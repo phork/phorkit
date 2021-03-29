@@ -1,0 +1,74 @@
+button.accordionLabel {
+  @mixin unbutton minimal;
+}
+
+.accordionLabel {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  flex: none;
+  padding: 8px 20px;
+  position: relative;
+  text-decoration: none;
+
+  &.is-selected {
+    color: var(--accordion-label-selected-text-color);
+  }
+
+  .accordionList:not(.is-accessible) & {
+    &:hover,
+    &.is-hovered {
+      color: var(--accordion-label-focused-text-color);
+    }
+  }
+
+  /**
+   * 1. Purposefully exclude :focus here because the browser
+   *    focus is no longer relevant in accessible mode.
+   */
+  .accordionList.is-accessible:focus &,
+  .accordionList.is-accessible.is-focused & {
+    &.is-focused { /* [1] */
+      color: var(--accordion-label-focused-text-color);
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+  
+  &:disabled,
+  &.is-disabled {
+    pointer-events: none;
+
+    & > .accordionLabel__content {
+      opacity: .5;
+    }
+  }
+}
+
+.accordionLabel--vertical {
+  width: 100%;
+}
+
+.accordionLabel--horizontal {
+  flex: none;
+  flex-direction: column;
+  justify-content: center;
+  line-height: normal;
+
+  &.accordion--icon {
+    min-width: 36px;
+    padding: 10px;
+  }
+}
+
+.accordionLabel a {
+  color: currentColor;
+  outline: none;
+}
+
+.accordionLabel__content {
+  width: 100%;
+}

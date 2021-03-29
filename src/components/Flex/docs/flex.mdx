@@ -1,0 +1,237 @@
+---
+name: Flex
+menu: Utilities
+route: /components/Flex
+---
+
+import { Playground, Props } from 'docz';
+import { Flex, StyledFlex } from 'components/Flex';
+import { FlexBox } from './helpers/FlexBox';
+import { Looper } from 'docs/helpers/Looper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Flex" src="components/Flex" />
+
+## Container row
+
+### Justify content space between, reverse
+
+<Playground>
+  <Flex direction="row" justifyContent="space-between" reverse>
+    <Looper start={0} end={4} render={i => (
+      <Flex key={i}>
+        <FlexBox width={40} height={40 + (i * 10)}>{i}</FlexBox>
+      </Flex>
+    )} />
+  </Flex>
+</Playground>
+
+### Justify content space around
+
+<Playground>
+  <Flex direction="row" justifyContent="space-around">
+    <Looper start={0} end={4} render={i => (
+      <Flex key={i}>
+        <FlexBox width={40} height={40 + (i * 10)}>{i}</FlexBox>
+      </Flex>
+    )} />
+  </Flex>
+</Playground>
+
+### Justify content space evenly
+
+<Playground>
+  <Flex direction="row" justifyContent="space-evenly">
+    <Looper start={0} end={4} render={i => (
+      <Flex key={i}>
+        <FlexBox width={40} height={40 + (i * 10)}>{i}</FlexBox>
+      </Flex>
+    )} />
+  </Flex>
+</Playground>
+
+### Justify content center, align items center
+
+<Playground>
+  <Flex direction="row" justifyContent="center" alignItems="center">
+    <Looper start={0} end={4} render={i => (
+      <Flex key={i}>
+        <FlexBox width={40} height={40 + (i * 10)}>{i}</FlexBox>
+      </Flex>
+    )} />
+  </Flex>
+</Playground>
+
+### Justify content start, align items start
+
+<Playground>
+  <Flex direction="row" justifyContent="flex-start" alignItems="flex-start">
+    <Looper start={0} end={4} render={i => (
+      <Flex key={i}>
+        <FlexBox width={40} height={40 + (i * 10)}>{i}</FlexBox>
+      </Flex>
+    )} />
+  </Flex>
+</Playground>
+
+### Justify content end, align items end
+
+<Playground>
+  <Flex direction="row" justifyContent="flex-end" alignItems="flex-end">
+    <Looper start={0} end={4} render={i => (
+      <Flex key={i}>
+        <FlexBox width={40} height={40 + (i * 10)}>{i}</FlexBox>
+      </Flex>
+    )} />
+  </Flex>
+</Playground>
+
+### Align content center, wrap
+
+<Playground>
+  <Flex direction="row" alignContent="center" wrap style={{height: '320px'}}>
+    <Looper start={0} end={30} render={i => (
+      <Flex key={i}>
+        <FlexBox height={40} width={40}>{i}</FlexBox>
+      </Flex>
+    )} />
+  </Flex>
+</Playground>
+
+### Align content space between, wrap
+
+<Playground>
+  <Flex direction="row" alignContent="space-between" wrap style={{height: '320px'}}>
+    <Looper start={0} end={30} render={i => (
+      <Flex key={i}>
+        <FlexBox height={40} width={40}>{i}</FlexBox>
+      </Flex>
+    )} />
+  </Flex>
+</Playground>
+
+## Container column
+
+### Justify content space between, reverse
+
+<Playground>
+  <Flex direction="column" justifyContent="space-between" reverse style={{height: '320px'}}>
+    <Looper start={0} end={4} render={i => (
+      <Flex key={i}>
+        <FlexBox height={40} width={40 + (i * 10)}>{i}</FlexBox>
+      </Flex>
+    )} />
+  </Flex>
+</Playground>
+
+### Justify content space around
+
+<Playground>
+  <Flex direction="column" justifyContent="space-around" style={{height: '320px'}}>
+    <Looper start={0} end={4} render={i => (
+      <Flex key={i}>
+        <FlexBox height={40} width={40 + (i * 10)}>{i}</FlexBox>
+      </Flex>
+    )} />
+  </Flex>
+</Playground>
+
+### Justify content space evenly
+
+<Playground>
+  <Flex direction="column" justifyContent="space-evenly" style={{height: '320px'}}>
+    <Looper start={0} end={4} render={i => (
+      <Flex key={i}>
+        <FlexBox height={40} width={40 + (i * 10)}>{i}</FlexBox>
+      </Flex>
+    )} />
+  </Flex>
+</Playground>
+
+### Justify content center, align items center
+
+<Playground>
+  <Flex direction="column" justifyContent="center" alignItems="center" style={{height: '320px'}}>
+    <Looper start={0} end={4} render={i => (
+      <Flex key={i}>
+        <FlexBox height={40} width={40 + (i * 10)}>{i}</FlexBox>
+      </Flex>
+    )} />
+  </Flex>
+</Playground>
+
+### Justify content start, align items start
+
+<Playground>
+  <Flex direction="column" justifyContent="flex-start" alignItems="flex-start" style={{height: '320px'}}>
+    <Looper start={0} end={4} render={i => (
+      <Flex key={i}>
+        <FlexBox height={40} width={40 + (i * 10)}>{i}</FlexBox>
+      </Flex>
+    )} />
+  </Flex>
+</Playground>
+
+### Justify content end, align items end
+
+<Playground>
+  <Flex direction="column" justifyContent="flex-end" alignItems="flex-end" style={{height: '320px'}}>
+    <Looper start={0} end={4} render={i => (
+      <Flex key={i}>
+        <FlexBox height={40} width={40 + (i * 10)}>{i}</FlexBox>
+      </Flex>
+    )} />
+  </Flex>
+</Playground>
+
+### Align content center, wrap
+
+<Playground>
+  <Flex direction="column" alignContent="center" wrap style={{height: '320px'}}>
+    <Looper start={0} end={10} render={i => (
+      <Flex key={i}>
+        <FlexBox height={40} width={40}>{i}</FlexBox>
+      </Flex>
+    )} />
+  </Flex>
+</Playground>
+
+### Align content space between, wrap
+
+<Playground>
+  <Flex direction="column" alignContent="space-between" wrap style={{height: '320px'}}>
+    <Looper start={0} end={10} render={i => (
+      <Flex key={i}>
+        <FlexBox height={40} width={40}>{i}</FlexBox>
+      </Flex>
+    )} />
+  </Flex>
+</Playground>
+
+### Styled flex grow
+
+<Playground>
+  <Flex direction="row" wrap>
+    <Looper start={0} end={10} render={i => (
+      <StyledFlex key={i} flexGrow={i}>
+        <FlexBox height={40} width="100%">{i}</FlexBox>
+      </StyledFlex>
+    )} />
+  </Flex>
+</Playground>
+
+### Styled flex shorthand
+
+<Playground>
+  <Flex direction="row" wrap={false}>
+    <Looper start={0} end={10} render={i => (
+      <StyledFlex key={i} flex={`${i} 0 40px`}>
+        <FlexBox height={40} width="100%">{i}</FlexBox>
+      </StyledFlex>
+    )} />
+  </Flex>
+</Playground>
+
+## \[props\]
+
+<Props of={Flex} />

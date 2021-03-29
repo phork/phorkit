@@ -1,0 +1,72 @@
+a.link,
+.linkContainer a {
+  color: var(--link-color, currentColor);
+  cursor: pointer;
+  display: inline;
+  text-decoration: none;
+  transition: color 200ms ease;
+
+  &:hover,
+  &.is-hovered {
+    color: var(--link-hover-color);
+  }
+
+  &:active,
+  &.is-active {
+    color: var(--link-active-color);
+  }
+
+  &:focus,
+  &.is-focused {
+    outline: 1px solid currentColor;
+    outline-offset: 0.1rem;
+    text-decoration: none;
+  }
+}
+
+a.link,
+.linkContainer {
+  @mixin themed {
+    --link-color: $theme-color-accent-primary;
+    --link-hover-color: $theme-color-accent-primary-L10;
+    --link-active-color: $theme-color-accent-primary-D10;
+  }
+}
+
+a.link.link--contrast.link--light,
+.linkContainer.linkContainer--contrast.linkContainer--light {
+  --link-color: $light-contrast-text-color;
+  --link-hover-color: $light-contrast-quiet-color;
+  --link-active-color: $light-contrast-text-color;
+}
+
+a.link.link--contrast.link--dark,
+.linkContainer.linkContainer--contrast.linkContainer--dark {
+  --link-color: $dark-contrast-text-color;
+  --link-hover-color: $dark-contrast-quiet-color;
+  --link-active-color: $dark-contrast-text-color;
+}
+
+/**
+ * Always underline contrast links otherwise
+ * it won't be obvious that they are links.
+ */
+a.link--contrast,
+a.link--underline,
+.linkContainer--contrast a,
+.linkContainer--underline a {
+  position: relative;
+
+  &:not(:focus):not(.is-focused) {
+    &:before {
+      border-bottom: 1px solid currentColor;
+      content: '';
+      height: 100%;
+      opacity: 0.7;
+      position: absolute;
+      top: 0.1rem;
+      left: -0.1rem;
+      right: -0.1rem;
+    }
+  }
+}

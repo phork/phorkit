@@ -1,0 +1,11 @@
+.tabPanel {
+  padding: 30px;
+
+  &:not(.is-selected) {
+    display: none;
+  }
+}
+
+.tabPanel--flush {
+  padding: 0;
+}

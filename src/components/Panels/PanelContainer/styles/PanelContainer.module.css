@@ -1,0 +1,53 @@
+.panelContainer {
+  @mixin allowMaximumFlexboxShrinkage;
+
+  flex-wrap: nowrap;
+  flex: 1;
+  position: relative;
+}
+
+.panelContainer--absolute {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.panelContainer--viewport {
+  max-height: 100vh;
+  min-height: 100vh;
+  overflow: hidden;
+  width: 100%;
+}
+
+/**
+ * 1. Account for an overly large margin-right on an
+ *    inline side panel pulling the main panel too wide.
+ */
+.panelContainer--vertical {
+  display: flex;
+  flex-direction: row;
+
+  &.panelContainer--reverse {
+    flex-direction: row-reverse;
+  }
+
+  > .modMainPanel {
+    max-width: 100%; /* [1] */
+  }
+}
+
+.panelContainer--horizontal {
+  display: flex;
+  flex-direction: column;
+
+  &.panelContainer--reverse {
+    flex-direction: column-reverse;
+  }
+}
+
+.panelContainer--full {
+  height: 100%;
+  width: 100%;
+}

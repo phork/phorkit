@@ -1,0 +1,114 @@
+---
+name: Toggle
+menu: Forms
+route: /components/FormToggle
+---
+
+import { Playground, Props } from 'docz';
+import { Toggle, NotifiedToggle } from '../index';
+import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
+import { Looper } from 'docs/helpers/Looper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Toggle" src="components/Form/Toggle" />
+
+## Basic toggle
+
+<Playground>
+  <FormComponentDemo property="checked" initialValue={true}>
+    <Toggle
+      id="demo-basic-toggle"
+      onChange={(event, checked) => console.log(checked)}
+      aria-label="Super fantastic label"
+    />
+  </FormComponentDemo>
+</Playground>
+
+## Labeled toggle
+
+<Playground>
+  <FormComponentDemo property="checked" initialValue={true}>
+    <Toggle id="demo-labeled-toggle" onChange={(event, checked) => console.log(checked)}>
+      Super fantastic label
+    </Toggle>
+  </FormComponentDemo>
+</Playground>
+
+## Wrapped labeled toggle
+
+<Playground>
+  <FormComponentDemo property="checked" initialValue={true}>
+    <Toggle id="demo-wrapped-labeled-toggle" onChange={(event, checked) => console.log(checked)}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget dui eu orci ultrices maximus eu eu ante.
+      Vestibulum ligula velit, scelerisque vitae venenatis tempor, consectetur a orci. Aenean molestie eu tortor in
+      pharetra. Nulla lobortis, sapien quis ornare venenatis, nunc libero finibus justo, non tempor nisi urna quis
+      justo. Integer sit amet venenatis leo.
+    </Toggle>
+  </FormComponentDemo>
+</Playground>
+
+## Disabled toggle
+
+<Playground>
+  <FormComponentDemo property="checked" initialValue={false}>
+    <Toggle disabled id="demo-disabled-toggle" onChange={(event, checked) => console.log(checked)} />
+  </FormComponentDemo>
+</Playground>
+
+## Small toggle
+
+<Playground>
+  <FormComponentDemo property="checked" initialValue={true}>
+    <Toggle size="small" id="demo-small-toggle" onChange={(event, checked) => console.log(checked)}>
+      Super fantastic label
+    </Toggle>
+  </FormComponentDemo>
+</Playground>
+
+## Contrast toggles
+
+<Playground>
+  <FormComponentDemo property="checked" initialValue={true} contrast>
+    <Toggle
+      contrast
+      id="demo-contrast-toggle"
+      onChange={(event, checked) => console.log(checked)}
+    >
+      Super fantastic label
+    </Toggle>
+  </FormComponentDemo>
+
+   <FormComponentDemo property="checked" initialValue={true} contrast>
+    <Toggle
+      contrast
+      id="demo-standalone-toggle"
+      onChange={(event, checked) => console.log(checked)}
+      standalone
+    >
+      Super standalone label
+    </Toggle>
+  </FormComponentDemo>
+</Playground>
+
+## Notifications
+
+<Playground>
+  <Looper
+    list={['success', 'danger', 'warning', 'primary', 'neutral']}
+    render={level => (
+      <FormComponentDemo property="checked" initialValue={true}>
+        <NotifiedToggle
+          onChange={(event, checked) => console.log(checked)}
+          level={level}
+          notification={`This is an example ${level} notification.`}
+        >
+          Super fantastic label
+        </NotifiedToggle>
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## \[props\]
+
+<Props of={Toggle} />

@@ -1,0 +1,36 @@
+---
+name: TagGroup
+menu: Display
+route: /components/TagGroup
+---
+
+import { Playground, Props } from 'docz';
+import { TagGroup } from '../index';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="TagGroup" src="components/Tags" />
+
+## Actionable tag group
+
+<Playground>
+  <ThemeWrapper>
+    <TagGroup actionable tags={[
+      { id: 'super', label: 'Super', onClick: () => console.log('super') },
+      { id: 'awesome', label: 'Awesome', onClick: () => console.log('awesome') },
+      { id: 'fun', label: 'Fun', onClick: () => console.log('fun') },
+    ]} />
+    <br />
+    <TagGroup shape="brick" actionable tags={[
+      { id: 'super', label: 'Super', onClick: () => console.log('super') },
+      { id: 'awesome', label: 'Awesome', onClick: () => console.log('awesome') },
+      { id: 'fun', label: 'Fun', onClick: () => console.log('fun') },
+    ]} />
+  </ThemeWrapper>
+</Playground>
+
+## \[props\]
+
+### TagGroup
+
+<Props of={TagGroup} />

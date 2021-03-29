@@ -1,0 +1,167 @@
+.slider {
+  display: inline-block;
+  font-size: $font-size-m;
+  position: relative;
+}
+
+.slider--noHandle {
+  .sliderHandle {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/*
+.sliderValue {}
+*/
+
+.sliderValue--top {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.sliderValue--right {
+  bottom: 2px;
+  left: calc(100% + 12px);
+  position: absolute;
+}
+
+/**
+ * 1. Add a bit of padding to make for a friendlier
+ *    click area. Also accounts for space taken up
+ *    by the slider button.
+ */
+.sliderInputContainer {
+  $vertical-padding: 8px; /* [1] */
+  $track-height: 4px;
+  $animation-timing: 200ms;
+
+  align-items: center;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: row;
+  flex: none;
+  height: 6px;
+  padding: $vertical-padding 0; /* [1] */
+  position: relative;
+  width: 100%;
+
+  &:before {
+    background: var(--slider-track-background-color);
+    border-radius: 3px;
+    bottom: calc($vertical-padding - calc($track-height / 2));
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: calc($vertical-padding - calc($track-height / 2));
+  }
+
+  &:after {
+    background: var(--slider-track-fill-background-color);
+    border-radius: 3px;
+    bottom: calc($vertical-padding - calc($track-height / 2));
+    content: '';
+    left: 0;
+    position: absolute;
+    top: calc($vertical-padding - calc($track-height / 2));
+    transition: all $animation-timing ease-in-out;
+    width: var(--slider-track-fill-width);
+  }
+
+  .slider.is-dragging & {
+    &:after {
+      transition: none;
+    }
+  }
+}
+
+.sliderHandle {
+  background-color: var(--slider-handle-background-color);
+  border-radius: 100%;
+  height: 12px;
+  left: var(--slider-track-fill-width);
+  position: absolute;
+  transform: translate(-50%);
+  transition: all $animation-timing ease-in-out;
+  width: 12px;
+  z-index: 2;
+
+  .slider.is-dragging & {
+    transition: none;
+  }
+
+  .slider:hover &,
+  .slider.is-focused & {
+    box-shadow: var(--slider-hover-handle-box-shadow);
+    border: 1px solid var(--slider-hover-handle-border-color);
+  }
+}
+
+.sliderHandle--small {
+  height: 8px;
+  width: 8px;
+}
+
+.sliderTickContainer {
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+
+.sliderTick {
+  background-color: var(--slider-tick-background-color);
+  border-radius: 100%;
+  display: inline-block;
+  height: 8px;
+  position: absolute;
+  transform: translate(-50%, 50%);
+  width: 8px;
+  z-index: 1;
+}
+
+.sliderTick--active {
+  background-color: var(--slider-handle-background-color);
+}
+
+input.sliderInput {
+  @mixin visuallyHidden;
+}
+
+.slider.is-disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.slider--primary {
+  @mixin themed .slider {
+    --slider-track-background-color: $theme-color-FG0-O10;
+    --slider-track-fill-background-color: $theme-color-accent-primary;
+    --slider-handle-background-color: $theme-color-accent-primary;
+    --slider-hover-handle-box-shadow: 0 0 0 1px $theme-color-accent-primary;
+    --slider-hover-handle-border-color: $theme-color-accent-primary;
+    --slider-tick-background-color: $theme-color-BG40;
+  }
+}
+
+.slider--contrast {
+  @mixin themed .slider {
+    --slider-track-background-color: $theme-contrast-quietest-color;
+    --slider-track-fill-background-color: $theme-contrast-accent-color;
+    --slider-handle-background-color: $theme-contrast-accent-color;
+    --slider-hover-handle-box-shadow: 0 0 0 1px $theme-contrast-accent-color;
+    --slider-hover-handle-border-color: $theme-contrast-accent-color;
+    --slider-tick-background-color: $theme-contrast-quiet-color;
+  }
+}
+
+.slider.is-danger {
+  @mixin themed .slider {
+    --slider-track-fill-background-color: $theme-color-danger;
+    --slider-handle-background-color: $theme-color-danger;
+    --slider-hover-handle-box-shadow: 0 0 0 1px $theme-color-danger;
+    --slider-hover-handle-border-color: $theme-color-danger;
+    --slider-tick-background-color: $theme-color-BG40;
+  }
+}

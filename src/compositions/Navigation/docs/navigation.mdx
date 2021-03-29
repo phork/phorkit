@@ -1,0 +1,502 @@
+---
+name: Navigation
+menu: Navigation
+route: /compositions/Navigation
+---
+
+import { Playground, Props } from 'docz';
+import { Navigation, StyledNavigation } from '../index';
+import { Button } from 'components/Button';
+import { Rhythm } from 'components/Rhythm';
+import { Typography } from 'components/Typography';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Navigation" src="compositions/Navigation" />
+
+Keyboard navigation is available for this component. Navigate with `Up`, `Down`, `Left`, `Right`, `Home` or `End`. Select with `Space` or `Enter`.
+
+## Basic navigation
+
+### Horizontal navigation
+
+<Playground>
+  <ThemeWrapper>
+    <div style={{ height: '50px' }}>
+      <StateWrapper initialState={'first'}>
+        {({ state: selectedId, setState: setSelectedId }) => (
+          <Navigation
+            selectedId={selectedId}
+            onSelect={(event, item) => { setSelectedId(item.id); console.log(item.id); }}
+            items={[
+              { id: 'first', label: 'First' },
+              { id: 'second', label: 'Second' },
+              { id: 'third', label: 'Third', disabled: true },
+              { id: 'fourth', label: 'Fourth' },
+            ]}
+          />
+        )}
+      </StateWrapper>
+    </div>
+  </ThemeWrapper>
+</Playground>
+
+### Vertical navigation
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={'first'}>
+      {({ state: selectedId, setState: setSelectedId }) => (
+        <Navigation
+          vertical
+          selectedId={selectedId}
+          onSelect={(event, item) => setSelectedId(item.id)}
+          items={[
+            { id: 'first', label: 'First' },
+            { id: 'second', label: 'Second' },
+            { id: 'third', label: 'Third', disabled: true },
+            { id: 'fourth', label: 'Fourth' },
+          ]}
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+## Animated navigation
+
+### Horizontal navigation
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={'second'}>
+      {({ state: selectedId, setState: setSelectedId }) => (
+        <Navigation
+          animated
+          style={{ height: '50px' }}
+          selectedId={selectedId}
+          onSelect={(event, item) => setSelectedId(item.id)}
+          items={[
+            { id: 'first', label: 'First' },
+            { id: 'second', label: 'Second' },
+            { id: 'third', label: 'Third', disabled: true },
+            { id: 'fourth', label: 'Fourth' },
+          ]}
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+### Vertical navigation
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={'second'}>
+      {({ state: selectedId, setState: setSelectedId }) => (
+        <Navigation
+          animated
+          vertical
+          selectedId={selectedId}
+          onSelect={(event, item) => setSelectedId(item.id)}
+          items={[
+            { id: 'first', label: 'First' },
+            { id: 'second', label: 'Second' },
+            { id: 'third', label: 'Third', disabled: true },
+            { id: 'fourth', label: 'Fourth' },
+          ]}
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+## Secondary navigation
+
+### Horizontal navigation
+
+<Playground>
+  <ThemeWrapper>
+    <div style={{ height: '50px' }}>
+      <StateWrapper initialState={'first'}>
+        {({ state: selectedId, setState: setSelectedId }) => (
+          <Navigation
+            animated
+            selectedId={selectedId}
+            variant="secondary"
+            onSelect={(event, item) => setSelectedId(item.id)}
+            items={[
+              { id: 'first', label: 'First' },
+              { id: 'second', label: 'Second' },
+              { id: 'third', label: 'Third', disabled: true },
+              { id: 'fourth', label: 'Fourth' },
+            ]}
+          />
+        )}
+      </StateWrapper>
+    </div>
+  </ThemeWrapper>
+</Playground>
+
+### Vertical navigation
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={'first'}>
+      {({ state: selectedId, setState: setSelectedId }) => (
+        <Navigation
+          vertical
+          animated
+          selectedId={selectedId}
+          variant="secondary"
+          onSelect={(event, item) => setSelectedId(item.id)}
+          items={[
+            { id: 'first', label: 'First' },
+            { id: 'second', label: 'Second' },
+            { id: 'third', label: 'Third', disabled: true },
+            { id: 'fourth', label: 'Fourth' },
+          ]}
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+## Tertiary navigation
+
+### Horizontal navigation
+
+<Playground>
+  <ThemeWrapper>
+    <div style={{ height: '50px' }}>
+      <StateWrapper initialState={'first'}>
+        {({ state: selectedId, setState: setSelectedId }) => (
+          <Navigation
+            animated
+            selectedId={selectedId}
+            variant="tertiary"
+            onSelect={(event, item) => setSelectedId(item.id)}
+            items={[
+              { id: 'first', label: 'First' },
+              { id: 'second', label: 'Second' },
+              { id: 'third', label: 'Third', disabled: true },
+              { id: 'fourth', label: 'Fourth' },
+            ]}
+          />
+        )}
+      </StateWrapper>
+    </div>
+  </ThemeWrapper>
+</Playground>
+
+### Vertical navigation
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={'first'}>
+      {({ state: selectedId, setState: setSelectedId }) => (
+        <Navigation
+          vertical
+          animated
+          selectedId={selectedId}
+          variant="tertiary"
+          onSelect={(event, item) => setSelectedId(item.id)}
+          items={[
+            { id: 'first', label: 'First' },
+            { id: 'second', label: 'Second' },
+            { id: 'third', label: 'Third', disabled: true },
+            { id: 'fourth', label: 'Fourth' },
+          ]}
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+### Vertical icon navigation with border radius
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={'first'}>
+      {({ state: selectedId, setState: setSelectedId }) => (
+        <Navigation
+          vertical
+          animated
+          highlightRadius={4}
+          selectedId={selectedId}
+          variant="tertiary"
+          onSelect={(event, item) => setSelectedId(item.id)}
+          items={[
+            { id: 'first', label: <BlobbrIcon size={16} />, flush: true, style: { borderRadius: '4px', padding: '8px', marginBottom: '4px' }},
+            { id: 'second', label: <BlobbrIcon size={16} />, flush: true, style: { borderRadius: '4px', padding: '8px', marginBottom: '4px' }},
+            { id: 'third', label: <BlobbrIcon size={16} />, flush: true, style: { borderRadius: '4px', padding: '8px', marginBottom: '4px' }, disabled: true },
+            { id: 'fourth', label: <BlobbrIcon size={16} />, flush: true, style: { borderRadius: '4px', padding: '8px', marginBottom: '4px' }},
+          ]}
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+### Navigation with custom labels
+
+<Playground>
+  <ThemeWrapper>
+    <div style={{ height: '50px' }}>
+      <StateWrapper initialState={'first'}>
+        {({ state: selectedId, setState: setSelectedId }) => (
+          <Navigation
+            animated
+            selectedId={selectedId}
+            variant="tertiary"
+            onSelect={(event, item) => setSelectedId(item.id)}
+            items={[
+              {
+                id: 'first',
+                label: (
+                  <Rhythm px={2}>
+                    <Typography size="xs" variants={['letter-spacing-comfy', 'uppercase']}>
+                      First
+                    </Typography>
+                  </Rhythm>
+                ),
+              },
+              {
+                id: 'second',
+                label: (
+                  <Rhythm px={2}>
+                    <Typography size="xs" variants={['letter-spacing-comfy', 'uppercase']}>
+                      Second
+                    </Typography>
+                  </Rhythm>
+                ),
+              },
+              {
+                id: 'third',
+                label: (
+                  <Rhythm px={2}>
+                    <Typography size="xs" variants={['letter-spacing-comfy', 'uppercase']}>
+                      Third
+                    </Typography>
+                  </Rhythm>
+                ),
+                disabled: true,
+              },
+              {
+                id: 'fourth',
+                label: (
+                  <Rhythm px={2}>
+                    <Typography size="xs" variants={['letter-spacing-comfy', 'uppercase']}>
+                      Fourth
+                    </Typography>
+                  </Rhythm>
+                ),
+              },
+            ]}
+          />
+        )}
+      </StateWrapper>
+    </div>
+  </ThemeWrapper>
+</Playground>
+
+## Variations
+
+### Navigation with triggerOnly
+
+<Playground>
+  <StateWrapper initialState={'second'}>
+    {({ state: selectedId, setState: setSelectedId }) => (
+      <Navigation
+        animated
+        style={{ height: '50px' }}
+        selectedId={selectedId}
+        onSelect={(event, item) => setSelectedId(item.id)}
+        items={[
+          { id: 'first', label: 'First' },
+          { id: 'second', label: 'Second' },
+          { id: 'third', label: 'Third', disabled: true },
+          { id: 'fourth', label: 'Trigger', triggerOnly: () => console.log('triggered') },
+        ]}
+      />
+    )}
+  </StateWrapper>
+</Playground>
+
+### Navigation as links
+
+_Note that the links will cause the page to reload so the state will appear unchanged._
+
+<Playground>
+  <ThemeWrapper>
+    <Navigation
+      animated
+      style={{ height: '50px' }}
+      selectedId={'first'}
+      items={[
+        {
+          id: 'first',
+          label: (
+            <a tabIndex="-1" href="#linked">
+              First
+            </a>
+          ),
+        },
+        {
+          id: 'second',
+          label: (
+            <a tabIndex="-1" href="#linked">
+              Second
+            </a>
+          ),
+        },
+        {
+          id: 'third',
+          label: (
+            <a tabIndex="-1" href="#linked">
+              Third
+            </a>
+          ),
+          disabled: true,
+        },
+        {
+          id: 'fourth',
+          label: (
+            <a tabIndex="-1" href="#linked">
+              Fourth
+            </a>
+          ),
+        },
+      ]}
+    />
+  </ThemeWrapper>
+</Playground>
+
+### Navigation with label functions
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={'second'}>
+      {({ state: selectedId, setState: setSelectedId }) => (
+        <Navigation
+          animated
+          selectedId={selectedId}
+          onSelect={(event, item) => setSelectedId(item.id)}
+          items={[
+            { id: 'first', label: ({ selected }) => `First${selected ? ' is selected' : ''}` },
+            { id: 'second', label: ({ selected }) => `Second${selected ? ' is selected' : ''}` },
+            { id: 'third', label: ({ selected }) => `Third${selected ? ' is selected' : ''}`, disabled: true },
+            { id: 'fourth', label: ({ selected }) => `Fourth${selected ? ' is selected' : ''}` },
+          ]}
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+### Styled navigation
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={'second'}>
+      {({ state: selectedId, setState: setSelectedId }) => (
+        <StyledNavigation
+          animated
+          selectedId={selectedId}
+          onSelect={(event, item) => setSelectedId(item.id)}
+          items={[
+            { id: 'first', label: ({ selected }) => `First${selected ? ' is selected' : ''}` },
+            { id: 'second', label: ({ selected }) => `Second${selected ? ' is selected' : ''}` },
+            { id: 'third', label: ({ selected }) => `Third${selected ? ' is selected' : ''}`, disabled: true },
+            { id: 'fourth', label: ({ selected }) => `Fourth${selected ? ' is selected' : ''}` },
+          ]}
+          focusedBorderColor="#393a61"
+          itemFocusedBackgroundColor="#393a61"
+          itemFocusedBorderColor="#393a61"
+          itemFocusedSelectedBackgroundColor="#393a61"
+          itemFocusedSelectedTextColor="#fff"
+          itemFocusedTextColor="#fff"
+          itemHoveredBorderColor="#393a61"
+          itemSelectedBackgroundColor="#393a61"
+          itemSelectedBorderColor="#393a61"
+          itemSelectedTextColor="#fff"
+          itemTextColor="#393a61"
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+### Example with `react-router-dom`
+
+```
+import React, { useCallback, useMemo } from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import { Navigation } from '@phork/phorkit';
+
+export function GlobalNavigation({ history, location }) {
+  const items = useMemo(
+    () => [
+      {
+        id: 'dashboard',
+        selected: location => location.pathname === '/',
+        url: '/',
+        label: 'Dashboard',
+      },
+      {
+        id: 'awesome',
+        selected: location => location.pathname.startsWith('/awesome'),
+        url: '/awesome',
+        label: 'Awesome',
+      },
+      {
+        id: 'example',
+        selected: location => location.pathname.startsWith('/example'),
+        url: '/example',
+        label: 'Example',
+      },
+      {
+        id: 'things',
+        selected: location => location.pathname.startsWith('/things'),
+        url: '/things',
+        label: 'Things',
+      },
+    ],
+    [],
+  );
+
+  const handleSelect = useCallback((event, { url }) => history.push(url), [history]);
+
+  return (
+    <Navigation
+      animated
+      fullWidth
+      onSelect={handleSelect}
+      selectedId={items.find(({ selected }) => selected(location)).id}
+      items={items}
+    />
+  );
+}
+
+GlobalNavigation.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+  location: PropTypes.object.isRequired,
+};
+
+export const EnhancedGlobalNavigation = withRouter(GlobalNavigation);
+```
+
+## \[props\]
+
+### Navigation
+
+<Props of={Navigation} />
+
+### StyledNavigation
+
+<Props of={StyledNavigation} />

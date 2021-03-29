@@ -1,0 +1,292 @@
+---
+name: Button
+menu: Input
+route: /components/Button
+---
+
+import { Playground, Props } from 'docz';
+import { Button } from '../Button';
+import { StyledButton, IconTextButton } from '../index';
+import { Flex } from 'components/Flex';
+import { Rhythm } from 'components/Rhythm';
+import { Hoverable } from 'components/Hoverable';
+import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { SpinnerIcon } from 'icons/SpinnerIcon';
+import { ucfirst } from 'utils';
+import { Looper } from 'docs/helpers/Looper';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Button" src="components/Button" />
+
+## Pill buttons
+
+<Playground>
+  <ThemeWrapper>
+    <Looper list={[undefined, 'outline']} render={weight => (
+      <div key={weight || 'undefined'}>
+        <Rhythm m={2}>
+          <Button color="primary" weight={weight} onClick={() => console.log('primary')}>Primary</Button>
+          <Button color="success" weight={weight} onClick={() => console.log('success')}>Success</Button>
+          <Button color="warning" weight={weight} onClick={() => console.log('warning')}>Warning</Button>
+          <Button color="danger" weight={weight} onClick={() => console.log('danger')}>Danger</Button>
+          <Button color="neutral" weight={weight} onClick={() => console.log('neutral')}>Neutral</Button>
+          <Button color="black" weight={weight} onClick={() => console.log('black')}>Black</Button>
+          <Button color="white" weight={weight} onClick={() => console.log('white')}>White</Button>
+        </Rhythm>
+        <br />
+        <Rhythm m={2}>
+          <Button color="primary" weight={weight} onClick={() => console.log('primary')} disabled loading loader={<SpinnerIcon scale="medium" />}>Primary</Button>
+          <Button color="success" weight={weight} onClick={() => console.log('success')} disabled loading loader={<SpinnerIcon scale="medium" />}>Success</Button>
+          <Button color="warning" weight={weight} onClick={() => console.log('warning')} disabled loading loader={<SpinnerIcon scale="medium" />}>Warning</Button>
+          <Button color="danger" weight={weight} onClick={() => console.log('danger')} disabled loading loader={<SpinnerIcon scale="medium" />}>Danger</Button>
+          <Button color="neutral" weight={weight} onClick={() => console.log('neutral')} disabled loading loader={<SpinnerIcon scale="medium" />}>Neutral</Button>
+          <Button color="black" weight={weight} onClick={() => console.log('black')} disabled loading loader={<SpinnerIcon scale="medium" />}>Black</Button>
+          <Button color="white" weight={weight} onClick={() => console.log('white')} disabled loading loader={<SpinnerIcon scale="medium" />}>White</Button>
+        </Rhythm>
+      </div>
+    )} />
+  </ThemeWrapper>
+</Playground>
+
+## Brick buttons
+
+<Playground>
+  <ThemeWrapper>
+    <Looper list={[undefined, 'outline']} render={weight => (
+      <div key={weight || 'undefined'}>
+        <Rhythm m={2}>
+          <Button color="primary" shape="brick" weight={weight} onClick={() => console.log('primary')}>Primary</Button>
+          <Button color="success" shape="brick" weight={weight} onClick={() => console.log('success')}>Success</Button>
+          <Button color="warning" shape="brick" weight={weight} onClick={() => console.log('warning')}>Warning</Button>
+          <Button color="danger" shape="brick" weight={weight} onClick={() => console.log('danger')}>Danger</Button>
+          <Button color="neutral" shape="brick" weight={weight} onClick={() => console.log('neutral')}>Neutral</Button>
+          <Button color="black" shape="brick" weight={weight} onClick={() => console.log('black')}>Black</Button>
+          <Button color="white" shape="brick" weight={weight} onClick={() => console.log('white')}>White</Button>
+        </Rhythm>
+        <br />
+        <Rhythm m={2}>
+          <Button color="primary" shape="brick" weight={weight} onClick={() => console.log('primary')} disabled loading loader={<SpinnerIcon scale="medium" />}>Primary</Button>
+          <Button color="success" shape="brick" weight={weight} onClick={() => console.log('success')} disabled loading loader={<SpinnerIcon scale="medium" />}>Success</Button>
+          <Button color="warning" shape="brick" weight={weight} onClick={() => console.log('warning')} disabled loading loader={<SpinnerIcon scale="medium" />}>Warning</Button>
+          <Button color="danger" shape="brick" weight={weight} onClick={() => console.log('danger')} disabled loading loader={<SpinnerIcon scale="medium" />}>Danger</Button>
+          <Button color="neutral" shape="brick" weight={weight} onClick={() => console.log('neutral')} disabled loading loader={<SpinnerIcon scale="medium" />}>Neutral</Button>
+          <Button color="black" shape="brick" weight={weight} onClick={() => console.log('black')} disabled loading loader={<SpinnerIcon scale="medium" />}>Black</Button>
+          <Button color="white" shape="brick" weight={weight} onClick={() => console.log('white')} disabled loading loader={<SpinnerIcon scale="medium" />}>White</Button>
+         </Rhythm>
+      </div>
+    )} />
+  </ThemeWrapper>
+</Playground>
+
+## Text buttons
+
+<Playground>
+  <ThemeWrapper>
+    <Rhythm m={2}>
+      <Button weight="text" color="primary" onClick={() => console.log('primary')}>Primary</Button>
+      <Button weight="text" color="success" onClick={() => console.log('success')}>Success</Button>
+      <Button weight="text" color="warning" onClick={() => console.log('warning')}>Warning</Button>
+      <Button weight="text" color="danger" onClick={() => console.log('danger')}>Danger</Button>
+      <Button weight="text" color="neutral" onClick={() => console.log('neutral')}>Neutral</Button>
+      <Button weight="text" color="neutralAccessible" onClick={() => console.log('neutralAccessible')}>Neutral accessible</Button>
+      <Button weight="text" color="neutralAndPrimary" onClick={() => console.log('neutralAndPrimary')}>Neutral and primary</Button>
+      <Button weight="text" color="black" onClick={() => console.log('black')}>Black</Button>
+      <Button weight="text" color="white" onClick={() => console.log('white')}>White</Button>
+    </Rhythm>
+    <br />
+    <Rhythm m={2}>
+      <Button weight="text" color="primary" onClick={() => console.log('primary')} disabled loading loader={<SpinnerIcon scale="medium" />}>Primary</Button>
+      <Button weight="text" color="success" onClick={() => console.log('success')} disabled loading loader={<SpinnerIcon scale="medium" />}>Success</Button>
+      <Button weight="text" color="warning" onClick={() => console.log('warning')} disabled loading loader={<SpinnerIcon scale="medium" />}>Warning</Button>
+      <Button weight="text" color="danger" onClick={() => console.log('danger')} disabled loading loader={<SpinnerIcon scale="medium" />}>Danger</Button>
+      <Button weight="text" color="neutral" onClick={() => console.log('neutral')} disabled loading loader={<SpinnerIcon scale="medium" />}>Neutral</Button>
+      <Button weight="text" color="neutralAccessible" onClick={() => console.log('neutralAccessible')} disabled loading loader={<SpinnerIcon scale="medium" />}>Neutral accessible</Button>
+      <Button weight="text" color="neutralAndPrimary" onClick={() => console.log('neutralAndPrimary')} disabled loading loader={<SpinnerIcon scale="medium" />}>Neutral and primary</Button>
+      <Button weight="text" color="black" onClick={() => console.log('black')} disabled loading loader={<SpinnerIcon scale="medium" />}>Black</Button>
+      <Button weight="text" color="white" onClick={() => console.log('white')} disabled loading loader={<SpinnerIcon scale="medium" />}>White</Button>
+    </Rhythm>
+  </ThemeWrapper>
+</Playground>
+
+## Variations
+
+### IconText buttons
+
+<Playground>
+  <ThemeWrapper>
+    <Flex direction="row">
+      <div>
+        <h3>Manual</h3>
+        <StateWrapper initialState={0} formatSetValue={previous => previous + 1}>
+          {({ state: isMouseOver, setState: setIsMouseOver }) => {
+            return (
+              <Looper
+                list={['pill', 'brick']}
+                render={shape => (
+                  <Rhythm mb={2} grouped>
+                    <Looper
+                      list={['primary', 'success', 'warning', 'danger', 'neutral']}
+                      render={color => (
+                        <Hoverable defaultProps={{ collapsed: true }} hoverableProps={{ collapsed: false }}>
+                          <Rhythm mx={2}>
+                            <IconTextButton
+                              color={color}
+                              icon={<BlobbrIcon scale="medium" />}
+                              manual
+                              text={ucfirst(color)}
+                              shape={shape}
+                            />
+                          </Rhythm>
+                        </Hoverable>
+                      )}
+                    />
+                  </Rhythm>
+                )}
+              />
+            );
+          }}
+        </StateWrapper>
+      </div>
+      <div>
+        <h3>Automatic</h3>
+        <Looper
+          list={['pill', 'brick']}
+          render={shape => (
+            <Rhythm mb={2} grouped>
+              <Looper
+                list={['primary', 'success', 'warning', 'danger', 'neutral']}
+                render={color => (
+                  <Rhythm mx={2}>
+                    <IconTextButton
+                      color={color}
+                      icon={<BlobbrIcon scale="medium" />}
+                      text={ucfirst(color)}
+                      shape={shape}
+                      weight="outline"
+                    />
+                  </Rhythm>
+                )}
+              />
+            </Rhythm>
+          )}
+        />
+      </div>
+    </Flex>
+  </ThemeWrapper>
+</Playground>
+
+### Contrast buttons
+
+<Playground>
+  <ThemeWrapper contrast>
+    <Rhythm m={2}>
+      <Button contrast>Contrast</Button>
+      <Button contrast weight="outline">Contrast</Button>
+      <Button contrast weight="text">Contrast</Button>
+    </Rhythm>
+    <br />
+    <Rhythm m={2}>
+      <Button contrast disabled loading loader={<SpinnerIcon scale="medium" />}>Contrast</Button>
+      <Button contrast weight="outline" disabled loading loader={<SpinnerIcon scale="medium" />}>Contrast</Button>
+      <Button contrast weight="text" disabled loading loader={<SpinnerIcon scale="medium" />}>Contrast</Button>
+    </Rhythm>
+  </ThemeWrapper>
+</Playground>
+
+### Linked buttons
+
+_Note that the links will cause the page to reload so the state will appear unchanged._
+
+<Playground>
+  <ThemeWrapper>
+    <Rhythm m={2}>
+      <Button href="#linked" onClick={() => console.log('linked clicked')} color="primary">Linked</Button>
+      <Button href="#linked" onClick={() => console.log('linked clicked')} weight="outline" color="primary">Linked</Button>
+      <Button href="#linked" onClick={() => console.log('linked clicked')} weight="text" color="primary">Linked</Button>
+    </Rhythm>
+    <br />
+    <Rhythm m={2}>
+      <Button href="#linked" onClick={() => console.log('linked clicked')} color="primary" disabled loading loader={<SpinnerIcon scale="medium" />}>Linked</Button>
+      <Button href="#linked" onClick={() => console.log('linked clicked')} weight="outline" color="primary" disabled loading loader={<SpinnerIcon scale="medium" />}>Linked</Button>
+      <Button href="#linked" onClick={() => console.log('linked clicked')} weight="text" color="primary" disabled loading loader={<SpinnerIcon scale="medium" />}>Linked</Button>
+    </Rhythm>
+  </ThemeWrapper>
+</Playground>
+
+### Non-button buttons
+
+<Playground>
+  <ThemeWrapper>
+    <Rhythm m={2}>
+      <Button as="div" onClick={() => console.log('div clicked')} color="primary">Acts like a button</Button>
+      <Button as="div" onClick={() => console.log('div clicked')} weight="outline" color="primary">Acts like a button</Button>
+      <Button as="div" onClick={() => console.log('div clicked')} weight="text" color="primary">Acts like a button</Button>
+    </Rhythm>
+    <br />
+    <Rhythm m={2}>
+      <Button as="div" onClick={() => console.log('div clicked')} color="primary" disabled loading loader={<SpinnerIcon scale="medium" />}>Acts like a button</Button>
+      <Button as="div" onClick={() => console.log('div clicked')} weight="outline" color="primary" disabled loading loader={<SpinnerIcon scale="medium" />}>Acts like a button</Button>
+      <Button as="div" onClick={() => console.log('div clicked')} weight="text" color="primary" disabled loading loader={<SpinnerIcon scale="medium" />}>Acts like a button</Button>
+    </Rhythm>
+  </ThemeWrapper>
+</Playground>
+
+### Sized buttons
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <Looper
+        list={['pill', 'brick']}
+        render={shape => (
+          <div key={shape}>
+            <Rhythm m={2}>
+              <StyledButton shape={shape} themeId={themeId} color="primary" width="100%">
+                Full width
+              </StyledButton>
+              <StyledButton shape={shape} themeId={themeId} color="primary" width={400}>
+                Fixed width
+              </StyledButton>
+            </Rhythm>
+          </div>
+        )}
+      />
+    )}
+  </ThemeWrapper>
+</Playground>
+
+### Aligned buttons
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <Rhythm m={2}>
+        <StyledButton themeId={themeId} color="primary" width={200} align="left">
+          Align left
+        </StyledButton>
+        <StyledButton themeId={themeId} color="primary" width={200}>
+          Align center
+        </StyledButton>
+        <StyledButton themeId={themeId} color="primary" width={200} align="right">
+          Align right
+        </StyledButton>
+      </Rhythm>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+### Unstyled button
+
+<Playground>
+  <ThemeWrapper>
+    <Button unstyled onClick={() => console.log('unstyled')}>
+      Unstyled
+    </Button>
+  </ThemeWrapper>
+</Playground>
+
+## \[props\]
+
+<Props of={Button} />

@@ -1,0 +1,5 @@
+{
+  "parserOptions": {
+    "project": "./__tests__/tsconfig.json"
+  }
+}

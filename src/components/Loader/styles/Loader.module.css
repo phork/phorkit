@@ -1,0 +1,34 @@
+.loader {
+  color: var(--loader-color);
+  pointer-events: none;
+  z-index: $layout-z-index-loader;
+
+  @mixin themed .loader {
+    color: $theme-color-FG0-O10;
+  }
+}
+
+.loader--contrast {
+  @mixin themed .loader {
+    color: $theme-contrast-quietest-color;
+  }
+}
+
+.loader--fixed,
+.loader--absolute {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.loader--fixed {
+  position: fixed;
+}
+
+.loader--absolute {
+  position: absolute;
+}

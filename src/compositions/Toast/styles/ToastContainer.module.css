@@ -1,0 +1,46 @@
+.toastContainer {
+  align-content: flex-end;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  max-height: 100vh;
+  pointer-events: none;
+  position: fixed;
+  z-index: $layout-z-index-toast;
+}
+
+.toastContainer--topLeft {
+  top: 0;
+  left: 0;
+}
+
+.toastContainer--topCenter {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.toastContainer--topRight {
+  top: 0;
+  right: 0;
+}
+
+.toastContainer--bottomLeft {
+  bottom: 0;
+  flex-direction: column-reverse;
+  left: 0;
+}
+
+.toastContainer--bottomCenter {
+  bottom: 0;
+  flex-direction: column-reverse;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.toastContainer--bottomRight {
+  bottom: 0;
+  flex-direction: column-reverse;
+  right: 0;
+};

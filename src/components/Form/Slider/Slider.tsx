@@ -1,0 +1,290 @@
+import { cx } from '@emotion/css';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { MergeElementProps, ThemeProps } from '../../../types';
+import { useComponentId } from '../../../hooks/useComponentId';
+import { useDimensions } from '../../../hooks/useDimensions';
+import { useThemeId } from '../../../hooks/useThemeId';
+import { Draggable, DraggableProps } from '../../Draggable';
+import { Label } from '../Label/Label';
+import styles from './styles/Slider.module.css';
+
+type SliderEvent =
+  | MouseEvent
+  | TouchEvent
+  | React.MouseEvent
+  | React.TouchEvent
+  | React.KeyboardEvent
+  | React.ChangeEvent<HTMLInputElement>;
+
+export interface LocalSliderProps extends ThemeProps {
+  children?: React.ReactNode;
+  className?: string;
+  disabled?: boolean;
+  formatValue?: (value?: number) => React.ReactNode;
+  id?: string;
+  max?: number;
+  min?: number;
+  name?: string;
+  onChange?: (event: SliderEvent, value: number) => void;
+  persistEvents?: boolean;
+  scale?: 'small';
+  snap?: boolean;
+  /** Force the snap to the next value; otherwise goes to the closest */
+  snapNext?: boolean;
+  step?: number;
+  tick?: number;
+  tickElement?: React.ElementType;
+  tickProps?: any;
+  trackElement?: React.ElementType;
+  trackProps?: any;
+  unstyled?: boolean;
+  validity?: 'danger';
+  value?: number;
+  valuePosition?: 'top' | 'right';
+  width?: string;
+}
+
+export type SliderProps = MergeElementProps<'label', LocalSliderProps>;
+
+export function Slider({
+  children,
+  className,
+  contrast,
+  disabled,
+  formatValue,
+  id,
+  max = 100,
+  min = 0,
+  name,
+  onChange,
+  persistEvents,
+  scale,
+  snap,
+  snapNext,
+  step = 1,
+  themeId: initThemeId,
+  tick,
+  tickElement,
+  tickProps,
+  trackElement,
+  trackProps,
+  unstyled,
+  validity,
+  value = 0,
+  valuePosition,
+  width: propWidth,
+  ...props
+}: SliderProps) {
+  const themeId = useThemeId(initThemeId);
+  const [focused, setFocused] = useState<boolean>(false);
+  const [dragging, setDragging] = useState<boolean>(false);
+  const [dragged, setDragged] = useState<number>();
+  const containerRef = useRef<HTMLElement>(null!);
+  const inputRef = useRef<HTMLInputElement>(null!);
+  const { generateComponentId } = useComponentId(id);
+  const width = containerRef.current && containerRef.current.offsetWidth;
+  const color = !unstyled && (contrast ? 'contrast' : 'primary');
+
+  const SliderTrack = trackElement || 'div';
+  const SliderTick = tickElement || 'div';
+
+  const reportBack = (event: SliderEvent, update: number) => {
+    if (update !== value && onChange) {
+      persistEvents && 'persist' in event && event.persist();
+      onChange(event, update);
+    }
+  };
+
+  const getValue = (): number | undefined => (dragging ? dragged : value);
+
+  const ticks = useMemo(
+    () =>
+      tick
+        ? Array(Math.round((max - min) / tick) + 1)
+            .fill(null)
+            .map((_, index, src) => {
+              return (index / (src.length - 1)) * 100;
+            })
+        : undefined,
+    [tick, min, max],
+  );
+
+  const calcSnap = (input: number, forceAdjust: number, snapNext?: boolean): number => {
+    if (snap) {
+      const adjust = input % step;
+      const adjusted = adjust / step < 0.5 && !snapNext ? input - adjust : input + (step - adjust);
+      if (forceAdjust && adjusted === value) {
+        return adjusted + step * forceAdjust;
+      }
+      return adjusted;
+    }
+    return input;
+  };
+
+  const calcFillFromValue = (value?: number): number => {
+    if (value === undefined) return 0;
+
+    const denominator = max - min;
+    const dividend = value - min;
+    const quotient = (dividend / denominator) * 100;
+    return Math.min(Math.max(0, quotient), 100);
+  };
+
+  /**
+   * If an event was triggered then force adjust the value
+   * up or down a step if the snapped value equals the current
+   * value.
+   */
+  const calcValueFromFill = (
+    percent: number,
+    event: MouseEvent | TouchEvent | React.MouseEvent | React.TouchEvent | React.KeyboardEvent,
+    snapNext?: boolean,
+  ): number => {
+    const diff = percent - calcFillFromValue(value);
+    const forceAdjust =
+      (event &&
+        (event.type === 'mousedown' || event.type === 'touchstart') &&
+        ((diff && diff !== Math.abs(diff) ? -1 : 1) || 0)) ||
+      0;
+    const denominator = max - min;
+    const precise = min + (percent * denominator) / 100;
+    const rounded = snapNext ? precise : +precise.toFixed(step >= 1 ? 0 : step.toString().split('.')[1].length);
+    return calcSnap(rounded, forceAdjust, snapNext);
+  };
+
+  const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = event => {
+    reportBack(event, +event.target.value);
+  };
+
+  const handleTrackClick: React.MouseEventHandler = event => {
+    if (!containerRef.current) return;
+
+    const rect = containerRef.current.getBoundingClientRect();
+    const percent = ((event.nativeEvent.clientX - rect.left) / rect.width) * 100;
+    const value = calcValueFromFill(percent, event, snapNext);
+    reportBack(event, value);
+  };
+
+  const handleDragMove: DraggableProps['onDragMove'] = (event, { position }) => {
+    dragging || setDragging(true);
+    const percent = (position.x / width) * 100;
+    const value = calcValueFromFill(percent, event);
+    setDragged(value);
+  };
+
+  const handleDragEnd: DraggableProps['onDragEnd'] = (event, { position }) => {
+    const percent = (position.x / width) * 100;
+    const value = calcValueFromFill(percent, event);
+    setDragging(false);
+    setDragged(undefined);
+    reportBack(event, value);
+
+    // manually focus the slider because it only focuses on click, not immediate drag
+    inputRef.current.focus();
+  };
+
+  const handleBlur = useCallback<React.FocusEventHandler<HTMLInputElement>>(() => setFocused(false), [setFocused]);
+  const handleFocus = useCallback<React.FocusEventHandler<HTMLInputElement>>(() => setFocused(true), [setFocused]);
+  const forwardFocus = useCallback<React.FocusEventHandler<HTMLLabelElement>>(() => inputRef.current?.focus(), []);
+
+  const filledPercent = () => calcFillFromValue(getValue()) || 0;
+
+  const [ref, { width: sliderWidth }] = useDimensions<HTMLLabelElement>({ propsToMeasure: ['width'] });
+
+  return (
+    <label
+      htmlFor={generateComponentId()}
+      className={cx(
+        styles.slider,
+        disabled && styles['is-disabled'],
+        dragging && styles['is-dragging'],
+        focused && styles['is-focused'],
+        validity && styles[`is-${validity}`],
+        themeId && styles[`slider--${themeId}`],
+        color && styles[`slider--${color}`],
+        className,
+      )}
+      style={{ width: propWidth }}
+      onFocus={forwardFocus}
+      ref={ref}
+      tabIndex={focused ? -1 : 0}
+      {...props}
+    >
+      {children && (
+        <Label className={styles.sliderValue} contrast={contrast} strength="legend" themeId={themeId}>
+          {children}
+        </Label>
+      )}
+
+      <SliderTrack
+        aria-hidden="true"
+        className={styles.sliderInputContainer}
+        onMouseDown={handleTrackClick}
+        ref={containerRef}
+        style={{ '--slider-track-fill-width': `${filledPercent()}%` }}
+        {...(trackElement && {
+          sliderWidth,
+        })}
+        {...trackProps}
+      >
+        {Number.isFinite(sliderWidth) && (
+          <Draggable
+            boundary={{ x: { min: 0, max: sliderWidth } }}
+            onDragMove={handleDragMove}
+            onDragEnd={handleDragEnd}
+          >
+            <div className={cx(styles.sliderHandle, scale && styles[`sliderHandle--${scale}`])} />
+          </Draggable>
+        )}
+
+        {ticks && (
+          <div className={styles.sliderTickContainer}>
+            {ticks.map((position, i) => {
+              const active = position <= calcFillFromValue(getValue());
+              return (
+                <SliderTick
+                  key={position}
+                  number={i}
+                  className={cx(styles.sliderTick, active && styles['sliderTick--active'])}
+                  style={{ left: `${position}%` }}
+                  {...(tickElement && {
+                    active,
+                  })}
+                  {...tickProps}
+                />
+              );
+            })}
+          </div>
+        )}
+      </SliderTrack>
+
+      <input
+        className={styles.sliderInput}
+        disabled={disabled}
+        id={generateComponentId()}
+        max={max}
+        min={min}
+        name={name}
+        onBlur={handleBlur}
+        onChange={handleInputChange}
+        onFocus={handleFocus}
+        ref={inputRef}
+        step={step}
+        tabIndex={-1}
+        type="range"
+        value={value}
+      />
+
+      {valuePosition && (
+        <Label
+          className={cx(styles.sliderValue, styles[`sliderValue--${valuePosition}`])}
+          contrast={contrast}
+          strength="standard"
+          themeId={themeId}
+        >
+          {formatValue ? formatValue(getValue()) : getValue()}
+        </Label>
+      )}
+    </label>
+  );
+}

@@ -1,0 +1,17 @@
+{
+  "printWidth": 120,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "arrowParens": "avoid",
+  "importOrder": [
+    "^[./]*types(.*)$",
+    "^[./]*config(.*)$",
+    "^[./]*context(.*)$",
+    "^[./]*hooks(.*)$",
+    "^[./]*utils(.*)$",
+    "^[./]*icons(.*)$",
+    "^[./]",
+    "^[./]*styles(.*)$"
+  ],
+  "importOrderSeparation": false
+}

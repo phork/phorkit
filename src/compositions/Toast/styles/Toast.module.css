@@ -1,0 +1,114 @@
+.toast {
+  background-color: var(--toast-background-color);
+  border-radius: $border-radius-s;
+  box-shadow: var(--toast-box-shadow);
+  color: var(--toast-text-color);
+  font-size: $font-size-s;
+  margin: 8px;
+  padding: 16px 20px;
+  pointer-events: all;
+  position: relative;
+  width: 300px;
+
+  &:not(.toast--colored) {
+    &:before {
+      background-color: var(--toast-level-color);
+      bottom: 0;
+      content: '';
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 4px;
+    }
+  }
+
+  @mixin themed .toast {
+    background-color: $theme-secondary-background-color;
+    box-shadow: $theme-box-shadow-0;
+
+    &:not(.toast--colored) {
+      color: $theme-secondary-text-color;
+    }
+  }
+}
+
+.toast--transitional {
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition-duration: 200ms;
+  transition-property: opacity, transform;
+  transition-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28);
+
+  &.has-transitioned {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+.toast--info {
+  @mixin themed .toast {
+    &.toast--colored,
+    &:before {
+      background-color: $theme-color-accent-primary;
+    }
+
+    &.toast--colored {
+      color: $theme-color-accent-primary-contrast;
+    }
+  }
+}
+
+.toast--danger {
+  @mixin themed .toast {
+    &.toast--colored,
+    &:before {
+      background-color: $theme-color-danger;
+    }
+
+    &.toast--colored {
+      color: $theme-color-danger-contrast;
+    }
+  }
+}
+
+.toast--success {
+  @mixin themed .toast {
+    &.toast--colored,
+    &:before {
+      background-color: $theme-color-success;
+    }
+
+    &.toast--colored {
+      color: $theme-color-success-contrast;
+    }
+  }
+}
+
+.toast--warning {
+  @mixin themed .toast {
+    &.toast--colored,
+    &:before {
+      background-color: $theme-color-warning;
+    }
+
+    &.toast--colored {
+      color: $theme-color-warning-contrast;
+    }
+  }
+}
+
+.toastActions {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+
+  > button {
+    margin-left: 6px;
+  }
+}
+
+.toastTitle {
+  font-weight: 700;
+  margin-bottom: 4px;
+}

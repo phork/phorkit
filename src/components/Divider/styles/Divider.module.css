@@ -1,0 +1,65 @@
+.divider {
+  background-color: var(--divider-color);
+  flex: none;
+}
+
+.divider--horizontal {
+  height: 1px;
+  width: 100%;
+}
+
+.divider--vertical {
+  height: 100%;
+  width: 1px;
+}
+
+/* stylelint-disable-next-line no-duplicate-selectors */
+.divider {
+  @mixin themed .divider {
+    background-color: $theme-color-BG40;
+  }
+
+  &.divider--quiet {
+    @mixin themed .divider {
+      background-color: $theme-color-BG30;
+    }
+  }
+
+  &.divider--quieter {
+    @mixin themed .divider {
+      background-color: $theme-color-BG20;
+    }
+  }
+
+  &.divider--quietest {
+    @mixin themed .divider {
+      background-color: $theme-color-BG10;
+    }
+  }
+}
+
+.divider--contrast {
+  @mixin themed .divider {
+    background-color: $theme-contrast-border-color;
+  }
+
+  &.divider--quiet {
+    @mixin themed .divider {
+      background-color: $theme-contrast-quieter-color;
+    }
+  }
+
+  &.divider--quieter {
+    @mixin themed .divider {
+      background-color: $theme-contrast-quietest-color;
+    }
+  }
+
+  &.divider--quietest {
+    opacity: .7;
+
+    @mixin themed .divider {
+      background-color: $theme-contrast-quietest-color;
+    }
+  }
+}

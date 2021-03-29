@@ -1,0 +1,8 @@
+.stepperButton {
+  @mixin unbutton;
+  padding: 0;
+
+  &:disabled {
+    opacity: .5;
+  }
+}

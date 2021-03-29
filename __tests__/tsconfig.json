@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "lib": ["src"],
+      "lib/*": ["src/*"]
+    }
+  },
+  "extends": "./tsconfig.ci.json",
+  "include": [".", "../src", "./jest.d.ts", "../__mocks__"]
+}

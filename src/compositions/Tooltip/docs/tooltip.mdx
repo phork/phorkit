@@ -1,0 +1,823 @@
+---
+name: Tooltip
+menu: Feedback
+route: /compositions/Tooltip
+---
+
+import { Playground, Props } from 'docz';
+import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } from '../index';
+import { IconButton } from 'components/Button';
+import { Paper } from 'components/Paper';
+import { Typography } from 'components/Typography';
+import { Flex } from 'components/Flex';
+import { Card } from 'components/Card';
+import { Rhythm } from 'components/Rhythm';
+import { LinkContainer } from 'components/Link';
+import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { themes } from 'config/themes';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Tooltip" src="compositions/Tooltip" />
+
+## Auto-positioned tooltip
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <React.Fragment>
+        <p>(There should be a permanent tooltip in the top right)</p>
+        <PortalTooltip
+          contentProps={{ portal: 'fixed' }}
+          height={80}
+          initialVisible
+          layout="vertical"
+          permanent
+          style={{position: 'fixed', top: '12px', right: '40px', zIndex: 2000}}
+          toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" style={{color: themes[themeId]['color-accent-primary-D10']}} />}
+          triangleColor={themes[themeId]['color-accent-primary']}
+          width={300}
+        >
+          {({ position }) => {
+            const arrowCornerRadiusProperty = {
+              'left-top': 'borderTopRightRadius',
+              'left-bottom': 'borderBottomRightRadius',
+              'right-top': 'borderTopLeftRadius',
+              'right-bottom': 'borderBottomLeftRadius',
+            }[position];
+            return (
+              <Card raised full>
+                <Paper themeId={themeId} style={{borderRadius: '2px', [arrowCornerRadiusProperty]: 0}} color="contrast" container="popover" contained scrollable>
+                  <Typography as="div" size="s" variants="line-height-comfy">
+                    The quick brown fox jumped over the {position} dog
+                    The quick brown fox jumped over the {position} dog
+                    The quick brown fox jumped over the {position} dog
+                    The quick brown fox jumped over the {position} dog
+                    The quick brown fox jumped over the {position} dog
+                    The quick brown fox jumped over the {position} dog
+                  </Typography>
+                </Paper>
+              </Card>
+            )
+          }}
+        </PortalTooltip>
+      </React.Fragment>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Unpositioned tooltip
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <React.Fragment>
+        <InlineTooltip
+          contentProps={{ withChildrenProps: true}}
+          focusable
+          height={80}
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          triangleColor={themes[themeId]['color-accent-primary']}
+          width={300}
+        >
+          {({ position }) => (
+            <Card raised full>
+              <Paper color="contrast" container="popover" contained scrollable>
+                <Typography as="div" size="s" variants="line-height-comfy">
+                  The quick brown fox jumped over the {position} dog
+                  The quick brown fox jumped over the {position} dog
+                  The quick brown fox jumped over the {position} dog
+                  The quick brown fox jumped over the {position} dog
+                  The quick brown fox jumped over the {position} dog
+                  The quick brown fox jumped over the {position} dog
+                </Typography>
+              </Paper>
+            </Card>
+          )}
+        </InlineTooltip>
+      </React.Fragment>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Top and bottom tooltips
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <Flex direction="row" justifyContent="space-between" alignContent="center" style={{margin: 'auto', height: '220px', width: '400px'}} wrap>
+        <div style={{display: 'flex', flexDirection: 'column', flex: 'none', width: '33%', margin: '8px 0', alignItems: 'flex-start'}}>
+          <InlineTooltip
+            height={80}
+            hoverable
+            initialVisible
+            position="top-left"
+            toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" />}
+            triangleColor={themes[themeId]['color-accent-primary']}
+            width={300}
+          >
+            <Paper themeId={themeId} style={{borderRadius: '2px'}} color="contrast" container="popover" contained scrollable>
+              <Typography as="div" size="s" variants="line-height-comfy">
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </Typography>
+            </Paper>
+          </InlineTooltip>
+        </div>
+        <div style={{display: 'flex', flexDirection: 'column', flex: 'none', width: '33%', margin: '8px 0', alignItems: 'center'}}>
+          <InlineTooltip
+            height={80}
+            hoverable
+            initialVisible
+            position="top-center"
+            toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" />}
+            triangleColor={themes[themeId]['color-accent-primary']}
+            width={300}
+          >
+            <Paper themeId={themeId} style={{borderRadius: '2px'}} color="contrast" container="popover" contained scrollable>
+              <Typography as="div" size="s" variants="line-height-comfy">
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </Typography>
+            </Paper>
+          </InlineTooltip>
+        </div>
+        <div style={{display: 'flex', flexDirection: 'column', flex: 'none', width: '33%', margin: '8px 0', alignItems: 'flex-end'}}>
+          <InlineTooltip
+            height={80}
+            hoverable
+            initialVisible
+            position="top-right"
+            toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" />}
+            triangleColor={themes[themeId]['color-accent-primary']}
+            width={300}
+          >
+            <Paper themeId={themeId} style={{borderRadius: '2px'}} color="contrast" container="popover" contained scrollable>
+              <Typography as="div" size="s" variants="line-height-comfy">
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </Typography>
+            </Paper>
+          </InlineTooltip>
+        </div>
+        <div style={{display: 'flex', flexDirection: 'column', flex: 'none', width: '33%', margin: '8px 0', alignItems: 'flex-start'}}>
+          <InlineTooltip
+            height={80}
+            hoverable
+            initialVisible
+            position="bottom-left"
+            toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" />}
+            triangleColor={themes[themeId]['color-accent-primary']}
+            width={300}
+          >
+            <Paper themeId={themeId} style={{borderRadius: '2px'}} color="contrast" container="popover" contained scrollable>
+              <Typography as="div" size="s" variants="line-height-comfy">
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </Typography>
+            </Paper>
+          </InlineTooltip>
+        </div>
+        <div style={{display: 'flex', flexDirection: 'column', flex: 'none', width: '33%', margin: '8px 0', alignItems: 'center'}}>
+          <InlineTooltip
+            height={80}
+            hoverable
+            initialVisible
+            position="bottom-center"
+            toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" />}
+            triangleColor={themes[themeId]['color-accent-primary']}
+            width={300}
+          >
+            <Paper themeId={themeId} style={{borderRadius: '2px'}} color="contrast" container="popover" contained scrollable>
+              <Typography as="div" size="s" variants="line-height-comfy">
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </Typography>
+            </Paper>
+          </InlineTooltip>
+        </div>
+        <div style={{display: 'flex', flexDirection: 'column', flex: 'none', width: '33%', margin: '8px 0', alignItems: 'flex-end'}}>
+          <InlineTooltip
+            height={80}
+            hoverable
+            initialVisible
+            position="bottom-right"
+            toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" />}
+            triangleColor={themes[themeId]['color-accent-primary']}
+            width={300}
+          >
+            <Paper themeId={themeId} style={{borderRadius: '2px'}} color="contrast" container="popover" contained scrollable>
+              <Typography as="div" size="s" variants="line-height-comfy">
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </Typography>
+            </Paper>
+          </InlineTooltip>
+        </div>
+      </Flex>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Left and right tooltips
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <Flex direction="column" justifyContent="space-between" alignContent="center" style={{height: '460px'}} wrap>
+        <div style={{display: 'flex', flexDirection: 'row', flex: 'none', height: '33%', margin: '0 8px', alignItems: 'flex-start'}}>
+          <InlineTooltip
+            hoverable
+            initialVisible
+            position="left-top"
+            toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" />}
+            triangleColor={themes[themeId]['color-accent-primary']}
+            width={300}
+          >
+            <Paper themeId={themeId} style={{borderRadius: '2px', borderTopRightRadius: 0}} color="contrast" container="popover">
+              <Typography as="div" size="s" variants="line-height-comfy">
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </Typography>
+            </Paper>
+          </InlineTooltip>
+        </div>
+        <div style={{display: 'flex', flexDirection: 'row', flex: 'none', height: '33%', margin: '0 8px', alignItems: 'center'}}>
+          <InlineTooltip
+            hoverable
+            initialVisible
+            position="left-center"
+            toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" />}
+            triangleColor={themes[themeId]['color-accent-primary']}
+            width={300}
+          >
+            <Paper themeId={themeId} style={{borderRadius: '2px'}} color="contrast" container="popover">
+              <Typography as="div" size="s" variants="line-height-comfy">
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </Typography>
+            </Paper>
+          </InlineTooltip>
+        </div>
+        <div style={{display: 'flex', flexDirection: 'row', flex: 'none', height: '33%', margin: '0 8px', alignItems: 'flex-end'}}>
+          <InlineTooltip
+            hoverable
+            initialVisible
+            position="left-bottom"
+            toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" />}
+            triangleColor={themes[themeId]['color-accent-primary']}
+            width={300}
+          >
+            <Paper themeId={themeId} style={{borderRadius: '2px', borderBottomRightRadius: 0}} color="contrast" container="popover">
+              <Typography as="div" size="s" variants="line-height-comfy">
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </Typography>
+            </Paper>
+          </InlineTooltip>
+        </div>
+        <div style={{display: 'flex', flexDirection: 'row', flex: 'none', height: '33%', margin: '0 8px', alignItems: 'flex-start'}}>
+          <InlineTooltip
+            hoverable
+            initialVisible
+            position="right-top"
+            toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" />}
+            triangleColor={themes[themeId]['color-accent-primary']}
+            width={300}
+          >
+            <Paper themeId={themeId} style={{borderRadius: '2px', borderTopLeftRadius: 0}} color="contrast" container="popover">
+              <Typography as="div" size="s" variants="line-height-comfy">
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </Typography>
+            </Paper>
+          </InlineTooltip>
+        </div>
+        <div style={{display: 'flex', flexDirection: 'row', flex: 'none', height: '33%', margin: '0 8px', alignItems: 'center'}}>
+          <InlineTooltip
+            hoverable
+            initialVisible
+            position="right-center"
+            toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" />}
+            triangleColor={themes[themeId]['color-accent-primary']}
+            width={300}
+          >
+            <Paper themeId={themeId} style={{borderRadius: '2px'}} color="contrast" container="popover">
+              <Typography as="div" size="s" variants="line-height-comfy">
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </Typography>
+            </Paper>
+          </InlineTooltip>
+        </div>
+        <div style={{display: 'flex', flexDirection: 'row', flex: 'none', height: '33%', margin: '0 8px', alignItems: 'flex-end'}}>
+          <InlineTooltip
+            hoverable
+            initialVisible
+            position="right-bottom"
+            toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" />}
+            triangleColor={themes[themeId]['color-accent-primary']}
+            width={300}
+          >
+            <Paper themeId={themeId} style={{borderRadius: '2px', borderBottomLeftRadius: 0}} color="contrast" container="popover">
+              <Typography as="div" size="s" variants="line-height-comfy">
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </Typography>
+            </Paper>
+          </InlineTooltip>
+        </div>
+      </Flex>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Top and bottom portals
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <Flex direction="row" justifyContent="space-between" alignContent="center" style={{margin: 'auto', height: '220px', width: '400px'}} wrap>
+        <div style={{display: 'flex', flexDirection: 'column', flex: 'none', width: '33%', margin: '8px 0', alignItems: 'flex-start'}}>
+          <PortalTooltip
+            height={80}
+            hoverable
+            initialVisible
+            position="top-left"
+            toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" />}
+            triangleColor={themes[themeId]['color-accent-primary']}
+            width={300}
+          >
+            <Paper themeId={themeId} style={{borderRadius: '2px'}} color="contrast" container="popover" contained scrollable>
+              <Typography as="div" size="s" variants="line-height-comfy">
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </Typography>
+            </Paper>
+          </PortalTooltip>
+        </div>
+        <div style={{display: 'flex', flexDirection: 'column', flex: 'none', width: '33%', margin: '8px 0', alignItems: 'center'}}>
+          <PortalTooltip
+            height={80}
+            hoverable
+            initialVisible
+            position="top-center"
+            toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" />}
+            triangleColor={themes[themeId]['color-accent-primary']}
+            width={300}
+          >
+            <Paper themeId={themeId} style={{borderRadius: '2px'}} color="contrast" container="popover" contained scrollable>
+              <Typography as="div" size="s" variants="line-height-comfy">
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </Typography>
+            </Paper>
+          </PortalTooltip>
+        </div>
+        <div style={{display: 'flex', flexDirection: 'column', flex: 'none', width: '33%', margin: '8px 0', alignItems: 'flex-end'}}>
+          <PortalTooltip
+            height={80}
+            hoverable
+            initialVisible
+            position="top-right"
+            toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" />}
+            triangleColor={themes[themeId]['color-accent-primary']}
+            width={300}
+          >
+            <Paper themeId={themeId} style={{borderRadius: '2px'}} color="contrast" container="popover" contained scrollable>
+              <Typography as="div" size="s" variants="line-height-comfy">
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </Typography>
+            </Paper>
+          </PortalTooltip>
+        </div>
+        <div style={{display: 'flex', flexDirection: 'column', flex: 'none', width: '33%', margin: '8px 0', alignItems: 'flex-start'}}>
+          <PortalTooltip
+            height={80}
+            hoverable
+            initialVisible
+            position="bottom-left"
+            toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" />}
+            triangleColor={themes[themeId]['color-accent-primary']}
+            width={300}
+          >
+            <Paper themeId={themeId} style={{borderRadius: '2px'}} color="contrast" container="popover" contained scrollable>
+              <Typography as="div" size="s" variants="line-height-comfy">
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </Typography>
+            </Paper>
+          </PortalTooltip>
+        </div>
+        <div style={{display: 'flex', flexDirection: 'column', flex: 'none', width: '33%', margin: '8px 0', alignItems: 'center'}}>
+          <PortalTooltip
+            height={80}
+            hoverable
+            initialVisible
+            position="bottom-center"
+            toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" />}
+            triangleColor={themes[themeId]['color-accent-primary']}
+            width={300}
+          >
+            <Paper themeId={themeId} style={{borderRadius: '2px'}} color="contrast" container="popover" contained scrollable>
+              <Typography as="div" size="s" variants="line-height-comfy">
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </Typography>
+            </Paper>
+          </PortalTooltip>
+        </div>
+        <div style={{display: 'flex', flexDirection: 'column', flex: 'none', width: '33%', margin: '8px 0', alignItems: 'flex-end'}}>
+          <PortalTooltip
+            height={80}
+            hoverable
+            initialVisible
+            position="bottom-right"
+            toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" />}
+            triangleColor={themes[themeId]['color-accent-primary']}
+            width={300}
+          >
+            <Paper themeId={themeId} style={{borderRadius: '2px'}} color="contrast" container="popover" contained scrollable>
+              <Typography as="div" size="s" variants="line-height-comfy">
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </Typography>
+            </Paper>
+          </PortalTooltip>
+        </div>
+      </Flex>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Left and right portals
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <Flex direction="column" justifyContent="space-between" alignContent="center" style={{height: '460px'}} wrap>
+        <div style={{display: 'flex', flexDirection: 'row', flex: 'none', height: '33%', margin: '0 8px', alignItems: 'flex-start'}}>
+          <PortalTooltip
+            hoverable
+            initialVisible
+            position="left-top"
+            toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" />}
+            triangleColor={themes[themeId]['color-accent-primary']}
+            width={300}
+          >
+            <Paper themeId={themeId} style={{borderRadius: '2px', borderTopRightRadius: 0}} color="contrast" container="popover">
+              <Typography as="div" size="s" variants="line-height-comfy">
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </Typography>
+            </Paper>
+          </PortalTooltip>
+        </div>
+        <div style={{display: 'flex', flexDirection: 'row', flex: 'none', height: '33%', margin: '0 8px', alignItems: 'center'}}>
+          <PortalTooltip
+            hoverable
+            initialVisible
+            position="left-center"
+            toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" />}
+            triangleColor={themes[themeId]['color-accent-primary']}
+            width={300}
+          >
+            <Paper themeId={themeId} style={{borderRadius: '2px'}} color="contrast" container="popover">
+              <Typography as="div" size="s" variants="line-height-comfy">
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </Typography>
+            </Paper>
+          </PortalTooltip>
+        </div>
+        <div style={{display: 'flex', flexDirection: 'row', flex: 'none', height: '33%', margin: '0 8px', alignItems: 'flex-end'}}>
+          <PortalTooltip
+            hoverable
+            initialVisible
+            position="left-bottom"
+            toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" />}
+            triangleColor={themes[themeId]['color-accent-primary']}
+            width={300}
+          >
+            <Paper themeId={themeId} style={{borderRadius: '2px', borderBottomRightRadius: 0}} color="contrast" container="popover">
+              <Typography as="div" size="s" variants="line-height-comfy">
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </Typography>
+            </Paper>
+          </PortalTooltip>
+        </div>
+        <div style={{display: 'flex', flexDirection: 'row', flex: 'none', height: '33%', margin: '0 8px', alignItems: 'flex-start'}}>
+          <PortalTooltip
+            hoverable
+            initialVisible
+            position="right-top"
+            toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" />}
+            triangleColor={themes[themeId]['color-accent-primary']}
+            width={300}
+          >
+            <Paper themeId={themeId} style={{borderRadius: '2px', borderTopLeftRadius: 0}} color="contrast" container="popover">
+              <Typography as="div" size="s" variants="line-height-comfy">
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </Typography>
+            </Paper>
+          </PortalTooltip>
+        </div>
+        <div style={{display: 'flex', flexDirection: 'row', flex: 'none', height: '33%', margin: '0 8px', alignItems: 'center'}}>
+          <PortalTooltip
+            hoverable
+            initialVisible
+            position="right-center"
+            toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" />}
+            triangleColor={themes[themeId]['color-accent-primary']}
+            width={300}
+          >
+            <Paper themeId={themeId} style={{borderRadius: '2px'}} color="contrast" container="popover">
+              <Typography as="div" size="s" variants="line-height-comfy">
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </Typography>
+            </Paper>
+          </PortalTooltip>
+        </div>
+        <div style={{display: 'flex', flexDirection: 'row', flex: 'none', height: '33%', margin: '0 8px', alignItems: 'flex-end'}}>
+          <PortalTooltip
+            hoverable
+            initialVisible
+            position="right-bottom"
+            toggler={<BlobbrIcon aria-label="Blobbr" scale="xxlarge" />}
+            triangleColor={themes[themeId]['color-accent-primary']}
+            width={300}
+          >
+            <Paper themeId={themeId} style={{borderRadius: '2px', borderBottomLeftRadius: 0}} color="contrast" container="popover">
+              <Typography as="div" size="s" variants="line-height-comfy">
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </Typography>
+            </Paper>
+          </PortalTooltip>
+        </div>
+      </Flex>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+# <br />
+# TextTooltip
+
+## Primary
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <React.Fragment>
+        <Typography as="div" size="m">
+          <span>Hello, world.</span>
+          <InlineTextTooltip
+            focusable
+            hoverable
+            position="top-center"
+            toggler={(
+              <Typography
+                color="accent-primary"
+                variants={['space-after', 'space-before']}
+              >
+                I am a friendly tooltip with an auto-focused link.
+              </Typography>
+            )}
+          >
+            <React.Fragment>
+              <p style={{marginTop: 0}}>
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </p>
+              <LinkContainer>
+                <p>
+                  <a href="#linked">I am a focused link</a>
+                </p>
+              </LinkContainer>
+              <p style={{marginBottom: 0}}>
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+                The quick brown fox jumped over the lazy dog
+              </p>
+            </React.Fragment>
+          </InlineTextTooltip>
+          <span>There are others like me as well.</span>
+        </Typography>
+        <Typography as="div" size="m">
+          <span>Hello, world.</span>
+          <InlineTextTooltip
+            focusable
+            hoverable
+            position="bottom-center"
+            toggler={(
+              <Typography
+                color="accent-primary"
+                variants={['space-after', 'space-before']}
+              >
+                I am a friendly tooltip with a manually focused link.
+              </Typography>
+            )}
+          >
+            {({ focusRef }) => (
+              <React.Fragment>
+                <p style={{marginTop: 0}}>
+                  The quick brown fox jumped over the lazy dog
+                  The quick brown fox jumped over the lazy dog
+                  The quick brown fox jumped over the lazy dog
+                  The quick brown fox jumped over the lazy dog
+                  The quick brown fox jumped over the lazy dog
+                  The quick brown fox jumped over the lazy dog
+                </p>
+                <LinkContainer>
+                  <p>
+                    <a href="#linked">I am not a focused link</a>
+                    <br />
+                    <a ref={focusRef} href="#linked">I am a focused link</a>
+                  </p>
+                </LinkContainer>
+                <p style={{marginBottom: 0}}>
+                  The quick brown fox jumped over the lazy dog
+                  The quick brown fox jumped over the lazy dog
+                  The quick brown fox jumped over the lazy dog
+                  The quick brown fox jumped over the lazy dog
+                  The quick brown fox jumped over the lazy dog
+                  The quick brown fox jumped over the lazy dog
+                </p>
+              </React.Fragment>
+            )}
+          </InlineTextTooltip>
+          <span>There are others like me as well.</span>
+        </Typography>
+        <Typography as="div" size="m">
+          <span>Sometimes a tooltip should be clickable, or on an icon.</span>
+          <PortalTextTooltip
+            layout="vertical"
+            toggler={<Rhythm mx={1} style={{top: '3px'}}><IconButton color="primary"><BlobbrIcon scale="medium" /></IconButton></Rhythm>}
+          >
+            Tiny little portal tooltip. Hardly bigger than an acorn.
+          </PortalTextTooltip>
+          <span>That is neat.</span>
+        </Typography>
+      </React.Fragment>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Contrast
+
+<Playground>
+  <ThemeWrapper contrast withThemeId>
+    {({ themeId }) => (
+      <Typography as="div" size="m">
+        <span>Hello, world.</span>
+        <InlineTextTooltip
+          contrast
+          layout="vertical"
+          toggler={(
+            <Typography
+              weight="bold"
+              variants={['space-after', 'space-before']}
+            >
+              I am a friendly tooltip.
+            </Typography>
+          )}
+        >
+          <p style={{marginTop: 0}}>
+            The quick brown fox jumped over the lazy dog
+            The quick brown fox jumped over the lazy dog
+            The quick brown fox jumped over the lazy dog
+            The quick brown fox jumped over the lazy dog
+            The quick brown fox jumped over the lazy dog
+            The quick brown fox jumped over the lazy dog
+          </p>
+          <p style={{marginBottom: 0}}>
+            The quick brown fox jumped over the lazy dog
+            The quick brown fox jumped over the lazy dog
+            The quick brown fox jumped over the lazy dog
+            The quick brown fox jumped over the lazy dog
+            The quick brown fox jumped over the lazy dog
+            The quick brown fox jumped over the lazy dog
+          </p>
+        </InlineTextTooltip>
+        <span>There are others like me as well.</span>
+      </Typography>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## \[props\]
+
+### Tooltip
+
+<Props of={Tooltip} />
+
+### TextTooltip
+
+<Props of={TextTooltip} />

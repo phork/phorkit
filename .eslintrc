@@ -1,0 +1,97 @@
+{
+  "extends": ["prettier", "prettier/react", "plugin:jsx-a11y/recommended"],
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "plugins": ["react", "prettier", "json", "react-hooks", "jsx-a11y", "import", "jest"],
+  "rules": {
+    "arrow-parens": 0,
+    "camelcase": 0,
+    "import/first": 0,
+    "import/newline-after-import": ["error", { "count": 1 }],
+    "import/no-named-default": 0,
+    "import/prefer-default-export": 0,
+    "import/order": [
+      "error",
+      {
+        "groups": [["builtin", "external"], "internal", ["parent", "sibling", "index"]]
+      }
+    ],
+    "no-console": 2,
+    "no-param-reassign": [2, { "props": false }],
+    "no-shadow": 0,
+    "no-underscore-dangle": ["error", { "allow": ["_id"] }],
+    "no-unused-expressions": 0,
+    "react-hooks/rules-of-hooks": 2,
+    "react-hooks/exhaustive-deps": "warn",
+    "react/forbid-prop-types": 0,
+    "react/jsx-curly-brace-presence": 0,
+    "react/jsx-filename-extension": 0,
+    "react/jsx-props-no-spreading": 0,
+    "jsx-a11y/anchor-is-valid": ["error", { "components": ["Link"], "specialLink": ["onClick", "to"] }]
+  },
+  "globals": {
+    "document": true,
+    "window": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "ecmaFeatures": {
+          "jsx": true
+        },
+        "project": ["./tsconfig.json"]
+      },
+      "plugins": ["@typescript-eslint", "react", "prettier", "json", "react-hooks", "jsx-a11y"],
+      "rules": {
+        "arrow-parens": 0,
+        "camelcase": 0,
+        "import/first": 0,
+        "import/no-named-default": 0,
+        "import/prefer-default-export": 0,
+        "import/order": [
+          "error",
+          {
+            "groups": [["builtin", "external"], "internal", ["parent", "sibling", "index"]]
+          }
+        ],
+        "no-console": 2,
+        "no-param-reassign": [2, { "props": false }],
+        "no-shadow": 0,
+        "no-underscore-dangle": ["error", { "allow": ["_id"] }],
+        "no-unused-expressions": 0,
+        "no-void": 0,
+        "react-hooks/rules-of-hooks": 2,
+        "react-hooks/exhaustive-deps": "warn",
+        "react/forbid-prop-types": 0,
+        "react/jsx-curly-brace-presence": 0,
+        "react/jsx-filename-extension": 0,
+        "react/jsx-props-no-spreading": 0,
+        "jsx-a11y/anchor-is-valid": ["error", { "components": ["Link"], "specialLink": ["onClick", "to"] }]
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+.tabs {
+  border-radius: $border-radius-s;
+  border: 1px solid var(--tabs-border-color);
+  display: flex;
+  flex-direction: column;
+  font-size: $font-size-m;
+  position: relative;
+
+  &.is-focused.is-accessible {
+    border-color: var(--tabs-focused-border-color);
+  }
+}
+
+.tabs--colored {
+  border: none;
+  
+  &:after {
+    border-radius: $border-radius-s;
+    border: 1px solid var(--tabs-border-color);
+    bottom: 0;
+    content: "";
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &.is-focused.is-accessible {
+    &:after {
+      border-color: var(--tabs-focused-border-color);
+    }
+  }
+}
+
+.tabs--vertical {
+  flex-direction: row;
+}
+
+.tabs--primary,
+.tabs--transparent {
+  @mixin themed .tabs {
+    --tabs-border-color: $theme-color-FG0-O5;
+    --tabs-focused-border-color: $theme-color-accent-primary;
+  }
+}
+
+.tabs--contrast {
+  @mixin themed .tabs {
+    --tabs-border-color: $theme-contrast-quietest-color;
+    --tabs-focused-border-color: $theme-contrast-accent-color;
+  }
+}

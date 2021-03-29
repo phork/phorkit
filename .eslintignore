@@ -1,0 +1,11 @@
+*.json
+.docz/
+lib/
+postcss.config.js
+scripts/
+src/**/*.test.js
+src/styles/
+src/icons/
+webpack.*.js
+jest.config.js
+jest.config.ci.js

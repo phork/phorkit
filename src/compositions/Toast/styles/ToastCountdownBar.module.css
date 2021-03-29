@@ -1,0 +1,36 @@
+@keyframes countdown {        
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }      
+}
+
+.toastCountdownBarContainer {
+  bottom: 0;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  opacity: .3;
+}
+
+.toastCountdownBarContainer--colored {
+  height: 3px;
+  opacity: .5;
+}
+
+.toastCountdownBarContainer--hasLevel {
+  left: 4px;
+}
+
+.toastCountdownBar--animated {
+  animation: countdown var(--toast-countdown-bar-duration) linear;
+}
+
+.toastCountdownBar {
+  background-color: currentColor;
+  height: 100%;
+  width: 100%;
+}

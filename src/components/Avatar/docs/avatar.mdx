@@ -1,0 +1,140 @@
+---
+name: Avatar
+menu: Display
+route: /components/Avatar
+---
+
+import { Playground, Props } from 'docz';
+import { Avatar, StyledAvatar } from '../index';
+import { Flex } from 'components/Flex';
+import { Rhythm } from 'components/Rhythm';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Avatar" src="components/Avatar" />
+
+## Image
+
+<Playground>
+  <ThemeWrapper>
+    <Flex direction="row" alignItems="center">
+      <Rhythm m={2}>
+        <Avatar imgSrc="/public/images/avatar.jpg" initials="EC" />
+        <Avatar imgSrc="/public/images/avatar.jpg" initials="EC" size="small" />
+        <Avatar imgSrc="/public/images/avatar.jpg" initials="EC" size="xsmall" />
+      </Rhythm>
+    </Flex>
+  </ThemeWrapper>
+</Playground>
+
+## Actionable image
+
+<Playground>
+  <ThemeWrapper>
+    <Flex direction="row" alignItems="center">
+      <Rhythm m={2}>
+        <Avatar actionable imgSrc="/public/images/avatar.jpg" initials="EC" />
+        <Avatar actionable imgSrc="/public/images/avatar.jpg" initials="EC" size="small" />
+        <Avatar actionable imgSrc="/public/images/avatar.jpg" initials="EC" size="xsmall" />
+      </Rhythm>
+    </Flex>
+  </ThemeWrapper>
+</Playground>
+
+## Initials
+
+<Playground>
+  <ThemeWrapper>
+    <Flex direction="row" alignItems="center" justifyContent="space-between" style={{maxWidth: '400px'}}>
+      <div>
+        <h3>Primary color</h3>
+        <Rhythm m={-2}>
+          <Flex direction="row" alignItems="center">
+            <Rhythm m={2}>
+              <Avatar color="primary" initials="EC" />
+              <Avatar color="primary" initials="EC" size="small" />
+              <Avatar color="primary" initials="EC" size="xsmall" />
+            </Rhythm>
+          </Flex>
+        </Rhythm>
+      </div>
+      <div>
+        <h3>Neutral color</h3>
+        <Rhythm m={-2}>
+          <Flex direction="row" alignItems="center">
+            <Rhythm m={2}>
+              <Avatar color="neutral" initials="EC" />
+              <Avatar color="neutral" initials="EC" size="small" />
+              <Avatar color="neutral" initials="EC" size="xsmall" />
+            </Rhythm>
+          </Flex>
+        </Rhythm>
+      </div>
+    </Flex>
+  </ThemeWrapper>
+</Playground>
+
+## Actionable initials
+
+<Playground>
+  <ThemeWrapper>
+    <Flex direction="row" alignItems="center" justifyContent="space-between" style={{maxWidth: '400px'}}>
+      <div>
+        <h3>Primary color</h3>
+        <Rhythm m={-2}>
+          <Flex direction="row" alignItems="center">
+            <Rhythm m={2}>
+              <Avatar actionable color="primary" initials="EC" />
+              <Avatar actionable color="primary" initials="EC" size="small" />
+              <Avatar actionable color="primary" initials="EC" size="xsmall" />
+            </Rhythm>
+          </Flex>
+        </Rhythm>
+      </div>
+      <div>
+        <h3>Neutral color</h3>
+        <Rhythm m={-2}>
+          <Flex direction="row" alignItems="center">
+            <Rhythm m={2}>
+              <Avatar actionable color="neutral" initials="EC" />
+              <Avatar actionable color="neutral" initials="EC" size="small" />
+              <Avatar actionable color="neutral" initials="EC" size="xsmall" />
+            </Rhythm>
+          </Flex>
+        </Rhythm>
+      </div>
+    </Flex>
+  </ThemeWrapper>
+</Playground>
+
+## Variations
+
+### Contrast initials
+
+<Playground>
+  <ThemeWrapper contrast>
+    <Flex direction="row" alignItems="center">
+      <Rhythm m={2}>
+        <Avatar actionable contrast initials="EC" />
+        <Avatar actionable contrast initials="EC" size="small" />
+        <Avatar actionable contrast initials="EC" size="xsmall" />
+      </Rhythm>
+    </Flex>
+  </ThemeWrapper>
+</Playground>
+
+### Styled initials
+
+<Playground>
+  <Flex direction="row" alignItems="center">
+    <Rhythm m={2}>
+      <StyledAvatar actionable backgroundColor="#556270" textColor="#fff" initials="EC" />
+      <StyledAvatar actionable backgroundColor="#556270" textColor="#fff" initials="EC" size="small" />
+      <StyledAvatar actionable backgroundColor="#556270" textColor="#fff" initials="EC" size="xsmall" />
+    </Rhythm>
+  </Flex>
+</Playground>
+
+## \[props\]
+
+<Props of={Avatar} />

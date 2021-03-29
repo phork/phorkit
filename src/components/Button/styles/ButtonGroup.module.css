@@ -1,0 +1,139 @@
+.buttonGroup {
+  display: flex;
+  flex: none;
+
+  &:not(.buttonGroup--vertical) {
+    align-items: center;
+    flex-direction: row;
+  }
+
+  &.buttonGroup--vertical {
+    flex-direction: column;
+  }
+}
+
+.buttonGroup--left {
+  &:not(.buttonGroup--vertical) {
+    justify-content: flex-start;
+  }
+
+  &.buttonGroup--vertical {
+    align-items: flex-start;
+  }
+}
+
+.buttonGroup--right {
+  &:not(.buttonGroup--vertical) {
+    justify-content: flex-end;
+  }
+
+  &.buttonGroup--vertical {
+    align-items: flex-end;
+  }
+}
+
+.buttonGroup--fullWidth {
+  flex: 1;
+  width: 100%;
+}
+
+.buttonGroup--cozy {
+  &:not(.buttonGroup--vertical) {
+    margin-left: -6px;
+    margin-right: -6px;
+
+    .buttonGroup__button {
+      margin-left: 6px;
+      margin-right: 6px;
+    }
+  }
+
+  &.buttonGroup--vertical {
+    margin-bottom: -6px;
+    margin-top: -6px;
+
+    .buttonGroup__button {
+      margin-bottom: 6px;
+      margin-top: 6px;
+    }
+  }
+}
+
+.buttonGroup--comfy {
+  &:not(.buttonGroup--vertical) {
+    margin-left: -12px;
+    margin-right: -12px;
+
+    .buttonGroup__button {
+      margin-left: 12px;
+      margin-right: 12px;
+    }
+  }
+
+  &.buttonGroup--vertical {
+    margin-bottom: -12px;
+    margin-top: -12px;
+    
+    .buttonGroup__button {
+      margin-bottom: 12px;
+      margin-top: 12px;
+    }
+  }
+}
+
+.buttonGroup--joined {
+  &:not(.buttonGroup--vertical) {
+    .buttonGroup__button:not(:first-child) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .buttonGroup__button:not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  &.buttonGroup--vertical {
+    .buttonGroup__button:not(:first-child) {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    .buttonGroup__button:not(:last-child) {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}
+
+/**
+ * 1. Remove the double border on outline buttons.
+ */
+.buttonGroup--joined.buttonGroup--overlap {
+  &:not(.buttonGroup--vertical) {
+    .buttonGroup__button:not(:first-child) {
+      margin-left: -1px; /* [1] */
+    }
+  }
+
+  &.buttonGroup--vertical {
+    .buttonGroup__button:not(:first-child) {
+      margin-top: -1px; /* [1] */
+    }
+  }
+}
+
+/**
+ * 1. Raise buttons so their border is highlighted.
+ */
+.buttonGroup .buttonGroup__button {
+  &:hover,
+  &.is-hovered,
+  &:focus,
+  &.is-focused,
+  &:active,
+  &.is-active {
+    z-index: 1; /* [1] */
+  }
+}

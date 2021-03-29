@@ -1,0 +1,181 @@
+.toggle {
+  $default-toggle-width: 40px;
+  $default-toggle-height: 24px;
+  $default-toggle-border-width: 3px;
+  $button-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+
+  align-items: center;
+  display: inline-flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.toggle--reverse {
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  width: 100%;
+
+  .toggleInput {
+    justify-content: flex-end;
+    margin-right: 0;
+  }
+
+  .toggleLabel {
+    justify-content: flex-start;
+    flex: 1;
+  }
+}
+
+.toggle--small {
+  --toggle-width: 32px;
+  --toggle-height: 20px;
+  --toggle-border-width: 2px;
+}
+
+input.toggleInput {
+  @mixin visuallyHidden;
+}
+
+/**
+ * 1. Add padding to align the label text properly.
+ */
+.toggleInput {
+  flex: none;
+  height: var(--toggle-height, $default-toggle-height);
+  margin-right: calc(.35 * var(--toggle-width, $default-toggle-width)); /* [1] */
+  position: relative;
+  width: var(--toggle-width, $default-toggle-width);
+
+  &:before {
+    background-color: var(--toggle-background-color);
+    border-radius: var(--toggle-height, $default-toggle-height);
+    content: '';
+    height: var(--toggle-height, $default-toggle-height);
+    left: 0;
+    min-width: var(--toggle-width, $default-toggle-width);
+    position: absolute;
+    top: 0;
+    transition: 300ms;
+    width: var(--toggle-width, $default-toggle-width);
+  }
+
+  &:after {
+    background-color: var(--toggle-button-background-color);
+    border-radius: 50%;
+    bottom: var(--toggle-border-width, $default-toggle-border-width);
+    box-shadow: $button-box-shadow;
+    content: '';
+    height: calc(
+      var(--toggle-height, $default-toggle-height) - calc(var(--toggle-border-width, $default-toggle-border-width) * 2)
+    );
+    left: var(--toggle-border-width, $default-toggle-border-width);
+    position: absolute;
+    top: var(--toggle-border-width, $default-toggle-border-width);
+    transition: all 300ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    width: calc(
+      var(--toggle-height, $default-toggle-height) - calc(var(--toggle-border-width, $default-toggle-border-width) * 2)
+    );
+  }
+
+  .toggle.is-checked & {
+    &:before {
+      background-color: var(--toggle-checked-background-color);
+    }
+
+    &:after {
+      background-color: var(--toggle-checked-button-background-color);
+      left: calc(
+        var(--toggle-width, $default-toggle-width) - var(--toggle-height, $default-toggle-height) +
+          var(--toggle-border-width, $default-toggle-border-width)
+      );
+    }
+  }
+
+  /**
+   * Remove the bounce and speed up the off transition.
+   */
+  .toggle:not(.is-checked) & {
+    &:after {
+      transition-timing-function: linear;
+      transition-duration: 200ms;
+    }
+  }
+
+  /**
+   * 1. Set the background color of the toggle to show
+   *    through the mask and create a center dot.
+   *
+   * 2. Use a box shadow as a mask to show a dot in the
+   *    middle of the toggle when focused.
+   */
+  .toggle.is-checked:hover &,
+  .toggle.is-checked.is-focused & {
+    &:after {
+      background-color: var(--toggle-checked-background-color); /* [1] */
+      box-shadow: $button-box-shadow,
+        inset 0px 0px 0px calc((var(--toggle-height, $default-toggle-height) / 2) - 4px)
+          var(--toggle-checked-button-background-color); /* [2] */
+    }
+  }
+
+  /**
+   * 1. Set the background color of the toggle to show
+   *    through the mask and create a center dot.
+   *
+   * 2. Use a box shadow as a mask to show a dot in the
+   *    middle of the toggle when focused.
+   */
+  .toggle:not(.is-checked):hover &,
+  .toggle:not(.is-checked).is-focused & {
+    &:after {
+      background-color: var(--toggle-background-color); /* [1] */
+      box-shadow: $button-box-shadow,
+        inset 0px 0px 0px calc((var(--toggle-height, $default-toggle-height) / 2) - 4px)
+          var(--toggle-button-background-color); /* [2] */
+    }
+  }
+}
+
+.toggle.is-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.toggle--primary {
+  &.toggle--light {
+    --toggle-background-color: $light-color-BG30;
+    --toggle-button-background-color: $light-color-BG0;
+    --toggle-checked-background-color: $light-primary-accent-color;
+    --toggle-checked-button-background-color: $light-color-BG0;
+  }
+
+  &.toggle--dark {
+    --toggle-background-color: $dark-color-BG40-O30;
+    --toggle-button-background-color: $dark-color-BG40;
+    --toggle-checked-background-color: $dark-primary-accent-color;
+    --toggle-checked-button-background-color: $dark-color-FG0;
+  }
+}
+
+.toggle--contrast {
+  @mixin themed .toggle {
+    --toggle-background-color: $theme-contrast-quietest-color;
+    --toggle-button-background-color: $theme-contrast-quieter-color;
+    --toggle-checked-background-color: $theme-contrast-quietest-color;
+    --toggle-checked-button-background-color: $theme-contrast-accent-color;
+  }
+}
+
+/**
+ * A stronger version of the toggle that doesn't
+ * have its colors muted to match the other form
+ * inputs.
+ */
+.toggle--contrast.toggle--standalone {
+  @mixin themed .toggle {
+    --toggle-background-color: $theme-contrast-quietest-color;
+    --toggle-button-background-color: $theme-contrast-quieter-color;
+    --toggle-checked-background-color: $theme-contrast-text-color;
+    --toggle-checked-button-background-color: var(--contrast-color, $theme-contrast-background-color);
+  }
+}

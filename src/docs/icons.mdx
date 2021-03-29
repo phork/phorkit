@@ -1,0 +1,39 @@
+---
+name: Icons
+route: /icons
+---
+
+import { Playground, Props } from 'docz';
+import { ThemeWrapper } from './helpers/ThemeWrapper';
+import { IconLooper } from './helpers/IconLooper';
+import { Flex, Paper, Rhythm, Typography } from '../index';
+
+# Icons
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <Flex wrap>
+        <IconLooper>
+          {(name, Icon) => (
+            <Rhythm m={2} px={4} py={2} key={name}>
+              <Paper bordered color="secondary">
+                <Typography weight="light" size="l" variants={['letter-spacing-comfy']} volume="quiet">{name}</Typography>
+                <Flex alignItems="center">
+                  <Rhythm m={1}>
+                    <Icon scale="xsmall" />
+                    <Icon scale="small" />
+                    <Icon scale="medium" />
+                    <Icon scale="large" />
+                    <Icon scale="xlarge" />
+                    <Icon scale="xxlarge" />
+                  </Rhythm>
+                </Flex>
+              </Paper>
+            </Rhythm>
+          )}
+        </IconLooper>
+      </Flex>
+    )}
+  </ThemeWrapper>
+</Playground>

@@ -1,0 +1,132 @@
+---
+name: Accordion
+menu: Surfaces
+route: /compositions/Accordion
+---
+
+import { Playground, Props } from 'docz';
+import { AccordionList } from '../AccordionList';
+import { Accordion, AccordionContent, AccordionLabel, AccordionContainer } from '../index';
+import { Button } from 'components/Button';
+import { Rhythm } from 'components/Rhythm';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { Looper } from 'docs/helpers/Looper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Accordion" src="compositions/Accordion" />
+
+Keyboard navigation is available for this component. Navigate with `Up`, `Down`, `Left`, `Right`, `Home` or `End`. Select with `Space` or `Enter`.
+
+## Basic accordion
+
+<Playground>
+  <ThemeWrapper>
+    <Accordion onSelect={(event, id) => console.log(id)} items={[
+      { id: 'first', label: 'First', content: <Rhythm px={5} py={2}>First panel</Rhythm> },
+      { id: 'second', label: 'Second', content: <Rhythm px={5} py={2}>Second panel</Rhythm> },
+      { id: 'third', label: 'Third', content: <Rhythm px={5} py={2}>Third panel</Rhythm> },
+      { id: 'fourth', label: 'Fourth', content: (
+        <Rhythm px={5} py={2} wrapper="div">
+          <Looper start={0} end={40} render={i => (
+            <span>Fourth panel{' '}</span>
+          )} />
+        </Rhythm>
+      )},
+    ]} />
+  </ThemeWrapper>
+</Playground>
+
+## Multi-select accordion
+
+<Playground>
+  <ThemeWrapper>
+    <Accordion allowMultiSelect onSelect={(event, id) => console.log(id)} items={[
+      { id: 'first', label: 'First', content: <Rhythm px={5} py={2}>First panel</Rhythm> },
+      { id: 'second', label: 'Second', content: <Rhythm px={5} py={2}>Second panel</Rhythm> },
+      { id: 'third', label: 'Third', content: <Rhythm px={5} py={2}>Third panel</Rhythm> },
+      { id: 'fourth', label: 'Fourth', content: (
+        <Rhythm px={5} py={2} wrapper="div">
+          <Looper start={0} end={40} render={i => (
+            <span>Fourth panel{' '}</span>
+          )} />
+        </Rhythm>
+      )},
+    ]} />
+  </ThemeWrapper>
+</Playground>
+
+## Horizontal accordion
+
+<Playground>
+  <ThemeWrapper>
+    <Accordion horizontal onSelect={(event, id) => console.log(id)} items={[
+      { id: 'first', label: '1', content: <Rhythm my={2} mx={4}>First</Rhythm> },
+      { id: 'second', label: '2', content: <Rhythm my={2} mx={4}>Second</Rhythm> },
+      { id: 'third', label: '3', content: <Rhythm my={2} mx={4}>Third</Rhythm>, disabled: true },
+      { id: 'fourth', label: '4', content: <Rhythm my={2} mx={4}>Fourth</Rhythm> },
+    ]} />
+  </ThemeWrapper>
+</Playground>
+
+## Variations
+
+### Accordion with label and content functions
+
+<Playground>
+  <ThemeWrapper>
+    <Accordion initialSelected="second" onSelect={(event, id) => console.log(id)} items={[
+      { id: 'first', label: ({ selected }) => `First${selected ? ' is selected': ''}`, content: ({ selected }) => <Rhythm px={5} py={2}>{`First panel${selected ? ' is selected': ''}`}</Rhythm> },
+      { id: 'second', label: ({ selected }) => `Second${selected ? ' is selected': ''}`, content: ({ selected }) => <Rhythm px={5} py={2}>{`Second panel${selected ? ' is selected': ''}`}</Rhythm> },
+      { id: 'third', label: ({ selected }) => `Third${selected ? ' is selected': ''}`, content: ({ selected }) => <Rhythm px={5} py={2}>{`Third panel${selected ? ' is selected': ''}`}</Rhythm>, disabled: true },
+      { id: 'fourth', label: ({ selected }) => `Fourth${selected ? ' is selected': ''}`, content: ({ selected }) => <Rhythm px={5} py={2}>{`Fourth panel${selected ? ' is selected': ''}`}</Rhythm> },
+    ]} />
+  </ThemeWrapper>
+</Playground>
+
+### Contrast accordion
+
+<Playground>
+  <ThemeWrapper contrast>
+    <Accordion contrast onSelect={(event, id) => console.log(id)} items={[
+      { id: 'first', label: 'First', content: <Rhythm px={5} py={2}>First panel</Rhythm> },
+      { id: 'second', label: 'Second', content: <Rhythm px={5} py={2}>Second panel</Rhythm> },
+      { id: 'third', label: 'Third', content: <Rhythm px={5} py={2}>Third panel</Rhythm>, disabled: true },
+      { id: 'fourth', label: 'Fourth', content: <Rhythm px={5} py={2}>Fourth panel</Rhythm> },
+    ]} />
+  </ThemeWrapper>
+</Playground>
+
+### Unselectable accordion
+
+<Playground>
+  <ThemeWrapper>
+    <Accordion allowUnselect onSelect={(event, id) => console.log(id)} items={[
+      { id: 'first', label: 'First', content: <Rhythm px={5} py={2}>First panel</Rhythm> },
+      { id: 'second', label: 'Second', content: <Rhythm px={5} py={2}>Second panel</Rhythm> },
+      { id: 'third', label: 'Third', content: <Rhythm px={5} py={2}>Third panel</Rhythm>, disabled: true },
+      { id: 'fourth', label: 'Fourth', content: <Rhythm px={5} py={2}>Fourth panel</Rhythm> },
+    ]} />
+  </ThemeWrapper>
+</Playground>
+
+## \[props\]
+
+### Accordion
+
+<Props of={Accordion} />
+
+### AccordionContainer
+
+<Props of={AccordionContainer} />
+
+### AccordionList
+
+<Props of={AccordionList} />
+
+### AccordionContent
+
+<Props of={AccordionContent} />
+
+### AccordionLabel
+
+<Props of={AccordionLabel} />

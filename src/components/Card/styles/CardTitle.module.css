@@ -1,0 +1,8 @@
+.cardTitle {
+  font-size: $font-size-xxl;
+  font-weight: 300;
+}
+
+.cardTitle--subtitle {
+  font-size: $font-size-m;
+}

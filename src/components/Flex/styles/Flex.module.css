@@ -1,0 +1,159 @@
+/* display */
+
+.display-flex {
+  display: flex;
+}
+
+.display-inline-flex {
+  display: inline-flex;
+}
+
+/* justify content */
+
+.justify-content-flex-start {
+  justify-content: flex-start;
+}
+
+.justify-content-flex-end {
+  justify-content: flex-end;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-space-around {
+  justify-content: space-around;
+}
+
+.justify-content-space-between {
+  justify-content: space-between;
+}
+
+.justify-content-space-evenly {
+  justify-content: space-evenly;
+}
+
+/* align content */
+
+.align-content-center {
+  align-content: center;
+}
+
+.align-content-flex-end {
+  align-content: flex-end;
+}
+
+.align-content-flex-start {
+  align-content: flex-start;
+}
+
+.align-content-space-around {
+  align-content: space-around;
+}
+
+.align-content-space-between {
+  align-content: space-between;
+}
+
+.align-content-stretch {
+  align-content: stretch;
+}
+
+/* align items */
+
+.align-items-center {
+  align-items: center;
+}
+
+.align-items-baseline {
+  align-items: baseline;
+}
+
+.align-items-flex-end {
+  align-items: flex-end;
+}
+
+.align-items-flex-start {
+  align-items: flex-start;
+}
+
+/* align self */
+
+.align-self-baseline {
+  align-self: baseline;
+}
+
+.align-self-center {
+  align-self: center;
+}
+
+.align-self-flex-end {
+  align-self: flex-end;
+}
+
+.align-self-flex-start {
+  align-self: flex-start;
+}
+
+.align-self-space-around {
+  align-self: space-around;
+}
+
+.align-self-space-between {
+  align-self: space-between;
+}
+
+.align-self-stretch {
+  align-self: stretch;
+}
+
+/* flex */
+
+.flexible {
+  flex: 1;
+}
+
+.inflexible {
+  flex: none;
+}
+
+/* flex direction */
+
+.flex-direction-row {
+  flex-direction: row;
+
+  &.flex-direction-reverse {
+    flex-direction: row-reverse;
+  }
+}
+
+.flex-direction-column {
+  flex-direction: column;
+
+  &.flex-direction-reverse {
+    flex-direction: column-reverse;
+  }
+}
+
+/* flex wrap */
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+/* helpers */
+
+.flex-full {
+  height: 100%;
+  width: 100%;
+}
+
+.flex-max {
+  min-height: 100%;
+  min-width: 100%;
+}

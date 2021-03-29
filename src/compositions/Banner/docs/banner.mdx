@@ -1,0 +1,108 @@
+---
+name: Banners
+menu: Feedback
+route: /compositions/Banners
+---
+
+import { Playground, Props } from 'docz';
+import { Banner, BannerConsumer, BannerContainer, Banners, BannerProvider } from '../index';
+import { Button } from 'components/Button';
+import { Rhythm } from 'components/Rhythm';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Banner" src="compositions/Banner" />
+
+## Basic banners
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <BannerContainer themeId={themeId}>
+        <Banner immediate level="info" onClose={() => console.log('close banner')}>
+          This is an info banner because something interesting happened. Exciting!
+        </Banner>
+        <Banner immediate level="danger" onClose={() => console.log('close banner')}>
+          This is a danger banner because something bad happened. Uh oh!
+        </Banner>
+        <Banner immediate level="warning" onClose={() => console.log('close banner')}>
+          This is a warning banner because something not so great happened. Meh.
+        </Banner>
+        <Banner immediate level="success" onClose={() => console.log('close banner')}>
+          This is a success banner because something excellent happened. Yay!
+        </Banner>
+        <Banner immediate level="success" onClose={() => console.log('close banner')}>
+          This is another success banner. It has a border to distinguish it from the one above.
+        </Banner>
+        <Banner immediate level="success">
+          This is another success banner. It can't be removed.
+        </Banner>
+      </BannerContainer>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Full context
+
+<Playground>
+  <ThemeWrapper>
+    <Banners style={{marginTop: '18px'}}>
+      <BannerConsumer>
+        {({ createNotification, clearNotifications }) => (
+          <Rhythm m={2}>
+            <Button color="primary" onClick={() => createNotification(
+              <Banner level="info">
+                This is an info banner because something interesting happened. Exciting!
+              </Banner>
+            )}>
+              Info banner
+            </Button>
+            <Button color="danger" onClick={() => createNotification(
+              <Banner level="danger">
+                This is a danger banner because something bad happened. Uh oh!
+              </Banner>
+            )}>
+              Danger banner
+            </Button>
+            <Button color="warning" onClick={() => createNotification(
+              <Banner level="warning" permanent>
+                This is a permanent warning banner because something not so great happened. Meh.
+              </Banner>
+            )}>
+              Warning banner
+            </Button>
+            <Button color="success" onClick={() => createNotification(
+              <Banner id="demo-success" level="success">
+                  This is an overwriting success banner because something excellent happened. Yay!
+                  <div style={{position: 'absolute', right: '8px', fontSize: '10px', opacity: .4}}>{Date.now()}</div>
+              </Banner>
+            )}>
+              Success banner
+            </Button>
+            <Button color="neutral" onClick={() => clearNotifications()}>
+              Clear all
+            </Button>
+          </Rhythm>
+        )}
+      </BannerConsumer>
+    </Banners>
+  </ThemeWrapper>
+</Playground>
+
+## \[props\]
+
+### Banner
+
+<Props of={Banner} />
+
+### BannerContainer
+
+<Props of={BannerContainer} />
+
+### BannerProvider
+
+<Props of={BannerProvider} />
+
+### Banners
+
+<Props of={Banners} />

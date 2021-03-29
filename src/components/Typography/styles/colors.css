@@ -1,0 +1,95 @@
+/**
+ * 1. Override default quiet setting which uses opacity.
+ */
+.text-color-primary {
+  @mixin themed .text {
+    color: $theme-primary-text-color;
+
+    &.text-quiet {
+      color: $theme-primary-quiet-color;
+      opacity: 1; /* [1] */
+    }
+
+    &.text-quieter {
+      color: $theme-primary-quieter-color;
+      opacity: 1; /* [1] */
+    }
+
+    &.text-quietest {
+      color: $theme-primary-quietest-color;
+      opacity: 1; /* [1] */
+    }
+  }
+}
+
+/**
+ * 1. Override default quiet setting which uses opacity.
+ */
+.text-color-secondary {
+  @mixin themed .text {
+    color: $theme-secondary-text-color;
+
+    &.text-quiet {
+      color: $theme-secondary-quiet-color;
+      opacity: 1; /* [1] */
+    }
+
+    &.text-quieter {
+      color: $theme-secondary-quieter-color;
+      opacity: 1; /* [1] */
+    }
+
+    &.text-quietest {
+      color: $theme-secondary-quietest-color;
+      opacity: 1; /* [1] */
+    }
+  }
+}
+
+/**
+ * 1. Override default quiet setting which uses opacity.
+ */
+.text-color-contrast {
+  @mixin themed .text {
+    color: $theme-contrast-text-color;
+
+    &.text-quiet {
+      color: $theme-contrast-quiet-color;
+      opacity: 1; /* [1] */
+    }
+
+    &.text-quieter {
+      color: $theme-contrast-quieter-color;
+      opacity: 1; /* [1] */
+    }
+
+    &.text-quietest {
+      color: $theme-contrast-quietest-color;
+      opacity: 1; /* [1] */
+    }
+  }
+}
+
+.text-color-accent-primary {
+  @mixin themed .text {
+    color: $theme-color-accent-primary;
+  }
+}
+
+.text-color-success {
+  @mixin themed .text {
+    color: $theme-color-success;
+  }
+}
+
+.text-color-warning {
+  @mixin themed .text {
+    color: $theme-color-warning;
+  }
+}
+
+.text-color-danger {
+  @mixin themed .text {
+    color: $theme-color-danger;
+  }
+}

@@ -1,0 +1,9 @@
+.mainPanel {
+  @mixin allowMaximumFlexboxShrinkage;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  flex: 1;
+  position: relative;
+}

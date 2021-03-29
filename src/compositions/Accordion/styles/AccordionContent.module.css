@@ -1,0 +1,13 @@
+.accordionContent {
+  display: flex;
+  overflow: hidden;
+}
+
+.accordionContent--vertical {
+  width: 100%;
+}
+
+.accordionContent--horizontal {
+  height: 100%;
+  flex: 1;
+}

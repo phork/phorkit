@@ -1,0 +1,185 @@
+---
+name: Checkbox
+menu: Forms
+route: /components/FormCheckbox
+---
+
+import { Playground, Props } from 'docz';
+import { Checkbox, CheckboxGroup, NotifiedCheckboxGroup } from '../index';
+import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
+import { Looper } from 'docs/helpers/Looper';
+import { Typography } from 'components/Typography';
+import { checkboxGroup, logChecked, logValues } from './helpers/utils';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Checkbox" src="components/Form/Checkbox" />
+
+## Basic checkbox
+
+<Playground>
+  <FormComponentDemo property="checked" initialValue={false}>
+    <Checkbox id="demo-basic-checkbox" onChange={logChecked} />
+  </FormComponentDemo>
+</Playground>
+
+## Indeterminate checkbox
+
+<Playground>
+  <FormComponentDemo property="checked" initialValue={false}>
+    <Checkbox id="demo-indeterminate-checkbox" indeterminate onChange={logChecked} />
+  </FormComponentDemo>
+</Playground>
+
+## Labeled checkbox
+
+<Playground>
+  <FormComponentDemo property="checked" initialValue={true}>
+    <Checkbox id="demo-labeled-checkbox" onChange={logChecked}>
+      Super fantastic label
+    </Checkbox>
+  </FormComponentDemo>
+</Playground>
+
+## Wrapped labeled checkbox
+
+<Playground>
+  <FormComponentDemo property="checked" initialValue={true}>
+    <Checkbox id="demo-wrapped-labeled-checkbox" onChange={logChecked}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget dui eu orci ultrices maximus eu eu ante.
+      Vestibulum ligula velit, scelerisque vitae venenatis tempor, consectetur a orci. Aenean molestie eu tortor in
+      pharetra. Nulla lobortis, sapien quis ornare venenatis, nunc libero finibus justo, non tempor nisi urna quis
+      justo. Integer sit amet venenatis leo.
+    </Checkbox>
+  </FormComponentDemo>
+</Playground>
+
+## Disabled checkbox
+
+<Playground>
+  <FormComponentDemo property="checked" initialValue={false}>
+    <Checkbox disabled id="demo-disabled-checkbox" onChange={logChecked}>
+      Super fantastic label
+    </Checkbox>
+  </FormComponentDemo>
+</Playground>
+
+## Danger checkbox
+
+<Playground>
+  <FormComponentDemo property="checked" initialValue={true}>
+    <Checkbox id="demo-danger-checkbox" onChange={logChecked} validity="danger">
+      Super fantastic label
+    </Checkbox>
+  </FormComponentDemo>
+</Playground>
+
+## Contrast checkbox
+
+<Playground>
+  <FormComponentDemo property="checked" initialValue={true} contrast>
+    <Checkbox contrast id="demo-contrast-checkbox" onChange={logChecked}>
+      Super fantastic label
+    </Checkbox>
+  </FormComponentDemo>
+</Playground>
+
+# <br />
+# CheckboxGroup
+
+## Example `checkboxes` values
+
+```
+[{
+  id: "checkbox-group-item1",
+  name: "checkbox-group-item1",
+  value: "one",
+  label: 'Super fantastic label one',
+}, {
+  id: "checkbox-group-item2",
+  name: "checkbox-group-item2",
+  value: "two",
+  label: 'Super fantastic label two',
+}, {
+  id: "checkbox-group-item3",
+  name: "checkbox-group-item3",
+  value: "three",
+  label: 'Super fantastic label three',
+}]
+```
+
+## Stacked group
+
+<Playground>
+  <FormComponentDemo property="values" initialValue={['one']}>
+    <CheckboxGroup
+      layout="stacked"
+      legend="Super fantastic legend says what?"
+      name="stacked-checkbox-group"
+      onChange={logValues}
+      checkboxes={checkboxGroup}
+    />
+  </FormComponentDemo>
+</Playground>
+
+## Inline group
+
+<Playground>
+  <FormComponentDemo property="values" initialValue={['one']}>
+    <CheckboxGroup
+      layout="inline"
+      legend="Super fantastic legend says what?"
+      name="inline-checkbox-group"
+      onChange={logValues}
+      checkboxes={checkboxGroup}
+    />
+  </FormComponentDemo>
+</Playground>
+
+## Custom group legend
+
+<Playground>
+  <FormComponentDemo property="values" initialValue={['one']}>
+    <CheckboxGroup
+      layout="inline"
+      legend={
+        <Typography as="legend" variants="medium-caps" style={{ marginBottom: '8px' }}>
+          Super fantastic legend says what?
+        </Typography>
+      }
+      name="custom-checkbox-group"
+      onChange={logValues}
+      checkboxes={checkboxGroup}
+    />
+  </FormComponentDemo>
+</Playground>
+
+## Notifications
+
+<Playground>
+  <Looper
+    list={['success', 'danger', 'warning', 'primary', 'neutral']}
+    render={level => (
+      <FormComponentDemo property="values" initialValue={['one']}>
+        <NotifiedCheckboxGroup
+          layout="inline"
+          legend="Super fantastic legend says what?"
+          name="inline-checkbox-group"
+          onChange={logValues}
+          checkboxes={checkboxGroup}
+          level={level}
+          notification={`This is an example ${level} notification.`}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## \[props\]
+
+### Checkbox
+
+<Props of={Checkbox} />
+
+### CheckboxGroup
+
+<Props of={CheckboxGroup} />

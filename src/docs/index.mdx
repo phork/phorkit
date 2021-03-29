@@ -1,0 +1,31 @@
+---
+name: Introduction
+route: /
+---
+
+import { Version } from './helpers/Version';
+
+<div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+  <h1>Phork/it</h1>
+  <h3>Version <Version /></h3>
+</div>
+
+## Getting started
+
+Include the common styles and fonts in `index.js`.
+
+```
+import '@phork/phorkit/lib/styles/normalize.css';
+import '@phork/phorkit/lib/styles/fonts.css';
+import '@phork/phorkit/lib/styles/common.css';
+```
+
+Include the basic providers in `App.js`.
+
+```
+<AccessibilityProvider>
+  <ThemeProvider themeId={light|dark}>
+    hello world
+  </Theme>
+</AccessibilityProvider>
+```

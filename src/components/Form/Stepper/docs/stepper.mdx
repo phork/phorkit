@@ -1,0 +1,150 @@
+---
+name: Stepper
+menu: Forms
+route: /components/FormStepper
+---
+
+import { Playground, Props } from 'docz';
+import { Stepper, NotifiedStepper } from '../index';
+import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
+import { Looper } from 'docs/helpers/Looper';
+import { variants } from './helpers/variants';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Stepper" src="components/Form/Stepper" />
+
+## Basic stepper
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue={10}>
+        <Stepper onChange={(event, value) => console.log(value)} aria-label="Super fantastic label" variant={variant} />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Ticked stepper
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue={10}>
+        <Stepper
+          id="demo-ticked-stepper"
+          min={-100}
+          max={100}
+          step={10}
+          onChange={(event, value) => console.log(value)}
+          aria-label="Super fantastic label"
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Labeled stepper
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue={10}>
+        <Stepper
+          label="Cool label"
+          min={2}
+          max={12}
+          step={1}
+          onChange={(event, value) => console.log(value)}
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Disabled stepper
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue={30}>
+        <Stepper
+          disabled
+          onChange={(event, value) => console.log(value)}
+          aria-label="Super fantastic label"
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Danger stepper
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue={60}>
+        <Stepper
+          onChange={(event, value) => console.log(value)}
+          validity="danger"
+          aria-label="Super fantastic label"
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Contrast stepper
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue={30} contrast>
+        <Stepper
+          contrast
+          onChange={(event, value) => console.log(value)}
+          aria-label="Super fantastic label"
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Notifications
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Looper
+        list={['success', 'danger', 'warning', 'primary', 'neutral']}
+        render={level => (
+          <FormComponentDemo property="value" initialValue={10}>
+            <NotifiedStepper
+              onChange={(event, value) => console.log(value)}
+              aria-label="Super fantastic label"
+              variant={variant}
+              level={level}
+              notification={`This is an example ${level} notification.`}
+            />
+          </FormComponentDemo>
+        )}
+      />
+    )}
+  />
+</Playground>
+
+## \[props\]
+
+<Props of={Stepper} />

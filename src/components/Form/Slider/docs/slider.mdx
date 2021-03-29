@@ -1,0 +1,232 @@
+---
+name: Slider
+menu: Forms
+route: /components/FormSlider
+---
+
+import { Playground, Props } from 'docz';
+import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index';
+import { Looper } from 'docs/helpers/Looper';
+import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Slider" src="components/Form/Slider" />
+
+## Basic slider
+
+<Playground>
+  <FormComponentDemo property="value" initialValue={10}>
+    <Slider
+      id="demo-basic-slider"
+      width="100%"
+      valuePosition="right"
+      onChange={(event, value) => console.log(value)}
+      aria-label="Super fantastic label"
+    />
+  </FormComponentDemo>
+</Playground>
+
+## Small slider
+
+<Playground>
+  <FormComponentDemo property="value" initialValue={10}>
+    <Slider
+      id="demo-small-slider"
+      width="100%"
+      valuePosition="right"
+      onChange={(event, value) => console.log(value)}
+      aria-label="Super fantastic label"
+      scale="small"
+    />
+  </FormComponentDemo>
+</Playground>
+
+## Negative slider
+
+<Playground>
+  <FormComponentDemo property="value" initialValue={-10}>
+    <Slider
+      id="demo-negative-slider"
+      width="100%"
+      min={-40}
+      max={0}
+      valuePosition="right"
+      onChange={(event, value) => console.log(value)}
+      aria-label="Super fantastic label"
+    />
+  </FormComponentDemo>
+</Playground>
+
+## Ticked slider
+
+<Playground>
+  <FormComponentDemo property="value" initialValue={10}>
+    <Slider
+      id="demo-ticked-slider"
+      width="100%"
+      min={0}
+      max={100}
+      step={1}
+      tick={10}
+      valuePosition="right"
+      onChange={(event, value) => console.log(value)}
+      aria-label="Super fantastic label"
+    />
+  </FormComponentDemo>
+</Playground>
+
+## Ticked snap slider
+
+<Playground>
+  <FormComponentDemo property="value" initialValue={2}>
+    <Slider
+      id="demo-ticked-snap-slider"
+      width="100%"
+      min={0}
+      max={5}
+      step={1}
+      tick={1}
+      snap
+      valuePosition="right"
+      onChange={(event, value) => console.log(value)}
+      aria-label="Super fantastic label"
+    />
+  </FormComponentDemo>
+</Playground>
+
+## Labeled slider
+
+<Playground>
+  <FormComponentDemo property="value" initialValue={4.5}>
+    <Slider
+      id="demo-labeled-slider"
+      width="100%"
+      min={2}
+      max={12}
+      step={0.1}
+      valuePosition="top"
+      onChange={(event, value) => console.log(value)}
+    >
+      Super fantastic label
+    </Slider>
+  </FormComponentDemo>
+</Playground>
+
+## Disabled slider
+
+<Playground>
+  <FormComponentDemo property="value" initialValue={30}>
+    <Slider
+      disabled
+      id="demo-disabled-slider"
+      width="100%"
+      onChange={(event, value) => console.log(value)}
+      aria-label="Super fantastic label"
+    />
+  </FormComponentDemo>
+</Playground>
+
+## Danger slider
+
+<Playground>
+  <FormComponentDemo property="value" initialValue={60}>
+    <Slider
+      id="demo-danger-slider"
+      width="100%"
+      onChange={(event, value) => console.log(value)}
+      validity="danger"
+      aria-label="Super fantastic label"
+    />
+  </FormComponentDemo>
+</Playground>
+
+## Contrast slider
+
+<Playground>
+  <FormComponentDemo property="value" initialValue={30} contrast>
+    <Slider
+      contrast
+      id="demo-contrast-slider"
+      width="100%"
+      onChange={(event, value) => console.log(value)}
+      aria-label="Super fantastic label"
+    />
+  </FormComponentDemo>
+</Playground>
+
+## Styled slider
+
+<Playground>
+  <FormComponentDemo property="value" initialValue={30}>
+    <StyledSlider
+      trackBackground="#e4e4e4"
+      trackFillBackground="#642da0"
+      handleBackgroundColor="#283992"
+      hoverHandleBoxShadow="#283992"
+      hoverHandleBorderColor="#283992"
+      tickBackgroundColor="#283992"
+      id="demo-styled-slider"
+      width="100%"
+      onChange={(event, value) => console.log(value)}
+      aria-label="Super fantastic label"
+    />
+  </FormComponentDemo>
+</Playground>
+
+## Multi-color slider
+
+<Playground>
+  <FormComponentDemo property="value" initialValue={2}>
+    <MultiColorSlider
+      id="demo-multi-color-slider"
+      width="100%"
+      colors={['danger', 'warning', 'success']}
+      valuePosition="right"
+      onChange={(event, value) => console.log(value)}
+      aria-label="Super fantastic label"
+      scale="small"
+    />
+  </FormComponentDemo>
+</Playground>
+
+## Multi-color slider with dividers
+
+<Playground>
+  <FormComponentDemo property="value" initialValue={2}>
+    <MultiColorSlider
+      id="demo-multi-color-slider-divider"
+      width="100%"
+      colors={['danger', 'warning', 'success']}
+      valuePosition="right"
+      variant="divider"
+      onChange={(event, value) => console.log(value)}
+      aria-label="Super fantastic label"
+      scale="small"
+    />
+  </FormComponentDemo>
+</Playground>
+
+## Notifications
+
+<Playground>
+  <Looper
+    list={['success', 'danger', 'warning', 'primary', 'neutral']}
+    render={level => (
+      <FormComponentDemo property="value" initialValue="20">
+        <NotifiedSlider
+          id="demo-notified-slider"
+          width="100%"
+          valuePosition="right"
+          onChange={(event, value) => console.log(value)}
+          aria-label="Super fantastic label"
+          level={level}
+          notification={`This is an example ${level} notification.`}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## \[props\]
+
+<Props of={Slider} />

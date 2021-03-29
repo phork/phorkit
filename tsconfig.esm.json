@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.rollup.json",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "lib/esm",
+    "tsBuildInfoFile": "lib/esm/tsbuildinfo"
+  },
+}

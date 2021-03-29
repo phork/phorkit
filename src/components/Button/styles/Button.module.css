@@ -1,0 +1,318 @@
+@import './mixins.css';
+
+button.unbutton {
+  @mixin unbutton;
+  padding: 0;
+}
+
+.unbutton {
+  color: currentColor;
+
+  &:disabled,
+  &.is-disabled {
+    cursor: default;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+/**
+ * 1. The full unbuttoning includes background, border and
+ *    text align which need to be overridden by certain classes
+ *    below. However due to the specificity here if they were
+ *    set in the unbuttoning here they wouldn't be overridable,
+ *    so this only does the minimum unbuttoning.
+ */
+button.button {
+  @mixin unbutton minimal; /* [1] */
+}
+
+/**
+ * 1. Put all button transitions here so shared classes
+ *    don't overwrite transitions.
+ * 2. Don't steal the event target away from the button.
+ */
+.button {
+  @mixin button;
+
+  background: transparent;
+  border: none;
+  display: inline-block;
+  flex: none;
+  font-size: $font-size-s;
+  letter-spacing: 0.25px;
+  line-height: 1.5em;
+  padding: 0.6em 2.1em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition-property: background-color, border-color, color, max-width; /* [1] */
+  transition-timing-function: ease;
+  transition-duration: 200ms;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled,
+  &.is-disabled,
+  &.is-loading {
+    cursor: default;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  > * {
+    pointer-events: none; /* [2] */
+  }
+}
+
+.button:not(.button--outline):not(.button--text) {
+  @mixin createButton;
+}
+
+/**
+ * 1. Remove 1px from the normal button padding
+ *    to make room for the border.
+ */
+.button--outline {
+  @mixin createOutlineButton;
+
+  padding: calc(0.6em - 1px) calc(2.1em - 1px); /* [1] */
+}
+
+.button--text {
+  @mixin createTextButton;
+}
+
+.button--icon,
+.button--text {
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * 1. Remove extra space added to the bottom.
+ */
+.button--icon {
+  svg {
+    float: left; /* [1] */
+  }
+
+  &.button--iconRound {
+    border-radius: 100%;
+  }
+
+  &.button--iconSquare {
+    border-radius: $border-radius-s;
+  }
+
+  &.button--iconRound,
+  &.button--iconSquare {
+    padding: 0.6em;
+
+    &.button--outline {
+      padding: calc(0.6em - 1px) calc(0.6em - 1px);
+    }
+  }
+}
+
+/**
+ * 1. Remove extra space added to the bottom.
+ */
+.button--iconText {
+  max-width: 100%;
+  overflow: hidden;
+  padding-left: 16px;
+
+  .button__content {
+    align-items: center;
+    display: flex;
+    flex: none;
+    flex-direction: row;
+    justify-content: center;
+    white-space: nowrap;
+  }
+
+  .button__icon {
+    line-height: 1;
+    margin-right: 8px;
+
+    svg {
+      float: left; /* [1] */
+    }
+  }
+
+  .button__text {
+    white-space: nowrap;
+  }
+
+  &.is-collapsed {
+    max-width: 29.2px;
+    padding-left: 0.6em;
+    padding-right: 0.6em;
+
+    .button__icon {
+      margin-right: 0;
+    }
+
+    .button__text {
+      display: none;
+    }
+  }
+}
+
+.button--left {
+  text-align: left;
+}
+
+.button--right {
+  text-align: right;
+}
+
+.button--pill {
+  border-radius: 20px;
+}
+
+.button--brick {
+  border-radius: $border-radius-m;
+}
+
+.button--noWrap {
+  white-space: nowrap;
+}
+
+.button--noWidth {
+  padding-left: 0;
+  padding-right: 0;
+  width: auto;
+}
+
+.button--fullWidth {
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+}
+
+.button.is-loading {
+  .button__content {
+    visibility: hidden;
+  }
+}
+
+.button--success {
+  @mixin themed .button {
+    --button-primary-color: $theme-color-success;
+    --button-inverse-color: $theme-color-success-contrast;
+    --button-hover-primary-color: $theme-color-success-D10;
+    --button-active-primary-color: $theme-color-success-L10;
+  }
+}
+
+.button--warning {
+  @mixin themed .button {
+    --button-primary-color: $theme-color-warning;
+    --button-inverse-color: $theme-color-warning-contrast;
+    --button-hover-primary-color: $theme-color-warning-D10;
+    --button-active-primary-color: $theme-color-warning-L10;
+  }
+}
+
+.button--danger {
+  @mixin themed .button {
+    --button-primary-color: $theme-color-danger;
+    --button-inverse-color: $theme-color-danger-contrast;
+    --button-hover-primary-color: $theme-color-danger-D10;
+    --button-active-primary-color: $theme-color-danger-L10;
+  }
+}
+
+.button--primary {
+  @mixin themed .button {
+    --button-primary-color: $theme-color-accent-primary;
+    --button-inverse-color: $theme-color-accent-primary-contrast;
+    --button-hover-primary-color: $theme-color-accent-primary-D10;
+    --button-active-primary-color: $theme-color-accent-primary-L10;
+  }
+}
+
+.button--contrast {
+  @mixin themed .button {
+    --button-primary-color: $theme-contrast-text-color;
+    --button-inverse-color: var(--contrast-color, $theme-contrast-background-color);
+    --button-hover-primary-color: $theme-contrast-quiet-color;
+    --button-active-primary-color: $theme-contrast-text-color;
+  }
+}
+
+.button--neutral,
+.button--neutralAccessible {
+  @mixin themed .button {
+    --button-primary-color: $theme-color-neutral;
+    --button-inverse-color: $theme-color-neutral-contrast;
+    --button-hover-primary-color: $theme-color-neutral-D10;
+    --button-active-primary-color: $theme-color-neutral-L10;
+  }
+}
+
+/**
+ * Make the underline more noticeable rather than light grey.
+ */
+/* stylelint-disable-next-line no-duplicate-selectors */
+.button--text {
+  &.button--neutralAccessible {
+    &.button--light {
+      --button-text-underline-color: #000;
+    }
+
+    &.button--dark {
+      --button-text-underline-color: #fff;
+    }
+  }
+
+  &.button--neutralAndPrimary {
+    &:not(:disabled):not(.is-disabled) {
+      &:focus,
+      &.is-focused {
+        color: var(--button-hover-primary-color);
+
+        &:before {
+          content: none;
+        }
+      }
+    }
+
+    @mixin themed .button {
+      --button-primary-color: $theme-color-neutral;
+      --button-inverse-color: $theme-color-neutral-contrast;
+      --button-hover-primary-color: $theme-color-accent-primary;
+      --button-active-primary-color: $theme-color-accent-primary;
+    }
+  }
+}
+
+.button--white {
+  --button-primary-color: #fff;
+  --button-inverse-color: #000;
+  --button-hover-primary-color: rgba(255, 255, 255, 0.8);
+  --button-active-primary-color: rgba(255, 255, 255, 0.6);
+}
+
+.button--black {
+  --button-primary-color: #000;
+  --button-inverse-color: #fff;
+  --button-hover-primary-color: rgba(0, 0, 0, 0.8);
+  --button-active-primary-color: rgba(0, 0, 0, 0.6);
+}
+
+.button__loader {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}

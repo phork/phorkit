@@ -1,0 +1,94 @@
+---
+name: Footer
+menu: Surfaces
+route: /components/Footer
+---
+
+import { Playground, Props } from 'docz';
+import { Rhythm } from 'components/Rhythm';
+import { Footer, StyledFooter } from '../index';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Footer" src="components/Footer" />
+
+## Basic footer
+
+<Playground>
+  <ThemeWrapper>
+    <Footer>
+      <div>Hello world</div>
+      <div>Hello world</div>
+    </Footer>
+  </ThemeWrapper>
+</Playground>
+
+## Bordered footer
+
+<Playground>
+  <ThemeWrapper>
+    <Footer bordered>
+      <div>Hello world</div>
+      <div>Hello world</div>
+    </Footer>
+  </ThemeWrapper>
+</Playground>
+
+## Global footer
+
+<Playground>
+  <ThemeWrapper>
+    <Footer variant="global">
+      <div>Hello world</div>
+      <div>Hello world</div>
+    </Footer>
+  </ThemeWrapper>
+</Playground>
+
+## Bordered global footer
+
+<Playground>
+  <ThemeWrapper>
+    <Footer bordered variant="global">
+      <div>Hello world</div>
+      <div>Hello world</div>
+    </Footer>
+  </ThemeWrapper>
+</Playground>
+
+## Bordered transparent footer
+
+<Playground>
+  <ThemeWrapper>
+    <Footer bordered variant="transparent">
+      <div>Hello world</div>
+      <div>Hello world</div>
+    </Footer>
+  </ThemeWrapper>
+</Playground>
+
+## Variations
+
+### Contrast footer
+
+<Playground>
+  <ThemeWrapper>
+    <Footer contrast>
+      <div>Hello world</div>
+      <div>Hello world</div>
+    </Footer>
+  </ThemeWrapper>
+</Playground>
+
+### Styled footer
+
+<Playground>
+  <StyledFooter bordered backgroundColor="#fc0" borderColor="#393a61" textColor="#fff" height={50}>
+    <div>Hello world</div>
+    <div>Hello world</div>
+  </StyledFooter>
+</Playground>
+
+## \[props\]
+
+<Props of={Footer} />

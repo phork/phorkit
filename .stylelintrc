@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-prettier"
+  ],
+  "rules": {
+    "no-descending-specificity": null,
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "mixin",
+          "import",
+          "define-mixin"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+.notificationContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.notification {
+  color: var(--notification-color);
+  font-size: 12px;
+
+  &:not(.notification--divided) {
+    margin-top: 4px;
+  }
+}
+
+.notification--divided {
+  border-top: 1px solid var(--notification-divider-color, currentColor);
+  margin-top: 12px;
+  padding-top: 8px;
+
+  &:not(.notification--contrast) {
+    @mixin themed .notification {
+      border-color: $theme-primary-quietest-color;
+    }
+  }
+
+  &.notification--contrast {
+    @mixin themed .notification {
+      border-color: $theme-contrast-quietest-color;
+    }
+  }
+}
+
+.notification--danger {
+  @mixin themed .notification {
+    color: $theme-color-danger;
+  }
+}
+
+.notification--warning {
+  @mixin themed .notification {
+    color: $theme-color-warning;
+  }
+}
+
+.notification--success {
+  @mixin themed .notification {
+    color: $theme-color-success;
+  }
+}
+
+.notification--primary {
+  @mixin themed .notification {
+    color: $theme-color-accent-primary;
+  }
+}
+
+.notification--neutral {
+  @mixin themed .notification {
+    color: $theme-color-neutral;
+  }
+}
+
+.notification--contrast {
+  @mixin themed .notification {
+    color: $theme-color-neutral;
+  }
+}

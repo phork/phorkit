@@ -1,0 +1,125 @@
+---
+name: Badge
+menu: Display
+route: /components/Badge
+---
+
+import { Playground, Props } from 'docz';
+import { Badge, ColoredBadge, StyledBadge } from '../index';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { ColorLooper } from 'docs/helpers/ColorLooper';
+import { Rhythm } from 'components/Rhythm';
+import { Flex } from 'components/Flex';
+import { themes } from 'config/themes';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Badge" src="components/Badge" />
+
+## Marker badges
+
+<Playground>
+  <ThemeWrapper>
+    <div style={{position: 'relative', width: '20px', height: '20px', backgroundColor: themes.light['color-BG40']}}>
+      <Badge position="top-left" shape="marker" color="primary" />
+      <Badge position="top-right" shape="marker" color="success" />
+      <Badge position="bottom-left" shape="marker" color="warning" />
+      <Badge position="bottom-right" shape="marker" color="danger" />
+    </div>
+  </ThemeWrapper>
+</Playground>
+
+## Point badges
+
+<Playground>
+  <ThemeWrapper>
+    <div style={{position: 'relative', width: '20px', height: '20px', backgroundColor: themes.light['color-BG40']}}>
+      <Badge position="top-left" shape="point" color="primary" />
+      <Badge position="top-right" shape="point" color="success" />
+      <Badge position="bottom-left" shape="point" color="warning" />
+      <Badge position="bottom-right" shape="point" color="danger" />
+    </div>
+  </ThemeWrapper>
+</Playground>
+
+## Count badges
+
+<Playground>
+  <ThemeWrapper>
+    <div style={{position: 'relative', width: '40px', height: '40px', backgroundColor: themes.light['color-BG40']}}>
+      <Badge position="top-left" shape="count" color="primary">0</Badge>
+      <Badge position="top-right" shape="count" color="success">99</Badge>
+      <Badge position="bottom-left" shape="count" color="warning">99+</Badge>
+      <Badge position="bottom-right" shape="count" color="danger">10000</Badge>
+    </div>
+  </ThemeWrapper>
+</Playground>
+
+## Label badges
+
+<Playground>
+  <ThemeWrapper>
+    <div style={{position: 'relative', width: '100px', height: '40px', backgroundColor: themes.light['color-BG40']}}>
+      <Badge position="top-left" shape="label" color="primary">Alpha</Badge>
+      <Badge position="top-right" shape="label" color="success">Beta</Badge>
+      <Badge position="bottom-left" shape="label" color="warning">Gamma</Badge>
+      <Badge position="bottom-right" shape="label" color="danger">Hello world</Badge>
+    </div>
+  </ThemeWrapper>
+</Playground>
+
+## Variations
+
+### Contrast badges
+
+<Playground>
+  <ThemeWrapper contrast>
+    <div style={{position: 'relative', width: '40px', height: '40px', backgroundColor: themes.light['contrast-quieter-color']}}>
+      <Badge contrast position="top-left" shape="marker" />
+      <Badge contrast position="top-right" shape="count">99+</Badge>
+      <Badge contrast position="bottom-left" shape="count">10000</Badge>
+      <Badge contrast position="bottom-right" shape="label">Beta</Badge>
+    </div>
+  </ThemeWrapper>
+</Playground>
+
+### Colored badges
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <Flex>
+        <ColorLooper themeId={themeId} render={({id}) => (
+          <Rhythm m={4} key={`P${id}`}>
+            <div style={{position: 'relative', width: 0, height: '40px'}}>
+              <ColoredBadge themeId={themeId} position="bottom-right" shape="marker" colorId={id} />
+              <ColoredBadge themeId={themeId} position="top-right" shape="count" colorId={id}>{id.replace(/[^0-9]/g, '')}</ColoredBadge>
+            </div>
+          </Rhythm>
+        )} />
+      </Flex>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+### Styled badges
+
+<Playground>
+  <ThemeWrapper>
+    <div style={{position: 'relative', width: '80px', height: '40px'}}>
+      <StyledBadge position="top-left" shape="marker" backgroundColor="#556270" textColor="#fff" />
+      <StyledBadge position="top-right" shape="count" backgroundColor="#556270" textColor="#fff">0</StyledBadge>
+      <StyledBadge position="bottom-left" shape="label" backgroundColor="#556270" textColor="#fff">Beta</StyledBadge>
+      <StyledBadge position="bottom-right" shape="label" backgroundColor="#556270" textColor="#fff" style={{fontSize: '16px'}}>Beta</StyledBadge>
+    </div>
+  </ThemeWrapper>
+</Playground>
+
+## \[props\]
+
+### Badge
+
+<Props of={Badge} />
+
+### ColoredBadge
+
+<Props of={ColoredBadge} />

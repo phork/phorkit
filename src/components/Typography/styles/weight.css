@@ -1,0 +1,28 @@
+.text-weight-lighter {
+  font-weight: 100;
+}
+
+.text-weight-light {
+  font-weight: 300;
+}
+
+.text-weight-regular {
+  font-weight: 400;
+}
+
+.text-weight-bold {
+  font-weight: 700;
+}
+
+
+.text-weight-200 {
+  font-weight: 200;
+}
+
+.text-weight-500 {
+  font-weight: 500;
+}
+
+.text-weight-600 {
+  font-weight: 600;
+}

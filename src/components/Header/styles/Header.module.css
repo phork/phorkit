@@ -1,0 +1,71 @@
+.header {
+  align-items: center;
+  background-color: var(--header-background-color);
+  color: var(--header-text-color);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+
+  @mixin themed .header {
+    background-color: $theme-secondary-background-color;
+    color: $theme-secondary-text-color;
+  }
+}
+
+/**
+ * 1. Use a pseudo element rather than a border so that
+ *    it doesn't add height to the box element.
+ */
+.header--bordered {
+  &:before {
+    background-color: var(--header-border-color); /* [1] */
+    bottom: -1px;
+    content: "";
+    height: 1px;
+    left: 0;
+    opacity: .5;
+    position: absolute;
+    right: 0;
+  }
+
+
+  @mixin themed .header {
+    &:before {
+      background-color: $theme-primary-border-color;
+    }
+  }
+}
+
+.header--global {
+  @mixin themed .header {
+    background-color: $theme-primary-background-color;
+    color: $theme-primary-text-color;
+  }
+}
+
+.header--transparent {
+  @mixin themed .header {
+    background-color: transparent;
+    color: $theme-primary-text-color;
+  }
+}
+
+.header--contrast {
+  @mixin themed .header {
+    background-color: var(--contrast-color, $theme-contrast-background-color);
+    color: $theme-contrast-text-color;
+  }
+}
+
+.header--raised {
+  @mixin themed .header {
+    box-shadow: $theme-box-shadow-0;
+  }
+}
+
+.header--full {
+  height: 100%;
+  width: 100%;
+}

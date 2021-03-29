@@ -1,0 +1,35 @@
+---
+name: Triangle
+menu: Utilities
+route: /components/Triangle
+---
+
+import { Playground, Props } from 'docz';
+import { Triangle } from '../index';
+import { Flex } from 'components/Flex';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Triangle" src="components/Triangle" />
+
+<Playground>
+  <Flex justifyContent="space-around">
+    <Triangle position="top-left" size={30} color="#0060ce" title="top-left" />
+    <Triangle position="top" size={30} color="#0060ce" title="top" />
+    <Triangle position="top-right" size={30} color="#0060ce" title="top-right" />
+  </Flex>
+
+  <Flex justifyContent="space-around">
+    <Triangle position="left" size={30} color="#0060ce" title="left" />
+    <Triangle position="right" size={30} color="#0060ce" title="right" />
+  </Flex>
+
+  <Flex justifyContent="space-around">
+    <Triangle position="bottom-left" size={30} color="#0060ce" title="bottom-left" />
+    <Triangle position="bottom" size={30} color="#0060ce" title="bottom" />
+    <Triangle position="bottom-right" size={30} color="#0060ce" title="bottom-right" />
+  </Flex>
+</Playground>
+
+## \[props\]
+
+<Props of={Triangle} />

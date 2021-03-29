@@ -1,0 +1,6 @@
+**/*.js
+**/*.ts
+**/*.tsx
+src/styles/fonts/**
+lib/
+node_modules/*

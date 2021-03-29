@@ -1,0 +1,58 @@
+.footer {
+  background-color: var(--footer-background-color);
+  color: var(--footer-text-color);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+
+  @mixin themed .footer {
+    background-color: $theme-secondary-background-color;
+    color: $theme-secondary-text-color;
+  }
+}
+
+/**
+ * 1. Use a pseudo element rather than a border so that
+ *    it doesn't add height to the box element.
+ */
+.footer--bordered {
+  &:before {
+    background-color: var(--footer-border-color); /* [1] */
+    top: -1px;
+    content: "";
+    height: 1px;
+    left: 0;
+    opacity: .5;
+    position: absolute;
+    right: 0;
+  }
+
+  @mixin themed .footer {
+    &:before {
+      background-color: $theme-primary-border-color;
+    }
+  }
+}
+
+.footer--global {
+  @mixin themed .footer {
+    background-color: $theme-primary-background-color;
+    color: $theme-primary-text-color;
+  }
+}
+
+.footer--transparent {
+  @mixin themed .footer {
+    background-color: transparent;
+    color: $theme-primary-text-color;
+  }
+}
+
+.footer--contrast {
+  @mixin themed .footer {
+    background-color: var(--contrast-color, $theme-contrast-background-color);
+    color: $theme-contrast-text-color;
+  }
+}

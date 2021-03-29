@@ -1,0 +1,450 @@
+.formbox {
+  display: inline-block;
+  font-size: $font-size-s;
+  position: relative;
+}
+
+.formbox--underline {
+  &.is-labeled {
+    padding-top: 16px;
+  }
+}
+
+.formbox--outline {
+  &.is-labeled {
+    padding-top: 18px;
+  }
+}
+
+.formbox--minimal {
+  &.is-labeled {
+    padding-top: 16px;
+  }
+}
+
+/**
+ * Style the input container rather than the input itself
+ * so that it can automatically make room for the icons.
+ */
+.formboxInputContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex: none;
+  position: relative;
+}
+
+.formboxInputContainer--underline,
+.formboxInputContainer--filled {
+  $box-shadow-position: inset 0 -1px 0 0;
+  box-shadow: $box-shadow-position var(--formbox-input-container-border-color);
+    
+  &:not(.formboxInputContainer--readOnly) {
+    &:hover,
+    &.is-hover {
+      box-shadow: $box-shadow-position var(--formbox-input-container-hover-border-color);
+    }
+
+    &:after {
+      background-color: var(--formbox-input-container-focused-border-color);
+      bottom: 0;
+      content: '';
+      height: 1px;
+      left: 0;
+      position: absolute;
+      transition: width 300ms ease-out;
+      width: 0%;
+    }
+
+    &.focus,
+    &.is-focused {
+      &:after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.formboxInputContainer--underline {
+  padding: 1px 0 3px;
+}
+
+/**
+ * 1. Prevent the underline from being hidden.
+ * 2. Unlike the others, put the padding on the parent so the background color encompasses the label
+ */
+.formboxInputContainer--filled {
+  background-color: var(--formbox-input-background-color);
+  border-top-left-radius: $border-radius-s;
+  border-top-right-radius: $border-radius-s;
+  margin-bottom: 1px; /* [1] */
+  padding: 6px 8px 2px 8px;
+  
+  .is-labeled & {
+    padding-top: 20px; /* [2] */
+  }
+}
+
+.formboxInputContainer--outline {
+  border: 1px solid var(--formbox-input-container-border-color);
+  border-radius: $border-radius-l;
+  padding: 4px 8px 2px 8px;
+
+  &:hover,
+  &.is-hover {
+    border-color: var(--formbox-input-container-hover-border-color);
+  }
+
+  &.focus,
+  &.is-focused {
+    border-color: var(--formbox-input-container-focused-border-color);
+  }
+}
+
+.formboxInputContainer--minimal {
+  &.focus,
+  &.is-focused {
+    caret-color: var(formbox-input-container-focused-border-color);
+  }
+}
+
+input.formboxInput,
+select.formboxInput,
+textarea.formboxInput {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  color: var(--formbox-input-text-color);
+  flex: 1;
+  font-size: $font-size-l;
+  line-height: 1.15;
+  min-width: 0;
+  outline: none;
+  padding: 4px 0;
+}
+
+input.formboxInput[type='number'] {
+  -moz-appearance: textfield;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.formboxReadOnly {
+  color: var(--formbox-input-text-color);
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  font-size: $font-size-l;
+  line-height: 1.15;
+  padding: 4px 0;
+
+  &:focus,
+  &.is-focused {
+    outline: none;
+  }
+}
+
+.formboxReadOnlyList {
+  display: flex;
+  flex-direction: column;
+
+  > * {
+    padding: 2px 0;
+  }
+}
+
+/**
+ * 1. Prevent a tiny bit of extra space showing below
+ *    the input.
+ */
+.formboxIcon {
+  color: var(--formbox-icon-color);
+  height: 100%; /* [1] */
+  line-height: 1; /* [1] */
+  pointer-events: none;
+  position: relative;
+}
+
+.formboxIcon--filled {
+  transition: top 200ms ease;
+  top: -1px;
+
+  .formbox.formbox--select.is-labeled.is-empty &,
+  .formbox:not(.formbox--select).is-labeled.is-empty:not(.is-focused) & {
+    top: -7px;
+  }
+}
+
+.formboxIcon--autoSize {
+  height: 12px;
+  width: 12px;
+}
+
+.formboxIcon--actionable {
+  cursor: pointer;
+  pointer-events: all;
+
+  &:focus,
+  &:hover,
+  &.is-hovered {
+    color: var(--formbox-icon-hover-color);
+  }
+}
+
+.formboxIcon--before {
+  margin-right: 8px;
+}
+
+.formboxIcon--after {
+  margin-left: 8px;
+}
+
+.formboxLabel {
+  color: var(--formbox-label-text-color);
+  font-size: $font-size-xs;
+  left: 0;
+  line-height: 1.5;
+  position: absolute;
+  top: 0;
+  transition: all 200ms ease;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.formboxLabel--filled {
+  left: 8px;
+  top: 4px;
+}
+
+.formboxLabel--placeholder {
+  font-size: $font-size-l;
+  opacity: 0.7;
+  pointer-events: none;
+
+  &.formboxLabel--hasIconBefore {
+    padding-left: 20px;
+  }
+
+  &.formboxLabel--hasIconAfter {
+    padding-right: 20px;
+  }
+
+  &.formboxLabel--underline {
+    top: 17px;
+  }
+
+  &.formboxLabel--filled {
+    top: 14px;
+  }
+
+  &.formboxLabel--outline {
+    left: 8px;
+    top: 24px;
+  }
+
+  &.formboxLabel--minimal {
+    top: 17px;
+  }
+}
+
+.formbox.is-disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.formbox.is-readonly {
+  pointer-events: none;
+}
+
+.formbox--primary {
+  @mixin themed .formbox {
+    --formbox-icon-color: $theme-primary-quiet-color;
+    --formbox-icon-hover-color: $theme-primary-accent-color;
+    --formbox-input-background-color: $theme-tertiary-background-color;
+    --formbox-input-container-border-color: $theme-primary-quieter-color;
+    --formbox-input-container-focused-border-color: $theme-color-accent-primary;
+    --formbox-input-container-hover-border-color: $theme-primary-quiet-color;
+    --formbox-input-text-color: $theme-primary-text-color;
+    --formbox-label-text-color: $theme-primary-quiet-color;
+
+    &.formbox--transparent {
+      --formbox-input-background-color: transparent;
+      --formbox-input-container-border-color: transparent;
+      --formbox-input-container-focused-border-color: transparent;
+      --formbox-input-container-hover-border-color: transparent;
+    }
+  }
+
+  &.formbox--light {
+    --formbox-placeholder-opacity: .3;
+  }
+
+  &.formbox--dark {
+    --formbox-placeholder-opacity: .5;
+  }
+}
+
+.formbox--contrast {
+  @mixin themed .formbox {
+    --formbox-icon-color: $theme-contrast-quiet-color;
+    --formbox-icon-hover-color: $theme-contrast-accent-color;
+    --formbox-input-background-color: $theme-contrast-quietest-color;
+    --formbox-input-container-border-color: $theme-contrast-quieter-color;
+    --formbox-input-container-focused-border-color: $theme-contrast-accent-color;
+    --formbox-input-container-hover-border-color: $theme-contrast-quieter-color;
+    --formbox-input-text-color: $theme-contrast-text-color;
+    --formbox-label-text-color: $theme-contrast-quiet-color;
+
+    &.formbox--transparent {
+      --formbox-input-background-color: transparent;
+      --formbox-input-container-border-color: transparent;
+      --formbox-input-container-focused-border-color: transparent;
+      --formbox-input-container-hover-border-color: transparent;
+    }
+  }
+}
+
+.formbox.is-warning {
+  @mixin themed .formbox {
+    --formbox-input-container-border-color: $theme-color-warning;
+    --formbox-input-container-focused-border-color: $theme-color-warning;
+    --formbox-input-container-hover-border-color: $theme-color-warning-D10;
+    --formbox-label-text-color: $theme-color-warning;
+
+    &.formbox--transparent {
+      --formbox-input-container-border-color: transparent;
+      --formbox-input-container-focused-border-color: transparent;
+      --formbox-input-container-hover-border-color: transparent;
+    }
+  }
+}
+
+.formbox.is-danger {
+  @mixin themed .formbox {
+    --formbox-input-container-border-color: $theme-color-danger;
+    --formbox-input-container-focused-border-color: $theme-color-danger-D10;
+    --formbox-input-container-hover-border-color: $theme-color-danger-D10;
+    --formbox-label-text-color: $theme-color-danger;
+
+    &.formbox--transparent {
+      --formbox-input-container-border-color: transparent;
+      --formbox-input-container-focused-border-color: transparent;
+      --formbox-input-container-hover-border-color: transparent;
+    }
+  }
+}
+
+
+/* input-specific - these must go last */
+
+/**
+ * 1. Prevent Chrome autocomplete from changing the form
+ *    background to yellow.
+ */
+ input.formboxInput {
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-transition-delay: 99999s; /* [1] */
+  }
+
+  &::placeholder {
+    opacity: var(--formbox-placeholder-opacity);
+  }
+}
+
+/**
+ * 1. Allow clicking on the down arrow to show dropdown.
+ * 2. Prevent the text from overflowing into the arrow.
+ */
+ select.formboxInput {
+  margin-right: -20px; /* [1] */
+  padding-right: 20px; /* [2] */
+}
+
+select.formboxInput:not([multiple]) {
+  & option {
+    color: initial;
+  }
+}
+
+/**
+ * Textareas have a top left corner marker that
+ * other inputs don't have.
+ */
+.formbox--textarea {
+  .formboxInputContainer--underline,
+  .formboxInputContainer--filled,
+  .formboxInputContainer--outline {
+    padding: 4px 0 4px 8px;
+
+    &:not(.formboxInputContainer--readOnly) {
+      &.is-focused {
+        &:before {
+          border-color: var(--formbox-input-container-focused-border-color);
+        }
+      }
+    }
+  }
+
+  .formboxInputContainer--underline {
+    margin-top: 4px;
+
+    &:before {
+      border-left: 1px solid var(--formbox-input-container-border-color);
+      border-top: 1px solid var(--formbox-input-container-border-color);
+      content: '';
+      height: 8px;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 8px;
+    }
+  }
+
+  &.is-labeled {
+    .formboxInputContainer--filled {
+      padding-top: 20px;
+    }
+  }
+
+  /**
+   * 1. The input container top margin and top padding plus the
+   *    original 17px.
+   * 2. The left padding.
+   */
+  .formboxLabel--placeholder {
+    top: 25px; /* [1] */
+    left: 8px; /* [2] */
+
+    &.formboxLabel--filled {
+      top: 6px;
+    }
+  }
+
+  .formboxIcon--filled,
+  .formboxIcon--outline {
+    &.formboxIcon--after:last-child {
+      margin-right: 8px;
+    }
+  }
+}
+
+/**
+ * 1. To add some space to the drag corner.
+ */
+textarea.formboxInput {
+  font-size: $font-size-l;
+  line-height: 1.4;
+  margin-right: 4px; /* [1] */
+  padding: 2px 0 4px 0;
+
+  &::placeholder {
+    opacity: var(--formbox-placeholder-opacity);
+  }
+}

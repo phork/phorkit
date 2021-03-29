@@ -1,0 +1,267 @@
+@import './mixins.css';
+
+.navigation {
+  align-items: center;
+  display: flex;
+  position: relative;
+
+  &:focus,
+  &.is-focused {
+    outline: none;
+
+    &.is-accessible {
+      box-shadow: 0 0 0 1px var(--navigation-focused-border-color) inset;
+    }
+  }
+}
+
+.navigation--horizontal {
+  flex-direction: row;
+  justify-content: center;
+}
+
+.navigation--vertical {
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.navigation--fullHeight {
+  height: 100%;
+}
+
+.navigation--fullWidth {
+  width: 100%;
+}
+
+.navigation--primary,
+.navigation--secondary,
+.navigation--tertiary {
+  @mixin themed .navigation {
+    --navigation-focused-border-color: $theme-color-accent-primary;
+    --navigation-item-focused-border-color: $theme-color-accent-primary-O20;
+    --navigation-item-selected-border-color: $theme-color-accent-primary;
+    --navigation-item-selected-text-color: $theme-primary-text-color;
+    --navigation-item-text-color: $theme-color-FG10;
+  }
+}
+
+.navigation--primary {
+  --navigation-item-selected-border-width: 3px;
+
+  display: flex;
+  font-size: $font-size-m;
+
+  @mixin themed .navigation {
+    --navigation-item-focused-background-color: $theme-color-accent-primary;
+    --navigation-item-selected-background-color: $theme-color-BG40-O20;
+    --navigation-item-focused-text-color: $theme-contrast-accent-color;
+  }
+}
+
+.navigation--secondary {
+  --navigation-item-selected-border-width: 3px;
+
+  display: inline-flex;
+  font-size: $font-size-m;
+  letter-spacing: 0.04rem;
+
+  @mixin themed .navigation {
+    --navigation-item-focused-background-color: $theme-color-BG40-O20;
+    --navigation-item-focused-border-color: $theme-color-BG40;
+    --navigation-item-hovered-border-color: $theme-color-BG40;
+  }
+}
+
+.navigation--tertiary {
+  --navigation-item-selected-border-width: 0;
+
+  display: inline-flex;
+  font-size: $font-size-m;
+  letter-spacing: 0.04rem;
+
+  @mixin themed .navigation {
+    --navigation-item-focused-background-color: $theme-color-BG40-O20;
+    --navigation-item-selected-background-color: $theme-color-accent-primary;
+    --navigation-item-selected-text-color: $theme-contrast-accent-color;
+    --navigation-item-focused-selected-background-color: $theme-color-BG40-O10;
+    --navigation-item-focused-selected-text-color: $theme-contrast-accent-color;
+  }
+}
+
+button.navigationItem {
+  @mixin unbutton;
+}
+
+/**
+ * 1. Set the z-index so variants can choose to put
+ *    pseudo elements above or below.
+ * 2. This is used with the styled navigation.
+ */
+.navigationItem {
+  align-items: center;
+  background-color: var(--navigation-item-background-color); /* 2 */
+  color: var(--navigation-item-text-color);
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  text-decoration: none;
+  z-index: 2; /* [1] */
+
+  &.is-selected {
+    @mixin addBorderHighlight var(--navigation-item-selected-border-color), var(--navigation-item-selected-border-width);
+
+    background-color: var(--navigation-item-selected-background-color);
+    color: var(--navigation-item-selected-text-color);
+  }
+
+  .navigation:not(.is-accessible) & {
+    &:hover,
+    &.is-hovered {
+      background: var(--navigation-item-focused-background-color);
+      color: var(--navigation-item-focused-text-color);
+    }
+  }
+
+  /**
+   * 1. Purposefully exclude :focus here because the browser
+   *    focus is no longer relevant in accessible mode.
+   */
+  .navigation.is-accessible:focus &,
+  .navigation.is-accessible.is-focused & {
+    &.is-focused { /* [1] */
+      background: var(--navigation-item-focused-background-color);
+      color: var(--navigation-item-focused-text-color);
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled,
+  &.is-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.navigationItem--primary {
+  &.navigationItem--horizontal {
+    flex: 1;
+    height: 50px;
+    width: 100%;
+  }
+
+  &.navigationItem--vertical {
+    flex: none;
+    height: 40px;
+    justify-content: flex-start;
+    width: 100%;
+
+    &:not(.navigationItem--flush) {
+      padding: 0 20px;
+    }
+  }
+}
+
+.navigationItem--secondary,
+.navigationItem--tertiary {
+  .navigation:not(.is-accessible) & {
+    &:hover,
+    &.is-hovered {
+      @mixin addBorderHighlight var(--navigation-item-hovered-border-color), var(--navigation-item-selected-border-width);
+    }
+  }
+
+  .navigation.is-accessible:focus &,
+  .navigation.is-accessible.is-focused & {
+    &.is-focused {
+      @mixin addBorderHighlight var(--navigation-item-focused-border-color), var(--navigation-item-selected-border-width);
+    }
+  }
+
+  &.navigationItem--horizontal {
+    &:not(.navigationItem--flush) {
+      padding: 8px 20px;
+    }
+  }
+
+  &.navigationItem--vertical {
+    flex: none;
+    height: auto;
+    justify-content: flex-start;
+    width: 100%;
+
+    &:not(.navigationItem--flush) {
+      padding: 8px 24px;
+    }
+  }
+}
+
+.navigationItem--tertiary {
+  transition: color 200ms ease-out;
+
+  .navigation:not(.is-accessible) & {
+    &:hover,
+    &.is-hovered {
+      &.is-selected {
+        background-color: var(--navigation-item-focused-selected-background-color);
+        color: var(--navigation-item-focused-selected-text-color);
+      }
+    }
+  }
+
+  .navigation.is-accessible:focus &,
+  .navigation.is-accessible.is-focused & {
+    &.is-focused {
+      &.is-selected {
+        background-color: var(--navigation-item-focused-selected-background-color);
+        color: var(--navigation-item-focused-selected-text-color);
+      }
+    }
+  }
+}
+
+.navigationItem--flush {
+  padding: 0;
+}
+
+.navigationItem a {
+  color: currentColor;
+  outline: none;
+}
+
+/**
+ * 1. Hide the selected styles on animated items so the
+ *    styles can be applied to the pseudo element with 
+ *    animation.
+ */
+.navigation--animated {
+  @mixin addBorderHighlight var(--navigation-item-selected-border-color), var(--navigation-item-selected-border-width),
+    var(--navigation-pseudo-item-position-top, 0), var(--navigation-pseudo-item-position-left, 0),
+    var(--navigation-pseudo-item-position-width, 0), var(--navigation-pseudo-item-position-height, 0);
+
+  &:before {
+    background-color: var(--navigation-item-selected-background-color);
+    border-radius: var(--navigation-item-selected-border-radius);
+    transition: all 300ms ease-out;
+    z-index: 1;
+  }
+
+
+  &.navigation--secondary {
+    &:before {
+      z-index: 3;
+    }
+  }
+
+  .navigationItem.is-selected {
+    background-color: transparent;
+
+    &:before {
+      content: none; /* [1] */
+    }
+  }
+}

@@ -1,0 +1,163 @@
+---
+name: Progress
+menu: Feedback
+route: /components/Progress
+---
+
+import { Playground, Props } from 'docz';
+import { Rhythm } from 'components/Rhythm';
+import { Progress, StyledProgress } from '../index';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Progress" src="components/Progress" />
+
+## Standard progress bars
+
+<Playground>
+  <ThemeWrapper>
+    <Rhythm grouped py={2}>
+      <h3>Small bar</h3>
+      <Progress color="primary" size="small" percent={80} />
+    </Rhythm>
+
+    <Rhythm grouped py={2}>
+      <h3>Medium bar</h3>
+      <Progress color="primary" percent={80} />
+    </Rhythm>
+
+    <Rhythm grouped py={2}>
+      <h3>Floating bar</h3>
+      <Progress floating color="primary" percent={80} />
+    </Rhythm>
+  </ThemeWrapper>
+</Playground>
+
+## Pill progress bars
+
+<Playground>
+  <ThemeWrapper>
+    <Rhythm grouped py={2}>
+      <h3>Medium bar</h3>
+      <Progress pill color="primary" percent={80} />
+    </Rhythm>
+
+    <Rhythm grouped py={2}>
+      <h3>Large bar</h3>
+      <Progress pill color="primary" size="large" percent={80} />
+    </Rhythm>
+
+    <Rhythm grouped py={2}>
+      <h3>Large animated bar</h3>
+      <Progress animated pill color="primary" size="large" percent={80} />
+    </Rhythm>
+  </ThemeWrapper>
+</Playground>
+
+## Multi-segment progress bars
+
+### Medium segmented bar
+
+<Playground>
+  <ThemeWrapper>
+    <Rhythm grouped py={2}>
+      <h3>Medium segmented bar</h3>
+      <Progress spaced color="primary" data={[
+        { color: 'danger', percent: 10 },
+        { color: 'warning', percent: 20 },
+        { color: 'success', percent: 40 },
+      ]} />
+    </Rhythm>
+
+    <Rhythm grouped py={2}>
+      <h3>Large segmented bar</h3>
+      <Progress pill spaced color="primary" size="large" data={[
+        { color: 'danger', percent: 10 },
+        { color: 'warning', percent: 20 },
+        { color: 'success', percent: 40 },
+      ]} />
+    </Rhythm>
+  </ThemeWrapper>
+</Playground>
+
+## Variations
+
+### State progress bars
+
+<Playground>
+  <ThemeWrapper>
+    <Rhythm grouped py={2}>
+      <h3>Success</h3>
+      <Progress color="success" percent={60} />
+    </Rhythm>
+
+    <Rhythm grouped py={2}>
+      <h3>Warning</h3>
+      <Progress color="warning" percent={40} />
+    </Rhythm>
+
+    <Rhythm grouped py={2}>
+      <h3>Danger</h3>
+      <Progress color="danger" percent={20} />
+    </Rhythm>
+
+    <Rhythm grouped py={2}>
+      <h3>Primary</h3>
+      <Progress color="primary" percent={20} />
+    </Rhythm>
+  </ThemeWrapper>
+</Playground>
+
+### Contrast progress bars
+
+<Playground>
+  <ThemeWrapper contrast>
+    <Rhythm grouped py={2}>
+      <h3>Success</h3>
+      <Progress contrast color="success" percent={60} />
+    </Rhythm>
+
+    <Rhythm grouped py={2}>
+      <h3>Warning</h3>
+      <Progress contrast color="warning" percent={40} />
+    </Rhythm>
+
+    <Rhythm grouped py={2}>
+      <h3>Danger</h3>
+      <Progress contrast color="danger" percent={20} />
+    </Rhythm>
+
+    <Rhythm grouped py={2}>
+      <h3>Regular</h3>
+      <Progress contrast percent={20} />
+    </Rhythm>
+  </ThemeWrapper>
+</Playground>
+
+### Styled progress bar
+
+<Playground>
+  <StyledProgress
+    backgroundColor="#000"
+    segmentColor="linear-gradient(90deg, rgba(244,17,80,1) 0%, rgba(255,50,50,1) 25%, rgba(248,190,7,1) 100%)"
+    percent={80}
+  />
+</Playground>
+
+### Styled animated progress bar
+
+<Playground>
+  <StyledProgress
+    animated
+    pill
+    backgroundColor="rgba(0, 0, 0, .1)"
+    segmentAnimationColor="rgba(0, 0, 0, .1)"
+    segmentColor="rgba(0, 0, 0, .1)"
+    size="large"
+    percent={80}
+  />
+</Playground>
+
+## \[props\]
+
+<Props of={Progress} />

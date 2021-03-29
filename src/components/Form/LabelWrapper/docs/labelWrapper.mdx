@@ -1,0 +1,81 @@
+---
+name: LabelWrapper
+menu: Forms
+route: /components/LabelWrapper
+---
+
+import { Playground, Props } from 'docz';
+import { LabelWrapper } from '../index';
+import { Label, Textbox } from 'components/Form';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="LabelWrapper" src="components/Form/LabelWrapper" />
+
+## Horizonal
+
+<Playground>
+  <ThemeWrapper>
+    <LabelWrapper
+      label={(
+        <Label strength="standard">Super awesome label</Label>
+      )}
+      input={(
+        <Textbox variant="filled" value="Hello world" />
+      )}
+    />
+  </ThemeWrapper>
+</Playground>
+
+## Horizonal reverse
+
+<Playground>
+  <ThemeWrapper>
+    <LabelWrapper
+      reverse
+      label={(
+        <Label strength="standard">Super awesome label</Label>
+      )}
+      input={(
+        <Textbox variant="filled" value="Hello world" />
+      )}
+    />
+  </ThemeWrapper>
+</Playground>
+
+## Vertical
+
+<Playground>
+  <ThemeWrapper>
+    <LabelWrapper
+      vertical
+      label={(
+        <Label strength="standard">Super awesome label</Label>
+      )}
+      input={(
+        <Textbox variant="filled" value="Hello world" />
+      )}
+    />
+  </ThemeWrapper>
+</Playground>
+
+## Vertical reverse
+
+<Playground>
+  <ThemeWrapper>
+    <LabelWrapper
+      vertical
+      reverse
+      label={(
+        <Label strength="standard">Super awesome label</Label>
+      )}
+      input={(
+        <Textbox variant="filled" value="Hello world" />
+      )}
+    />
+  </ThemeWrapper>
+</Playground>
+
+## \[props\]
+
+<Props of={LabelWrapper} />

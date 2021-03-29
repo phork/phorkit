@@ -1,0 +1,35 @@
+.text-size-xxs {
+  font-size: $font-size-xxs;
+}
+
+.text-size-xs {
+  font-size: $font-size-xs;
+}
+
+.text-size-s {
+  font-size: $font-size-s;
+}
+
+.text-size-m {
+  font-size: $font-size-m;
+}
+
+.text-size-l {
+  font-size: $font-size-l;
+}
+
+.text-size-xl {
+  font-size: $font-size-xl;
+}
+
+.text-size-xxl {
+  font-size: $font-size-xxl;
+}
+
+.text-size-xxxl {
+  font-size: $font-size-xxxl;
+}
+
+.text-size-xxxxl {
+  font-size: $font-size-xxxxl;
+}

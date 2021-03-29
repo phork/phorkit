@@ -1,0 +1,20 @@
+.sidePanel {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: $layout-z-index-side-panel;
+}
+
+.sidePanel--fixed {
+  bottom: 0;
+  position: absolute;
+  top: 0;
+
+  &.sidePanel--left {
+    left: 0;
+  }
+
+  &.sidePanel--right {
+    right: 0;
+  }
+}

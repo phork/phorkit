@@ -1,0 +1,188 @@
+---
+name: LineLoader
+menu: Feedback
+route: /components/LineLoader
+---
+
+import { Playground, Props } from 'docz';
+import { LineLoader, ColoredLineLoader, StyledLineLoader, useLineLoader } from '../index';
+import { Button } from '../../Button/Button';
+import { Rhythm } from '../../Rhythm/Rhythm';
+import { Looper } from 'docs/helpers/Looper';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="LineLoader" src="components/LineLoader" />
+
+## Basic line loader
+
+<Playground>
+  <ThemeWrapper>
+    <LineLoader />
+  </ThemeWrapper>
+</Playground>
+
+## Top loader
+
+<Playground>
+  <ThemeWrapper>
+    <LineLoader position="top" />
+  </ThemeWrapper>
+</Playground>
+
+## Bottom loader
+
+<Playground>
+  <ThemeWrapper>
+    <LineLoader position="bottom" />
+  </ThemeWrapper>
+</Playground>
+
+## Fixed loader
+
+<Playground>
+  <ThemeWrapper>
+    <LineLoader position="top" fixed />
+    (There should be a loader at the top of the page)
+  </ThemeWrapper>
+</Playground>
+
+## Finite loader
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={3}>
+      {({ state: loops, setState: setLoops }) => (
+        <React.Fragment>
+          <Looper start={1} end={5} step={1} render={i => (
+            <Rhythm key={i} m={1}>
+              <Button color={i === loops ? 'primary' : 'neutral'} onClick={() => setLoops(i)}>{`${i} loops`}</Button>
+            </Rhythm>
+          )} />
+          <LineLoader
+            key={loops}
+            loops={loops}
+            onLoop={({ loop }) => console.log(`finite loop ${loop}`)}
+            onFinish={() => console.log('finished')}
+            position="top"
+          />
+        </React.Fragment>
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+## Stoppable loader
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper>
+      {({ state: percent, setState: setPercent }) => (
+        <React.Fragment>
+          <Button color="primary" onClick={() => setPercent(percent? undefined : 50)}>{percent ? 'Restart' : 'Stop'}</Button>
+          <LineLoader percent={percent} position="bottom" onLoop={({ loop }) => console.log(`stoppable loop ${loop}`)} />
+        </React.Fragment>
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+## Variations
+
+### Contrast loader
+
+<Playground>
+  <ThemeWrapper contrast>
+    <LineLoader contrast />
+  </ThemeWrapper>
+</Playground>
+
+### Colored line loader
+
+<Playground>
+  <ColoredLineLoader colorId="P20" />
+</Playground>
+
+### Styled line loader
+
+<Playground>
+  <StyledLineLoader color="#556270" />
+</Playground>
+
+## useLineLoader hook
+
+<Playground>
+  {() => {
+    const { loader, onLoad, loaderFinishing } = useLineLoader({ position: 'top' });
+    return (
+      <ThemeWrapper>
+        <StateWrapper initialState={false}>
+          {({ state: loaded, setState: setLoaded }) => (
+            <React.Fragment>
+              {(!loaded || loaderFinishing) && loader}
+              {!loaded && <Button color="primary" onClick={() => { setLoaded(true); onLoad() }}>Trigger</Button>}
+              {loaded && 'Loaded!'}
+            </React.Fragment>
+          )}
+        </StateWrapper>
+      </ThemeWrapper>
+    )
+  }}
+</Playground>
+
+<div style="height: 50px" />
+
+<Playground>
+  {() => {
+    const { loader, onLoad, loaderFinishing } = useLineLoader({ position: 'top', component: ColoredLineLoader, colorId: 'P20' });
+    return (
+      <ThemeWrapper>
+        <StateWrapper initialState={false}>
+          {({ state: loaded, setState: setLoaded }) => (
+            <React.Fragment>
+              {(!loaded || loaderFinishing) && loader}
+              {!loaded && <Button color="primary" onClick={() => { setLoaded(true); onLoad() }}>Trigger</Button>}
+              {loaded && 'Loaded!'}
+            </React.Fragment>
+          )}
+        </StateWrapper>
+      </ThemeWrapper>
+    )
+  }}
+</Playground>
+
+<div style="height: 50px" />
+
+<Playground>
+  {() => {
+    const { loader, onLoad, loaderFinishing } = useLineLoader({ position: 'top', component: StyledLineLoader, color: '#556270' });
+    return (
+      <ThemeWrapper>
+        <StateWrapper initialState={false}>
+          {({ state: loaded, setState: setLoaded }) => (
+            <React.Fragment>
+              {(!loaded || loaderFinishing) && loader}
+              {!loaded && <Button color="primary" onClick={() => { setLoaded(true); onLoad() }}>Trigger</Button>}
+              {loaded && 'Loaded!'}
+            </React.Fragment>
+          )}
+        </StateWrapper>
+      </ThemeWrapper>
+    )
+  }}
+</Playground>
+
+## \[props\]
+
+### LineLoader
+
+<Props of={LineLoader} />
+
+### ColoredLineLoader
+
+<Props of={ColoredLineLoader} />
+
+### StyledLineLoader
+
+<Props of={StyledLineLoader} />

@@ -1,0 +1,113 @@
+/**
+ * 1. The full unbuttoning includes background color which will
+ *    break the avatar so this only does the minimal unbuttoning.
+ */
+button.avatar {
+  @mixin unbutton minimal; /* [1] */
+
+  border: none;
+}
+
+.avatar {
+  align-items: center;
+  background-color: var(--avatar-background-color);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 100%;
+  color: var(--avatar-text-color);
+  display: flex;
+  flex: none;
+  font-size: 16px;
+  height: 36px;
+  justify-content: center;
+  margin: 0;
+  position: relative;
+  width: 36px;
+}
+
+.avatar--actionable {
+  border: none;
+
+  &:before {
+    border-radius: inherit;
+    bottom: 0;
+    box-shadow: 0 0 0 var(--avatar-actionable-border-width, 5px) var(--avatar-actionable-background-color, var(--avatar-background-color));
+    content: "";
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: opacity 100ms ease;
+  }
+
+  &:focus:before {
+    opacity: .2;
+  }
+
+  &:hover:before {
+    opacity: .2;
+  }
+
+  &:active:before {
+    opacity: .3;
+  }
+}
+
+/**
+ * The width and height and box shadow size has been 
+ * set to the calculated dimensions of round icon buttons
+ * for consistency.
+ */
+.avatar--small {
+  --avatar-actionable-border-width: 3px;
+
+  font-size: 14px;
+  height: 29.2px;
+  width: 29.2px;
+}
+
+.avatar--xsmall {
+  --avatar-actionable-border-width: 2px;
+
+  font-size: 10px;
+  height: 24px;
+  width: 24px;
+}
+
+.avatar--image {
+  @mixin themed .avatar {
+    --avatar-actionable-background-color: $theme-secondary-text-color;
+  }
+}
+
+.avatar--primary {
+  @mixin themed .avatar {
+    --avatar-background-color: $theme-color-accent-primary;
+    --avatar-text-color: $theme-color-accent-primary-contrast;
+  }
+}
+
+.avatar--neutral {
+  @mixin themed .avatar {
+    --avatar-actionable-background-color: $theme-color-neutral-D10;
+    --avatar-background-color: $theme-color-neutral;
+    --avatar-text-color: $theme-color-neutral-contrast;
+  }
+}
+
+.avatar--contrast {
+  @mixin themed .avatar {
+    --avatar-background-color: $theme-contrast-text-color;
+    --avatar-text-color: var(--contrast-color, $theme-contrast-background-color);
+  }
+}
+
+/* stylelint-disable-next-line no-duplicate-selectors */
+.avatar--image {
+  .avatar__content {
+    display: none;
+  }
+}

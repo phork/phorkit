@@ -1,0 +1,143 @@
+---
+name: EventListener
+menu: Utilities
+route: /components/EventListener
+---
+
+import { Playground, Props } from 'docz';
+import { Button } from 'components/Button';
+import { Rhythm } from 'components/Rhythm';
+import { Textbox, CheckboxGroup } from 'components/Form';
+import {
+  EventListenerProvider,
+  EventListenerConsumer,
+  eventListenerOptions,
+  getEventTypeFromMapKey,
+  getOptionsFromMapKey,
+} from '../index';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { HookDemo } from './helpers/HookDemo';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="EventListener" src="components/EventListener" />
+
+## console.log on event
+
+<Playground>
+  <ThemeWrapper>
+    <EventListenerProvider>
+      <EventListenerConsumer>
+        {({ events, unshiftEventListener, pushEventListener, removeEventListener, clearListeners }) => (
+          <React.Fragment>
+            {Array.from(events.keys()).map(eventType => (
+              <div key={eventType}>
+                {getEventTypeFromMapKey(eventType)} {Object.keys(getOptionsFromMapKey(eventType)).join(', ')}
+                <div>
+                  {events.get(eventType).map(({ id, eventType, options }) => (
+                    <Rhythm key={id} m={2}>
+                      <Button color="danger" onClick={() => removeEventListener(id, eventType, options)}>
+                        Remove {id}
+                      </Button>
+                    </Rhythm>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <StateWrapper initialState={{ text: 'hello world', options: [] }}>
+              {({ state, setState }) => {
+                return (
+                  <React.Fragment>
+                    <Rhythm m={2}>
+                      <Textbox
+                        label="Logged text"
+                        name="text"
+                        onChange={(event, value) => setState({ ...state, text: value })}
+                        transitional
+                        value={state.text}
+                      />
+                      <CheckboxGroup
+                        layout="inline"
+                        legend="Options"
+                        name="checkboxes"
+                        onChange={(event, values) => setState({ ...state, options: values })}
+                        values={state.options}
+                        checkboxes={[
+                          {
+                            id: 'capture',
+                            name: 'capture',
+                            value: eventListenerOptions.capture,
+                            label: 'Capture',
+                          },
+                          {
+                            id: 'once',
+                            name: 'once',
+                            value: eventListenerOptions.once,
+                            label: 'Once',
+                          },
+                          {
+                            id: 'passive',
+                            name: 'passive',
+                            value: eventListenerOptions.passive,
+                            label: 'Passive',
+                          },
+                        ]}
+                      />
+                    </Rhythm>
+                    <Rhythm m={2}>
+                      <Button
+                        color="primary"
+                        onClick={() => pushEventListener('dblclick', () => console.log(state.text), state.options)}
+                      >
+                        Add dblclick listener to the end
+                      </Button>
+                      <Button
+                        color="primary"
+                        onClick={() => unshiftEventListener('dblclick', () => console.log(state.text), state.options)}
+                      >
+                        Add dblclick listener to the beginning
+                      </Button>
+                    </Rhythm>
+                    <br />
+                    <Rhythm m={2}>
+                      <Button
+                        color="neutral"
+                        onClick={() => pushEventListener('keydown', () => console.log(state.text), state.options)}
+                      >
+                        Add keydown listener to the end
+                      </Button>
+                      <Button
+                        color="neutral"
+                        onClick={() => unshiftEventListener('keydown', () => console.log(state.text), state.options)}
+                      >
+                        Add keydown listener to the beginning
+                      </Button>
+                    </Rhythm>
+                    <br />
+                    <Rhythm m={2}>
+                      <Button color="danger" onClick={clearListeners}>
+                        Clear listeners
+                      </Button>
+                    </Rhythm>
+                  </React.Fragment>
+                );
+              }}
+            </StateWrapper>
+          </React.Fragment>
+        )}
+      </EventListenerConsumer>
+    </EventListenerProvider>
+  </ThemeWrapper>
+</Playground>
+
+## useEventListener hook
+
+<Playground>
+  <EventListenerProvider>
+    <HookDemo />
+  </EventListenerProvider>
+</Playground>
+
+## \[props\]
+
+<Props of={EventListenerProvider} />

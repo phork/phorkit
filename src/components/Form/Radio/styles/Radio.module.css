@@ -1,0 +1,126 @@
+.radio {
+  display: inline-block;
+  position: relative;
+}
+
+/**
+ * 1. This should be the inverse of the margin
+ *    applied to .radioGroup--inline 
+ */
+.radio--grouped--inline {
+  margin: 4px 12px; /* [1] */
+}
+
+/**
+ * 1. This should be the inverse of the margin
+ *    applied to .radioGroup--stacked 
+ */
+.radio--grouped--stacked {
+  margin: 4px 0; /* [1] */
+}
+
+input.radioInput {
+  @mixin visuallyHidden;
+}
+
+.radioLabel {
+  line-height: 1.2;
+  min-height: 1.2em;
+  padding-left: 1.8em;
+  position: relative;
+
+  &:before {
+    background-color: var(--radio-unchecked-background-color);
+    border-radius: 100%;
+    content: "";
+    height: 1.2em;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    transition: box-shadow 200ms ease;
+    width: 1.2em;
+  }
+
+  &:after {
+    background-color: var(--radio-checked-icon-color);
+    border-radius: 100%;
+    content: "";
+    height: 1.2em;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    transform: scale(0);
+    transition: transform 300ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    width: 1.2em;
+  }
+}
+
+.radioInput:checked + .radioLabel {
+  &:before {
+    background-color: var(--radio-checked-background-color);
+  }
+
+  &:after {   
+    transform: scale(.4);
+  }
+}
+
+/**
+ * 1. Use the box shadow to add an outline to the
+ *    radio button.
+ */
+.radioInput:checked + .radioLabel:hover {
+  &:before {
+    box-shadow: var(--radio-checked-hover-box-shadow); /* [1] */
+  }
+}
+
+/**
+ * 1. Use the box shadow to add an outline to the
+ *    radio button.
+ */
+.radioInput:not(:checked):not(:indeterminate):not(:focus) + .radioLabel:hover {
+  &:before {
+    box-shadow: var(--radio-unchecked-hover-box-shadow); /* [1] */
+  }
+}
+
+/**
+ * 1. Use the box shadow to add an outline to the
+ *    radio button.
+ */
+.radioInput:checked:focus + .radioLabel,
+.radioInput:not(:checked):focus + .radioLabel {
+  &:before {
+    box-shadow: var(--radio-focused-box-shadow); /* [1] */
+  }
+}
+
+.radioInput:disabled + .radioLabel {
+  opacity: .6;
+  pointer-events: none;
+}
+
+.radio--primary {
+  @mixin themed .radio {
+    --radio-checked-background-color: $theme-color-accent-primary;
+    --radio-checked-hover-box-shadow: 0 0 0 1px $theme-color-accent-primary;
+    --radio-checked-icon-color: $theme-color-accent-primary-contrast;
+    --radio-unchecked-background-color: $theme-color-FG0-O10;
+    --radio-unchecked-hover-box-shadow: 0 0 0 1px $theme-color-FG0-O10;
+    --radio-focused-box-shadow: 0 0 0 1px $theme-color-accent-primary;
+  }
+}
+
+.radio--contrast {
+  @mixin themed .radio {
+    --radio-checked-background-color: $theme-contrast-accent-color;
+    --radio-checked-hover-box-shadow: 0 0 0 1px $theme-contrast-accent-color;
+    --radio-checked-icon-color: var(--contrast-color, $theme-contrast-background-color);
+    --radio-unchecked-background-color: $theme-contrast-quietest-color;
+    --radio-unchecked-hover-box-shadow: 0 0 0 1px $theme-contrast-quietest-color;
+    --radio-focused-box-shadow: 0 0 0 1px $theme-contrast-accent-color;
+  }
+}

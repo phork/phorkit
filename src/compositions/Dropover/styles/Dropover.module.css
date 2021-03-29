@@ -1,0 +1,35 @@
+.dropover {
+  z-index: calc($layout-z-index-popover + 1);
+}
+
+.dropoverLabel {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  font-size: 11px;
+  line-height: normal;
+  justify-content: space-between;
+  z-index: calc($layout-z-index-popover + 2);
+
+  &:focus {
+    outline: none;
+  }
+}
+
+/**
+ * 1. Recreate the label on top of the dropover
+ *    in portal mode because it gets covered up.
+ */
+.dropoverContentLabel {
+  position: absolute;
+  top: 0;
+  z-index: 100;
+}
+ 
+.dropoverContentLabel--alignLeft {
+  left: 0;
+}
+
+.dropoverContentLabel--alignRight {
+  right: 0;
+}

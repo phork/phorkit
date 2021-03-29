@@ -1,0 +1,343 @@
+---
+name: Select
+menu: Forms
+route: /components/FormSelect
+---
+
+import { Playground, Props } from 'docz';
+import { Select, NotifiedSelect } from '../index';
+import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
+import { Looper } from 'docs/helpers/Looper';
+import { TagIcon } from 'icons/internal/TagIcon';
+import { SearchIcon } from 'icons/SearchIcon';
+import { TimesIcon } from 'icons/TimesIcon';
+import { options } from './helpers/options';
+import { variants } from './helpers/variants.js';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Select" src="components/Form/Select" />
+
+## Basic select
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="yellow">
+        <Select onChange={(event, value) => console.log(value)} options={options} variant={variant} />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Multiple select
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue={['yellow', 'blue']}>
+        <Select
+          label="Super fantastic label"
+          multiple
+          onChange={(event, value) => console.log(value)}
+          options={options}
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Numeric select
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue={7}>
+        <Select
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          type="number"
+          width="120px"
+          options={[
+            { value: 1, label: 'One' },
+            { value: 2, label: 'Two' },
+            { value: 3, label: 'Threee' },
+            { value: 4, label: 'Four' },
+            { value: 5, label: 'Five' },
+            { value: 6, label: 'Six' },
+            { value: 7, label: 'Seven' },
+            { value: 8, label: 'Eight' },
+            { value: 9, label: 'Nine' },
+            { value: 10, label: 'Ten' },
+          ]}
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Labeled select
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="yellow">
+        <Select
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          options={options}
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Transitional labeled select
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value">
+        <Select
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          options={options}
+          transitional
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Transitional labeled select with icons
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value">
+        <Select
+          iconBefore={SearchIcon}
+          iconAfter={<TimesIcon size={8} />}
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          options={options}
+          transitional
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Placeholder select (string)
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value">
+        <Select
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          options={options}
+          placeholder="Choose a color"
+          transitional
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Placeholder select (object)
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value">
+        <Select
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          options={options}
+          placeholder={{ label: 'Choose a color', value: 'none' }}
+          transitional
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Disabled select
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="yellow">
+        <Select
+          disabled
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          options={options}
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Read only select
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="yellow">
+        <Select
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          options={options}
+          readOnly
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Read only multiple select
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue={['yellow', 'blue']}>
+        <Select
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          options={options}
+          readOnly
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Icon select
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="yellow">
+        <Select
+          iconBefore={<TagIcon scale="small" />}
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          options={options}
+          transitional
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Danger select
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="yellow">
+        <Select
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          options={options}
+          validity="danger"
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Warning select
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="yellow">
+        <Select
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          options={options}
+          validity="warning"
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Contrast select
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="yellow" contrast>
+        <Select
+          contrast
+          id="demo-contrast-select"
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          options={options}
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Notifications
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Looper
+        list={['success', 'danger', 'warning', 'primary', 'neutral']}
+        render={level => (
+          <FormComponentDemo property="value" initialValue="yellow">
+            <NotifiedSelect
+              label="Super fantastic label"
+              onChange={(event, value) => console.log(value)}
+              options={options}
+              variant={variant}
+              level={level}
+              notification={`This is an example ${level} notification.`}
+            />
+          </FormComponentDemo>
+        )}
+      />
+    )}
+  />
+</Playground>
+
+## \[props\]
+
+<Props of={Select} />

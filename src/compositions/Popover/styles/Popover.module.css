@@ -1,0 +1,114 @@
+.popoverContainer {
+  display: inline-flex;
+  position: relative;
+}
+
+.popover {
+  display: none;
+  position: absolute;
+  z-index: $layout-z-index-popover;
+
+  &.is-visible {
+    display: block; 
+  }
+}
+
+.popover--bottomLeft {
+  right: 0;
+  top: 100%;
+
+  &.popover--centered {
+    right: 50%;
+  }
+}
+
+.popover--bottomCenter {
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+}
+
+.popover--bottomRight {
+  left: 0;
+  top: 100%;
+
+  &.popover--centered {
+    left: 50%;
+  }
+}
+
+.popover--topLeft {
+  bottom: 100%;
+  right: 0;
+
+  &.popover--centered {
+    right: 50%;
+  }
+}
+
+.popover--topCenter {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.popover--topRight {
+  bottom: 100%;
+  left: 0;
+
+  &.popover--centered {
+    left: 50%;
+  }
+}
+
+.popover--leftTop {
+  right: 100%;
+  top: 0;
+
+  &.popover--centered {
+    top: 50%;
+  }
+}
+
+.popover--leftCenter {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.popover--leftBottom {
+  right: 100%;
+  bottom: 0;
+
+  &.popover--centered {
+    bottom: 50%;
+  }
+}
+
+.popover--rightTop {
+  left: 100%;
+  top: 0;
+
+  &.popover--centered {
+    top: 50%;
+  }
+}
+
+.popover--rightCenter {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.popover--rightBottom {
+  bottom: 0;
+  left: 100%;
+
+  &.popover--centered {
+    bottom: 50%;
+  }
+}
+
+.popover--stackedRight {
+  right: 0;
+}

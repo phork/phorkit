@@ -1,0 +1,143 @@
+---
+name: DropdownWithTags
+menu: Input
+route: /compositions/DropdownWithTags
+---
+
+import { Playground, Props } from 'docz';
+import { DropdownWithTags } from '../index';
+import { TagIcon } from 'icons/internal/TagIcon';
+import { SearchIcon } from 'icons/SearchIcon';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { ListProps } from 'docs/helpers/ListProps';
+import { options, handleFilter, handleEmptyFilter } from './helpers/options';
+import { themes } from 'config/themes';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="DropdownWithTags" src="compositions/Dropdown" />
+
+Keyboard navigation is available for this component. Navigate with `Up`, `Down`, `Left`, `Right`, `Home` or `End`. Toggle with `Space`. Select with `Enter`. Close with `Escape`.
+
+## Raised underline dropdown
+
+<Playground>
+  <ThemeWrapper style={{ height: '300px' }}>
+    <div style={{ maxWidth: 300 }}>
+      <DropdownWithTags
+        initialSelected={[options[3]]}
+        label="Super awesome dropdown"
+        layout="raised"
+        onChange={value => console.log('change', value)}
+        onClear={value => console.log('clear')}
+        onSelect={value => console.log('select', value)}
+        options={options}
+        transitional
+      />
+    </div>
+  </ThemeWrapper>
+</Playground>
+
+## Raised filled dropdown
+
+<Playground>
+  <ThemeWrapper style={{ height: '300px' }}>
+    <div style={{ maxWidth: 300 }}>
+      <DropdownWithTags
+        initialSelected={[options[3]]}
+        inputVariant="filled"
+        label="Super awesome dropdown"
+        layout="raised"
+        onChange={value => console.log('change', value)}
+        onClear={value => console.log('clear')}
+        onSelect={value => console.log('select', value)}
+        options={options}
+        transitional
+      />
+    </div>
+  </ThemeWrapper>
+</Playground>
+
+## Raised outline dropdown
+
+<Playground>
+  <ThemeWrapper style={{ height: '300px' }}>
+    <div style={{ maxWidth: 300 }}>
+      <DropdownWithTags
+        initialSelected={[options[3]]}
+        inputVariant="outline"
+        label="Super awesome dropdown"
+        layout="raised"
+        onChange={value => console.log('change', value)}
+        onClear={value => console.log('clear')}
+        onSelect={value => console.log('select', value)}
+        options={options}
+        transitional
+      />
+    </div>
+  </ThemeWrapper>
+</Playground>
+
+## Contained dropdown
+
+<Playground>
+  <ThemeWrapper style={{ height: '300px' }}>
+    <br />
+    <DropdownWithTags
+      initialSelected={[options[3]]}
+      label="Super awesome dropdown"
+      layout="contained"
+      onChange={value => console.log('change', value)}
+      onClear={value => console.log('clear')}
+      onSelect={value => console.log('select', value)}
+      options={options}
+      style={{ width: '300px' }}
+      transitional
+    />
+  </ThemeWrapper>
+</Playground>
+
+## Filterable dropdown
+
+<Playground>
+  <ThemeWrapper style={{ height: '300px' }}>
+    <div style={{ maxWidth: 300 }}>
+      <DropdownWithTags
+        iconAfter={<SearchIcon size={14} />}
+        initialSelected={[options[3]]}
+        label="Super awesome dropdown"
+        onChange={value => console.log(value)}
+        onFilter={handleFilter}
+        onSelect={value => console.log('select', value)}
+        onSubmit={(event, value) =>
+          !options.some(option => option.id === value) && options.push({ id: value, label: value })
+        }
+        options={options}
+        transitional
+      />
+    </div>
+  </ThemeWrapper>
+</Playground>
+
+## Variations
+
+### Contrast dropdown
+
+<Playground>
+  <ThemeWrapper contrast style={{ height: '300px' }}>
+    <div style={{ maxWidth: 300 }}>
+      <DropdownWithTags
+        contrast
+        id="demo-contrast-dropdown"
+        initialSelected={[options[3]]}
+        label="Super awesome dropdown"
+        onChange={value => console.log('change', value)}
+        options={options}
+      />
+    </div>
+  </ThemeWrapper>
+</Playground>
+
+## \[props\]
+
+<Props of={DropdownWithTags} />

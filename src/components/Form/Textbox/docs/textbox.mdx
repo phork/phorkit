@@ -1,0 +1,283 @@
+---
+name: Textbox
+menu: Forms
+route: /components/FormTextbox
+---
+
+import { Playground, Props } from 'docz';
+import { Textbox, NotifiedTextbox } from '../index';
+import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
+import { Looper } from 'docs/helpers/Looper';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { SearchIcon } from 'icons/SearchIcon';
+import { TimesIcon } from 'icons/TimesIcon';
+import { variants } from './helpers/variants.js';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Textbox" src="components/Form/Textbox" />
+
+## Basic textbox
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="Hello world" key={variant}>
+        <Textbox
+          variant={variant}
+          id={`demo-basic-textbox-${variant}`}
+          onChange={(event, value) => console.log(value)}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Labeled textbox
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="Hello world" key={variant}>
+        <Textbox
+          id={`demo-labeled-textbox-${variant}`}
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          onSubmit={(event, value) => console.log('submit', value)}
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Transitional labeled textbox
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" key={variant}>
+        <Textbox
+          clearable
+          id={`demo-transitional-labeled-textbox-${variant}`}
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          transitional
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Transitional labeled textbox with icons
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" key={variant}>
+        <Textbox
+          clearable
+          iconBefore={SearchIcon}
+          iconAfter={<TimesIcon size={8} />}
+          id={`demo-transitional-labeled-textbox-${variant}`}
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          transitional
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Labeled textbox with placeholder
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" key={variant}>
+        <Textbox
+          id={`demo-placeholder-textbox-${variant}`}
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          onSubmit={(event, value) => console.log('submit', value)}
+          placeholder="Hello world"
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Disabled textbox
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="Hello world" key={variant}>
+        <Textbox
+          disabled
+          id={`demo-disabled-textbox-${variant}`}
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Clearable search textbox
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="Hello world" key={variant}>
+        <Textbox
+          clearable
+          iconBefore={<SearchIcon />}
+          id={`demo-search-textbox-${variant}`}
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          transitional
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Read only textbox
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="Hello world" key={variant}>
+        <Textbox
+          id={`demo-read-only-textbox-${variant}`}
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          readOnly
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Textbox with focus/blur callbacks
+
+<Playground>
+  <StateWrapper initialState={false}>
+    {({ state: isFocused, setState: setFocused }) => (
+      <FormComponentDemo property="value">
+        <Textbox
+          id={`demo-callbacks-textbox`}
+          label={isFocused ? 'Focused label' : 'Blurred label'}
+          onFocus={event => setFocused(true)}
+          onBlur={event => setFocused(false)}
+          placeholder="Hello world"
+        />
+      </FormComponentDemo>
+    )}
+  </StateWrapper>
+</Playground>
+
+## Danger textbox
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="Hello world">
+        <Textbox
+          id={`demo-danger-textbox-${variant}`}
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          validity="danger"
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Warning textbox
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="Hello world">
+        <Textbox
+          id={`demo-warning-textbox-${variant}`}
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          validity="warning"
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Contrast textbox
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="Hello world" contrast key={variant}>
+        <Textbox
+          clearable
+          contrast
+          iconBefore={<SearchIcon />}
+          id={`demo-contrast-${variant}`}
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          transitional
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Notifications
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Looper
+        list={['success', 'danger', 'warning', 'primary', 'neutral']}
+        render={level => (
+          <FormComponentDemo property="value" initialValue="Hello world" key={variant}>
+            <NotifiedTextbox
+              clearable
+              id={`demo-notification-${variant}-${level}`}
+              label="Super fantastic label"
+              onChange={(event, value) => console.log(value)}
+              transitional
+              variant={variant}
+              level={level}
+              notification={`This is an example ${level} notification.`}
+            />
+          </FormComponentDemo>
+        )}
+      />
+    )}
+  />
+</Playground>
+
+## \[props\]
+
+<Props of={Textbox} />

@@ -1,0 +1,11 @@
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 24px;
+  position: relative;
+}
+
+.cardBody--flush {
+  padding: 0;
+}

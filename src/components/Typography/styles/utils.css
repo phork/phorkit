@@ -1,0 +1,85 @@
+.text-volume-quiet {
+  opacity: .5;
+}
+
+.text-volume-quieter {
+  opacity: .4;
+}
+
+.text-volume-quietest {
+  opacity: .3;
+}
+
+.text-italic {
+  font-style: italic;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-lowercase {
+  text-transform: lowercase;
+}
+
+.text-unset-case {
+  text-transform: none;
+}
+
+.text-line-height-smash {
+  line-height: 1;
+}
+
+.text-line-height-comfy {
+  line-height: 1.5;
+}
+
+.text-line-height-normal {
+  line-height: normal;
+}
+
+.text-letter-spacing-comfy {
+  letter-spacing: .04rem;
+}
+
+.text-space-after {
+  &:after {
+    content: "\00a0";
+  }
+}
+
+.text-space-before {
+  &:before {
+    content: "\00a0";
+  }
+}
+
+.text-truncated {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-no-wrap {
+  white-space: nowrap;
+}
+
+.text-width-full {
+  width: 100%;
+}
+
+.text-blackout {
+  background-color: currentColor;
+}
+
+.text-spoiler {
+  transition: background-color 300ms ease;
+
+  &:not(:hover):not(:focus) {
+    background-color: currentColor;
+  }
+}

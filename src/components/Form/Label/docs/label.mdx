@@ -1,0 +1,60 @@
+---
+name: Label
+menu: Forms
+route: /components/Label
+---
+
+import { Playground, Props } from 'docz';
+import { Label } from '../index';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Label" src="components/Form/Label" />
+
+## Standard Label
+
+<Playground>
+  <ThemeWrapper>
+    <Label strength="standard">Super awesome label</Label>
+    <Label strength="standard" validity="danger">Super awesome dangerous label</Label>
+    <Label strength="standard" muted>Super awesome muted label</Label>
+    <Label strength="standard" disabled>Super awesome disabled label</Label>
+  </ThemeWrapper>
+</Playground>
+
+## Transitioned Label
+
+<Playground>
+  <ThemeWrapper>
+    <Label strength="transitioned">Super awesome label</Label>
+    <Label strength="transitioned" validity="danger">Super awesome dangerous label</Label>
+    <Label strength="transitioned" muted>Super awesome muted label</Label>
+    <Label strength="transitioned" disabled>Super awesome disabled label</Label>
+  </ThemeWrapper>
+</Playground>
+
+## Legend Label
+
+<Playground>
+  <ThemeWrapper>
+    <Label strength="legend">Super awesome label</Label>
+    <Label strength="legend" validity="danger">Super awesome dangerous label</Label>
+    <Label strength="legend" muted>Super awesome muted label</Label>
+    <Label strength="legend" disabled>Super awesome disabled label</Label>
+  </ThemeWrapper>
+</Playground>
+
+## Contrast Label
+
+<Playground>
+  <ThemeWrapper contrast>
+    <Label contrast strength="standard">Super awesome label</Label>
+    <Label contrast strength="standard" validity="danger">Super awesome dangerous label</Label>
+    <Label contrast strength="standard" muted>Super awesome muted label</Label>
+    <Label contrast strength="standard" disabled>Super awesome disabled label</Label>
+  </ThemeWrapper>
+</Playground>
+
+## \[props\]
+
+<Props of={Label} />

@@ -1,0 +1,78 @@
+@import './mixins/addRaised.css';
+
+.card {
+  background-color: var(--card-background-color);
+  border-radius: $border-radius-s;
+  color: var(--card-text-color);
+  display: flex;
+  flex-direction: column;
+  float: none;
+  overflow: hidden;
+  position: relative;
+
+  &.card--hoverable {
+    &:hover,
+    .is-hovered {
+      border-color: var(--card-hover-border-color);
+    }
+  }
+
+  &.card--bordered {
+    border: 1px solid var(--card-border-color);
+  }
+
+  @mixin themed .card {
+    background-color: $theme-secondary-background-color;
+    color: $theme-secondary-text-color;
+
+    --card-hover-border-color: $theme-primary-border-color;
+    --card-border-color: $theme-secondary-border-color;
+  }
+
+  &.card--transparent {
+    background-color: transparent;
+  }
+}
+
+.card--squared {
+  border-radius: 0;
+}
+
+.card--raised {
+  @mixin addRaisedAndHoverable;
+}
+
+.card--raised-0 {
+  @mixin addRaisedAndHoverable 0, 10;
+}
+
+.card--raised-10 {
+  @mixin addRaisedAndHoverable 10, 20;
+}
+
+.card--raised-20 {
+  @mixin addRaisedAndHoverable 20, 100;
+}
+
+.card--raised-100 {
+  @mixin addRaised 100, 0;
+}
+
+.card--raised-200 {
+  @mixin addRaised 200, 0;
+}
+
+.card--magnify {
+  transform: scale(1);
+  transition: transform 200ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+
+  &:hover,
+  &.is-hovered {
+    transform: scale(1.02);
+  }
+}
+
+.card--full {
+  height: 100%;
+  width: 100%;
+}

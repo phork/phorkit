@@ -1,0 +1,63 @@
+---
+name: Loader
+menu: Feedback
+route: /components/Loader
+---
+
+import { Playground, Props } from 'docz';
+import { Loader, StyledLoader } from '../index';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Loader" src="components/Loader" />
+
+## Fixed position loader
+
+<Playground>
+  <ThemeWrapper>
+    <p>(There should be a loader in the middle of the page)</p>
+
+    <Loader position="fixed" />
+  </ThemeWrapper>
+</Playground>
+
+## Absolutely positioned loader
+
+<Playground>
+  <ThemeWrapper style={{height: 100}}>
+    <Loader position="absolute" />
+  </ThemeWrapper>
+</Playground>
+
+## Variations
+
+### Contrast loader
+
+<Playground>
+  <ThemeWrapper style={{height: 100}} contrast>
+    <Loader contrast position="absolute" />
+  </ThemeWrapper>
+</Playground>
+
+### Sized loaders
+
+<Playground>
+  <ThemeWrapper style={{height: 100}}>
+    <Loader size={24} position="absolute" />
+    <Loader size={40} position="absolute" />
+    <Loader size={60} position="absolute" />
+    <Loader size={82} position="absolute" />
+  </ThemeWrapper>
+</Playground>
+
+### Styled loader
+
+<Playground>
+  <ThemeWrapper style={{height: 100}}>
+    <StyledLoader color="#0060ce" position="absolute" />
+  </ThemeWrapper>
+</Playground>
+
+## \[props\]
+
+<Props of={Loader} />

@@ -1,0 +1,106 @@
+---
+name: Link
+menu: Navigation
+route: /components/Link
+---
+
+import { Playground, Props } from 'docz';
+import { Typography } from 'components/Typography';
+import { Link, LinkContainer, StyledLink } from '../index';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Link" src="components/Link" />
+
+## Basic link
+
+<Playground>
+  <ThemeWrapper>
+    <Typography size="l">
+      Hello world.
+      <Link href="http://phork.org" target="_blank">I am a Link.</Link>
+      {' '}
+      Goodbye.
+    </Typography>
+    <br />
+    <LinkContainer as="p">
+      Hello world.
+      <a href="http://phork.org" target="_blank">I am within a LinkContainer.</a>
+      {' '}
+      I also have a paragraph wrapper. Goodbye.
+    </LinkContainer>
+  </ThemeWrapper>
+</Playground>
+
+## Underlined link
+
+<Playground>
+  <ThemeWrapper>
+    <Typography size="l">
+      Hello world.
+      <Link underline href="http://phork.org" target="_blank">I am a Link.</Link>
+      {' '}
+      Goodbye.
+    </Typography>
+    <br />
+    <LinkContainer as="p" underline>
+      <Typography size="xl">
+        Hello world.
+        <a href="http://phork.org" target="_blank">I am within a LinkContainer and a Typography component.</a>
+        {' '}
+        Goodbye.
+      </Typography>
+    </LinkContainer>
+  </ThemeWrapper>
+</Playground>
+
+## Variations
+
+### Contrast link
+
+<Playground>
+  <ThemeWrapper contrast>
+    <Typography size="l">
+      Hello world.
+      <Link contrast href="http://phork.org" target="_blank">I am a Link.</Link>
+      {' '}
+      Goodbye.
+    </Typography>
+    <br />
+    <LinkContainer contrast>
+      <Typography size="l">
+        Hello world.
+        <a href="http://phork.org" target="_blank">I am within a LinkContainer.</a>
+        {' '}
+        Goodbye.
+      </Typography>
+    </LinkContainer>
+  </ThemeWrapper>
+</Playground>
+
+### Styled link
+
+<Playground>
+  <Typography size="l">
+    Hello world.
+    <StyledLink
+      color="#ff8e0d"
+      hoverColor="#ff9b28"
+      activeColor="#f18100"
+      href="http://phork.org"
+      target="_blank"
+    >
+      I am a StyledLink.
+    </StyledLink>
+  </Typography>
+</Playground>
+
+## \[props\]
+
+### Link
+
+<Props of={Link} />
+
+### LinkContainer
+
+<Props of={LinkContainer} />

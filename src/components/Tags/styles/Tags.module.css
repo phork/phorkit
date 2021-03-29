@@ -1,0 +1,100 @@
+.tagGroup {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: -4px;
+
+  > .tag {
+    margin: 4px;
+  }
+}
+
+button.tag {
+  @mixin unbutton minimal;
+}
+
+.tag {
+  background-color: var(--tag-background-color);
+  border: 1px solid var(--tag-border-color);
+  color: var(--tag-text-color);
+  display: inline-block;
+  font-size: $font-size-s;
+  line-height: 1.5;
+  outline: none;
+  padding: 2px 12px;
+  position: relative;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.tag--pill {
+  border-radius: 12px;
+}
+
+.tag--brick {
+  border-radius: $border-radius-m;
+}
+
+.tag--actionable {
+  cursor: pointer;
+  transition: background-color 200ms ease, color 200ms ease;
+
+  &:before {
+    border-radius: inherit;
+    box-shadow: 0 0 0 0 transparent;    
+    content: "";
+    height: 100%;
+    opacity: .3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  &:focus,
+  &.is-focused {
+    outline: none;
+
+    &:before {
+      box-shadow: 0 0 0 3px var(--tag-border-color);
+    }
+  }
+  
+  &:hover,
+  &.is-hovered {
+    background-color: var(--tag-hover-background-color);
+    border-color: var(--tag-hover-border-color);
+    color: var(--tag-hover-text-color);
+
+    &:focus,
+    &.is-focused {
+      &:before {
+        box-shadow: 0 0 0 3px var(--tag-hover-border-color);
+      }
+    }
+  }
+}
+
+.tag--primary {
+  @mixin themed .tag {
+    --tag-background-color: $theme-secondary-background-color;
+    --tag-text-color: $theme-secondary-text-color;
+    --tag-border-color: $theme-secondary-border-color;
+    --tag-hover-background-color: $theme-color-accent-primary;
+    --tag-hover-text-color: $theme-color-accent-primary-contrast;
+    --tag-hover-border-color: $theme-color-accent-primary;
+  }
+}
+
+.tag--contrast {
+  @mixin themed .tag {
+    --tag-background-color: var(--contrast-color, $theme-contrast-background-color);
+    --tag-text-color: $theme-contrast-text-color;
+    --tag-border-color: $theme-contrast-text-color;
+    --tag-hover-background-color: $theme-contrast-text-color;
+    --tag-hover-text-color: var(--contrast-color, $theme-contrast-background-color);
+    --tag-hover-border-color: $theme-contrast-text-color;
+  }
+}

@@ -1,0 +1,88 @@
+---
+name: ListRegistry
+menu: Utilities
+route: /components/ListRegistry
+---
+
+import { Playground, Props } from 'docz';
+import { Button } from '../../Button/Button';
+import { Rhythm } from '../../Rhythm/Rhythm';
+import { ListRegistryItem, ListRegistryConsumer, ListRegistryProvider } from '../index';
+import { Looper } from 'docs/helpers/Looper';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="ListRegistry" src="components/ListRegistry" />
+
+## Scroll to element
+
+<Playground>
+  <ThemeWrapper>
+    <ListRegistryProvider>
+      <ListRegistryConsumer>
+        {({ getItem }) => (
+          <React.Fragment>
+            <Looper start={0} end={40} step={10} render={i => (
+              <Rhythm key={i} m={1}>
+                <Button color="primary" onClick={() => getItem(i).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })}>{`Scroll to ${i}`}</Button>
+              </Rhythm>
+            )} />
+            <div style={{marginTop: '20px', height: '100px', overflow: 'auto'}}>
+              <Looper start={0} end={40} render={i => (
+                <ListRegistryItem id={i} key={i}>
+                  <Rhythm px={2} my={1}>{`Hello world ${i}`}</Rhythm>
+                </ListRegistryItem>
+              )} />
+            </div>
+          </React.Fragment>
+        )}
+      </ListRegistryConsumer>
+    </ListRegistryProvider>
+  </ThemeWrapper>
+</Playground>
+
+## Scroll to element with function and re-render
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={0}>
+      {({ state: count, setState: setCount }) => (
+        <ListRegistryProvider>
+          <ListRegistryConsumer>
+            {({ getItem }) => (
+              <React.Fragment>
+                 <Looper start={0} end={40} step={10} render={i => (
+                  <Rhythm key={i} m={1}>
+                    <Button color="primary" onClick={() => { setCount(count + 1); getItem(i).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })}}>{`Scroll to ${i}`}</Button>
+                  </Rhythm>
+                )} />
+                <div style={{marginTop: '20px', height: '100px', overflow: 'auto'}}>
+                  <Looper start={0} end={40} render={i => (
+                    <ListRegistryItem id={i} key={i}>
+                      {({ ref }) => (
+                        <div ref={ref}>
+                          <Rhythm px={2} my={1}>{`Hello world ${i}${count > 0 ? ` ${count}` : ''}`}</Rhythm>
+                        </div>
+                      )}
+                    </ListRegistryItem>
+                  )} />
+                </div>
+              </React.Fragment>
+            )}
+          </ListRegistryConsumer>
+        </ListRegistryProvider>
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+## \[props\]
+
+### ListRegistryItem
+
+<Props of={ListRegistryItem} />
+
+### ListRegistryProvider
+
+<Props of={ListRegistryProvider} />

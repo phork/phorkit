@@ -1,0 +1,102 @@
+.tooltip {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.tooltip__triangle {
+  position: absolute;
+  z-index: 1;
+
+  /* triangle: top */
+  .tooltip--bottomLeft & {
+    margin-top: calc(-1 * var(--triangle-size));
+    right: 0;
+    top: 0;
+    transform: translateX(50%);
+  }
+
+  /* triangle: top */
+  .tooltip--bottomCenter & {
+    left: 50%;
+    margin-top: calc(-1 * var(--triangle-size));
+    top: 0;
+    transform: translateX(-50%);
+  }
+
+  /* triangle: top */
+  .tooltip--bottomRight & {
+    left: 0;
+    margin-top: calc(-1 * var(--triangle-size));
+    top: 0;
+    transform: translateX(-50%);
+  }
+
+  /* triangle: bottom */
+  .tooltip--topLeft & {
+    bottom: 0;
+    margin-bottom: calc(-1 * var(--triangle-size));
+    right: 0;
+    transform: translateX(50%);
+  }
+
+  /* triangle: bottom */
+  .tooltip--topCenter & {
+    bottom: 0;
+    left: 50%;
+    margin-bottom: calc(-1 * var(--triangle-size));
+    transform: translateX(-50%);
+  }
+
+  /* triangle: bottom */
+  .tooltip--topRight & {
+    bottom: 0;
+    left: 0;
+    margin-bottom: calc(-1 * var(--triangle-size));
+    transform: translateX(-50%);
+  }
+
+  /* triangle: top-left */
+  .tooltip--leftTop & {
+    margin-right: calc(-2 * var(--triangle-size));
+    right: 0;
+    top: 0;
+  }
+
+  /* triangle: right */
+  .tooltip--leftCenter & {
+    margin-right: calc(-1 * var(--triangle-size));
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* triangle: bottom-left */
+  .tooltip--leftBottom & {
+    bottom: 0;
+    margin-right: calc(-2 * var(--triangle-size));
+    right: 0;
+  }
+
+  /* triangle: top-right */
+  .tooltip--rightTop & {
+    left: 0;
+    margin-left: calc(-2 * var(--triangle-size));
+    top: 0;
+  }
+
+  /* triangle: left */
+  .tooltip--rightCenter & {
+    left: 0;
+    margin-left: calc(-1 * var(--triangle-size));
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* triangle: bottom-right */
+  .tooltip--rightBottom & {
+    bottom: 0;
+    left: 0;
+    margin-left: calc(-2 * var(--triangle-size));
+  }
+}

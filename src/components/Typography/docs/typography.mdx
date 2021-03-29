@@ -1,0 +1,296 @@
+---
+name: Typography
+menu: Utilities
+route: /components/Typography
+---
+
+import { Playground, Props } from 'docz';
+import { Rhythm } from 'components/Rhythm';
+import { Typography } from '../index';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Typography" src="components/Typography" />
+
+## Font sizes
+
+<Playground>
+  <Rhythm wrapper="div" my={1}>
+    <Typography size="xxs">The quick brown fox jumped over the lazy dog (xxs)</Typography>
+  </Rhythm>
+  <Rhythm wrapper="div" my={1}>
+    <Typography size="xs">The quick brown fox jumped over the lazy dog (xs)</Typography>
+  </Rhythm>
+  <Rhythm wrapper="div" my={1}>
+    <Typography size="s">The quick brown fox jumped over the lazy dog (s)</Typography>
+  </Rhythm>
+  <Rhythm wrapper="div" my={1}>
+    <Typography size="m">The quick brown fox jumped over the lazy dog (m)</Typography>
+  </Rhythm>
+  <Rhythm wrapper="div" my={1}>
+    <Typography size="l">The quick brown fox jumped over the lazy dog (l)</Typography>
+  </Rhythm>
+  <Rhythm wrapper="div" my={1}>
+    <Typography size="xl">The quick brown fox jumped over the lazy dog (xl)</Typography>
+  </Rhythm>
+  <Rhythm wrapper="div" my={1}>
+    <Typography size="xxl">The quick brown fox jumped over the lazy dog (xxl)</Typography>
+  </Rhythm>
+  <Rhythm wrapper="div" my={1}>
+    <Typography size="xxxl">The quick brown fox jumped over the lazy dog (xxxl)</Typography>
+  </Rhythm>
+  <Rhythm wrapper="div" my={1}>
+    <Typography size="xxxxl">The quick brown fox jumped over the lazy dog (xxxxl)</Typography>
+  </Rhythm>
+</Playground>
+
+## Font weights
+
+<Playground>
+  <Rhythm wrapper="div" my={1}>
+    <Typography size="l" weight="lighter">
+      The quick brown fox jumped over the lazy dog (lighter)
+    </Typography>
+  </Rhythm>
+  <Rhythm wrapper="div" my={1}>
+    <Typography size="l" weight="light">
+      The quick brown fox jumped over the lazy dog (light)
+    </Typography>
+  </Rhythm>
+  <Rhythm wrapper="div" my={1}>
+    <Typography size="l" weight="regular">
+      The quick brown fox jumped over the lazy dog (regular)
+    </Typography>
+  </Rhythm>
+  <Rhythm wrapper="div" my={1}>
+    <Typography size="l" weight="bold">
+      The quick brown fox jumped over the lazy dog (bold)
+    </Typography>
+  </Rhythm>
+</Playground>
+
+## Spaces
+
+<Playground>
+  <div>
+    Hello<Typography variants={['space-before']}>world</Typography>
+  </div>
+  <div>
+    <Typography variants={['space-after']}>Hello</Typography>world
+  </div>
+  <div>
+    <Typography variants={['space-after', 'small-caps']}>Hello</Typography>
+    <Typography variants={['space-before', 'xxl']}>world</Typography>
+  </div>
+</Playground>
+
+## Truncated
+
+<Playground>
+  <Typography variants="truncated" as="div" style={{ width: '140px' }}>
+    The quick brown fox jumped over the lazy dog
+  </Typography>
+</Playground>
+
+## Align
+
+<Playground>
+  <Typography align="left" as="div">
+    The quick brown fox jumped over the lazy dog
+  </Typography>
+  <Typography align="center" as="div">
+    The quick brown fox jumped over the lazy dog
+  </Typography>
+  <Typography align="right" as="div">
+    The quick brown fox jumped over the lazy dog
+  </Typography>
+</Playground>
+
+## Case
+
+<Playground>
+  <Typography variants="uppercase" as="div">
+    The uppercase fox jumped over the lazy dog
+  </Typography>
+  <Typography variants="lowercase" as="div">
+    The LOWERCASE fox jumped over the lazy dog
+  </Typography>
+</Playground>
+
+## Italic
+
+<Playground>
+  <Typography variants="italic">The quick brown fox jumped over the lazy dog</Typography>
+</Playground>
+
+## Underline
+
+<Playground>
+  <Typography variants="underline">The quick brown fox jumped over the lazy dog</Typography>
+</Playground>
+
+## Blackout
+
+<Playground>
+  <Typography variants="blackout">The quick brown fox jumped over the lazy dog</Typography>
+</Playground>
+
+## Spoiler
+
+<Playground>
+  <Typography variants="spoiler">The quick brown fox jumped over the lazy dog</Typography>
+</Playground>
+
+## Letter spacing
+
+<Playground>
+  <Typography as="div">This is normal letter spacing</Typography>
+  <Typography variants="letter-spacing-comfy" as="div">
+    This is comfy letter spacing
+  </Typography>
+  <Typography variants="uppercase" as="div">
+    This is normal letter spacing
+  </Typography>
+  <Typography variants={['letter-spacing-comfy', 'uppercase']} as="div">
+    This is comfy letter spacing
+  </Typography>
+</Playground>
+
+## Line heights
+
+<Playground>
+  <Rhythm my={2} style={{ maxWidth: '400px' }}>
+    <Typography as="div" variants="line-height-smash">
+      This is line height smash This is line height smash This is line height smash This is line height smash This is
+      line height smash This is line height smash This is line height smash
+    </Typography>
+    <Typography as="div" variants="line-height-normal">
+      This is line height normal This is line height normal This is line height normal This is line height normal This is
+      line height normal This is line height normal This is line height normal
+    </Typography>
+    <Typography as="div" variants="line-height-comfy">
+      This is line height comfy This is line height comfy This is line height comfy This is line height comfy This is
+      line height comfy This is line height comfy This is line height comfy
+    </Typography>
+  </Rhythm>
+</Playground>
+
+## Quiet, Quieter, Quietest
+
+<Playground>
+  <Typography as="div">This is a normal volume</Typography>
+  <Typography volume="quiet" as="div">
+    This is a quiet volume
+  </Typography>
+  <Typography volume="quieter" as="div">
+    This is a quieter volume
+  </Typography>
+  <Typography volume="quietest" as="div">
+    This is the quietest volume
+  </Typography>
+</Playground>
+
+## Colors
+
+<Playground>
+  <ThemeWrapper>
+    <Typography color="primary" as="div">Theme primary</Typography>
+    <Typography color="primary" volume="quiet" as="div">Theme primary quiet</Typography>
+    <Typography color="primary" volume="quieter" as="div">Theme primary quieter</Typography>
+    <Typography color="primary" volume="quietest" as="div">Theme primary quietest</Typography>
+
+    <br />
+
+    <Typography color="secondary" as="div">Theme secondary</Typography>
+    <Typography color="secondary" volume="quiet" as="div">Theme secondary quiet</Typography>
+    <Typography color="secondary" volume="quieter" as="div">Theme secondary quieter</Typography>
+    <Typography color="secondary" volume="quietest" as="div">Theme secondary quietest</Typography>
+
+    <br />
+
+    <Typography color="accent-primary" as="div">Theme accent primary</Typography>
+    <Typography color="accent-primary" volume="quiet" as="div">Theme accent primary quiet</Typography>
+    <Typography color="accent-primary" volume="quieter" as="div">Theme accent primary quieter</Typography>
+    <Typography color="accent-primary" volume="quietest" as="div">Theme accent primary quietest</Typography>
+
+  </ThemeWrapper>
+</Playground>
+
+# <br />
+# Compositions
+
+## Headings
+
+<Playground>
+  <Rhythm my={2}>
+    <Typography heading="h1">The quick brown fox jumped over the lazy dog (h1)</Typography>
+    <Typography heading="h2">The quick brown fox jumped over the lazy dog (h2)</Typography>
+    <Typography heading="h3">The quick brown fox jumped over the lazy dog (h3)</Typography>
+    <Typography heading="h4">The quick brown fox jumped over the lazy dog (h4)</Typography>
+    <Typography heading="h5">The quick brown fox jumped over the lazy dog (h5)</Typography>
+    <Typography heading="h6">The quick brown fox jumped over the lazy dog (h6)</Typography>
+    <Typography heading="p">
+      The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox
+      jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog
+      The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox
+      jumped over the lazy dog (p)
+    </Typography>
+  </Rhythm>
+</Playground>
+
+## Medium caps
+
+<Playground>
+  <Typography variants={['medium-caps']}>The quick brown fox jumped over the lazy dog</Typography>
+</Playground>
+
+<div style="height: 50px" />
+
+<Playground>
+  <Typography variants={['medium-caps']} volume="quiet">The quiet brown fox jumped over the lazy dog</Typography>
+</Playground>
+
+## Small caps
+
+<Playground>
+  <Typography variants={['small-caps']}>The quick brown fox jumped over the lazy dog</Typography>
+</Playground>
+
+<div style="height: 50px" />
+
+<Playground>
+  <Typography variants={['small-caps']} volume="quiet">The quiet brown fox jumped over the lazy dog</Typography>
+</Playground>
+
+## Extra small caps
+
+<Playground>
+  <Typography variants={['xsmall-caps']}>The quick brown fox jumped over the lazy dog</Typography>
+</Playground>
+
+<div style="height: 50px" />
+
+<Playground>
+  <Typography variants={['xsmall-caps']} volume="quiet">The quiet brown fox jumped over the lazy dog</Typography>
+</Playground>
+
+## Reset
+
+<Playground>
+  <div
+    style={{
+      fontSize: '14px',
+      fontWeight: 'bold',
+      fontStyle: 'italic',
+      letterSpacing: '1.5px',
+      textTransform: 'uppercase',
+    }}
+  >
+    <div>This text has not been reset.</div>
+    <Typography variants={['reset']}>The quick brown fox jumped over the lazy dog</Typography>
+  </div>
+</Playground>
+
+## \[props\]
+
+<Props of={Typography} />

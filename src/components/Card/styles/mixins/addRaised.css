@@ -1,0 +1,26 @@
+@define-mixin addRaised $raisedLevel: 0 {
+  &.card--light {
+    @mixin raisedShadow light, $raisedLevel;
+  }
+
+  &.card--dark {
+    @mixin raisedShadow dark, $raisedLevel;
+  }
+}
+
+@define-mixin addRaisedAndHoverable $raisedLevel: 0, $hoverableLevel: 10 {
+  &.card--hoverable {
+    &:hover,
+    &.is-hovered {
+      &.card--light {
+        @mixin raisedShadow light, $hoverableLevel;
+      }
+
+      &.card--dark {
+        @mixin raisedShadow dark, $hoverableLevel;
+      }
+    }
+  }
+
+  @mixin addRaised $raisedLevel;
+}

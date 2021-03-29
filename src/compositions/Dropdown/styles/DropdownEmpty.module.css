@@ -1,0 +1,21 @@
+.dropdownEmpty {
+  color: var(--dropdown-empty-text-color);
+  font-size: $font-size-s;
+  padding: 8px 0;
+}
+
+.dropdownEmpty--contained {
+  padding: 12px;
+}
+
+.dropdownEmpty--primary {
+  @mixin themed .dropdownEmpty {
+    --dropdown-empty-text-color: $theme-secondary-quiet-color;
+  }
+}
+
+.dropdownEmpty--contrast {
+  @mixin themed .dropdownEmpty {
+    --dropdown-empty-text-color: $theme-contrast-quiet-color;
+  }
+}

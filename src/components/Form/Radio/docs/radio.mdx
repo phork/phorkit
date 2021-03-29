@@ -1,0 +1,151 @@
+---
+name: Radio
+menu: Forms
+route: /components/FormRadio
+---
+
+import { Playground, Props } from 'docz';
+import { Radio, RadioGroup, NotifiedRadioGroup } from '../index';
+import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
+import { Looper } from 'docs/helpers/Looper';
+import { Typography } from 'components/Typography';
+import { radioGroup, logValue } from './helpers/utils';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Radio" src="components/Form/Radio" />
+
+## Basic radio button
+
+<Playground>
+  <FormComponentDemo property="checked" initialValue={false}>
+    <Radio name="basic-radio" id="demo-basic-radio" value="basic" onChange={logValue} />
+  </FormComponentDemo>
+</Playground>
+
+## Labeled radio button
+
+<Playground>
+  <FormComponentDemo property="checked" initialValue={true}>
+    <Radio name="labeled-radio" id="demo-labeled-radio" value="labeled" onChange={logValue}>
+      Super fantastic label
+    </Radio>
+  </FormComponentDemo>
+</Playground>
+
+## Disabled radio button
+
+<Playground>
+  <FormComponentDemo property="checked" initialValue={false}>
+    <Radio disabled name="disabled-radio" id="demo-disabled-radio" value="disabled" onChange={logValue}>
+      Super fantastic label
+    </Radio>
+  </FormComponentDemo>
+</Playground>
+
+## Contrast radio button
+
+<Playground>
+  <FormComponentDemo property="checked" initialValue={false} contrast>
+    <Radio contrast name="contrast-radio" id="contrast-basic-radio" onChange={logValue}>
+      Super fantastic label
+    </Radio>
+  </FormComponentDemo>
+</Playground>
+
+# <br />
+# RadioGroup
+
+## Example `radios` values
+
+```
+[{
+  id: "radio-group-item1",
+  value: "one",
+  label: 'Super fantastic label one',
+}, {
+  id: "radio-group-item2",
+  value: "two",
+  label: 'Super fantastic label two',
+}, {
+  id: "radio-group-item3",
+  value: "three",
+  label: 'Super fantastic label three',
+}]
+```
+
+## Stacked group
+
+<Playground>
+  <FormComponentDemo property="value" initialValue="one">
+    <RadioGroup
+      layout="stacked"
+      legend="Super fantastic label says what?"
+      name="stacked-radio-group"
+      onChange={logValue}
+      radios={radioGroup}
+    />
+  </FormComponentDemo>
+</Playground>
+
+## Inline group
+
+<Playground>
+  <FormComponentDemo property="value" initialValue="one">
+    <RadioGroup
+      layout="inline"
+      legend="Super fantastic label says what?"
+      name="inline-radio-group"
+      onChange={logValue}
+      radios={radioGroup}
+    />
+  </FormComponentDemo>
+</Playground>
+
+## Custom label
+
+<Playground>
+  <FormComponentDemo property="value" initialValue="one">
+    <RadioGroup
+      layout="inline"
+      legend={
+        <Typography as="legend" variants="medium-caps" style={{ marginBottom: '8px' }}>
+          Super fantastic legend says what?
+        </Typography>
+      }
+      name="custom-radio-group"
+      onChange={logValue}
+      radios={radioGroup}
+    />
+  </FormComponentDemo>
+</Playground>
+
+## Notifications
+
+<Playground>
+  <Looper
+    list={['success', 'danger', 'warning', 'primary', 'neutral']}
+    render={level => (
+      <FormComponentDemo property="value" initialValue="one">
+        <NotifiedRadioGroup
+          layout="inline"
+          legend="Super fantastic label says what?"
+          name="inline-radio-group"
+          onChange={logValue}
+          radios={radioGroup}
+          level={level}
+          notification={`This is an example ${level} notification.`}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## \[props\]
+
+### Radio
+
+<Props of={Radio} />
+
+### RadioGroup
+
+<Props of={RadioGroup} />

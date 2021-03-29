@@ -1,0 +1,46 @@
+---
+name: IconText
+menu: Display
+route: /components/IconText
+---
+
+import { Playground, Props } from 'docz';
+import { IconText } from '../index';
+import { Rhythm } from 'components/Rhythm';
+import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="IconText" src="components/IconText" />
+
+## Default order
+
+<Playground>
+  <IconText
+    icon={<BlobbrIcon scale="medium" />}
+    text="Hello world"
+  />
+</Playground>
+
+## Inline reversed order
+
+<Playground>
+  <IconText
+    inline
+    icon={<BlobbrIcon scale="medium" />}
+    text="Hello world"
+    reversed
+  />
+</Playground>
+
+## Spaced icon
+
+<Playground>
+  <IconText
+    icon={<BlobbrIcon scale="large" />}
+    text={<Rhythm ml={2}><span>Hello world</span></Rhythm>}
+  />
+</Playground>
+
+## \[props\]
+
+<Props of={IconText} />

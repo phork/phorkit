@@ -1,0 +1,35 @@
+.bannerContainer {
+  .banner--danger + .banner--danger,
+  .banner--warning + .banner--warning,
+  .banner--success + .banner--success,
+  .banner--info + .banner--info {
+    border-top: 1px solid var(--banner-divider-color);
+  }
+
+  &.bannerContainer--light {
+    --banner-divider-color: rgba(255, 255, 255, .3);
+  }
+
+  &.bannerContainer--dark {
+    --banner-divider-color: rgba(0, 0, 0, .1);
+  }
+}
+
+.banner {
+  position: relative;
+  font-size: $font-size-m;
+}
+
+.banner--transitional {
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition-duration: 200ms;
+  transition-property: opacity, transform;  
+  transition-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28);
+
+  &.has-transitioned {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}

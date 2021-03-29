@@ -1,0 +1,225 @@
+---
+name: Tabs
+menu: Surfaces
+route: /compositions/Tabs
+---
+
+import { Playground, Props } from 'docz';
+import { ColoredTabs, Tabs, Tab, TabList, TabPanelGroup, TabPanel, TabsContainer } from '../index';
+import { Button } from 'components/Button';
+import { Rhythm } from 'components/Rhythm';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { ColorLooper } from 'docs/helpers/ColorLooper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Tabs" src="compositions/Tabs" />
+
+Keyboard navigation is available for this component. Navigate with `Up`, `Down`, `Left`, `Right`, `Home` or `End`. Select with `Space` or `Enter`.
+
+### Basic tabs
+
+<Playground>
+  <ThemeWrapper>
+    <Tabs onSelect={(event, id) => console.log(id)} items={[
+      { id: 'first', label: 'First', content: 'First panel' },
+      { id: 'second', label: 'Second', content: 'Second panel' },
+      { id: 'third', label: 'Third', content: 'Third panel', disabled: true },
+      { id: 'fourth', label: 'Fourth', content: 'Fourth panel' },
+    ]} />
+  </ThemeWrapper>
+</Playground>
+
+### Full width tabs
+
+<Playground>
+  <ThemeWrapper>
+    <Tabs fullWidth onSelect={(event, id) => console.log(id)} items={[
+      { id: 'first', label: 'First', content: 'First panel' },
+      { id: 'second', label: 'Second', content: 'Second panel' },
+      { id: 'third', label: 'Third', content: 'Third panel', disabled: true },
+      { id: 'fourth', label: 'Fourth', content: 'Fourth panel' },
+    ]} />
+  </ThemeWrapper>
+</Playground>
+
+### Overflow tabs
+
+<Playground>
+  <ThemeWrapper>
+    <Tabs onSelect={(event, id) => console.log(id)} items={[
+      { id: 'first', label: 'First', content: 'First panel' },
+      { id: 'second', label: 'Second', content: 'Second panel' },
+      { id: 'third', label: 'Third', content: 'Third panel' },
+      { id: 'fourth', label: 'Fourth', content: 'Fourth panel' },
+      { id: 'fifth', label: 'Fifth', content: 'Fifth panel' },
+      { id: 'sixth', label: 'Sixth', content: 'Sixth panel' },
+      { id: 'seventh', label: 'Seventh', content: 'Seventh panel' },
+      { id: 'eighth', label: 'Eighth', content: 'Eighth panel' },
+      { id: 'ninth', label: 'Ninth', content: 'Ninth panel' },
+      { id: 'tenth', label: 'Tenth', content: 'Tenth panel' },
+      { id: 'eleventh', label: 'Eleventh', content: 'Eleventh panel' },
+      { id: 'twelfth', label: 'Twelfth', content: 'Twelfth panel' },
+      { id: 'thirteenth', label: 'Thirteenth', content: 'Thirteenth panel' },
+      { id: 'fourteenth', label: 'Fourteenth', content: 'Fourteenth panel' },
+      { id: 'fifteenth', label: 'Fifteenth', content: 'Fifteenth panel' },
+    ]} />
+  </ThemeWrapper>
+</Playground>
+
+### Vertical tabs
+
+<Playground>
+  <ThemeWrapper>
+    <Tabs vertical onSelect={(event, id) => console.log(id)} items={[
+      { id: 'first', label: '1', content: 'First panel' },
+      { id: 'second', label: '2', content: 'Second panel' },
+      { id: 'third', label: '3', content: 'Third panel', disabled: true },
+      { id: 'fourth', label: '4', content: 'Fourth panel' },
+    ]} />
+  </ThemeWrapper>
+</Playground>
+
+## Variations
+
+### Tabs with label and content functions
+
+<Playground>
+  <ThemeWrapper>
+    <Tabs initialSelected="second" onSelect={(event, id) => console.log(id)} items={[
+      { id: 'first', label: ({ selected }) => `First${selected ? ' is selected': ''}`, content: ({ selected }) => `First panel${selected ? ' is selected': ''}` },
+      { id: 'second', label: ({ selected }) => `Second${selected ? ' is selected': ''}`, content: ({ selected }) => `Second panel${selected ? ' is selected': ''}` },
+      { id: 'third', label: ({ selected }) => `Third${selected ? ' is selected': ''}`, content: ({ selected }) => `Third panel${selected ? ' is selected': ''}`, disabled: true },
+      { id: 'fourth', label: ({ selected }) => `Fourth${selected ? ' is selected': ''}`, content: ({ selected }) => `Fourth panel${selected ? ' is selected': ''}` },
+    ]} />
+  </ThemeWrapper>
+</Playground>
+
+### Colored tabs
+
+<Playground>
+  <ThemeWrapper>
+    <ColoredTabs colorId="P10" onSelect={(event, id) => console.log(id)} items={[
+      { id: 'first', label: 'First', content: 'First panel' },
+      { id: 'second', label: 'Second', content: 'Second panel' },
+      { id: 'third', label: 'Third', content: 'Third panel', disabled: true },
+      { id: 'fourth', label: 'Fourth', content: 'Fourth panel' },
+    ]} />
+  </ThemeWrapper>
+</Playground>
+
+### Transparent tabs
+
+<Playground>
+  <ThemeWrapper>
+    <Tabs variant="transparent" onSelect={(event, id) => console.log(id)} items={[
+      { id: 'first', label: 'First', content: 'First panel' },
+      { id: 'second', label: 'Second', content: 'Second panel' },
+      { id: 'third', label: 'Third', content: 'Third panel', disabled: true },
+      { id: 'fourth', label: 'Fourth', content: 'Fourth panel' },
+    ]} />
+  </ThemeWrapper>
+</Playground>
+
+### Contrast tabs
+
+<Playground>
+  <ThemeWrapper contrast>
+    <Tabs contrast onSelect={(event, id) => console.log(id)} items={[
+      { id: 'first', label: 'First', content: 'First panel' },
+      { id: 'second', label: 'Second', content: 'Second panel' },
+      { id: 'third', label: 'Third', content: 'Third panel', disabled: true },
+      { id: 'fourth', label: 'Fourth', content: 'Fourth panel' },
+    ]} />
+  </ThemeWrapper>
+</Playground>
+
+### Colored tabs
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <ColorLooper themeId={themeId} group="primary" render={({ id }) => (
+        <Rhythm key={id} my={1}>
+          <ColoredTabs initialSelected="third" colorId={id} vertical onSelect={(event, id) => console.log(id)} items={[
+            { id: 'first', label: '1', content: 'First panel' },
+            { id: 'second', label: '2', content: 'Second panel' },
+            { id: 'third', label: '3', content: 'Third panel' },
+            { id: 'fourth', label: '4', content: 'Fourth panel' },
+          ]} />
+        </Rhythm>
+      )} />
+    )}
+  </ThemeWrapper>
+</Playground>
+
+### Custom tab styles, flush content
+
+<Playground>
+  <ThemeWrapper>
+    <Tabs unstyled initialSelected="second" style={{ outline: 'none' }} onSelect={(event, id) => console.log(id)} items={[
+      { id: 'first', label: ({ disabled, focused, selected }) => <Rhythm mr={2}><Button disabled={disabled} focused={focused} as="div" color="neutral" weight={selected ? undefined : 'outline'}>First</Button></Rhythm>, content: ({ selected }) => <h4>First panel{selected ? ' is selected': ''}</h4>, labelProps: { style: { outline: 'none' }}, contentProps: { flush: true }},
+      { id: 'second', label: ({ disabled, focused, selected }) => <Rhythm mx={2}><Button disabled={disabled} focused={focused} as="div" color="neutral" weight={selected ? undefined : 'outline'}>Second</Button></Rhythm>, content: ({ selected }) => <h4>Second panel{selected ? ' is selected': ''}</h4>, labelProps: { style: { outline: 'none' }}, contentProps: { flush: true }},
+      { id: 'third', label: ({ disabled, focused, selected }) => <Rhythm mx={2}><Button disabled={disabled} focused={focused} as="div" color="neutral" weight={selected ? undefined : 'outline'}>Third</Button></Rhythm>, content: ({ selected }) => <h4>Third panel{selected ? ' is selected': ''}</h4>, labelProps: { style: { outline: 'none', pointerEvents: 'none' }}, contentProps: { flush: true }, disabled: true },
+      { id: 'fourth', label: ({ disabled, focused, selected }) => <Rhythm ml={2}><Button disabled={disabled} focused={focused} as="div" color="neutral" weight={selected ? undefined : 'outline'}>Fourth</Button></Rhythm>, content: ({ selected }) => <h4>Fourth panel{selected ? ' is selected': ''}</h4>, labelProps: { style: { outline: 'none' }}, contentProps: { flush: true }},
+    ]}>
+      {({ componentId, items, ref, themeId, vertical }) => (
+        <TabsContainer vertical={vertical}>
+          <TabList
+            componentId={componentId}
+            ref={ref}
+            items={items}
+            themeId={themeId}
+            unstyled
+            vertical={vertical}
+            style={{
+              alignItems: 'center',
+              display: 'flex',
+              flexDirection: vertical ? 'column' : 'row',
+              outline: 'none',
+            }}
+          />
+          <TabPanelGroup componentId={componentId} items={items} themeId={themeId} unstyled vertical={vertical} />
+        </TabsContainer>
+      )}
+    </Tabs>
+  </ThemeWrapper>
+</Playground>
+
+### Unselectable tabs
+
+<Playground>
+  <ThemeWrapper>
+    <Tabs allowUnselect onSelect={(event, id) => console.log(id)} items={[
+      { id: 'first', label: 'First', content: 'First panel' },
+      { id: 'second', label: 'Second', content: 'Second panel' },
+      { id: 'third', label: 'Third', content: 'Third panel', disabled: true },
+      { id: 'fourth', label: 'Fourth', content: 'Fourth panel' },
+    ]} />
+  </ThemeWrapper>
+</Playground>
+
+## \[props\]
+
+### Tabs
+
+<Props of={Tabs} />
+
+### TabsContainer
+
+<Props of={TabsContainer} />
+
+### TabList
+
+<Props of={TabList} />
+
+### Tab
+
+<Props of={Tab} />
+
+### TabPanelGroup
+
+<Props of={TabPanelGroup} />
+
+### TabPanel
+
+<Props of={TabPanel} />

@@ -1,0 +1,146 @@
+/*
+.position {}
+*/
+
+.position--raised {
+  z-index: 1;
+}
+
+.position--center {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.position--bottomLeft {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+
+  &.position--outside {
+    transform: translate(-100%, 100%);
+  }
+
+  &.position--middle {
+    transform: translate(-50%, 50%);
+  }
+}
+
+.position--bottomCenter {
+  bottom: 0;
+  left: 50%;
+  position: absolute;
+  
+  &.position--inside {
+    transform: translateX(-50%);
+  }
+
+  &.position--outside {
+    transform: translate(-50%, 100%);
+  }
+
+  &.position--middle {
+    transform: translate(-50%, 50%);
+  }
+}
+
+.position--bottomRight {
+  bottom: 0;
+  position: absolute;
+  right: 0;
+  
+  &.position--outside {
+    transform: translate(100%, 100%);
+  }
+
+  &.position--middle {
+    transform: translate(50%, 50%);
+  }
+}
+
+.position--topLeft {
+  left: 0;
+  position: absolute;
+  top: 0;
+
+  &.position--outside {
+    transform: translate(-100%, -100%);
+  }
+
+  &.position--middle {
+    transform: translate(-50%, -50%);
+  }
+}
+
+.position--topCenter {
+  left: 50%;
+  position: absolute;
+  top: 0;
+  
+  &.position--inside {
+    transform: translateX(-50%);
+  }
+
+  &.position--outside {
+    transform: translate(-50%, -100%);
+  }
+
+  &.position--middle {
+    transform: translate(-50%, -50%);
+  }
+}
+
+.position--topRight {
+  position: absolute;
+  right: 0;
+  top: 0;
+  
+  &.position--outside {
+    transform: translate(100%, -100%);
+  }
+
+  &.position--middle {
+    transform: translate(50%, -50%);
+  }
+}
+
+.position--leftCenter {
+  left: 0;
+  position: absolute;
+  top: 50%;
+  
+  &.position--inside {
+    transform: translateY(-50%);
+  }
+
+  &.position--outside {
+    transform: translate(-100%, -50%);
+  }
+
+  &.position--middle {
+    transform: translate(-50%, -50%);
+  }
+}
+
+.position--rightCenter { 
+  position: absolute;
+  right: 0;
+  top: 50%;
+  
+  &.position--inside {
+    transform: translateY(-50%);
+  }
+
+  &.position--outside {
+    transform: translate(100%, -50%);
+  }
+
+  &.position--middle {
+    transform: translate(50%, -50%);
+  }
+}
+
+.position--fixed {
+  position: fixed;
+}

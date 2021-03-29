@@ -1,0 +1,20 @@
+.text-medium-caps {
+  font-size: $font-size-m;
+  font-weight: bold;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+}
+
+.text-small-caps {
+  font-size: $font-size-s;
+  font-weight: bold;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+}
+
+.text-xsmall-caps {
+  font-size: $font-size-xs;
+  font-weight: bold;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+}

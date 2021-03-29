@@ -1,0 +1,44 @@
+---
+name: Notification
+menu: Forms
+route: /components/Notification
+---
+
+import { Playground, Props } from 'docz';
+import { Flex } from 'components/Flex';
+import { Rhythm } from 'components/Rhythm';
+import { Notification } from '../index';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Notification" src="components/Form/Notification" />
+
+## Basic notification
+
+<Playground>
+  <ThemeWrapper>
+    <Notification notification="Basic notification">Content that the basic notification refers to.</Notification>
+    <br />
+    <Notification notification="Divided notification" divided>Content that the divided notification refers to.</Notification>
+  </ThemeWrapper>
+</Playground>
+
+## Status notification
+
+<Playground>
+  <ThemeWrapper>
+    <Flex direction="column">
+      <Rhythm mb={1}>
+        <Notification color="success" notification="Success notification" />
+        <Notification color="warning" notification="Warning notification" />
+        <Notification color="danger" notification="Danger notification" />
+        <Notification color="primary" notification="Primary notification" divided />
+        <Notification color="neutral" notification="Neutral notification" />
+      </Rhythm>
+    </Flex>
+  </ThemeWrapper>
+</Playground>
+
+## \[props\]
+
+<Props of={Notification} />

@@ -1,0 +1,9 @@
+.portal {
+  display: none;
+  position: absolute;
+  z-index: $layout-z-index-popover;
+
+  &.is-visible {
+    display: block; 
+  }
+}

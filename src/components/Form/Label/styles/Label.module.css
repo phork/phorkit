@@ -1,0 +1,55 @@
+.label {
+  color: var(--label-text-color);
+  transition: color 200ms ease;
+
+  &.is-disabled {
+    color: var(--label-muted-text-color);
+    pointer-events: none;
+  }
+
+  &.is-muted:not(:hover):not(.is-focused) {
+    color: var(--label-muted-text-color);
+  }
+
+  &:hover,
+  &.is-focused {
+    color: var(--label-text-color);
+  }
+}
+
+.label--transitioned {
+  font-size: $font-size-xs;
+  line-height: 16px;
+}
+
+.label--standard {
+  font-size: $font-size-s;
+  line-height: 16px;
+}
+
+.label--legend {
+  font-size: $font-size-l;
+  line-height: 20px;
+}
+
+.label--primary {
+  @mixin themed .label {
+    --label-text-color: $theme-primary-text-color;
+    --label-muted-text-color: $theme-primary-quiet-color;
+  }
+}
+
+.label--contrast {
+  @mixin themed .label {
+    --label-text-color: $theme-contrast-text-color;
+    --label-muted-text-color: $theme-contrast-quiet-color;
+  }
+  
+}
+
+.label.is-danger {
+  @mixin themed .label {
+    --label-text-color: $theme-color-danger;
+    --label-muted-text-color: $theme-primary-quiet-color;
+  }
+}

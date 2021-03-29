@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.rollup.json",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "lib/cjs",
+    "tsBuildInfoFile": "lib/cjs/tsbuildinfo"
+  }
+}

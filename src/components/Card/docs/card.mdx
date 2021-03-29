@@ -1,0 +1,161 @@
+---
+name: Card
+menu: Surfaces
+route: /components/Card
+---
+
+import { Playground, Props } from 'docz';
+import { Rhythm } from 'components/Rhythm';
+import { Card } from '../Card';
+import { CardBody, CardEdge, CardTitle, StyledCard } from '../index';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Card" src="components/Card" />
+
+## Inactive card
+
+<Playground>
+  <ThemeWrapper>
+    <Card>
+      <Rhythm p={3}>Hello world</Rhythm>
+    </Card>
+  </ThemeWrapper>
+</Playground>
+
+## Bordered card
+
+<Playground>
+  <ThemeWrapper>
+    <Card bordered>
+      <Rhythm p={3}>Hello world</Rhythm>
+    </Card>
+  </ThemeWrapper>
+</Playground>
+
+## Bordered and hoverable card
+
+<Playground>
+  <ThemeWrapper>
+    <Card bordered hoverable>
+      <Rhythm p={3}>Hello world</Rhythm>
+    </Card>
+  </ThemeWrapper>
+</Playground>
+
+## Raised card
+
+<Playground>
+  <ThemeWrapper>
+    <Card raised>
+      <Rhythm p={3}>Hello world</Rhythm>
+    </Card>
+  </ThemeWrapper>
+</Playground>
+
+## Raised and hoverable card
+
+<Playground>
+  <ThemeWrapper>
+    <Card hoverable raised>
+      <Rhythm p={3}>Hello world</Rhythm>
+    </Card>
+  </ThemeWrapper>
+</Playground>
+
+## Raised custom levels
+
+<Playground>
+  <ThemeWrapper>
+    <Rhythm my={3}>
+      <Card raised={0}>
+        <Rhythm p={3}>Hello world (0)</Rhythm>
+      </Card>
+      <Card raised={10}>
+        <Rhythm p={3}>Hello world (10)</Rhythm>
+      </Card>
+      <Card raised={20}>
+        <Rhythm p={3}>Hello world (20)</Rhythm>
+      </Card>
+      <Card raised={100}>
+        <Rhythm p={3}>Hello world (100)</Rhythm>
+      </Card>
+      <Card raised={200}>
+        <Rhythm p={3}>Hello world (200)</Rhythm>
+      </Card>
+    </Rhythm>
+  </ThemeWrapper>
+</Playground>
+
+## Transparent card
+
+<Playground>
+  <ThemeWrapper>
+    <Card transparent>
+      <Rhythm p={3}>Hello world</Rhythm>
+    </Card>
+  </ThemeWrapper>
+</Playground>
+
+## Squared card
+
+<Playground>
+  <ThemeWrapper>
+    <Card hoverable raised squared>
+      <Rhythm p={3}>Hello world</Rhythm>
+    </Card>
+  </ThemeWrapper>
+</Playground>
+
+
+## Full cards
+
+### Full card with magnification
+
+<Playground>
+  <ThemeWrapper>
+    <div style={{ width: '300px', height: '200px' }}>
+      <Card hoverable raised magnify full>
+        <CardEdge>Card edge top</CardEdge>
+        <CardBody>
+          <CardTitle>Card title</CardTitle>
+          <CardTitle variant="subtitle">Card subtitle</CardTitle>
+        </CardBody>
+        <CardEdge justify="spread">
+          <span>Card edge bottom</span>
+          <span>Justify spread</span>
+        </CardEdge>
+      </Card>
+    </div>
+  </ThemeWrapper>
+</Playground>
+
+### Styled card
+
+<Playground>
+  <div style={{ width: '300px', height: '200px' }}>
+    <StyledCard
+      backgroundColor="#393a61"
+      borderColor="#393a61"
+      hoverBorderColor="#000"
+      textColor="#fff"
+      bordered
+      hoverable
+      full
+    >
+      <CardEdge>Card edge top</CardEdge>
+      <CardBody>
+        <CardTitle>Card title</CardTitle>
+        <CardTitle variant="subtitle">Card subtitle</CardTitle>
+      </CardBody>
+      <CardEdge justify="spread">
+        <span>Card edge bottom</span>
+        <span>Justify spread</span>
+      </CardEdge>
+    </StyledCard>
+  </div>
+</Playground>
+
+## \[props\]
+
+<Props of={Card} />

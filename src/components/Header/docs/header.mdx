@@ -1,0 +1,105 @@
+---
+name: Header
+menu: Surfaces
+route: /components/Header
+---
+
+import { Playground, Props } from 'docz';
+import { Rhythm } from 'components/Rhythm';
+import { Header, StyledHeader } from '../index';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Header" src="components/Header" />
+
+## Basic header
+
+<Playground>
+  <ThemeWrapper>
+    <Header>
+      <div>Hello world</div>
+      <div>Hello world</div>
+    </Header>
+  </ThemeWrapper>
+</Playground>
+
+## Bordered header
+
+<Playground>
+  <ThemeWrapper>
+    <Header bordered>
+      <div>Hello world</div>
+      <div>Hello world</div>
+    </Header>
+  </ThemeWrapper>
+</Playground>
+
+## Raised header
+
+<Playground>
+  <ThemeWrapper>
+    <Header raised>
+      <div>Hello world</div>
+      <div>Hello world</div>
+    </Header>
+  </ThemeWrapper>
+</Playground>
+
+## Global header
+
+<Playground>
+  <ThemeWrapper>
+    <Header variant="global">
+      <div>Hello world</div>
+      <div>Hello world</div>
+    </Header>
+  </ThemeWrapper>
+</Playground>
+
+## Bordered global header
+
+<Playground>
+  <ThemeWrapper>
+    <Header bordered variant="global">
+      <div>Hello world</div>
+      <div>Hello world</div>
+    </Header>
+  </ThemeWrapper>
+</Playground>
+
+## Bordered transparent header
+
+<Playground>
+  <ThemeWrapper>
+    <Header bordered variant="transparent">
+      <div>Hello world</div>
+      <div>Hello world</div>
+    </Header>
+  </ThemeWrapper>
+</Playground>
+
+## Variations
+
+### Contrast header
+
+<Playground>
+  <ThemeWrapper>
+    <Header contrast>
+      <div>Hello world</div>
+      <div>Hello world</div>
+    </Header>
+  </ThemeWrapper>
+</Playground>
+
+### Styled header
+
+<Playground>
+  <StyledHeader bordered backgroundColor="#fc0" borderColor="#393a61" textColor="#fff" height={50}>
+    <div>Hello world</div>
+    <div>Hello world</div>
+  </StyledHeader>
+</Playground>
+
+## \[props\]
+
+<Props of={Header} />

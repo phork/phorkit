@@ -1,0 +1,908 @@
+---
+name: Popover
+menu: Surfaces
+route: /compositions/Popover
+---
+
+import { Playground, Props } from 'docz';
+import { InlinePopover, PortalPopover, Popover } from '../index';
+import { Button } from 'components/Button';
+import { Paper } from 'components/Paper';
+import { Rhythm } from 'components/Rhythm';
+import { Typography } from 'components/Typography';
+import { Flex } from 'components/Flex';
+import { Card } from 'components/Card';
+import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { TimesIcon } from 'icons/TimesIcon';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { themes } from 'config/themes';
+import { horizontal, vertical } from './helpers/config';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Popover" src="compositions/Popover" />
+
+## Auto-positioned popover
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <React.Fragment>
+        <p>(There should be a permanent popover in the top right)</p>
+        <PortalPopover
+          contentProps={{ portal: 'fixed', withChildrenProps: true}}
+          focusable
+          height={80}
+          initialVisible
+          layout="horizontal"
+          offset={{horizontal}}
+          permanent
+          style={{position: 'fixed', top: '100px', right: '40px', zIndex: 2000}}
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" style={{color: themes[themeId]['color-accent-primary']}} />}
+          width={300}
+        >
+          {({ position }) => (
+            <Card raised full>
+              <Paper color="contrast" container="popover" contained scrollable>
+                <Typography as="div" size="s" variants="line-height-comfy">
+                  The quick brown fox jumped over the {position} dog
+                  The quick brown fox jumped over the {position} dog
+                  The quick brown fox jumped over the {position} dog
+                  The quick brown fox jumped over the {position} dog
+                  The quick brown fox jumped over the {position} dog
+                  The quick brown fox jumped over the {position} dog
+                </Typography>
+              </Paper>
+            </Card>
+          )}
+        </PortalPopover>
+      </React.Fragment>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Unpositioned popover
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <React.Fragment>
+        <InlinePopover
+          contentProps={{ withChildrenProps: true}}
+          focusable
+          height={80}
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          {({ position }) => (
+            <Card raised full>
+              <Paper color="contrast" container="popover" contained scrollable>
+                <Typography as="div" size="s" variants="line-height-comfy">
+                  The quick brown fox jumped over the {position} dog
+                  The quick brown fox jumped over the {position} dog
+                  The quick brown fox jumped over the {position} dog
+                  The quick brown fox jumped over the {position} dog
+                  The quick brown fox jumped over the {position} dog
+                  The quick brown fox jumped over the {position} dog
+                </Typography>
+              </Paper>
+            </Card>
+          )}
+        </InlinePopover>
+      </React.Fragment>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Top and bottom popovers
+
+<Playground>
+  <ThemeWrapper>
+    <Flex
+      direction="row"
+      justifyContent="space-between"
+      alignContent="center"
+      style={{ margin: 'auto', height: '220px', width: '400px' }}
+      wrap
+    >
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 'none',
+          width: '33%',
+          margin: '8px 0',
+          alignItems: 'flex-start',
+        }}
+      >
+        <InlinePopover
+          height={80}
+          initialVisible
+          offset={{ vertical }}
+          position="top-left"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          <Paper color="contrast" container="popover" contained scrollable>
+            <Typography as="div" size="s" variants="line-height-comfy">
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </Typography>
+          </Paper>
+        </InlinePopover>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 'none',
+          width: '33%',
+          margin: '8px 0',
+          alignItems: 'center',
+        }}
+      >
+        <InlinePopover
+          height={80}
+          initialVisible
+          offset={{ vertical }}
+          position="top-center"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          <Paper color="contrast" container="popover" contained scrollable>
+            <Typography as="div" size="s" variants="line-height-comfy">
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </Typography>
+          </Paper>
+        </InlinePopover>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 'none',
+          width: '33%',
+          margin: '8px 0',
+          alignItems: 'flex-end',
+        }}
+      >
+        <InlinePopover
+          height={80}
+          initialVisible
+          offset={{ vertical }}
+          position="top-right"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          <Paper color="contrast" container="popover" contained scrollable>
+            <Typography as="div" size="s" variants="line-height-comfy">
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </Typography>
+          </Paper>
+        </InlinePopover>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 'none',
+          width: '33%',
+          margin: '8px 0',
+          alignItems: 'flex-start',
+        }}
+      >
+        <InlinePopover
+          height={80}
+          initialVisible
+          offset={{ vertical }}
+          position="bottom-left"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          <Paper color="contrast" container="popover" contained scrollable>
+            <Typography as="div" size="s" variants="line-height-comfy">
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </Typography>
+          </Paper>
+        </InlinePopover>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 'none',
+          width: '33%',
+          margin: '8px 0',
+          alignItems: 'center',
+        }}
+      >
+        <InlinePopover
+          height={80}
+          initialVisible
+          offset={{ vertical }}
+          position="bottom-center"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          <Paper color="contrast" container="popover" contained scrollable>
+            <Typography as="div" size="s" variants="line-height-comfy">
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </Typography>
+          </Paper>
+        </InlinePopover>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 'none',
+          width: '33%',
+          margin: '8px 0',
+          alignItems: 'flex-end',
+        }}
+      >
+        <InlinePopover
+          height={80}
+          initialVisible
+          offset={{ vertical }}
+          position="bottom-right"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          <Paper color="contrast" container="popover" contained scrollable>
+            <Typography as="div" size="s" variants="line-height-comfy">
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </Typography>
+          </Paper>
+        </InlinePopover>
+      </div>
+    </Flex>
+  </ThemeWrapper>
+</Playground>
+
+## Left and right popovers
+
+<Playground>
+  <ThemeWrapper>
+    <Flex direction="column" justifyContent="space-between" alignContent="center" style={{ height: '400px' }} wrap>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          flex: 'none',
+          height: '33%',
+          margin: '0 8px',
+          alignItems: 'flex-start',
+        }}
+      >
+        <InlinePopover
+          initialVisible
+          offset={{ horizontal }}
+          position="left-top"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          <Paper color="contrast" container="popover">
+            <Typography as="div" size="s" variants="line-height-comfy">
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </Typography>
+          </Paper>
+        </InlinePopover>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          flex: 'none',
+          height: '33%',
+          margin: '0 8px',
+          alignItems: 'center',
+        }}
+      >
+        <InlinePopover
+          initialVisible
+          offset={{ horizontal }}
+          position="left-center"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          <Paper color="contrast" container="popover">
+            <Typography as="div" size="s" variants="line-height-comfy">
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </Typography>
+          </Paper>
+        </InlinePopover>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          flex: 'none',
+          height: '33%',
+          margin: '0 8px',
+          alignItems: 'flex-end',
+        }}
+      >
+        <InlinePopover
+          initialVisible
+          offset={{ horizontal }}
+          position="left-bottom"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          <Paper color="contrast" container="popover">
+            <Typography as="div" size="s" variants="line-height-comfy">
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </Typography>
+          </Paper>
+        </InlinePopover>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          flex: 'none',
+          height: '33%',
+          margin: '0 8px',
+          alignItems: 'flex-start',
+        }}
+      >
+        <InlinePopover
+          initialVisible
+          offset={{ horizontal }}
+          position="right-top"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          <Paper color="contrast" container="popover">
+            <Typography as="div" size="s" variants="line-height-comfy">
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </Typography>
+          </Paper>
+        </InlinePopover>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          flex: 'none',
+          height: '33%',
+          margin: '0 8px',
+          alignItems: 'center',
+        }}
+      >
+        <InlinePopover
+          initialVisible
+          offset={{ horizontal }}
+          position="right-center"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          <Paper color="contrast" container="popover">
+            <Typography as="div" size="s" variants="line-height-comfy">
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </Typography>
+          </Paper>
+        </InlinePopover>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          flex: 'none',
+          height: '33%',
+          margin: '0 8px',
+          alignItems: 'flex-end',
+        }}
+      >
+        <InlinePopover
+          initialVisible
+          offset={{ horizontal }}
+          position="right-bottom"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          <Paper color="contrast" container="popover">
+            <Typography as="div" size="s" variants="line-height-comfy">
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </Typography>
+          </Paper>
+        </InlinePopover>
+      </div>
+    </Flex>
+  </ThemeWrapper>
+</Playground>
+
+## Top and bottom portals
+
+<Playground>
+  <ThemeWrapper>
+    <Flex
+      direction="row"
+      justifyContent="space-between"
+      alignContent="center"
+      style={{ margin: 'auto', height: '220px', width: '400px' }}
+      wrap
+    >
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 'none',
+          width: '33%',
+          margin: '8px 0',
+          alignItems: 'flex-start',
+        }}
+      >
+        <PortalPopover
+          height={80}
+          initialVisible
+          offset={{ vertical }}
+          position="top-left"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          <Paper color="contrast" container="popover" contained scrollable>
+            <Typography as="div" size="s" variants="line-height-comfy">
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </Typography>
+          </Paper>
+        </PortalPopover>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 'none',
+          width: '33%',
+          margin: '8px 0',
+          alignItems: 'center',
+        }}
+      >
+        <PortalPopover
+          height={80}
+          initialVisible
+          offset={{ vertical }}
+          position="top-center"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          <Paper color="contrast" container="popover" contained scrollable>
+            <Typography as="div" size="s" variants="line-height-comfy">
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </Typography>
+          </Paper>
+        </PortalPopover>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 'none',
+          width: '33%',
+          margin: '8px 0',
+          alignItems: 'flex-end',
+        }}
+      >
+        <PortalPopover
+          height={80}
+          initialVisible
+          offset={{ vertical }}
+          position="top-right"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          <Paper color="contrast" container="popover" contained scrollable>
+            <Typography as="div" size="s" variants="line-height-comfy">
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </Typography>
+          </Paper>
+        </PortalPopover>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 'none',
+          width: '33%',
+          margin: '8px 0',
+          alignItems: 'flex-start',
+        }}
+      >
+        <PortalPopover
+          height={80}
+          initialVisible
+          offset={{ vertical }}
+          position="bottom-left"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          <Paper color="contrast" container="popover" contained scrollable>
+            <Typography as="div" size="s" variants="line-height-comfy">
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </Typography>
+          </Paper>
+        </PortalPopover>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 'none',
+          width: '33%',
+          margin: '8px 0',
+          alignItems: 'center',
+        }}
+      >
+        <PortalPopover
+          height={80}
+          initialVisible
+          offset={{ vertical }}
+          position="bottom-center"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          <Paper color="contrast" container="popover" contained scrollable>
+            <Typography as="div" size="s" variants="line-height-comfy">
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </Typography>
+          </Paper>
+        </PortalPopover>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 'none',
+          width: '33%',
+          margin: '8px 0',
+          alignItems: 'flex-end',
+        }}
+      >
+        <PortalPopover
+          height={80}
+          initialVisible
+          offset={{ vertical }}
+          position="bottom-right"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          <Paper color="contrast" container="popover" contained scrollable>
+            <Typography as="div" size="s" variants="line-height-comfy">
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </Typography>
+          </Paper>
+        </PortalPopover>
+      </div>
+    </Flex>
+  </ThemeWrapper>
+</Playground>
+
+## Left and right portals
+
+<Playground>
+  <ThemeWrapper>
+    <Flex direction="column" justifyContent="space-between" alignContent="center" style={{ height: '400px' }} wrap>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          flex: 'none',
+          height: '33%',
+          margin: '0 8px',
+          alignItems: 'flex-start',
+        }}
+      >
+        <PortalPopover
+          initialVisible
+          offset={{ horizontal }}
+          position="left-top"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          <Paper color="contrast" container="popover">
+            <Typography as="div" size="s" variants="line-height-comfy">
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </Typography>
+          </Paper>
+        </PortalPopover>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          flex: 'none',
+          height: '33%',
+          margin: '0 8px',
+          alignItems: 'center',
+        }}
+      >
+        <PortalPopover
+          initialVisible
+          offset={{ horizontal }}
+          position="left-center"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          <Paper color="contrast" container="popover">
+            <Typography as="div" size="s" variants="line-height-comfy">
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </Typography>
+          </Paper>
+        </PortalPopover>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          flex: 'none',
+          height: '33%',
+          margin: '0 8px',
+          alignItems: 'flex-end',
+        }}
+      >
+        <PortalPopover
+          initialVisible
+          offset={{ horizontal }}
+          position="left-bottom"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          <Paper color="contrast" container="popover">
+            <Typography as="div" size="s" variants="line-height-comfy">
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </Typography>
+          </Paper>
+        </PortalPopover>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          flex: 'none',
+          height: '33%',
+          margin: '0 8px',
+          alignItems: 'flex-start',
+        }}
+      >
+        <PortalPopover
+          initialVisible
+          offset={{ horizontal }}
+          position="right-top"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          <Paper color="contrast" container="popover">
+            <Typography as="div" size="s" variants="line-height-comfy">
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </Typography>
+          </Paper>
+        </PortalPopover>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          flex: 'none',
+          height: '33%',
+          margin: '0 8px',
+          alignItems: 'center',
+        }}
+      >
+        <PortalPopover
+          initialVisible
+          offset={{ horizontal }}
+          position="right-center"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          <Paper color="contrast" container="popover">
+            <Typography as="div" size="s" variants="line-height-comfy">
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </Typography>
+          </Paper>
+        </PortalPopover>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          flex: 'none',
+          height: '33%',
+          margin: '0 8px',
+          alignItems: 'flex-end',
+        }}
+      >
+        <PortalPopover
+          initialVisible
+          offset={{ horizontal }}
+          position="right-bottom"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={300}
+        >
+          <Paper color="contrast" container="popover">
+            <Typography as="div" size="s" variants="line-height-comfy">
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </Typography>
+          </Paper>
+        </PortalPopover>
+      </div>
+    </Flex>
+  </ThemeWrapper>
+</Playground>
+
+## Fixed portal with redraw
+
+<Playground>
+  <ThemeWrapper>
+    <PortalPopover
+      contentProps={{ portal: 'fixed' }}
+      initialVisible
+      offset={{ vertical }}
+      position="right-center"
+      toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+      width={300}
+    >
+      <Paper color="contrast" container="popover">
+        <Typography as="div" size="s" variants="line-height-comfy">
+          The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox
+          jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy
+          dog The quick brown fox jumped over the lazy dog
+        </Typography>
+      </Paper>
+    </PortalPopover>
+  </ThemeWrapper>
+</Playground>
+
+## Popovers with focus
+
+<Playground>
+  <ThemeWrapper>
+    <Flex justifyContent="space-between">
+      <div>
+        <h3>Manual focus</h3>
+        <InlinePopover
+          contentProps={{ withChildrenProps: true}}
+          focusable
+          height={74}
+          offset={{vertical}}
+          position="right-center"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={150}
+        >
+          {({ focusRef }) => (
+            <Card raised full>
+              <Paper color="contrast" container="popover" contained scrollable>
+                <Typography as="div" variants="reset">
+                  <Rhythm my={1}>
+                    <Button onClick={() => console.log('clicked')} weight="text" contrast>Unfocused button</Button>
+                    <Button ref={focusRef} onClick={() => console.log('clicked')} weight="text" contrast>Focused button</Button>
+                  </Rhythm>
+                </Typography>
+              </Paper>
+            </Card>
+          )}
+        </InlinePopover>
+      </div>
+      <div>
+        <h3>Manual focus portal</h3>
+        <PortalPopover
+          contentProps={{ withChildrenProps: true}}
+          focusable
+          height={74}
+          offset={{vertical}}
+          position="right-center"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={150}
+        >
+          {({ focusRef }) => (
+            <Card raised full>
+              <Paper color="contrast" container="popover" contained scrollable>
+                <Typography as="div" variants="reset">
+                  <Rhythm my={1}>
+                    <Button onClick={() => console.log('clicked')} weight="text" contrast>Unfocused button</Button>
+                    <Button ref={focusRef} onClick={() => console.log('clicked')} weight="text" contrast>Focused button</Button>
+                  </Rhythm>
+                </Typography>
+              </Paper>
+            </Card>
+          )}
+        </PortalPopover>
+      </div>
+      <div>
+        <h3>Auto focus</h3>
+        <InlinePopover
+          focusable
+          height={74}
+          offset={{vertical}}
+          position="right-center"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={150}
+        >
+          <Card raised full>
+            <Paper color="contrast" container="popover" contained scrollable>
+              <Typography as="div" variants="reset">
+                <Rhythm my={1}>
+                  <Button onClick={() => console.log('clicked')} weight="text" contrast>Focused button</Button>
+                  <Button onClick={() => console.log('clicked')} weight="text" contrast>Unfocused button</Button>
+                </Rhythm>
+              </Typography>
+            </Paper>
+          </Card>
+        </InlinePopover>
+      </div>
+      <div>
+        <h3>Auto focus portal</h3>
+        <PortalPopover
+          focusable
+          height={74}
+          offset={{vertical}}
+          position="right-center"
+          toggler={<BlobbrIcon aria-label="BlobbrIcon" scale="xxlarge" />}
+          width={150}
+        >
+          <Card raised full>
+            <Paper color="contrast" container="popover" contained scrollable>
+              <Typography as="div" variants="reset">
+                <Rhythm my={1}>
+                  <Button onClick={() => console.log('clicked')} weight="text" contrast>Focused button</Button>
+                  <Button onClick={() => console.log('clicked')} weight="text" contrast>Unfocused button</Button>
+                </Rhythm>
+              </Typography>
+            </Paper>
+          </Card>
+        </PortalPopover>
+      </div>
+    </Flex>
+  </ThemeWrapper>
+</Playground>
+
+## \[props\]
+
+<Props of={Popover} />

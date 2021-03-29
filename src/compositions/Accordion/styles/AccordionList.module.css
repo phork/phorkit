@@ -1,0 +1,78 @@
+@import "../../../styles/common/mixins/addScrollbar.css";
+
+.accordionList {
+  @mixin addScrollbar var(--accordion-list-scrollbar-thumb-color), transparent, $scrollbar-small-width, $scrollbar-small-border-radius, $scrollbar-small-min-height, $scrollbar-small-offset;
+
+  color: var(--accordion-text-color);
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 1;
+
+  &:focus,
+  &.is-focused {
+    outline: none;
+  }
+}
+
+.accordionList--vertical {
+  flex-direction: column;
+}
+
+.accordion--horizontal {
+  flex-direction: row;
+}
+
+.accordionList--primary {
+  @mixin themed .accordionList {
+    --accordion-border-color: $theme-secondary-background-color;
+    --accordion-item-border-color: $theme-color-FG0-O5;
+    --accordion-item-focused-border-color: $theme-color-accent-primary;
+    --accordion-label-focused-text-color: $theme-color-accent-primary;
+    --accordion-list-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
+    --accordion-selected-text-color: $theme-secondary-text-color;
+    --accordion-text-color: $theme-tertiary-text-color;
+  }
+}
+
+.accordionList--contrast {
+  @mixin themed .accordionList {
+    --accordion-border-color: var(--contrast-color, $theme-contrast-background-color);
+    --accordion-item-border-color: $theme-contrast-quietest-color;
+    --accordion-item-focused-border-color: $theme-contrast-text-color;
+    --accordion-label-focused-text-color: $theme-contrast-text-color;
+    --accordion-list-scrollbar-thumb-color: $theme-contrast-scrollbar-thumb-color;
+    --accordion-selected-text-color: $theme-contrast-quiet-color;
+    --accordion-text-color: $theme-contrast-quiet-color;
+  }
+}
+
+.accordionItem {
+  display: flex;
+  flex: none;
+
+  .is-accessible.is-focused & {
+    &.is-focused {
+      outline: 1px solid var(--accordion-item-focused-border-color);
+      outline-offset: -1px;
+      z-index: 1;
+    }
+  }
+}
+
+.accordionItem--vertical {
+  border-bottom: 1px solid var(--accordion-item-border-color);
+  flex-direction: column;
+  width: 100%;
+}
+
+.accordionItem--horizontal {
+  border-right: 1px solid var(--accordion-item-border-color);
+  flex-direction: row;
+  flex-wrap: nowrap;
+  min-height: 100%;
+
+  &.is-selected {
+    flex: 1;
+  }
+}

@@ -1,0 +1,160 @@
+---
+name: Tag
+menu: Display
+route: /components/Tag
+---
+
+import { Playground, Props } from 'docz';
+import { ColoredTag, StyledTag, Tag, TagGroup } from '../index';
+import { IconButton } from 'components/Button';
+import { IconText } from 'components/IconText';
+import { Rhythm } from 'components/Rhythm';
+import { Flex } from 'components/Flex';
+import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { TimesIcon } from 'icons/TimesIcon';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { ColorLooper } from 'docs/helpers/ColorLooper';
+import { Looper } from 'docs/helpers/Looper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Tag" src="components/Tags" />
+
+## Pill tags
+
+_Note that the links will cause the page to reload so the state will appear unchanged._
+
+<Playground>
+  <ThemeWrapper>
+    <Rhythm m={2}>
+      <Tag label="Read only tag" />
+      <Tag label="Button tag" onClick={() => console.log('button tag')} actionable />
+      <Tag label="Link tag" as="a" href="#tag" actionable />
+    </Rhythm>
+  </ThemeWrapper>
+</Playground>
+
+## Brick tags
+
+_Note that the links will cause the page to reload so the state will appear unchanged._
+
+<Playground>
+  <ThemeWrapper>
+    <Rhythm m={2}>
+      <Tag shape="brick" label="Read only tag" />
+      <Tag shape="brick" label="Button tag" onClick={() => console.log('button tag')} actionable />
+      <Tag shape="brick" label="Link tag" as="a" href="#tag" actionable />
+    </Rhythm>
+  </ThemeWrapper>
+</Playground>
+
+## Variations
+
+### Contrast tag
+
+_Note that the links will cause the page to reload so the state will appear unchanged._
+
+<Playground>
+  <ThemeWrapper contrast>
+    <Rhythm m={2}>
+      <Tag contrast label="Read only tag" />
+      <Tag contrast label="Button tag" onClick={() => console.log('button tag')} actionable />
+      <Tag contrast label="Link tag" as="a" href="#tag" actionable />
+    </Rhythm>
+  </ThemeWrapper>
+</Playground>
+
+## Colored tags
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <Flex drection="row">
+        <Looper
+          list={[undefined, 'brick']}
+          render={shape => (
+            <Flex key={`shape-${shape}`} direction="column">
+              <ColorLooper
+                themeId={themeId}
+                group="primary"
+                render={({ id }) => (
+                  <Rhythm key={`${shape}-${id}`} mb={1} mr={4}>
+                    <TagGroup>
+                      <ColoredTag shape={shape} colorId={id} label={`Color tag ${id}`} actionable />
+                      <ColoredTag shape={shape} filled colorId={id} label={`Color tag ${id}`} actionable />
+                    </TagGroup>
+                  </Rhythm>
+                )}
+              />
+            </Flex>
+          )}
+        />
+      </Flex>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+### Custom tag labels
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <TagGroup>
+        <Tag
+          key="remove"
+          label={
+            <IconText
+              icon={
+                <IconButton
+                  aria-label="Remove tag"
+                  themeId={themeId}
+                  color="neutral"
+                  onClick={e => console.log('remove tag')}
+                >
+                  <TimesIcon scale="xsmall" />
+                </IconButton>
+              }
+              text={
+                <Rhythm mr={2}>
+                  <span>Hello world</span>
+                </Rhythm>
+              }
+              reversed
+            />
+          }
+        />
+        <Tag
+          key="hello"
+          label={
+            <IconText
+              icon={<BlobbrIcon scale="small" />}
+              text={
+                <Rhythm ml={2}>
+                  <span>Hello world</span>
+                </Rhythm>
+              }
+            />
+          }
+          onClick={() => console.log('tag')}
+          shape="brick"
+          actionable
+        />
+      </TagGroup>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+### Styled tag
+
+<Playground>
+  <StyledTag label="Hello world" textColor="#fff" backgroundColor="#556270" borderColor="#333" />
+</Playground>
+
+## \[props\]
+
+### Tag
+
+<Props of={Tag} />
+
+### ColoredTag
+
+<Props of={ColoredTag} />

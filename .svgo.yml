@@ -1,0 +1,51 @@
+plugins:
+  - removeDoctype
+  - removeXMLProcInst
+  - removeComments
+  - removeMetadata
+  - removeXMLNS
+  - removeEditorsNSData
+  - cleanupAttrs
+  - inlineStyles
+  - minifyStyles
+  - convertStyleToAttrs
+  - cleanupIDs
+  - prefixIds: 
+      prefixClassNames: false
+  - removeRasterImages
+  - removeUselessDefs
+  - cleanupNumericValues: false
+  - cleanupListOfValues
+  - convertColors
+  - removeUnknownsAndDefaults
+  - removeNonInheritableGroupAttrs
+  - removeUselessStrokeAndFill
+  - removeViewBox: false
+  - cleanupEnableBackground
+  - removeHiddenElems
+  - removeEmptyText
+  - convertShapeToPath
+  - convertEllipseToCircle
+  - moveElemsAttrsToGroup
+  - moveGroupAttrsToElems
+  - collapseGroups
+  - convertPathData
+  - convertTransform
+  - removeEmptyAttrs
+  - removeEmptyContainers
+  - mergePaths
+  - removeUnusedNS
+  - sortAttrs
+  - sortDefsChildren
+  - removeTitle: false
+  - removeDesc
+  - removeDimensions
+  - removeAttrs
+  - removeAttributesBySelector
+  - removeElementsByAttr
+  - addClassesToSVGElement
+  - removeStyleElement
+  - removeScriptElement
+  - addAttributesToSVGElement
+  - removeOffCanvasPaths
+  - reusePaths

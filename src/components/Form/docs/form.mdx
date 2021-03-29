@@ -1,0 +1,333 @@
+---
+name: All components
+menu: Forms
+route: /components/FormAll
+---
+
+import { Playground, Props } from 'docz';
+import {
+  Textbox,
+  Password,
+  Checkbox,
+  CheckboxGroup,
+  Label,
+  Radio,
+  RadioGroup,
+  Select,
+  Slider,
+  Stepper,
+  Textarea,
+  Toggle,
+} from '../index';
+import { FormDemo } from './helpers/FormDemo';
+import { Button, ButtonGroup } from 'components/Button';
+import { Rhythm } from 'components/Rhythm';
+import { Flex } from 'components/Flex';
+import { InlineDropdown } from 'compositions/Dropdown';
+import { SearchIcon } from 'icons/SearchIcon';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+
+# All form components
+
+<Playground>
+  <StateWrapper initialState={'underline'}>
+    {({ state: variant, setState: setVariant }) => (
+      <ThemeWrapper>
+        <FormDemo contrast={false} style={{maxWidth: '400px'}}>
+          {(onChange, setValues, values, contrast, { options, persistEvents }) => (
+            <React.Fragment>
+              <Rhythm mt={4} mb={2}>
+                <ButtonGroup
+                  buttons={[
+                    { id: 'underline', label: 'Underline', selected: variant === 'underline' },
+                    { id: 'filled', label: 'Filled', selected: variant === 'filled' },
+                    { id: 'outline', label: 'Outline', selected: variant === 'outline' },
+                  ]}
+                  color="primary"
+                  fullWidth
+                  onClick={(event, id) => setVariant(id)}
+                  overlap
+                  shape="brick"
+                  spacing="joined"
+                />
+              </Rhythm>
+              <Rhythm my={2}>
+                <Textbox
+                  contrast={contrast}
+                  id="demo-username"
+                  label="Username"
+                  name="username"
+                  onChange={onChange}
+                  persistEvents={persistEvents}
+                  transitional
+                  value={values.username}
+                  variant={variant}
+                />
+              </Rhythm>
+              <Rhythm my={2}>
+                <Password
+                  contrast={contrast}
+                  id="demo-password"
+                  label="Password"
+                  name="password"
+                  onChange={onChange}
+                  persistEvents={persistEvents}
+                  transitional
+                  value={values.password}
+                  variant={variant}
+                />
+              </Rhythm>
+              <Rhythm my={2}>
+                <Textbox
+                  clearable
+                  contrast={contrast}
+                  iconBefore={<SearchIcon />}
+                  id="demo-search"
+                  label="Search"
+                  name="search"
+                  onChange={(event, value) => setValues({...values, search: value})}
+                  persistEvents={persistEvents}
+                  transitional
+                  value={values.search}
+                  variant={variant}
+                />
+              </Rhythm>
+              <Rhythm my={2}>
+                <Textbox
+                  contrast={contrast}
+                  id="demo-danger"
+                  label="Dangerous"
+                  name="danger"
+                  onChange={onChange}
+                  persistEvents={persistEvents}
+                  transitional
+                  validity="danger"
+                  value={values.danger}
+                  variant={variant}
+                />
+              </Rhythm>
+              <Rhythm my={2}>
+                <Select
+                  contrast={contrast}
+                  id="demo-select"
+                  label="Choose a color"
+                  name="select"
+                  onChange={onChange}
+                  persistEvents={persistEvents}
+                  transitional
+                  value={values.select}
+                  options={options}
+                  variant={variant}
+                />
+              </Rhythm>
+              <Rhythm my={2}>
+                <Select
+                  contrast={contrast}
+                  id="demo-selected"
+                  label="Choose another color"
+                  name="selected"
+                  onChange={onChange}
+                  persistEvents={persistEvents}
+                  transitional
+                  value={values.selected}
+                  options={options}
+                  variant={variant}
+                />
+              </Rhythm>
+              <Rhythm my={2}>
+                <InlineDropdown
+                  inputVariant={variant}
+                  label="A custom dropdown"
+                  layout="raised"
+                  onChange={(value) => onChange({ target: { name: 'dropdown'}}, value)}
+                  options={options}
+                  transitional
+                />
+              </Rhythm>
+              <Rhythm my={2}>
+                <Textarea
+                  contrast={contrast}
+                  id="demo-textarea"
+                  label="Manifesto"
+                  name="manifesto"
+                  onChange={onChange}
+                  persistEvents={persistEvents}
+                  transitional
+                  value={values.manifesto}
+                  variant={variant}
+                />
+              </Rhythm>
+              <Rhythm my={2}>
+                <Checkbox
+                  checked={values.checkbox}
+                  contrast={contrast}
+                  id="demo-checkbox"
+                  name="checkbox"
+                  onChange={(event, checked) => setValues({...values, checkbox: checked})}
+                  persistEvents={persistEvents}
+                >
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget dui eu orci ultrices maximus eu eu ante. Vestibulum ligula velit, scelerisque vitae venenatis tempor, consectetur a orci. Aenean molestie eu tortor in pharetra. Nulla lobortis, sapien quis ornare venenatis, nunc libero finibus justo, non tempor nisi urna quis justo. Integer sit amet venenatis leo.
+                </Checkbox>
+              </Rhythm>
+              <Rhythm my={2} mr={2}>
+                <Radio
+                  checked={values.radio === 'one'}
+                  contrast={contrast}
+                  id="demo-radio1"
+                  name="radio"
+                  value="one"
+                  onChange={(event, checked, value) => checked && setValues({...values, radio: value })}
+                  persistEvents={persistEvents}
+                >
+                  Lorem ipsum dolor sit amet
+                </Radio>
+                <Radio
+                  checked={values.radio === 'two'}
+                  contrast={contrast}
+                  id="demo-radio2"
+                  name="radio"
+                  value="two"
+                  onChange={(event, checked, value) => checked && setValues({...values, radio: value })}
+                  persistEvents={persistEvents}
+                >
+                  Consectetur adipiscing elit
+                </Radio>
+              </Rhythm>
+              <Rhythm mt={4} mb={2} grouped>
+                <Flex direction="row" alignItems="flex-end" justifyContent="space-between" flexible>
+                  <div>
+                    <Label
+                      as="legend"
+                      contrast={contrast}
+                      strength="legend"
+                    >
+                      Pick a big number
+                    </Label>
+                    <Stepper
+                      contrast={contrast}
+                      id="demo-stepper1"
+                      inputWidth={100}
+                      max={10000}
+                      min={0}
+                      name="stepper1"
+                      onChange={(event, value) => setValues({...values, stepper1: value})}
+                      persistEvents={persistEvents}
+                      step={100}
+                      value={values.stepper1}
+                      width="50%"
+                      variant={variant}
+                    />
+                  </div>
+                  <Stepper
+                    contrast={contrast}
+                    id="demo-stepper2"
+                    label="Pick another number"
+                    max={100}
+                    min={0}
+                    step={10}
+                    name="stepper2"
+                    onChange={(event, value) => setValues({...values, stepper2: value})}
+                    persistEvents={persistEvents}
+                    value={values.stepper2}
+                    width="50%"
+                    variant={variant}
+                  />
+                </Flex>
+              </Rhythm>
+              <Rhythm mt={4} mb={2}>
+                <CheckboxGroup
+                  contrast={contrast}
+                  id="demo-checkbox-group"
+                  layout="stacked"
+                  legend="Super fantastic label says what?"
+                  name="checkboxes"
+                  onChange={(event, value) => setValues({...values, checkboxes: value})}
+                  values={values.checkboxes}
+                  checkboxes={[{
+                    id: "demo-checkbox-group1",
+                    name: "checkbox-group1",
+                    value: "one",
+                    label: 'Super fantastic label one',
+                  }, {
+                    id: "demo-checkbox-group2",
+                    name: "checkbox-group2",
+                    value: "two",
+                    label: 'Super fantastic label two',
+                  }, {
+                    id: "demo-checkbox-group3",
+                    name: "checkbox-group3",
+                    value: "three",
+                    label: 'Super fantastic label three',
+                  }]}
+                />
+              </Rhythm>
+              <Rhythm mt={4} mb={2}>
+                <RadioGroup
+                  contrast={contrast}
+                  id="demo-radio-group"
+                  layout="inline"
+                  legend="Super fantastic label says what?"
+                  name="radios"
+                  onChange={(event, value) => setValues({...values, radios: value})}
+                  value={values.radios}
+                  radios={[{
+                    id: "demo-radio-group1",
+                    value: "one",
+                    label: 'Super fantastic label one',
+                  }, {
+                    id: "demo-radio-group2",
+                    value: "two",
+                    label: 'Super fantastic label two',
+                  }, {
+                    id: "demo-radio-group3",
+                    value: "three",
+                    label: 'Super fantastic label three',
+                  }]}
+                />
+              </Rhythm>
+              <Rhythm mt={4} mb={2}>
+                <Slider
+                  contrast={contrast}
+                  formatValue={value => value + '%'}
+                  id="demo-slider"
+                  max={100}
+                  min={0}
+                  name="slider"
+                  onChange={(event, value) => setValues({...values, slider: value})}
+                  persistEvents={persistEvents}
+                  value={values.slider}
+                  valuePosition="top"
+                  width="100%"
+                >
+                  Percentage
+                </Slider>
+              </Rhythm>
+              <Flex justifyContent="space-between" alignItems="center" wrap>
+                <Toggle
+                  checked={values.toggle}
+                  contrast={contrast}
+                  id="demo-toggle"
+                  name="toggle"
+                  onChange={(event, checked) => setValues({...values, toggle: checked})}
+                  persistEvents={persistEvents}
+                  value={true}
+                >
+                  Activate super powers
+                </Toggle>
+                <Rhythm mr={-4}>
+                  <Flex flexible alignItems="center" justifyContent="flex-end">
+                    <Rhythm my={1} mr={4}>
+                      <Button weight="text" color="neutral">Cancel</Button>
+                      <Button type="submit" color="primary">Submit</Button>
+                    </Rhythm>
+                  </Flex>
+                </Rhythm>
+              </Flex>
+            </React.Fragment>
+          )}
+        </FormDemo>
+      </ThemeWrapper>
+    )}
+  </StateWrapper>
+</Playground>

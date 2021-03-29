@@ -1,0 +1,166 @@
+@import "../../../styles/common/mixins/addScrollbar.css";
+
+.paper {
+  background-color: var(--paper-background-color);
+  border-color: var(--paper-border-color);
+  color: var(--paper-text-color);
+  position: relative;
+}
+
+.paper--full {
+  height: 100%;
+  width: 100%;
+}
+
+.paper--contained {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.paper--scrollable {
+  @mixin addScrollbar var(--paper-scrollbar-thumb-color);
+
+  &.paper--xs-scrollbar {
+    @mixin addScrollbar var(--paper-scrollbar-thumb-color), var(--scrollbar-track-color, transparent), 2px, 0, 32px, 0;
+  }
+  &.paper--s-scrollbar {
+    @mixin addScrollbar var(--paper-scrollbar-thumb-color), var(--scrollbar-track-color, transparent), 4px, 0, 32px, 0;
+  }
+
+  overflow: auto;
+}
+
+.paper--flexible {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.paper--bordered {
+  border-width: 1px;
+  border-style: solid;
+}
+
+.paper--narrowPage {
+  padding: 20px 70px;
+}
+
+.paper--page {
+  padding: 20px 40px;
+}
+
+.paper--panel {
+  padding: 40px;
+}
+
+.paper--popover {
+  padding: 12px 20px;
+}
+
+.paper--banner {
+  padding: 16px 40px;
+}
+
+.paper--primary {
+  @mixin themed .paper {
+    background-color: $theme-primary-background-color;
+    border-color: $theme-primary-border-color;
+    color: $theme-primary-text-color;
+    
+    --paper-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
+  }
+}
+
+.paper--secondary {
+  @mixin themed .paper {
+    background-color: $theme-secondary-background-color;
+    border-color: $theme-secondary-border-color;
+    color: $theme-secondary-text-color;
+
+    --paper-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
+  }
+}
+
+.paper--tertiary {
+  @mixin themed .paper {
+    background-color: $theme-tertiary-background-color;
+    border-color: $theme-tertiary-border-color;
+    color: $theme-tertiary-text-color;
+
+    --paper-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
+  }
+}
+
+.paper--transparent {
+  @mixin themed .paper {
+    background-color: transparent;
+    border-color: $theme-primary-border-color;
+    color: currentColor;
+    
+    --paper-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
+  }
+}
+
+.paper--contrast {
+  @mixin themed .paper {
+    background-color: var(--contrast-color, $theme-contrast-background-color);
+    border-color: $theme-contrast-border-color;
+    color: $theme-contrast-text-color;
+
+    --paper-scrollbar-thumb-color: $theme-contrast-scrollbar-thumb-color;
+  }
+}
+
+.paper--success {
+  @mixin themed .paper {
+    background-color: $theme-color-success;
+    color: $theme-color-success-contrast;
+
+    --paper-scrollbar-thumb-color: $theme-contrast-scrollbar-thumb-color;
+  }
+
+  &.paper--light {
+    border-color: $light-color-success-D10;
+  }
+
+  &.paper--dark {
+    border-color: $dark-color-success-L10;
+  }
+}
+
+.paper--warning {
+  @mixin themed .paper {
+    background-color: $theme-color-warning;
+    color: $theme-color-warning-contrast;
+
+    --paper-scrollbar-thumb-color: $theme-contrast-scrollbar-thumb-color;
+  }
+
+  &.paper--light {
+    border-color: $light-color-warning-D10;
+  }
+
+  &.paper--dark {
+    border-color: $dark-color-warning-L10;
+  }
+}
+
+.paper--danger {
+  @mixin themed .paper {
+    background-color: $theme-color-danger;
+    color: $theme-color-danger-contrast;
+
+    --paper-scrollbar-thumb-color: $theme-contrast-scrollbar-thumb-color;
+  }
+
+  &.paper--light {
+    border-color: $light-color-danger-D10;
+  }
+
+  &.paper--dark {
+    border-color: $dark-color-danger-L10;
+  }
+}

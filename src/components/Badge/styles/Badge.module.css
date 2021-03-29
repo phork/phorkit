@@ -1,0 +1,126 @@
+/**
+ * 1. Badges usually go on top of things.
+ * 2. Add transitions for when a badge changes from
+ *    a dot to a marker, for example. Or from danger
+ *    to success.
+ */
+.badge {
+  align-items: center;
+  background-color: var(--badge-background-color);
+  color: var(--badge-text-color);
+  display: flex;
+  flex: none;
+  flex-direction: row;
+  font-size: $font-size-xxs;
+  font-weight: 700;
+  justify-content: center;
+  transition-duration: 300ms; /* [1] */
+  transition-property: width, height, background-color; /* [1] */
+  transition-timing-function: ease-in-out; /* [1] */
+  white-space: nowrap;
+  z-index: 1; /* [1] */
+}
+
+.badge--outlined {
+  border: 1px solid currentColor;
+}
+
+.badge--marker {
+  border-radius: 100%;
+  width: 8px;
+  height: 8px;
+}
+
+.badge--point {
+  border-radius: 100%;
+  width: 4px;
+  height: 4px;
+}
+
+/**
+ * 1. Set an arbitrarily large border radius
+ *    to force the badge into pill or circle
+ *    format. Note that 100% will not work.
+ */
+.badge--count {
+  border-radius: 500px; /* [1] */
+  min-height: 24px;
+  min-width: 24px;
+  padding: 4px;
+}
+
+.badge--label {
+  border-radius: $border-radius-s;
+  height: 1.7em;
+  padding: 2px 8px;
+}
+
+.badge--topLeft {
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: translate(-50%, -50%);
+}
+
+.badge--topRight {
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translate(50%, -50%);
+}
+
+.badge--bottomLeft {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  transform: translate(-50%, 50%);
+}
+
+.badge--bottomRight {
+  bottom: 0;
+  position: absolute;
+  right: 0;
+  transform: translate(50%, 50%);
+}
+
+.badge--success {
+  @mixin themed .badge {
+    background-color: $theme-color-success;
+    color: $theme-color-success-contrast;
+  }
+}
+
+.badge--warning {
+  @mixin themed .badge {
+    background-color: $theme-color-warning;
+    color: $theme-color-warning-contrast;
+  }
+}
+
+.badge--danger {
+  @mixin themed .badge {
+    background-color: $theme-color-danger;
+    color: $theme-color-danger-contrast;
+  }
+}
+
+.badge--primary {
+  @mixin themed .badge {
+    background-color: $theme-color-accent-primary;
+    color: $theme-color-accent-primary-contrast;
+  }
+}
+
+.badge--contrast {
+  @mixin themed .badge {
+    background-color: $theme-contrast-text-color;
+    color: var(--contrast-color, $theme-contrast-background-color);
+  }
+}
+
+.badge--neutral {
+  @mixin themed .badge {
+    background-color: $theme-color-neutral;
+    color: $theme-color-neutral-contrast;
+  }
+}

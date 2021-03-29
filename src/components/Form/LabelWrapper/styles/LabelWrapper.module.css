@@ -1,0 +1,51 @@
+.labelWrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.labelWrapper--horizontal {
+  align-items: center;
+
+  &:not(.labelWrapper--reverse) {
+    flex-direction: row;
+
+    .labelWrapper__label {
+      margin-right: 12px;
+    }
+  }
+
+  &.labelWrapper--reverse {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+.labelWrapper--vertical {
+  align-items: flex-start;
+  justify-content: flex-end;
+
+  &:not(.labelWrapper--reverse) {
+    flex-direction: column;
+
+    .labelWrapper__label {
+      margin-bottom: 8px;
+    }
+  }
+
+  &.labelWrapper--reverse {
+    flex-direction: column-reverse;
+
+    .labelWrapper__label {
+      margin-top: 8px;
+    }
+  }
+}
+
+.labelWrapper--fullWidth {
+  width: 100%;
+}
+
+.labelWrapper--spread {
+  justify-content: space-between;
+}

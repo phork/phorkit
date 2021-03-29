@@ -1,0 +1,129 @@
+.progress {
+  background-color: var(--progress-background-color);
+  display: flex;
+  flex-direction: row;
+  flex: none;
+  height: var(--progress-height);
+  overflow: hidden;
+  width: 100%;
+}
+
+.progress--primary,
+.progress--success,
+.progress--warning,
+.progress--danger {
+  @mixin themed .progress {
+    background-color: $theme-color-BG20;
+  }
+}
+
+.progress--contrast {
+  @mixin themed .progress {
+    background-color: $theme-contrast-quietest-color;
+  }
+}
+
+.progress--quiet {
+  opacity: .3;
+}
+
+.progress--small {
+  --progress-height: 1px;
+}
+
+.progress--medium {
+  --progress-height: 3px;
+}
+
+.progress--large {
+  --progress-height: 8px;
+}
+
+.progress--pill {
+  border-radius: var(--progress-height);
+
+  .progressSegment:last-child {
+    border-top-right-radius: var(--progress-height);
+    border-bottom-right-radius: var(--progress-height);
+  }
+}
+
+.progress--floating {
+  background-color: transparent;
+}
+
+/**
+ * 1. Use background not background-color here to allow
+ *    for gradients.
+ */
+.progressSegment {
+  background: var(--progress-segment-color); /* [1] */
+  display: block;
+  flex: none;
+  height: 100%;
+  transition: width 200ms ease, background-color 200ms ease;
+  width: 0;
+}
+
+.progressSegment--primary {
+  @mixin themed .progressSegment {
+    background-color: $theme-color-accent-primary;
+  }
+}
+
+.progressSegment--success {
+  @mixin themed .progressSegment {
+    background-color: $theme-color-success;
+  }
+}
+
+.progressSegment--warning {
+  @mixin themed .progressSegment {
+    background-color: $theme-color-warning;
+  }
+}
+
+.progressSegment--danger {
+  @mixin themed .progressSegment {
+    background-color: $theme-color-danger;
+  }
+}
+
+.progressSegment--neutral {
+  @mixin themed .progressSegment {
+    background-color: $theme-color-neutral;
+  }
+}
+
+.progressSegment--contrast {
+  @mixin themed .progressSegment {
+    background-color: $theme-contrast-accent-color;
+  }
+}
+
+@keyframes progressSegmentBackground {
+  0% { background-position: left; }
+  50% { background-position: right; }
+}
+
+.progressSegment--animated {
+  animation: progressSegmentBackground 100s infinite;
+  background-image: linear-gradient(
+    45deg, var(--progress-segment-animation-color) 25%,
+    transparent 25%,
+    transparent 50%,
+    var(--progress-segment-animation-color) 50%,
+    var(--progress-segment-animation-color) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+
+  &.progressSegment--light {
+    --progress-segment-animation-color: rgba(255, 255, 255, .15);
+  }
+
+  &.progressSegment--dark {
+    --progress-segment-animation-color: rgba(0, 0, 0, .1);
+  }
+}

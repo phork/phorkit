@@ -1,0 +1,71 @@
+import '@testing-library/jest-dom/extend-expect';
+import { fireEvent, render } from '@testing-library/react';
+import { RadioGroup } from 'lib';
+import * as React from 'react';
+
+const items = [
+  {
+    id: 'first',
+    name: 'first',
+    value: 'first',
+    label: 'First',
+  },
+  {
+    id: 'second',
+    name: 'second',
+    value: 'second',
+    label: 'Second',
+  },
+  {
+    id: 'third',
+    name: 'third',
+    value: 'third',
+    label: 'Third',
+  },
+];
+
+describe('<RadioGroup />', () => {
+  it('should render a basic radio group', () => {
+    const { container, getByText } = render(
+      <RadioGroup
+        layout="stacked"
+        legend="Legendary"
+        name="radio"
+        onChange={() => {}}
+        radios={items}
+        value={'first'}
+      />,
+    );
+    expect(container.querySelectorAll('input[type="radio"]').length).toBe(3);
+    expect(getByText('First')).toBeTruthy();
+    expect(getByText('Second')).toBeTruthy();
+    expect(getByText('Third')).toBeTruthy();
+  });
+
+  it('should be clickable', () => {
+    const onChange = jest.fn();
+    const { getAllByRole } = render(
+      <RadioGroup
+        layout="stacked"
+        legend="Legendary"
+        name="radio"
+        onChange={onChange}
+        radios={items}
+        value={'third'}
+      />,
+    );
+
+    expect(onChange).not.toHaveBeenCalled();
+
+    const radios = getAllByRole('radio');
+    fireEvent.click(radios[0]);
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toEqual('first');
+
+    fireEvent.click(radios[1]);
+
+    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toEqual('second');
+  });
+});

@@ -1,0 +1,52 @@
+import styled from '@emotion/styled';
+import { Navigation, NavigationProps } from './Navigation';
+
+export interface StyledNavigationProps extends NavigationProps {
+  focusedBorderColor?: string;
+  itemBackgroundColor?: string;
+  itemFocusedBackgroundColor?: string;
+  itemFocusedBorderColor?: string;
+  itemFocusedSelectedBackgroundColor?: string;
+  itemFocusedSelectedTextColor?: string;
+  itemFocusedTextColor?: string;
+  itemHoveredBorderColor?: string;
+  itemSelectedBackgroundColor?: string;
+  itemSelectedBorderColor?: string;
+  itemSelectedTextColor?: string;
+  itemTextColor?: string;
+}
+
+export const StyledNavigation = styled(Navigation, {
+  shouldForwardProp: (prop: string) =>
+    ![
+      'focusedBorderColor',
+      'itemBackgroundColor',
+      'itemFocusedBackgroundColor',
+      'itemFocusedBorderColor',
+      'itemFocusedSelectedBackgroundColor',
+      'itemFocusedSelectedTextColor',
+      'itemFocusedTextColor',
+      'itemHoveredBorderColor',
+      'itemSelectedBackgroundColor',
+      'itemSelectedBorderColor',
+      'itemSelectedTextColor',
+      'itemTextColor',
+    ].includes(prop),
+})<StyledNavigationProps>`
+  --navigation-focused-border-color: ${props => props.focusedBorderColor};
+  --navigation-item-background-color: ${props => props.itemBackgroundColor};
+  --navigation-item-focused-background-color: ${props => props.itemFocusedBackgroundColor};
+  --navigation-item-focused-border-color: ${props => props.itemFocusedBorderColor};
+  --navigation-item-focused-selected-background-color: ${props => props.itemFocusedSelectedBackgroundColor};
+  --navigation-item-focused-selected-text-color: ${props => props.itemFocusedSelectedTextColor};
+  --navigation-item-focused-text-color: ${props => props.itemFocusedTextColor};
+  --navigation-item-hovered-border-color: ${props => props.itemHoveredBorderColor};
+  --navigation-item-selected-background-color: ${props => props.itemSelectedBackgroundColor};
+  --navigation-item-selected-border-color: ${props => props.itemSelectedBorderColor};
+  --navigation-item-selected-text-color: ${props => props.itemSelectedTextColor};
+  --navigation-item-text-color: ${props => props.itemTextColor};
+`;
+
+StyledNavigation.defaultProps = {
+  unthemed: true,
+};

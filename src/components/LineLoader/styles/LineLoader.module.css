@@ -1,0 +1,49 @@
+.lineLoader {
+  height: 3px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  &:after {
+    background-color: var(--line-loader-color);
+    content: '';
+    height: 100%;
+    left: var(--line-loader-left, 0);
+    position: absolute;
+    right: var(--line-loader-right, 100%);
+  }
+
+  @mixin themed .lineLoader {
+    &:after {
+      background-color: $theme-primary-accent-color;
+    }
+  }
+}
+
+.lineLoader--top {
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+
+.lineLoader--bottom {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  z-index: 10;
+}
+
+.lineLoader--fixed {
+  position: fixed;
+}
+
+.lineLoader--contrast {
+  @mixin themed .lineLoader {
+    &:after {
+      background-color: $theme-contrast-accent-color;
+    }
+  }
+}

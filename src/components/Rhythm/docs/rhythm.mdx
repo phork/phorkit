@@ -1,0 +1,98 @@
+---
+name: Rhythm
+menu: Utilities
+route: /components/Rhythm
+---
+
+import { Playground, Props } from 'docz';
+import { Flex } from 'components/Flex';
+import { Rhythm } from '../index';
+import { RhythmBox } from './helpers/RhythmBox';
+import { Looper } from 'docs/helpers/Looper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Rhythm" src="components/Rhythm" />
+
+## Padding
+
+<Playground>
+  <Looper
+    start={0}
+    end={12}
+    render={i => (
+      <Rhythm key={i} p={i}>
+        <RhythmBox inline>{i}</RhythmBox>
+      </Rhythm>
+    )}
+  />
+</Playground>
+
+## Padding grouped
+
+<Playground>
+  <Rhythm p={4} style={{ background: '#556270' }} grouped>
+    <Looper start={0} end={12} render={i => <RhythmBox inline>{i}</RhythmBox>} />
+  </Rhythm>
+</Playground>
+
+## Margins
+
+<Playground>
+  <Looper
+    start={0}
+    end={12}
+    render={i => (
+      <Rhythm key={i} m={i}>
+        <RhythmBox height={20} width={20} inline>
+          {i}
+        </RhythmBox>
+      </Rhythm>
+    )}
+  />
+</Playground>
+
+## Margin grouped
+
+<Playground>
+  <Rhythm m={4} style={{ background: '#556270' }} grouped>
+    <Looper start={0} end={12} render={i => <RhythmBox inline>{i}</RhythmBox>} />
+  </Rhythm>
+</Playground>
+
+## Individual margins
+
+<Playground>
+  <Looper
+    start={0}
+    end={12}
+    render={i => (
+      <Rhythm key={i} mt={i} mb={i} ml={i} mr={i}>
+        <RhythmBox height={20} width={20} inline>
+          {i}
+        </RhythmBox>
+      </Rhythm>
+    )}
+  />
+</Playground>
+
+## Individual negative margins
+
+<Playground>
+  <Looper
+    start={-4}
+    end={0}
+    render={i => (
+      <div key={i} style={{ margin: '32px' }}>
+        <Rhythm mt={i} mb={i} ml={i} mr={i}>
+          <RhythmBox height={40} width={40}>
+            {i}
+          </RhythmBox>
+        </Rhythm>
+      </div>
+    )}
+  />
+</Playground>
+
+## \[props\]
+
+<Props of={Rhythm} />

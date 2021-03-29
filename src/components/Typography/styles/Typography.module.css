@@ -1,0 +1,28 @@
+@import "./align.css";
+@import "./colors.css";
+@import "./elements.css";
+@import "./sizes.css";
+@import "./utils.css";
+@import "./variants.css";
+@import "./weight.css";
+
+/**
+ * This must be after all other definitions.
+ */
+.text-reset {
+  font-size: $font-size-m;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: normal;
+  text-align: left;
+  text-decoration: none;
+  text-transform: none;
+  white-space: normal;
+}
+
+.typographyWithSvg {
+  svg {
+    float: left;
+  }
+}

@@ -1,0 +1,33 @@
+name: Docs
+
+on:
+  release:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '15'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build library
+        run: yarn build-docs
+
+      - uses: burnett01/rsync-deployments@4.1
+        with:
+          switches: -avz --delete
+          path: .docz/dist
+          remote_path: ./phorkit/
+          remote_host: phork.org
+          remote_user: phorkit
+          remote_key: ${{ secrets.DEPLOY_KEY }}

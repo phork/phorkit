@@ -1,0 +1,345 @@
+ol.unlist,
+ul.unlist {
+  @mixin unlist;
+
+  &.unlist--inline {
+    > * {
+      display: inline-block;
+    }
+  }
+}
+
+.list {
+  @mixin unlist;
+}
+
+.listItem {
+  cursor: pointer;
+  display: block;
+
+  .list--inline & {
+    display: inline-block;
+  }
+}
+
+.list,
+.listItem {
+  &.is-inactive {
+    pointer-events: none;
+  }
+}
+
+/**
+ * Don't raise the shadowed and unboxed list items
+ * on hover or focus.
+ */
+.list--bordered,
+.list--shadowed {
+  --list-item-focused-z-index: 2;
+  --list-item-hovered-z-index: 2;
+}
+
+.list--divided,
+.list--bordered,
+.list--shadowed {
+  &:focus,
+  &.is-focused {
+    &.is-accessible {
+      outline: 1px solid var(--list-focused-border-color);
+    }
+  }
+}
+
+.list--divided,
+.list--bordered,
+.list--shadowed,
+.list--unboxed {
+  &:focus,
+  &.is-focused {
+    outline: none;
+  }
+
+  .listItem {
+    background-color: var(--list-item-background-color);
+    color: var(--list-item-text-color);
+    font-size: $font-size-m;
+    padding: 8px 16px;
+    position: relative;
+    text-align: left;
+
+    &.listItem--mimicSelectOnFocus:focus,
+    &.listItem--mimicSelectOnFocus.is-focused,
+    &.is-selected {
+      background-color: var(--list-item-selected-background-color);
+      color: var(--list-item-selected-text-color);
+      z-index: 1;
+    }
+    
+    &:active,
+    &.is-active {
+      background-color: var(--list-item-selected-background-color);
+      color: var(--list-item-selected-text-color);
+      z-index: 1;
+    }
+
+    &:disabled,
+    &.is-disabled {
+      pointer-events: none;
+
+      .listItem__content {
+        opacity: .5;
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &:not(.is-accessible) {
+    .listItem {
+      &:hover,
+      &.is-hovered {
+        &:not(:active):not(.is-selected) {
+          color: var(--list-item-focused-text-color);
+          z-index: var(--list-item-focused-z-index, 0);
+        }
+      }
+    }
+  }
+
+  /**
+   * 1. Purposefully exclude :focus here because the browser
+   *    focus is no longer relevant in accessible mode.
+   */
+  &.is-accessible:focus,
+  &.is-accessible.is-focused {
+    .listItem:not(.listItem--mimicSelectOnFocus) {
+      &.is-focused { /* [1] */
+        &:not(:active):not(.is-selected) {
+          color: var(--list-item-focused-text-color);
+          z-index: var(--list-item-focused-z-index, 0);
+        }
+      }
+    }
+  }
+}
+
+.list--xsmall {
+  .listItem {
+    font-size: $font-size-s;
+    padding: 4px 12px;
+  }
+}
+
+.list--small {
+  .listItem {
+    font-size: $font-size-m;
+    padding: 4px 16px;
+  }
+}
+
+.list--medium {
+  .listItem {
+    font-size: $font-size-m;
+    padding: 8px 16px;
+  }
+}
+
+.list--divided {
+  &.list--inline {
+    .listItem {
+      border-left: 1px solid var(--list-item-border-color);
+      border-right: 1px solid var(--list-item-border-color);
+    
+      &:first-child {
+        border-left: none;
+      }
+
+      &:last-child {
+        border-right: none;
+      }
+
+      &:not(:first-child) {
+        border-left: none;
+      }
+    }
+  }
+
+  &:not(.list--inline) {
+    .listItem {
+      border-top: 1px solid var(--list-item-border-color);
+      border-bottom: 1px solid var(--list-item-border-color);
+    
+      &:first-child {
+        border-top: none;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:not(:first-child) {
+        border-top: none;
+      }
+    }
+  }
+}
+
+/**
+ * It's preferable to use a shadowed list but if the list's
+ * container has the overflow cut off then the outline will
+ * be hidden so borders are necessary.
+ *
+ * 1. Move each child up to overlap the border of its
+ *    previous sibling. Don't remove the border because
+ *    it will break the border highlighting.
+ */
+.list--bordered {
+  .listItem {
+    border: 1px solid var(--list-item-border-color);
+
+    &.is-selected {
+      border-color: var(--list-item-focused-border-color);
+    }
+
+    &:active {
+      border-color: var(--list-item-focused-border-color);
+    }
+  }
+
+  &:not(.is-accessible) {
+    .listItem {
+      &:hover,
+      &.is-hovered {
+        &:not(:active):not(.is-selected) {
+          border-color: var(--list-item-focused-border-color);
+        }
+      }
+    }
+  }
+
+  /**
+   * 1. Purposefully exclude :focus here because the browser
+   *    focus is no longer relevant in accessible mode.
+   */
+  &.is-accessible:focus,
+  &.is-accessible.is-focused {
+    .listItem:not(.listItem--mimicSelectOnFocus) {
+      &.is-focused { /* [1] */
+        &:not(:active):not(.is-selected) {
+          border-color: var(--list-item-focused-border-color);
+        }
+      }
+    }
+  }
+
+  &.list--inline {
+    .listItem {
+      &:not(:first-child) {
+        margin-left: -1px; /* [1] */
+      }
+    }
+
+    &.list--open {
+      .listItem {
+        border-top: 0;
+        border-bottom: 0;
+      }
+    }
+  }
+
+  &:not(.list--inline) {
+    .listItem {
+      &:not(:first-child) {
+        margin-top: -1px; /* [1] */
+      }
+    }
+
+    &.list--open {
+      .listItem {
+        border-left: 0;
+        border-right: 0;
+      }
+    }
+  }
+}
+
+.list--shadowed {
+  .listItem {
+    @mixin shadowBorder var(--list-item-border-color);
+    
+    &.is-selected {
+      @mixin shadowBorder var(--list-item-focused-border-color);
+    }
+
+    &:active {
+      @mixin shadowBorder var(--list-item-focused-border-color);
+    }
+  }
+
+  &:not(.is-accessible) {
+    .listItem {
+      &:hover,
+      &.is-hovered {
+        &:not(:active):not(.is-selected) {
+          @mixin shadowBorder var(--list-item-focused-border-color);
+        }
+      }
+    }
+  }
+  
+  /**
+   * 1. Purposefully exclude :focus here because the browser
+   *    focus is no longer relevant in accessible mode.
+   */
+  &.is-accessible:focus,
+  &.is-accessible.is-focused {
+    .listItem:not(.listItem--mimicSelectOnFocus) {
+      &.is-focused { /* [1] */
+        &:not(:active):not(.is-selected) {
+          @mixin shadowBorder var(--list-item-focused-border-color);
+        }
+      }
+    }
+  }
+}
+
+.list--primary {
+  @mixin themed .list {
+    --list-focused-border-color: $theme-secondary-accent-color;
+    --list-item-selected-background-color: $theme-secondary-accent-color;
+    --list-item-selected-text-color: $theme-color-accent-primary-contrast;
+    --list-item-background-color: $theme-secondary-background-color;
+    --list-item-border-color: $theme-secondary-border-color;
+    --list-item-focused-border-color: $theme-secondary-accent-color;
+    --list-item-focused-text-color: $theme-secondary-accent-color;
+    --list-item-text-color: $theme-secondary-quiet-color;
+  }
+}
+
+.list--minimal {
+  @mixin themed .list {
+    --list-focused-border-color: $theme-secondary-border-color;
+    --list-item-selected-background-color: $theme-color-BG40-O10;
+    --list-item-selected-text-color: $theme-secondary-text-color;
+    --list-item-background-color: $theme-color-BG0;
+    --list-item-border-color: $theme-secondary-border-color;
+    --list-item-focused-border-color: $theme-secondary-border-color;
+    --list-item-focused-text-color: $theme-secondary-text-color;
+    --list-item-text-color: $theme-secondary-quiet-color;
+  }
+}
+
+.list--contrast {
+  @mixin themed .list {
+    --list-focused-border-color: $theme-contrast-accent-color;
+    --list-item-selected-background-color: $theme-contrast-accent-color;
+    --list-item-selected-text-color: var(--contrast-color, $theme-contrast-background-color);
+    --list-item-background-color: var(--contrast-color, $theme-contrast-background-color);
+    --list-item-border-color: $theme-contrast-border-color;
+    --list-item-focused-border-color: $theme-contrast-accent-color;
+    --list-item-focused-text-color: $theme-contrast-quiet-color;
+    --list-item-text-color: $theme-contrast-text-color;
+  }
+}

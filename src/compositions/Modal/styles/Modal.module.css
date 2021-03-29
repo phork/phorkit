@@ -1,0 +1,110 @@
+@import "../../../styles/common/mixins/addScrollbar.css";
+
+.modal {
+  @mixin addScrollbar var(--modal-scrollbar-thumb-color);
+
+  background-color: var(--modal-background-color);
+  border-radius: $border-radius-s;
+  box-shadow: var(--modal-box-shadow);
+  color: var(--modal-text-color);
+  display: flex;
+  flex-direction: column;
+  font-size: $font-size-s;
+  margin: 8px;
+  max-height: calc(100vh - 20px);
+  max-width: calc(100vw - 20px);
+  overflow: auto;
+  pointer-events: all;
+  position: relative;
+
+  &.modal--light {
+    background-color: $light-secondary-background-color;
+    box-shadow: $light-box-shadow-0;
+    color: $light-secondary-text-color;
+
+    --modal-scrollbar-thumb-color: $light-primary-scrollbar-thumb-color;
+  }
+
+  &.modal--dark {
+    background-color: $dark-secondary-background-color;
+    box-shadow: $dark-box-shadow-0;
+    color: $dark-secondary-text-color;
+    
+    --modal-scrollbar-thumb-color: $dark-primary-scrollbar-thumb-color;
+  }
+}
+
+.modal--transitional {
+  opacity: 0;
+  top: 30px;
+  transition-duration: 80ms;
+  transition-property: opacity, top;  
+  transition-timing-function: ease-out;
+
+  &.has-transitioned {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+.modal--small {
+  width: 360px;
+}
+
+.modal--medium {
+  width: 600px;
+}
+
+.modal--large {
+  width: 90%;
+}
+
+.modalActions {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 100;
+
+  > button {
+    padding: 4px;
+    margin-left: 4px;
+  }
+}
+
+.modalHeader {
+  flex: none;
+  margin-bottom: 4px;
+  padding: 30px 36px 0;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.modalContent--scrollable {
+  @mixin addScrollbar var(--modal-scrollbar-thumb-color);
+
+  flex: auto;
+  overflow: auto;
+}
+
+.modalContent__interior {
+  padding: 16px 36px;
+}
+
+.modalFooter {
+  flex: none;
+  padding: 20px 36px;
+}
+
+.modalFooter--bordered {
+  .modal--light & {
+    border-top: 1px solid $light-secondary-border-color;
+  }
+
+  .modal--dark & {
+    border-top: 1px solid $dark-secondary-border-color;
+  }
+}

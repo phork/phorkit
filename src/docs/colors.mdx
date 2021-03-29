@@ -1,0 +1,147 @@
+---
+name: Colors
+route: /colors
+---
+
+import { Playground, Props } from 'docz';
+import { ColorSwatch } from './helpers/ColorSwatch';
+import { ColorTheme } from './helpers/ColorTheme';
+import { ThemeWrapper } from './helpers/ThemeWrapper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Colors" src="postcss/vars" />
+
+## Primary colors
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <ColorSwatch themeId={themeId} group="primary" variant="P" />
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Primary accent color
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <ColorSwatch themeId={themeId} group="state" variant="accent-primary" />
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Success color
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <ColorSwatch themeId={themeId} group="state" variant="success" />
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Warning color
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <ColorSwatch themeId={themeId} group="state" variant="warning" />
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Danger color
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <ColorSwatch themeId={themeId} group="state" variant="danger" />
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Neutral color
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <ColorSwatch themeId={themeId} group="state" variant="neutral" />
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Background colors
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <ColorSwatch themeId={themeId} group="neutral" variant="BG" />
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Foreground colors
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <ColorSwatch themeId={themeId} group="neutral" variant="FG" />
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Transparent colors
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <React.Fragment>
+        <ColorSwatch themeId={themeId} group="transparent" variant="accent-primary" /><br />
+        <ColorSwatch themeId={themeId} group="transparent" variant="FG0" /><br />
+        <ColorSwatch themeId={themeId} group="transparent" variant="BG40" /><br />
+        <ColorSwatch themeId={themeId} group="transparent" variant="BG0" />
+      </React.Fragment>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Primary theme
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <ColorTheme themeId={themeId} variant="primary" />
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Secondary theme
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <ColorTheme themeId={themeId} variant="secondary" />
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Tertiary theme
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <ColorTheme themeId={themeId} variant="tertiary" />
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Contrast theme
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <ColorTheme themeId={themeId} variant="contrast" />
+    )}
+  </ThemeWrapper>
+</Playground>

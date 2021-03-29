@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Spinner</title>
+  <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="6">
+    <animate attributeName="stroke-dashoffset" dur="2s" from="0" repeatCount="indefinite" to="502" />
+    <animate
+      attributeName="stroke-dasharray"
+      dur="2s"
+      repeatCount="indefinite"
+      values="150.6 100.4;1 250;150.6 100.4"
+    />
+  </circle>
+</svg>

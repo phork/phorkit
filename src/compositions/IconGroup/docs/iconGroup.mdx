@@ -1,0 +1,90 @@
+---
+name: IconGroup
+menu: Display
+route: /compositions/IconGroup
+---
+
+import { Playground, Props } from 'docz';
+import { IconGroup } from '../index';
+import { Rhythm } from 'components/Rhythm';
+import { TimesIcon } from 'icons/TimesIcon';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { TimeoutWrapper } from 'docs/helpers/TimeoutWrapper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="IconGroup" src="compositions/IconGroup" />
+
+## Scaled group
+
+<Playground>
+  <IconGroup scale="large">
+    <Rhythm m={2}>
+      <TimesIcon />
+      <TimesIcon />
+      <TimesIcon />
+      <TimesIcon />
+      <TimesIcon />
+      <TimesIcon />
+    </Rhythm>
+  </IconGroup>
+</Playground>
+
+## Sized group by pixel
+
+<Playground>
+  <IconGroup size={18}>
+    <Rhythm m={2}>
+      <TimesIcon />
+      <TimesIcon />
+      <TimesIcon />
+      <TimesIcon />
+      <TimesIcon />
+      <TimesIcon />
+    </Rhythm>
+  </IconGroup>
+</Playground>
+
+## Sized group by em
+
+<Playground>
+  <IconGroup size="1em">
+    <Rhythm m={2}>
+      <TimesIcon />
+      <TimesIcon />
+      <TimesIcon />
+      <TimesIcon />
+      <TimesIcon />
+      <TimesIcon />
+    </Rhythm>
+  </IconGroup>
+</Playground>
+
+## Variations
+
+### Scaled group by state
+
+<Playground>
+  <StateWrapper initialState={0} formatSetValue={previous => previous + 1}>
+    {({ state: count, setState: setCount }) => {
+      const sizes = ['small', 'medium', 'large', 'xlarge', 'xxlarge'];
+      return (
+        <TimeoutWrapper callback={setCount} milliseconds={500} infinite>
+          <IconGroup scale={sizes[count % sizes.length]}>
+            <Rhythm m={2} style={{ height: '40px', transition: 'all 500ms linear' }}>
+              <TimesIcon />
+              <TimesIcon />
+              <TimesIcon />
+              <TimesIcon />
+              <TimesIcon />
+              <TimesIcon />
+            </Rhythm>
+          </IconGroup>
+        </TimeoutWrapper>
+      );
+    }}
+  </StateWrapper>
+</Playground>
+
+## \[props\]
+
+<Props of={IconGroup} />

@@ -1,0 +1,45 @@
+.h1 {
+  display: block;
+  font-size: $font-size-xxxxl;
+  line-height: 1.5;
+  font-weight: 200;
+}
+
+.h2 {
+  display: block;
+  font-size: $font-size-xxxl;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.h3 {
+  display: block;
+  font-size: $font-size-xxl;
+  line-height: 1.5;
+}
+
+.h4 {
+  display: block;
+  font-size: $font-size-xl;
+  line-height: 1.5;
+}
+
+.h5 {
+  display: block;
+  font-size: $font-size-l;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.h6 {
+  display: block;
+  font-size: $font-size-m;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.p {
+  display: block;
+  font-size: $font-size-m;
+  line-height: 1.5;
+}

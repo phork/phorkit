@@ -1,0 +1,39 @@
+@define-mixin addScrollbar $thumbColor: var(--scrollbar-thumb-color), $trackColor: var(--scrollbar-track-color, transparent), $width: 6px, $borderRadius: 6px, $minHeight: 60px, $offset: 4px {
+  &::-webkit-scrollbar {
+    height: calc($width + calc($offset * 2));
+    width: calc($width + calc($offset * 2));
+  }
+
+  /**
+   * 1. Clip the background to the content-box, instead of the border-box.
+   *    This allows the border style (1) to have a visual effect.
+   * 2. The border will visually "squeeze" the scrollbar-thumb to
+   *    be thinner.
+   */
+  &::-webkit-scrollbar-thumb {
+    background-clip: content-box; /* [1] */
+    background-color: $thumbColor;
+    border-radius: calc($borderRadius + calc($offset * 2));
+    border: $offset solid transparent; /* [2] */
+    min-height: $minHeight;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $trackColor;
+    border-radius: calc($borderRadius + calc($offset * 2));
+  }
+
+  /**
+   * 1. Prevent a white square in the corner when there are both horizontal
+   *    and vertical scrollbars.
+   */
+  &::-webkit-scrollbar-corner {
+    background-color: transparent; /* [1] */
+  }
+
+  /**
+   * 1. This is experimental Firefox technology and not guaranteed
+   *    to work in all versions.
+   */
+  scrollbar-width: thin;
+}

@@ -1,0 +1,220 @@
+---
+name: Textarea
+menu: Forms
+route: /components/FormTextarea
+---
+
+import { Playground, Props } from 'docz';
+import { Textarea, NotifiedTextarea } from '../index';
+import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
+import { Looper } from 'docs/helpers/Looper';
+import { variants } from './helpers/variants';
+import { PageTitle } from 'docs/helpers/PageTitle';
+
+<PageTitle title="Textarea" src="components/Form/Textarea" />
+
+## Basic textarea
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="Hello world">
+        <Textarea variant={variant} onChange={(event, value) => console.log(value)} />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Textarea with height
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="Hello world">
+        <Textarea variant={variant} height={100} onChange={(event, value) => console.log(value)} />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Textarea with max length
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="Hello world">
+        <Textarea variant={variant} maxLength={12} onChange={(event, value) => console.log(value)} />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Labeled textarea
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="Hello world">
+        <Textarea variant={variant} label="Super fantastic label" onChange={(event, value) => console.log(value)} />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Transitional labeled textarea
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value">
+        <Textarea
+          variant={variant}
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          transitional
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Labeled textarea with placeholder
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value">
+        <Textarea
+          variant={variant}
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          placeholder="Hello world"
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Disabled textarea
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="Hello world">
+        <Textarea
+          disabled
+          variant={variant}
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Read only textarea
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="Hello world">
+        <Textarea
+          variant={variant}
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          readOnly
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Danger textarea
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="Hello world">
+        <Textarea
+          variant={variant}
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          validity="danger"
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Warning textarea
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="Hello world">
+        <Textarea
+          variant={variant}
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          validity="warning"
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Contrast textarea
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="Hello world" contrast>
+        <Textarea
+          contrast
+          variant={variant}
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          transitional
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Notifications
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Looper
+        list={['success', 'danger', 'warning', 'primary', 'neutral']}
+        render={level => (
+          <FormComponentDemo property="value" initialValue="Hello world">
+            <NotifiedTextarea
+              variant={variant}
+              onChange={(event, value) => console.log(value)}
+              level={level}
+              notification={`This is an example ${level} notification.`}
+            />
+          </FormComponentDemo>
+        )}
+      />
+    )}
+  />
+</Playground>
+
+## \[props\]
+
+<Props of={Textarea} />

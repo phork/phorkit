@@ -1,0 +1,997 @@
+---
+name: Playground
+route: /playground
+---
+
+import { Playground, Props } from 'docz';
+import { StateWrapper } from './helpers/StateWrapper';
+import { ThemeWrapper } from './helpers/ThemeWrapper';
+import { Looper } from './helpers/Looper';
+import { ArrowDownIcon } from 'icons/ArrowDownIcon';
+import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { CheckIcon } from 'icons/internal/CheckIcon';
+import { SearchIcon } from 'icons/SearchIcon';
+import { TimesIcon } from 'icons/TimesIcon';
+import {
+  Avatar,
+  Badge,
+  Banner,
+  Button,
+  ButtonGroup,
+  Card,
+  CardBody,
+  CardEdge,
+  CardTitle,
+  ColoredPaper,
+  ColoredTabs,
+  Dropdown,
+  DropdownContent,
+  DropoverContent,
+  DropoverInputLabel,
+  Flex,
+  IconButton,
+  IconGroup,
+  IconText,
+  InlineTooltip,
+  InteractiveList,
+  List,
+  ListItem,
+  MainPanel,
+  Modal,
+  ModalConsumer,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  Modals,
+  Navigation,
+  PanelContainer,
+  Paper,
+  Password,
+  PortalDropover,
+  PortalPopover,
+  PortalTextTooltip,
+  PortalTooltip,
+  Position,
+  Rhythm,
+  ScaleProvider,
+  StackPanel,
+  StyledAvatar,
+  StyledLoader,
+  Tabs,
+  Textbox,
+  TextTooltip,
+  Toast,
+  Toggle,
+  Tooltip,
+  Triangle,
+  Typography,
+  themes,
+} from '../index';
+
+# Playground
+
+## Badges on things
+
+<Playground>
+  <ThemeWrapper>
+    <Rhythm m={2}>
+      <Button color="primary">
+        <Flex wrap={false} inflexible direction="row" alignItems="center" justifyContent="center">
+          Notifications
+          <Rhythm ml={2}>
+            <Badge shape="label" contrast>
+              Beta
+            </Badge>
+          </Rhythm>
+        </Flex>
+      </Button>
+      <Button color="primary">
+        <Flex wrap={false} inflexible direction="row" alignItems="center" justifyContent="center">
+          Notifications
+          <Badge position="top-right" shape="count" color="warning">
+            7
+          </Badge>
+        </Flex>
+      </Button>
+      <Button color="warning" weight="outline">
+        <Flex wrap={false} inflexible direction="row" alignItems="center" justifyContent="center">
+          Notifications
+          <Badge position="top-right" shape="count" color="warning">
+            7
+          </Badge>
+        </Flex>
+      </Button>
+    </Rhythm>
+  </ThemeWrapper>
+</Playground>
+
+<div style="height: 50px" />
+
+<Playground>
+  <ThemeWrapper>
+    <div style={{ width: '300px', height: '200px', maxWidth: '100%' }}>
+      <Card hoverable raised full style={{ overflow: 'visible' }}>
+        <Badge position="top-right" shape="count" color="warning">
+          7
+        </Badge>
+        <Paper flexible color="secondary">
+          <CardBody>
+            <CardTitle>Hello world</CardTitle>
+            <CardTitle variant="subtitle">How are things?</CardTitle>
+          </CardBody>
+        </Paper>
+        <CardEdge>
+          <ColoredPaper flexible colorId="P25" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
+            <Rhythm m={2}>
+              <ButtonGroup spacing="comfy">
+                <Button contrast weight="text" key="cancel">
+                  Cancel
+                </Button>
+                <Button contrast weight="outline" key="confirm">
+                  Confirm
+                </Button>
+              </ButtonGroup>
+            </Rhythm>
+          </ColoredPaper>
+        </CardEdge>
+      </Card>
+    </div>
+  </ThemeWrapper>
+</Playground>
+
+<div style="height: 50px" />
+
+<Playground>
+  <ThemeWrapper>
+    <Navigation
+      animated
+      selectedId="first"
+      vertical
+      items={[
+        {
+          id: 'first',
+          label: (
+            <Flex wrap={false} inflexible direction="row" alignItems="center" justifyContent="center">
+              <Badge position="top-right" shape="count" color="warning">
+                7
+              </Badge>
+              First
+            </Flex>
+          ),
+        },
+        { id: 'second', label: 'Second' },
+        {
+          id: 'third',
+          label: (
+            <Flex wrap={false} inflexible direction="row" alignItems="center" justifyContent="center">
+              <Position location="right-center" variant="inside">
+                <Rhythm ml={4}>
+                  <Badge shape="label" color="primary">
+                    Restricted
+                  </Badge>
+                </Rhythm>
+              </Position>
+              Third
+            </Flex>
+          ),
+          disabled: true,
+        },
+        {
+          id: 'fourth',
+          label: (
+            <div style={{ position: 'relative' }}>
+              <Position location="right-center" variant="outside">
+                <Rhythm ml={2}>
+                  <Badge shape="marker" color="primary" />
+                </Rhythm>
+              </Position>
+              Fourth
+            </div>
+          ),
+        },
+      ]}
+    />
+  </ThemeWrapper>
+</Playground>
+
+<div style="height: 50px" />
+
+<Playground>
+  <ThemeWrapper>
+    <Toast id="demo-success-toast" title="Hello world" level="success" style={{ maxWidth: '100%' }}>
+      This is a success toast
+      <Badge position="top-right" shape="count" color="warning">
+        7
+      </Badge>
+    </Toast>
+  </ThemeWrapper>
+</Playground>
+
+## Tooltips on things
+
+<Playground>
+  <ThemeWrapper>
+    <InlineTooltip
+      hoverable={false}
+      position="top-center"
+      toggler={
+        <Button color="warning" weight="outline">
+          Notifications
+        </Button>
+      }
+      triangleBorderColor={themes.light['color-P50-D10']}
+      triangleColor={themes.light['color-P50']}
+      width={250}
+    >
+      <ColoredPaper bordered style={{ borderRadius: '2px' }} colorId="P50" container="popover">
+        <Typography as="div" size="s" variants="line-height-comfy">
+          The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog
+        </Typography>
+      </ColoredPaper>
+    </InlineTooltip>
+  </ThemeWrapper>
+</Playground>
+
+<div style="height: 50px" />
+
+<Playground>
+  <ThemeWrapper>
+    <PortalTextTooltip
+      hoverable={false}
+      position="right-center"
+      toggler={
+        <Textbox
+          clearable
+          iconBefore={<SearchIcon />}
+          id="demo-tooltip-textbox"
+          label="Super fantastic label"
+          style={{ width: '400px', maxWidth: '100%' }}
+          transitional
+        />
+      }
+      width="auto"
+    >
+      <Typography variants="no-wrap">This field is required</Typography>
+    </PortalTextTooltip>
+  </ThemeWrapper>
+</Playground>
+
+<div style="height: 50px" />
+
+<Playground>
+  <ThemeWrapper>
+    <PortalTextTooltip
+      position="left-center"
+      toggler={<Toggle id="demo-tooltip-toggle">Super fantastic label</Toggle>}
+      width="auto"
+    >
+      <Typography variants="no-wrap">You must agree</Typography>
+    </PortalTextTooltip>
+  </ThemeWrapper>
+</Playground>
+
+## Fancy lists
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <List outline="shadowed" as="div" style={{ width: '300px', maxWidth: '100%' }}>
+        <Looper
+          start={0}
+          end={5}
+          render={i => (
+            <ListItem
+              key={i}
+              disabled={i === 4}
+              style={{ '--list-item-text-color': themes[themeId]['secondary-text-color'] }}
+            >
+              <Flex direction="row" alignItems="center" justifyContent="flex-start">
+                <Avatar
+                  imgSrc="/public/images/avatar.jpg"
+                  initials="EC"
+                  style={{ border: `1px solid ${themes[themeId]['primary-border-color']}` }}
+                />
+                <Rhythm mx={4}>
+                  <Flex flexible>
+                    <Typography weight="bold">Elenor C.</Typography>
+                  </Flex>
+                </Rhythm>
+                <Typography color="accent-primary" variants="line-height-smash">
+                  <CheckIcon scale="medium" />
+                </Typography>
+              </Flex>
+            </ListItem>
+          )}
+        />
+      </List>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+<div style="height: 50px" />
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <Flex direction="row" justifyContent="space-between" alignItems="center" wrap>
+        <PortalTooltip
+          height={200}
+          initialVisible
+          permanent
+          position="right-center"
+          toggler={<BlobbrIcon aria-label="Blobbr" size={40} />}
+          triangleBorderColor={themes[themeId]['primary-border-color']}
+          triangleColor={themes[themeId]['primary-background-color']}
+          width={300}
+        >
+          <div
+            style={{
+              height: '200px',
+              width: '300px',
+              overflowY: 'auto',
+              margin: '1px',
+              boxShadow: themes[themeId]['box-shadow-10'],
+            }}
+          >
+            <List outline="bordered" variant="primary" as="div">
+              <Looper
+                start={0}
+                end={5}
+                render={i => (
+                  <ListItem
+                    key={i}
+                    disabled={i === 4}
+                    style={{ '--list-item-text-color': themes[themeId]['secondary-text-color'] }}
+                  >
+                    <Flex direction="row" alignItems="center" justifyContent="flex-start">
+                      <Avatar
+                        imgSrc="/public/images/avatar.jpg"
+                        initials="EC"
+                        style={{ border: `1px solid ${themes[themeId]['primary-border-color']}` }}
+                      />
+                      <Rhythm mx={4}>
+                        <Flex flexible>
+                          <Typography weight="bold">Elenor C.</Typography>
+                        </Flex>
+                      </Rhythm>
+                      <Typography color="accent-primary" variants="line-height-smash">
+                        <CheckIcon scale="medium" />
+                      </Typography>
+                    </Flex>
+                  </ListItem>
+                )}
+              />
+            </List>
+          </div>
+        </PortalTooltip>
+        <PortalPopover
+          height={200}
+          offset={{ vertical: -3 }}
+          position="bottom-center"
+          toggler={
+            <Toast level="info" title="Hello world">
+              This is a clickable toast with a fancy list popover.
+            </Toast>
+          }
+          width={300}
+        >
+          <div style={{ height: '100%', overflowY: 'auto', boxShadow: themes[themeId]['box-shadow-10'] }}>
+            <List
+              as="div"
+              outline="divided"
+              style={{ borderLeft: `6px solid ${themes[themeId]['primary-accent-color']}` }}
+              variant="primary"
+            >
+              <Looper
+                start={0}
+                end={5}
+                render={i => (
+                  <ListItem
+                    key={i}
+                    disabled={i === 4}
+                    style={{ '--list-item-text-color': themes[themeId]['secondary-text-color'] }}
+                  >
+                    <Flex direction="row" alignItems="center" justifyContent="flex-start">
+                      <Avatar
+                        imgSrc="/public/images/avatar.jpg"
+                        initials="EC"
+                        style={{ border: `1px solid ${themes[themeId]['primary-border-color']}` }}
+                      />
+                      <Rhythm mx={4}>
+                        <Flex flexible>
+                          <Typography weight="bold">Elenor C.</Typography>
+                        </Flex>
+                      </Rhythm>
+                      <Typography color="accent-primary" variants="line-height-smash">
+                        <CheckIcon scale="medium" />
+                      </Typography>
+                    </Flex>
+                  </ListItem>
+                )}
+              />
+            </List>
+          </div>
+        </PortalPopover>
+      </Flex>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Fancy dropdown
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => {
+      const options = [
+        { id: 1, value: 'one' },
+        { id: 2, value: 'two' },
+        { id: 3, value: 'three' },
+        { id: 4, value: 'four' },
+        { id: 5, value: 'five', label: 'Plain text option' },
+      ].map(option => ({
+        label: ({ selected }) => (
+          <Flex flexible direction="row" alignItems="center" justifyContent="flex-start">
+            <Avatar
+              imgSrc="/public/images/avatar.jpg"
+              initials="EC"
+              style={{ border: `1px solid ${themes[themeId]['primary-border-color']}` }}
+            />
+            <Rhythm mx={4}>
+              <Flex flexible>
+                <Typography weight="bold">Elenor C.</Typography>
+              </Flex>
+            </Rhythm>
+            <Typography color={selected ? 'contrast' : 'accent-primary'} variants="line-height-smash">
+              <CheckIcon scale="medium" />
+            </Typography>
+          </Flex>
+        ),
+        selectedLabel: option.label || (
+          <Rhythm px={4}>
+            <Flex flexible direction="row" alignItems="center" justifyContent="flex-start">
+              <Avatar
+                imgSrc="/public/images/avatar.jpg"
+                initials="EC"
+                style={{ border: `1px solid ${themes[themeId]['primary-border-color']}` }}
+              />
+              <Rhythm mx={4}>
+                <Flex flexible>
+                  <Typography weight="bold">Elenor C.</Typography>
+                </Flex>
+              </Rhythm>
+            </Flex>
+          </Rhythm>
+        ),
+        ...option,
+      }));
+      return (
+        <div style={{ width: '400px', height: '200px' }}>
+          <Dropdown
+            arrowIconSize={12}
+            dropdownContent={DropdownContent}
+            initialSelected={options[0]}
+            label="Super awesome dropdown"
+            layout="raised"
+            listOutline="divided"
+            listSize="medium"
+            onChange={value => console.log('change', value)}
+            onClear={value => console.log('clear')}
+            onSelect={value => console.log('select', value)}
+            options={options}
+            placeholder={(
+              <Rhythm px={4} style={{ opacity: .5 }}>
+                <Flex flexible direction="row" alignItems="center" justifyContent="flex-start">
+                  <StyledAvatar backgroundColor={themes[themeId]['primary-quietest-color']} initials=" " />
+                  <Rhythm mx={4}>
+                    <Flex flexible>Choose your person</Flex>
+                  </Rhythm>
+                </Flex>
+              </Rhythm>
+            )}
+            transitional
+          />
+        </div>
+      );
+    }}
+  </ThemeWrapper>
+</Playground>
+
+## Fancy tabs
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <ScaleProvider scale="small">
+        <Card hoverable raised full style={{ maxWidth: '300px' }}>
+          <ColoredTabs
+            colorId="P50"
+            initialSelected="check"
+            vertical
+            onSelect={(event, id) => console.log(id)}
+            items={[
+              {
+                id: 'blobbr',
+                label: <BlobbrIcon style={{ display: 'block' }} />,
+                content: (
+                  <React.Fragment>
+                    <img
+                      src="/public/images/avatar.jpg"
+                      width="100%"
+                      alt="Blobbr panel"
+                      style={{
+                        opacity: 0.1,
+                        filter: 'blur(3px) grayscale(1)',
+                        transform: 'scale(1.1)',
+                      }}
+                    />
+                    <Position location="bottom-right" variant="inside" style={{ zIndex: 10 }}>
+                      <Triangle position="bottom-right" size={18} color={themes[themeId]['color-accent-primary']}>
+                        <Typography
+                          color="contrast"
+                          as="div"
+                          size="xxs"
+                          style={{
+                            position: 'absolute',
+                            left: 0,
+                            bottom: 0,
+                            transform: 'rotate(-45deg) translate(50%, 30%)',
+                          }}
+                          variants={['uppercase', 'letter-spacing-comfy']}
+                          weight="bold"
+                        >
+                          Beta
+                        </Typography>
+                      </Triangle>
+                    </Position>
+                  </React.Fragment>
+                ),
+                iconOnly: true,
+                contentProps: {
+                  flush: true,
+                  style: {
+                    overflow: 'hidden',
+                  },
+                },
+              },
+              {
+                id: 'check',
+                label: <CheckIcon style={{ display: 'block' }} />,
+                content: (
+                  <InteractiveList
+                    initialSelected={4}
+                    selectOnFocus
+                    outline="divided"
+                    variant="primary"
+                    items={[{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }].map(option => ({
+                      label: ({ selected }) => (
+                        <Flex flexible direction="row" alignItems="center" justifyContent="flex-start">
+                          <Avatar
+                            imgSrc="/public/images/avatar.jpg"
+                            initials="EC"
+                            style={{ border: `1px solid ${themes[themeId]['primary-border-color']}` }}
+                          />
+                          <Rhythm mx={4}>
+                            <Flex flexible>
+                              <Typography weight="bold">Elenor C.</Typography>
+                            </Flex>
+                          </Rhythm>
+                          <Typography color={selected ? 'contrast' : 'accent-primary'} variants="line-height-smash">
+                            <CheckIcon scale="medium" />
+                          </Typography>
+                        </Flex>
+                      ),
+                      ...option,
+                    }))}
+                  />
+                ),
+                iconOnly: true,
+                contentProps: {
+                  flush: true,
+                },
+              },
+              {
+                id: 'search',
+                label: <SearchIcon style={{ display: 'block' }} />,
+                content: 'Third panel',
+                iconOnly: true,
+                contentProps: { flush: true },
+                disabled: true,
+              },
+              {
+                id: 'times',
+                label: <TimesIcon style={{ display: 'block' }} />,
+                content: (
+                  <Rhythm py={2} px={5}>
+                    <Paper flexible color="secondary">
+                      <Looper start={0} end={10} render={i => <div key={i}>This tab is using flexible paper.</div>} />
+                    </Paper>
+                  </Rhythm>
+                ),
+                iconOnly: true,
+                contentProps: {
+                  flush: true,
+                },
+              },
+            ]}
+          />
+        </Card>
+      </ScaleProvider>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Fancy toast
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <Flex direction="row" justifyContent="space-between" wrap>
+        <Toast id="demo-triangle-toast" immediate title="Hello world" level="info">
+          This is an info toast with a triangle!
+          <Position location="top-right" variant="inside">
+            <Triangle position="top-right" size={18} color={themes[themeId]['primary-accent-color']}>
+              <Typography
+                color="contrast"
+                as="div"
+                size="xxs"
+                style={{ position: 'absolute', top: 0, left: 0, transform: 'rotate(45deg) translate(50%, -20%)' }}
+                variants={['uppercase', 'letter-spacing-comfy']}
+                weight="bold"
+              >
+                Beta
+              </Typography>
+            </Triangle>
+          </Position>
+        </Toast>
+        <Toast id="demo-marker-toast" level="info">
+          <Flex direction="row" justifyContent="flex-start" alignItems="center">
+            <Rhythm mr={2}>
+              <Badge shape="marker" color="danger" />
+            </Rhythm>
+            <Typography color="danger">I am a bad thing.</Typography>
+          </Flex>
+          <Flex direction="row" justifyContent="flex-start" alignItems="center">
+            <Rhythm mr={2}>
+              <Badge shape="marker" color="warning" />
+            </Rhythm>
+            <Typography color="warning">I am an ok thing.</Typography>
+          </Flex>
+          <Flex direction="row" justifyContent="flex-start" alignItems="center">
+            <Rhythm mr={2}>
+              <Badge shape="marker" color="success" />
+            </Rhythm>
+            <Typography color="success">I am a good thing.</Typography>
+          </Flex>
+        </Toast>
+      </Flex>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Fancy card
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <div style={{ width: '200px', maxWidth: '100%' }}>
+        <Card hoverable raised magnify full>
+          <CardBody flush>
+            <img
+              src="/public/images/avatar.jpg"
+              width="100%"
+              alt="Card hero"
+              style={{
+                opacity: 0.3,
+                filter: 'blur(3px) grayscale(1)',
+                transform: 'scale(1.1)',
+              }}
+            />
+            <Position location="top-right" variant="inside">
+              <Triangle position="top-right" size={18} color={themes[themeId]['primary-accent-color']}>
+                <Typography
+                  color="contrast"
+                  as="div"
+                  size="xxs"
+                  style={{ position: 'absolute', top: 0, left: 0, transform: 'rotate(45deg) translate(50%, -20%)' }}
+                  variants={['uppercase', 'letter-spacing-comfy']}
+                  weight="bold"
+                >
+                  Beta
+                </Typography>
+              </Triangle>
+            </Position>
+            <StyledLoader size={90} color="#fff" style={{ opacity: 0.9 }} position="absolute" />
+          </CardBody>
+          <CardBody flush>
+            <InteractiveList
+              outline="divided"
+              variant="primary"
+              items={[
+                { id: 'normal0', label: 'Normal' },
+                { id: 'selected', label: 'Selected', selected: true },
+                { id: 'normal1', label: 'Normal' },
+                { id: 'normal2', label: 'Normal' },
+              ]}
+            />
+          </CardBody>
+        </Card>
+      </div>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Fancy buttons
+
+<Playground>
+  <ThemeWrapper>
+    <Rhythm m={2}>
+      <Button color="primary">
+        <IconText
+          icon={<BlobbrIcon scale="small" />}
+          text={
+            <Rhythm ml={2}>
+              <span>Submit</span>
+            </Rhythm>
+          }
+        />
+      </Button>
+      <Button color="primary" weight="outline">
+        <IconText
+          icon={<BlobbrIcon scale="small" />}
+          text={
+            <Rhythm ml={2}>
+              <span>Submit</span>
+            </Rhythm>
+          }
+        />
+      </Button>
+      <Button color="primary" weight="text">
+        <IconText
+          icon={<BlobbrIcon scale="small" />}
+          text={
+            <Rhythm ml={1}>
+              <span>Submit</span>
+            </Rhythm>
+          }
+        />
+      </Button>
+    </Rhythm>
+  </ThemeWrapper>
+</Playground>
+
+## Fancy icon buttons
+
+<Playground>
+  <ThemeWrapper>
+    <Paper color="secondary">
+      <Flex>
+        <IconGroup scale="medium">
+          <Rhythm m={2}>
+            <IconButton onClick={() => console.log('check')} color="primary">
+              <CheckIcon />
+            </IconButton>
+            <IconButton onClick={() => console.log('search')} color="primary">
+              <SearchIcon />
+              <Badge position="top-right" shape="point" color="warning" />
+            </IconButton>
+            <IconButton onClick={() => console.log('times')} color="primary">
+              <TimesIcon />
+            </IconButton>
+          </Rhythm>
+        </IconGroup>
+        <IconGroup scale="medium">
+          <Rhythm m={1}>
+            <IconButton shape="square" onClick={() => console.log('check')} color="primary">
+              <CheckIcon />
+            </IconButton>
+            <IconButton shape="square" onClick={() => console.log('search')} color="primary">
+              <SearchIcon />
+              <Badge position="top-right" shape="marker" color="warning" outlined />
+            </IconButton>
+            <IconButton shape="square" onClick={() => console.log('times')} color="primary">
+              <TimesIcon />
+            </IconButton>
+          </Rhythm>
+        </IconGroup>
+        <IconGroup scale="medium">
+          <Rhythm m={1}>
+            <IconButton shape="round" onClick={() => console.log('check')} color="primary">
+              <CheckIcon />
+            </IconButton>
+            <IconButton shape="round" onClick={() => console.log('search')} color="primary">
+              <SearchIcon />
+              <Badge position="top-right" shape="point" color="warning" />
+            </IconButton>
+            <IconButton shape="round" onClick={() => console.log('times')} color="primary">
+              <TimesIcon />
+            </IconButton>
+          </Rhythm>
+        </IconGroup>
+      </Flex>
+    </Paper>
+  </ThemeWrapper>
+</Playground>
+
+## Banner time
+
+<Playground style={{ display: 'flex', margin: '-40px', height: '300px' }}>
+  <PanelContainer orientation="horizontal">
+    <StackPanel position="top" open>
+      <Card squared raised>
+        <Banner immediate themeId="light" level="info">
+          <IconText
+            icon={<BlobbrIcon size={18} />}
+            text={
+              <Rhythm ml={3} wrapper="span">
+                This is a simple info banner because something happened. Cool.
+              </Rhythm>
+            }
+          />
+        </Banner>
+        <Banner immediate themeId="light" level="success">
+          <IconText
+            icon={<BlobbrIcon size={18} />}
+            text={
+              <Rhythm ml={3} wrapper="span">
+                This is a simple success banner because something was successful. Yay.
+              </Rhythm>
+            }
+          />
+        </Banner>
+      </Card>
+    </StackPanel>
+    <MainPanel>
+      <Paper scrollable flexible color="primary" container="panel" themeId="light">
+        <Looper
+          start={0}
+          end={10}
+          render={i => (
+            <Typography size="l" variants={['line-height-comfy']} key={i}>
+              This banner system is using panels. The banners are raised with a Card.
+            </Typography>
+          )}
+        />
+      </Paper>
+    </MainPanel>
+  </PanelContainer>
+</Playground>
+
+<div style="height: 50px" />
+
+<Playground style={{ display: 'flex', flexDirection: 'column', margin: '-40px', height: '300px' }}>
+  <Banner immediate themeId="light" level="warning">
+    This is a simple warning banner because something concerning happened. Meh.
+  </Banner>
+  <Banner immediate themeId="light" level="danger">
+    This is a simple danger banner because something went wrong. Boo.
+  </Banner>
+  <Paper scrollable flexible color="primary" container="panel" themeId="light">
+    <Looper
+      start={0}
+      end={10}
+      render={i => (
+        <Typography size="l" variants={['line-height-comfy']} key={i}>
+          This banner system is using scrollable paper.
+        </Typography>
+      )}
+    />
+  </Paper>
+</Playground>
+
+## Login modal
+
+<Playground>
+  <ThemeWrapper>
+    <Modals>
+      <ModalConsumer>
+        {({ createModal, popModal }) => (
+          <Rhythm m={2}>
+            <Button
+              color="primary"
+              onClick={event =>
+                event.persist() ||
+                createModal(
+                  <Modal id="demo-login-modal" focusable size="small">
+                    {({ id, focusRef }) => (
+                      <React.Fragment>
+                        <ModalHeader modalId={id} title="Login" />
+                        <ModalContent scrollable>
+                          <StateWrapper initialState={{}}>
+                            {({ state: values, setState: setValues }) => (
+                              <React.Fragment>
+                                <Rhythm mb={2}>
+                                  <Textbox
+                                    id="login-username"
+                                    label="Username"
+                                    name="username"
+                                    onChange={event => {
+                                      event.persist();
+                                      setValues(previous => ({ ...previous, [event.target.name]: event.target.value }));
+                                    }}
+                                    transitional
+                                    value={values.username}
+                                    variant="underline"
+                                    ref={focusRef}
+                                  />
+                                </Rhythm>
+                                <Rhythm mt={2} mb={6}>
+                                  <Password
+                                    id="login-password"
+                                    label="Password"
+                                    name="password"
+                                    onChange={event => {
+                                      event.persist();
+                                      setValues(previous => ({ ...previous, [event.target.name]: event.target.value }));
+                                    }}
+                                    transitional
+                                    value={values.password}
+                                    variant="underline"
+                                  />
+                                </Rhythm>
+                              </React.Fragment>
+                            )}
+                          </StateWrapper>
+                        </ModalContent>
+                        <ModalFooter bordered>
+                          <Flex justifyContent="flex-end">
+                            <ButtonGroup spacing="comfy" color="primary" key="cancel">
+                              <Button key="cancel" onClick={popModal} color="neutral" weight="text">
+                                Cancel
+                              </Button>
+                              <Button key="submit" onClick={() => console.log('Login!')} color="primary" key="login">
+                                Login
+                              </Button>
+                            </ButtonGroup>
+                          </Flex>
+                        </ModalFooter>
+                      </React.Fragment>
+                    )}
+                  </Modal>,
+                  { onClose: () => console.log('closed modal') },
+                )
+              }
+            >
+              Open a login modal
+            </Button>
+          </Rhythm>
+        )}
+      </ModalConsumer>
+    </Modals>
+  </ThemeWrapper>
+</Playground>
+
+## Search dropover
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper>
+      {({ state: searchTerm, setState: setSearchTerm }) => (
+        <PortalDropover
+          contentProps={{ portal: 'fixed' }}
+          label={
+            <DropoverInputLabel>
+              <Textbox
+                aria-label="Search"
+                clearable
+                iconBefore={<SearchIcon size={14} />}
+                onChange={(event, value, { cleared } = {}) => {
+                  setSearchTerm(cleared ? '' : value);
+                }}
+                value={searchTerm || ''}
+                width={200}
+              />
+            </DropoverInputLabel>
+          }
+          passiveLabel
+          width={400}
+        >
+          <DropoverContent>
+            <Rhythm py={5}>
+              <div>{searchTerm || 'What are you searching for?'}</div>
+            </Rhythm>
+          </DropoverContent>
+        </PortalDropover>
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
