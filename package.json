@@ -66,7 +66,7 @@
     "rebase-develop": "git checkout main && git pull && git checkout develop && git rebase main",
     "scaffold": "node ./scripts/scaffold-component.js",
     "scaffold-test": "node ./scripts/scaffold-component-test.js",
-    "start": "docz dev",
+    "start": "yarn gen-postcss-json && yarn build-icons && docz dev",
     "stylelint": "npx stylelint \"src/**/*.css\" --fix",
     "test": "npx jest --config=jest.config.ci.js",
     "test-dev": "npx jest",
