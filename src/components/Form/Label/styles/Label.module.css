@@ -23,7 +23,7 @@
 }
 
 .label--standard {
-  font-size: $font-size-s;
+  font-size: $font-size-m;
   line-height: 16px;
 }
 
@@ -44,7 +44,7 @@
     --label-text-color: $theme-contrast-text-color;
     --label-muted-text-color: $theme-contrast-quiet-color;
   }
-  
+
 }
 
 .label.is-danger {

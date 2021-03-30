@@ -5,18 +5,32 @@ import { useThemeId } from '../../hooks/useThemeId';
 import styles from './styles/Tags.module.css';
 
 export type TagElementType = Extract<keyof JSX.IntrinsicElements, 'button' | 'a' | 'div' | 'span'>;
+export type TagShape = 'pill' | 'brick';
+export type TagSize = 'small' | 'large';
 
 export interface LocalTagProps extends ThemeProps {
   actionable?: boolean;
   className?: string;
   label: React.ReactNode;
-  shape?: 'pill' | 'brick';
+  shape?: TagShape;
+  size?: TagSize;
 }
 
 export type TagProps<T extends TagElementType = 'div'> = { as?: T } & MergeElementProps<T, LocalTagProps>;
 
 export function TagBase<T extends TagElementType = 'div'>(
-  { actionable, as, className, contrast, label, shape = 'pill', themeId: initThemeId, unthemed, ...props }: TagProps<T>,
+  {
+    actionable,
+    as,
+    className,
+    contrast,
+    label,
+    shape = 'pill',
+    size = 'small',
+    themeId: initThemeId,
+    unthemed,
+    ...props
+  }: TagProps<T>,
   forwardedRef: React.ForwardedRef<HTMLElementTagNameMap[T]>,
 ): React.ReactElement {
   const themeId = useThemeId(initThemeId);
@@ -30,6 +44,7 @@ export function TagBase<T extends TagElementType = 'div'>(
         styles.tag,
         color && !unthemed && styles[`tag--${color}`],
         shape && styles[`tag--${shape}`],
+        size && styles[`tag--${size}`],
         actionable && styles['tag--actionable'],
         themeId && !unthemed && styles[`tag--${themeId}`],
         className,

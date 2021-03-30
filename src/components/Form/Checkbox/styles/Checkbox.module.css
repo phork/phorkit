@@ -5,7 +5,7 @@
 
 /**
  * 1. This should be the inverse of the margin
- *    applied to .checkboxGroup--inline 
+ *    applied to .checkboxGroup--inline
  */
 .checkbox--grouped--inline {
   margin: 4px 12px; /* [1] */
@@ -13,7 +13,7 @@
 
 /**
  * 1. This should be the inverse of the margin
- *    applied to .checkboxGroup--stacked 
+ *    applied to .checkboxGroup--stacked
  */
 .checkbox--grouped--stacked {
   margin: 4px 0; /* [1] */
@@ -24,37 +24,37 @@ input.checkboxInput {
 }
 
 .checkboxLabel {
-  line-height: 1.2;
-  min-height: 1.2em;
-  padding-left: 2em;
+  line-height: 1.5;
+  min-height: 1.4em;
+  padding-left: 2.2em;
   position: relative;
 
   &:before {
     background-color: var(--checkbox-unchecked-background-color);
     border-radius: .2em;
     content: "";
-    height: 1.2em;
+    height: 1.4em;
     left: 0;
     pointer-events: none;
     position: absolute;
     top: 0;
     transition: box-shadow 200ms ease;
-    width: 1.2em;
+    width: 1.4em;
   }
 
   &:after {
     border: solid transparent;
     border-color: var(--checkbox-checked-icon-color);
-    border-width: 0 .12em .12em 0;
+    border-width: 0 .18em .18em 0;
     content: "";
-    height: .8em;
-    left: .35em;
+    height: 1em;
+    left: .45em;
     margin-top: .1em;
     position: absolute;
     top: 0;
     transform: rotate(45deg) scale(0);
     transition: transform 300ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
-    width: .4em;
+    width: .5em;
   }
 }
 
@@ -76,11 +76,11 @@ input.checkboxInput {
   &:after {
     background-color: var(--checkbox-checked-icon-color);
     border: none;
-    height: .15em;
-    left: .34em;
-    top: .44em;
+    height: .11em;
+    left: .43em;
+    top: .57em;
     transform: none;
-    width: .5em;
+    width: .6em;
   }
 }
 

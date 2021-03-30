@@ -3,7 +3,7 @@
   border-radius: $border-radius-s;
   box-shadow: var(--toast-box-shadow);
   color: var(--toast-text-color);
-  font-size: $font-size-s;
+  font-size: $font-size-m;
   margin: 8px;
   padding: 16px 20px;
   pointer-events: all;

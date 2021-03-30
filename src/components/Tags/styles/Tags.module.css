@@ -18,15 +18,23 @@ button.tag {
   border: 1px solid var(--tag-border-color);
   color: var(--tag-text-color);
   display: inline-block;
-  font-size: $font-size-s;
   line-height: 1.5;
   outline: none;
-  padding: 2px 12px;
   position: relative;
 
   &:focus {
     outline: none;
   }
+}
+
+.tag--small {
+  font-size: $font-size-s;
+  padding: 2px 12px;
+}
+
+.tag--large {
+  font-size: 13px;
+  padding: 2px 16px;
 }
 
 .tag--pill {
@@ -43,7 +51,7 @@ button.tag {
 
   &:before {
     border-radius: inherit;
-    box-shadow: 0 0 0 0 transparent;    
+    box-shadow: 0 0 0 0 transparent;
     content: "";
     height: 100%;
     opacity: .3;
@@ -61,7 +69,7 @@ button.tag {
       box-shadow: 0 0 0 3px var(--tag-border-color);
     }
   }
-  
+
   &:hover,
   &.is-hovered {
     background-color: var(--tag-hover-background-color);

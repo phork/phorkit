@@ -7,7 +7,7 @@ import { TimesIcon } from '../../icons/TimesIcon';
 import { Flex } from '../../components/Flex';
 import { IconText } from '../../components/IconText';
 import { Rhythm } from '../../components/Rhythm/Rhythm';
-import { Tag, TagGroup } from '../../components/Tags';
+import { Tag, TagGroup, TagSize } from '../../components/Tags';
 import { Typography, TypographyWithSvg } from '../../components/Typography';
 import { Dropdown, DropdownProps } from './Dropdown';
 import { DropdownContent } from './DropdownContent';
@@ -25,6 +25,7 @@ export const dropdownWithTagsTranslations: DropdownWithTagsTranslations = {
 export interface DropdownWithTagsProps extends Omit<DropdownProps, 'initialSelected' | 'dropdownContent'> {
   initialSelected?: DropdownOption[];
   readOnlyValue?: React.ReactChild;
+  tagSize?: TagSize;
   translations?: DropdownWithTagsTranslations;
 }
 
@@ -35,6 +36,7 @@ export function DropdownWithTags({
   onSelect,
   options,
   readOnlyValue,
+  tagSize,
   themeId: initThemeId,
   translations: customTranslations,
   ...props
@@ -93,7 +95,7 @@ export function DropdownWithTags({
         {...props}
       />
       <Rhythm mt={6} grouped>
-        <TagGroup>
+        <TagGroup size={tagSize}>
           {selected.filter(Boolean).map(({ id: itemId, label }) => (
             <Tag<'button'>
               actionable
@@ -117,6 +119,7 @@ export function DropdownWithTags({
               }
               onClick={() => removeItem(itemId)}
               shape="pill"
+              size={tagSize}
               themeId={themeId}
             />
           ))}

@@ -38,7 +38,7 @@
 .formboxInputContainer--filled {
   $box-shadow-position: inset 0 -1px 0 0;
   box-shadow: $box-shadow-position var(--formbox-input-container-border-color);
-    
+
   &:not(.formboxInputContainer--readOnly) {
     &:hover,
     &.is-hover {
@@ -79,7 +79,7 @@
   border-top-right-radius: $border-radius-s;
   margin-bottom: 1px; /* [1] */
   padding: 6px 8px 2px 8px;
-  
+
   .is-labeled & {
     padding-top: 20px; /* [2] */
   }
@@ -234,11 +234,11 @@ input.formboxInput[type='number'] {
   }
 
   &.formboxLabel--underline {
-    top: 17px;
+    top: 18px;
   }
 
   &.formboxLabel--filled {
-    top: 14px;
+    top: 15px;
   }
 
   &.formboxLabel--outline {
@@ -247,7 +247,7 @@ input.formboxInput[type='number'] {
   }
 
   &.formboxLabel--minimal {
-    top: 17px;
+    top: 18px;
   }
 }
 

@@ -9,7 +9,7 @@
   color: var(--modal-text-color);
   display: flex;
   flex-direction: column;
-  font-size: $font-size-s;
+  font-size: $font-size-m;
   margin: 8px;
   max-height: calc(100vh - 20px);
   max-width: calc(100vw - 20px);
@@ -29,7 +29,7 @@
     background-color: $dark-secondary-background-color;
     box-shadow: $dark-box-shadow-0;
     color: $dark-secondary-text-color;
-    
+
     --modal-scrollbar-thumb-color: $dark-primary-scrollbar-thumb-color;
   }
 }
@@ -38,7 +38,7 @@
   opacity: 0;
   top: 30px;
   transition-duration: 80ms;
-  transition-property: opacity, top;  
+  transition-property: opacity, top;
   transition-timing-function: ease-out;
 
   &.has-transitioned {
