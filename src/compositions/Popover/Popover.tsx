@@ -191,17 +191,18 @@ export function Popover({
     const togglerProps = {
       id: generateToggleId(),
       onBlur: handleTogglerBlur,
-      onFocus: handleTogglerFocus,
       onClick: handleClick,
-      onMouseEnter: handleMouseEnter,
+      onFocus: handleTogglerFocus,
       onKeyDown: handleKeyDown,
+      onMouseEnter: handleMouseEnter,
       role: 'button',
-      tabIndex: 0,
       style: {
         cursor: 'pointer',
         outline: !accessible ? 'none' : undefined,
         ...(typeof toggler === 'object' && toggler.props ? toggler.props.style : {}),
       } as React.CSSProperties,
+      tabIndex: 0,
+      visible: isComponentVisible,
     };
 
     return renderFromProp(toggler, togglerProps, { createFromString: true });
