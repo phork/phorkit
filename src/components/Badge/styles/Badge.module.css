@@ -18,7 +18,7 @@
   transition-property: width, height, background-color; /* [1] */
   transition-timing-function: ease-in-out; /* [1] */
   white-space: nowrap;
-  z-index: 1; /* [1] */
+  z-index: 5; /* [1] */
 }
 
 .badge--outlined {

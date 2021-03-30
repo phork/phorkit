@@ -1,8 +1,8 @@
-import { IconButton } from 'components/Button';
 import PropTypes from 'prop-types';
 import React, { useCallback, useContext, useLayoutEffect } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useColorMode } from 'theme-ui';
+import { IconButton } from 'components/Button';
 import { ThemeContext } from 'context/Theme';
 import { renderFromProp } from 'utils/renderFromProp';
 import { LightOffIcon } from 'icons/internal/LightOffIcon';

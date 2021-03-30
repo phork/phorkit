@@ -84,10 +84,7 @@ const shadowColors = {
   `,
 
   'box-shadow-10': `
-    0px 0px 0px 1px ${color.transparency(neutralColors['color-FG40'], 80)},
-    0px 1px 6px 0px rgba(0, 0, 0, 0.8),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.9),
-    0px 2px 4px -1px rgba(0, 0, 0, 0.9)
+    0px 0px 0px 1px ${color.transparency(neutralColors['color-FG40'], 60)}
   `,
 
   'box-shadow-20': `

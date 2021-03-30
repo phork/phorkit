@@ -84,9 +84,6 @@ const mixins = {
         top: 0,
         transition: 'opacity 300ms linear',
       };
-      shadow['> *'] = {
-        zIndex: 1,
-      };
     }
 
     return shadow;
