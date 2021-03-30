@@ -49,7 +49,9 @@
 }
 
 .progress--floating {
-  background-color: transparent;
+  @mixin themed .progress {
+    background-color: transparent;
+  }
 }
 
 /**
