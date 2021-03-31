@@ -13,6 +13,7 @@ export interface LocalListItemProps extends ThemeProps {
   mimicSelectOnFocus?: boolean;
   onClick?: (event: React.MouseEvent | React.TouchEvent) => void;
   selected?: boolean;
+  transparent?: boolean;
   unstyled?: boolean;
 }
 
@@ -31,6 +32,7 @@ function ListItemBase<T extends ListItemElementType = 'li'>(
     mimicSelectOnFocus,
     onClick,
     selected,
+    transparent,
     unstyled,
     ...props
   }: ListItemProps<T>,
@@ -44,6 +46,7 @@ function ListItemBase<T extends ListItemElementType = 'li'>(
         : cx(
             styles.listItem,
             mimicSelectOnFocus && styles['listItem--mimicSelectOnFocus'],
+            transparent && styles['listItem--transparent'],
             disabled && styles['is-disabled'],
             focused && styles['is-focused'],
             inactive && styles['is-inactive'],

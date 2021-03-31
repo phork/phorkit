@@ -23,7 +23,9 @@ export interface LocalListProps extends ThemeProps {
   /** mimicSelectOnFocus uses selected styles for focused items */
   mimicSelectOnFocus?: boolean;
   outline?: 'bordered' | 'shadowed' | 'divided' | 'unboxed';
+  rounded?: boolean;
   size?: 'xsmall' | 'small' | 'medium';
+  transparent?: boolean;
   unstyled?: boolean;
   variant?: 'primary' | 'minimal';
 }
@@ -44,8 +46,10 @@ function ListBase<T extends ListElementType = 'ul'>(
     items,
     mimicSelectOnFocus,
     outline,
+    rounded,
     size = 'medium',
     themeId: initThemeId,
+    transparent,
     unstyled,
     variant: initVariant = 'primary',
     ...props
@@ -66,6 +70,7 @@ function ListBase<T extends ListElementType = 'ul'>(
             styles.list,
             inline && styles['list--inline'],
             outline && styles[`list--${outline}`],
+            rounded && styles['list--rounded'],
             size && styles[`list--${size}`],
             themeId && styles[`list--${themeId}`],
             variant && styles[`list--${variant}`],
@@ -85,6 +90,7 @@ function ListBase<T extends ListElementType = 'ul'>(
           key={id}
           inactive={inactive}
           mimicSelectOnFocus={mimicSelectOnFocus}
+          transparent={transparent}
           unstyled={unstyled}
           {...(item as ListItemProps<ListItemElementMap[T]>)}
         >

@@ -4,12 +4,14 @@ menu: Input
 route: /compositions/InteractiveList
 ---
 
+import { cx } from '@emotion/css';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { InteractiveGroupItem, InteractiveGroupConsumer } from 'components/InteractiveGroup';
 import { InteractiveList } from '../index';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { options } from './helpers/options';
-import { PageTitle } from 'docs/helpers/PageTitle';
+import scrollbar from 'styles/common/Scrollbar.module.css';
 
 <PageTitle title="InteractiveList" src="compositions/InteractiveList" />
 
@@ -18,242 +20,306 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 ## Scroll to element
 
 <Playground>
-  <ThemeWrapper>
-    <InteractiveList
-      initialSelected="violet-red"
-      items={options}
-      onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
-      onSelect={(event, { id, index }) => console.log('select', { id, index })}
-      onUnselect={(event, { id }) => console.log('unselect', id)}
-      outline="bordered"
-      style={{height: '200px', overflow: 'auto'}}
-    >
-      An empty notification
-    </InteractiveList>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <InteractiveList
+        initialSelected="violet-red"
+        items={options}
+        onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
+        onSelect={(event, { id, index }) => console.log('select', { id, index })}
+        onUnselect={(event, { id }) => console.log('unselect', id)}
+        outline="bordered"
+        className={cx(
+          scrollbar['scrollbar--small'],
+          scrollbar['scrollbar--primary'],
+          scrollbar[`scrollbar--${themeId}`],
+        )}
+        style={{ height: '200px', overflow: 'auto' }}
+      >
+        An empty notification
+      </InteractiveList>
+    )}
   </ThemeWrapper>
 </Playground>
 
 ## Select on focus
 
 <Playground>
-  <ThemeWrapper>
-    <InteractiveList
-      initialSelected="red"
-      items={options}
-      onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
-      onSelect={(event, { id, index }) => console.log('select', { id, index })}
-      onUnselect={(event, { id }) => console.log('unselect', id)}
-      outline="bordered"
-      selectOnFocus
-      style={{height: '200px', overflow: 'auto'}}
-    >
-      An empty notification
-    </InteractiveList>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <InteractiveList
+        initialSelected="red"
+        items={options}
+        onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
+        onSelect={(event, { id, index }) => console.log('select', { id, index })}
+        onUnselect={(event, { id }) => console.log('unselect', id)}
+        outline="bordered"
+        selectOnFocus
+        className={cx(
+          scrollbar['scrollbar--small'],
+          scrollbar['scrollbar--primary'],
+          scrollbar[`scrollbar--${themeId}`],
+        )}
+        style={{ height: '200px', overflow: 'auto' }}
+      >
+        An empty notification
+      </InteractiveList>
+    )}
   </ThemeWrapper>
 </Playground>
 
 ## Mimic select on focus
 
 <Playground>
-  <ThemeWrapper>
-    <InteractiveList
-      initialSelected="red"
-      items={options}
-      onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
-      onSelect={(event, { id, index }) => console.log('select', { id, index })}
-      onUnselect={(event, { id }) => console.log('unselect', id)}
-      outline="bordered"
-      mimicSelectOnFocus
-      style={{height: '200px', overflow: 'auto'}}
-    >
-      An empty notification
-    </InteractiveList>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <InteractiveList
+        initialSelected="red"
+        items={options}
+        onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
+        onSelect={(event, { id, index }) => console.log('select', { id, index })}
+        onUnselect={(event, { id }) => console.log('unselect', id)}
+        outline="bordered"
+        mimicSelectOnFocus
+        className={cx(
+          scrollbar['scrollbar--small'],
+          scrollbar['scrollbar--primary'],
+          scrollbar[`scrollbar--${themeId}`],
+        )}
+        style={{ height: '200px', overflow: 'auto' }}
+      >
+        An empty notification
+      </InteractiveList>
+    )}
   </ThemeWrapper>
 </Playground>
-
 
 ## Multi-select
 
 <Playground>
-  <ThemeWrapper>
-    <InteractiveList
-      allowMultiSelect
-      initialSelected={['violet-red']}
-      items={options}
-      onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
-      onSelect={(event, { id, index }) => console.log('select', { id, index })}
-      onUnselect={(event, { id }) => console.log('unselect', id)}
-      outline="bordered"
-      style={{height: '200px', overflow: 'auto'}}
-    >
-      An empty notification
-    </InteractiveList>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <InteractiveList
+        allowMultiSelect
+        initialSelected={['violet-red']}
+        items={options}
+        onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
+        onSelect={(event, { id, index }) => console.log('select', { id, index })}
+        onUnselect={(event, { id }) => console.log('unselect', id)}
+        outline="bordered"
+        className={cx(
+          scrollbar['scrollbar--small'],
+          scrollbar['scrollbar--primary'],
+          scrollbar[`scrollbar--${themeId}`],
+        )}
+        style={{ height: '200px', overflow: 'auto' }}
+      >
+        An empty notification
+      </InteractiveList>
+    )}
   </ThemeWrapper>
 </Playground>
 
 ## Disable unselect
 
 <Playground>
-  <ThemeWrapper>
-    <InteractiveList
-      disableUnselect
-      initialSelected="red"
-      items={options}
-      onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
-      onSelect={(event, { id, index }) => console.log('select', { id, index })}
-      onUnselect={(event, { id }) => console.log('unselect', id)}
-      outline="bordered"
-      style={{height: '200px', overflow: 'auto'}}
-    >
-      An empty notification
-    </InteractiveList>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <InteractiveList
+        disableUnselect
+        initialSelected="red"
+        items={options}
+        onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
+        onSelect={(event, { id, index }) => console.log('select', { id, index })}
+        onUnselect={(event, { id }) => console.log('unselect', id)}
+        outline="bordered"
+        className={cx(
+          scrollbar['scrollbar--small'],
+          scrollbar['scrollbar--primary'],
+          scrollbar[`scrollbar--${themeId}`],
+        )}
+        style={{ height: '200px', overflow: 'auto' }}
+      >
+        An empty notification
+      </InteractiveList>
+    )}
   </ThemeWrapper>
 </Playground>
 
 ## Allow reselect
 
 <Playground>
-  <ThemeWrapper>
-    <InteractiveList
-      allowReselect
-      disableUnselect
-      initialSelected="red"
-      items={options}
-      onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
-      onSelect={(event, { id, index }) => console.log('select', { id, index })}
-      onUnselect={(event, { id }) => console.log('unselect', id)}
-      outline="bordered"
-      style={{height: '200px', overflow: 'auto'}}
-    >
-      An empty notification
-    </InteractiveList>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <InteractiveList
+        allowReselect
+        disableUnselect
+        initialSelected="red"
+        items={options}
+        onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
+        onSelect={(event, { id, index }) => console.log('select', { id, index })}
+        onUnselect={(event, { id }) => console.log('unselect', id)}
+        outline="bordered"
+        className={cx(
+          scrollbar['scrollbar--small'],
+          scrollbar['scrollbar--primary'],
+          scrollbar[`scrollbar--${themeId}`],
+        )}
+        style={{ height: '200px', overflow: 'auto' }}
+      >
+        An empty notification
+      </InteractiveList>
+    )}
   </ThemeWrapper>
 </Playground>
 
 ## Custom list items
 
-*Note that the links will cause the page to reload so the state will appear unchanged.*
+_Note that the links will cause the page to reload so the state will appear unchanged._
 
 <Playground>
-  <ThemeWrapper>
-    <InteractiveList
-      items={[
-        {
-          id: 'first',
-          label: ({ focused }) => (
-            <a href="#linked" style={{color: 'currentColor', display: 'block', height: '60px'}}>
-              First {focused ? 'is focused!' : ''}
-            </a>
-          )
-        },
-        {
-          id: 'second',
-          label: ({ focused }) => (
-            <a href="#linked" style={{color: 'currentColor', display: 'block', height: '60px'}}>
-              Second {focused ? 'is focused!' : ''}
-            </a>
-          )
-        },
-        {
-          id: 'third',
-          label: ({ focused }) => (
-            <a href="#linked" style={{color: 'currentColor', display: 'block', height: '60px'}}>
-              Third {focused ? 'is focused!' : ''}
-            </a>
-          )
-        },
-        {
-          id: 'fourth',
-          label: ({ focused }) => (
-            <a href="#linked" style={{color: 'currentColor', display: 'block', height: '60px'}}>
-              Fourth {focused ? 'is focused!' : ''}
-            </a>
-          )
-        },
-      ]}
-      outline="shadowed"
-      style={{height: '200px', overflow: 'auto'}}
-    />
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <InteractiveList
+        items={[
+          {
+            id: 'first',
+            label: ({ focused }) => (
+              <a href="#linked" style={{ color: 'currentColor', display: 'block', height: '60px' }}>
+                First {focused ? 'is focused!' : ''}
+              </a>
+            ),
+          },
+          {
+            id: 'second',
+            label: ({ focused }) => (
+              <a href="#linked" style={{ color: 'currentColor', display: 'block', height: '60px' }}>
+                Second {focused ? 'is focused!' : ''}
+              </a>
+            ),
+          },
+          {
+            id: 'third',
+            label: ({ focused }) => (
+              <a href="#linked" style={{ color: 'currentColor', display: 'block', height: '60px' }}>
+                Third {focused ? 'is focused!' : ''}
+              </a>
+            ),
+          },
+          {
+            id: 'fourth',
+            label: ({ focused }) => (
+              <a href="#linked" style={{ color: 'currentColor', display: 'block', height: '60px' }}>
+                Fourth {focused ? 'is focused!' : ''}
+              </a>
+            ),
+          },
+        ]}
+        outline="shadowed"
+        className={cx(
+          scrollbar['scrollbar--small'],
+          scrollbar['scrollbar--primary'],
+          scrollbar[`scrollbar--${themeId}`],
+        )}
+        style={{ height: '200px', overflow: 'auto' }}
+      />
+    )}
   </ThemeWrapper>
 </Playground>
 
 ## Unstyled
 
 <Playground>
-  <ThemeWrapper>
-    <InteractiveList
-      initialSelected="red"
-      items={[
-        {
-          id: 'first',
-          label: ({ focused, selected }) => (
-            <div style={{color: 'currentColor', display: 'block', height: '20px'}}>
-              First {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
-            </div>
-          )
-        },
-        {
-          id: 'second',
-          label: ({ focused, selected }) => (
-            <div style={{color: 'currentColor', display: 'block', height: '20px'}}>
-              Second {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
-            </div>
-          )
-        },
-        {
-          id: 'third',
-          label: ({ focused, selected }) => (
-            <div style={{color: 'currentColor', display: 'block', height: '20px'}}>
-              Third {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
-            </div>
-          )
-        },
-        {
-          id: 'fourth',
-          label: ({ focused, selected }) => (
-            <div style={{color: 'currentColor', display: 'block', height: '20px'}}>
-              Fourth {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
-            </div>
-          )
-        },
-      ]}
-      onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
-      onSelect={(event, { id, index }) => console.log('select', { id, index })}
-      onUnselect={(event, { id }) => console.log('unselect', id)}
-      style={{height: '200px', overflow: 'auto'}}
-      unstyled
-    >
-      An empty notification
-    </InteractiveList>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <InteractiveList
+        initialSelected="red"
+        items={[
+          {
+            id: 'first',
+            label: ({ focused, selected }) => (
+              <div style={{ color: 'currentColor', display: 'block', height: '20px' }}>
+                First {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
+              </div>
+            ),
+          },
+          {
+            id: 'second',
+            label: ({ focused, selected }) => (
+              <div style={{ color: 'currentColor', display: 'block', height: '20px' }}>
+                Second {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
+              </div>
+            ),
+          },
+          {
+            id: 'third',
+            label: ({ focused, selected }) => (
+              <div style={{ color: 'currentColor', display: 'block', height: '20px' }}>
+                Third {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
+              </div>
+            ),
+          },
+          {
+            id: 'fourth',
+            label: ({ focused, selected }) => (
+              <div style={{ color: 'currentColor', display: 'block', height: '20px' }}>
+                Fourth {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
+              </div>
+            ),
+          },
+        ]}
+        onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
+        onSelect={(event, { id, index }) => console.log('select', { id, index })}
+        onUnselect={(event, { id }) => console.log('unselect', id)}
+        className={cx(
+          scrollbar['scrollbar--small'],
+          scrollbar['scrollbar--primary'],
+          scrollbar[`scrollbar--${themeId}`],
+        )}
+        style={{ height: '200px', overflow: 'auto' }}
+        unstyled
+      >
+        An empty notification
+      </InteractiveList>
+    )}
   </ThemeWrapper>
 </Playground>
 
 ## Navigation role
 
 <Playground>
-  <ThemeWrapper>
-    <InteractiveList
-      initialSelected="violet-red"
-      items={options}
-      onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
-      onSelect={(event, { id, index }) => console.log('select', { id, index })}
-      onUnselect={(event, { id }) => console.log('unselect', id)}
-      outline="bordered"
-      style={{height: '200px', overflow: 'auto'}}
-      providerProps={{ role: 'navigation', 'aria-label': 'Primary navigation' }}
-    >
-      An empty notification
-    </InteractiveList>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <InteractiveList
+        initialSelected="violet-red"
+        items={options}
+        onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
+        onSelect={(event, { id, index }) => console.log('select', { id, index })}
+        onUnselect={(event, { id }) => console.log('unselect', id)}
+        outline="bordered"
+        className={cx(
+          scrollbar['scrollbar--small'],
+          scrollbar['scrollbar--primary'],
+          scrollbar[`scrollbar--${themeId}`],
+        )}
+        style={{ height: '200px', overflow: 'auto' }}
+        providerProps={{ role: 'navigation', 'aria-label': 'Primary navigation' }}
+      >
+        An empty notification
+      </InteractiveList>
+    )}
   </ThemeWrapper>
 </Playground>
 
 ## Empty list
 
 <Playground>
-  <ThemeWrapper>
-    <InteractiveList items={[]} outline="bordered">
-      An empty notification
-    </InteractiveList>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <InteractiveList items={[]} outline="bordered">
+        An empty notification
+      </InteractiveList>
+    )}
   </ThemeWrapper>
 </Playground>
 

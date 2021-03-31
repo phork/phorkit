@@ -4,11 +4,11 @@ menu: Display
 route: /components/List
 ---
 
-import { Playground, Props } from 'docz';
-import { List, ListItem } from '../index';
-import { Flex } from 'components/Flex';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { Playground, Props } from 'docz';
+import { Flex } from 'components/Flex';
+import { List, ListItem } from '../index';
 
 <PageTitle title="List" src="components/List" />
 
@@ -19,53 +19,67 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
 <Playground>
   <ThemeWrapper>
     <Flex direction="row" justifyContent="space-between" wrap>
-      <div style={{width: '200px', maxWidth: '100%'}}>
+      <div style={{ width: '200px', maxWidth: '100%' }}>
         <h3>Bordered list</h3>
-        <List outline="bordered" items={[
-          { id: 'normal0', label: 'Normal' },
-          { id: 'selected', label: 'Selected', selected: true },
-          { id: 'normal1', label: 'Normal' },
-          { id: 'normal2', label: 'Normal' },
-          { id: 'normal3', label: 'Normal' },
-          { id: 'disabled', label: 'Disabled', disabled: true },
-          { id: 'inactive', label: 'Inactive', inactive: true },
-        ]} />
+        <List
+          outline="bordered"
+          items={[
+            { id: 'normal0', label: 'Normal' },
+            { id: 'selected', label: 'Selected', selected: true },
+            { id: 'normal1', label: 'Normal' },
+            { id: 'normal2', label: 'Normal' },
+            { id: 'normal3', label: 'Normal' },
+            { id: 'disabled', label: 'Disabled', disabled: true },
+            { id: 'inactive', label: 'Inactive', inactive: true },
+          ]}
+        />
       </div>
-      <div style={{width: '200px', maxWidth: '100%'}}>
+      <div style={{ width: '200px', maxWidth: '100%' }}>
         <h3>Box shadowed list</h3>
-        <List outline="shadowed" items={[
-          { id: 'normal0', label: 'Normal' },
-          { id: 'selected', label: 'Selected', selected: true },
-          { id: 'normal1', label: 'Normal' },
-          { id: 'normal2', label: 'Normal' },
-          { id: 'normal3', label: 'Normal' },
-          { id: 'disabled', label: 'Disabled', disabled: true },
-          { id: 'inactive', label: 'Inactive', inactive: true },
-        ]} />
+        <List
+          outline="shadowed"
+          items={[
+            { id: 'normal0', label: 'Normal' },
+            { id: 'selected', label: 'Selected', selected: true },
+            { id: 'normal1', label: 'Normal' },
+            { id: 'normal2', label: 'Normal' },
+            { id: 'normal3', label: 'Normal' },
+            { id: 'disabled', label: 'Disabled', disabled: true },
+            { id: 'inactive', label: 'Inactive', inactive: true },
+          ]}
+        />
       </div>
-      <div style={{width: '200px', maxWidth: '100%'}}>
+      <div style={{ width: '200px', maxWidth: '100%' }}>
         <h3>Divided list</h3>
-        <List outline="divided" items={[
-          { id: 'normal0', label: 'Normal' },
-          { id: 'selected', label: 'Selected', selected: true },
-          { id: 'normal1', label: 'Normal' },
-          { id: 'normal2', label: 'Normal' },
-          { id: 'normal3', label: 'Normal' },
-          { id: 'disabled', label: 'Disabled', disabled: true },
-          { id: 'inactive', label: 'Inactive', inactive: true },
-        ]} />
+        <List
+          outline="divided"
+          items={[
+            { id: 'normal0', label: 'Normal' },
+            { id: 'selected', label: 'Selected', selected: true },
+            { id: 'normal1', label: 'Normal' },
+            { id: 'normal2', label: 'Normal' },
+            { id: 'normal3', label: 'Normal' },
+            { id: 'disabled', label: 'Disabled', disabled: true },
+            { id: 'inactive', label: 'Inactive', inactive: true },
+          ]}
+        />
       </div>
-      <div style={{width: '200px', maxWidth: '100%'}}>
+      <div style={{ width: '200px', maxWidth: '100%' }}>
         <h3>Unboxed list</h3>
-        <List outline="unboxed" items={[
-          { id: 'normal0', label: 'Normal' },
-          { id: 'selected', label: 'Selected', selected: true },
-          { id: 'normal1', label: 'Normal' },
-          { id: 'normal2', label: 'Normal' },
-          { id: 'normal3', label: 'Normal' },
-          { id: 'disabled', label: 'Disabled', disabled: true },
-          { id: 'inactive', label: 'Inactive', inactive: true },
-        ]} />
+        <List
+          outline="unboxed"
+          rounded
+          transparent
+          items={[
+            { id: 'normal0', label: 'Normal' },
+            { id: 'selected', label: 'Selected', selected: true },
+            { id: 'normal1', label: 'Normal' },
+            { id: 'normal2', label: 'Normal' },
+            { id: 'normal3', label: 'Normal' },
+            { id: 'disabled', label: 'Disabled', disabled: true },
+            { id: 'inactive', label: 'Inactive', inactive: true },
+          ]}
+        />
       </div>
     </Flex>
   </ThemeWrapper>
@@ -76,26 +90,38 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
 <Playground>
   <ThemeWrapper>
     <h3>Bordered list</h3>
-    <List inline outline="bordered" items={[
-      { id: 'first', label: 'First' },
-      { id: 'second', label: 'Second' },
-      { id: 'third', label: 'Third', selected: true },
-      { id: 'fourth', label: 'Fourth' },
-    ]} />
+    <List
+      inline
+      outline="bordered"
+      items={[
+        { id: 'first', label: 'First' },
+        { id: 'second', label: 'Second' },
+        { id: 'third', label: 'Third', selected: true },
+        { id: 'fourth', label: 'Fourth' },
+      ]}
+    />
     <h3>Box shadowed list</h3>
-    <List inline outline="shadowed" items={[
-      { id: 'first', label: 'First' },
-      { id: 'second', label: 'Second' },
-      { id: 'third', label: 'Third', selected: true },
-      { id: 'fourth', label: 'Fourth' },
-    ]} />
+    <List
+      inline
+      outline="shadowed"
+      items={[
+        { id: 'first', label: 'First' },
+        { id: 'second', label: 'Second' },
+        { id: 'third', label: 'Third', selected: true },
+        { id: 'fourth', label: 'Fourth' },
+      ]}
+    />
     <h3>Divided list</h3>
-    <List inline outline="divided" items={[
-      { id: 'first', label: 'First' },
-      { id: 'second', label: 'Second' },
-      { id: 'third', label: 'Third', selected: true },
-      { id: 'fourth', label: 'Fourth' },
-    ]} />
+    <List
+      inline
+      outline="divided"
+      items={[
+        { id: 'first', label: 'First' },
+        { id: 'second', label: 'Second' },
+        { id: 'third', label: 'Third', selected: true },
+        { id: 'fourth', label: 'Fourth' },
+      ]}
+    />
   </ThemeWrapper>
 </Playground>
 
@@ -103,19 +129,28 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
 
 <Playground>
   <ThemeWrapper>
-    <List outline="shadowed" size="small" items={[
-      { id: 'first', label: 'First' },
-      { id: 'second', label: 'Second' },
-      { id: 'third', label: 'Third', selected: true },
-      { id: 'fourth', label: 'Fourth' },
-    ]} />
+    <List
+      outline="shadowed"
+      size="small"
+      items={[
+        { id: 'first', label: 'First' },
+        { id: 'second', label: 'Second' },
+        { id: 'third', label: 'Third', selected: true },
+        { id: 'fourth', label: 'Fourth' },
+      ]}
+    />
     <br />
-    <List inline outline="shadowed" size="small" items={[
-      { id: 'first', label: 'First' },
-      { id: 'second', label: 'Second' },
-      { id: 'third', label: 'Third', selected: true },
-      { id: 'fourth', label: 'Fourth' },
-    ]} />
+    <List
+      inline
+      outline="shadowed"
+      size="small"
+      items={[
+        { id: 'first', label: 'First' },
+        { id: 'second', label: 'Second' },
+        { id: 'third', label: 'Third', selected: true },
+        { id: 'fourth', label: 'Fourth' },
+      ]}
+    />
   </ThemeWrapper>
 </Playground>
 
@@ -123,19 +158,28 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
 
 <Playground>
   <ThemeWrapper>
-    <List outline="shadowed" size="xsmall" items={[
-      { id: 'first', label: 'First' },
-      { id: 'second', label: 'Second' },
-      { id: 'third', label: 'Third', selected: true },
-      { id: 'fourth', label: 'Fourth' },
-    ]} />
+    <List
+      outline="shadowed"
+      size="xsmall"
+      items={[
+        { id: 'first', label: 'First' },
+        { id: 'second', label: 'Second' },
+        { id: 'third', label: 'Third', selected: true },
+        { id: 'fourth', label: 'Fourth' },
+      ]}
+    />
     <br />
-    <List inline outline="shadowed" size="xsmall" items={[
-      { id: 'first', label: 'First' },
-      { id: 'second', label: 'Second' },
-      { id: 'third', label: 'Third', selected: true },
-      { id: 'fourth', label: 'Fourth' },
-    ]} />
+    <List
+      inline
+      outline="shadowed"
+      size="xsmall"
+      items={[
+        { id: 'first', label: 'First' },
+        { id: 'second', label: 'Second' },
+        { id: 'third', label: 'Third', selected: true },
+        { id: 'fourth', label: 'Fourth' },
+      ]}
+    />
   </ThemeWrapper>
 </Playground>
 
@@ -146,29 +190,39 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
 <Playground>
   <ThemeWrapper>
     <Flex direction="row" justifyContent="space-between" wrap>
-      <div style={{width: '200px', maxWidth: '100%'}}>
+      <div style={{ width: '200px', maxWidth: '100%' }}>
         <h3>Bordered list</h3>
-        <List variant="minimal" outline="bordered" items={[
-          { id: 'normal0', label: 'Normal' },
-          { id: 'selected', label: 'Selected', selected: true },
-          { id: 'normal1', label: 'Normal' },
-          { id: 'normal2', label: 'Normal' },
-          { id: 'normal3', label: 'Normal' },
-          { id: 'disabled', label: 'Disabled', disabled: true },
-          { id: 'inactive', label: 'Inactive', inactive: true },
-        ]} />
+        <List
+          variant="minimal"
+          outline="bordered"
+          items={[
+            { id: 'normal0', label: 'Normal' },
+            { id: 'selected', label: 'Selected', selected: true },
+            { id: 'normal1', label: 'Normal' },
+            { id: 'normal2', label: 'Normal' },
+            { id: 'normal3', label: 'Normal' },
+            { id: 'disabled', label: 'Disabled', disabled: true },
+            { id: 'inactive', label: 'Inactive', inactive: true },
+          ]}
+        />
       </div>
-      <div style={{width: '200px', maxWidth: '100%'}}>
+      <div style={{ width: '200px', maxWidth: '100%' }}>
         <h3>Unboxed list</h3>
-        <List variant="minimal" outline="unboxed" items={[
-          { id: 'normal0', label: 'Normal' },
-          { id: 'selected', label: 'Selected', selected: true },
-          { id: 'normal1', label: 'Normal' },
-          { id: 'normal2', label: 'Normal' },
-          { id: 'normal3', label: 'Normal' },
-          { id: 'disabled', label: 'Disabled', disabled: true },
-          { id: 'inactive', label: 'Inactive', inactive: true },
-        ]} />
+        <List
+          variant="minimal"
+          outline="unboxed"
+          rounded
+          transparent
+          items={[
+            { id: 'normal0', label: 'Normal' },
+            { id: 'selected', label: 'Selected', selected: true },
+            { id: 'normal1', label: 'Normal' },
+            { id: 'normal2', label: 'Normal' },
+            { id: 'normal3', label: 'Normal' },
+            { id: 'disabled', label: 'Disabled', disabled: true },
+            { id: 'inactive', label: 'Inactive', inactive: true },
+          ]}
+        />
       </div>
     </Flex>
   </ThemeWrapper>
@@ -179,30 +233,40 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
 <Playground>
   <ThemeWrapper contrast>
     <Flex direction="row" justifyContent="space-between" wrap>
-      <div style={{width: '200px', maxWidth: '100%'}}>
+      <div style={{ width: '200px', maxWidth: '100%' }}>
         <h3>Bordered list</h3>
-        <List contrast outline="bordered" items={[
-          { id: 'normal0', label: 'Normal' },
-          { id: 'selected', label: 'Selected', selected: true },
-          { id: 'normal1', label: 'Normal' },
-          { id: 'normal2', label: 'Normal' },
-          { id: 'normal3', label: 'Normal' },
-          { id: 'disabled', label: 'Disabled', disabled: true },
-          { id: 'inactive', label: 'Inactive', inactive: true },
-        ]} />
+        <List
+          contrast
+          outline="bordered"
+          items={[
+            { id: 'normal0', label: 'Normal' },
+            { id: 'selected', label: 'Selected', selected: true },
+            { id: 'normal1', label: 'Normal' },
+            { id: 'normal2', label: 'Normal' },
+            { id: 'normal3', label: 'Normal' },
+            { id: 'disabled', label: 'Disabled', disabled: true },
+            { id: 'inactive', label: 'Inactive', inactive: true },
+          ]}
+        />
       </div>
-      <div style={{width: '200px', maxWidth: '100%'}}>
+      <div style={{ width: '200px', maxWidth: '100%' }}>
         <h3>Unboxed list</h3>
-        <List contrast outline="unboxed" items={[
-          { id: 'normal0', label: 'Normal' },
-          { id: 'selected', label: 'Selected', selected: true },
-          { id: 'normal1', label: 'Normal' },
-          { id: 'normal2', label: 'Normal' },
-          { id: 'normal3', label: 'Normal' },
-          { id: 'normal4', label: 'Normal' },
-          { id: 'disabled', label: 'Disabled', disabled: true },
-          { id: 'inactive', label: 'Inactive', inactive: true },
-        ]} />
+        <List
+          contrast
+          outline="unboxed"
+          rounded
+          transparent
+          items={[
+            { id: 'normal0', label: 'Normal' },
+            { id: 'selected', label: 'Selected', selected: true },
+            { id: 'normal1', label: 'Normal' },
+            { id: 'normal2', label: 'Normal' },
+            { id: 'normal3', label: 'Normal' },
+            { id: 'normal4', label: 'Normal' },
+            { id: 'disabled', label: 'Disabled', disabled: true },
+            { id: 'inactive', label: 'Inactive', inactive: true },
+          ]}
+        />
       </div>
     </Flex>
   </ThemeWrapper>
@@ -212,12 +276,16 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
 
 <Playground>
   <ThemeWrapper>
-    <List inactive outline="shadowed" items={[
-      { id: 'first', label: 'First' },
-      { id: 'second', label: 'Second' },
-      { id: 'third', label: 'Third', selected: true },
-      { id: 'fourth', label: 'Fourth' },
-    ]} />
+    <List
+      inactive
+      outline="shadowed"
+      items={[
+        { id: 'first', label: 'First' },
+        { id: 'second', label: 'Second' },
+        { id: 'third', label: 'Third', selected: true },
+        { id: 'fourth', label: 'Fourth' },
+      ]}
+    />
   </ThemeWrapper>
 </Playground>
 
@@ -225,27 +293,42 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
 
 <Playground>
   <ThemeWrapper>
-    <List as="div" outline="shadowed" items={[
-      { id: 'first', label: 'First' },
-      { id: 'second', label: 'Second' },
-      { id: 'third', label: 'Third', selected: true },
-      { id: 'fourth', label: 'Fourth' },
-    ]} />
+    <List
+      as="div"
+      outline="shadowed"
+      items={[
+        { id: 'first', label: 'First' },
+        { id: 'second', label: 'Second' },
+        { id: 'third', label: 'Third', selected: true },
+        { id: 'fourth', label: 'Fourth' },
+      ]}
+    />
   </ThemeWrapper>
 </Playground>
 
 ### List with custom elements
 
-*Note that the links will cause the page to reload so the state will appear unchanged.*
+_Note that the links will cause the page to reload so the state will appear unchanged._
 
 <Playground>
   <ThemeWrapper>
-    <List as="div" outline="shadowed" items={[
-      { id: 'first', label: 'First', as: 'a', href: '#first', style: { display: 'block' }},
-      { id: 'second', label: 'Second', as: 'a', href: '#second', style: { display: 'block' }},
-      { id: 'third', label: <strong>Third</strong>, as: 'a', href: '#third', style: { display: 'block' }, selected: true},
-      { id: 'fourth', label: 'Fourth', as: 'a', href: '#fourth', style: { display: 'block' }},
-    ]} />
+    <List
+      as="div"
+      outline="shadowed"
+      items={[
+        { id: 'first', label: 'First', as: 'a', href: '#first', style: { display: 'block' } },
+        { id: 'second', label: 'Second', as: 'a', href: '#second', style: { display: 'block' } },
+        {
+          id: 'third',
+          label: <strong>Third</strong>,
+          as: 'a',
+          href: '#third',
+          style: { display: 'block' },
+          selected: true,
+        },
+        { id: 'fourth', label: 'Fourth', as: 'a', href: '#fourth', style: { display: 'block' } },
+      ]}
+    />
   </ThemeWrapper>
 </Playground>
 
@@ -275,19 +358,26 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
 <Playground>
   <ThemeWrapper>
     <h3>Block list</h3>
-    <List unstyled items={[
-      { id: 'first', label: 'First' },
-      { id: 'second', label: 'Second' },
-      { id: 'third', label: 'Third', selected: true },
-      { id: 'fourth', label: 'Fourth' },
-    ]} />
+    <List
+      unstyled
+      items={[
+        { id: 'first', label: 'First' },
+        { id: 'second', label: 'Second' },
+        { id: 'third', label: 'Third', selected: true },
+        { id: 'fourth', label: 'Fourth' },
+      ]}
+    />
     <h3>Inline list</h3>
-    <List inline unstyled items={[
-      { id: 'first', label: 'First' },
-      { id: 'second', label: 'Second' },
-      { id: 'third', label: 'Third', selected: true },
-      { id: 'fourth', label: 'Fourth' },
-    ]} />
+    <List
+      inline
+      unstyled
+      items={[
+        { id: 'first', label: 'First' },
+        { id: 'second', label: 'Second' },
+        { id: 'third', label: 'Third', selected: true },
+        { id: 'fourth', label: 'Fourth' },
+      ]}
+    />
   </ThemeWrapper>
 </Playground>
 

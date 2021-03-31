@@ -67,6 +67,10 @@ ul.unlist {
     position: relative;
     text-align: left;
 
+    &.listItem--transparent {
+      background-color: transparent;
+    }
+
     &.listItem--mimicSelectOnFocus:focus,
     &.listItem--mimicSelectOnFocus.is-focused,
     &.is-selected {
@@ -74,7 +78,7 @@ ul.unlist {
       color: var(--list-item-selected-text-color);
       z-index: 1;
     }
-    
+
     &:active,
     &.is-active {
       background-color: var(--list-item-selected-background-color);
@@ -151,7 +155,7 @@ ul.unlist {
     .listItem {
       border-left: 1px solid var(--list-item-border-color);
       border-right: 1px solid var(--list-item-border-color);
-    
+
       &:first-child {
         border-left: none;
       }
@@ -170,7 +174,7 @@ ul.unlist {
     .listItem {
       border-top: 1px solid var(--list-item-border-color);
       border-bottom: 1px solid var(--list-item-border-color);
-    
+
       &:first-child {
         border-top: none;
       }
@@ -268,7 +272,7 @@ ul.unlist {
 .list--shadowed {
   .listItem {
     @mixin shadowBorder var(--list-item-border-color);
-    
+
     &.is-selected {
       @mixin shadowBorder var(--list-item-focused-border-color);
     }
@@ -288,7 +292,7 @@ ul.unlist {
       }
     }
   }
-  
+
   /**
    * 1. Purposefully exclude :focus here because the browser
    *    focus is no longer relevant in accessible mode.
@@ -302,6 +306,12 @@ ul.unlist {
         }
       }
     }
+  }
+}
+
+.list--unboxed.list--rounded {
+  .listItem {
+    border-radius: $border-radius-m;
   }
 }
 

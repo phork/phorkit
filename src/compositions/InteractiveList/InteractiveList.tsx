@@ -64,8 +64,10 @@ function InteractiveListBase(
     onSelect,
     onUnselect,
     providerProps,
+    rounded,
     selectOnFocus,
     themeId: initThemeId,
+    transparent,
     unstyled,
     ...props
   }: InteractiveListProps,
@@ -119,8 +121,10 @@ function InteractiveListBase(
               onBlur={handleBlur}
               onFocus={handleFocus}
               ref={combineRefs}
+              rounded={rounded}
               tabIndex={disabled ? -1 : 0}
               themeId={themeId}
+              transparent={transparent}
               unstyled={unstyled}
               {...(props as Omit<
                 ListProps<'ul'>,
@@ -148,6 +152,7 @@ function InteractiveListBase(
                     mimicSelectOnFocus={mimicSelectOnFocus}
                     onClick={handleItemClick}
                     selected={isSelected(id)}
+                    transparent={transparent}
                     unstyled={unstyled}
                     {...(itemProps as Omit<InteractiveListItemProps, 'id' | 'label' | 'onClick'>)}
                   />

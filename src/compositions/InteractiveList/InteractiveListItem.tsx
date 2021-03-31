@@ -30,6 +30,7 @@ export function InteractiveListItemBase({
   onClick,
   onKeyDown,
   selected,
+  transparent,
   ...props
 }: InteractiveListItemProps): React.ReactElement {
   const stateProps: StateProps = {
@@ -54,9 +55,10 @@ export function InteractiveListItemBase({
           onClick={handleClick}
           ref={ref}
           tabIndex={-1}
+          transparent={transparent}
           {...(props as Omit<
             InteractiveListItemProps,
-            'as' | 'children' | 'disabled' | 'focused' | 'selected' | 'onClick' | 'ref' | 'tabIndex'
+            'as' | 'children' | 'disabled' | 'focused' | 'selected' | 'onClick' | 'ref' | 'tabIndex' | 'transparent'
           >)}
           {...stateProps}
         >
