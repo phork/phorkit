@@ -16,6 +16,19 @@ import { usePopoverComponentIds } from './usePopoverComponentIds';
 
 const CLOSE_TIMEOUT_ID = 'close';
 
+type TogglerProps = {
+  id: string;
+  onBlur: () => void;
+  onClick: (event: React.MouseEvent | React.TouchEvent) => void;
+  onFocus: () => void;
+  onKeyDown: (event: React.KeyboardEvent) => void;
+  onMouseEnter: () => void;
+  role: 'button';
+  style: React.CSSProperties;
+  tabIndex: 0;
+  visible?: boolean;
+};
+
 export interface PopoverProps
   extends Pick<PopoverContentInlineProps, 'alwaysRender' | 'centered' | 'children' | 'focusable' | 'height' | 'width'> {
   className?: string;
@@ -59,6 +72,8 @@ export interface PopoverProps
   /** if the popover is a tooltip it will have different aria props */
   tooltip?: boolean;
   width?: number | string;
+  /** pass extra props to the toggler (to be used with ForwardProps) */
+  withTogglerProps?: boolean;
 }
 
 export function Popover({
@@ -87,6 +102,7 @@ export function Popover({
   toggler,
   tooltip,
   width,
+  withTogglerProps,
   ...props
 }: PopoverProps): React.ReactElement<PopoverProps, 'div'> {
   const accessible = useAccessibility();
@@ -112,7 +128,7 @@ export function Popover({
     position,
     initOffset,
   ]);
-  const { generatePopoverId, generateToggleId } = usePopoverComponentIds();
+  const { generatePopoverId, generateTogglerId } = usePopoverComponentIds();
 
   // update the state to force a re-render when the content ref renders; exclude the content ref from triggering a close on click
   const setContentRef = (node: HTMLElement | null) => {
@@ -162,20 +178,20 @@ export function Popover({
     }
   };
 
-  const handleClick = (event: React.MouseEvent | React.TouchEvent) => {
+  const handleClick: TogglerProps['onClick'] = (event: React.MouseEvent | React.TouchEvent) => {
     event.preventDefault();
     event.stopPropagation();
 
     !hoverable && togglePopover();
   };
 
-  const handleMouseEnter = () => {
+  const handleMouseEnter: TogglerProps['onMouseEnter'] = () => {
     if (hoverable) {
       openPopover();
     }
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent) => {
+  const handleKeyDown: TogglerProps['onKeyDown'] = (event: React.KeyboardEvent) => {
     if (event.key === ' ' || event.key === 'Enter') {
       event.preventDefault();
       event.stopPropagation();
@@ -184,12 +200,12 @@ export function Popover({
     }
   };
 
-  const handleTogglerBlur = useCallback(() => setTogglerFocused(false), []);
-  const handleTogglerFocus = useCallback(() => setTogglerFocused(true), []);
+  const handleTogglerBlur: TogglerProps['onBlur'] = useCallback(() => setTogglerFocused(false), []);
+  const handleTogglerFocus: TogglerProps['onFocus'] = useCallback(() => setTogglerFocused(true), []);
 
   const renderToggler = () => {
-    const togglerProps = {
-      id: generateToggleId(),
+    const togglerProps: TogglerProps = {
+      id: generateTogglerId(),
       onBlur: handleTogglerBlur,
       onClick: handleClick,
       onFocus: handleTogglerFocus,
@@ -202,10 +218,13 @@ export function Popover({
         ...(typeof toggler === 'object' && toggler.props ? toggler.props.style : {}),
       } as React.CSSProperties,
       tabIndex: 0,
-      visible: isComponentVisible,
     };
 
-    return renderFromProp(toggler, togglerProps, { createFromString: true });
+    if (withTogglerProps) {
+      togglerProps.visible = isComponentVisible;
+    }
+
+    return renderFromProp<TogglerProps>(toggler, togglerProps, { createFromString: true });
   };
 
   // reset the focus if the visibility changes or when the contentRef value is set on initial render (needed for portals)
