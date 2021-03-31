@@ -11,6 +11,7 @@ export type ButtonGroupItem = {
   id: string;
   label: React.ReactNode;
   selected?: boolean;
+  style?: React.CSSProperties;
 } & Omit<ButtonProps, 'children' | 'id' | 'key' | 'onClick' | 'style' | 'value'>;
 
 export interface LocalButtonGroupProps extends Pick<ButtonProps, 'color' | 'fullWidth' | 'shape'>, ThemeProps {
@@ -92,7 +93,7 @@ export function ButtonGroup({
     >
       {buttons &&
         buttons.map(
-          ({ id, label, selected, ...button }: ButtonGroupItem) =>
+          ({ id, label, selected, style, ...button }: ButtonGroupItem) =>
             renderLabel(id, label, selected) || (
               <Button
                 className={styles.buttonGroup__button}
@@ -104,7 +105,7 @@ export function ButtonGroup({
                 {...button}
                 key={id}
                 onClick={handleClick}
-                style={fullWidth ? { display: 'flex', flex: 1, justifyContent: 'center' } : undefined}
+                style={fullWidth ? { display: 'flex', flex: 1, justifyContent: 'center', ...style } : style}
                 data-value={id}
               >
                 {label}

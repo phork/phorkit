@@ -770,52 +770,50 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
 
 <Playground>
   <ThemeWrapper>
-    <Paper color="secondary">
-      <Flex>
-        <IconGroup scale="medium">
-          <Rhythm m={2}>
-            <IconButton onClick={() => console.log('check')} color="primary">
-              <CheckIcon />
-            </IconButton>
-            <IconButton onClick={() => console.log('search')} color="primary">
-              <SearchIcon />
-              <Badge position="top-right" shape="point" color="warning" />
-            </IconButton>
-            <IconButton onClick={() => console.log('times')} color="primary">
-              <TimesIcon />
-            </IconButton>
-          </Rhythm>
-        </IconGroup>
-        <IconGroup scale="medium">
-          <Rhythm m={1}>
-            <IconButton shape="square" onClick={() => console.log('check')} color="primary">
-              <CheckIcon />
-            </IconButton>
-            <IconButton shape="square" onClick={() => console.log('search')} color="primary">
-              <SearchIcon />
-              <Badge position="top-right" shape="marker" color="warning" outlined />
-            </IconButton>
-            <IconButton shape="square" onClick={() => console.log('times')} color="primary">
-              <TimesIcon />
-            </IconButton>
-          </Rhythm>
-        </IconGroup>
-        <IconGroup scale="medium">
-          <Rhythm m={1}>
-            <IconButton shape="round" onClick={() => console.log('check')} color="primary">
-              <CheckIcon />
-            </IconButton>
-            <IconButton shape="round" onClick={() => console.log('search')} color="primary">
-              <SearchIcon />
-              <Badge position="top-right" shape="point" color="warning" />
-            </IconButton>
-            <IconButton shape="round" onClick={() => console.log('times')} color="primary">
-              <TimesIcon />
-            </IconButton>
-          </Rhythm>
-        </IconGroup>
-      </Flex>
-    </Paper>
+    <Flex>
+      <IconGroup scale="medium">
+        <Rhythm m={2}>
+          <IconButton onClick={() => console.log('check')} color="primary">
+            <CheckIcon />
+          </IconButton>
+          <IconButton onClick={() => console.log('search')} color="primary">
+            <SearchIcon />
+            <Badge position="top-right" shape="point" color="warning" />
+          </IconButton>
+          <IconButton onClick={() => console.log('times')} color="primary">
+            <TimesIcon />
+          </IconButton>
+        </Rhythm>
+      </IconGroup>
+      <IconGroup scale="medium">
+        <Rhythm m={1}>
+          <IconButton shape="square" onClick={() => console.log('check')} color="primary">
+            <CheckIcon />
+          </IconButton>
+          <IconButton shape="square" onClick={() => console.log('search')} color="primary">
+            <SearchIcon />
+            <Badge position="top-right" shape="marker" color="warning" outlined />
+          </IconButton>
+          <IconButton shape="square" onClick={() => console.log('times')} color="primary">
+            <TimesIcon />
+          </IconButton>
+        </Rhythm>
+      </IconGroup>
+      <IconGroup scale="medium">
+        <Rhythm m={1}>
+          <IconButton shape="round" onClick={() => console.log('check')} color="primary">
+            <CheckIcon />
+          </IconButton>
+          <IconButton shape="round" onClick={() => console.log('search')} color="primary">
+            <SearchIcon />
+            <Badge position="top-right" shape="point" color="warning" />
+          </IconButton>
+          <IconButton shape="round" onClick={() => console.log('times')} color="primary">
+            <TimesIcon />
+          </IconButton>
+        </Rhythm>
+      </IconGroup>
+    </Flex>
   </ThemeWrapper>
 </Playground>
 

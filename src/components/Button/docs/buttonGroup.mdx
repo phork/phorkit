@@ -9,6 +9,8 @@ import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { TimesIcon } from 'icons/TimesIcon';
+import { MoonIcon } from 'icons/internal/MoonIcon';
+import { SunIcon } from 'icons/internal/SunIcon';
 import { Flex } from 'components/Flex';
 import { IconText } from 'components/IconText';
 import { Rhythm } from 'components/Rhythm';
@@ -261,58 +263,97 @@ import { Button, ButtonGroup, StyledButton } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <StateWrapper initialState="first">
-      {({ state, setState }) => (
-        <ButtonGroup
-          spacing="joined"
-          overlap
-          color="primary"
-          onClick={(event, id) => setState(id)}
-          buttons={[
-            {
-              id: 'first',
-              label: (
-                <Rhythm mx={3} ml={4}>
-                  <TimesIcon scale="xsmall" />
-                </Rhythm>
-              ),
-              selected: state === 'first',
-              noWidth: true,
-            },
-            {
-              id: 'second',
-              label: (
-                <Rhythm mx={3}>
-                  <TimesIcon scale="xsmall" />
-                </Rhythm>
-              ),
-              selected: state === 'second',
-              noWidth: true,
-            },
-            {
-              id: 'third',
-              label: (
-                <Rhythm mx={3}>
-                  <TimesIcon scale="xsmall" />
-                </Rhythm>
-              ),
-              selected: state === 'third',
-              noWidth: true,
-            },
-            {
-              id: 'fourth',
-              label: (
-                <Rhythm mx={3} mr={4}>
-                  <TimesIcon scale="xsmall" />
-                </Rhythm>
-              ),
-              selected: state === 'fourth',
-              noWidth: true,
-            },
-          ]}
-        />
-      )}
-    </StateWrapper>
+    <Flex direction="row" alignItems="center" justifyContent="space-between" style={{ maxWidth: 330 }}>
+      <StateWrapper initialState="first">
+        {({ state, setState }) => (
+          <ButtonGroup
+            spacing="joined"
+            overlap
+            color="primary"
+            onClick={(event, id) => setState(id)}
+            buttons={[
+              {
+                id: 'first',
+                label: (
+                  <Rhythm mx={3} ml={4}>
+                    <TimesIcon scale="xsmall" />
+                  </Rhythm>
+                ),
+                selected: state === 'first',
+                noWidth: true,
+              },
+              {
+                id: 'second',
+                label: (
+                  <Rhythm mx={3}>
+                    <TimesIcon scale="xsmall" />
+                  </Rhythm>
+                ),
+                selected: state === 'second',
+                noWidth: true,
+              },
+              {
+                id: 'third',
+                label: (
+                  <Rhythm mx={3}>
+                    <TimesIcon scale="xsmall" />
+                  </Rhythm>
+                ),
+                selected: state === 'third',
+                noWidth: true,
+              },
+              {
+                id: 'fourth',
+                label: (
+                  <Rhythm mx={3} mr={4}>
+                    <TimesIcon scale="xsmall" />
+                  </Rhythm>
+                ),
+                selected: state === 'fourth',
+                noWidth: true,
+              },
+            ]}
+          />
+        )}
+      </StateWrapper>
+      <StateWrapper initialState="first">
+        {({ state, setState }) => (
+          <ButtonGroup
+            spacing="joined"
+            overlap
+            color="neutral"
+            shape="brick"
+            onClick={(event, id) => setState(id)}
+            buttons={[
+              {
+                id: 'first',
+                label: (
+                  <Rhythm mx={2}>
+                    <SunIcon scale="medium" />
+                  </Rhythm>
+                ),
+                selected: state === 'first',
+                style: state === 'first' ? { padding: '1px' } : {},
+                noPadding: true,
+                noWidth: true,
+              },
+              {
+                id: 'last',
+                label: (
+                  <Rhythm mx={2}>
+                    <MoonIcon scale="medium" />
+                  </Rhythm>
+                ),
+                selected: state === 'last',
+                style: state === 'last' ? { padding: '1px' } : {},
+                noPadding: true,
+                noWidth: true,
+              },
+            ]}
+          />
+        )}
+      </StateWrapper>
+    </Flex>
   </ThemeWrapper>
 </Playground>
 

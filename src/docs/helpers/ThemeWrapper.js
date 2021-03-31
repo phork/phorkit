@@ -4,8 +4,8 @@ import React, { useCallback, useContext, useLayoutEffect } from 'react';
 import { useColorMode } from 'theme-ui';
 import { ThemeContext } from 'context/Theme';
 import { renderFromProp } from 'utils/renderFromProp';
-import { LightOffIcon } from 'icons/internal/LightOffIcon';
-import { LightOnIcon } from 'icons/internal/LightOnIcon';
+import { MoonIcon } from 'icons/internal/MoonIcon';
+import { SunIcon } from 'icons/internal/SunIcon';
 import { IconButton } from 'components/Button';
 import { renderPropType } from './propTypes';
 
@@ -41,13 +41,13 @@ export function ThemeWrapper({ children, contrast, style, variant: initVariant, 
       }}
     >
       <IconButton
-        style={{ position: 'absolute', top: '-42px', right: '0' }}
+        style={{ position: 'absolute', top: '-30px', right: '10px' }}
         onClick={updateThemeIds}
         aria-label="Toggle theme"
         themeId="light"
         color="neutral"
       >
-        {themeId === 'dark' ? <LightOnIcon size={28} /> : <LightOffIcon size={28} />}
+        {themeId === 'dark' ? <SunIcon scale="medium" /> : <MoonIcon scale="medium" />}
       </IconButton>
 
       {content}

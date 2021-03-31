@@ -24,6 +24,8 @@ export interface LocalButtonProps extends ThemeProps {
   icon?: boolean;
   loader?: React.ReactElement;
   loading?: boolean;
+  noHeight?: boolean;
+  noPadding?: boolean;
   noWidth?: boolean;
   noWrap?: boolean;
   onClick?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent) => void;
@@ -53,6 +55,8 @@ function ButtonBase<T extends ButtonElementType = 'button'>(
     icon,
     loader,
     loading,
+    noHeight,
+    noPadding,
     noWidth,
     noWrap,
     onClick,
@@ -80,9 +84,11 @@ function ButtonBase<T extends ButtonElementType = 'button'>(
         color && styles[`button--${color}`],
         fullWidth && styles['button--fullWidth'],
         icon && styles['button--icon'],
+        noHeight && styles['button--noHeight'],
+        noPadding && styles['button--noPadding'],
         noWidth && styles['button--noWidth'],
         noWrap && styles['button--noWrap'],
-        shape && styles[`button--${shape}`],
+        shape && weight !== 'text' && styles[`button--${shape}`],
         themeId && styles[`button--${themeId}`],
         weight && styles[`button--${weight}`],
         className,

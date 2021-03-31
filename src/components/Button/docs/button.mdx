@@ -381,64 +381,84 @@ import { Button, StyledButton, IconTextButton } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row">
-      <div>
-        <h3>Manual</h3>
-        <StateWrapper initialState={0} formatSetValue={previous => previous + 1}>
-          {({ state: isMouseOver, setState: setIsMouseOver }) => {
-            return (
-              <Looper
-                list={['pill', 'brick']}
-                render={shape => (
-                  <Rhythm mb={2} grouped>
-                    <Looper
-                      list={['primary', 'success', 'warning', 'danger', 'neutral']}
-                      render={color => (
-                        <Hoverable defaultProps={{ collapsed: true }} hoverableProps={{ collapsed: false }}>
-                          <Rhythm mx={2}>
-                            <IconTextButton
-                              color={color}
-                              icon={<BlobbrIcon scale="medium" />}
-                              manual
-                              text={ucfirst(color)}
-                              shape={shape}
-                            />
-                          </Rhythm>
-                        </Hoverable>
-                      )}
-                    />
-                  </Rhythm>
-                )}
-              />
-            );
-          }}
-        </StateWrapper>
-      </div>
-      <div>
-        <h3>Automatic</h3>
-        <Looper
-          list={['pill', 'brick']}
-          render={shape => (
-            <Rhythm mb={2} grouped>
-              <Looper
-                list={['primary', 'success', 'warning', 'danger', 'neutral']}
-                render={color => (
-                  <Rhythm mx={2}>
-                    <IconTextButton
-                      color={color}
-                      icon={<BlobbrIcon scale="medium" />}
-                      text={ucfirst(color)}
-                      shape={shape}
-                      weight="outline"
-                    />
-                  </Rhythm>
-                )}
-              />
-            </Rhythm>
-          )}
-        />
-      </div>
-    </Flex>
+    <Looper
+      list={[undefined, 'outline']}
+      render={weight => (
+        <Rhythm mb={2} key={`iconText-${weight}`} grouped>
+          <Looper
+            list={['pill', 'brick']}
+            render={shape => (
+              <div key={`iconText-${weight}-${shape}`}>
+                <Looper
+                  list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+                  render={color => (
+                    <Rhythm m={2} key={`iconText-${weight}-${shape}-${color}`}>
+                      <IconTextButton
+                        color={color}
+                        icon={<BlobbrIcon scale="medium" />}
+                        text={ucfirst(color)}
+                        shape={shape}
+                        weight={weight}
+                      />
+                    </Rhythm>
+                  )}
+                />
+                <br />
+              </div>
+            )}
+          />
+        </Rhythm>
+      )}
+    />
+    <Rhythm mt={4} grouped>
+      <Looper
+        list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+        render={color => (
+          <Rhythm mx={2} key={`text-${color}`}>
+            <IconTextButton color={color} icon={<BlobbrIcon scale="medium" />} text={ucfirst(color)} weight="text" />
+          </Rhythm>
+        )}
+      />
+    </Rhythm>
+  </ThemeWrapper>
+</Playground>
+
+### Collapsible IconText buttons
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={0} formatSetValue={previous => previous + 1}>
+      {({ state: isMouseOver, setState: setIsMouseOver }) => {
+        return (
+          <Looper
+            list={['pill', 'brick']}
+            render={shape => (
+              <Rhythm mb={2} key={`iconTextCollapsible-${shape}`} grouped>
+                <Looper
+                  list={['primary', 'success', 'warning', 'danger', 'neutral']}
+                  render={color => (
+                    <Hoverable
+                      defaultProps={{ collapsed: true }}
+                      hoverableProps={{ collapsed: false }}
+                      key={`iconTextCollapsible-${shape}-${color}`}
+                    >
+                      <Rhythm mx={2}>
+                        <IconTextButton
+                          color={color}
+                          icon={<BlobbrIcon scale="medium" />}
+                          text={ucfirst(color)}
+                          shape={shape}
+                        />
+                      </Rhythm>
+                    </Hoverable>
+                  )}
+                />
+              </Rhythm>
+            )}
+          />
+        );
+      }}
+    </StateWrapper>
   </ThemeWrapper>
 </Playground>
 
