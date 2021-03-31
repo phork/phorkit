@@ -4,11 +4,11 @@ menu: Utilities
 route: /components/Typography
 ---
 
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from '../index';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { PageTitle } from 'docs/helpers/PageTitle';
 
 <PageTitle title="Typography" src="components/Typography" />
 
@@ -135,6 +135,12 @@ import { PageTitle } from 'docs/helpers/PageTitle';
   <Typography variants="blackout">The quick brown fox jumped over the lazy dog</Typography>
 </Playground>
 
+## Blackout rounded
+
+<Playground>
+  <Typography variants="blackout-rounded">The quick brown fox jumped over the lazy dog</Typography>
+</Playground>
+
 ## Spoiler
 
 <Playground>
@@ -165,8 +171,8 @@ import { PageTitle } from 'docs/helpers/PageTitle';
       line height smash This is line height smash This is line height smash
     </Typography>
     <Typography as="div" variants="line-height-normal">
-      This is line height normal This is line height normal This is line height normal This is line height normal This is
-      line height normal This is line height normal This is line height normal
+      This is line height normal This is line height normal This is line height normal This is line height normal This
+      is line height normal This is line height normal This is line height normal
     </Typography>
     <Typography as="div" variants="line-height-comfy">
       This is line height comfy This is line height comfy This is line height comfy This is line height comfy This is
@@ -217,6 +223,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 </Playground>
 
 # <br />
+
 # Compositions
 
 ## Headings
@@ -247,7 +254,9 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 <div style="height: 50px" />
 
 <Playground>
-  <Typography variants={['medium-caps']} volume="quiet">The quiet brown fox jumped over the lazy dog</Typography>
+  <Typography variants={['medium-caps']} volume="quiet">
+    The quiet brown fox jumped over the lazy dog
+  </Typography>
 </Playground>
 
 ## Small caps
@@ -259,7 +268,9 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 <div style="height: 50px" />
 
 <Playground>
-  <Typography variants={['small-caps']} volume="quiet">The quiet brown fox jumped over the lazy dog</Typography>
+  <Typography variants={['small-caps']} volume="quiet">
+    The quiet brown fox jumped over the lazy dog
+  </Typography>
 </Playground>
 
 ## Extra small caps
@@ -271,7 +282,9 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 <div style="height: 50px" />
 
 <Playground>
-  <Typography variants={['xsmall-caps']} volume="quiet">The quiet brown fox jumped over the lazy dog</Typography>
+  <Typography variants={['xsmall-caps']} volume="quiet">
+    The quiet brown fox jumped over the lazy dog
+  </Typography>
 </Playground>
 
 ## Reset

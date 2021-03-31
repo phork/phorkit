@@ -8,6 +8,7 @@ export type TypographyVariants =
   | 'italic'
   | 'underline'
   | 'blackout'
+  | 'blackout-rounded'
   | 'spoiler'
   | 'truncated'
   | 'uppercase'

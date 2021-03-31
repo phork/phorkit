@@ -76,6 +76,12 @@
   background-color: currentColor;
 }
 
+.text-blackout-rounded {
+  background-color: currentColor;
+  border-radius: 12px;
+  padding: 0 4px;
+}
+
 .text-spoiler {
   transition: background-color 300ms ease;
 
