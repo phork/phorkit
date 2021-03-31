@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.3.0](https://github.com/phork/phorkit/compare/v1.2.0...v1.3.0) (2021-03-31)
+
+
+### ✨ Features
+
+* improved icon text buttons, more button spacing options ([bb501d7](https://github.com/phork/phorkit/commit/bb501d7))
+
 # [1.2.0](https://github.com/phork/phorkit/compare/v1.1.0...v1.2.0) (2021-03-31)
 
 
