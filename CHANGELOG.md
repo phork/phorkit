@@ -1,5 +1,18 @@
 # Changelog
 
+# [1.2.0](https://github.com/phork/phorkit/compare/v1.1.0...v1.2.0) (2021-03-31)
+
+
+### ✨ Features
+
+* added blackout rounded typography ([a546fd1](https://github.com/phork/phorkit/commit/a546fd1))
+* added rounded and transparent lists ([4d5060c](https://github.com/phork/phorkit/commit/4d5060c))
+
+
+### 🐛 Bug Fixes
+
+* only pass extra popover toggler props if requested ([24d759e](https://github.com/phork/phorkit/commit/24d759e))
+
 # [1.1.0](https://github.com/phork/phorkit/compare/v1.0.0...v1.1.0) (2021-03-30)
 
 
