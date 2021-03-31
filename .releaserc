@@ -36,6 +36,12 @@
       }
     ],
     [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "npm version ${nextRelease.version} --no-git-tag-version"
+      }
+    ],
+    [
       "@semantic-release/git",
       {
         "assets": [
