@@ -17,7 +17,7 @@ export function PageTitle({ title, src, url: initUrl }) {
           {title}
         </Typography>
 
-        <IconButton as="a" color="neutral" href={url} target="_blank">
+        <IconButton as="a" color="neutral" themeId="light" href={url} target="_blank">
           <GithubIcon size={24} />
         </IconButton>
       </Flex>
