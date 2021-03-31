@@ -4,29 +4,29 @@ menu: Forms
 route: /components/FormAll
 ---
 
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
+import { SearchIcon } from 'icons/SearchIcon';
+import { Button, ButtonGroup } from 'components/Button';
+import { Flex } from 'components/Flex';
+import { Rhythm } from 'components/Rhythm';
+import { InlineDropdown } from 'compositions/Dropdown';
 import {
-  Textbox,
-  Password,
   Checkbox,
   CheckboxGroup,
   Label,
+  Password,
   Radio,
   RadioGroup,
   Select,
   Slider,
   Stepper,
   Textarea,
+  Textbox,
   Toggle,
 } from '../index';
 import { FormDemo } from './helpers/FormDemo';
-import { Button, ButtonGroup } from 'components/Button';
-import { Rhythm } from 'components/Rhythm';
-import { Flex } from 'components/Flex';
-import { InlineDropdown } from 'compositions/Dropdown';
-import { SearchIcon } from 'icons/SearchIcon';
-import { StateWrapper } from 'docs/helpers/StateWrapper';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 
 # All form components
 
@@ -34,7 +34,7 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
   <StateWrapper initialState={'underline'}>
     {({ state: variant, setState: setVariant }) => (
       <ThemeWrapper>
-        <FormDemo contrast={false} style={{maxWidth: '400px'}}>
+        <FormDemo contrast={false} style={{ maxWidth: '400px' }}>
           {(onChange, setValues, values, contrast, { options, persistEvents }) => (
             <React.Fragment>
               <Rhythm mt={4} mb={2}>
@@ -86,7 +86,7 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
                   id="demo-search"
                   label="Search"
                   name="search"
-                  onChange={(event, value) => setValues({...values, search: value})}
+                  onChange={(event, value) => setValues({ ...values, search: value })}
                   persistEvents={persistEvents}
                   transitional
                   value={values.search}
@@ -140,7 +140,7 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
                   inputVariant={variant}
                   label="A custom dropdown"
                   layout="raised"
-                  onChange={(value) => onChange({ target: { name: 'dropdown'}}, value)}
+                  onChange={value => onChange({ target: { name: 'dropdown' } }, value)}
                   options={options}
                   transitional
                 />
@@ -164,10 +164,13 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
                   contrast={contrast}
                   id="demo-checkbox"
                   name="checkbox"
-                  onChange={(event, checked) => setValues({...values, checkbox: checked})}
+                  onChange={(event, checked) => setValues({ ...values, checkbox: checked })}
                   persistEvents={persistEvents}
                 >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget dui eu orci ultrices maximus eu eu ante. Vestibulum ligula velit, scelerisque vitae venenatis tempor, consectetur a orci. Aenean molestie eu tortor in pharetra. Nulla lobortis, sapien quis ornare venenatis, nunc libero finibus justo, non tempor nisi urna quis justo. Integer sit amet venenatis leo.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget dui eu orci ultrices maximus eu
+                  eu ante. Vestibulum ligula velit, scelerisque vitae venenatis tempor, consectetur a orci. Aenean
+                  molestie eu tortor in pharetra. Nulla lobortis, sapien quis ornare venenatis, nunc libero finibus
+                  justo, non tempor nisi urna quis justo. Integer sit amet venenatis leo.
                 </Checkbox>
               </Rhythm>
               <Rhythm my={2} mr={2}>
@@ -177,7 +180,7 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
                   id="demo-radio1"
                   name="radio"
                   value="one"
-                  onChange={(event, checked, value) => checked && setValues({...values, radio: value })}
+                  onChange={(event, checked, value) => checked && setValues({ ...values, radio: value })}
                   persistEvents={persistEvents}
                 >
                   Lorem ipsum dolor sit amet
@@ -188,7 +191,7 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
                   id="demo-radio2"
                   name="radio"
                   value="two"
-                  onChange={(event, checked, value) => checked && setValues({...values, radio: value })}
+                  onChange={(event, checked, value) => checked && setValues({ ...values, radio: value })}
                   persistEvents={persistEvents}
                 >
                   Consectetur adipiscing elit
@@ -197,11 +200,7 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
               <Rhythm mt={4} mb={2} grouped>
                 <Flex direction="row" alignItems="flex-end" justifyContent="space-between" flexible>
                   <div>
-                    <Label
-                      as="legend"
-                      contrast={contrast}
-                      strength="legend"
-                    >
+                    <Label as="legend" contrast={contrast} strength="legend">
                       Pick a big number
                     </Label>
                     <Stepper
@@ -211,7 +210,7 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
                       max={10000}
                       min={0}
                       name="stepper1"
-                      onChange={(event, value) => setValues({...values, stepper1: value})}
+                      onChange={(event, value) => setValues({ ...values, stepper1: value })}
                       persistEvents={persistEvents}
                       step={100}
                       value={values.stepper1}
@@ -227,7 +226,7 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
                     min={0}
                     step={10}
                     name="stepper2"
-                    onChange={(event, value) => setValues({...values, stepper2: value})}
+                    onChange={(event, value) => setValues({ ...values, stepper2: value })}
                     persistEvents={persistEvents}
                     value={values.stepper2}
                     width="50%"
@@ -242,24 +241,28 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
                   layout="stacked"
                   legend="Super fantastic label says what?"
                   name="checkboxes"
-                  onChange={(event, value) => setValues({...values, checkboxes: value})}
+                  onChange={(event, value) => setValues({ ...values, checkboxes: value })}
                   values={values.checkboxes}
-                  checkboxes={[{
-                    id: "demo-checkbox-group1",
-                    name: "checkbox-group1",
-                    value: "one",
-                    label: 'Super fantastic label one',
-                  }, {
-                    id: "demo-checkbox-group2",
-                    name: "checkbox-group2",
-                    value: "two",
-                    label: 'Super fantastic label two',
-                  }, {
-                    id: "demo-checkbox-group3",
-                    name: "checkbox-group3",
-                    value: "three",
-                    label: 'Super fantastic label three',
-                  }]}
+                  checkboxes={[
+                    {
+                      id: 'demo-checkbox-group1',
+                      name: 'checkbox-group1',
+                      value: 'one',
+                      label: 'Super fantastic label one',
+                    },
+                    {
+                      id: 'demo-checkbox-group2',
+                      name: 'checkbox-group2',
+                      value: 'two',
+                      label: 'Super fantastic label two',
+                    },
+                    {
+                      id: 'demo-checkbox-group3',
+                      name: 'checkbox-group3',
+                      value: 'three',
+                      label: 'Super fantastic label three',
+                    },
+                  ]}
                 />
               </Rhythm>
               <Rhythm mt={4} mb={2}>
@@ -269,21 +272,25 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
                   layout="inline"
                   legend="Super fantastic label says what?"
                   name="radios"
-                  onChange={(event, value) => setValues({...values, radios: value})}
+                  onChange={(event, value) => setValues({ ...values, radios: value })}
                   value={values.radios}
-                  radios={[{
-                    id: "demo-radio-group1",
-                    value: "one",
-                    label: 'Super fantastic label one',
-                  }, {
-                    id: "demo-radio-group2",
-                    value: "two",
-                    label: 'Super fantastic label two',
-                  }, {
-                    id: "demo-radio-group3",
-                    value: "three",
-                    label: 'Super fantastic label three',
-                  }]}
+                  radios={[
+                    {
+                      id: 'demo-radio-group1',
+                      value: 'one',
+                      label: 'Super fantastic label one',
+                    },
+                    {
+                      id: 'demo-radio-group2',
+                      value: 'two',
+                      label: 'Super fantastic label two',
+                    },
+                    {
+                      id: 'demo-radio-group3',
+                      value: 'three',
+                      label: 'Super fantastic label three',
+                    },
+                  ]}
                 />
               </Rhythm>
               <Rhythm mt={4} mb={2}>
@@ -294,7 +301,7 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
                   max={100}
                   min={0}
                   name="slider"
-                  onChange={(event, value) => setValues({...values, slider: value})}
+                  onChange={(event, value) => setValues({ ...values, slider: value })}
                   persistEvents={persistEvents}
                   value={values.slider}
                   valuePosition="top"
@@ -309,7 +316,7 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
                   contrast={contrast}
                   id="demo-toggle"
                   name="toggle"
-                  onChange={(event, checked) => setValues({...values, toggle: checked})}
+                  onChange={(event, checked) => setValues({ ...values, toggle: checked })}
                   persistEvents={persistEvents}
                   value={true}
                 >
@@ -318,8 +325,12 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
                 <Rhythm mr={-4}>
                   <Flex flexible alignItems="center" justifyContent="flex-end">
                     <Rhythm my={1} mr={4}>
-                      <Button weight="text" color="neutral">Cancel</Button>
-                      <Button type="submit" color="primary">Submit</Button>
+                      <Button weight="text" color="neutral">
+                        Cancel
+                      </Button>
+                      <Button type="submit" color="primary">
+                        Submit
+                      </Button>
                     </Rhythm>
                   </Flex>
                 </Rhythm>

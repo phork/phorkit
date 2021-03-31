@@ -6,9 +6,6 @@ lib/
 src/icons/
 src/styles/fonts/**
 src/components/ErrorBoundary/ErrorBoundary.tsx
-src/**/docs/*
 src/gatsby-theme-docz/
 *.d.ts
-*.mdx
 .rollup.cache
-``

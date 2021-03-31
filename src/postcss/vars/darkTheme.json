@@ -83,7 +83,7 @@
   "contrast-quieter-color": "hsla(0, 0%, 13.3%, 0.4)",
   "contrast-quietest-color": "hsla(0, 0%, 13.3%, 0.2)",
   "contrast-accent-color": "#222",
-  "primary-scrollbar-thumb-color": "hsla(0, 0%, 100%, 0.2)",
+  "primary-scrollbar-thumb-color": "#222",
   "primary-scrollbar-track-color": "transparent",
   "contrast-scrollbar-thumb-color": "hsla(0, 0%, 13.3%, 0.2)",
   "contrast-scrollbar-track-color": "transparent",

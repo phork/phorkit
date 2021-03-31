@@ -11,7 +11,7 @@ const options = [
   { id: 'blue', value: 'blue', label: 'Blue' },
   { id: 'indigo', value: 'indigo', label: 'Indigo' },
   { id: 'violet', value: 'violet', label: 'Violet' },
-]
+];
 
 export function FormDemo({ children, contrast, style }) {
   const { values, setValues, handleChange, handleSubmit } = useForm(

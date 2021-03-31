@@ -5,7 +5,7 @@ import { useComponentId } from '../../hooks/useComponentId';
 export type UsePopoverComponentIdsResponse = {
   componentId: string;
   generatePopoverId: () => string;
-  generateToggleId: () => string;
+  generateTogglerId: () => string;
 };
 
 export function usePopoverComponentIds(id?: string): UsePopoverComponentIdsResponse {
@@ -17,7 +17,7 @@ export function usePopoverComponentIds(id?: string): UsePopoverComponentIdsRespo
     [generateComponentId],
   );
 
-  const generateToggleId = useCallback<UsePopoverComponentIdsResponse['generateToggleId']>(
+  const generateTogglerId = useCallback<UsePopoverComponentIdsResponse['generateTogglerId']>(
     () => generateComponentId('toggle'),
     [generateComponentId],
   );
@@ -25,7 +25,7 @@ export function usePopoverComponentIds(id?: string): UsePopoverComponentIdsRespo
   previousResponse.current = produce(previousResponse.current, draftState => {
     draftState.componentId = componentId;
     draftState.generatePopoverId = generatePopoverId;
-    draftState.generateToggleId = generateToggleId;
+    draftState.generateTogglerId = generateTogglerId;
   });
   return previousResponse.current;
 }

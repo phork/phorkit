@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { IconButton } from 'components/Button';
 import { RightPanelIcon } from 'icons/internal/RightPanelIcon';
+import { IconButton } from 'components/Button';
 
 export function SidePanelDemo({ children, isOpen: initialIsOpen, style }) {
   const [isOpen, setOpen] = useState(initialIsOpen);

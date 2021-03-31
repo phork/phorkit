@@ -3,16 +3,13 @@ name: Playground
 route: /playground
 ---
 
-import { Playground, Props } from 'docz';
 import { cx } from '@emotion/css';
-import { StateWrapper } from './helpers/StateWrapper';
-import { ThemeWrapper } from './helpers/ThemeWrapper';
-import { Looper } from './helpers/Looper';
+import { Playground, Props } from 'docz';
 import { ArrowDownIcon } from 'icons/ArrowDownIcon';
-import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
-import { CheckIcon } from 'icons/internal/CheckIcon';
 import { SearchIcon } from 'icons/SearchIcon';
 import { TimesIcon } from 'icons/TimesIcon';
+import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { CheckIcon } from 'icons/internal/CheckIcon';
 import {
   Avatar,
   Badge,
@@ -68,7 +65,10 @@ import {
   Typography,
   themes,
 } from '../index';
-import scrollbar from '../styles/common/Scrollbar.module.css'
+import { Looper } from './helpers/Looper';
+import { StateWrapper } from './helpers/StateWrapper';
+import { ThemeWrapper } from './helpers/ThemeWrapper';
+import scrollbar from 'styles/common/Scrollbar.module.css';
 
 # Playground
 
@@ -327,7 +327,11 @@ import scrollbar from '../styles/common/Scrollbar.module.css'
           width={300}
         >
           <div
-            className={cx(scrollbar['scrollbar--small'], scrollbar['scrollbar--primary'], scrollbar[`scrollbar--${themeId}`])}
+            className={cx(
+              scrollbar['scrollbar--small'],
+              scrollbar['scrollbar--primary'],
+              scrollbar[`scrollbar--${themeId}`],
+            )}
             style={{
               height: '200px',
               width: '300px',
@@ -481,8 +485,8 @@ import scrollbar from '../styles/common/Scrollbar.module.css'
             onClear={value => console.log('clear')}
             onSelect={value => console.log('select', value)}
             options={options}
-            placeholder={(
-              <Rhythm px={4} style={{ opacity: .5 }}>
+            placeholder={
+              <Rhythm px={4} style={{ opacity: 0.5 }}>
                 <Flex flexible direction="row" alignItems="center" justifyContent="flex-start">
                   <StyledAvatar backgroundColor={themes[themeId]['primary-quietest-color']} initials=" " />
                   <Rhythm mx={4}>
@@ -490,7 +494,7 @@ import scrollbar from '../styles/common/Scrollbar.module.css'
                   </Rhythm>
                 </Flex>
               </Rhythm>
-            )}
+            }
             transitional
           />
         </div>
@@ -898,46 +902,54 @@ import scrollbar from '../styles/common/Scrollbar.module.css'
               onClick={event =>
                 event.persist() ||
                 createModal(
-                  <Modal id="demo-login-modal" focusable size="small">
+                  <Modal id="demo-login-modal" focusable size="medium">
                     {({ id, focusRef }) => (
                       <React.Fragment>
                         <ModalHeader modalId={id} title="Login" />
                         <ModalContent scrollable>
-                          <StateWrapper initialState={{}}>
-                            {({ state: values, setState: setValues }) => (
-                              <React.Fragment>
-                                <Rhythm mb={2}>
-                                  <Textbox
-                                    id="login-username"
-                                    label="Username"
-                                    name="username"
-                                    onChange={event => {
-                                      event.persist();
-                                      setValues(previous => ({ ...previous, [event.target.name]: event.target.value }));
-                                    }}
-                                    transitional
-                                    value={values.username}
-                                    variant="underline"
-                                    ref={focusRef}
-                                  />
-                                </Rhythm>
-                                <Rhythm mt={2} mb={6}>
-                                  <Password
-                                    id="login-password"
-                                    label="Password"
-                                    name="password"
-                                    onChange={event => {
-                                      event.persist();
-                                      setValues(previous => ({ ...previous, [event.target.name]: event.target.value }));
-                                    }}
-                                    transitional
-                                    value={values.password}
-                                    variant="underline"
-                                  />
-                                </Rhythm>
-                              </React.Fragment>
-                            )}
-                          </StateWrapper>
+                          <Rhythm py={4} grouped>
+                            <StateWrapper initialState={{}}>
+                              {({ state: values, setState: setValues }) => (
+                                <React.Fragment>
+                                  <Rhythm mb={2}>
+                                    <Textbox
+                                      id="login-username"
+                                      label="Username"
+                                      name="username"
+                                      onChange={event => {
+                                        event.persist();
+                                        setValues(previous => ({
+                                          ...previous,
+                                          [event.target.name]: event.target.value,
+                                        }));
+                                      }}
+                                      transitional
+                                      value={values.username}
+                                      variant="filled"
+                                      ref={focusRef}
+                                    />
+                                  </Rhythm>
+                                  <Rhythm mt={6} mb={6}>
+                                    <Password
+                                      id="login-password"
+                                      label="Password"
+                                      name="password"
+                                      onChange={event => {
+                                        event.persist();
+                                        setValues(previous => ({
+                                          ...previous,
+                                          [event.target.name]: event.target.value,
+                                        }));
+                                      }}
+                                      transitional
+                                      value={values.password}
+                                      variant="filled"
+                                    />
+                                  </Rhythm>
+                                </React.Fragment>
+                              )}
+                            </StateWrapper>
+                          </Rhythm>
                         </ModalContent>
                         <ModalFooter bordered>
                           <Flex justifyContent="flex-end">
@@ -973,31 +985,33 @@ import scrollbar from '../styles/common/Scrollbar.module.css'
   <ThemeWrapper>
     <StateWrapper>
       {({ state: searchTerm, setState: setSearchTerm }) => (
-        <PortalDropover
-          contentProps={{ portal: 'fixed' }}
-          label={
-            <DropoverInputLabel>
-              <Textbox
-                aria-label="Search"
-                clearable
-                iconBefore={<SearchIcon size={14} />}
-                onChange={(event, value, { cleared } = {}) => {
-                  setSearchTerm(cleared ? '' : value);
-                }}
-                value={searchTerm || ''}
-                width={200}
-              />
-            </DropoverInputLabel>
-          }
-          passiveLabel
-          width={400}
-        >
-          <DropoverContent>
-            <Rhythm py={5}>
-              <div>{searchTerm || 'What are you searching for?'}</div>
-            </Rhythm>
-          </DropoverContent>
-        </PortalDropover>
+        <Rhythm mb={6} grouped>
+          <PortalDropover
+            contentProps={{ portal: 'fixed' }}
+            label={
+              <DropoverInputLabel>
+                <Textbox
+                  aria-label="Search"
+                  clearable
+                  iconBefore={<SearchIcon size={14} />}
+                  onChange={(event, value, { cleared } = {}) => {
+                    setSearchTerm(cleared ? '' : value);
+                  }}
+                  value={searchTerm || ''}
+                  width={200}
+                />
+              </DropoverInputLabel>
+            }
+            passiveLabel
+            width={400}
+          >
+            <DropoverContent>
+              <Rhythm py={5}>
+                <div>{searchTerm || 'What are you searching for?'}</div>
+              </Rhythm>
+            </DropoverContent>
+          </PortalDropover>
+        </Rhythm>
       )}
     </StateWrapper>
   </ThemeWrapper>

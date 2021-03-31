@@ -22,6 +22,7 @@ export interface PortalProps
   portal?: 'fixed' | 'absolute';
   visible?: boolean;
   width?: number | string;
+  /** pass extra props to the children (to be used with ForwardProps) */
   withChildrenProps?: boolean;
 }
 

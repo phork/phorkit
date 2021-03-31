@@ -138,7 +138,7 @@ const hierarchyColors = {
 };
 
 const miscColors = {
-  'primary-scrollbar-thumb-color': color.transparency(neutralColors['color-FG0'], 80),
+  'primary-scrollbar-thumb-color': neutralColors['color-BG20'],
   'primary-scrollbar-track-color': 'transparent',
 
   'contrast-scrollbar-thumb-color': color.transparency(accentColors['color-accent-primary-contrast'], 80),

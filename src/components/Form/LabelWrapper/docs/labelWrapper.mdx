@@ -4,11 +4,11 @@ menu: Forms
 route: /components/LabelWrapper
 ---
 
-import { Playground, Props } from 'docz';
-import { LabelWrapper } from '../index';
-import { Label, Textbox } from 'components/Form';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { Playground, Props } from 'docz';
+import { Label, Textbox } from 'components/Form';
+import { LabelWrapper } from '../index';
 
 <PageTitle title="LabelWrapper" src="components/Form/LabelWrapper" />
 
@@ -17,12 +17,8 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 <Playground>
   <ThemeWrapper>
     <LabelWrapper
-      label={(
-        <Label strength="standard">Super awesome label</Label>
-      )}
-      input={(
-        <Textbox variant="filled" value="Hello world" />
-      )}
+      label={<Label strength="standard">Super awesome label</Label>}
+      input={<Textbox variant="filled" value="Hello world" />}
     />
   </ThemeWrapper>
 </Playground>
@@ -33,12 +29,8 @@ import { PageTitle } from 'docs/helpers/PageTitle';
   <ThemeWrapper>
     <LabelWrapper
       reverse
-      label={(
-        <Label strength="standard">Super awesome label</Label>
-      )}
-      input={(
-        <Textbox variant="filled" value="Hello world" />
-      )}
+      label={<Label strength="standard">Super awesome label</Label>}
+      input={<Textbox variant="filled" value="Hello world" />}
     />
   </ThemeWrapper>
 </Playground>
@@ -49,12 +41,8 @@ import { PageTitle } from 'docs/helpers/PageTitle';
   <ThemeWrapper>
     <LabelWrapper
       vertical
-      label={(
-        <Label strength="standard">Super awesome label</Label>
-      )}
-      input={(
-        <Textbox variant="filled" value="Hello world" />
-      )}
+      label={<Label strength="standard">Super awesome label</Label>}
+      input={<Textbox variant="filled" value="Hello world" />}
     />
   </ThemeWrapper>
 </Playground>
@@ -66,12 +54,8 @@ import { PageTitle } from 'docs/helpers/PageTitle';
     <LabelWrapper
       vertical
       reverse
-      label={(
-        <Label strength="standard">Super awesome label</Label>
-      )}
-      input={(
-        <Textbox variant="filled" value="Hello world" />
-      )}
+      label={<Label strength="standard">Super awesome label</Label>}
+      input={<Textbox variant="filled" value="Hello world" />}
     />
   </ThemeWrapper>
 </Playground>

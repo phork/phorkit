@@ -4,12 +4,12 @@ menu: Utilities
 route: /components/Divider
 ---
 
+import { ColorLooper } from 'docs/helpers/ColorLooper';
+import { Looper } from 'docs/helpers/Looper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { Divider, ColoredDivider } from '../index';
-import { Looper } from 'docs/helpers/Looper';
-import { ColorLooper } from 'docs/helpers/ColorLooper';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { PageTitle } from 'docs/helpers/PageTitle';
 
 <PageTitle title="Divider" src="components/Divider" />
 
@@ -25,7 +25,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 
 <Playground>
   <ThemeWrapper>
-    <div style={{height: '60px'}}>
+    <div style={{ height: '60px' }}>
       <Divider orientation="vertical" />
     </div>
   </ThemeWrapper>
@@ -37,12 +37,15 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 
 <Playground>
   <ThemeWrapper>
-    <Looper list={[undefined, 'quiet', 'quieter', 'quietest']} render={volume => (
-      <div key={volume || 'none'} style={{marginBottom: '12px'}}>
-        <h4>volume: {volume || 'none'}</h4>
-        <Divider variant="primary" volume={volume} />
-      </div>
-    )} />
+    <Looper
+      list={[undefined, 'quiet', 'quieter', 'quietest']}
+      render={volume => (
+        <div key={volume || 'none'} style={{ marginBottom: '12px' }}>
+          <h4>volume: {volume || 'none'}</h4>
+          <Divider variant="primary" volume={volume} />
+        </div>
+      )}
+    />
   </ThemeWrapper>
 </Playground>
 
@@ -50,12 +53,15 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 
 <Playground>
   <ThemeWrapper contrast>
-    <Looper list={[undefined, 'quiet', 'quieter', 'quietest']} render={volume => (
-      <div key={volume || 'none'} style={{marginBottom: '12px'}}>
-        <h4>volume: {volume || 'none'}</h4>
-        <Divider contrast volume={volume} />
-      </div>
-    )} />
+    <Looper
+      list={[undefined, 'quiet', 'quieter', 'quietest']}
+      render={volume => (
+        <div key={volume || 'none'} style={{ marginBottom: '12px' }}>
+          <h4>volume: {volume || 'none'}</h4>
+          <Divider contrast volume={volume} />
+        </div>
+      )}
+    />
   </ThemeWrapper>
 </Playground>
 
@@ -65,18 +71,26 @@ import { PageTitle } from 'docs/helpers/PageTitle';
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <React.Fragment>
-        <ColorLooper themeId={themeId} group="primary" render={({ id }) => (
-          <div key={id} style={{marginBottom: '12px'}}>
-            <h4>Color: {id}</h4>
-            <ColoredDivider key={id} themeId={themeId} colorId={id} />
-          </div>
-        )} />
-        <ColorLooper themeId={themeId} group="neutral" render={({ id }) => (
-          <div key={id} style={{marginBottom: '12px'}}>
-            <h4>Color: {id}</h4>
-            <ColoredDivider key={id} themeId={themeId} colorId={id} />
-          </div>
-        )} />
+        <ColorLooper
+          themeId={themeId}
+          group="primary"
+          render={({ id }) => (
+            <div key={id} style={{ marginBottom: '12px' }}>
+              <h4>Color: {id}</h4>
+              <ColoredDivider key={id} themeId={themeId} colorId={id} />
+            </div>
+          )}
+        />
+        <ColorLooper
+          themeId={themeId}
+          group="neutral"
+          render={({ id }) => (
+            <div key={id} style={{ marginBottom: '12px' }}>
+              <h4>Color: {id}</h4>
+              <ColoredDivider key={id} themeId={themeId} colorId={id} />
+            </div>
+          )}
+        />
       </React.Fragment>
     )}
   </ThemeWrapper>
