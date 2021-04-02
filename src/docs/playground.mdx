@@ -10,6 +10,8 @@ import { SearchIcon } from 'icons/SearchIcon';
 import { TimesIcon } from 'icons/TimesIcon';
 import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { CheckIcon } from 'icons/internal/CheckIcon';
+import { HeartIcon } from 'icons/internal/HeartIcon';
+import { MoonIcon } from 'icons/internal/MoonIcon';
 import {
   Avatar,
   Badge,
@@ -22,12 +24,15 @@ import {
   CardTitle,
   ColoredPaper,
   ColoredTabs,
+  Divider,
   Dropdown,
   DropdownContent,
   DropoverContent,
   DropoverInputLabel,
   Flex,
+  Footer,
   IconButton,
+  IconCount,
   IconGroup,
   IconText,
   InlineTooltip,
@@ -55,6 +60,7 @@ import {
   StackPanel,
   StyledAvatar,
   StyledLoader,
+  StyledHeader,
   Tabs,
   Textbox,
   TextTooltip,
@@ -148,6 +154,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
     <Navigation
       animated
       selectedId="first"
+      style={{ maxWidth: '200px' }}
       vertical
       items={[
         {
@@ -382,11 +389,18 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
           }
           width={300}
         >
-          <div style={{ height: '100%', overflowY: 'auto', boxShadow: themes[themeId]['box-shadow-10'] }}>
+          <div
+            className={cx(
+              scrollbar['scrollbar--small'],
+              scrollbar['scrollbar--primary'],
+              scrollbar[`scrollbar--${themeId}`],
+            )}
+            style={{ height: '100%', overflowY: 'auto', boxShadow: themes[themeId]['box-shadow-10'] }}
+          >
             <List
               as="div"
               outline="divided"
-              style={{ borderLeft: `6px solid ${themes[themeId]['primary-accent-color']}` }}
+              style={{ borderLeft: `4px solid ${themes[themeId]['primary-accent-color']}` }}
               variant="primary"
             >
               <Looper
@@ -675,94 +689,121 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
   </ThemeWrapper>
 </Playground>
 
-## Fancy card
+## Fancy cards
 
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <div style={{ width: '200px', maxWidth: '100%' }}>
-        <Card hoverable raised magnify full>
-          <CardBody flush>
-            <img
-              src="/public/images/avatar.jpg"
-              width="100%"
-              alt="Card hero"
-              style={{
-                opacity: 0.3,
-                filter: 'blur(3px) grayscale(1)',
-                transform: 'scale(1.1)',
-              }}
-            />
-            <Position location="top-right" variant="inside">
-              <Triangle position="top-right" size={18} color={themes[themeId]['primary-accent-color']}>
-                <Typography
-                  color="contrast"
-                  as="div"
-                  size="xxs"
-                  style={{ position: 'absolute', top: 0, left: 0, transform: 'rotate(45deg) translate(50%, -20%)' }}
-                  variants={['uppercase', 'letter-spacing-comfy']}
-                  weight="bold"
+      <Flex direction="row" alignItems="flex-start" justifyContent="space-between">
+        <div style={{ width: '200px', maxWidth: '100%' }}>
+          <Card hoverable raised magnify full>
+            <CardBody flush>
+              <img
+                src="/public/images/avatar.jpg"
+                width="100%"
+                alt="Card hero"
+                style={{
+                  opacity: 0.3,
+                  filter: 'blur(3px) grayscale(1)',
+                  transform: 'scale(1.1)',
+                }}
+              />
+              <Position location="top-right" variant="inside">
+                <Triangle position="top-right" size={18} color={themes[themeId]['primary-accent-color']}>
+                  <Typography
+                    color="contrast"
+                    as="div"
+                    size="xxs"
+                    style={{ position: 'absolute', top: 0, left: 0, transform: 'rotate(45deg) translate(50%, -20%)' }}
+                    variants={['uppercase', 'letter-spacing-comfy']}
+                    weight="bold"
+                  >
+                    Beta
+                  </Typography>
+                </Triangle>
+              </Position>
+              <StyledLoader size={90} color="#fff" style={{ opacity: 0.9 }} position="absolute" />
+            </CardBody>
+            <CardBody flush>
+              <Paper color="secondary">
+                <Rhythm p={3}>
+                  <List
+                    inactive
+                    outline="unboxed"
+                    rounded
+                    variant="primary"
+                    items={[
+                      { id: 'normal0', label: 'Normal' },
+                      { id: 'selected', label: 'Selected', selected: true },
+                      { id: 'normal1', label: 'Normal' },
+                      { id: 'normal2', label: 'Normal' },
+                    ]}
+                  />
+                </Rhythm>
+              </Paper>
+            </CardBody>
+          </Card>
+        </div>
+        <div style={{ width: '300px' }}>
+          <Card raised full>
+            <StyledHeader backgroundColor="#393945" textColor="#fff" height={50}>
+              <Rhythm px={5}>Fancy card</Rhythm>
+            </StyledHeader>
+            <CardBody flush>
+              <Paper color="primary" container="panel">
+                <Flex direction="row" alignItems="center" justifyContent="center" full>
+                  <Typography volume="quietest">
+                    <MoonIcon size={42} />
+                  </Typography>
+                </Flex>
+              </Paper>
+            </CardBody>
+            <Divider volume="quieter" />
+            <Rhythm px={5} py={4}>
+              <Flex direction="row" justifyContent="space-between">
+                {[
+                  { id: 'first', label: 'First', value: 'Super' },
+                  { id: 'second', label: 'Second', value: 'Awesome' },
+                  { id: 'third', label: 'Third', value: 'Value' },
+                ].map(({ id, label, value }, i) => (
+                  <React.Fragment key={id}>
+                    <Flex justifyContent="center" direction="column" flexible>
+                      <Typography color="secondary" size="xs" weight="bold" variants={['line-height-comfy', 'no-wrap']}>
+                        {value}
+                      </Typography>
+                      <Typography variants={['xsmall-caps']} volume="quiet">
+                        {label}
+                      </Typography>
+                    </Flex>
+                    {i < 2 && (
+                      <Rhythm mr={4}>
+                        <Divider volume="quieter" orientation="vertical" style={{ height: '24px' }} />
+                      </Rhythm>
+                    )}
+                  </React.Fragment>
+                ))}
+              </Flex>
+            </Rhythm>
+            <Footer bordered>
+              <Rhythm px={5}>
+                <Flex
+                  full
+                  direction="row"
+                  alignItems="center"
+                  justifyContent="space-between"
+                  style={{ height: '48px' }}
                 >
-                  Beta
-                </Typography>
-              </Triangle>
-            </Position>
-            <StyledLoader size={90} color="#fff" style={{ opacity: 0.9 }} position="absolute" />
-          </CardBody>
-          <CardBody flush>
-            <InteractiveList
-              outline="divided"
-              variant="primary"
-              items={[
-                { id: 'normal0', label: 'Normal' },
-                { id: 'selected', label: 'Selected', selected: true },
-                { id: 'normal1', label: 'Normal' },
-                { id: 'normal2', label: 'Normal' },
-              ]}
-            />
-          </CardBody>
-        </Card>
-      </div>
+                  <IconCount label="Example" icon={CheckIcon} count={13} />
+                  <IconCount label="Example" icon={TimesIcon} iconSize={10} count={24} />
+                  <IconCount label="Example" icon={HeartIcon} iconSize={15} count={9} />
+                  <IconCount label="Example" icon={BlobbrIcon} />
+                </Flex>
+              </Rhythm>
+            </Footer>
+          </Card>
+        </div>
+      </Flex>
     )}
-  </ThemeWrapper>
-</Playground>
-
-## Fancy buttons
-
-<Playground>
-  <ThemeWrapper>
-    <Rhythm m={2}>
-      <Button color="primary">
-        <IconText
-          icon={<BlobbrIcon scale="small" />}
-          text={
-            <Rhythm ml={2}>
-              <span>Submit</span>
-            </Rhythm>
-          }
-        />
-      </Button>
-      <Button color="primary" weight="outline">
-        <IconText
-          icon={<BlobbrIcon scale="small" />}
-          text={
-            <Rhythm ml={2}>
-              <span>Submit</span>
-            </Rhythm>
-          }
-        />
-      </Button>
-      <Button color="primary" weight="text">
-        <IconText
-          icon={<BlobbrIcon scale="small" />}
-          text={
-            <Rhythm ml={1}>
-              <span>Submit</span>
-            </Rhythm>
-          }
-        />
-      </Button>
-    </Rhythm>
   </ThemeWrapper>
 </Playground>
 

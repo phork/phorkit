@@ -20,7 +20,7 @@ program.on('--help', function(){
   console.log('  $ scaffold-component -c Button');
   console.log('  $ scaffold-component -c Tooltip -t composition');
 });
-  
+
 program.parse(process.argv);
 
 const { component, type = 'component' } = program;
@@ -56,7 +56,7 @@ export function ${component}({ children, themeId: initThemeId }: ${component}Pro
   const themeId = useThemeId(initThemeId);
 
   return (
-    <div 
+    <div
       className={cx(
         styles.${lcfirst(component)},
         themeId && styles[\`${lcfirst(component)}--\${themeId}\`],
@@ -90,7 +90,7 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 
 # ${component}
 
-## Basic ${lcfirst(component)}
+## Basic ${ucfirst(component)}
 
 <Playground>
   <ThemeWrapper>
@@ -104,3 +104,4 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 `);
 
 console.log(chalk.green(`🚀 Generated ${src}`));
+console.log(chalk.green(`📣 Don't forget to export this component from ${type}/index.ts`));

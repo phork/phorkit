@@ -1,6 +1,7 @@
 export { BlobbrIcon } from './BlobbrIcon';
 export { CheckIcon } from './CheckIcon';
 export { GithubIcon } from './GithubIcon';
+export { HeartIcon } from './HeartIcon';
 export { HelpIcon } from './HelpIcon';
 export { LeftPanelIcon } from './LeftPanelIcon';
 export { MoonIcon } from './MoonIcon';

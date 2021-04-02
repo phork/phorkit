@@ -3,6 +3,7 @@ export * from './Banner';
 export * from './Dropdown';
 export * from './Dropover';
 export * from './IconGroup';
+export * from './IconCount';
 export * from './InteractiveList';
 export * from './Modal';
 export * from './Navigation';

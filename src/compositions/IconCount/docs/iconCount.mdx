@@ -1,0 +1,49 @@
+---
+name: IconCount
+menu: Display
+route: /compositions/IconCount
+---
+
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { Playground, Props } from 'docz';
+import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { Flex } from 'components/Flex';
+import { Rhythm } from 'components/Rhythm';
+import { IconCount } from '../index';
+
+# IconCount
+
+## Basic IconCount
+
+<Playground>
+  <ThemeWrapper>
+    <IconCount label="Example" icon={BlobbrIcon} count={24} />
+  </ThemeWrapper>
+</Playground>
+
+## Active IconCount
+
+<Playground>
+  <ThemeWrapper>
+    <IconCount active label="Example" icon={BlobbrIcon} count={24} />
+  </ThemeWrapper>
+</Playground>
+
+## IconCount with custom sizes
+
+<Playground>
+  <ThemeWrapper>
+    <Flex direction="row" justifyContent="space-betwee" wrap>
+      <Rhythm m={2}>
+        <IconCount label="Example" icon={BlobbrIcon} iconSize={14} count={24} typographySize="s" />
+        <IconCount label="Example" icon={BlobbrIcon} iconSize={16} count={24} typographySize="m" />
+        <IconCount label="Example" icon={BlobbrIcon} iconSize={20} count={24} typographySize="l" />
+        <IconCount label="Example" icon={BlobbrIcon} iconSize={24} count={24} typographySize="xl" />
+      </Rhythm>
+    </Flex>
+  </ThemeWrapper>
+</Playground>
+
+## \[props\]
+
+<Props of={IconCount} />

@@ -2,7 +2,7 @@
 
 .card {
   background-color: var(--card-background-color);
-  border-radius: $border-radius-s;
+  border-radius: $border-radius-m;
   color: var(--card-text-color);
   display: flex;
   flex-direction: column;
