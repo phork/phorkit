@@ -39,6 +39,7 @@
     "react/jsx-curly-brace-presence": 0,
     "react/jsx-filename-extension": 0,
     "react/jsx-props-no-spreading": 0,
+    "react/jsx-no-undef": "error",
     "jsx-a11y/anchor-is-valid": ["error", { "components": ["Link"], "specialLink": ["onClick", "to"] }]
   },
   "globals": {
@@ -65,7 +66,7 @@
         },
         "project": ["./tsconfig.json"]
       },
-      "plugins": ["@typescript-eslint", "react", "prettier", "json", "react-hooks", "jsx-a11y"],
+      "plugins": ["@typescript-eslint", "react", "prettier", "json", "react-hooks", "jsx-a11y", "import"],
       "rules": {
         "arrow-parens": 0,
         "camelcase": 0,
@@ -90,6 +91,7 @@
         "react/jsx-curly-brace-presence": 0,
         "react/jsx-filename-extension": 0,
         "react/jsx-props-no-spreading": 0,
+        "react/jsx-no-undef": "error",
         "jsx-a11y/anchor-is-valid": ["error", { "components": ["Link"], "specialLink": ["onClick", "to"] }]
       }
     }
