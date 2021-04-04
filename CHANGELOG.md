@@ -1,5 +1,17 @@
 # Changelog
 
+# [1.4.0](https://github.com/phork/phorkit/compare/v1.3.0...v1.4.0) (2021-04-04)
+
+
+### ✨ Features
+
+* added IconCount component ([abe1d97](https://github.com/phork/phorkit/commit/abe1d97))
+
+
+### 🐛 Bug Fixes
+
+* fix reverse IconCount spacing ([f0f7ba0](https://github.com/phork/phorkit/commit/f0f7ba0))
+
 # [1.3.0](https://github.com/phork/phorkit/compare/v1.2.0...v1.3.0) (2021-03-31)
 
 
