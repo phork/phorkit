@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { SemanticColor, ThemeProps, MergeElementProps } from '../../types';
+import { SemanticColor, ThemeProps, MergeElementProps, AsType } from '../../types';
 import { useThemeId } from '../../hooks/useThemeId';
 import styles from './styles/Button.module.css';
 
@@ -35,9 +35,7 @@ export interface LocalButtonProps extends ThemeProps {
   weight?: ButtonWeight;
 }
 
-export type ButtonProps<T extends ButtonElementType = 'button'> = {
-  as?: T;
-} & MergeElementProps<T, LocalButtonProps>;
+export type ButtonProps<T extends ButtonElementType = 'button'> = AsType<T> & MergeElementProps<T, LocalButtonProps>;
 
 function ButtonBase<T extends ButtonElementType = 'button'>(
   {

@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { MergeElementProps, ThemeProps } from '../../types';
+import { AsType, MergeElementProps, ThemeProps } from '../../types';
 import { useThemeId } from '../../hooks/useThemeId';
 import styles from './styles/Link.module.css';
 
@@ -13,10 +13,8 @@ export interface LocalLinkContainerProps extends ThemeProps {
   underline?: boolean;
 }
 
-export type LinkContainerProps<T extends LinkContainerElementType = 'div'> = { as?: T } & MergeElementProps<
-  T,
-  LocalLinkContainerProps
->;
+export type LinkContainerProps<T extends LinkContainerElementType = 'div'> = AsType<T> &
+  MergeElementProps<T, LocalLinkContainerProps>;
 
 export function LinkContainer<T extends LinkContainerElementType = 'div'>({
   as,

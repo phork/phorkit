@@ -37,6 +37,7 @@ import {
   IconText,
   InlineTooltip,
   InteractiveList,
+  Link,
   List,
   ListItem,
   MainPanel,
@@ -1053,5 +1054,15 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
         </Rhythm>
       )}
     </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+## Typography
+
+<Playground>
+  <ThemeWrapper>
+    <Typography as={Link} volume="quietest" href="#typography">
+      Typography as Link
+    </Typography>
   </ThemeWrapper>
 </Playground>

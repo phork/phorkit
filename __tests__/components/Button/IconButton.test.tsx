@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom/extend-expect';
 import { fireEvent, render } from '@testing-library/react';
+import { AsTypeA } from '__mocks__/AsType.mock';
 import { IconButton, TimesIcon } from 'lib';
 import * as React from 'react';
 
@@ -39,5 +40,15 @@ describe('<IconButton />', () => {
     fireEvent.click(button);
 
     expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('should render an icon button using a functional component', () => {
+    const { container } = render(
+      <IconButton<'a'> as={AsTypeA}>
+        <TimesIcon scale="medium" />
+      </IconButton>,
+    );
+    expect(container.firstChild?.nodeName).toBe('A');
+    expect(container.querySelector('svg')).toBeTruthy();
   });
 });

@@ -21,3 +21,7 @@ export type ExpandRecursively<T> = T extends object
     ? { [K in keyof O]: ExpandRecursively<O[K]> }
     : never
   : T;
+
+export type AsType<T extends React.ElementType> = {
+  as?: T | ((props: any) => React.ReactElement<any, T>);
+};

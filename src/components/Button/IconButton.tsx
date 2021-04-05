@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { MergeProps } from '../../types';
+import { AsType, MergeProps } from '../../types';
 import { lowerCamelize } from '../../utils/case';
 import { renderFromPropWithFallback, RenderFromPropElement } from '../../utils/renderFromProp';
 import { Button, ButtonElementType, ButtonProps } from './Button';
@@ -14,10 +14,8 @@ export interface LocalIconButtonProps {
   shape?: IconButtonShape;
 }
 
-export type IconButtonProps<T extends IconButtonElementType = 'button'> = { as?: T } & MergeProps<
-  Omit<ButtonProps<T>, 'as'>,
-  LocalIconButtonProps
->;
+export type IconButtonProps<T extends IconButtonElementType = 'button'> = AsType<T> &
+  MergeProps<Omit<ButtonProps<T>, 'as'>, LocalIconButtonProps>;
 
 function IconButtonBase<T extends IconButtonElementType = 'button'>(
   { as, children, className, shape, ...props }: IconButtonProps<T>,

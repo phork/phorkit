@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { CSSProperties } from 'react';
-import { HorizontalPosition, MergeElementProps, Theme, Volume } from '../../types';
+import { AsType, HorizontalPosition, MergeElementProps, Theme, Volume } from '../../types';
 import { useThemeId } from '../../hooks/useThemeId';
 import styles from './styles/Typography.module.css';
 
@@ -43,10 +43,8 @@ export interface LocalTypographyProps {
   volume?: Volume;
 }
 
-export type TypographyProps<T extends keyof JSX.IntrinsicElements = 'span'> = { as?: T } & MergeElementProps<
-  T,
-  LocalTypographyProps
->;
+export type TypographyProps<T extends keyof JSX.IntrinsicElements = 'span'> = AsType<T> &
+  MergeElementProps<T, LocalTypographyProps>;
 
 export function Typography<T extends keyof JSX.IntrinsicElements = 'span'>({
   align,
@@ -90,7 +88,7 @@ export function Typography<T extends keyof JSX.IntrinsicElements = 'span'>({
     {
       className: cx(
         variantStyles(),
-        as && styles[as],
+        as && typeof as === 'string' && styles[as],
         align && styles[`text-align-${align}`],
         color && styles[`text-color-${color}`],
         fullWidth && styles['text-width-full'],

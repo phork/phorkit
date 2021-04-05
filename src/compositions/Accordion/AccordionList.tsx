@@ -125,7 +125,9 @@ export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps
                   horizontal={horizontal}
                   iconOnly={iconOnly}
                   id={generateComponentId(id)}
-                  onClick={event => handleItemClick(event, id)}
+                  onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent> | React.TouchEvent<HTMLDivElement>) =>
+                    handleItemClick(event, id)
+                  }
                   unstyled={unstyled}
                   {...labelProps}
                   {...stateProps}
@@ -138,6 +140,7 @@ export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps
                   easing={easing}
                   horizontal={horizontal}
                   id={generateComponentId(id, 'panel')}
+                  role="region"
                   {...contentProps}
                   {...stateProps}
                 >

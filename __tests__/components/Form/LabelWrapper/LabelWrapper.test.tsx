@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import { AsTypeA } from '__mocks__/AsType.mock';
 import { LabelWrapper } from 'lib';
 import * as React from 'react';
 
@@ -18,5 +19,14 @@ describe('<LabelWrapper />', () => {
     expect(container.firstChild?.nodeName).toBe('LABEL');
     expect(getByText('Hello world')).toBeTruthy();
     expect(getByRole('textbox')).toBeTruthy();
+  });
+
+  it('should render a label wrapper using a functional component', () => {
+    const { container, getByText, getByRole } = render(
+      <LabelWrapper<'a'> as={AsTypeA} label={<div>Hello world</div>} input={<input type="text" />} />,
+    );
+    expect(getByText('Hello world')).toBeTruthy();
+    expect(getByRole('textbox')).toBeTruthy();
+    expect(container.firstChild?.nodeName).toBe('A');
   });
 });

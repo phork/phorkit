@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { MergeElementProps } from '../../../types';
+import { AsType, MergeElementProps } from '../../../types';
 import styles from './styles/LabelWrapper.module.css';
 
 export interface LocalLabelWrapperProps {
@@ -15,9 +15,8 @@ export interface LocalLabelWrapperProps {
   vertical?: boolean;
 }
 
-export type LabelWrapperProps<T extends React.ElementType = 'div'> = {
-  as?: T;
-} & MergeElementProps<T, LocalLabelWrapperProps>;
+export type LabelWrapperProps<T extends React.ElementType = 'div'> = AsType<T> &
+  MergeElementProps<T, LocalLabelWrapperProps>;
 
 export function LabelWrapper<T extends React.ElementType = 'div'>({
   as,

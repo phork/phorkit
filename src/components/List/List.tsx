@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { MergeElementProps, ThemeProps } from '../../types';
+import { AsType, MergeElementProps, ThemeProps } from '../../types';
 import { ListItemElementMap, ListElementType } from './types';
 import { useAccessibility } from '../../context/Accessibility';
 import { useThemeId } from '../../hooks/useThemeId';
@@ -32,9 +32,7 @@ export interface LocalListProps extends ThemeProps {
   variant?: 'primary' | 'minimal';
 }
 
-export type ListProps<T extends ListElementType = 'ul'> = {
-  as?: T;
-} & MergeElementProps<T, LocalListProps>;
+export type ListProps<T extends ListElementType = 'ul'> = AsType<T> & MergeElementProps<T, LocalListProps>;
 
 function ListBase<T extends ListElementType = 'ul'>(
   {
@@ -61,7 +59,7 @@ function ListBase<T extends ListElementType = 'ul'>(
   const accessible = useAccessibility();
   const themeId = useThemeId(initThemeId);
   const variant = contrast ? 'contrast' : initVariant;
-  const listItemElement = listItemElementMap[as || 'ul'];
+  const listItemElement = listItemElementMap[(as && typeof as === 'string' ? as : undefined) || 'ul'];
 
   return React.createElement(
     as || 'ul',

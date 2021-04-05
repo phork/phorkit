@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom/extend-expect';
 import { fireEvent, render } from '@testing-library/react';
+import { AsTypeA } from '__mocks__/AsType.mock';
 import { Button } from 'lib';
 import * as React from 'react';
 
@@ -31,5 +32,11 @@ describe('<Button />', () => {
     fireEvent.click(button);
 
     expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('should render a button using a functional component', () => {
+    const { container, getByText } = render(<Button<'a'> as={AsTypeA}>Click me!</Button>);
+    expect(container.firstChild?.nodeName).toBe('A');
+    expect(getByText('Click me!')).toBeTruthy();
   });
 });

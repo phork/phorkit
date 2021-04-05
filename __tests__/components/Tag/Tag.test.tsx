@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom/extend-expect';
 import { fireEvent, render } from '@testing-library/react';
+import { AsTypeA } from '__mocks__/AsType.mock';
 import { Tag } from 'lib';
 import * as React from 'react';
 
@@ -31,5 +32,12 @@ describe('<Tag />', () => {
     fireEvent.click(tag);
 
     expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('should render a tag using a functional component', () => {
+    const { container, getByText } = render(<Tag<'a'> as={AsTypeA} actionable href="#tag" label="Click me!" />);
+    expect(container.firstChild?.nodeName).toBe('A');
+    expect(container.firstChild).toHaveAttribute('href', '#tag');
+    expect(getByText('Click me!')).toBeTruthy();
   });
 });

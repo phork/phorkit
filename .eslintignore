@@ -9,3 +9,4 @@ src/icons/
 webpack.*.js
 jest.config.js
 jest.config.ci.js
+__mocks__

@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { MergeProps } from '../../types';
+import { AsType, MergeProps } from '../../types';
 import { useThemeId } from '../../hooks/useThemeId';
 import { Button, ButtonElementType, ButtonProps } from '../../components/Button/Button';
 
@@ -11,10 +11,8 @@ export interface LocalPaginationPageProps {
   page: number;
 }
 
-export type PaginationPageProps<T extends ButtonElementType = 'button'> = { as?: T } & MergeProps<
-  Omit<ButtonProps<T>, 'as' | 'children'>,
-  LocalPaginationPageProps
->;
+export type PaginationPageProps<T extends ButtonElementType = 'button'> = AsType<T> &
+  MergeProps<Omit<ButtonProps<T>, 'as' | 'children'>, LocalPaginationPageProps>;
 
 export function PaginationPage<T extends ButtonElementType = 'button'>({
   active,

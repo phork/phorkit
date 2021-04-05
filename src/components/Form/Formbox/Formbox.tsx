@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useRef } from 'react';
-import { InvalidStateColor, MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
+import { AsType, InvalidStateColor, MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
 import { useComponentId } from '../../../hooks/useComponentId';
 import { useDeepFocus } from '../../../hooks/useDeepFocus';
 import { useThemeId } from '../../../hooks/useThemeId';
@@ -66,8 +66,7 @@ export interface LocalFormboxProps<I extends FormboxInputElementType> extends Th
 }
 
 // because the forwardedRef goes on the input, we need to MergeElementPropsWithoutRef and then add a separate input ref
-export type FormboxProps<T extends FormboxContainerElementType, I extends FormboxInputElementType> = {
-  as?: T;
+export type FormboxProps<T extends FormboxContainerElementType, I extends FormboxInputElementType> = AsType<T> & {
   ref?: React.Ref<HTMLElement>;
   type?: I;
 } & MergeElementPropsWithoutRef<T, LocalFormboxProps<I>>;
