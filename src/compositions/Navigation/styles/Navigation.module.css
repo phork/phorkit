@@ -235,7 +235,7 @@ button.navigationItem {
 
 /**
  * 1. Hide the selected styles on animated items so the
- *    styles can be applied to the pseudo element with 
+ *    styles can be applied to the pseudo element with
  *    animation.
  */
 .navigation--animated {
@@ -263,5 +263,22 @@ button.navigationItem {
     &:before {
       content: none; /* [1] */
     }
+  }
+}
+
+.navigationItemLink {
+  align-items: center;
+  color: currentColor;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  text-decoration: none;
+  width: 100%;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: currentColor;
+    outline: none;
   }
 }

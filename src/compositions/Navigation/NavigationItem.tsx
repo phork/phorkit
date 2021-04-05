@@ -13,10 +13,12 @@ interface NavigationItemStateProps {
 }
 
 export interface LocalNavigationItemProps extends NavigationItemStateProps {
+  allowRightClickLinks?: boolean;
   children: React.ReactNode | ((props: NavigationItemStateProps) => React.ReactNode);
   className?: string;
   componentId?: string;
   flush?: boolean;
+  href?: string;
   id: string;
   onClick?: (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>, id: string) => void;
   variant: SequentialVariant;
@@ -26,12 +28,14 @@ export interface LocalNavigationItemProps extends NavigationItemStateProps {
 export type NavigationItemProps = MergeElementProps<'div', LocalNavigationItemProps>;
 
 export function NavigationItem({
+  allowRightClickLinks,
   children,
   className,
   componentId,
   disabled,
   flush,
   focused,
+  href,
   id,
   onClick,
   selected,
@@ -51,6 +55,25 @@ export function NavigationItem({
     },
     [id, onClick],
   );
+
+  const renderContent = () => {
+    const content = typeof children === 'function' ? children({ disabled, focused, selected }) : children;
+
+    return allowRightClickLinks && href && !disabled ? (
+      <a
+        className={styles.navigationItemLink}
+        href={href}
+        // prevent the link from clicking because it's only here for right clicking
+        onClick={event => event.preventDefault()}
+        onKeyDown={event => event.preventDefault()}
+        tabIndex={-1}
+      >
+        {content}
+      </a>
+    ) : (
+      content
+    );
+  };
 
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
@@ -72,7 +95,7 @@ export function NavigationItem({
       tabIndex={-1}
       {...props}
     >
-      {typeof children === 'function' ? children({ disabled, focused, selected }) : children}
+      {renderContent()}
     </div>
   );
 }

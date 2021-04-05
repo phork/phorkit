@@ -29,11 +29,14 @@ export interface UseInteractiveGroupInterface {
   disabled?: boolean;
   initialSelected?: string | string[];
   items: InteractiveGroupItemType[];
+  onItemClick?: (event: React.MouseEvent | React.TouchEvent, id: string) => void;
   onItemFocus?: (event: InteractiveGroupEventTypes['event'] | undefined, props: { id: string; index: number }) => void;
   onKeyDown?: (event: KeyboardEvent, props?: { used?: boolean }) => void;
   onSelect?: (event: InteractiveGroupEventTypes['event'], props: { id?: string; index?: number }) => void;
   onUnselect?: (event: InteractiveGroupEventTypes['event'], props: { id?: string }) => void;
   selectOnFocus?: boolean;
+  /** when true the first link in the item will be triggered when the item is selected */
+  triggerLinks?: boolean;
 }
 
 export type UseInteractiveGroupResponse<E extends HTMLElement = HTMLDivElement, I extends HTMLElement = HTMLElement> = {
@@ -60,11 +63,13 @@ export function useInteractiveGroup<E extends HTMLElement = HTMLDivElement, I ex
   disabled,
   initialSelected,
   items: initialItems,
+  onItemClick,
   onItemFocus,
   onKeyDown,
   onSelect,
   onUnselect,
   selectOnFocus,
+  triggerLinks,
 }: UseInteractiveGroupInterface): UseInteractiveGroupResponse<E, I> {
   const previousState = useRef<{
     focusedIndex?: number;
@@ -218,6 +223,7 @@ export function useInteractiveGroup<E extends HTMLElement = HTMLDivElement, I ex
       const event = selectedEvent;
       if (
         typeof window !== 'undefined' &&
+        triggerLinks &&
         event &&
         ((event.target as HTMLElement)?.tagName.toLowerCase() !== 'a' || ('key' in event && event.key === ' '))
       ) {
@@ -231,7 +237,17 @@ export function useInteractiveGroup<E extends HTMLElement = HTMLDivElement, I ex
 
     previousState.current.selectedId = selectedId;
     selectedId && (previousState.current.selectedTime = selectedTime);
-  }, [selectedId, selectedEvent, unselectedEvent, onSelect, items, onUnselect, selectedTime, allowReselect]);
+  }, [
+    selectedId,
+    selectedEvent,
+    unselectedEvent,
+    onSelect,
+    items,
+    onUnselect,
+    selectedTime,
+    allowReselect,
+    triggerLinks,
+  ]);
 
   const setFocused: UseInteractiveGroupResponse['setFocused'] = useCallback(
     (id, props) => setFocusedByIndex(items.getIndexById(id), props),
@@ -242,8 +258,9 @@ export function useInteractiveGroup<E extends HTMLElement = HTMLDivElement, I ex
     (event, id) => {
       event.persist();
       !disabled && toggleSelected(id, { event });
+      onItemClick && onItemClick(event, id);
     },
-    [disabled, toggleSelected],
+    [disabled, onItemClick, toggleSelected],
   );
 
   const handleKeyDown = useCallback(

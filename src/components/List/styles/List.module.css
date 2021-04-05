@@ -63,9 +63,12 @@ ul.unlist {
     background-color: var(--list-item-background-color);
     color: var(--list-item-text-color);
     font-size: $font-size-m;
-    padding: 8px 16px;
     position: relative;
     text-align: left;
+
+    &:not(.listItem--flush) {
+      padding: 8px 16px;
+    }
 
     &.listItem--transparent {
       background-color: transparent;
@@ -91,7 +94,7 @@ ul.unlist {
       pointer-events: none;
 
       .listItem__content {
-        opacity: .5;
+        opacity: 0.5;
       }
     }
 
@@ -119,7 +122,8 @@ ul.unlist {
   &.is-accessible:focus,
   &.is-accessible.is-focused {
     .listItem:not(.listItem--mimicSelectOnFocus) {
-      &.is-focused { /* [1] */
+      &.is-focused {
+        /* [1] */
         &:not(:active):not(.is-selected) {
           color: var(--list-item-focused-text-color);
           z-index: var(--list-item-focused-z-index, 0);
@@ -132,21 +136,30 @@ ul.unlist {
 .list--xsmall {
   .listItem {
     font-size: $font-size-s;
-    padding: 4px 12px;
+
+    &:not(.listItem--flush) {
+      padding: 4px 12px;
+    }
   }
 }
 
 .list--small {
   .listItem {
     font-size: $font-size-m;
-    padding: 4px 16px;
+
+    &:not(.listItem--flush) {
+      padding: 4px 16px;
+    }
   }
 }
 
 .list--medium {
   .listItem {
     font-size: $font-size-m;
-    padding: 8px 16px;
+
+    &:not(.listItem--flush) {
+      padding: 8px 16px;
+    }
   }
 }
 
@@ -230,7 +243,8 @@ ul.unlist {
   &.is-accessible:focus,
   &.is-accessible.is-focused {
     .listItem:not(.listItem--mimicSelectOnFocus) {
-      &.is-focused { /* [1] */
+      &.is-focused {
+        /* [1] */
         &:not(:active):not(.is-selected) {
           border-color: var(--list-item-focused-border-color);
         }

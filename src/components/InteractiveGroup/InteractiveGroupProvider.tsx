@@ -27,11 +27,13 @@ export function InteractiveGroupProvider<E extends HTMLElement = HTMLDivElement,
   disabled,
   initialSelected,
   items,
+  onItemClick,
   onItemFocus,
   onKeyDown,
   onSelect,
   onUnselect,
   selectOnFocus,
+  triggerLinks,
   ...props
 }: InteractiveGroupProviderProps<E, I>): React.ReactElement {
   const previousValue = useRef<Omit<UseInteractiveGroupResponse<E, I>, 'ref'>>({} as UseInteractiveGroupResponse<E, I>);
@@ -52,11 +54,13 @@ export function InteractiveGroupProvider<E extends HTMLElement = HTMLDivElement,
     disableUnselect,
     initialSelected,
     items,
+    onItemClick,
     onItemFocus,
     onKeyDown,
     onSelect,
     onUnselect,
     selectOnFocus,
+    triggerLinks,
   });
 
   const value = produce(previousValue.current, draftState => {

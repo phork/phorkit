@@ -10,6 +10,7 @@ import { InnerNavigation, InnerNavigationProps } from './InnerNavigation';
 export interface NavigationProps
   extends Pick<
       InnerNavigationProps,
+      | 'allowRightClickLinks'
       | 'animated'
       | 'className'
       | 'fullHeight'
@@ -23,9 +24,11 @@ export interface NavigationProps
     >,
     ThemeProps {
   onSelect?: InteractiveGroupProviderProps['onSelect'];
+  triggerLinks?: boolean;
 }
 
 export function Navigation({
+  allowRightClickLinks,
   animated,
   className,
   fullHeight,
@@ -35,6 +38,7 @@ export function Navigation({
   onSelect,
   selectedId,
   style,
+  triggerLinks,
   unthemed,
   variant = 'primary',
   vertical,
@@ -47,10 +51,12 @@ export function Navigation({
         disableUnselect
         onSelect={onSelect}
         items={items}
+        triggerLinks={triggerLinks}
         {...props}
       >
         {ref => (
           <InnerNavigation
+            allowRightClickLinks={allowRightClickLinks}
             animated={animated}
             className={className}
             fullHeight={fullHeight}

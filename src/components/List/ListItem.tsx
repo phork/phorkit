@@ -8,10 +8,13 @@ export interface LocalListItemProps extends ThemeProps {
   children: React.ReactNode;
   className?: string;
   disabled?: boolean;
+  flush?: boolean;
   focused?: boolean;
   inactive?: boolean;
   mimicSelectOnFocus?: boolean;
   onClick?: (event: React.MouseEvent | React.TouchEvent) => void;
+  /** the default role is listitem or option but it can be overridden or set to undefined */
+  role?: string;
   selected?: boolean;
   transparent?: boolean;
   unstyled?: boolean;
@@ -27,6 +30,7 @@ function ListItemBase<T extends ListItemElementType = 'li'>(
     children,
     className,
     disabled,
+    flush,
     focused,
     inactive,
     mimicSelectOnFocus,
@@ -45,6 +49,7 @@ function ListItemBase<T extends ListItemElementType = 'li'>(
         ? className
         : cx(
             styles.listItem,
+            flush && styles['listItem--flush'],
             mimicSelectOnFocus && styles['listItem--mimicSelectOnFocus'],
             transparent && styles['listItem--transparent'],
             disabled && styles['is-disabled'],
@@ -58,7 +63,7 @@ function ListItemBase<T extends ListItemElementType = 'li'>(
       ref: forwardedRef,
       onClick,
       role: inactive ? 'listitem' : 'option',
-      ...(props as Omit<ListItemProps, 'children' | 'className' | 'autoFocus' | 'ref' | 'onClick' | 'role'>),
+      ...(props as Omit<ListItemProps, 'children' | 'className' | 'autoFocus' | 'ref' | 'onClick'>),
     },
     unstyled ? children : <div className={styles.listItem__content}>{children}</div>,
   );

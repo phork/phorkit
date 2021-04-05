@@ -5,7 +5,14 @@ a.link,
   display: inline;
   text-decoration: none;
   transition: color 200ms ease;
+}
 
+a.link--unstyled {
+  outline: none;
+}
+
+a.link:not(.link--unstyled),
+.linkContainer a {
   &:hover,
   &.is-hovered {
     color: var(--link-hover-color);
@@ -69,4 +76,8 @@ a.link--underline,
       right: -0.1rem;
     }
   }
+}
+
+a.link--block {
+  display: block;
 }

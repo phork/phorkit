@@ -10,7 +10,7 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { InteractiveGroupItem, InteractiveGroupConsumer } from 'components/InteractiveGroup';
 import { InteractiveList } from '../index';
-import { options } from './helpers/options';
+import { options, navigationOptions } from './helpers/options';
 import scrollbar from 'styles/common/Scrollbar.module.css';
 
 <PageTitle title="InteractiveList" src="compositions/InteractiveList" />
@@ -23,17 +23,17 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <InteractiveList
+        className={cx(
+          scrollbar['scrollbar--small'],
+          scrollbar['scrollbar--primary'],
+          scrollbar[`scrollbar--${themeId}`],
+        )}
         initialSelected="violet-red"
         items={options}
         onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
         onSelect={(event, { id, index }) => console.log('select', { id, index })}
         onUnselect={(event, { id }) => console.log('unselect', id)}
         outline="bordered"
-        className={cx(
-          scrollbar['scrollbar--small'],
-          scrollbar['scrollbar--primary'],
-          scrollbar[`scrollbar--${themeId}`],
-        )}
         style={{ height: '200px', overflow: 'auto' }}
       >
         An empty notification
@@ -48,6 +48,11 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <InteractiveList
+        className={cx(
+          scrollbar['scrollbar--small'],
+          scrollbar['scrollbar--primary'],
+          scrollbar[`scrollbar--${themeId}`],
+        )}
         initialSelected="red"
         items={options}
         onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
@@ -55,12 +60,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         onUnselect={(event, { id }) => console.log('unselect', id)}
         outline="bordered"
         selectOnFocus
-        className={cx(
-          scrollbar['scrollbar--small'],
-          scrollbar['scrollbar--primary'],
-          scrollbar[`scrollbar--${themeId}`],
-        )}
-        style={{ height: '200px', overflow: 'auto' }}
+        tyle={{ height: '200px', overflow: 'auto' }}
       >
         An empty notification
       </InteractiveList>
@@ -74,18 +74,18 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <InteractiveList
-        initialSelected="red"
-        items={options}
-        onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
-        onSelect={(event, { id, index }) => console.log('select', { id, index })}
-        onUnselect={(event, { id }) => console.log('unselect', id)}
-        outline="bordered"
-        mimicSelectOnFocus
         className={cx(
           scrollbar['scrollbar--small'],
           scrollbar['scrollbar--primary'],
           scrollbar[`scrollbar--${themeId}`],
         )}
+        initialSelected="red"
+        items={options}
+        mimicSelectOnFocus
+        onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
+        onSelect={(event, { id, index }) => console.log('select', { id, index })}
+        onUnselect={(event, { id }) => console.log('unselect', id)}
+        outline="bordered"
         style={{ height: '200px', overflow: 'auto' }}
       >
         An empty notification
@@ -101,17 +101,17 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
     {({ themeId }) => (
       <InteractiveList
         allowMultiSelect
+        className={cx(
+          scrollbar['scrollbar--small'],
+          scrollbar['scrollbar--primary'],
+          scrollbar[`scrollbar--${themeId}`],
+        )}
         initialSelected={['violet-red']}
         items={options}
         onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
         onSelect={(event, { id, index }) => console.log('select', { id, index })}
         onUnselect={(event, { id }) => console.log('unselect', id)}
         outline="bordered"
-        className={cx(
-          scrollbar['scrollbar--small'],
-          scrollbar['scrollbar--primary'],
-          scrollbar[`scrollbar--${themeId}`],
-        )}
         style={{ height: '200px', overflow: 'auto' }}
       >
         An empty notification
@@ -126,6 +126,11 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <InteractiveList
+        className={cx(
+          scrollbar['scrollbar--small'],
+          scrollbar['scrollbar--primary'],
+          scrollbar[`scrollbar--${themeId}`],
+        )}
         disableUnselect
         initialSelected="red"
         items={options}
@@ -133,11 +138,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         onSelect={(event, { id, index }) => console.log('select', { id, index })}
         onUnselect={(event, { id }) => console.log('unselect', id)}
         outline="bordered"
-        className={cx(
-          scrollbar['scrollbar--small'],
-          scrollbar['scrollbar--primary'],
-          scrollbar[`scrollbar--${themeId}`],
-        )}
         style={{ height: '200px', overflow: 'auto' }}
       >
         An empty notification
@@ -153,6 +153,11 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
     {({ themeId }) => (
       <InteractiveList
         allowReselect
+        className={cx(
+          scrollbar['scrollbar--small'],
+          scrollbar['scrollbar--primary'],
+          scrollbar[`scrollbar--${themeId}`],
+        )}
         disableUnselect
         initialSelected="red"
         items={options}
@@ -160,11 +165,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         onSelect={(event, { id, index }) => console.log('select', { id, index })}
         onUnselect={(event, { id }) => console.log('unselect', id)}
         outline="bordered"
-        className={cx(
-          scrollbar['scrollbar--small'],
-          scrollbar['scrollbar--primary'],
-          scrollbar[`scrollbar--${themeId}`],
-        )}
         style={{ height: '200px', overflow: 'auto' }}
       >
         An empty notification
@@ -181,6 +181,11 @@ _Note that the links will cause the page to reload so the state will appear unch
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <InteractiveList
+        className={cx(
+          scrollbar['scrollbar--small'],
+          scrollbar['scrollbar--primary'],
+          scrollbar[`scrollbar--${themeId}`],
+        )}
         items={[
           {
             id: 'first',
@@ -216,12 +221,8 @@ _Note that the links will cause the page to reload so the state will appear unch
           },
         ]}
         outline="shadowed"
-        className={cx(
-          scrollbar['scrollbar--small'],
-          scrollbar['scrollbar--primary'],
-          scrollbar[`scrollbar--${themeId}`],
-        )}
         style={{ height: '200px', overflow: 'auto' }}
+        triggerLinks
       />
     )}
   </ThemeWrapper>
@@ -233,6 +234,11 @@ _Note that the links will cause the page to reload so the state will appear unch
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <InteractiveList
+        className={cx(
+          scrollbar['scrollbar--small'],
+          scrollbar['scrollbar--primary'],
+          scrollbar[`scrollbar--${themeId}`],
+        )}
         initialSelected="red"
         items={[
           {
@@ -271,11 +277,6 @@ _Note that the links will cause the page to reload so the state will appear unch
         onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
         onSelect={(event, { id, index }) => console.log('select', { id, index })}
         onUnselect={(event, { id }) => console.log('unselect', id)}
-        className={cx(
-          scrollbar['scrollbar--small'],
-          scrollbar['scrollbar--primary'],
-          scrollbar[`scrollbar--${themeId}`],
-        )}
         style={{ height: '200px', overflow: 'auto' }}
         unstyled
       >
@@ -285,25 +286,25 @@ _Note that the links will cause the page to reload so the state will appear unch
   </ThemeWrapper>
 </Playground>
 
-## Navigation role
+## Navigation role with links for right-click only
 
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <InteractiveList
-        initialSelected="violet-red"
-        items={options}
-        onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
-        onSelect={(event, { id, index }) => console.log('select', { id, index })}
-        onUnselect={(event, { id }) => console.log('unselect', id)}
-        outline="bordered"
         className={cx(
           scrollbar['scrollbar--small'],
           scrollbar['scrollbar--primary'],
           scrollbar[`scrollbar--${themeId}`],
         )}
-        style={{ height: '200px', overflow: 'auto' }}
+        initialSelected="violet-red"
+        items={navigationOptions}
+        onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
+        onSelect={(event, { id, index }) => console.log('select', { id, index })}
+        onUnselect={(event, { id }) => console.log('unselect', id)}
+        outline="bordered"
         providerProps={{ role: 'navigation', 'aria-label': 'Primary navigation' }}
+        style={{ height: '200px', overflow: 'auto' }}
       >
         An empty notification
       </InteractiveList>

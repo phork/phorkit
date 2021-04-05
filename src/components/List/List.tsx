@@ -23,6 +23,8 @@ export interface LocalListProps extends ThemeProps {
   /** mimicSelectOnFocus uses selected styles for focused items */
   mimicSelectOnFocus?: boolean;
   outline?: 'bordered' | 'shadowed' | 'divided' | 'unboxed';
+  /** the default role is list or listbox but it can be overridden or set to undefined */
+  role?: string;
   rounded?: boolean;
   size?: 'xsmall' | 'small' | 'medium';
   transparent?: boolean;

@@ -17,6 +17,8 @@ import { NavigationItem, NavigationItemProps } from './NavigationItem';
 import styles from './styles/Navigation.module.css';
 
 export interface InnerNavigationProps extends React.HTMLAttributes<HTMLElement>, ThemeProps {
+  /** allowRightClickLinks will make each nav item a link only for the purpose of right clicking */
+  allowRightClickLinks?: boolean;
   animated?: boolean;
   className?: string;
   fullHeight?: boolean;
@@ -39,6 +41,7 @@ export interface InnerNavigationProps extends React.HTMLAttributes<HTMLElement>,
 export const InnerNavigation = React.forwardRef<HTMLElement, InnerNavigationProps>(
   (
     {
+      allowRightClickLinks,
       animated,
       className,
       fullHeight,
@@ -150,6 +153,7 @@ export const InnerNavigation = React.forwardRef<HTMLElement, InnerNavigationProp
 
             return (
               <NavigationItem
+                allowRightClickLinks={allowRightClickLinks}
                 componentId={componentId}
                 key={id}
                 id={id}

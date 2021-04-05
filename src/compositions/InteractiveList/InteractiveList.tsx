@@ -20,11 +20,13 @@ type ExplicitProviderProps = Pick<
   | 'disabled'
   | 'initialSelected'
   | 'items'
+  | 'onItemClick'
   | 'onItemFocus'
   | 'onKeyDown'
   | 'onSelect'
   | 'onUnselect'
   | 'selectOnFocus'
+  | 'triggerLinks'
 >;
 
 export interface LocalInteractiveListProps extends ExplicitProviderProps {
@@ -56,6 +58,7 @@ function InteractiveListBase(
     mimicSelectOnFocus,
     onBlur,
     onFocus,
+    onItemClick,
     onItemFocus,
     onKeyDown,
     onSelect,
@@ -65,6 +68,7 @@ function InteractiveListBase(
     selectOnFocus,
     themeId: initThemeId,
     transparent,
+    triggerLinks,
     unstyled,
     ...props
   }: InteractiveListProps,
@@ -95,16 +99,18 @@ function InteractiveListBase(
     <InteractiveGroupProvider<HTMLUListElement, HTMLLIElement>
       allowMultiSelect={allowMultiSelect}
       allowReselect={allowReselect}
-      disableUnselect={disableUnselect}
       containerRef={containerRef}
       disabled={disabled}
+      disableUnselect={disableUnselect}
       initialSelected={initialSelected}
       items={items}
+      onItemClick={onItemClick}
       onItemFocus={onItemFocus}
       onKeyDown={onKeyDown}
       onSelect={onSelect}
       onUnselect={onUnselect}
       selectOnFocus={selectOnFocus}
+      triggerLinks={triggerLinks}
       {...providerProps}
     >
       <InteractiveGroupConsumer>

@@ -4,15 +4,15 @@ menu: Navigation
 route: /compositions/Navigation
 ---
 
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
-import { Navigation, StyledNavigation } from '../index';
+import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { Button } from 'components/Button';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
-import { StateWrapper } from 'docs/helpers/StateWrapper';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
-import { PageTitle } from 'docs/helpers/PageTitle';
+import { Navigation, StyledNavigation } from '../index';
 
 <PageTitle title="Navigation" src="compositions/Navigation" />
 
@@ -29,7 +29,10 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         {({ state: selectedId, setState: setSelectedId }) => (
           <Navigation
             selectedId={selectedId}
-            onSelect={(event, item) => { setSelectedId(item.id); console.log(item.id); }}
+            onSelect={(event, item) => {
+              setSelectedId(item.id);
+              console.log(item.id);
+            }}
             items={[
               { id: 'first', label: 'First' },
               { id: 'second', label: 'Second' },
@@ -229,10 +232,31 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
           variant="tertiary"
           onSelect={(event, item) => setSelectedId(item.id)}
           items={[
-            { id: 'first', label: <BlobbrIcon size={16} />, flush: true, style: { borderRadius: '4px', padding: '8px', marginBottom: '4px' }},
-            { id: 'second', label: <BlobbrIcon size={16} />, flush: true, style: { borderRadius: '4px', padding: '8px', marginBottom: '4px' }},
-            { id: 'third', label: <BlobbrIcon size={16} />, flush: true, style: { borderRadius: '4px', padding: '8px', marginBottom: '4px' }, disabled: true },
-            { id: 'fourth', label: <BlobbrIcon size={16} />, flush: true, style: { borderRadius: '4px', padding: '8px', marginBottom: '4px' }},
+            {
+              id: 'first',
+              label: <BlobbrIcon size={16} />,
+              flush: true,
+              style: { borderRadius: '4px', padding: '8px', marginBottom: '4px' },
+            },
+            {
+              id: 'second',
+              label: <BlobbrIcon size={16} />,
+              flush: true,
+              style: { borderRadius: '4px', padding: '8px', marginBottom: '4px' },
+            },
+            {
+              id: 'third',
+              label: <BlobbrIcon size={16} />,
+              flush: true,
+              style: { borderRadius: '4px', padding: '8px', marginBottom: '4px' },
+              disabled: true,
+            },
+            {
+              id: 'fourth',
+              label: <BlobbrIcon size={16} />,
+              flush: true,
+              style: { borderRadius: '4px', padding: '8px', marginBottom: '4px' },
+            },
           ]}
         />
       )}
@@ -333,13 +357,11 @@ _Note that the links will cause the page to reload so the state will appear unch
   <ThemeWrapper>
     <Navigation
       animated
-      style={{ height: '50px' }}
-      selectedId={'first'}
       items={[
         {
           id: 'first',
           label: (
-            <a tabIndex="-1" href="#linked">
+            <a tabIndex="-1" href="#first">
               First
             </a>
           ),
@@ -347,7 +369,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         {
           id: 'second',
           label: (
-            <a tabIndex="-1" href="#linked">
+            <a tabIndex="-1" href="#second">
               Second
             </a>
           ),
@@ -355,7 +377,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         {
           id: 'third',
           label: (
-            <a tabIndex="-1" href="#linked">
+            <a tabIndex="-1" href="#third">
               Third
             </a>
           ),
@@ -364,13 +386,41 @@ _Note that the links will cause the page to reload so the state will appear unch
         {
           id: 'fourth',
           label: (
-            <a tabIndex="-1" href="#linked">
+            <a tabIndex="-1" href="#fourth">
               Fourth
             </a>
           ),
         },
       ]}
+      selectedId={'first'}
+      style={{ height: '50px' }}
+      triggerLinks
     />
+  </ThemeWrapper>
+</Playground>
+
+### Navigation with links for right click only
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={'second'}>
+      {({ state: selectedId, setState: setSelectedId }) => (
+        <Navigation
+          allowRightClickLinks
+          animated
+          style={{ height: '50px' }}
+          selectedId={selectedId}
+          onSelect={(event, item) => setSelectedId(item.id)}
+          items={[
+            { id: 'first', label: 'First', href: '#first' },
+            { id: 'second', label: 'Second', href: '#second' },
+            { id: 'third', label: 'Third', href: '#third', disabled: true },
+            { id: 'fourth', label: 'Fourth', href: '#fourth' },
+            { id: 'fifth', label: 'Trigger', triggerOnly: () => console.log('triggered') },
+          ]}
+        />
+      )}
+    </StateWrapper>
   </ThemeWrapper>
 </Playground>
 
