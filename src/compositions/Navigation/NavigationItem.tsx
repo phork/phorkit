@@ -65,7 +65,7 @@ export function NavigationItem({
         href={href}
         // prevent the link from clicking because it's only here for right clicking
         onClick={event => event.preventDefault()}
-        onKeyDown={event => event.preventDefault()}
+        onKeyDown={event => event.key === 'Enter' && event.preventDefault()}
         tabIndex={-1}
       >
         {content}
