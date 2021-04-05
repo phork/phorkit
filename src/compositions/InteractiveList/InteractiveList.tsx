@@ -40,9 +40,6 @@ export interface LocalInteractiveListProps extends ExplicitProviderProps {
   unstyled?: boolean;
 }
 
-/**
- * - C is the element type of the container
- */
 export type InteractiveListProps = MergeProps<ListProps<'ul'>, LocalInteractiveListProps> & ThemeProps;
 
 function InteractiveListBase(
