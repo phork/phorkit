@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.5.1](https://github.com/phork/phorkit/compare/v1.5.0...v1.5.1) (2021-04-05)
+
+
+### ♻ Code Refactoring
+
+* added AsType, allow "as" to be functional component ([7c2f097](https://github.com/phork/phorkit/commit/7c2f097))
+
+
+### 🐛 Bug Fixes
+
+* only prevent keydown on navigation link enter ([2c6886e](https://github.com/phork/phorkit/commit/2c6886e))
+
 # [1.5.0](https://github.com/phork/phorkit/compare/v1.4.0...v1.5.0) (2021-04-05)
 
 
