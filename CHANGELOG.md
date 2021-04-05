@@ -1,5 +1,17 @@
 # Changelog
 
+# [1.5.0](https://github.com/phork/phorkit/compare/v1.4.0...v1.5.0) (2021-04-05)
+
+
+### ♻ Code Refactoring
+
+* minor props order adjustments ([37c4a03](https://github.com/phork/phorkit/commit/37c4a03))
+
+
+### ✨ Features
+
+* add allowRightClickLinks to int. list, navigation ([34fe90c](https://github.com/phork/phorkit/commit/34fe90c))
+
 # [1.4.0](https://github.com/phork/phorkit/compare/v1.3.0...v1.4.0) (2021-04-04)
 
 
