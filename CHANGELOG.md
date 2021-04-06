@@ -1,5 +1,22 @@
 # Changelog
 
+# [1.6.0](https://github.com/phork/phorkit/compare/v1.5.1...v1.6.0) (2021-04-06)
+
+
+### ♻ Code Refactoring
+
+* break up PostCSS mixins into multiple files ([4a74d25](https://github.com/phork/phorkit/commit/4a74d25))
+
+
+### ✨ Features
+
+* refactored button styles, added button sizes ([7c1e05c](https://github.com/phork/phorkit/commit/7c1e05c))
+
+
+### 🐛 Bug Fixes
+
+* button group size optional ([8cc4526](https://github.com/phork/phorkit/commit/8cc4526))
+
 ## [1.5.1](https://github.com/phork/phorkit/compare/v1.5.0...v1.5.1) (2021-04-05)
 
 
