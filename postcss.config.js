@@ -8,7 +8,7 @@ module.exports = {
   plugins: [
     require('postcss-import'),
     require('postcss-mixins')({
-      mixins: require('./src/postcss/mixins.js'),
+      mixins: require('./src/postcss/mixins'),
     }),
     require('postcss-simple-vars')({
       variables: () => require('./src/postcss/vars'),
