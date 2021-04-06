@@ -22,7 +22,7 @@ export interface LocalButtonGroupProps extends Pick<ButtonProps, 'color' | 'full
   onClick: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, value: string) => void;
   orientation?: Orientation;
   overlap?: boolean;
-  size: ButtonSize;
+  size?: ButtonSize;
   spacing?: ButtonGroupSpacing;
 }
 
@@ -40,7 +40,7 @@ export function ButtonGroup({
   orientation,
   overlap,
   shape = 'pill',
-  size,
+  size = 'medium',
   spacing,
   themeId: initThemeId,
   ...props
