@@ -2,7 +2,7 @@ import { cx } from '@emotion/css';
 import React, { useCallback } from 'react';
 import { MergeElementProps, Orientation, ThemeProps } from '../../types';
 import { useThemeId } from '../../hooks/useThemeId';
-import { Button, ButtonProps } from './Button';
+import { Button, ButtonProps, ButtonSize } from './Button';
 import styles from './styles/ButtonGroup.module.css';
 
 export type ButtonGroupSpacing = 'joined' | 'cozy' | 'comfy';
@@ -12,7 +12,7 @@ export type ButtonGroupItem = {
   label: React.ReactNode;
   selected?: boolean;
   style?: React.CSSProperties;
-} & Omit<ButtonProps, 'children' | 'id' | 'key' | 'onClick' | 'style' | 'value'>;
+} & Omit<ButtonProps, 'children' | 'id' | 'key' | 'onClick' | 'shape' | 'size' | 'style' | 'value'>;
 
 export interface LocalButtonGroupProps extends Pick<ButtonProps, 'color' | 'fullWidth' | 'shape'>, ThemeProps {
   align?: 'left' | 'right';
@@ -22,6 +22,7 @@ export interface LocalButtonGroupProps extends Pick<ButtonProps, 'color' | 'full
   onClick: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, value: string) => void;
   orientation?: Orientation;
   overlap?: boolean;
+  size: ButtonSize;
   spacing?: ButtonGroupSpacing;
 }
 
@@ -39,6 +40,7 @@ export function ButtonGroup({
   orientation,
   overlap,
   shape = 'pill',
+  size,
   spacing,
   themeId: initThemeId,
   ...props
@@ -105,6 +107,7 @@ export function ButtonGroup({
                 {...button}
                 key={id}
                 onClick={handleClick}
+                size={size}
                 style={fullWidth ? { display: 'flex', flex: 1, justifyContent: 'center', ...style } : style}
                 data-value={id}
               >

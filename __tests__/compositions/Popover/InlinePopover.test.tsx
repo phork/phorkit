@@ -9,7 +9,7 @@ describe('<InlinePopover />', () => {
         focusable
         height={80}
         permanent
-        toggler={<TimesIcon aria-label="TimesIcon" scale="xxlarge" />}
+        toggler={<TimesIcon aria-label="TimesIcon" scale="xxxlarge" />}
         width={300}
       >
         <div>Hello world</div>
@@ -25,7 +25,7 @@ describe('<InlinePopover />', () => {
         focusable
         height={80}
         permanent
-        toggler={<TimesIcon aria-label="TimesIcon" scale="xxlarge" />}
+        toggler={<TimesIcon aria-label="TimesIcon" scale="xxxlarge" />}
         width={300}
       >
         <ForwardProps<Partial<PopoverContentRenderChildrenProps>>>

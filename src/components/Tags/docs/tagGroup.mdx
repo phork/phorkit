@@ -4,10 +4,12 @@ menu: Display
 route: /components/TagGroup
 ---
 
-import { Playground, Props } from 'docz';
-import { TagGroup } from '../index';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { Playground, Props } from 'docz';
+import { Flex } from 'components/Flex';
+import { Rhythm } from 'components/Rhythm';
+import { TagGroup } from '../index';
 
 <PageTitle title="TagGroup" src="components/Tags" />
 
@@ -15,29 +17,75 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 
 <Playground>
   <ThemeWrapper>
-    <TagGroup actionable tags={[
-      { id: 'super', label: 'Super', onClick: () => console.log('super') },
-      { id: 'awesome', label: 'Awesome', onClick: () => console.log('awesome') },
-      { id: 'fun', label: 'Fun', onClick: () => console.log('fun') },
-    ]} />
-    <br />
-    <TagGroup shape="brick" actionable tags={[
-      { id: 'super', label: 'Super', onClick: () => console.log('super') },
-      { id: 'awesome', label: 'Awesome', onClick: () => console.log('awesome') },
-      { id: 'fun', label: 'Fun', onClick: () => console.log('fun') },
-    ]} />
-    <br />
-    <TagGroup size="large" actionable tags={[
-      { id: 'super', label: 'Super', onClick: () => console.log('super') },
-      { id: 'awesome', label: 'Awesome', onClick: () => console.log('awesome') },
-      { id: 'fun', label: 'Fun', onClick: () => console.log('fun') },
-    ]} />
-    <br />
-    <TagGroup size="large" shape="brick" actionable tags={[
-      { id: 'super', label: 'Super', onClick: () => console.log('super') },
-      { id: 'awesome', label: 'Awesome', onClick: () => console.log('awesome') },
-      { id: 'fun', label: 'Fun', onClick: () => console.log('fun') },
-    ]} />
+    <Flex direction="row" justifyContent="space-between" wrap>
+      <Flex direction="column">
+        <Rhythm my={1}>
+          <TagGroup
+            actionable
+            tags={[
+              { id: 'super', label: 'Super', onClick: () => console.log('super') },
+              { id: 'awesome', label: 'Awesome', onClick: () => console.log('awesome') },
+              { id: 'fun', label: 'Fun', onClick: () => console.log('fun') },
+            ]}
+          />
+          <TagGroup
+            shape="brick"
+            actionable
+            tags={[
+              { id: 'super', label: 'Super', onClick: () => console.log('super') },
+              { id: 'awesome', label: 'Awesome', onClick: () => console.log('awesome') },
+              { id: 'fun', label: 'Fun', onClick: () => console.log('fun') },
+            ]}
+          />
+        </Rhythm>
+      </Flex>
+      <Flex direction="column">
+        <Rhythm my={1}>
+          <TagGroup
+            size="medium"
+            actionable
+            tags={[
+              { id: 'super', label: 'Super', onClick: () => console.log('super') },
+              { id: 'awesome', label: 'Awesome', onClick: () => console.log('awesome') },
+              { id: 'fun', label: 'Fun', onClick: () => console.log('fun') },
+            ]}
+          />
+          <TagGroup
+            size="medium"
+            shape="brick"
+            actionable
+            tags={[
+              { id: 'super', label: 'Super', onClick: () => console.log('super') },
+              { id: 'awesome', label: 'Awesome', onClick: () => console.log('awesome') },
+              { id: 'fun', label: 'Fun', onClick: () => console.log('fun') },
+            ]}
+          />
+        </Rhythm>
+      </Flex>
+      <Flex direction="column">
+        <Rhythm my={1}>
+          <TagGroup
+            size="large"
+            actionable
+            tags={[
+              { id: 'super', label: 'Super', onClick: () => console.log('super') },
+              { id: 'awesome', label: 'Awesome', onClick: () => console.log('awesome') },
+              { id: 'fun', label: 'Fun', onClick: () => console.log('fun') },
+            ]}
+          />
+          <TagGroup
+            size="large"
+            shape="brick"
+            actionable
+            tags={[
+              { id: 'super', label: 'Super', onClick: () => console.log('super') },
+              { id: 'awesome', label: 'Awesome', onClick: () => console.log('awesome') },
+              { id: 'fun', label: 'Fun', onClick: () => console.log('fun') },
+            ]}
+          />
+        </Rhythm>
+      </Flex>
+    </Flex>
   </ThemeWrapper>
 </Playground>
 

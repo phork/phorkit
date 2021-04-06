@@ -14,10 +14,13 @@ button.tag {
 }
 
 .tag {
+  align-items: center;
   background-color: var(--tag-background-color);
   border: 1px solid var(--tag-border-color);
   color: var(--tag-text-color);
-  display: inline-block;
+  display: inline-flex;
+  flex: none;
+  justify-content: center;
   line-height: 1.5;
   outline: none;
   position: relative;
@@ -29,16 +32,27 @@ button.tag {
 
 .tag--small {
   font-size: $font-size-s;
-  padding: 2px 12px;
+  line-height: 1.3em;
+  min-height: 28px;
+  padding: 0.5em 1.4em;
+}
+
+.tag--medium {
+  font-size: $font-size-m;
+  line-height: 1.3em;
+  min-height: 34px;
+  padding: 0.4em 2em;
 }
 
 .tag--large {
-  font-size: 13px;
-  padding: 2px 16px;
+  font-size: $font-size-l;
+  line-height: 1.3em;
+  min-height: 40px;
+  padding: 0.4em 2.2em;
 }
 
 .tag--pill {
-  border-radius: 12px;
+  border-radius: 20px;
 }
 
 .tag--brick {

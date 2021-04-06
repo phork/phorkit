@@ -6,7 +6,7 @@ import styles from './styles/Tags.module.css';
 
 export type TagElementType = Extract<keyof JSX.IntrinsicElements, 'button' | 'a' | 'div' | 'span'>;
 export type TagShape = 'pill' | 'brick';
-export type TagSize = 'small' | 'large';
+export type TagSize = 'small' | 'medium' | 'large';
 
 export interface LocalTagProps extends ThemeProps {
   actionable?: boolean;

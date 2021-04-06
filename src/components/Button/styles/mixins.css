@@ -1,5 +1,11 @@
-@define-mixin createButton {
+/**
+ * 1. Put a border on the filled button so it can
+ *    share all size and padding with the outline
+ *    button.
+ */
+@define-mixin createFilledButton {
   background-color: var(--button-primary-color);
+  border: 1px solid var(--button-primary-color); /* [1] */
   color: var(--button-inverse-color);
   position: relative;
 
@@ -20,18 +26,20 @@
     &:focus,
     &.is-focused {
       &:before {
-        box-shadow: 0 0 0 3px var(--button-primary-color);
+        box-shadow: 0 0 0 4px var(--button-primary-color);
       }
     }
 
     &:hover,
     &.is-hovered {
       background-color: var(--button-hover-primary-color);
+      border-color: var(--button-hover-primary-color);
     }
 
     &:active,
     &.is-active {
       background-color: var(--button-active-primary-color);
+      border-color: var(--button-active-primary-color);
     }
   }
 }
@@ -58,7 +66,7 @@
     &:focus,
     &.is-focused {
       &:before {
-        box-shadow: 0 0 0 3px var(--button-primary-color);
+        box-shadow: 0 0 0 4px var(--button-primary-color);
       }
     }
 
@@ -76,7 +84,10 @@
 }
 
 @define-mixin createTextButton {
+  border-radius: 0;
   color: var(--button-primary-color);
+  margin: 0;
+  padding: 0;
 
   &:not(:disabled):not(.is-disabled) {
     &:hover,
@@ -90,7 +101,6 @@
         border-bottom: 1px solid var(--button-text-underline-color, var(--button-primary-color));
         content: "";
         height: 100%;
-        opacity: .7;
         position: absolute;
         top: .1rem;
         left: -.1rem;

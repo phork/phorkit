@@ -21,83 +21,83 @@ import { IconButton } from '../index';
 <Playground>
   <ThemeWrapper>
     <Looper
-      list={['primary', 'success', 'warning', 'danger', 'neutral', 'neutralAccessible', 'black', 'white']}
+      list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
       render={color => (
-        <Flex direction="row" alignItems="center" key={color}>
-          <Rhythm m={1}>
-            <IconButton onClick={() => console.log('medium')} color={color}>
-              <BlobbrIcon scale="medium" />
-            </IconButton>
-            <IconButton onClick={() => console.log('large')} color={color}>
-              <BlobbrIcon scale="large" />
-            </IconButton>
-            <IconButton onClick={() => console.log('xlarge')} color={color}>
-              <BlobbrIcon scale="xlarge" />
-            </IconButton>
-            <IconButton onClick={() => console.log('round')} shape="round" color={color}>
-              <BlobbrIcon scale="medium" />
-            </IconButton>
-            <IconButton onClick={() => console.log('square')} shape="square" color={color}>
-              <BlobbrIcon scale="medium" />
-            </IconButton>
-            <IconButton onClick={() => console.log('round outline')} shape="round" color={color} weight="outline">
-              <BlobbrIcon scale="medium" />
-            </IconButton>
-            <IconButton onClick={() => console.log('square outline')} shape="square" color={color} weight="outline">
-              <BlobbrIcon scale="medium" />
-            </IconButton>
-            <IconButton
-              onClick={() => console.log('loading')}
-              disabled
-              loading
-              color={color}
-              loader={<SpinnerIcon scale="medium" />}
-            >
-              <BlobbrIcon scale="xlarge" />
-            </IconButton>
-            <IconButton
-              onClick={() => console.log('loading round')}
-              disabled
-              loading
-              shape="round"
-              color={color}
-              loader={<SpinnerIcon scale="medium" />}
-            >
-              <BlobbrIcon scale="medium" />
-            </IconButton>
-            <IconButton
-              onClick={() => console.log('loading square')}
-              disabled
-              loading
-              shape="square"
-              color={color}
-              loader={<SpinnerIcon scale="medium" />}
-            >
-              <BlobbrIcon scale="medium" />
-            </IconButton>
-            <IconButton
-              onClick={() => console.log('loading round outline')}
-              disabled
-              loading
-              shape="round"
-              color={color}
-              weight="outline"
-              loader={<SpinnerIcon scale="medium" />}
-            >
-              <BlobbrIcon scale="medium" />
-            </IconButton>
-            <IconButton
-              onClick={() => console.log('loading square outline')}
-              disabled
-              loading
-              shape="square"
-              color={color}
-              weight="outline"
-              loader={<SpinnerIcon scale="medium" />}
-            >
-              <BlobbrIcon scale="medium" />
-            </IconButton>
-          </Rhythm>
+        <Flex direction="row" alignItems="center" wrap>
+          <Looper
+            list={[false, true]}
+            render={loading => (
+              <Flex direction="row" alignItems="center" key={color}>
+                <Rhythm m={2}>
+                  <IconButton
+                    color={color}
+                    loader={<SpinnerIcon scale="medium" />}
+                    loading={loading}
+                    onClick={() => console.log('medium')}
+                    weight="text"
+                  >
+                    <BlobbrIcon scale="medium" />
+                  </IconButton>
+                  <IconButton
+                    color={color}
+                    loader={<SpinnerIcon scale="large" />}
+                    loading={loading}
+                    onClick={() => console.log('large')}
+                    weight="text"
+                  >
+                    <BlobbrIcon scale="large" />
+                  </IconButton>
+                  <IconButton
+                    color={color}
+                    loader={<SpinnerIcon scale="xlarge" />}
+                    loading={loading}
+                    onClick={() => console.log('xlarge')}
+                    weight="text"
+                  >
+                    <BlobbrIcon scale="xlarge" />
+                  </IconButton>
+                  <IconButton
+                    color={color}
+                    loader={<SpinnerIcon scale="medium" />}
+                    loading={loading}
+                    onClick={() => console.log('round')}
+                    shape="round"
+                  >
+                    <BlobbrIcon scale="medium" />
+                  </IconButton>
+                  <IconButton
+                    color={color}
+                    loader={<SpinnerIcon scale="medium" />}
+                    loading={loading}
+                    onClick={() => console.log('square')}
+                    shape="square"
+                  >
+                    <BlobbrIcon scale="medium" />
+                  </IconButton>
+                  <IconButton
+                    color={color}
+                    loader={<SpinnerIcon scale="medium" />}
+                    loading={loading}
+                    onClick={() => console.log('round outline')}
+                    shape="round"
+                    weight="outline"
+                  >
+                    <BlobbrIcon scale="medium" />
+                  </IconButton>
+                  <IconButton
+                    color={color}
+                    loader={<SpinnerIcon scale="medium" />}
+                    loading={loading}
+                    onClick={() => console.log('square outline')}
+                    shape="square"
+                    weight="outline"
+                  >
+                    <BlobbrIcon scale="medium" />
+                  </IconButton>
+                </Rhythm>
+              </Flex>
+            )}
+          />
         </Flex>
       )}
     />
@@ -192,7 +192,7 @@ _Note that the links will cause the page to reload so the state will appear unch
 <Playground>
   <ThemeWrapper>
     <IconButton onClick={() => console.log('default')} color="primary">
-      {({ scale = ['small', 'medium', 'large', 'xlarge'][Math.floor(Math.random() * 4)] }) => (
+      {({ scale = ['medium', 'large', 'xlarge', 'xxlarge'][Math.floor(Math.random() * 4)] }) => (
         <BlobbrIcon scale={scale} />
       )}
     </IconButton>

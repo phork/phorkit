@@ -86,7 +86,7 @@ export function ColorSwatch({ group, themeId, variant }) {
             width={40}
           >
             {L10 && <SwatchOffset backgroundColor={L10} title={`[color-${variant}${id}-L10] ${L10}`} />}
-            <BlobbrIcon scale="large" />
+            <BlobbrIcon scale="xlarge" />
             {D10 && <SwatchOffset backgroundColor={D10} title={`[color-${variant}${id}-D10] ${D10}`} />}
           </Swatch>
         );

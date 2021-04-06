@@ -9,7 +9,7 @@ describe('<InlineTooltip />', () => {
         focusable
         height={80}
         permanent
-        toggler={<TimesIcon aria-label="TimesIcon" scale="xxlarge" />}
+        toggler={<TimesIcon aria-label="TimesIcon" scale="xxxlarge" />}
         triangleColor="#fff"
         width={300}
       >
@@ -26,7 +26,7 @@ describe('<InlineTooltip />', () => {
         focusable
         height={80}
         permanent
-        toggler={<TimesIcon aria-label="TimesIcon" scale="xxlarge" />}
+        toggler={<TimesIcon aria-label="TimesIcon" scale="xxxlarge" />}
         triangleColor="#fff"
         width={300}
       >

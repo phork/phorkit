@@ -4,9 +4,9 @@ route: /icons
 ---
 
 import { Playground, Props } from 'docz';
-import { ThemeWrapper } from './helpers/ThemeWrapper';
-import { IconLooper } from './helpers/IconLooper';
 import { Flex, Paper, Rhythm, Typography } from '../index';
+import { IconLooper } from './helpers/IconLooper';
+import { ThemeWrapper } from './helpers/ThemeWrapper';
 
 # Icons
 
@@ -18,7 +18,9 @@ import { Flex, Paper, Rhythm, Typography } from '../index';
           {(name, Icon) => (
             <Rhythm m={2} px={4} py={2} key={name}>
               <Paper bordered color="secondary">
-                <Typography weight="light" size="l" variants={['letter-spacing-comfy']} volume="quiet">{name}</Typography>
+                <Typography weight="light" size="l" variants={['letter-spacing-comfy']} volume="quiet">
+                  {name}
+                </Typography>
                 <Flex alignItems="center">
                   <Rhythm m={1}>
                     <Icon scale="xsmall" />
@@ -27,6 +29,7 @@ import { Flex, Paper, Rhythm, Typography } from '../index';
                     <Icon scale="large" />
                     <Icon scale="xlarge" />
                     <Icon scale="xxlarge" />
+                    <Icon scale="xxxlarge" />
                   </Rhythm>
                 </Flex>
               </Paper>

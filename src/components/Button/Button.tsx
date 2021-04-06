@@ -5,9 +5,10 @@ import { useThemeId } from '../../hooks/useThemeId';
 import styles from './styles/Button.module.css';
 
 export type ButtonAlignment = 'left' | 'right' | 'center';
-export type ButtonWeight = 'outline' | 'text' | undefined;
+export type ButtonWeight = 'filled' | 'outline' | 'text';
 export type ButtonShape = 'pill' | 'brick';
-export type ButtonColor = SemanticColor | 'neutralAccessible' | 'neutralAndPrimary' | 'black' | 'white';
+export type ButtonSize = 'small' | 'medium' | 'large' | 'relative';
+export type ButtonColor = SemanticColor | 'black' | 'white';
 
 export type ButtonElementType = Extract<keyof JSX.IntrinsicElements, 'button' | 'a' | 'div' | 'span'>;
 
@@ -21,15 +22,13 @@ export interface LocalButtonProps extends ThemeProps {
   focused?: boolean;
   fullWidth?: boolean;
   href?: string;
-  icon?: boolean;
   loader?: React.ReactElement;
   loading?: boolean;
   noHeight?: boolean;
   noPadding?: boolean;
-  noWidth?: boolean;
-  noWrap?: boolean;
   onClick?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent) => void;
   shape?: ButtonShape;
+  size?: ButtonSize;
   type?: 'button' | 'submit';
   unstyled?: boolean;
   weight?: ButtonWeight;
@@ -46,29 +45,28 @@ function ButtonBase<T extends ButtonElementType = 'button'>(
     className,
     color: initColor,
     contrast,
-    disabled,
+    disabled: initDisabled,
     focused,
     fullWidth,
     href,
-    icon,
     loader,
     loading,
     noHeight,
     noPadding,
-    noWidth,
-    noWrap,
     onClick,
     shape = 'pill',
+    size = 'medium',
     themeId: initThemeId,
     type = 'button',
     unstyled,
-    weight,
+    weight = 'filled',
     ...props
   }: ButtonProps<T>,
   forwardedRef: React.ForwardedRef<HTMLElementTagNameMap[T]>,
 ): React.ReactElement {
   const themeId = useThemeId(initThemeId);
   const color = contrast ? 'contrast' : initColor;
+  const disabled = initDisabled || loading ? true : false;
 
   const classes = unstyled
     ? cx(styles.unbutton, className)
@@ -81,12 +79,10 @@ function ButtonBase<T extends ButtonElementType = 'button'>(
         align && styles[`button--${align}`],
         color && styles[`button--${color}`],
         fullWidth && styles['button--fullWidth'],
-        icon && styles['button--icon'],
-        noHeight && styles['button--noHeight'],
-        noPadding && styles['button--noPadding'],
-        noWidth && styles['button--noWidth'],
-        noWrap && styles['button--noWrap'],
+        (noHeight || weight === 'text') && styles['button--noHeight'],
+        (noPadding || weight === 'text') && styles['button--noPadding'],
         shape && weight !== 'text' && styles[`button--${shape}`],
+        size && styles[`button--${size}`],
         themeId && styles[`button--${themeId}`],
         weight && styles[`button--${weight}`],
         className,

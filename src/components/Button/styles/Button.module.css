@@ -28,6 +28,9 @@ button.button {
 }
 
 /**
+ * The shared button styles - this should not include
+ * colors or sizes.
+ *
  * 1. Put all button transitions here so shared classes
  *    don't overwrite transitions.
  * 2. Don't steal the event target away from the button.
@@ -35,18 +38,18 @@ button.button {
 .button {
   @mixin button;
 
+  align-items: center;
   background: transparent;
   border: none;
-  display: inline-block;
+  display: inline-flex;
   flex: none;
-  font-size: $font-size-m;
+  flex-direction: row;
+  justify-content: center;
   letter-spacing: 0.25px;
-  line-height: 1.3em;
-  padding: 0.6em 2.1em;
   position: relative;
   text-align: center;
   text-decoration: none;
-  transition-property: background-color, border-color, color, max-width; /* [1] */
+  transition-property: background-color, border-color, color; /* [1] */
   transition-timing-function: ease;
   transition-duration: 200ms;
 
@@ -67,106 +70,7 @@ button.button {
   }
 }
 
-.button:not(.button--outline):not(.button--text) {
-  @mixin createButton;
-
-  &:not(.button--noHeight) {
-    min-height: 30px;
-  }
-}
-
-/**
- * 1. Remove 1px from the normal button padding
- *    to make room for the border.
- */
-.button--outline {
-  @mixin createOutlineButton;
-
-  padding: calc(0.6em - 1px) calc(2.1em - 1px); /* [1] */
-
-  &:not(.button--noHeight) {
-    min-height: 30px;
-  }
-}
-
-.button--text {
-  @mixin createTextButton;
-}
-
-.button--icon,
-.button--text {
-  border-radius: 0;
-  margin: 0;
-  padding: 0;
-}
-
-/**
- * 1. Remove extra space added to the bottom.
- */
-.button--icon {
-  svg {
-    float: left; /* [1] */
-  }
-
-  &.button--iconRound {
-    border-radius: 100%;
-  }
-
-  &.button--iconSquare {
-    border-radius: $border-radius-s;
-  }
-
-  &.button--iconRound,
-  &.button--iconSquare {
-    padding: 0.6em;
-
-    &.button--outline {
-      padding: calc(0.6em - 1px) calc(0.6em - 1px);
-    }
-  }
-}
-
-/**
- * 1. Remove extra space added to the bottom.
- */
-.button--iconText {
-  max-width: 100%;
-
-  &:not(.button--text) {
-    padding-left: 16px;
-  }
-
-  &.button--text {
-    padding-bottom: .2rem;
-  }
-
-  .button__icon {
-    line-height: 1;
-    margin-right: 8px;
-
-    svg {
-      float: left; /* [1] */
-    }
-  }
-
-  .button__text {
-    white-space: nowrap;
-  }
-
-  &.is-collapsed {
-    max-width: 30.4px;
-    padding-left: 0.6em;
-    padding-right: 0.6em;
-
-    .button__icon {
-      margin-right: 0;
-    }
-
-    .button__text {
-      display: none;
-    }
-  }
-}
+/* Button shapes */
 
 .button--pill {
   border-radius: 20px;
@@ -176,24 +80,140 @@ button.button {
   border-radius: $border-radius-m;
 }
 
-.button--noHeight {
-  min-height: auto;
-  padding-bottom: 0;
-  padding-top: 0;
+/* Button sizes */
+
+.button--small {
+  font-size: $font-size-s;
+  line-height: 1.3em;
+
+  &:not(.button--noHeight) {
+    min-height: 28px;
+
+    &.button--icon {
+      width: 28px;
+    }
+  }
+
+  &:not(.button--noPadding) {
+    padding: 0.5em 1.4em;
+
+    &.button--iconText {
+      padding-left: 1.2em;
+    }
+  }
 }
+
+.button--medium {
+  font-size: $font-size-m;
+  line-height: 1.3em;
+
+  &:not(.button--noHeight) {
+    min-height: 34px;
+
+    &.button--icon {
+      width: 34px;
+    }
+  }
+
+  &:not(.button--noPadding) {
+    padding: 0.4em 2em;
+
+    &.button--iconText {
+      padding-left: 1.4em;
+    }
+  }
+}
+
+.button--large {
+  font-size: $font-size-l;
+  line-height: 1.3em;
+
+  &:not(.button--noHeight) {
+    min-height: 40px;
+
+    &.button--icon {
+      width: 40px;
+    }
+  }
+
+  &:not(.button--noPadding) {
+    padding: 0.4em 2.2em;
+
+    &.button--iconText {
+      padding-left: 1.6em;
+    }
+  }
+}
+
+/* A general catch-all button size */
+
+.button--relative {
+  font-size: 1em;
+  line-height: 1.3em;
+
+  &:not(.button--noHeight) {
+    min-height: 2em;
+  }
+
+  &:not(.button--noPadding) {
+    padding: 0.4em 1.6em;
+  }
+}
+
+/* Button weights */
+
+.button--filled {
+  @mixin createFilledButton;
+}
+
+.button--outline {
+  @mixin createOutlineButton;
+}
+
+.button--text {
+  @mixin createTextButton;
+}
+
+/* Icon buttons */
+
+.button--icon {
+  &.button--pill {
+    border-radius: 100%;
+  }
+
+  &.button--pill,
+  &.button--brick {
+    padding: 0;
+  }
+}
+
+.button--iconText {
+  &.button--text {
+    padding-bottom: 0.2em;
+  }
+
+  .button__icon {
+    line-height: 1;
+    margin-right: 8px;
+  }
+
+  .button__text {
+    white-space: nowrap;
+  }
+}
+
+/**
+ * 1. Remove extra space added to the bottom.
+ */
+.button--icon svg,
+.button--iconText .button__icon svg {
+  float: left; /* [1] */
+}
+
+/* Button extras */
 
 .button--noPadding {
   padding: 0;
-}
-
-.button--noWidth {
-  padding-left: 0;
-  padding-right: 0;
-  width: auto;
-}
-
-.button--noWrap {
-  white-space: nowrap;
 }
 
 .button--fullWidth {
@@ -253,49 +273,12 @@ button.button {
   }
 }
 
-.button--neutral,
-.button--neutralAccessible {
+.button--neutral {
   @mixin themed .button {
     --button-primary-color: $theme-color-neutral;
     --button-inverse-color: $theme-color-neutral-contrast;
     --button-hover-primary-color: $theme-color-neutral-D10;
     --button-active-primary-color: $theme-color-neutral-L10;
-  }
-}
-
-/**
- * Make the underline more noticeable rather than light grey.
- */
-/* stylelint-disable-next-line no-duplicate-selectors */
-.button--text {
-  &.button--neutralAccessible {
-    &.button--light {
-      --button-text-underline-color: #000;
-    }
-
-    &.button--dark {
-      --button-text-underline-color: #fff;
-    }
-  }
-
-  &.button--neutralAndPrimary {
-    &:not(:disabled):not(.is-disabled) {
-      &:focus,
-      &.is-focused {
-        color: var(--button-hover-primary-color);
-
-        &:before {
-          content: none;
-        }
-      }
-    }
-
-    @mixin themed .button {
-      --button-primary-color: $theme-color-neutral;
-      --button-inverse-color: $theme-color-neutral-contrast;
-      --button-hover-primary-color: $theme-color-accent-primary;
-      --button-active-primary-color: $theme-color-accent-primary;
-    }
   }
 }
 
@@ -313,6 +296,8 @@ button.button {
   --button-active-primary-color: rgba(0, 0, 0, 0.6);
 }
 
+/* Button children */
+
 .button__content {
   align-items: center;
   display: flex;
@@ -320,6 +305,7 @@ button.button {
   flex-direction: row;
   justify-content: center;
   white-space: nowrap;
+  width: 100%;
 
   .button--left & {
     justify-content: flex-start;
