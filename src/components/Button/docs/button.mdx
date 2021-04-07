@@ -11,6 +11,7 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { ucfirst } from 'utils';
 import { SpinnerIcon } from 'icons/SpinnerIcon';
+import { TimesIcon } from 'icons/TimesIcon';
 import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { Flex } from 'components/Flex';
 import { Hoverable } from 'components/Hoverable';
@@ -531,6 +532,75 @@ import { Button, StyledButton, IconTextButton } from '../index';
           </Rhythm>
         )}
       />
+    </Rhythm>
+  </ThemeWrapper>
+</Playground>
+
+<div style="height: 50px" />
+
+<Playground>
+  <ThemeWrapper>
+    <Looper
+      list={[undefined, 'outline']}
+      render={weight => (
+        <Rhythm mb={2} key={`iconText-${weight}`} grouped>
+          <Looper
+            list={['pill', 'brick']}
+            render={shape => (
+              <div key={`iconText-${weight}-${shape}`}>
+                <Looper
+                  list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+                  render={color => (
+                    <Rhythm m={2} key={`iconTextReverse-${weight}-${shape}-${color}`}>
+                      <IconTextButton
+                        color={color}
+                        icon={<TimesIcon scale="xsmall" />}
+                        reverse
+                        shape={shape}
+                        text={ucfirst(color)}
+                        weight={weight}
+                      />
+                    </Rhythm>
+                  )}
+                />
+                <br />
+              </div>
+            )}
+          />
+        </Rhythm>
+      )}
+    />
+    <Rhythm mt={4} grouped>
+      <Looper
+        list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+        render={color => (
+          <Rhythm mx={4} key={`text-${color}`}>
+            <IconTextButton
+              color={color}
+              icon={<TimesIcon scale="xsmall" />}
+              reverse
+              text={ucfirst(color)}
+              weight="text"
+            />
+          </Rhythm>
+        )}
+      />
+    </Rhythm>
+  </ThemeWrapper>
+</Playground>
+
+### Neutral and primary buttons
+
+<Playground>
+  <ThemeWrapper>
+    <Rhythm m={2}>
+      <Button color="neutralAndPrimary">Contrast</Button>
+      <Button color="neutralAndPrimary" weight="outline">
+        Contrast
+      </Button>
+      <Button color="neutralAndPrimary" weight="text">
+        Contrast
+      </Button>
     </Rhythm>
   </ThemeWrapper>
 </Playground>

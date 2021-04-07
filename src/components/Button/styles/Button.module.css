@@ -46,6 +46,7 @@ button.button {
   flex-direction: row;
   justify-content: center;
   letter-spacing: 0.25px;
+  line-height: normal;
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -84,7 +85,6 @@ button.button {
 
 .button--small {
   font-size: $font-size-s;
-  line-height: 1.3em;
 
   &:not(.button--noHeight) {
     min-height: 28px;
@@ -100,12 +100,15 @@ button.button {
     &.button--iconText {
       padding-left: 1.2em;
     }
+
+    &.button--iconTextReverse {
+      padding-right: 1.2em;
+    }
   }
 }
 
 .button--medium {
   font-size: $font-size-m;
-  line-height: 1.3em;
 
   &:not(.button--noHeight) {
     min-height: 34px;
@@ -121,12 +124,15 @@ button.button {
     &.button--iconText {
       padding-left: 1.4em;
     }
+
+    &.button--iconTextReverse {
+      padding-right: 1.4em;
+    }
   }
 }
 
 .button--large {
   font-size: $font-size-l;
-  line-height: 1.3em;
 
   &:not(.button--noHeight) {
     min-height: 40px;
@@ -142,6 +148,10 @@ button.button {
     &.button--iconText {
       padding-left: 1.6em;
     }
+
+    &.button--iconTextReverse {
+      padding-right: 1.6em;
+    }
   }
 }
 
@@ -149,7 +159,6 @@ button.button {
 
 .button--relative {
   font-size: 1em;
-  line-height: 1.3em;
 
   &:not(.button--noHeight) {
     min-height: 2em;
@@ -187,14 +196,14 @@ button.button {
   }
 }
 
-.button--iconText {
+.button--iconText,
+.button--iconTextReverse {
   &.button--text {
     padding-bottom: 0.2em;
   }
 
   .button__icon {
     line-height: 1;
-    margin-right: 8px;
   }
 
   .button__text {
@@ -202,11 +211,28 @@ button.button {
   }
 }
 
+.button--iconText {
+  .button__icon {
+    margin-right: 8px;
+  }
+}
+
+.button--iconTextReverse {
+  .button__content {
+    flex-direction: row-reverse;
+  }
+
+  .button__icon {
+    margin-left: 12px;
+  }
+}
+
 /**
  * 1. Remove extra space added to the bottom.
  */
 .button--icon svg,
-.button--iconText .button__icon svg {
+.button--iconText .button__icon svg,
+.button--iconTextReverse .button__icon svg  {
   float: left; /* [1] */
 }
 
@@ -273,12 +299,25 @@ button.button {
   }
 }
 
-.button--neutral {
+.button--neutral,
+.button--neutralAndPrimary {
   @mixin themed .button {
     --button-primary-color: $theme-color-neutral;
     --button-inverse-color: $theme-color-neutral-contrast;
     --button-hover-primary-color: $theme-color-neutral-D10;
     --button-active-primary-color: $theme-color-neutral-L10;
+  }
+}
+
+.button--neutralAndPrimary {
+  @mixin themed .button {
+    &:not(:disabled):not(.is-disabled) {
+      &:focus,
+      &.is-focused {
+        --button-primary-color: $theme-color-accent-primary;
+        --button-inverse-color: $theme-color-accent-primary-contrast;
+      }
+    }
   }
 }
 

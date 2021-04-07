@@ -8,7 +8,7 @@ export type ButtonAlignment = 'left' | 'right' | 'center';
 export type ButtonWeight = 'filled' | 'outline' | 'text';
 export type ButtonShape = 'pill' | 'brick';
 export type ButtonSize = 'small' | 'medium' | 'large' | 'relative';
-export type ButtonColor = SemanticColor | 'black' | 'white';
+export type ButtonColor = SemanticColor | 'neutralAndPrimary' | 'black' | 'white';
 
 export type ButtonElementType = Extract<keyof JSX.IntrinsicElements, 'button' | 'a' | 'div' | 'span'>;
 
