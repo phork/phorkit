@@ -74,7 +74,7 @@ const accentColors = {
   'color-danger': primaryColors['color-P15'],
   'color-danger-contrast': primaryColors['color-P15-contrast'],
 
-  'color-neutral': neutralColors['color-BG40'],
+  'color-neutral': '#777',
   'color-neutral-contrast': neutralColors['color-BG0'],
 };
 
