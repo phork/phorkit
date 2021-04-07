@@ -29,7 +29,7 @@ export type MultiColorSliderProps = MergeProps<
   >,
   LocalMultiColorSliderProps
 > & {
-  ref: React.Ref<HTMLInputElement>;
+  ref?: React.Ref<HTMLInputElement>;
 };
 
 export function MultiColorSlider({

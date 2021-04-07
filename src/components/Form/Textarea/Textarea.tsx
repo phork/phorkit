@@ -16,7 +16,7 @@ export interface LocalTextareaProps {
 }
 
 export type TextareaProps = MergeProps<Omit<FormboxProps<'label', 'textarea'>, 'as' | 'input'>, LocalTextareaProps> & {
-  ref: React.Ref<HTMLTextAreaElement>;
+  ref?: React.Ref<HTMLTextAreaElement>;
 };
 
 function TextareaBase(

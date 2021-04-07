@@ -1,24 +1,34 @@
 import React from 'react';
-import { SemanticColor } from '../../../types';
+import { MergeProps, SemanticColor } from '../../../types';
 import { Notification, NotificationProps } from '../Notification';
 
 export type WithNotificationOptions = {
   withDivider?: boolean;
 };
 
-export interface NotifiedComponentProps
+export interface LocalNotifiedComponentProps
   extends Pick<NotificationProps, 'contrast' | 'hideNotification' | 'notification' | 'width'> {
   level: SemanticColor;
 }
 
-export function withNotification<P = {}, E extends HTMLElement = HTMLElement>(
-  WrappedComponent: React.FC<P>,
+export type NotifiedComponentProps<WrappedComponentProps extends {}> = MergeProps<
+  WrappedComponentProps,
+  LocalNotifiedComponentProps
+>;
+
+export function withNotification<WrappedComponentProps, E extends HTMLElement>(
+  WrappedComponent: React.FC<WrappedComponentProps>,
   { withDivider }: WithNotificationOptions = {},
 ) {
-  function NotifiedComponent(
-    { contrast, hideNotification, level = 'neutral', notification, width, ...props }: NotifiedComponentProps,
-    forwardedRef: React.ForwardedRef<E>,
-  ): React.ReactElement {
+  function NotifiedComponent({
+    contrast,
+    forwardedRef,
+    hideNotification,
+    level = 'neutral',
+    notification,
+    width,
+    ...props
+  }: NotifiedComponentProps<WrappedComponentProps> & { forwardedRef: React.ForwardedRef<E> }): React.ReactElement {
     return (
       <Notification
         color={level}
@@ -28,10 +38,20 @@ export function withNotification<P = {}, E extends HTMLElement = HTMLElement>(
         notification={notification}
         width={width}
       >
-        <WrappedComponent contrast={contrast} width={width} ref={forwardedRef} {...(props as P)} />
+        <WrappedComponent
+          contrast={contrast}
+          width={width}
+          ref={forwardedRef}
+          {...((props as unknown) as WrappedComponentProps)}
+        />
       </Notification>
     );
   }
 
-  return React.forwardRef(NotifiedComponent) as typeof NotifiedComponent;
+  const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
+  NotifiedComponent.displayName = `withNotification(${displayName})`;
+
+  return React.forwardRef<E, NotifiedComponentProps<WrappedComponentProps>>((props, ref) => (
+    <NotifiedComponent forwardedRef={ref} {...props} />
+  ));
 }

@@ -24,7 +24,7 @@ export interface LocalRadioGroupProps extends ThemeProps {
 }
 
 export type RadioGroupProps = MergeElementPropsWithoutRef<'div', LocalRadioGroupProps> & {
-  ref: React.Ref<HTMLFieldSetElement>;
+  ref?: React.Ref<HTMLFieldSetElement>;
 };
 
 function RadioGroupBase(

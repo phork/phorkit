@@ -38,7 +38,7 @@ export type TextboxProps = MergeProps<
   Omit<FormboxProps<'label', 'input'>, 'as' | 'input' | 'ref'>,
   LocalTextboxProps
 > & {
-  ref: React.Ref<HTMLInputElement>;
+  ref?: React.Ref<HTMLInputElement>;
 };
 
 function TextboxBase(

@@ -46,7 +46,7 @@ export interface LocalSliderProps extends ThemeProps {
 }
 
 export type SliderProps = MergeElementPropsWithoutRef<'label', LocalSliderProps> & {
-  ref: React.Ref<HTMLInputElement>;
+  ref?: React.Ref<HTMLInputElement>;
 };
 
 function SliderBase(

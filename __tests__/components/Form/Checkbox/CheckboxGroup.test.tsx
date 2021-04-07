@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom/extend-expect';
 import { fireEvent, render } from '@testing-library/react';
-import { CheckboxGroup } from 'lib';
+import { CheckboxGroup, NotifiedCheckboxGroup } from 'lib';
 import * as React from 'react';
 
 const items = [
@@ -53,5 +53,21 @@ describe('<CheckboxGroup />', () => {
 
     expect(onChange).toHaveBeenCalledTimes(2);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toEqual(['third', 'second']);
+  });
+
+  it('should render a notified checkbox group', () => {
+    const { container, getByText } = render(
+      <NotifiedCheckboxGroup
+        checkboxes={items}
+        layout="stacked"
+        legend="Legendary"
+        onChange={() => {}}
+        values={['first']}
+        level="danger"
+        notification="Example notification"
+      />,
+    );
+    expect(container.querySelectorAll('input[type="checkbox"]').length).toBe(3);
+    expect(getByText('Example notification')).toBeTruthy();
   });
 });

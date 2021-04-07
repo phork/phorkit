@@ -4,15 +4,15 @@ menu: Forms
 route: /components/FormTextbox
 ---
 
-import { Playground, Props } from 'docz';
-import { Textbox, NotifiedTextbox } from '../index';
-import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
 import { Looper } from 'docs/helpers/Looper';
+import { PageTitle } from 'docs/helpers/PageTitle';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { Playground, Props } from 'docz';
 import { SearchIcon } from 'icons/SearchIcon';
 import { TimesIcon } from 'icons/TimesIcon';
+import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
+import { Textbox, NotifiedTextbox } from '../index';
 import { variants } from './helpers/variants.js';
-import { PageTitle } from 'docs/helpers/PageTitle';
 
 <PageTitle title="Textbox" src="components/Form/Textbox" />
 
@@ -83,7 +83,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
           clearable
           iconBefore={SearchIcon}
           iconAfter={<TimesIcon size={8} />}
-          id={`demo-transitional-labeled-textbox-${variant}`}
+          id={`demo-transitional-labeled-textbox-icon-${variant}`}
           label="Super fantastic label"
           onChange={(event, value) => console.log(value)}
           transitional

@@ -24,7 +24,7 @@ export interface LocalToggleProps extends ThemeProps {
 }
 
 export type ToggleProps = MergeElementPropsWithoutRef<'label', LocalToggleProps> & {
-  ref: React.Ref<HTMLInputElement>;
+  ref?: React.Ref<HTMLInputElement>;
 };
 
 export function ToggleBase(

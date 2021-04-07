@@ -23,7 +23,7 @@ export interface LocalCheckboxGroupProps extends ThemeProps {
 }
 
 export type CheckboxGroupProps = MergeElementPropsWithoutRef<'div', LocalCheckboxGroupProps> & {
-  ref: React.Ref<HTMLFieldSetElement>;
+  ref?: React.Ref<HTMLFieldSetElement>;
 };
 
 function CheckboxGroupBase(
