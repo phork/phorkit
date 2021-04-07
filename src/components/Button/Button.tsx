@@ -31,6 +31,7 @@ export interface LocalButtonProps extends ThemeProps {
   size?: ButtonSize;
   type?: 'button' | 'submit';
   unstyled?: boolean;
+  unthemed?: boolean;
   weight?: ButtonWeight;
 }
 
@@ -59,6 +60,7 @@ function ButtonBase<T extends ButtonElementType = 'button'>(
     themeId: initThemeId,
     type = 'button',
     unstyled,
+    unthemed,
     weight = 'filled',
     ...props
   }: ButtonProps<T>,
@@ -77,13 +79,13 @@ function ButtonBase<T extends ButtonElementType = 'button'>(
         focused && styles['is-focused'],
         loading && styles['is-loading'],
         align && styles[`button--${align}`],
-        color && styles[`button--${color}`],
+        color && !unthemed && styles[`button--${color}`],
         fullWidth && styles['button--fullWidth'],
         (noHeight || weight === 'text') && styles['button--noHeight'],
         (noPadding || weight === 'text') && styles['button--noPadding'],
         shape && weight !== 'text' && styles[`button--${shape}`],
         size && styles[`button--${size}`],
-        themeId && styles[`button--${themeId}`],
+        themeId && !unthemed && styles[`button--${themeId}`],
         weight && styles[`button--${weight}`],
         className,
       );

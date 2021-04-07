@@ -4,6 +4,7 @@ menu: Input
 route: /components/IconButton
 ---
 
+import { ColorLooper } from 'docs/helpers/ColorLooper';
 import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
@@ -12,7 +13,7 @@ import { SpinnerIcon } from 'icons/SpinnerIcon';
 import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { Flex } from 'components/Flex';
 import { Rhythm } from 'components/Rhythm';
-import { IconButton } from '../index';
+import { ColoredIconButton, IconButton } from '../index';
 
 <PageTitle title="IconButton" src="components/Button" />
 
@@ -23,11 +24,11 @@ import { IconButton } from '../index';
     <Looper
       list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
       render={color => (
-        <Flex direction="row" alignItems="center" wrap>
+        <Flex direction="row" alignItems="center" wrap key={`iconButton-${color}`}>
           <Looper
             list={[false, true]}
             render={loading => (
-              <Flex direction="row" alignItems="center" key={color}>
+              <Flex direction="row" alignItems="center" key={`iconButton-${color}-${loading}`}>
                 <Rhythm m={2}>
                   <IconButton
                     color={color}
@@ -127,14 +128,78 @@ import { IconButton } from '../index';
         <IconButton contrast shape="square">
           <BlobbrIcon scale="medium" />
         </IconButton>
-        <IconButton contrast disabled loading loader={<SpinnerIcon scale="medium" />}>
+        <IconButton contrast onClick={() => console.log('round outline')} shape="round" weight="outline">
+          <BlobbrIcon scale="medium" />
+        </IconButton>
+        <IconButton contrast onClick={() => console.log('square outline')} shape="square" weight="outline">
+          <BlobbrIcon scale="medium" />
+        </IconButton>
+        <IconButton contrast loading loader={<SpinnerIcon scale="medium" />}>
           <BlobbrIcon scale="xlarge" />
         </IconButton>
-        <IconButton contrast disabled loading shape="square" loader={<SpinnerIcon scale="medium" />}>
+        <IconButton contrast loading shape="square" loader={<SpinnerIcon scale="medium" />}>
           <BlobbrIcon scale="medium" />
         </IconButton>
       </Rhythm>
     </Flex>
+  </ThemeWrapper>
+</Playground>
+
+## Colored icon buttons
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <Flex direction="column">
+        <ColorLooper
+          themeId={themeId}
+          group="primary"
+          render={({ id }) => (
+            <Flex direction="row" alignItems="center" key={`coloredIconButton-${id}`}>
+              <Rhythm m={2}>
+                <ColoredIconButton colorId={id} onClick={() => console.log('medium')} weight="text">
+                  <BlobbrIcon scale="medium" />
+                </ColoredIconButton>
+                <ColoredIconButton colorId={id} onClick={() => console.log('large')} weight="text">
+                  <BlobbrIcon scale="large" />
+                </ColoredIconButton>
+                <ColoredIconButton colorId={id} onClick={() => console.log('xlarge')} weight="text">
+                  <BlobbrIcon scale="xlarge" />
+                </ColoredIconButton>
+                <ColoredIconButton colorId={id} onClick={() => console.log('round')} shape="round">
+                  <BlobbrIcon scale="medium" />
+                </ColoredIconButton>
+                <ColoredIconButton colorId={id} onClick={() => console.log('square')} shape="square">
+                  <BlobbrIcon scale="medium" />
+                </ColoredIconButton>
+                <ColoredIconButton
+                  colorId={id}
+                  onClick={() => console.log('round outline')}
+                  shape="round"
+                  weight="outline"
+                >
+                  <BlobbrIcon scale="medium" />
+                </ColoredIconButton>
+                <ColoredIconButton
+                  colorId={id}
+                  onClick={() => console.log('square outline')}
+                  shape="square"
+                  weight="outline"
+                >
+                  <BlobbrIcon scale="medium" />
+                </ColoredIconButton>
+                <ColoredIconButton colorId={id} loading loader={<SpinnerIcon scale="medium" />}>
+                  <BlobbrIcon scale="xlarge" />
+                </ColoredIconButton>
+                <ColoredIconButton colorId={id} loading shape="square" loader={<SpinnerIcon scale="medium" />}>
+                  <BlobbrIcon scale="medium" />
+                </ColoredIconButton>
+              </Rhythm>
+            </Flex>
+          )}
+        />
+      </Flex>
+    )}
   </ThemeWrapper>
 </Playground>
 
@@ -147,12 +212,6 @@ _Note that the links will cause the page to reload so the state will appear unch
     <Flex direction="row" alignItems="center">
       <Rhythm m={1}>
         <IconButton href="#linked" onClick={() => console.log('default')} color="primary">
-          <BlobbrIcon scale="medium" />
-        </IconButton>
-        <IconButton href="#linked" onClick={() => console.log('default')} color="primary">
-          <BlobbrIcon scale="large" />
-        </IconButton>
-        <IconButton href="#linked" onClick={() => console.log('default')} color="primary">
           <BlobbrIcon scale="xlarge" />
         </IconButton>
         <IconButton href="#linked" onClick={() => console.log('round')} shape="round" color="primary">
@@ -160,16 +219,6 @@ _Note that the links will cause the page to reload so the state will appear unch
         </IconButton>
         <IconButton href="#linked" onClick={() => console.log('square')} shape="square" color="primary">
           <BlobbrIcon scale="medium" />
-        </IconButton>
-        <IconButton
-          href="#linked"
-          onClick={() => console.log('default')}
-          disabled
-          loading
-          color="primary"
-          loader={<SpinnerIcon scale="medium" />}
-        >
-          <BlobbrIcon scale="xlarge" />
         </IconButton>
         <IconButton
           href="#linked"

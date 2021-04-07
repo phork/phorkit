@@ -4,6 +4,7 @@ menu: Input
 route: /components/Button
 ---
 
+import { ColorLooper } from 'docs/helpers/ColorLooper';
 import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
@@ -16,7 +17,7 @@ import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { Flex } from 'components/Flex';
 import { Hoverable } from 'components/Hoverable';
 import { Rhythm } from 'components/Rhythm';
-import { Button, StyledButton, IconTextButton } from '../index';
+import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextButton } from '../index';
 
 <PageTitle title="Button" src="components/Button" />
 
@@ -416,7 +417,6 @@ import { Button, StyledButton, IconTextButton } from '../index';
     <Rhythm m={2}>
       <Button
         color="primary"
-        disabled
         loader={<SpinnerIcon scale="medium" />}
         loading
         onClick={() => console.log('primary')}
@@ -426,7 +426,6 @@ import { Button, StyledButton, IconTextButton } from '../index';
       </Button>
       <Button
         color="success"
-        disabled
         loader={<SpinnerIcon scale="medium" />}
         loading
         onClick={() => console.log('success')}
@@ -436,7 +435,6 @@ import { Button, StyledButton, IconTextButton } from '../index';
       </Button>
       <Button
         color="warning"
-        disabled
         loader={<SpinnerIcon scale="medium" />}
         loading
         onClick={() => console.log('warning')}
@@ -446,7 +444,6 @@ import { Button, StyledButton, IconTextButton } from '../index';
       </Button>
       <Button
         color="danger"
-        disabled
         loader={<SpinnerIcon scale="medium" />}
         loading
         onClick={() => console.log('danger')}
@@ -456,7 +453,6 @@ import { Button, StyledButton, IconTextButton } from '../index';
       </Button>
       <Button
         color="neutral"
-        disabled
         loader={<SpinnerIcon scale="medium" />}
         loading
         onClick={() => console.log('neutral')}
@@ -466,7 +462,6 @@ import { Button, StyledButton, IconTextButton } from '../index';
       </Button>
       <Button
         color="black"
-        disabled
         loader={<SpinnerIcon scale="medium" />}
         loading
         onClick={() => console.log('black')}
@@ -476,7 +471,6 @@ import { Button, StyledButton, IconTextButton } from '../index';
       </Button>
       <Button
         color="white"
-        disabled
         loader={<SpinnerIcon scale="medium" />}
         loading
         onClick={() => console.log('white')}
@@ -620,16 +614,64 @@ import { Button, StyledButton, IconTextButton } from '../index';
     </Rhythm>
     <br />
     <Rhythm m={2}>
-      <Button contrast disabled loading loader={<SpinnerIcon scale="medium" />}>
+      <Button contrast loading loader={<SpinnerIcon scale="medium" />}>
         Contrast
       </Button>
-      <Button contrast weight="outline" disabled loading loader={<SpinnerIcon scale="medium" />}>
+      <Button contrast weight="outline" loading loader={<SpinnerIcon scale="medium" />}>
         Contrast
       </Button>
-      <Button contrast weight="text" disabled loading loader={<SpinnerIcon scale="medium" />}>
+      <Button contrast weight="text" loading loader={<SpinnerIcon scale="medium" />}>
         Contrast
       </Button>
     </Rhythm>
+  </ThemeWrapper>
+</Playground>
+
+## Colored buttons
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <Flex direction="column">
+        <ColorLooper
+          themeId={themeId}
+          group="primary"
+          render={({ id }) => (
+            <Flex direction="row" key={`coloredButton-${id}`}>
+              <Rhythm key={`colorButton-${id}`} mb={1} mr={4}>
+                <ColoredButton shape="pill" weight="filled" colorId={id}>
+                  {`Color button ${id}`}
+                </ColoredButton>
+                <ColoredButton shape="brick" weight="filled" colorId={id}>
+                  {`Color button ${id}`}
+                </ColoredButton>
+                <ColoredIconTextButton
+                  colorId={id}
+                  icon={<BlobbrIcon scale="medium" />}
+                  shape="brick"
+                  text={`Color button ${id}`}
+                  weight="filled"
+                />
+                <ColoredButton shape="pill" weight="outline" colorId={id}>
+                  {`Color button ${id}`}
+                </ColoredButton>
+                <ColoredButton shape="brick" weight="outline" colorId={id}>
+                  {`Color button ${id}`}
+                </ColoredButton>
+                <ColoredIconTextButton
+                  colorId={id}
+                  icon={<BlobbrIcon scale="medium" />}
+                  shape="brick"
+                  text={`Color button ${id}`}
+                  weight="outline"
+                />
+              </Rhythm>
+              <br />
+            </Flex>
+          )}
+        />
+      </Flex>
+    )}
   </ThemeWrapper>
 </Playground>
 
@@ -654,7 +696,6 @@ _Note that the links will cause the page to reload so the state will appear unch
     <Rhythm m={2}>
       <Button
         color="primary"
-        disabled
         href="#linked"
         loader={<SpinnerIcon scale="medium" />}
         loading
@@ -664,7 +705,6 @@ _Note that the links will cause the page to reload so the state will appear unch
       </Button>
       <Button
         color="primary"
-        disabled
         href="#linked"
         loader={<SpinnerIcon scale="medium" />}
         loading
@@ -675,7 +715,6 @@ _Note that the links will cause the page to reload so the state will appear unch
       </Button>
       <Button
         color="primary"
-        disabled
         href="#linked"
         loader={<SpinnerIcon scale="medium" />}
         loading
@@ -708,7 +747,6 @@ _Note that the links will cause the page to reload so the state will appear unch
       <Button
         as="div"
         color="primary"
-        disabled
         loader={<SpinnerIcon scale="medium" />}
         loading
         onClick={() => console.log('div clicked')}
@@ -718,7 +756,6 @@ _Note that the links will cause the page to reload so the state will appear unch
       <Button
         as="div"
         color="primary"
-        disabled
         loader={<SpinnerIcon scale="medium" />}
         loading
         onClick={() => console.log('div clicked')}
@@ -729,7 +766,6 @@ _Note that the links will cause the page to reload so the state will appear unch
       <Button
         as="div"
         color="primary"
-        disabled
         loader={<SpinnerIcon scale="medium" />}
         loading
         onClick={() => console.log('div clicked')}

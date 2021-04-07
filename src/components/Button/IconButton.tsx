@@ -1,20 +1,20 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { AsType, MergeProps } from '../../types';
+import { AsType, MergeElementProps } from '../../types';
 import { renderFromPropWithFallback, RenderFromPropElement } from '../../utils/renderFromProp';
-import { Button, ButtonElementType, ButtonProps } from './Button';
+import { Button, ButtonElementType, ButtonProps, LocalButtonProps } from './Button';
 import styles from './styles/Button.module.css';
 
 export type IconButtonShape = 'round' | 'square';
 export type IconButtonElementType = ButtonElementType;
 
-export interface LocalIconButtonProps {
+export interface LocalIconButtonProps extends Omit<LocalButtonProps, 'children' | 'shape'> {
   children: RenderFromPropElement;
   shape?: IconButtonShape;
 }
 
-export type IconButtonProps<T extends IconButtonElementType = 'button'> = AsType<T> &
-  MergeProps<Omit<ButtonProps<T>, 'as'>, LocalIconButtonProps>;
+export type IconButtonProps<T extends ButtonElementType = 'button'> = AsType<T> &
+  MergeElementProps<T, LocalIconButtonProps>;
 
 const shapeMap = {
   round: 'pill',

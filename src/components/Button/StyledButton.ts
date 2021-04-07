@@ -5,6 +5,10 @@ import { Button, ButtonElementType, ButtonProps } from './Button';
 export type StyledButtonProps<T extends ButtonElementType = 'button'> = MergeProps<
   Omit<ButtonProps<T>, 'width'>,
   {
+    primaryColor?: string;
+    inverseColor?: string;
+    hoverPrimaryColor?: string;
+    activePrimaryColor?: string;
     width: number | string;
   }
 >;
@@ -13,5 +17,9 @@ export type StyledButtonProps<T extends ButtonElementType = 'button'> = MergePro
 export const StyledButton = styled(Button, {
   shouldForwardProp: (prop: string) => prop !== 'width',
 })<StyledButtonProps>`
+  ${({ primaryColor }) => primaryColor && `--button-primary-color: ${primaryColor};`}
+  ${({ inverseColor }) => inverseColor && `--button-inverse-color: ${inverseColor};`}
+  ${({ hoverPrimaryColor }) => hoverPrimaryColor && `--button-hover-primary-color: ${hoverPrimaryColor};`}
+  ${({ activePrimaryColor }) => activePrimaryColor && `--button-active-primary-color: ${activePrimaryColor};`}
   ${({ width }) => width !== undefined && `width: ${Number.isNaN(width) ? width : `${width}px`};`}
 `;
