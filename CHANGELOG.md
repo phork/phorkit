@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.7.1](https://github.com/phork/phorkit/compare/v1.7.0...v1.7.1) (2021-04-07)
+
+
+### ♻ Code Refactoring
+
+* added types to withNotification ([9c172bb](https://github.com/phork/phorkit/commit/9c172bb))
+
+
+### 🐛 Bug Fixes
+
+* lighten up dark neutral color ([42b5168](https://github.com/phork/phorkit/commit/42b5168))
+* update withNotification types ([c342244](https://github.com/phork/phorkit/commit/c342244))
+
 # [1.7.0](https://github.com/phork/phorkit/compare/v1.6.0...v1.7.0) (2021-04-07)
 
 
