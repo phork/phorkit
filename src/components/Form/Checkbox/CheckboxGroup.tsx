@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useCallback } from 'react';
-import { MergeElementProps, ThemeProps } from '../../../types';
+import { MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
 import { useComponentId } from '../../../hooks/useComponentId';
 import { useThemeId } from '../../../hooks/useThemeId';
 import { Fieldset } from '../Fieldset/Fieldset';
@@ -22,19 +22,26 @@ export interface LocalCheckboxGroupProps extends ThemeProps {
   values: Array<CheckboxProps['value']>;
 }
 
-export type CheckboxGroupProps = MergeElementProps<'div', LocalCheckboxGroupProps>;
+export type CheckboxGroupProps = MergeElementPropsWithoutRef<'div', LocalCheckboxGroupProps> & {
+  ref: React.Ref<HTMLFieldSetElement>;
+};
 
-export function CheckboxGroup({
-  className,
-  contrast,
-  layout = 'inline',
-  legend,
-  onChange,
-  checkboxes,
-  themeId: initThemeId,
-  values,
-  ...props
-}: CheckboxGroupProps): React.ReactElement<CheckboxGroupProps, 'fieldset'> {
+function CheckboxGroupBase(
+  {
+    className,
+    contrast,
+    layout = 'inline',
+    legend,
+    onChange,
+    checkboxes,
+    // this allows us to spread the rest of the props without typescript erroring
+    ref: ignoredRef,
+    themeId: initThemeId,
+    values,
+    ...props
+  }: CheckboxGroupProps,
+  forwardedRef: React.ForwardedRef<HTMLFieldSetElement>,
+): React.ReactElement<CheckboxGroupProps, 'fieldset'> {
   const themeId = useThemeId(initThemeId);
   const { generateComponentId } = useComponentId();
 
@@ -55,7 +62,7 @@ export function CheckboxGroup({
   );
 
   return (
-    <Fieldset className={className} contrast={contrast} legend={legend} themeId={themeId}>
+    <Fieldset className={className} contrast={contrast} legend={legend} themeId={themeId} ref={forwardedRef}>
       <div className={cx(styles.checkboxGroup, layout && styles[`checkboxGroup--${layout}`])} {...props}>
         {checkboxes &&
           checkboxes.map(({ id, label, value: checkboxValue, ...checkboxProps }) => (
@@ -77,3 +84,5 @@ export function CheckboxGroup({
     </Fieldset>
   );
 }
+
+export const CheckboxGroup = React.forwardRef(CheckboxGroupBase);

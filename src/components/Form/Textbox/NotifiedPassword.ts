@@ -1,4 +1,4 @@
 import { withNotification } from '../hoc/withNotification';
-import { Password } from './Password';
+import { Password, PasswordProps } from './Password';
 
-export const NotifiedPassword = withNotification(Password);
+export const NotifiedPassword = withNotification<PasswordProps, HTMLInputElement>(Password);

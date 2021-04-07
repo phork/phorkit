@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useRef, useState } from 'react';
-import { MergeElementProps, ThemeProps } from '../../../types';
+import { MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
 import { useComponentId } from '../../../hooks/useComponentId';
 import { useThemeId } from '../../../hooks/useThemeId';
 import { makeCombineRefs } from '../../../utils';
@@ -23,7 +23,9 @@ export interface LocalToggleProps extends ThemeProps {
   value?: string;
 }
 
-export type ToggleProps = MergeElementProps<'label', LocalToggleProps>;
+export type ToggleProps = MergeElementPropsWithoutRef<'label', LocalToggleProps> & {
+  ref: React.Ref<HTMLInputElement>;
+};
 
 export function ToggleBase(
   {
@@ -36,6 +38,8 @@ export function ToggleBase(
     name,
     onChange,
     persistEvents,
+    // this allows us to spread the rest of the props without typescript erroring
+    ref: ignoredRef,
     reverse,
     size,
     standalone,

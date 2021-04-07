@@ -11,10 +11,13 @@ export interface NotifiedComponentProps
   level: SemanticColor;
 }
 
-export function withNotification(WrappedComponent: React.FC<any>, { withDivider }: WithNotificationOptions = {}) {
+export function withNotification<P = {}, E extends HTMLElement = HTMLElement>(
+  WrappedComponent: React.FC<P>,
+  { withDivider }: WithNotificationOptions = {},
+) {
   function NotifiedComponent(
     { contrast, hideNotification, level = 'neutral', notification, width, ...props }: NotifiedComponentProps,
-    forwardedRef: React.ForwardedRef<HTMLElement>,
+    forwardedRef: React.ForwardedRef<E>,
   ): React.ReactElement {
     return (
       <Notification
@@ -25,7 +28,7 @@ export function withNotification(WrappedComponent: React.FC<any>, { withDivider 
         notification={notification}
         width={width}
       >
-        <WrappedComponent contrast={contrast} width={width} ref={forwardedRef} {...props} />
+        <WrappedComponent contrast={contrast} width={width} ref={forwardedRef} {...(props as P)} />
       </Notification>
     );
   }

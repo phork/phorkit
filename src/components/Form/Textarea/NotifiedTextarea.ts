@@ -1,4 +1,4 @@
 import { withNotification } from '../hoc/withNotification';
-import { Textarea } from './Textarea';
+import { Textarea, TextareaProps } from './Textarea';
 
-export const NotifiedTextarea = withNotification(Textarea);
+export const NotifiedTextarea = withNotification<TextareaProps, HTMLTextAreaElement>(Textarea);

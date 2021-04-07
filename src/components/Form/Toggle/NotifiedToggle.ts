@@ -1,4 +1,4 @@
 import { withNotification } from '../hoc/withNotification';
-import { Toggle } from './Toggle';
+import { Toggle, ToggleProps } from './Toggle';
 
-export const NotifiedToggle = withNotification(Toggle);
+export const NotifiedToggle = withNotification<ToggleProps, HTMLInputElement>(Toggle);

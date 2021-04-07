@@ -28,7 +28,9 @@ export type MultiColorSliderProps = MergeProps<
     | 'trackProps'
   >,
   LocalMultiColorSliderProps
->;
+> & {
+  ref: React.Ref<HTMLInputElement>;
+};
 
 export function MultiColorSlider({
   colors: initColors,

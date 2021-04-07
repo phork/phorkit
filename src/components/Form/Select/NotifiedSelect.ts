@@ -1,4 +1,4 @@
 import { withNotification } from '../hoc/withNotification';
-import { Select } from './Select';
+import { Select, SelectProps } from './Select';
 
-export const NotifiedSelect = withNotification(Select);
+export const NotifiedSelect = withNotification<SelectProps, HTMLSelectElement>(Select);

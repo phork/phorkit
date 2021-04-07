@@ -25,7 +25,9 @@ export interface LocalSelectProps {
 export type SelectProps = MergeProps<
   Omit<FormboxProps<'label', 'input'>, 'as' | 'input' | 'placeholder' | 'type'>,
   LocalSelectProps
->;
+> & {
+  ref: React.Ref<HTMLSelectElement>;
+};
 
 export function SelectBase(
   {

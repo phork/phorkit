@@ -1,9 +1,10 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useMemo, useRef, useState } from 'react';
-import { MergeElementProps, ThemeProps } from '../../../types';
+import { MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
 import { useComponentId } from '../../../hooks/useComponentId';
 import { useDimensions } from '../../../hooks/useDimensions';
 import { useThemeId } from '../../../hooks/useThemeId';
+import { makeCombineRefs } from '../../../utils/combineRefs';
 import { Draggable, DraggableProps } from '../../Draggable';
 import { Label } from '../Label/Label';
 import styles from './styles/Slider.module.css';
@@ -44,37 +45,44 @@ export interface LocalSliderProps extends ThemeProps {
   width?: string;
 }
 
-export type SliderProps = MergeElementProps<'label', LocalSliderProps>;
+export type SliderProps = MergeElementPropsWithoutRef<'label', LocalSliderProps> & {
+  ref: React.Ref<HTMLInputElement>;
+};
 
-export function Slider({
-  children,
-  className,
-  contrast,
-  disabled,
-  formatValue,
-  id,
-  max = 100,
-  min = 0,
-  name,
-  onChange,
-  persistEvents,
-  scale,
-  snap,
-  snapNext,
-  step = 1,
-  themeId: initThemeId,
-  tick,
-  tickElement,
-  tickProps,
-  trackElement,
-  trackProps,
-  unstyled,
-  validity,
-  value = 0,
-  valuePosition,
-  width: propWidth,
-  ...props
-}: SliderProps) {
+function SliderBase(
+  {
+    children,
+    className,
+    contrast,
+    disabled,
+    formatValue,
+    id,
+    max = 100,
+    min = 0,
+    name,
+    onChange,
+    persistEvents,
+    // this allows us to spread the rest of the props without typescript erroring
+    ref: ignoredRef,
+    scale,
+    snap,
+    snapNext,
+    step = 1,
+    themeId: initThemeId,
+    tick,
+    tickElement,
+    tickProps,
+    trackElement,
+    trackProps,
+    unstyled,
+    validity,
+    value = 0,
+    valuePosition,
+    width: propWidth,
+    ...props
+  }: SliderProps,
+  forwardedRef: React.ForwardedRef<HTMLInputElement>,
+) {
   const themeId = useThemeId(initThemeId);
   const [focused, setFocused] = useState<boolean>(false);
   const [dragging, setDragging] = useState<boolean>(false);
@@ -87,6 +95,8 @@ export function Slider({
 
   const SliderTrack = trackElement || 'div';
   const SliderTick = tickElement || 'div';
+
+  const combineRefs = makeCombineRefs<HTMLInputElement>(inputRef, forwardedRef);
 
   const reportBack = (event: SliderEvent, update: number) => {
     if (update !== value && onChange) {
@@ -268,7 +278,7 @@ export function Slider({
         onBlur={handleBlur}
         onChange={handleInputChange}
         onFocus={handleFocus}
-        ref={inputRef}
+        ref={combineRefs}
         step={step}
         tabIndex={-1}
         type="range"
@@ -288,3 +298,5 @@ export function Slider({
     </label>
   );
 }
+
+export const Slider = React.forwardRef(SliderBase);

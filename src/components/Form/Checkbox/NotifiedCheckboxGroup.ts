@@ -1,6 +1,6 @@
 import { withNotification } from '../hoc/withNotification';
-import { CheckboxGroup } from './CheckboxGroup';
+import { CheckboxGroup, CheckboxGroupProps } from './CheckboxGroup';
 
-export const NotifiedCheckboxGroup = withNotification(CheckboxGroup, {
+export const NotifiedCheckboxGroup = withNotification<CheckboxGroupProps, HTMLFieldSetElement>(CheckboxGroup, {
   withDivider: true,
 });

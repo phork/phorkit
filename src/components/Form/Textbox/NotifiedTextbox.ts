@@ -1,4 +1,4 @@
 import { withNotification } from '../hoc/withNotification';
-import { Textbox } from './Textbox';
+import { Textbox, TextboxProps } from './Textbox';
 
-export const NotifiedTextbox = withNotification(Textbox);
+export const NotifiedTextbox = withNotification<TextboxProps, HTMLInputElement>(Textbox);

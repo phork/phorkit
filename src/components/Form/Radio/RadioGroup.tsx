@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useCallback } from 'react';
-import { MergeElementProps, ThemeProps } from '../../../types';
+import { MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
 import { useComponentId } from '../../../hooks/useComponentId';
 import { useThemeId } from '../../../hooks/useThemeId';
 import { Fieldset } from '../Fieldset/Fieldset';
@@ -23,20 +23,27 @@ export interface LocalRadioGroupProps extends ThemeProps {
   value?: string | number;
 }
 
-export type RadioGroupProps = MergeElementProps<'div', LocalRadioGroupProps>;
+export type RadioGroupProps = MergeElementPropsWithoutRef<'div', LocalRadioGroupProps> & {
+  ref: React.Ref<HTMLFieldSetElement>;
+};
 
-export function RadioGroup({
-  className,
-  contrast,
-  layout,
-  legend,
-  name,
-  onChange,
-  radios,
-  themeId: initThemeId,
-  value,
-  ...props
-}: RadioGroupProps): React.ReactElement<RadioGroupProps, 'fieldset'> {
+function RadioGroupBase(
+  {
+    className,
+    contrast,
+    layout,
+    legend,
+    name,
+    onChange,
+    radios,
+    // this allows us to spread the rest of the props without typescript erroring
+    ref: ignoredRef,
+    themeId: initThemeId,
+    value,
+    ...props
+  }: RadioGroupProps,
+  forwardedRef: React.ForwardedRef<HTMLFieldSetElement>,
+): React.ReactElement<RadioGroupProps, 'fieldset'> {
   const themeId = useThemeId(initThemeId);
   const { generateComponentId } = useComponentId();
 
@@ -48,7 +55,7 @@ export function RadioGroup({
   );
 
   return (
-    <Fieldset className={className} contrast={contrast} legend={legend} themeId={themeId}>
+    <Fieldset className={className} contrast={contrast} legend={legend} themeId={themeId} ref={forwardedRef}>
       <div className={cx(styles.radioGroup, layout && styles[`radioGroup--${layout}`])} {...props}>
         {radios &&
           radios.map(({ id, label, value: radioValue, ...radioProps }) => (
@@ -71,3 +78,5 @@ export function RadioGroup({
     </Fieldset>
   );
 }
+
+export const RadioGroup = React.forwardRef(RadioGroupBase);

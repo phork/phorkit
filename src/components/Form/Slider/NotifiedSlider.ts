@@ -1,4 +1,4 @@
 import { withNotification } from '../hoc/withNotification';
-import { Slider } from './Slider';
+import { Slider, SliderProps } from './Slider';
 
-export const NotifiedSlider = withNotification(Slider);
+export const NotifiedSlider = withNotification<SliderProps, HTMLInputElement>(Slider);
