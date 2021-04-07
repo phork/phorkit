@@ -1,5 +1,13 @@
 # Changelog
 
+# [1.7.0](https://github.com/phork/phorkit/compare/v1.6.0...v1.7.0) (2021-04-07)
+
+
+### ✨ Features
+
+* added colored buttons, icon buttons and icon text buttons ([2ef4cd3](https://github.com/phork/phorkit/commit/2ef4cd3))
+* added reverse icon text buttons, restored neutralAndPrimary ([870fa10](https://github.com/phork/phorkit/commit/870fa10))
+
 # [1.6.0](https://github.com/phork/phorkit/compare/v1.5.1...v1.6.0) (2021-04-06)
 
 
