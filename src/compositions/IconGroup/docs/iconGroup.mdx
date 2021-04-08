@@ -64,7 +64,7 @@ import { IconGroup } from '../index';
 ### Scaled group by state
 
 <Playground>
-  <StateWrapper initialState={0} formatSetValue={previous => previous + 1}>
+  <StateWrapper initialState={0} setStateFromPrevious={previous => previous + 1}>
     {({ state: count, setState: setCount }) => {
       const sizes = ['small', 'medium', 'large', 'xlarge', 'xxlarge', 'xxlarge'];
       return (

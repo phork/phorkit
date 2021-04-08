@@ -150,13 +150,13 @@ button.navigationItem {
 .navigationItem--primary {
   &.navigationItem--horizontal {
     flex: 1;
-    height: 50px;
+    height: $element-height-xxxlarge;
     width: 100%;
   }
 
   &.navigationItem--vertical {
     flex: none;
-    height: 40px;
+    height: $element-height-xlarge;
     justify-content: flex-start;
     width: 100%;
 

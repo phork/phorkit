@@ -5,7 +5,7 @@ import { ThemeContext, ThemeContextValue } from './ThemeContext';
 
 export interface ThemeProviderProps {
   children: React.ReactNode;
-  onChange: (themeId: Theme) => void;
+  onChange?: (themeId: Theme) => void;
   themeId: Theme;
 }
 

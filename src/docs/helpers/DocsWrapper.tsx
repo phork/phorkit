@@ -1,15 +1,19 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useColorMode } from 'theme-ui';
+import { Theme } from 'types';
 import { AccessibilityProvider } from 'context/Accessibility';
 import { ThemeProvider } from 'context/Theme';
 import './styles.css';
 import 'styles/common.css';
 import 'styles/normalize.css';
 
-export default function DocsWrapper({ children }) {
-  const [colorMode] = useColorMode();
+export interface DocsWrapperProps {
+  children: React.ReactNode;
+}
+
+export default function DocsWrapper({ children }: DocsWrapperProps): React.ReactElement {
+  const [colorMode] = useColorMode<Theme>();
 
   return (
     <AccessibilityProvider>
@@ -29,7 +33,3 @@ export default function DocsWrapper({ children }) {
     </AccessibilityProvider>
   );
 }
-
-DocsWrapper.propTypes = {
-  children: PropTypes.node.isRequired,
-};

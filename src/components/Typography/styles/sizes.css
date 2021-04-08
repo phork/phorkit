@@ -33,3 +33,15 @@
 .text-size-xxxxl {
   font-size: $font-size-xxxxl;
 }
+
+.text-size-xxxxxl {
+  font-size: $font-size-xxxxxl;
+}
+
+.text-size-xxxxxxl {
+  font-size: $font-size-xxxxxxl;
+}
+
+.text-size-xxxxxxxl {
+  font-size: $font-size-xxxxxxxl;
+}

@@ -87,15 +87,15 @@ button.button {
   font-size: $font-size-s;
 
   &:not(.button--noHeight) {
-    min-height: 28px;
+    min-height: $element-height-small;
 
     &.button--icon {
-      width: 28px;
+      width: $element-height-small;
     }
   }
 
   &:not(.button--noPadding) {
-    padding: 0.5em 1.4em;
+    padding: 0.5em 1.6em;
 
     &.button--iconText {
       padding-left: 1.2em;
@@ -111,15 +111,15 @@ button.button {
   font-size: $font-size-m;
 
   &:not(.button--noHeight) {
-    min-height: 34px;
+    min-height: $element-height-medium;
 
     &.button--icon {
-      width: 34px;
+      width: $element-height-medium;
     }
   }
 
   &:not(.button--noPadding) {
-    padding: 0.4em 2em;
+    padding: 0.4em 1.8em;
 
     &.button--iconText {
       padding-left: 1.4em;
@@ -135,10 +135,10 @@ button.button {
   font-size: $font-size-l;
 
   &:not(.button--noHeight) {
-    min-height: 40px;
+    min-height: $element-height-large;
 
     &.button--icon {
-      width: 40px;
+      width: $element-height-large;
     }
   }
 

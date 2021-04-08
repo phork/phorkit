@@ -78,7 +78,7 @@
       }
     }
   }
-  
+
   > .tab.is-selected:first-child:before {
     display: none; /* [2] */
   }
@@ -168,7 +168,7 @@ button.tab {
   &:focus {
     outline: none;
   }
-  
+
   &:disabled,
   &.is-disabled {
     pointer-events: none;
@@ -183,6 +183,7 @@ button.tab {
   border-bottom: none;
   border-top-left-radius: $border-radius-s;
   border-top-right-radius: $border-radius-s;
+  min-height: $element-height-medium;
   padding: 8px 30px;
 }
 

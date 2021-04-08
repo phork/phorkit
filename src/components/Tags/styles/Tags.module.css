@@ -33,21 +33,21 @@ button.tag {
 .tag--small {
   font-size: $font-size-s;
   line-height: 1.3em;
-  min-height: 28px;
+  min-height: $element-height-small;
   padding: 0.5em 1.4em;
 }
 
 .tag--medium {
   font-size: $font-size-m;
   line-height: 1.3em;
-  min-height: 34px;
+  min-height: $element-height-medium;
   padding: 0.4em 2em;
 }
 
 .tag--large {
   font-size: $font-size-l;
   line-height: 1.3em;
-  min-height: 40px;
+  min-height: $element-height-large;
   padding: 0.4em 2.2em;
 }
 

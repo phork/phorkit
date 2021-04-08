@@ -35,7 +35,7 @@ export interface LocalTypographyProps {
   fullWidth?: boolean;
   heading?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
   reset?: boolean;
-  size?: 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl' | 'xxxxl';
+  size?: 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl' | 'xxxxl' | 'xxxxxl' | 'xxxxxxl' | 'xxxxxxxl';
   style?: CSSProperties;
   themeId?: Theme;
   weight?: 'lighter' | 'light' | 'regular' | 'bold' | 200 | 500 | 600;

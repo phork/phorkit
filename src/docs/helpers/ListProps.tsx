@@ -1,7 +1,7 @@
 import React from 'react';
 
-export function ListProps(props) {
-  const items = [];
+export function ListProps(props: Record<string, string>): React.ReactElement {
+  const items = [] as React.ReactElement[];
 
   Object.keys(props).forEach(key => {
     items.push(<li key={key}>{`${key}: ${props[key]}`}</li>);

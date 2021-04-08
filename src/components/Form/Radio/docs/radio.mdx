@@ -130,7 +130,7 @@ import { radioGroup, logValue } from './helpers/utils';
         <NotifiedRadioGroup
           layout="inline"
           legend="Super fantastic label says what?"
-          name="inline-radio-group"
+          name={`notified-radio-group-${level}`}
           onChange={logValue}
           radios={radioGroup}
           level={level}

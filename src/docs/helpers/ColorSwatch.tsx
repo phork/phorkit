@@ -1,11 +1,10 @@
 import styled from '@emotion/styled';
-import PropTypes from 'prop-types';
 import React, { useMemo } from 'react';
-import { themes } from 'config/themes';
+import { Theme } from 'types';
+import { ThemeColors, themes } from 'config/themes';
 import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
-import { themeIdPropType } from './propTypes';
 
-const Swatch = styled.div`
+const Swatch = styled.div<{ backgroundColor: string; spaced?: boolean; width: number }>`
   align-items: center;
   background-color: ${props => props.backgroundColor};
   color: ${props => props.color};
@@ -17,7 +16,7 @@ const Swatch = styled.div`
   width: ${props => `${props.width}px`};
 `;
 
-const SwatchOffset = styled.div`
+const SwatchOffset = styled.div<{ backgroundColor: string }>`
   background-color: ${props => props.backgroundColor};
   height: 20px;
   position: relative;
@@ -31,12 +30,18 @@ const patterns = {
   transparent: /^color-(.+)-O([0-9]+)$/,
 };
 
-export function ColorSwatch({ group, themeId, variant }) {
+export interface ColorSwatchProps {
+  group: 'primary' | 'neutral' | 'state' | 'transparent';
+  variant: string;
+  themeId: Theme;
+}
+
+export function ColorSwatch({ group, themeId, variant }: ColorSwatchProps): Array<React.ReactElement | null> {
   const themeProps = themes[themeId];
   const colors = useMemo(
     () =>
-      Object.keys(themeProps).reduce((acc, prop) => {
-        const color = themeProps[prop];
+      Object.keys(themeProps).reduce((acc, prop: string) => {
+        const color = themeProps[prop as keyof ThemeColors] as string;
         const matches = prop.match(patterns[group]);
 
         if (matches && matches[1] === variant) {
@@ -45,25 +50,27 @@ export function ColorSwatch({ group, themeId, variant }) {
         }
 
         return acc;
-      }, []),
+      }, [] as { id: string; color: string }[]),
     [group, themeProps, variant],
   );
 
   if (group === 'state') {
-    return ['L10', variant, 'D10'].map(id => {
-      const { color } = colors.find(color => color.id === id);
-      return (
-        <Swatch
-          backgroundColor={color}
-          color={themeProps[`color-${variant}-contrast`]}
-          key={color}
-          title={`[color-${variant}${id !== variant ? `-${id}` : ''}] ${color}`}
-          width={120}
-        >
-          <BlobbrIcon size={80} />
-        </Swatch>
-      );
-    });
+    return ['L10', variant, 'D10']
+      .map(id => {
+        const { color } = colors.find(color => color.id === id) || {};
+        return color ? (
+          <Swatch
+            backgroundColor={color}
+            color={themeProps[`color-${variant}-contrast` as keyof ThemeColors] as string}
+            key={color}
+            title={`[color-${variant}${id !== variant ? `-${id}` : ''}] ${color}`}
+            width={120}
+          >
+            <BlobbrIcon size={80} />
+          </Swatch>
+        ) : null;
+      })
+      .filter(Boolean);
   }
 
   return (
@@ -72,9 +79,9 @@ export function ColorSwatch({ group, themeId, variant }) {
       const { id, color } = item;
 
       if (group === 'primary') {
-        const L10 = themeProps[`color-${variant}${id}-L10`];
-        const D10 = themeProps[`color-${variant}${id}-D10`];
-        const contrast = themeProps[`color-${variant}${id}-contrast`];
+        const L10 = themeProps[`color-${variant}${id}-L10` as keyof ThemeColors] as string;
+        const D10 = themeProps[`color-${variant}${id}-D10` as keyof ThemeColors] as string;
+        const contrast = themeProps[`color-${variant}${id}-contrast` as keyof ThemeColors] as string;
 
         return (
           <Swatch
@@ -103,13 +110,3 @@ export function ColorSwatch({ group, themeId, variant }) {
     })
   );
 }
-
-ColorSwatch.defaultProps = {
-  themeId: undefined,
-};
-
-ColorSwatch.propTypes = {
-  group: PropTypes.oneOf(['neutral', 'primary', 'state', 'transparent']),
-  themeId: themeIdPropType,
-  variant: PropTypes.string.isRequired,
-};

@@ -19,7 +19,7 @@ export interface LocalAvatarProps extends ThemeProps {
   color?: 'neutral' | 'primary';
   imgSrc?: string;
   initials?: string;
-  size?: 'xsmall' | 'small';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
   style?: React.CSSProperties;
   translations?: AvatarTranslations;
 }
@@ -34,7 +34,7 @@ export function Avatar<T extends React.ElementType = 'div'>({
   contrast,
   imgSrc,
   initials,
-  size,
+  size = 'medium',
   style,
   themeId: initThemeId,
   translations: customTranslations,

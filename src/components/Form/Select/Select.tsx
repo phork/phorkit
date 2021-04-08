@@ -1,8 +1,10 @@
+import { cx } from '@emotion/css';
 import React, { useCallback, useMemo } from 'react';
 import { MergeProps } from '../../../types';
 import { useThemeId } from '../../../hooks/useThemeId';
 import { ArrowDownIcon } from '../../../icons/ArrowDownIcon';
 import { Formbox, FormboxProps, FormboxValue } from '../Formbox/Formbox';
+import styles from './styles/Select.module.css';
 
 export type SelectOption = {
   label?: string;
@@ -81,7 +83,11 @@ export function SelectBase(
 
   const renderInput = (): React.ReactElement<HTMLSelectElement> => {
     return (
-      <select multiple={multiple} {...selectProps}>
+      <select
+        className={cx(styles.selectInput, styles[`selectInput--${themeId}`])}
+        multiple={multiple}
+        {...selectProps}
+      >
         {renderedPlaceholder}
 
         {children ||
@@ -102,7 +108,7 @@ export function SelectBase(
     value: FormboxValue | FormboxValue[] | undefined,
   ): FormboxValue | FormboxValue[] | undefined => {
     if (Array.isArray(value)) {
-      return value.reduce((acc: FormboxValue[], value: FormboxValue | undefined) => {
+      return value.reduce((acc, value: FormboxValue | undefined) => {
         const label = getLabelByValue(value);
         if (label !== undefined) {
           acc.push(label);

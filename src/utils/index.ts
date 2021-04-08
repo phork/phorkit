@@ -11,3 +11,4 @@ export * from './isElementVisible';
 export * from './measureDomNode';
 export * from './renderFromProp';
 export * from './setStyle';
+export * from './typeGuards';

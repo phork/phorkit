@@ -1,10 +1,16 @@
 import styled from '@emotion/styled';
-import PropTypes from 'prop-types';
 import React from 'react';
-import { themes } from 'config/themes';
-import { themeIdPropType } from './propTypes';
+import { Theme } from 'types';
+import { ThemeColors, themes } from 'config/themes';
 
-const Theme = styled.div`
+const ThemeElement = styled.div<{
+  backgroundColor: string;
+  borderColor: string;
+  quietColor: string;
+  quieterColor: string;
+  quietestColor: string;
+  accentColor: string;
+}>`
   align-items: center;
   background-color: ${props => props.backgroundColor};
   border: 1px solid ${props => props.borderColor};
@@ -54,33 +60,29 @@ const Theme = styled.div`
   }
 `;
 
-export function ColorTheme({ themeId, variant }) {
+export interface ColorThemeProps {
+  themeId: Theme;
+  variant: 'primary' | 'secondary' | 'tertiary' | 'contrast';
+}
+
+export function ColorTheme({ themeId, variant }: ColorThemeProps): React.ReactElement {
   const themeProps = themes[themeId];
 
   return (
-    <Theme
-      color={themeProps[`${variant}-text-color`]}
-      backgroundColor={themeProps[`${variant}-background-color`]}
-      borderColor={themeProps[`${variant}-border-color`]}
-      quietColor={themeProps[`${variant}-quiet-color`]}
-      quieterColor={themeProps[`${variant}-quieter-color`]}
-      quietestColor={themeProps[`${variant}-quietest-color`]}
-      accentColor={themeProps[`${variant}-accent-color`]}
+    <ThemeElement
+      color={themeProps[`${variant}-text-color` as keyof ThemeColors] as string}
+      backgroundColor={themeProps[`${variant}-background-color` as keyof ThemeColors] as string}
+      borderColor={themeProps[`${variant}-border-color` as keyof ThemeColors] as string}
+      quietColor={themeProps[`${variant}-quiet-color` as keyof ThemeColors] as string}
+      quieterColor={themeProps[`${variant}-quieter-color` as keyof ThemeColors] as string}
+      quietestColor={themeProps[`${variant}-quietest-color` as keyof ThemeColors] as string}
+      accentColor={themeProps[`${variant}-accent-color` as keyof ThemeColors] as string}
     >
       <div>The quick brown fox jumped over the lazy dog</div>
       <div className="quiet">The quiet brown fox jumped over the lazy dog</div>
       <div className="quieter">The quieter brown fox jumped over the lazy dog</div>
       <div className="quietest">The quietest brown fox jumped over the lazy dog</div>
       <div className="accent">The accented brown fox jumped over the lazy dog</div>
-    </Theme>
+    </ThemeElement>
   );
 }
-
-ColorTheme.defaultProps = {
-  themeId: undefined,
-};
-
-ColorTheme.propTypes = {
-  themeId: themeIdPropType,
-  variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'contrast']).isRequired,
-};

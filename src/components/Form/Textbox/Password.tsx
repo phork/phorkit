@@ -49,7 +49,7 @@ function PasswordBase(
     onClick: React.MouseEventHandler;
   }) => (
     <button aria-label={label} className={styles.textboxButton} type="button" onClick={onClick}>
-      <Icon title={label} />
+      <Icon size={16} title={label} />
     </button>
   );
 

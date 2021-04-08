@@ -1,0 +1,17 @@
+@import '../../../../styles/common/mixins/addScrollbar.css';
+
+.selectInput {
+  @mixin addScrollbar var(--select-scrollbar-thumb-color), var(--select-track-color, transparent), 4px, 0, 32px, 0;
+
+  & option {
+    padding: 4px 8px;
+  }
+
+  &:not([multiple]) option {
+    color: initial;
+  }
+
+  @mixin themed {
+    --select-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
+  }
+}

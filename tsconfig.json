@@ -17,6 +17,10 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "paths": {
+      "*": ["src/*"],
+    },
+
     "removeComments": false,
     "resolveJsonModule": true,
     "rootDir": "src",

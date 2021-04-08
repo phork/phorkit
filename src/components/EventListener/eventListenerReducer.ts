@@ -11,7 +11,7 @@ export const getOptionsFromMapKey = (mapKey: string): OptionsFromMapKey => {
   const options = (Object.keys(OPTIONS) as (keyof typeof OPTIONS)[]).filter(
     option => (OPTIONS[option] & optionSum) > 0,
   );
-  return options.reduce((acc: OptionsFromMapKey, option) => {
+  return options.reduce((acc, option) => {
     return {
       ...acc,
       [option]: true,

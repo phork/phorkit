@@ -88,7 +88,8 @@
 
 .formboxInputContainer--outline {
   border: 1px solid var(--formbox-input-container-border-color);
-  border-radius: $border-radius-l;
+  border-radius: $border-radius-m;
+  min-height: $element-height-medium;
   padding: 4px 8px 2px 8px;
 
   &:hover,
@@ -244,7 +245,7 @@ input.formboxInput[type='number'] {
 
   &.formboxLabel--outline {
     left: 8px;
-    top: 24px;
+    top: 26px;
   }
 
   &.formboxLabel--minimal {
@@ -281,11 +282,11 @@ input.formboxInput[type='number'] {
   }
 
   &.formbox--light {
-    --formbox-placeholder-opacity: .3;
+    --formbox-placeholder-opacity: 0.3;
   }
 
   &.formbox--dark {
-    --formbox-placeholder-opacity: .5;
+    --formbox-placeholder-opacity: 0.5;
   }
 }
 
@@ -339,14 +340,13 @@ input.formboxInput[type='number'] {
   }
 }
 
-
 /* input-specific - these must go last */
 
 /**
  * 1. Prevent Chrome autocomplete from changing the form
  *    background to yellow.
  */
- input.formboxInput {
+input.formboxInput {
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus,
@@ -360,17 +360,40 @@ input.formboxInput[type='number'] {
 }
 
 /**
- * 1. Allow clicking on the down arrow to show dropdown.
+ * 1. Allow clicking on the down arrow to show the dropdown.
  * 2. Prevent the text from overflowing into the arrow.
+ * 3. Visually align the options with the container.
  */
- select.formboxInput {
-  margin-right: -20px; /* [1] */
-  padding-right: 20px; /* [2] */
-}
+select.formboxInput {
+  &:not([multiple]) {
+    margin-right: -20px; /* [1] */
+    padding-right: 20px; /* [2] */
 
-select.formboxInput:not([multiple]) {
-  & option {
-    color: initial;
+    .formboxInputContainer--filled & {
+      margin-right: -24px; /* [1] */
+      padding-right: 24px; /* [2] */
+      margin-left: -8px; /* [3] */
+      padding-left: 8px; /* [3] */
+    }
+
+    .formboxInputContainer--outline & {
+      margin-right: -25px; /* [1] */
+      padding-right: 25px; /* [2] */
+      margin-left: -9px; /* [3] */
+      padding-left: 9px; /* [3] */
+    }
+  }
+
+  &[multiple] {
+    .formboxInputContainer--filled & {
+      margin-left: -8px; /* [3] */
+      margin-right: -12px; /* [3] */
+    }
+
+    .formboxInputContainer--outline & {
+      margin-left: -8px; /* [3] */
+      margin-right: -12px; /* [3] */
+    }
   }
 }
 

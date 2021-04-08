@@ -4,3 +4,5 @@ export interface SvgIconProps extends Omit<React.SVGProps<SVGSVGElement>, 'size'
   title?: string;
   titleId?: string;
 }
+
+export type Icon = (props: SvgIconProps) => React.ReactElement<SVGElement>;

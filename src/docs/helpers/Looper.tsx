@@ -1,7 +1,14 @@
-import PropTypes from 'prop-types';
 import React, { cloneElement, Fragment } from 'react';
 
-export function Looper({ end: initEnd, list, render, start, step }) {
+export interface LooperProps {
+  end: number;
+  start: number;
+  step: number;
+  render: (item: string | number, i: number) => React.ReactElement;
+  list?: Array<string | number>;
+}
+
+export function Looper({ end: initEnd, list, render, start = 0, step = 1 }: LooperProps) {
   const items = [];
   const end = list ? list.length - 1 : initEnd;
 
@@ -16,18 +23,3 @@ export function Looper({ end: initEnd, list, render, start, step }) {
   // eslint-disable-next-line react/jsx-fragments
   return <Fragment>{items}</Fragment>;
 }
-
-Looper.defaultProps = {
-  end: undefined,
-  list: undefined,
-  start: 0,
-  step: 1,
-};
-
-Looper.propTypes = {
-  end: PropTypes.number,
-  list: PropTypes.array,
-  render: PropTypes.func.isRequired,
-  start: PropTypes.number,
-  step: PropTypes.number,
-};

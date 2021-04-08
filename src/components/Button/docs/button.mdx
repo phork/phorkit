@@ -28,7 +28,7 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
     <Looper
       list={['small', 'medium', 'large']}
       render={size => (
-        <Rhythm py={3} grouped key={`buttonSize-${size}`}>
+        <Rhythm py={1} grouped key={`buttonSize-${size}`}>
           <Rhythm m={2}>
             <Button color="primary" shape="pill" weight="filled" onClick={() => console.log('click')} size={size}>
               Primary
@@ -81,7 +81,20 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
               Primary
             </Button>
           </Rhythm>
-          <br />
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Playground>
+
+<div style="height: 50px" />
+
+<Playground>
+  <ThemeWrapper>
+    <Looper
+      list={['small', 'medium', 'large']}
+      render={size => (
+        <Rhythm py={1} grouped key={`iconButtonSize-${size}`}>
           <Rhythm m={2}>
             <IconTextButton
               color="primary"
@@ -833,4 +846,18 @@ _Note that the links will cause the page to reload so the state will appear unch
 
 ## \[props\]
 
+### Button
+
 <Props of={Button} />
+
+### ColoredButton
+
+<Props of={ColoredButton} />
+
+### IconTextButton
+
+<Props of={IconTextButton} />
+
+### ColoredIconTextButton
+
+<Props of={ColoredIconTextButton} />

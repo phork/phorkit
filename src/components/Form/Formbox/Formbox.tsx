@@ -137,7 +137,7 @@ function FormboxBase<T extends FormboxContainerElementType, I extends FormboxInp
     return React.isValidElement(input)
       ? React.cloneElement(input as React.ReactElement, {
           autoFocus,
-          className: cx(input.props.className, styles.formboxInput, variant && styles[`formboxInput--${variant}`]),
+          className: cx(styles.formboxInput, variant && styles[`formboxInput--${variant}`], input.props.className),
           disabled,
           ref: forwardedRef,
           id: generateComponentId(),
@@ -174,7 +174,10 @@ function FormboxBase<T extends FormboxContainerElementType, I extends FormboxInp
 
   // the best practice is to pass a button for the icon if it's actionable
   const renderIcon = (icon: RenderFromPropElement, position: FormboxIconPosition, actionable: boolean | undefined) => {
-    const autoSize = !(typeof icon === 'object' && icon.props && (icon.props.size || icon.props.scale));
+    const autoSize = !(
+      typeof icon === 'object' &&
+      (icon.type === 'button' || (icon.props && (icon.props.size || icon.props.scale)))
+    );
     const className = cx(
       styles.formboxIcon,
       actionable && styles['formboxIcon--actionable'],

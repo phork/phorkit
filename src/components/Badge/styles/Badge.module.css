@@ -44,8 +44,8 @@
  */
 .badge--count {
   border-radius: 500px; /* [1] */
-  min-height: 24px;
-  min-width: 24px;
+  min-height: $element-height-xsmall;
+  min-width: $element-height-xsmall;
   padding: 4px;
 }
 

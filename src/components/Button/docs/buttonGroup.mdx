@@ -464,6 +464,28 @@ _Note that the links will cause the page to reload so the state will appear unch
   </ThemeWrapper>
 </Playground>
 
+### Group with children
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState="third">
+      {({ state, setState }) => (
+        <ButtonGroup spacing="joined" overlap onClick={(event, id) => setState(id)}>
+          <Button key="first" weight="pill" color="primary" weight="filled">
+            First
+          </Button>
+          <Button key="second" weight="pill" color="primary" weight="filled">
+            Second
+          </Button>
+          <Button key="third" weight="pill" color="primary" weight="filled">
+            Third
+          </Button>
+        </ButtonGroup>
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
 ### Group with custom labels
 
 <Playground>

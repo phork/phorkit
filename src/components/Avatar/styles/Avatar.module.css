@@ -19,11 +19,9 @@ button.avatar {
   display: flex;
   flex: none;
   font-size: 16px;
-  height: 36px;
   justify-content: center;
   margin: 0;
   position: relative;
-  width: 36px;
 }
 
 .avatar--actionable {
@@ -32,7 +30,7 @@ button.avatar {
   &:before {
     border-radius: inherit;
     bottom: 0;
-    box-shadow: 0 0 0 var(--avatar-actionable-border-width, 5px) var(--avatar-actionable-background-color, var(--avatar-background-color));
+    box-shadow: 0 0 0 var(--avatar-actionable-border-width, 4px) var(--avatar-actionable-background-color, var(--avatar-background-color));
     content: "";
     height: 100%;
     left: 0;
@@ -56,25 +54,30 @@ button.avatar {
   }
 }
 
-/**
- * The width and height and box shadow size has been 
- * set to the calculated dimensions of round icon buttons
- * for consistency.
- */
-.avatar--small {
-  --avatar-actionable-border-width: 3px;
-
+.avatar--large {
   font-size: 14px;
-  height: 29.2px;
-  width: 29.2px;
+  height: $element-height-large;
+  width: $element-height-large;
+}
+
+.avatar--medium {
+  font-size: 14px;
+  height: $element-height-medium;
+  width: $element-height-medium;
+}
+
+.avatar--small {
+  font-size: 14px;
+  height: $element-height-small;
+  width: $element-height-small;
 }
 
 .avatar--xsmall {
-  --avatar-actionable-border-width: 2px;
+  --avatar-actionable-border-width: 3px;
 
   font-size: 10px;
-  height: 24px;
-  width: 24px;
+  height: $element-height-xsmall;
+  width: $element-height-xsmall;
 }
 
 .avatar--image {

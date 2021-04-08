@@ -16,8 +16,10 @@
 
   &.labelWrapper--reverse {
     flex-direction: row-reverse;
-    justify-content: space-between;
-    width: 100%;
+
+    .labelWrapper__label {
+      margin-left: 12px;
+    }
   }
 }
 

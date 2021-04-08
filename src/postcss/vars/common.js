@@ -4,10 +4,24 @@ const fontSizes = {
   'font-size-s': '11px',
   'font-size-m': '12px',
   'font-size-l': '13px',
-  'font-size-xl': '16px',
-  'font-size-xxl': '18px',
-  'font-size-xxxl': '20px',
-  'font-size-xxxxl': '24px',
+  'font-size-xl': '14px',
+  'font-size-xxl': '16px',
+  'font-size-xxxl': '18px',
+  'font-size-xxxxl': '20px',
+  'font-size-xxxxxl': '24px',
+  'font-size-xxxxxxl': '28px',
+  'font-size-xxxxxxxl': '36px',
+};
+
+const elementSizes = {
+  'element-height-xxsmall': '20px',
+  'element-height-xsmall': '24px',
+  'element-height-small': '28px',
+  'element-height-medium': '32px',
+  'element-height-large': '36px',
+  'element-height-xlarge': '40px',
+  'element-height-xxlarge': '44px',
+  'element-height-xxxlarge': '48px',
 };
 
 const layout = {
@@ -39,5 +53,6 @@ const layout = {
 
 module.exports = {
   ...fontSizes,
+  ...elementSizes,
   ...layout,
 };

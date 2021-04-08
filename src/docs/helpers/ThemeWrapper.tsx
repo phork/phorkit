@@ -1,18 +1,30 @@
-import PropTypes from 'prop-types';
 import React, { useCallback, useContext, useLayoutEffect } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { useColorMode } from 'theme-ui';
+import { SequentialVariant, Theme } from 'types';
 import { ThemeContext } from 'context/Theme';
-import { renderFromProp } from 'utils/renderFromProp';
+import { renderFromProp, RenderFromPropElement } from 'utils/renderFromProp';
 import { MoonIcon } from 'icons/internal/MoonIcon';
 import { SunIcon } from 'icons/internal/SunIcon';
 import { IconButton } from 'components/Button';
-import { renderPropType } from './propTypes';
 
 const variables = require('../../postcss/vars/index');
 
-export function ThemeWrapper({ children, contrast, style, variant: initVariant, withThemeId }) {
-  const [colorMode, setColorMode] = useColorMode();
+export interface ThemeWrapperProps {
+  children: RenderFromPropElement | RenderFromPropElement[];
+  contrast?: boolean;
+  style?: React.CSSProperties;
+  variant?: SequentialVariant;
+  withThemeId?: boolean;
+}
+
+export function ThemeWrapper({
+  children,
+  contrast,
+  style,
+  variant: initVariant = 'primary',
+  withThemeId,
+}: ThemeWrapperProps): React.ReactElement {
+  const [colorMode, setColorMode] = useColorMode<Theme>();
   const { themeId, toggleThemeId } = useContext(ThemeContext);
 
   const updateThemeIds = useCallback(() => {
@@ -54,19 +66,3 @@ export function ThemeWrapper({ children, contrast, style, variant: initVariant, 
     </div>
   );
 }
-
-ThemeWrapper.defaultProps = {
-  children: undefined,
-  contrast: false,
-  style: undefined,
-  variant: 'primary',
-  withThemeId: false,
-};
-
-ThemeWrapper.propTypes = {
-  children: renderPropType,
-  contrast: PropTypes.bool,
-  style: PropTypes.object,
-  variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
-  withThemeId: PropTypes.bool,
-};

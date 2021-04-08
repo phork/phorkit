@@ -1,12 +1,18 @@
 import { useConfig } from 'docz';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import { GithubIcon } from 'icons/internal/GithubIcon';
 import { IconButton } from 'components/Button/IconButton';
 import { Flex } from 'components/Flex';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 
-export function PageTitle({ title, src, url: initUrl }) {
+export interface PageTitleProps {
+  src?: string;
+  title: string;
+  url?: string;
+}
+
+export function PageTitle({ title, src, url: initUrl }: PageTitleProps): React.ReactElement {
   const { repository } = useConfig();
   const url = initUrl || (repository && src && `${repository}/tree/develop/src/${src}`) || undefined;
 
@@ -24,14 +30,3 @@ export function PageTitle({ title, src, url: initUrl }) {
     </Rhythm>
   );
 }
-
-PageTitle.defaultProps = {
-  src: undefined,
-  url: undefined,
-};
-
-PageTitle.propTypes = {
-  src: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  url: PropTypes.string,
-};
