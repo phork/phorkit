@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.8.0](https://github.com/phork/phorkit/compare/v1.7.1...v1.8.0) (2021-04-08)
+
+
+### ✨ Features
+
+* standardized element sizes, docs helpers to ts ([df82808](https://github.com/phork/phorkit/commit/df82808))
+
 ## [1.7.1](https://github.com/phork/phorkit/compare/v1.7.0...v1.7.1) (2021-04-07)
 
 
