@@ -94,8 +94,27 @@
 
   .slider:hover &,
   .slider.is-focused & {
-    box-shadow: var(--slider-hover-handle-box-shadow);
-    border: 1px solid var(--slider-hover-handle-border-color);
+    &:before {
+      border-radius: 100%;
+      border: 2px solid var(--slider-hover-handle-border-mask-color);
+      bottom: -2px;
+      content: '';
+      left: -2px;
+      position: absolute;
+      right: -2px;
+      top: -2px;
+    }
+
+    &:after {
+      border-radius: 100%;
+      border: 1px solid var(--slider-hover-handle-border-color);
+      bottom: -3px;
+      content: '';
+      left: -3px;
+      position: absolute;
+      right: -3px;
+      top: -3px;
+    }
   }
 }
 
@@ -139,8 +158,8 @@ input.sliderInput {
     --slider-track-background-color: $theme-color-FG0-O10;
     --slider-track-fill-background-color: $theme-color-accent-primary;
     --slider-handle-background-color: $theme-color-accent-primary;
-    --slider-hover-handle-box-shadow: 0 0 0 1px $theme-color-accent-primary;
     --slider-hover-handle-border-color: $theme-color-accent-primary;
+    --slider-hover-handle-border-mask-color: $theme-primary-background-color;
     --slider-tick-background-color: $theme-color-BG40;
   }
 }
@@ -150,8 +169,8 @@ input.sliderInput {
     --slider-track-background-color: $theme-contrast-quietest-color;
     --slider-track-fill-background-color: $theme-contrast-accent-color;
     --slider-handle-background-color: $theme-contrast-accent-color;
-    --slider-hover-handle-box-shadow: 0 0 0 1px $theme-contrast-accent-color;
     --slider-hover-handle-border-color: $theme-contrast-accent-color;
+    --slider-hover-handle-border-mask-color: var(--contrast-color, $theme-contrast-background-color);
     --slider-tick-background-color: $theme-contrast-quiet-color;
   }
 }
@@ -160,8 +179,8 @@ input.sliderInput {
   @mixin themed .slider {
     --slider-track-fill-background-color: $theme-color-danger;
     --slider-handle-background-color: $theme-color-danger;
-    --slider-hover-handle-box-shadow: 0 0 0 1px $theme-color-danger;
     --slider-hover-handle-border-color: $theme-color-danger;
+    --slider-hover-handle-border-mask-color: $theme-primary-background-color;
     --slider-tick-background-color: $theme-color-BG40;
   }
 }

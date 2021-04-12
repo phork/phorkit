@@ -8,41 +8,20 @@
   display: inline-flex;
   flex-direction: row;
   position: relative;
-}
 
-.toggle--reverse {
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  width: 100%;
-
-  .toggleInput {
-    justify-content: flex-end;
-    margin-right: 0;
+  &.is-disabled {
+    opacity: 0.5;
+    pointer-events: none;
   }
-
-  .toggleLabel {
-    justify-content: flex-start;
-    flex: 1;
-  }
-}
-
-.toggle--small {
-  --toggle-width: 32px;
-  --toggle-height: 20px;
-  --toggle-border-width: 2px;
 }
 
 input.toggleInput {
   @mixin visuallyHidden;
 }
 
-/**
- * 1. Add padding to align the label text properly.
- */
 .toggleInput {
   flex: none;
   height: var(--toggle-height, $default-toggle-height);
-  margin-right: calc(.35 * var(--toggle-width, $default-toggle-width)); /* [1] */
   position: relative;
   width: var(--toggle-width, $default-toggle-width);
 
@@ -113,7 +92,7 @@ input.toggleInput {
     &:after {
       background-color: var(--toggle-checked-background-color); /* [1] */
       box-shadow: $button-box-shadow,
-        inset 0px 0px 0px calc((var(--toggle-height, $default-toggle-height) / 2) - 4px)
+        inset 0px 0px 0px 2px
           var(--toggle-checked-button-background-color); /* [2] */
     }
   }
@@ -130,15 +109,36 @@ input.toggleInput {
     &:after {
       background-color: var(--toggle-background-color); /* [1] */
       box-shadow: $button-box-shadow,
-        inset 0px 0px 0px calc((var(--toggle-height, $default-toggle-height) / 2) - 4px)
+        inset 0px 0px 0px 2px
           var(--toggle-button-background-color); /* [2] */
     }
   }
 }
 
-.toggle.is-disabled {
-  opacity: 0.5;
-  pointer-events: none;
+.toggleLabel {
+  margin-left: calc(0.35 * var(--toggle-width, $default-toggle-width));
+}
+
+.toggle--reverse {
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  width: 100%;
+
+  .toggleInput {
+    justify-content: flex-end;
+  }
+
+  .toggleLabel {
+    justify-content: flex-start;
+    flex: 1;
+    margin-right: calc(0.35 * var(--toggle-width, $default-toggle-width));
+  }
+}
+
+.toggle--small {
+  --toggle-width: 32px;
+  --toggle-height: 20px;
+  --toggle-border-width: 2px;
 }
 
 .toggle--primary {

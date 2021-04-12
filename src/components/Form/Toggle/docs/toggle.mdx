@@ -4,11 +4,11 @@ menu: Forms
 route: /components/FormToggle
 ---
 
-import { Playground, Props } from 'docz';
-import { Toggle, NotifiedToggle } from '../index';
-import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
 import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'docs/helpers/PageTitle';
+import { Playground, Props } from 'docz';
+import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
+import { Toggle, NotifiedToggle } from '../index';
 
 <PageTitle title="Toggle" src="components/Form/Toggle" />
 
@@ -29,6 +29,16 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 <Playground>
   <FormComponentDemo property="checked" initialValue={true}>
     <Toggle id="demo-labeled-toggle" onChange={(event, checked) => console.log(checked)}>
+      Super fantastic label
+    </Toggle>
+  </FormComponentDemo>
+</Playground>
+
+## Reverse labeled toggle
+
+<Playground>
+  <FormComponentDemo property="checked" initialValue={true}>
+    <Toggle id="demo-reverse-labeled-toggle" reverse onChange={(event, checked) => console.log(checked)}>
       Super fantastic label
     </Toggle>
   </FormComponentDemo>

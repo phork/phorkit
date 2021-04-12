@@ -193,8 +193,13 @@ function SliderBase(
     inputRef.current.focus();
   };
 
-  const handleBlur = useCallback<React.FocusEventHandler<HTMLInputElement>>(() => setFocused(false), [setFocused]);
-  const handleFocus = useCallback<React.FocusEventHandler<HTMLInputElement>>(() => setFocused(true), [setFocused]);
+  const handleDragStart: DraggableProps['onDragStart'] = useCallback(() => setFocused(true), []);
+
+  const handleBlur = useCallback<React.FocusEventHandler<HTMLInputElement>>(() => !dragging && setFocused(false), [
+    dragging,
+  ]);
+
+  const handleFocus = useCallback<React.FocusEventHandler<HTMLInputElement>>(() => setFocused(true), []);
   const forwardFocus = useCallback<React.FocusEventHandler<HTMLLabelElement>>(() => inputRef.current?.focus(), []);
 
   const filledPercent = () => calcFillFromValue(getValue()) || 0;
@@ -240,6 +245,7 @@ function SliderBase(
         {Number.isFinite(sliderWidth) && (
           <Draggable
             boundary={{ x: { min: 0, max: sliderWidth } }}
+            onDragStart={handleDragStart}
             onDragMove={handleDragMove}
             onDragEnd={handleDragEnd}
           >
