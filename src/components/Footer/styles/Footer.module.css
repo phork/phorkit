@@ -1,4 +1,5 @@
 .footer {
+  align-items: center;
   background-color: var(--footer-background-color);
   color: var(--footer-text-color);
   display: flex;
@@ -6,11 +7,6 @@
   justify-content: space-between;
   position: relative;
   width: 100%;
-
-  @mixin themed .footer {
-    background-color: $theme-secondary-background-color;
-    color: $theme-secondary-text-color;
-  }
 }
 
 /**
@@ -18,33 +14,45 @@
  *    it doesn't add height to the box element.
  */
 .footer--bordered {
-  &:before {
-    background-color: var(--footer-border-color); /* [1] */
-    top: -1px;
-    content: "";
-    height: 1px;
-    left: 0;
-    opacity: .5;
-    position: absolute;
-    right: 0;
-  }
+  border-top: 1px solid var(--footer-border-color);
 
-  @mixin themed .footer {
+  &.footer--bordered-pseudo {
+    border: none;
+
     &:before {
-      background-color: $theme-primary-border-color;
+      background-color: var(--footer-border-color); /* [1] */
+      content: '';
+      height: 1px;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: -1px;
     }
   }
 }
 
-.footer--global {
+.footer--primary {
   @mixin themed .footer {
+    --footer-border-color: $theme-primary-border-color;
+
     background-color: $theme-primary-background-color;
     color: $theme-primary-text-color;
   }
 }
 
+.footer--secondary {
+  @mixin themed .footer {
+    --footer-border-color: $theme-secondary-border-color;
+
+    background-color: $theme-secondary-background-color;
+    color: $theme-secondary-text-color;
+  }
+}
+
 .footer--transparent {
   @mixin themed .footer {
+    --footer-border-color: $theme-primary-border-color;
+
     background-color: transparent;
     color: $theme-primary-text-color;
   }
@@ -52,7 +60,20 @@
 
 .footer--contrast {
   @mixin themed .footer {
+    --footer-border-color: $theme-contrast-border-color;
+
     background-color: var(--contrast-color, $theme-contrast-background-color);
     color: $theme-contrast-text-color;
   }
+}
+
+.footer--raised {
+  @mixin themed .footer {
+    box-shadow: $theme-box-shadow-0;
+  }
+}
+
+.footer--full {
+  height: 100%;
+  width: 100%;
 }

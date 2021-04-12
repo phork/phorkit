@@ -5,12 +5,12 @@ import { useThemeId } from '../../hooks/useThemeId';
 import styles from './styles/Header.module.css';
 
 export interface HeaderProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
-  bordered?: boolean;
+  bordered?: boolean | 'pseudo';
   children: React.ReactNode;
   className?: string;
   full?: boolean;
   raised?: boolean;
-  variant?: 'global' | 'transparent';
+  variant?: 'primary' | 'secondary' | 'transparent';
 }
 
 export function Header({
@@ -22,7 +22,7 @@ export function Header({
   raised,
   themeId: initThemeId,
   unthemed,
-  variant: initVariant,
+  variant: initVariant = 'primary',
   ...props
 }: HeaderProps): React.ReactElement<HeaderProps, 'div'> {
   const themeId = useThemeId(initThemeId);
@@ -31,6 +31,7 @@ export function Header({
   const classes = cx(
     styles.header,
     bordered && styles['header--bordered'],
+    bordered === 'pseudo' && styles['header-bordered-pseudo'],
     raised && styles['header--raised'],
     full && styles['header--full'],
     !unthemed && themeId && styles[`header--${themeId}`],

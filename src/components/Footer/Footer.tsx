@@ -5,10 +5,12 @@ import { useThemeId } from '../../hooks/useThemeId';
 import styles from './styles/Footer.module.css';
 
 export interface FooterProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
-  bordered?: boolean;
+  bordered?: boolean | 'pseudo';
   children: React.ReactNode;
   className?: string;
-  variant?: 'global' | 'transparent';
+  full?: boolean;
+  raised?: boolean;
+  variant?: 'primary' | 'secondary' | 'transparent';
 }
 
 export function Footer({
@@ -16,9 +18,11 @@ export function Footer({
   children,
   className,
   contrast,
+  full,
+  raised,
   themeId: initThemeId,
   unthemed,
-  variant: initVariant,
+  variant: initVariant = 'primary',
   ...props
 }: FooterProps): React.ReactElement<FooterProps, 'div'> {
   const themeId = useThemeId(initThemeId);
@@ -27,6 +31,9 @@ export function Footer({
   const classes = cx(
     styles.footer,
     bordered && styles['footer--bordered'],
+    bordered === 'pseudo' && styles['footer-bordered-pseudo'],
+    raised && styles['footer--raised'],
+    full && styles['footer--full'],
     !unthemed && themeId && styles[`footer--${themeId}`],
     !unthemed && variant && styles[`footer--${variant}`],
     className,

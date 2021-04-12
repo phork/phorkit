@@ -4,11 +4,11 @@ menu: Surfaces
 route: /components/Header
 ---
 
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { Rhythm } from 'components/Rhythm';
 import { Header, StyledHeader } from '../index';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { PageTitle } from 'docs/helpers/PageTitle';
 
 <PageTitle title="Header" src="components/Header" />
 
@@ -34,6 +34,17 @@ import { PageTitle } from 'docs/helpers/PageTitle';
   </ThemeWrapper>
 </Playground>
 
+## Pseudo-bordered header
+
+<Playground>
+  <ThemeWrapper>
+    <Header bordered="pseudo">
+      <div>Hello world</div>
+      <div>Hello world</div>
+    </Header>
+  </ThemeWrapper>
+</Playground>
+
 ## Raised header
 
 <Playground>
@@ -45,22 +56,22 @@ import { PageTitle } from 'docs/helpers/PageTitle';
   </ThemeWrapper>
 </Playground>
 
-## Global header
+## Secondary header
 
 <Playground>
   <ThemeWrapper>
-    <Header variant="global">
+    <Header variant="secondary">
       <div>Hello world</div>
       <div>Hello world</div>
     </Header>
   </ThemeWrapper>
 </Playground>
 
-## Bordered global header
+## Bordered secondary header
 
 <Playground>
   <ThemeWrapper>
-    <Header bordered variant="global">
+    <Header bordered variant="secondary">
       <div>Hello world</div>
       <div>Hello world</div>
     </Header>

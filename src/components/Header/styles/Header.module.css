@@ -7,11 +7,6 @@
   justify-content: space-between;
   position: relative;
   width: 100%;
-
-  @mixin themed .header {
-    background-color: $theme-secondary-background-color;
-    color: $theme-secondary-text-color;
-  }
 }
 
 /**
@@ -19,34 +14,45 @@
  *    it doesn't add height to the box element.
  */
 .header--bordered {
-  &:before {
-    background-color: var(--header-border-color); /* [1] */
-    bottom: -1px;
-    content: "";
-    height: 1px;
-    left: 0;
-    opacity: .5;
-    position: absolute;
-    right: 0;
-  }
+  border-bottom: 1px solid var(--header-border-color);
 
+  &.header--bordered-pseudo {
+    border: none;
 
-  @mixin themed .header {
     &:before {
-      background-color: $theme-primary-border-color;
+      background-color: var(--header-border-color); /* [1] */
+      bottom: -1px;
+      content: '';
+      height: 1px;
+      left: 0;
+      position: absolute;
+      right: 0;
     }
   }
 }
 
-.header--global {
+.header--primary {
   @mixin themed .header {
+    --header-border-color: $theme-primary-border-color;
+
     background-color: $theme-primary-background-color;
     color: $theme-primary-text-color;
   }
 }
 
+.header--secondary {
+  @mixin themed .header {
+    --header-border-color: $theme-secondary-border-color;
+
+    background-color: $theme-secondary-background-color;
+    color: $theme-secondary-text-color;
+  }
+}
+
 .header--transparent {
   @mixin themed .header {
+    --header-border-color: $theme-primary-border-color;
+
     background-color: transparent;
     color: $theme-primary-text-color;
   }
@@ -54,6 +60,8 @@
 
 .header--contrast {
   @mixin themed .header {
+    --header-border-color: $theme-contrast-border-color;
+
     background-color: var(--contrast-color, $theme-contrast-background-color);
     color: $theme-contrast-text-color;
   }
