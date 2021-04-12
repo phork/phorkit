@@ -34,6 +34,7 @@ export function BannerProvider({ children }: BannerProviderProps): React.ReactEl
       type: ACTIONS.SET,
       value: mutableBanner,
     });
+    return id;
   }, []);
 
   const clearNotifications = useCallback<BannerContextValue['clearNotifications']>(

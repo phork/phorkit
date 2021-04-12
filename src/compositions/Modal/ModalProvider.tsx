@@ -39,6 +39,7 @@ export function ModalProvider({ children }: ModalProviderProps): React.ReactElem
         options,
       },
     });
+    return id;
   }, []);
 
   const jumpModal = useCallback<ModalContextValue['jumpModal']>(id => {

@@ -3,7 +3,7 @@ import { ToastItemType } from './types';
 
 export interface ToastContextValue {
   notifications: Map<string, ToastItemType>;
-  createNotification: (toast: ToastItemType) => void;
+  createNotification: (toast: ToastItemType) => string | undefined;
   removeNotification: (id: string) => void;
   pinNotification: (id: string) => void;
   clearNotifications: () => void;
@@ -11,7 +11,7 @@ export interface ToastContextValue {
 
 export const ToastContext = React.createContext<ToastContextValue>({
   notifications: new Map(),
-  createNotification: (/* toast */) => {},
+  createNotification: (/* toast */) => undefined,
   pinNotification: (/* id */) => {},
   removeNotification: (/* id */) => {},
   clearNotifications: () => {},

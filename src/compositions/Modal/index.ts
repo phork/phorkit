@@ -6,6 +6,7 @@ export * from './ModalContent';
 export * from './ModalContext';
 export * from './ModalFooter';
 export * from './ModalFromContext';
+export * from './ModalsFromContext';
 export * from './ModalHeader';
 export * from './ModalProvider';
 export * from './modalReducer';

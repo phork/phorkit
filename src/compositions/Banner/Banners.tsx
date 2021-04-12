@@ -1,39 +1,16 @@
 import React from 'react';
-import { ThemeProps } from '../../types';
-import { useThemeId } from '../../hooks/useThemeId';
-import { BannerConsumer } from './BannerConsumer';
-import { BannerContainer } from './BannerContainer';
-import { BannerFromContext } from './BannerFromContext';
 import { BannerProvider } from './BannerProvider';
+import { BannersFromContext, BannersFromContextProps } from './BannersFromContext';
 
-export interface BannersProps extends ThemeProps {
+export interface BannersProps extends BannersFromContextProps {
   children?: React.ReactNode;
 }
 
-export function Banners({ children, themeId: initThemeId, ...props }: BannersProps): React.ReactElement {
-  const themeId = useThemeId(initThemeId);
-
+export function Banners({ children, ...props }: BannersProps): React.ReactElement {
   return (
-    <BannerProvider {...props}>
-      <BannerConsumer>
-        {({ removeNotification, notifications }) => (
-          <React.Fragment>
-            {children}
-            {notifications.size ? (
-              <BannerContainer themeId={themeId} {...props}>
-                {[...notifications.values()].map(element => (
-                  <BannerFromContext
-                    element={element}
-                    removeNotification={removeNotification}
-                    themeId={themeId}
-                    key={element.props.id}
-                  />
-                ))}
-              </BannerContainer>
-            ) : null}
-          </React.Fragment>
-        )}
-      </BannerConsumer>
+    <BannerProvider>
+      {children}
+      <BannersFromContext {...props} />
     </BannerProvider>
   );
 }

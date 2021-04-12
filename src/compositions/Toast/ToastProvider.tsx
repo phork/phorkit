@@ -81,6 +81,7 @@ export function ToastProvider({ children }: ToastProviderProps): React.ReactElem
       });
 
       scheduleRemoveNotification(mutableToast);
+      return id;
     },
     [scheduleRemoveNotification],
   );
