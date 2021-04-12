@@ -30,8 +30,9 @@ button.avatar {
   &:before {
     border-radius: inherit;
     bottom: 0;
-    box-shadow: 0 0 0 var(--avatar-actionable-border-width, 4px) var(--avatar-actionable-background-color, var(--avatar-background-color));
-    content: "";
+    box-shadow: 0 0 0 var(--avatar-actionable-border-width, 4px)
+      var(--avatar-actionable-background-color, var(--avatar-background-color));
+    content: '';
     height: 100%;
     left: 0;
     opacity: 0;
@@ -42,32 +43,50 @@ button.avatar {
   }
 
   &:focus:before {
-    opacity: .2;
+    opacity: 0.2;
   }
 
   &:hover:before {
-    opacity: .2;
+    opacity: 0.2;
   }
 
   &:active:before {
-    opacity: .3;
+    opacity: 0.3;
   }
 }
 
-.avatar--large {
+.avatar--xxxlarge {
+  font-size: 18px;
+  height: $element-height-xxxlarge;
+  width: $element-height-xxxlarge;
+}
+
+.avatar--xxlarge {
+  font-size: 16px;
+  height: $element-height-xxlarge;
+  width: $element-height-xxlarge;
+}
+
+.avatar--xlarge {
   font-size: 14px;
+  height: $element-height-xlarge;
+  width: $element-height-xlarge;
+}
+
+.avatar--large {
+  font-size: 13px;
   height: $element-height-large;
   width: $element-height-large;
 }
 
 .avatar--medium {
-  font-size: 14px;
+  font-size: 12px;
   height: $element-height-medium;
   width: $element-height-medium;
 }
 
 .avatar--small {
-  font-size: 14px;
+  font-size: 11px;
   height: $element-height-small;
   width: $element-height-small;
 }
@@ -75,9 +94,15 @@ button.avatar {
 .avatar--xsmall {
   --avatar-actionable-border-width: 3px;
 
-  font-size: 10px;
+  font-size: 9px;
   height: $element-height-xsmall;
   width: $element-height-xsmall;
+}
+
+.avatar--custom {
+  font-size: var(--avatar-font-size);
+  height: var(--avatar-size);
+  width: var(--avatar-size);
 }
 
 .avatar--image {
