@@ -1,5 +1,17 @@
 # Changelog
 
+# [1.9.0](https://github.com/phork/phorkit/compare/v1.8.0...v1.9.0) (2021-04-12)
+
+
+### ✨ Features
+
+* additional avatar sizes ([8010efe](https://github.com/phork/phorkit/commit/8010efe))
+
+
+### 🐛 Bug Fixes
+
+* improve focus and hover for slider and toggle ([283e751](https://github.com/phork/phorkit/commit/283e751))
+
 # [1.8.0](https://github.com/phork/phorkit/compare/v1.7.1...v1.8.0) (2021-04-08)
 
 
