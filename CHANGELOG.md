@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.11.0](https://github.com/phork/phorkit/compare/v1.10.0...v1.11.0) (2021-04-13)
+
+
+### ✨ Features
+
+* new success inputs, removed label validity colors ([b93049d](https://github.com/phork/phorkit/commit/b93049d))
+
 # [1.10.0](https://github.com/phork/phorkit/compare/v1.9.0...v1.10.0) (2021-04-13)
 
 
