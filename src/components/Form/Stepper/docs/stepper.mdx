@@ -4,12 +4,12 @@ menu: Forms
 route: /components/FormStepper
 ---
 
-import { Playground, Props } from 'docz';
-import { Stepper, NotifiedStepper } from '../index';
-import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
 import { Looper } from 'docs/helpers/Looper';
-import { variants } from './helpers/variants';
 import { PageTitle } from 'docs/helpers/PageTitle';
+import { Playground, Props } from 'docz';
+import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
+import { Stepper, NotifiedStepper } from '../index';
+import { variants } from './helpers/variants';
 
 <PageTitle title="Stepper" src="components/Form/Stepper" />
 
@@ -95,6 +95,42 @@ import { PageTitle } from 'docs/helpers/PageTitle';
         <Stepper
           onChange={(event, value) => console.log(value)}
           validity="danger"
+          aria-label="Super fantastic label"
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Warning stepper
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue={60}>
+        <Stepper
+          onChange={(event, value) => console.log(value)}
+          validity="warning"
+          aria-label="Super fantastic label"
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Success stepper
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue={60}>
+        <Stepper
+          onChange={(event, value) => console.log(value)}
+          validity="success"
           aria-label="Super fantastic label"
           variant={variant}
         />

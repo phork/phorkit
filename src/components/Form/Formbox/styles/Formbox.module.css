@@ -310,12 +310,25 @@ input.formboxInput[type='number'] {
   }
 }
 
+.formbox.is-success {
+  @mixin themed .formbox {
+    --formbox-input-container-border-color: $theme-color-success;
+    --formbox-input-container-focused-border-color: $theme-color-success-D10;
+    --formbox-input-container-hover-border-color: $theme-color-success-D10;
+
+    &.formbox--transparent {
+      --formbox-input-container-border-color: transparent;
+      --formbox-input-container-focused-border-color: transparent;
+      --formbox-input-container-hover-border-color: transparent;
+    }
+  }
+}
+
 .formbox.is-warning {
   @mixin themed .formbox {
     --formbox-input-container-border-color: $theme-color-warning;
     --formbox-input-container-focused-border-color: $theme-color-warning;
     --formbox-input-container-hover-border-color: $theme-color-warning-D10;
-    --formbox-label-text-color: $theme-color-warning;
 
     &.formbox--transparent {
       --formbox-input-container-border-color: transparent;
@@ -330,7 +343,6 @@ input.formboxInput[type='number'] {
     --formbox-input-container-border-color: $theme-color-danger;
     --formbox-input-container-focused-border-color: $theme-color-danger-D10;
     --formbox-input-container-hover-border-color: $theme-color-danger-D10;
-    --formbox-label-text-color: $theme-color-danger;
 
     &.formbox--transparent {
       --formbox-input-container-border-color: transparent;

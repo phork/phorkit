@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useRef } from 'react';
-import { AsType, InvalidStateColor, MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
+import { AsType, StateColor, MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
 import { useComponentId } from '../../../hooks/useComponentId';
 import { useDeepFocus } from '../../../hooks/useDeepFocus';
 import { useThemeId } from '../../../hooks/useThemeId';
@@ -59,7 +59,7 @@ export interface LocalFormboxProps<I extends FormboxInputElementType> extends Th
   translations?: FormboxTranslations;
   /** transparent inputs can be used inside styled containers (eg. a contained dropdown) */
   transparent?: boolean;
-  validity?: InvalidStateColor;
+  validity?: StateColor;
   value?: FormboxValue | FormboxValue[];
   variant?: FormboxVariant;
   width?: string | number;

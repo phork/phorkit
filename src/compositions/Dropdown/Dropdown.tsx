@@ -2,7 +2,7 @@ import { cx } from '@emotion/css';
 import debounce from 'lodash.debounce';
 import React, { useCallback, useMemo, useEffect, useReducer, useRef } from 'react';
 import { v4 as uuid } from 'uuid';
-import { InvalidStateColor, ThemeProps } from '../../types';
+import { StateColor, ThemeProps } from '../../types';
 import { DropdownOption, DropdownInputVariant, DropdownLayout } from './types';
 import { useClickAndEscape } from '../../hooks/useClickAndEscape';
 import { useSafeTimeout } from '../../hooks/useSafeTimeout';
@@ -44,7 +44,7 @@ export interface DropdownProps
   options: DropdownOption[];
   readOnlyValue?: React.ReactChild;
   transitional?: boolean;
-  validity?: InvalidStateColor;
+  validity?: StateColor;
 }
 
 /** The dropdown is a controlled component */

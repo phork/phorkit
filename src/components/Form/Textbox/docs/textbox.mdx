@@ -202,6 +202,7 @@ import { variants } from './helpers/variants.js';
           id={`demo-danger-textbox-${variant}`}
           label="Super fantastic label"
           onChange={(event, value) => console.log(value)}
+          transitional
           validity="danger"
           variant={variant}
         />
@@ -221,7 +222,28 @@ import { variants } from './helpers/variants.js';
           id={`demo-warning-textbox-${variant}`}
           label="Super fantastic label"
           onChange={(event, value) => console.log(value)}
+          transitional
           validity="warning"
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Success textbox
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="Hello world">
+        <Textbox
+          id={`demo-success-textbox-${variant}`}
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          transitional
+          validity="success"
           variant={variant}
         />
       </FormComponentDemo>

@@ -44,12 +44,25 @@
     --label-text-color: $theme-contrast-text-color;
     --label-muted-text-color: $theme-contrast-quiet-color;
   }
-
 }
 
 .label.is-danger {
   @mixin themed .label {
     --label-text-color: $theme-color-danger;
+    --label-muted-text-color: $theme-primary-quiet-color;
+  }
+}
+
+.label.is-warning {
+  @mixin themed .label {
+    --label-text-color: $theme-color-warning;
+    --label-muted-text-color: $theme-primary-quiet-color;
+  }
+}
+
+.label.is-success {
+  @mixin themed .label {
+    --label-text-color: $theme-color-success;
     --label-muted-text-color: $theme-primary-quiet-color;
   }
 }

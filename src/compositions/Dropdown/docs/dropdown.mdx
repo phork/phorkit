@@ -4,20 +4,20 @@ menu: Input
 route: /compositions/Dropdown
 ---
 
-import { Playground, Props } from 'docz';
-import { themes } from 'config/themes';
-import { Dropdown, DropdownContent, DropdownEmpty, InlineDropdown } from '../index';
-import { Flex } from 'components/Flex';
-import { TagIcon } from 'icons/internal/TagIcon';
-import { SearchIcon } from 'icons/SearchIcon';
+import { ListProps } from 'docs/helpers/ListProps';
+import { Looper } from 'docs/helpers/Looper';
+import { PageTitle } from 'docs/helpers/PageTitle';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { Looper } from 'docs/helpers/Looper';
-import { ListProps } from 'docs/helpers/ListProps';
+import { Playground, Props } from 'docz';
+import { themes } from 'config/themes';
+import { SearchIcon } from 'icons/SearchIcon';
+import { TagIcon } from 'icons/internal/TagIcon';
+import { Flex } from 'components/Flex';
+import { Dropdown, DropdownContent, DropdownEmpty, InlineDropdown } from '../index';
 import { MultiVariantDropdown } from './helpers/MultiVariantDropdown';
 import { options, handleFilter, handleEmptyFilter } from './helpers/options';
 import { variants } from './helpers/variants.js';
-import { PageTitle } from 'docs/helpers/PageTitle';
 
 <PageTitle title="Dropdown" src="compositions/Dropdown" />
 
@@ -84,27 +84,27 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   <ThemeWrapper>
     <Flex direction="row" justifyContent="space-between" full wrap>
       <Looper
-          list={variants}
-          render={variant => (
-            <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginRight: 20 }}>
-              <InlineDropdown
-                iconAfter={<TagIcon size={12} />}
-                initialSelected={options[3]}
-                inputVariant={variant}
-                label="Super awesome dropdown"
-                onChange={value => console.log(value)}
-                onFilter={handleFilter}
-                onSelect={value => console.log('select', value)}
-                onSubmit={(event, value) =>
-                  !options.some(option => option.id === value) && options.push({ id: value, label: value })
-                }
-                options={options}
-                transitional
-              />
-            </div>
-          )}
-        />
-      </Flex>
+        list={variants}
+        render={variant => (
+          <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginRight: 20 }}>
+            <InlineDropdown
+              iconAfter={<TagIcon size={12} />}
+              initialSelected={options[3]}
+              inputVariant={variant}
+              label="Super awesome dropdown"
+              onChange={value => console.log(value)}
+              onFilter={handleFilter}
+              onSelect={value => console.log('select', value)}
+              onSubmit={(event, value) =>
+                !options.some(option => option.id === value) && options.push({ id: value, label: value })
+              }
+              options={options}
+              transitional
+            />
+          </div>
+        )}
+      />
+    </Flex>
   </ThemeWrapper>
 </Playground>
 
@@ -149,6 +149,42 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
         onSelect={value => console.log('select', value)}
         options={options}
         validity="danger"
+      />
+    </div>
+  </ThemeWrapper>
+</Playground>
+
+### Warning dropdown
+
+<Playground>
+  <ThemeWrapper style={{ height: '300px' }}>
+    <div style={{ maxWidth: 300 }}>
+      <InlineDropdown
+        id="demo-danger-dropdown"
+        initialSelected={options[3]}
+        label="Super awesome dropdown"
+        onChange={value => console.log('change', value)}
+        onSelect={value => console.log('select', value)}
+        options={options}
+        validity="warning"
+      />
+    </div>
+  </ThemeWrapper>
+</Playground>
+
+### Success dropdown
+
+<Playground>
+  <ThemeWrapper style={{ height: '300px' }}>
+    <div style={{ maxWidth: 300 }}>
+      <InlineDropdown
+        id="demo-danger-dropdown"
+        initialSelected={options[3]}
+        label="Super awesome dropdown"
+        onChange={value => console.log('change', value)}
+        onSelect={value => console.log('select', value)}
+        options={options}
+        validity="success"
       />
     </div>
   </ThemeWrapper>

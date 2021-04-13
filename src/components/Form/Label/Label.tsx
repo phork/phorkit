@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { AsType, InvalidStateColor, MergeElementProps, ThemeProps } from '../../../types';
+import { AsType, StateColor, MergeElementProps, ThemeProps } from '../../../types';
 import { useThemeId } from '../../../hooks/useThemeId';
 import styles from './styles/Label.module.css';
 
@@ -11,7 +11,7 @@ export interface LocalLabelProps extends ThemeProps {
   focused?: boolean;
   muted?: boolean;
   strength?: 'transitioned' | 'standard' | 'legend';
-  validity?: InvalidStateColor;
+  validity?: StateColor;
 }
 
 export type LabelProps<T extends React.ElementType = 'div'> = AsType<T> & MergeElementProps<T, LocalLabelProps>;

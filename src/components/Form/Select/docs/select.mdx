@@ -4,16 +4,16 @@ menu: Forms
 route: /components/FormSelect
 ---
 
-import { Playground, Props } from 'docz';
-import { Select, NotifiedSelect } from '../index';
-import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
 import { Looper } from 'docs/helpers/Looper';
-import { TagIcon } from 'icons/internal/TagIcon';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { Playground, Props } from 'docz';
 import { SearchIcon } from 'icons/SearchIcon';
 import { TimesIcon } from 'icons/TimesIcon';
+import { TagIcon } from 'icons/internal/TagIcon';
+import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
+import { Select, NotifiedSelect } from '../index';
 import { options } from './helpers/options';
 import { variants } from './helpers/variants.js';
-import { PageTitle } from 'docs/helpers/PageTitle';
 
 <PageTitle title="Select" src="components/Form/Select" />
 
@@ -266,6 +266,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
           label="Super fantastic label"
           onChange={(event, value) => console.log(value)}
           options={options}
+          transitional
           validity="danger"
           variant={variant}
         />
@@ -285,7 +286,28 @@ import { PageTitle } from 'docs/helpers/PageTitle';
           label="Super fantastic label"
           onChange={(event, value) => console.log(value)}
           options={options}
+          transitional
           validity="warning"
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Success select
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="yellow">
+        <Select
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          options={options}
+          transitional
+          validity="success"
           variant={variant}
         />
       </FormComponentDemo>
