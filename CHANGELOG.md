@@ -1,5 +1,17 @@
 # Changelog
 
+# [1.10.0](https://github.com/phork/phorkit/compare/v1.9.0...v1.10.0) (2021-04-13)
+
+
+### ♻ Code Refactoring
+
+* broke out context from toasts, modals and banners ([dad53bd](https://github.com/phork/phorkit/commit/dad53bd))
+
+
+### ✨ Features
+
+* change header and footer borders to non-pseudo element ([406a353](https://github.com/phork/phorkit/commit/406a353))
+
 # [1.9.0](https://github.com/phork/phorkit/compare/v1.8.0...v1.9.0) (2021-04-12)
 
 
