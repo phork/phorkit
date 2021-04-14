@@ -84,7 +84,7 @@ export function SelectBase(
   const renderInput = (): React.ReactElement<HTMLSelectElement> => {
     return (
       <select
-        className={cx(styles.selectInput, styles[`selectInput--${themeId}`])}
+        className={cx(styles.selectInput, styles[`selectInput--${themeId}`], selectProps?.className)}
         multiple={multiple}
         {...selectProps}
       >

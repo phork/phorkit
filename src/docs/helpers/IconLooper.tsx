@@ -11,6 +11,7 @@ export interface IconLooperProps {
 export function IconLooper({ children }: IconLooperProps) {
   const items = Object.keys(icons).map(icon => {
     if (isKeyof<typeof icons>(icons, icon)) {
+      // eslint-disable-next-line import/namespace
       return children(icon, icons[icon]);
     }
     return null;

@@ -19,6 +19,7 @@ import styles from './styles/Dropdown.module.css';
 export interface LocalDropdownContentProps extends ThemeProps {
   /** allowReselect is used by DropdownWithTags so an item can be added, removed and re-added */
   allowReselect?: boolean;
+  className?: string;
   containerRef: React.RefObject<HTMLDivElement>;
   disabledIds?: Array<DropdownOption['id']>;
   emptyNotification?: RenderFromPropElement;
@@ -46,6 +47,7 @@ export type DropdownContentProps = MergeElementProps<'div', LocalDropdownContent
 function DropdownContentBase(
   {
     allowReselect,
+    className,
     containerRef,
     contrast,
     disabledIds,
@@ -88,6 +90,7 @@ function DropdownContentBase(
         accessible && styles['is-accessible'],
         state.listFocus && styles['is-focused'],
         isDropdownVisible && styles['is-visible'],
+        className,
       )}
       ref={ref}
       {...props}

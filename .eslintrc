@@ -1,5 +1,11 @@
 {
-  "extends": ["prettier", "prettier/react", "plugin:jsx-a11y/recommended"],
+  "extends": [
+    "prettier",
+    "prettier/react",
+    "plugin:jsx-a11y/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
   "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaVersion": 2018,
@@ -18,9 +24,10 @@
   "rules": {
     "arrow-parens": 0,
     "camelcase": 0,
-    "import/first": 0,
     "import/newline-after-import": ["error", { "count": 1 }],
+    "import/no-absolute-path": 2,
     "import/no-named-default": 0,
+    "import/no-named-as-default": 0,
     "import/prefer-default-export": 0,
     "import/order": [
       "error",
@@ -28,13 +35,12 @@
         "groups": [["builtin", "external"], "internal", ["parent", "sibling", "index"]]
       }
     ],
-    "no-console": 2,
+    "no-console": 1,
     "no-param-reassign": [2, { "props": false }],
-    "no-shadow": 0,
     "no-underscore-dangle": ["error", { "allow": ["_id"] }],
     "no-unused-expressions": 0,
     "react-hooks/rules-of-hooks": 2,
-    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/exhaustive-deps": 2,
     "react/forbid-prop-types": 0,
     "react/jsx-curly-brace-presence": 0,
     "react/jsx-filename-extension": 0,
@@ -57,6 +63,14 @@
   "overrides": [
     {
       "files": ["**/*.ts", "**/*.tsx"],
+      "extends": [
+        "prettier",
+        "prettier/react",
+        "plugin:jsx-a11y/recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript"
+      ],
       "parser": "@typescript-eslint/parser",
       "parserOptions": {
         "ecmaVersion": 2018,
@@ -70,8 +84,10 @@
       "rules": {
         "arrow-parens": 0,
         "camelcase": 0,
-        "import/first": 0,
+        "import/newline-after-import": ["error", { "count": 1 }],
+        "import/no-absolute-path": 2,
         "import/no-named-default": 0,
+        "import/no-named-as-default": 0,
         "import/prefer-default-export": 0,
         "import/order": [
           "error",
@@ -79,14 +95,13 @@
             "groups": [["builtin", "external"], "internal", ["parent", "sibling", "index"]]
           }
         ],
-        "no-console": 2,
+        "no-console": 1,
         "no-param-reassign": [2, { "props": false }],
-        "no-shadow": 0,
         "no-underscore-dangle": ["error", { "allow": ["_id"] }],
         "no-unused-expressions": 0,
         "no-void": 0,
         "react-hooks/rules-of-hooks": 2,
-        "react-hooks/exhaustive-deps": "warn",
+        "react-hooks/exhaustive-deps": 2,
         "react/forbid-prop-types": 0,
         "react/jsx-curly-brace-presence": 0,
         "react/jsx-filename-extension": 0,
