@@ -5,9 +5,16 @@ import { BannerConsumer } from './BannerConsumer';
 import { BannerContainer } from './BannerContainer';
 import { BannerFromContext } from './BannerFromContext';
 
-export type BannersFromContextProps = React.HTMLAttributes<HTMLDivElement> & ThemeProps;
+export type BannersFromContextProps = React.HTMLAttributes<HTMLDivElement> &
+  ThemeProps & {
+    bannerStyle?: React.CSSProperties;
+  };
 
-export function BannersFromContext({ themeId: initThemeId, ...props }: BannersFromContextProps): React.ReactElement {
+export function BannersFromContext({
+  bannerStyle,
+  themeId: initThemeId,
+  ...props
+}: BannersFromContextProps): React.ReactElement {
   const themeId = useThemeId(initThemeId);
 
   return (
@@ -19,9 +26,10 @@ export function BannersFromContext({ themeId: initThemeId, ...props }: BannersFr
               {[...notifications.values()].map(element => (
                 <BannerFromContext
                   element={element}
-                  removeNotification={removeNotification}
-                  themeId={themeId}
                   key={element.props.id}
+                  removeNotification={removeNotification}
+                  style={bannerStyle}
+                  themeId={themeId}
                 />
               ))}
             </BannerContainer>
