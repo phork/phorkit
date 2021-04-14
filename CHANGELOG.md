@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.12.0](https://github.com/phork/phorkit/compare/v1.11.0...v1.12.0) (2021-04-14)
+
+
+### ✨ Features
+
+* accept custom banner styles ([33110ee](https://github.com/phork/phorkit/commit/33110ee))
+
 # [1.11.0](https://github.com/phork/phorkit/compare/v1.10.0...v1.11.0) (2021-04-13)
 
 
