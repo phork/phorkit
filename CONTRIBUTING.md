@@ -88,7 +88,7 @@ The normalize styles, common styles and fonts have been bundled into `styles`. A
 
 ### PostCSS
 
-All color, sizing and spacing definitions comes from the `postcss` files. Only the `*.js` files should be edited. _Do not edit the `_.json` files.\_ They will be overwritten during the build cycle.
+All color, sizing and spacing definitions comes from the `postcss` files. Only the `*.js` files should be edited. **Do not edit the `_.json` files.** They will be overwritten during the build cycle.
 
 ## Theming
 
