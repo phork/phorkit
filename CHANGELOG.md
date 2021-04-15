@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.13.0](https://github.com/phork/phorkit/compare/v1.12.0...v1.13.0) (2021-04-15)
+
+
+### ✨ Features
+
+* publish additional standalone styles ([a3d5bf3](https://github.com/phork/phorkit/commit/a3d5bf3))
+
 # [1.12.0](https://github.com/phork/phorkit/compare/v1.11.0...v1.12.0) (2021-04-14)
 
 
