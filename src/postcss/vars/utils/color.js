@@ -40,15 +40,15 @@ module.exports = {
     }, {});
   },
 
-  generateLightenDarken: (source, colors) => {
+  generateLightenDarken: (source, colors, adjustments) => {
     return colors.reduce((acc, color) => {
       if (source[color]) {
         acc[`${color}-L10`] = Color(source[color])
-          .lighten(source[`${color}-adjust-lighten`] || 0.2)
+          .lighten(adjustments?.[`${color}-lighten`] || 0.2)
           .hex();
 
         acc[`${color}-D10`] = Color(source[color])
-          .darken(source[`${color}-adjust-darken`] || 0.2)
+          .darken(adjustments?.[`${color}-darken`] || 0.2)
           .hex();
       }
       return acc;

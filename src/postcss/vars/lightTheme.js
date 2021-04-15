@@ -32,15 +32,12 @@ const primaryColors = {
 
   'color-P25': '#ff8e0d',
   'color-P25-contrast': '#fff',
-  'color-P25-adjust-darken': 0.1 /* override the default darken amount */,
 
   'color-P30': '#FCA60A',
   'color-P30-contrast': '#fff',
-  'color-P30-adjust-darken': 0.08 /* override the default darken amount */,
 
   'color-P35': '#f8be07',
   'color-P35-contrast': '#fff',
-  'color-P35-adjust-darken': 0.05 /* override the default darken amount */,
 
   'color-P40': '#7CBB3F',
   'color-P40-contrast': '#fff',
@@ -59,6 +56,12 @@ const primaryColors = {
 
   'color-P65': '#8b218b',
   'color-P65-contrast': '#fff',
+};
+
+const adjustments = {
+  'color-P25-darken': 0.1 /* override the default darken amount */,
+  'color-P30-darken': 0.08 /* override the default darken amount */,
+  'color-P35-darken': 0.05 /* override the default darken amount */,
 };
 
 const accentColors = {
@@ -155,14 +158,18 @@ const definedColors = {
 
 const colors = {
   ...definedColors,
-  ...color.generateLightenDarken(definedColors, [
-    'color-accent-primary',
-    'color-success',
-    'color-warning',
-    'color-danger',
-    'color-neutral',
-    ...Object.keys(primaryColors).filter(key => !key.includes('contrast')),
-  ]),
+  ...color.generateLightenDarken(
+    definedColors,
+    [
+      'color-accent-primary',
+      'color-success',
+      'color-warning',
+      'color-danger',
+      'color-neutral',
+      ...Object.keys(primaryColors).filter(key => !key.includes('contrast')),
+    ],
+    adjustments,
+  ),
   ...color.generateOpacityRange(definedColors, ['color-BG0', 'color-FG0', 'color-BG40', 'color-accent-primary']),
 };
 

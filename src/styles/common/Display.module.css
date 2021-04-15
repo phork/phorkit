@@ -1,0 +1,91 @@
+.display-inline {
+  display: inline;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-contents {
+  display: contents;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.display-grid {
+  display: grid;
+}
+
+.display-inline-block {
+  display: inline-block;
+}
+
+.display-inline-flex {
+  display: inline-flex;
+}
+
+.display-inline-grid {
+  display: inline-grid;
+}
+
+.display-inline-table {
+  display: inline-table;
+}
+
+.display-list-item {
+  display: list-item;
+}
+
+.display-run-in {
+  display: run-in;
+}
+
+.display-table {
+  display: table;
+}
+
+.display-table-caption {
+  display: table-caption;
+}
+
+.display-table-column-group {
+  display: table-column-group;
+}
+
+.display-table-header-group {
+  display: table-header-group;
+}
+
+.display-table-footer-group {
+  display: table-footer-group;
+}
+
+.display-table-row-group {
+  display: table-row-group;
+}
+
+.display-table-cell {
+  display: table-cell;
+}
+
+.display-table-column {
+  display: table-column;
+}
+
+.display-table-row {
+  display: table-row;
+}
+
+.display-none {
+  display: none;
+}
+
+.display-initial {
+  display: initial;
+}
+
+.display-inherit {
+  display: inherit;
+}

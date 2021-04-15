@@ -1,0 +1,27 @@
+.position-static {
+  position: static;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.position-fixed {
+  position: fixed;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.position-sticky {
+  position: sticky;
+}
+
+.position-initial {
+  position: initial;
+}
+
+.position-inherit {
+  position: inherit;
+}

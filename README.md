@@ -16,12 +16,14 @@ import '@phork/phorkit/lib/styles/common.css';
 
 Include the basic providers in `App.js`.
 
-```
+```javascript
 <AccessibilityProvider>
   <ThemeProvider themeId={light|dark}>
     hello world
   </Theme>
 </AccessibilityProvider>
 ```
+
+The Phork/it CSS files have also been published separately so that they can be used outside of React, or included in a custom React component.
 
 [Contribution guidelines for this project](CONTRIBUTING.md)

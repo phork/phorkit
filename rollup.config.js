@@ -115,10 +115,15 @@ const scriptsConfig = ['esm', 'cjs'].map(format => ({
       },
     }),
     postcss({
+      autoModules: false,
       modules: {
         generateScopedName: isDev ? longNames : shortNames,
       },
-      autoModules: false,
+      config: {
+        ctx: {
+          prettify: false,
+        },
+      },
     }),
     !isDev && terser(),
   ],
@@ -135,6 +140,11 @@ const sharedStyleConfig = ['common.css', 'normalize.css'].map(name => ({
       autoModules: false,
       extract: true,
       modules: false,
+      config: {
+        ctx: {
+          prettify: false,
+        },
+      },
     }),
   ],
 }));
@@ -147,6 +157,11 @@ const fontConfig = {
       autoModules: false,
       extract: true,
       modules: false,
+      config: {
+        ctx: {
+          prettify: false,
+        },
+      },
     }),
     copy({
       targets: [
@@ -174,6 +189,11 @@ const stylesConfigs = commonStylesModules.map(src => ({
       autoModules: false,
       extract: true,
       modules: false,
+      config: {
+        ctx: {
+          prettify: true,
+        },
+      },
     }),
   ],
 }));
@@ -188,6 +208,11 @@ const rawStylesConfigs = [...new Set(componentInfo.map(({ css }) => css).filter(
       autoModules: false,
       extract: true,
       modules: false,
+      config: {
+        ctx: {
+          prettify: true,
+        },
+      },
     }),
   ],
 }));
