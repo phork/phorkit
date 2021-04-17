@@ -4,13 +4,15 @@ menu: Feedback
 route: /compositions/Toasts
 ---
 
-import { Playground, Props } from 'docz';
-import { Toast, ToastConsumer, ToastContainer, ToastProvider, Toasts } from '../index';
-import { Button } from 'components/Button';
-import { Rhythm } from 'components/Rhythm';
+import { PageTitle } from 'docs/helpers/PageTitle';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { PageTitle } from 'docs/helpers/PageTitle';
+import { Playground, Props } from 'docz';
+import { TimesIcon } from 'icons/TimesIcon';
+import { CheckIcon } from 'icons/internal/CheckIcon';
+import { Button } from 'components/Button';
+import { Rhythm } from 'components/Rhythm';
+import { IconToast, Toast, ToastConsumer, ToastContainer, ToastProvider, Toasts } from '../index';
 
 <PageTitle title="Toast" src="compositions/Toast" />
 
@@ -21,6 +23,15 @@ import { PageTitle } from 'docs/helpers/PageTitle';
     <Toast id="demo-basic-toast" immediate>
       This is an example toast.
     </Toast>
+    <br />
+    <Toast id="demo-basic-colored-toast" variant="colored" immediate>
+      This is an example toast.
+    </Toast>
+    <br />
+    <Toast id="demo-basic-colored-toast-long" variant="colored" immediate>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat congue risus vitae consequat. Aenean
+      ultricies eu enim et accumsan. Suspendisse potenti.
+    </Toast>
   </ThemeWrapper>
 </Playground>
 
@@ -28,9 +39,133 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 
 <Playground>
   <ThemeWrapper>
-    <Toast id="demo-title-toast" title="Hello world" level="success" immediate>
-      This is a success toast.
+    <Toast id="demo-title-toast" title="Hello world" immediate>
+      This is an example toast.
     </Toast>
+    <br />
+    <Toast id="demo-title-colored-toast" title="Hello world" variant="colored" immediate>
+      This is an example toast.
+    </Toast>
+    <br />
+    <Toast id="demo-title-colored-toast-long" title="Hello world" variant="colored" immediate>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat congue risus vitae consequat. Aenean
+      ultricies eu enim et accumsan. Suspendisse potenti.{' '}
+    </Toast>
+  </ThemeWrapper>
+</Playground>
+
+## Icon toast
+
+<Playground>
+  <ThemeWrapper>
+    <IconToast id="demo-icon-toast" icon={CheckIcon} immediate>
+      This is an example toast.
+    </IconToast>
+    <br />
+    <IconToast id="demo-icon-colored-toast" icon={CheckIcon} variant="colored" immediate>
+      This is an example toast.
+    </IconToast>
+    <br />
+    <IconToast id="demo-icon-colored-toast-long" icon={CheckIcon} variant="colored" immediate>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat congue risus vitae consequat. Aenean
+      ultricies eu enim et accumsan. Suspendisse potenti.{' '}
+    </IconToast>
+  </ThemeWrapper>
+</Playground>
+
+## Icon toast with a title
+
+<Playground>
+  <ThemeWrapper>
+    <IconToast id="demo-title-icon-info-toast" title="Hello world" level="info" icon={CheckIcon} immediate>
+      This is an info toast.
+    </IconToast>
+    <br />
+    <IconToast
+      id="demo-title-icon-colored-info-toast"
+      title="Hello world"
+      level="info"
+      icon={CheckIcon}
+      variant="colored"
+      immediate
+    >
+      This is an info toast.
+    </IconToast>
+    <br />
+    <IconToast
+      id="demo-title-icon-colored-info-toast-long"
+      title="Hello world"
+      level="info"
+      icon={CheckIcon}
+      variant="colored"
+      immediate
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat congue risus vitae consequat. Aenean
+      ultricies eu enim et accumsan. Suspendisse potenti.{' '}
+    </IconToast>
+  </ThemeWrapper>
+</Playground>
+
+<div style="height: 50px" />
+
+<Playground>
+  <ThemeWrapper>
+    <IconToast id="demo-title-icon-success-toast" title="Hello world" level="success" icon={CheckIcon} immediate>
+      This is a success toast.
+    </IconToast>
+    <br />
+    <IconToast
+      id="demo-title-icon-colored-success-toast"
+      title="Hello world"
+      level="success"
+      icon={CheckIcon}
+      variant="colored"
+      immediate
+    >
+      This is a success toast.
+    </IconToast>
+  </ThemeWrapper>
+</Playground>
+
+<div style="height: 50px" />
+
+<Playground>
+  <ThemeWrapper>
+    <IconToast id="demo-title-icon-success-toast" title="Hello world" level="warning" icon={CheckIcon} immediate>
+      This is a warning toast.
+    </IconToast>
+    <br />
+    <IconToast
+      id="demo-title-icon-colored-warning-toast"
+      title="Hello world"
+      level="warning"
+      icon={CheckIcon}
+      variant="colored"
+      immediate
+    >
+      This is a warning toast.
+    </IconToast>
+  </ThemeWrapper>
+</Playground>
+
+<div style="height: 50px" />
+
+<Playground>
+  <ThemeWrapper>
+    <IconToast id="demo-title-icon-danger-toast" title="Hello world" level="danger" icon={TimesIcon} immediate>
+      This is a danger toast.
+    </IconToast>
+    <br />
+    <IconToast
+      id="demo-title-icon-colored-danger-toast"
+      title="Hello world"
+      level="danger"
+      icon={TimesIcon}
+      variant="colored"
+      immediate
+    >
+      This is a danger toast.
+    </IconToast>
   </ThemeWrapper>
 </Playground>
 
@@ -57,30 +192,6 @@ import { PageTitle } from 'docs/helpers/PageTitle';
                   Info toast
                 </Button>
                 <Button
-                  color="danger"
-                  onClick={() =>
-                    createNotification(
-                      <Toast level="danger" title="Hello world">
-                        This is a danger toast.
-                      </Toast>,
-                    )
-                  }
-                >
-                  Danger toast
-                </Button>
-                <Button
-                  color="warning"
-                  onClick={() =>
-                    createNotification(
-                      <Toast level="warning" title="Hello world" permanent>
-                        This is a permanent warning toast.
-                      </Toast>,
-                    )
-                  }
-                >
-                  Warning toast
-                </Button>
-                <Button
                   color="success"
                   onClick={() =>
                     createNotification(
@@ -96,6 +207,30 @@ import { PageTitle } from 'docs/helpers/PageTitle';
                   }
                 >
                   Success toast
+                </Button>
+                <Button
+                  color="warning"
+                  onClick={() =>
+                    createNotification(
+                      <Toast level="warning" title="Hello world" permanent>
+                        This is a permanent warning toast.
+                      </Toast>,
+                    )
+                  }
+                >
+                  Warning toast
+                </Button>
+                <Button
+                  color="danger"
+                  onClick={() =>
+                    createNotification(
+                      <Toast level="danger" title="Hello world">
+                        This is a danger toast.
+                      </Toast>,
+                    )
+                  }
+                >
+                  Danger toast
                 </Button>
                 <Button color="neutral" weight="outline" onClick={() => clearNotifications()}>
                   Clear all

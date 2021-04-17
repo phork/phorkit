@@ -32,6 +32,8 @@ export interface ToastProps extends ThemeProps {
   id?: string;
   immediate?: boolean;
   level?: ToastNotificationLevel;
+  /** If another toast (eg. the IconToast) has already set the title Id then don't set it again */
+  noTitleIdOnContent?: boolean;
   onClose?: (event: React.MouseEvent | React.KeyboardEvent, id: string) => void;
   onPin?: (event: React.MouseEvent | React.KeyboardEvent, id: string) => void;
   title?: React.ReactNode;
@@ -47,6 +49,7 @@ export function Toast({
   id: initId,
   immediate,
   level = 'info',
+  noTitleIdOnContent,
   onClose,
   onPin,
   themeId: initThemeId,
@@ -118,11 +121,11 @@ export function Toast({
       </div>
 
       {title && (
-        <div id={generateTitleId()} className={cx(styles.toastTitle)}>
+        <div id={noTitleIdOnContent ? generateTitleId() : undefined} className={cx(styles.toastTitle)}>
           {title}
         </div>
       )}
-      {children && <div id={!title ? generateTitleId() : undefined}>{children}</div>}
+      {children && <div id={!title && !noTitleIdOnContent ? generateTitleId() : undefined}>{children}</div>}
       {duration > 0 && created && (
         <ToastCountdownBar created={created} duration={duration} level={level} themeId={themeId} variant={variant} />
       )}

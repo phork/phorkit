@@ -1,3 +1,4 @@
+export * from './IconToast';
 export * from './Toast';
 export * from './toastActions';
 export * from './ToastConsumer';
