@@ -1,5 +1,19 @@
 # Changelog
 
+# [1.14.0](https://github.com/phork/phorkit/compare/v1.13.0...v1.14.0) (2021-04-17)
+
+
+### ✨ Features
+
+* added IconToast component ([ddf835d](https://github.com/phork/phorkit/commit/ddf835d))
+* added more primary color shades ([db4912f](https://github.com/phork/phorkit/commit/db4912f))
+* added StyledToast and StyledIconToast components ([26e9b31](https://github.com/phork/phorkit/commit/26e9b31))
+
+
+### 🐛 Bug Fixes
+
+* don't pass style props from styled button to button ([99aefd0](https://github.com/phork/phorkit/commit/99aefd0))
+
 # [1.13.0](https://github.com/phork/phorkit/compare/v1.12.0...v1.13.0) (2021-04-15)
 
 
