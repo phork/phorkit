@@ -4,6 +4,7 @@ import { useColorMode } from 'theme-ui';
 import { Theme } from 'types';
 import { AccessibilityProvider } from 'context/Accessibility';
 import { ThemeProvider } from 'context/Theme';
+import { Toasts } from 'compositions/Toast';
 import './styles.css';
 import 'styles/common.css';
 import 'styles/normalize.css';
@@ -28,7 +29,7 @@ export default function DocsWrapper({ children }: DocsWrapperProps): React.React
           <meta name="theme-color" content="#fff" />
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" />
         </Helmet>
-        {children}
+        <Toasts position="bottom-right">{children}</Toasts>
       </ThemeProvider>
     </AccessibilityProvider>
   );

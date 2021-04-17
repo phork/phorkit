@@ -6,7 +6,6 @@ import { renderFromProp, RenderFromPropElement } from 'utils/renderFromProp';
 import { MoonIcon } from 'icons/internal/MoonIcon';
 import { SunIcon } from 'icons/internal/SunIcon';
 import { IconButton } from 'components/Button';
-import { Toasts } from 'compositions/Toast';
 
 const variables = require('../../postcss/vars/index');
 
@@ -63,7 +62,7 @@ export function ThemeWrapper({
         {themeId === 'dark' ? <SunIcon scale="medium" /> : <MoonIcon scale="medium" />}
       </IconButton>
 
-      <Toasts position="bottom-right">{content}</Toasts>
+      {content}
     </div>
   );
 }
