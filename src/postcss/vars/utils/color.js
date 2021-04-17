@@ -44,11 +44,29 @@ module.exports = {
     return colors.reduce((acc, color) => {
       if (source[color]) {
         acc[`${color}-L10`] = Color(source[color])
-          .lighten(adjustments?.[`${color}-lighten`] || 0.2)
+          .lighten((adjustments?.[`${color}-lighten`] || 0.25) * 1)
+          .hex();
+        acc[`${color}-L20`] = Color(source[color])
+          .lighten((adjustments?.[`${color}-lighten`] || 0.25) * 2)
+          .hex();
+        acc[`${color}-L30`] = Color(source[color])
+          .lighten((adjustments?.[`${color}-lighten`] || 0.25) * 3)
+          .hex();
+        acc[`${color}-L40`] = Color(source[color])
+          .lighten((adjustments?.[`${color}-lighten`] || 0.25) * 4)
           .hex();
 
         acc[`${color}-D10`] = Color(source[color])
-          .darken(adjustments?.[`${color}-darken`] || 0.2)
+          .darken((adjustments?.[`${color}-darken`] || 0.125) * 1)
+          .hex();
+        acc[`${color}-D20`] = Color(source[color])
+          .darken((adjustments?.[`${color}-darken`] || 0.125) * 2)
+          .hex();
+        acc[`${color}-D30`] = Color(source[color])
+          .darken((adjustments?.[`${color}-darken`] || 0.125) * 3)
+          .hex();
+        acc[`${color}-D40`] = Color(source[color])
+          .darken((adjustments?.[`${color}-darken`] || 0.125) * 4)
           .hex();
       }
       return acc;

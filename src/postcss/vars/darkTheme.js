@@ -59,9 +59,24 @@ const primaryColors = {
 };
 
 const adjustments = {
-  'color-P25-darken': 0.1 /* override the default darken amount */,
-  'color-P30-darken': 0.08 /* override the default darken amount */,
-  'color-P35-darken': 0.05 /* override the default darken amount */,
+  'color-P05-lighten': 0.275,
+  'color-P10-lighten': 0.1875,
+  'color-P15-lighten': 0.125,
+  'color-P20-lighten': 0.15,
+  'color-P25-lighten': 0.1875,
+  'color-P30-lighten': 0.1875,
+  'color-P35-lighten': 0.1875,
+  'color-P40-lighten': 0.23,
+  'color-P45-lighten': 0.2,
+  'color-P50-lighten': 0.17,
+  'color-P55-lighten': 0.15,
+  'color-P60-lighten': 0.2,
+  'color-P65-lighten': 0.38,
+
+  'color-P15-darken': 0.125,
+  'color-P25-darken': 0.125,
+  'color-P30-darken': 0.1,
+  'color-P35-darken': 0.0625,
 };
 
 const accentColors = {

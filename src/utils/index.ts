@@ -1,5 +1,7 @@
 export * from './boundsObservable';
 export * from './case';
+export * from './clipboard';
+export * from './colors';
 export * from './combineRefs';
 export * from './easings';
 export * from './getAbsoluteCoords';

@@ -32,7 +32,7 @@
 }
 
 .progress--medium {
-  --progress-height: 3px;
+  --progress-height: 4px;
 }
 
 .progress--large {

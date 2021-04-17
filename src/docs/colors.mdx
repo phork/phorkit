@@ -3,20 +3,25 @@ name: Colors
 route: /colors
 ---
 
+import { PageTitle } from 'docs/helpers/PageTitle';
 import { Playground, Props } from 'docz';
+import { BlobbrIcon } from 'icons/internal';
 import { ColorSwatch } from './helpers/ColorSwatch';
 import { ColorTheme } from './helpers/ColorTheme';
 import { ThemeWrapper } from './helpers/ThemeWrapper';
-import { PageTitle } from 'docs/helpers/PageTitle';
 
 <PageTitle title="Colors" src="postcss/vars" />
+
+Clicking on any color block will copy that color ID to your clipboard.
 
 ## Primary colors
 
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <ColorSwatch themeId={themeId} group="primary" variant="P" />
+      <ColorSwatch themeId={themeId} group="primary" direction="column" swatchWidth={60} swatchHeight={40}>
+        <BlobbrIcon size={24} />
+      </ColorSwatch>
     )}
   </ThemeWrapper>
 </Playground>
@@ -26,7 +31,9 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <ColorSwatch themeId={themeId} group="state" variant="accent-primary" />
+      <ColorSwatch themeId={themeId} group="state" variant="accent-primary" joined swatchWidth={120} swatchHeight={120}>
+        <BlobbrIcon size={84} />
+      </ColorSwatch>
     )}
   </ThemeWrapper>
 </Playground>
@@ -36,7 +43,9 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <ColorSwatch themeId={themeId} group="state" variant="success" />
+      <ColorSwatch themeId={themeId} group="state" variant="success" joined swatchWidth={120} swatchHeight={120}>
+        <BlobbrIcon size={84} />
+      </ColorSwatch>
     )}
   </ThemeWrapper>
 </Playground>
@@ -46,7 +55,9 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <ColorSwatch themeId={themeId} group="state" variant="warning" />
+      <ColorSwatch themeId={themeId} group="state" variant="warning" joined swatchWidth={120} swatchHeight={120}>
+        <BlobbrIcon size={84} />
+      </ColorSwatch>
     )}
   </ThemeWrapper>
 </Playground>
@@ -56,7 +67,9 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <ColorSwatch themeId={themeId} group="state" variant="danger" />
+      <ColorSwatch themeId={themeId} group="state" variant="danger" joined swatchWidth={120} swatchHeight={120}>
+        <BlobbrIcon size={84} />
+      </ColorSwatch>
     )}
   </ThemeWrapper>
 </Playground>
@@ -66,7 +79,9 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <ColorSwatch themeId={themeId} group="state" variant="neutral" />
+      <ColorSwatch themeId={themeId} group="state" variant="neutral" joined swatchWidth={120} swatchHeight={120}>
+        <BlobbrIcon size={84} />
+      </ColorSwatch>
     )}
   </ThemeWrapper>
 </Playground>
@@ -75,9 +90,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 
 <Playground>
   <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <ColorSwatch themeId={themeId} group="neutral" variant="BG" />
-    )}
+    {({ themeId }) => <ColorSwatch themeId={themeId} group="background" swatchWidth={60} swatchHeight={40} />}
   </ThemeWrapper>
 </Playground>
 
@@ -85,9 +98,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 
 <Playground>
   <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <ColorSwatch themeId={themeId} group="neutral" variant="FG" />
-    )}
+    {({ themeId }) => <ColorSwatch themeId={themeId} group="foreground" swatchWidth={60} swatchHeight={40} />}
   </ThemeWrapper>
 </Playground>
 
@@ -97,10 +108,16 @@ import { PageTitle } from 'docs/helpers/PageTitle';
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <React.Fragment>
-        <ColorSwatch themeId={themeId} group="transparent" variant="accent-primary" /><br />
-        <ColorSwatch themeId={themeId} group="transparent" variant="FG0" /><br />
-        <ColorSwatch themeId={themeId} group="transparent" variant="BG40" /><br />
-        <ColorSwatch themeId={themeId} group="transparent" variant="BG0" />
+        <ColorSwatch
+          themeId={themeId}
+          group="transparent"
+          variant="accent-primary"
+          swatchWidth={60}
+          swatchHeight={40}
+        />
+        <ColorSwatch themeId={themeId} group="transparent" variant="FG0" swatchWidth={60} swatchHeight={40} />
+        <ColorSwatch themeId={themeId} group="transparent" variant="BG40" swatchWidth={60} swatchHeight={40} />
+        <ColorSwatch themeId={themeId} group="transparent" variant="BG0" swatchWidth={60} swatchHeight={40} />
       </React.Fragment>
     )}
   </ThemeWrapper>
@@ -109,39 +126,23 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 ## Primary theme
 
 <Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <ColorTheme themeId={themeId} variant="primary" />
-    )}
-  </ThemeWrapper>
+  <ThemeWrapper withThemeId>{({ themeId }) => <ColorTheme themeId={themeId} variant="primary" />}</ThemeWrapper>
 </Playground>
 
 ## Secondary theme
 
 <Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <ColorTheme themeId={themeId} variant="secondary" />
-    )}
-  </ThemeWrapper>
+  <ThemeWrapper withThemeId>{({ themeId }) => <ColorTheme themeId={themeId} variant="secondary" />}</ThemeWrapper>
 </Playground>
 
 ## Tertiary theme
 
 <Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <ColorTheme themeId={themeId} variant="tertiary" />
-    )}
-  </ThemeWrapper>
+  <ThemeWrapper withThemeId>{({ themeId }) => <ColorTheme themeId={themeId} variant="tertiary" />}</ThemeWrapper>
 </Playground>
 
 ## Contrast theme
 
 <Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <ColorTheme themeId={themeId} variant="contrast" />
-    )}
-  </ThemeWrapper>
+  <ThemeWrapper withThemeId>{({ themeId }) => <ColorTheme themeId={themeId} variant="contrast" />}</ThemeWrapper>
 </Playground>
