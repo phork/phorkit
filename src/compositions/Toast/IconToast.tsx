@@ -15,6 +15,7 @@ export interface IconToastProps extends ToastProps {
 
 export function IconToast({
   children,
+  className,
   icon: Icon,
   iconSize = 20,
   id: initId,
@@ -24,7 +25,7 @@ export function IconToast({
   const { componentId: id, generateTitleId } = useToastComponentIds(initId);
 
   return (
-    <Toast className={styles['toast--withIcon']} id={id} noTitleIdOnContent {...props}>
+    <Toast className={cx(styles['toast--withIcon'], className)} id={id} noTitleIdOnContent {...props}>
       <div className={styles.toastIconContainer}>
         <div className={styles.toastIcon}>
           <Icon size={iconSize} />

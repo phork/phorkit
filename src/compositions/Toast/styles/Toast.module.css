@@ -1,8 +1,5 @@
 .toast {
-  background-color: var(--toast-background-color);
   border-radius: $border-radius-s;
-  box-shadow: var(--toast-box-shadow);
-  color: var(--toast-text-color);
   font-size: $font-size-m;
   margin: 8px;
   padding: 16px 20px;
@@ -12,6 +9,11 @@
 
   &.toast--withIcon {
     padding-left: 0;
+  }
+
+  &.toast--colored {
+    background-color: var(--toast-level-color);
+    color: var(--toast-level-inverse-color);
   }
 
   &:not(.toast--colored) {
@@ -27,10 +29,10 @@
   }
 
   @mixin themed .toast {
-    background-color: $theme-secondary-background-color;
     box-shadow: $theme-box-shadow-0;
 
     &:not(.toast--colored) {
+      background-color: $theme-secondary-background-color;
       color: $theme-secondary-text-color;
     }
   }
@@ -50,82 +52,6 @@
   }
 }
 
-.toast--info {
-  @mixin themed .toast {
-    .toastIcon,
-    &.toast--colored,
-    &:before {
-      background-color: $theme-color-accent-primary;
-    }
-
-    .toastIcon,
-    &.toast--colored {
-      color: $theme-color-accent-primary-contrast;
-    }
-
-    &.toast--colored .toastIcon:before {
-      border-color: $theme-color-accent-primary-contrast;
-    }
-  }
-}
-
-.toast--danger {
-  @mixin themed .toast {
-    .toastIcon,
-    &.toast--colored,
-    &:before {
-      background-color: $theme-color-danger;
-    }
-
-    .toastIcon,
-    &.toast--colored {
-      color: $theme-color-danger-contrast;
-    }
-
-    &.toast--colored .toastIcon:before {
-      border-color: $theme-color-danger-contrast;
-    }
-  }
-}
-
-.toast--success {
-  @mixin themed .toast {
-    .toastIcon,
-    &.toast--colored,
-    &:before {
-      background-color: $theme-color-success;
-    }
-
-    .toastIcon,
-    &.toast--colored {
-      color: $theme-color-success-contrast;
-    }
-
-    &.toast--colored .toastIcon:before {
-      border-color: $theme-color-success-contrast;
-    }
-  }
-}
-
-.toast--warning {
-  @mixin themed .toast {
-    .toastIcon,
-    &.toast--colored,
-    &:before {
-      background-color: $theme-color-warning;
-    }
-
-    .toastIcon,
-    &.toast--colored {
-      color: $theme-color-warning-contrast;
-    }
-
-    &.toast--colored .toastIcon:before {
-      border-color: $theme-color-warning-contrast;
-    }
-  }
-}
-
 .toastIconContainer {
   align-items: center;
   display: flex;
@@ -136,7 +62,9 @@
 .toastIcon {
   align-items: center;
   align-self: flex-start;
+  background-color: var(--toast-level-color);
   border-radius: 100%;
+  color: var(--toast-level-inverse-color);
   display: flex;
   flex-direction: row;
   height: 30px;
@@ -146,16 +74,18 @@
   position: relative;
   width: 30px;
 
-  &:before {
-    border-radius: 100%;
-    border: 1px solid transparent;
-    bottom: 0;
-    content: '';
-    left: 0;
-    opacity: .5;
-    position: absolute;
-    right: 0;
-    top: 0;
+  .toast--colored & {
+    &:before {
+      border-radius: 100%;
+      border: 1px solid currentColor;
+      bottom: 0;
+      content: '';
+      left: 0;
+      opacity: 0.5;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
   }
 }
 
@@ -178,4 +108,64 @@
 .toastTitle {
   font-weight: 700;
   margin-bottom: 4px;
+}
+
+.toast--info {
+  @mixin themed .toast {
+    .toastIcon,
+    &.toast--colored,
+    &:before {
+      background-color: $theme-color-accent-primary;
+    }
+
+    .toastIcon,
+    &.toast--colored {
+      color: $theme-color-accent-primary-contrast;
+    }
+  }
+}
+
+.toast--danger {
+  @mixin themed .toast {
+    .toastIcon,
+    &.toast--colored,
+    &:before {
+      background-color: $theme-color-danger;
+    }
+
+    .toastIcon,
+    &.toast--colored {
+      color: $theme-color-danger-contrast;
+    }
+  }
+}
+
+.toast--success {
+  @mixin themed .toast {
+    .toastIcon,
+    &.toast--colored,
+    &:before {
+      background-color: $theme-color-success;
+    }
+
+    .toastIcon,
+    &.toast--colored {
+      color: $theme-color-success-contrast;
+    }
+  }
+}
+
+.toast--warning {
+  @mixin themed .toast {
+    .toastIcon,
+    &.toast--colored,
+    &:before {
+      background-color: $theme-color-warning;
+    }
+
+    .toastIcon,
+    &.toast--colored {
+      color: $theme-color-warning-contrast;
+    }
+  }
 }

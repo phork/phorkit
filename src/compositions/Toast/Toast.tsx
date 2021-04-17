@@ -95,7 +95,7 @@ export function Toast({
     <div
       className={cx(
         styles.toast,
-        level && styles[`toast--${level}`],
+        level && level !== 'custom' && styles[`toast--${level}`],
         themeId && styles[`toast--${themeId}`],
         variant && styles[`toast--${variant}`],
         !immediate && styles['toast--transitional'],

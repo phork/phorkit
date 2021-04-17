@@ -31,7 +31,7 @@ export function ToastsFromContext({
                   pinNotification={pinNotification}
                   removeNotification={removeNotification}
                   themeId={themeId}
-                  variant={variant}
+                  variant={element.props.variant || variant}
                 />
               ))}
             </ToastContainer>

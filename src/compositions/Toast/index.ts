@@ -1,4 +1,6 @@
 export * from './IconToast';
+export * from './StyledIconToast';
+export * from './StyledToast';
 export * from './Toast';
 export * from './toastActions';
 export * from './ToastConsumer';

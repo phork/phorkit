@@ -10,9 +10,18 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { TimesIcon } from 'icons/TimesIcon';
 import { CheckIcon } from 'icons/internal/CheckIcon';
-import { Button } from 'components/Button';
+import { Button, StyledButton } from 'components/Button';
 import { Rhythm } from 'components/Rhythm';
-import { IconToast, Toast, ToastConsumer, ToastContainer, ToastProvider, Toasts } from '../index';
+import {
+  IconToast,
+  StyledIconToast,
+  StyledToast,
+  Toast,
+  ToastConsumer,
+  ToastContainer,
+  ToastProvider,
+  Toasts,
+} from '../index';
 
 <PageTitle title="Toast" src="compositions/Toast" />
 
@@ -77,12 +86,12 @@ import { IconToast, Toast, ToastConsumer, ToastContainer, ToastProvider, Toasts 
 
 <Playground>
   <ThemeWrapper>
-    <IconToast id="demo-title-icon-info-toast" title="Hello world" level="info" icon={CheckIcon} immediate>
+    <IconToast id="demo-icon-info-toast" title="Hello world" level="info" icon={CheckIcon} immediate>
       This is an info toast.
     </IconToast>
     <br />
     <IconToast
-      id="demo-title-icon-colored-info-toast"
+      id="demo-icon-colored-info-toast"
       title="Hello world"
       level="info"
       icon={CheckIcon}
@@ -93,7 +102,7 @@ import { IconToast, Toast, ToastConsumer, ToastContainer, ToastProvider, Toasts 
     </IconToast>
     <br />
     <IconToast
-      id="demo-title-icon-colored-info-toast-long"
+      id="demo-icon-colored-info-toast-long"
       title="Hello world"
       level="info"
       icon={CheckIcon}
@@ -110,12 +119,12 @@ import { IconToast, Toast, ToastConsumer, ToastContainer, ToastProvider, Toasts 
 
 <Playground>
   <ThemeWrapper>
-    <IconToast id="demo-title-icon-success-toast" title="Hello world" level="success" icon={CheckIcon} immediate>
+    <IconToast id="demo-icon-success-toast" title="Hello world" level="success" icon={CheckIcon} immediate>
       This is a success toast.
     </IconToast>
     <br />
     <IconToast
-      id="demo-title-icon-colored-success-toast"
+      id="demo-icon-colored-success-toast"
       title="Hello world"
       level="success"
       icon={CheckIcon}
@@ -131,12 +140,12 @@ import { IconToast, Toast, ToastConsumer, ToastContainer, ToastProvider, Toasts 
 
 <Playground>
   <ThemeWrapper>
-    <IconToast id="demo-title-icon-success-toast" title="Hello world" level="warning" icon={CheckIcon} immediate>
+    <IconToast id="demo-icon-success-toast" title="Hello world" level="warning" icon={CheckIcon} immediate>
       This is a warning toast.
     </IconToast>
     <br />
     <IconToast
-      id="demo-title-icon-colored-warning-toast"
+      id="demo-icon-colored-warning-toast"
       title="Hello world"
       level="warning"
       icon={CheckIcon}
@@ -152,12 +161,12 @@ import { IconToast, Toast, ToastConsumer, ToastContainer, ToastProvider, Toasts 
 
 <Playground>
   <ThemeWrapper>
-    <IconToast id="demo-title-icon-danger-toast" title="Hello world" level="danger" icon={TimesIcon} immediate>
+    <IconToast id="demo-icon-danger-toast" title="Hello world" level="danger" icon={TimesIcon} immediate>
       This is a danger toast.
     </IconToast>
     <br />
     <IconToast
-      id="demo-title-icon-colored-danger-toast"
+      id="demo-icon-colored-danger-toast"
       title="Hello world"
       level="danger"
       icon={TimesIcon}
@@ -166,6 +175,56 @@ import { IconToast, Toast, ToastConsumer, ToastContainer, ToastProvider, Toasts 
     >
       This is a danger toast.
     </IconToast>
+  </ThemeWrapper>
+</Playground>
+
+## Styled toast
+
+<Playground>
+  <ThemeWrapper>
+    <StyledToast id="demo-styled-toast" title="Hello world" levelColor="#556270" levelInverseColor="#fff" immediate>
+      This is a styled toast.
+    </StyledToast>
+    <br />
+    <StyledToast
+      id="demo-custom-styled-toast"
+      title="Hello world"
+      levelColor="#556270"
+      levelInverseColor="#fff"
+      variant="colored"
+      immediate
+    >
+      This is a styled toast.
+    </StyledToast>
+  </ThemeWrapper>
+</Playground>
+
+<div style="height: 50px" />
+
+<Playground>
+  <ThemeWrapper>
+    <StyledIconToast
+      id="demo-styled-icon-toast"
+      title="Hello world"
+      icon={CheckIcon}
+      levelColor="#556270"
+      levelInverseColor="#fff"
+      immediate
+    >
+      This is a styled icon toast.
+    </StyledIconToast>
+    <br />
+    <StyledIconToast
+      id="demo-custom-styled-icon-toast"
+      title="Hello world"
+      icon={CheckIcon}
+      levelColor="#556270"
+      levelInverseColor="#fff"
+      variant="colored"
+      immediate
+    >
+      This is a styled icon toast.
+    </StyledIconToast>
   </ThemeWrapper>
 </Playground>
 
@@ -232,6 +291,21 @@ import { IconToast, Toast, ToastConsumer, ToastContainer, ToastProvider, Toasts 
                 >
                   Danger toast
                 </Button>
+                <StyledButton
+                  primaryColor="#556270"
+                  inverseColor="#fff"
+                  hoverPrimaryColor="#393945"
+                  activePrimaryColor="#708194"
+                  onClick={() =>
+                    createNotification(
+                      <StyledToast title="Hello world" levelColor="#556270" levelInverseColor="#fff">
+                        This is a styled toast.
+                      </StyledToast>,
+                    )
+                  }
+                >
+                  Styled toast
+                </StyledButton>
                 <Button color="neutral" weight="outline" onClick={() => clearNotifications()}>
                   Clear all
                 </Button>

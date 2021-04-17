@@ -3,6 +3,6 @@ import { CornerPosition, StateColor, VerticalPositionCentered } from '../../type
 
 export type ToastItemType = React.ReactElement;
 
-export type ToastNotificationLevel = StateColor | 'default' | 'info';
+export type ToastNotificationLevel = StateColor | 'default' | 'info' | 'custom';
 
 export type ToastContainerPosition = VerticalPositionCentered | CornerPosition;

@@ -9,6 +9,7 @@ import { toastActions as ACTIONS } from './toastActions';
 import { toastReducer as reducer, ToastState } from './toastReducer';
 
 const durations: Record<ToastNotificationLevel, number> = {
+  custom: 8000,
   danger: 12000,
   default: 8000,
   info: 8000,
