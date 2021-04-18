@@ -11,3 +11,5 @@ export const ForwardProps = <P extends Record<string, unknown>>({
   children,
   ...props
 }: ForwardPropsProps<P>): React.ReactElement | React.ReactPortal | null => children(props);
+
+ForwardProps.displayName = 'ForwardProps';

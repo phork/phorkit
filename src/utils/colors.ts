@@ -1,5 +1,5 @@
-import { Theme } from 'types';
-import { themes, ThemeColors } from 'config/themes';
+import { Theme } from '../types';
+import { themes, ThemeColors } from '../config/themes';
 
 export type Colors = Record<string, string>;
 

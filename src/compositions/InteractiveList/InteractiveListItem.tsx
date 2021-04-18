@@ -70,3 +70,4 @@ export function InteractiveListItemBase({
 }
 
 export const InteractiveListItem = React.memo(InteractiveListItemBase) as typeof InteractiveListItemBase;
+InteractiveListItemBase.displayName = 'InteractiveListItemBase';

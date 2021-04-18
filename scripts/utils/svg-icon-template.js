@@ -8,6 +8,8 @@ export function ${componentName} ({ title, titleId = uuid(), ...initProps }: Svg
   const props = useIconSize(initProps);
   return ${jsx}
 }
+
+${componentName}.displayName = 'SvgIcon';
 `
 }
 

@@ -126,3 +126,4 @@ function DropdownContentBase(
 }
 
 export const DropdownContent = React.forwardRef(DropdownContentBase);
+DropdownContentBase.displayName = 'DropdownContentBase';

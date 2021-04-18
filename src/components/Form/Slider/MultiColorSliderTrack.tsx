@@ -69,3 +69,5 @@ export const MultiColorSliderTrack = React.forwardRef(
     );
   },
 );
+
+MultiColorSliderTrack.displayName = 'MultiColorSliderTrack';

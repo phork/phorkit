@@ -117,3 +117,4 @@ export function CheckboxBase(
 }
 
 export const Checkbox = React.forwardRef(CheckboxBase);
+CheckboxBase.displayName = 'CheckboxBase';

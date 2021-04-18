@@ -30,3 +30,5 @@ export function PageTitle({ title, src, url: initUrl }: PageTitleProps): React.R
     </Rhythm>
   );
 }
+
+PageTitle.displayName = 'PageTitle';

@@ -108,3 +108,4 @@ export function RadioBase(
 }
 
 export const Radio = React.forwardRef(RadioBase);
+RadioBase.displayName = 'RadioBase';

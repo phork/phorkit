@@ -19,3 +19,4 @@ export function ArrowDownIcon({ title, titleId = uuid(), ...initProps }: SvgIcon
     </svg>
   );
 }
+ArrowDownIcon.displayName = 'SvgIcon';

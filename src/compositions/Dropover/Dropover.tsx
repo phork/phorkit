@@ -121,3 +121,5 @@ export function Dropover({
     </Component>
   );
 }
+
+Dropover.displayName = 'Dropover';

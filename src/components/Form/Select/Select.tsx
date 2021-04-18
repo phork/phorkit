@@ -149,3 +149,4 @@ export function SelectBase(
 }
 
 export const Select = React.forwardRef(SelectBase);
+Select.displayName = 'Select';

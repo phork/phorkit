@@ -99,3 +99,5 @@ export function NavigationItem({
     </div>
   );
 }
+
+NavigationItem.displayName = 'NavigationItem';

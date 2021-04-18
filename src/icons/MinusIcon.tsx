@@ -12,3 +12,4 @@ export function MinusIcon({ title, titleId = uuid(), ...initProps }: SvgIconProp
     </svg>
   );
 }
+MinusIcon.displayName = 'SvgIcon';

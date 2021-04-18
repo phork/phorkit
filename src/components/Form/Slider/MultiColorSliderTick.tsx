@@ -48,3 +48,5 @@ export function MultiColorSliderTick({
     />
   );
 }
+
+MultiColorSliderTick.displayName = 'MultiColorSliderTick';

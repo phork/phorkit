@@ -81,3 +81,5 @@ export function Progress({
     </div>
   );
 }
+
+Progress.displayName = 'Progress';

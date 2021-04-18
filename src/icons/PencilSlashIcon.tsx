@@ -22,3 +22,4 @@ export function PencilSlashIcon({
     </svg>
   );
 }
+PencilSlashIcon.displayName = 'SvgIcon';

@@ -104,3 +104,5 @@ export function ColorSwatch({ group, themeId, variant, ...props }: ColorSwatchPr
       return null;
   }
 }
+
+ColorSwatch.displayName = 'ColorSwatch';

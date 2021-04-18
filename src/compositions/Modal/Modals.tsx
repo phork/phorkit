@@ -14,3 +14,5 @@ export function Modals({ children, ...props }: ModalsProps): React.ReactElement 
     </ModalProvider>
   );
 }
+
+Modals.displayName = 'Modals';

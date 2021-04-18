@@ -167,3 +167,5 @@ export function Pagination({
     </ErrorBoundary>
   );
 }
+
+Pagination.displayName = 'Pagination';

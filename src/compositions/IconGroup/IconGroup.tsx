@@ -18,3 +18,5 @@ export function IconGroup({ children, className, scale, size }: IconGroupProps):
     </ScaleProvider>
   );
 }
+
+IconGroup.displayName = 'IconGroup';

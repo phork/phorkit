@@ -62,3 +62,5 @@ export function AccordionLabel({
     </div>
   );
 }
+
+AccordionLabel.displayName = 'AccordionLabel';

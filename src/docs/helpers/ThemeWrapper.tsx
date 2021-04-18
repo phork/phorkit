@@ -66,3 +66,5 @@ export function ThemeWrapper({
     </div>
   );
 }
+
+ThemeWrapper.displayName = 'ThemeWrapper';

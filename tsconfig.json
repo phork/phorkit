@@ -49,5 +49,5 @@
     "typeRoots": ["node_modules/@types", "src/assetTypes"]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.json"],
-  "exclude": ["node_modules", "lib"]
+  "exclude": ["node_modules", "lib", ".docz"]
 }

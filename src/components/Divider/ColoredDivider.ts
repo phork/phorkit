@@ -18,6 +18,7 @@ const StyledDivider = styled(Divider, {
 `;
 
 export const ColoredDivider = React.memo<ColoredDividerProps>(withTheme(StyledDivider));
+ColoredDivider.displayName = 'ColoredDivider';
 
 StyledDivider.defaultProps = {
   unthemed: true,

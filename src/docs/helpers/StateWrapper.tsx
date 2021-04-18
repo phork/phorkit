@@ -22,3 +22,5 @@ export function StateWrapper<T>({
     setState: setStateFromPrevious ? customSetState : setState,
   });
 }
+
+StateWrapper.displayName = 'StateWrapper';

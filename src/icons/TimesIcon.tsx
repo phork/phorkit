@@ -15,3 +15,4 @@ export function TimesIcon({ title, titleId = uuid(), ...initProps }: SvgIconProp
     </svg>
   );
 }
+TimesIcon.displayName = 'SvgIcon';

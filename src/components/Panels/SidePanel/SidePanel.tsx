@@ -71,3 +71,5 @@ export const SidePanel = React.forwardRef<HTMLDivElement, SidePanelProps>(
     );
   },
 );
+
+SidePanel.displayName = 'SidePanel';

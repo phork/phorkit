@@ -97,3 +97,5 @@ export const Portal = React.forwardRef<HTMLDivElement, PortalProps>(
       : null;
   },
 );
+
+Portal.displayName = 'Portal';

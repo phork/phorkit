@@ -15,3 +15,4 @@ export function ClipboardIcon({ title, titleId = uuid(), ...initProps }: SvgIcon
     </svg>
   );
 }
+ClipboardIcon.displayName = 'SvgIcon';

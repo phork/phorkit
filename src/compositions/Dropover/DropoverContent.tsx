@@ -30,3 +30,5 @@ export function DropoverContent({
     </Card>
   );
 }
+
+DropoverContent.displayName = 'DropoverContent';

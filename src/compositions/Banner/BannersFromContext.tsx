@@ -39,3 +39,5 @@ export function BannersFromContext({
     </BannerConsumer>
   );
 }
+
+BannersFromContext.displayName = 'BannersFromContext';

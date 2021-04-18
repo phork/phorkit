@@ -86,3 +86,5 @@ export function InteractiveGroupProvider<E extends HTMLElement = HTMLDivElement,
     </InteractiveGroupContext.Provider>
   );
 }
+
+InteractiveGroupProvider.displayName = 'InteractiveGroupProvider';

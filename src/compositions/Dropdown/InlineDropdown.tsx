@@ -5,3 +5,5 @@ import { DropdownContent } from './DropdownContent';
 export function InlineDropdown({ ...props }: Omit<DropdownProps, 'dropdownContent'>) {
   return <Dropdown dropdownContent={DropdownContent} {...props} />;
 }
+
+InlineDropdown.displayName = 'InlineDropdown';

@@ -116,3 +116,5 @@ export function Rhythm({ children, className, grouped, wrapper, ...props }: Rhyt
     </React.Fragment>
   ) : null;
 }
+
+Rhythm.displayName = 'Rhythm';

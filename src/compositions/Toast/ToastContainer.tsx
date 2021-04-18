@@ -31,3 +31,5 @@ export function ToastContainer({
       )
     : null;
 }
+
+ToastContainer.displayName = 'ToastContainer';

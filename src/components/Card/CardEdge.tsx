@@ -34,3 +34,5 @@ export function CardEdge({
     </div>
   );
 }
+
+CardEdge.displayName = 'CardEdge';

@@ -15,3 +15,5 @@ export const StyledProgress = styled(Progress, {
   --progress-segment-color: ${props => props.segmentColor};
   --progress-segment-animation-color: ${props => props.segmentAnimationColor};
 `;
+
+StyledProgress.displayName = 'StyledProgress';

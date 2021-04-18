@@ -18,6 +18,8 @@ export const StyledHeader = styled(Header, {
   ${({ height }) => height !== undefined && `height: ${Number.isNaN(height) ? height : `${height}px`};`}
 `;
 
+StyledHeader.displayName = 'StyledHeader';
+
 StyledHeader.defaultProps = {
   unthemed: true,
 };

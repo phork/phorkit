@@ -43,3 +43,5 @@ export function IconToast({
     </Toast>
   );
 }
+
+IconToast.displayName = 'IconToast';

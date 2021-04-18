@@ -92,3 +92,4 @@ function PasswordBase(
 }
 
 export const Password = React.forwardRef(PasswordBase);
+PasswordBase.displayName = 'PasswordBase';

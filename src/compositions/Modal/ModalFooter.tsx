@@ -21,3 +21,5 @@ export function ModalFooter({
     </div>
   );
 }
+
+ModalFooter.displayName = 'ModalFooter';

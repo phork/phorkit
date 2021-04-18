@@ -16,3 +16,5 @@ export const StyledFlex = styled(Flex, {
   ${({ flexGrow }) => flexGrow !== undefined && `flex-grow: ${flexGrow}`};
   ${({ flexShrink }) => flexShrink !== undefined && `flex-shrink: ${flexShrink}`};
 `;
+
+StyledFlex.displayName = 'StyledFlex';

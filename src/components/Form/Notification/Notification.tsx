@@ -46,3 +46,5 @@ export function Notification({
     </div>
   );
 }
+
+Notification.displayName = 'Notification';

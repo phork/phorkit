@@ -45,3 +45,5 @@ export function AccordionContainer({
     </div>
   );
 }
+
+AccordionContainer.displayName = 'AccordionContainer';

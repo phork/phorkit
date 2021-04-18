@@ -86,3 +86,5 @@ export const PopoverContentInline = React.forwardRef<HTMLDivElement, PopoverCont
     ) : null;
   },
 );
+
+PopoverContentInline.displayName = 'PopoverContentInline';

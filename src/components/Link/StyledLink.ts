@@ -19,6 +19,8 @@ export const StyledLink = styled(Link, {
   --link-color: ${props => props.textColor};
 `;
 
+StyledLink.displayName = 'StyledLink';
+
 StyledLink.defaultProps = {
   unthemed: true,
 };

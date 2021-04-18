@@ -50,3 +50,5 @@ export function ListRegistryProvider({ children }: ListRegistryProviderProps): R
 
   return <ListRegistryContext.Provider value={value}>{children}</ListRegistryContext.Provider>;
 }
+
+ListRegistryProvider.displayName = 'ListRegistryProvider';

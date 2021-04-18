@@ -172,3 +172,4 @@ function InteractiveListBase(
 }
 
 export const InteractiveList = React.forwardRef(InteractiveListBase) as typeof InteractiveListBase;
+InteractiveListBase.displayName = 'InteractiveListBase';

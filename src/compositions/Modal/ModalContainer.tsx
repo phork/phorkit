@@ -29,3 +29,5 @@ export function ModalContainer({ children, className, onEscape }: ModalContainer
     ? ReactDOM.createPortal(<div className={cx(styles.modalContainer, className)}>{children}</div>, document.body)
     : null;
 }
+
+ModalContainer.displayName = 'ModalContainer';

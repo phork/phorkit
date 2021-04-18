@@ -24,3 +24,5 @@ export function ModalsFromContext({ themeId: initThemeId, ...props }: ModalsFrom
     </ModalConsumer>
   );
 }
+
+ModalsFromContext.displayName = 'ModalsFromContext';

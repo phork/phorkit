@@ -89,3 +89,5 @@ export function MultiColorSlider({
     />
   );
 }
+
+MultiColorSlider.displayName = 'MultiColorSlider';

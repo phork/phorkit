@@ -28,3 +28,5 @@ export function Hoverable({ children, defaultProps, hoverableProps }: HoverableP
     ...(hovered ? hoverableProps : defaultProps),
   });
 }
+
+Hoverable.displayName = 'Hoverable';

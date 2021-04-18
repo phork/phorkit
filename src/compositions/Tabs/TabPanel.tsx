@@ -34,3 +34,5 @@ export function TabPanel({
     </div>
   );
 }
+
+TabPanel.displayName = 'TabPanel';

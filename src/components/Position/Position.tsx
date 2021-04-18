@@ -41,3 +41,5 @@ export function Position({
     </div>
   );
 }
+
+Position.displayName = 'Position';

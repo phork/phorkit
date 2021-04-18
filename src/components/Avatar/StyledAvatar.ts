@@ -12,3 +12,5 @@ export const StyledAvatar = styled(Avatar, {
   ${({ backgroundColor }) => backgroundColor && `--avatar-background-color: ${backgroundColor};`}
   ${({ textColor }) => textColor && `--avatar-text-color: ${textColor};`}
 `;
+
+StyledAvatar.displayName = 'StyledAvatar';

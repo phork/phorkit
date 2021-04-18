@@ -34,3 +34,5 @@ export function ModalHeader({
     </div>
   );
 }
+
+ModalHeader.displayName = 'ModalHeader';

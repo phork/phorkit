@@ -151,3 +151,4 @@ function ButtonBase<T extends ButtonElementType = 'button'>(
 }
 
 export const Button = React.forwardRef(ButtonBase) as typeof ButtonBase;
+ButtonBase.displayName = 'ButtonBase';

@@ -16,6 +16,8 @@ export const StyledTag = styled(Tag, {
   ${({ textColor }) => textColor && `--tag-text-color: ${textColor};`}
 `;
 
+StyledTag.displayName = 'StyledTag';
+
 StyledTag.defaultProps = {
   unthemed: true,
 };

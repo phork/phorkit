@@ -121,3 +121,5 @@ export function Modal({
     </div>
   );
 }
+
+Modal.displayName = 'Modal';

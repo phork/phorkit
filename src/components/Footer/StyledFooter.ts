@@ -18,6 +18,8 @@ export const StyledFooter = styled(Footer, {
   ${({ height }) => height !== undefined && `height: ${Number.isNaN(height) ? height : `${height}px`};`}
 `;
 
+StyledFooter.displayName = 'StyledFooter';
+
 StyledFooter.defaultProps = {
   unthemed: true,
 };

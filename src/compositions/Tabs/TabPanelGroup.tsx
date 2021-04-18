@@ -85,3 +85,5 @@ export function TabPanelGroup({
     </div>
   );
 }
+
+TabPanelGroup.displayName = 'TabPanelGroup';

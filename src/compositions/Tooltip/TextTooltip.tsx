@@ -87,3 +87,5 @@ export function TextTooltip({
     </Tooltip>
   );
 }
+
+TextTooltip.displayName = 'TextTooltip';

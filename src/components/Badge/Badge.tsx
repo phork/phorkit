@@ -50,3 +50,5 @@ export function Badge({
     </div>
   );
 }
+
+Badge.displayName = 'Badge';

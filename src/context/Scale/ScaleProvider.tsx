@@ -17,3 +17,5 @@ export function ScaleProvider({ children, scale, size }: ScaleProviderProps): Re
 
   return <ScaleContext.Provider value={value}>{children}</ScaleContext.Provider>;
 }
+
+ScaleProvider.displayName = 'ScaleProvider';

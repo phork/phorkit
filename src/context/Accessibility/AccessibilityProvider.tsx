@@ -65,3 +65,5 @@ export function AccessibilityProvider({ children }: AccessibilityProviderProps):
 
   return <AccessibilityContext.Provider value={value}>{children}</AccessibilityContext.Provider>;
 }
+
+AccessibilityProvider.displayName = 'AccessibilityProvider';

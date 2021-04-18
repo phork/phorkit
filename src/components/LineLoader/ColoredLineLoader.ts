@@ -18,6 +18,7 @@ const StyledLineLoader = styled(LineLoader, {
 `;
 
 export const ColoredLineLoader = React.memo<ColoredLineLoaderProps>(withTheme(StyledLineLoader));
+ColoredLineLoader.displayName = 'ColoredLineLoader';
 
 StyledLineLoader.defaultProps = {
   unthemed: true,

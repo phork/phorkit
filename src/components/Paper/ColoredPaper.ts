@@ -22,6 +22,7 @@ const StyledPaper = styled(Paper, {
 `;
 
 export const ColoredPaper = React.memo<ColoredPaperProps>(withTheme(StyledPaper));
+ColoredPaper.displayName = 'ColoredPaper';
 
 StyledPaper.defaultProps = {
   unthemed: true,

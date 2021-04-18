@@ -64,3 +64,5 @@ export default function DocsWrapper({ children }: DocsWrapperProps): React.React
     </AccessibilityProvider>
   );
 }
+
+DocsWrapper.displayName = 'DocsWrapper';

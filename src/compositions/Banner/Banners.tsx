@@ -14,3 +14,5 @@ export function Banners({ children, ...props }: BannersProps): React.ReactElemen
     </BannerProvider>
   );
 }
+
+Banners.displayName = 'Banners';

@@ -52,3 +52,5 @@ export function BannerProvider({ children }: BannerProviderProps): React.ReactEl
 
   return <BannerContext.Provider value={value}>{children}</BannerContext.Provider>;
 }
+
+BannerProvider.displayName = 'BannerProvider';

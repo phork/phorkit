@@ -18,6 +18,8 @@ export const StyledCard = styled(Card, {
   ${({ textColor }) => textColor && `--card-text-color: ${textColor};`}
 `;
 
+StyledCard.displayName = 'StyledCard';
+
 StyledCard.defaultProps = {
   unthemed: true,
 };

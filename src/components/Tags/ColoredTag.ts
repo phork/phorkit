@@ -28,6 +28,7 @@ const StyledTag = styled(Tag, {
 `;
 
 export const ColoredTag = React.memo<ColoredTagProps>(withTheme(StyledTag));
+ColoredTag.displayName = 'ColoredTag';
 
 StyledTag.defaultProps = {
   unthemed: true,

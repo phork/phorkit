@@ -81,3 +81,5 @@ export function LineLoader({
     />
   );
 }
+
+LineLoader.displayName = 'LineLoader';

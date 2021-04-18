@@ -33,3 +33,5 @@ export function CardTitle({
     </div>
   );
 }
+
+CardTitle.displayName = 'CardTitle';

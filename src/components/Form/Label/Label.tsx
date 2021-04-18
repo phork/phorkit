@@ -53,3 +53,5 @@ export function Label<T extends React.ElementType = 'div'>({
     children,
   );
 }
+
+Label.displayName = 'Label';

@@ -33,3 +33,5 @@ export function CardBody({
     </div>
   );
 }
+
+CardBody.displayName = 'CardBody';

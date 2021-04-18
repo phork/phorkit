@@ -29,6 +29,8 @@ export const StyledSlider = styled(Slider, {
   --slider-tick-background-color: ${props => props.tickBackgroundColor};
 `;
 
+StyledSlider.displayName = 'StyledSlider';
+
 StyledSlider.defaultProps = {
   unstyled: true,
 };

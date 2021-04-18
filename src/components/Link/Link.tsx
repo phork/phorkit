@@ -48,3 +48,5 @@ export function Link({
     </a>
   );
 }
+
+Link.displayName = 'Link';

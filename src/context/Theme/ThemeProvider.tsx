@@ -35,3 +35,5 @@ export function ThemeProvider({
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }
+
+ThemeProvider.displayName = 'ThemeProvider';

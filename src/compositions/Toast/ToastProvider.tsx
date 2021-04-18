@@ -103,3 +103,5 @@ export function ToastProvider({ children }: ToastProviderProps): React.ReactElem
 
   return <ToastContext.Provider value={value}>{children}</ToastContext.Provider>;
 }
+
+ToastProvider.displayName = 'ToastProvider';

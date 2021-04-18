@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import { Icon } from 'types';
 import { isKeyof } from 'utils';
@@ -20,6 +19,4 @@ export function IconLooper({ children }: IconLooperProps) {
   return <Fragment>{items}</Fragment>;
 }
 
-IconLooper.propTypes = {
-  children: PropTypes.func.isRequired,
-};
+IconLooper.displayName = 'IconLooper';

@@ -221,3 +221,5 @@ export function Draggable({
         ref,
       });
 }
+
+Draggable.displayName = 'Draggable';

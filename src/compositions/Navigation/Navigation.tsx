@@ -76,3 +76,5 @@ export function Navigation({
     </ListRegistryProvider>
   );
 }
+
+Navigation.displayName = 'Navigation';

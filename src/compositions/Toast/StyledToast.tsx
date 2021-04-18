@@ -41,3 +41,5 @@ StyledToast.defaultProps = {
   level: 'custom',
 };
 */
+
+StyledToast.displayName = 'StyledToast';

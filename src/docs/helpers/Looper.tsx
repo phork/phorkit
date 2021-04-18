@@ -23,3 +23,5 @@ export function Looper({ end: initEnd, list, render, start = 0, step = 1 }: Loop
   // eslint-disable-next-line react/jsx-fragments
   return <Fragment>{items}</Fragment>;
 }
+
+Looper.displayName = 'Looper';

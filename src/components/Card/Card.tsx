@@ -59,3 +59,5 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     );
   },
 );
+
+Card.displayName = 'Card';

@@ -24,6 +24,7 @@ const StyledIconTextButton = styled(IconTextButton, {
 `;
 
 export const ColoredIconTextButton = React.memo<ColoredIconTextButtonProps>(withTheme(StyledIconTextButton));
+ColoredIconTextButton.displayName = 'ColoredIconTextButton';
 
 StyledIconTextButton.defaultProps = {
   unthemed: true,

@@ -17,3 +17,5 @@ export const StyledPaper = styled(Paper, {
   --paper-text-color: ${props => props.textColor};
   --paper-scrollbar-thumb-color: ${props => props.scrollbarColor};
 `;
+
+StyledPaper.displayName = 'StyledPaper';

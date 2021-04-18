@@ -33,3 +33,5 @@ export function ColorLooper({ render, themeId, group = 'primary' }: ColorLooperP
   // eslint-disable-next-line react/jsx-fragments
   return <Fragment>{items}</Fragment>;
 }
+
+ColorLooper.displayName = 'ColorLooper';

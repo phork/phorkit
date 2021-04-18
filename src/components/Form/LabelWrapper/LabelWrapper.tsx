@@ -61,3 +61,5 @@ export function LabelWrapper<T extends React.ElementType = 'div'>({
     </Element>
   );
 }
+
+LabelWrapper.displayName = 'LabelWrapper';

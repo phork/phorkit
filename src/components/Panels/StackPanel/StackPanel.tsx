@@ -71,3 +71,5 @@ export const StackPanel = React.forwardRef<HTMLDivElement, StackPanelProps>(
     );
   },
 );
+
+StackPanel.displayName = 'StackPanel';

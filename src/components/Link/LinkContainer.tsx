@@ -37,3 +37,5 @@ export function LinkContainer<T extends LinkContainerElementType = 'div'>({
 
   return React.createElement(as || 'div', { className, ...props }, children);
 }
+
+LinkContainer.displayName = 'LinkContainer';

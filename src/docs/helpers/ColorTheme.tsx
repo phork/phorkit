@@ -88,3 +88,5 @@ export function ColorTheme({ themeId, variant }: ColorThemeProps): React.ReactEl
     </ThemeElement>
   );
 }
+
+ColorTheme.displayName = 'ColorTheme';

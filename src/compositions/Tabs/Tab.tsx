@@ -79,3 +79,5 @@ export function Tab({
     </div>
   );
 }
+
+Tab.displayName = 'Tab';

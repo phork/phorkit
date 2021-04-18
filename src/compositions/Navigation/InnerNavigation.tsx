@@ -171,3 +171,5 @@ export const InnerNavigation = React.forwardRef<HTMLElement, InnerNavigationProp
     );
   },
 );
+
+InnerNavigation.displayName = 'InnerNavigation';

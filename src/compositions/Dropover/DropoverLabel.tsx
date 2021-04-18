@@ -56,3 +56,5 @@ export const DropoverLabel = React.forwardRef<HTMLDivElement, DropoverLabelProps
     );
   },
 );
+
+DropoverLabel.displayName = 'DropoverLabel';

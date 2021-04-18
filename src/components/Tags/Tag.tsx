@@ -59,3 +59,4 @@ export function TagBase<T extends TagElementType = 'div'>(
 }
 
 export const Tag = React.forwardRef(TagBase) as typeof TagBase;
+TagBase.displayName = 'TagBase';

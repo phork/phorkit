@@ -80,3 +80,4 @@ function RadioGroupBase(
 }
 
 export const RadioGroup = React.forwardRef(RadioGroupBase);
+RadioGroupBase.displayName = 'RadioGroupBase';

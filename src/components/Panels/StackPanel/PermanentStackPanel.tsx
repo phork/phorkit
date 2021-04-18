@@ -33,3 +33,5 @@ export const PermanentStackPanel = React.forwardRef<HTMLDivElement, PermanentSta
     );
   },
 );
+
+PermanentStackPanel.displayName = 'PermanentStackPanel';

@@ -102,3 +102,4 @@ function ListBase<T extends ListElementType = 'ul'>(
 }
 
 export const List = React.forwardRef(ListBase) as typeof ListBase;
+ListBase.displayName = 'ListBase';

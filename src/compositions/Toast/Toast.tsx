@@ -134,3 +134,5 @@ export function Toast({
     </div>
   );
 }
+
+Toast.displayName = 'Toast';

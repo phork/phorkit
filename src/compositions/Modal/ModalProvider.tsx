@@ -79,3 +79,5 @@ export function ModalProvider({ children }: ModalProviderProps): React.ReactElem
 
   return <ModalContext.Provider value={value}>{children}</ModalContext.Provider>;
 }
+
+ModalProvider.displayName = 'ModalProvider';

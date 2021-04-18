@@ -60,3 +60,5 @@ export function Flex({
     </div>
   );
 }
+
+Flex.displayName = 'Flex';

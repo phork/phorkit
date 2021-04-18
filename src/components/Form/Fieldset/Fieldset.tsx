@@ -38,3 +38,5 @@ export function Fieldset({
     </fieldset>
   );
 }
+
+Fieldset.displayName = 'Fieldset';

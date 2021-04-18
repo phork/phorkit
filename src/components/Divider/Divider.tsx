@@ -38,3 +38,5 @@ export function Divider({
     />
   );
 }
+
+Divider.displayName = 'Divider';

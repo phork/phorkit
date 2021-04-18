@@ -33,3 +33,5 @@ export const PermanentSidePanel = React.forwardRef<HTMLDivElement, PermanentSide
     );
   },
 );
+
+PermanentSidePanel.displayName = 'PermanentSidePanel';

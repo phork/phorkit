@@ -68,3 +68,4 @@ function ListItemBase<T extends ListItemElementType = 'li'>(
 }
 
 export const ListItem = React.forwardRef(ListItemBase) as typeof ListItemBase;
+ListItemBase.displayName = 'ListItemBase';

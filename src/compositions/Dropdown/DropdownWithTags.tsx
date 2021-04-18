@@ -128,3 +128,5 @@ export function DropdownWithTags({
     </Flex>
   );
 }
+
+DropdownWithTags.displayName = 'DropdownWithTags';

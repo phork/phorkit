@@ -48,3 +48,5 @@ export function Header({
     </div>
   );
 }
+
+Header.displayName = 'Header';

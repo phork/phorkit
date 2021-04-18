@@ -87,3 +87,5 @@ export const Triangle = ({
     {...props}
   />
 );
+
+Triangle.displayName = 'Triangle';

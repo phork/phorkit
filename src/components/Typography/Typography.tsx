@@ -106,3 +106,5 @@ export function Typography<T extends keyof JSX.IntrinsicElements = 'span'>({
     children,
   );
 }
+
+Typography.displayName = 'Typography';

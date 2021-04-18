@@ -173,3 +173,5 @@ export function Tooltip({
     </Component>
   );
 }
+
+Tooltip.displayName = 'Tooltip';

@@ -14,3 +14,5 @@ export function Toasts({ children, ...props }: ToastsProps): React.ReactElement 
     </ToastProvider>
   );
 }
+
+Toasts.displayName = 'Toasts';

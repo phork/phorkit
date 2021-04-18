@@ -10,3 +10,5 @@ export const StyledLoader = styled(Loader, {
 })<StyledLoaderProps>`
   --loader-color: ${({ color }) => color};
 `;
+
+StyledLoader.displayName = 'StyledLoader';

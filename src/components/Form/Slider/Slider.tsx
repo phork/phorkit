@@ -306,3 +306,4 @@ function SliderBase(
 }
 
 export const Slider = React.forwardRef(SliderBase);
+SliderBase.displayName = 'SliderBase';

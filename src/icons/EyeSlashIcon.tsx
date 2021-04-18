@@ -24,3 +24,4 @@ export function EyeSlashIcon({ title, titleId = uuid(), ...initProps }: SvgIconP
     </svg>
   );
 }
+EyeSlashIcon.displayName = 'SvgIcon';

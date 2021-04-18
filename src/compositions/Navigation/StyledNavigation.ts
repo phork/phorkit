@@ -47,6 +47,8 @@ export const StyledNavigation = styled(Navigation, {
   --navigation-item-text-color: ${props => props.itemTextColor};
 `;
 
+StyledNavigation.displayName = 'StyledNavigation';
+
 StyledNavigation.defaultProps = {
   unthemed: true,
 };

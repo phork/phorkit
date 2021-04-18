@@ -105,3 +105,5 @@ export const AccordionContent = React.forwardRef<HTMLDivElement, AccordionConten
     );
   },
 );
+
+AccordionContent.displayName = 'AccordionContent';

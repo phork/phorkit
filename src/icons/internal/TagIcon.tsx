@@ -15,3 +15,4 @@ export function TagIcon({ title, titleId = uuid(), ...initProps }: SvgIconProps)
     </svg>
   );
 }
+TagIcon.displayName = 'SvgIcon';

@@ -15,3 +15,4 @@ export function SunIcon({ title, titleId = uuid(), ...initProps }: SvgIconProps)
     </svg>
   );
 }
+SunIcon.displayName = 'SvgIcon';

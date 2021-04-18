@@ -20,3 +20,5 @@ export function BannerContainer({
     </div>
   );
 }
+
+BannerContainer.displayName = 'BannerContainer';

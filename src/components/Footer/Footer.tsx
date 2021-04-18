@@ -49,3 +49,5 @@ export function Footer({
     </div>
   );
 }
+
+Footer.displayName = 'Footer';

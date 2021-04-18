@@ -46,3 +46,5 @@ export function DropdownEmpty({
     </div>
   );
 }
+
+DropdownEmpty.displayName = 'DropdownEmpty';

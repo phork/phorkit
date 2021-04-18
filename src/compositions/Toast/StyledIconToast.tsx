@@ -41,3 +41,5 @@ StyledIconToast.defaultProps = {
   level: 'custom',
 };
 */
+
+StyledIconToast.displayName = 'StyledIconToast';

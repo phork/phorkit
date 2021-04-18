@@ -70,3 +70,5 @@ export function Avatar<T extends React.ElementType = 'div'>({
     </Element>
   );
 }
+
+Avatar.displayName = 'Avatar';

@@ -39,3 +39,5 @@ export function PanelContainer({
     </div>
   );
 }
+
+PanelContainer.displayName = 'PanelContainer';

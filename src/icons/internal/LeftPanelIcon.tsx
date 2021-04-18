@@ -19,3 +19,4 @@ export function LeftPanelIcon({ title, titleId = uuid(), ...initProps }: SvgIcon
     </svg>
   );
 }
+LeftPanelIcon.displayName = 'SvgIcon';

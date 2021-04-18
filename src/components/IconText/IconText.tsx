@@ -34,3 +34,5 @@ export const IconText = React.forwardRef<HTMLDivElement, IconTextProps>(
     );
   },
 );
+
+IconText.displayName = 'IconText';

@@ -23,3 +23,4 @@ export function ArrowUpDownIcon({
     </svg>
   );
 }
+ArrowUpDownIcon.displayName = 'SvgIcon';

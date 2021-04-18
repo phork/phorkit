@@ -20,3 +20,5 @@ export function TimeoutWrapper({
 
   return children;
 }
+
+TimeoutWrapper.displayName = 'TimeoutWrapper';

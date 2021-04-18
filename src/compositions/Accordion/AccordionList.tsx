@@ -153,3 +153,5 @@ export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps
     );
   },
 );
+
+AccordionList.displayName = 'AccordionList';

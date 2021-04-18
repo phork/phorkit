@@ -13,6 +13,8 @@ export const StyledBadge = styled(Badge, {
   ${({ textColor }) => textColor && `--badge-text-color: ${textColor};`}
 `;
 
+StyledBadge.displayName = 'StyledBadge';
+
 StyledBadge.defaultProps = {
   unthemed: true,
 };

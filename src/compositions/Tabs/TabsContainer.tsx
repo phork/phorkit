@@ -53,3 +53,5 @@ export function TabsContainer({
     </div>
   );
 }
+
+TabsContainer.displayName = 'TabsContainer';

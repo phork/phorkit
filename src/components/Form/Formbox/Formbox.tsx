@@ -263,3 +263,4 @@ function FormboxBase<T extends FormboxContainerElementType, I extends FormboxInp
 }
 
 export const Formbox = React.forwardRef(FormboxBase) as typeof FormboxBase;
+FormboxBase.displayName = 'FormboxBase';

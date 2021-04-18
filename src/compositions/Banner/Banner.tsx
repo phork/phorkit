@@ -93,3 +93,5 @@ export function Banner({
     </Paper>
   );
 }
+
+Banner.displayName = 'Banner';

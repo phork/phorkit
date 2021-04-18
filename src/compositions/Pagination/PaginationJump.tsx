@@ -53,3 +53,5 @@ export function PaginationJump<T extends IconButtonElementType = 'button'>({
     </IconButton>
   ) : null;
 }
+
+PaginationJump.displayName = 'PaginationJump';

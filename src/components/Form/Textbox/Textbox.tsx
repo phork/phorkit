@@ -181,3 +181,4 @@ function TextboxBase(
 }
 
 export const Textbox = React.forwardRef(TextboxBase);
+TextboxBase.displayName = 'TextboxBase';

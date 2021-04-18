@@ -56,3 +56,5 @@ export function ToastCountdownBar({ created, duration, level, themeId, variant }
     </div>
   );
 }
+
+ToastCountdownBar.displayName = 'ToastCountdownBar';

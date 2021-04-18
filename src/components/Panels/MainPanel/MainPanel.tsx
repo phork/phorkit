@@ -7,16 +7,16 @@ export interface MainPanelProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
 }
 
-export function MainPanel({
-  children,
-  className,
-  ...props
-}: MainPanelProps): React.ReactElement<MainPanelProps, 'div'> {
-  const classes = cx(styles.mainPanel, className);
+export const MainPanel = React.forwardRef<HTMLDivElement, MainPanelProps>(
+  ({ children, className, ...props }: MainPanelProps, forwardedRef): React.ReactElement<MainPanelProps, 'div'> => {
+    const classes = cx(styles.mainPanel, className);
 
-  return (
-    <div className={classes} {...props}>
-      {children}
-    </div>
-  );
-}
+    return (
+      <div className={classes} ref={forwardedRef} {...props}>
+        {children}
+      </div>
+    );
+  },
+);
+
+MainPanel.displayName = 'MainPanel';

@@ -24,3 +24,5 @@ export const StyledButton = styled(Button, {
   ${({ activePrimaryColor }) => activePrimaryColor && `--button-active-primary-color: ${activePrimaryColor};`}
   ${({ width }) => width !== undefined && `width: ${Number.isNaN(width) ? width : `${width}px`};`}
 `;
+
+StyledButton.displayName = 'StyledButton';

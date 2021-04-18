@@ -97,3 +97,5 @@ export function ColorSwatchGroup({
     </Flex>
   );
 }
+
+ColorSwatchGroup.displayName = 'ColorSwatchGroup';

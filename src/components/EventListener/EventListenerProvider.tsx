@@ -128,3 +128,5 @@ export function EventListenerProvider({ children }: EventListenerProviderProps) 
 
   return <EventListenerContext.Provider value={value}>{children}</EventListenerContext.Provider>;
 }
+
+EventListenerProvider.displayName = 'EventListenerProvider';

@@ -50,3 +50,5 @@ export function IconCount({
     </Flex>
   );
 }
+
+IconCount.displayName = 'IconCount';

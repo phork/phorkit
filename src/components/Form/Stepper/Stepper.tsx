@@ -141,3 +141,4 @@ export function StepperBase(
 }
 
 export const Stepper = React.forwardRef(StepperBase);
+StepperBase.displayName = 'StepperBase';

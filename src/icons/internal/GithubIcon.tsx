@@ -19,3 +19,4 @@ export function GithubIcon({ title, titleId = uuid(), ...initProps }: SvgIconPro
     </svg>
   );
 }
+GithubIcon.displayName = 'SvgIcon';

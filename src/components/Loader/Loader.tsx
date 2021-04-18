@@ -60,3 +60,5 @@ export function Loader({
   }
   return content;
 }
+
+Loader.displayName = 'Loader';

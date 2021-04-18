@@ -127,3 +127,5 @@ export function Accordion({
     </ListRegistryProvider>
   );
 }
+
+Accordion.displayName = 'Accordion';

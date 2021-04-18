@@ -15,3 +15,4 @@ export function PhorkIcon({ title, titleId = uuid(), ...initProps }: SvgIconProp
     </svg>
   );
 }
+PhorkIcon.displayName = 'SvgIcon';

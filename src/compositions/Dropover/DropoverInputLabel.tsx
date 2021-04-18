@@ -21,3 +21,5 @@ export const DropoverInputLabel = React.forwardRef<HTMLDivElement, DropoverInput
     );
   },
 );
+
+DropoverInputLabel.displayName = 'DropoverInputLabel';

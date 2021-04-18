@@ -48,3 +48,5 @@ export function TagGroup<T extends TagElementType = 'div'>({
     </div>
   );
 }
+
+TagGroup.displayName = 'TagGroup';

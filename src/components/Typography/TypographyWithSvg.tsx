@@ -6,3 +6,5 @@ import styles from './styles/Typography.module.css';
 export const TypographyWithSvg = ({ className, ...props }: TypographyProps) => {
   return <Typography className={cx(styles.typographyWithSvg, className)} {...props} />;
 };
+
+TypographyWithSvg.displayName = 'TypographyWithSvg';

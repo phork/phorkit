@@ -27,3 +27,5 @@ export const ModalContent = React.forwardRef<HTMLDivElement, ModalContentProps>(
     );
   },
 );
+
+ModalContent.displayName = 'ModalContent';

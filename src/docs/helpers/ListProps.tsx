@@ -9,3 +9,5 @@ export function ListProps(props: Record<string, string>): React.ReactElement {
 
   return <ul style={{ listStyleType: 'none', padding: 0, margin: 0 }}>{items}</ul>;
 }
+
+ListProps.displayName = 'ListProps';

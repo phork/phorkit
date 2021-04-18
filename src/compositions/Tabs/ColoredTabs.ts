@@ -28,6 +28,7 @@ const StyledTabs = styled(Tabs, {
 `;
 
 export const ColoredTabs = React.memo<ColoredTabsProps>(withTheme(StyledTabs));
+ColoredTabs.displayName = 'ColoredTabs';
 
 StyledTabs.defaultProps = {
   variant: 'colored',

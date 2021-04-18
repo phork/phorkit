@@ -19,6 +19,7 @@ const StyledBadge = styled(Badge, {
 `;
 
 export const ColoredBadge = React.memo<ColoredBadgeProps>(withTheme(StyledBadge));
+ColoredBadge.displayName = 'ColoredBadge';
 
 StyledBadge.defaultProps = {
   unthemed: true,

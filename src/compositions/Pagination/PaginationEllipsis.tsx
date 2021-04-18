@@ -17,3 +17,5 @@ export function PaginationEllipsis({
     </Typography>
   );
 }
+
+PaginationEllipsis.displayName = 'PaginationEllipsis';

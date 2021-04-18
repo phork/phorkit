@@ -19,3 +19,4 @@ export function SearchIcon({ title, titleId = uuid(), ...initProps }: SvgIconPro
     </svg>
   );
 }
+SearchIcon.displayName = 'SvgIcon';

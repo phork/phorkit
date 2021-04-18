@@ -45,3 +45,5 @@ export function PaginationPage<T extends ButtonElementType = 'button'>({
     </Button>
   );
 }
+
+PaginationPage.displayName = 'PaginationPage';
