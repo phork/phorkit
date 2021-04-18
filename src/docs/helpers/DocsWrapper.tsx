@@ -5,9 +5,6 @@ import { Theme } from 'types';
 import { AccessibilityProvider } from 'context/Accessibility';
 import { ThemeProvider } from 'context/Theme';
 import { Toasts } from 'compositions/Toast';
-import './styles.css';
-import 'styles/common.css';
-import 'styles/normalize.css';
 
 export interface DocsWrapperProps {
   children: React.ReactNode;
