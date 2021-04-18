@@ -1,5 +1,17 @@
 # Changelog
 
+# [1.15.0](https://github.com/phork/phorkit/compare/v1.14.0...v1.15.0) (2021-04-18)
+
+
+### ✨ Features
+
+* added quiet header and footer borders ([47a43bb](https://github.com/phork/phorkit/commit/47a43bb))
+
+
+### 🐛 Bug Fixes
+
+* remove emotion from styled toasts to fix infinite loop ([32e6dd5](https://github.com/phork/phorkit/commit/32e6dd5))
+
 # [1.14.0](https://github.com/phork/phorkit/compare/v1.13.0...v1.14.0) (2021-04-17)
 
 
