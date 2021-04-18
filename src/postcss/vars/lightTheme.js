@@ -122,6 +122,7 @@ const shadowColors = {
 const hierarchyColors = {
   'primary-background-color': neutralColors['color-BG05'],
   'primary-border-color': neutralColors['color-BG40'],
+  'primary-quiet-border-color': neutralColors['color-BG20'],
   'primary-text-color': neutralColors['color-FG0'],
   'primary-quiet-color': neutralColors['color-FG40'],
   'primary-quieter-color': color.whiten(neutralColors['color-FG40'], 80),
@@ -130,6 +131,7 @@ const hierarchyColors = {
 
   'secondary-background-color': neutralColors['color-BG0'],
   'secondary-border-color': neutralColors['color-BG30'],
+  'secondary-quiet-border-color': neutralColors['color-BG20'],
   'secondary-text-color': neutralColors['color-FG10'],
   'secondary-quiet-color': neutralColors['color-FG40'],
   'secondary-quieter-color': color.whiten(neutralColors['color-FG40'], 80),
@@ -138,6 +140,7 @@ const hierarchyColors = {
 
   'tertiary-background-color': neutralColors['color-BG10'],
   'tertiary-border-color': neutralColors['color-BG30'],
+  'tertiary-quiet-border-color': neutralColors['color-BG20'],
   'tertiary-text-color': neutralColors['color-FG20'],
   'tertiary-quiet-color': neutralColors['color-FG40'],
   'tertiary-quieter-color': color.whiten(neutralColors['color-FG40'], 90),
@@ -146,6 +149,7 @@ const hierarchyColors = {
 
   'contrast-background-color': accentColors['color-accent-primary'],
   'contrast-border-color': color.transparency(accentColors['color-accent-primary-contrast'], 50),
+  'contrast-quiet-border-color': color.transparency(accentColors['color-accent-primary-contrast'], 70),
   'contrast-text-color': accentColors['color-accent-primary-contrast'],
   'contrast-quiet-color': color.transparency(accentColors['color-accent-primary-contrast'], 40),
   'contrast-quieter-color': color.transparency(accentColors['color-accent-primary-contrast'], 60),

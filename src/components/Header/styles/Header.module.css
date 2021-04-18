@@ -35,6 +35,10 @@
   @mixin themed .header {
     --header-border-color: $theme-primary-border-color;
 
+    &.header--quiet {
+      --header-border-color: $theme-primary-quiet-border-color;
+    }
+
     background-color: $theme-primary-background-color;
     color: $theme-primary-text-color;
   }
@@ -43,6 +47,10 @@
 .header--secondary {
   @mixin themed .header {
     --header-border-color: $theme-secondary-border-color;
+
+    &.header--quiet {
+      --header-border-color: $theme-secondary-quiet-border-color;
+    }
 
     background-color: $theme-secondary-background-color;
     color: $theme-secondary-text-color;
@@ -53,6 +61,10 @@
   @mixin themed .header {
     --header-border-color: $theme-primary-border-color;
 
+    &.header--quiet {
+      --header-border-color: $theme-primary-quiet-border-color;
+    }
+
     background-color: transparent;
     color: $theme-primary-text-color;
   }
@@ -61,6 +73,10 @@
 .header--contrast {
   @mixin themed .header {
     --header-border-color: $theme-contrast-border-color;
+
+    &.header--quiet {
+      --header-border-color: $theme-contrast-quiet-border-color;
+    }
 
     background-color: var(--contrast-color, $theme-contrast-background-color);
     color: $theme-contrast-text-color;

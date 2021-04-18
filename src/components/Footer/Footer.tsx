@@ -11,6 +11,7 @@ export interface FooterProps extends React.HTMLAttributes<HTMLDivElement>, Theme
   full?: boolean;
   raised?: boolean;
   variant?: 'primary' | 'secondary' | 'transparent';
+  volume?: 'quiet';
 }
 
 export function Footer({
@@ -23,6 +24,7 @@ export function Footer({
   themeId: initThemeId,
   unthemed,
   variant: initVariant = 'primary',
+  volume,
   ...props
 }: FooterProps): React.ReactElement<FooterProps, 'div'> {
   const themeId = useThemeId(initThemeId);
@@ -36,6 +38,8 @@ export function Footer({
     full && styles['footer--full'],
     !unthemed && themeId && styles[`footer--${themeId}`],
     !unthemed && variant && styles[`footer--${variant}`],
+    full && styles['footer--full'],
+    volume && styles[`footer--${volume}`],
     className,
   );
 

@@ -6,6 +6,7 @@ import { ThemeColors, themes } from 'config/themes';
 const ThemeElement = styled.div<{
   backgroundColor: string;
   borderColor: string;
+  quietBorderColor: string;
   quietColor: string;
   quieterColor: string;
   quietestColor: string;
@@ -24,7 +25,7 @@ const ThemeElement = styled.div<{
   width: 100%;
 
   &:before {
-    background-color: ${props => props.borderColor};
+    background-color: ${props => props.quietBorderColor};
     bottom: 20px;
     content: '';
     height: 1px;
@@ -73,6 +74,7 @@ export function ColorTheme({ themeId, variant }: ColorThemeProps): React.ReactEl
       color={themeProps[`${variant}-text-color` as keyof ThemeColors] as string}
       backgroundColor={themeProps[`${variant}-background-color` as keyof ThemeColors] as string}
       borderColor={themeProps[`${variant}-border-color` as keyof ThemeColors] as string}
+      quietBorderColor={themeProps[`${variant}-quiet-border-color` as keyof ThemeColors] as string}
       quietColor={themeProps[`${variant}-quiet-color` as keyof ThemeColors] as string}
       quieterColor={themeProps[`${variant}-quieter-color` as keyof ThemeColors] as string}
       quietestColor={themeProps[`${variant}-quietest-color` as keyof ThemeColors] as string}

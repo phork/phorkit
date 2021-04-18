@@ -11,6 +11,7 @@ export interface HeaderProps extends React.HTMLAttributes<HTMLDivElement>, Theme
   full?: boolean;
   raised?: boolean;
   variant?: 'primary' | 'secondary' | 'transparent';
+  volume?: 'quiet';
 }
 
 export function Header({
@@ -23,6 +24,7 @@ export function Header({
   themeId: initThemeId,
   unthemed,
   variant: initVariant = 'primary',
+  volume,
   ...props
 }: HeaderProps): React.ReactElement<HeaderProps, 'div'> {
   const themeId = useThemeId(initThemeId);
@@ -36,6 +38,7 @@ export function Header({
     full && styles['header--full'],
     !unthemed && themeId && styles[`header--${themeId}`],
     !unthemed && variant && styles[`header--${variant}`],
+    volume && styles[`header--${volume}`],
     className,
   );
 
