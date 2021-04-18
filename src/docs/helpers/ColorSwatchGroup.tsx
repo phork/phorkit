@@ -57,18 +57,22 @@ export function ColorSwatchGroup({
   const { createNotification } = useContext(ToastContext);
 
   const handleClick = (id: string, color: string, contrast?: string) => {
-    textToClipboard(id);
-    createNotification(
-      <StyledIconToast
-        title="Copied to clipboard"
-        icon={ClipboardIcon}
-        levelColor={color}
-        levelInverseColor={contrast}
-        variant="colored"
-      >
-        The color ID <strong>{id}</strong> has been copied to your clipboard.
-      </StyledIconToast>,
-    );
+    try {
+      textToClipboard(id);
+      createNotification(
+        <StyledIconToast
+          title="Copied to clipboard"
+          icon={ClipboardIcon}
+          levelColor={color}
+          levelInverseColor={contrast}
+          variant="colored"
+        >
+          The color ID <strong>{id}</strong> has been copied to your clipboard.
+        </StyledIconToast>,
+      );
+    } catch (e) {
+      // do nothing here
+    }
   };
 
   return (

@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useLayoutEffect, useState } from 'react';
-import { ThemeProps } from '../../types';
+import { MergeElementProps, ThemeProps } from '../../types';
 import { ToastNotificationLevel } from './types';
 import { useSafeTimeout } from '../../hooks/useSafeTimeout';
 import { useThemeId } from '../../hooks/useThemeId';
@@ -24,7 +24,7 @@ export const toastTranslations: ToastTranslations = {
   pinNotificationLabel: 'Pin notification',
 };
 
-export interface ToastProps extends ThemeProps {
+export interface LocalToastProps extends ThemeProps {
   children: React.ReactNode;
   className?: string;
   created?: number;
@@ -40,6 +40,8 @@ export interface ToastProps extends ThemeProps {
   translations?: ToastTranslations;
   variant?: 'colored';
 }
+
+export type ToastProps = MergeElementProps<'div', LocalToastProps>;
 
 export function Toast({
   children,
