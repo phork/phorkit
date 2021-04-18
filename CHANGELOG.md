@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.2](https://github.com/phork/phorkit/compare/v1.15.1...v1.15.2) (2021-04-18)
+
+
+### 🐛 Bug Fixes
+
+* added missing displayName prop to all components ([052bcd7](https://github.com/phork/phorkit/commit/052bcd7))
+
 ## [1.15.1](https://github.com/phork/phorkit/compare/v1.15.0...v1.15.1) (2021-04-18)
 
 
