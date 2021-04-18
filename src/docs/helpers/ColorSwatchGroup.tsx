@@ -33,6 +33,8 @@ export type Color = {
   id: string;
   color: string;
   contrast?: string;
+  height?: number;
+  width?: number;
 };
 
 export interface ColorSwatchGroupProps {
@@ -77,15 +79,15 @@ export function ColorSwatchGroup({
 
   return (
     <Flex direction={direction} {...props}>
-      {colors.map(({ color, contrast, id }) => (
+      {colors.map(({ color, contrast, id, width, height }) => (
         <Rhythm key={id} m={joined ? 0 : 1}>
           <SwatchBlock
             backgroundColor={color}
             color={contrast}
             rounded={!joined}
             title={`${id} ${color}`}
-            width={swatchWidth}
-            height={swatchHeight}
+            width={width || swatchWidth}
+            height={height || swatchHeight}
             onClick={() => handleClick(id, color, contrast)}
           >
             {children}

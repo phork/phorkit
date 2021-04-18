@@ -36,12 +36,13 @@ const renderColorGrid = (colorGrid: Color[][], props: Omit<ColorSwatchGroupProps
 export function ColorSwatch({ group, themeId, variant, ...props }: ColorSwatchProps): React.ReactElement | null {
   const themeProps = themes[themeId];
 
-  const mapColors = (root: string, shade: string | undefined): Color => {
+  const mapColors = (root: string, shade: string | undefined, props?: Omit<Color, 'id' | 'color'>): Color => {
     const id = `${root}${shade ? `-${shade}` : ''}`;
     return {
       id,
       color: themeProps[id as keyof ThemeColors] as string,
       contrast: themeProps[`${root}-contrast` as keyof ThemeColors] as string,
+      ...props,
     };
   };
 
@@ -56,7 +57,9 @@ export function ColorSwatch({ group, themeId, variant, ...props }: ColorSwatchPr
       const colors = getPrimaryColors(themeId);
       return renderColorGrid(
         Object.keys(colors).map((root: string) =>
-          ['L40', 'L30', 'L20', 'L10', undefined, 'D10', 'D20', 'D30', 'D40'].map(shade => mapColors(root, shade)),
+          ['L40', 'L30', 'L20', 'L10', undefined, 'D10', 'D20', 'D30', 'D40'].map(shade =>
+            mapColors(root, shade, !shade ? { height: 60 } : undefined),
+          ),
         ),
         props,
       );

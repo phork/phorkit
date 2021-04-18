@@ -6,15 +6,18 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-postcss`,
+      resolve: 'gatsby-plugin-postcss',
       options: {
         cssLoaderOptions: {
           camelCase: false,
+          modules: {
+            auto: resourcePath => resourcePath.endsWith('.module.css'),
+          },
         },
       },
     },
     {
-      resolve: `gatsby-plugin-portal`,
+      resolve: 'gatsby-plugin-portal',
       options: {
         key: 'portal',
         id: 'portal',
