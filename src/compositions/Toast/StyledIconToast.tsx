@@ -23,21 +23,21 @@ export const StyledIconToast = ({ levelColor, levelInverseColor, ...props }: Sty
 
 /* [TODO:dep] something in emotion causes infinite loops in production
 import styled from '@emotion/styled';
-import { IconIconToast, IconIconToastProps } from './IconIconToast';
+import { IconToast, IconToastProps } from './IconToast';
 
-export interface StyledIconIconToastProps extends IconIconToastProps {
+export interface StyledIconToastProps extends IconToastProps {
   levelColor?: string;
   levelInverseColor?: string;
 }
 
-export const StyledIconIconToast = styled(IconIconToast, {
-  shouldForwardProp: (prop: string) => !['levelColor', 'levelInverseColor', 'themeId'].includes(prop),
-})<StyledIconIconToastProps>`
+export const StyledIconToast = styled(IconToast, {
+  shouldForwardProp: (prop: string) => !['levelColor', 'levelInverseColor'].includes(prop),
+})<StyledIconToastProps>`
   ${({ levelColor }) => levelColor && `--toast-level-color: ${levelColor};`}
   ${({ levelInverseColor }) => levelInverseColor && `--toast-level-inverse-color: ${levelInverseColor};`}
 `;
 
-StyledIconIconToast.defaultProps = {
+StyledIconToast.defaultProps = {
   level: 'custom',
 };
 */

@@ -31,7 +31,7 @@ export interface StyledToastProps extends Omit<ToastProps, 'level'> {
 }
 
 export const StyledToast = styled(Toast, {
-  shouldForwardProp: (prop: string) => !['levelColor', 'levelInverseColor', 'themeId'].includes(prop),
+  shouldForwardProp: (prop: string) => !['levelColor', 'levelInverseColor'].includes(prop),
 })<StyledToastProps>`
   ${({ levelColor }) => levelColor && `--toast-level-color: ${levelColor};`}
   ${({ levelInverseColor }) => levelInverseColor && `--toast-level-inverse-color: ${levelInverseColor};`}
