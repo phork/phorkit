@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.3](https://github.com/phork/phorkit/compare/v1.15.2...v1.15.3) (2021-04-19)
+
+
+### 🐛 Bug Fixes
+
+* disable typography style minification ([97b8b3d](https://github.com/phork/phorkit/commit/97b8b3d))
+
 ## [1.15.2](https://github.com/phork/phorkit/compare/v1.15.1...v1.15.2) (2021-04-18)
 
 
