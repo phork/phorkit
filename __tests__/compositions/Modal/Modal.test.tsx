@@ -1,12 +1,12 @@
 import { render } from '@testing-library/react';
-import { Modal, ModalContent, ModalHeader, ModalFooter } from 'lib';
 import * as React from 'react';
+import { Modal, ModalBody, ModalHeader, ModalFooter } from 'lib';
 
 describe('<Modal />', () => {
   it('should render a basic modal', () => {
     const { getByText } = render(
       <Modal ariaLabel="Example modal" immediate>
-        <ModalContent key="content">Hello world</ModalContent>
+        <ModalBody key="content">Hello world</ModalBody>
       </Modal>,
     );
     expect(getByText('Hello world')).toBeTruthy();
@@ -16,7 +16,7 @@ describe('<Modal />', () => {
     const { getByText } = render(
       <Modal immediate>
         <ModalHeader title="Modal header" />
-        <ModalContent scrollable>Hello world</ModalContent>
+        <ModalBody scrollable>Hello world</ModalBody>
         <ModalFooter>Modal footer</ModalFooter>
       </Modal>,
     );

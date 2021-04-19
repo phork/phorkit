@@ -43,7 +43,7 @@ import {
   MainPanel,
   Modal,
   ModalConsumer,
-  ModalContent,
+  ModalBody,
   ModalFooter,
   ModalHeader,
   Modals,
@@ -946,7 +946,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                     {({ id, focusRef }) => (
                       <React.Fragment>
                         <ModalHeader modalId={id} title="Login" />
-                        <ModalContent scrollable>
+                        <ModalBody scrollable>
                           <Rhythm py={4} grouped>
                             <StateWrapper initialState={{}}>
                               {({ state: values, setState: setValues }) => (
@@ -990,7 +990,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                               )}
                             </StateWrapper>
                           </Rhythm>
-                        </ModalContent>
+                        </ModalBody>
                         <ModalFooter bordered>
                           <Flex justifyContent="flex-end">
                             <ButtonGroup spacing="comfy" color="primary" key="cancel">

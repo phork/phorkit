@@ -21,6 +21,7 @@ export const modalTranslations: ModalTranslations = {
 };
 
 export interface ModalProps extends ThemeProps {
+  allowOverflow?: boolean;
   /* if a header isn't included with a title this should be used to label the modal */
   ariaLabel?: string;
   children: RenderFromPropElement | RenderFromPropElement[];
@@ -30,11 +31,12 @@ export interface ModalProps extends ThemeProps {
   immediate?: boolean;
   onClose?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, id?: string) => void;
   permanent?: boolean;
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'xlarge';
   translations?: ModalTranslations;
 }
 
 export function Modal({
+  allowOverflow,
   ariaLabel,
   children,
   className,
@@ -100,6 +102,7 @@ export function Modal({
         styles.modal,
         size && styles[`modal--${size}`],
         themeId && styles[`modal--${themeId}`],
+        allowOverflow && styles['modal--allowOverflow'],
         !immediate && styles['modal--transitional'],
         hasTransitioned && styles['has-transitioned'],
         className,

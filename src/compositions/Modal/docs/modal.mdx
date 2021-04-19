@@ -4,25 +4,25 @@ menu: Surfaces
 route: /compositions/Modals
 ---
 
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
+import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { Button, ButtonGroup } from 'components/Button';
+import { Flex } from 'components/Flex';
+import { IconText } from 'components/IconText';
+import { Rhythm } from 'components/Rhythm';
+import { Typography } from 'components/Typography';
 import {
   Modal,
   ModalConsumer,
   ModalContainer,
-  ModalContent,
+  ModalBody,
   ModalFooter,
   ModalHeader,
   ModalProvider,
   Modals,
 } from '../index';
-import { Button } from 'components/Button';
-import { IconText } from 'components/IconText';
-import { Rhythm } from 'components/Rhythm';
-import { Flex } from 'components/Flex';
-import { Typography } from 'components/Typography';
-import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { PageTitle } from 'docs/helpers/PageTitle';
 
 <PageTitle title="Modals" src="compositions/Modal" />
 
@@ -33,7 +33,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 <Playground>
   <ThemeWrapper>
     <Modal ariaLabel="Example modal" id="demo-basic-modal" immediate>
-      <ModalContent>This is an example modal.</ModalContent>
+      <ModalBody>This is an example modal.</ModalBody>
     </Modal>
   </ThemeWrapper>
 </Playground>
@@ -44,7 +44,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
   <ThemeWrapper>
     <Modal id="demo-modal-header" immediate>
       <ModalHeader modalId="demo-header" title="Hello world" />
-      <ModalContent scrollable>This is a modal with a header.</ModalContent>
+      <ModalBody scrollable>This is a modal with a header.</ModalBody>
     </Modal>
   </ThemeWrapper>
 </Playground>
@@ -55,12 +55,43 @@ import { PageTitle } from 'docs/helpers/PageTitle';
   <ThemeWrapper>
     <Modal id="demo-modal-header-footer" immediate>
       <ModalHeader modalId="demo-modal-header-footer" title="Hello world" />
-      <ModalContent scrollable>This is a modal with a header and footer.</ModalContent>
+      <ModalBody scrollable>This is a modal with a header and footer.</ModalBody>
       <ModalFooter>
         <Typography as="div" align="right" size="xs" variants={['italic']} volume="quiet">
           To be continued ...
         </Typography>
       </ModalFooter>
+    </Modal>
+  </ThemeWrapper>
+</Playground>
+
+### Modal with overflow, custom styles
+
+<Playground>
+  <ThemeWrapper>
+    <Modal id="demo-modal-overflow" size="medium" allowOverflow immediate style={{ borderRadius: '12px' }}>
+      <ModalBody flush style={{ height: '300px' }}>
+        <div
+          style={{
+            width: '100%',
+            height: '100%',
+            background: '#556270',
+            borderRadius: '12px',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            right: '-20px',
+            top: '-20px',
+            borderRadius: '100%',
+            background: '#fff',
+            boxShadow: '0 8px 40px 0 rgba(0, 0, 0, .1)',
+            width: '280px',
+            height: '280px',
+          }}
+        />
+      </ModalBody>
     </Modal>
   </ThemeWrapper>
 </Playground>
@@ -73,90 +104,225 @@ import { PageTitle } from 'docs/helpers/PageTitle';
       <ModalConsumer>
         {({ createModal, clearModals, popModal, hasModal, jumpModal }) => (
           <Rhythm m={2}>
-            <Button color="primary" onClick={event => event.persist() || createModal(
-              <Modal id="demo-large-modal" focusable size="large">
-                {({ id, focusRef }) => (
-                  <React.Fragment>
-                    <ModalHeader modalId={id} title="A large modal" />
-                    <ModalContent scrollable>
-                      <p>This is a large modal with scrollable content. This uses a render function to focus the submit button.</p>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nulla neque, tempus vitae mollis non, suscipit eget urna. Phasellus viverra sodales nibh, et tristique dui lacinia ac. In a erat elit. Morbi consequat quam non consequat ullamcorper. Suspendisse vel elementum lacus, id bibendum libero. Etiam sed mauris bibendum, tincidunt neque quis, fringilla lectus. Curabitur finibus enim a dolor suscipit, quis tristique ante facilisis. Sed arcu eros, sodales vel lectus aliquet, mollis porttitor dolor. Proin pharetra, ante eget malesuada consequat, sapien neque mattis elit, id mollis arcu enim id leo. Vivamus posuere porta dapibus. Aenean ultrices mollis eros id feugiat.</p>
-                      <p>Duis non magna et erat vestibulum posuere. In eu libero ultrices, dictum massa non, congue odio. Ut finibus facilisis lacinia. Nunc imperdiet pellentesque varius. Suspendisse interdum semper eros, id condimentum turpis dignissim vel. Cras mattis diam id lacinia mollis. Maecenas id placerat augue. Phasellus mattis diam in tellus rhoncus, ac suscipit turpis lobortis. Etiam et lobortis diam. Fusce odio risus, laoreet in feugiat vel, consequat nec purus. Donec vel commodo erat. Proin sit amet diam blandit, cursus velit in, commodo libero. Maecenas faucibus est eget lectus imperdiet fermentum. Proin in est aliquam, elementum dolor non, blandit leo. Cras eleifend placerat orci in maximus. Suspendisse tempus diam ligula, ac congue dolor lacinia a.</p>
-                      <p>Praesent porttitor tortor quis enim aliquam pellentesque. Sed et erat nunc. Sed ac placerat diam. Etiam interdum ex nec velit faucibus, sit amet suscipit metus efficitur. Aliquam nisi est, iaculis sed cursus vitae, ornare dapibus purus. Integer quis dolor at felis sollicitudin egestas vel in metus. Integer sed ante tristique, laoreet arcu id, bibendum nulla. Pellentesque mattis, mi a mollis accumsan, purus nisl hendrerit dolor, in pharetra nibh lorem a sem. Praesent nisi turpis, condimentum mattis nulla ut, pellentesque fringilla arcu. Praesent scelerisque, nisl quis pulvinar mattis, augue augue vulputate mi, non mattis diam lacus id ipsum. Sed sollicitudin metus et felis vehicula, ac lobortis tortor scelerisque. In luctus ex consequat tellus sollicitudin convallis.</p>
-                    </ModalContent>
-                    <ModalFooter bordered>
-                      <Flex justifyContent="flex-end">
-                        <Button ref={focusRef} color="primary" onClick={() => createModal(
-                          <Modal id="demo-medium-modal" focusable size="medium">
-                            {({ id, focusRef }) => (
-                              <React.Fragment>
-                                <ModalHeader modalId={id} title="A medium modal" />
-                                <ModalContent>
-                                  <p>This is a medium modal with inline content. This also uses a render function.</p>
-                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nulla neque, tempus vitae mollis non, suscipit eget urna. Phasellus viverra sodales nibh, et tristique dui lacinia ac. In a erat elit. Morbi consequat quam non consequat ullamcorper. Suspendisse vel elementum lacus, id bibendum libero. Etiam sed mauris bibendum, tincidunt neque quis, fringilla lectus. Curabitur finibus enim a dolor suscipit, quis tristique ante facilisis. Sed arcu eros, sodales vel lectus aliquet, mollis porttitor dolor. Proin pharetra, ante eget malesuada consequat, sapien neque mattis elit, id mollis arcu enim id leo. Vivamus posuere porta dapibus. Aenean ultrices mollis eros id feugiat.</p>
-                                  <p>Duis non magna et erat vestibulum posuere. In eu libero ultrices, dictum massa non, congue odio. Ut finibus facilisis lacinia. Nunc imperdiet pellentesque varius. Suspendisse interdum semper eros, id condimentum turpis dignissim vel. Cras mattis diam id lacinia mollis. Maecenas id placerat augue. Phasellus mattis diam in tellus rhoncus, ac suscipit turpis lobortis. Etiam et lobortis diam. Fusce odio risus, laoreet in feugiat vel, consequat nec purus. Donec vel commodo erat. Proin sit amet diam blandit, cursus velit in, commodo libero. Maecenas faucibus est eget lectus imperdiet fermentum. Proin in est aliquam, elementum dolor non, blandit leo. Cras eleifend placerat orci in maximus. Suspendisse tempus diam ligula, ac congue dolor lacinia a.</p>
-                                  <p>Praesent porttitor tortor quis enim aliquam pellentesque. Sed et erat nunc. Sed ac placerat diam. Etiam interdum ex nec velit faucibus, sit amet suscipit metus efficitur. Aliquam nisi est, iaculis sed cursus vitae, ornare dapibus purus. Integer quis dolor at felis sollicitudin egestas vel in metus. Integer sed ante tristique, laoreet arcu id, bibendum nulla. Pellentesque mattis, mi a mollis accumsan, purus nisl hendrerit dolor, in pharetra nibh lorem a sem. Praesent nisi turpis, condimentum mattis nulla ut, pellentesque fringilla arcu. Praesent scelerisque, nisl quis pulvinar mattis, augue augue vulputate mi, non mattis diam lacus id ipsum. Sed sollicitudin metus et felis vehicula, ac lobortis tortor scelerisque. In luctus ex consequat tellus sollicitudin convallis.</p>
-                                </ModalContent>
-                                <ModalFooter>
-                                  <Flex justifyContent="flex-end">
-                                    <Button ref={focusRef} color="primary" onClick={() => createModal(
-                                      <Modal id="demo-small-modal" ariaLabel="Hello world" size="small">
-                                        <ModalHeader modalId="demo-small-modal">
-                                          <IconText
-                                            icon={<BlobbrIcon scale="medium" />}
-                                            text={<Rhythm ml={2}><Typography size="l">Hello world</Typography></Rhythm>}
-                                            inline
-                                          />
-                                        </ModalHeader>
-                                        <ModalContent style={{paddingTop: 0}} scrollable>
-                                          <p>This is a small modal with a custom header and no top margin on the content. This does not use a render function so the first element automatically gets focus.</p>
-                                          <p>From here you can <Button tabIndex={1} weight="text" color="primary" onClick={() => clearModals()}>clear all modals</Button> or clear one at a time with the close button.</p>
-                                          <p><Button weight="text" color="primary" onClick={() => jumpModal('demo-large-modal')}>Jump to the large modal</Button></p>
-                                          <p><Button weight="text" color="primary" onClick={() => jumpModal('demo-medium-modal')}>Jump to the medium modal</Button></p>
-                                        </ModalContent>
-                                      </Modal>,
-                                      { onClose: () => console.log('closed 3') }
-                                    )}>
-                                      Open another modal
-                                    </Button>
-                                  </Flex>
-                                </ModalFooter>
-                              </React.Fragment>
-                            )}
-                          </Modal>,
-                          { onClose: () => console.log('closed 2') }
-                        )}>
-                          Open another modal
-                        </Button>
-                      </Flex>
-                    </ModalFooter>
-                  </React.Fragment>
-                )}
-              </Modal>,
-              { onClose: () => console.log('closed 1') }
-            )}>
+            <Button
+              color="primary"
+              onClick={event =>
+                event.persist() ||
+                createModal(
+                  <Modal id="demo-large-modal" focusable size="large" style={{ height: '400px' }}>
+                    {({ id, focusRef }) => (
+                      <React.Fragment>
+                        <ModalHeader modalId={id} title="A large modal" />
+                        <ModalBody scrollable>
+                          <p>
+                            This is a large modal with scrollable content. This uses a render function to focus the
+                            submit button.
+                          </p>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nulla neque, tempus vitae
+                            mollis non, suscipit eget urna. Phasellus viverra sodales nibh, et tristique dui lacinia ac.
+                            In a erat elit. Morbi consequat quam non consequat ullamcorper. Suspendisse vel elementum
+                            lacus, id bibendum libero. Etiam sed mauris bibendum, tincidunt neque quis, fringilla
+                            lectus. Curabitur finibus enim a dolor suscipit, quis tristique ante facilisis. Sed arcu
+                            eros, sodales vel lectus aliquet, mollis porttitor dolor. Proin pharetra, ante eget
+                            malesuada consequat, sapien neque mattis elit, id mollis arcu enim id leo. Vivamus posuere
+                            porta dapibus. Aenean ultrices mollis eros id feugiat.
+                          </p>
+                          <p>
+                            Duis non magna et erat vestibulum posuere. In eu libero ultrices, dictum massa non, congue
+                            odio. Ut finibus facilisis lacinia. Nunc imperdiet pellentesque varius. Suspendisse interdum
+                            semper eros, id condimentum turpis dignissim vel. Cras mattis diam id lacinia mollis.
+                            Maecenas id placerat augue. Phasellus mattis diam in tellus rhoncus, ac suscipit turpis
+                            lobortis. Etiam et lobortis diam. Fusce odio risus, laoreet in feugiat vel, consequat nec
+                            purus. Donec vel commodo erat. Proin sit amet diam blandit, cursus velit in, commodo libero.
+                            Maecenas faucibus est eget lectus imperdiet fermentum. Proin in est aliquam, elementum dolor
+                            non, blandit leo. Cras eleifend placerat orci in maximus. Suspendisse tempus diam ligula, ac
+                            congue dolor lacinia a.
+                          </p>
+                          <p>
+                            Praesent porttitor tortor quis enim aliquam pellentesque. Sed et erat nunc. Sed ac placerat
+                            diam. Etiam interdum ex nec velit faucibus, sit amet suscipit metus efficitur. Aliquam nisi
+                            est, iaculis sed cursus vitae, ornare dapibus purus. Integer quis dolor at felis
+                            sollicitudin egestas vel in metus. Integer sed ante tristique, laoreet arcu id, bibendum
+                            nulla. Pellentesque mattis, mi a mollis accumsan, purus nisl hendrerit dolor, in pharetra
+                            nibh lorem a sem. Praesent nisi turpis, condimentum mattis nulla ut, pellentesque fringilla
+                            arcu. Praesent scelerisque, nisl quis pulvinar mattis, augue augue vulputate mi, non mattis
+                            diam lacus id ipsum. Sed sollicitudin metus et felis vehicula, ac lobortis tortor
+                            scelerisque. In luctus ex consequat tellus sollicitudin convallis.
+                          </p>
+                        </ModalBody>
+                        <ModalFooter bordered>
+                          <Flex justifyContent="flex-end">
+                            <Button
+                              ref={focusRef}
+                              color="primary"
+                              onClick={() =>
+                                createModal(
+                                  <Modal id="demo-medium-modal" focusable size="medium">
+                                    {({ id, focusRef }) => (
+                                      <React.Fragment>
+                                        <ModalHeader modalId={id} title="A medium modal" />
+                                        <ModalBody>
+                                          <p>
+                                            This is a medium modal with inline content. This also uses a render
+                                            function.
+                                          </p>
+                                          <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nulla
+                                            neque, tempus vitae mollis non, suscipit eget urna. Phasellus viverra
+                                            sodales nibh, et tristique dui lacinia ac. In a erat elit. Morbi consequat
+                                            quam non consequat ullamcorper. Suspendisse vel elementum lacus, id bibendum
+                                            libero. Etiam sed mauris bibendum, tincidunt neque quis, fringilla lectus.
+                                            Curabitur finibus enim a dolor suscipit, quis tristique ante facilisis. Sed
+                                            arcu eros, sodales vel lectus aliquet, mollis porttitor dolor. Proin
+                                            pharetra, ante eget malesuada consequat, sapien neque mattis elit, id mollis
+                                            arcu enim id leo. Vivamus posuere porta dapibus. Aenean ultrices mollis eros
+                                            id feugiat.
+                                          </p>
+                                          <p>
+                                            Duis non magna et erat vestibulum posuere. In eu libero ultrices, dictum
+                                            massa non, congue odio. Ut finibus facilisis lacinia. Nunc imperdiet
+                                            pellentesque varius. Suspendisse interdum semper eros, id condimentum turpis
+                                            dignissim vel. Cras mattis diam id lacinia mollis. Maecenas id placerat
+                                            augue. Phasellus mattis diam in tellus rhoncus, ac suscipit turpis lobortis.
+                                            Etiam et lobortis diam. Fusce odio risus, laoreet in feugiat vel, consequat
+                                            nec purus. Donec vel commodo erat. Proin sit amet diam blandit, cursus velit
+                                            in, commodo libero. Maecenas faucibus est eget lectus imperdiet fermentum.
+                                            Proin in est aliquam, elementum dolor non, blandit leo. Cras eleifend
+                                            placerat orci in maximus. Suspendisse tempus diam ligula, ac congue dolor
+                                            lacinia a.
+                                          </p>
+                                          <p>
+                                            Praesent porttitor tortor quis enim aliquam pellentesque. Sed et erat nunc.
+                                            Sed ac placerat diam. Etiam interdum ex nec velit faucibus, sit amet
+                                            suscipit metus efficitur. Aliquam nisi est, iaculis sed cursus vitae, ornare
+                                            dapibus purus. Integer quis dolor at felis sollicitudin egestas vel in
+                                            metus. Integer sed ante tristique, laoreet arcu id, bibendum nulla.
+                                            Pellentesque mattis, mi a mollis accumsan, purus nisl hendrerit dolor, in
+                                            pharetra nibh lorem a sem. Praesent nisi turpis, condimentum mattis nulla
+                                            ut, pellentesque fringilla arcu. Praesent scelerisque, nisl quis pulvinar
+                                            mattis, augue augue vulputate mi, non mattis diam lacus id ipsum. Sed
+                                            sollicitudin metus et felis vehicula, ac lobortis tortor scelerisque. In
+                                            luctus ex consequat tellus sollicitudin convallis.
+                                          </p>
+                                        </ModalBody>
+                                        <ModalFooter>
+                                          <Flex justifyContent="flex-end">
+                                            <Button
+                                              ref={focusRef}
+                                              color="primary"
+                                              onClick={() =>
+                                                createModal(
+                                                  <Modal id="demo-small-modal" ariaLabel="Hello world" size="small">
+                                                    <ModalHeader modalId="demo-small-modal">
+                                                      <IconText
+                                                        icon={<BlobbrIcon scale="medium" />}
+                                                        text={
+                                                          <Rhythm ml={2}>
+                                                            <Typography size="l">Hello world</Typography>
+                                                          </Rhythm>
+                                                        }
+                                                        inline
+                                                      />
+                                                    </ModalHeader>
+                                                    <ModalBody style={{ paddingTop: 0 }} scrollable>
+                                                      <p>
+                                                        This is a small modal with a custom header and no top margin on
+                                                        the content. This does not use a render function so the first
+                                                        element automatically gets focus.
+                                                      </p>
+                                                      <p>
+                                                        From here you can{' '}
+                                                        <Button
+                                                          weight="text"
+                                                          color="primary"
+                                                          onClick={() => clearModals()}
+                                                        >
+                                                          clear all modals
+                                                        </Button>{' '}
+                                                        or clear one at a time with the close button.
+                                                      </p>
+                                                      <Rhythm my={3}>
+                                                        <ButtonGroup align="left" orientation="vertical" spacing="cozy">
+                                                          <Button
+                                                            key="jump-large-modal"
+                                                            weight="text"
+                                                            color="primary"
+                                                            onClick={() => jumpModal('demo-large-modal')}
+                                                          >
+                                                            Jump to the large modal
+                                                          </Button>
+                                                          <Button
+                                                            key="jump-medium-modal"
+                                                            weight="text"
+                                                            color="primary"
+                                                            onClick={() => jumpModal('demo-medium-modal')}
+                                                          >
+                                                            Jump to the medium modal
+                                                          </Button>
+                                                        </ButtonGroup>
+                                                      </Rhythm>
+                                                    </ModalBody>
+                                                  </Modal>,
+                                                  { onClose: () => console.log('closed 3') },
+                                                )
+                                              }
+                                            >
+                                              Open another modal
+                                            </Button>
+                                          </Flex>
+                                        </ModalFooter>
+                                      </React.Fragment>
+                                    )}
+                                  </Modal>,
+                                  { onClose: () => console.log('closed 2') },
+                                )
+                              }
+                            >
+                              Open another modal
+                            </Button>
+                          </Flex>
+                        </ModalFooter>
+                      </React.Fragment>
+                    )}
+                  </Modal>,
+                  { onClose: () => console.log('closed 1') },
+                )
+              }
+            >
               Open a modal
             </Button>
-            <Button color="danger" onClick={event => event.persist() || createModal(
-              <Modal id="permanent-modal" permanent size="small">
-                {({ id }) => (
-                  <React.Fragment>
-                    <ModalHeader align="left" modalId={id} title="A permanent modal" />
-                    <ModalContent>
-                      <div>
-                        This is a permanent modal that uses a render function to receive its parent's ID.
-                        It also has a left-aligned header. Note that it does not have a close button.
-                        However you can still <Button weight="text" color="primary" onClick={() => clearModals()}>clear all modals</Button>.
-                      </div>
-                      <Rhythm my={3}>
-                        <Button weight="text" color="danger" onClick={() => popModal(true)}>Forceably remove</Button>
-                      </Rhythm>
-                    </ModalContent>
-                  </React.Fragment>
-                )}
-              </Modal>,
-              { onClose: () => console.log('closed') }
-            )}>
+            <Button
+              color="danger"
+              onClick={event =>
+                event.persist() ||
+                createModal(
+                  <Modal id="permanent-modal" permanent size="small">
+                    {({ id }) => (
+                      <React.Fragment>
+                        <ModalHeader align="left" modalId={id} title="A permanent modal" />
+                        <ModalBody>
+                          <div>
+                            This is a permanent modal that uses a render function to receive its parent's ID. It also
+                            has a left-aligned header. Note that it does not have a close button. However you can still{' '}
+                            <Button weight="text" color="primary" onClick={() => clearModals()}>
+                              clear all modals
+                            </Button>
+                            .
+                          </div>
+                          <Rhythm my={3}>
+                            <Button weight="text" color="danger" onClick={() => popModal(true)}>
+                              Forceably remove
+                            </Button>
+                          </Rhythm>
+                        </ModalBody>
+                      </React.Fragment>
+                    )}
+                  </Modal>,
+                  { onClose: () => console.log('closed') },
+                )
+              }
+            >
               Open an uncloseable modal
             </Button>
             <p>{hasModal('demo-large-modal') ? 'The large modal is open.' : 'The large modal is closed.'}</p>

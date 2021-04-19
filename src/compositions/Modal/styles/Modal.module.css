@@ -13,9 +13,12 @@
   margin: 8px;
   max-height: calc(100vh - 20px);
   max-width: calc(100vw - 20px);
-  overflow: auto;
   pointer-events: all;
   position: relative;
+
+  &:not(.modal--allowOverflow) {
+    overflow: auto;
+  }
 
   &.modal--light {
     background-color: $light-secondary-background-color;
@@ -48,14 +51,18 @@
 }
 
 .modal--small {
-  width: 360px;
+  width: 440px;
 }
 
 .modal--medium {
-  width: 600px;
+  width: 660px;
 }
 
 .modal--large {
+  width: 880px;
+}
+
+.modal--xlarge {
   width: 90%;
 }
 
@@ -77,21 +84,30 @@
   padding: 30px 36px 0;
 }
 
-.modalContent {
+.modalBody {
   display: flex;
   flex-direction: column;
   padding: 0;
+
+  &:not(.modalBody--flush) {
+    padding: 16px 36px;
+  }
 }
 
-.modalContent--scrollable {
+/**
+ * Use a content div so the flexbox on the modal
+ * body doesn't interfere with the content.
+ */
+.modalBody__content {
+  position: relative;
+  flex: 1;
+}
+
+.modalBody--scrollable {
   @mixin addScrollbar var(--modal-scrollbar-thumb-color);
 
   flex: auto;
   overflow: auto;
-}
-
-.modalContent__interior {
-  padding: 16px 36px;
 }
 
 .modalFooter {

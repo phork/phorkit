@@ -1,4 +1,4 @@
-import React from 'react';
+import { createContext } from 'react';
 import { ModalItemType } from './types';
 
 export interface ModalContextValue {
@@ -16,7 +16,7 @@ export interface ModalContextValue {
   hasModal: (id: string) => boolean;
 }
 
-export const ModalContext = React.createContext<ModalContextValue>({
+export const ModalContext = createContext<ModalContextValue>({
   modal: undefined,
   modals: new Map(),
   clearModals: () => {},
