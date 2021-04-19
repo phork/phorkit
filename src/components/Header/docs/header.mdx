@@ -34,22 +34,11 @@ import { Header, StyledHeader } from '../index';
   </ThemeWrapper>
 </Playground>
 
-## Pseudo-bordered header
+## Quiet bordered header
 
 <Playground>
   <ThemeWrapper>
-    <Header bordered="pseudo">
-      <div>Hello world</div>
-      <div>Hello world</div>
-    </Header>
-  </ThemeWrapper>
-</Playground>
-
-## Raised header
-
-<Playground>
-  <ThemeWrapper>
-    <Header raised>
+    <Header bordered volume="quiet">
       <div>Hello world</div>
       <div>Hello world</div>
     </Header>
@@ -78,6 +67,17 @@ import { Header, StyledHeader } from '../index';
   </ThemeWrapper>
 </Playground>
 
+## Quiet bordered secondary header
+
+<Playground>
+  <ThemeWrapper>
+    <Header bordered variant="secondary" volume="quiet">
+      <div>Hello world</div>
+      <div>Hello world</div>
+    </Header>
+  </ThemeWrapper>
+</Playground>
+
 ## Bordered transparent header
 
 <Playground>
@@ -89,7 +89,29 @@ import { Header, StyledHeader } from '../index';
   </ThemeWrapper>
 </Playground>
 
+## Quiet bordered transparent header
+
+<Playground>
+  <ThemeWrapper>
+    <Header bordered variant="transparent" volume="quiet">
+      <div>Hello world</div>
+      <div>Hello world</div>
+    </Header>
+  </ThemeWrapper>
+</Playground>
+
 ## Variations
+
+## Pseudo-bordered header
+
+<Playground>
+  <ThemeWrapper>
+    <Header bordered="pseudo">
+      <div>Hello world</div>
+      <div>Hello world</div>
+    </Header>
+  </ThemeWrapper>
+</Playground>
 
 ### Contrast header
 
@@ -105,7 +127,7 @@ import { Header, StyledHeader } from '../index';
 ### Styled header
 
 <Playground>
-  <StyledHeader bordered backgroundColor="#fc0" borderColor="#393a61" textColor="#fff" height={50}>
+  <StyledHeader bordered backgroundColor="#556270" borderColor="#393a61" textColor="#fff" height={50}>
     <div>Hello world</div>
     <div>Hello world</div>
   </StyledHeader>

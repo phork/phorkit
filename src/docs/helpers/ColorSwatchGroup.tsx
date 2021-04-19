@@ -4,6 +4,7 @@ import { textToClipboard } from 'utils/clipboard';
 import { ClipboardIcon } from 'icons/internal/ClipboardIcon';
 import { Flex, FlexProps } from 'components/Flex';
 import { Rhythm } from 'components/Rhythm';
+import { Typography } from 'components/Typography';
 import { StyledIconToast, ToastContext } from 'compositions/Toast';
 
 const SwatchBlock = styled.div<{
@@ -69,7 +70,14 @@ export function ColorSwatchGroup({
           levelInverseColor={contrast}
           variant="colored"
         >
-          The color ID <strong>{id}</strong> has been copied to your clipboard.
+          <div>
+            The color ID <strong>{id}</strong> has been copied to your clipboard.
+          </div>
+          <Rhythm mt={2}>
+            <Typography as="div" weight="bold" volume="quieter">
+              {color}
+            </Typography>
+          </Rhythm>
         </StyledIconToast>,
       );
     } catch (e) {

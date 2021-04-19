@@ -83,12 +83,6 @@
   }
 }
 
-.footer--raised {
-  @mixin themed .footer {
-    box-shadow: $theme-box-shadow-0;
-  }
-}
-
 .footer--full {
   height: 100%;
   width: 100%;

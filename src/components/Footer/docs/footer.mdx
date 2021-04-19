@@ -34,22 +34,11 @@ import { Footer, StyledFooter } from '../index';
   </ThemeWrapper>
 </Playground>
 
-## Pseudo-bordered footer
+## Quiet bordered footer
 
 <Playground>
   <ThemeWrapper>
-    <Footer bordered="pseudo">
-      <div>Hello world</div>
-      <div>Hello world</div>
-    </Footer>
-  </ThemeWrapper>
-</Playground>
-
-## Raised footer
-
-<Playground>
-  <ThemeWrapper>
-    <Footer raised>
+    <Footer bordered volume="quiet">
       <div>Hello world</div>
       <div>Hello world</div>
     </Footer>
@@ -78,6 +67,17 @@ import { Footer, StyledFooter } from '../index';
   </ThemeWrapper>
 </Playground>
 
+## Quiet bordered secondary footer
+
+<Playground>
+  <ThemeWrapper>
+    <Footer bordered variant="secondary" volume="quiet">
+      <div>Hello world</div>
+      <div>Hello world</div>
+    </Footer>
+  </ThemeWrapper>
+</Playground>
+
 ## Bordered transparent footer
 
 <Playground>
@@ -89,7 +89,29 @@ import { Footer, StyledFooter } from '../index';
   </ThemeWrapper>
 </Playground>
 
+## Quiet bordered transparent footer
+
+<Playground>
+  <ThemeWrapper>
+    <Footer bordered variant="transparent" volume="quiet">
+      <div>Hello world</div>
+      <div>Hello world</div>
+    </Footer>
+  </ThemeWrapper>
+</Playground>
+
 ## Variations
+
+## Pseudo-bordered footer
+
+<Playground>
+  <ThemeWrapper>
+    <Footer bordered="pseudo">
+      <div>Hello world</div>
+      <div>Hello world</div>
+    </Footer>
+  </ThemeWrapper>
+</Playground>
 
 ### Contrast footer
 
@@ -105,7 +127,7 @@ import { Footer, StyledFooter } from '../index';
 ### Styled footer
 
 <Playground>
-  <StyledFooter bordered backgroundColor="#fc0" borderColor="#393a61" textColor="#fff" height={50}>
+  <StyledFooter bordered backgroundColor="#556270" borderColor="#393a61" textColor="#fff" height={50}>
     <div>Hello world</div>
     <div>Hello world</div>
   </StyledFooter>

@@ -83,12 +83,6 @@
   }
 }
 
-.header--raised {
-  @mixin themed .header {
-    box-shadow: $theme-box-shadow-0;
-  }
-}
-
 .header--full {
   height: 100%;
   width: 100%;
