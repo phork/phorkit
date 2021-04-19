@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom/extend-expect';
 import { fireEvent, render } from '@testing-library/react';
-import { CheckboxGroup, NotifiedCheckboxGroup } from 'lib';
 import * as React from 'react';
+import { CheckboxGroup, NotifiedCheckboxGroup } from 'lib';
 
 const items = [
   {

@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { CardTitle } from 'lib';
 import * as React from 'react';
+import { CardTitle } from 'lib';
 
 describe('<CardTitle />', () => {
   it('should render a basic card title', () => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import { createContext } from 'react';
 import { ToastItemType } from './types';
 
 export interface ToastContextValue {
@@ -9,7 +9,7 @@ export interface ToastContextValue {
   clearNotifications: () => void;
 }
 
-export const ToastContext = React.createContext<ToastContextValue>({
+export const ToastContext = createContext<ToastContextValue>({
   notifications: new Map(),
   createNotification: (/* toast */) => undefined,
   pinNotification: (/* id */) => {},

@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/dom';
 import { render } from '@testing-library/react';
-import { Portal } from 'lib';
 import * as React from 'react';
+import { Portal } from 'lib';
 
 describe('<Portal />', () => {
   it('should render a basic portal', () => {

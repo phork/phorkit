@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { CSSProperties } from 'react';
-import { AsType, HorizontalPosition, MergeElementProps, Theme, Volume } from '../../types';
+import { AsReactType, HorizontalPosition, MergeElementPropsWithoutRef, Theme, Volume } from '../../types';
 import { useThemeId } from '../../hooks/useThemeId';
 import styles from './styles/Typography.module.css';
 
@@ -43,8 +43,8 @@ export interface LocalTypographyProps {
   volume?: Volume;
 }
 
-export type TypographyProps<T extends keyof JSX.IntrinsicElements = 'span'> = AsType<T> &
-  MergeElementProps<T, LocalTypographyProps>;
+export type TypographyProps<T extends keyof JSX.IntrinsicElements = 'span'> = AsReactType<T> &
+  MergeElementPropsWithoutRef<T, LocalTypographyProps>;
 
 export function Typography<T extends keyof JSX.IntrinsicElements = 'span'>({
   align,

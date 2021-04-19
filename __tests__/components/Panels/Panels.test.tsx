@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { PanelContainer, MainPanel, SidePanel, StackPanel } from 'lib';
 import * as React from 'react';
+import { PanelContainer, MainPanel, SidePanel, StackPanel } from 'lib';
 
 describe('<Panels />', () => {
   it('should render a set of panels', () => {

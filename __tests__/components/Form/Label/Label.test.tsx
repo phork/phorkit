@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
+import * as React from 'react';
 import { AsTypeA } from '__mocks__/AsType.mock';
 import { Label } from 'lib';
-import * as React from 'react';
 
 describe('<Label />', () => {
   it('should render a basic label', () => {

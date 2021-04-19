@@ -1,4 +1,4 @@
-import React from 'react';
+import { createContext } from 'react';
 
 export type FocusType = 'keyboard' | 'mouse' | 'touch';
 
@@ -8,7 +8,7 @@ export interface AccessibilityContextValue {
   setFocusType: (focusType: FocusType) => void;
 }
 
-export const AccessibilityContext = React.createContext<AccessibilityContextValue>({
+export const AccessibilityContext = createContext<AccessibilityContextValue>({
   accessible: undefined,
   focusType: undefined,
   setFocusType: (/* focusType */) => {},

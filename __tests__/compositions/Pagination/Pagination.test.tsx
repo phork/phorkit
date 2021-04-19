@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { Pagination } from 'lib';
 import * as React from 'react';
+import { Pagination } from 'lib';
 
 describe('<Pagination />', () => {
   it('should render a basic pagination', () => {

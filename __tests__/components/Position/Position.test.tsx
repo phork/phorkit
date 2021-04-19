@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { Position } from 'lib';
 import * as React from 'react';
+import { Position } from 'lib';
 
 describe('<Position />', () => {
   it('should render a basic position container', () => {

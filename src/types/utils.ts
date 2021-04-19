@@ -22,6 +22,12 @@ export type ExpandRecursively<T> = T extends object
     : never
   : T;
 
-export type AsType<T extends React.ElementType> = {
+// type can be div, span, etc.
+export type AsType<T extends keyof JSX.IntrinsicElements> = {
+  as?: T;
+};
+
+// type can be div, span, etc. or a react element
+export type AsReactType<T extends React.ElementType> = {
   as?: T | ((props: any) => React.ReactElement<any, T>);
 };

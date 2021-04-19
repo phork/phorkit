@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { Navigation } from 'lib';
 import * as React from 'react';
+import { Navigation } from 'lib';
 
 describe('<Navigation />', () => {
   it('should render a basic navigation', () => {

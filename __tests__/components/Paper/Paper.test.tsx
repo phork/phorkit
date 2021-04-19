@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { Paper } from 'lib';
 import * as React from 'react';
+import { Paper } from 'lib';
 
 describe('<Paper />', () => {
   it('should render a basic paper', () => {

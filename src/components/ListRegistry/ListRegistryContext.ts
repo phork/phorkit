@@ -1,4 +1,4 @@
-import React from 'react';
+import { createContext } from 'react';
 import { ListRegistryItemType } from './types';
 
 export interface ListRegistryContextValue {
@@ -7,7 +7,7 @@ export interface ListRegistryContextValue {
   getItem: (id: string) => ListRegistryItemType | undefined;
 }
 
-export const ListRegistryContext = React.createContext<ListRegistryContextValue>({
+export const ListRegistryContext = createContext<ListRegistryContextValue>({
   registerItem: (/* id, ref */) => {},
   unregisterItem: (/* id */) => {},
   getItem: (/* id */) => undefined,

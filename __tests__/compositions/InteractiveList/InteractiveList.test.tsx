@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { InteractiveList } from 'lib';
 import * as React from 'react';
+import { InteractiveList } from 'lib';
 
 const options = [
   { id: 'red', label: 'Red' },

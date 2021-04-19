@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { Divider } from 'lib';
 import * as React from 'react';
+import { Divider } from 'lib';
 
 describe('<Divider />', () => {
   it('should render a basic avatar', () => {

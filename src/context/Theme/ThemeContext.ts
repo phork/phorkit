@@ -1,4 +1,4 @@
-import React from 'react';
+import { createContext } from 'react';
 import { Theme } from '../../types';
 
 export interface ThemeContextValue {
@@ -6,7 +6,7 @@ export interface ThemeContextValue {
   toggleThemeId: (forceThemeId: Theme) => Theme | undefined;
 }
 
-export const ThemeContext = React.createContext<ThemeContextValue>({
+export const ThemeContext = createContext<ThemeContextValue>({
   themeId: undefined,
   toggleThemeId: (/* forceThemeId */) => undefined,
 });

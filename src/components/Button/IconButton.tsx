@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { AsType, MergeElementProps } from '../../types';
+import { AsReactType, MergeElementProps } from '../../types';
 import { renderFromPropWithFallback, RenderFromPropElement } from '../../utils/renderFromProp';
 import { Button, ButtonElementType, ButtonProps, LocalButtonProps } from './Button';
 import styles from './styles/Button.module.css';
@@ -13,7 +13,7 @@ export interface LocalIconButtonProps extends Omit<LocalButtonProps, 'children' 
   shape?: IconButtonShape;
 }
 
-export type IconButtonProps<T extends ButtonElementType = 'button'> = AsType<T> &
+export type IconButtonProps<T extends ButtonElementType = 'button'> = AsReactType<T> &
   MergeElementProps<T, LocalIconButtonProps>;
 
 const shapeMap = {

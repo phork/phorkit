@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { PermanentSidePanel } from 'lib';
 import * as React from 'react';
+import { PermanentSidePanel } from 'lib';
 
 describe('<PermanentSidePanel />', () => {
   it('should render a permanent side panel', () => {

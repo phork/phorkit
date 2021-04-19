@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { AsType, MergeElementProps } from '../../types';
+import { AsReactType, MergeElementProps } from '../../types';
 import { renderFromProp, renderFromPropWithFallback, RenderFromPropElement } from '../../utils/renderFromProp';
 import { Button, ButtonElementType, LocalButtonProps, ButtonProps } from './Button';
 import styles from './styles/Button.module.css';
@@ -13,7 +13,7 @@ export interface LocalIconTextButtonProps extends Omit<LocalButtonProps, 'childr
   reverse?: boolean;
 }
 
-export type IconTextButtonProps<T extends ButtonElementType = 'button'> = AsType<T> &
+export type IconTextButtonProps<T extends ButtonElementType = 'button'> = AsReactType<T> &
   MergeElementProps<T, LocalIconTextButtonProps>;
 
 export function IconTextButtonBase<T extends IconTextButtonElementType = 'button'>(

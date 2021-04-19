@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
-import { Checkbox } from 'lib';
 import * as React from 'react';
+import { Checkbox } from 'lib';
 
 describe('<Checkbox />', () => {
   it('should render a labeled checkbox', () => {

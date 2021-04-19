@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { InlineDropdown } from 'lib';
 import * as React from 'react';
+import { InlineDropdown } from 'lib';
 
 export const options = [
   { id: 'red', value: 'fancy-red', label: 'Red' },

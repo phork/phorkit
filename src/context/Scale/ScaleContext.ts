@@ -1,4 +1,4 @@
-import React from 'react';
+import { createContext } from 'react';
 import { IconScale } from '../../types';
 
 export interface ScaleContextValue {
@@ -6,7 +6,7 @@ export interface ScaleContextValue {
   size?: number;
 }
 
-export const ScaleContext = React.createContext<ScaleContextValue>({
+export const ScaleContext = createContext<ScaleContextValue>({
   scale: undefined,
   size: undefined,
 });

@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { Loader } from 'lib';
 import * as React from 'react';
+import { Loader } from 'lib';
 
 describe('<Loader />', () => {
   it('should render a basic loader', () => {

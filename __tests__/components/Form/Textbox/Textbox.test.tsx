@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
-import { Textbox, NotifiedTextbox } from 'lib';
 import * as React from 'react';
+import { Textbox, NotifiedTextbox } from 'lib';
 
 describe('<Textbox />', () => {
   it('should render a labeled textbox', () => {

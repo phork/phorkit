@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { CardBody } from 'lib';
 import * as React from 'react';
+import { CardBody } from 'lib';
 
 describe('<CardBody />', () => {
   it('should render a basic card body', () => {

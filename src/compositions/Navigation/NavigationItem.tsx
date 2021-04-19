@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useRef } from 'react';
-import { MergeElementProps, SequentialVariant } from '../../types';
+import { MergeElementPropsWithoutRef, SequentialVariant } from '../../types';
 import { useComponentId } from '../../hooks/useComponentId';
 import { useInteractiveGroupItem } from '../../components/InteractiveGroup/useInteractiveGroupItem';
 import { useListRegistryItem } from '../../components/ListRegistry/useListRegistryItem';
@@ -25,7 +25,7 @@ export interface LocalNavigationItemProps extends NavigationItemStateProps {
   vertical?: boolean;
 }
 
-export type NavigationItemProps = MergeElementProps<'div', LocalNavigationItemProps>;
+export type NavigationItemProps = MergeElementPropsWithoutRef<'div', LocalNavigationItemProps>;
 
 export function NavigationItem({
   allowRightClickLinks,

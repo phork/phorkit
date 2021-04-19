@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
-import { Select, NotifiedSelect } from 'lib';
 import * as React from 'react';
+import { Select, NotifiedSelect } from 'lib';
 
 const options = [
   { value: 'red', label: 'Red' },

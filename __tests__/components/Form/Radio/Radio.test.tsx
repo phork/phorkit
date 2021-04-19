@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
-import { Radio } from 'lib';
 import * as React from 'react';
+import { Radio } from 'lib';
 
 describe('<Radio />', () => {
   it('should render a labeled radio', () => {

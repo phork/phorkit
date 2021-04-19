@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { Rhythm } from 'lib';
 import * as React from 'react';
+import { Rhythm } from 'lib';
 
 describe('<Rhythm />', () => {
   it('should render a basic rhythm container', () => {

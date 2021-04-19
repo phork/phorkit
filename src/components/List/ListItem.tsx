@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { AsType, MergeElementProps, ThemeProps } from '../../types';
+import { AsReactType, MergeElementProps, ThemeProps } from '../../types';
 import { ListItemElementType } from './types';
 import styles from './styles/List.module.css';
 
@@ -20,7 +20,8 @@ export interface LocalListItemProps extends ThemeProps {
   unstyled?: boolean;
 }
 
-export type ListItemProps<T extends ListItemElementType = 'li'> = AsType<T> & MergeElementProps<T, LocalListItemProps>;
+export type ListItemProps<T extends ListItemElementType = 'li'> = AsReactType<T> &
+  MergeElementProps<T, LocalListItemProps>;
 
 function ListItemBase<T extends ListItemElementType = 'li'>(
   {

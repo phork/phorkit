@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { StackPanel } from 'lib';
 import * as React from 'react';
+import { StackPanel } from 'lib';
 
 describe('<StackPanel />', () => {
   it('should render a stack panel', () => {

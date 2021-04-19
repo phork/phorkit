@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
-import { Textarea, NotifiedTextarea } from 'lib';
 import * as React from 'react';
+import { Textarea, NotifiedTextarea } from 'lib';
 
 describe('<Textarea />', () => {
   it('should render a labeled textarea', () => {

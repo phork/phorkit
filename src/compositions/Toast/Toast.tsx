@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useLayoutEffect, useState } from 'react';
-import { MergeElementProps, ThemeProps } from '../../types';
+import { MergeElementPropsWithoutRef, ThemeProps } from '../../types';
 import { ToastNotificationLevel } from './types';
 import { useSafeTimeout } from '../../hooks/useSafeTimeout';
 import { useThemeId } from '../../hooks/useThemeId';
@@ -41,7 +41,7 @@ export interface LocalToastProps extends ThemeProps {
   variant?: 'colored';
 }
 
-export type ToastProps = MergeElementProps<'div', LocalToastProps>;
+export type ToastProps = MergeElementPropsWithoutRef<'div', LocalToastProps>;
 
 export function Toast({
   children,

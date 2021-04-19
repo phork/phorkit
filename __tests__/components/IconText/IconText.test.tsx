@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { IconText, TimesIcon } from 'lib';
 import * as React from 'react';
+import { IconText, TimesIcon } from 'lib';
 
 describe('<IconText />', () => {
   it('should render a basic icon text', () => {

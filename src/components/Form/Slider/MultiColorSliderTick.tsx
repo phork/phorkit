@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { MergeElementProps, ThemeProps } from '../../../types';
+import { MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
 import { useThemeId } from '../../../hooks/useThemeId';
 import styles from './styles/MultiColorSliderTick.module.css';
 
@@ -13,7 +13,7 @@ export interface LocalMultiColorSliderTickProps extends ThemeProps {
   variant?: 'divider';
 }
 
-export type MultiColorSliderTickProps = MergeElementProps<'div', LocalMultiColorSliderTickProps>;
+export type MultiColorSliderTickProps = MergeElementPropsWithoutRef<'div', LocalMultiColorSliderTickProps>;
 
 export function MultiColorSliderTick({
   active,

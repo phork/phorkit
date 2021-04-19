@@ -1,4 +1,4 @@
-import React from 'react';
+import { createContext } from 'react';
 import { UseInteractiveGroupResponse } from './useInteractiveGroup';
 
 export type InteractiveGroupContextValue<
@@ -6,7 +6,7 @@ export type InteractiveGroupContextValue<
   I extends HTMLElement = HTMLElement
 > = Omit<UseInteractiveGroupResponse<E, I>, 'ref'>;
 
-export const InteractiveGroupContext = React.createContext<InteractiveGroupContextValue<any, any>>({
+export const InteractiveGroupContext = createContext<InteractiveGroupContextValue<any, any>>({
   focusedIndex: undefined,
   handleItemClick: (/* event, id */) => {},
   isSelected: (/* id */) => false,

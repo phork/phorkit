@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { AsType, MergeElementProps, ThemeProps } from '../../types';
+import { AsReactType, MergeElementProps, ThemeProps } from '../../types';
 import { ListItemElementMap, ListElementType } from './types';
 import { useAccessibility } from '../../context/Accessibility';
 import { useThemeId } from '../../hooks/useThemeId';
@@ -32,7 +32,7 @@ export interface LocalListProps extends ThemeProps {
   variant?: 'primary' | 'minimal';
 }
 
-export type ListProps<T extends ListElementType = 'ul'> = AsType<T> & MergeElementProps<T, LocalListProps>;
+export type ListProps<T extends ListElementType = 'ul'> = AsReactType<T> & MergeElementProps<T, LocalListProps>;
 
 function ListBase<T extends ListElementType = 'ul'>(
   {

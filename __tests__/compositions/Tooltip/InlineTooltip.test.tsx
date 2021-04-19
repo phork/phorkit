@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { InlineTooltip, ForwardProps, PopoverContentRenderChildrenProps, TimesIcon } from 'lib';
 import * as React from 'react';
+import { InlineTooltip, ForwardProps, PopoverContentRenderChildrenProps, TimesIcon } from 'lib';
 
 describe('<InlineTooltip />', () => {
   it('should render a basic tooltip', () => {

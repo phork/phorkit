@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { Flex } from 'lib';
 import * as React from 'react';
+import { Flex } from 'lib';
 
 describe('<Flex />', () => {
   it('should render a basic flex container', () => {

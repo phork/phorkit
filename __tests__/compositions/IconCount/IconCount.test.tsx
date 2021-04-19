@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { IconCount, TimesIcon } from 'lib';
 import * as React from 'react';
+import { IconCount, TimesIcon } from 'lib';
 
 describe('<IconCount />', () => {
   it('should render a basic icon + count', () => {

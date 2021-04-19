@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { Badge } from 'lib';
 import * as React from 'react';
+import { Badge } from 'lib';
 
 describe('<Badge />', () => {
   it('should render a basic badge', () => {

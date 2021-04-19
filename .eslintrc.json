@@ -88,6 +88,7 @@
         "import/no-absolute-path": 2,
         "import/no-named-default": 0,
         "import/no-named-as-default": 0,
+        "import/no-named-as-default-member": 0,
         "import/prefer-default-export": 0,
         "import/order": [
           "error",
@@ -108,6 +109,11 @@
         "react/jsx-props-no-spreading": 0,
         "react/jsx-no-undef": "error",
         "jsx-a11y/anchor-is-valid": ["error", { "components": ["Link"], "specialLink": ["onClick", "to"] }]
+      },
+      "settings": {
+        "import/resolver": {
+          "typescript": {}
+        }
       }
     }
   ]

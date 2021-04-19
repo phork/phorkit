@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { PanelContainer } from 'lib';
 import * as React from 'react';
+import { PanelContainer } from 'lib';
 
 describe('<PanelContainer />', () => {
   it('should render a panel container', () => {

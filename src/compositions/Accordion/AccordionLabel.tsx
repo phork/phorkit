@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useRef } from 'react';
-import { MergeElementProps } from '../../types';
+import { MergeElementPropsWithoutRef } from '../../types';
 import { useInteractiveGroupItem } from '../../components/InteractiveGroup/useInteractiveGroupItem';
 import { useListRegistryItem } from '../../components/ListRegistry/useListRegistryItem';
 import styles from './styles/AccordionLabel.module.css';
@@ -17,7 +17,7 @@ export interface LocalAccordionLabelProps {
   unstyled?: boolean;
 }
 
-export type AccordionLabelProps = MergeElementProps<'div', LocalAccordionLabelProps>;
+export type AccordionLabelProps = MergeElementPropsWithoutRef<'div', LocalAccordionLabelProps>;
 
 export function AccordionLabel({
   children,

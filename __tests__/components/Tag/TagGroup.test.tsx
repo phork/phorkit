@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom/extend-expect';
 import { fireEvent, render } from '@testing-library/react';
-import { TagGroup } from 'lib';
 import * as React from 'react';
+import { TagGroup } from 'lib';
 
 describe('<TagGroup />', () => {
   it('should render a basic tag group', () => {

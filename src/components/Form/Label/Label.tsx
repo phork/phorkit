@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { AsType, StateColor, MergeElementProps, ThemeProps } from '../../../types';
+import { AsReactType, StateColor, MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
 import { useThemeId } from '../../../hooks/useThemeId';
 import styles from './styles/Label.module.css';
 
@@ -14,7 +14,8 @@ export interface LocalLabelProps extends ThemeProps {
   validity?: StateColor;
 }
 
-export type LabelProps<T extends React.ElementType = 'div'> = AsType<T> & MergeElementProps<T, LocalLabelProps>;
+export type LabelProps<T extends React.ElementType = 'div'> = AsReactType<T> &
+  MergeElementPropsWithoutRef<T, LocalLabelProps>;
 
 export function Label<T extends React.ElementType = 'div'>({
   as,

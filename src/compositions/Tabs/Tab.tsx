@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useRef } from 'react';
-import { MergeElementProps } from '../../types';
+import { MergeElementPropsWithoutRef } from '../../types';
 import { useComponentId } from '../../hooks/useComponentId';
 import { useInteractiveGroupItem } from '../../components/InteractiveGroup/useInteractiveGroupItem';
 import { useListRegistryItem } from '../../components/ListRegistry/useListRegistryItem';
@@ -20,7 +20,7 @@ export interface LocalTabProps {
   vertical?: boolean;
 }
 
-export type TabProps = MergeElementProps<'div', LocalTabProps>;
+export type TabProps = MergeElementPropsWithoutRef<'div', LocalTabProps>;
 
 export function Tab({
   children,

@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom/extend-expect';
 import { fireEvent, render } from '@testing-library/react';
+import * as React from 'react';
 import { AsTypeA } from '__mocks__/AsType.mock';
 import { Button } from 'lib';
-import * as React from 'react';
 
 describe('<Button />', () => {
   it('should render a basic button with children', () => {

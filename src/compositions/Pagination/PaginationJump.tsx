@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { AsType, MergeProps } from '../../types';
+import { AsReactType, MergeProps } from '../../types';
 import { SvgIconProps } from '../../types/svgIcon';
 import { ArrowDoubleLeftIcon } from '../../icons/ArrowDoubleLeftIcon';
 import { ArrowDoubleRightIcon } from '../../icons/ArrowDoubleRightIcon';
@@ -22,7 +22,7 @@ export interface LocalPaginationJumpProps {
   type: 'first' | 'last' | 'next' | 'previous';
 }
 
-export type PaginationJumpProps<T extends IconButtonElementType = 'button'> = AsType<T> &
+export type PaginationJumpProps<T extends IconButtonElementType = 'button'> = AsReactType<T> &
   MergeProps<Omit<IconButtonProps<T>, 'as' | 'children'>, LocalPaginationJumpProps>;
 
 export function PaginationJump<T extends IconButtonElementType = 'button'>({

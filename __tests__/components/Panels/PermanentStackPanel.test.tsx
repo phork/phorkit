@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { PermanentStackPanel } from 'lib';
 import * as React from 'react';
+import { PermanentStackPanel } from 'lib';
 
 describe('<PermanentStackPanel />', () => {
   it('should render a permanent stack panel', () => {

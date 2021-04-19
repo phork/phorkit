@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { AsType, MergeElementProps, ThemeProps } from '../../types';
+import { AsReactType, MergeElementProps, ThemeProps } from '../../types';
 import { useThemeId } from '../../hooks/useThemeId';
 import { useTranslations } from '../../hooks/useTranslations';
 import styles from './styles/Avatar.module.css';
@@ -24,7 +24,7 @@ export interface LocalAvatarProps extends ThemeProps {
   translations?: AvatarTranslations;
 }
 
-export type AvatarProps<T extends React.ElementType = 'div'> = AsType<T> & MergeElementProps<T, LocalAvatarProps>;
+export type AvatarProps<T extends React.ElementType = 'div'> = AsReactType<T> & MergeElementProps<T, LocalAvatarProps>;
 
 export function Avatar<T extends React.ElementType = 'div'>({
   actionable,

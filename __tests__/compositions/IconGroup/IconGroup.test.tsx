@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { IconGroup, TimesIcon } from 'lib';
 import * as React from 'react';
+import { IconGroup, TimesIcon } from 'lib';
 
 describe('<IconGroup />', () => {
   it('should render a basic icon group', () => {

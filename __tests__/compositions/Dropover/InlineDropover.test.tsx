@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
-import { InlineDropover, DropoverLabel, DropoverContent } from 'lib';
 import * as React from 'react';
+import { InlineDropover, DropoverLabel, DropoverContent } from 'lib';
 
 describe('<InlineDropover />', () => {
   it('should render a basic inline dropover', () => {

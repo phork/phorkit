@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
-import { Slider, NotifiedSlider } from 'lib';
 import * as React from 'react';
+import { Slider, NotifiedSlider } from 'lib';
 
 describe('<Slider />', () => {
   it('should render a labeled slider', () => {

@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { CardEdge } from 'lib';
 import * as React from 'react';
+import { CardEdge } from 'lib';
 
 describe('<CardEdge />', () => {
   it('should render a basic card edge', () => {

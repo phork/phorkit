@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { BannerContainer, Banner } from 'lib';
 import * as React from 'react';
+import { BannerContainer, Banner } from 'lib';
 
 describe('<Banners />', () => {
   it('should render a basic banner container', () => {

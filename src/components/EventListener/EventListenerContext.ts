@@ -1,4 +1,4 @@
-import React from 'react';
+import { createContext } from 'react';
 import { AddEventListenerCallback, RemoveEventListenerCallback } from './types';
 import { EventListenerState } from './eventListenerReducer';
 
@@ -10,7 +10,7 @@ export interface EventListenerContextValue {
   clearListeners: () => void;
 }
 
-export const EventListenerContext = React.createContext<EventListenerContextValue>({
+export const EventListenerContext = createContext<EventListenerContextValue>({
   events: new Map() as EventListenerState,
   unshiftEventListener: (/* eventType, listener, options */) => undefined,
   pushEventListener: (/* eventType, listener, options */) => undefined,
