@@ -1,5 +1,5 @@
 import { fireEvent, render } from '@testing-library/react';
-import * as React from 'react';
+import React from 'react';
 import { Textbox, NotifiedTextbox } from 'lib';
 
 describe('<Textbox />', () => {

@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
-import * as React from 'react';
-import { AsTypeDiv } from '__mocks__/AsType.mock';
+import React from 'react';
 import { PaginationPage } from 'lib';
+import { AsTypeDiv } from '__mocks__/AsType.mock';
 
 describe('<PaginationPage />', () => {
   it('should render a basic pagination page', () => {

@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import * as React from 'react';
+import React from 'react';
 import { Progress } from 'lib';
 
 describe('<Progress />', () => {

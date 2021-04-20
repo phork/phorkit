@@ -4,6 +4,8 @@
   "trailingComma": "all",
   "arrowParens": "avoid",
   "importOrder": [
+    "^[./]*lib(.*)$",
+    "^[./]*__mocks__(.*)$",
     "^[./]*types(.*)$",
     "^[./]*config(.*)$",
     "^[./]*context(.*)$",
@@ -12,8 +14,10 @@
     "^[./]*icons(.*)$",
     "^[./]*components(.*)$",
     "^[./]*compositions(.*)$",
+    "^[./]*docs(.*)$",
     "^[./]",
     "^[./]*styles(.*)$"
   ],
-  "importOrderSeparation": false
+  "importOrderSeparation": false,
+  "experimentalBabelParserPluginsList": ["jsx", "typescript"]
 }

@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
-import * as React from 'react';
-import { AsTypeA } from '__mocks__/AsType.mock';
+import React from 'react';
 import { Typography } from 'lib';
+import { AsTypeA } from '__mocks__/AsType.mock';
 
 describe('<Typography />', () => {
   it('should render a basic typography element', () => {

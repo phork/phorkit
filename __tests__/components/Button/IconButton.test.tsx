@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom/extend-expect';
 import { fireEvent, render } from '@testing-library/react';
-import * as React from 'react';
-import { AsTypeA } from '__mocks__/AsType.mock';
+import React from 'react';
 import { IconButton, TimesIcon } from 'lib';
+import { AsTypeA } from '__mocks__/AsType.mock';
 
 describe('<IconButton />', () => {
   it('should render a basic icon button', () => {

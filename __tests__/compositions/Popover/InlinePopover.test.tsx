@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import * as React from 'react';
+import React from 'react';
 import { InlinePopover, PopoverContentRenderChildrenProps, ForwardProps, TimesIcon } from 'lib';
 
 describe('<InlinePopover />', () => {
