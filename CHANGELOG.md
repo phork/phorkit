@@ -1,5 +1,18 @@
 # Changelog
 
+# [1.16.0](https://github.com/phork/phorkit/compare/v1.15.3...v1.16.0) (2021-04-20)
+
+
+### ✨ Features
+
+* refactored modal, added xlarge size ([b864782](https://github.com/phork/phorkit/commit/b864782))
+* updated dark box shadows, removed raised header and footer ([63b2c9a](https://github.com/phork/phorkit/commit/63b2c9a))
+
+
+### 🐛 Bug Fixes
+
+* prettier import order ([d979104](https://github.com/phork/phorkit/commit/d979104))
+
 ## [1.15.3](https://github.com/phork/phorkit/compare/v1.15.2...v1.15.3) (2021-04-19)
 
 
