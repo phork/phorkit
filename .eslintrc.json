@@ -1,7 +1,6 @@
 {
   "extends": [
     "prettier",
-    "prettier/react",
     "plugin:jsx-a11y/recommended",
     "plugin:import/errors",
     "plugin:import/warnings"
@@ -65,7 +64,6 @@
       "files": ["**/*.ts", "**/*.tsx"],
       "extends": [
         "prettier",
-        "prettier/react",
         "plugin:jsx-a11y/recommended",
         "plugin:import/errors",
         "plugin:import/warnings",

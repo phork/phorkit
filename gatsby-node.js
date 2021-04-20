@@ -19,7 +19,12 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         styles$: path.join(src, 'styles'),
         types$: path.join(src, 'types'),
         utils$: path.join(src, 'utils'),
-        'react-dom': '@hot-loader/react-dom',
+
+        ...(process.env.NODE_ENV === 'development'
+          ? {
+              'react-dom': '@hot-loader/react-dom',
+            }
+          : {}),
       },
     },
   });

@@ -4,6 +4,10 @@ module.exports = {
     siteUrl: 'https://phorkit.phork.org',
     description: 'A component library',
   },
+  flags: {
+    PRESERVE_WEBPACK_CACHE: true,
+    PRESERVE_FILE_DOWNLOAD_CACHE: true,
+  },
   plugins: [
     {
       resolve: 'gatsby-plugin-postcss',
