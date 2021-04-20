@@ -56,9 +56,9 @@ export const StackPanel = React.forwardRef<HTMLDivElement, StackPanelProps>(
     });
 
     const classes = cx(
-      styles.sidePanel,
-      fixed && styles['sidePanel--fixed'],
-      styles[`sidePanel--${position}`],
+      styles.stackPanel,
+      fixed && styles['stackPanel--fixed'],
+      styles[`stackPanel--${position}`],
       className,
     );
 
