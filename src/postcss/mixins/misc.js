@@ -70,6 +70,10 @@ const mixins = {
       const opacities = {
         0: 0.05,
         1: 0.08,
+        10: 0.05,
+        20: 0.05,
+        100: 0.05,
+        200: 0.05,
       };
 
       shadow.position = 'relative';

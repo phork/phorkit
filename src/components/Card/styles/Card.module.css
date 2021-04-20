@@ -38,10 +38,6 @@
   border-radius: 0;
 }
 
-.card--raised {
-  @mixin addRaisedAndHoverable;
-}
-
 .card--raised-0 {
   @mixin addRaisedAndHoverable 0, 10;
 }
@@ -51,11 +47,11 @@
 }
 
 .card--raised-20 {
-  @mixin addRaisedAndHoverable 20, 100;
+  @mixin addRaised 20, 100;
 }
 
 .card--raised-100 {
-  @mixin addRaised 100, 0;
+  @mixin addRaisedAndHoverable 100, 10;
 }
 
 .card--raised-200 {

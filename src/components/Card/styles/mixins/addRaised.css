@@ -9,6 +9,8 @@
 }
 
 @define-mixin addRaisedAndHoverable $raisedLevel: 0, $hoverableLevel: 10 {
+  @mixin addRaised $raisedLevel;
+
   &.card--hoverable {
     &:hover,
     &.is-hovered {
@@ -21,6 +23,4 @@
       }
     }
   }
-
-  @mixin addRaised $raisedLevel;
 }

@@ -4,10 +4,10 @@ menu: Surfaces
 route: /components/Card
 ---
 
-import { PageTitle } from 'docs/helpers/PageTitle';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { Rhythm } from 'components/Rhythm';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Card } from '../Card';
 import { CardBody, CardEdge, CardTitle, StyledCard } from '../index';
 
@@ -57,7 +57,7 @@ import { CardBody, CardEdge, CardTitle, StyledCard } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Card hoverable raised>
+    <Card raised hoverable>
       <Rhythm p={3}>Hello world</Rhythm>
     </Card>
   </ThemeWrapper>
@@ -68,19 +68,19 @@ import { CardBody, CardEdge, CardTitle, StyledCard } from '../index';
 <Playground>
   <ThemeWrapper>
     <Rhythm my={3}>
-      <Card raised={0}>
+      <Card raised={0} hoverable>
         <Rhythm p={3}>Hello world (0)</Rhythm>
       </Card>
-      <Card raised={10}>
+      <Card raised={10} hoverable>
         <Rhythm p={3}>Hello world (10)</Rhythm>
       </Card>
-      <Card raised={20}>
+      <Card raised={20} hoverable>
         <Rhythm p={3}>Hello world (20)</Rhythm>
       </Card>
-      <Card raised={100}>
+      <Card raised={100} hoverable>
         <Rhythm p={3}>Hello world (100)</Rhythm>
       </Card>
-      <Card raised={200}>
+      <Card raised={200} hoverable>
         <Rhythm p={3}>Hello world (200)</Rhythm>
       </Card>
     </Rhythm>

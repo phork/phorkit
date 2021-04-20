@@ -98,16 +98,18 @@ const accentColors = {
 
 const shadowColors = {
   'box-shadow-0': `
-    0px 0px 0px 1px ${color.transparency(neutralColors['color-FG40'], 80)}
+    0px 0px 0px 1px ${color.transparency(neutralColors['color-FG0'], 85)},
+    0px 2px 4px 1px rgba(0, 0, 0, 0.8)
   `,
 
   'box-shadow-10': `
-    0px 0px 0px 1px ${color.transparency(neutralColors['color-FG40'], 60)}
+    0px 0px 0px 1px ${color.transparency(neutralColors['color-FG0'], 80)},
+    0px 2px 4px 1px rgba(0, 0, 0, 0.7)
   `,
 
   'box-shadow-20': `
-    0px 0px 0px 1px ${neutralColors['color-BG40']},
-    0px 1px 10px 0px rgba(0, 0, 0, 0.8)
+    0px 0px 0px 1px ${color.transparency(neutralColors['color-FG0'], 70)},
+    0px 2px 4px 1px rgba(0, 0, 0, 0.9)
   `,
 
   'box-shadow-100': `
