@@ -10,9 +10,9 @@ import { StyledIconToast, ToastContext } from 'compositions/Toast';
 const SwatchBlock = styled.div<{
   backgroundColor: string;
   color?: string;
-  height?: number;
+  height?: string | number;
   rounded?: boolean;
-  width?: number;
+  width?: string | number;
 }>`
   align-items: center;
   background-color: ${props => props.backgroundColor};
@@ -20,22 +20,38 @@ const SwatchBlock = styled.div<{
   color: ${props => props.color || 'currentColor'};
   cursor: pointer;
   display: flex;
-  height: ${props => `${props.height}px`};
+  flex: none;
+  font-size: 11px;
+  height: ${props => `${props.height}${typeof props.height === 'number' ? 'px' : ''}`};
   justify-content: center;
   position: relative;
-  width: ${props => `${props.width}px`};
+  width: ${props => `${props.width}${typeof props.width === 'number' ? 'px' : ''}`};
 
   > svg {
     pointer-events: none;
   }
 `;
 
+const SwatchLabel = styled.div<{
+  height?: string | number;
+  width?: string | number;
+}>`
+  align-items: center;
+  display: flex;
+  font-size: 11px;
+  height: ${props => `${props.height}${typeof props.height === 'number' ? 'px' : ''}`};
+  justify-content: center;
+  position: relative;
+  width: ${props => `${props.width}${typeof props.width === 'number' ? 'px' : ''}`}; ;
+`;
+
 export type Color = {
   id: string;
   color: string;
   contrast?: string;
-  height?: number;
-  width?: number;
+  height?: string | number;
+  width?: string | number;
+  children?: React.ReactNode;
 };
 
 export interface ColorSwatchGroupProps {
@@ -43,9 +59,12 @@ export interface ColorSwatchGroupProps {
   colors: Color[];
   direction?: FlexProps['direction'];
   joined?: boolean;
+  label?: string;
+  labelHeight?: string | number;
+  labelWidth?: string | number;
+  swatchHeight?: string | number;
+  swatchWidth?: string | number;
   withIcon?: boolean;
-  swatchWidth?: number;
-  swatchHeight?: number;
 }
 
 export function ColorSwatchGroup({
@@ -53,8 +72,11 @@ export function ColorSwatchGroup({
   colors,
   direction = 'row',
   joined,
-  swatchWidth = 40,
+  label,
+  labelHeight,
+  labelWidth,
   swatchHeight = 60,
+  swatchWidth = 40,
   ...props
 }: ColorSwatchGroupProps): React.ReactElement {
   const { createNotification } = useContext(ToastContext);
@@ -86,8 +108,16 @@ export function ColorSwatchGroup({
   };
 
   return (
-    <Flex direction={direction} {...props}>
-      {colors.map(({ color, contrast, id, width, height }) => (
+    <Flex direction={direction} wrap {...props}>
+      {label && (
+        <Rhythm m={joined ? 0 : 1}>
+          <SwatchLabel width={labelWidth || swatchWidth} height={labelHeight || swatchHeight}>
+            {label}
+          </SwatchLabel>
+        </Rhythm>
+      )}
+
+      {colors.map(({ color, contrast, id, width, height, children: colorChildren }) => (
         <Rhythm key={id} m={joined ? 0 : 1}>
           <SwatchBlock
             backgroundColor={color}
@@ -98,7 +128,7 @@ export function ColorSwatchGroup({
             height={height || swatchHeight}
             onClick={() => handleClick(id, color, contrast)}
           >
-            {children}
+            {colorChildren !== undefined ? colorChildren : children}
           </SwatchBlock>
         </Rhythm>
       ))}

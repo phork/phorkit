@@ -4,13 +4,13 @@ menu: Display
 route: /components/Badge
 ---
 
-import { ColorLooper } from 'docs/helpers/ColorLooper';
-import { PageTitle } from 'docs/helpers/PageTitle';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { themes } from 'config/themes';
 import { Flex } from 'components/Flex';
 import { Rhythm } from 'components/Rhythm';
+import { ColorLooper } from 'docs/helpers/ColorLooper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Badge, ColoredBadge, StyledBadge } from '../index';
 
 <PageTitle title="Badge" src="components/Badge" />
@@ -116,7 +116,7 @@ import { Badge, ColoredBadge, StyledBadge } from '../index';
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <Flex>
+      <Flex wrap>
         <ColorLooper
           themeId={themeId}
           render={({ id }) => (

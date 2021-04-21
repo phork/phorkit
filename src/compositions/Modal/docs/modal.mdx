@@ -70,7 +70,13 @@ import {
 
 <Playground>
   <ThemeWrapper>
-    <Modal id="demo-modal-overflow" size="medium" allowOverflow immediate style={{ borderRadius: '12px' }}>
+    <Modal
+      id="demo-modal-overflow"
+      size="medium"
+      allowOverflow
+      immediate
+      style={{ borderRadius: '12px', maxWidth: 'calc(100% - 20px)' }}
+    >
       <ModalBody flush style={{ height: '300px' }}>
         <div
           style={{

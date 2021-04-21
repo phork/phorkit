@@ -4,11 +4,6 @@ menu: Input
 route: /components/Button
 ---
 
-import { ColorLooper } from 'docs/helpers/ColorLooper';
-import { Looper } from 'docs/helpers/Looper';
-import { PageTitle } from 'docs/helpers/PageTitle';
-import { StateWrapper } from 'docs/helpers/StateWrapper';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { ucfirst } from 'utils';
 import { SpinnerIcon } from 'icons/SpinnerIcon';
@@ -17,6 +12,11 @@ import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { Flex } from 'components/Flex';
 import { Hoverable } from 'components/Hoverable';
 import { Rhythm } from 'components/Rhythm';
+import { ColorLooper } from 'docs/helpers/ColorLooper';
+import { Looper } from 'docs/helpers/Looper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextButton } from '../index';
 
 <PageTitle title="Button" src="components/Button" />
@@ -645,13 +645,13 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <Flex direction="column">
+      <Flex direction="column" wrap>
         <ColorLooper
           themeId={themeId}
           group="primary"
           render={({ id }) => (
-            <Flex direction="row" key={`coloredButton-${id}`}>
-              <Rhythm key={`colorButton-${id}`} mb={1} mr={4}>
+            <Flex direction="row" key={`coloredButton-${id}`} wrap>
+              <Rhythm key={`colorButton-${id}`} mb={2} mr={2}>
                 <ColoredButton shape="pill" weight="filled" colorId={id}>
                   {`Color button ${id}`}
                 </ColoredButton>
@@ -665,6 +665,8 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
                   text={`Color button ${id}`}
                   weight="filled"
                 />
+              </Rhythm>
+              <Rhythm key={`colorButton-${id}`} mb={2} mr={2}>
                 <ColoredButton shape="pill" weight="outline" colorId={id}>
                   {`Color button ${id}`}
                 </ColoredButton>
@@ -679,7 +681,7 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
                   weight="outline"
                 />
               </Rhythm>
-              <br />
+              <div style={{ width: '100%', height: '20px' }} />
             </Flex>
           )}
         />
@@ -803,7 +805,7 @@ _Note that the links will cause the page to reload so the state will appear unch
               <StyledButton shape={shape} themeId={themeId} color="primary" fullWidth>
                 Full width
               </StyledButton>
-              <StyledButton shape={shape} themeId={themeId} color="primary" width={400}>
+              <StyledButton shape={shape} themeId={themeId} color="primary" width={200}>
                 Fixed width
               </StyledButton>
             </Rhythm>

@@ -4,12 +4,12 @@ menu: Display
 route: /components/Avatar
 ---
 
-import { Looper } from 'docs/helpers/Looper';
-import { PageTitle } from 'docs/helpers/PageTitle';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { Flex } from 'components/Flex';
 import { Rhythm } from 'components/Rhythm';
+import { Looper } from 'docs/helpers/Looper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Avatar, StyledAvatar } from '../index';
 
 <PageTitle title="Avatar" src="components/Avatar" />
@@ -18,7 +18,7 @@ import { Avatar, StyledAvatar } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" alignItems="center">
+    <Flex direction="row" alignItems="center" wrap>
       <Looper
         list={['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']}
         render={size => (
@@ -35,7 +35,7 @@ import { Avatar, StyledAvatar } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" alignItems="center">
+    <Flex direction="row" alignItems="center" wrap>
       <Looper
         list={['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']}
         render={size => (
@@ -61,7 +61,7 @@ import { Avatar, StyledAvatar } from '../index';
     <Flex direction="column">
       <div>
         <h3>Primary color</h3>
-        <Flex direction="row" alignItems="center">
+        <Flex direction="row" alignItems="center" wrap>
           <Rhythm m={2}>
             <Looper
               list={['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']}
@@ -76,7 +76,7 @@ import { Avatar, StyledAvatar } from '../index';
       </div>
       <div>
         <h3>Neutral color</h3>
-        <Flex direction="row" alignItems="center">
+        <Flex direction="row" alignItems="center" wrap>
           <Rhythm m={2}>
             <Looper
               list={['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']}
@@ -100,7 +100,7 @@ import { Avatar, StyledAvatar } from '../index';
     <Flex direction="column">
       <div>
         <h3>Primary color</h3>
-        <Flex direction="row" alignItems="center">
+        <Flex direction="row" alignItems="center" wrap>
           <Looper
             list={['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']}
             render={size => (
@@ -119,7 +119,7 @@ import { Avatar, StyledAvatar } from '../index';
       </div>
       <div>
         <h3>Neutral color</h3>
-        <Flex direction="row" alignItems="center">
+        <Flex direction="row" alignItems="center" wrap>
           <Looper
             list={['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']}
             render={size => (
@@ -146,7 +146,7 @@ import { Avatar, StyledAvatar } from '../index';
 
 <Playground>
   <ThemeWrapper contrast>
-    <Flex direction="row" alignItems="center">
+    <Flex direction="row" alignItems="center" wrap>
       <Looper
         list={['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']}
         render={size => (
@@ -163,7 +163,7 @@ import { Avatar, StyledAvatar } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" alignItems="center">
+    <Flex direction="row" alignItems="center" wrap>
       <Looper
         list={['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']}
         render={size => (

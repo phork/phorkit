@@ -8,6 +8,7 @@ import { Color, ColorSwatchGroup, ColorSwatchGroupProps } from './ColorSwatchGro
 const ColorGrid = styled('div')<{ direction: 'row' | 'column' }>`
   display: flex;
   flex-direction: ${({ direction }) => direction};
+  flex-wrap: wrap;
 `;
 
 export interface ColorSwatchProps extends Omit<ColorSwatchGroupProps, 'colors'> {
@@ -24,11 +25,19 @@ const renderColorSwatches = (
   return <ColorSwatchGroup key={key} colors={colors} {...props} />;
 };
 
-const renderColorGrid = (colorGrid: Color[][], props: Omit<ColorSwatchGroupProps, 'colors'>): React.ReactElement => {
+type ColorGridVector = {
+  colors: Color[];
+  label?: string;
+};
+
+const renderColorGrid = (
+  colorGrid: ColorGridVector[],
+  props: Omit<ColorSwatchGroupProps, 'colors'>,
+): React.ReactElement => {
   const direction = props.direction === 'column' ? 'row' : 'column';
   return (
     <ColorGrid direction={direction}>
-      {colorGrid.map((colors: Color[], i) => renderColorSwatches(colors, props, i))}
+      {colorGrid.map(({ colors, label }, i) => renderColorSwatches(colors, { ...props, label, labelHeight: 20 }, i))}
     </ColorGrid>
   );
 };
@@ -56,11 +65,12 @@ export function ColorSwatch({ group, themeId, variant, ...props }: ColorSwatchPr
     case 'primary': {
       const colors = getPrimaryColors(themeId);
       return renderColorGrid(
-        Object.keys(colors).map((root: string) =>
-          ['L40', 'L30', 'L20', 'L10', undefined, 'D10', 'D20', 'D30', 'D40'].map(shade =>
-            mapColors(root, shade, !shade ? { height: 60 } : undefined),
+        Object.keys(colors).map((root: string) => ({
+          colors: ['L40', 'L30', 'L20', 'L10', undefined, 'D10', 'D20', 'D30', 'D40'].map(shade =>
+            mapColors(root, shade, shade ? { children: shade } : undefined),
           ),
-        ),
+          label: root.replace('color-', ''),
+        })),
         props,
       );
     }
@@ -71,6 +81,7 @@ export function ColorSwatch({ group, themeId, variant, ...props }: ColorSwatchPr
         Object.keys(colors).map(key => ({
           id: key,
           color: colors[key],
+          children: key.split('-').slice(-1)[0],
         })),
         props,
       );
@@ -83,6 +94,7 @@ export function ColorSwatch({ group, themeId, variant, ...props }: ColorSwatchPr
           id: key,
           color: colors[key],
           contrast: themeProps['color-FG0' as keyof ThemeColors] as string,
+          children: key.replace('color-', ''),
         })),
         props,
       );
@@ -95,6 +107,7 @@ export function ColorSwatch({ group, themeId, variant, ...props }: ColorSwatchPr
           id: key,
           color: colors[key],
           contrast: themeProps['color-BG0' as keyof ThemeColors] as string,
+          children: key.replace('color-', ''),
         })),
         props,
       );
