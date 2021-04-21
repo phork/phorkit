@@ -1,5 +1,11 @@
 # Changelog
 
+# [1.17.0](https://github.com/phork/phorkit/compare/v1.16.2...v1.17.0) (2021-04-21)
+
+### ✨ Features
+
+- page banner colors, accessibility demo ([c0f32de](https://github.com/phork/phorkit/commit/c0f32de))
+
 ## [1.16.2](https://github.com/phork/phorkit/compare/v1.16.1...v1.16.2) (2021-04-20)
 
 ### 🐛 Bug Fixes
