@@ -38,7 +38,7 @@ export function TextTooltip({
       focusable={focusable}
       layout="vertical"
       triangleBorderColor={borderColor}
-      triangleColor={backgroundColor}
+      triangleColor={contrast ? `var(--contrast-color, ${backgroundColor})` : backgroundColor}
       width={width}
       {...props}
     >
@@ -68,7 +68,7 @@ export function TextTooltip({
           return (
             <Card raised full themeId={themeId}>
               <StyledPaper
-                backgroundColor={backgroundColor}
+                backgroundColor={contrast ? `var(--contrast-color, ${backgroundColor})` : backgroundColor}
                 borderColor={borderColor}
                 bordered
                 textColor={textColor}

@@ -1,18 +1,17 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { SequentialVariant, StateColor, ThemeProps } from '../../types';
+import { AccentColor, SequentialVariant, StateColor, ThemeProps } from '../../types';
 import { useThemeId } from '../../hooks/useThemeId';
-import { lowerCamelize } from '../../utils/case';
 import styles from './styles/Paper.module.css';
 
 export interface PaperProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
   bordered?: boolean;
   children: React.ReactNode;
   className?: string;
-  color?: StateColor | SequentialVariant | 'contrast' | 'transparent';
+  color?: StateColor | SequentialVariant | AccentColor | 'contrast' | 'transparent';
   /** Whether the paper is contained within a relative element and should fill it */
   contained?: boolean;
-  container?: 'narrow-page' | 'page' | 'panel' | 'popover' | 'banner';
+  container?: 'page' | 'panel' | 'popover' | 'banner';
   flexible?: boolean;
   full?: boolean;
   scrollable?: boolean;
@@ -47,7 +46,7 @@ export const Paper = React.forwardRef<HTMLDivElement, PaperProps>(
           bordered && styles['paper--bordered'],
           color && styles[`paper--${color}`],
           contained && styles['paper--contained'],
-          container && styles[`paper--${lowerCamelize(container)}`],
+          container && styles[`paper--${container}`],
           flexible && styles['paper--flexible'],
           full && styles['paper--full'],
           scrollable && styles['paper--scrollable'],

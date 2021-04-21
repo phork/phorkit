@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useLayoutEffect, useState } from 'react';
-import { ThemeProps } from '../../types';
+import { SequentialVariant, StateColor, ThemeProps } from '../../types';
 import { useSafeTimeout } from '../../hooks/useSafeTimeout';
 import { useThemeId } from '../../hooks/useThemeId';
 import { useTranslations } from '../../hooks/useTranslations';
@@ -25,7 +25,7 @@ export interface BannerProps extends Omit<React.HTMLAttributes<PaperProps>, 'id'
   className?: string;
   id?: string;
   immediate?: boolean;
-  level: 'danger' | 'info' | 'success' | 'warning';
+  level: StateColor | SequentialVariant | 'info' | 'contrast' | 'transparent';
   onClose?: (event: React.MouseEvent | React.KeyboardEvent, id?: string) => void;
   style?: React.CSSProperties;
   translations?: BannerTranslations;
@@ -62,6 +62,8 @@ export function Banner({
     !hasTransitioned && setSafeTimeout(() => setHasTransitioned(true), 100);
   }, [hasTransitioned, setSafeTimeout]);
 
+  const isColoredBanner = !['primary', 'secondary', 'tertiary', 'transparent'].includes(level);
+
   return (
     <Paper
       className={cx(
@@ -71,7 +73,7 @@ export function Banner({
         hasTransitioned && styles['has-transitioned'],
         className,
       )}
-      color={level === 'info' ? 'contrast' : level}
+      color={level === 'info' ? 'accent-primary' : level}
       container="banner"
       role="banner"
       themeId={themeId}
@@ -83,7 +85,13 @@ export function Banner({
         {onClose && (
           <Position location="right-center" variant="outside">
             <Rhythm p={2} wrapper="div">
-              <IconButton aria-label={closeLabel} contrast themeId={themeId} onClick={handleClose}>
+              <IconButton
+                aria-label={closeLabel}
+                color="neutral"
+                contrast={isColoredBanner}
+                themeId={themeId}
+                onClick={handleClose}
+              >
                 <TimesIcon title={closeLabel} scale="xsmall" />
               </IconButton>
             </Rhythm>

@@ -4,8 +4,6 @@ menu: Feedback
 route: /compositions/Tooltip
 ---
 
-import { PageTitle } from 'docs/helpers/PageTitle';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { themes } from 'config/themes';
 import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
@@ -16,6 +14,8 @@ import { LinkContainer } from 'components/Link';
 import { Paper } from 'components/Paper';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } from '../index';
 
 <PageTitle title="Tooltip" src="compositions/Tooltip" />
@@ -56,7 +56,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
                 <Paper
                   themeId={themeId}
                   style={{ borderRadius: '2px', [arrowCornerRadiusProperty]: 0 }}
-                  color="contrast"
+                  color="accent-primary"
                   container="popover"
                   contained
                   scrollable
@@ -93,7 +93,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
         >
           {({ position }) => (
             <Card raised full>
-              <Paper color="contrast" container="popover" contained scrollable>
+              <Paper color="accent-primary" container="popover" contained scrollable>
                 <Typography as="div" size="s" variants="line-height-comfy">
                   The quick brown fox jumped over the {position} dog The quick brown fox jumped over the {position} dog
                   The quick brown fox jumped over the {position} dog The quick brown fox jumped over the {position} dog
@@ -142,7 +142,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
             <Paper
               themeId={themeId}
               style={{ borderRadius: '2px' }}
-              color="contrast"
+              color="accent-primary"
               container="popover"
               contained
               scrollable
@@ -177,7 +177,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
             <Paper
               themeId={themeId}
               style={{ borderRadius: '2px' }}
-              color="contrast"
+              color="accent-primary"
               container="popover"
               contained
               scrollable
@@ -212,7 +212,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
             <Paper
               themeId={themeId}
               style={{ borderRadius: '2px' }}
-              color="contrast"
+              color="accent-primary"
               container="popover"
               contained
               scrollable
@@ -247,7 +247,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
             <Paper
               themeId={themeId}
               style={{ borderRadius: '2px' }}
-              color="contrast"
+              color="accent-primary"
               container="popover"
               contained
               scrollable
@@ -282,7 +282,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
             <Paper
               themeId={themeId}
               style={{ borderRadius: '2px' }}
-              color="contrast"
+              color="accent-primary"
               container="popover"
               contained
               scrollable
@@ -317,7 +317,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
             <Paper
               themeId={themeId}
               style={{ borderRadius: '2px' }}
-              color="contrast"
+              color="accent-primary"
               container="popover"
               contained
               scrollable
@@ -362,7 +362,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
             <Paper
               themeId={themeId}
               style={{ borderRadius: '2px', borderTopRightRadius: 0 }}
-              color="contrast"
+              color="accent-primary"
               container="popover"
             >
               <Typography as="div" size="s" variants="line-height-comfy">
@@ -391,7 +391,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
-            <Paper themeId={themeId} style={{ borderRadius: '2px' }} color="contrast" container="popover">
+            <Paper themeId={themeId} style={{ borderRadius: '2px' }} color="accent-primary" container="popover">
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
                 brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox
@@ -421,7 +421,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
             <Paper
               themeId={themeId}
               style={{ borderRadius: '2px', borderBottomRightRadius: 0 }}
-              color="contrast"
+              color="accent-primary"
               container="popover"
             >
               <Typography as="div" size="s" variants="line-height-comfy">
@@ -453,7 +453,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
             <Paper
               themeId={themeId}
               style={{ borderRadius: '2px', borderTopLeftRadius: 0 }}
-              color="contrast"
+              color="accent-primary"
               container="popover"
             >
               <Typography as="div" size="s" variants="line-height-comfy">
@@ -482,7 +482,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
-            <Paper themeId={themeId} style={{ borderRadius: '2px' }} color="contrast" container="popover">
+            <Paper themeId={themeId} style={{ borderRadius: '2px' }} color="accent-primary" container="popover">
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
                 brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox
@@ -512,7 +512,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
             <Paper
               themeId={themeId}
               style={{ borderRadius: '2px', borderBottomLeftRadius: 0 }}
-              color="contrast"
+              color="accent-primary"
               container="popover"
             >
               <Typography as="div" size="s" variants="line-height-comfy">
@@ -562,7 +562,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
             <Paper
               themeId={themeId}
               style={{ borderRadius: '2px' }}
-              color="contrast"
+              color="accent-primary"
               container="popover"
               contained
               scrollable
@@ -597,7 +597,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
             <Paper
               themeId={themeId}
               style={{ borderRadius: '2px' }}
-              color="contrast"
+              color="accent-primary"
               container="popover"
               contained
               scrollable
@@ -632,7 +632,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
             <Paper
               themeId={themeId}
               style={{ borderRadius: '2px' }}
-              color="contrast"
+              color="accent-primary"
               container="popover"
               contained
               scrollable
@@ -667,7 +667,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
             <Paper
               themeId={themeId}
               style={{ borderRadius: '2px' }}
-              color="contrast"
+              color="accent-primary"
               container="popover"
               contained
               scrollable
@@ -702,7 +702,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
             <Paper
               themeId={themeId}
               style={{ borderRadius: '2px' }}
-              color="contrast"
+              color="accent-primary"
               container="popover"
               contained
               scrollable
@@ -737,7 +737,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
             <Paper
               themeId={themeId}
               style={{ borderRadius: '2px' }}
-              color="contrast"
+              color="accent-primary"
               container="popover"
               contained
               scrollable
@@ -782,7 +782,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
             <Paper
               themeId={themeId}
               style={{ borderRadius: '2px', borderTopRightRadius: 0 }}
-              color="contrast"
+              color="accent-primary"
               container="popover"
             >
               <Typography as="div" size="s" variants="line-height-comfy">
@@ -811,7 +811,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
-            <Paper themeId={themeId} style={{ borderRadius: '2px' }} color="contrast" container="popover">
+            <Paper themeId={themeId} style={{ borderRadius: '2px' }} color="accent-primary" container="popover">
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
                 brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox
@@ -841,7 +841,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
             <Paper
               themeId={themeId}
               style={{ borderRadius: '2px', borderBottomRightRadius: 0 }}
-              color="contrast"
+              color="accent-primary"
               container="popover"
             >
               <Typography as="div" size="s" variants="line-height-comfy">
@@ -873,7 +873,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
             <Paper
               themeId={themeId}
               style={{ borderRadius: '2px', borderTopLeftRadius: 0 }}
-              color="contrast"
+              color="accent-primary"
               container="popover"
             >
               <Typography as="div" size="s" variants="line-height-comfy">
@@ -902,7 +902,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
-            <Paper themeId={themeId} style={{ borderRadius: '2px' }} color="contrast" container="popover">
+            <Paper themeId={themeId} style={{ borderRadius: '2px' }} color="accent-primary" container="popover">
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
                 brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox
@@ -932,7 +932,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
             <Paper
               themeId={themeId}
               style={{ borderRadius: '2px', borderBottomLeftRadius: 0 }}
-              color="contrast"
+              color="accent-primary"
               container="popover"
             >
               <Typography as="div" size="s" variants="line-height-comfy">

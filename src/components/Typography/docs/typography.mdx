@@ -4,10 +4,10 @@ menu: Utilities
 route: /components/Typography
 ---
 
-import { PageTitle } from 'docs/helpers/PageTitle';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { Rhythm } from 'components/Rhythm';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Typography } from '../index';
 
 <PageTitle title="Typography" src="components/Typography" />
@@ -228,6 +228,25 @@ import { Typography } from '../index';
     <Typography color="accent-primary" volume="quieter" as="div">Theme accent primary quieter</Typography>
     <Typography color="accent-primary" volume="quietest" as="div">Theme accent primary quietest</Typography>
 
+  </ThemeWrapper>
+</Playground>
+
+## Contrast
+
+<Playground>
+  <ThemeWrapper contrast>
+    <Typography color="contrast" as="div">
+      Theme contrast
+    </Typography>
+    <Typography color="contrast" volume="quiet" as="div">
+      Theme contrast quiet
+    </Typography>
+    <Typography color="contrast" volume="quieter" as="div">
+      Theme contrast quieter
+    </Typography>
+    <Typography color="contrast" volume="quietest" as="div">
+      Theme contrast quietest
+    </Typography>
   </ThemeWrapper>
 </Playground>
 

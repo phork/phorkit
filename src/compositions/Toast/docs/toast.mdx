@@ -4,14 +4,14 @@ menu: Feedback
 route: /compositions/Toasts
 ---
 
-import { PageTitle } from 'docs/helpers/PageTitle';
-import { StateWrapper } from 'docs/helpers/StateWrapper';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { TimesIcon } from 'icons/TimesIcon';
 import { CheckIcon } from 'icons/internal/CheckIcon';
 import { Button, StyledButton } from 'components/Button';
 import { Rhythm } from 'components/Rhythm';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import {
   IconToast,
   StyledIconToast,
@@ -19,8 +19,9 @@ import {
   Toast,
   ToastConsumer,
   ToastContainer,
-  ToastProvider,
+  ToastFromContext,
   Toasts,
+  ToastsFromContext,
 } from '../index';
 
 <PageTitle title="Toast" src="compositions/Toast" />
@@ -331,10 +332,16 @@ import {
 
 <Props of={ToastContainer} />
 
-### ToastProvider
-
-<Props of={ToastProvider} />
+## \[context\]
 
 ### Toasts
 
 <Props of={Toasts} />
+
+### ToastsFromContext
+
+<Props of={ToastsFromContext} />
+
+### ToastFromContext
+
+<Props of={ToastFromContext} />

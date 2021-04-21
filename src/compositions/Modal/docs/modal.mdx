@@ -4,8 +4,6 @@ menu: Surfaces
 route: /compositions/Modals
 ---
 
-import { PageTitle } from 'docs/helpers/PageTitle';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { Button, ButtonGroup } from 'components/Button';
@@ -13,15 +11,18 @@ import { Flex } from 'components/Flex';
 import { IconText } from 'components/IconText';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import {
   Modal,
+  ModalBody,
   ModalConsumer,
   ModalContainer,
-  ModalBody,
   ModalFooter,
+  ModalFromContext,
   ModalHeader,
-  ModalProvider,
   Modals,
+  ModalsFromContext,
 } from '../index';
 
 <PageTitle title="Modals" src="compositions/Modal" />
@@ -345,10 +346,16 @@ import {
 
 <Props of={ModalContainer} />
 
-### ModalProvider
-
-<Props of={ModalProvider} />
+## \[context\]
 
 ### Modals
 
 <Props of={Modals} />
+
+### ModalsFromContext
+
+<Props of={ModalsFromContext} />
+
+### ModalFromContext
+
+<Props of={ModalFromContext} />

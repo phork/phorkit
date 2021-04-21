@@ -69,7 +69,7 @@
     background-color: $theme-primary-background-color;
     border-color: $theme-primary-border-color;
     color: $theme-primary-text-color;
-    
+
     --paper-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
   }
 }
@@ -99,7 +99,7 @@
     background-color: transparent;
     border-color: $theme-primary-border-color;
     color: currentColor;
-    
+
     --paper-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
   }
 }
@@ -162,5 +162,22 @@
 
   &.paper--dark {
     border-color: $dark-color-danger-L10;
+  }
+}
+
+.paper--accent-primary {
+  @mixin themed .paper {
+    background-color: $theme-color-accent-primary;
+    color: $theme-color-accent-primary-contrast;
+
+    --paper-scrollbar-thumb-color: $theme-contrast-scrollbar-thumb-color;
+
+    &.paper--light {
+    border-color: $theme-color-accent-primary-D10;
+  }
+
+  &.paper--dark {
+    border-color: $theme-color-accent-primary-L10;
+  }
   }
 }

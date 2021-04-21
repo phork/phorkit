@@ -1,0 +1,65 @@
+---
+name: Accessibility
+menu: Utilities
+route: /components/Accessibility
+---
+
+import { Playground, Props } from 'docz';
+import { Button } from 'components/Button';
+import { Flex } from 'components/Flex';
+import { Rhythm } from 'components/Rhythm';
+import { Typography } from 'components/Typography';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { AccessibilityProvider, useAccessibility, useInputFocusType } from '../index';
+import styles from './AccessibilityDemo.module.css';
+
+<PageTitle title="Accessibility" src="context/Accessibility" />
+
+## AccessibilityProvider, useAccessibility and useInputFocusType
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <AccessibilityProvider>
+        <React.Fragment>
+          {React.createElement(() => {
+            const accessible = useAccessibility();
+            const focusType = useInputFocusType();
+            const buttonClassName = [styles.button, styles[`button--${themeId}`], accessible && styles['is-accessible']]
+              .filter(Boolean)
+              .join(' ');
+            return (
+              <div>
+                <Flex direction="row">
+                  <Rhythm m={2} mb={4}>
+                    <Typography as="div" variants={['xsmall-caps']} style={{ width: '120px' }}>
+                      <Typography volume="quiet">Is accessible</Typography> {accessible ? 'yes' : 'no'}
+                    </Typography>
+                    <Typography as="div" variants={['xsmall-caps']} style={{ width: '140px' }}>
+                      <Typography volume="quiet">Focus type</Typography> {focusType || '-'}
+                    </Typography>
+                  </Rhythm>
+                </Flex>
+                <Flex direction="row">
+                  <button type="button" className={buttonClassName}>
+                    Action
+                  </button>
+                  <button type="button" className={buttonClassName}>
+                    Action
+                  </button>
+                  <button type="button" className={buttonClassName}>
+                    Action
+                  </button>
+                  <button type="button" className={buttonClassName}>
+                    Action
+                  </button>
+                </Flex>
+              </div>
+            );
+          })}
+        </React.Fragment>
+      </AccessibilityProvider>
+    )}
+  </ThemeWrapper>
+</Playground>

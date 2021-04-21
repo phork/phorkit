@@ -43,14 +43,16 @@ export function ThemeWrapper({
 
   return (
     <div
-      style={{
-        backgroundColor: contrast ? `var(--contrast-color, ${backgroundColor})` : backgroundColor,
-        color,
-        margin: '-20px',
-        padding: '20px',
-        borderRadius: '4px',
-        ...style,
-      }}
+      style={
+        {
+          backgroundColor: contrast ? `var(--contrast-color, ${backgroundColor})` : backgroundColor,
+          color,
+          margin: '-20px',
+          padding: '20px',
+          borderRadius: '4px',
+          ...style,
+        } as React.CSSProperties
+      }
     >
       <IconButton
         style={{ position: 'absolute', top: '-30px', right: '10px' }}

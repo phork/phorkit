@@ -4,10 +4,10 @@ menu: Surfaces
 route: /components/Paper
 ---
 
+import { Playground, Props } from 'docz';
 import { ColorLooper } from 'docs/helpers/ColorLooper';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { Playground, Props } from 'docz';
 import { Paper } from '../Paper';
 import { ColoredPaper, StyledPaper } from '../index';
 
@@ -15,17 +15,17 @@ import { ColoredPaper, StyledPaper } from '../index';
 
 ## Standard paper
 
-### Page primary paper
+### Primary paper
 
 <Playground>
   <ThemeWrapper>
-    <Paper bordered container="page" color="primary">
+    <Paper bordered container="panel" color="primary">
       Hello world
     </Paper>
   </ThemeWrapper>
 </Playground>
 
-### Panel secondary paper
+### Secondary paper
 
 <Playground>
   <ThemeWrapper>
@@ -35,7 +35,7 @@ import { ColoredPaper, StyledPaper } from '../index';
   </ThemeWrapper>
 </Playground>
 
-### Panel tertiary paper
+### Tertiary paper
 
 <Playground>
   <ThemeWrapper>
@@ -45,7 +45,7 @@ import { ColoredPaper, StyledPaper } from '../index';
   </ThemeWrapper>
 </Playground>
 
-### Panel transparent paper
+### Transparent paper
 
 <Playground>
   <ThemeWrapper>
@@ -55,7 +55,17 @@ import { ColoredPaper, StyledPaper } from '../index';
   </ThemeWrapper>
 </Playground>
 
-### Panel contrast paper
+### Accent primary paper
+
+<Playground>
+  <ThemeWrapper>
+    <Paper bordered container="panel" color="accent-primary">
+      Hello world
+    </Paper>
+  </ThemeWrapper>
+</Playground>
+
+### Contrast paper
 
 <Playground>
   <ThemeWrapper>
@@ -237,6 +247,48 @@ import { ColoredPaper, StyledPaper } from '../index';
     >
       <div style={{ height: '40px' }}>The quick brown fox jumped over the lazy dog</div>
     </StyledPaper>
+  </ThemeWrapper>
+</Playground>
+
+## Paper sizes
+
+### Page paper
+
+<Playground>
+  <ThemeWrapper>
+    <Paper bordered container="page" color="primary">
+      Hello world
+    </Paper>
+  </ThemeWrapper>
+</Playground>
+
+### Panel paper
+
+<Playground>
+  <ThemeWrapper>
+    <Paper bordered container="panel" color="primary">
+      Hello world
+    </Paper>
+  </ThemeWrapper>
+</Playground>
+
+### Popover paper
+
+<Playground>
+  <ThemeWrapper>
+    <Paper bordered container="popover" color="primary">
+      Hello world
+    </Paper>
+  </ThemeWrapper>
+</Playground>
+
+### Banner paper
+
+<Playground>
+  <ThemeWrapper>
+    <Paper bordered container="banner" color="primary">
+      Hello world
+    </Paper>
   </ThemeWrapper>
 </Playground>
 

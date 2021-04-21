@@ -2,16 +2,42 @@
   .banner--danger + .banner--danger,
   .banner--warning + .banner--warning,
   .banner--success + .banner--success,
-  .banner--info + .banner--info {
+  .banner--info + .banner--info,
+  .banner--accent-color + .banner--accent-color,
+  .banner--contrast + .banner--contrast,
+  .banner--primary + .banner--primary,
+  .banner--secondary + .banner--secondary,
+  .banner--tertiary + .banner--tertiary,
+  .banner--transparent + .banner--transparent {
     border-top: 1px solid var(--banner-divider-color);
   }
+}
 
-  &.bannerContainer--light {
+.banner--danger,
+.banner--warning,
+.banner--success,
+.banner--info,
+.banner--accent-color,
+.banner--contrast {
+  .bannerContainer--light & {
     --banner-divider-color: rgba(255, 255, 255, .3);
   }
 
-  &.bannerContainer--dark {
+  .bannerContainer--dark & {
     --banner-divider-color: rgba(0, 0, 0, .1);
+  }
+}
+
+.banner--primary,
+.banner--secondary,
+.banner--tertiary,
+.banner--transparent {
+  .bannerContainer--light & {
+    --banner-divider-color: $light-color-FG0-O5;
+  }
+
+  .bannerContainer--dark & {
+    --banner-divider-color: $dark-color-FG0-O10;
   }
 }
 
@@ -25,7 +51,7 @@
   transform: scaleY(0);
   transform-origin: top;
   transition-duration: 200ms;
-  transition-property: opacity, transform;  
+  transition-property: opacity, transform;
   transition-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28);
 
   &.has-transitioned {

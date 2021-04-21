@@ -55,6 +55,7 @@ export default function DocsWrapper({ children }: DocsWrapperProps): React.React
 
             h3 > a {
               font-weight: 400 !important;
+              font-size: 16px;
               opacity: .5;
             }
           `}</style>
