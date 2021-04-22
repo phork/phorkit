@@ -7,7 +7,7 @@ export interface ThemeProviderProps {
   children: React.ReactNode;
   onChange?: (themeId: Theme) => void;
   themeId: Theme;
-  unthemed: boolean;
+  unthemed?: boolean;
 }
 
 export function ThemeProvider({

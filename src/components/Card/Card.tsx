@@ -13,7 +13,6 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement>, ThemePr
   magnify?: boolean;
   raised?: boolean | 0 | 10 | 20 | 100 | 200;
   squared?: boolean;
-  transparent?: boolean;
 }
 
 export const Card = React.forwardRef<HTMLDivElement, CardProps>(
@@ -28,7 +27,6 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
       raised,
       squared,
       themeId: initThemeId,
-      transparent,
       unthemed,
       ...props
     },
@@ -48,7 +46,6 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
           magnify && styles['card--magnify'],
           full && styles[`card--full`],
           themeId && !unthemed && styles[`card--${themeId}`],
-          transparent && styles['card--transparent'],
           className,
         )}
         ref={forwardedRef}
