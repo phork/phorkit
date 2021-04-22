@@ -16,24 +16,24 @@
 /* stylelint-disable-next-line no-duplicate-selectors */
 .divider {
   @mixin themed .divider {
-    background-color: $theme-color-BG40;
+    background-color: $theme-color-BG50;
   }
 
   &.divider--quiet {
     @mixin themed .divider {
-      background-color: $theme-color-BG30;
+      background-color: $theme-color-BG40;
     }
   }
 
   &.divider--quieter {
     @mixin themed .divider {
-      background-color: $theme-color-BG20;
+      background-color: $theme-color-BG30;
     }
   }
 
   &.divider--quietest {
     @mixin themed .divider {
-      background-color: $theme-color-BG10;
+      background-color: $theme-color-BG20;
     }
   }
 }

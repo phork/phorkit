@@ -159,15 +159,15 @@ input.toggleInput {
 
 .toggle--primary {
   &.toggle--light {
-    --toggle-background-color: $light-color-BG30;
+    --toggle-background-color: $light-color-BG40;
     --toggle-button-background-color: $light-color-BG0;
     --toggle-checked-background-color: $light-primary-palette-accent-color;
     --toggle-checked-button-background-color: $light-color-BG0;
   }
 
   &.toggle--dark {
-    --toggle-background-color: $dark-color-BG40-O30;
-    --toggle-button-background-color: $dark-color-BG40;
+    --toggle-background-color: $dark-color-BG50-O30;
+    --toggle-button-background-color: $dark-color-BG50;
     --toggle-checked-background-color: $dark-primary-palette-accent-color;
     --toggle-checked-button-background-color: $dark-color-FG0;
   }

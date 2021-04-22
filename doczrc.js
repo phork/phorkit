@@ -4,33 +4,33 @@ const fontFamily = "Roboto, Helvetica, 'Helvetica Neue', Arial, 'sans-serif'";
 const lightTheme = {
   'primary-palette-background-color': '#FAFAFA',
   'primary-palette-border-color': '#D1D1D6',
-  'primary-palette-text-color': '#2A2B33',
-  'primary-palette-quiet-color': 'hsla(233.29999999999995, 9.7%, 18.2%, 0.6)',
-  'primary-palette-quieter-color': 'hsla(233.29999999999995, 9.7%, 18.2%, 0.4)',
-  'primary-palette-quietest-color': 'hsla(233.29999999999995, 9.7%, 18.2%, 0.2)',
+  'primary-palette-text-color': '#3A3A40',
+  'primary-palette-quiet-color': '#808086',
+  'primary-palette-quieter-color': '#A3A3A9',
+  'primary-palette-quietest-color': '#C6C6CC',
   'primary-palette-accent-color': '#0060ce',
   'secondary-palette-background-color': '#F4F4F5',
   'secondary-palette-border-color': '#C6C6CC',
-  'secondary-palette-text-color': '#34353E',
-  'secondary-palette-quiet-color': 'hsla(234, 8.8%, 22.4%, 0.6)',
-  'secondary-palette-quieter-color': 'hsla(234, 8.8%, 22.4%, 0.4)',
-  'secondary-palette-quietest-color': 'hsla(234, 8.8%, 22.4%, 0.2)',
+  'secondary-palette-text-color': '#29292F',
+  'secondary-palette-quiet-color': '#808086',
+  'secondary-palette-quieter-color': '#A3A3A9',
+  'secondary-palette-quietest-color': '#C6C6CC',
 };
 
 const darkTheme = {
   'primary-palette-background-color': '#17171D',
   'primary-palette-border-color': '#3D3F49',
-  'primary-palette-text-color': '#FAFAFA',
-  'primary-palette-quiet-color': 'hsla(0, 0%, 98%, 0.4)',
-  'primary-palette-quieter-color': 'hsla(0, 0%, 98%, 0.3)',
-  'primary-palette-quietest-color': 'hsla(0, 0%, 98%, 0.2)',
+  'primary-palette-text-color': '#D6D7D9',
+  'primary-palette-quiet-color': '#8F9096',
+  'primary-palette-quieter-color': '#6B6C75',
+  'primary-palette-quietest-color': '#474954',
   'primary-palette-accent-color': '#00aaff',
   'secondary-palette-background-color': '#212128',
   'secondary-palette-border-color': '#474954',
-  'secondary-palette-text-color': '#FAFAFA',
-  'secondary-palette-quiet-color': 'hsla(0, 0%, 98%, 0.5)',
-  'secondary-palette-quieter-color': 'hsla(0, 0%, 98%, 0.4)',
-  'secondary-palette-quietest-color': 'hsla(0, 0%, 98%, 0.3)',
+  'secondary-palette-text-color': '#E8E9EA',
+  'secondary-palette-quiet-color': '#8F9096',
+  'secondary-palette-quieter-color': '#6B6C75',
+  'secondary-palette-quietest-color': '#474954',
 };
 
 export default {
@@ -61,7 +61,6 @@ export default {
     showDarkModeSwitch: false,
     showPlaygroundEditor: false,
 
-    // theme imports don't seem to work, so instead we hardcode the colors :(
     colors: {
       primary: lightTheme['primary-palette-accent-color'],
       text: lightTheme['primary-palette-text-color'],

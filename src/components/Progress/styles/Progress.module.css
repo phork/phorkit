@@ -13,7 +13,7 @@
 .progress--warning,
 .progress--danger {
   @mixin themed .progress {
-    background-color: $theme-color-BG20;
+    background-color: $theme-color-BG30;
   }
 }
 

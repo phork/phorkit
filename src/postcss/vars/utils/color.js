@@ -2,7 +2,7 @@ const Color = require('color');
 
 /**
  * Generate 10% to 90% transparencies for each color.
- * And example result is `color-FG10-O20` for 20%
+ * And example result is `color-FG20-O20` for 20%
  * opacity (80% transparent).
  */
 module.exports = {

@@ -160,7 +160,7 @@ input.sliderInput {
     --slider-handle-background-color: $theme-color-accent-primary;
     --slider-hover-handle-border-color: $theme-color-accent-primary;
     --slider-hover-handle-border-mask-color: $theme-primary-palette-background-color;
-    --slider-tick-background-color: $theme-color-BG40;
+    --slider-tick-background-color: $theme-color-BG50;
   }
 }
 
@@ -181,6 +181,6 @@ input.sliderInput {
     --slider-handle-background-color: $theme-color-danger;
     --slider-hover-handle-border-color: $theme-color-danger;
     --slider-hover-handle-border-mask-color: $theme-primary-palette-background-color;
-    --slider-tick-background-color: $theme-color-BG40;
+    --slider-tick-background-color: $theme-color-BG50;
   }
 }
