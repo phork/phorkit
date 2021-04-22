@@ -37,8 +37,8 @@ export function ThemeWrapper({
   }, [colorMode, toggleThemeId]);
 
   const variant = contrast ? 'contrast' : initVariant;
-  const backgroundColor = variables[`${themeId}-${variant}-background-color`];
-  const color = variables[`${themeId}-${variant}-text-color`];
+  const backgroundColor = variables[`${themeId}-${variant}-palette-background-color`];
+  const color = variables[`${themeId}-${variant}-palette-text-color`];
   const content = withThemeId ? renderFromProp(children, { themeId }) : children;
 
   return (

@@ -2,31 +2,19 @@ const color = require('./utils/color');
 
 // foreground and background colors, generally
 const neutralColors = {
-  'color-FG0': '#000',
-  'color-FG05': '#111',
-  'color-FG10': '#333',
-  'color-FG20': '#555',
-  'color-FG30': '#777',
-  'color-FG40': '#999',
+  'color-FG0': '#17171D',
+  'color-FG05': '#212128',
+  'color-FG10': '#2A2B33',
+  'color-FG20': '#34353E',
+  'color-FG30': '#3D3F49',
+  'color-FG40': '#474954',
 
   'color-BG0': '#fff',
-  'color-BG05': '#fafafa',
-  'color-BG10': '#f4f4f4',
-  'color-BG20': '#e4e4e4',
-  'color-BG30': '#d4d4d4',
-  'color-BG40': '#c4c4c4',
-};
-
-const primaryZero = {
-  'color-P0-L40': '#b5bbc9',
-  'color-P0-L30': '#a6abb9',
-  'color-P0-L20': '#969ba8',
-  'color-P0-L10': '#878a98',
-  'color-P0': '#777a87',
-  'color-P0-D10': '#686a77',
-  'color-P0-D20': '#585a66',
-  'color-P0-D30': '#494956',
-  'color-P0-D40': '#393945',
+  'color-BG05': '#F7F7F6',
+  'color-BG10': '#EFEFEC',
+  'color-BG20': '#E7E6E3',
+  'color-BG30': '#DFDED9',
+  'color-BG40': '#D7D6D0',
 };
 
 const primaryColors = {
@@ -45,8 +33,19 @@ const primaryColors = {
   'color-P65': '#8b218b',
 };
 
+const primaryZeroColors = {
+  'color-P0-L40': '#D7D6D0',
+  'color-P0-L30': '#C5C4C1',
+  'color-P0-L20': '#B3B3B1',
+  'color-P0-L10': '#A1A1A2',
+  'color-P0': '#8F9092',
+  'color-P0-D10': '#7D7E83',
+  'color-P0-D20': '#6B6C73',
+  'color-P0-D30': '#595B64',
+  'color-P0-D40': '#474954',
+};
+
 const primaryContrastColors = {
-  'color-P0-contrast': '#fff',
   'color-P05-contrast': '#fff',
   'color-P10-contrast': '#fff',
   'color-P15-contrast': '#fff',
@@ -95,7 +94,7 @@ const accentColors = {
   'color-danger': primaryColors['color-P15'],
   'color-danger-contrast': '#fff',
 
-  'color-neutral': color.whiten(neutralColors['color-FG40'], 80),
+  'color-neutral': primaryZeroColors['color-P0-D20'],
   'color-neutral-contrast': neutralColors['color-BG0'],
 };
 
@@ -180,7 +179,7 @@ const definedColors = {
 
 const colors = {
   ...definedColors,
-  ...primaryZero,
+  ...primaryZeroColors,
   ...primaryContrastColors,
   ...color.generateLightenDarken(
     definedColors,

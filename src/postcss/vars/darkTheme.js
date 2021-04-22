@@ -3,30 +3,18 @@ const color = require('./utils/color');
 // foreground and background colors, generally
 const neutralColors = {
   'color-FG0': '#fff',
-  'color-FG05': '#fafafa',
-  'color-FG10': '#f4f4f4',
-  'color-FG20': '#e4e4e4',
-  'color-FG30': '#d4d4d4',
-  'color-FG40': '#c4c4c4',
+  'color-FG05': '#F7F7F6',
+  'color-FG10': '#EFEFEC',
+  'color-FG20': '#E7E6E3',
+  'color-FG30': '#DFDED9',
+  'color-FG40': '#D7D6D0',
 
   'color-BG0': '#17171D',
-  'color-BG05': '#1F2027',
-  'color-BG10': '#272931',
-  'color-BG20': '#2F313A',
-  'color-BG30': '#373A44',
-  'color-BG40': '#3F434E',
-};
-
-const primaryZero = {
-  'color-P0-L40': '#848999',
-  'color-P0-L30': '#777b8a',
-  'color-P0-L20': '#6a6e7c',
-  'color-P0-L10': '#5d606d',
-  'color-P0': '#50525e',
-  'color-P0-D10': '#42444f',
-  'color-P0-D20': '#353741',
-  'color-P0-D30': '#282932',
-  'color-P0-D40': '#1b1b23',
+  'color-BG05': '#212128',
+  'color-BG10': '#2A2B33',
+  'color-BG20': '#34353E',
+  'color-BG30': '#3D3F49',
+  'color-BG40': '#474954',
 };
 
 const primaryColors = {
@@ -45,8 +33,19 @@ const primaryColors = {
   'color-P65': '#8b218b',
 };
 
+const primaryZeroColors = {
+  'color-P0-L40': '#D7D6D0',
+  'color-P0-L30': '#C5C4C1',
+  'color-P0-L20': '#B3B3B1',
+  'color-P0-L10': '#A1A1A2',
+  'color-P0': '#8F9092',
+  'color-P0-D10': '#7D7E83',
+  'color-P0-D20': '#6B6C73',
+  'color-P0-D30': '#595B64',
+  'color-P0-D40': '#474954',
+};
+
 const primaryContrastColors = {
-  'color-P0-contrast': '#fff',
   'color-P05-contrast': '#222',
   'color-P10-contrast': '#222',
   'color-P15-contrast': '#222',
@@ -96,8 +95,8 @@ const accentColors = {
   'color-danger': primaryColors['color-P15'],
   'color-danger-contrast': '#222',
 
-  'color-neutral': '#777',
-  'color-neutral-contrast': neutralColors['color-BG0'],
+  'color-neutral': primaryZeroColors['color-P0-D20'],
+  'color-neutral-contrast': '#222',
 };
 
 const shadowColors = {
@@ -128,8 +127,8 @@ const shadowColors = {
 };
 
 const hierarchyColors = {
-  'primary-palette-background-color': neutralColors['color-BG10'],
-  'primary-palette-border-color': neutralColors['color-BG40'],
+  'primary-palette-background-color': neutralColors['color-BG05'],
+  'primary-palette-border-color': neutralColors['color-BG30'],
   'primary-palette-quiet-border-color': neutralColors['color-BG20'],
   'primary-palette-text-color': neutralColors['color-FG05'],
   'primary-palette-quiet-color': neutralColors['color-FG40'],
@@ -184,7 +183,7 @@ const definedColors = {
 
 const colors = {
   ...definedColors,
-  ...primaryZero,
+  ...primaryZeroColors,
   ...primaryContrastColors,
   ...color.generateLightenDarken(
     definedColors,
