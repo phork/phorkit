@@ -40,7 +40,7 @@
     --navigation-focused-border-color: $theme-color-accent-primary;
     --navigation-item-focused-border-color: $theme-color-accent-primary-O20;
     --navigation-item-selected-border-color: $theme-color-accent-primary;
-    --navigation-item-selected-text-color: $theme-primary-text-color;
+    --navigation-item-selected-text-color: $theme-primary-palette-text-color;
     --navigation-item-text-color: $theme-color-FG10;
   }
 }
@@ -54,7 +54,7 @@
   @mixin themed .navigation {
     --navigation-item-focused-background-color: $theme-color-accent-primary;
     --navigation-item-selected-background-color: $theme-color-BG40-O20;
-    --navigation-item-focused-text-color: $theme-contrast-accent-color;
+    --navigation-item-focused-text-color: $theme-contrast-palette-accent-color;
   }
 }
 
@@ -82,9 +82,9 @@
   @mixin themed .navigation {
     --navigation-item-focused-background-color: $theme-color-BG40-O20;
     --navigation-item-selected-background-color: $theme-color-accent-primary;
-    --navigation-item-selected-text-color: $theme-contrast-accent-color;
+    --navigation-item-selected-text-color: $theme-contrast-palette-accent-color;
     --navigation-item-focused-selected-background-color: $theme-color-BG40-O10;
-    --navigation-item-focused-selected-text-color: $theme-contrast-accent-color;
+    --navigation-item-focused-selected-text-color: $theme-contrast-palette-accent-color;
   }
 }
 

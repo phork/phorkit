@@ -331,39 +331,39 @@ ul.unlist {
 
 .list--primary {
   @mixin themed .list {
-    --list-focused-border-color: $theme-secondary-accent-color;
-    --list-item-selected-background-color: $theme-secondary-accent-color;
+    --list-focused-border-color: $theme-secondary-palette-accent-color;
+    --list-item-selected-background-color: $theme-secondary-palette-accent-color;
     --list-item-selected-text-color: $theme-color-accent-primary-contrast;
-    --list-item-background-color: $theme-secondary-background-color;
-    --list-item-border-color: $theme-secondary-border-color;
-    --list-item-focused-border-color: $theme-secondary-accent-color;
-    --list-item-focused-text-color: $theme-secondary-accent-color;
-    --list-item-text-color: $theme-secondary-quiet-color;
+    --list-item-background-color: $theme-secondary-palette-background-color;
+    --list-item-border-color: $theme-secondary-palette-border-color;
+    --list-item-focused-border-color: $theme-secondary-palette-accent-color;
+    --list-item-focused-text-color: $theme-secondary-palette-accent-color;
+    --list-item-text-color: $theme-secondary-palette-quiet-color;
   }
 }
 
 .list--minimal {
   @mixin themed .list {
-    --list-focused-border-color: $theme-secondary-border-color;
+    --list-focused-border-color: $theme-secondary-palette-border-color;
     --list-item-selected-background-color: $theme-color-BG40-O10;
-    --list-item-selected-text-color: $theme-secondary-text-color;
+    --list-item-selected-text-color: $theme-secondary-palette-text-color;
     --list-item-background-color: $theme-color-BG0;
-    --list-item-border-color: $theme-secondary-border-color;
-    --list-item-focused-border-color: $theme-secondary-border-color;
-    --list-item-focused-text-color: $theme-secondary-text-color;
-    --list-item-text-color: $theme-secondary-quiet-color;
+    --list-item-border-color: $theme-secondary-palette-border-color;
+    --list-item-focused-border-color: $theme-secondary-palette-border-color;
+    --list-item-focused-text-color: $theme-secondary-palette-text-color;
+    --list-item-text-color: $theme-secondary-palette-quiet-color;
   }
 }
 
 .list--contrast {
   @mixin themed .list {
-    --list-focused-border-color: $theme-contrast-accent-color;
-    --list-item-selected-background-color: $theme-contrast-accent-color;
-    --list-item-selected-text-color: var(--contrast-color, $theme-contrast-background-color);
-    --list-item-background-color: var(--contrast-color, $theme-contrast-background-color);
-    --list-item-border-color: $theme-contrast-border-color;
-    --list-item-focused-border-color: $theme-contrast-accent-color;
-    --list-item-focused-text-color: $theme-contrast-quiet-color;
-    --list-item-text-color: $theme-contrast-text-color;
+    --list-focused-border-color: $theme-contrast-palette-accent-color;
+    --list-item-selected-background-color: $theme-contrast-palette-accent-color;
+    --list-item-selected-text-color: var(--contrast-color, $theme-contrast-palette-background-color);
+    --list-item-background-color: var(--contrast-color, $theme-contrast-palette-background-color);
+    --list-item-border-color: $theme-contrast-palette-border-color;
+    --list-item-focused-border-color: $theme-contrast-palette-accent-color;
+    --list-item-focused-text-color: $theme-contrast-palette-quiet-color;
+    --list-item-text-color: $theme-contrast-palette-text-color;
   }
 }

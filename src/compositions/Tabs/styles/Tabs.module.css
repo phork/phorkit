@@ -20,11 +20,11 @@
 
 .tabList--primary {
   @mixin themed .tabList {
-    --tab-background-color: $theme-tertiary-background-color;
+    --tab-background-color: $theme-tertiary-palette-background-color;
     --tab-focused-text-color: $theme-color-accent-primary;
-    --tab-selected-background-color: $theme-secondary-background-color;
-    --tab-selected-text-color: $theme-secondary-text-color;
-    --tab-text-color: $theme-tertiary-text-color;
+    --tab-selected-background-color: $theme-secondary-palette-background-color;
+    --tab-selected-text-color: $theme-secondary-palette-text-color;
+    --tab-text-color: $theme-tertiary-palette-text-color;
     --tab-list-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
   }
 }
@@ -43,10 +43,10 @@
 .tabList--contrast {
   @mixin themed .tabList {
     --tab-background-color: $theme-color-BG0-O5;
-    --tab-focused-text-color: $theme-contrast-text-color;
-    --tab-selected-background-color: var(--contrast-color, $theme-contrast-background-color);
-    --tab-selected-text-color: $theme-contrast-quiet-color;
-    --tab-text-color: $theme-contrast-quiet-color;
+    --tab-focused-text-color: $theme-contrast-palette-text-color;
+    --tab-selected-background-color: var(--contrast-color, $theme-contrast-palette-background-color);
+    --tab-selected-text-color: $theme-contrast-palette-quiet-color;
+    --tab-text-color: $theme-contrast-palette-quiet-color;
     --tab-list-scrollbar-thumb-color: $theme-contrast-scrollbar-thumb-color;
   }
 }

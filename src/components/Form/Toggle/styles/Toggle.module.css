@@ -145,24 +145,24 @@ input.toggleInput {
   &.toggle--light {
     --toggle-background-color: $light-color-BG30;
     --toggle-button-background-color: $light-color-BG0;
-    --toggle-checked-background-color: $light-primary-accent-color;
+    --toggle-checked-background-color: $light-primary-palette-accent-color;
     --toggle-checked-button-background-color: $light-color-BG0;
   }
 
   &.toggle--dark {
     --toggle-background-color: $dark-color-BG40-O30;
     --toggle-button-background-color: $dark-color-BG40;
-    --toggle-checked-background-color: $dark-primary-accent-color;
+    --toggle-checked-background-color: $dark-primary-palette-accent-color;
     --toggle-checked-button-background-color: $dark-color-FG0;
   }
 }
 
 .toggle--contrast {
   @mixin themed .toggle {
-    --toggle-background-color: $theme-contrast-quietest-color;
-    --toggle-button-background-color: $theme-contrast-quieter-color;
-    --toggle-checked-background-color: $theme-contrast-quietest-color;
-    --toggle-checked-button-background-color: $theme-contrast-accent-color;
+    --toggle-background-color: $theme-contrast-palette-quietest-color;
+    --toggle-button-background-color: $theme-contrast-palette-quieter-color;
+    --toggle-checked-background-color: $theme-contrast-palette-quietest-color;
+    --toggle-checked-button-background-color: $theme-contrast-palette-accent-color;
   }
 }
 
@@ -173,9 +173,9 @@ input.toggleInput {
  */
 .toggle--contrast.toggle--standalone {
   @mixin themed .toggle {
-    --toggle-background-color: $theme-contrast-quietest-color;
-    --toggle-button-background-color: $theme-contrast-quieter-color;
-    --toggle-checked-background-color: $theme-contrast-text-color;
-    --toggle-checked-button-background-color: var(--contrast-color, $theme-contrast-background-color);
+    --toggle-background-color: $theme-contrast-palette-quietest-color;
+    --toggle-button-background-color: $theme-contrast-palette-quieter-color;
+    --toggle-checked-background-color: $theme-contrast-palette-text-color;
+    --toggle-checked-button-background-color: var(--contrast-color, $theme-contrast-palette-background-color);
   }
 }

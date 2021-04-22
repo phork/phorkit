@@ -113,8 +113,8 @@
 
 .badge--contrast {
   @mixin themed .badge {
-    background-color: $theme-contrast-text-color;
-    color: var(--contrast-color, $theme-contrast-background-color);
+    background-color: $theme-contrast-palette-text-color;
+    color: var(--contrast-color, $theme-contrast-palette-background-color);
   }
 }
 

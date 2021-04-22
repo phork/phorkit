@@ -33,53 +33,53 @@
 
 .header--primary {
   @mixin themed .header {
-    --header-border-color: $theme-primary-border-color;
+    --header-border-color: $theme-primary-palette-border-color;
 
     &.header--quiet {
-      --header-border-color: $theme-primary-quiet-border-color;
+      --header-border-color: $theme-primary-palette-quiet-border-color;
     }
 
-    background-color: $theme-primary-background-color;
-    color: $theme-primary-text-color;
+    background-color: $theme-primary-palette-background-color;
+    color: $theme-primary-palette-text-color;
   }
 }
 
 .header--secondary {
   @mixin themed .header {
-    --header-border-color: $theme-secondary-border-color;
+    --header-border-color: $theme-secondary-palette-border-color;
 
     &.header--quiet {
-      --header-border-color: $theme-secondary-quiet-border-color;
+      --header-border-color: $theme-secondary-palette-quiet-border-color;
     }
 
-    background-color: $theme-secondary-background-color;
-    color: $theme-secondary-text-color;
+    background-color: $theme-secondary-palette-background-color;
+    color: $theme-secondary-palette-text-color;
   }
 }
 
 .header--transparent {
   @mixin themed .header {
-    --header-border-color: $theme-primary-border-color;
+    --header-border-color: $theme-primary-palette-border-color;
 
     &.header--quiet {
-      --header-border-color: $theme-primary-quiet-border-color;
+      --header-border-color: $theme-primary-palette-quiet-border-color;
     }
 
     background-color: transparent;
-    color: $theme-primary-text-color;
+    color: $theme-primary-palette-text-color;
   }
 }
 
 .header--contrast {
   @mixin themed .header {
-    --header-border-color: $theme-contrast-border-color;
+    --header-border-color: $theme-contrast-palette-border-color;
 
     &.header--quiet {
-      --header-border-color: $theme-contrast-quiet-border-color;
+      --header-border-color: $theme-contrast-palette-quiet-border-color;
     }
 
-    background-color: var(--contrast-color, $theme-contrast-background-color);
-    color: $theme-contrast-text-color;
+    background-color: var(--contrast-color, $theme-contrast-palette-background-color);
+    color: $theme-contrast-palette-text-color;
   }
 }
 

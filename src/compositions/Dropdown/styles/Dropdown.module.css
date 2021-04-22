@@ -166,11 +166,11 @@
 
 .dropdown--primary {
   @mixin themed .dropdown {
-    --dropdown-options-bottom-border-color: $theme-secondary-border-color;
-    --dropdown-options-focused-border-color: $theme-primary-accent-color;
-    --dropdown-options-contained-background-color: $theme-secondary-background-color;
+    --dropdown-options-bottom-border-color: $theme-secondary-palette-border-color;
+    --dropdown-options-focused-border-color: $theme-primary-palette-accent-color;
+    --dropdown-options-contained-background-color: $theme-secondary-palette-background-color;
     --dropdown-options-contained-box-shadow: $theme-box-shadow-0;
-    --dropdown-options-contained-border-color: $theme-secondary-border-color;
+    --dropdown-options-contained-border-color: $theme-secondary-palette-border-color;
     --dropdown-options-raised-box-shadow: $theme-box-shadow-0;
     --dropdown-options-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
   }
@@ -178,20 +178,20 @@
 
 .dropdown--contrast {
   @mixin themed .dropdown {
-    --dropdown-options-focused-border-color: $theme-contrast-accent-color;
-    --dropdown-options-contained-background-color: var(--contrast-color, $theme-contrast-background-color);
+    --dropdown-options-focused-border-color: $theme-contrast-palette-accent-color;
+    --dropdown-options-contained-background-color: var(--contrast-color, $theme-contrast-palette-background-color);
     --dropdown-options-contained-box-shadow: $theme-box-shadow-0;
-    --dropdown-options-contained-border-color: $theme-contrast-text-color;
+    --dropdown-options-contained-border-color: $theme-contrast-palette-text-color;
     --dropdown-options-raised-box-shadow: $theme-box-shadow-0;
     --dropdown-options-scrollbar-thumb-color: $theme-contrast-scrollbar-thumb-color;
   }
 
   &.dropdown--light {
-    --dropdown-options-bottom-border-color: $light-contrast-quietest-color;
+    --dropdown-options-bottom-border-color: $light-contrast-palette-quietest-color;
   }
 
   &.dropdown--dark {
-    --dropdown-options-bottom-border-color: $dark-contrast-quieter-color;
+    --dropdown-options-bottom-border-color: $dark-contrast-palette-quieter-color;
   }
 }
 

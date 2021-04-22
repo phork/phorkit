@@ -134,12 +134,12 @@ input.checkboxInput {
 
 .checkbox--contrast {
   @mixin themed .checkbox {
-    --checkbox-checked-background-color: $theme-contrast-accent-color;
-    --checkbox-checked-hover-box-shadow: 0 0 0 1px $theme-contrast-accent-color;
-    --checkbox-checked-icon-color: var(--contrast-color, $theme-contrast-background-color);
-    --checkbox-unchecked-background-color: $theme-contrast-quietest-color;
-    --checkbox-unchecked-hover-box-shadow: 0 0 0 1px $theme-contrast-quietest-color;
-    --checkbox-focused-box-shadow: 0 0 0 1px $theme-contrast-accent-color;
+    --checkbox-checked-background-color: $theme-contrast-palette-accent-color;
+    --checkbox-checked-hover-box-shadow: 0 0 0 1px $theme-contrast-palette-accent-color;
+    --checkbox-checked-icon-color: var(--contrast-color, $theme-contrast-palette-background-color);
+    --checkbox-unchecked-background-color: $theme-contrast-palette-quietest-color;
+    --checkbox-unchecked-hover-box-shadow: 0 0 0 1px $theme-contrast-palette-quietest-color;
+    --checkbox-focused-box-shadow: 0 0 0 1px $theme-contrast-palette-accent-color;
   }
 }
 

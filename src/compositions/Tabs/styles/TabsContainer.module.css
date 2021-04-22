@@ -13,7 +13,7 @@
 
 .tabs--colored {
   border: none;
-  
+
   &:after {
     border-radius: $border-radius-s;
     border: 1px solid var(--tabs-border-color);
@@ -47,7 +47,7 @@
 
 .tabs--contrast {
   @mixin themed .tabs {
-    --tabs-border-color: $theme-contrast-quietest-color;
-    --tabs-focused-border-color: $theme-contrast-accent-color;
+    --tabs-border-color: $theme-contrast-palette-quietest-color;
+    --tabs-focused-border-color: $theme-contrast-palette-accent-color;
   }
 }

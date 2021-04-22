@@ -3,20 +3,20 @@
  */
 .text-color-primary {
   @mixin themed .text {
-    color: $theme-primary-text-color;
+    color: $theme-primary-palette-text-color;
 
     &.text-quiet {
-      color: $theme-primary-quiet-color;
+      color: $theme-primary-palette-quiet-color;
       opacity: 1; /* [1] */
     }
 
     &.text-quieter {
-      color: $theme-primary-quieter-color;
+      color: $theme-primary-palette-quieter-color;
       opacity: 1; /* [1] */
     }
 
     &.text-quietest {
-      color: $theme-primary-quietest-color;
+      color: $theme-primary-palette-quietest-color;
       opacity: 1; /* [1] */
     }
   }
@@ -27,20 +27,20 @@
  */
 .text-color-secondary {
   @mixin themed .text {
-    color: $theme-secondary-text-color;
+    color: $theme-secondary-palette-text-color;
 
     &.text-quiet {
-      color: $theme-secondary-quiet-color;
+      color: $theme-secondary-palette-quiet-color;
       opacity: 1; /* [1] */
     }
 
     &.text-quieter {
-      color: $theme-secondary-quieter-color;
+      color: $theme-secondary-palette-quieter-color;
       opacity: 1; /* [1] */
     }
 
     &.text-quietest {
-      color: $theme-secondary-quietest-color;
+      color: $theme-secondary-palette-quietest-color;
       opacity: 1; /* [1] */
     }
   }
@@ -51,20 +51,20 @@
  */
 .text-color-contrast {
   @mixin themed .text {
-    color: $theme-contrast-text-color;
+    color: $theme-contrast-palette-text-color;
 
     &.text-quiet {
-      color: $theme-contrast-quiet-color;
+      color: $theme-contrast-palette-quiet-color;
       opacity: 1; /* [1] */
     }
 
     &.text-quieter {
-      color: $theme-contrast-quieter-color;
+      color: $theme-contrast-palette-quieter-color;
       opacity: 1; /* [1] */
     }
 
     &.text-quietest {
-      color: $theme-contrast-quietest-color;
+      color: $theme-contrast-palette-quietest-color;
       opacity: 1; /* [1] */
     }
   }

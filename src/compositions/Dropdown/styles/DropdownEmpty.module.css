@@ -10,12 +10,12 @@
 
 .dropdownEmpty--primary {
   @mixin themed .dropdownEmpty {
-    --dropdown-empty-text-color: $theme-secondary-quiet-color;
+    --dropdown-empty-text-color: $theme-secondary-palette-quiet-color;
   }
 }
 
 .dropdownEmpty--contrast {
   @mixin themed .dropdownEmpty {
-    --dropdown-empty-text-color: $theme-contrast-quiet-color;
+    --dropdown-empty-text-color: $theme-contrast-palette-quiet-color;
   }
 }

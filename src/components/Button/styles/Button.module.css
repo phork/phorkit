@@ -292,10 +292,10 @@ button.button {
 
 .button--contrast {
   @mixin themed .button {
-    --button-primary-color: $theme-contrast-text-color;
-    --button-inverse-color: var(--contrast-color, $theme-contrast-background-color);
-    --button-hover-primary-color: $theme-contrast-quiet-color;
-    --button-active-primary-color: $theme-contrast-text-color;
+    --button-primary-color: $theme-contrast-palette-text-color;
+    --button-inverse-color: var(--contrast-color, $theme-contrast-palette-background-color);
+    --button-hover-primary-color: $theme-contrast-palette-quiet-color;
+    --button-active-primary-color: $theme-contrast-palette-text-color;
   }
 }
 

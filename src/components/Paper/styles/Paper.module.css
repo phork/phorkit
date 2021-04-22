@@ -66,9 +66,9 @@
 
 .paper--primary {
   @mixin themed .paper {
-    background-color: $theme-primary-background-color;
-    border-color: $theme-primary-border-color;
-    color: $theme-primary-text-color;
+    background-color: $theme-primary-palette-background-color;
+    border-color: $theme-primary-palette-border-color;
+    color: $theme-primary-palette-text-color;
 
     --paper-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
   }
@@ -76,9 +76,9 @@
 
 .paper--secondary {
   @mixin themed .paper {
-    background-color: $theme-secondary-background-color;
-    border-color: $theme-secondary-border-color;
-    color: $theme-secondary-text-color;
+    background-color: $theme-secondary-palette-background-color;
+    border-color: $theme-secondary-palette-border-color;
+    color: $theme-secondary-palette-text-color;
 
     --paper-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
   }
@@ -86,9 +86,9 @@
 
 .paper--tertiary {
   @mixin themed .paper {
-    background-color: $theme-tertiary-background-color;
-    border-color: $theme-tertiary-border-color;
-    color: $theme-tertiary-text-color;
+    background-color: $theme-tertiary-palette-background-color;
+    border-color: $theme-tertiary-palette-border-color;
+    color: $theme-tertiary-palette-text-color;
 
     --paper-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
   }
@@ -97,7 +97,7 @@
 .paper--transparent {
   @mixin themed .paper {
     background-color: transparent;
-    border-color: $theme-primary-border-color;
+    border-color: $theme-primary-palette-border-color;
     color: currentColor;
 
     --paper-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
@@ -106,9 +106,9 @@
 
 .paper--contrast {
   @mixin themed .paper {
-    background-color: var(--contrast-color, $theme-contrast-background-color);
-    border-color: $theme-contrast-border-color;
-    color: $theme-contrast-text-color;
+    background-color: var(--contrast-color, $theme-contrast-palette-background-color);
+    border-color: $theme-contrast-palette-border-color;
+    color: $theme-contrast-palette-text-color;
 
     --paper-scrollbar-thumb-color: $theme-contrast-scrollbar-thumb-color;
   }

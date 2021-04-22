@@ -40,18 +40,18 @@
 
 .divider--contrast {
   @mixin themed .divider {
-    background-color: $theme-contrast-border-color;
+    background-color: $theme-contrast-palette-border-color;
   }
 
   &.divider--quiet {
     @mixin themed .divider {
-      background-color: $theme-contrast-quieter-color;
+      background-color: $theme-contrast-palette-quieter-color;
     }
   }
 
   &.divider--quieter {
     @mixin themed .divider {
-      background-color: $theme-contrast-quietest-color;
+      background-color: $theme-contrast-palette-quietest-color;
     }
   }
 
@@ -59,7 +59,7 @@
     opacity: .7;
 
     @mixin themed .divider {
-      background-color: $theme-contrast-quietest-color;
+      background-color: $theme-contrast-palette-quietest-color;
     }
   }
 }

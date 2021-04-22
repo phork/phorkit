@@ -22,11 +22,11 @@
   }
 
   @mixin themed .card {
-    background-color: $theme-secondary-background-color;
-    color: $theme-secondary-text-color;
+    background-color: $theme-secondary-palette-background-color;
+    color: $theme-secondary-palette-text-color;
 
-    --card-hover-border-color: $theme-primary-border-color;
-    --card-border-color: $theme-secondary-border-color;
+    --card-hover-border-color: $theme-primary-palette-border-color;
+    --card-border-color: $theme-secondary-palette-border-color;
   }
 
   &.card--transparent {

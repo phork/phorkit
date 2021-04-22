@@ -42,16 +42,16 @@ a.link,
 
 a.link.link--contrast.link--light,
 .linkContainer.linkContainer--contrast.linkContainer--light {
-  --link-color: $light-contrast-text-color;
-  --link-hover-color: $light-contrast-quiet-color;
-  --link-active-color: $light-contrast-text-color;
+  --link-color: $light-contrast-palette-text-color;
+  --link-hover-color: $light-contrast-palette-quiet-color;
+  --link-active-color: $light-contrast-palette-text-color;
 }
 
 a.link.link--contrast.link--dark,
 .linkContainer.linkContainer--contrast.linkContainer--dark {
-  --link-color: $dark-contrast-text-color;
-  --link-hover-color: $dark-contrast-quiet-color;
-  --link-active-color: $dark-contrast-text-color;
+  --link-color: $dark-contrast-palette-text-color;
+  --link-hover-color: $dark-contrast-palette-quiet-color;
+  --link-active-color: $dark-contrast-palette-text-color;
 }
 
 /**

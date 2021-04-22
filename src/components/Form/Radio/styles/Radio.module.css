@@ -116,11 +116,11 @@ input.radioInput {
 
 .radio--contrast {
   @mixin themed .radio {
-    --radio-checked-background-color: $theme-contrast-accent-color;
-    --radio-checked-hover-box-shadow: 0 0 0 1px $theme-contrast-accent-color;
-    --radio-checked-icon-color: var(--contrast-color, $theme-contrast-background-color);
-    --radio-unchecked-background-color: $theme-contrast-quietest-color;
-    --radio-unchecked-hover-box-shadow: 0 0 0 1px $theme-contrast-quietest-color;
-    --radio-focused-box-shadow: 0 0 0 1px $theme-contrast-accent-color;
+    --radio-checked-background-color: $theme-contrast-palette-accent-color;
+    --radio-checked-hover-box-shadow: 0 0 0 1px $theme-contrast-palette-accent-color;
+    --radio-checked-icon-color: var(--contrast-color, $theme-contrast-palette-background-color);
+    --radio-unchecked-background-color: $theme-contrast-palette-quietest-color;
+    --radio-unchecked-hover-box-shadow: 0 0 0 1px $theme-contrast-palette-quietest-color;
+    --radio-focused-box-shadow: 0 0 0 1px $theme-contrast-palette-accent-color;
   }
 }

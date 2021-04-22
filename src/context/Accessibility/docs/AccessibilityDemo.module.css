@@ -1,8 +1,8 @@
 .button {
   @mixin themed {
     align-items: center;
-    background-color: $theme-primary-accent-color;
-    color: $theme-contrast-text-color;
+    background-color: $theme-primary-palette-accent-color;
+    color: $theme-contrast-palette-text-color;
     border-radius: $border-radius-m;
     border: 1px solid transparent;
     cursor: pointer;
