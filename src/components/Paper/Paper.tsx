@@ -8,7 +8,7 @@ export interface PaperProps extends React.HTMLAttributes<HTMLDivElement>, ThemeP
   bordered?: boolean;
   children: React.ReactNode;
   className?: string;
-  color?: StateColor | SequentialVariant | AccentColor | 'contrast' | 'transparent';
+  color?: StateColor | SequentialVariant | AccentColor | 'contrast' | 'transparent' | 'extreme';
   /** Whether the paper is contained within a relative element and should fill it */
   contained?: boolean;
   container?: 'page' | 'panel' | 'popover' | 'banner';

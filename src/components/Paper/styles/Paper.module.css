@@ -64,6 +64,16 @@
   padding: 16px 40px;
 }
 
+.paper--extreme {
+  @mixin themed .paper {
+    background-color: $theme-extreme-palette-background-color;
+    border-color: $theme-extreme-palette-border-color;
+    color: $theme-extreme-palette-text-color;
+
+    --paper-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
+  }
+}
+
 .paper--primary {
   @mixin themed .paper {
     background-color: $theme-primary-palette-background-color;

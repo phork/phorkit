@@ -24,7 +24,7 @@
     --tab-focused-text-color: $theme-color-accent-primary;
     --tab-selected-background-color: $theme-primary-palette-background-color;
     --tab-selected-text-color: $theme-primary-palette-text-color;
-    --tab-text-color: $theme-tertiary-palette-text-color;
+    --tab-text-color: $theme-secondary-palette-quiet-color;
     --tab-list-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
   }
 }

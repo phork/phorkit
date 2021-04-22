@@ -10,7 +10,8 @@ const neutralColors = {
   'color-FG40': '#A3A3A9',
   'color-FG50': '#C6C6CC',
 
-  'color-BG0': '#FAFAFA',
+  'color-BG0': '#FFF',
+  'color-BG05': '#FAFAFA',
   'color-BG10': '#F4F4F5',
   'color-BG20': '#E8E8EB',
   'color-BG30': '#DDDDE0',
@@ -112,7 +113,11 @@ const shadowColors = {
 };
 
 const paletteColors = {
-  'primary-palette-background-color': neutralColors['color-BG0'],
+  'extreme-palette-background-color': neutralColors['color-BG0'],
+  'extreme-palette-border-color': neutralColors['color-BG40'],
+  'extreme-palette-text-color': neutralColors['color-FG0'],
+
+  'primary-palette-background-color': neutralColors['color-BG05'],
   'primary-palette-border-color': neutralColors['color-BG40'],
   'primary-palette-quiet-border-color': neutralColors['color-BG30'],
   'primary-palette-text-color': neutralColors['color-FG10'],
