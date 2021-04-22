@@ -76,9 +76,9 @@
 
 .paper--secondary {
   @mixin themed .paper {
-    background-color: $theme-secondary-palette-background-color;
-    border-color: $theme-secondary-palette-border-color;
-    color: $theme-secondary-palette-text-color;
+    background-color: $theme-primary-palette-background-color;
+    border-color: $theme-primary-palette-border-color;
+    color: $theme-primary-palette-text-color;
 
     --paper-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
   }

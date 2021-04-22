@@ -59,6 +59,12 @@ export default function DocsWrapper({ children }: DocsWrapperProps): React.React
               opacity: .5;
             }
 
+            h2 > a:focus,
+            h3 > a:focus {
+              outline: none;
+              text-decoration: underline;
+            }
+
             pre.prism-code {
               position: relative;
               background: transparent !important;

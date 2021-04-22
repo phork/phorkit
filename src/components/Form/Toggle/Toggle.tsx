@@ -1,6 +1,7 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useRef, useState } from 'react';
 import { MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
+import { useAccessibility } from '../../../context/Accessibility';
 import { useComponentId } from '../../../hooks/useComponentId';
 import { useThemeId } from '../../../hooks/useThemeId';
 import { makeCombineRefs } from '../../../utils';
@@ -50,6 +51,7 @@ export function ToggleBase(
   forwardedRef: React.ForwardedRef<HTMLInputElement>,
 ): React.ReactElement<ToggleProps, 'label'> {
   const inputRef = useRef<HTMLInputElement>(null!);
+  const accessible = useAccessibility();
   const themeId = useThemeId(initThemeId);
   const [focused, setFocused] = useState(false);
   const color = contrast ? 'contrast' : 'primary';
@@ -102,7 +104,9 @@ export function ToggleBase(
         type="checkbox"
         value={value}
       />
-      <div className={styles.toggleInput} />
+      <div className={styles.toggleButton}>
+        {accessible && focused && <div className={styles.toggleButtonFocusRing} />}
+      </div>
       <Label
         className={styles.toggleLabel}
         contrast={contrast}

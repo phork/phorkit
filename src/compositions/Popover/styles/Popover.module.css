@@ -9,7 +9,7 @@
   z-index: $layout-z-index-popover;
 
   &.is-visible {
-    display: block; 
+    display: block;
   }
 }
 
@@ -111,4 +111,19 @@
 
 .popover--stackedRight {
   right: 0;
+}
+
+.popoverToggler {
+  &:focus {
+    outline: none;
+
+    &.is-accessible {
+      outline: 1px solid currentColor;
+      outline-offset: 2px;
+
+      @mixin themed .popoverToggler {
+        outline-color: $theme-color-accent-primary;
+      }
+    }
+  }
 }

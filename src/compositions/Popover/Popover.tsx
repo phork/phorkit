@@ -1,11 +1,12 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Orientation, AnyPosition, StackedPosition } from '../../types';
+import { Orientation, AnyPosition, StackedPosition, ThemeProps } from '../../types';
 import { useAccessibility } from '../../context/Accessibility';
 import { useComponentVisible } from '../../hooks/useComponentVisible';
 import { useFocusReturn } from '../../hooks/useFocusReturn';
 import { usePopoverPosition } from '../../hooks/usePopoverPosition';
 import { useSafeTimeout } from '../../hooks/useSafeTimeout';
+import { useThemeId } from '../../hooks/useThemeId';
 import { getFirstFocusableElement } from '../../utils/getFocusableElements';
 import { getPositionOffset } from '../../utils/getPositionOffset';
 import { renderFromProp, RenderFromPropElement } from '../../utils/renderFromProp';
@@ -18,19 +19,20 @@ const CLOSE_TIMEOUT_ID = 'close';
 
 type TogglerProps = {
   id: string;
+  className?: string;
   onBlur: () => void;
   onClick: (event: React.MouseEvent | React.TouchEvent) => void;
   onFocus: () => void;
   onKeyDown: (event: React.KeyboardEvent) => void;
   onMouseEnter: () => void;
   role: 'button';
-  style: React.CSSProperties;
   tabIndex: 0;
   visible?: boolean;
 };
 
 export interface PopoverProps
-  extends Pick<PopoverContentInlineProps, 'alwaysRender' | 'centered' | 'children' | 'focusable' | 'height' | 'width'> {
+  extends Pick<PopoverContentInlineProps, 'alwaysRender' | 'centered' | 'children' | 'focusable' | 'height' | 'width'>,
+    ThemeProps {
   className?: string;
   content: typeof PopoverContentInline | typeof Portal;
   contentProps?: Partial<
@@ -72,6 +74,8 @@ export interface PopoverProps
   /** if the popover is a tooltip it will have different aria props */
   tooltip?: boolean;
   width?: number | string;
+  /** if the toggle handles the focus styles this can be used to hide the standard focus outline */
+  withoutTogglerFocusStyle?: boolean;
   /** pass extra props to the toggler (to be used with ForwardProps) */
   withTogglerProps?: boolean;
 }
@@ -99,13 +103,16 @@ export function Popover({
   popoverClassName,
   position: initPosition,
   style,
+  themeId: initThemeId,
   toggler,
   tooltip,
   width,
+  withoutTogglerFocusStyle,
   withTogglerProps,
   ...props
 }: PopoverProps): React.ReactElement<PopoverProps, 'div'> {
   const accessible = useAccessibility();
+  const themeId = useThemeId(initThemeId);
   const { setSafeTimeout, clearSafeTimeout } = useSafeTimeout();
   const { changeFocus, returnFocus } = useFocusReturn();
   const [togglerFocused, setTogglerFocused] = useState<boolean>(false);
@@ -206,17 +213,17 @@ export function Popover({
   const renderToggler = () => {
     const togglerProps: TogglerProps = {
       id: generateTogglerId(),
+      className: cx(
+        styles.popoverToggler,
+        !withoutTogglerFocusStyle && themeId && styles[`popoverToggler--${themeId}`],
+        !withoutTogglerFocusStyle && accessible && styles['is-accessible'],
+      ),
       onBlur: handleTogglerBlur,
       onClick: handleClick,
       onFocus: handleTogglerFocus,
       onKeyDown: handleKeyDown,
       onMouseEnter: handleMouseEnter,
       role: 'button',
-      style: {
-        cursor: 'pointer',
-        outline: !accessible ? 'none' : undefined,
-        ...(typeof toggler === 'object' && toggler.props ? toggler.props.style : {}),
-      } as React.CSSProperties,
       tabIndex: 0,
     };
 

@@ -25,12 +25,12 @@
 
 .accordionList--primary {
   @mixin themed .accordionList {
-    --accordion-border-color: $theme-secondary-palette-background-color;
+    --accordion-border-color: $theme-primary-palette-background-color;
     --accordion-item-border-color: $theme-color-FG0-O5;
     --accordion-item-focused-border-color: $theme-color-accent-primary;
     --accordion-label-focused-text-color: $theme-color-accent-primary;
     --accordion-list-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
-    --accordion-selected-text-color: $theme-secondary-palette-text-color;
+    --accordion-selected-text-color: $theme-primary-palette-text-color;
     --accordion-text-color: $theme-tertiary-palette-text-color;
   }
 }

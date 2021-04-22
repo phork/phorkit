@@ -101,9 +101,9 @@ button.tag {
 
 .tag--primary {
   @mixin themed .tag {
-    --tag-background-color: $theme-secondary-palette-background-color;
-    --tag-text-color: $theme-secondary-palette-text-color;
-    --tag-border-color: $theme-secondary-palette-border-color;
+    --tag-background-color: $theme-primary-palette-background-color;
+    --tag-text-color: $theme-primary-palette-text-color;
+    --tag-border-color: $theme-primary-palette-border-color;
     --tag-hover-background-color: $theme-color-accent-primary;
     --tag-hover-text-color: $theme-color-accent-primary-contrast;
     --tag-hover-border-color: $theme-color-accent-primary;

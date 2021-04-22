@@ -28,9 +28,9 @@ export function TextTooltip({
 }: TextTooltipProps): React.ReactElement {
   const themeId = useThemeId(initThemeId);
   const color = contrast ? 'contrast' : 'primary';
-  const textColor = themes[themeId][`${color}-text-color` as keyof ThemeColors] as string;
-  const backgroundColor = themes[themeId][`${color}-background-color` as keyof ThemeColors] as string;
-  const borderColor = themes[themeId][`${color}-border-color` as keyof ThemeColors] as string;
+  const textColor = themes[themeId][`${color}-palette-text-color` as keyof ThemeColors] as string;
+  const backgroundColor = themes[themeId][`${color}-palette-background-color` as keyof ThemeColors] as string;
+  const borderColor = themes[themeId][`${color}-palette-border-color` as keyof ThemeColors] as string;
 
   return (
     <Tooltip

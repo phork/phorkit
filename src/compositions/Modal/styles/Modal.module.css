@@ -21,17 +21,17 @@
   }
 
   &.modal--light {
-    background-color: $light-secondary-palette-background-color;
+    background-color: $light-primary-palette-background-color;
     box-shadow: $light-box-shadow-0;
-    color: $light-secondary-palette-text-color;
+    color: $light-primary-palette-text-color;
 
     --modal-scrollbar-thumb-color: $light-primary-scrollbar-thumb-color;
   }
 
   &.modal--dark {
-    background-color: $dark-secondary-palette-background-color;
+    background-color: $dark-primary-palette-background-color;
     box-shadow: $dark-box-shadow-0;
-    color: $dark-secondary-palette-text-color;
+    color: $dark-primary-palette-text-color;
 
     --modal-scrollbar-thumb-color: $dark-primary-scrollbar-thumb-color;
   }
@@ -117,10 +117,10 @@
 
 .modalFooter--bordered {
   .modal--light & {
-    border-top: 1px solid $light-secondary-palette-border-color;
+    border-top: 1px solid $light-primary-palette-border-color;
   }
 
   .modal--dark & {
-    border-top: 1px solid $dark-secondary-palette-border-color;
+    border-top: 1px solid $dark-primary-palette-border-color;
   }
 }

@@ -275,6 +275,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
       position="left-center"
       toggler={<Toggle id="demo-tooltip-toggle">Super fantastic label</Toggle>}
       width="auto"
+      withoutTogglerFocusStyle
     >
       <Typography variants="no-wrap">You must agree</Typography>
     </PortalTextTooltip>
@@ -294,13 +295,13 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
             <ListItem
               key={i}
               disabled={i === 4}
-              style={{ '--list-item-text-color': themes[themeId]['secondary-palette-text-color'] }}
+              style={{ '--list-item-text-color': themes[themeId]['primary-palette-text-color'] }}
             >
               <Flex direction="row" alignItems="center" justifyContent="flex-start">
                 <Avatar
                   imgSrc="/public/images/avatar.jpg"
                   initials="EC"
-                  style={{ border: `1px solid ${themes[themeId]['primary-palette-border-color']}` }}
+                  style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
                 />
                 <Rhythm mx={4}>
                   <Flex flexible>
@@ -331,8 +332,8 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
           permanent
           position="right-center"
           toggler={<BlobbrIcon aria-label="Blobbr" size={40} />}
-          triangleBorderColor={themes[themeId]['primary-palette-border-color']}
-          triangleColor={themes[themeId]['primary-palette-background-color']}
+          triangleBorderColor={themes[themeId]['secondary-palette-border-color']}
+          triangleColor={themes[themeId]['secondary-palette-background-color']}
           width={300}
         >
           <div
@@ -357,13 +358,13 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                   <ListItem
                     key={i}
                     disabled={i === 4}
-                    style={{ '--list-item-text-color': themes[themeId]['secondary-palette-text-color'] }}
+                    style={{ '--list-item-text-color': themes[themeId]['primary-palette-text-color'] }}
                   >
                     <Flex direction="row" alignItems="center" justifyContent="flex-start">
                       <Avatar
                         imgSrc="/public/images/avatar.jpg"
                         initials="EC"
-                        style={{ border: `1px solid ${themes[themeId]['primary-palette-border-color']}` }}
+                        style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
                       />
                       <Rhythm mx={4}>
                         <Flex flexible>
@@ -402,7 +403,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
             <List
               as="div"
               outline="divided"
-              style={{ borderLeft: `4px solid ${themes[themeId]['primary-palette-accent-color']}` }}
+              style={{ borderLeft: `4px solid ${themes[themeId]['secondary-palette-accent-color']}` }}
               variant="primary"
             >
               <Looper
@@ -412,13 +413,13 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                   <ListItem
                     key={i}
                     disabled={i === 4}
-                    style={{ '--list-item-text-color': themes[themeId]['secondary-palette-text-color'] }}
+                    style={{ '--list-item-text-color': themes[themeId]['primary-palette-text-color'] }}
                   >
                     <Flex direction="row" alignItems="center" justifyContent="flex-start">
                       <Avatar
                         imgSrc="/public/images/avatar.jpg"
                         initials="EC"
-                        style={{ border: `1px solid ${themes[themeId]['primary-palette-border-color']}` }}
+                        style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
                       />
                       <Rhythm mx={4}>
                         <Flex flexible>
@@ -457,7 +458,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
             <Avatar
               imgSrc="/public/images/avatar.jpg"
               initials="EC"
-              style={{ border: `1px solid ${themes[themeId]['primary-palette-border-color']}` }}
+              style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
             />
             <Rhythm mx={4}>
               <Flex flexible>
@@ -475,7 +476,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
               <Avatar
                 imgSrc="/public/images/avatar.jpg"
                 initials="EC"
-                style={{ border: `1px solid ${themes[themeId]['primary-palette-border-color']}` }}
+                style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
               />
               <Rhythm mx={4}>
                 <Flex flexible>
@@ -504,7 +505,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
             placeholder={
               <Rhythm px={4} style={{ opacity: 0.5 }}>
                 <Flex flexible direction="row" alignItems="center" justifyContent="flex-start">
-                  <StyledAvatar backgroundColor={themes[themeId]['primary-palette-quietest-color']} initials=" " />
+                  <StyledAvatar backgroundColor={themes[themeId]['secondary-palette-quietest-color']} initials=" " />
                   <Rhythm mx={4}>
                     <Flex flexible>Choose your person</Flex>
                   </Rhythm>
@@ -591,7 +592,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                           <Avatar
                             imgSrc="/public/images/avatar.jpg"
                             initials="EC"
-                            style={{ border: `1px solid ${themes[themeId]['primary-palette-border-color']}` }}
+                            style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
                           />
                           <Rhythm mx={4}>
                             <Flex flexible>
@@ -652,7 +653,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
         <Toast id="demo-triangle-toast" immediate title="Hello world" level="info">
           This is an info toast with a triangle!
           <Position location="top-right" variant="inside">
-            <Triangle position="top-right" size={18} color={themes[themeId]['primary-palette-accent-color']}>
+            <Triangle position="top-right" size={18} color={themes[themeId]['secondary-palette-accent-color']}>
               <Typography
                 color="contrast"
                 as="div"
@@ -711,7 +712,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                 }}
               />
               <Position location="top-right" variant="inside">
-                <Triangle position="top-right" size={18} color={themes[themeId]['primary-palette-accent-color']}>
+                <Triangle position="top-right" size={18} color={themes[themeId]['secondary-palette-accent-color']}>
                   <Typography
                     color="contrast"
                     as="div"

@@ -264,9 +264,9 @@ input.formboxInput[type='number'] {
 
 .formbox--primary {
   @mixin themed .formbox {
-    --formbox-icon-color: $theme-primary-palette-quiet-color;
+    --formbox-icon-color: $theme-primary-palette-quieter-color;
     --formbox-icon-hover-color: $theme-primary-palette-accent-color;
-    --formbox-input-background-color: $theme-tertiary-palette-background-color;
+    --formbox-input-background-color: $theme-color-FG0-O5;
     --formbox-input-container-border-color: $theme-primary-palette-quietest-color;
     --formbox-input-container-focused-border-color: $theme-color-accent-primary;
     --formbox-input-container-hover-border-color: $theme-primary-palette-quieter-color;
@@ -292,7 +292,7 @@ input.formboxInput[type='number'] {
 
 .formbox--contrast {
   @mixin themed .formbox {
-    --formbox-icon-color: $theme-contrast-palette-quiet-color;
+    --formbox-icon-color: $theme-contrast-palette-quieter-color;
     --formbox-icon-hover-color: $theme-contrast-palette-accent-color;
     --formbox-input-background-color: $theme-contrast-palette-quietest-color;
     --formbox-input-container-border-color: $theme-contrast-palette-quieter-color;

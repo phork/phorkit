@@ -27,20 +27,20 @@
  */
 .text-color-secondary {
   @mixin themed .text {
-    color: $theme-secondary-palette-text-color;
+    color: $theme-primary-palette-text-color;
 
     &.text-quiet {
-      color: $theme-secondary-palette-quiet-color;
+      color: $theme-primary-palette-quiet-color;
       opacity: 1; /* [1] */
     }
 
     &.text-quieter {
-      color: $theme-secondary-palette-quieter-color;
+      color: $theme-primary-palette-quieter-color;
       opacity: 1; /* [1] */
     }
 
     &.text-quietest {
-      color: $theme-secondary-palette-quietest-color;
+      color: $theme-primary-palette-quietest-color;
       opacity: 1; /* [1] */
     }
   }

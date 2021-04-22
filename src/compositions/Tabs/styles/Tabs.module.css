@@ -22,8 +22,8 @@
   @mixin themed .tabList {
     --tab-background-color: $theme-tertiary-palette-background-color;
     --tab-focused-text-color: $theme-color-accent-primary;
-    --tab-selected-background-color: $theme-secondary-palette-background-color;
-    --tab-selected-text-color: $theme-secondary-palette-text-color;
+    --tab-selected-background-color: $theme-primary-palette-background-color;
+    --tab-selected-text-color: $theme-primary-palette-text-color;
     --tab-text-color: $theme-tertiary-palette-text-color;
     --tab-list-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
   }

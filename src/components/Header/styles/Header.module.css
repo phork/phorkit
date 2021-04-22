@@ -46,14 +46,14 @@
 
 .header--secondary {
   @mixin themed .header {
-    --header-border-color: $theme-secondary-palette-border-color;
+    --header-border-color: $theme-primary-palette-border-color;
 
     &.header--quiet {
-      --header-border-color: $theme-secondary-palette-quiet-border-color;
+      --header-border-color: $theme-primary-palette-quiet-border-color;
     }
 
-    background-color: $theme-secondary-palette-background-color;
-    color: $theme-secondary-palette-text-color;
+    background-color: $theme-primary-palette-background-color;
+    color: $theme-primary-palette-text-color;
   }
 }
 

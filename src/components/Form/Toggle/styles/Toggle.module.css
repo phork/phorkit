@@ -13,13 +13,17 @@
     opacity: 0.5;
     pointer-events: none;
   }
+
+  &:focus {
+    outline: none;
+  }
 }
 
 input.toggleInput {
   @mixin visuallyHidden;
 }
 
-.toggleInput {
+.toggleButton {
   flex: none;
   height: var(--toggle-height, $default-toggle-height);
   position: relative;
@@ -88,6 +92,7 @@ input.toggleInput {
    *    middle of the toggle when focused.
    */
   .toggle.is-checked:hover &,
+  .toggle.is-checked:focus &,
   .toggle.is-checked.is-focused & {
     &:after {
       background-color: var(--toggle-checked-background-color); /* [1] */
@@ -105,6 +110,7 @@ input.toggleInput {
    *    middle of the toggle when focused.
    */
   .toggle:not(.is-checked):hover &,
+  .toggle:not(.is-checked):focus &,
   .toggle:not(.is-checked).is-focused & {
     &:after {
       background-color: var(--toggle-background-color); /* [1] */
@@ -113,6 +119,16 @@ input.toggleInput {
           var(--toggle-button-background-color); /* [2] */
     }
   }
+}
+
+.toggleButtonFocusRing {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: -2px;
+  right: -2px;
+  border-radius: var(--toggle-height, $default-toggle-height);
+  border: 1px solid var(--toggle-checked-button-background-color);
 }
 
 .toggleLabel {
@@ -124,7 +140,7 @@ input.toggleInput {
   justify-content: space-between;
   width: 100%;
 
-  .toggleInput {
+  .toggleButton {
     justify-content: flex-end;
   }
 

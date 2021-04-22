@@ -10,7 +10,7 @@
 
 .dropdownEmpty--primary {
   @mixin themed .dropdownEmpty {
-    --dropdown-empty-text-color: $theme-secondary-palette-quiet-color;
+    --dropdown-empty-text-color: $theme-primary-palette-quiet-color;
   }
 }
 

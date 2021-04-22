@@ -17,15 +17,15 @@
 
 .tabPanelGroup--primary {
   @mixin themed .tabPanelGroup {
-    background-color: $theme-secondary-palette-background-color;
-    color: $theme-secondary-palette-text-color;
+    background-color: $theme-primary-palette-background-color;
+    color: $theme-primary-palette-text-color;
   }
 }
 
 .tabPanelGroup--transparent {
   @mixin themed .tabPanelGroup {
     background-color: transparent;
-    color: $theme-secondary-palette-text-color;
+    color: $theme-primary-palette-text-color;
   }
 }
 

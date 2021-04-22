@@ -7,7 +7,9 @@ import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 import { StyledIconToast, ToastContext } from 'compositions/Toast';
 
-const SwatchBlock = styled.div<{
+const SwatchBlock = styled('div', {
+  shouldForwardProp: (prop: string) => !['backgroundColor', 'color', 'height', 'rounded', 'width'].includes(prop),
+})<{
   backgroundColor: string;
   color?: string;
   height?: string | number;
@@ -38,7 +40,9 @@ const SwatchBlock = styled.div<{
   }
 `;
 
-const SwatchLabel = styled.div<{
+const SwatchLabel = styled('div', {
+  shouldForwardProp: (prop: string) => !['height', 'width'].includes(prop),
+})<{
   height?: string | number;
   width?: string | number;
 }>`

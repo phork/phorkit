@@ -107,7 +107,7 @@ button.avatar {
 
 .avatar--image {
   @mixin themed .avatar {
-    --avatar-actionable-background-color: $theme-secondary-palette-text-color;
+    --avatar-actionable-background-color: $theme-primary-palette-text-color;
   }
 }
 

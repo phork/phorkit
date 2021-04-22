@@ -7,15 +7,17 @@ export interface ThemeProviderProps {
   children: React.ReactNode;
   onChange?: (themeId: Theme) => void;
   themeId: Theme;
+  unthemed: boolean;
 }
 
 export function ThemeProvider({
   children,
   onChange,
   themeId: initThemeId = 'light',
+  unthemed,
 }: ThemeProviderProps): React.ReactElement {
   const previousValue = useRef<ThemeContextValue>({} as ThemeContextValue);
-  const [themeId, setThemeId] = useState<Theme>(initThemeId);
+  const [themeId, setThemeId] = useState<Theme | undefined>(unthemed ? undefined : initThemeId);
 
   const toggleThemeId = useCallback<ThemeContextValue['toggleThemeId']>(
     forceThemeId => {
@@ -27,9 +29,12 @@ export function ThemeProvider({
     [onChange, themeId],
   );
 
+  const clearThemeId = useCallback(() => setThemeId(undefined), []);
+
   const value: ThemeContextValue = produce(previousValue.current, draftState => {
     draftState.themeId = themeId;
     draftState.toggleThemeId = toggleThemeId;
+    draftState.clearThemeId = clearThemeId;
   });
   previousValue.current = value;
 
