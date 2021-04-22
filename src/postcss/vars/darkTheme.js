@@ -101,57 +101,57 @@ const accentColors = {
 
 const shadowColors = {
   'box-shadow-0': `
-    0px 0px 0px 1px ${color.transparency(neutralColors['color-FG0'], 85)},
-    0px 2px 4px 1px rgba(0, 0, 0, 0.8)
+    0px 0px 0px 1px ${color.transparency(neutralColors['color-FG0'], 90)},
+    0px 2px 4px 1px rgba(0, 0, 0, 0.4)
   `,
 
   'box-shadow-10': `
     0px 0px 0px 1px ${color.transparency(neutralColors['color-FG0'], 80)},
-    0px 2px 4px 1px rgba(0, 0, 0, 0.7)
+    0px 2px 4px 1px rgba(0, 0, 0, 0.5)
   `,
 
   'box-shadow-20': `
     0px 0px 0px 1px ${color.transparency(neutralColors['color-FG0'], 70)},
-    0px 2px 4px 1px rgba(0, 0, 0, 0.9)
+    0px 2px 4px 1px rgba(0, 0, 0, 0.8)
   `,
 
   'box-shadow-100': `
     0px 0px 0px 1px ${color.transparency(neutralColors['color-FG0'], 90)},
-    0px 2px 4px 1px rgba(0, 0, 0, 0.9)
+    0px 2px 4px 1px rgba(0, 0, 0, 0.4)
   `,
 
   'box-shadow-200': `
     0px 0px 0px 1px ${color.transparency(neutralColors['color-FG0'], 95)},
-    0px 8px 40px 0px rgba(0, 0, 0, 0.9)
+    0px 8px 40px 0px rgba(0, 0, 0, 0.4)
   `,
 };
 
 const hierarchyColors = {
   'primary-palette-background-color': neutralColors['color-BG05'],
-  'primary-palette-border-color': neutralColors['color-BG30'],
+  'primary-palette-border-color': neutralColors['color-BG40'],
   'primary-palette-quiet-border-color': neutralColors['color-BG20'],
-  'primary-palette-text-color': neutralColors['color-FG05'],
-  'primary-palette-quiet-color': neutralColors['color-FG40'],
-  'primary-palette-quieter-color': color.blacken(neutralColors['color-FG40'], 80),
-  'primary-palette-quietest-color': color.blacken(neutralColors['color-FG40'], 80),
+  'primary-palette-text-color': neutralColors['color-FG0'],
+  'primary-palette-quiet-color': color.transparency(neutralColors['color-FG0'], 50),
+  'primary-palette-quieter-color': color.transparency(neutralColors['color-FG0'], 60),
+  'primary-palette-quietest-color': color.transparency(neutralColors['color-FG0'], 70),
   'primary-palette-accent-color': accentColors['color-accent-primary'],
 
   'secondary-palette-background-color': neutralColors['color-BG0'],
   'secondary-palette-border-color': neutralColors['color-BG30'],
   'secondary-palette-quiet-border-color': neutralColors['color-BG20'],
   'secondary-palette-text-color': neutralColors['color-FG0'],
-  'secondary-palette-quiet-color': neutralColors['color-FG40'],
-  'secondary-palette-quieter-color': color.blacken(neutralColors['color-FG40'], 80),
-  'secondary-palette-quietest-color': color.blacken(neutralColors['color-FG40'], 90),
+  'secondary-palette-quiet-color': color.transparency(neutralColors['color-FG0'], 60),
+  'secondary-palette-quieter-color': color.transparency(neutralColors['color-FG0'], 70),
+  'secondary-palette-quietest-color': color.transparency(neutralColors['color-FG0'], 80),
   'secondary-palette-accent-color': accentColors['color-accent-primary'],
 
   'tertiary-palette-background-color': neutralColors['color-BG20'],
   'tertiary-palette-border-color': neutralColors['color-BG40'],
-  'tertiary-palette-quiet-border-color': neutralColors['color-BG20'],
-  'tertiary-palette-text-color': neutralColors['color-FG20'],
-  'tertiary-palette-quiet-color': neutralColors['color-FG40'],
-  'tertiary-palette-quieter-color': color.blacken(neutralColors['color-FG40'], 90),
-  'tertiary-palette-quietest-color': color.blacken(neutralColors['color-FG40'], 100),
+  'tertiary-palette-quiet-border-color': neutralColors['color-BG30'],
+  'tertiary-palette-text-color': neutralColors['color-FG0'],
+  'tertiary-palette-quiet-color': color.transparency(neutralColors['color-FG0'], 60),
+  'tertiary-palette-quieter-color': color.transparency(neutralColors['color-FG0'], 70),
+  'tertiary-palette-quietest-color': color.transparency(neutralColors['color-FG0'], 80),
   'tertiary-palette-accent-color': accentColors['color-accent-primary'],
 
   'contrast-palette-background-color': accentColors['color-accent-primary'],

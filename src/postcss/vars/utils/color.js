@@ -22,6 +22,16 @@ module.exports = {
       .blacken(percent / 100)
       .hex(),
 
+  lighten: (color, percent) =>
+    Color(color)
+      .lighten(percent / 100)
+      .hex(),
+
+  darken: (color, percent) =>
+    Color(color)
+      .darken(percent / 100)
+      .hex(),
+
   generateOpacityRange: (source, colors, step = 10) => {
     const opacity = (color, i) =>
       Color(source[color])

@@ -27,6 +27,12 @@ const SwatchBlock = styled.div<{
   position: relative;
   width: ${props => `${props.width}${typeof props.width === 'number' ? 'px' : ''}`};
 
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px ${props => props.backgroundColor};
+    opacity: 0.4;
+  }
+
   > svg {
     pointer-events: none;
   }
@@ -107,6 +113,12 @@ export function ColorSwatchGroup({
     }
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent, id: string, color: string, contrast?: string) => {
+    if (event.key === 'Enter') {
+      handleClick(id, color, contrast);
+    }
+  };
+
   return (
     <Flex direction={direction} wrap {...props}>
       {label && (
@@ -127,6 +139,8 @@ export function ColorSwatchGroup({
             width={width || swatchWidth}
             height={height || swatchHeight}
             onClick={() => handleClick(id, color, contrast)}
+            onKeyDown={event => handleKeyDown(event, id, color, contrast)}
+            tabIndex={0}
           >
             {colorChildren !== undefined ? colorChildren : children}
           </SwatchBlock>

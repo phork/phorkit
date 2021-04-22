@@ -58,6 +58,23 @@ export default function DocsWrapper({ children }: DocsWrapperProps): React.React
               font-size: 16px;
               opacity: .5;
             }
+
+            pre.prism-code {
+              position: relative;
+              background: transparent !important;
+            }
+
+            pre.prism-code:before {
+              content: "";
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              opacity: .2;
+              border: 1px solid currentColor;
+              border-radius: inherit;
+            }
           `}</style>
         </Helmet>
         <Toasts position="bottom-right">{children}</Toasts>

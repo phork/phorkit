@@ -25,7 +25,7 @@
     background-color: $theme-secondary-palette-background-color;
     color: $theme-secondary-palette-text-color;
 
-    --card-hover-border-color: $theme-primary-palette-border-color;
+    --card-hover-border-color: $theme-primary-palette-quieter-color;
     --card-border-color: $theme-secondary-palette-border-color;
   }
 

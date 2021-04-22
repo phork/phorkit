@@ -267,9 +267,9 @@ input.formboxInput[type='number'] {
     --formbox-icon-color: $theme-primary-palette-quiet-color;
     --formbox-icon-hover-color: $theme-primary-palette-accent-color;
     --formbox-input-background-color: $theme-tertiary-palette-background-color;
-    --formbox-input-container-border-color: $theme-primary-palette-quieter-color;
+    --formbox-input-container-border-color: $theme-primary-palette-quietest-color;
     --formbox-input-container-focused-border-color: $theme-color-accent-primary;
-    --formbox-input-container-hover-border-color: $theme-primary-palette-quiet-color;
+    --formbox-input-container-hover-border-color: $theme-primary-palette-quieter-color;
     --formbox-input-text-color: $theme-primary-palette-text-color;
     --formbox-label-text-color: $theme-primary-palette-quiet-color;
 
