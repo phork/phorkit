@@ -9,9 +9,9 @@ const writeFileSyncRecursive = require('./utils/write-file');
 
 program
   .version(pkg.version)
-  .usage('[options] <file ...>')
-  .option('-t, --type <type>', 'Type', /^(component|composition)$/i, 'component')
-  .option('-c, --component <component>', 'Component name', /^([A-Z][a-z]+)+$/)
+  .usage('[options]')
+  .addOption(new program.Option('-t, --type <type>', 'type (component or composition)').choices(['component', 'composition']).default('component'))
+  .requiredOption('-c, --component <component>', 'component name');
 
 program.on('--help', function(){
   console.log('')
@@ -20,10 +20,10 @@ program.on('--help', function(){
   console.log('  $ scaffold-component-test -c Button');
   console.log('  $ scaffold-component-test -c Tooltip -t composition');
 });
-  
+
 program.parse(process.argv);
 
-const { component, type = 'component' } = program;
+const { component, type = 'component' } = program.opts();
 const src = `./__tests__/${type}s/${component}/`;
 
 if (typeof component === 'undefined') {

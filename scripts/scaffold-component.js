@@ -9,9 +9,9 @@ const writeFileSyncRecursive = require('./utils/write-file');
 
 program
   .version(pkg.version)
-  .usage('[options] <file ...>')
-  .option('-t, --type <type>', 'Type', /^(component|composition)$/i, 'component')
-  .option('-c, --component <component>', 'Component name', /^([A-Z][a-z]+)+$/)
+  .usage('[options]')
+  .addOption(new program.Option('-t, --type <type>', 'type (component or composition)').choices(['component', 'composition']).default('component'))
+  .requiredOption('-c, --component <component>', 'component name');
 
 program.on('--help', function(){
   console.log('')
@@ -23,7 +23,7 @@ program.on('--help', function(){
 
 program.parse(process.argv);
 
-const { component, type = 'component' } = program;
+const { component, type = 'component' } = program.opts();
 const src = `./src/${type}s/${component}/`;
 
 if (typeof component === 'undefined') {
@@ -66,10 +66,12 @@ export function ${component}({ children, themeId: initThemeId }: ${component}Pro
     </div>
   );
 }
+
+${component}.displayName = '${component}';
 `);
 
 writeFileSyncRecursive(`${src}/index.ts`, `
-export { ${component} } from './${component}';
+export * from './${component}';
 `);
 
 writeFileSyncRecursive(`${src}/styles/${component}.module.css`, `
@@ -85,8 +87,8 @@ route: /${type}s/${component}
 ---
 
 import { Playground, Props } from 'docz';
-import { ${component} } from '../index';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { ${component} } from '../index';
 
 # ${component}
 
@@ -104,4 +106,4 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 `);
 
 console.log(chalk.green(`🚀 Generated ${src}`));
-console.log(chalk.green(`📣 Don't forget to export this component from ${type}/index.ts`));
+console.log(chalk.red(`📣 Don't forget to export this component from ${type}/index.ts`));
