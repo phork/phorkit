@@ -129,6 +129,14 @@ For example
 $ git commit -m ':bug: fix: broken button width'
 ```
 
+The optional full commit message format is
+
+```
+:gitmoji: type(scope?): subject
+body?
+footer?
+```
+
 ### Publishing
 
 Publishing is automated by Github actions. Any pushes to the `main` branch will be automatically versioned and published by [semantic-release](https://semantic-release.gitbook.io/semantic-release/).

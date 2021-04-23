@@ -8,10 +8,9 @@
       {
         "config": "conventional-changelog-gitmoji-config",
         "releaseRules": [
-          {
-            "type": "build",
-            "release": "patch"
-          }
+          { "type": "build", "release": "patch" },
+          { "scope": "major", "release": "major" },
+          { "scope": "no-release", "release": false }
         ]
       }
     ],
