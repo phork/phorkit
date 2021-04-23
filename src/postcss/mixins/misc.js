@@ -59,37 +59,11 @@ const mixins = {
     padding: 0,
   }),
 
-  // add an extra layer on top of the dark theme to lighten the background
   raisedShadow: (_mixin, theme, level = 0) => {
     const shadow = {
       boxShadow: config[`${theme}-box-shadow-${level}`],
       transition: 'box-shadow 200ms ease',
     };
-
-    if (theme === 'dark') {
-      const opacities = {
-        0: 0.05,
-        1: 0.08,
-        10: 0.05,
-        20: 0.05,
-        100: 0.05,
-        200: 0.05,
-      };
-
-      shadow.position = 'relative';
-      shadow['&::before'] = {
-        backgroundColor: '#fff',
-        opacity: opacities[level],
-        bottom: 0,
-        content: '""',
-        left: 0,
-        position: 'absolute',
-        right: 0,
-        top: 0,
-        transition: 'opacity 300ms linear',
-      };
-    }
-
     return shadow;
   },
 
