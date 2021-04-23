@@ -2,6 +2,14 @@
 
 # [2.0.0](https://github.com/phork/phorkit/compare/v1.17.0...v2.0.0) (2021-04-23)
 
+### 💥 Breaking Changes
+
+- removed card children components (#1) ([daf5eb7](https://github.com/phork/phorkit/commit/daf5eb7))
+
+### ✨ Features
+
+- refactored color palettes (#1) ([daf5eb7](https://github.com/phork/phorkit/commit/daf5eb7))
+
 # [1.17.0](https://github.com/phork/phorkit/compare/v1.16.2...v1.17.0) (2021-04-21)
 
 ### ✨ Features
