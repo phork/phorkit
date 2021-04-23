@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.0.1](https://github.com/phork/phorkit/compare/v2.0.0...v2.0.1) (2021-04-23)
+
+### 🐛 Bug Fixes
+
+- remove automatically added dark card lightener ([b803b6f](https://github.com/phork/phorkit/commit/b803b6f))
+
 # [2.0.0](https://github.com/phork/phorkit/compare/v1.17.0...v2.0.0) (2021-04-23)
 
 ### 💥 Breaking Changes
