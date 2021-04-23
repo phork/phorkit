@@ -31,8 +31,8 @@
 
 .accordion--contrast {
   @mixin themed .accordion {
-    --accordion-focused-border-color: $theme-contrast-accent-color;
-    --accordion-label-focused-text-color: $theme-contrast-accent-color;
+    --accordion-focused-border-color: $theme-contrast-palette-accent-color;
+    --accordion-label-focused-text-color: $theme-contrast-palette-accent-color;
     --accordion-label-selected-border-color: transparent;
   }
 }

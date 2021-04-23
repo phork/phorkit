@@ -7,7 +7,9 @@ import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 import { StyledIconToast, ToastContext } from 'compositions/Toast';
 
-const SwatchBlock = styled.div<{
+const SwatchBlock = styled('div', {
+  shouldForwardProp: (prop: string) => !['backgroundColor', 'color', 'height', 'rounded', 'width'].includes(prop),
+})<{
   backgroundColor: string;
   color?: string;
   height?: string | number;
@@ -27,12 +29,20 @@ const SwatchBlock = styled.div<{
   position: relative;
   width: ${props => `${props.width}${typeof props.width === 'number' ? 'px' : ''}`};
 
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px ${props => props.backgroundColor};
+    opacity: 0.4;
+  }
+
   > svg {
     pointer-events: none;
   }
 `;
 
-const SwatchLabel = styled.div<{
+const SwatchLabel = styled('div', {
+  shouldForwardProp: (prop: string) => !['height', 'width'].includes(prop),
+})<{
   height?: string | number;
   width?: string | number;
 }>`
@@ -107,6 +117,12 @@ export function ColorSwatchGroup({
     }
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent, id: string, color: string, contrast?: string) => {
+    if (event.key === 'Enter') {
+      handleClick(id, color, contrast);
+    }
+  };
+
   return (
     <Flex direction={direction} wrap {...props}>
       {label && (
@@ -127,6 +143,8 @@ export function ColorSwatchGroup({
             width={width || swatchWidth}
             height={height || swatchHeight}
             onClick={() => handleClick(id, color, contrast)}
+            onKeyDown={event => handleKeyDown(event, id, color, contrast)}
+            tabIndex={0}
           >
             {colorChildren !== undefined ? colorChildren : children}
           </SwatchBlock>

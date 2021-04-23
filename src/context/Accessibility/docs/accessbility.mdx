@@ -31,7 +31,7 @@ import styles from './AccessibilityDemo.module.css';
               .join(' ');
             return (
               <div>
-                <Flex direction="row">
+                <Flex direction="row" wrap>
                   <Rhythm m={2} mb={4}>
                     <Typography as="div" variants={['xsmall-caps']} style={{ width: '120px' }}>
                       <Typography volume="quiet">Is accessible</Typography> {accessible ? 'yes' : 'no'}

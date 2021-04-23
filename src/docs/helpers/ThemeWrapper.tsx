@@ -21,7 +21,7 @@ export function ThemeWrapper({
   children,
   contrast,
   style,
-  variant: initVariant = 'primary',
+  variant: initVariant,
   withThemeId,
 }: ThemeWrapperProps): React.ReactElement {
   const [colorMode, setColorMode] = useColorMode<Theme>();
@@ -37,8 +37,8 @@ export function ThemeWrapper({
   }, [colorMode, toggleThemeId]);
 
   const variant = contrast ? 'contrast' : initVariant;
-  const backgroundColor = variables[`${themeId}-${variant}-background-color`];
-  const color = variables[`${themeId}-${variant}-text-color`];
+  const backgroundColor = variant ? variables[`${themeId}-${variant}-palette-background-color`] : 'transparent';
+  const color = variant ? variables[`${themeId}-${variant}-palette-text-color`] : 'currentColor';
   const content = withThemeId ? renderFromProp(children, { themeId }) : children;
 
   return (

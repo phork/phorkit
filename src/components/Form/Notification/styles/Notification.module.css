@@ -19,13 +19,13 @@
 
   &:not(.notification--contrast) {
     @mixin themed .notification {
-      border-color: $theme-primary-quietest-color;
+      border-color: $theme-primary-palette-quietest-color;
     }
   }
 
   &.notification--contrast {
     @mixin themed .notification {
-      border-color: $theme-contrast-quietest-color;
+      border-color: $theme-contrast-palette-quietest-color;
     }
   }
 }

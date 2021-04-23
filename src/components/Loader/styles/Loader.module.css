@@ -10,7 +10,7 @@
 
 .loader--contrast {
   @mixin themed .loader {
-    color: $theme-contrast-quietest-color;
+    color: $theme-contrast-palette-quietest-color;
   }
 }
 

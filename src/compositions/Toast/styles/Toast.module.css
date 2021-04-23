@@ -32,8 +32,8 @@
     box-shadow: $theme-box-shadow-0;
 
     &:not(.toast--colored) {
-      background-color: $theme-secondary-background-color;
-      color: $theme-secondary-text-color;
+      background-color: $theme-primary-palette-background-color;
+      color: $theme-primary-palette-text-color;
     }
   }
 }

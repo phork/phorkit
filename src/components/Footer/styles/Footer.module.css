@@ -33,53 +33,53 @@
 
 .footer--primary {
   @mixin themed .footer {
-    --footer-border-color: $theme-primary-border-color;
+    --footer-border-color: $theme-primary-palette-border-color;
 
     &.footer--quiet {
-      --footer-border-color: $theme-primary-quiet-border-color;
+      --footer-border-color: $theme-primary-palette-quiet-border-color;
     }
 
-    background-color: $theme-primary-background-color;
-    color: $theme-primary-text-color;
+    background-color: $theme-primary-palette-background-color;
+    color: $theme-primary-palette-text-color;
   }
 }
 
 .footer--secondary {
   @mixin themed .footer {
-    --footer-border-color: $theme-secondary-border-color;
+    --footer-border-color: $theme-primary-palette-border-color;
 
     &.footer--quiet {
-      --footer-border-color: $theme-secondary-quiet-border-color;
+      --footer-border-color: $theme-primary-palette-quiet-border-color;
     }
 
-    background-color: $theme-secondary-background-color;
-    color: $theme-secondary-text-color;
+    background-color: $theme-primary-palette-background-color;
+    color: $theme-primary-palette-text-color;
   }
 }
 
 .footer--transparent {
   @mixin themed .footer {
-    --footer-border-color: $theme-primary-border-color;
+    --footer-border-color: $theme-primary-palette-border-color;
 
     &.footer--quiet {
-      --footer-border-color: $theme-primary-quiet-border-color;
+      --footer-border-color: $theme-primary-palette-quiet-border-color;
     }
 
     background-color: transparent;
-    color: $theme-primary-text-color;
+    color: $theme-primary-palette-text-color;
   }
 }
 
 .footer--contrast {
   @mixin themed .footer {
-    --footer-border-color: $theme-contrast-border-color;
+    --footer-border-color: $theme-contrast-palette-border-color;
 
     &.footer--quiet {
-      --footer-border-color: $theme-contrast-quiet-border-color;
+      --footer-border-color: $theme-contrast-palette-quiet-border-color;
     }
 
-    background-color: var(--contrast-color, $theme-contrast-background-color);
-    color: $theme-contrast-text-color;
+    background-color: var(--contrast-color, $theme-contrast-palette-background-color);
+    color: $theme-contrast-palette-text-color;
   }
 }
 

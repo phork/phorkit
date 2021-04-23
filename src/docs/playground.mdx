@@ -19,9 +19,6 @@ import {
   Button,
   ButtonGroup,
   Card,
-  CardBody,
-  CardEdge,
-  CardTitle,
   ColoredPaper,
   ColoredTabs,
   Divider,
@@ -123,26 +120,28 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
         <Badge position="top-right" shape="count" color="warning">
           7
         </Badge>
-        <Paper flexible color="secondary">
-          <CardBody>
-            <CardTitle>Hello world</CardTitle>
-            <CardTitle variant="subtitle">How are things?</CardTitle>
-          </CardBody>
+        <Paper flexible color="primary">
+          <Rhythm p={6} grouped>
+            <Typography as="div" size="xxxl" weight="light" variants={['line-height-comfy']}>
+              Hello world
+            </Typography>
+            <Typography as="div" size="m" variants={['line-height-comfy']}>
+              How are things?
+            </Typography>
+          </Rhythm>
         </Paper>
-        <CardEdge>
-          <ColoredPaper flexible colorId="P25" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
-            <Rhythm m={2}>
-              <ButtonGroup spacing="comfy">
-                <Button contrast weight="text" key="cancel">
-                  Cancel
-                </Button>
-                <Button contrast weight="outline" key="confirm">
-                  Confirm
-                </Button>
-              </ButtonGroup>
-            </Rhythm>
-          </ColoredPaper>
-        </CardEdge>
+        <ColoredPaper inflexible colorId="P25" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
+          <Rhythm m={2}>
+            <ButtonGroup align="right" spacing="comfy">
+              <Button contrast weight="text" key="cancel">
+                Cancel
+              </Button>
+              <Button contrast weight="outline" key="confirm">
+                Confirm
+              </Button>
+            </ButtonGroup>
+          </Rhythm>
+        </ColoredPaper>
       </Card>
     </div>
   </ThemeWrapper>
@@ -275,6 +274,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
       position="left-center"
       toggler={<Toggle id="demo-tooltip-toggle">Super fantastic label</Toggle>}
       width="auto"
+      withoutTogglerFocusStyle
     >
       <Typography variants="no-wrap">You must agree</Typography>
     </PortalTextTooltip>
@@ -294,13 +294,13 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
             <ListItem
               key={i}
               disabled={i === 4}
-              style={{ '--list-item-text-color': themes[themeId]['secondary-text-color'] }}
+              style={{ '--list-item-text-color': themes[themeId]['primary-palette-text-color'] }}
             >
               <Flex direction="row" alignItems="center" justifyContent="flex-start">
                 <Avatar
                   imgSrc="/public/images/avatar.jpg"
                   initials="EC"
-                  style={{ border: `1px solid ${themes[themeId]['primary-border-color']}` }}
+                  style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
                 />
                 <Rhythm mx={4}>
                   <Flex flexible>
@@ -331,8 +331,8 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
           permanent
           position="right-center"
           toggler={<BlobbrIcon aria-label="Blobbr" size={40} />}
-          triangleBorderColor={themes[themeId]['primary-border-color']}
-          triangleColor={themes[themeId]['primary-background-color']}
+          triangleBorderColor={themes[themeId]['secondary-palette-border-color']}
+          triangleColor={themes[themeId]['secondary-palette-background-color']}
           width={300}
         >
           <div
@@ -357,13 +357,13 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                   <ListItem
                     key={i}
                     disabled={i === 4}
-                    style={{ '--list-item-text-color': themes[themeId]['secondary-text-color'] }}
+                    style={{ '--list-item-text-color': themes[themeId]['primary-palette-text-color'] }}
                   >
                     <Flex direction="row" alignItems="center" justifyContent="flex-start">
                       <Avatar
                         imgSrc="/public/images/avatar.jpg"
                         initials="EC"
-                        style={{ border: `1px solid ${themes[themeId]['primary-border-color']}` }}
+                        style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
                       />
                       <Rhythm mx={4}>
                         <Flex flexible>
@@ -402,7 +402,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
             <List
               as="div"
               outline="divided"
-              style={{ borderLeft: `4px solid ${themes[themeId]['primary-accent-color']}` }}
+              style={{ borderLeft: `4px solid ${themes[themeId]['secondary-palette-accent-color']}` }}
               variant="primary"
             >
               <Looper
@@ -412,13 +412,13 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                   <ListItem
                     key={i}
                     disabled={i === 4}
-                    style={{ '--list-item-text-color': themes[themeId]['secondary-text-color'] }}
+                    style={{ '--list-item-text-color': themes[themeId]['primary-palette-text-color'] }}
                   >
                     <Flex direction="row" alignItems="center" justifyContent="flex-start">
                       <Avatar
                         imgSrc="/public/images/avatar.jpg"
                         initials="EC"
-                        style={{ border: `1px solid ${themes[themeId]['primary-border-color']}` }}
+                        style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
                       />
                       <Rhythm mx={4}>
                         <Flex flexible>
@@ -457,7 +457,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
             <Avatar
               imgSrc="/public/images/avatar.jpg"
               initials="EC"
-              style={{ border: `1px solid ${themes[themeId]['primary-border-color']}` }}
+              style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
             />
             <Rhythm mx={4}>
               <Flex flexible>
@@ -475,7 +475,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
               <Avatar
                 imgSrc="/public/images/avatar.jpg"
                 initials="EC"
-                style={{ border: `1px solid ${themes[themeId]['primary-border-color']}` }}
+                style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
               />
               <Rhythm mx={4}>
                 <Flex flexible>
@@ -504,7 +504,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
             placeholder={
               <Rhythm px={4} style={{ opacity: 0.5 }}>
                 <Flex flexible direction="row" alignItems="center" justifyContent="flex-start">
-                  <StyledAvatar backgroundColor={themes[themeId]['primary-quietest-color']} initials=" " />
+                  <StyledAvatar backgroundColor={themes[themeId]['secondary-palette-quietest-color']} initials=" " />
                   <Rhythm mx={4}>
                     <Flex flexible>Choose your person</Flex>
                   </Rhythm>
@@ -591,7 +591,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                           <Avatar
                             imgSrc="/public/images/avatar.jpg"
                             initials="EC"
-                            style={{ border: `1px solid ${themes[themeId]['primary-border-color']}` }}
+                            style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
                           />
                           <Rhythm mx={4}>
                             <Flex flexible>
@@ -652,7 +652,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
         <Toast id="demo-triangle-toast" immediate title="Hello world" level="info">
           This is an info toast with a triangle!
           <Position location="top-right" variant="inside">
-            <Triangle position="top-right" size={18} color={themes[themeId]['primary-accent-color']}>
+            <Triangle position="top-right" size={18} color={themes[themeId]['secondary-palette-accent-color']}>
               <Typography
                 color="contrast"
                 as="div"
@@ -699,7 +699,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
       <Flex direction="row" alignItems="flex-start" justifyContent="space-between">
         <div style={{ width: '200px', maxWidth: '100%' }}>
           <Card hoverable raised magnify full>
-            <CardBody flush>
+            <div style={{ position: 'relative' }}>
               <img
                 src="/public/images/avatar.jpg"
                 width="100%"
@@ -711,7 +711,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                 }}
               />
               <Position location="top-right" variant="inside">
-                <Triangle position="top-right" size={18} color={themes[themeId]['primary-accent-color']}>
+                <Triangle position="top-right" size={18} color={themes[themeId]['secondary-palette-accent-color']}>
                   <Typography
                     color="contrast"
                     as="div"
@@ -725,25 +725,23 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                 </Triangle>
               </Position>
               <StyledLoader size={90} color="#fff" style={{ opacity: 0.9 }} position="absolute" />
-            </CardBody>
-            <CardBody flush>
-              <Paper color="secondary">
-                <Rhythm p={3}>
-                  <List
-                    inactive
-                    outline="unboxed"
-                    rounded
-                    variant="primary"
-                    items={[
-                      { id: 'normal0', label: 'Normal' },
-                      { id: 'selected', label: 'Selected', selected: true },
-                      { id: 'normal1', label: 'Normal' },
-                      { id: 'normal2', label: 'Normal' },
-                    ]}
-                  />
-                </Rhythm>
-              </Paper>
-            </CardBody>
+            </div>
+            <Paper color="primary">
+              <Rhythm p={3}>
+                <List
+                  inactive
+                  outline="unboxed"
+                  rounded
+                  variant="primary"
+                  items={[
+                    { id: 'normal0', label: 'Normal' },
+                    { id: 'selected', label: 'Selected', selected: true },
+                    { id: 'normal1', label: 'Normal' },
+                    { id: 'normal2', label: 'Normal' },
+                  ]}
+                />
+              </Rhythm>
+            </Paper>
           </Card>
         </div>
         <div style={{ width: '300px' }}>
@@ -751,40 +749,45 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
             <StyledHeader backgroundColor="#393945" textColor="#fff" height={50}>
               <Rhythm px={5}>Fancy card</Rhythm>
             </StyledHeader>
-            <CardBody flush>
-              <Paper color="primary" container="panel">
-                <Flex direction="row" alignItems="center" justifyContent="center" full>
-                  <Typography volume="quietest">
-                    <MoonIcon size={42} />
-                  </Typography>
-                </Flex>
-              </Paper>
-            </CardBody>
+            <Paper color="secondary" container="panel">
+              <Flex direction="row" alignItems="center" justifyContent="center" full>
+                <Typography volume="quietest">
+                  <MoonIcon size={42} />
+                </Typography>
+              </Flex>
+            </Paper>
             <Divider volume="quieter" />
             <Rhythm px={5} py={4}>
-              <Flex direction="row" justifyContent="space-between">
-                {[
-                  { id: 'first', label: 'First', value: 'Super' },
-                  { id: 'second', label: 'Second', value: 'Awesome' },
-                  { id: 'third', label: 'Third', value: 'Value' },
-                ].map(({ id, label, value }, i) => (
-                  <React.Fragment key={id}>
-                    <Flex justifyContent="center" direction="column" flexible>
-                      <Typography color="secondary" size="xs" weight="bold" variants={['line-height-comfy', 'no-wrap']}>
-                        {value}
-                      </Typography>
-                      <Typography variants={['xsmall-caps']} volume="quiet">
-                        {label}
-                      </Typography>
-                    </Flex>
-                    {i < 2 && (
-                      <Rhythm mr={4}>
-                        <Divider volume="quieter" orientation="vertical" style={{ height: '24px' }} />
-                      </Rhythm>
-                    )}
-                  </React.Fragment>
-                ))}
-              </Flex>
+              <Paper color="primary">
+                <Flex direction="row" justifyContent="space-between">
+                  {[
+                    { id: 'first', label: 'First', value: 'Super' },
+                    { id: 'second', label: 'Second', value: 'Awesome' },
+                    { id: 'third', label: 'Third', value: 'Value' },
+                  ].map(({ id, label, value }, i) => (
+                    <React.Fragment key={id}>
+                      <Flex justifyContent="center" direction="column" flexible>
+                        <Typography
+                          color="secondary"
+                          size="xs"
+                          weight="bold"
+                          variants={['line-height-comfy', 'no-wrap']}
+                        >
+                          {value}
+                        </Typography>
+                        <Typography variants={['xsmall-caps']} volume="quiet">
+                          {label}
+                        </Typography>
+                      </Flex>
+                      {i < 2 && (
+                        <Rhythm mr={4}>
+                          <Divider volume="quieter" orientation="vertical" style={{ height: '24px' }} />
+                        </Rhythm>
+                      )}
+                    </React.Fragment>
+                  ))}
+                </Flex>
+              </Paper>
             </Rhythm>
             <Footer bordered volume="quiet">
               <Rhythm px={5}>

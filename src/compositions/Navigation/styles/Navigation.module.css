@@ -40,8 +40,8 @@
     --navigation-focused-border-color: $theme-color-accent-primary;
     --navigation-item-focused-border-color: $theme-color-accent-primary-O20;
     --navigation-item-selected-border-color: $theme-color-accent-primary;
-    --navigation-item-selected-text-color: $theme-primary-text-color;
-    --navigation-item-text-color: $theme-color-FG10;
+    --navigation-item-selected-text-color: $theme-primary-palette-text-color;
+    --navigation-item-text-color: $theme-color-FG20;
   }
 }
 
@@ -53,8 +53,8 @@
 
   @mixin themed .navigation {
     --navigation-item-focused-background-color: $theme-color-accent-primary;
-    --navigation-item-selected-background-color: $theme-color-BG40-O20;
-    --navigation-item-focused-text-color: $theme-contrast-accent-color;
+    --navigation-item-selected-background-color: $theme-color-BG50-O20;
+    --navigation-item-focused-text-color: $theme-contrast-palette-accent-color;
   }
 }
 
@@ -66,9 +66,9 @@
   letter-spacing: 0.04rem;
 
   @mixin themed .navigation {
-    --navigation-item-focused-background-color: $theme-color-BG40-O20;
-    --navigation-item-focused-border-color: $theme-color-BG40;
-    --navigation-item-hovered-border-color: $theme-color-BG40;
+    --navigation-item-focused-background-color: $theme-color-BG50-O20;
+    --navigation-item-focused-border-color: $theme-color-BG50;
+    --navigation-item-hovered-border-color: $theme-color-BG50;
   }
 }
 
@@ -80,11 +80,11 @@
   letter-spacing: 0.04rem;
 
   @mixin themed .navigation {
-    --navigation-item-focused-background-color: $theme-color-BG40-O20;
+    --navigation-item-focused-background-color: $theme-color-BG50-O20;
     --navigation-item-selected-background-color: $theme-color-accent-primary;
-    --navigation-item-selected-text-color: $theme-contrast-accent-color;
-    --navigation-item-focused-selected-background-color: $theme-color-BG40-O10;
-    --navigation-item-focused-selected-text-color: $theme-contrast-accent-color;
+    --navigation-item-selected-text-color: $theme-contrast-palette-accent-color;
+    --navigation-item-focused-selected-background-color: $theme-color-BG50-O10;
+    --navigation-item-focused-selected-text-color: $theme-contrast-palette-accent-color;
   }
 }
 

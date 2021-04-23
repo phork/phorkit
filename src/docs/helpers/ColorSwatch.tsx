@@ -50,7 +50,8 @@ export function ColorSwatch({ group, themeId, variant, ...props }: ColorSwatchPr
     return {
       id,
       color: themeProps[id as keyof ThemeColors] as string,
-      contrast: themeProps[`${root}-contrast` as keyof ThemeColors] as string,
+      contrast:
+        themeProps[`${id}-contrast` as keyof ThemeColors] || themeProps[`${root}-contrast` as keyof ThemeColors],
       ...props,
     };
   };
@@ -65,12 +66,14 @@ export function ColorSwatch({ group, themeId, variant, ...props }: ColorSwatchPr
     case 'primary': {
       const colors = getPrimaryColors(themeId);
       return renderColorGrid(
-        Object.keys(colors).map((root: string) => ({
-          colors: ['L40', 'L30', 'L20', 'L10', undefined, 'D10', 'D20', 'D30', 'D40'].map(shade =>
-            mapColors(root, shade, shade ? { children: shade } : undefined),
-          ),
-          label: root.replace('color-', ''),
-        })),
+        Object.keys(colors)
+          .sort((a, b) => +a.replace(/[^\d]/g, '') - +b.replace(/[^\d]/g, ''))
+          .map((root: string) => ({
+            colors: ['L40', 'L30', 'L20', 'L10', undefined, 'D10', 'D20', 'D30', 'D40'].map(shade =>
+              mapColors(root, shade, shade ? { children: shade } : undefined),
+            ),
+            label: root.replace('color-', ''),
+          })),
         props,
       );
     }

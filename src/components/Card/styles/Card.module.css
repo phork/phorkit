@@ -1,9 +1,7 @@
 @import './mixins/addRaised.css';
 
 .card {
-  background-color: var(--card-background-color);
   border-radius: $border-radius-m;
-  color: var(--card-text-color);
   display: flex;
   flex-direction: column;
   float: none;
@@ -22,11 +20,8 @@
   }
 
   @mixin themed .card {
-    background-color: $theme-secondary-background-color;
-    color: $theme-secondary-text-color;
-
-    --card-hover-border-color: $theme-primary-border-color;
-    --card-border-color: $theme-secondary-border-color;
+    --card-hover-border-color: $theme-primary-palette-quieter-color;
+    --card-border-color: $theme-primary-palette-border-color;
   }
 
   &.card--transparent {

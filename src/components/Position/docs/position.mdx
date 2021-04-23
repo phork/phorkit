@@ -5,61 +5,121 @@ route: /components/Position
 ---
 
 import { Playground, Props } from 'docz';
-import { Position } from '../index';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { themes } from 'config/themes';
 import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { Position } from '../index';
 
 <PageTitle title="Position" src="components/Position" />
 
 ## Inside
 
 <Playground>
-  <div style={{position: 'relative', width: '40px', height: '40px', backgroundColor: themes.light['color-BG40']}}>
-    <Position location="center" raised><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position variant="inside" location="bottom-left"><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position variant="inside" location="bottom-center"><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position variant="inside" location="bottom-right"><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position variant="inside" location="top-left"><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position variant="inside" location="top-center"><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position variant="inside" location="top-right"><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position variant="inside" location="left-center"><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position variant="inside" location="right-center"><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position location="center"><div style={{width: '20px', height: '20px', backgroundColor: '#fff'}} /></Position>
+  <div style={{ position: 'relative', width: '40px', height: '40px', backgroundColor: themes.light['color-BG50'] }}>
+    <Position location="center" raised>
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position variant="inside" location="bottom-left">
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position variant="inside" location="bottom-center">
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position variant="inside" location="bottom-right">
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position variant="inside" location="top-left">
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position variant="inside" location="top-center">
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position variant="inside" location="top-right">
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position variant="inside" location="left-center">
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position variant="inside" location="right-center">
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position location="center">
+      <div style={{ width: '20px', height: '20px', backgroundColor: '#fff' }} />
+    </Position>
   </div>
 </Playground>
 
 ## Outside
 
 <Playground>
-  <div style={{position: 'relative', width: '40px', height: '40px', backgroundColor: themes.light['color-BG40']}}>
-    <Position location="center" raised><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position variant="outside" location="bottom-left"><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position variant="outside" location="bottom-center"><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position variant="outside" location="bottom-right"><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position variant="outside" location="top-left"><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position variant="outside" location="top-center"><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position variant="outside" location="top-right"><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position variant="outside" location="left-center"><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position variant="outside" location="right-center"><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position location="center"><div style={{width: '20px', height: '20px', backgroundColor: '#fff'}} /></Position>
+  <div style={{ position: 'relative', width: '40px', height: '40px', backgroundColor: themes.light['color-BG50'] }}>
+    <Position location="center" raised>
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position variant="outside" location="bottom-left">
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position variant="outside" location="bottom-center">
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position variant="outside" location="bottom-right">
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position variant="outside" location="top-left">
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position variant="outside" location="top-center">
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position variant="outside" location="top-right">
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position variant="outside" location="left-center">
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position variant="outside" location="right-center">
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position location="center">
+      <div style={{ width: '20px', height: '20px', backgroundColor: '#fff' }} />
+    </Position>
   </div>
 </Playground>
 
 ## Middle
 
 <Playground>
-  <div style={{position: 'relative', width: '40px', height: '40px', backgroundColor: themes.light['color-BG40']}}>
-    <Position location="center" raised><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position variant="middle" location="bottom-left"><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position variant="middle" location="bottom-center"><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position variant="middle" location="bottom-right"><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position variant="middle" location="top-left"><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position variant="middle" location="top-center"><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position variant="middle" location="top-right"><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position variant="middle" location="left-center"><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position variant="middle" location="right-center"><div style={{width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%'}} /></Position>
-    <Position location="center"><div style={{width: '20px', height: '20px', backgroundColor: '#fff'}} /></Position>
+  <div style={{ position: 'relative', width: '40px', height: '40px', backgroundColor: themes.light['color-BG50'] }}>
+    <Position location="center" raised>
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position variant="middle" location="bottom-left">
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position variant="middle" location="bottom-center">
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position variant="middle" location="bottom-right">
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position variant="middle" location="top-left">
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position variant="middle" location="top-center">
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position variant="middle" location="top-right">
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position variant="middle" location="left-center">
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position variant="middle" location="right-center">
+      <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />
+    </Position>
+    <Position location="center">
+      <div style={{ width: '20px', height: '20px', backgroundColor: '#fff' }} />
+    </Position>
   </div>
 </Playground>
 

@@ -15,7 +15,7 @@
 
   @mixin themed .lineLoader {
     &:after {
-      background-color: $theme-primary-accent-color;
+      background-color: $theme-primary-palette-accent-color;
     }
   }
 }
@@ -43,7 +43,7 @@
 .lineLoader--contrast {
   @mixin themed .lineLoader {
     &:after {
-      background-color: $theme-contrast-accent-color;
+      background-color: $theme-contrast-palette-accent-color;
     }
   }
 }

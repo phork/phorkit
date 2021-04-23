@@ -107,7 +107,7 @@ button.avatar {
 
 .avatar--image {
   @mixin themed .avatar {
-    --avatar-actionable-background-color: $theme-secondary-text-color;
+    --avatar-actionable-background-color: $theme-primary-palette-text-color;
   }
 }
 
@@ -128,8 +128,8 @@ button.avatar {
 
 .avatar--contrast {
   @mixin themed .avatar {
-    --avatar-background-color: $theme-contrast-text-color;
-    --avatar-text-color: var(--contrast-color, $theme-contrast-background-color);
+    --avatar-background-color: $theme-contrast-palette-text-color;
+    --avatar-text-color: var(--contrast-color, $theme-contrast-palette-background-color);
   }
 }
 

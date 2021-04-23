@@ -2,7 +2,7 @@ const Color = require('color');
 
 /**
  * Generate 10% to 90% transparencies for each color.
- * And example result is `color-FG10-O20` for 20%
+ * And example result is `color-FG20-O20` for 20%
  * opacity (80% transparent).
  */
 module.exports = {
@@ -20,6 +20,16 @@ module.exports = {
   blacken: (color, percent) =>
     Color(color)
       .blacken(percent / 100)
+      .hex(),
+
+  lighten: (color, percent) =>
+    Color(color)
+      .lighten(percent / 100)
+      .hex(),
+
+  darken: (color, percent) =>
+    Color(color)
+      .darken(percent / 100)
       .hex(),
 
   generateOpacityRange: (source, colors, step = 10) => {

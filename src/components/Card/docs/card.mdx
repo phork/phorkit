@@ -8,8 +8,7 @@ import { Playground, Props } from 'docz';
 import { Rhythm } from 'components/Rhythm';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { Card } from '../Card';
-import { CardBody, CardEdge, CardTitle, StyledCard } from '../index';
+import { Card, StyledCard } from '../index';
 
 <PageTitle title="Card" src="components/Card" />
 
@@ -107,52 +106,16 @@ import { CardBody, CardEdge, CardTitle, StyledCard } from '../index';
   </ThemeWrapper>
 </Playground>
 
-## Full cards
-
-### Full card with magnification
+## Magnification
 
 <Playground>
   <ThemeWrapper>
     <div style={{ width: '300px', height: '200px' }}>
       <Card hoverable raised magnify full>
-        <CardEdge>Card edge top</CardEdge>
-        <CardBody>
-          <CardTitle>Card title</CardTitle>
-          <CardTitle variant="subtitle">Card subtitle</CardTitle>
-        </CardBody>
-        <CardEdge justify="spread">
-          <span>Card edge bottom</span>
-          <span>Justify spread</span>
-        </CardEdge>
+        <Rhythm p={3}>Hello world</Rhythm>
       </Card>
     </div>
   </ThemeWrapper>
-</Playground>
-
-### Styled card
-
-<Playground>
-  <div style={{ width: '300px', height: '200px' }}>
-    <StyledCard
-      backgroundColor="#393a61"
-      borderColor="#393a61"
-      hoverBorderColor="#000"
-      textColor="#fff"
-      bordered
-      hoverable
-      full
-    >
-      <CardEdge>Card edge top</CardEdge>
-      <CardBody>
-        <CardTitle>Card title</CardTitle>
-        <CardTitle variant="subtitle">Card subtitle</CardTitle>
-      </CardBody>
-      <CardEdge justify="spread">
-        <span>Card edge bottom</span>
-        <span>Justify spread</span>
-      </CardEdge>
-    </StyledCard>
-  </div>
 </Playground>
 
 ## \[props\]

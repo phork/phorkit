@@ -17,21 +17,21 @@
 
 .tabPanelGroup--primary {
   @mixin themed .tabPanelGroup {
-    background-color: $theme-secondary-background-color;
-    color: $theme-secondary-text-color;
+    background-color: $theme-primary-palette-background-color;
+    color: $theme-primary-palette-text-color;
   }
 }
 
 .tabPanelGroup--transparent {
   @mixin themed .tabPanelGroup {
     background-color: transparent;
-    color: $theme-secondary-text-color;
+    color: $theme-primary-palette-text-color;
   }
 }
 
 .tabPanelGroup--contrast {
   @mixin themed .tabPanelGroup {
-    background-color: var(--contrast-color, $theme-contrast-background-color);
-    color: var(--contrast-color, $theme-contrast-text-color);
+    background-color: var(--contrast-color, $theme-contrast-palette-background-color);
+    color: var(--contrast-color, $theme-contrast-palette-text-color);
   }
 }

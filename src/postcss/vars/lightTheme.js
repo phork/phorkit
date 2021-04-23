@@ -2,59 +2,52 @@ const color = require('./utils/color');
 
 // foreground and background colors, generally
 const neutralColors = {
-  'color-FG0': '#000',
-  'color-FG05': '#111',
-  'color-FG10': '#333',
-  'color-FG20': '#555',
-  'color-FG30': '#777',
-  'color-FG40': '#999',
+  'color-FG0': '#17171D',
+  'color-FG05': '#29292F',
+  'color-FG10': '#3A3A40',
+  'color-FG20': '#5D5D63',
+  'color-FG30': '#808086',
+  'color-FG40': '#A3A3A9',
+  'color-FG50': '#C6C6CC',
 
-  'color-BG0': '#fff',
-  'color-BG05': '#fafafa',
-  'color-BG10': '#f4f4f4',
-  'color-BG20': '#e4e4e4',
-  'color-BG30': '#d4d4d4',
-  'color-BG40': '#c4c4c4',
+  'color-BG0': '#FFF',
+  'color-BG05': '#FAFAFA',
+  'color-BG10': '#F4F4F5',
+  'color-BG20': '#E8E8EB',
+  'color-BG30': '#DDDDE0',
+  'color-BG40': '#D1D1D6',
+  'color-BG50': '#C6C6CC',
 };
 
 const primaryColors = {
   'color-P05': '#c5106b',
-  'color-P05-contrast': '#fff',
-
   'color-P10': '#f41150',
-  'color-P10-contrast': '#fff',
-
   'color-P15': '#ff3232',
-  'color-P15-contrast': '#fff',
-
-  'color-P20': '#FF6020',
-  'color-P20-contrast': '#fff',
-
+  'color-P20': '#ff6020',
   'color-P25': '#ff8e0d',
-  'color-P25-contrast': '#fff',
-
-  'color-P30': '#FCA60A',
-  'color-P30-contrast': '#fff',
-
+  'color-P30': '#fca60a',
   'color-P35': '#f8be07',
-  'color-P35-contrast': '#fff',
-
-  'color-P40': '#7CBB3F',
-  'color-P40-contrast': '#fff',
-
-  'color-P45': '#3E8E87',
-  'color-P45-contrast': '#fff',
-
+  'color-P40': '#7cbb3f',
+  'color-P45': '#3e8e87',
   'color-P50': '#0060ce',
-  'color-P50-contrast': '#fff',
-
-  'color-P55': '#3247B7',
-  'color-P55-contrast': '#fff',
-
+  'color-P55': '#3247b7',
   'color-P60': '#642da0',
-  'color-P60-contrast': '#fff',
-
   'color-P65': '#8b218b',
+};
+
+const primaryContrastColors = {
+  'color-P05-contrast': '#fff',
+  'color-P10-contrast': '#fff',
+  'color-P15-contrast': '#fff',
+  'color-P20-contrast': '#fff',
+  'color-P25-contrast': '#fff',
+  'color-P30-contrast': '#fff',
+  'color-P35-contrast': '#fff',
+  'color-P40-contrast': '#fff',
+  'color-P45-contrast': '#fff',
+  'color-P50-contrast': '#fff',
+  'color-P55-contrast': '#fff',
+  'color-P60-contrast': '#fff',
   'color-P65-contrast': '#fff',
 };
 
@@ -80,19 +73,19 @@ const adjustments = {
 
 const accentColors = {
   'color-accent-primary': primaryColors['color-P50'],
-  'color-accent-primary-contrast': primaryColors['color-P50-contrast'],
+  'color-accent-primary-contrast': '#fff',
 
   'color-success': primaryColors['color-P40'],
-  'color-success-contrast': primaryColors['color-P40-contrast'],
+  'color-success-contrast': '#fff',
 
   'color-warning': primaryColors['color-P25'],
-  'color-warning-contrast': primaryColors['color-P25-contrast'],
+  'color-warning-contrast': '#fff',
 
   'color-danger': primaryColors['color-P15'],
-  'color-danger-contrast': primaryColors['color-P15-contrast'],
+  'color-danger-contrast': '#fff',
 
-  'color-neutral': color.whiten(neutralColors['color-FG40'], 80),
-  'color-neutral-contrast': neutralColors['color-BG0'],
+  'color-neutral': neutralColors['color-FG30'],
+  'color-neutral-contrast': '#fff',
 };
 
 const shadowColors = {
@@ -119,46 +112,50 @@ const shadowColors = {
   `,
 };
 
-const hierarchyColors = {
-  'primary-background-color': neutralColors['color-BG05'],
-  'primary-border-color': neutralColors['color-BG40'],
-  'primary-quiet-border-color': neutralColors['color-BG20'],
-  'primary-text-color': neutralColors['color-FG0'],
-  'primary-quiet-color': neutralColors['color-FG40'],
-  'primary-quieter-color': color.whiten(neutralColors['color-FG40'], 80),
-  'primary-quietest-color': color.whiten(neutralColors['color-FG40'], 90),
-  'primary-accent-color': accentColors['color-accent-primary'],
+const paletteColors = {
+  'extreme-palette-background-color': neutralColors['color-BG0'],
+  'extreme-palette-border-color': neutralColors['color-BG40'],
+  'extreme-palette-text-color': neutralColors['color-FG0'],
 
-  'secondary-background-color': neutralColors['color-BG0'],
-  'secondary-border-color': neutralColors['color-BG30'],
-  'secondary-quiet-border-color': neutralColors['color-BG20'],
-  'secondary-text-color': neutralColors['color-FG10'],
-  'secondary-quiet-color': neutralColors['color-FG40'],
-  'secondary-quieter-color': color.whiten(neutralColors['color-FG40'], 80),
-  'secondary-quietest-color': color.whiten(neutralColors['color-FG40'], 90),
-  'secondary-accent-color': accentColors['color-accent-primary'],
+  'primary-palette-background-color': neutralColors['color-BG05'],
+  'primary-palette-border-color': neutralColors['color-BG40'],
+  'primary-palette-quiet-border-color': neutralColors['color-BG30'],
+  'primary-palette-text-color': neutralColors['color-FG10'],
+  'primary-palette-quiet-color': neutralColors['color-FG30'],
+  'primary-palette-quieter-color': neutralColors['color-FG40'],
+  'primary-palette-quietest-color': neutralColors['color-FG50'],
+  'primary-palette-accent-color': accentColors['color-accent-primary'],
 
-  'tertiary-background-color': neutralColors['color-BG10'],
-  'tertiary-border-color': neutralColors['color-BG30'],
-  'tertiary-quiet-border-color': neutralColors['color-BG20'],
-  'tertiary-text-color': neutralColors['color-FG20'],
-  'tertiary-quiet-color': neutralColors['color-FG40'],
-  'tertiary-quieter-color': color.whiten(neutralColors['color-FG40'], 90),
-  'tertiary-quietest-color': color.whiten(neutralColors['color-FG40'], 100),
-  'tertiary-accent-color': accentColors['color-accent-primary'],
+  'secondary-palette-background-color': neutralColors['color-BG10'],
+  'secondary-palette-border-color': neutralColors['color-BG50'],
+  'secondary-palette-quiet-border-color': neutralColors['color-BG30'],
+  'secondary-palette-text-color': neutralColors['color-FG05'],
+  'secondary-palette-quiet-color': neutralColors['color-FG30'],
+  'secondary-palette-quieter-color': neutralColors['color-FG40'],
+  'secondary-palette-quietest-color': neutralColors['color-FG50'],
+  'secondary-palette-accent-color': accentColors['color-accent-primary'],
 
-  'contrast-background-color': accentColors['color-accent-primary'],
-  'contrast-border-color': color.transparency(accentColors['color-accent-primary-contrast'], 50),
-  'contrast-quiet-border-color': color.transparency(accentColors['color-accent-primary-contrast'], 70),
-  'contrast-text-color': accentColors['color-accent-primary-contrast'],
-  'contrast-quiet-color': color.transparency(accentColors['color-accent-primary-contrast'], 40),
-  'contrast-quieter-color': color.transparency(accentColors['color-accent-primary-contrast'], 60),
-  'contrast-quietest-color': color.transparency(accentColors['color-accent-primary-contrast'], 80),
-  'contrast-accent-color': accentColors['color-accent-primary-contrast'],
+  'tertiary-palette-background-color': neutralColors['color-BG20'],
+  'tertiary-palette-border-color': neutralColors['color-BG40'],
+  'tertiary-palette-quiet-border-color': neutralColors['color-BG30'],
+  'tertiary-palette-text-color': neutralColors['color-FG0'],
+  'tertiary-palette-quiet-color': neutralColors['color-FG30'],
+  'tertiary-palette-quieter-color': neutralColors['color-FG40'],
+  'tertiary-palette-quietest-color': neutralColors['color-FG50'],
+  'tertiary-palette-accent-color': accentColors['color-accent-primary'],
+
+  'contrast-palette-background-color': accentColors['color-accent-primary'],
+  'contrast-palette-border-color': color.transparency(accentColors['color-accent-primary-contrast'], 50),
+  'contrast-palette-quiet-border-color': color.transparency(accentColors['color-accent-primary-contrast'], 70),
+  'contrast-palette-text-color': accentColors['color-accent-primary-contrast'],
+  'contrast-palette-quiet-color': color.transparency(accentColors['color-accent-primary-contrast'], 40),
+  'contrast-palette-quieter-color': color.transparency(accentColors['color-accent-primary-contrast'], 60),
+  'contrast-palette-quietest-color': color.transparency(accentColors['color-accent-primary-contrast'], 80),
+  'contrast-palette-accent-color': accentColors['color-accent-primary-contrast'],
 };
 
 const miscColors = {
-  'primary-scrollbar-thumb-color': neutralColors['color-BG20'],
+  'primary-scrollbar-thumb-color': neutralColors['color-BG30'],
   'primary-scrollbar-track-color': 'transparent',
 
   'contrast-scrollbar-thumb-color': color.transparency(accentColors['color-accent-primary-contrast'], 80),
@@ -170,12 +167,13 @@ const definedColors = {
   ...primaryColors,
   ...accentColors,
   ...shadowColors,
-  ...hierarchyColors,
+  ...paletteColors,
   ...miscColors,
 };
 
 const colors = {
   ...definedColors,
+  ...primaryContrastColors,
   ...color.generateLightenDarken(
     definedColors,
     [
@@ -184,11 +182,11 @@ const colors = {
       'color-warning',
       'color-danger',
       'color-neutral',
-      ...Object.keys(primaryColors).filter(key => !key.includes('contrast')),
+      ...Object.keys(primaryColors),
     ],
     adjustments,
   ),
-  ...color.generateOpacityRange(definedColors, ['color-BG0', 'color-FG0', 'color-BG40', 'color-accent-primary']),
+  ...color.generateOpacityRange(definedColors, ['color-BG0', 'color-FG0', 'color-BG50', 'color-accent-primary']),
 };
 
 module.exports = colors;

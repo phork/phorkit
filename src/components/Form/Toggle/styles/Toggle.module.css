@@ -13,13 +13,17 @@
     opacity: 0.5;
     pointer-events: none;
   }
+
+  &:focus {
+    outline: none;
+  }
 }
 
 input.toggleInput {
   @mixin visuallyHidden;
 }
 
-.toggleInput {
+.toggleButton {
   flex: none;
   height: var(--toggle-height, $default-toggle-height);
   position: relative;
@@ -88,6 +92,7 @@ input.toggleInput {
    *    middle of the toggle when focused.
    */
   .toggle.is-checked:hover &,
+  .toggle.is-checked:focus &,
   .toggle.is-checked.is-focused & {
     &:after {
       background-color: var(--toggle-checked-background-color); /* [1] */
@@ -105,6 +110,7 @@ input.toggleInput {
    *    middle of the toggle when focused.
    */
   .toggle:not(.is-checked):hover &,
+  .toggle:not(.is-checked):focus &,
   .toggle:not(.is-checked).is-focused & {
     &:after {
       background-color: var(--toggle-background-color); /* [1] */
@@ -113,6 +119,16 @@ input.toggleInput {
           var(--toggle-button-background-color); /* [2] */
     }
   }
+}
+
+.toggleButtonFocusRing {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: -2px;
+  right: -2px;
+  border-radius: var(--toggle-height, $default-toggle-height);
+  border: 1px solid var(--toggle-checked-button-background-color);
 }
 
 .toggleLabel {
@@ -124,7 +140,7 @@ input.toggleInput {
   justify-content: space-between;
   width: 100%;
 
-  .toggleInput {
+  .toggleButton {
     justify-content: flex-end;
   }
 
@@ -143,26 +159,26 @@ input.toggleInput {
 
 .toggle--primary {
   &.toggle--light {
-    --toggle-background-color: $light-color-BG30;
-    --toggle-button-background-color: $light-color-BG0;
-    --toggle-checked-background-color: $light-primary-accent-color;
-    --toggle-checked-button-background-color: $light-color-BG0;
+    --toggle-background-color: $light-color-BG40;
+    --toggle-button-background-color: $light-color-BG05;
+    --toggle-checked-background-color: $light-primary-palette-accent-color;
+    --toggle-checked-button-background-color: $light-color-BG05;
   }
 
   &.toggle--dark {
-    --toggle-background-color: $dark-color-BG40-O30;
-    --toggle-button-background-color: $dark-color-BG40;
-    --toggle-checked-background-color: $dark-primary-accent-color;
+    --toggle-background-color: $dark-color-FG50;
+    --toggle-button-background-color: $dark-color-FG30;
+    --toggle-checked-background-color: $dark-primary-palette-accent-color;
     --toggle-checked-button-background-color: $dark-color-FG0;
   }
 }
 
 .toggle--contrast {
   @mixin themed .toggle {
-    --toggle-background-color: $theme-contrast-quietest-color;
-    --toggle-button-background-color: $theme-contrast-quieter-color;
-    --toggle-checked-background-color: $theme-contrast-quietest-color;
-    --toggle-checked-button-background-color: $theme-contrast-accent-color;
+    --toggle-background-color: $theme-contrast-palette-quietest-color;
+    --toggle-button-background-color: $theme-contrast-palette-quieter-color;
+    --toggle-checked-background-color: $theme-contrast-palette-quietest-color;
+    --toggle-checked-button-background-color: $theme-contrast-palette-accent-color;
   }
 }
 
@@ -173,9 +189,9 @@ input.toggleInput {
  */
 .toggle--contrast.toggle--standalone {
   @mixin themed .toggle {
-    --toggle-background-color: $theme-contrast-quietest-color;
-    --toggle-button-background-color: $theme-contrast-quieter-color;
-    --toggle-checked-background-color: $theme-contrast-text-color;
-    --toggle-checked-button-background-color: var(--contrast-color, $theme-contrast-background-color);
+    --toggle-background-color: $theme-contrast-palette-quietest-color;
+    --toggle-button-background-color: $theme-contrast-palette-quieter-color;
+    --toggle-checked-background-color: $theme-contrast-palette-text-color;
+    --toggle-checked-button-background-color: var(--contrast-color, $theme-contrast-palette-background-color);
   }
 }

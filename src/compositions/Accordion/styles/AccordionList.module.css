@@ -25,25 +25,25 @@
 
 .accordionList--primary {
   @mixin themed .accordionList {
-    --accordion-border-color: $theme-secondary-background-color;
+    --accordion-border-color: $theme-primary-palette-background-color;
     --accordion-item-border-color: $theme-color-FG0-O5;
     --accordion-item-focused-border-color: $theme-color-accent-primary;
     --accordion-label-focused-text-color: $theme-color-accent-primary;
     --accordion-list-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
-    --accordion-selected-text-color: $theme-secondary-text-color;
-    --accordion-text-color: $theme-tertiary-text-color;
+    --accordion-selected-text-color: $theme-primary-palette-text-color;
+    --accordion-text-color: $theme-tertiary-palette-text-color;
   }
 }
 
 .accordionList--contrast {
   @mixin themed .accordionList {
-    --accordion-border-color: var(--contrast-color, $theme-contrast-background-color);
-    --accordion-item-border-color: $theme-contrast-quietest-color;
-    --accordion-item-focused-border-color: $theme-contrast-text-color;
-    --accordion-label-focused-text-color: $theme-contrast-text-color;
+    --accordion-border-color: var(--contrast-color, $theme-contrast-palette-background-color);
+    --accordion-item-border-color: $theme-contrast-palette-quietest-color;
+    --accordion-item-focused-border-color: $theme-contrast-palette-text-color;
+    --accordion-label-focused-text-color: $theme-contrast-palette-text-color;
     --accordion-list-scrollbar-thumb-color: $theme-contrast-scrollbar-thumb-color;
-    --accordion-selected-text-color: $theme-contrast-quiet-color;
-    --accordion-text-color: $theme-contrast-quiet-color;
+    --accordion-selected-text-color: $theme-contrast-palette-quiet-color;
+    --accordion-text-color: $theme-contrast-palette-quiet-color;
   }
 }
 

@@ -37,11 +37,12 @@ export const DropoverLabel = React.forwardRef<HTMLDivElement, DropoverLabelProps
   ): React.ReactElement<DropoverLabelProps, 'div'> => {
     const themeId = useThemeId(initThemeId);
     const triangleColor =
-      initTriangleColor || (contrast ? themes[themeId]['contrast-quiet-color'] : themes[themeId]['primary-text-color']);
+      initTriangleColor ||
+      (contrast ? themes[themeId]['contrast-palette-quiet-color'] : themes[themeId]['secondary-palette-text-color']);
 
     const triangleFocusedColor =
       initTriangleFocusedColor ||
-      (contrast ? themes[themeId]['contrast-accent-color'] : themes[themeId]['primary-accent-color']);
+      (contrast ? themes[themeId]['contrast-palette-accent-color'] : themes[themeId]['secondary-palette-accent-color']);
 
     return (
       <div className={cx(styles.dropoverLabel, className)} ref={forwardedRef} {...props}>

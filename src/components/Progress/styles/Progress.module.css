@@ -13,13 +13,13 @@
 .progress--warning,
 .progress--danger {
   @mixin themed .progress {
-    background-color: $theme-color-BG20;
+    background-color: $theme-color-BG30;
   }
 }
 
 .progress--contrast {
   @mixin themed .progress {
-    background-color: $theme-contrast-quietest-color;
+    background-color: $theme-contrast-palette-quietest-color;
   }
 }
 
@@ -99,7 +99,7 @@
 
 .progressSegment--contrast {
   @mixin themed .progressSegment {
-    background-color: $theme-contrast-accent-color;
+    background-color: $theme-contrast-palette-accent-color;
   }
 }
 
