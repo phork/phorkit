@@ -1,4 +1,5 @@
 const fs = require('fs')
+const chalk = require('chalk')
 
 const writeFileSyncRecursive = (filename, content, charset) => {
   filename
@@ -12,6 +13,7 @@ const writeFileSyncRecursive = (filename, content, charset) => {
       return folderPath
     })
 
+  console.log(chalk.blue(`🤖 Writing ${filename}`))
   fs.writeFileSync(filename, content.trim() + "\n", charset);
 }
 

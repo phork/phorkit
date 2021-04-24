@@ -4,6 +4,7 @@
 
 const chalk = require('chalk')
 const program = require('commander')
+const fs = require('fs')
 const pkg = require('../package.json')
 const writeFileSyncRecursive = require('./utils/write-file');
 
@@ -24,14 +25,14 @@ program.on('--help', function(){
 program.parse(process.argv);
 
 const { component, type = 'component' } = program.opts();
-const src = `./src/${type}s/${component}/`;
+const src = `./src/${type}s/${component}`;
 
 if (typeof component === 'undefined') {
   console.log(chalk.red('Missing argument -c or --component. Try --help'))
   process.exit(1);
 }
 
-console.log(chalk.blue(`🤖 Generating ${src}...`))
+console.log(chalk.blue(`🤖 Generating the ${component} ${type}`))
 
 const lcfirst = input => {
   return input.charAt(0).toLowerCase() + input.slice(1);
@@ -41,6 +42,7 @@ const ucfirst = input => {
   return input.charAt(0).toUpperCase() + input.slice(1);
 }
 
+// generate the component boilerplate
 writeFileSyncRecursive(`${src}/${component}.tsx`, `
 import React from 'react';
 import { cx } from '@emotion/css';
@@ -70,15 +72,18 @@ export function ${component}({ children, themeId: initThemeId }: ${component}Pro
 ${component}.displayName = '${component}';
 `);
 
+// generate the component index
 writeFileSyncRecursive(`${src}/index.ts`, `
 export * from './${component}';
 `);
 
+// generate the styles boilerplate
 writeFileSyncRecursive(`${src}/styles/${component}.module.css`, `
 .${lcfirst(component)} {
 }
 `);
 
+// generate the docz boilerplate
 writeFileSyncRecursive(`${src}/docs/${lcfirst(component)}.mdx`, `
 ---
 name: ${component}
@@ -105,5 +110,8 @@ import { ${component} } from '../index';
 <Props of={${component}} />
 `);
 
+// add the export to the index file
+const lines = [`export * from './${component}';`, ...fs.readFileSync(`src/${type}s/index.ts`).toString().split('\n')].sort()
+writeFileSyncRecursive(`src/${type}s/index.ts`, [...new Set(lines)].join('\n'))
+
 console.log(chalk.green(`🚀 Generated ${src}`));
-console.log(chalk.red(`📣 Don't forget to export this component from ${type}/index.ts`));

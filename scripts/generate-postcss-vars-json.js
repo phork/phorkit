@@ -8,7 +8,6 @@ const lightTheme = require('../src/postcss/vars/lightTheme.js');
 const writeFileSyncRecursive = require('./utils/write-file');
 
 const writeJson = (filename, content) => {
-  console.log(chalk.blue(`🤖 Generating ${filename}`))
   writeFileSyncRecursive(filename, JSON.stringify(content, null, 2));
   console.log(chalk.green(`🚀 Generated ${filename}`));
 }
