@@ -49,8 +49,6 @@ export function dropdownReducer(state: DropdownState, action: DropdownStateActio
       return {
         ...state,
         clearFocus: true,
-        inputFocus: false,
-        listFocus: false,
       };
 
     case ACTIONS.SET_FILTER:
@@ -62,16 +60,12 @@ export function dropdownReducer(state: DropdownState, action: DropdownStateActio
     case ACTIONS.SET_INPUT_FOCUS:
       return {
         ...state,
-        clearFocus: false,
         inputFocus: true,
-        listFocus: false,
       };
 
     case ACTIONS.SET_LIST_FOCUS:
       return {
         ...state,
-        clearFocus: false,
-        inputFocus: false,
         listFocus: true,
       };
 
@@ -117,23 +111,17 @@ export function dropdownReducer(state: DropdownState, action: DropdownStateActio
       return {
         ...state,
         clearFocus: false,
-        inputFocus: false,
-        listFocus: false,
       };
 
     case ACTIONS.UNSET_INPUT_FOCUS:
       return {
         ...state,
-        clearFocus: false,
         inputFocus: false,
-        listFocus: false,
       };
 
     case ACTIONS.UNSET_LIST_FOCUS:
       return {
         ...state,
-        clearFocus: false,
-        inputFocus: false,
         listFocus: false,
       };
 

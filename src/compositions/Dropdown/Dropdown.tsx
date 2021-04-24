@@ -85,6 +85,12 @@ export function Dropdown({
   const ref = useRef<HTMLDivElement>(null!);
   const listRef = useRef<HTMLUListElement | null>(null);
   const inputRef = useRef<HTMLInputElement>(null!);
+
+  const mouseDownRef = useRef<{
+    isFocused?: boolean;
+    isDropdownVisible?: boolean;
+  }>({});
+
   const previous = useRef<{
     input?: string;
     isDropdownVisible?: boolean;
@@ -134,9 +140,7 @@ export function Dropdown({
   const focusList = () => listRef.current?.focus();
 
   const handleHideDropdown = useCallback(() => dispatch({ type: ACTIONS.HIDE_DROPDOWN }), []);
-  const handleBlur = handleHideDropdown;
   const handleShowDropdown = useCallback(() => dispatch({ type: ACTIONS.SHOW_DROPDOWN }), []);
-  const handleFocus = handleShowDropdown;
   const handleListBlur = useCallback(() => dispatch({ type: ACTIONS.UNSET_LIST_FOCUS }), []);
   const handleListFocus = useCallback(() => dispatch({ type: ACTIONS.SET_LIST_FOCUS }), []);
   const handleClearBlur = useCallback(() => dispatch({ type: ACTIONS.UNSET_CLEAR_FOCUS }), []);
@@ -144,6 +148,9 @@ export function Dropdown({
   const handleInputBlur = useCallback(() => dispatch({ type: ACTIONS.UNSET_INPUT_FOCUS }), []);
   const handleInputFocus = useCallback(() => dispatch({ type: ACTIONS.SET_INPUT_FOCUS }), []);
   const handleInputClick = useCallback(() => !onFilter && focusList(), [onFilter]);
+
+  const handleBlur = handleHideDropdown;
+  const handleFocus = handleShowDropdown;
 
   const { setSafeTimeout } = useSafeTimeout();
   const safeHandleInputFocus = () => setSafeTimeout(handleInputFocus);
@@ -248,6 +255,25 @@ export function Dropdown({
     [state.input],
   );
 
+  /**
+   * Because focus and blur events fire before the click events we must
+   * capture the component state in the mousedown phase before these
+   * other events interfere. The ensures that the click event will be
+   * able to know what the state was when it was actually clicked.
+   */
+  const handleMouseDown = useCallback(() => {
+    mouseDownRef.current = {
+      isFocused,
+      isDropdownVisible,
+    };
+  }, [isDropdownVisible, isFocused]);
+
+  const handleClick = useCallback(() => {
+    if (mouseDownRef.current.isDropdownVisible) {
+      handleHideDropdown();
+    }
+  }, [handleHideDropdown]);
+
   const handleKeyDown = useCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === ' ' && (event.target as HTMLDivElement).tagName.toLowerCase() !== 'input') {
       event.preventDefault();
@@ -309,6 +335,8 @@ export function Dropdown({
         color && styles[`dropdown--${color}`],
         className,
       )}
+      onClick={handleClick}
+      onMouseDown={handleMouseDown}
       onKeyDown={handleKeyDown}
       onFocus={handleFocus}
       ref={ref}
