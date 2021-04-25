@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.0.2](https://github.com/phork/phorkit/compare/v2.0.1...v2.0.2) (2021-04-25)
+
+### 🐛 Bug Fixes
+
+- clicking an open dropdown closes it ([ada0407](https://github.com/phork/phorkit/commit/ada0407))
+
 ## [2.0.1](https://github.com/phork/phorkit/compare/v2.0.0...v2.0.1) (2021-04-23)
 
 ### 🐛 Bug Fixes
