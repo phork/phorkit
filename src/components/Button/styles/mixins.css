@@ -10,13 +10,13 @@
   position: relative;
 
   &:not(:disabled):not(.is-disabled) {
-    &:before {
+    &:after {
       border-radius: inherit;
       box-shadow: 0 0 0 0 var(--button-primary-color);
-      content: "";
+      content: '';
       height: 100%;
       left: 0;
-      opacity: .3;
+      opacity: 0.3;
       position: absolute;
       top: 0;
       transition: box-shadow 100ms ease;
@@ -25,7 +25,7 @@
 
     &:focus,
     &.is-focused {
-      &:before {
+      &:after {
         box-shadow: 0 0 0 4px var(--button-primary-color);
       }
     }
@@ -50,12 +50,25 @@
   position: relative;
 
   &:not(:disabled):not(.is-disabled) {
-    &:before {
+    &:after {
       border-radius: inherit;
       box-shadow: 0 0 0 0 transparent;
-      content: "";
+      content: '';
       height: 100%;
-      opacity: .3;
+      opacity: 0.3;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: box-shadow 100ms ease;
+      width: 100%;
+    }
+
+    &:before {
+      background-color: transparent;
+      border-radius: inherit;
+      content: '';
+      height: 100%;
+      opacity: 0.1;
       position: absolute;
       top: 0;
       left: 0;
@@ -65,8 +78,12 @@
 
     &:focus,
     &.is-focused {
-      &:before {
+      &:after {
         box-shadow: 0 0 0 4px var(--button-primary-color);
+
+        &:before {
+          background-color: var(--button-primary-color);
+        }
       }
     }
 
@@ -74,11 +91,19 @@
     &.is-hovered {
       border-color: var(--button-hover-primary-color);
       color: var(--button-hover-primary-color);
+
+      &:before {
+        background-color: var(--button-primary-color);
+      }
     }
 
     &:active,
     &.is-active {
       border-color: var(--button-active-primary-color);
+
+      &:before {
+        background-color: var(--button-primary-color);
+      }
     }
   }
 }
@@ -97,18 +122,18 @@
 
     &:focus,
     &.is-focused {
-      &:before {
+      &:after {
         border-bottom: 1px solid var(--button-text-underline-color, var(--button-primary-color));
-        content: "";
+        content: '';
         height: 100%;
         position: absolute;
-        top: .1rem;
-        left: -.1rem;
-        right: -.1rem;
+        top: 0.1rem;
+        left: -0.1rem;
+        right: -0.1rem;
       }
 
       &.button--icon {
-        &:before {
+        &:after {
           top: 4px;
         }
       }

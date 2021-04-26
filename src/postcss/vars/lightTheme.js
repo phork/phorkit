@@ -66,7 +66,6 @@ const adjustments = {
   'color-P65-lighten': 0.32,
 
   'color-P15-darken': 0.15,
-  'color-P25-darken': 0.125,
   'color-P30-darken': 0.1,
   'color-P35-darken': 0.0625,
 };
@@ -148,9 +147,9 @@ const paletteColors = {
   'contrast-palette-border-color': color.transparency(accentColors['color-accent-primary-contrast'], 50),
   'contrast-palette-quiet-border-color': color.transparency(accentColors['color-accent-primary-contrast'], 70),
   'contrast-palette-text-color': accentColors['color-accent-primary-contrast'],
-  'contrast-palette-quiet-color': color.transparency(accentColors['color-accent-primary-contrast'], 40),
-  'contrast-palette-quieter-color': color.transparency(accentColors['color-accent-primary-contrast'], 60),
-  'contrast-palette-quietest-color': color.transparency(accentColors['color-accent-primary-contrast'], 80),
+  'contrast-palette-quiet-color': color.transparency(accentColors['color-accent-primary-contrast'], 20),
+  'contrast-palette-quieter-color': color.transparency(accentColors['color-accent-primary-contrast'], 40),
+  'contrast-palette-quietest-color': color.transparency(accentColors['color-accent-primary-contrast'], 60),
   'contrast-palette-accent-color': accentColors['color-accent-primary-contrast'],
 };
 

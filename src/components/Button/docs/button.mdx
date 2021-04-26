@@ -651,7 +651,7 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
           group="primary"
           render={({ id }) => (
             <Flex direction="row" key={`coloredButton-${id}`} wrap>
-              <Rhythm key={`colorButton-${id}`} mb={2} mr={2}>
+              <Rhythm key={`coloredButtonFilled-${id}`} mb={2} mr={2}>
                 <ColoredButton shape="pill" weight="filled" colorId={id}>
                   {`Color button ${id}`}
                 </ColoredButton>
@@ -666,7 +666,7 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
                   weight="filled"
                 />
               </Rhythm>
-              <Rhythm key={`colorButton-${id}`} mb={2} mr={2}>
+              <Rhythm key={`coloredButtonOutline-${id}`} mb={2} mr={2}>
                 <ColoredButton shape="pill" weight="outline" colorId={id}>
                   {`Color button ${id}`}
                 </ColoredButton>
@@ -688,6 +688,44 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
       </Flex>
     )}
   </ThemeWrapper>
+</Playground>
+
+### Styled buttons
+
+<Playground>
+  {() => {
+    const styles = {
+      primaryColor: '#556270',
+      inverseColor: '#fff',
+      hoverPrimaryColor: '#454f58',
+      activePrimaryColor: '#798796',
+    };
+    return (
+      <React.Fragment>
+        <Rhythm m={2}>
+          <StyledButton {...styles}>Styled</StyledButton>
+          <StyledButton weight="outline" {...styles}>
+            Styled
+          </StyledButton>
+          <StyledButton weight="text" {...styles}>
+            Styled
+          </StyledButton>
+        </Rhythm>
+        <br />
+        <Rhythm m={2}>
+          <StyledButton loading loader={<SpinnerIcon scale="medium" />} {...styles}>
+            Styled
+          </StyledButton>
+          <StyledButton weight="outline" loading loader={<SpinnerIcon scale="medium" />} {...styles}>
+            Styled
+          </StyledButton>
+          <StyledButton weight="text" loading loader={<SpinnerIcon scale="medium" />} {...styles}>
+            Styled
+          </StyledButton>
+        </Rhythm>
+      </React.Fragment>
+    );
+  }}
 </Playground>
 
 ### Linked buttons
@@ -802,12 +840,12 @@ _Note that the links will cause the page to reload so the state will appear unch
         render={shape => (
           <div key={shape}>
             <Rhythm m={2}>
-              <StyledButton shape={shape} themeId={themeId} color="primary" fullWidth>
+              <Button shape={shape} themeId={themeId} color="primary" fullWidth>
                 Full width
-              </StyledButton>
-              <StyledButton shape={shape} themeId={themeId} color="primary" width={200}>
+              </Button>
+              <Button shape={shape} themeId={themeId} color="primary" width={200}>
                 Fixed width
-              </StyledButton>
+              </Button>
             </Rhythm>
           </div>
         )}
@@ -855,6 +893,10 @@ _Note that the links will cause the page to reload so the state will appear unch
 ### ColoredButton
 
 <Props of={ColoredButton} />
+
+### StyledButton
+
+<Props of={StyledButton} />
 
 ### IconTextButton
 

@@ -258,8 +258,8 @@ button.button {
   @mixin themed .button {
     --button-primary-color: $theme-color-success;
     --button-inverse-color: $theme-color-success-contrast;
-    --button-hover-primary-color: $theme-color-success-D10;
-    --button-active-primary-color: $theme-color-success-L10;
+    --button-hover-primary-color: $theme-color-success-L10;
+    --button-active-primary-color: $theme-color-success-D10;
   }
 }
 
@@ -267,8 +267,8 @@ button.button {
   @mixin themed .button {
     --button-primary-color: $theme-color-warning;
     --button-inverse-color: $theme-color-warning-contrast;
-    --button-hover-primary-color: $theme-color-warning-D10;
-    --button-active-primary-color: $theme-color-warning-L10;
+    --button-hover-primary-color: $theme-color-warning-L10;
+    --button-active-primary-color: $theme-color-warning-D10;
   }
 }
 
@@ -276,8 +276,8 @@ button.button {
   @mixin themed .button {
     --button-primary-color: $theme-color-danger;
     --button-inverse-color: $theme-color-danger-contrast;
-    --button-hover-primary-color: $theme-color-danger-D10;
-    --button-active-primary-color: $theme-color-danger-L10;
+    --button-hover-primary-color: $theme-color-danger-L10;
+    --button-active-primary-color: $theme-color-danger-D10;
   }
 }
 
@@ -285,8 +285,8 @@ button.button {
   @mixin themed .button {
     --button-primary-color: $theme-color-accent-primary;
     --button-inverse-color: $theme-color-accent-primary-contrast;
-    --button-hover-primary-color: $theme-color-accent-primary-D10;
-    --button-active-primary-color: $theme-color-accent-primary-L10;
+    --button-hover-primary-color: $theme-color-accent-primary-L10;
+    --button-active-primary-color: $theme-color-accent-primary-D10;
   }
 }
 
@@ -304,8 +304,8 @@ button.button {
   @mixin themed .button {
     --button-primary-color: $theme-color-neutral;
     --button-inverse-color: $theme-color-neutral-contrast;
-    --button-hover-primary-color: $theme-color-neutral-D10;
-    --button-active-primary-color: $theme-color-neutral-L10;
+    --button-hover-primary-color: $theme-color-neutral-L10;
+    --button-active-primary-color: $theme-color-neutral-D10;
   }
 }
 
@@ -332,7 +332,7 @@ button.button {
   --button-primary-color: #000;
   --button-inverse-color: #fff;
   --button-hover-primary-color: rgba(0, 0, 0, 0.8);
-  --button-active-primary-color: rgba(0, 0, 0, 0.6);
+  --button-active-primary-color: rgba(0, 0, 0, 0.7);
 }
 
 /* Button children */
