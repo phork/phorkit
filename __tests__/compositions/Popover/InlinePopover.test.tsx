@@ -5,13 +5,7 @@ import { InlinePopover, PopoverContentRenderChildrenProps, ForwardProps, TimesIc
 describe('<InlinePopover />', () => {
   it('should render a basic popover', () => {
     const { getByText } = render(
-      <InlinePopover
-        focusable
-        height={80}
-        permanent
-        toggler={<TimesIcon aria-label="TimesIcon" scale="xxxlarge" />}
-        width={300}
-      >
+      <InlinePopover focusable height={80} permanent toggler={<TimesIcon scale="xxxlarge" />} width={300}>
         <div>Hello world</div>
       </InlinePopover>,
     );
@@ -25,7 +19,7 @@ describe('<InlinePopover />', () => {
         focusable
         height={80}
         permanent
-        toggler={<TimesIcon aria-label="TimesIcon" scale="xxxlarge" />}
+        toggler={<TimesIcon scale="xxxlarge" />}
         width={300}
       >
         <ForwardProps<Partial<PopoverContentRenderChildrenProps>>>

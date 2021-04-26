@@ -7,7 +7,7 @@ import { useFocusReturn } from '../../hooks/useFocusReturn';
 import { usePopoverPosition } from '../../hooks/usePopoverPosition';
 import { useSafeTimeout } from '../../hooks/useSafeTimeout';
 import { useThemeId } from '../../hooks/useThemeId';
-import { getFirstFocusableElement } from '../../utils/getFocusableElements';
+import { getFirstFocusableElement, isFocusWithin } from '../../utils/getFocusableElements';
 import { getPositionOffset } from '../../utils/getPositionOffset';
 import { renderFromProp, RenderFromPropElement } from '../../utils/renderFromProp';
 import { Portal } from '../../components/Portal';
@@ -34,6 +34,7 @@ export interface PopoverProps
   extends Pick<PopoverContentInlineProps, 'alwaysRender' | 'centered' | 'children' | 'focusable' | 'height' | 'width'>,
     ThemeProps {
   className?: string;
+  closeDelay?: number;
   content: typeof PopoverContentInline | typeof Portal;
   contentProps?: Partial<
     Omit<
@@ -85,6 +86,7 @@ export function Popover({
   centered,
   children,
   className,
+  closeDelay = 500,
   content: PopoverContent,
   contentProps = {},
   focusable,
@@ -252,7 +254,7 @@ export function Popover({
           onOpen && onOpen();
         }
       } else {
-        focusable && returnFocus();
+        focusable && isFocusWithin(contentRef.current) && returnFocus();
         onClose && onClose();
       }
     }
@@ -264,7 +266,7 @@ export function Popover({
     <div
       aria-describedby={tooltip ? generatePopoverId() : undefined}
       className={cx(styles.popoverContainer, className)}
-      onMouseLeave={() => hoverable && closePopover(500)}
+      onMouseLeave={() => hoverable && closePopover(closeDelay)}
       ref={parentRef}
       style={style}
       {...props}

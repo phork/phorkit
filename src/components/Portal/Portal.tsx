@@ -75,7 +75,6 @@ export const Portal = React.forwardRef<HTMLDivElement, PortalProps>(
     focusable && typeof children === 'function' && (renderProps.focusRef = focusRef);
 
     const content = withChildrenProps ? renderFromProp(children, { position, offset, ...renderProps }) : children;
-
     return position && (visible || alwaysRender) && coords && container
       ? ReactDOM.createPortal(
           /* eslint-disable react/jsx-indent */

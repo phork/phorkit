@@ -32,6 +32,7 @@ import {
   IconCount,
   IconGroup,
   IconText,
+  InlinePopover,
   InlineTooltip,
   InteractiveList,
   Link,
@@ -130,7 +131,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
             </Typography>
           </Rhythm>
         </Paper>
-        <ColoredPaper inflexible colorId="P25" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
+        <ColoredPaper colorId="P25" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
           <Rhythm m={2}>
             <ButtonGroup align="right" spacing="cozy">
               <Button contrast weight="text" key="cancel">
@@ -213,6 +214,34 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
         7
       </Badge>
     </Toast>
+  </ThemeWrapper>
+</Playground>
+
+## Popover title
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <Rhythm m={6}>
+        <InlinePopover
+          hoverable
+          position="top-center"
+          toggler={<BlobbrIcon scale="xlarge" />}
+          offset={{ vertical: 10 }}
+          closeDelay={0}
+        >
+          <Card raised full>
+            <Rhythm px={3} py={1}>
+              <Paper bordered color="primary">
+                <Typography as="div" size="s" variants={['no-wrap']}>
+                  An example title
+                </Typography>
+              </Paper>
+            </Rhythm>
+          </Card>
+        </InlinePopover>
+      </Rhythm>
+    )}
   </ThemeWrapper>
 </Playground>
 
@@ -330,7 +359,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
           initialVisible
           permanent
           position="right-center"
-          toggler={<BlobbrIcon aria-label="Blobbr" size={40} />}
+          toggler={<BlobbrIcon size={40} />}
           triangleBorderColor={themes[themeId]['secondary-palette-border-color']}
           triangleColor={themes[themeId]['secondary-palette-background-color']}
           width={300}
