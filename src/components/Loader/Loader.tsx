@@ -31,6 +31,7 @@ export function Loader({
   size = 60,
   themeId: initThemeId,
   translations: customTranslations,
+  unthemed,
   ...props
 }: LoaderProps): React.ReactElement<LoaderProps, 'div'> | React.ReactPortal | null {
   const themeId = useThemeId(initThemeId);
@@ -43,7 +44,7 @@ export function Loader({
         styles.loader,
         contrast && styles['loader--contrast'],
         position && styles[`loader--${position}`],
-        themeId && styles[`loader--${themeId}`],
+        themeId && !unthemed && styles[`loader--${themeId}`],
         className,
       )}
       {...props}

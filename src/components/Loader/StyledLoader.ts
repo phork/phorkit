@@ -12,3 +12,7 @@ export const StyledLoader = styled(Loader, {
 `;
 
 StyledLoader.displayName = 'StyledLoader';
+
+StyledLoader.defaultProps = {
+  unthemed: true,
+};
