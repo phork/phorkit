@@ -31,6 +31,7 @@ export function TextTooltip({
   const textColor = themes[themeId][`${color}-palette-text-color` as keyof ThemeColors] as string;
   const backgroundColor = themes[themeId][`${color}-palette-background-color` as keyof ThemeColors] as string;
   const borderColor = themes[themeId][`${color}-palette-border-color` as keyof ThemeColors] as string;
+  const scrollbarColor = themes[themeId][`${color}-scrollbar-thumb-color` as keyof ThemeColors] as string;
 
   return (
     <Tooltip
@@ -73,6 +74,7 @@ export function TextTooltip({
                 bordered
                 textColor={textColor}
                 scrollable={scrollable}
+                scrollbarColor={scrollbarColor}
                 style={{ borderRadius: '2px', ...paperStyle }}
                 container="popover"
               >
