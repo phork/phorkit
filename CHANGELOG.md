@@ -1,5 +1,25 @@
 # Changelog
 
+# [3.0.0](https://github.com/phork/phorkit/compare/v2.0.2...v3.0.0) (2021-04-26)
+
+### ♻ Code Refactoring
+
+- improve tooltip focus and focus return ([a4345de](https://github.com/phork/phorkit/commit/a4345de))
+
+### ✨ Features
+
+- **major**: renamed button text to inline, new text button styles ([2056790](https://github.com/phork/phorkit/commit/2056790))
+- added new styled divider ([d58fb18](https://github.com/phork/phorkit/commit/d58fb18))
+- added new styled label ([d62b21b](https://github.com/phork/phorkit/commit/d62b21b))
+- updated button colors ([9553bed](https://github.com/phork/phorkit/commit/9553bed))
+
+### 🐛 Bug Fixes
+
+- correct order of rhythm rules ([880336a](https://github.com/phork/phorkit/commit/880336a))
+- force styled component colors to be defined ([14bd1d9](https://github.com/phork/phorkit/commit/14bd1d9))
+- remove theme from styled loader ([243d3bb](https://github.com/phork/phorkit/commit/243d3bb))
+- text tooltip styled paper scrollbar color ([57eb730](https://github.com/phork/phorkit/commit/57eb730))
+
 ## [2.0.2](https://github.com/phork/phorkit/compare/v2.0.1...v2.0.2) (2021-04-25)
 
 ### 🐛 Bug Fixes
