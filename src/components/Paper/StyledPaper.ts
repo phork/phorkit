@@ -2,10 +2,10 @@ import styled from '@emotion/styled';
 import { Paper, PaperProps } from './Paper';
 
 export interface StyledPaperProps extends Omit<PaperProps, 'color'> {
-  backgroundColor?: string;
-  borderColor?: string;
-  textColor?: string;
-  scrollbarColor?: string;
+  backgroundColor: string;
+  borderColor: string;
+  textColor: string;
+  scrollbarColor: string;
 }
 
 export const StyledPaper = styled(Paper, {

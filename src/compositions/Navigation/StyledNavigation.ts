@@ -2,18 +2,18 @@ import styled from '@emotion/styled';
 import { Navigation, NavigationProps } from './Navigation';
 
 export interface StyledNavigationProps extends NavigationProps {
-  focusedBorderColor?: string;
-  itemBackgroundColor?: string;
-  itemFocusedBackgroundColor?: string;
-  itemFocusedBorderColor?: string;
-  itemFocusedSelectedBackgroundColor?: string;
-  itemFocusedSelectedTextColor?: string;
-  itemFocusedTextColor?: string;
-  itemHoveredBorderColor?: string;
-  itemSelectedBackgroundColor?: string;
-  itemSelectedBorderColor?: string;
-  itemSelectedTextColor?: string;
-  itemTextColor?: string;
+  focusedBorderColor: string;
+  itemBackgroundColor: string;
+  itemFocusedBackgroundColor: string;
+  itemFocusedBorderColor: string;
+  itemFocusedSelectedBackgroundColor: string;
+  itemFocusedSelectedTextColor: string;
+  itemFocusedTextColor: string;
+  itemHoveredBorderColor: string;
+  itemSelectedBackgroundColor: string;
+  itemSelectedBorderColor: string;
+  itemSelectedTextColor: string;
+  itemTextColor: string;
 }
 
 export const StyledNavigation = styled(Navigation, {

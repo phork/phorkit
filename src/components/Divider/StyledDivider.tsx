@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Divider, DividerProps } from './Divider';
 
 export interface StyledDividerProps extends DividerProps {
-  dividerColor?: string;
+  dividerColor: string;
 }
 
 export const StyledDivider = styled(Divider, {

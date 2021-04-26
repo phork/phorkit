@@ -2,8 +2,8 @@ import React from 'react';
 import { Toast, ToastProps } from './Toast';
 
 export interface StyledToastProps extends Omit<ToastProps, 'level'> {
-  levelColor?: string;
-  levelInverseColor?: string;
+  levelColor: string;
+  levelInverseColor: string;
 }
 
 export const StyledToast = ({ levelColor, levelInverseColor, ...props }: StyledToastProps) => {
@@ -26,8 +26,8 @@ import styled from '@emotion/styled';
 import { Toast, ToastProps } from './Toast';
 
 export interface StyledToastProps extends Omit<ToastProps, 'level'> {
-  levelColor?: string;
-  levelInverseColor?: string;
+  levelColor: string;
+  levelInverseColor: string;
 }
 
 export const StyledToast = styled(Toast, {

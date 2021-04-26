@@ -2,8 +2,8 @@ import React from 'react';
 import { IconToast, IconToastProps } from './IconToast';
 
 export interface StyledIconToastProps extends Omit<IconToastProps, 'level'> {
-  levelColor?: string;
-  levelInverseColor?: string;
+  levelColor: string;
+  levelInverseColor: string;
 }
 
 export const StyledIconToast = ({ levelColor, levelInverseColor, ...props }: StyledIconToastProps) => {
@@ -26,8 +26,8 @@ import styled from '@emotion/styled';
 import { IconToast, IconToastProps } from './IconToast';
 
 export interface StyledIconToastProps extends IconToastProps {
-  levelColor?: string;
-  levelInverseColor?: string;
+  levelColor: string;
+  levelInverseColor: string;
 }
 
 export const StyledIconToast = styled(IconToast, {

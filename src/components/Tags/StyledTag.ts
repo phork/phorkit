@@ -2,9 +2,9 @@ import styled from '@emotion/styled';
 import { Tag, TagProps } from './Tag';
 
 export interface StyledTagProps extends TagProps {
-  backgroundColor?: string;
-  borderColor?: string;
-  textColor?: string;
+  backgroundColor: string;
+  borderColor: string;
+  textColor: string;
 }
 
 // @ts-ignore [TODO:ts] WTF

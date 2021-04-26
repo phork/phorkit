@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import { Badge, BadgeProps } from './Badge';
 
 export interface StyledBadgeProps extends BadgeProps {
-  backgroundColor?: string;
-  textColor?: string;
+  backgroundColor: string;
+  textColor: string;
 }
 
 export const StyledBadge = styled(Badge, {

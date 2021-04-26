@@ -29,10 +29,25 @@ const SwatchBlock = styled('div', {
   position: relative;
   width: ${props => `${props.width}${typeof props.width === 'number' ? 'px' : ''}`};
 
+  &:after {
+    background: transparent;
+    border-radius: inherit;
+    bottom: 1px;
+    content: '';
+    left: 1px;
+    opacity: 0.2;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    transition-color: background-color 100ms;
+  }
+
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 1px ${props => props.backgroundColor};
-    opacity: 0.4;
+
+    &:after {
+      background-color: #fff;
+    }
   }
 
   > svg {

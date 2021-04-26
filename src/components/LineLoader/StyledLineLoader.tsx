@@ -2,7 +2,7 @@ import React from 'react';
 import { LineLoader, LineLoaderProps } from './LineLoader';
 
 export interface StyledLineLoaderProps extends Omit<LineLoaderProps, 'color'> {
-  color?: string;
+  color: string;
 }
 
 export const StyledLineLoader = ({ color, ...props }: StyledLineLoaderProps) => {
@@ -24,7 +24,7 @@ import styled from '@emotion/styled';
 import { LineLoader, LineLoaderProps } from './LineLoader';
 
 export interface StyledLineLoaderProps extends Omit<LineLoaderProps, 'color'> {
-  color?: string;
+  color: string;
 }
 
 export const StyledLineLoader = styled(LineLoader, {

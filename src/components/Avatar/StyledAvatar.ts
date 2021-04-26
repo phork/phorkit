@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import { Avatar, AvatarProps } from './Avatar';
 
 export interface StyledAvatarProps extends AvatarProps {
-  backgroundColor?: string;
-  textColor?: string;
+  backgroundColor: string;
+  textColor: string;
 }
 
 export const StyledAvatar = styled(Avatar, {

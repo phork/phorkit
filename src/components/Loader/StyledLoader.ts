@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Loader, LoaderProps } from './Loader';
 
 export interface StyledLoaderProps extends Omit<LoaderProps, 'color'> {
-  color?: string;
+  color: string;
 }
 
 export const StyledLoader = styled(Loader, {

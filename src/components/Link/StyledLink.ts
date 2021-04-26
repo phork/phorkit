@@ -2,9 +2,9 @@ import styled from '@emotion/styled';
 import { Link, LinkProps } from './Link';
 
 export interface StyledLinkProps extends LinkProps {
-  activeColor?: string;
-  hoverColor?: string;
-  textColor?: string;
+  activeColor: string;
+  hoverColor: string;
+  textColor: string;
 }
 
 export const StyledLink = styled(Link, {
