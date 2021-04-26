@@ -35,34 +35,34 @@
 .label--primary {
   @mixin themed .label {
     --label-text-color: $theme-primary-palette-text-color;
-    --label-muted-text-color: $theme-primary-palette-quiet-color;
+    --label-muted-text-color: $theme-primary-palette-quieter-color;
   }
 }
 
 .label--contrast {
   @mixin themed .label {
     --label-text-color: $theme-contrast-palette-text-color;
-    --label-muted-text-color: $theme-contrast-palette-quiet-color;
+    --label-muted-text-color: $theme-contrast-palette-quieter-color;
   }
 }
 
 .label.is-danger {
   @mixin themed .label {
     --label-text-color: $theme-color-danger;
-    --label-muted-text-color: $theme-primary-palette-quiet-color;
+    --label-muted-text-color: $theme-primary-palette-quieter-color;
   }
 }
 
 .label.is-warning {
   @mixin themed .label {
     --label-text-color: $theme-color-warning;
-    --label-muted-text-color: $theme-primary-palette-quiet-color;
+    --label-muted-text-color: $theme-primary-palette-quieter-color;
   }
 }
 
 .label.is-success {
   @mixin themed .label {
     --label-text-color: $theme-color-success;
-    --label-muted-text-color: $theme-primary-palette-quiet-color;
+    --label-muted-text-color: $theme-primary-palette-quieter-color;
   }
 }

@@ -27,6 +27,7 @@ export function Label<T extends React.ElementType = 'div'>({
   muted,
   strength,
   themeId: initThemeId,
+  unthemed,
   validity,
   ...props
 }: LabelProps<T>): React.ReactElement {
@@ -40,8 +41,8 @@ export function Label<T extends React.ElementType = 'div'>({
     muted && styles['is-muted'],
     validity && styles[`is-${validity}`],
     strength && styles[`label--${strength}`],
-    themeId && styles[`label--${themeId}`],
-    color && styles[`label--${color}`],
+    themeId && !unthemed && styles[`label--${themeId}`],
+    color && !unthemed && styles[`label--${color}`],
     className,
   );
 

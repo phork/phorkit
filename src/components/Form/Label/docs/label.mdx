@@ -4,10 +4,10 @@ menu: Forms
 route: /components/Label
 ---
 
+import { Playground, Props } from 'docz';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { Playground, Props } from 'docz';
-import { Label } from '../index';
+import { Label, StyledLabel } from '../index';
 
 <PageTitle title="Label" src="components/Form/Label" />
 
@@ -105,6 +105,26 @@ import { Label } from '../index';
   </ThemeWrapper>
 </Playground>
 
+## Styled Label
+
+<Playground>
+  <StyledLabel strength="standard" textColor="#0060ce" mutedTextColor="#81BCFF">
+    Super awesome label
+  </StyledLabel>
+  <StyledLabel strength="standard" textColor="#0060ce" mutedTextColor="#81BCFF" muted>
+    Super awesome muted label
+  </StyledLabel>
+  <StyledLabel strength="standard" textColor="#0060ce" mutedTextColor="#81BCFF" disabled>
+    Super awesome disabled label
+  </StyledLabel>
+</Playground>
+
 ## \[props\]
 
+### Label
+
 <Props of={Label} />
+
+### StyledLabel
+
+<Props of={StyledLabel} />
