@@ -1,4 +1,4 @@
-@import "../../../styles/common/mixins/addScrollbar.css";
+@import '../../../styles/common/mixins/addScrollbar.css';
 
 .paper {
   background-color: var(--paper-background-color);
@@ -183,11 +183,11 @@
     --paper-scrollbar-thumb-color: $theme-contrast-scrollbar-thumb-color;
 
     &.paper--light {
-    border-color: $theme-color-accent-primary-D10;
-  }
+      border-color: $theme-color-accent-primary-D10;
+    }
 
-  &.paper--dark {
-    border-color: $theme-color-accent-primary-L10;
-  }
+    &.paper--dark {
+      border-color: $theme-color-accent-primary-L10;
+    }
   }
 }

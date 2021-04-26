@@ -4,14 +4,14 @@ menu: Navigation
 route: /compositions/Navigation
 ---
 
-import { PageTitle } from 'docs/helpers/PageTitle';
-import { StateWrapper } from 'docs/helpers/StateWrapper';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { Button } from 'components/Button';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Navigation, StyledNavigation } from '../index';
 
 <PageTitle title="Navigation" src="compositions/Navigation" />
@@ -449,34 +449,32 @@ _Note that the links will cause the page to reload so the state will appear unch
 ### Styled navigation
 
 <Playground>
-  <ThemeWrapper>
-    <StateWrapper initialState={'second'}>
-      {({ state: selectedId, setState: setSelectedId }) => (
-        <StyledNavigation
-          animated
-          selectedId={selectedId}
-          onSelect={(event, item) => setSelectedId(item.id)}
-          items={[
-            { id: 'first', label: ({ selected }) => `First${selected ? ' is selected' : ''}` },
-            { id: 'second', label: ({ selected }) => `Second${selected ? ' is selected' : ''}` },
-            { id: 'third', label: ({ selected }) => `Third${selected ? ' is selected' : ''}`, disabled: true },
-            { id: 'fourth', label: ({ selected }) => `Fourth${selected ? ' is selected' : ''}` },
-          ]}
-          focusedBorderColor="#393a61"
-          itemFocusedBackgroundColor="#393a61"
-          itemFocusedBorderColor="#393a61"
-          itemFocusedSelectedBackgroundColor="#393a61"
-          itemFocusedSelectedTextColor="#fff"
-          itemFocusedTextColor="#fff"
-          itemHoveredBorderColor="#393a61"
-          itemSelectedBackgroundColor="#393a61"
-          itemSelectedBorderColor="#393a61"
-          itemSelectedTextColor="#fff"
-          itemTextColor="#393a61"
-        />
-      )}
-    </StateWrapper>
-  </ThemeWrapper>
+  <StateWrapper initialState={'second'}>
+    {({ state: selectedId, setState: setSelectedId }) => (
+      <StyledNavigation
+        animated
+        selectedId={selectedId}
+        onSelect={(event, item) => setSelectedId(item.id)}
+        items={[
+          { id: 'first', label: ({ selected }) => `First${selected ? ' is selected' : ''}` },
+          { id: 'second', label: ({ selected }) => `Second${selected ? ' is selected' : ''}` },
+          { id: 'third', label: ({ selected }) => `Third${selected ? ' is selected' : ''}`, disabled: true },
+          { id: 'fourth', label: ({ selected }) => `Fourth${selected ? ' is selected' : ''}` },
+        ]}
+        focusedBorderColor="#f41150"
+        itemFocusedBackgroundColor="#f41150"
+        itemFocusedBorderColor="#f41150"
+        itemFocusedSelectedBackgroundColor="#F86F95"
+        itemFocusedSelectedTextColor="#fff"
+        itemFocusedTextColor="#fff"
+        itemHoveredBorderColor="#f41150"
+        itemSelectedBackgroundColor="#F86F95"
+        itemSelectedBorderColor="#f41150"
+        itemSelectedTextColor="#fff"
+        itemTextColor="#f41150"
+      />
+    )}
+  </StateWrapper>
 </Playground>
 
 ### Example with `react-router-dom`

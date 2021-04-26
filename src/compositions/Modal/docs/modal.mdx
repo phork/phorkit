@@ -66,6 +66,22 @@ import {
   </ThemeWrapper>
 </Playground>
 
+### Modal with header and bordered footer
+
+<Playground>
+  <ThemeWrapper>
+    <Modal id="demo-modal-header-footer" immediate>
+      <ModalHeader modalId="demo-modal-header-footer" title="Hello world" />
+      <ModalBody scrollable>This is a modal with a header and bordered footer.</ModalBody>
+      <ModalFooter bordered>
+        <Typography as="div" align="right" size="xs" variants={['italic']} volume="quiet">
+          To be continued ...
+        </Typography>
+      </ModalFooter>
+    </Modal>
+  </ThemeWrapper>
+</Playground>
+
 ### Modal with overflow, custom styles
 
 <Playground>
@@ -244,6 +260,7 @@ import {
                                                           weight="text"
                                                           color="primary"
                                                           onClick={() => clearModals()}
+                                                          tabIndex={2}
                                                         >
                                                           clear all modals
                                                         </Button>{' '}
