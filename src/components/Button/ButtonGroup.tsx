@@ -2,7 +2,7 @@ import { cx } from '@emotion/css';
 import React, { useCallback } from 'react';
 import { MergeElementProps, Orientation, ThemeProps } from '../../types';
 import { useThemeId } from '../../hooks/useThemeId';
-import { Button, ButtonProps, ButtonSize } from './Button';
+import { Button, ButtonColor, ButtonProps, ButtonSize, ButtonWeight } from './Button';
 import styles from './styles/ButtonGroup.module.css';
 
 export type ButtonGroupSpacing = 'joined' | 'cozy' | 'comfy';
@@ -22,8 +22,11 @@ export interface LocalButtonGroupProps extends Pick<ButtonProps, 'color' | 'full
   onClick: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, value: string) => void;
   orientation?: Orientation;
   overlap?: boolean;
+  selectedColor?: ButtonColor;
+  selectedWeight?: ButtonWeight;
   size?: ButtonSize;
   spacing?: ButtonGroupSpacing;
+  weight?: ButtonWeight;
 }
 
 export type ButtonGroupProps = MergeElementProps<'div', LocalButtonGroupProps>;
@@ -39,10 +42,13 @@ export function ButtonGroup({
   onClick,
   orientation,
   overlap,
+  selectedColor,
+  selectedWeight = 'filled',
   shape = 'pill',
   size = 'medium',
   spacing,
   themeId: initThemeId,
+  weight = 'outline',
   ...props
 }: ButtonGroupProps): React.ReactElement<ButtonGroupProps, 'div'> {
   const themeId = useThemeId(initThemeId);
@@ -99,11 +105,11 @@ export function ButtonGroup({
             renderLabel(id, label, selected) || (
               <Button
                 className={styles.buttonGroup__button}
-                color={color}
+                color={selected && selectedColor ? selectedColor : color}
                 contrast={contrast}
                 shape={shape}
                 themeId={themeId}
-                weight={!selected ? 'outline' : undefined}
+                weight={selected && selectedWeight ? selectedWeight : weight}
                 {...button}
                 key={id}
                 onClick={handleClick}

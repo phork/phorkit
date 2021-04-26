@@ -5,7 +5,7 @@ import { useThemeId } from '../../hooks/useThemeId';
 import styles from './styles/Button.module.css';
 
 export type ButtonAlignment = 'left' | 'right' | 'center';
-export type ButtonWeight = 'filled' | 'outline' | 'text';
+export type ButtonWeight = 'filled' | 'outline' | 'text' | 'inline';
 export type ButtonShape = 'pill' | 'brick';
 export type ButtonSize = 'small' | 'medium' | 'large' | 'relative';
 export type ButtonColor = SemanticColor | 'neutralAndPrimary' | 'black' | 'white';
@@ -82,9 +82,9 @@ function ButtonBase<T extends ButtonElementType = 'button'>(
         align && styles[`button--${align}`],
         color && !unthemed && styles[`button--${color}`],
         fullWidth && styles['button--fullWidth'],
-        (noHeight || weight === 'text') && styles['button--noHeight'],
-        (noPadding || weight === 'text') && styles['button--noPadding'],
-        shape && weight !== 'text' && styles[`button--${shape}`],
+        (noHeight || weight === 'inline') && styles['button--noHeight'],
+        (noPadding || weight === 'inline') && styles['button--noPadding'],
+        shape && weight !== 'inline' && styles[`button--${shape}`],
         size && styles[`button--${size}`],
         themeId && !unthemed && styles[`button--${themeId}`],
         weight && styles[`button--${weight}`],

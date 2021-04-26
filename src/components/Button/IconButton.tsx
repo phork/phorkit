@@ -27,12 +27,13 @@ function IconButtonBase<T extends IconButtonElementType = 'button'>(
 ): React.ReactElement {
   const classes = cx(styles['button--icon'], shape && styles[`button--${shapeMap[shape]}`], className);
   const content = renderFromPropWithFallback(children);
-  const weight = initWeight || (shape && 'filled') || (!shape && 'text');
+  const weight = initWeight || (shape && 'filled') || (!shape && 'inline');
 
   return (
     <Button<T>
       as={as}
       className={classes}
+      noPadding
       ref={forwardedRef}
       shape={shape ? shapeMap[shape] : undefined}
       weight={weight}

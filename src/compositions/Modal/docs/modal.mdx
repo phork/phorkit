@@ -257,7 +257,7 @@ import {
                                                       <p>
                                                         From here you can{' '}
                                                         <Button
-                                                          weight="text"
+                                                          weight="inline"
                                                           color="primary"
                                                           onClick={() => clearModals()}
                                                           tabIndex={2}
@@ -270,7 +270,7 @@ import {
                                                         <ButtonGroup align="left" orientation="vertical" spacing="cozy">
                                                           <Button
                                                             key="jump-large-modal"
-                                                            weight="text"
+                                                            weight="inline"
                                                             color="primary"
                                                             onClick={() => jumpModal('demo-large-modal')}
                                                           >
@@ -278,7 +278,7 @@ import {
                                                           </Button>
                                                           <Button
                                                             key="jump-medium-modal"
-                                                            weight="text"
+                                                            weight="inline"
                                                             color="primary"
                                                             onClick={() => jumpModal('demo-medium-modal')}
                                                           >
@@ -329,13 +329,13 @@ import {
                           <div>
                             This is a permanent modal that uses a render function to receive its parent's ID. It also
                             has a left-aligned header. Note that it does not have a close button. However you can still{' '}
-                            <Button weight="text" color="primary" onClick={() => clearModals()}>
+                            <Button weight="inline" color="primary" onClick={() => clearModals()}>
                               clear all modals
                             </Button>
                             .
                           </div>
                           <Rhythm my={3}>
-                            <Button weight="text" color="danger" onClick={() => popModal(true)}>
+                            <Button weight="inline" color="danger" onClick={() => popModal(true)}>
                               Forceably remove
                             </Button>
                           </Rhythm>

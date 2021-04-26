@@ -38,7 +38,7 @@ export function PaginationPage<T extends ButtonElementType = 'button'>({
       href={href}
       onClick={handleClick}
       themeId={themeId}
-      weight="text"
+      weight="inline"
       {...((props as unknown) as ButtonProps<T>)}
     >
       {page}

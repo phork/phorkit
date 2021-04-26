@@ -4,9 +4,6 @@ menu: Input
 route: /components/ButtonGroup
 ---
 
-import { PageTitle } from 'docs/helpers/PageTitle';
-import { StateWrapper } from 'docs/helpers/StateWrapper';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { TimesIcon } from 'icons/TimesIcon';
 import { MoonIcon } from 'icons/internal/MoonIcon';
@@ -14,6 +11,10 @@ import { SunIcon } from 'icons/internal/SunIcon';
 import { Flex } from 'components/Flex';
 import { IconText } from 'components/IconText';
 import { Rhythm } from 'components/Rhythm';
+import { Looper } from 'docs/helpers/Looper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Button, ButtonGroup, StyledButton } from '../index';
 
 <PageTitle title="ButtonGroup" src="components/Button" />
@@ -24,101 +25,39 @@ import { Button, ButtonGroup, StyledButton } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" justifyContent="space-between" wrap>
-      <StateWrapper initialState="first">
-        {({ state, setState }) => (
-          <Rhythm m={2}>
-            <ButtonGroup
-              spacing="joined"
-              overlap
-              color="primary"
-              onClick={(event, id) => setState(id)}
-              buttons={[
-                { id: 'first', label: 'First', selected: state === 'first' },
-                { id: 'second', label: 'Second', selected: state === 'second' },
-                { id: 'third', label: 'Third', selected: state === 'third' },
-                { id: 'fourth', label: 'Fourth', selected: state === 'fourth' },
-              ]}
-              size="small"
+    <Looper
+      list={['pill', 'brick']}
+      render={shape => (
+        <Rhythm my={2} key={`joinedButtonGroup-${shape}`}>
+          <Flex direction="row" justifyContent="space-between" wrap>
+            <Looper
+              list={['small', 'medium', 'large']}
+              render={size => (
+                <StateWrapper initialState="first">
+                  {({ state, setState }) => (
+                    <ButtonGroup
+                      buttons={[
+                        { id: 'first', label: 'First', selected: state === 'first' },
+                        { id: 'second', label: 'Second', selected: state === 'second' },
+                        { id: 'third', label: 'Third', selected: state === 'third' },
+                        { id: 'fourth', label: 'Fourth', selected: state === 'fourth' },
+                      ]}
+                      color="primary"
+                      key={`joinedButtonGroup-${shape}-${size}`}
+                      onClick={(event, id) => setState(id)}
+                      overlap
+                      shape={shape}
+                      size={size}
+                      spacing="joined"
+                    />
+                  )}
+                </StateWrapper>
+              )}
             />
-            <ButtonGroup
-              spacing="joined"
-              overlap
-              color="primary"
-              onClick={(event, id) => setState(id)}
-              buttons={[
-                { id: 'first', label: 'First', selected: state === 'first' },
-                { id: 'second', label: 'Second', selected: state === 'second' },
-                { id: 'third', label: 'Third', selected: state === 'third' },
-                { id: 'fourth', label: 'Fourth', selected: state === 'fourth' },
-              ]}
-              size="medium"
-            />
-            <ButtonGroup
-              spacing="joined"
-              overlap
-              color="primary"
-              onClick={(event, id) => setState(id)}
-              buttons={[
-                { id: 'first', label: 'First', selected: state === 'first' },
-                { id: 'second', label: 'Second', selected: state === 'second' },
-                { id: 'third', label: 'Third', selected: state === 'third' },
-                { id: 'fourth', label: 'Fourth', selected: state === 'fourth' },
-              ]}
-              size="large"
-            />
-          </Rhythm>
-        )}
-      </StateWrapper>
-      <StateWrapper initialState="first">
-        {({ state, setState }) => (
-          <Rhythm m={2}>
-            <ButtonGroup
-              shape="brick"
-              spacing="joined"
-              overlap
-              color="primary"
-              onClick={(event, id) => setState(id)}
-              buttons={[
-                { id: 'first', label: 'First', selected: state === 'first' },
-                { id: 'second', label: 'Second', selected: state === 'second' },
-                { id: 'third', label: 'Third', selected: state === 'third' },
-                { id: 'fourth', label: 'Fourth', selected: state === 'fourth' },
-              ]}
-              size="small"
-            />
-            <ButtonGroup
-              shape="brick"
-              spacing="joined"
-              overlap
-              color="primary"
-              onClick={(event, id) => setState(id)}
-              buttons={[
-                { id: 'first', label: 'First', selected: state === 'first' },
-                { id: 'second', label: 'Second', selected: state === 'second' },
-                { id: 'third', label: 'Third', selected: state === 'third' },
-                { id: 'fourth', label: 'Fourth', selected: state === 'fourth' },
-              ]}
-              size="medium"
-            />
-            <ButtonGroup
-              shape="brick"
-              spacing="joined"
-              overlap
-              color="primary"
-              onClick={(event, id) => setState(id)}
-              buttons={[
-                { id: 'first', label: 'First', selected: state === 'first' },
-                { id: 'second', label: 'Second', selected: state === 'second' },
-                { id: 'third', label: 'Third', selected: state === 'third' },
-                { id: 'fourth', label: 'Fourth', selected: state === 'fourth' },
-              ]}
-              size="large"
-            />
-          </Rhythm>
-        )}
-      </StateWrapper>
-    </Flex>
+          </Flex>
+        </Rhythm>
+      )}
+    />
   </ThemeWrapper>
 </Playground>
 
@@ -126,38 +65,41 @@ import { Button, ButtonGroup, StyledButton } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <StateWrapper initialState="second">
-      {({ state, setState }) => (
-        <ButtonGroup
-          spacing="cozy"
-          color="primary"
-          onClick={(event, id) => setState(id)}
-          buttons={[
-            { id: 'first', label: 'First', selected: state === 'first' },
-            { id: 'second', label: 'Second', selected: state === 'second' },
-            { id: 'third', label: 'Third', selected: state === 'third' },
-            { id: 'fourth', label: 'Fourth', selected: state === 'fourth' },
-          ]}
-        />
+    <Looper
+      list={['pill', 'brick']}
+      render={shape => (
+        <Rhythm my={2} key={`cozyButtonGroup-${shape}`}>
+          <Flex direction="row" justifyContent="space-between" wrap>
+            <Looper
+              list={['small', 'medium', 'large']}
+              render={size => (
+                <StateWrapper initialState="first">
+                  {({ state, setState }) => (
+                    <ButtonGroup
+                      buttons={[
+                        { id: 'first', label: 'First', selected: state === 'first' },
+                        { id: 'second', label: 'Second', selected: state === 'second' },
+                        { id: 'third', label: 'Third', selected: state === 'third' },
+                        { id: 'fourth', label: 'Fourth', selected: state === 'fourth' },
+                      ]}
+                      color="primary"
+                      key={`cozyButtonGroup-${shape}-${size}`}
+                      onClick={(event, id) => setState(id)}
+                      overlap
+                      spacing="cozy"
+                      selectedWeight="outline"
+                      shape={shape}
+                      size={size}
+                      weight="text"
+                    />
+                  )}
+                </StateWrapper>
+              )}
+            />
+          </Flex>
+        </Rhythm>
       )}
-    </StateWrapper>
-    <br />
-    <StateWrapper initialState="second">
-      {({ state, setState }) => (
-        <ButtonGroup
-          shape="brick"
-          spacing="cozy"
-          color="primary"
-          onClick={(event, id) => setState(id)}
-          buttons={[
-            { id: 'first', label: 'First', selected: state === 'first' },
-            { id: 'second', label: 'Second', selected: state === 'second' },
-            { id: 'third', label: 'Third', selected: state === 'third' },
-            { id: 'fourth', label: 'Fourth', selected: state === 'fourth' },
-          ]}
-        />
-      )}
-    </StateWrapper>
+    />
   </ThemeWrapper>
 </Playground>
 
@@ -165,35 +107,36 @@ import { Button, ButtonGroup, StyledButton } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <StateWrapper initialState="third">
-      {({ state, setState }) => (
-        <ButtonGroup
-          spacing="comfy"
-          color="primary"
-          onClick={(event, id) => setState(id)}
-          buttons={[
-            { id: 'first', label: 'First', weight: 'text', color: state === 'first' ? 'primary' : 'neutral' },
-            { id: 'second', label: 'Second', weight: 'text', color: state === 'second' ? 'primary' : 'neutral' },
-            { id: 'third', label: 'Third', weight: 'text', color: state === 'third' ? 'primary' : 'neutral' },
-            { id: 'fourth', label: 'Fourth', weight: 'text', color: state === 'fourth' ? 'primary' : 'neutral' },
-          ]}
+    <Rhythm my={2} key="comfyButtonGroup">
+      <Flex direction="row" justifyContent="space-between" wrap>
+        <Looper
+          list={['small', 'medium', 'large']}
+          render={size => (
+            <StateWrapper initialState="first">
+              {({ state, setState }) => (
+                <ButtonGroup
+                  buttons={[
+                    { id: 'first', label: 'First', selected: state === 'first' },
+                    { id: 'second', label: 'Second', selected: state === 'second' },
+                    { id: 'third', label: 'Third', selected: state === 'third' },
+                    { id: 'fourth', label: 'Fourth', selected: state === 'fourth' },
+                  ]}
+                  color="neutral"
+                  key={`comfyButtonGroup-${size}`}
+                  onClick={(event, id) => setState(id)}
+                  overlap
+                  selectedColor="primary"
+                  selectedWeight="inline"
+                  size={size}
+                  spacing="comfy"
+                  weight="inline"
+                />
+              )}
+            </StateWrapper>
+          )}
         />
-      )}
-    </StateWrapper>
-    <br />
-    <StateWrapper initialState="third">
-      {({ state, setState }) => (
-        <ButtonGroup
-          spacing="comfy"
-          color="primary"
-          onClick={(event, id) => setState(id)}
-          buttons={[
-            { id: 'first', label: 'First', weight: 'text', color: state === 'first' ? 'primary' : 'neutral' },
-            { id: 'second', label: 'Second', color: 'primary' },
-          ]}
-        />
-      )}
-    </StateWrapper>
+      </Flex>
+    </Rhythm>
   </ThemeWrapper>
 </Playground>
 
@@ -203,94 +146,83 @@ import { Button, ButtonGroup, StyledButton } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <StateWrapper initialState="second">
-      {({ state, setState }) => (
-        <ButtonGroup
-          orientation="vertical"
-          spacing="joined"
-          overlap
-          layout="vertical"
-          color="primary"
-          onClick={(event, id) => setState(id)}
-          buttons={[
-            { id: 'first', label: 'First', selected: state === 'first', align: 'left' },
-            { id: 'second', label: 'Second', selected: state === 'second', align: 'left' },
-            { id: 'third', label: 'Third', selected: state === 'third', align: 'left' },
-            { id: 'fourth', label: 'Fourth', selected: state === 'fourth', align: 'left' },
-          ]}
-          style={{ width: '200px' }}
-        />
-      )}
-    </StateWrapper>
-    <br />
-    <StateWrapper initialState="second">
-      {({ state, setState }) => (
-        <ButtonGroup
-          shape="brick"
-          orientation="vertical"
-          spacing="joined"
-          overlap
-          layout="vertical"
-          color="primary"
-          onClick={(event, id) => setState(id)}
-          buttons={[
-            { id: 'first', label: 'First', selected: state === 'first', align: 'right' },
-            { id: 'second', label: 'Second', selected: state === 'second', align: 'right' },
-            { id: 'third', label: 'Third', selected: state === 'third', align: 'right' },
-            { id: 'fourth', label: 'Fourth', selected: state === 'fourth', align: 'right' },
-          ]}
-          style={{ width: '200px' }}
-        />
-      )}
-    </StateWrapper>
-  </ThemeWrapper>
-</Playground>
-
-### Cozy groups
-
-<Playground>
-  <ThemeWrapper>
     <Flex direction="row" justifyContent="space-between" wrap>
-      <div style={{ width: '300px' }}>
-        <StateWrapper initialState="second">
-          {({ state, setState }) => (
-            <ButtonGroup
-              orientation="vertical"
-              spacing="cozy"
-              color="primary"
-              onClick={(event, id) => setState(id)}
-              buttons={[
-                { id: 'first', label: 'First', selected: state === 'first', align: 'left' },
-                { id: 'second', label: 'Second', selected: state === 'second', align: 'left' },
-                { id: 'third', label: 'Third', selected: state === 'third', align: 'left' },
-                { id: 'fourth', label: 'Fourth', selected: state === 'fourth', align: 'left' },
-              ]}
-              style={{ width: '200px' }}
-            />
-          )}
-        </StateWrapper>
-      </div>
-      <div style={{ width: '200px' }}>
-        <StateWrapper initialState="second">
-          {({ state, setState }) => (
-            <ButtonGroup
-              orientation="vertical"
-              spacing="cozy"
-              align="left"
-              color="primary"
-              onClick={(event, id) => setState(id)}
-              buttons={[
-                { id: 'first', label: 'First', selected: state === 'first', weight: 'text' },
-                { id: 'second', label: 'Second', selected: state === 'second', weight: 'text' },
-                { id: 'third', label: 'Third', selected: state === 'third', weight: 'text' },
-                { id: 'fourth', label: 'Fourth', selected: state === 'fourth', weight: 'text' },
-              ]}
-              style={{ width: '200px' }}
-            />
-          )}
-        </StateWrapper>
-      </div>
+      <StateWrapper initialState="second">
+        {({ state, setState }) => (
+          <ButtonGroup
+            shape="brick"
+            orientation="vertical"
+            spacing="joined"
+            overlap
+            layout="vertical"
+            color="primary"
+            onClick={(event, id) => setState(id)}
+            buttons={[
+              { id: 'first', label: 'First', selected: state === 'first', align: 'left' },
+              { id: 'second', label: 'Second', selected: state === 'second', align: 'left' },
+              { id: 'third', label: 'Third', selected: state === 'third', align: 'left' },
+              { id: 'fourth', label: 'Fourth', selected: state === 'fourth', align: 'left' },
+            ]}
+            style={{ width: '200px' }}
+          />
+        )}
+      </StateWrapper>
+      <StateWrapper initialState="second">
+        {({ state, setState }) => (
+          <ButtonGroup
+            orientation="vertical"
+            spacing="joined"
+            overlap
+            layout="vertical"
+            color="primary"
+            onClick={(event, id) => setState(id)}
+            buttons={[
+              { id: 'first', label: 'First', selected: state === 'first', align: 'center' },
+              { id: 'second', label: 'Second', selected: state === 'second', align: 'center' },
+              { id: 'third', label: 'Third', selected: state === 'third', align: 'center' },
+              { id: 'fourth', label: 'Fourth', selected: state === 'fourth', align: 'center' },
+            ]}
+            style={{ width: '200px' }}
+          />
+        )}
+      </StateWrapper>
+      <StateWrapper initialState="second">
+        {({ state, setState }) => (
+          <ButtonGroup
+            orientation="vertical"
+            spacing="cozy"
+            color="primary"
+            onClick={(event, id) => setState(id)}
+            buttons={[
+              { id: 'first', label: 'First', selected: state === 'first', align: 'left' },
+              { id: 'second', label: 'Second', selected: state === 'second', align: 'left' },
+              { id: 'third', label: 'Third', selected: state === 'third', align: 'left' },
+              { id: 'fourth', label: 'Fourth', selected: state === 'fourth', align: 'left' },
+            ]}
+            style={{ width: '200px' }}
+          />
+        )}
+      </StateWrapper>
+      <StateWrapper initialState="second">
+        {({ state, setState }) => (
+          <ButtonGroup
+            orientation="vertical"
+            spacing="cozy"
+            align="left"
+            color="primary"
+            onClick={(event, id) => setState(id)}
+            buttons={[
+              { id: 'first', label: 'First', selected: state === 'first', weight: 'text' },
+              { id: 'second', label: 'Second', selected: state === 'second', weight: 'text' },
+              { id: 'third', label: 'Third', selected: state === 'third', weight: 'text' },
+              { id: 'fourth', label: 'Fourth', selected: state === 'fourth', weight: 'text' },
+            ]}
+            style={{ width: '200px' }}
+          />
+        )}
+      </StateWrapper>
     </Flex>
+
   </ThemeWrapper>
 </Playground>
 
@@ -324,94 +256,113 @@ import { Button, ButtonGroup, StyledButton } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" alignItems="center" justifyContent="space-between" style={{ maxWidth: 330 }}>
-      <StateWrapper initialState="first">
-        {({ state, setState }) => (
-          <ButtonGroup
-            spacing="joined"
-            size="small"
-            overlap
-            color="primary"
-            onClick={(event, id) => setState(id)}
-            buttons={[
-              {
-                id: 'first',
-                label: (
-                  <Rhythm mx={3} ml={4} my={2}>
-                    <TimesIcon scale="xsmall" />
-                  </Rhythm>
-                ),
-                selected: state === 'first',
-                noPadding: true,
-              },
-              {
-                id: 'second',
-                label: (
-                  <Rhythm mx={3} my={2}>
-                    <TimesIcon scale="xsmall" />
-                  </Rhythm>
-                ),
-                selected: state === 'second',
-                noPadding: true,
-              },
-              {
-                id: 'third',
-                label: (
-                  <Rhythm mx={3} my={2}>
-                    <TimesIcon scale="xsmall" />
-                  </Rhythm>
-                ),
-                selected: state === 'third',
-                noPadding: true,
-              },
-              {
-                id: 'fourth',
-                label: (
-                  <Rhythm mx={3} mr={4} my={2}>
-                    <TimesIcon scale="xsmall" />
-                  </Rhythm>
-                ),
-                selected: state === 'fourth',
-                noPadding: true,
-              },
-            ]}
-          />
+    <Flex direction="row" alignItems="center" justifyContent="space-between" style={{ maxWidth: 400 }} wrap>
+      <Looper
+        list={['horizontal', 'vertical']}
+        render={orientation => (
+          <React.Fragment>
+            <StateWrapper initialState="first">
+              {({ state, setState }) => (
+                <ButtonGroup
+                  color="primary"
+                  onClick={(event, id) => setState(id)}
+                  orientation={orientation}
+                  overlap
+                  size="small"
+                  spacing="joined"
+                  buttons={[
+                    {
+                      id: 'first',
+                      label: (
+                        <Rhythm
+                          mx={3}
+                          ml={orientation === 'horizontal' ? 4 : 3}
+                          my={2}
+                          mt={orientation === 'vertical' ? 3 : 2}
+                        >
+                          <TimesIcon scale="xsmall" />
+                        </Rhythm>
+                      ),
+                      selected: state === 'first',
+                      noPadding: true,
+                    },
+                    {
+                      id: 'second',
+                      label: (
+                        <Rhythm mx={3} my={2}>
+                          <TimesIcon scale="xsmall" />
+                        </Rhythm>
+                      ),
+                      selected: state === 'second',
+                      noPadding: true,
+                    },
+                    {
+                      id: 'third',
+                      label: (
+                        <Rhythm mx={3} my={2}>
+                          <TimesIcon scale="xsmall" />
+                        </Rhythm>
+                      ),
+                      selected: state === 'third',
+                      noPadding: true,
+                    },
+                    {
+                      id: 'fourth',
+                      label: (
+                        <Rhythm
+                          mx={3}
+                          mr={orientation === 'horizontal' ? 4 : 3}
+                          my={2}
+                          mb={orientation === 'vertical' ? 3 : 2}
+                        >
+                          <TimesIcon scale="xsmall" />
+                        </Rhythm>
+                      ),
+                      selected: state === 'fourth',
+                      noPadding: true,
+                    },
+                  ]}
+                />
+              )}
+            </StateWrapper>
+            <StateWrapper initialState="first">
+              {({ state, setState }) => (
+                <ButtonGroup
+                  color="neutral"
+                  onClick={(event, id) => setState(id)}
+                  orientation={orientation}
+                  overlap
+                  shape="brick"
+                  size="small"
+                  spacing="joined"
+                  buttons={[
+                    {
+                      id: 'first',
+                      label: (
+                        <Rhythm mx={2} my={2}>
+                          <SunIcon size={14} />
+                        </Rhythm>
+                      ),
+                      selected: state === 'first',
+                      noPadding: true,
+                    },
+                    {
+                      id: 'last',
+                      label: (
+                        <Rhythm mx={2} my={2}>
+                          <MoonIcon size={14} />
+                        </Rhythm>
+                      ),
+                      selected: state === 'last',
+                      noPadding: true,
+                    },
+                  ]}
+                />
+              )}
+            </StateWrapper>
+          </React.Fragment>
         )}
-      </StateWrapper>
-      <StateWrapper initialState="first">
-        {({ state, setState }) => (
-          <ButtonGroup
-            spacing="joined"
-            overlap
-            color="neutral"
-            shape="brick"
-            size="small"
-            onClick={(event, id) => setState(id)}
-            buttons={[
-              {
-                id: 'first',
-                label: (
-                  <Rhythm mx={2} my={2}>
-                    <SunIcon size={14} />
-                  </Rhythm>
-                ),
-                selected: state === 'first',
-                noPadding: true,
-              },
-              {
-                id: 'last',
-                label: (
-                  <Rhythm mx={2} my={2}>
-                    <MoonIcon size={14} />
-                  </Rhythm>
-                ),
-                selected: state === 'last',
-                noPadding: true,
-              },
-            ]}
-          />
-        )}
-      </StateWrapper>
+      />
     </Flex>
   </ThemeWrapper>
 </Playground>
@@ -471,14 +422,41 @@ _Note that the links will cause the page to reload so the state will appear unch
     <StateWrapper initialState="third">
       {({ state, setState }) => (
         <ButtonGroup spacing="joined" overlap onClick={(event, id) => setState(id)}>
-          <Button key="first" weight="pill" color="primary" weight="filled">
+          <Button
+            key="first"
+            shape="pill"
+            color={state === 'first' ? 'primary' : 'neutral'}
+            weight={state === 'first' ? 'filled' : 'outline'}
+            data-value="first"
+          >
             First
           </Button>
-          <Button key="second" weight="pill" color="primary" weight="filled">
+          <Button
+            key="second"
+            shape="pill"
+            color={state === 'second' ? 'primary' : 'neutral'}
+            weight={state === 'second' ? 'filled' : 'outline'}
+            data-value="second"
+          >
             Second
           </Button>
-          <Button key="third" weight="pill" color="primary" weight="filled">
+          <Button
+            key="third"
+            shape="pill"
+            color={state === 'third' ? 'primary' : 'neutral'}
+            weight={state === 'third' ? 'filled' : 'outline'}
+            data-value="third"
+          >
             Third
+          </Button>
+          <Button
+            key="fourth"
+            shape="pill"
+            color={state === 'fourth' ? 'primary' : 'neutral'}
+            weight={state === 'fourth' ? 'filled' : 'outline'}
+            data-value="fourth"
+          >
+            Fourth
           </Button>
         </ButtonGroup>
       )}

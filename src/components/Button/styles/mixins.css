@@ -109,6 +109,66 @@
 }
 
 @define-mixin createTextButton {
+  color: var(--button-primary-color);
+  position: relative;
+
+  &:not(:disabled):not(.is-disabled) {
+    &:after {
+      border-radius: inherit;
+      bottom: 0;
+      box-shadow: 0 0 0 0 transparent;
+      content: '';
+      left: 0;
+      opacity: 0.3;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: box-shadow 100ms ease;
+    }
+
+    &:before {
+      background-color: var(--button-primary-color);
+      border-radius: inherit;
+      bottom: 0;
+      content: '';
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: opacity 100ms ease;
+    }
+
+    &:focus,
+    &.is-focused {
+      &:after {
+        box-shadow: 0 0 0 3px var(--button-primary-color);
+
+        &:before {
+          opacity: 0.1;
+        }
+      }
+    }
+
+    &:hover,
+    &.is-hovered {
+      color: var(--button-hover-primary-color);
+
+      &:before {
+        opacity: 0.1;
+      }
+    }
+
+    &:active,
+    &.is-active {
+      &:before {
+        opacity: 0.1;
+      }
+    }
+  }
+}
+
+@define-mixin createInlineButton {
   border-radius: 0;
   color: var(--button-primary-color);
   margin: 0;

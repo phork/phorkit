@@ -32,30 +32,13 @@ import { ColoredIconButton, IconButton } from '../index';
                 <Rhythm m={2}>
                   <IconButton
                     color={color}
-                    loader={<SpinnerIcon scale="medium" />}
+                    loader={<SpinnerIcon size={20} />}
                     loading={loading}
-                    onClick={() => console.log('medium')}
+                    onClick={() => console.log('round')}
+                    shape="round"
                     weight="text"
                   >
-                    <BlobbrIcon scale="medium" />
-                  </IconButton>
-                  <IconButton
-                    color={color}
-                    loader={<SpinnerIcon scale="large" />}
-                    loading={loading}
-                    onClick={() => console.log('large')}
-                    weight="text"
-                  >
-                    <BlobbrIcon scale="large" />
-                  </IconButton>
-                  <IconButton
-                    color={color}
-                    loader={<SpinnerIcon scale="xlarge" />}
-                    loading={loading}
-                    onClick={() => console.log('xlarge')}
-                    weight="text"
-                  >
-                    <BlobbrIcon scale="xlarge" />
+                    <BlobbrIcon size={20} />
                   </IconButton>
                   <IconButton
                     color={color}
@@ -95,6 +78,15 @@ import { ColoredIconButton, IconButton } from '../index';
                   >
                     <BlobbrIcon scale="medium" />
                   </IconButton>
+                  <IconButton
+                    color={color}
+                    loader={<SpinnerIcon scale="xlarge" />}
+                    loading={loading}
+                    onClick={() => console.log('xlarge')}
+                    weight="inline"
+                  >
+                    <BlobbrIcon scale="xlarge" />
+                  </IconButton>
                 </Rhythm>
               </Flex>
             )}
@@ -119,30 +111,13 @@ import { ColoredIconButton, IconButton } from '../index';
             <Rhythm m={2}>
               <IconButton
                 contrast
-                loader={<SpinnerIcon scale="medium" />}
+                loader={<SpinnerIcon size={20} />}
                 loading={loading}
-                onClick={() => console.log('medium')}
+                onClick={() => console.log('round')}
+                shape="round"
                 weight="text"
               >
-                <BlobbrIcon scale="medium" />
-              </IconButton>
-              <IconButton
-                contrast
-                loader={<SpinnerIcon scale="large" />}
-                loading={loading}
-                onClick={() => console.log('large')}
-                weight="text"
-              >
-                <BlobbrIcon scale="large" />
-              </IconButton>
-              <IconButton
-                contrast
-                loader={<SpinnerIcon scale="xlarge" />}
-                loading={loading}
-                onClick={() => console.log('xlarge')}
-                weight="text"
-              >
-                <BlobbrIcon scale="xlarge" />
+                <BlobbrIcon size={20} />
               </IconButton>
               <IconButton
                 contrast
@@ -182,6 +157,15 @@ import { ColoredIconButton, IconButton } from '../index';
               >
                 <BlobbrIcon scale="medium" />
               </IconButton>
+              <IconButton
+                contrast
+                loader={<SpinnerIcon scale="xlarge" />}
+                loading={loading}
+                onClick={() => console.log('xlarge')}
+                weight="inline"
+              >
+                <BlobbrIcon scale="xlarge" />
+              </IconButton>
             </Rhythm>
           </Flex>
         )}
@@ -208,30 +192,13 @@ import { ColoredIconButton, IconButton } from '../index';
                     <Rhythm m={2}>
                       <ColoredIconButton
                         colorId={id}
-                        loader={<SpinnerIcon scale="medium" />}
+                        loader={<SpinnerIcon size={20} />}
                         loading={loading}
-                        onClick={() => console.log('medium')}
+                        onClick={() => console.log('round')}
+                        shape="round"
                         weight="text"
                       >
-                        <BlobbrIcon scale="medium" />
-                      </ColoredIconButton>
-                      <ColoredIconButton
-                        colorId={id}
-                        loader={<SpinnerIcon scale="large" />}
-                        loading={loading}
-                        onClick={() => console.log('large')}
-                        weight="text"
-                      >
-                        <BlobbrIcon scale="large" />
-                      </ColoredIconButton>
-                      <ColoredIconButton
-                        colorId={id}
-                        loader={<SpinnerIcon scale="xlarge" />}
-                        loading={loading}
-                        onClick={() => console.log('xlarge')}
-                        weight="text"
-                      >
-                        <BlobbrIcon scale="xlarge" />
+                        <BlobbrIcon size={20} />
                       </ColoredIconButton>
                       <ColoredIconButton
                         colorId={id}
@@ -271,6 +238,15 @@ import { ColoredIconButton, IconButton } from '../index';
                       >
                         <BlobbrIcon scale="medium" />
                       </ColoredIconButton>
+                      <ColoredIconButton
+                        colorId={id}
+                        loader={<SpinnerIcon scale="xlarge" />}
+                        loading={loading}
+                        onClick={() => console.log('xlarge')}
+                        weight="inline"
+                      >
+                        <BlobbrIcon scale="xlarge" />
+                      </ColoredIconButton>
                     </Rhythm>
                   </Flex>
                 )}
@@ -291,8 +267,8 @@ _Note that the links will cause the page to reload so the state will appear unch
   <ThemeWrapper>
     <Flex direction="row" alignItems="center">
       <Rhythm m={2}>
-        <IconButton href="#linked" onClick={() => console.log('default')} color="primary">
-          <BlobbrIcon scale="xlarge" />
+        <IconButton href="#linked" onClick={() => console.log('round')} shape="round" color="primary" weight="text">
+          <BlobbrIcon size={20} />
         </IconButton>
         <IconButton href="#linked" onClick={() => console.log('round')} shape="round" color="primary">
           <BlobbrIcon scale="medium" />
@@ -310,6 +286,9 @@ _Note that the links will cause the page to reload so the state will appear unch
           loader={<SpinnerIcon scale="medium" />}
         >
           <BlobbrIcon scale="medium" />
+        </IconButton>
+        <IconButton href="#linked" onClick={() => console.log('default')} color="primary">
+          <BlobbrIcon scale="xlarge" />
         </IconButton>
       </Rhythm>
     </Flex>

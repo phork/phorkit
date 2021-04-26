@@ -50,9 +50,9 @@ button.button {
   position: relative;
   text-align: center;
   text-decoration: none;
-  transition-property: background-color, border-color, color; /* [1] */
+  transition-property: background-color, border-color, color, opacity; /* [1] */
   transition-timing-function: ease;
-  transition-duration: 200ms;
+  transition-duration: 100ms;
 
   &:focus {
     outline: none;
@@ -183,6 +183,10 @@ button.button {
   @mixin createTextButton;
 }
 
+.button--inline {
+  @mixin createInlineButton;
+}
+
 /* Icon buttons */
 
 .button--icon {
@@ -198,7 +202,7 @@ button.button {
 
 .button--iconText,
 .button--iconTextReverse {
-  &.button--text {
+  &.button--inline {
     padding-bottom: 0.2em;
   }
 
@@ -232,7 +236,7 @@ button.button {
  */
 .button--icon svg,
 .button--iconText .button__icon svg,
-.button--iconTextReverse .button__icon svg  {
+.button--iconTextReverse .button__icon svg {
   float: left; /* [1] */
 }
 
