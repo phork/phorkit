@@ -108,7 +108,17 @@
   }
 }
 
+/**
+ * 1. Put a border on the filled button so it can
+ *    share all size and padding with the outline
+ *    button.
+ *
+ * 2. Set the hover background to overflow the
+ *    transparent border so that the button looks
+ *    like it's the same size as the others.
+ */
 @define-mixin createTextButton {
+  border: 1px solid transparent; /* [1] */
   color: var(--button-primary-color);
   position: relative;
 
@@ -129,13 +139,13 @@
     &:before {
       background-color: var(--button-primary-color);
       border-radius: inherit;
-      bottom: 0;
+      bottom: -1px; /* [2] */
       content: '';
-      left: 0;
+      left: -1px; /* [2] */
       opacity: 0;
       position: absolute;
-      right: 0;
-      top: 0;
+      right: -1px; /* [2] */
+      top: -1px; /* [2] */
       transition: opacity 100ms ease;
     }
 
