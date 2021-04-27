@@ -17,8 +17,6 @@ export type MultiColorSliderProps = MergeProps<
   Omit<
     StyledSliderProps,
     | 'handleBackgroundColor'
-    | 'hoverHandleBorderColor'
-    | 'hoverHandleBoxShadow'
     | 'tickBackgroundColor'
     | 'tickElement'
     | 'tickProps'
@@ -68,8 +66,6 @@ export function MultiColorSlider({
     <StyledSlider
       className={variant === 'divider' && !accessible ? styles['slider--noHandle'] : undefined}
       handleBackgroundColor={activeColor}
-      hoverHandleBorderColor={activeColor}
-      hoverHandleBoxShadow={activeColor}
       max={colors.length}
       min={0}
       onChange={handleChange}

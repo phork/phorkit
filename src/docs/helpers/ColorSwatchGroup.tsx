@@ -114,7 +114,7 @@ export function ColorSwatchGroup({
           title="Copied to clipboard"
           icon={ClipboardIcon}
           levelColor={color}
-          levelInverseColor={contrast}
+          levelInverseColor={contrast || 'currentColor'}
           variant="colored"
         >
           <div>
