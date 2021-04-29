@@ -2,7 +2,7 @@
   display: flex;
   flex: none;
 
-  &:not(.buttonGroup--vertical) {
+  &.buttonGroup--horizontal {
     align-items: center;
     flex-direction: row;
   }
@@ -13,7 +13,7 @@
 }
 
 .buttonGroup--left {
-  &:not(.buttonGroup--vertical) {
+  &.buttonGroup--horizontal {
     justify-content: flex-start;
   }
 
@@ -23,7 +23,7 @@
 }
 
 .buttonGroup--right {
-  &:not(.buttonGroup--vertical) {
+  &.buttonGroup--horizontal {
     justify-content: flex-end;
   }
 
@@ -38,7 +38,7 @@
 }
 
 .buttonGroup--cozy {
-  &:not(.buttonGroup--vertical) {
+  &.buttonGroup--horizontal {
     margin-left: -6px;
     margin-right: -6px;
 
@@ -60,7 +60,7 @@
 }
 
 .buttonGroup--comfy {
-  &:not(.buttonGroup--vertical) {
+  &.buttonGroup--horizontal {
     margin-left: -12px;
     margin-right: -12px;
 
@@ -73,7 +73,7 @@
   &.buttonGroup--vertical {
     margin-bottom: -12px;
     margin-top: -12px;
-    
+
     .buttonGroup__button {
       margin-bottom: 12px;
       margin-top: 12px;
@@ -81,11 +81,16 @@
   }
 }
 
+/**
+ * 1. Remove the double border on outline buttons.
+ */
+.buttonGroup--divided,
 .buttonGroup--joined {
-  &:not(.buttonGroup--vertical) {
+  &.buttonGroup--horizontal {
     .buttonGroup__button:not(:first-child) {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
+      margin-left: -1px; /* [1] */
     }
 
     .buttonGroup__button:not(:last-child) {
@@ -98,6 +103,7 @@
     .buttonGroup__button:not(:first-child) {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
+      margin-top: -1px; /* [1] */
     }
 
     .buttonGroup__button:not(:last-child) {
@@ -107,20 +113,38 @@
   }
 }
 
-/**
- * 1. Remove the double border on outline buttons.
- */
-.buttonGroup--joined.buttonGroup--overlap {
-  &:not(.buttonGroup--vertical) {
+.buttonGroup--divided {
+  &.buttonGroup--horizontal {
     .buttonGroup__button:not(:first-child) {
-      margin-left: -1px; /* [1] */
+      &:before {
+        background-color: var(--button-group-divider-background-color, #fff);
+        bottom: -1px;
+        content: '';
+        left: -1px;
+        position: absolute;
+        top: -1px;
+        width: 1px;
+        z-index: 1;
+      }
     }
   }
 
   &.buttonGroup--vertical {
     .buttonGroup__button:not(:first-child) {
-      margin-top: -1px; /* [1] */
+      &:before {
+        background-color: var(--button-group-divider-background-color, #fff);
+        content: '';
+        height: 1px;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: -1px;
+      }
     }
+  }
+
+  @mixin themed .buttonGroup {
+    --button-group-divider-background-color: $theme-contrast-palette-quietest-color;
   }
 }
 

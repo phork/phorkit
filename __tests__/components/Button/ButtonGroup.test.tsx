@@ -15,7 +15,6 @@ describe('<ButtonGroup />', () => {
         ]}
         color="primary"
         onClick={() => {}}
-        overlap
         spacing="joined"
       />,
     );
@@ -38,7 +37,6 @@ describe('<ButtonGroup />', () => {
         ]}
         color="primary"
         onClick={onClick}
-        overlap
         spacing="joined"
       />,
     );

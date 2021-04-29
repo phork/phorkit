@@ -5,7 +5,7 @@ import { useThemeId } from '../../hooks/useThemeId';
 import { Button, ButtonColor, ButtonProps, ButtonSize, ButtonWeight } from './Button';
 import styles from './styles/ButtonGroup.module.css';
 
-export type ButtonGroupSpacing = 'joined' | 'cozy' | 'comfy';
+export type ButtonGroupSpacing = 'divided' | 'joined' | 'cozy' | 'comfy';
 
 export type ButtonGroupItem = {
   id: string;
@@ -21,7 +21,6 @@ export interface LocalButtonGroupProps extends Pick<ButtonProps, 'color' | 'full
   className?: string;
   onClick: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, value: string) => void;
   orientation?: Orientation;
-  overlap?: boolean;
   selectedColor?: ButtonColor;
   selectedWeight?: ButtonWeight;
   size?: ButtonSize;
@@ -40,8 +39,7 @@ export function ButtonGroup({
   contrast,
   fullWidth,
   onClick,
-  orientation,
-  overlap,
+  orientation = 'horizontal',
   selectedColor,
   selectedWeight = 'filled',
   shape = 'pill',
@@ -70,7 +68,8 @@ export function ButtonGroup({
       return React.cloneElement(label(selected), {
         key: id,
         className: styles.buttonGroup__button,
-        onClick: event => onClick(event, id),
+        onClick: handleClick,
+        'data-value': id,
       });
     }
     return undefined;
@@ -81,6 +80,7 @@ export function ButtonGroup({
       ? children.map(child =>
           React.cloneElement(child, {
             className: styles.buttonGroup__button,
+            onClick: handleClick,
           }),
         )
       : undefined;
@@ -91,10 +91,10 @@ export function ButtonGroup({
       className={cx(
         styles.buttonGroup,
         align && styles[`buttonGroup--${align}`],
+        fullWidth && styles['buttonGroup--fullWidth'],
         orientation && styles[`buttonGroup--${orientation}`],
         spacing && styles[`buttonGroup--${spacing}`],
-        overlap && styles['buttonGroup--overlap'],
-        fullWidth && styles['buttonGroup--fullWidth'],
+        themeId && styles[`buttonGroup--${themeId}`],
         className,
       )}
       {...props}
