@@ -24,7 +24,9 @@ export type FormboxVariant = 'underline' | 'filled' | 'outline' | 'minimal';
 export type FormboxIconPosition = 'before' | 'after';
 
 export interface LocalFormboxProps<I extends FormboxInputElementType> extends ThemeProps {
+  /** alwaysTriggerFocus means the a focus transfer within the formbox will trigger the blur event */
   alwaysTriggerBlur?: boolean;
+  /** alwaysTriggerFocus means the a focus transfer within the formbox will trigger the focus event */
   alwaysTriggerFocus?: boolean;
   autoFocus?: boolean;
   className?: string;

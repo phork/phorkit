@@ -170,6 +170,7 @@ export function Dropdown({
 
   useEffect((): (() => void) => () => handleFilter.cancel(), [handleFilter]);
 
+  // when the dropdown visibility changes ...
   useEffect(() => {
     if (isDropdownVisible !== previous.current.isDropdownVisible) {
       if (isDropdownVisible) {
@@ -182,6 +183,7 @@ export function Dropdown({
     previous.current.isDropdownVisible = !!isDropdownVisible;
   }, [isDropdownVisible, onFilter, onOpen, onClose]);
 
+  // when the options change ...
   useEffect(() => {
     if (options !== previous.current.options) {
       handleShowDropdown();
@@ -189,6 +191,7 @@ export function Dropdown({
     previous.current.options = options;
   }, [handleShowDropdown, options]);
 
+  // when the selected item changes ...
   useEffect(() => {
     if (
       state.selected !== previous.current.selected &&
@@ -199,6 +202,7 @@ export function Dropdown({
     previous.current.selected = state.selected;
   }, [state.selected, onSelect]);
 
+  // when the cleared counter changes ...
   useEffect(() => {
     if (
       state.cleared !== previous.current.cleared &&
@@ -209,6 +213,7 @@ export function Dropdown({
     previous.current.cleared = state.cleared;
   }, [state.cleared, onClear]);
 
+  // when the search or filter input changes ...
   useEffect(() => {
     if (state.input !== previous.current.input && Object.prototype.hasOwnProperty.call(previous.current, 'input')) {
       if (state.input) {
@@ -354,7 +359,8 @@ export function Dropdown({
         iconAfter={(state.busy && state.listVisible && SpinnerIcon) || iconAfter}
         iconBefore={iconBefore}
         id={state.id}
-        key={initialSelected && initialSelected.id} // used to force update on selected
+        // the key is used to force an update on select
+        key={initialSelected && initialSelected.id}
         label={label}
         onBlur={handleInputBlur}
         onChange={handleInputChange}
@@ -368,7 +374,7 @@ export function Dropdown({
         readOnlyValue={readOnlyValue || selectedView}
         role={onFilter ? undefined : 'button'}
         silentReadOnly
-        /* don't allow this to be tabbed to if input is read only and focus is already in the component */
+        // don't allow this to be tabbed to if input is read only and focus is already in the component
         tabIndex={isFocused && !onFilter ? -1 : 0}
         themeId={themeId}
         transitional={transitional}
