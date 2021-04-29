@@ -11,6 +11,7 @@ export type TagSize = 'small' | 'medium' | 'large';
 export interface LocalTagProps extends ThemeProps {
   actionable?: boolean;
   className?: string;
+  flush?: boolean;
   label: React.ReactNode;
   shape?: TagShape;
   size?: TagSize;
@@ -24,6 +25,7 @@ export function TagBase<T extends TagElementType = 'div'>(
     as,
     className,
     contrast,
+    flush,
     label,
     shape = 'pill',
     size = 'small',
@@ -46,6 +48,7 @@ export function TagBase<T extends TagElementType = 'div'>(
         shape && styles[`tag--${shape}`],
         size && styles[`tag--${size}`],
         actionable && styles['tag--actionable'],
+        flush && styles['tag--flush'],
         themeId && !unthemed && styles[`tag--${themeId}`],
         className,
       ),

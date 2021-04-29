@@ -4,17 +4,19 @@ menu: Display
 route: /components/Tag
 ---
 
-import { ColorLooper } from 'docs/helpers/ColorLooper';
-import { Looper } from 'docs/helpers/Looper';
-import { PageTitle } from 'docs/helpers/PageTitle';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { TimesIcon } from 'icons/TimesIcon';
 import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { Avatar } from 'components/Avatar';
 import { IconButton } from 'components/Button';
 import { Flex } from 'components/Flex';
 import { IconText } from 'components/IconText';
 import { Rhythm } from 'components/Rhythm';
+import { Typography } from 'components/Typography';
+import { ColorLooper } from 'docs/helpers/ColorLooper';
+import { Looper } from 'docs/helpers/Looper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { ColoredTag, StyledTag, Tag, TagGroup } from '../index';
 
 <PageTitle title="Tag" src="components/Tags" />
@@ -163,6 +165,37 @@ _Note that the links will cause the page to reload so the state will appear unch
           actionable
         />
       </TagGroup>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+### Chip Tag
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <Tag
+        size="medium"
+        flush
+        label={
+          <Flex direction="row" alignItems="center" justifyContent="space-between">
+            <Rhythm m={1} mr={2}>
+              <Avatar color="primary" size="xsmall" initials="EC" />
+            </Rhythm>
+            <Typography variants={['line-height-smash']}>Hello world</Typography>
+            <Rhythm mr={3} ml={4}>
+              <IconButton
+                aria-label="Remove tag"
+                themeId={themeId}
+                color="neutral"
+                onClick={e => console.log('remove tag')}
+              >
+                <TimesIcon scale="xsmall" />
+              </IconButton>
+            </Rhythm>
+          </Flex>
+        }
+      />
     )}
   </ThemeWrapper>
 </Playground>

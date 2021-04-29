@@ -32,23 +32,32 @@ button.tag {
 
 .tag--small {
   font-size: $font-size-s;
+  height: $element-height-small;
   line-height: 1.3em;
-  min-height: $element-height-small;
   padding: 0.5em 1.4em;
 }
 
 .tag--medium {
   font-size: $font-size-m;
+  height: $element-height-medium;
   line-height: 1.3em;
-  min-height: $element-height-medium;
   padding: 0.4em 2em;
 }
 
 .tag--large {
   font-size: $font-size-l;
+  height: $element-height-large;
   line-height: 1.3em;
-  min-height: $element-height-large;
   padding: 0.4em 2.2em;
+}
+
+.tag--flush {
+  &.tag--small,
+  &.tag--medium,
+  &.tag--large {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .tag--pill {
@@ -66,9 +75,9 @@ button.tag {
   &:before {
     border-radius: inherit;
     box-shadow: 0 0 0 0 transparent;
-    content: "";
+    content: '';
     height: 100%;
-    opacity: .3;
+    opacity: 0.3;
     position: absolute;
     top: 0;
     left: 0;
