@@ -55,11 +55,14 @@ import { radioGroup, logValue } from './helpers/utils';
 ## Disabled radio button
 
 <Playground>
-  <FormComponentDemo property="checked" initialValue={false}>
-    <Radio disabled name="disabled-radio" id="demo-disabled-radio" value="disabled" onChange={logValue}>
-      Super fantastic label
-    </Radio>
-  </FormComponentDemo>
+  <Radio checked disabled name="disabled-radio" id="demo-disabled-checked-radio" value="disabled">
+    Super fantastic label
+  </Radio>
+  <br />
+  <br />
+  <Radio disabled name="disabled-radio" id="demo-disabled-unchecked-radio" value="disabled">
+    Super fantastic label
+  </Radio>
 </Playground>
 
 ## Contrast radio button
