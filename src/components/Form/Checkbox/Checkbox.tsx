@@ -1,6 +1,7 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useRef, useState } from 'react';
 import { MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
+import { useAccessibility } from '../../../context/Accessibility/useAccessibility';
 import { useComponentId } from '../../../hooks/useComponentId';
 import { useThemeId } from '../../../hooks/useThemeId';
 import { makeCombineRefs } from '../../../utils/combineRefs';
@@ -12,12 +13,14 @@ export interface LocalCheckboxProps extends ThemeProps {
   children: React.ReactNode;
   className?: string;
   disabled?: boolean;
+  full?: boolean;
   grouped?: 'stacked' | 'inline';
   id?: string;
   indeterminate?: boolean;
   name?: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>, checked: boolean, value: string | number) => void;
   persistEvents?: boolean;
+  reverse?: boolean;
   unthemed?: boolean;
   validity?: 'danger';
   value?: string | number;
@@ -32,12 +35,14 @@ export function CheckboxBase(
     className,
     contrast,
     disabled,
+    full,
     grouped,
     id,
     indeterminate,
     name,
     onChange,
     persistEvents,
+    reverse,
     themeId: initThemeId,
     unthemed,
     validity,
@@ -46,6 +51,7 @@ export function CheckboxBase(
   }: CheckboxProps,
   forwardedRef: React.ForwardedRef<HTMLInputElement>,
 ): React.ReactElement<CheckboxProps, 'label'> {
+  const accessible = useAccessibility();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const themeId = useThemeId(initThemeId);
   const [focused, setFocused] = useState<boolean>(false);
@@ -77,30 +83,41 @@ export function CheckboxBase(
       className={cx(
         styles.checkbox,
         validity && styles[`is-${validity}`],
+        reverse && styles['checkbox--reverse'],
         themeId && !unthemed && styles[`checkbox--${themeId}`],
         color && styles[`checkbox--${color}`],
+        full && styles['checkbox--full'],
         grouped && styles[`checkbox--grouped--${grouped}`],
+        checked && styles['is-checked'],
+        indeterminate && styles['is-indeterminate'],
+        !checked && !indeterminate && styles['is-unchecked'],
+        accessible && styles['is-accessible'],
+        disabled && styles['is-disabled'],
+        focused && styles['is-focused'],
         className,
       )}
       onFocus={forwardFocus}
-      tabIndex={focused ? -1 : 0}
+      tabIndex={focused || disabled ? -1 : 0}
       {...props}
     >
-      <input
-        checked={checked}
-        className={styles.checkboxInput}
-        disabled={disabled}
-        id={generateComponentId()}
-        name={name}
-        onBlur={handleBlur}
-        onChange={handleChange}
-        onFocus={handleFocus}
-        ref={combineRefs}
-        tabIndex={-1}
-        type="checkbox"
-        value={value}
-        data-type={typeof value}
-      />
+      <div className={styles.checkboxInputContainer}>
+        <div className={styles.checkboxInputContainerFocusRing} />
+        <input
+          checked={checked}
+          className={styles.checkboxInput}
+          disabled={disabled}
+          id={generateComponentId()}
+          name={name}
+          onBlur={handleBlur}
+          onChange={handleChange}
+          onFocus={handleFocus}
+          ref={combineRefs}
+          tabIndex={-1}
+          type="checkbox"
+          value={value}
+          data-type={typeof value}
+        />
+      </div>
       <Label
         className={styles.checkboxLabel}
         contrast={contrast}

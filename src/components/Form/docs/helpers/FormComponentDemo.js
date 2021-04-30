@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 
-export function FormComponentDemo({ contrast, children, initialValue, property, variant }) {
+export function FormComponentDemo({ contrast, children, initialValue, property, variant, ...props }) {
   const [value, setValue] = useState(initialValue);
 
   return (
-    <ThemeWrapper contrast={contrast} variant={variant}>
+    <ThemeWrapper contrast={contrast} variant={variant} {...props}>
       <div style={{ maxWidth: 400 }}>
         {React.cloneElement(children, {
           [property]: value,

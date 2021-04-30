@@ -1,6 +1,7 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
+import { useAccessibility } from '../../../context/Accessibility/useAccessibility';
 import { useComponentId } from '../../../hooks/useComponentId';
 import { useDimensions } from '../../../hooks/useDimensions';
 import { useThemeId } from '../../../hooks/useThemeId';
@@ -83,6 +84,7 @@ function SliderBase(
   }: SliderProps,
   forwardedRef: React.ForwardedRef<HTMLInputElement>,
 ) {
+  const accessible = useAccessibility();
   const themeId = useThemeId(initThemeId);
   const [focused, setFocused] = useState<boolean>(false);
   const [dragging, setDragging] = useState<boolean>(false);
@@ -211,6 +213,7 @@ function SliderBase(
       htmlFor={generateComponentId()}
       className={cx(
         styles.slider,
+        accessible && styles['is-accessible'],
         disabled && styles['is-disabled'],
         dragging && styles['is-dragging'],
         focused && styles['is-focused'],

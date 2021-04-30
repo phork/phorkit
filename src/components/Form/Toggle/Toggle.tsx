@@ -13,6 +13,7 @@ export interface LocalToggleProps extends ThemeProps {
   children: React.ReactNode;
   className?: string;
   disabled?: boolean;
+  full?: boolean;
   id?: string;
   name?: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => void;
@@ -35,6 +36,7 @@ export function ToggleBase(
     className,
     contrast,
     disabled,
+    full,
     id,
     name,
     onChange,
@@ -50,8 +52,8 @@ export function ToggleBase(
   }: ToggleProps,
   forwardedRef: React.ForwardedRef<HTMLInputElement>,
 ): React.ReactElement<ToggleProps, 'label'> {
-  const inputRef = useRef<HTMLInputElement>(null!);
   const accessible = useAccessibility();
+  const inputRef = useRef<HTMLInputElement>(null!);
   const themeId = useThemeId(initThemeId);
   const [focused, setFocused] = useState(false);
   const color = contrast ? 'contrast' : 'primary';
@@ -76,36 +78,38 @@ export function ToggleBase(
       htmlFor={generateComponentId(id)}
       className={cx(
         styles.toggle,
-        checked && styles['is-checked'],
-        disabled && styles['is-disabled'],
-        focused && styles['is-focused'],
+        full && styles['toggle--full'],
         reverse && styles['toggle--reverse'],
         standalone && styles['toggle--standalone'],
         size && styles[`toggle--${size}`],
         themeId && styles[`toggle--${themeId}`],
         color && styles[`toggle--${color}`],
+        accessible && styles['is-accessible'],
+        checked && styles['is-checked'],
+        disabled && styles['is-disabled'],
+        focused && styles['is-focused'],
         className,
       )}
       onFocus={forwardFocus}
-      tabIndex={focused ? -1 : 0}
+      tabIndex={focused || disabled ? -1 : 0}
       {...props}
     >
-      <input
-        checked={checked}
-        className={styles.toggleInput}
-        disabled={disabled}
-        id={generateComponentId(id)}
-        name={name}
-        onBlur={handleBlur}
-        onChange={handleChange}
-        onFocus={handleFocus}
-        ref={combineRefs}
-        tabIndex={-1}
-        type="checkbox"
-        value={value}
-      />
-      <div className={styles.toggleButton}>
-        {accessible && focused && <div className={styles.toggleButtonFocusRing} />}
+      <div className={styles.toggleInputContainer}>
+        <div className={styles.toggleInputContainerFocusRing} />
+        <input
+          checked={checked}
+          className={styles.toggleInput}
+          disabled={disabled}
+          id={generateComponentId(id)}
+          name={name}
+          onBlur={handleBlur}
+          onChange={handleChange}
+          onFocus={handleFocus}
+          ref={combineRefs}
+          tabIndex={-1}
+          type="checkbox"
+          value={value}
+        />
       </div>
       <Label
         className={styles.toggleLabel}

@@ -1,6 +1,7 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useRef, useState } from 'react';
 import { MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
+import { useAccessibility } from '../../../context/Accessibility/useAccessibility';
 import { useComponentId } from '../../../hooks/useComponentId';
 import { useThemeId } from '../../../hooks/useThemeId';
 import { makeCombineRefs } from '../../../utils';
@@ -12,12 +13,14 @@ export interface LocalRadioProps extends ThemeProps {
   children: React.ReactNode;
   className?: string;
   disabled?: boolean;
+  full?: boolean;
   grouped?: 'stacked' | 'inline';
   id?: string;
   indeterminate?: boolean;
   name?: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>, checked: boolean, value: string | number) => void;
   persistEvents?: boolean;
+  reverse?: boolean;
   unthemed?: boolean;
   validity?: 'danger';
   value?: string | number;
@@ -32,11 +35,13 @@ export function RadioBase(
     className,
     contrast,
     disabled,
+    full,
     grouped,
     id,
     name,
     onChange,
     persistEvents,
+    reverse,
     themeId: initThemeId,
     unthemed,
     value,
@@ -44,6 +49,7 @@ export function RadioBase(
   }: RadioProps,
   forwardedRef: React.ForwardedRef<HTMLInputElement>,
 ): React.ReactElement<RadioProps, 'label'> {
+  const accessible = useAccessibility();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const themeId = useThemeId(initThemeId);
   const [focused, setFocused] = useState(false);
@@ -69,29 +75,39 @@ export function RadioBase(
       htmlFor={generateComponentId()}
       className={cx(
         styles.radio,
+        full && styles['radio--full'],
+        reverse && styles['radio--reverse'],
         themeId && !unthemed && styles[`radio--${themeId}`],
         color && styles[`radio--${color}`],
         grouped && styles[`radio--grouped--${grouped}`],
+        checked && styles['is-checked'],
+        !checked && styles['is-unchecked'],
+        accessible && styles['is-accessible'],
+        disabled && styles['is-disabled'],
+        focused && styles['is-focused'],
         className,
       )}
       onFocus={forwardFocus}
-      tabIndex={focused ? -1 : 0}
+      tabIndex={focused || disabled ? -1 : 0}
       {...props}
     >
-      <input
-        checked={checked}
-        className={styles.radioInput}
-        disabled={disabled}
-        id={generateComponentId()}
-        name={name}
-        onBlur={handleBlur}
-        onChange={handleChange}
-        onFocus={handleFocus}
-        ref={combineRefs}
-        tabIndex={-1}
-        type="radio"
-        value={value}
-      />
+      <div className={styles.radioInputContainer}>
+        <div className={styles.radioInputContainerFocusRing} />
+        <input
+          checked={checked}
+          className={styles.radioInput}
+          disabled={disabled}
+          id={generateComponentId()}
+          name={name}
+          onBlur={handleBlur}
+          onChange={handleChange}
+          onFocus={handleFocus}
+          ref={combineRefs}
+          tabIndex={-1}
+          type="radio"
+          value={value}
+        />
+      </div>
       <Label
         className={styles.radioLabel}
         contrast={contrast}

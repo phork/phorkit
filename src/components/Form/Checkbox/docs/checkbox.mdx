@@ -4,11 +4,11 @@ menu: Forms
 route: /components/FormCheckbox
 ---
 
-import { Looper } from 'docs/helpers/Looper';
-import { PageTitle } from 'docs/helpers/PageTitle';
 import { Playground, Props } from 'docz';
 import { Typography } from 'components/Typography';
 import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
+import { Looper } from 'docs/helpers/Looper';
+import { PageTitle } from 'docs/helpers/PageTitle';
 import { Checkbox, CheckboxGroup, NotifiedCheckboxGroup } from '../index';
 import { checkboxGroup, logChecked, logValues } from './helpers/utils';
 
@@ -38,6 +38,26 @@ import { checkboxGroup, logChecked, logValues } from './helpers/utils';
       Super fantastic label
     </Checkbox>
   </FormComponentDemo>
+  <FormComponentDemo property="checked" initialValue={true}>
+    <Checkbox id="demo-labeled-reverse-checkbox" onChange={logChecked} reverse>
+      Super fantastic label
+    </Checkbox>
+  </FormComponentDemo>
+</Playground>
+
+## Full width labeled checkbox
+
+<Playground>
+  <FormComponentDemo property="checked" initialValue={true} style={{ width: 240 }}>
+    <Checkbox id="demo-labeled-reverse-full-checkbox" onChange={logChecked} full>
+      Super fantastic label
+    </Checkbox>
+  </FormComponentDemo>
+  <FormComponentDemo property="checked" initialValue={true} style={{ width: 240 }}>
+    <Checkbox id="demo-labeled-reverse-full-checkbox" onChange={logChecked} full reverse>
+      Super fantastic label
+    </Checkbox>
+  </FormComponentDemo>
 </Playground>
 
 ## Wrapped labeled checkbox
@@ -56,11 +76,14 @@ import { checkboxGroup, logChecked, logValues } from './helpers/utils';
 ## Disabled checkbox
 
 <Playground>
-  <FormComponentDemo property="checked" initialValue={false}>
-    <Checkbox disabled id="demo-disabled-checkbox" onChange={logChecked}>
-      Super fantastic label
-    </Checkbox>
-  </FormComponentDemo>
+  <Checkbox checked disabled id="demo-disabled-checked-checkbox">
+    Super fantastic label
+  </Checkbox>
+  <br />
+  <br />
+  <Checkbox disabled id="demo-disabled-unchecked-checkbox">
+    Super fantastic label
+  </Checkbox>
 </Playground>
 
 ## Danger checkbox
