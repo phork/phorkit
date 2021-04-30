@@ -77,6 +77,9 @@ export function CheckboxBase(
       className={cx(
         styles.checkbox,
         validity && styles[`is-${validity}`],
+        checked && styles['checkbox--checked'],
+        indeterminate && styles['checkbox--indeterminate'],
+        focused && styles['checkbox--focused'],
         themeId && !unthemed && styles[`checkbox--${themeId}`],
         color && styles[`checkbox--${color}`],
         grouped && styles[`checkbox--grouped--${grouped}`],

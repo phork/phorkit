@@ -31,8 +31,8 @@ input.checkboxInput {
 
   &:before {
     background-color: var(--checkbox-unchecked-background-color);
-    border-radius: .2em;
-    content: "";
+    border-radius: 0.2em;
+    content: '';
     height: 1.4em;
     left: 0;
     pointer-events: none;
@@ -45,63 +45,51 @@ input.checkboxInput {
   &:after {
     border: solid transparent;
     border-color: var(--checkbox-checked-icon-color);
-    border-width: 0 .18em .18em 0;
-    content: "";
+    border-width: 0 0.18em 0.18em 0;
+    content: '';
     height: 1em;
-    left: .45em;
-    margin-top: .1em;
+    left: 0.45em;
+    margin-top: 0.1em;
     position: absolute;
     top: 0;
     transform: rotate(45deg) scale(0);
     transition: transform 300ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
-    width: .5em;
+    width: 0.5em;
   }
 }
 
-.checkboxInput:checked + .checkboxLabel {
-  &:before {
-    background-color: var(--checkbox-checked-background-color);
-  }
-
-  &:after {
-    transform: rotate(45deg) scale(.8);
-  }
-}
-
-.checkboxInput:indeterminate + .checkboxLabel {
-  &:before {
-    background-color: var(--checkbox-checked-background-color);
-  }
-
-  &:after {
-    background-color: var(--checkbox-checked-icon-color);
-    border: none;
-    height: .11em;
-    left: .43em;
-    top: .57em;
-    transform: none;
-    width: .6em;
+.checkbox--checked,
+.checkbox--indeterminate {
+  .checkboxLabel {
+    &:before {
+      background-color: var(--checkbox-checked-background-color);
+    }
   }
 }
 
-/**
- * 1. Use the box shadow to add an outline to the
- *    checkbox.
- */
-.checkboxInput:checked + .checkboxLabel:hover,
-.checkboxInput:indeterminate + .checkboxLabel:hover {
-  &:before {
-    box-shadow: var(--checkbox-checked-hover-box-shadow); /* [1] */
+.checkbox--checked {
+  .checkboxLabel {
+    &:after {
+      transform: rotate(45deg) scale(0.8);
+    }
   }
 }
 
-/**
- * 1. Use the box shadow to add an outline to the
- *    checkbox.
- */
-.checkboxInput:not(:checked):not(:indeterminate):not(:focus) + .checkboxLabel:hover {
-  &:before {
-    box-shadow: var(--checkbox-unchecked-hover-box-shadow); /* [1] */
+.checkbox--indeterminate {
+  .checkboxLabel {
+    &:before {
+      background-color: var(--checkbox-checked-background-color);
+    }
+
+    &:after {
+      background-color: var(--checkbox-checked-icon-color);
+      border: none;
+      height: 0.11em;
+      left: 0.43em;
+      top: 0.57em;
+      transform: none;
+      width: 0.6em;
+    }
   }
 }
 
@@ -109,16 +97,45 @@ input.checkboxInput {
  * 1. Use the box shadow to add an outline to the
  *    checkbox.
  */
-.checkboxInput:checked:focus + .checkboxLabel,
-.checkboxInput:not(:checked):focus + .checkboxLabel {
-  &:before {
-    box-shadow: var(--checkbox-focused-box-shadow); /* [1] */
+.checkbox--checked:hover,
+.checkbox--indeterminate:hover {
+  .checkboxLabel {
+    &:before {
+      box-shadow: var(--checkbox-checked-hover-box-shadow); /* [1] */
+    }
   }
 }
 
-.checkboxInput:disabled + .checkboxLabel {
-  opacity: .6;
-  pointer-events: none;
+/**
+ * 1. Use the box shadow to add an outline to the
+ *    checkbox.
+ */
+.checkbox:not(.checkbox--checked):not(.checkbox--indeterminate):not(.checkbox--focused):hover {
+  .checkboxLabel {
+    &:before {
+      box-shadow: var(--checkbox-unchecked-hover-box-shadow); /* [1] */
+    }
+  }
+}
+
+/**
+ * 1. Use the box shadow to add an outline to the
+ *    checkbox.
+ */
+.checkbox--checked:focus,
+.checkbox:not(.checkbox--checked):focus {
+  .checkboxLabel {
+    &:before {
+      box-shadow: var(--checkbox-focused-box-shadow); /* [1] */
+    }
+  }
+}
+
+.checkbox--disabled {
+  .checkboxLabel {
+    opacity: 0.6;
+    pointer-events: none;
+  }
 }
 
 .checkbox--primary {
