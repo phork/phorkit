@@ -75,13 +75,13 @@ export function RadioBase(
         styles.radio,
         checked && styles['radio--checked'],
         !checked && styles['radio--unchecked'],
-        disabled && styles['radio--disabled'],
-        focused && styles['radio--focused'],
         reverse && styles['radio--reverse'],
         themeId && !unthemed && styles[`radio--${themeId}`],
         color && styles[`radio--${color}`],
         grouped && styles[`radio--grouped--${grouped}`],
         accessible && styles['is-accessible'],
+        disabled && styles['is-disabled'],
+        focused && styles['is-focused'],
         className,
       )}
       onFocus={forwardFocus}

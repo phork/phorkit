@@ -6,11 +6,11 @@
   &:focus {
     outline: none;
   }
-}
 
-.checkbox--disabled {
-  opacity: 0.6;
-  pointer-events: none;
+  &.is-disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
 }
 
 .checkbox--reverse {
@@ -133,7 +133,7 @@ input.checkboxInput {
   }
 }
 
-.checkbox--focused.is-accessible {
+.checkbox.is-focused.is-accessible {
   .checkboxInputContainerFocusRing {
     &:after {
       box-shadow: var(--checkbox-unchecked-focused-box-shadow);

@@ -6,11 +6,11 @@
   &:focus {
     outline: none;
   }
-}
 
-.radio--disabled {
-  opacity: 0.6;
-  pointer-events: none;
+  &.is-disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
 }
 
 .radio--reverse {
@@ -127,7 +127,7 @@ input.radioInput {
   }
 }
 
-.radio--focused.is-accessible {
+.radio.is-focused.is-accessible {
   .radioInputContainerFocusRing {
     &:after {
       box-shadow: var(--radio-unchecked-focused-box-shadow);

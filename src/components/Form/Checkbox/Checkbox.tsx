@@ -84,13 +84,13 @@ export function CheckboxBase(
         checked && styles['checkbox--checked'],
         indeterminate && styles['checkbox--indeterminate'],
         !checked && !indeterminate && styles['checkbox--unchecked'],
-        disabled && styles['checkbox--disabled'],
-        focused && styles['checkbox--focused'],
         reverse && styles['checkbox--reverse'],
         themeId && !unthemed && styles[`checkbox--${themeId}`],
         color && styles[`checkbox--${color}`],
         grouped && styles[`checkbox--grouped--${grouped}`],
         accessible && styles['is-accessible'],
+        disabled && styles['is-disabled'],
+        focused && styles['is-focused'],
         className,
       )}
       onFocus={forwardFocus}
