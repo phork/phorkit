@@ -1,6 +1,7 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useRef, useState } from 'react';
 import { MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
+import { useAccessibility } from '../../../context/Accessibility/useAccessibility';
 import { useComponentId } from '../../../hooks/useComponentId';
 import { useThemeId } from '../../../hooks/useThemeId';
 import { makeCombineRefs } from '../../../utils/combineRefs';
@@ -48,6 +49,7 @@ export function CheckboxBase(
   }: CheckboxProps,
   forwardedRef: React.ForwardedRef<HTMLInputElement>,
 ): React.ReactElement<CheckboxProps, 'label'> {
+  const accessible = useAccessibility();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const themeId = useThemeId(initThemeId);
   const [focused, setFocused] = useState<boolean>(false);
@@ -81,18 +83,22 @@ export function CheckboxBase(
         validity && styles[`is-${validity}`],
         checked && styles['checkbox--checked'],
         indeterminate && styles['checkbox--indeterminate'],
+        !checked && !indeterminate && styles['checkbox--unchecked'],
+        disabled && styles['checkbox--disabled'],
         focused && styles['checkbox--focused'],
         reverse && styles['checkbox--reverse'],
         themeId && !unthemed && styles[`checkbox--${themeId}`],
         color && styles[`checkbox--${color}`],
         grouped && styles[`checkbox--grouped--${grouped}`],
+        accessible && styles['is-accessible'],
         className,
       )}
       onFocus={forwardFocus}
-      tabIndex={focused ? -1 : 0}
+      tabIndex={focused || disabled ? -1 : 0}
       {...props}
     >
       <div className={styles.checkboxInputContainer}>
+        <div className={styles.checkboxInputContainerFocusRing} />
         <input
           checked={checked}
           className={styles.checkboxInput}

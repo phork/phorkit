@@ -2,26 +2,19 @@
   display: inline-flex;
   flex-direction: row;
   position: relative;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.checkbox--disabled {
+  opacity: .6;
+  pointer-events: none;
 }
 
 .checkbox--reverse {
   flex-direction: row-reverse;
-}
-
-/**
- * 1. This should be the inverse of the margin
- *    applied to .checkboxGroup--inline
- */
-.checkbox--grouped--inline {
-  margin: 4px 12px; /* [1] */
-}
-
-/**
- * 1. This should be the inverse of the margin
- *    applied to .checkboxGroup--stacked
- */
-.checkbox--grouped--stacked {
-  margin: 4px 0; /* [1] */
 }
 
 input.checkboxInput {
@@ -35,14 +28,13 @@ input.checkboxInput {
 }
 
 /**
- * The font size determines the size of the checkbox.
+ * 1. The font size determines the size of the checkbox.
  */
 .checkboxInputContainer {
+  border-radius: 0.2em;
   flex: none;
   font-size: 13px; /* [1] */
   height: 1.4em; /* [1] */
-  max-height: 1.4em;
-  max-width: 1.4em;
   position: relative;
   width: 1.4em; /* [1] */
 
@@ -54,17 +46,33 @@ input.checkboxInput {
     margin-right: 12px;
   }
 
-  &:before {
-    background-color: var(--checkbox-unchecked-background-color);
-    border-radius: 0.2em;
-    content: '';
-    height: 100%;
-    left: 0;
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    transition: box-shadow 200ms ease;
-    width: 100%;
+  .checkbox--checked &,
+  .checkbox--indeterminate & {
+    &:before {
+      background-color: var(--checkbox-checked-background-color);
+      border-radius: inherit;
+      content: '';
+      height: 100%;
+      left: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+
+  .checkbox--unchecked & {
+    &:before {
+      border-radius: inherit;
+      border: 1px solid var(--checkbox-unchecked-border-color);
+      bottom: 0;
+      content: '';
+      left: 0;
+      pointer-events: none;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
   }
 
   &:after {
@@ -83,19 +91,68 @@ input.checkboxInput {
   }
 }
 
-.checkbox--checked,
-.checkbox--indeterminate {
-  .checkboxInputContainer {
-    &:before {
-      background-color: var(--checkbox-checked-background-color);
-    }
-  }
+.checkboxInputContainerFocusRing {
+  border-radius: inherit;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .checkbox--checked {
   .checkboxInputContainer {
     &:after {
       transform: rotate(45deg) scale(0.8);
+    }
+  }
+}
+
+.checkbox--focused.is-accessible {
+  .checkboxInputContainerFocusRing {
+    &:after {
+      border-radius: 0.25em;
+      bottom: -2px;
+      box-shadow: var(--checkbox-unchecked-focused-box-shadow);
+      content: '';
+      left: -2px;
+      position: absolute;
+      right: -2px;
+      top: -2px;
+    }
+  }
+
+  &.checkbox--checked,
+  &.checkbox--indeterminate {
+    .checkboxInputContainerFocusRing {
+      &:after {
+        box-shadow: var(--checkbox-checked-focused-box-shadow);
+      }
+    }
+  }
+}
+
+.checkbox:hover {
+  .checkboxInputContainerFocusRing {
+    &:before {
+      border-radius: inherit;
+      bottom: 0;
+      box-shadow: var(--checkbox-unchecked-hover-box-shadow);
+      content: '';
+      left: 0;
+      opacity: 0.2;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  &.checkbox--checked,
+  &.checkbox--indeterminate {
+    .checkboxInputContainerFocusRing {
+      &:before {
+        box-shadow: var(--checkbox-checked-hover-box-shadow);
+      }
     }
   }
 }
@@ -119,57 +176,30 @@ input.checkboxInput {
 }
 
 /**
- * 1. Use the box shadow to add an outline to the
- *    checkbox.
+ * 1. This should be the inverse of the margin
+ *    applied to .checkboxGroup--inline
  */
-.checkbox--checked:hover,
-.checkbox--indeterminate:hover {
-  .checkboxInputContainer {
-    &:before {
-      box-shadow: var(--checkbox-checked-hover-box-shadow); /* [1] */
-    }
-  }
+.checkbox--grouped--inline {
+  margin: 4px 12px; /* [1] */
 }
 
 /**
- * 1. Use the box shadow to add an outline to the
- *    checkbox.
+ * 1. This should be the inverse of the margin
+ *    applied to .checkboxGroup--stacked
  */
-.checkbox:not(.checkbox--checked):not(.checkbox--indeterminate):not(.checkbox--focused):hover {
-  .checkboxInputContainer {
-    &:before {
-      box-shadow: var(--checkbox-unchecked-hover-box-shadow); /* [1] */
-    }
-  }
-}
-
-/**
- * 1. Use the box shadow to add an outline to the
- *    checkbox.
- */
-.checkbox--checked:focus,
-.checkbox:not(.checkbox--checked):focus {
-  .checkboxInputContainer {
-    &:before {
-      box-shadow: var(--checkbox-focused-box-shadow); /* [1] */
-    }
-  }
-}
-
-.checkbox--disabled {
-  .checkboxInputContainer {
-    opacity: 0.6;
-    pointer-events: none;
-  }
+.checkbox--grouped--stacked {
+  margin: 4px 0; /* [1] */
 }
 
 .checkbox--primary {
   @mixin themed .checkbox {
     --checkbox-checked-background-color: $theme-color-accent-primary;
-    --checkbox-checked-hover-box-shadow: 0 0 0 1px $theme-color-accent-primary;
+    --checkbox-checked-hover-box-shadow: 0 0 0 4px $theme-color-accent-primary;
+    --checkbox-checked-focused-box-shadow: 0 0 0 1px $theme-color-accent-primary;
     --checkbox-checked-icon-color: $theme-color-accent-primary-contrast;
-    --checkbox-unchecked-background-color: $theme-color-FG0-O10;
-    --checkbox-unchecked-hover-box-shadow: 0 0 0 1px $theme-color-FG0-O10;
+    --checkbox-unchecked-border-color: $theme-primary-palette-quietest-color;
+    --checkbox-unchecked-hover-box-shadow: 0 0 0 4px $theme-color-FG0-O40;
+    --checkbox-unchecked-focused-box-shadow: 0 0 0 1px $theme-color-FG0-O40;
     --checkbox-focused-box-shadow: 0 0 0 1px $theme-color-accent-primary;
   }
 }
@@ -177,10 +207,12 @@ input.checkboxInput {
 .checkbox--contrast {
   @mixin themed .checkbox {
     --checkbox-checked-background-color: $theme-contrast-palette-accent-color;
-    --checkbox-checked-hover-box-shadow: 0 0 0 1px $theme-contrast-palette-accent-color;
+    --checkbox-checked-hover-box-shadow: 0 0 0 4px $theme-contrast-palette-accent-color;
+    --checkbox-checked-focused-box-shadow: 0 0 0 1px $theme-contrast-palette-accent-color;
     --checkbox-checked-icon-color: var(--contrast-color, $theme-contrast-palette-background-color);
-    --checkbox-unchecked-background-color: $theme-contrast-palette-quietest-color;
-    --checkbox-unchecked-hover-box-shadow: 0 0 0 1px $theme-contrast-palette-quietest-color;
+    --checkbox-unchecked-border-color: $theme-contrast-palette-quieter-color;
+    --checkbox-unchecked-hover-box-shadow: 0 0 0 4px $theme-contrast-palette-quietest-color;
+    --checkbox-unchecked-focused-box-shadow: 0 0 0 1px $theme-contrast-palette-quietest-color;
     --checkbox-focused-box-shadow: 0 0 0 1px $theme-contrast-palette-accent-color;
   }
 }
@@ -188,10 +220,12 @@ input.checkboxInput {
 .checkbox.is-danger {
   @mixin themed .checkbox {
     --checkbox-checked-background-color: $theme-color-danger;
-    --checkbox-checked-hover-box-shadow: 0 0 0 1px $theme-color-danger;
+    --checkbox-checked-hover-box-shadow: 0 0 0 4px $theme-color-danger;
+    --checkbox-checked-focused-box-shadow: 0 0 0 1px $theme-color-danger;
     --checkbox-checked-icon-color: $theme-color-danger-contrast;
-    --checkbox-unchecked-background-color: $theme-color-danger;
-    --checkbox-unchecked-hover-box-shadow: 0 0 0 1px $theme-color-danger;
+    --checkbox-unchecked-border-color: $theme-color-danger;
+    --checkbox-unchecked-hover-box-shadow: 0 0 0 4px $theme-color-FG0-O40;
+    --checkbox-unchecked-focused-box-shadow: 0 0 0 1px $theme-color-FG0-O40;
     --checkbox-focused-box-shadow: 0 0 0 1px $theme-color-danger-D10;
   }
 }
