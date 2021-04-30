@@ -13,6 +13,7 @@ export interface LocalCheckboxProps extends ThemeProps {
   children: React.ReactNode;
   className?: string;
   disabled?: boolean;
+  full?: boolean;
   grouped?: 'stacked' | 'inline';
   id?: string;
   indeterminate?: boolean;
@@ -34,6 +35,7 @@ export function CheckboxBase(
     className,
     contrast,
     disabled,
+    full,
     grouped,
     id,
     indeterminate,
@@ -81,13 +83,14 @@ export function CheckboxBase(
       className={cx(
         styles.checkbox,
         validity && styles[`is-${validity}`],
-        checked && styles['checkbox--checked'],
-        indeterminate && styles['checkbox--indeterminate'],
-        !checked && !indeterminate && styles['checkbox--unchecked'],
         reverse && styles['checkbox--reverse'],
         themeId && !unthemed && styles[`checkbox--${themeId}`],
         color && styles[`checkbox--${color}`],
+        full && styles['checkbox--full'],
         grouped && styles[`checkbox--grouped--${grouped}`],
+        checked && styles['is-checked'],
+        indeterminate && styles['is-indeterminate'],
+        !checked && !indeterminate && styles['is-unchecked'],
         accessible && styles['is-accessible'],
         disabled && styles['is-disabled'],
         focused && styles['is-focused'],

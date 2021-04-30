@@ -13,6 +13,11 @@
   }
 }
 
+.radio--full {
+  justify-content: space-between;
+  width: 100%;
+}
+
 .radio--reverse {
   flex-direction: row-reverse;
 }
@@ -23,8 +28,14 @@ input.radioInput {
 
 .radioLabel {
   line-height: 1.5;
+  margin-left: 12px;
   min-height: 1.4em;
   position: relative;
+
+  .radio--reverse & {
+    margin-left: 0;
+    margin-right: 12px;
+  }
 }
 
 /**
@@ -37,14 +48,6 @@ input.radioInput {
   height: 1.4em; /* [1] */
   position: relative;
   width: 1.4em; /* [1] */
-
-  .radio--reverse & {
-    margin-left: 12px;
-  }
-
-  :not(.radio--reverse) & {
-    margin-right: 12px;
-  }
 
   &:after {
     background-color: var(--radio-checked-icon-color);
@@ -60,7 +63,7 @@ input.radioInput {
     width: 1.4em;
   }
 
-  .radio--checked & {
+  .radio.is-checked & {
     &:before {
       background-color: var(--radio-checked-background-color);
       border-radius: inherit;
@@ -78,7 +81,7 @@ input.radioInput {
     }
   }
 
-  .radio--unchecked & {
+  .radio.is-unchecked & {
     &:before {
       border-radius: inherit;
       border: 1px solid var(--radio-unchecked-border-color);
@@ -134,7 +137,7 @@ input.radioInput {
     }
   }
 
-  &.radio--checked {
+  &.is-checked {
     .radioInputContainerFocusRing {
       &:after {
         box-shadow: var(--radio-checked-focused-box-shadow);
@@ -150,7 +153,7 @@ input.radioInput {
     }
   }
 
-  &.radio--checked {
+  &.is-checked {
     .radioInputContainerFocusRing {
       &:before {
         box-shadow: var(--radio-checked-hover-box-shadow);

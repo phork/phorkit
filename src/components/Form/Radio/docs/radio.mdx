@@ -30,13 +30,23 @@ import { radioGroup, logValue } from './helpers/utils';
       Super fantastic label
     </Radio>
   </FormComponentDemo>
-</Playground>
-
-## Labeled reverse radio button
-
-<Playground>
   <FormComponentDemo property="checked" initialValue={true}>
     <Radio name="labeled-reverse-radio" id="demo-labeled-reverse-radio" onChange={logValue} reverse>
+      Super fantastic label
+    </Radio>
+  </FormComponentDemo>
+</Playground>
+
+## Full width labeled radio button
+
+<Playground>
+  <FormComponentDemo property="checked" initialValue={true} style={{ width: 240 }}>
+    <Radio name="labeled-radio" id="demo-labeled-radio" value="labeled" onChange={logValue} full>
+      Super fantastic label
+    </Radio>
+  </FormComponentDemo>
+  <FormComponentDemo property="checked" initialValue={true} style={{ width: 240 }}>
+    <Radio name="labeled-reverse-radio" id="demo-labeled-reverse-radio" onChange={logValue} full reverse>
       Super fantastic label
     </Radio>
   </FormComponentDemo>

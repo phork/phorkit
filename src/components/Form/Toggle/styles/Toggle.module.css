@@ -4,26 +4,45 @@
   $default-toggle-border-width: 3px;
   $button-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
 
-  align-items: center;
+  align-items: flex-start;
   display: inline-flex;
   flex-direction: row;
   position: relative;
 
-  &.is-disabled {
-    opacity: 0.5;
-    pointer-events: none;
-  }
-
   &:focus {
     outline: none;
   }
+
+  &.is-disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}
+
+.toggle--full {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.toggle--reverse {
+  flex-direction: row-reverse;
 }
 
 input.toggleInput {
   @mixin visuallyHidden;
 }
 
-.toggleButton {
+.toggleLabel {
+  margin-left: calc(0.35 * var(--toggle-width, $default-toggle-width));
+  margin-top: 5px;
+
+  .toggle--reverse & {
+    margin-left: 0;
+    margin-right: calc(0.35 * var(--toggle-width, $default-toggle-width));
+  }
+}
+
+.toggleInputContainer {
   flex: none;
   height: var(--toggle-height, $default-toggle-height);
   position: relative;
@@ -83,71 +102,72 @@ input.toggleInput {
       transition-duration: 200ms;
     }
   }
-
-  /**
-   * 1. Set the background color of the toggle to show
-   *    through the mask and create a center dot.
-   *
-   * 2. Use a box shadow as a mask to show a dot in the
-   *    middle of the toggle when focused.
-   */
-  .toggle.is-checked:hover &,
-  .toggle.is-checked:focus &,
-  .toggle.is-checked.is-focused & {
-    &:after {
-      background-color: var(--toggle-checked-background-color); /* [1] */
-      box-shadow: $button-box-shadow,
-        inset 0px 0px 0px 2px
-          var(--toggle-checked-button-background-color); /* [2] */
-    }
-  }
-
-  /**
-   * 1. Set the background color of the toggle to show
-   *    through the mask and create a center dot.
-   *
-   * 2. Use a box shadow as a mask to show a dot in the
-   *    middle of the toggle when focused.
-   */
-  .toggle:not(.is-checked):hover &,
-  .toggle:not(.is-checked):focus &,
-  .toggle:not(.is-checked).is-focused & {
-    &:after {
-      background-color: var(--toggle-background-color); /* [1] */
-      box-shadow: $button-box-shadow,
-        inset 0px 0px 0px 2px
-          var(--toggle-button-background-color); /* [2] */
-    }
-  }
 }
 
-.toggleButtonFocusRing {
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  left: -2px;
-  right: -2px;
+.toggleInputContainerFocusRing {
   border-radius: var(--toggle-height, $default-toggle-height);
-  border: 1px solid var(--toggle-checked-button-background-color);
-}
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 
-.toggleLabel {
-  margin-left: calc(0.35 * var(--toggle-width, $default-toggle-width));
-}
-
-.toggle--reverse {
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  width: 100%;
-
-  .toggleButton {
-    justify-content: flex-end;
+  &:before {
+    border-radius: inherit;
+    bottom: 0;
+    box-shadow: 0 0 0 0 transparent;
+    content: '';
+    left: 0;
+    opacity: 0.2;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: box-shadow 200ms ease;
   }
 
-  .toggleLabel {
-    justify-content: flex-start;
-    flex: 1;
-    margin-right: calc(0.35 * var(--toggle-width, $default-toggle-width));
+  &:after {
+    border-radius: inherit;
+    bottom: -2px;
+    box-shadow: 0 0 0 0 transparent;
+    content: '';
+    left: -2px;
+    position: absolute;
+    right: -2px;
+    top: -2px;
+    transition: box-shadow 200ms ease;
+  }
+}
+
+.toggle.is-focused.is-accessible {
+  .toggleInputContainerFocusRing {
+    &:after {
+      box-shadow: var(--toggle-unchecked-focused-box-shadow);
+    }
+  }
+
+  &.is-checked {
+    .toggleInputContainerFocusRing {
+      &:after {
+        box-shadow: var(--toggle-checked-focused-box-shadow);
+      }
+    }
+  }
+}
+
+.toggle:hover {
+  .toggleInputContainerFocusRing {
+    &:before {
+      box-shadow: var(--toggle-unchecked-hover-box-shadow);
+    }
+  }
+
+  &.is-checked {
+    .toggleInputContainerFocusRing {
+      &:before {
+        box-shadow: var(--toggle-checked-hover-box-shadow);
+        opacity: var(--toggle-checked-hover-opacity, 0.2);
+      }
+    }
   }
 }
 
@@ -155,6 +175,10 @@ input.toggleInput {
   --toggle-width: 32px;
   --toggle-height: 20px;
   --toggle-border-width: 2px;
+
+  .toggleLabel {
+    margin-top: 3px;
+  }
 }
 
 .toggle--primary {
@@ -163,6 +187,10 @@ input.toggleInput {
     --toggle-button-background-color: $light-color-BG05;
     --toggle-checked-background-color: $light-primary-palette-accent-color;
     --toggle-checked-button-background-color: $light-color-BG05;
+    --toggle-checked-hover-box-shadow: 0 0 0 4px $light-color-accent-primary;
+    --toggle-checked-focused-box-shadow: 0 0 0 1px $light-color-accent-primary;
+    --toggle-unchecked-hover-box-shadow: 0 0 0 4px $light-color-FG0-O40;
+    --toggle-unchecked-focused-box-shadow: 0 0 0 1px $light-color-FG0-O40;
   }
 
   &.toggle--dark {
@@ -170,6 +198,12 @@ input.toggleInput {
     --toggle-button-background-color: $dark-color-FG30;
     --toggle-checked-background-color: $dark-primary-palette-accent-color;
     --toggle-checked-button-background-color: $dark-color-FG0;
+    --toggle-checked-hover-box-shadow: 0 0 0 4px $dark-color-accent-primary;
+    --toggle-checked-focused-box-shadow: 0 0 0 1px $dark-color-accent-primary;
+    --toggle-unchecked-hover-box-shadow: 0 0 0 4px $dark-color-FG0-O40;
+    --toggle-unchecked-focused-box-shadow: 0 0 0 1px $dark-color-FG0-O40;
+
+    --toggle-checked-hover-opacity: 0.3;
   }
 }
 
@@ -179,6 +213,10 @@ input.toggleInput {
     --toggle-button-background-color: $theme-contrast-palette-quieter-color;
     --toggle-checked-background-color: $theme-contrast-palette-quietest-color;
     --toggle-checked-button-background-color: $theme-contrast-palette-accent-color;
+    --toggle-checked-hover-box-shadow: 0 0 0 4px $theme-contrast-palette-accent-color;
+    --toggle-checked-focused-box-shadow: 0 0 0 1px $theme-contrast-palette-accent-color;
+    --toggle-unchecked-hover-box-shadow: 0 0 0 4px $theme-contrast-palette-quietest-color;
+    --toggle-unchecked-focused-box-shadow: 0 0 0 1px $theme-contrast-palette-quietest-color;
   }
 }
 

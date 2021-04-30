@@ -13,6 +13,7 @@ export interface LocalRadioProps extends ThemeProps {
   children: React.ReactNode;
   className?: string;
   disabled?: boolean;
+  full?: boolean;
   grouped?: 'stacked' | 'inline';
   id?: string;
   indeterminate?: boolean;
@@ -34,6 +35,7 @@ export function RadioBase(
     className,
     contrast,
     disabled,
+    full,
     grouped,
     id,
     name,
@@ -73,12 +75,13 @@ export function RadioBase(
       htmlFor={generateComponentId()}
       className={cx(
         styles.radio,
-        checked && styles['radio--checked'],
-        !checked && styles['radio--unchecked'],
+        full && styles['radio--full'],
         reverse && styles['radio--reverse'],
         themeId && !unthemed && styles[`radio--${themeId}`],
         color && styles[`radio--${color}`],
         grouped && styles[`radio--grouped--${grouped}`],
+        checked && styles['is-checked'],
+        !checked && styles['is-unchecked'],
         accessible && styles['is-accessible'],
         disabled && styles['is-disabled'],
         focused && styles['is-focused'],

@@ -13,6 +13,11 @@
   }
 }
 
+.checkbox--full {
+  justify-content: space-between;
+  width: 100%;
+}
+
 .checkbox--reverse {
   flex-direction: row-reverse;
 }
@@ -23,8 +28,14 @@ input.checkboxInput {
 
 .checkboxLabel {
   line-height: 1.5;
+  margin-left: 12px;
   min-height: 1.4em;
   position: relative;
+
+  .checkbox--reverse & {
+    margin-left: 0;
+    margin-right: 12px;
+  }
 }
 
 /**
@@ -37,14 +48,6 @@ input.checkboxInput {
   height: 1.4em; /* [1] */
   position: relative;
   width: 1.4em; /* [1] */
-
-  .checkbox--reverse & {
-    margin-left: 12px;
-  }
-
-  :not(.checkbox--reverse) & {
-    margin-right: 12px;
-  }
 
   &:after {
     border: solid transparent;
@@ -61,8 +64,8 @@ input.checkboxInput {
     width: 0.5em;
   }
 
-  .checkbox--checked &,
-  .checkbox--indeterminate & {
+  .checkbox.is-checked &,
+  .checkbox.is-indeterminate & {
     &:before {
       background-color: var(--checkbox-checked-background-color);
       border-radius: inherit;
@@ -76,7 +79,7 @@ input.checkboxInput {
     }
   }
 
-  .checkbox--unchecked & {
+  .checkbox.is-unchecked & {
     &:before {
       border-radius: inherit;
       border: 1px solid var(--checkbox-unchecked-border-color);
@@ -125,7 +128,7 @@ input.checkboxInput {
   }
 }
 
-.checkbox--checked {
+.checkbox.is-checked {
   .checkboxInputContainer {
     &:after {
       transform: rotate(45deg) scale(0.8);
@@ -140,8 +143,8 @@ input.checkboxInput {
     }
   }
 
-  &.checkbox--checked,
-  &.checkbox--indeterminate {
+  &.is-checked,
+  &.is-indeterminate {
     .checkboxInputContainerFocusRing {
       &:after {
         box-shadow: var(--checkbox-checked-focused-box-shadow);
@@ -157,8 +160,8 @@ input.checkboxInput {
     }
   }
 
-  &.checkbox--checked,
-  &.checkbox--indeterminate {
+  &.is-checked,
+  &.is-indeterminate {
     .checkboxInputContainerFocusRing {
       &:before {
         box-shadow: var(--checkbox-checked-hover-box-shadow);
@@ -168,7 +171,7 @@ input.checkboxInput {
   }
 }
 
-.checkbox--indeterminate {
+.checkbox.is-indeterminate {
   .checkboxInputContainer {
     &:before {
       background-color: var(--checkbox-checked-background-color);

@@ -38,13 +38,23 @@ import { checkboxGroup, logChecked, logValues } from './helpers/utils';
       Super fantastic label
     </Checkbox>
   </FormComponentDemo>
-</Playground>
-
-## Labeled reverse checkbox
-
-<Playground>
   <FormComponentDemo property="checked" initialValue={true}>
     <Checkbox id="demo-labeled-reverse-checkbox" onChange={logChecked} reverse>
+      Super fantastic label
+    </Checkbox>
+  </FormComponentDemo>
+</Playground>
+
+## Full width labeled checkbox
+
+<Playground>
+  <FormComponentDemo property="checked" initialValue={true} style={{ width: 240 }}>
+    <Checkbox id="demo-labeled-reverse-full-checkbox" onChange={logChecked} full>
+      Super fantastic label
+    </Checkbox>
+  </FormComponentDemo>
+  <FormComponentDemo property="checked" initialValue={true} style={{ width: 240 }}>
+    <Checkbox id="demo-labeled-reverse-full-checkbox" onChange={logChecked} full reverse>
       Super fantastic label
     </Checkbox>
   </FormComponentDemo>
