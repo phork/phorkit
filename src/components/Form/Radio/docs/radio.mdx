@@ -4,11 +4,11 @@ menu: Forms
 route: /components/FormRadio
 ---
 
-import { Looper } from 'docs/helpers/Looper';
-import { PageTitle } from 'docs/helpers/PageTitle';
 import { Playground, Props } from 'docz';
 import { Typography } from 'components/Typography';
 import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
+import { Looper } from 'docs/helpers/Looper';
+import { PageTitle } from 'docs/helpers/PageTitle';
 import { Radio, RadioGroup, NotifiedRadioGroup } from '../index';
 import { radioGroup, logValue } from './helpers/utils';
 
@@ -27,6 +27,16 @@ import { radioGroup, logValue } from './helpers/utils';
 <Playground>
   <FormComponentDemo property="checked" initialValue={true}>
     <Radio name="labeled-radio" id="demo-labeled-radio" value="labeled" onChange={logValue}>
+      Super fantastic label
+    </Radio>
+  </FormComponentDemo>
+</Playground>
+
+## Labeled reverse radio button
+
+<Playground>
+  <FormComponentDemo property="checked" initialValue={true}>
+    <Radio name="labeled-reverse-radio" id="demo-labeled-reverse-radio" onChange={logValue} reverse>
       Super fantastic label
     </Radio>
   </FormComponentDemo>

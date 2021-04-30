@@ -103,7 +103,7 @@
       position: absolute;
       right: 0;
       top: 0;
-      opacity: .2;
+      opacity: var(--slider-handle-focused-opacity, .2);
     }
   }
 }
@@ -157,6 +157,10 @@ input.sliderInput {
     --slider-handle-background-color: $theme-color-accent-primary;
     --slider-tick-background-color: $theme-color-BG50;
   }
+
+  &.slider--dark {
+    --slider-handle-focused-opacity: .4;
+  }
 }
 
 .slider--contrast {
@@ -173,5 +177,9 @@ input.sliderInput {
     --slider-track-fill-background-color: $theme-color-danger;
     --slider-handle-background-color: $theme-color-danger;
     --slider-tick-background-color: $theme-color-BG50;
+  }
+
+  &.slider--dark {
+    --slider-handle-focused-opacity: .4;
   }
 }
