@@ -114,7 +114,7 @@ export function DropdownWithTags({
                       <Typography size="m">{label}</Typography>
                     </Rhythm>
                   }
-                  reversed
+                  reverse
                 />
               }
               onClick={() => removeItem(itemId)}

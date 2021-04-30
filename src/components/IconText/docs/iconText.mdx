@@ -5,31 +5,23 @@ route: /components/IconText
 ---
 
 import { Playground, Props } from 'docz';
-import { IconText } from '../index';
-import { Rhythm } from 'components/Rhythm';
 import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { Rhythm } from 'components/Rhythm';
 import { PageTitle } from 'docs/helpers/PageTitle';
+import { IconText } from '../index';
 
 <PageTitle title="IconText" src="components/IconText" />
 
 ## Default order
 
 <Playground>
-  <IconText
-    icon={<BlobbrIcon scale="medium" />}
-    text="Hello world"
-  />
+  <IconText icon={<BlobbrIcon scale="medium" />} text="Hello world" />
 </Playground>
 
-## Inline reversed order
+## Inline reversed
 
 <Playground>
-  <IconText
-    inline
-    icon={<BlobbrIcon scale="medium" />}
-    text="Hello world"
-    reversed
-  />
+  <IconText inline icon={<BlobbrIcon scale="medium" />} text="Hello world" reverse />
 </Playground>
 
 ## Spaced icon
@@ -37,7 +29,11 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 <Playground>
   <IconText
     icon={<BlobbrIcon scale="large" />}
-    text={<Rhythm ml={2}><span>Hello world</span></Rhythm>}
+    text={
+      <Rhythm ml={2}>
+        <span>Hello world</span>
+      </Rhythm>
+    }
   />
 </Playground>
 

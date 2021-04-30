@@ -18,6 +18,7 @@ export interface LocalCheckboxProps extends ThemeProps {
   name?: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>, checked: boolean, value: string | number) => void;
   persistEvents?: boolean;
+  reverse?: boolean;
   unthemed?: boolean;
   validity?: 'danger';
   value?: string | number;
@@ -38,6 +39,7 @@ export function CheckboxBase(
     name,
     onChange,
     persistEvents,
+    reverse,
     themeId: initThemeId,
     unthemed,
     validity,
@@ -80,6 +82,7 @@ export function CheckboxBase(
         checked && styles['checkbox--checked'],
         indeterminate && styles['checkbox--indeterminate'],
         focused && styles['checkbox--focused'],
+        reverse && styles['checkbox--reverse'],
         themeId && !unthemed && styles[`checkbox--${themeId}`],
         color && styles[`checkbox--${color}`],
         grouped && styles[`checkbox--grouped--${grouped}`],
@@ -89,21 +92,23 @@ export function CheckboxBase(
       tabIndex={focused ? -1 : 0}
       {...props}
     >
-      <input
-        checked={checked}
-        className={styles.checkboxInput}
-        disabled={disabled}
-        id={generateComponentId()}
-        name={name}
-        onBlur={handleBlur}
-        onChange={handleChange}
-        onFocus={handleFocus}
-        ref={combineRefs}
-        tabIndex={-1}
-        type="checkbox"
-        value={value}
-        data-type={typeof value}
-      />
+      <div className={styles.checkboxInputContainer}>
+        <input
+          checked={checked}
+          className={styles.checkboxInput}
+          disabled={disabled}
+          id={generateComponentId()}
+          name={name}
+          onBlur={handleBlur}
+          onChange={handleChange}
+          onFocus={handleFocus}
+          ref={combineRefs}
+          tabIndex={-1}
+          type="checkbox"
+          value={value}
+          data-type={typeof value}
+        />
+      </div>
       <Label
         className={styles.checkboxLabel}
         contrast={contrast}

@@ -7,14 +7,14 @@ export interface IconTextProps extends React.HTMLAttributes<HTMLDivElement> {
   icon: React.ReactElement;
   iconClassName?: string;
   inline?: boolean;
-  reversed?: boolean;
+  reverse?: boolean;
   text: React.ReactNode;
   textClassName?: string;
 }
 
 export const IconText = React.forwardRef<HTMLDivElement, IconTextProps>(
   (
-    { className: initClassName, icon, iconClassName, inline, reversed, text, textClassName, ...props },
+    { className: initClassName, icon, iconClassName, inline, reverse, text, textClassName, ...props },
     forwardedRef,
   ): React.ReactElement<IconTextProps, 'div'> => {
     return (
@@ -22,7 +22,7 @@ export const IconText = React.forwardRef<HTMLDivElement, IconTextProps>(
         className={cx(
           styles.iconText,
           inline && styles['iconText--inline'],
-          reversed && styles['iconText--reversed'],
+          reverse && styles['iconText--reverse'],
           initClassName,
         )}
         ref={forwardedRef}

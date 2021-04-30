@@ -8,7 +8,7 @@
   display: inline-flex;
 }
 
-.iconText--reversed {
+.iconText--reverse {
   flex-direction: row-reverse;
 }
 
