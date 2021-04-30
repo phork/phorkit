@@ -1,5 +1,19 @@
 # Changelog
 
+# [3.1.0](https://github.com/phork/phorkit/compare/v3.0.0...v3.1.0) (2021-04-30)
+
+### ♻ Code Refactoring
+
+- updated slider hover and focus styles ([e96a1fa](https://github.com/phork/phorkit/commit/e96a1fa))
+
+### ✨ Features
+
+- added divided button group ([07e7a59](https://github.com/phork/phorkit/commit/07e7a59))
+
+### 🐛 Bug Fixes
+
+- add hidden border to text buttons so they behave the same ([945c059](https://github.com/phork/phorkit/commit/945c059))
+
 # [3.0.0](https://github.com/phork/phorkit/compare/v2.0.2...v3.0.0) (2021-04-26)
 
 ### ♻ Code Refactoring
