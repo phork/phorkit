@@ -1,5 +1,21 @@
 # Changelog
 
+# [3.2.0](https://github.com/phork/phorkit/compare/v3.1.0...v3.2.0) (2021-05-02)
+
+### ♻ Code Refactoring
+
+- renamed list outline, variant props ([e7b3428](https://github.com/phork/phorkit/commit/e7b3428))
+
+### ✨ Features
+
+- added [@media](https://github.com/media) queries for paper, modal responsiveness ([2679e8e](https://github.com/phork/phorkit/commit/2679e8e))
+
+### 🐛 Bug Fixes
+
+- add border radius to navigation and unselected nav items ([6153491](https://github.com/phork/phorkit/commit/6153491))
+- allow button to override button group click event ([adff7f3](https://github.com/phork/phorkit/commit/adff7f3))
+- use transparent color for unchecked checkboxes, radio buttons ([720a97b](https://github.com/phork/phorkit/commit/720a97b))
+
 # [3.1.0](https://github.com/phork/phorkit/compare/v3.0.0...v3.1.0) (2021-04-30)
 
 ### ♻ Code Refactoring
