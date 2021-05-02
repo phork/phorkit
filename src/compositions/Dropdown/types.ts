@@ -9,6 +9,6 @@ export type DropdownOption = {
 
 export type DropdownInputVariant = 'underline' | 'filled' | 'outline' | 'minimal';
 export type DropdownLayout = 'raised' | 'contained';
-export type DropdownListOutline = 'bordered' | 'shadowed' | 'divided' | 'unboxed';
+export type DropdownListVariant = 'bordered' | 'shadowed' | 'divided' | 'unboxed';
 export type DropdownListSize = 'xsmall' | 'small' | 'medium';
-export type DropdownListVariant = 'primary' | 'minimal';
+export type DropdownListColor = 'primary' | 'minimal';

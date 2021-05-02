@@ -2,12 +2,12 @@ import { cx } from '@emotion/css';
 import React, { useMemo, useRef } from 'react';
 import { MergeElementProps, ThemeProps } from '../../types';
 import {
-  DropdownOption,
-  DropdownListOutline,
+  DropdownInputVariant,
+  DropdownLayout,
+  DropdownListColor,
   DropdownListSize,
   DropdownListVariant,
-  DropdownLayout,
-  DropdownInputVariant,
+  DropdownOption,
 } from './types';
 import { useAccessibility } from '../../context';
 import { RenderFromPropElement } from '../../utils';
@@ -27,8 +27,8 @@ export interface LocalDropdownContentProps extends ThemeProps {
   isDropdownVisible?: boolean;
   isEmpty?: boolean;
   layout: DropdownLayout;
-  listDefaults: { outline: DropdownListOutline; size: DropdownListSize; variant: DropdownListVariant };
-  listOutline?: DropdownListOutline;
+  listColor?: DropdownListColor;
+  listDefaults: { variant: DropdownListVariant; size: DropdownListSize; color: DropdownListColor };
   listSize?: DropdownListSize;
   listVariant?: DropdownListVariant;
   /** mimicSelectOnFocus is required by DropdownWithTags so keyboard navigation doesn't keep selecting items but it looks like a regular dropdown */
@@ -57,9 +57,9 @@ function DropdownContentBase(
     isEmpty,
     layout = 'raised',
     listDefaults,
-    listOutline,
-    listSize,
     listVariant,
+    listSize,
+    listColor,
     mimicSelectOnFocus,
     onListBlur,
     onListFocus,
@@ -98,9 +98,11 @@ function DropdownContentBase(
       <div className={cx(styles.dropdownOptions, isEmpty && styles['is-empty'])}>
         <InteractiveList
           allowReselect={allowReselect}
+          color={listColor || listDefaults.color}
           containerRef={ref}
           contrast={contrast}
           disabled={!state.listVisible || state.clearFocus}
+          hideFocusOutline
           initialSelected={state.selected ? state.selected.id : undefined}
           items={items}
           mimicSelectOnFocus={mimicSelectOnFocus}
@@ -109,7 +111,6 @@ function DropdownContentBase(
           onKeyDown={onListKeyDown}
           onSelect={onSelect}
           onUnselect={onUnselect}
-          outline={listOutline || listDefaults.outline}
           ref={forwardedRef}
           selectOnFocus={!mimicSelectOnFocus}
           size={listSize || listDefaults.size}

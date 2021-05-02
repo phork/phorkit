@@ -19,7 +19,7 @@ import styles from './styles/Dropdown.module.css';
 
 export interface DropdownProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'onSelect' | 'onSubmit'>,
-    Partial<Pick<DropdownContentProps, 'emptyNotification' | 'listOutline' | 'listSize' | 'listVariant'>>,
+    Partial<Pick<DropdownContentProps, 'emptyNotification' | 'listVariant' | 'listSize' | 'listColor'>>,
     ThemeProps {
   arrowIconSize?: number;
   className?: string;
@@ -63,9 +63,9 @@ export function Dropdown({
   inputVariant = 'underline',
   label,
   layout = 'raised',
-  listOutline,
-  listSize,
   listVariant,
+  listSize,
+  listColor,
   mimicSelectOnFocus,
   onChange,
   onClear,
@@ -117,14 +117,14 @@ export function Dropdown({
     () =>
       ({
         raised: {
-          outline: 'unboxed',
+          color: 'primary',
           size: 'medium',
-          variant: 'primary',
+          variant: 'unboxed',
         } as DropdownContentProps['listDefaults'],
         contained: {
-          outline: 'unboxed',
+          color: 'primary',
           size: 'medium',
-          variant: 'primary',
+          variant: 'unboxed',
         } as DropdownContentProps['listDefaults'],
       }[layout]),
     [layout],
@@ -394,9 +394,9 @@ export function Dropdown({
         isEmpty={isEmpty}
         layout={layout}
         listDefaults={listDefaults}
-        listOutline={listOutline}
-        listSize={listSize}
         listVariant={listVariant}
+        listSize={listSize}
+        listColor={listColor}
         mimicSelectOnFocus={mimicSelectOnFocus}
         onListBlur={handleListBlur}
         onListFocus={handleListFocus}

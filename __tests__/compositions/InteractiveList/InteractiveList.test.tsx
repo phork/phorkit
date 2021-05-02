@@ -22,7 +22,7 @@ const options = [
 describe('<InteractiveList />', () => {
   it('should render a basic interactiveList', () => {
     const { getByText } = render(
-      <InteractiveList initialSelected="red" items={options} outline="bordered">
+      <InteractiveList initialSelected="red" items={options} variant="bordered">
         An empty notification
       </InteractiveList>,
     );

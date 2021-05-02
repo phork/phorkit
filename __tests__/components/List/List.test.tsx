@@ -7,7 +7,7 @@ describe('<List />', () => {
   it('should render a basic list', () => {
     const { container, getByText } = render(
       <List
-        outline="bordered"
+        variant="bordered"
         items={[
           { id: 'normal0', label: 'First' },
           { id: 'selected', label: 'Second', selected: true },
@@ -34,7 +34,7 @@ describe('<List />', () => {
     const { container } = render(
       <List<'div'>
         as={AsTypeDiv}
-        outline="bordered"
+        variant="bordered"
         items={[
           { id: 'normal0', label: 'First' },
           { id: 'selected', label: 'Second', selected: true },

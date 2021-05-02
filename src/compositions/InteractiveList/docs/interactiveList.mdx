@@ -5,10 +5,10 @@ route: /compositions/InteractiveList
 ---
 
 import { cx } from '@emotion/css';
-import { PageTitle } from 'docs/helpers/PageTitle';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { InteractiveGroupItem, InteractiveGroupConsumer } from 'components/InteractiveGroup';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { InteractiveList } from '../index';
 import { options, navigationOptions } from './helpers/options';
 import scrollbar from 'styles/common/Scrollbar.module.css';
@@ -33,8 +33,8 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
         onSelect={(event, { id, index }) => console.log('select', { id, index })}
         onUnselect={(event, { id }) => console.log('unselect', id)}
-        outline="bordered"
         style={{ height: '200px', overflow: 'auto' }}
+        variant="bordered"
       >
         An empty notification
       </InteractiveList>
@@ -58,9 +58,9 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
         onSelect={(event, { id, index }) => console.log('select', { id, index })}
         onUnselect={(event, { id }) => console.log('unselect', id)}
-        outline="bordered"
         selectOnFocus
         tyle={{ height: '200px', overflow: 'auto' }}
+        variant="bordered"
       >
         An empty notification
       </InteractiveList>
@@ -85,8 +85,8 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
         onSelect={(event, { id, index }) => console.log('select', { id, index })}
         onUnselect={(event, { id }) => console.log('unselect', id)}
-        outline="bordered"
         style={{ height: '200px', overflow: 'auto' }}
+        variant="bordered"
       >
         An empty notification
       </InteractiveList>
@@ -111,8 +111,8 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
         onSelect={(event, { id, index }) => console.log('select', { id, index })}
         onUnselect={(event, { id }) => console.log('unselect', id)}
-        outline="bordered"
         style={{ height: '200px', overflow: 'auto' }}
+        variant="bordered"
       >
         An empty notification
       </InteractiveList>
@@ -137,8 +137,8 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
         onSelect={(event, { id, index }) => console.log('select', { id, index })}
         onUnselect={(event, { id }) => console.log('unselect', id)}
-        outline="bordered"
         style={{ height: '200px', overflow: 'auto' }}
+        variant="bordered"
       >
         An empty notification
       </InteractiveList>
@@ -164,8 +164,8 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
         onSelect={(event, { id, index }) => console.log('select', { id, index })}
         onUnselect={(event, { id }) => console.log('unselect', id)}
-        outline="bordered"
         style={{ height: '200px', overflow: 'auto' }}
+        variant="bordered"
       >
         An empty notification
       </InteractiveList>
@@ -220,9 +220,9 @@ _Note that the links will cause the page to reload so the state will appear unch
             ),
           },
         ]}
-        outline="shadowed"
         style={{ height: '200px', overflow: 'auto' }}
         triggerLinks
+        variant="shadowed"
       />
     )}
   </ThemeWrapper>
@@ -302,9 +302,9 @@ _Note that the links will cause the page to reload so the state will appear unch
         onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
         onSelect={(event, { id, index }) => console.log('select', { id, index })}
         onUnselect={(event, { id }) => console.log('unselect', id)}
-        outline="bordered"
         providerProps={{ role: 'navigation', 'aria-label': 'Primary navigation' }}
         style={{ height: '200px', overflow: 'auto' }}
+        variant="bordered"
       >
         An empty notification
       </InteractiveList>
@@ -317,7 +317,7 @@ _Note that the links will cause the page to reload so the state will appear unch
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <InteractiveList items={[]} outline="bordered">
+      <InteractiveList items={[]} variant="bordered">
         An empty notification
       </InteractiveList>
     )}

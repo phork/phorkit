@@ -16,20 +16,22 @@ export const listItemElementMap: ListItemElementMap = {
 export interface LocalListProps extends ThemeProps {
   children?: React.ReactNode;
   className?: string;
+  color?: 'primary' | 'minimal';
   focused?: boolean;
+  /** this should only be used when something else containing the list has a focus variant (eg. a dropdown) */
+  hideFocusOutline?: boolean;
   inactive?: boolean;
   inline?: boolean;
   items?: (Omit<ListItemProps, 'children'> & { id: string; label: string })[];
   /** mimicSelectOnFocus uses selected styles for focused items */
   mimicSelectOnFocus?: boolean;
-  outline?: 'bordered' | 'shadowed' | 'divided' | 'unboxed';
   /** the default role is list or listbox but it can be overridden or set to undefined */
   role?: string;
   rounded?: boolean;
   size?: 'xsmall' | 'small' | 'medium';
   transparent?: boolean;
   unstyled?: boolean;
-  variant?: 'primary' | 'minimal';
+  variant?: 'bordered' | 'shadowed' | 'divided' | 'unboxed';
 }
 
 export type ListProps<T extends ListElementType = 'ul'> = AsReactType<T> & MergeElementProps<T, LocalListProps>;
@@ -41,24 +43,25 @@ function ListBase<T extends ListElementType = 'ul'>(
     className,
     contrast,
     focused,
+    hideFocusOutline,
     inactive,
     inline,
     items,
     mimicSelectOnFocus,
-    outline,
+    variant,
     rounded,
     size = 'medium',
     themeId: initThemeId,
     transparent,
     unstyled,
-    variant: initVariant = 'primary',
+    color: initColor = 'primary',
     ...props
   }: ListProps<T>,
   forwardedRef: React.ForwardedRef<HTMLElementTagNameMap[T]>,
 ): React.ReactElement {
   const accessible = useAccessibility();
   const themeId = useThemeId(initThemeId);
-  const variant = contrast ? 'contrast' : initVariant;
+  const color = contrast ? 'contrast' : initColor;
   const listItemElement = listItemElementMap[(as && typeof as === 'string' ? as : undefined) || 'ul'];
 
   return React.createElement(
@@ -68,8 +71,9 @@ function ListBase<T extends ListElementType = 'ul'>(
         ? cx(styles.unlist, inline && styles['unlist--inline'], className)
         : cx(
             styles.list,
+            color && styles[`list--${color}`],
+            hideFocusOutline && styles['list--hideFocusOutline'],
             inline && styles['list--inline'],
-            outline && styles[`list--${outline}`],
             rounded && styles['list--rounded'],
             size && styles[`list--${size}`],
             themeId && styles[`list--${themeId}`],

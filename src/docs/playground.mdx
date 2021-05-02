@@ -315,7 +315,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <List outline="shadowed" as="div" style={{ width: '300px', maxWidth: '100%' }}>
+      <List variant="shadowed" as="div" style={{ width: '300px', maxWidth: '100%' }}>
         <Looper
           start={0}
           end={5}
@@ -378,7 +378,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
               boxShadow: themes[themeId]['box-shadow-10'],
             }}
           >
-            <List outline="bordered" variant="primary" as="div">
+            <List as="div" variant="bordered">
               <Looper
                 start={0}
                 end={5}
@@ -430,9 +430,8 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
           >
             <List
               as="div"
-              outline="divided"
               style={{ borderLeft: `4px solid ${themes[themeId]['secondary-palette-accent-color']}` }}
-              variant="primary"
+              variant="divided"
             >
               <Looper
                 start={0}
@@ -524,7 +523,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
             initialSelected={options[0]}
             label="Super awesome dropdown"
             layout="raised"
-            listOutline="divided"
+            listVariant="divided"
             listSize="medium"
             onChange={value => console.log('change', value)}
             onClear={value => console.log('clear')}
@@ -612,8 +611,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                   <InteractiveList
                     initialSelected={4}
                     selectOnFocus
-                    outline="divided"
-                    variant="primary"
+                    variant="divided"
                     items={[{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }].map(option => ({
                       label: ({ selected }) => (
                         <Flex flexible direction="row" alignItems="center" justifyContent="flex-start">
@@ -725,8 +723,8 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <Flex direction="row" alignItems="flex-start" justifyContent="space-between">
-        <div style={{ width: '200px', maxWidth: '100%' }}>
+      <Flex direction="row" alignItems="flex-start" justifyContent="space-between" wrap>
+        <Rhythm m={2} grouped style={{ width: '200px', maxWidth: '100%' }}>
           <Card hoverable raised magnify full>
             <div style={{ position: 'relative' }}>
               <img
@@ -759,9 +757,8 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
               <Rhythm p={3}>
                 <List
                   inactive
-                  outline="unboxed"
                   rounded
-                  variant="primary"
+                  variant="unboxed"
                   items={[
                     { id: 'normal0', label: 'Normal' },
                     { id: 'selected', label: 'Selected', selected: true },
@@ -772,18 +769,20 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
               </Rhythm>
             </Paper>
           </Card>
-        </div>
-        <div style={{ width: '300px' }}>
+        </Rhythm>
+        <Rhythm m={2} grouped style={{ width: '300px' }}>
           <Card raised full>
             <StyledHeader backgroundColor="#393945" textColor="#fff" height={50}>
               <Rhythm px={5}>Fancy card</Rhythm>
             </StyledHeader>
-            <Paper color="secondary" container="panel">
-              <Flex direction="row" alignItems="center" justifyContent="center" full>
-                <Typography volume="quietest">
-                  <MoonIcon size={42} />
-                </Typography>
-              </Flex>
+            <Paper color="secondary">
+              <Rhythm my={12}>
+                <Flex direction="row" alignItems="center" justifyContent="center" full>
+                  <Typography volume="quietest">
+                    <MoonIcon size={48} />
+                  </Typography>
+                </Flex>
+              </Rhythm>
             </Paper>
             <Divider volume="quieter" />
             <Rhythm px={5} py={4}>
@@ -835,7 +834,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
               </Rhythm>
             </Footer>
           </Card>
-        </div>
+        </Rhythm>
       </Flex>
     )}
   </ThemeWrapper>

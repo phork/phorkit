@@ -41,22 +41,15 @@ ul.unlist {
 
 .list--divided,
 .list--bordered,
-.list--shadowed {
-  &:focus,
-  &.is-focused {
-    &.is-accessible {
-      outline: 1px solid var(--list-focused-border-color);
-    }
-  }
-}
-
-.list--divided,
-.list--bordered,
 .list--shadowed,
 .list--unboxed {
   &:focus,
   &.is-focused {
     outline: none;
+
+    &.is-accessible:not(.list--hideFocusOutline) {
+      outline: 1px solid var(--list-focused-border-color);
+    }
   }
 
   .listItem {
