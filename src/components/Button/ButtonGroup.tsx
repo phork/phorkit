@@ -12,16 +12,18 @@ export type ButtonGroupItem = {
   label: React.ReactNode;
   selected?: boolean;
   style?: React.CSSProperties;
-} & Omit<ButtonProps, 'children' | 'id' | 'key' | 'onClick' | 'shape' | 'size' | 'style' | 'value'>;
+} & Omit<ButtonProps, 'children' | 'id' | 'key' | 'size' | 'style' | 'value'>;
 
 export interface LocalButtonGroupProps extends Pick<ButtonProps, 'color' | 'fullWidth' | 'shape'>, ThemeProps {
   align?: 'left' | 'right';
   buttons?: ButtonGroupItem[];
   children?: React.ReactElement[];
   className?: string;
-  onClick: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, value: string) => void;
+  /** if onClick is undefined then each button must have its own onClick prop */
+  onClick?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, value: string) => void;
   orientation?: Orientation;
   selectedColor?: ButtonColor;
+  selectedStyle?: React.CSSProperties;
   selectedWeight?: ButtonWeight;
   size?: ButtonSize;
   spacing?: ButtonGroupSpacing;
@@ -41,6 +43,7 @@ export function ButtonGroup({
   onClick,
   orientation = 'horizontal',
   selectedColor,
+  selectedStyle,
   selectedWeight = 'filled',
   shape = 'pill',
   size = 'medium',
@@ -68,7 +71,7 @@ export function ButtonGroup({
       return React.cloneElement(label(selected), {
         key: id,
         className: styles.buttonGroup__button,
-        onClick: handleClick,
+        ...(onClick ? { onClick: handleClick } : {}),
         'data-value': id,
       });
     }
@@ -80,7 +83,7 @@ export function ButtonGroup({
       ? children.map(child =>
           React.cloneElement(child, {
             className: styles.buttonGroup__button,
-            onClick: handleClick,
+            ...(onClick ? { onClick: handleClick } : {}),
           }),
         )
       : undefined;
@@ -107,14 +110,24 @@ export function ButtonGroup({
                 className={styles.buttonGroup__button}
                 color={selected && selectedColor ? selectedColor : color}
                 contrast={contrast}
+                onClick={handleClick}
                 shape={shape}
                 themeId={themeId}
                 weight={selected && selectedWeight ? selectedWeight : weight}
                 {...button}
                 key={id}
-                onClick={handleClick}
                 size={size}
-                style={fullWidth ? { display: 'flex', flex: 1, justifyContent: 'center', ...style } : style}
+                style={
+                  fullWidth
+                    ? {
+                        display: 'flex',
+                        flex: 1,
+                        justifyContent: 'center',
+                        ...style,
+                        ...(selected ? selectedStyle : {}),
+                      }
+                    : { ...style, ...(selected ? selectedStyle : {}) }
+                }
                 data-value={id}
               >
                 {label}
