@@ -2,6 +2,7 @@
 
 .navigation {
   align-items: center;
+  border-radius: var(--navigation-border-radius, 0);
   display: flex;
   position: relative;
 
@@ -80,7 +81,7 @@
   letter-spacing: 0.04rem;
 
   @mixin themed .navigation {
-    --navigation-item-focused-background-color: $theme-color-BG50-O20;
+    --navigation-item-focused-background-color: $theme-color-BG50-O30;
     --navigation-item-selected-background-color: $theme-color-accent-primary;
     --navigation-item-selected-text-color: $theme-contrast-palette-accent-color;
     --navigation-item-focused-selected-background-color: $theme-color-BG50-O10;
@@ -100,6 +101,7 @@ button.navigationItem {
 .navigationItem {
   align-items: center;
   background-color: var(--navigation-item-background-color); /* 2 */
+  border-radius: var(--navigation-item-border-radius, 0);
   color: var(--navigation-item-text-color);
   cursor: pointer;
   display: flex;
@@ -245,7 +247,7 @@ button.navigationItem {
 
   &:before {
     background-color: var(--navigation-item-selected-background-color);
-    border-radius: var(--navigation-item-selected-border-radius);
+    border-radius: var(--navigation-item-border-radius);
     transition: all 300ms ease-out;
     z-index: 1;
   }

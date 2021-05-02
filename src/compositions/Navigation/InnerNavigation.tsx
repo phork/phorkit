@@ -136,7 +136,8 @@ export const InnerNavigation = React.forwardRef<HTMLElement, InnerNavigationProp
             '--navigation-pseudo-item-position-width': selectedCoords && `${selectedCoords.width}px`,
             '--navigation-pseudo-item-position-top': selectedCoords && `${selectedCoords.top}px`,
             '--navigation-pseudo-item-position-height': selectedCoords && `${selectedCoords.height}px`,
-            '--navigation-item-selected-border-radius': highlightRadius && `${highlightRadius}px`,
+            '--navigation-item-border-radius': highlightRadius && `${highlightRadius}px`,
+            '--navigation-border-radius': highlightRadius && `${highlightRadius}px`,
           } as React.CSSProperties
         }
         /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */

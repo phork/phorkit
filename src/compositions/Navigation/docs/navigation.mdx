@@ -236,26 +236,26 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
               id: 'first',
               label: <BlobbrIcon size={16} />,
               flush: true,
-              style: { borderRadius: '4px', padding: '8px', marginBottom: '4px' },
+              style: { padding: '8px', marginBottom: '4px' },
             },
             {
               id: 'second',
               label: <BlobbrIcon size={16} />,
               flush: true,
-              style: { borderRadius: '4px', padding: '8px', marginBottom: '4px' },
+              style: { padding: '8px', marginBottom: '4px' },
             },
             {
               id: 'third',
               label: <BlobbrIcon size={16} />,
               flush: true,
-              style: { borderRadius: '4px', padding: '8px', marginBottom: '4px' },
+              style: { padding: '8px', marginBottom: '4px' },
               disabled: true,
             },
             {
               id: 'fourth',
               label: <BlobbrIcon size={16} />,
               flush: true,
-              style: { borderRadius: '4px', padding: '8px', marginBottom: '4px' },
+              style: { padding: '8px' },
             },
           ]}
         />
@@ -273,6 +273,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         {({ state: selectedId, setState: setSelectedId }) => (
           <Navigation
             animated
+            highlightRadius={4}
             selectedId={selectedId}
             variant="tertiary"
             onSelect={(event, item) => setSelectedId(item.id)}
