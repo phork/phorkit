@@ -185,7 +185,7 @@ input.radioInput {
     --radio-checked-hover-box-shadow: 0 0 0 4px $theme-color-accent-primary;
     --radio-checked-focused-box-shadow: 0 0 0 1px $theme-color-accent-primary;
     --radio-checked-icon-color: $theme-color-accent-primary-contrast;
-    --radio-unchecked-border-color: $theme-primary-palette-quietest-color;
+    --radio-unchecked-border-color: $theme-color-FG0-O20;
     --radio-unchecked-hover-box-shadow: 0 0 0 4px $theme-color-FG0-O40;
     --radio-unchecked-focused-box-shadow: 0 0 0 1px $theme-color-FG0-O40;
     --radio-focused-box-shadow: 0 0 0 1px $theme-color-accent-primary;
