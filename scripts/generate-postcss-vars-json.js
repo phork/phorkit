@@ -15,3 +15,29 @@ const writeJson = (filename, content) => {
 writeJson('./src/postcss/vars/common.json', common)
 writeJson('./src/postcss/vars/darkTheme.json', darkTheme)
 writeJson('./src/postcss/vars/lightTheme.json', lightTheme)
+
+writeJson('./src/postcss/vars/mediaRules.json', {
+  '--viewport-xxsmall-only': `(max-width: ${common['viewport-xxsmall'].max}px)`,
+  '--viewport-xsmall-only': `(min-width: ${common['viewport-xsmall'].min}px) and (${common['viewport-xsmall'].max}px)`,
+  '--viewport-small-only': `(min-width: ${common['viewport-small'].min}px) and (${common['viewport-small'].max}px)`,
+  '--viewport-medium-only': `(min-width: ${common['viewport-medium'].min}px) and (${common['viewport-medium'].max}px)`,
+  '--viewport-large-only': `(min-width: ${common['viewport-large'].min}px) and (${common['viewport-large'].max}px)`,
+  '--viewport-xlarge-only': `(min-width: ${common['viewport-xlarge'].min}px) and (${common['viewport-xlarge'].max}px)`,
+  '--viewport-xxlarge-only': `(min-width: ${common['viewport-xxlarge'].min}px)`,
+
+  // --viewport-xxsmall-up is omitted because it would include everything
+  '--viewport-xsmall-up': `(min-width: ${common['viewport-xsmall'].min}px)`,
+  '--viewport-small-up': `(min-width: ${common['viewport-small'].min}px)`,
+  '--viewport-medium-up': `(min-width: ${common['viewport-medium'].min}px)`,
+  '--viewport-large-up': `(min-width: ${common['viewport-large'].min}px)`,
+  '--viewport-xlarge-up': `(min-width: ${common['viewport-xlarge'].min}px)`,
+  '--viewport-xxlarge-up': `(min-width: ${common['viewport-xxlarge'].min}px)`,
+
+  '--viewport-xxsmall-down': `(max-width: ${common['viewport-xsmall'].max}px)`,
+  '--viewport-xsmall-down': `(max-width: ${common['viewport-xsmall'].max}px)`,
+  '--viewport-small-down': `(max-width: ${common['viewport-small'].max}px)`,
+  '--viewport-medium-down': `(max-width: ${common['viewport-medium'].max}px)`,
+  '--viewport-large-down': `(max-width: ${common['viewport-large'].max}px)`,
+  '--viewport-xlarge-down': `(max-width: ${common['viewport-xlarge'].max}px)`,
+  // --viewport-xxlarge-down is omitted because it would include everything
+})

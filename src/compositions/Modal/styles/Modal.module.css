@@ -1,4 +1,4 @@
-@import "../../../styles/common/mixins/addScrollbar.css";
+@import '../../../styles/common/mixins/addScrollbar.css';
 
 .modal {
   @mixin addScrollbar var(--modal-scrollbar-thumb-color);
@@ -82,6 +82,11 @@
   flex: none;
   margin-bottom: 4px;
   padding: 30px 36px 0;
+
+  @media (max-width: ${viewports.xsmall.max}px) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
 
 .modalBody {
@@ -91,6 +96,11 @@
 
   &:not(.modalBody--flush) {
     padding: 16px 36px;
+
+    @media (max-width: ${viewports.xsmall.max}px) {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
   }
 }
 
@@ -113,6 +123,11 @@
 .modalFooter {
   flex: none;
   padding: 20px 36px;
+
+  @media (--viewport-xsmall-down) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
 
 .modalFooter--bordered {

@@ -46,22 +46,38 @@
 
 .paper--narrowPage {
   padding: 20px 70px;
+
+  @media (--viewport-xsmall-down) {
+    padding: 20px 24px;
+  }
 }
 
 .paper--page {
   padding: 20px 40px;
+
+  @media (--viewport-xsmall-down) {
+    padding: 20px 24px;
+  }
 }
 
 .paper--panel {
-  padding: 40px;
-}
+  padding: 12px 40px;
 
-.paper--popover {
-  padding: 12px 20px;
+  @media (--viewport-xsmall-down) {
+    padding: 12px 24px;
+  }
 }
 
 .paper--banner {
   padding: 16px 40px;
+
+  @media (--viewport-xsmall-down) {
+    padding: 16px 24px;
+  }
+}
+
+.paper--popover {
+  padding: 12px 20px;
 }
 
 .paper--extreme {

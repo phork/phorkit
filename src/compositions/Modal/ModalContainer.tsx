@@ -21,7 +21,7 @@ export function ModalContainer({ children, className, onEscape }: ModalContainer
   );
 
   useEffect((): (() => void) => {
-    typeof window !== 'undefined' && window.addEventListener('keydown', onKeyDown);
+    typeof window !== 'undefined' && window.addEventListener('keydown', onKeyDown, { capture: true });
     return () => typeof window !== 'undefined' && window.removeEventListener('keydown', onKeyDown);
   }, [onKeyDown]);
 

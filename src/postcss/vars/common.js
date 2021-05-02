@@ -51,8 +51,19 @@ const layout = {
   'scrollbar-xsmall-offset': 0,
 };
 
+const viewports = {
+  'viewport-xxsmall': { max: 414 },
+  'viewport-xsmall': { min: 415, max: 575.999 },
+  'viewport-small': { min: 576, max: 768.999 },
+  'viewport-medium': { min: 769, max: 992.999 },
+  'viewport-large': { min: 993, max: 1200.999 },
+  'viewport-xlarge': { min: 1201, max: 1400.999 },
+  'viewport-xxlarge': { min: 1401 },
+};
+
 module.exports = {
   ...fontSizes,
   ...elementSizes,
   ...layout,
+  ...viewports,
 };

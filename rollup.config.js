@@ -195,6 +195,15 @@ const stylesConfigs = commonStylesModules.map(src => ({
         },
       },
     }),
+    copy({
+      targets: [
+        {
+          src: './src/postcss/vars/mediaRules.json',
+          dest: `${destination}/styles`,
+        },
+      ],
+      verbose: true,
+    }),
   ],
 }));
 

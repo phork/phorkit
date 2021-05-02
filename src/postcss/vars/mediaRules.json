@@ -1,0 +1,21 @@
+{
+  "--viewport-xxsmall-only": "(max-width: 414px)",
+  "--viewport-xsmall-only": "(min-width: 415px) and (575.999px)",
+  "--viewport-small-only": "(min-width: 576px) and (768.999px)",
+  "--viewport-medium-only": "(min-width: 769px) and (992.999px)",
+  "--viewport-large-only": "(min-width: 993px) and (1200.999px)",
+  "--viewport-xlarge-only": "(min-width: 1201px) and (1400.999px)",
+  "--viewport-xxlarge-only": "(min-width: 1401px)",
+  "--viewport-xsmall-up": "(min-width: 415px)",
+  "--viewport-small-up": "(min-width: 576px)",
+  "--viewport-medium-up": "(min-width: 769px)",
+  "--viewport-large-up": "(min-width: 993px)",
+  "--viewport-xlarge-up": "(min-width: 1201px)",
+  "--viewport-xxlarge-up": "(min-width: 1401px)",
+  "--viewport-xxsmall-down": "(max-width: 575.999px)",
+  "--viewport-xsmall-down": "(max-width: 575.999px)",
+  "--viewport-small-down": "(max-width: 768.999px)",
+  "--viewport-medium-down": "(max-width: 992.999px)",
+  "--viewport-large-down": "(max-width: 1200.999px)",
+  "--viewport-xlarge-down": "(max-width: 1400.999px)"
+}
