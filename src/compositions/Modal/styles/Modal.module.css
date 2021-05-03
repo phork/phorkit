@@ -83,7 +83,7 @@
   margin-bottom: 4px;
   padding: 30px 36px 0;
 
-  @media (max-width: ${viewports.xsmall.max}px) {
+  @media (--viewport-xsmall-down) {
     padding-left: 16px;
     padding-right: 16px;
   }
@@ -97,7 +97,7 @@
   &:not(.modalBody--flush) {
     padding: 16px 36px;
 
-    @media (max-width: ${viewports.xsmall.max}px) {
+    @media (--viewport-xsmall-down) {
       padding-left: 16px;
       padding-right: 16px;
     }
