@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.2.3](https://github.com/phork/phorkit/compare/v3.2.2...v3.2.3) (2021-05-03)
+
+### 🐛 Bug Fixes
+
+- fix button group full width ([704f2ce](https://github.com/phork/phorkit/commit/704f2ce))
+
 ## [3.2.2](https://github.com/phork/phorkit/compare/v3.2.1...v3.2.2) (2021-05-03)
 
 ### ♻ Code Refactoring
