@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.2.1](https://github.com/phork/phorkit/compare/v3.2.0...v3.2.1) (2021-05-03)
+
+### 🐛 Bug Fixes
+
+- omit css, sx from merge element props types ([d6f0ecc](https://github.com/phork/phorkit/commit/d6f0ecc))
+
 # [3.2.0](https://github.com/phork/phorkit/compare/v3.1.0...v3.2.0) (2021-05-02)
 
 ### ♻ Code Refactoring
