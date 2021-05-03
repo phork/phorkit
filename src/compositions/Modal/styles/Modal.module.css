@@ -84,8 +84,8 @@
   padding: 30px 36px 0;
 
   @media (--viewport-xsmall-down) {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 }
 
@@ -98,8 +98,8 @@
     padding: 16px 36px;
 
     @media (--viewport-xsmall-down) {
-      padding-left: 16px;
-      padding-right: 16px;
+      padding-left: 24px;
+      padding-right: 24px;
     }
   }
 }
@@ -125,8 +125,8 @@
   padding: 20px 36px;
 
   @media (--viewport-xsmall-down) {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 }
 
