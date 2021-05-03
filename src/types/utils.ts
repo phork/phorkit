@@ -1,14 +1,16 @@
 export type MergeProps<T extends object = {}, P extends object = {}> = Omit<T, keyof P> & P;
 
+// see https://github.com/microsoft/TypeScript/issues/36860 for css, sx removal notes
 export type MergeElementProps<T extends React.ElementType, P extends object = {}> = Omit<
   React.ComponentPropsWithRef<T>,
-  keyof P
+  keyof P | 'css' | 'sx'
 > &
   P;
 
+// see https://github.com/microsoft/TypeScript/issues/36860 for css, sx removal notes
 export type MergeElementPropsWithoutRef<T extends React.ElementType, P extends object = {}> = Omit<
   React.ComponentPropsWithoutRef<T>,
-  keyof P
+  keyof P | 'css' | 'sx'
 > &
   P;
 

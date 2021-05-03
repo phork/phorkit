@@ -5,13 +5,14 @@ export interface StyledLineLoaderProps extends Omit<LineLoaderProps, 'color'> {
   color: string;
 }
 
-export const StyledLineLoader = ({ color, ...props }: StyledLineLoaderProps) => {
+export const StyledLineLoader = ({ color, style, ...props }: StyledLineLoaderProps) => {
   return (
     <LineLoader
       {...props}
       style={
         {
           '--line-loader-color': color,
+          ...style,
         } as React.CSSProperties
       }
       unthemed

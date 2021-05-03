@@ -6,7 +6,7 @@ export interface StyledIconToastProps extends Omit<IconToastProps, 'level'> {
   levelInverseColor: string;
 }
 
-export const StyledIconToast = ({ levelColor, levelInverseColor, ...props }: StyledIconToastProps) => {
+export const StyledIconToast = ({ levelColor, levelInverseColor, style, ...props }: StyledIconToastProps) => {
   return (
     <IconToast
       {...props}
@@ -15,6 +15,7 @@ export const StyledIconToast = ({ levelColor, levelInverseColor, ...props }: Sty
         {
           '--toast-level-color': levelColor,
           '--toast-level-inverse-color': levelInverseColor,
+          ...style,
         } as React.CSSProperties
       }
     />
