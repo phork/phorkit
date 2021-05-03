@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.2.2](https://github.com/phork/phorkit/compare/v3.2.1...v3.2.2) (2021-05-03)
+
+### ♻ Code Refactoring
+
+- add side padding to xsmall modals ([f6cf2b7](https://github.com/phork/phorkit/commit/f6cf2b7))
+
+### 🐛 Bug Fixes
+
+- fix modal media queries ([8b40def](https://github.com/phork/phorkit/commit/8b40def))
+
 ## [3.2.1](https://github.com/phork/phorkit/compare/v3.2.0...v3.2.1) (2021-05-03)
 
 ### 🐛 Bug Fixes
