@@ -28,23 +28,21 @@ _Note that the links will cause the page to reload so the state will appear unch
 
 <Playground>
   <ThemeWrapper>
-    <Rhythm m={2}>
-      <Tag size="small" label="Read only tag" />
-      <Tag size="small" label="Button tag" onClick={() => console.log('button tag')} actionable />
-      <Tag size="small" label="Link tag" as="a" href="#tag" actionable />
-    </Rhythm>
-    <br />
-    <Rhythm m={2}>
-      <Tag size="medium" label="Read only tag" />
-      <Tag size="medium" label="Button tag" onClick={() => console.log('button tag')} actionable />
-      <Tag size="medium" label="Link tag" as="a" href="#tag" actionable />
-    </Rhythm>
-    <br />
-    <Rhythm m={2}>
-      <Tag size="large" label="Read only tag" />
-      <Tag size="large" label="Button tag" onClick={() => console.log('button tag')} actionable />
-      <Tag size="large" label="Link tag" as="a" href="#tag" actionable />
-    </Rhythm>
+    <Looper
+      list={['xxsmall', 'xsmall', 'small', 'medium', 'large']}
+      render={size => (
+        <React.Fragment>
+          <Rhythm m={2}>
+            <Tag size={size} label="Read only tag" />
+            <Tag size={size} label="Button tag" onClick={() => console.log('button tag')} actionable />
+            <Tag size={size} label="Link tag" as="a" href="#tag" actionable />
+            <Tag size={size} label="Transparent tag" variant="transparent" actionable />
+            <Tag size={size} label="Filled tag" variant="filled" actionable />
+          </Rhythm>
+          <br />
+        </React.Fragment>
+      )}
+    />
   </ThemeWrapper>
 </Playground>
 
@@ -54,23 +52,21 @@ _Note that the links will cause the page to reload so the state will appear unch
 
 <Playground>
   <ThemeWrapper>
-    <Rhythm m={2}>
-      <Tag size="small" shape="brick" label="Read only tag" />
-      <Tag size="small" shape="brick" label="Button tag" onClick={() => console.log('button tag')} actionable />
-      <Tag size="small" shape="brick" label="Link tag" as="a" href="#tag" actionable />
-    </Rhythm>
-    <br />
-    <Rhythm m={2}>
-      <Tag size="medium" shape="brick" label="Read only tag" />
-      <Tag size="medium" shape="brick" label="Button tag" onClick={() => console.log('button tag')} actionable />
-      <Tag size="medium" shape="brick" label="Link tag" as="a" href="#tag" actionable />
-    </Rhythm>
-    <br />
-    <Rhythm m={2}>
-      <Tag size="large" shape="brick" label="Read only tag" />
-      <Tag size="large" shape="brick" label="Button tag" onClick={() => console.log('button tag')} actionable />
-      <Tag size="large" shape="brick" label="Link tag" as="a" href="#tag" actionable />
-    </Rhythm>
+    <Looper
+      list={['xxsmall', 'xsmall', 'small', 'medium', 'large']}
+      render={size => (
+        <React.Fragment>
+          <Rhythm m={2}>
+            <Tag shape="brick" size={size} label="Read only tag" />
+            <Tag shape="brick" size={size} label="Button tag" onClick={() => console.log('button tag')} actionable />
+            <Tag shape="brick" size={size} label="Link tag" as="a" href="#tag" actionable />
+            <Tag shape="brick" size={size} label="Transparent tag" variant="transparent" actionable />
+            <Tag shape="brick" size={size} label="Filled tag" variant="filled" actionable />
+          </Rhythm>
+          <br />
+        </React.Fragment>
+      )}
+    />
   </ThemeWrapper>
 </Playground>
 
@@ -86,6 +82,8 @@ _Note that the links will cause the page to reload so the state will appear unch
       <Tag contrast label="Read only tag" />
       <Tag contrast label="Button tag" onClick={() => console.log('button tag')} actionable />
       <Tag contrast label="Link tag" as="a" href="#tag" actionable />
+      <Tag contrast label="Transparent tag" variant="transparent" actionable />
+      <Tag contrast label="Filled tag" variant="filled" actionable />
     </Rhythm>
   </ThemeWrapper>
 </Playground>
@@ -106,8 +104,15 @@ _Note that the links will cause the page to reload so the state will appear unch
                 render={({ id }) => (
                   <Rhythm key={`${shape}-${id}`} mb={1} mr={4}>
                     <TagGroup>
-                      <ColoredTag shape={shape} colorId={id} label={`Color tag ${id}`} actionable />
-                      <ColoredTag shape={shape} filled colorId={id} label={`Color tag ${id}`} actionable />
+                      <ColoredTag
+                        shape={shape}
+                        colorId={id}
+                        label={`Color tag ${id}`}
+                        variant="transparent"
+                        actionable
+                      />
+                      <ColoredTag shape={shape} colorId={id} label={`Color tag ${id}`} variant="shaded" actionable />
+                      <ColoredTag shape={shape} colorId={id} label={`Color tag ${id}`} variant="filled" actionable />
                     </TagGroup>
                   </Rhythm>
                 )}
@@ -225,7 +230,18 @@ _Note that the links will cause the page to reload so the state will appear unch
 ### Styled tag
 
 <Playground>
-  <StyledTag label="Hello world" textColor="#fff" backgroundColor="#556270" borderColor="#333" />
+  <Rhythm m={2}>
+    <StyledTag contrast label="Shaded tag" inverseColor="#fff" primaryColor="#556270" actionable />
+    <StyledTag
+      contrast
+      label="Transparent tag"
+      inverseColor="#fff"
+      primaryColor="#556270"
+      variant="transparent"
+      actionable
+    />
+    <StyledTag contrast label="Filled tag" inverseColor="#fff" primaryColor="#556270" variant="filled" actionable />
+  </Rhythm>
 </Playground>
 
 ## \[props\]

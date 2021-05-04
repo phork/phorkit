@@ -88,10 +88,6 @@
       &:after {
         box-shadow: 0 0 0 4px var(--button-primary-color);
       }
-
-      &:before {
-        background-color: var(--button-primary-color);
-      }
     }
 
     &:hover,
@@ -163,10 +159,6 @@
     &.is-focused {
       &:after {
         box-shadow: 0 0 0 3px var(--button-primary-color);
-      }
-
-      &:before {
-        opacity: 0.1;
       }
     }
 

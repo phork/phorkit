@@ -2,18 +2,16 @@ import styled from '@emotion/styled';
 import { Tag, TagProps } from './Tag';
 
 export interface StyledTagProps extends TagProps {
-  backgroundColor: string;
-  borderColor: string;
-  textColor: string;
+  primaryColor: string;
+  inverseColor: string;
 }
 
 // @ts-ignore [TODO:ts] WTF
 export const StyledTag = styled(Tag, {
-  shouldForwardProp: (prop: string) => !['backgroundColor', 'borderColor', 'textColor', 'themeId'].includes(prop),
+  shouldForwardProp: (prop: string) => !['primaryColor', 'inverseColor', 'themeId'].includes(prop),
 })<StyledTagProps>`
-  ${({ backgroundColor }) => backgroundColor && `--tag-background-color: ${backgroundColor};`}
-  ${({ borderColor }) => borderColor && `--tag-border-color: ${borderColor};`}
-  ${({ textColor }) => textColor && `--tag-text-color: ${textColor};`}
+  ${({ primaryColor }) => primaryColor && `--tag-primary-color: ${primaryColor};`}
+  ${({ inverseColor }) => inverseColor && `--tag-inverse-color: ${inverseColor};`}
 `;
 
 StyledTag.displayName = 'StyledTag';

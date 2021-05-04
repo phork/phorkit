@@ -6,7 +6,8 @@ import styles from './styles/Tags.module.css';
 
 export type TagElementType = Extract<keyof JSX.IntrinsicElements, 'button' | 'a' | 'div' | 'span'>;
 export type TagShape = 'pill' | 'brick';
-export type TagSize = 'small' | 'medium' | 'large';
+export type TagSize = 'xxsmall' | 'xsmall' | 'small' | 'medium' | 'large';
+export type TagVariant = 'transparent' | 'shaded' | 'filled';
 
 export interface LocalTagProps extends ThemeProps {
   actionable?: boolean;
@@ -15,6 +16,7 @@ export interface LocalTagProps extends ThemeProps {
   label: React.ReactNode;
   shape?: TagShape;
   size?: TagSize;
+  variant?: TagVariant;
 }
 
 export type TagProps<T extends TagElementType = 'div'> = AsReactType<T> & MergeElementProps<T, LocalTagProps>;
@@ -30,6 +32,7 @@ export function TagBase<T extends TagElementType = 'div'>(
     shape = 'pill',
     size = 'small',
     themeId: initThemeId,
+    variant = 'shaded',
     unthemed,
     ...props
   }: TagProps<T>,
@@ -50,6 +53,7 @@ export function TagBase<T extends TagElementType = 'div'>(
         actionable && styles['tag--actionable'],
         flush && styles['tag--flush'],
         themeId && !unthemed && styles[`tag--${themeId}`],
+        variant && styles[`tag--${variant}`],
         className,
       ),
       ref: forwardedRef,

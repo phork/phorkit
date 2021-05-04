@@ -8,7 +8,7 @@ import { Flex } from '../../components/Flex';
 import { IconText } from '../../components/IconText';
 import { Rhythm } from '../../components/Rhythm/Rhythm';
 import { Tag, TagGroup, TagSize } from '../../components/Tags';
-import { Typography, TypographyWithSvg } from '../../components/Typography';
+import { TypographyWithSvg } from '../../components/Typography';
 import { Dropdown, DropdownProps } from './Dropdown';
 import { DropdownContent } from './DropdownContent';
 
@@ -36,7 +36,7 @@ export function DropdownWithTags({
   onSelect,
   options,
   readOnlyValue,
-  tagSize,
+  tagSize = 'xsmall',
   themeId: initThemeId,
   translations: customTranslations,
   ...props
@@ -109,11 +109,7 @@ export function DropdownWithTags({
                       <TimesIcon scale="xsmall" />
                     </TypographyWithSvg>
                   }
-                  text={
-                    <Rhythm mr={2}>
-                      <Typography size="m">{label}</Typography>
-                    </Rhythm>
-                  }
+                  text={<Rhythm mr={2}>{label}</Rhythm>}
                   reverse
                 />
               }

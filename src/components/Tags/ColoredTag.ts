@@ -7,24 +7,15 @@ import { Tag, TagProps } from './Tag';
 
 export interface ColoredTagProps extends TagProps {
   colorId: ThemeColorIds;
-  filled?: boolean;
   themeId: Theme;
 }
 
 // @ts-ignore [TODO:ts] WTF, and revisit casting
 const StyledTag = styled(Tag, {
-  shouldForwardProp: (prop: string) => !['colorId', 'filled', 'themeId'].includes(prop),
+  shouldForwardProp: (prop: string) => !['colorId', 'themeId'].includes(prop),
 })<ColoredTagProps>`
-  --tag-background-color: ${props =>
-    themes[props.themeId][`color-${props.colorId}${!props.filled ? '-contrast' : ''}` as keyof ThemeColors]};
-  --tag-border-color: ${props => themes[props.themeId][`color-${props.colorId}` as keyof ThemeColors]};
-  --tag-text-color: ${props =>
-    themes[props.themeId][`color-${props.colorId}${props.filled ? '-contrast' : ''}` as keyof ThemeColors]};
-  --tag-hovered-background-color: ${props =>
-    themes[props.themeId][`color-${props.colorId}${props.filled ? '-contrast' : ''}` as keyof ThemeColors]};
-  --tag-hovered-border-color: ${props => themes[props.themeId][`color-${props.colorId}` as keyof ThemeColors]};
-  --tag-hovered-text-color: ${props =>
-    themes[props.themeId][`color-${props.colorId}${!props.filled ? '-contrast' : ''}` as keyof ThemeColors]};
+  --tag-primary-color: ${props => themes[props.themeId][`color-${props.colorId}` as keyof ThemeColors]};
+  --tag-inverse-color: ${props => themes[props.themeId][`color-${props.colorId}-contrast` as keyof ThemeColors]};
 `;
 
 export const ColoredTag = React.memo<ColoredTagProps>(withTheme(StyledTag));

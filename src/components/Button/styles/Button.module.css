@@ -33,6 +33,7 @@ button.button {
  *
  * 1. Put all button transitions here so shared classes
  *    don't overwrite transitions.
+ *
  * 2. Don't steal the event target away from the button.
  */
 .button {
