@@ -157,15 +157,15 @@ input.toggleInput {
 .toggle:hover {
   .toggleInputContainerFocusRing {
     &:before {
-      box-shadow: var(--toggle-unchecked-hover-box-shadow);
+      box-shadow: var(--toggle-unchecked-hovered-box-shadow);
     }
   }
 
   &.is-checked {
     .toggleInputContainerFocusRing {
       &:before {
-        box-shadow: var(--toggle-checked-hover-box-shadow);
-        opacity: var(--toggle-checked-hover-opacity, 0.2);
+        box-shadow: var(--toggle-checked-hovered-box-shadow);
+        opacity: var(--toggle-checked-hovered-opacity, 0.2);
       }
     }
   }
@@ -187,9 +187,9 @@ input.toggleInput {
     --toggle-button-background-color: $light-color-BG05;
     --toggle-checked-background-color: $light-primary-palette-accent-color;
     --toggle-checked-button-background-color: $light-color-BG05;
-    --toggle-checked-hover-box-shadow: 0 0 0 4px $light-color-accent-primary;
+    --toggle-checked-hovered-box-shadow: 0 0 0 4px $light-color-accent-primary;
     --toggle-checked-focused-box-shadow: 0 0 0 1px $light-color-accent-primary;
-    --toggle-unchecked-hover-box-shadow: 0 0 0 4px $light-color-FG0-O40;
+    --toggle-unchecked-hovered-box-shadow: 0 0 0 4px $light-color-FG0-O40;
     --toggle-unchecked-focused-box-shadow: 0 0 0 1px $light-color-FG0-O40;
   }
 
@@ -198,12 +198,12 @@ input.toggleInput {
     --toggle-button-background-color: $dark-color-FG30;
     --toggle-checked-background-color: $dark-primary-palette-accent-color;
     --toggle-checked-button-background-color: $dark-color-FG0;
-    --toggle-checked-hover-box-shadow: 0 0 0 4px $dark-color-accent-primary;
+    --toggle-checked-hovered-box-shadow: 0 0 0 4px $dark-color-accent-primary;
     --toggle-checked-focused-box-shadow: 0 0 0 1px $dark-color-accent-primary;
-    --toggle-unchecked-hover-box-shadow: 0 0 0 4px $dark-color-FG0-O40;
+    --toggle-unchecked-hovered-box-shadow: 0 0 0 4px $dark-color-FG0-O40;
     --toggle-unchecked-focused-box-shadow: 0 0 0 1px $dark-color-FG0-O40;
 
-    --toggle-checked-hover-opacity: 0.3;
+    --toggle-checked-hovered-opacity: 0.3;
   }
 }
 
@@ -213,9 +213,9 @@ input.toggleInput {
     --toggle-button-background-color: $theme-contrast-palette-quieter-color;
     --toggle-checked-background-color: $theme-contrast-palette-quietest-color;
     --toggle-checked-button-background-color: $theme-contrast-palette-accent-color;
-    --toggle-checked-hover-box-shadow: 0 0 0 4px $theme-contrast-palette-accent-color;
+    --toggle-checked-hovered-box-shadow: 0 0 0 4px $theme-contrast-palette-accent-color;
     --toggle-checked-focused-box-shadow: 0 0 0 1px $theme-contrast-palette-accent-color;
-    --toggle-unchecked-hover-box-shadow: 0 0 0 4px $theme-contrast-palette-quietest-color;
+    --toggle-unchecked-hovered-box-shadow: 0 0 0 4px $theme-contrast-palette-quietest-color;
     --toggle-unchecked-focused-box-shadow: 0 0 0 1px $theme-contrast-palette-quietest-color;
   }
 }

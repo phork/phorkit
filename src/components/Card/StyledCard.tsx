@@ -3,14 +3,14 @@ import { Card, CardProps } from './Card';
 
 export interface StyledCardProps extends CardProps {
   borderColor: string;
-  hoverBorderColor: string;
+  hoveredBorderColor: string;
 }
 
 export const StyledCard = styled(Card, {
-  shouldForwardProp: (prop: string) => !['borderColor', 'hoverBorderColor', 'themeId'].includes(prop),
+  shouldForwardProp: (prop: string) => !['borderColor', 'hoveredBorderColor', 'themeId'].includes(prop),
 })<StyledCardProps>`
   ${({ borderColor }) => borderColor && `--card-border-color: ${borderColor};`}
-  ${({ hoverBorderColor }) => hoverBorderColor && `--card-hover-border-color: ${hoverBorderColor};`}
+  ${({ hoveredBorderColor }) => hoveredBorderColor && `--card-hovered-border-color: ${hoveredBorderColor};`}
 `;
 
 StyledCard.displayName = 'StyledCard';

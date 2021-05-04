@@ -6,7 +6,7 @@ import { getBackgroundColors, getForegroundColors, getPrimaryColors, getTranspar
 import { Color, ColorSwatchGroup, ColorSwatchGroupProps } from './ColorSwatchGroup';
 
 const ColorGrid = styled('div')<{ direction: 'row' | 'column' }>`
-  display: flex;
+  display: inline-flex;
   flex-direction: ${({ direction }) => direction};
   flex-wrap: wrap;
 `;

@@ -95,6 +95,34 @@ import { FormDemo } from './helpers/FormDemo';
               <Rhythm my={2}>
                 <Textbox
                   contrast={contrast}
+                  id="demo-success"
+                  label="Successful"
+                  name="success"
+                  onChange={onChange}
+                  persistEvents={persistEvents}
+                  transitional
+                  validity="success"
+                  value={values.success}
+                  variant={variant}
+                />
+              </Rhythm>
+              <Rhythm my={2}>
+                <Textbox
+                  contrast={contrast}
+                  id="demo-warning"
+                  label="Warningish"
+                  name="warning"
+                  onChange={onChange}
+                  persistEvents={persistEvents}
+                  transitional
+                  validity="warning"
+                  value={values.warning}
+                  variant={variant}
+                />
+              </Rhythm>
+              <Rhythm my={2}>
+                <Textbox
+                  contrast={contrast}
                   id="demo-danger"
                   label="Dangerous"
                   name="danger"

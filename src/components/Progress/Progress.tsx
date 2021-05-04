@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { SemanticColor, ThemeProps } from '../../types';
+import { Orientation, SemanticColor, ThemeProps } from '../../types';
 import { useThemeId } from '../../hooks/useThemeId';
 import styles from './styles/Progress.module.css';
 
@@ -21,22 +21,25 @@ export interface ProgressProps extends React.HTMLAttributes<HTMLDivElement>, The
   quiet?: boolean;
   size?: 'small' | 'medium' | 'large';
   spaced?: boolean;
+  orientation: Orientation;
 }
 
 export function Progress({
   animated,
   children,
   className,
+  color,
   contrast,
   data,
   floating,
-  quiet,
-  pill,
+  orientation = 'horizontal',
   percent = 0,
+  pill,
+  quiet,
   size = 'medium',
   spaced,
   themeId: initThemeId,
-  color,
+  unthemed,
   ...props
 }: ProgressProps): React.ReactElement<ProgressProps, 'div'> {
   const themeId = useThemeId(initThemeId);
@@ -48,14 +51,15 @@ export function Progress({
         key={color}
         className={cx(
           styles.progressSegment,
+          styles[`progressSegment--${orientation}`],
           animated && styles['progressSegment--animated'],
-          color && styles[`progressSegment--${color}`],
+          themeId && !unthemed && styles[`progressSegment--${themeId}`],
+          color && !unthemed && styles[`progressSegment--${color}`],
           contrast && styles['progressSegment--contrast'],
-          themeId && styles[`progressSegment--${themeId}`],
         )}
         style={{
-          marginRight: withSpace ? '1px' : undefined,
-          width: withSpace ? `calc(${percent}% - 1px)` : `${percent}%`,
+          [orientation === 'vertical' ? 'marginBottom' : 'marginRight']: withSpace ? '1px' : undefined,
+          [orientation === 'vertical' ? 'height' : 'width']: withSpace ? `calc(${percent}% - 1px)` : `${percent}%`,
         }}
       />
     );
@@ -65,13 +69,14 @@ export function Progress({
     <div
       className={cx(
         styles.progress,
+        styles[`progress--${orientation}`],
         contrast && styles['progress--contrast'],
         floating && styles['progress--floating'],
         pill && styles['progress--pill'],
         quiet && styles['progress--quiet'],
         size && styles[`progress--${size}`],
-        themeId && styles[`progress--${themeId}`],
-        color && styles[`progress--${color}`],
+        themeId && !unthemed && styles[`progress--${themeId}`],
+        color && !unthemed && styles[`progress--${color}`],
         className,
       )}
       {...props}

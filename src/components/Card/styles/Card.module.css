@@ -11,7 +11,7 @@
   &.card--hoverable {
     &:hover,
     .is-hovered {
-      border-color: var(--card-hover-border-color);
+      border-color: var(--card-hovered-border-color);
     }
   }
 
@@ -20,7 +20,7 @@
   }
 
   @mixin themed .card {
-    --card-hover-border-color: $theme-primary-palette-quieter-color;
+    --card-hovered-border-color: $theme-primary-palette-quieter-color;
     --card-border-color: $theme-primary-palette-border-color;
   }
 

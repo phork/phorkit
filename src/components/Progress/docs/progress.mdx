@@ -5,10 +5,11 @@ route: /components/Progress
 ---
 
 import { Playground, Props } from 'docz';
+import { Flex } from 'components/Flex';
 import { Rhythm } from 'components/Rhythm';
-import { Progress, StyledProgress } from '../index';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { Progress, StyledProgress } from '../index';
 
 <PageTitle title="Progress" src="components/Progress" />
 
@@ -23,13 +24,24 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 
     <Rhythm grouped py={2}>
       <h3>Medium bar</h3>
-      <Progress color="primary" percent={80} />
+      <Progress color="primary" size="medium" percent={80} />
+    </Rhythm>
+
+    <Rhythm grouped py={2}>
+      <h3>Large bar</h3>
+      <Progress color="primary" size="large" percent={80} />
     </Rhythm>
 
     <Rhythm grouped py={2}>
       <h3>Floating bar</h3>
-      <Progress floating color="primary" percent={80} />
+      <Progress color="primary" size="medium" percent={80} floating />
     </Rhythm>
+
+    <Rhythm grouped py={2}>
+      <h3>Animated bar</h3>
+      <Progress color="primary" size="large" percent={80} animated />
+    </Rhythm>
+
   </ThemeWrapper>
 </Playground>
 
@@ -38,19 +50,45 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 <Playground>
   <ThemeWrapper>
     <Rhythm grouped py={2}>
+      <h3>Small bar</h3>
+      <Progress color="primary" size="small" percent={80} pill />
+    </Rhythm>
+
+    <Rhythm grouped py={2}>
       <h3>Medium bar</h3>
-      <Progress pill color="primary" percent={80} />
+      <Progress color="primary" size="medium" percent={80} pill />
     </Rhythm>
 
     <Rhythm grouped py={2}>
       <h3>Large bar</h3>
-      <Progress pill color="primary" size="large" percent={80} />
+      <Progress color="primary" size="large" percent={80} pill />
     </Rhythm>
 
     <Rhythm grouped py={2}>
-      <h3>Large animated bar</h3>
-      <Progress animated pill color="primary" size="large" percent={80} />
+      <h3>Floating bar</h3>
+      <Progress color="primary" size="medium" percent={80} pill floating />
     </Rhythm>
+
+    <Rhythm grouped py={2}>
+      <h3>Animated bar</h3>
+      <Progress color="primary" size="large" percent={80} pill animated />
+    </Rhythm>
+
+  </ThemeWrapper>
+</Playground>
+
+### Vertical progress bars
+
+<Playground>
+  <ThemeWrapper>
+    <Flex direction="row">
+      <Rhythm mx={2} style={{ height: 120 }}>
+        <Progress color="primary" size="small" percent={80} orientation="vertical" pill />
+        <Progress color="primary" size="medium" percent={80} orientation="vertical" pill />
+        <Progress color="primary" size="large" percent={80} orientation="vertical" pill />
+        <Progress color="primary" size="medium" percent={80} orientation="vertical" pill floating />
+      </Rhythm>
+    </Flex>
   </ThemeWrapper>
 </Playground>
 
@@ -77,6 +115,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
         { color: 'success', percent: 40 },
       ]} />
     </Rhythm>
+
   </ThemeWrapper>
 </Playground>
 
@@ -105,6 +144,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
       <h3>Primary</h3>
       <Progress color="primary" percent={20} />
     </Rhythm>
+
   </ThemeWrapper>
 </Playground>
 
@@ -113,24 +153,30 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 <Playground>
   <ThemeWrapper contrast>
     <Rhythm grouped py={2}>
-      <h3>Success</h3>
-      <Progress contrast color="success" percent={60} />
+      <h3>Small bar</h3>
+      <Progress contrast color="primary" size="small" percent={80} pill />
     </Rhythm>
 
     <Rhythm grouped py={2}>
-      <h3>Warning</h3>
-      <Progress contrast color="warning" percent={40} />
+      <h3>Medium bar</h3>
+      <Progress contrast color="primary" size="medium" percent={80} pill />
     </Rhythm>
 
     <Rhythm grouped py={2}>
-      <h3>Danger</h3>
-      <Progress contrast color="danger" percent={20} />
+      <h3>Large bar</h3>
+      <Progress contrast color="primary" size="large" percent={80} pill />
     </Rhythm>
 
     <Rhythm grouped py={2}>
-      <h3>Regular</h3>
-      <Progress contrast percent={20} />
+      <h3>Floating bar</h3>
+      <Progress contrast color="primary" size="medium" percent={80} pill floating />
     </Rhythm>
+
+    <Rhythm grouped py={2}>
+      <h3>Animated bar</h3>
+      <Progress contrast color="primary" size="large" percent={80} pill animated />
+    </Rhythm>
+
   </ThemeWrapper>
 </Playground>
 

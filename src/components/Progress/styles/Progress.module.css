@@ -1,11 +1,21 @@
 .progress {
   background-color: var(--progress-background-color);
   display: flex;
-  flex-direction: row;
   flex: none;
-  height: var(--progress-height);
   overflow: hidden;
+}
+
+.progress--horizontal {
+  flex-direction: row;
+  height: var(--progress-thickness);
   width: 100%;
+}
+
+.progress--vertical {
+  justify-content: flex-end;
+  flex-direction: column;
+  height: 100%;
+  width: var(--progress-thickness);
 }
 
 .progress--primary,
@@ -24,27 +34,34 @@
 }
 
 .progress--quiet {
-  opacity: .3;
+  opacity: 0.3;
 }
 
 .progress--small {
-  --progress-height: 1px;
+  --progress-thickness: 1px;
 }
 
 .progress--medium {
-  --progress-height: 4px;
+  --progress-thickness: 4px;
 }
 
 .progress--large {
-  --progress-height: 8px;
+  --progress-thickness: 8px;
 }
 
 .progress--pill {
-  border-radius: var(--progress-height);
+  border-radius: var(--progress-thickness);
 
   .progressSegment:last-child {
-    border-top-right-radius: var(--progress-height);
-    border-bottom-right-radius: var(--progress-height);
+    &.progressSegment--horizontal {
+      border-top-right-radius: var(--progress-thickness);
+      border-bottom-right-radius: var(--progress-thickness);
+    }
+
+    &.progressSegment--vertical {
+      border-top-left-radius: var(--progress-thickness);
+      border-top-right-radius: var(--progress-thickness);
+    }
   }
 }
 
@@ -62,9 +79,18 @@
   background: var(--progress-segment-color); /* [1] */
   display: block;
   flex: none;
-  height: 100%;
-  transition: width 200ms ease, background-color 200ms ease;
-  width: 0;
+  transition: width var(--progress-transition-time, 200ms) ease, height var(--progress-transition-time, 200ms) ease,
+    background-color 200ms ease;
+
+  &.progressSegment--horizontal {
+    height: 100%;
+    width: 0;
+  }
+
+  &.progressSegment--vertical {
+    height: 0;
+    width: 100%;
+  }
 }
 
 .progressSegment--primary {
@@ -103,15 +129,20 @@
   }
 }
 
-@keyframes progressSegmentBackground {
-  0% { background-position: left; }
-  50% { background-position: right; }
+@keyframes progressSegmentBackgroundHorizontal {
+  0% {
+    background-position: left;
+  }
+  50% {
+    background-position: right;
+  }
 }
 
 .progressSegment--animated {
-  animation: progressSegmentBackground 100s infinite;
+  background-size: 1rem 1rem;
   background-image: linear-gradient(
-    45deg, var(--progress-segment-animation-color) 25%,
+    135deg,
+    var(--progress-segment-animation-color) 25%,
     transparent 25%,
     transparent 50%,
     var(--progress-segment-animation-color) 50%,
@@ -119,13 +150,18 @@
     transparent 75%,
     transparent
   );
-  background-size: 1rem 1rem;
 
-  &.progressSegment--light {
-    --progress-segment-animation-color: rgba(255, 255, 255, .15);
+  &.progressSegment--horizontal {
+    animation: progressSegmentBackgroundHorizontal 200s infinite;
   }
 
-  &.progressSegment--dark {
-    --progress-segment-animation-color: rgba(0, 0, 0, .1);
+  &.progressSegment--light,
+  &.progressSegment--dark.progressSegment--contrast {
+    --progress-segment-animation-color: rgba(255, 255, 255, 0.15);
+  }
+
+  &.progressSegment--dark,
+  &.progressSegment--light.progressSegment--contrast {
+    --progress-segment-animation-color: rgba(0, 0, 0, 0.1);
   }
 }

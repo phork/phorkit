@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import { Progress, ProgressProps } from './Progress';
 
 export interface StyledProgressProps extends Omit<ProgressProps, 'color'> {
-  backgroundColor: string;
-  segmentAnimationColor: string;
+  backgroundColor?: string;
+  segmentAnimationColor?: string;
   segmentColor: string;
 }
 
@@ -17,3 +17,7 @@ export const StyledProgress = styled(Progress, {
 `;
 
 StyledProgress.displayName = 'StyledProgress';
+
+StyledProgress.defaultProps = {
+  unthemed: true,
+};

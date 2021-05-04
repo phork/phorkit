@@ -71,14 +71,42 @@ button.button {
   }
 }
 
+/* Button weights (these should go before other defs) */
+
+.button--filled {
+  @mixin createFilledButton;
+}
+
+.button--outline {
+  @mixin createOutlineButton;
+}
+
+.button--text {
+  @mixin createTextButton;
+}
+
+.button--inline {
+  @mixin createInlineButton;
+}
+
 /* Button shapes */
 
 .button--pill {
   border-radius: 20px;
 }
 
+/**
+ * 1. Override the inherited border radius from
+ *    the mixin. This must be defined after the
+ *    mixin has been called.
+ */
 .button--brick {
   border-radius: $border-radius-m;
+
+  &:before,
+  &:after {
+    border-radius: 1px; /* [1] */
+  }
 }
 
 /* Button sizes */
@@ -169,24 +197,6 @@ button.button {
   }
 }
 
-/* Button weights */
-
-.button--filled {
-  @mixin createFilledButton;
-}
-
-.button--outline {
-  @mixin createOutlineButton;
-}
-
-.button--text {
-  @mixin createTextButton;
-}
-
-.button--inline {
-  @mixin createInlineButton;
-}
-
 /* Icon buttons */
 
 .button--icon {
@@ -262,7 +272,7 @@ button.button {
   @mixin themed .button {
     --button-primary-color: $theme-color-success;
     --button-inverse-color: $theme-color-success-contrast;
-    --button-hover-primary-color: $theme-color-success-L10;
+    --button-hovered-primary-color: $theme-color-success-L10;
     --button-active-primary-color: $theme-color-success-D10;
   }
 }
@@ -271,7 +281,7 @@ button.button {
   @mixin themed .button {
     --button-primary-color: $theme-color-warning;
     --button-inverse-color: $theme-color-warning-contrast;
-    --button-hover-primary-color: $theme-color-warning-L10;
+    --button-hovered-primary-color: $theme-color-warning-L10;
     --button-active-primary-color: $theme-color-warning-D10;
   }
 }
@@ -280,7 +290,7 @@ button.button {
   @mixin themed .button {
     --button-primary-color: $theme-color-danger;
     --button-inverse-color: $theme-color-danger-contrast;
-    --button-hover-primary-color: $theme-color-danger-L10;
+    --button-hovered-primary-color: $theme-color-danger-L10;
     --button-active-primary-color: $theme-color-danger-D10;
   }
 }
@@ -289,7 +299,7 @@ button.button {
   @mixin themed .button {
     --button-primary-color: $theme-color-accent-primary;
     --button-inverse-color: $theme-color-accent-primary-contrast;
-    --button-hover-primary-color: $theme-color-accent-primary-L10;
+    --button-hovered-primary-color: $theme-color-accent-primary-L10;
     --button-active-primary-color: $theme-color-accent-primary-D10;
   }
 }
@@ -298,7 +308,7 @@ button.button {
   @mixin themed .button {
     --button-primary-color: $theme-contrast-palette-text-color;
     --button-inverse-color: var(--contrast-color, $theme-contrast-palette-background-color);
-    --button-hover-primary-color: $theme-contrast-palette-quiet-color;
+    --button-hovered-primary-color: $theme-contrast-palette-quiet-color;
     --button-active-primary-color: $theme-contrast-palette-text-color;
   }
 }
@@ -308,7 +318,7 @@ button.button {
   @mixin themed .button {
     --button-primary-color: $theme-color-neutral;
     --button-inverse-color: $theme-color-neutral-contrast;
-    --button-hover-primary-color: $theme-color-neutral-L10;
+    --button-hovered-primary-color: $theme-color-neutral-L10;
     --button-active-primary-color: $theme-color-neutral-D10;
   }
 }
@@ -328,14 +338,14 @@ button.button {
 .button--white {
   --button-primary-color: #fff;
   --button-inverse-color: #000;
-  --button-hover-primary-color: rgba(255, 255, 255, 0.8);
+  --button-hovered-primary-color: rgba(255, 255, 255, 0.8);
   --button-active-primary-color: rgba(255, 255, 255, 0.6);
 }
 
 .button--black {
   --button-primary-color: #000;
   --button-inverse-color: #fff;
-  --button-hover-primary-color: rgba(0, 0, 0, 0.8);
+  --button-hovered-primary-color: rgba(0, 0, 0, 0.8);
   --button-active-primary-color: rgba(0, 0, 0, 0.7);
 }
 

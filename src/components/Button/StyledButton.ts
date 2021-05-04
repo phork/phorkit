@@ -7,7 +7,7 @@ export type StyledButtonProps<T extends ButtonElementType = 'button'> = MergePro
   {
     primaryColor?: string;
     inverseColor?: string;
-    hoverPrimaryColor?: string;
+    hoveredPrimaryColor?: string;
     activePrimaryColor?: string;
     width: number | string;
   }
@@ -16,11 +16,11 @@ export type StyledButtonProps<T extends ButtonElementType = 'button'> = MergePro
 // @ts-ignore [TODO:ts] WTF
 export const StyledButton = styled(Button, {
   shouldForwardProp: (prop: string) =>
-    !['primaryColor', 'inverseColor', 'hoverPrimaryColor', 'activePrimaryColor', 'width'].includes(prop),
+    !['primaryColor', 'inverseColor', 'hoveredPrimaryColor', 'activePrimaryColor', 'width'].includes(prop),
 })<StyledButtonProps>`
   ${({ primaryColor }) => primaryColor && `--button-primary-color: ${primaryColor};`}
   ${({ inverseColor }) => inverseColor && `--button-inverse-color: ${inverseColor};`}
-  ${({ hoverPrimaryColor }) => hoverPrimaryColor && `--button-hover-primary-color: ${hoverPrimaryColor};`}
+  ${({ hoveredPrimaryColor }) => hoveredPrimaryColor && `--button-hovered-primary-color: ${hoveredPrimaryColor};`}
   ${({ activePrimaryColor }) => activePrimaryColor && `--button-active-primary-color: ${activePrimaryColor};`}
   ${({ width }) => width !== undefined && `width: ${Number.isNaN(width) ? width : `${width}px`};`}
 `;

@@ -20,10 +20,10 @@ const StyledTag = styled(Tag, {
   --tag-border-color: ${props => themes[props.themeId][`color-${props.colorId}` as keyof ThemeColors]};
   --tag-text-color: ${props =>
     themes[props.themeId][`color-${props.colorId}${props.filled ? '-contrast' : ''}` as keyof ThemeColors]};
-  --tag-hover-background-color: ${props =>
+  --tag-hovered-background-color: ${props =>
     themes[props.themeId][`color-${props.colorId}${props.filled ? '-contrast' : ''}` as keyof ThemeColors]};
-  --tag-hover-border-color: ${props => themes[props.themeId][`color-${props.colorId}` as keyof ThemeColors]};
-  --tag-hover-text-color: ${props =>
+  --tag-hovered-border-color: ${props => themes[props.themeId][`color-${props.colorId}` as keyof ThemeColors]};
+  --tag-hovered-text-color: ${props =>
     themes[props.themeId][`color-${props.colorId}${!props.filled ? '-contrast' : ''}` as keyof ThemeColors]};
 `;
 

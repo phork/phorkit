@@ -2,6 +2,9 @@
  * 1. Put a border on the filled button so it can
  *    share all size and padding with the outline
  *    button.
+ *
+ * 2. Try to make the specificity as low as possible
+ *    so it's easier to override without !important.
  */
 @define-mixin createFilledButton {
   background-color: var(--button-primary-color);
@@ -9,20 +12,20 @@
   color: var(--button-inverse-color);
   position: relative;
 
-  &:not(:disabled):not(.is-disabled) {
-    &:after {
-      border-radius: inherit;
-      box-shadow: 0 0 0 0 var(--button-primary-color);
-      content: '';
-      height: 100%;
-      left: 0;
-      opacity: 0.3;
-      position: absolute;
-      top: 0;
-      transition: box-shadow 100ms ease;
-      width: 100%;
-    }
+  &:after /*[2]*/ {
+    border-radius: inherit;
+    box-shadow: 0 0 0 0 transparent;
+    content: '';
+    height: 100%;
+    left: 0;
+    opacity: 0.3;
+    position: absolute;
+    top: 0;
+    transition: box-shadow 100ms ease;
+    width: 100%;
+  }
 
+  &:not(:disabled):not(.is-disabled) {
     &:focus,
     &.is-focused {
       &:after {
@@ -32,8 +35,8 @@
 
     &:hover,
     &.is-hovered {
-      background-color: var(--button-hover-primary-color);
-      border-color: var(--button-hover-primary-color);
+      background-color: var(--button-hovered-primary-color);
+      border-color: var(--button-hovered-primary-color);
     }
 
     &:active,
@@ -44,38 +47,42 @@
   }
 }
 
+/**
+ * 1. Try to make the specificity as low as possible
+ *    so it's easier to override without !important.
+ */
 @define-mixin createOutlineButton {
   border: 1px solid var(--button-primary-color);
   color: var(--button-primary-color);
   position: relative;
 
+  &:after /* [1] */ {
+    border-radius: inherit;
+    box-shadow: 0 0 0 0 transparent;
+    content: '';
+    height: 100%;
+    opacity: 0.3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: box-shadow 100ms ease;
+    width: 100%;
+  }
+
+  &:before /* [2] */ {
+    background-color: transparent;
+    border-radius: inherit;
+    content: '';
+    height: 100%;
+    opacity: 0.1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: box-shadow 100ms ease;
+    width: 100%;
+  }
+
   &:not(:disabled):not(.is-disabled) {
-    &:after {
-      border-radius: inherit;
-      box-shadow: 0 0 0 0 transparent;
-      content: '';
-      height: 100%;
-      opacity: 0.3;
-      position: absolute;
-      top: 0;
-      left: 0;
-      transition: box-shadow 100ms ease;
-      width: 100%;
-    }
-
-    &:before {
-      background-color: transparent;
-      border-radius: inherit;
-      content: '';
-      height: 100%;
-      opacity: 0.1;
-      position: absolute;
-      top: 0;
-      left: 0;
-      transition: box-shadow 100ms ease;
-      width: 100%;
-    }
-
     &:focus,
     &.is-focused {
       &:after {
@@ -89,8 +96,8 @@
 
     &:hover,
     &.is-hovered {
-      border-color: var(--button-hover-primary-color);
-      color: var(--button-hover-primary-color);
+      border-color: var(--button-hovered-primary-color);
+      color: var(--button-hovered-primary-color);
 
       &:before {
         background-color: var(--button-primary-color);
@@ -113,7 +120,10 @@
  *    share all size and padding with the outline
  *    button.
  *
- * 2. Set the hover background to overflow the
+ * 2. Try to make the specificity as low as possible
+ *    so it's easier to override without !important.
+ *
+ * 3. Set the hover background to overflow the
  *    transparent border so that the button looks
  *    like it's the same size as the others.
  */
@@ -122,33 +132,33 @@
   color: var(--button-primary-color);
   position: relative;
 
+  &:after /* [2] */ {
+    border-radius: inherit;
+    bottom: 0;
+    box-shadow: 0 0 0 0 transparent;
+    content: '';
+    left: 0;
+    opacity: 0.3;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: box-shadow 100ms ease;
+  }
+
+  &:before /* [2] */ {
+    background-color: var(--button-primary-color);
+    border-radius: inherit;
+    bottom: -1px; /* [3] */
+    content: '';
+    left: -1px; /* [3] */
+    opacity: 0;
+    position: absolute;
+    right: -1px; /* [3] */
+    top: -1px; /* [3] */
+    transition: opacity 100ms ease;
+  }
+
   &:not(:disabled):not(.is-disabled) {
-    &:after {
-      border-radius: inherit;
-      bottom: 0;
-      box-shadow: 0 0 0 0 transparent;
-      content: '';
-      left: 0;
-      opacity: 0.3;
-      position: absolute;
-      right: 0;
-      top: 0;
-      transition: box-shadow 100ms ease;
-    }
-
-    &:before {
-      background-color: var(--button-primary-color);
-      border-radius: inherit;
-      bottom: -1px; /* [2] */
-      content: '';
-      left: -1px; /* [2] */
-      opacity: 0;
-      position: absolute;
-      right: -1px; /* [2] */
-      top: -1px; /* [2] */
-      transition: opacity 100ms ease;
-    }
-
     &:focus,
     &.is-focused {
       &:after {
@@ -162,7 +172,7 @@
 
     &:hover,
     &.is-hovered {
-      color: var(--button-hover-primary-color);
+      color: var(--button-hovered-primary-color);
 
       &:before {
         opacity: 0.1;
@@ -187,7 +197,7 @@
   &:not(:disabled):not(.is-disabled) {
     &:hover,
     &.is-hovered {
-      color: var(--button-hover-primary-color);
+      color: var(--button-hovered-primary-color);
     }
 
     &:focus,

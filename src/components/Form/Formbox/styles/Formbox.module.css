@@ -42,8 +42,8 @@
 
   &:not(.formboxInputContainer--readOnly) {
     &:hover,
-    &.is-hover {
-      box-shadow: $box-shadow-position var(--formbox-input-container-hover-border-color);
+    &.is-hovered {
+      box-shadow: $box-shadow-position var(--formbox-input-container-hovered-border-color);
     }
 
     &:after {
@@ -75,7 +75,6 @@
  * 2. Unlike the others, put the padding on the parent so the background color encompasses the label
  */
 .formboxInputContainer--filled {
-  background-color: var(--formbox-input-background-color);
   border-top-left-radius: $border-radius-s;
   border-top-right-radius: $border-radius-s;
   margin-bottom: 1px; /* [1] */
@@ -83,6 +82,34 @@
 
   .is-labeled & {
     padding-top: 20px; /* [2] */
+  }
+
+  &:before {
+    background-color: var(--formbox-input-container-border-color);
+    border-top-left-radius: $border-radius-s;
+    border-top-right-radius: $border-radius-s;
+    bottom: 0;
+    content: '';
+    left: 0;
+    opacity: 0.1;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: background-color 200ms ease;
+  }
+
+  &:hover,
+  &.is-hovered {
+    &:before {
+      background-color: var(--formbox-input-container-hovered-border-color);
+    }
+  }
+
+  &.focus,
+  &.is-focused {
+    &:before {
+      background-color: var(--formbox-input-container-focused-border-color);
+    }
   }
 }
 
@@ -93,8 +120,8 @@
   padding: 4px 8px 2px 8px;
 
   &:hover,
-  &.is-hover {
-    border-color: var(--formbox-input-container-hover-border-color);
+  &.is-hovered {
+    border-color: var(--formbox-input-container-hovered-border-color);
   }
 
   &.focus,
@@ -192,8 +219,8 @@ input.formboxInput[type='number'] {
 
   &:focus,
   &:hover,
-  &.is-hovered {
-    color: var(--formbox-icon-hover-color);
+  &.is-hovereded {
+    color: var(--formbox-icon-hovered-color);
   }
 }
 
@@ -265,11 +292,11 @@ input.formboxInput[type='number'] {
 .formbox--primary {
   @mixin themed .formbox {
     --formbox-icon-color: $theme-primary-palette-quieter-color;
-    --formbox-icon-hover-color: $theme-primary-palette-accent-color;
+    --formbox-icon-hovered-color: $theme-primary-palette-accent-color;
     --formbox-input-background-color: $theme-color-BG50-O20;
     --formbox-input-container-border-color: $theme-primary-palette-quietest-color;
     --formbox-input-container-focused-border-color: $theme-color-accent-primary;
-    --formbox-input-container-hover-border-color: $theme-primary-palette-quieter-color;
+    --formbox-input-container-hovered-border-color: $theme-primary-palette-quieter-color;
     --formbox-input-text-color: $theme-primary-palette-text-color;
     --formbox-label-text-color: $theme-primary-palette-quiet-color;
 
@@ -277,7 +304,7 @@ input.formboxInput[type='number'] {
       --formbox-input-background-color: transparent;
       --formbox-input-container-border-color: transparent;
       --formbox-input-container-focused-border-color: transparent;
-      --formbox-input-container-hover-border-color: transparent;
+      --formbox-input-container-hovered-border-color: transparent;
     }
   }
 
@@ -293,11 +320,11 @@ input.formboxInput[type='number'] {
 .formbox--contrast {
   @mixin themed .formbox {
     --formbox-icon-color: $theme-contrast-palette-quieter-color;
-    --formbox-icon-hover-color: $theme-contrast-palette-accent-color;
+    --formbox-icon-hovered-color: $theme-contrast-palette-accent-color;
     --formbox-input-background-color: $theme-contrast-palette-quietest-color;
     --formbox-input-container-border-color: $theme-contrast-palette-quieter-color;
     --formbox-input-container-focused-border-color: $theme-contrast-palette-accent-color;
-    --formbox-input-container-hover-border-color: $theme-contrast-palette-quieter-color;
+    --formbox-input-container-hovered-border-color: $theme-contrast-palette-quieter-color;
     --formbox-input-text-color: $theme-contrast-palette-text-color;
     --formbox-label-text-color: $theme-contrast-palette-quiet-color;
 
@@ -305,7 +332,7 @@ input.formboxInput[type='number'] {
       --formbox-input-background-color: transparent;
       --formbox-input-container-border-color: transparent;
       --formbox-input-container-focused-border-color: transparent;
-      --formbox-input-container-hover-border-color: transparent;
+      --formbox-input-container-hovered-border-color: transparent;
     }
   }
 }
@@ -314,12 +341,12 @@ input.formboxInput[type='number'] {
   @mixin themed .formbox {
     --formbox-input-container-border-color: $theme-color-success;
     --formbox-input-container-focused-border-color: $theme-color-success-D10;
-    --formbox-input-container-hover-border-color: $theme-color-success-D10;
+    --formbox-input-container-hovered-border-color: $theme-color-success-D10;
 
     &.formbox--transparent {
       --formbox-input-container-border-color: transparent;
       --formbox-input-container-focused-border-color: transparent;
-      --formbox-input-container-hover-border-color: transparent;
+      --formbox-input-container-hovered-border-color: transparent;
     }
   }
 }
@@ -328,12 +355,12 @@ input.formboxInput[type='number'] {
   @mixin themed .formbox {
     --formbox-input-container-border-color: $theme-color-warning;
     --formbox-input-container-focused-border-color: $theme-color-warning;
-    --formbox-input-container-hover-border-color: $theme-color-warning-D10;
+    --formbox-input-container-hovered-border-color: $theme-color-warning-D10;
 
     &.formbox--transparent {
       --formbox-input-container-border-color: transparent;
       --formbox-input-container-focused-border-color: transparent;
-      --formbox-input-container-hover-border-color: transparent;
+      --formbox-input-container-hovered-border-color: transparent;
     }
   }
 }
@@ -342,12 +369,12 @@ input.formboxInput[type='number'] {
   @mixin themed .formbox {
     --formbox-input-container-border-color: $theme-color-danger;
     --formbox-input-container-focused-border-color: $theme-color-danger-D10;
-    --formbox-input-container-hover-border-color: $theme-color-danger-D10;
+    --formbox-input-container-hovered-border-color: $theme-color-danger-D10;
 
     &.formbox--transparent {
       --formbox-input-container-border-color: transparent;
       --formbox-input-container-focused-border-color: transparent;
-      --formbox-input-container-hover-border-color: transparent;
+      --formbox-input-container-hovered-border-color: transparent;
     }
   }
 }

@@ -58,8 +58,9 @@ import {
   ScaleProvider,
   StackPanel,
   StyledAvatar,
-  StyledLoader,
   StyledHeader,
+  StyledLoader,
+  StyledProgress,
   Tabs,
   Textbox,
   TextTooltip,
@@ -70,12 +71,78 @@ import {
   Typography,
   themes,
 } from '../index';
+import { ColorLooper } from './helpers/ColorLooper';
 import { Looper } from './helpers/Looper';
 import { StateWrapper } from './helpers/StateWrapper';
 import { ThemeWrapper } from './helpers/ThemeWrapper';
+import { TimeoutWrapper } from './helpers/TimeoutWrapper';
 import scrollbar from 'styles/common/Scrollbar.module.css';
 
 # Playground
+
+## Lots of progress
+
+<Playground>
+  {() => {
+    const getPercent = (min = 20, max = 100) => Math.floor(Math.random() * (max - min + 1) + min);
+    const style = { marginRight: 1, height: 40, '--progress-transition-time': '600ms' };
+    return (
+      <ThemeWrapper withThemeId>
+        {({ themeId }) => (
+          <Flex direction="row" justifyContent="flex-start">
+            <ColorLooper
+              themeId={themeId}
+              render={({ id }) => (
+                <StateWrapper>
+                  {({ state: percent, setState: setPercent }) => (
+                    <TimeoutWrapper callback={() => setPercent(getPercent())} milliseconds={600} infinite>
+                      <StyledProgress
+                        segmentColor={themes[themeId][`color-${id}-L10`]}
+                        size="large"
+                        orientation="vertical"
+                        percent={percent}
+                        floating
+                        style={style}
+                      />
+                    </TimeoutWrapper>
+                  )}
+                </StateWrapper>
+              )}
+            />
+          </Flex>
+        )}
+      </ThemeWrapper>
+    );
+  }}
+</Playground>
+
+## Popover title
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <Rhythm m={6}>
+        <InlinePopover
+          hoverable
+          position="top-center"
+          toggler={<BlobbrIcon scale="xlarge" />}
+          offset={{ vertical: 10 }}
+          closeDelay={0}
+        >
+          <Card raised full>
+            <Rhythm px={3} py={1}>
+              <Paper bordered color="primary">
+                <Typography as="div" size="s" variants={['no-wrap']}>
+                  An example title
+                </Typography>
+              </Paper>
+            </Rhythm>
+          </Card>
+        </InlinePopover>
+      </Rhythm>
+    )}
+  </ThemeWrapper>
+</Playground>
 
 ## Badges on things
 
@@ -214,34 +281,6 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
         7
       </Badge>
     </Toast>
-  </ThemeWrapper>
-</Playground>
-
-## Popover title
-
-<Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <Rhythm m={6}>
-        <InlinePopover
-          hoverable
-          position="top-center"
-          toggler={<BlobbrIcon scale="xlarge" />}
-          offset={{ vertical: 10 }}
-          closeDelay={0}
-        >
-          <Card raised full>
-            <Rhythm px={3} py={1}>
-              <Paper bordered color="primary">
-                <Typography as="div" size="s" variants={['no-wrap']}>
-                  An example title
-                </Typography>
-              </Paper>
-            </Rhythm>
-          </Card>
-        </InlinePopover>
-      </Rhythm>
-    )}
   </ThemeWrapper>
 </Playground>
 
@@ -1025,11 +1064,17 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                         </ModalBody>
                         <ModalFooter bordered>
                           <Flex justifyContent="flex-end">
-                            <ButtonGroup spacing="cozy" color="primary" key="cancel">
-                              <Button key="cancel" onClick={popModal} color="neutral" weight="text">
+                            <ButtonGroup spacing="cozy">
+                              <Button color="neutral" key="cancel" onClick={popModal} shape="brick" weight="text">
                                 Cancel
                               </Button>
-                              <Button key="submit" onClick={() => console.log('Login!')} color="primary" key="login">
+                              <Button
+                                color="primary"
+                                key="login"
+                                key="submit"
+                                onClick={() => console.log('Login!')}
+                                shape="brick"
+                              >
                                 Login
                               </Button>
                             </ButtonGroup>

@@ -33,8 +33,10 @@ export function FormDemo({ children, contrast, style }) {
       slider: 40,
       stepper1: 13,
       stepper2: 42,
-      username: 'phork',
+      success: '',
       toggle: false,
+      username: 'phork',
+      warning: '',
     },
   );
 

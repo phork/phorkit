@@ -95,14 +95,14 @@ button.tag {
 
   &:hover,
   &.is-hovered {
-    background-color: var(--tag-hover-background-color);
-    border-color: var(--tag-hover-border-color);
-    color: var(--tag-hover-text-color);
+    background-color: var(--tag-hovered-background-color);
+    border-color: var(--tag-hovered-border-color);
+    color: var(--tag-hovered-text-color);
 
     &:focus,
     &.is-focused {
       &:before {
-        box-shadow: 0 0 0 3px var(--tag-hover-border-color);
+        box-shadow: 0 0 0 3px var(--tag-hovered-border-color);
       }
     }
   }
@@ -113,9 +113,9 @@ button.tag {
     --tag-background-color: $theme-primary-palette-background-color;
     --tag-text-color: $theme-primary-palette-text-color;
     --tag-border-color: $theme-primary-palette-border-color;
-    --tag-hover-background-color: $theme-color-accent-primary;
-    --tag-hover-text-color: $theme-color-accent-primary-contrast;
-    --tag-hover-border-color: $theme-color-accent-primary;
+    --tag-hovered-background-color: $theme-color-accent-primary;
+    --tag-hovered-text-color: $theme-color-accent-primary-contrast;
+    --tag-hovered-border-color: $theme-color-accent-primary;
   }
 }
 
@@ -124,8 +124,8 @@ button.tag {
     --tag-background-color: var(--contrast-color, $theme-contrast-palette-background-color);
     --tag-text-color: $theme-contrast-palette-text-color;
     --tag-border-color: $theme-contrast-palette-text-color;
-    --tag-hover-background-color: $theme-contrast-palette-text-color;
-    --tag-hover-text-color: var(--contrast-color, $theme-contrast-palette-background-color);
-    --tag-hover-border-color: $theme-contrast-palette-text-color;
+    --tag-hovered-background-color: $theme-contrast-palette-text-color;
+    --tag-hovered-text-color: var(--contrast-color, $theme-contrast-palette-background-color);
+    --tag-hovered-border-color: $theme-contrast-palette-text-color;
   }
 }

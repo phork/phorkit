@@ -7,6 +7,19 @@ import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 import { StyledIconToast, ToastContext } from 'compositions/Toast';
 
+const SwatchGroup = styled(Flex, {
+  shouldForwardProp: (prop: string) => prop !== 'joined',
+})<{
+  joined?: boolean;
+}>`
+  ${({ joined }) =>
+    joined &&
+    `
+    border-radius: 3px;
+    overflow: hidden;
+`}
+`;
+
 const SwatchBlock = styled('div', {
   shouldForwardProp: (prop: string) => !['backgroundColor', 'color', 'height', 'rounded', 'width'].includes(prop),
 })<{
@@ -139,7 +152,7 @@ export function ColorSwatchGroup({
   };
 
   return (
-    <Flex direction={direction} wrap {...props}>
+    <SwatchGroup direction={direction} inline joined wrap {...props}>
       {label && (
         <Rhythm m={joined ? 0 : 1}>
           <SwatchLabel width={labelWidth || swatchWidth} height={labelHeight || swatchHeight}>
@@ -165,7 +178,7 @@ export function ColorSwatchGroup({
           </SwatchBlock>
         </Rhythm>
       ))}
-    </Flex>
+    </SwatchGroup>
   );
 }
 

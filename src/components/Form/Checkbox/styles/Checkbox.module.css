@@ -156,7 +156,7 @@ input.checkboxInput {
 .checkbox:hover {
   .checkboxInputContainerFocusRing {
     &:before {
-      box-shadow: var(--checkbox-unchecked-hover-box-shadow);
+      box-shadow: var(--checkbox-unchecked-hovered-box-shadow);
     }
   }
 
@@ -164,8 +164,8 @@ input.checkboxInput {
   &.is-indeterminate {
     .checkboxInputContainerFocusRing {
       &:before {
-        box-shadow: var(--checkbox-checked-hover-box-shadow);
-        opacity: var(--checkbox-checked-hover-opacity, 0.2);
+        box-shadow: var(--checkbox-checked-hovered-box-shadow);
+        opacity: var(--checkbox-checked-hovered-opacity, 0.2);
       }
     }
   }
@@ -208,28 +208,28 @@ input.checkboxInput {
 .checkbox--primary {
   @mixin themed .checkbox {
     --checkbox-checked-background-color: $theme-color-accent-primary;
-    --checkbox-checked-hover-box-shadow: 0 0 0 4px $theme-color-accent-primary;
+    --checkbox-checked-hovered-box-shadow: 0 0 0 4px $theme-color-accent-primary;
     --checkbox-checked-focused-box-shadow: 0 0 0 1px $theme-color-accent-primary;
     --checkbox-checked-icon-color: $theme-color-accent-primary-contrast;
     --checkbox-unchecked-border-color: $theme-color-FG0-O20;
-    --checkbox-unchecked-hover-box-shadow: 0 0 0 4px $theme-color-FG0-O40;
+    --checkbox-unchecked-hovered-box-shadow: 0 0 0 4px $theme-color-FG0-O40;
     --checkbox-unchecked-focused-box-shadow: 0 0 0 1px $theme-color-FG0-O40;
     --checkbox-focused-box-shadow: 0 0 0 1px $theme-color-accent-primary;
   }
 
   &.checkbox--dark {
-    --checkbox-checked-hover-opacity: 0.3;
+    --checkbox-checked-hovered-opacity: 0.3;
   }
 }
 
 .checkbox--contrast {
   @mixin themed .checkbox {
     --checkbox-checked-background-color: $theme-contrast-palette-accent-color;
-    --checkbox-checked-hover-box-shadow: 0 0 0 4px $theme-contrast-palette-accent-color;
+    --checkbox-checked-hovered-box-shadow: 0 0 0 4px $theme-contrast-palette-accent-color;
     --checkbox-checked-focused-box-shadow: 0 0 0 1px $theme-contrast-palette-accent-color;
     --checkbox-checked-icon-color: var(--contrast-color, $theme-contrast-palette-background-color);
     --checkbox-unchecked-border-color: $theme-contrast-palette-quieter-color;
-    --checkbox-unchecked-hover-box-shadow: 0 0 0 4px $theme-contrast-palette-quietest-color;
+    --checkbox-unchecked-hovered-box-shadow: 0 0 0 4px $theme-contrast-palette-quietest-color;
     --checkbox-unchecked-focused-box-shadow: 0 0 0 1px $theme-contrast-palette-quietest-color;
     --checkbox-focused-box-shadow: 0 0 0 1px $theme-contrast-palette-accent-color;
   }
@@ -238,16 +238,16 @@ input.checkboxInput {
 .checkbox.is-danger {
   @mixin themed .checkbox {
     --checkbox-checked-background-color: $theme-color-danger;
-    --checkbox-checked-hover-box-shadow: 0 0 0 4px $theme-color-danger;
+    --checkbox-checked-hovered-box-shadow: 0 0 0 4px $theme-color-danger;
     --checkbox-checked-focused-box-shadow: 0 0 0 1px $theme-color-danger;
     --checkbox-checked-icon-color: $theme-color-danger-contrast;
     --checkbox-unchecked-border-color: $theme-color-danger;
-    --checkbox-unchecked-hover-box-shadow: 0 0 0 4px $theme-color-FG0-O40;
+    --checkbox-unchecked-hovered-box-shadow: 0 0 0 4px $theme-color-FG0-O40;
     --checkbox-unchecked-focused-box-shadow: 0 0 0 1px $theme-color-FG0-O40;
     --checkbox-focused-box-shadow: 0 0 0 1px $theme-color-danger-D10;
   }
 
   &.checkbox--dark {
-    --checkbox-checked-hover-opacity: 0.3;
+    --checkbox-checked-hovered-opacity: 0.3;
   }
 }

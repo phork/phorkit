@@ -15,7 +15,7 @@ a.link:not(.link--unstyled),
 .linkContainer a {
   &:hover,
   &.is-hovered {
-    color: var(--link-hover-color);
+    color: var(--link-hovered-color);
   }
 
   &:active,
@@ -35,7 +35,7 @@ a.link,
 .linkContainer {
   @mixin themed {
     --link-color: $theme-color-accent-primary;
-    --link-hover-color: $theme-color-accent-primary-L10;
+    --link-hovered-color: $theme-color-accent-primary-L10;
     --link-active-color: $theme-color-accent-primary-D10;
   }
 }
@@ -43,14 +43,14 @@ a.link,
 a.link.link--contrast.link--light,
 .linkContainer.linkContainer--contrast.linkContainer--light {
   --link-color: $light-contrast-palette-text-color;
-  --link-hover-color: $light-contrast-palette-quiet-color;
+  --link-hovered-color: $light-contrast-palette-quiet-color;
   --link-active-color: $light-contrast-palette-text-color;
 }
 
 a.link.link--contrast.link--dark,
 .linkContainer.linkContainer--contrast.linkContainer--dark {
   --link-color: $dark-contrast-palette-text-color;
-  --link-hover-color: $dark-contrast-palette-quiet-color;
+  --link-hovered-color: $dark-contrast-palette-quiet-color;
   --link-active-color: $dark-contrast-palette-text-color;
 }
 

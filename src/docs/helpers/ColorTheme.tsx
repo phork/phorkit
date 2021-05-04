@@ -12,21 +12,20 @@ const ThemeElement = styled.div<{
   quietestColor: string;
   accentColor: string;
 }>`
-  align-items: center;
   background-color: ${props => props.backgroundColor};
   border: 1px solid ${props => props.borderColor};
   color: ${props => props.color};
   display: flex;
-  flex: 1;
   flex-direction: column;
-  padding: 20px 0 40px;
-  justify-content: center;
+  padding: 80px 40px 40px;
+  line-height: 1.5;
+  max-width: 670px;
   position: relative;
   width: 100%;
 
   &:before {
     background-color: ${props => props.quietBorderColor};
-    bottom: 20px;
+    top: 40px;
     content: '';
     height: 1px;
     left: 0;
@@ -36,12 +35,12 @@ const ThemeElement = styled.div<{
 
   &:after {
     background-color: ${props => props.borderColor};
-    bottom: 0;
+    top: 20px;
     content: '';
+    height: 1px;
+    left: 0;
     position: absolute;
-    right: 20px;
-    top: 0;
-    width: 1px;
+    right: 0;
   }
 
   > .quiet {
@@ -81,10 +80,10 @@ export function ColorTheme({ themeId, variant }: ColorThemeProps): React.ReactEl
       accentColor={themeProps[`${variant}-palette-accent-color` as keyof ThemeColors] as string}
     >
       <div>The quick brown fox jumped over the lazy dog</div>
-      <div className="quiet">The quiet brown fox jumped over the lazy dog</div>
-      <div className="quieter">The quieter brown fox jumped over the lazy dog</div>
-      <div className="quietest">The quietest brown fox jumped over the lazy dog</div>
-      <div className="accent">The accented brown fox jumped over the lazy dog</div>
+      <div className="quiet">The quiet quick brown fox jumped over the lazy dog</div>
+      <div className="quieter">The quieter quick brown fox jumped over the lazy dog</div>
+      <div className="quietest">The quietest quick brown fox jumped over the lazy dog</div>
+      <div className="accent">The accented quick brown fox jumped over the lazy dog</div>
     </ThemeElement>
   );
 }
