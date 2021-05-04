@@ -52,7 +52,7 @@ button.button {
   text-decoration: none;
   transition-property: background-color, border-color, color, opacity; /* [1] */
   transition-timing-function: ease;
-  transition-duration: 100ms;
+  transition-duration: 150ms;
 
   &:focus {
     outline: none;

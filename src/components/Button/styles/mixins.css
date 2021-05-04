@@ -21,7 +21,7 @@
     opacity: 0.3;
     position: absolute;
     top: 0;
-    transition: box-shadow 100ms ease;
+    transition: box-shadow 150ms ease;
     width: 100%;
   }
 
@@ -65,7 +65,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    transition: box-shadow 100ms ease;
+    transition: box-shadow 150ms ease;
     width: 100%;
   }
 
@@ -78,7 +78,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    transition: box-shadow 100ms ease;
+    transition: background-color 150ms ease;
     width: 100%;
   }
 
@@ -87,10 +87,10 @@
     &.is-focused {
       &:after {
         box-shadow: 0 0 0 4px var(--button-primary-color);
+      }
 
-        &:before {
-          background-color: var(--button-primary-color);
-        }
+      &:before {
+        background-color: var(--button-primary-color);
       }
     }
 
@@ -142,7 +142,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    transition: box-shadow 100ms ease;
+    transition: box-shadow 150ms ease;
   }
 
   &:before /* [2] */ {
@@ -155,7 +155,7 @@
     position: absolute;
     right: -1px; /* [3] */
     top: -1px; /* [3] */
-    transition: opacity 100ms ease;
+    transition: opacity 150ms ease;
   }
 
   &:not(:disabled):not(.is-disabled) {
@@ -163,10 +163,10 @@
     &.is-focused {
       &:after {
         box-shadow: 0 0 0 3px var(--button-primary-color);
+      }
 
-        &:before {
-          opacity: 0.1;
-        }
+      &:before {
+        opacity: 0.1;
       }
     }
 
@@ -194,6 +194,24 @@
   margin: 0;
   padding: 0;
 
+  &:after {
+    border-bottom: 1px solid transparent;
+    content: '';
+    height: 100%;
+    position: absolute;
+    top: 0.1rem;
+    left: -0.1rem;
+    right: -0.1rem;
+    transition: border-color 150ms ease, transform 200ms ease;
+    transform: scaleX(0);
+  }
+
+  &.button--icon {
+    &:after {
+      top: 4px;
+    }
+  }
+
   &:not(:disabled):not(.is-disabled) {
     &:hover,
     &.is-hovered {
@@ -203,19 +221,8 @@
     &:focus,
     &.is-focused {
       &:after {
-        border-bottom: 1px solid var(--button-text-underline-color, var(--button-primary-color));
-        content: '';
-        height: 100%;
-        position: absolute;
-        top: 0.1rem;
-        left: -0.1rem;
-        right: -0.1rem;
-      }
-
-      &.button--icon {
-        &:after {
-          top: 4px;
-        }
+        border-color: currentColor;
+        transform: scaleX(1);
       }
     }
 
