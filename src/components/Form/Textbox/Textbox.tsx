@@ -73,6 +73,7 @@ function TextboxBase(
     transitional,
     translations: customTranslations,
     type = 'text',
+    unthemed,
     validity,
     value = '',
     variant,
@@ -171,6 +172,7 @@ function TextboxBase(
       themeId={themeId}
       transitional={transitional}
       type="input"
+      unthemed={unthemed}
       validity={validity}
       value={value}
       variant={variant}

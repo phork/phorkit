@@ -3,7 +3,7 @@ import debounce from 'lodash.debounce';
 import React, { useCallback, useMemo, useEffect, useReducer, useRef } from 'react';
 import { v4 as uuid } from 'uuid';
 import { StateColor, ThemeProps } from '../../types';
-import { DropdownOption, DropdownInputVariant, DropdownLayout } from './types';
+import { DropdownOption, DropdownInputVariant, DropdownLayout, DropdownListSize, DropdownListVariant } from './types';
 import { useClickAndEscape } from '../../hooks/useClickAndEscape';
 import { useSafeTimeout } from '../../hooks/useSafeTimeout';
 import { useThemeId } from '../../hooks/useThemeId';
@@ -78,6 +78,7 @@ export function Dropdown({
   placeholder,
   readOnlyValue,
   themeId: initThemeId,
+  unthemed,
   transitional,
   validity,
   ...props
@@ -118,13 +119,13 @@ export function Dropdown({
       ({
         raised: {
           color: 'primary',
-          size: 'medium',
-          variant: 'unboxed',
+          size: 'medium' as DropdownListSize,
+          variant: 'unboxed' as DropdownListVariant,
         } as DropdownContentProps['listDefaults'],
         contained: {
           color: 'primary',
-          size: 'medium',
-          variant: 'unboxed',
+          size: 'medium' as DropdownListSize,
+          variant: 'unboxed' as DropdownListVariant,
         } as DropdownContentProps['listDefaults'],
       }[layout]),
     [layout],
@@ -336,8 +337,8 @@ export function Dropdown({
         styles.dropdown,
         disabled && styles['is-disabled'],
         isDropdownVisible && styles['is-visible'],
-        themeId && styles[`dropdown--${themeId}`],
-        color && styles[`dropdown--${color}`],
+        themeId && !unthemed && styles[`dropdown--${themeId}`],
+        color && !unthemed && styles[`dropdown--${color}`],
         className,
       )}
       onClick={handleClick}
@@ -378,7 +379,8 @@ export function Dropdown({
         tabIndex={isFocused && !onFilter ? -1 : 0}
         themeId={themeId}
         transitional={transitional}
-        transparent={layout === 'contained' && isDropdownVisible && inputVariant !== 'outline'}
+        transparent={layout === 'contained' && isDropdownVisible && ['underline', 'filled'].includes(inputVariant)}
+        unthemed={unthemed}
         validity={validity}
         value={inputValue}
         variant={inputVariant}
@@ -407,6 +409,7 @@ export function Dropdown({
         ref={listRef}
         state={state}
         themeId={themeId}
+        unthemed={unthemed}
       />
     </div>
   );

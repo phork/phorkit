@@ -78,7 +78,7 @@ export function RadioBase(
         full && styles['radio--full'],
         reverse && styles['radio--reverse'],
         themeId && !unthemed && styles[`radio--${themeId}`],
-        color && styles[`radio--${color}`],
+        color && !unthemed && styles[`radio--${color}`],
         grouped && styles[`radio--grouped--${grouped}`],
         checked && styles['is-checked'],
         !checked && styles['is-unchecked'],

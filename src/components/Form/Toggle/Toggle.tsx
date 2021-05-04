@@ -47,6 +47,7 @@ export function ToggleBase(
     size,
     standalone,
     themeId: initThemeId,
+    unthemed,
     value,
     ...props
   }: ToggleProps,
@@ -82,8 +83,8 @@ export function ToggleBase(
         reverse && styles['toggle--reverse'],
         standalone && styles['toggle--standalone'],
         size && styles[`toggle--${size}`],
-        themeId && styles[`toggle--${themeId}`],
-        color && styles[`toggle--${color}`],
+        themeId && !unthemed && styles[`toggle--${themeId}`],
+        color && !unthemed && styles[`toggle--${color}`],
         accessible && styles['is-accessible'],
         checked && styles['is-checked'],
         disabled && styles['is-disabled'],

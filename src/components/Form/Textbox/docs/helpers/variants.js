@@ -1,1 +1,2 @@
-export const variants = ['underline', 'filled', 'outline', 'minimal'];
+export const textbox = ['underline', 'filled', 'outline', 'pill', 'minimal'];
+export const password = ['underline', 'filled', 'outline', 'minimal'];

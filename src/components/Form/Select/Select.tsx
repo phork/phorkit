@@ -52,6 +52,7 @@ export function SelectBase(
     silentReadOnly,
     themeId: initThemeId,
     transitional,
+    unthemed,
     validity,
     value,
     width,
@@ -84,7 +85,11 @@ export function SelectBase(
   const renderInput = (): React.ReactElement<HTMLSelectElement> => {
     return (
       <select
-        className={cx(styles.selectInput, styles[`selectInput--${themeId}`], selectProps?.className)}
+        className={cx(
+          styles.selectInput,
+          themeId && !unthemed && styles[`selectInput--${themeId}`],
+          selectProps?.className,
+        )}
         multiple={multiple}
         {...selectProps}
       >
@@ -138,6 +143,7 @@ export function SelectBase(
       themeId={themeId}
       transitional={transitional}
       type="select"
+      unthemed={unthemed}
       validity={validity}
       value={readOnly ? getLabelsByValue(value) : value}
       width={width}

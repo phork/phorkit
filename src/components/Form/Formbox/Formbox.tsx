@@ -20,7 +20,7 @@ export const formboxTranslations: FormboxTranslations = {
 export type FormboxValue = string | number;
 export type FormboxContainerElementType = Extract<keyof JSX.IntrinsicElements, 'label' | 'div'>;
 export type FormboxInputElementType = Extract<keyof JSX.IntrinsicElements, 'input' | 'select' | 'textarea'>;
-export type FormboxVariant = 'underline' | 'filled' | 'outline' | 'minimal';
+export type FormboxVariant = 'underline' | 'filled' | 'outline' | 'minimal' | 'pill';
 export type FormboxIconPosition = 'before' | 'after';
 
 export interface LocalFormboxProps<I extends FormboxInputElementType> extends ThemeProps {
@@ -56,6 +56,7 @@ export interface LocalFormboxProps<I extends FormboxInputElementType> extends Th
   readOnlyValue?: React.ReactChild;
   /** silentReadOnly cannot be edited but has all the functionality of a regular input (focus, blur, etc.) */
   silentReadOnly?: boolean;
+  style?: React.CSSProperties;
   tabIndex?: number;
   transitional?: boolean;
   translations?: FormboxTranslations;
@@ -102,12 +103,14 @@ function FormboxBase<T extends FormboxContainerElementType, I extends FormboxInp
     readOnly,
     readOnlyValue,
     silentReadOnly,
+    style,
     tabIndex,
     themeId: initThemeId,
     transitional,
     translations: customTranslations,
     transparent,
     type,
+    unthemed,
     validity,
     value,
     variant = 'underline',
@@ -205,8 +208,8 @@ function FormboxBase<T extends FormboxContainerElementType, I extends FormboxInp
       className: cx(
         styles.formbox,
         styles[`formbox--${type}`],
-        color && styles[`formbox--${color}`],
-        themeId && styles[`formbox--${themeId}`],
+        color && !unthemed && styles[`formbox--${color}`],
+        themeId && !unthemed && styles[`formbox--${themeId}`],
         transparent && styles['formbox--transparent'],
         variant && styles[`formbox--${variant}`],
         empty && styles['is-empty'],
@@ -220,7 +223,7 @@ function FormboxBase<T extends FormboxContainerElementType, I extends FormboxInp
       onBlur: handleBlur,
       onFocus: handleFocus,
       ref,
-      style: width !== undefined ? { width: typeof width === 'number' ? `${width}px` : width } : undefined,
+      style: { ...style, ...(width !== undefined ? { width: typeof width === 'number' ? `${width}px` : width } : {}) },
       ...props,
     },
     label && (

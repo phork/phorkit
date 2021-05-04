@@ -10,7 +10,8 @@
   }
 }
 
-.formbox--outline {
+.formbox--outline,
+.formbox--pill {
   &.is-labeled {
     padding-top: 18px;
   }
@@ -114,11 +115,11 @@
   }
 }
 
-.formboxInputContainer--outline {
+.formboxInputContainer--outline,
+.formboxInputContainer--pill {
+  background-color: var(--formbox-input-container-background-color);
   border: 1px solid var(--formbox-input-container-border-color);
-  border-radius: $border-radius-m;
   min-height: $element-height-medium;
-  padding: 4px 8px 2px 8px;
 
   &:hover,
   &.is-hovered {
@@ -136,6 +137,16 @@
   &.is-focused {
     caret-color: var(formbox-input-container-focused-border-color);
   }
+}
+
+.formboxInputContainer--outline {
+  border-radius: $border-radius-m;
+  padding: 4px 8px 2px 8px;
+}
+
+.formboxInputContainer--pill {
+  border-radius: $element-height-medium;
+  padding: 4px 16px 2px 16px;
 }
 
 input.formboxInput,
@@ -250,6 +261,10 @@ input.formboxInput[type='number'] {
   top: 4px;
 }
 
+.formboxLabel--pill {
+  left: 17px;
+}
+
 .formboxLabel--placeholder {
   font-size: $font-size-l;
   opacity: 0.7;
@@ -276,6 +291,11 @@ input.formboxInput[type='number'] {
     top: 26px;
   }
 
+  &.formboxLabel--pill {
+    left: 16px;
+    top: 26px;
+  }
+
   &.formboxLabel--minimal {
     top: 18px;
   }
@@ -294,19 +314,12 @@ input.formboxInput[type='number'] {
   @mixin themed .formbox {
     --formbox-icon-color: $theme-primary-palette-quieter-color;
     --formbox-icon-hovered-color: $theme-primary-palette-accent-color;
-    --formbox-input-background-color: $theme-color-BG50-O20;
+    --formbox-input-container-background-color: transparent;
     --formbox-input-container-border-color: $theme-primary-palette-quietest-color;
     --formbox-input-container-focused-border-color: $theme-color-accent-primary;
     --formbox-input-container-hovered-border-color: $theme-primary-palette-quieter-color;
     --formbox-input-text-color: $theme-primary-palette-text-color;
     --formbox-label-text-color: $theme-primary-palette-quiet-color;
-
-    &.formbox--transparent {
-      --formbox-input-background-color: transparent;
-      --formbox-input-container-border-color: transparent;
-      --formbox-input-container-focused-border-color: transparent;
-      --formbox-input-container-hovered-border-color: transparent;
-    }
   }
 
   &.formbox--light {
@@ -322,19 +335,12 @@ input.formboxInput[type='number'] {
   @mixin themed .formbox {
     --formbox-icon-color: $theme-contrast-palette-quieter-color;
     --formbox-icon-hovered-color: $theme-contrast-palette-accent-color;
-    --formbox-input-background-color: $theme-contrast-palette-quietest-color;
+    --formbox-input-container-background-color: transparent;
     --formbox-input-container-border-color: $theme-contrast-palette-quieter-color;
     --formbox-input-container-focused-border-color: $theme-contrast-palette-accent-color;
     --formbox-input-container-hovered-border-color: $theme-contrast-palette-quieter-color;
     --formbox-input-text-color: $theme-contrast-palette-text-color;
     --formbox-label-text-color: $theme-contrast-palette-quiet-color;
-
-    &.formbox--transparent {
-      --formbox-input-background-color: transparent;
-      --formbox-input-container-border-color: transparent;
-      --formbox-input-container-focused-border-color: transparent;
-      --formbox-input-container-hovered-border-color: transparent;
-    }
   }
 }
 
@@ -343,12 +349,6 @@ input.formboxInput[type='number'] {
     --formbox-input-container-border-color: $theme-color-success;
     --formbox-input-container-focused-border-color: $theme-color-success-D10;
     --formbox-input-container-hovered-border-color: $theme-color-success-D10;
-
-    &.formbox--transparent {
-      --formbox-input-container-border-color: transparent;
-      --formbox-input-container-focused-border-color: transparent;
-      --formbox-input-container-hovered-border-color: transparent;
-    }
   }
 }
 
@@ -357,12 +357,6 @@ input.formboxInput[type='number'] {
     --formbox-input-container-border-color: $theme-color-warning;
     --formbox-input-container-focused-border-color: $theme-color-warning;
     --formbox-input-container-hovered-border-color: $theme-color-warning-D10;
-
-    &.formbox--transparent {
-      --formbox-input-container-border-color: transparent;
-      --formbox-input-container-focused-border-color: transparent;
-      --formbox-input-container-hovered-border-color: transparent;
-    }
   }
 }
 
@@ -371,13 +365,18 @@ input.formboxInput[type='number'] {
     --formbox-input-container-border-color: $theme-color-danger;
     --formbox-input-container-focused-border-color: $theme-color-danger-D10;
     --formbox-input-container-hovered-border-color: $theme-color-danger-D10;
-
-    &.formbox--transparent {
-      --formbox-input-container-border-color: transparent;
-      --formbox-input-container-focused-border-color: transparent;
-      --formbox-input-container-hovered-border-color: transparent;
-    }
   }
+}
+
+/**
+ * This resorts to using !important so that it can override any
+ * custom styles applied.
+ */
+.formbox--transparent {
+  --formbox-input-container-background-color: transparent !important;
+  --formbox-input-container-border-color: transparent !important;
+  --formbox-input-container-focused-border-color: transparent !important;
+  --formbox-input-container-hovered-border-color: transparent !important;
 }
 
 /* input-specific - these must go last */
@@ -416,7 +415,8 @@ select.formboxInput {
       padding-left: 8px; /* [3] */
     }
 
-    .formboxInputContainer--outline & {
+    .formboxInputContainer--outline &,
+    .formboxInputContainer--pill & {
       margin-right: -25px; /* [1] */
       padding-right: 25px; /* [2] */
       margin-left: -9px; /* [3] */
@@ -430,7 +430,8 @@ select.formboxInput {
       margin-right: -12px; /* [3] */
     }
 
-    .formboxInputContainer--outline & {
+    .formboxInputContainer--outline &,
+    .formboxInputContainer--pill & {
       margin-left: -8px; /* [3] */
       margin-right: -12px; /* [3] */
     }

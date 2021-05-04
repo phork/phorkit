@@ -85,7 +85,7 @@ export function CheckboxBase(
         validity && styles[`is-${validity}`],
         reverse && styles['checkbox--reverse'],
         themeId && !unthemed && styles[`checkbox--${themeId}`],
-        color && styles[`checkbox--${color}`],
+        color && !unthemed && styles[`checkbox--${color}`],
         full && styles['checkbox--full'],
         grouped && styles[`checkbox--grouped--${grouped}`],
         checked && styles['is-checked'],

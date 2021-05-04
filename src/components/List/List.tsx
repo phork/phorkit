@@ -54,6 +54,7 @@ function ListBase<T extends ListElementType = 'ul'>(
     themeId: initThemeId,
     transparent,
     unstyled,
+    unthemed,
     color: initColor = 'primary',
     ...props
   }: ListProps<T>,
@@ -71,12 +72,12 @@ function ListBase<T extends ListElementType = 'ul'>(
         ? cx(styles.unlist, inline && styles['unlist--inline'], className)
         : cx(
             styles.list,
-            color && styles[`list--${color}`],
+            color && !unthemed && styles[`list--${color}`],
             hideFocusOutline && styles['list--hideFocusOutline'],
             inline && styles['list--inline'],
             rounded && styles['list--rounded'],
             size && styles[`list--${size}`],
-            themeId && styles[`list--${themeId}`],
+            themeId && !unthemed && styles[`list--${themeId}`],
             variant && styles[`list--${variant}`],
             accessible && styles['is-accessible'],
             focused && styles['is-focused'],

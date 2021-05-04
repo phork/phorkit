@@ -70,6 +70,7 @@ function InteractiveListBase(
     transparent,
     triggerLinks,
     unstyled,
+    unthemed,
     ...props
   }: InteractiveListProps,
   forwardedRef: React.ForwardedRef<HTMLUListElement>,
@@ -129,6 +130,7 @@ function InteractiveListBase(
               themeId={themeId}
               transparent={transparent}
               unstyled={unstyled}
+              unthemed={unthemed}
               {...(props as Omit<
                 ListProps<'ul'>,
                 | 'as'

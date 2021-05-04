@@ -4,15 +4,15 @@ menu: Forms
 route: /components/FormTextbox
 ---
 
-import { Looper } from 'docs/helpers/Looper';
-import { PageTitle } from 'docs/helpers/PageTitle';
-import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { Playground, Props } from 'docz';
 import { SearchIcon } from 'icons/SearchIcon';
 import { TimesIcon } from 'icons/TimesIcon';
 import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
+import { Looper } from 'docs/helpers/Looper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { Textbox, NotifiedTextbox } from '../index';
-import { variants } from './helpers/variants.js';
+import { textbox as variants } from './helpers/variants.js';
 
 <PageTitle title="Textbox" src="components/Form/Textbox" />
 
@@ -197,7 +197,7 @@ import { variants } from './helpers/variants.js';
   <Looper
     list={variants}
     render={variant => (
-      <FormComponentDemo property="value" initialValue="Hello world">
+      <FormComponentDemo property="value" initialValue="Hello world" key={variant}>
         <Textbox
           id={`demo-danger-textbox-${variant}`}
           label="Super fantastic label"
@@ -217,7 +217,7 @@ import { variants } from './helpers/variants.js';
   <Looper
     list={variants}
     render={variant => (
-      <FormComponentDemo property="value" initialValue="Hello world">
+      <FormComponentDemo property="value" initialValue="Hello world" key={variant}>
         <Textbox
           id={`demo-warning-textbox-${variant}`}
           label="Super fantastic label"
@@ -237,7 +237,7 @@ import { variants } from './helpers/variants.js';
   <Looper
     list={variants}
     render={variant => (
-      <FormComponentDemo property="value" initialValue="Hello world">
+      <FormComponentDemo property="value" initialValue="Hello world" key={variant}>
         <Textbox
           id={`demo-success-textbox-${variant}`}
           label="Super fantastic label"
@@ -267,6 +267,36 @@ import { variants } from './helpers/variants.js';
           onChange={(event, value) => console.log(value)}
           transitional
           variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Styled textbox
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" initialValue="Hello world" key={variant}>
+        <Textbox
+          id={`demo-styled-textbox-${variant}`}
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          transitional
+          unthemed
+          variant={variant}
+          style={{
+            '--formbox-icon-color': '#9D69D5',
+            '--formbox-icon-hovered-color': '#642da0',
+            '--formbox-input-container-background-color': 'transparent',
+            '--formbox-input-container-border-color': '#9D69D5',
+            '--formbox-input-container-focused-border-color': '#57278C',
+            '--formbox-input-container-hovered-border-color': '#642da0',
+            '--formbox-input-text-color': '#642da0',
+            '--formbox-label-text-color': '#B995E1',
+          }}
         />
       </FormComponentDemo>
     )}

@@ -4,16 +4,16 @@ menu: Input
 route: /compositions/Dropdown
 ---
 
-import { ListProps } from 'docs/helpers/ListProps';
-import { Looper } from 'docs/helpers/Looper';
-import { PageTitle } from 'docs/helpers/PageTitle';
-import { StateWrapper } from 'docs/helpers/StateWrapper';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { themes } from 'config/themes';
 import { SearchIcon } from 'icons/SearchIcon';
 import { TagIcon } from 'icons/internal/TagIcon';
 import { Flex } from 'components/Flex';
+import { ListProps } from 'docs/helpers/ListProps';
+import { Looper } from 'docs/helpers/Looper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Dropdown, DropdownContent, DropdownEmpty, InlineDropdown } from '../index';
 import { MultiVariantDropdown } from './helpers/MultiVariantDropdown';
 import { options, handleFilter, handleEmptyFilter } from './helpers/options';
@@ -31,7 +31,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
       <Looper
         list={variants}
         render={variant => (
-          <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginRight: 20 }}>
+          <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
             <InlineDropdown
               initialSelected={options[3]}
               inputVariant={variant}
@@ -59,7 +59,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
       <Looper
         list={variants}
         render={variant => (
-          <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginRight: 20 }}>
+          <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
             <InlineDropdown
               initialSelected={options[3]}
               inputVariant={variant}
@@ -86,7 +86,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
       <Looper
         list={variants}
         render={variant => (
-          <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginRight: 20 }}>
+          <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
             <InlineDropdown
               iconAfter={<TagIcon size={12} />}
               initialSelected={options[3]}
@@ -116,7 +116,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
   <ThemeWrapper>
     <StateWrapper initialState={''}>
       {({ state: filter, setState: setFilter }) => (
-        <div style={{ maxWidth: 300 }}>
+        <div style={{ height: 300, maxWidth: 300 }}>
           <InlineDropdown
             emptyNotification={filter ? `No options were found for "${filter}".` : ''}
             label="Super awesome dropdown"
@@ -131,6 +131,40 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
         </div>
       )}
     </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+## Empty dropdown
+
+<Playground>
+  <ThemeWrapper style={{ height: '300px' }}>
+    <div style={{ maxWidth: 300 }}>
+      <InlineDropdown
+        label="Super awesome dropdown"
+        onChange={value => console.log('change', value)}
+        onSelect={value => console.log('select', value)}
+        options={[]}
+        transitional
+      />
+    </div>
+  </ThemeWrapper>
+</Playground>
+
+### Empty filterable dropdown
+
+<Playground>
+  <ThemeWrapper style={{ height: '300px' }}>
+    <div style={{ maxWidth: 300 }}>
+      <InlineDropdown
+        iconBefore={<SearchIcon size={14} />}
+        label="Super awesome dropdown"
+        onChange={value => console.log('change', value)}
+        onFilter={handleEmptyFilter}
+        onSelect={value => console.log('select', value)}
+        options={[]}
+        transitional
+      />
+    </div>
   </ThemeWrapper>
 </Playground>
 
@@ -208,38 +242,47 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
   </ThemeWrapper>
 </Playground>
 
-### Empty dropdown
+### Styled dropdown
 
 <Playground>
-  <ThemeWrapper style={{ height: '300px' }}>
-    <div style={{ maxWidth: 300 }}>
-      <InlineDropdown
-        label="Super awesome dropdown"
-        onChange={value => console.log('change', value)}
-        onSelect={value => console.log('select', value)}
-        options={[]}
-        transitional
-      />
-    </div>
-  </ThemeWrapper>
-</Playground>
-
-### Empty filterable dropdown
-
-<Playground>
-  <ThemeWrapper style={{ height: '300px' }}>
-    <div style={{ maxWidth: 300 }}>
-      <InlineDropdown
-        iconBefore={<SearchIcon size={14} />}
-        label="Super awesome dropdown"
-        onChange={value => console.log('change', value)}
-        onFilter={handleEmptyFilter}
-        onSelect={value => console.log('select', value)}
-        options={[]}
-        transitional
-      />
-    </div>
-  </ThemeWrapper>
+  <div style={{ height: 300, maxWidth: 300, marginLeft: 20, marginRight: 20 }}>
+    <InlineDropdown
+      id="demo-contrast-dropdown"
+      initialSelected={options[3]}
+      label="Super awesome dropdown"
+      layout="contained"
+      onChange={value => console.log('change', value)}
+      onSelect={value => console.log('select', value)}
+      options={options}
+      style={{
+        '--dropdown-options-bottom-border-color': '#9D69D5',
+        '--dropdown-options-focused-border-color': '#57278C',
+        '--dropdown-options-contained-background-color': '#fff',
+        '--dropdown-options-contained-box-shadow': '0px 1px 2px 0px rgba(0, 0, 0, 0.3)',
+        '--dropdown-options-contained-border-color': '#B995E1',
+        '--dropdown-options-raised-box-shadow': '0px 1px 2px 0px rgba(0, 0, 0, 0.3)',
+        '--dropdown-options-scrollbar-thumb-color': '#DDDDE0',
+        '--list-focused-border-color': '#642da0',
+        '--list-item-selected-background-color': '#642da0',
+        '--list-item-selected-text-color': '#ffffff',
+        '--list-item-background-color': 'transparent',
+        '--list-item-border-color': '#642da0',
+        '--list-item-focused-border-color': '#57278C',
+        '--list-item-focused-text-color': '#642da0',
+        '--list-item-text-color': '#B995E1',
+        '--formbox-icon-color': '#9D69D5',
+        '--formbox-icon-hovered-color': '#642da0',
+        '--formbox-input-container-background-color': 'transparent',
+        '--formbox-input-container-border-color': '#9D69D5',
+        '--formbox-input-container-focused-border-color': '#57278C',
+        '--formbox-input-container-hovered-border-color': '#642da0',
+        '--formbox-input-text-color': '#642da0',
+        '--formbox-label-text-color': '#B995E1',
+      }}
+      unthemed
+      variant="underline"
+    />
+  </div>
 </Playground>
 
 ### Multi-variant dropdown
@@ -258,7 +301,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
         onSelect={value => console.log('select', value)}
         options={options}
         outline="unboxed"
-        style={{ width: '300px', '--contrast-color': themes[themeId]['color-accent-primary'] }}
+        style={{ width: '300px', marginLeft: 20, '--contrast-color': themes[themeId]['color-FG40'] }}
       />
     )}
   </ThemeWrapper>

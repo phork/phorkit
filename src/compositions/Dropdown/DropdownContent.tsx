@@ -69,6 +69,7 @@ function DropdownContentBase(
     options,
     state,
     themeId,
+    unthemed,
     ...props
   }: DropdownContentProps,
   forwardedRef: React.ForwardedRef<HTMLUListElement>,
@@ -115,6 +116,7 @@ function DropdownContentBase(
           selectOnFocus={!mimicSelectOnFocus}
           size={listSize || listDefaults.size}
           tabIndex={isDropdownVisible ? 0 : -1}
+          unthemed={unthemed}
           variant={listVariant || listDefaults.variant}
         >
           <DropdownEmpty contrast={contrast} themeId={themeId} filter={state.input} layout={layout}>
