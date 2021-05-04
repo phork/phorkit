@@ -1,7 +1,7 @@
 {
   "name": "@phork/phorkit",
   "description": "Phork/it. A component library.",
-  "version": "3.2.3",
+  "version": "3.3.0",
   "license": "MIT",
   "main": "cjs/index.js",
   "module": "esm/index.js",

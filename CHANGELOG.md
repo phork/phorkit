@@ -1,5 +1,15 @@
 # Changelog
 
+# [3.3.0](https://github.com/phork/phorkit/compare/v3.2.3...v3.3.0) (2021-05-04)
+
+### ✨ Features
+
+- vertical progress bar, form fill colors, refactoring ([bb53d5d](https://github.com/phork/phorkit/commit/bb53d5d))
+
+### 🐛 Bug Fixes
+
+- progress bar orientation should be optional ([7163b54](https://github.com/phork/phorkit/commit/7163b54))
+
 ## [3.2.3](https://github.com/phork/phorkit/compare/v3.2.2...v3.2.3) (2021-05-03)
 
 ### 🐛 Bug Fixes
