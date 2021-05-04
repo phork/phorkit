@@ -21,7 +21,7 @@ export interface ProgressProps extends React.HTMLAttributes<HTMLDivElement>, The
   quiet?: boolean;
   size?: 'small' | 'medium' | 'large';
   spaced?: boolean;
-  orientation: Orientation;
+  orientation?: Orientation;
 }
 
 export function Progress({
