@@ -53,14 +53,15 @@
       height: 1px;
       left: 0;
       position: absolute;
-      transition: width 300ms ease-out;
-      width: 0%;
+      transition: transform 300ms ease;
+      transform: scaleX(0);
+      width: 100%;
     }
 
     &.focus,
     &.is-focused {
       &:after {
-        width: 100%;
+        transform: scaleX(1);
       }
     }
   }
@@ -437,8 +438,8 @@ select.formboxInput {
 }
 
 /**
- * Textareas have a top left corner marker that
- * other inputs don't have.
+ * 1. Textareas have a top left corner marker that
+ *    other inputs don't have.
  */
 .formbox--textarea {
   .formboxInputContainer--underline,
@@ -455,7 +456,7 @@ select.formboxInput {
     }
   }
 
-  .formboxInputContainer--underline {
+  .formboxInputContainer--underline /* [1] */ {
     margin-top: 4px;
 
     &:before {
