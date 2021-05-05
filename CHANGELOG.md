@@ -1,5 +1,22 @@
 # Changelog
 
+# [4.0.0](https://github.com/phork/phorkit/compare/v3.3.0...v4.0.0) (2021-05-05)
+
+### ♻ Code Refactoring
+
+- **major**: rename Tags component to Tag ([48d5850](https://github.com/phork/phorkit/commit/48d5850))
+
+### ✨ Features
+
+- added badge pulsing animation ([a22e8c4](https://github.com/phork/phorkit/commit/a22e8c4))
+- added pill textbox, unthemed dropdown ([60e49b3](https://github.com/phork/phorkit/commit/60e49b3))
+- refactored tags, added variants ([3cc15ce](https://github.com/phork/phorkit/commit/3cc15ce))
+
+### 🐛 Bug Fixes
+
+- improve button color transitions ([4d604cc](https://github.com/phork/phorkit/commit/4d604cc))
+- improve formbox transitions ([c90c29b](https://github.com/phork/phorkit/commit/c90c29b))
+
 # [3.3.0](https://github.com/phork/phorkit/compare/v3.2.3...v3.3.0) (2021-05-04)
 
 ### ✨ Features
