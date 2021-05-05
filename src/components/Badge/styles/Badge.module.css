@@ -55,7 +55,7 @@
  *    format. Note that 100% will not work.
  */
 .badge--count {
-  border-radius: 500px; /* [1] */
+  border-radius: 40px; /* [1] */
   min-height: $element-height-xsmall;
   min-width: $element-height-xsmall;
   padding: 4px;

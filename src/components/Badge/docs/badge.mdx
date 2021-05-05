@@ -300,17 +300,18 @@ import { Badge, ColoredBadge, StyledBadge } from '../index';
               <Flex direction="column" alignItems="center" justifyContent="center">
                 <Rhythm my={2}>
                   <ColoredBadge themeId={themeId} shape="point" colorId={id} />
-                  <ColoredBadge themeId={themeId} shape="point" colorId={id} pulsing />
                   <ColoredBadge themeId={themeId} shape="marker" colorId={id} />
-                  <ColoredBadge themeId={themeId} shape="marker" colorId={id} pulsing />
                   <ColoredBadge themeId={themeId} shape="count" colorId={id}>
-                    {id.replace(/[^0-9]/g, '')}
-                  </ColoredBadge>
-                  <ColoredBadge themeId={themeId} shape="count" colorId={id} pulsing>
                     {id.replace(/[^0-9]/g, '')}
                   </ColoredBadge>
                   <ColoredBadge themeId={themeId} shape="label" colorId={id}>
                     {id}
+                  </ColoredBadge>
+                  <br />
+                  <ColoredBadge themeId={themeId} shape="point" colorId={id} pulsing />
+                  <ColoredBadge themeId={themeId} shape="marker" colorId={id} pulsing />
+                  <ColoredBadge themeId={themeId} shape="count" colorId={id} pulsing>
+                    {id.replace(/[^0-9]/g, '')}
                   </ColoredBadge>
                   <ColoredBadge themeId={themeId} shape="label" colorId={id} pulsing>
                     {id}
