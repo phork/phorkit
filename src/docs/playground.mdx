@@ -93,7 +93,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
             <ColorLooper
               themeId={themeId}
               render={({ id }) => (
-                <StateWrapper>
+                <StateWrapper key={id}>
                   {({ state: percent, setState: setPercent }) => (
                     <TimeoutWrapper callback={() => setPercent(getPercent())} milliseconds={600} infinite>
                       <StyledProgress

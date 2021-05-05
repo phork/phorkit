@@ -127,6 +127,7 @@ button.tab {
   position: relative;
   text-decoration: none;
   transition: background-color 100ms ease;
+  user-select: none;
 
   &.is-selected {
     background-color: var(--tab-selected-background-color);

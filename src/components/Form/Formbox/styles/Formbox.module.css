@@ -269,6 +269,7 @@ input.formboxInput[type='number'] {
   font-size: $font-size-l;
   opacity: 0.7;
   pointer-events: none;
+  user-select: none;
 
   &.formboxLabel--hasIconBefore {
     padding-left: 20px;

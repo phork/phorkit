@@ -68,6 +68,10 @@
   white-space: nowrap;
 }
 
+.text-no-select {
+  user-select: none;
+}
+
 .text-width-full {
   width: 100%;
 }

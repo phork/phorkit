@@ -23,6 +23,7 @@ button.avatar {
   line-height: 0;
   margin: 0;
   position: relative;
+  user-select: none;
 }
 
 .avatar--actionable {

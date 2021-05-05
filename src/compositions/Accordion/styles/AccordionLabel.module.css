@@ -11,6 +11,7 @@ button.accordionLabel {
   padding: 8px 20px;
   position: relative;
   text-decoration: none;
+  user-select: none;
 
   &.is-selected {
     color: var(--accordion-label-selected-text-color);
@@ -37,7 +38,7 @@ button.accordionLabel {
   &:focus {
     outline: none;
   }
-  
+
   &:disabled,
   &.is-disabled {
     pointer-events: none;

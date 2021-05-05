@@ -20,6 +20,7 @@ export type TypographyVariants =
   | 'line-height-normal'
   | 'space-after'
   | 'space-before'
+  | 'no-select'
   | 'no-wrap'
   | 'reset'
   | 'medium-caps'

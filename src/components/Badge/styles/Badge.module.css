@@ -18,6 +18,7 @@
   transition-duration: 300ms; /* [1] */
   transition-property: width, height, background-color; /* [1] */
   transition-timing-function: ease-in-out; /* [1] */
+  user-select: none;
   white-space: nowrap;
   z-index: 5; /* [1] */
 }

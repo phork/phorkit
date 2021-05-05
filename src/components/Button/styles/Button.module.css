@@ -54,6 +54,7 @@ button.button {
   transition-property: background-color, border-color, color, opacity; /* [1] */
   transition-timing-function: ease;
   transition-duration: 150ms;
+  user-select: none;
 
   &:focus {
     outline: none;
