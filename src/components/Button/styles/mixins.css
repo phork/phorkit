@@ -35,14 +35,14 @@
 
     &:hover,
     &.is-hovered {
-      background-color: var(--button-hovered-primary-color);
-      border-color: var(--button-hovered-primary-color);
+      opacity: .8;
     }
 
     &:active,
     &.is-active {
       background-color: var(--button-active-primary-color);
       border-color: var(--button-active-primary-color);
+      opacity: 1;
     }
   }
 }
@@ -92,9 +92,6 @@
 
     &:hover,
     &.is-hovered {
-      border-color: var(--button-hovered-primary-color);
-      color: var(--button-hovered-primary-color);
-
       &:before {
         background-color: var(--button-primary-color);
       }
@@ -164,8 +161,6 @@
 
     &:hover,
     &.is-hovered {
-      color: var(--button-hovered-primary-color);
-
       &:before {
         opacity: 0.1;
       }
@@ -207,7 +202,7 @@
   &:not(:disabled):not(.is-disabled) {
     &:hover,
     &.is-hovered {
-      color: var(--button-hovered-primary-color);
+      opacity: .8;
     }
 
     &:focus,
@@ -221,6 +216,7 @@
     &:active,
     &.is-active {
       color: var(--button-active-primary-color);
+      opacity: 1;
     }
   }
 }
