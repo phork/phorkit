@@ -6,7 +6,7 @@ import styles from './styles/Chip.module.css';
 
 export interface ChipProps extends Omit<TagProps, 'flush' | 'label'> {
   avatar: Pick<AvatarProps, 'color' | 'imgSrc' | 'initials' | 'style' | 'translations' | 'themeId' | 'unthemed'>;
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   text: React.ReactNode;
 }
 

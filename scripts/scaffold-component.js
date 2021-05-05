@@ -92,12 +92,13 @@ route: /${type}s/${component}
 ---
 
 import { Playground, Props } from 'docz';
+import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { ${component} } from '../index';
 
-# ${component}
+<PageTitle title="${component}" src="${type}s/${component}" />
 
-## Basic ${ucfirst(component)}
+## Basic ${lcfirst(component)}
 
 <Playground>
   <ThemeWrapper>
