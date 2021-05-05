@@ -25,6 +25,6 @@ export * from './Portal';
 export * from './Position';
 export * from './Progress';
 export * from './Rhythm';
-export * from './Tags';
+export * from './Tag';
 export * from './Triangle';
 export * from './Typography';

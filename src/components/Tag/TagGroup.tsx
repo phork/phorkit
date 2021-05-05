@@ -3,7 +3,7 @@ import React from 'react';
 import { ThemeProps } from '../../types';
 import { useThemeId } from '../../hooks/useThemeId';
 import { Tag, TagElementType, TagShape, TagSize, TagProps } from './Tag';
-import styles from './styles/Tags.module.css';
+import styles from './styles/Tag.module.css';
 
 export interface TagGroupProps<T extends TagElementType = 'div'>
   extends React.HTMLAttributes<HTMLDivElement>,

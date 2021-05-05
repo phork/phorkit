@@ -27,6 +27,7 @@ button.tag {
   position: relative;
   text-align: center;
   text-decoration: none;
+  user-select: none;
 
   &:focus {
     outline: none;
