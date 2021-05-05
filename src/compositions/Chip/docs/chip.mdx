@@ -1,0 +1,193 @@
+---
+name: Chip
+menu: Display
+route: /compositions/Chip
+---
+
+import { Playground, Props } from 'docz';
+import { TimesIcon } from 'icons/TimesIcon';
+import { CheckIcon } from 'icons/internal/CheckIcon';
+import { Avatar } from 'components/Avatar';
+import { IconButton } from 'components/Button';
+import { Rhythm } from 'components/Rhythm';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { Chip } from '../index';
+
+<PageTitle title="Chip" src="compositions/Chip" />
+
+## Small chip
+
+<Playground>
+  <ThemeWrapper>
+    <Rhythm m={2}>
+      <Chip
+        avatar={{ initials: 'EC', color: 'primary' }}
+        icon={
+          <Rhythm p={1}>
+            <IconButton
+              aria-label="Remove tag"
+              color="neutral"
+              noHeight
+              onClick={e => console.log('remove tag')}
+              shape="round"
+            >
+              <TimesIcon scale="xsmall" />
+            </IconButton>
+          </Rhythm>
+        }
+        size="small"
+        text="Hello world"
+      />
+      <Chip
+        avatar={{ initials: 'EC', color: 'primary', imgSrc: '/public/images/avatar.jpg' }}
+        icon={
+          <Rhythm mr={2}>
+            <CheckIcon scale="medium" />
+          </Rhythm>
+        }
+        size="small"
+        text="Hello world"
+      />
+      <Chip
+        actionable
+        avatar={{
+          initials: 'EC',
+        }}
+        icon={
+          <Rhythm mr={2}>
+            <CheckIcon scale="medium" />
+          </Rhythm>
+        }
+        size="small"
+        text="Hello world"
+        style={{
+          '--avatar-background-color': '#f41150',
+          '--avatar-text-color': '#fff',
+          '--tag-primary-color': '#f41150',
+          '--tag-inverse-color': '#fff',
+        }}
+        text="Hello world"
+        unthemed
+      />
+    </Rhythm>
+  </ThemeWrapper>
+</Playground>
+
+## Medium chip
+
+<Playground>
+  <ThemeWrapper>
+    <Rhythm m={2}>
+      <Chip
+        avatar={{ initials: 'EC', color: 'primary' }}
+        icon={
+          <Rhythm p={1}>
+            <IconButton
+              aria-label="Remove tag"
+              color="neutral"
+              noHeight
+              onClick={e => console.log('remove tag')}
+              shape="round"
+            >
+              <TimesIcon size={7} />
+            </IconButton>
+          </Rhythm>
+        }
+        size="medium"
+        text="Hello world"
+      />
+      <Chip
+        avatar={{ initials: 'EC', color: 'primary', imgSrc: '/public/images/avatar.jpg' }}
+        icon={
+          <Rhythm mr={2}>
+            <CheckIcon scale="medium" />
+          </Rhythm>
+        }
+        size="medium"
+        text="Hello world"
+      />
+      <Chip
+        actionable
+        avatar={{
+          initials: 'EC',
+        }}
+        icon={
+          <Rhythm mr={2}>
+            <CheckIcon scale="medium" />
+          </Rhythm>
+        }
+        size="medium"
+        style={{
+          '--avatar-background-color': '#f41150',
+          '--avatar-text-color': '#fff',
+          '--tag-primary-color': '#f41150',
+          '--tag-inverse-color': '#fff',
+        }}
+        text="Hello world"
+        unthemed
+      />
+    </Rhythm>
+  </ThemeWrapper>
+</Playground>
+
+## Large chip
+
+<Playground>
+  <ThemeWrapper>
+    <Rhythm m={2}>
+      <Chip
+        avatar={{ initials: 'EC', color: 'primary' }}
+        icon={
+          <Rhythm p={1}>
+            <IconButton
+              aria-label="Remove tag"
+              color="neutral"
+              noHeight
+              onClick={e => console.log('remove tag')}
+              shape="round"
+            >
+              <TimesIcon scale="xsmall" />
+            </IconButton>
+          </Rhythm>
+        }
+        size="large"
+        text="Hello world"
+      />
+      <Chip
+        avatar={{ initials: 'EC', color: 'primary', imgSrc: '/public/images/avatar.jpg' }}
+        icon={
+          <Rhythm mr={1}>
+            <CheckIcon size={18} />
+          </Rhythm>
+        }
+        size="large"
+        text="Hello world"
+      />
+      <Chip
+        actionable
+        avatar={{
+          initials: 'EC',
+        }}
+        icon={
+          <Rhythm mr={2}>
+            <CheckIcon size={18} />
+          </Rhythm>
+        }
+        size="large"
+        style={{
+          '--avatar-background-color': '#f41150',
+          '--avatar-text-color': '#fff',
+          '--tag-primary-color': '#f41150',
+          '--tag-inverse-color': '#fff',
+        }}
+        text="Hello world"
+        unthemed
+      />
+    </Rhythm>
+  </ThemeWrapper>
+</Playground>
+
+## \[props\]
+
+<Props of={Chip} />

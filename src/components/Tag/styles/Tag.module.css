@@ -140,11 +140,12 @@ button.tag {
 }
 
 .tag--flush {
+  &.tag--xxsmall,
+  &.tag--xsmall,
   &.tag--small,
   &.tag--medium,
   &.tag--large {
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0;
   }
 }
 

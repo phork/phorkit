@@ -141,6 +141,6 @@ button.avatar {
 /* stylelint-disable-next-line no-duplicate-selectors */
 .avatar--image {
   .avatar__content {
-    display: none;
+    opacity: 0;
   }
 }
