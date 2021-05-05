@@ -13,6 +13,7 @@ export interface LocalBadgeProps extends ThemeProps {
   color?: SemanticColor;
   outlined?: boolean;
   position?: CornerPosition;
+  pulsing?: boolean;
   shape?: BadgeShape;
 }
 
@@ -25,6 +26,7 @@ export function Badge({
   contrast,
   outlined,
   position,
+  pulsing,
   shape,
   themeId: initThemeId,
   unthemed,
@@ -42,11 +44,12 @@ export function Badge({
         themeId && !unthemed && styles[`badge--${themeId}`],
         color && styles[`badge--${color}`],
         outlined && styles['badge--outlined'],
+        pulsing && styles['badge--pulsing'],
         className,
       )}
       {...props}
     >
-      {children}
+      <div className={styles.badge__content}>{children}</div>
     </div>
   );
 }

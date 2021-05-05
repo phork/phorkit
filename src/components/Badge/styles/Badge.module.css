@@ -8,17 +8,28 @@
   align-items: center;
   background-color: var(--badge-background-color);
   color: var(--badge-text-color);
-  display: flex;
+  display: inline-flex;
   flex: none;
   flex-direction: row;
   font-size: $font-size-xxs;
   font-weight: 700;
   justify-content: center;
+  position: relative;
   transition-duration: 300ms; /* [1] */
   transition-property: width, height, background-color; /* [1] */
   transition-timing-function: ease-in-out; /* [1] */
   white-space: nowrap;
   z-index: 5; /* [1] */
+}
+
+/**
+ * The transform used for the pulsing animation
+ * creates a new stacking content so this puts
+ * the badge content in that same stacking context
+ * and prevents the animation from being overlaid.
+ */
+.badge__content {
+  transform: scale(1);
 }
 
 .badge--outlined {
@@ -85,42 +96,129 @@
 
 .badge--success {
   @mixin themed .badge {
-    background-color: $theme-color-success;
-    color: $theme-color-success-contrast;
+    --badge-background-color: $theme-color-success;
+    --badge-text-color: $theme-color-success-contrast;
   }
 }
 
 .badge--warning {
   @mixin themed .badge {
-    background-color: $theme-color-warning;
-    color: $theme-color-warning-contrast;
+    --badge-background-color: $theme-color-warning;
+    --badge-text-color: $theme-color-warning-contrast;
   }
 }
 
 .badge--danger {
   @mixin themed .badge {
-    background-color: $theme-color-danger;
-    color: $theme-color-danger-contrast;
+    --badge-background-color: $theme-color-danger;
+    --badge-text-color: $theme-color-danger-contrast;
   }
 }
 
 .badge--primary {
   @mixin themed .badge {
-    background-color: $theme-color-accent-primary;
-    color: $theme-color-accent-primary-contrast;
+    --badge-background-color: $theme-color-accent-primary;
+    --badge-text-color: $theme-color-accent-primary-contrast;
   }
 }
 
 .badge--contrast {
   @mixin themed .badge {
-    background-color: $theme-contrast-palette-text-color;
-    color: var(--contrast-color, $theme-contrast-palette-background-color);
+    --badge-background-color: $theme-contrast-palette-text-color;
+    --badge-text-color: var(--contrast-color, $theme-contrast-palette-background-color);
   }
 }
 
 .badge--neutral {
   @mixin themed .badge {
-    background-color: $theme-color-neutral;
-    color: $theme-color-neutral-contrast;
+    --badge-background-color: $theme-color-neutral;
+    --badge-text-color: $theme-color-neutral-contrast;
+  }
+}
+
+/**
+ * The default pulsing animation.
+ */
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+
+  80% {
+    transform: scale(1.6);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}
+
+/**
+ * The animation for the point badge is larger than
+ * the default animation.
+ */
+@keyframes pulse-marker {
+  0% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+
+  80% {
+    transform: scale(2.2);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(2.2);
+  }
+}
+
+/**
+ * The animation for the point badge is darker and
+ * larger than the default animation.
+ */
+@keyframes pulse-point {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+
+  80% {
+    transform: scale(3.5);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(3.5);
+  }
+}
+
+.badge--pulsing {
+  &:before {
+    animation: pulse 2s infinite;
+    background-color: var(--badge-background-color);
+    border-radius: inherit;
+    bottom: 0;
+    content: '';
+    flex: none;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: scale(1);
+  }
+
+  &.badge--marker {
+    &:before {
+      animation: pulse-marker 2s infinite;
+    }
+  }
+
+  &.badge--point {
+    &:before {
+      animation: pulse-point 2s infinite;
+    }
   }
 }
