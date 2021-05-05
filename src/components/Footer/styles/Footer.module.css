@@ -4,6 +4,7 @@
   color: var(--footer-text-color);
   display: flex;
   flex-direction: row;
+  flex: none;
   justify-content: space-between;
   position: relative;
   width: 100%;

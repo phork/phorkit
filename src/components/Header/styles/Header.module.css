@@ -3,6 +3,7 @@
   background-color: var(--header-background-color);
   color: var(--header-text-color);
   display: flex;
+  flex: none;
   flex-direction: row;
   justify-content: space-between;
   position: relative;
