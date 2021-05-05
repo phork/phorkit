@@ -32,8 +32,7 @@ button.avatar {
   &:before {
     border-radius: inherit;
     bottom: 0;
-    box-shadow: 0 0 0 var(--avatar-actionable-border-width, 4px)
-      var(--avatar-actionable-background-color, var(--avatar-background-color));
+    box-shadow: 0 0 0 0 transparent;
     content: '';
     height: 100%;
     left: 0;
@@ -41,19 +40,23 @@ button.avatar {
     position: absolute;
     right: 0;
     top: 0;
-    transition: opacity 100ms ease;
+    transition: box-shadow 150ms ease, opacity 150ms ease;
   }
 
   &:focus:before {
+    box-shadow: 0 0 0 var(--avatar-actionable-border-width, 4px)
+      var(--avatar-actionable-background-color, var(--avatar-background-color));
     opacity: 0.2;
   }
 
   &:hover:before {
+    box-shadow: 0 0 0 var(--avatar-actionable-border-width, 4px)
+      var(--avatar-actionable-background-color, var(--avatar-background-color));
     opacity: 0.2;
   }
 
   &:active:before {
-    opacity: 0.3;
+    opacity: 0.4;
   }
 }
 

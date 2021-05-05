@@ -7,10 +7,11 @@ route: /components/Avatar
 import { Playground, Props } from 'docz';
 import { Flex } from 'components/Flex';
 import { Rhythm } from 'components/Rhythm';
+import { ColorLooper } from 'docs/helpers/ColorLooper';
 import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { Avatar, StyledAvatar } from '../index';
+import { Avatar, ColoredAvatar, StyledAvatar } from '../index';
 
 <PageTitle title="Avatar" src="components/Avatar" />
 
@@ -159,6 +160,41 @@ import { Avatar, StyledAvatar } from '../index';
   </ThemeWrapper>
 </Playground>
 
+### Colored initials
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <Rhythm my={2}>
+        <Flex direction="column">
+          <ColorLooper
+            themeId={themeId}
+            group="primary"
+            render={({ id }) => (
+              <Flex direction="row" alignItems="center" key={`coloredInitials-${id}`} wrap>
+                <Looper
+                  list={['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']}
+                  render={size => (
+                    <Rhythm m={2}>
+                      <ColoredAvatar
+                        key={`coloredInitials-${id}-${size}`}
+                        actionable
+                        colorId={id}
+                        initials="EC"
+                        size={size}
+                      />
+                    </Rhythm>
+                  )}
+                />
+              </Flex>
+            )}
+          />
+        </Flex>
+      </Rhythm>
+    )}
+  </ThemeWrapper>
+</Playground>
+
 ### Styled initials
 
 <Playground>
@@ -199,4 +235,14 @@ import { Avatar, StyledAvatar } from '../index';
 
 ## \[props\]
 
+### Avatar
+
 <Props of={Avatar} />
+
+### ColoredAvatar
+
+<Props of={ColoredAvatar} />
+
+### StyledAvatar
+
+<Props of={StyledAvatar} />
