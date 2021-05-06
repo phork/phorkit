@@ -5,7 +5,7 @@ import { useThemeId } from '../../hooks/useThemeId';
 import styles from './styles/Button.module.css';
 
 export type ButtonAlignment = 'left' | 'right' | 'center';
-export type ButtonWeight = 'filled' | 'outline' | 'text' | 'inline';
+export type ButtonWeight = 'solid' | 'shaded' | 'outlined' | 'ghost' | 'inline';
 export type ButtonShape = 'pill' | 'brick';
 export type ButtonSize = 'small' | 'medium' | 'large' | 'relative';
 export type ButtonColor = SemanticColor | 'neutralAndPrimary' | 'black' | 'white';
@@ -62,7 +62,7 @@ function ButtonBase<T extends ButtonElementType = 'button'>(
     type = 'button',
     unstyled,
     unthemed,
-    weight = 'filled',
+    weight = 'solid',
     ...props
   }: ButtonProps<T>,
   forwardedRef: React.ForwardedRef<HTMLElementTagNameMap[T]>,

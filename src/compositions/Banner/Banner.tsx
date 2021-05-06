@@ -84,13 +84,16 @@ export function Banner({
 
         {onClose && (
           <Position location="right-center" variant="outside">
-            <Rhythm p={2} wrapper="div">
+            <Rhythm ml={-1} p={2}>
               <IconButton
                 aria-label={closeLabel}
                 color="neutral"
                 contrast={isColoredBanner}
-                themeId={themeId}
+                noHeight
                 onClick={handleClose}
+                shape="square"
+                themeId={themeId}
+                weight="ghost"
               >
                 <TimesIcon title={closeLabel} scale="xsmall" />
               </IconButton>

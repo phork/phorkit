@@ -27,7 +27,7 @@ function IconButtonBase<T extends IconButtonElementType = 'button'>(
 ): React.ReactElement {
   const classes = cx(styles['button--icon'], shape && styles[`button--${shapeMap[shape]}`], className);
   const content = renderFromPropWithFallback(children);
-  const weight = initWeight || (shape && 'filled') || (!shape && 'inline');
+  const weight = initWeight || (shape && 'solid') || (!shape && 'inline');
 
   return (
     <Button<T>

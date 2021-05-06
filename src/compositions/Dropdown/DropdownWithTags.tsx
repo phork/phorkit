@@ -7,7 +7,7 @@ import { TimesIcon } from '../../icons/TimesIcon';
 import { Flex } from '../../components/Flex';
 import { IconText } from '../../components/IconText';
 import { Rhythm } from '../../components/Rhythm/Rhythm';
-import { Tag, TagGroup, TagSize } from '../../components/Tag';
+import { Tag, TagGroup, TagSize, TagVariant } from '../../components/Tag';
 import { TypographyWithSvg } from '../../components/Typography';
 import { Dropdown, DropdownProps } from './Dropdown';
 import { DropdownContent } from './DropdownContent';
@@ -26,6 +26,7 @@ export interface DropdownWithTagsProps extends Omit<DropdownProps, 'initialSelec
   initialSelected?: DropdownOption[];
   readOnlyValue?: React.ReactChild;
   tagSize?: TagSize;
+  tagVariant?: TagVariant;
   translations?: DropdownWithTagsTranslations;
 }
 
@@ -37,6 +38,7 @@ export function DropdownWithTags({
   options,
   readOnlyValue,
   tagSize = 'xsmall',
+  tagVariant = 'outlined',
   themeId: initThemeId,
   translations: customTranslations,
   ...props
@@ -116,6 +118,7 @@ export function DropdownWithTags({
               onClick={() => removeItem(itemId)}
               shape="pill"
               size={tagSize}
+              variant={tagVariant}
               themeId={themeId}
             />
           ))}

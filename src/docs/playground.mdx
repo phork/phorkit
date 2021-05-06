@@ -167,7 +167,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
           </Badge>
         </Flex>
       </Button>
-      <Button color="warning" weight="outline">
+      <Button color="warning" weight="outlined">
         <Flex wrap={false} inflexible direction="row" alignItems="center" justifyContent="center">
           Notifications
           <Badge position="top-right" shape="count" color="warning">
@@ -201,10 +201,10 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
         <ColoredPaper colorId="P25" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
           <Rhythm m={2}>
             <ButtonGroup align="right" spacing="cozy">
-              <Button contrast weight="text" key="cancel">
+              <Button contrast weight="ghost" key="cancel">
                 Cancel
               </Button>
-              <Button contrast weight="outline" key="confirm">
+              <Button contrast weight="outlined" key="confirm">
                 Confirm
               </Button>
             </ButtonGroup>
@@ -292,7 +292,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
       hoverable={false}
       position="top-center"
       toggler={
-        <Button color="warning" weight="outline">
+        <Button color="warning" weight="outlined">
           Notifications
         </Button>
       }
@@ -1065,7 +1065,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                         <ModalFooter bordered>
                           <Flex justifyContent="flex-end">
                             <ButtonGroup spacing="cozy">
-                              <Button color="neutral" key="cancel" onClick={popModal} shape="brick" weight="text">
+                              <Button color="neutral" key="cancel" onClick={popModal} shape="brick" weight="ghost">
                                 Cancel
                               </Button>
                               <Button

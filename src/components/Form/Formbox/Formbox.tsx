@@ -20,7 +20,7 @@ export const formboxTranslations: FormboxTranslations = {
 export type FormboxValue = string | number;
 export type FormboxContainerElementType = Extract<keyof JSX.IntrinsicElements, 'label' | 'div'>;
 export type FormboxInputElementType = Extract<keyof JSX.IntrinsicElements, 'input' | 'select' | 'textarea'>;
-export type FormboxVariant = 'underline' | 'filled' | 'outline' | 'minimal' | 'pill';
+export type FormboxVariant = 'underline' | 'filled' | 'outline' | 'pill' | 'minimal';
 export type FormboxIconPosition = 'before' | 'after';
 
 export interface LocalFormboxProps<I extends FormboxInputElementType> extends ThemeProps {

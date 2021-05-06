@@ -108,7 +108,7 @@ import { Button, ButtonGroup, StyledButton } from '../index';
                           size={size}
                           spacing="divided"
                           selectedStyle={{ opacity: 0.8 }}
-                          weight="filled"
+                          weight="solid"
                         />
                       </Rhythm>
                     )}
@@ -149,10 +149,10 @@ import { Button, ButtonGroup, StyledButton } from '../index';
                         key={`cozyButtonGroup-${shape}-${size}`}
                         onClick={(event, id) => setState(id)}
                         spacing="cozy"
-                        selectedWeight="outline"
+                        selectedWeight="outlined"
                         shape={shape}
                         size={size}
-                        weight="text"
+                        weight="ghost"
                       />
                     </Rhythm>
                   )}
@@ -268,7 +268,7 @@ import { Button, ButtonGroup, StyledButton } from '../index';
                   size={size}
                   spacing="divided"
                   style={{ width: '200px' }}
-                  weight="filled"
+                  weight="solid"
                 />
               </Rhythm>
             )}
@@ -524,7 +524,7 @@ _Note that the links will cause the page to reload._
             key="first"
             shape="pill"
             color={state === 'first' ? 'primary' : 'neutral'}
-            weight={state === 'first' ? 'filled' : 'outline'}
+            weight={state === 'first' ? 'solid' : 'outlined'}
             data-value="first"
           >
             First
@@ -533,7 +533,7 @@ _Note that the links will cause the page to reload._
             key="second"
             shape="pill"
             color={state === 'second' ? 'primary' : 'neutral'}
-            weight={state === 'second' ? 'filled' : 'outline'}
+            weight={state === 'second' ? 'solid' : 'outlined'}
             data-value="second"
           >
             Second
@@ -542,7 +542,7 @@ _Note that the links will cause the page to reload._
             key="third"
             shape="pill"
             color={state === 'third' ? 'primary' : 'neutral'}
-            weight={state === 'third' ? 'filled' : 'outline'}
+            weight={state === 'third' ? 'solid' : 'outlined'}
             data-value="third"
           >
             Third
@@ -551,7 +551,7 @@ _Note that the links will cause the page to reload._
             key="fourth"
             shape="pill"
             color={state === 'fourth' ? 'primary' : 'neutral'}
-            weight={state === 'fourth' ? 'filled' : 'outline'}
+            weight={state === 'fourth' ? 'solid' : 'outlined'}
             data-value="fourth"
           >
             Fourth
@@ -577,7 +577,7 @@ _Note that the links will cause the page to reload._
               label: selected => (
                 <Button
                   value="first"
-                  weight={selected ? undefined : 'outline'}
+                  weight={selected ? undefined : 'outlined'}
                   color={selected ? 'primary' : 'neutral'}
                 >
                   First
@@ -590,7 +590,7 @@ _Note that the links will cause the page to reload._
               label: selected => (
                 <Button
                   value="second"
-                  weight={selected ? undefined : 'outline'}
+                  weight={selected ? undefined : 'outlined'}
                   color={selected ? 'primary' : 'neutral'}
                 >
                   Second
@@ -603,7 +603,7 @@ _Note that the links will cause the page to reload._
               label: selected => (
                 <Button
                   value="third"
-                  weight={selected ? undefined : 'outline'}
+                  weight={selected ? undefined : 'outlined'}
                   color={selected ? 'primary' : 'neutral'}
                 >
                   Third
@@ -616,7 +616,7 @@ _Note that the links will cause the page to reload._
               label: selected => (
                 <Button
                   value="fourth"
-                  weight={selected ? undefined : 'outline'}
+                  weight={selected ? undefined : 'outlined'}
                   color={selected ? 'primary' : 'neutral'}
                 >
                   Fourth

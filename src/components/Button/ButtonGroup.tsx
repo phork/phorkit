@@ -44,12 +44,12 @@ export function ButtonGroup({
   orientation = 'horizontal',
   selectedColor,
   selectedStyle,
-  selectedWeight = 'filled',
+  selectedWeight = 'solid',
   shape = 'pill',
   size = 'medium',
   spacing,
   themeId: initThemeId,
-  weight = 'outline',
+  weight = 'outlined',
   ...props
 }: ButtonGroupProps): React.ReactElement<ButtonGroupProps, 'div'> {
   const themeId = useThemeId(initThemeId);

@@ -36,7 +36,7 @@ import { ColoredIconButton, IconButton } from '../index';
                     loading={loading}
                     onClick={() => console.log('round')}
                     shape="round"
-                    weight="text"
+                    weight="ghost"
                   >
                     <BlobbrIcon size={20} />
                   </IconButton>
@@ -62,9 +62,29 @@ import { ColoredIconButton, IconButton } from '../index';
                     color={color}
                     loader={<SpinnerIcon scale="medium" />}
                     loading={loading}
+                    onClick={() => console.log('round shaded')}
+                    shape="round"
+                    weight="shaded"
+                  >
+                    <BlobbrIcon scale="medium" />
+                  </IconButton>
+                  <IconButton
+                    color={color}
+                    loader={<SpinnerIcon scale="medium" />}
+                    loading={loading}
+                    onClick={() => console.log('square shaded')}
+                    shape="square"
+                    weight="shaded"
+                  >
+                    <BlobbrIcon scale="medium" />
+                  </IconButton>
+                  <IconButton
+                    color={color}
+                    loader={<SpinnerIcon scale="medium" />}
+                    loading={loading}
                     onClick={() => console.log('round outline')}
                     shape="round"
-                    weight="outline"
+                    weight="outlined"
                   >
                     <BlobbrIcon scale="medium" />
                   </IconButton>
@@ -74,7 +94,7 @@ import { ColoredIconButton, IconButton } from '../index';
                     loading={loading}
                     onClick={() => console.log('square outline')}
                     shape="square"
-                    weight="outline"
+                    weight="outlined"
                   >
                     <BlobbrIcon scale="medium" />
                   </IconButton>
@@ -115,7 +135,7 @@ import { ColoredIconButton, IconButton } from '../index';
                 loading={loading}
                 onClick={() => console.log('round')}
                 shape="round"
-                weight="text"
+                weight="ghost"
               >
                 <BlobbrIcon size={20} />
               </IconButton>
@@ -141,9 +161,29 @@ import { ColoredIconButton, IconButton } from '../index';
                 contrast
                 loader={<SpinnerIcon scale="medium" />}
                 loading={loading}
+                onClick={() => console.log('round shaded')}
+                shape="round"
+                weight="shaded"
+              >
+                <BlobbrIcon scale="medium" />
+              </IconButton>
+              <IconButton
+                contrast
+                loader={<SpinnerIcon scale="medium" />}
+                loading={loading}
+                onClick={() => console.log('square shaded')}
+                shape="square"
+                weight="shaded"
+              >
+                <BlobbrIcon scale="medium" />
+              </IconButton>
+              <IconButton
+                contrast
+                loader={<SpinnerIcon scale="medium" />}
+                loading={loading}
                 onClick={() => console.log('round outline')}
                 shape="round"
-                weight="outline"
+                weight="outlined"
               >
                 <BlobbrIcon scale="medium" />
               </IconButton>
@@ -153,7 +193,7 @@ import { ColoredIconButton, IconButton } from '../index';
                 loading={loading}
                 onClick={() => console.log('square outline')}
                 shape="square"
-                weight="outline"
+                weight="outlined"
               >
                 <BlobbrIcon scale="medium" />
               </IconButton>
@@ -196,7 +236,7 @@ import { ColoredIconButton, IconButton } from '../index';
                         loading={loading}
                         onClick={() => console.log('round')}
                         shape="round"
-                        weight="text"
+                        weight="ghost"
                       >
                         <BlobbrIcon size={20} />
                       </ColoredIconButton>
@@ -222,9 +262,29 @@ import { ColoredIconButton, IconButton } from '../index';
                         colorId={id}
                         loader={<SpinnerIcon scale="medium" />}
                         loading={loading}
+                        onClick={() => console.log('round shaded')}
+                        shape="round"
+                        weight="shaded"
+                      >
+                        <BlobbrIcon scale="medium" />
+                      </ColoredIconButton>
+                      <ColoredIconButton
+                        colorId={id}
+                        loader={<SpinnerIcon scale="medium" />}
+                        loading={loading}
+                        onClick={() => console.log('square shaded')}
+                        shape="square"
+                        weight="shaded"
+                      >
+                        <BlobbrIcon scale="medium" />
+                      </ColoredIconButton>
+                      <ColoredIconButton
+                        colorId={id}
+                        loader={<SpinnerIcon scale="medium" />}
+                        loading={loading}
                         onClick={() => console.log('round outline')}
                         shape="round"
-                        weight="outline"
+                        weight="outlined"
                       >
                         <BlobbrIcon scale="medium" />
                       </ColoredIconButton>
@@ -234,7 +294,7 @@ import { ColoredIconButton, IconButton } from '../index';
                         loading={loading}
                         onClick={() => console.log('square outline')}
                         shape="square"
-                        weight="outline"
+                        weight="outlined"
                       >
                         <BlobbrIcon scale="medium" />
                       </ColoredIconButton>
@@ -267,7 +327,7 @@ _Note that the links will cause the page to reload so the state will appear unch
   <ThemeWrapper>
     <Flex direction="row" alignItems="center">
       <Rhythm m={2}>
-        <IconButton href="#linked" onClick={() => console.log('round')} shape="round" color="primary" weight="text">
+        <IconButton href="#linked" onClick={() => console.log('round')} shape="round" color="primary" weight="ghost">
           <BlobbrIcon size={20} />
         </IconButton>
         <IconButton href="#linked" onClick={() => console.log('round')} shape="round" color="primary">

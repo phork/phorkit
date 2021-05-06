@@ -44,9 +44,9 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
                         onClick={() => console.log('click')}
                         shape={shape}
                         size={size}
-                        weight="filled"
+                        weight="solid"
                       >
-                        {ucfirst(size)} {shape} filled
+                        {ucfirst(size)} {shape} solid
                       </Button>
                       <Button
                         color="primary"
@@ -55,21 +55,33 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
                         onClick={() => console.log('click')}
                         shape={shape}
                         size={size}
-                        weight="outline"
+                        weight="shaded"
                       >
-                        {ucfirst(size)} {shape} outline
+                        {ucfirst(size)} {shape} shaded
+                      </Button>
+                      <Button
+                        color="primary"
+                        loader={<SpinnerIcon scale={size} />}
+                        loading={loading}
+                        onClick={() => console.log('click')}
+                        shape={shape}
+                        size={size}
+                        weight="outlined"
+                      >
+                        {ucfirst(size)} {shape} outlined
                       </Button>
                       <Button
                         color="primary"
                         loader={<SpinnerIcon scale={size} />}
                         loading={loading}
                         shape={shape}
-                        weight="text"
+                        weight="ghost"
                         onClick={() => console.log('click')}
                         size={size}
                       >
-                        {ucfirst(size)} {shape} text
+                        {ucfirst(size)} {shape} ghost
                       </Button>
+                      <br />
                     </Rhythm>
                   )}
                 />
@@ -106,8 +118,8 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
                         onClick={() => console.log('click')}
                         shape={shape}
                         size={size}
-                        text={`${ucfirst(size)} ${shape} filled`}
-                        weight="filled"
+                        text={`${ucfirst(size)} ${shape} solid`}
+                        weight="solid"
                       />
                       <IconTextButton
                         color="primary"
@@ -117,8 +129,19 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
                         onClick={() => console.log('click')}
                         shape={shape}
                         size={size}
-                        text={`${ucfirst(size)} ${shape} outline`}
-                        weight="outline"
+                        text={`${ucfirst(size)} ${shape} shaded`}
+                        weight="shaded"
+                      />
+                      <IconTextButton
+                        color="primary"
+                        icon={<BlobbrIcon scale={size} />}
+                        loader={<SpinnerIcon scale={size} />}
+                        loading={loading}
+                        onClick={() => console.log('click')}
+                        shape={shape}
+                        size={size}
+                        text={`${ucfirst(size)} ${shape} outlined`}
+                        weight="outlined"
                       />
                       <IconTextButton
                         color="primary"
@@ -126,11 +149,12 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
                         loader={<SpinnerIcon scale={size} />}
                         loading={loading}
                         shape={shape}
-                        text={`${ucfirst(size)} ${shape} text`}
-                        weight="text"
+                        text={`${ucfirst(size)} ${shape} ghost`}
+                        weight="ghost"
                         onClick={() => console.log('click')}
                         size={size}
                       />
+                      <br />
                     </Rhythm>
                   )}
                 />
@@ -194,7 +218,7 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
 <Playground>
   <ThemeWrapper>
     <Looper
-      list={['filled', 'outline', 'text']}
+      list={['solid', 'shaded', 'outlined', 'ghost']}
       render={weight => (
         <div key={weight || 'undefined'}>
           <Rhythm m={2}>
@@ -304,7 +328,7 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
 <Playground>
   <ThemeWrapper>
     <Looper
-      list={['filled', 'outline', 'text']}
+      list={['solid', 'shaded', 'outlined', 'ghost']}
       render={weight => (
         <div key={weight || 'undefined'}>
           <Rhythm m={2}>
@@ -517,7 +541,7 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
 <Playground>
   <ThemeWrapper>
     <Looper
-      list={['filled', 'outline', 'text']}
+      list={['solid', 'shaded', 'outlined', 'ghost']}
       render={weight => (
         <Rhythm mb={2} key={`iconText-${weight}`} grouped>
           <Looper
@@ -549,7 +573,7 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
       <Looper
         list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
         render={color => (
-          <Rhythm mx={4} key={`text-${color}`}>
+          <Rhythm mx={4} key={`inline-${color}`}>
             <IconTextButton color={color} icon={<BlobbrIcon scale="medium" />} text={ucfirst(color)} weight="inline" />
           </Rhythm>
         )}
@@ -563,7 +587,7 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
 <Playground>
   <ThemeWrapper>
     <Looper
-      list={['filled', 'outline', 'text']}
+      list={['solid', 'shaded', 'outlined', 'ghost']}
       render={weight => (
         <Rhythm mb={2} key={`iconText-${weight}`} grouped>
           <Looper
@@ -618,14 +642,17 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
 <Playground>
   <ThemeWrapper>
     <Rhythm m={2}>
-      <Button color="neutralAndPrimary" weight="filled">
-        Pill filled
+      <Button color="neutralAndPrimary" weight="solid">
+        Pill solid
       </Button>
-      <Button color="neutralAndPrimary" weight="outline">
-        Pill outline
+      <Button color="neutralAndPrimary" weight="shaded">
+        Pill shaded
       </Button>
-      <Button color="neutralAndPrimary" weight="text">
-        Pill text
+      <Button color="neutralAndPrimary" weight="outlined">
+        Pill outlined
+      </Button>
+      <Button color="neutralAndPrimary" weight="ghost">
+        Pill ghost
       </Button>
       <Button color="neutralAndPrimary" weight="inline">
         Inline
@@ -639,14 +666,17 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
 <Playground>
   <ThemeWrapper contrast>
     <Rhythm m={2}>
-      <Button contrast weight="filled">
-        Pill filled
+      <Button contrast weight="solid">
+        Pill solid
       </Button>
-      <Button contrast weight="outline">
-        Pill outline
+      <Button contrast weight="shaded">
+        Pill shaded
       </Button>
-      <Button contrast weight="text">
-        Pill text
+      <Button contrast weight="outlined">
+        Pill outlined
+      </Button>
+      <Button contrast weight="ghost">
+        Pill ghost
       </Button>
       <Button contrast weight="inline">
         Inline
@@ -655,13 +685,16 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
     <br />
     <Rhythm m={2}>
       <Button contrast loading loader={<SpinnerIcon scale="medium" />}>
-        Pill filled
+        Pill solid
       </Button>
-      <Button contrast weight="outline" loading loader={<SpinnerIcon scale="medium" />}>
-        Pill outline
+      <Button contrast weight="shaded" loading loader={<SpinnerIcon scale="medium" />}>
+        Pill shaded
       </Button>
-      <Button contrast weight="text" loading loader={<SpinnerIcon scale="medium" />}>
-        Pill text
+      <Button contrast weight="outlined" loading loader={<SpinnerIcon scale="medium" />}>
+        Pill outlined
+      </Button>
+      <Button contrast weight="ghost" loading loader={<SpinnerIcon scale="medium" />}>
+        Pill ghost
       </Button>
       <Button contrast weight="inline" loading loader={<SpinnerIcon scale="medium" />}>
         Inline
@@ -681,28 +714,40 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
           group="primary"
           render={({ id }) => (
             <Flex direction="row" key={`coloredButton-${id}`} wrap>
-              <Rhythm key={`coloredButtonFilled-${id}`} m={2}>
+              <Rhythm key={`coloredButtonSolid-${id}`} m={2}>
                 <ColoredIconTextButton
                   colorId={id}
                   icon={<BlobbrIcon scale="medium" />}
                   shape="pill"
-                  text={`Pill color ${id}`}
-                  weight="filled"
+                  text={`Color ${id}`}
+                  weight="solid"
                 />
-                <ColoredButton shape="brick" weight="filled" colorId={id}>
-                  {`Brick color ${id}`}
+                <ColoredButton shape="brick" weight="solid" colorId={id}>
+                  {`Color ${id}`}
                 </ColoredButton>
               </Rhythm>
-              <Rhythm key={`coloredButtonOutline-${id}`} m={2}>
+              <Rhythm key={`coloredButtonShaded-${id}`} m={2}>
                 <ColoredIconTextButton
                   colorId={id}
                   icon={<BlobbrIcon scale="medium" />}
                   shape="pill"
-                  text={`Pill color ${id}`}
-                  weight="outline"
+                  text={`Color ${id}`}
+                  weight="shaded"
                 />
-                <ColoredButton shape="brick" weight="outline" colorId={id}>
-                  {`Brick color ${id}`}
+                <ColoredButton shape="brick" weight="shaded" colorId={id}>
+                  {`Color ${id}`}
+                </ColoredButton>
+              </Rhythm>
+              <Rhythm key={`coloredButtonOutlined-${id}`} m={2}>
+                <ColoredIconTextButton
+                  colorId={id}
+                  icon={<BlobbrIcon scale="medium" />}
+                  shape="pill"
+                  text={`Color ${id}`}
+                  weight="outlined"
+                />
+                <ColoredButton shape="brick" weight="outlined" colorId={id}>
+                  {`Color ${id}`}
                 </ColoredButton>
               </Rhythm>
               <Rhythm key={`coloredButtonText-${id}`} m={2}>
@@ -710,14 +755,14 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
                   colorId={id}
                   icon={<BlobbrIcon scale="medium" />}
                   shape="pill"
-                  text={`Pill color ${id}`}
-                  weight="text"
+                  text={`Color ${id}`}
+                  weight="ghost"
                 />
-                <ColoredButton shape="brick" weight="text" colorId={id}>
-                  {`Brick color ${id}`}
+                <ColoredButton shape="brick" weight="ghost" colorId={id}>
+                  {`Color ${id}`}
                 </ColoredButton>
                 <ColoredButton weight="inline" colorId={id}>
-                  {`Inline color ${id}`}
+                  {`Color ${id}`}
                 </ColoredButton>
               </Rhythm>
               <div style={{ width: '100%', height: '4px' }} />
@@ -743,10 +788,13 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
       <React.Fragment>
         <Rhythm m={2}>
           <StyledButton {...styles}>Styled</StyledButton>
-          <StyledButton weight="outline" {...styles}>
+          <StyledButton weight="outlined" {...styles}>
             Styled
           </StyledButton>
-          <StyledButton weight="text" {...styles}>
+          <StyledButton weight="shaded" {...styles}>
+            Styled
+          </StyledButton>
+          <StyledButton weight="ghost" {...styles}>
             Styled
           </StyledButton>
           <StyledButton weight="inline" {...styles}>
@@ -758,10 +806,13 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
           <StyledButton loading loader={<SpinnerIcon scale="medium" />} {...styles}>
             Styled
           </StyledButton>
-          <StyledButton weight="outline" loading loader={<SpinnerIcon scale="medium" />} {...styles}>
+          <StyledButton weight="outlined" loading loader={<SpinnerIcon scale="medium" />} {...styles}>
             Styled
           </StyledButton>
-          <StyledButton weight="text" loading loader={<SpinnerIcon scale="medium" />} {...styles}>
+          <StyledButton weight="shaded" loading loader={<SpinnerIcon scale="medium" />} {...styles}>
+            Styled
+          </StyledButton>
+          <StyledButton weight="ghost" loading loader={<SpinnerIcon scale="medium" />} {...styles}>
             Styled
           </StyledButton>
           <StyledButton weight="inline" loading loader={<SpinnerIcon scale="medium" />} {...styles}>
@@ -783,10 +834,13 @@ _Note that the links will cause the page to reload so the state will appear unch
       <Button href="#linked" onClick={() => console.log('linked clicked')} color="primary">
         Linked
       </Button>
-      <Button href="#linked" onClick={() => console.log('linked clicked')} weight="outline" color="primary">
+      <Button href="#linked" onClick={() => console.log('linked clicked')} weight="shaded" color="primary">
         Linked
       </Button>
-      <Button href="#linked" onClick={() => console.log('linked clicked')} weight="text" color="primary">
+      <Button href="#linked" onClick={() => console.log('linked clicked')} weight="outlined" color="primary">
+        Linked
+      </Button>
+      <Button href="#linked" onClick={() => console.log('linked clicked')} weight="ghost" color="primary">
         Linked
       </Button>
       <Button href="#linked" onClick={() => console.log('linked clicked')} weight="inline" color="primary">
@@ -810,7 +864,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         loader={<SpinnerIcon scale="medium" />}
         loading
         onClick={() => console.log('linked clicked')}
-        weight="outline"
+        weight="shaded"
       >
         Linked
       </Button>
@@ -820,7 +874,17 @@ _Note that the links will cause the page to reload so the state will appear unch
         loader={<SpinnerIcon scale="medium" />}
         loading
         onClick={() => console.log('linked clicked')}
-        weight="text"
+        weight="outlined"
+      >
+        Linked
+      </Button>
+      <Button
+        color="primary"
+        href="#linked"
+        loader={<SpinnerIcon scale="medium" />}
+        loading
+        onClick={() => console.log('linked clicked')}
+        weight="ghost"
       >
         Linked
       </Button>
@@ -846,10 +910,13 @@ _Note that the links will cause the page to reload so the state will appear unch
       <Button as="div" onClick={() => console.log('div clicked')} color="primary">
         Acts like a button
       </Button>
-      <Button as="div" onClick={() => console.log('div clicked')} weight="outline" color="primary">
+      <Button as="div" onClick={() => console.log('div clicked')} weight="shaded" color="primary">
         Acts like a button
       </Button>
-      <Button as="div" onClick={() => console.log('div clicked')} weight="text" color="primary">
+      <Button as="div" onClick={() => console.log('div clicked')} weight="outlined" color="primary">
+        Acts like a button
+      </Button>
+      <Button as="div" onClick={() => console.log('div clicked')} weight="ghost" color="primary">
         Acts like a button
       </Button>
       <Button as="div" onClick={() => console.log('div clicked')} weight="inline" color="primary">
@@ -873,7 +940,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         loader={<SpinnerIcon scale="medium" />}
         loading
         onClick={() => console.log('div clicked')}
-        weight="outline"
+        weight="shaded"
       >
         Acts like a button
       </Button>
@@ -883,7 +950,17 @@ _Note that the links will cause the page to reload so the state will appear unch
         loader={<SpinnerIcon scale="medium" />}
         loading
         onClick={() => console.log('div clicked')}
-        weight="text"
+        weight="outlined"
+      >
+        Acts like a button
+      </Button>
+      <Button
+        as="div"
+        color="primary"
+        loader={<SpinnerIcon scale="medium" />}
+        loading
+        onClick={() => console.log('div clicked')}
+        weight="ghost"
       >
         Acts like a button
       </Button>

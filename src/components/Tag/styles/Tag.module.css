@@ -14,17 +14,16 @@ button.tag {
 }
 
 .tag {
+  @mixin makeFillerBase;
+
   align-items: center;
   background: transparent;
-  border: 1px solid var(--tag-primary-color);
-  color: var(--tag-primary-color);
   display: inline-flex;
   flex-direction: row;
   flex: none;
   justify-content: center;
   letter-spacing: 0.25px;
   line-height: normal;
-  position: relative;
   text-align: center;
   text-decoration: none;
   user-select: none;
@@ -34,73 +33,50 @@ button.tag {
   }
 }
 
-.tag--shaded {
-  &:before {
-    background-color: var(--tag-primary-color);
-    border-radius: inherit;
-    content: '';
-    height: 100%;
-    opacity: 0.1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    transition: opacity 150ms ease;
-  }
-}
-
-.tag--filled {
-  background-color: var(--tag-primary-color);
-  border: 1px solid var(--tag-primary-color);
-  color: var(--tag-inverse-color);
+.tag--solid {
+  @mixin makeSolidFill var(--tag-primary-color), var(--tag-inverse-color);
 
   &.tag--actionable {
     &:hover,
     &.is-hovered {
-      opacity: .8;
+      @mixin makeSolidFillHover;
+    }
+  }
+}
+
+.tag--shaded {
+  @mixin makeShadedFill var(--tag-primary-color), withShade;
+
+  &.tag--actionable {
+    &:hover,
+    &.is-hovered {
+      @mixin makeShadedFillHover var(--tag-primary-color), var(--tag-inverse-color);
+    }
+  }
+}
+
+.tag--outlined {
+  @mixin makeOutlinedFill var(--tag-primary-color);
+
+  &.tag--actionable {
+    @mixin prepareShade;
+
+    &:hover,
+    &.is-hovered {
+      @mixin makeOutlinedFillHover var(--tag-primary-color);
     }
   }
 }
 
 .tag--actionable {
-  cursor: pointer;
-  transition-duration: 150ms;
-  transition-property: background-color, color;
-  transition-timing-function: ease;
+  @mixin makeFillerTransitions;
+  @mixin prepareFocusRing;
 
-  &:after {
-    border-radius: inherit;
-    box-shadow: 0 0 0 0 transparent;
-    content: '';
-    height: 100%;
-    opacity: 0.3;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: box-shadow 150ms ease;
-    width: 100%;
-  }
+  cursor: pointer;
 
   &:focus,
   &.is-focused {
-    &:after {
-      box-shadow: 0 0 0 4px var(--tag-primary-color);
-    }
-  }
-
-  &:hover,
-  &.is-hovered {
-    background-color: var(--tag-primary-color);
-    color: var(--tag-inverse-color);
-  }
-
-  &:active,
-  &.is-active {
-    color: var(--tag-inverse-color);
-
-    &:before {
-      opacity: 0.9;
-    }
+    @mixin makeFocusRing var(--tag-primary-color);
   }
 }
 
