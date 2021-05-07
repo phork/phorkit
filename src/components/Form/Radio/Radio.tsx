@@ -108,17 +108,19 @@ export function RadioBase(
           value={value}
         />
       </div>
-      <Label
-        className={styles.radioLabel}
-        contrast={contrast}
-        disabled={disabled}
-        focused={focused}
-        strength="standard"
-        themeId={themeId}
-        muted={!checked}
-      >
-        {children}
-      </Label>
+      {children && (
+        <Label
+          className={styles.radioLabel}
+          contrast={contrast}
+          disabled={disabled}
+          focused={focused}
+          strength="standard"
+          themeId={themeId}
+          muted={!checked}
+        >
+          {children}
+        </Label>
+      )}
     </label>
   );
 }

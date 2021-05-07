@@ -118,17 +118,19 @@ export function CheckboxBase(
           data-type={typeof value}
         />
       </div>
-      <Label
-        className={styles.checkboxLabel}
-        contrast={contrast}
-        disabled={disabled}
-        focused={focused}
-        strength="standard"
-        themeId={themeId}
-        muted={!checked && !indeterminate}
-      >
-        {children}
-      </Label>
+      {children && (
+        <Label
+          className={styles.checkboxLabel}
+          contrast={contrast}
+          disabled={disabled}
+          focused={focused}
+          strength="standard"
+          themeId={themeId}
+          muted={!checked && !indeterminate}
+        >
+          {children}
+        </Label>
+      )}
     </label>
   );
 }

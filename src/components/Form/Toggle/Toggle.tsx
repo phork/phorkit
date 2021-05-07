@@ -112,17 +112,19 @@ export function ToggleBase(
           value={value}
         />
       </div>
-      <Label
-        className={styles.toggleLabel}
-        contrast={contrast}
-        disabled={disabled}
-        focused={focused}
-        strength="standard"
-        themeId={themeId}
-        muted={!checked}
-      >
-        {children}
-      </Label>
+      {children && (
+        <Label
+          className={styles.toggleLabel}
+          contrast={contrast}
+          disabled={disabled}
+          focused={focused}
+          strength="standard"
+          themeId={themeId}
+          muted={!checked}
+        >
+          {children}
+        </Label>
+      )}
     </label>
   );
 }
