@@ -89,6 +89,7 @@ const prepareShade = (mixin, withBorder) => ({
     content: '""',
     left: withBorder ? '-1px' : 0,
     opacity: 0.1,
+    pointerEvents: 'none',
     position: 'absolute',
     right: withBorder ? '-1px' : 0,
     top: withBorder ? '-1px' : 0,

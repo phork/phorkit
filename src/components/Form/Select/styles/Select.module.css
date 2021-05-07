@@ -1,7 +1,7 @@
 @import '../../../../styles/common/mixins/addScrollbar.css';
 
 .selectInput {
-  @mixin addScrollbar var(--select-scrollbar-thumb-color), var(--select-track-color, transparent), 4px, 0, 32px, 0;
+  @mixin addSmallScrollbar var(--select-scrollbar-thumb-color);
 
   & option {
     padding: 4px 8px;

@@ -23,11 +23,12 @@
 .paper--scrollable {
   @mixin addScrollbar var(--paper-scrollbar-thumb-color);
 
-  &.paper--xs-scrollbar {
-    @mixin addScrollbar var(--paper-scrollbar-thumb-color), var(--scrollbar-track-color, transparent), 2px, 0, 32px, 0;
-  }
   &.paper--s-scrollbar {
-    @mixin addScrollbar var(--paper-scrollbar-thumb-color), var(--scrollbar-track-color, transparent), 4px, 0, 32px, 0;
+    @mixin addSmallScrollbar var(--paper-scrollbar-thumb-color);
+  }
+
+  &.paper--xs-scrollbar {
+    @mixin addXSmallScrollbar var(--paper-scrollbar-thumb-color);
   }
 
   overflow: auto;

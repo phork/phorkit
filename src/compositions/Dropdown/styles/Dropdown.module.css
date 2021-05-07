@@ -161,7 +161,7 @@
  *    is hidden.
  */
 .dropdownOptions {
-  @mixin addScrollbar var(--dropdown-options-scrollbar-thumb-color);
+  @mixin addSmallScrollbar var(--dropdown-options-scrollbar-thumb-color);
 
   border-radius: inherit;
   margin-top: -1px; /* [1] */
@@ -176,6 +176,7 @@
 
   .dropdownOptionsContainer--raised.is-visible & {
     box-shadow: var(--dropdown-options-raised-box-shadow);
+    overflow: overlay;
   }
 
   .dropdownOptionsContainer--contained.dropdownOptionsContainer--underline &,

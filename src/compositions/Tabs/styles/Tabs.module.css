@@ -1,7 +1,7 @@
 @import "../../../styles/common/mixins/addScrollbar.css";
 
 .tabList {
-  @mixin addScrollbar var(--tab-list-scrollbar-thumb-color), transparent, $scrollbar-small-width, $scrollbar-small-border-radius, $scrollbar-small-min-height, $scrollbar-small-offset;;
+  @mixin addSmallScrollbar var(--tab-list-scrollbar-thumb-color), transparent;
 
   align-items: center;
   background-color: var(--tab-background-color);
