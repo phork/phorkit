@@ -15,8 +15,8 @@ const generateIcon = ({ fileName, src, dst, level }) => {
 
   svgr(svgCode, {
     plugins: [
-      '@svgr/plugin-svgo', 
-      '@svgr/plugin-jsx', 
+      '@svgr/plugin-svgo',
+      '@svgr/plugin-jsx',
       '@svgr/plugin-prettier',
     ],
     titleProp: true,
@@ -44,8 +44,8 @@ const generateIcons = ({ src, dst, type, level }) => {
  */
 ;(async () => {
   generateIcons({
-    src: './public/icons/',
-    dst: './src/icons/',
+    src: './public/icons',
+    dst: './src/icons',
     type: 'bundled',
     level: 1,
   });
