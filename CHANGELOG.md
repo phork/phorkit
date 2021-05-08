@@ -1,5 +1,25 @@
 # Changelog
 
+# [5.0.0](https://github.com/phork/phorkit/compare/v4.0.0...v5.0.0) (2021-05-08)
+
+### ♻ Code Refactoring
+
+- improve scrollbars ([df9d5ab](https://github.com/phork/phorkit/commit/df9d5ab))
+- **major**: refactored and renamed button and tag variants ([df225f7](https://github.com/phork/phorkit/commit/df225f7))
+- change filled button hover color ([f037874](https://github.com/phork/phorkit/commit/f037874))
+
+### ✨ Features
+
+- added Chip component ([d255f08](https://github.com/phork/phorkit/commit/d255f08))
+- added colored avatar ([a5e4f7e](https://github.com/phork/phorkit/commit/a5e4f7e))
+- added secondary variants to checkbox, radio ([1eacf5e](https://github.com/phork/phorkit/commit/1eacf5e))
+
+### 🐛 Bug Fixes
+
+- improve badge radius ([e1d5be2](https://github.com/phork/phorkit/commit/e1d5be2))
+- make header and footer inflexible ([d793a8e](https://github.com/phork/phorkit/commit/d793a8e))
+- remove right margin from selectors without children ([a1b2b48](https://github.com/phork/phorkit/commit/a1b2b48))
+
 # [4.0.0](https://github.com/phork/phorkit/compare/v3.3.0...v4.0.0) (2021-05-05)
 
 ### ♻ Code Refactoring
