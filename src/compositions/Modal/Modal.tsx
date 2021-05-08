@@ -114,7 +114,14 @@ export function Modal({
     >
       <div className={styles.modalActions}>
         {!permanent && onClose && (
-          <IconButton aria-label={closeLabel} themeId={themeId} color="neutral" onClick={handleClose}>
+          <IconButton
+            aria-label={closeLabel}
+            themeId={themeId}
+            color="neutral"
+            onClick={handleClose}
+            shape="square"
+            weight="ghost"
+          >
             <TimesIcon size={12} title={closeLabel} />
           </IconButton>
         )}
