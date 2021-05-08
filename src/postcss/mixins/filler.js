@@ -58,6 +58,7 @@ const prepareFocusRing = () => ({
     content: '""',
     left: 0,
     opacity: 0.3,
+    pointerEvents: 'none',
     position: 'absolute',
     right: 0,
     top: 0,

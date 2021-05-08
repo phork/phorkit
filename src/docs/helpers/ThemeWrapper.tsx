@@ -23,6 +23,7 @@ export function ThemeWrapper({
   style,
   variant: initVariant,
   withThemeId,
+  ...props
 }: ThemeWrapperProps): React.ReactElement {
   const [colorMode, setColorMode] = useColorMode<Theme>();
   const { themeId, toggleThemeId } = useContext(ThemeContext);
@@ -53,6 +54,7 @@ export function ThemeWrapper({
           ...style,
         } as React.CSSProperties
       }
+      {...props}
     >
       <IconButton
         style={{ position: 'absolute', top: '-30px', right: '10px' }}

@@ -20,6 +20,7 @@ export interface LocalCheckboxGroupProps extends ThemeProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>, values: Array<CheckboxProps['value']>) => void;
   checkboxes: CheckboxGroupItem[];
   values: Array<CheckboxProps['value']>;
+  variant?: CheckboxProps['variant'];
 }
 
 export type CheckboxGroupProps = MergeElementPropsWithoutRef<'div', LocalCheckboxGroupProps> & {
@@ -38,6 +39,7 @@ function CheckboxGroupBase(
     ref: ignoredRef,
     themeId: initThemeId,
     values,
+    variant,
     ...props
   }: CheckboxGroupProps,
   forwardedRef: React.ForwardedRef<HTMLFieldSetElement>,
@@ -75,6 +77,7 @@ function CheckboxGroupBase(
               themeId={themeId}
               value={checkboxValue}
               onChange={handleChange}
+              variant={variant}
               {...checkboxProps}
             >
               {label}

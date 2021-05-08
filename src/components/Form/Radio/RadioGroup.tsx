@@ -21,6 +21,7 @@ export interface LocalRadioGroupProps extends ThemeProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>, value: RadioProps['value']) => void;
   radios: RadioGroupItem[];
   value?: string | number;
+  variant?: RadioProps['variant'];
 }
 
 export type RadioGroupProps = MergeElementPropsWithoutRef<'div', LocalRadioGroupProps> & {
@@ -40,6 +41,7 @@ function RadioGroupBase(
     ref: ignoredRef,
     themeId: initThemeId,
     value,
+    variant,
     ...props
   }: RadioGroupProps,
   forwardedRef: React.ForwardedRef<HTMLFieldSetElement>,
@@ -69,6 +71,7 @@ function RadioGroupBase(
               onChange={handleChange}
               themeId={themeId}
               value={radioValue}
+              variant={variant}
               {...radioProps}
             >
               {label}

@@ -33,7 +33,7 @@
   flex-direction: row;
   flex: none;
   position: relative;
-  transition: background-color 200ms ease;
+  transition: background-color 150ms ease;
 }
 
 .formboxInputContainer--underline,
@@ -60,7 +60,7 @@
       width: 100%;
     }
 
-    &.focus,
+    &:focus,
     &.is-focused {
       &:after {
         transform: scaleX(1);
@@ -99,7 +99,7 @@
     pointer-events: none;
     right: 0;
     top: 0;
-    transition: background-color 200ms ease;
+    transition: background-color 150ms ease;
   }
 
   &:hover,
@@ -109,7 +109,7 @@
     }
   }
 
-  &.focus,
+  &:focus,
   &.is-focused {
     &:before {
       background-color: var(--formbox-input-container-focused-border-color);
@@ -117,25 +117,38 @@
   }
 }
 
+/**
+ * 1. Move the focus ring out by a pixel to adjust for the border.
+ */
 .formboxInputContainer--outline,
 .formboxInputContainer--pill {
   background-color: var(--formbox-input-container-background-color);
   border: 1px solid var(--formbox-input-container-border-color);
   min-height: $element-height-medium;
 
+  @mixin prepareFocusRing;
+  &:after {
+    opacity: 0.1;
+    bottom: -1px; /* [1] */
+    top: -1px; /* [1] */
+    left: -1px; /* [1] */
+    right: -1px; /* [1] */
+  }
+
   &:hover,
   &.is-hovered {
     border-color: var(--formbox-input-container-hovered-border-color);
   }
 
-  &.focus,
+  &:focus,
   &.is-focused {
+    @mixin makeFocusRing var(--formbox-input-container-focused-border-color);
     border-color: var(--formbox-input-container-focused-border-color);
   }
 }
 
 .formboxInputContainer--minimal {
-  &.focus,
+  &:focus,
   &.is-focused {
     caret-color: var(formbox-input-container-focused-border-color);
   }
@@ -213,7 +226,7 @@ input.formboxInput[type='number'] {
 }
 
 .formboxIcon--filled {
-  transition: top 200ms ease;
+  transition: top 150ms ease;
   top: -1px;
 
   .formbox.formbox--select.is-labeled.is-empty &,
@@ -253,7 +266,7 @@ input.formboxInput[type='number'] {
   line-height: 1.5;
   position: absolute;
   top: 0;
-  transition: all 200ms ease;
+  transition: all 150ms ease;
   white-space: nowrap;
   z-index: 1;
 }

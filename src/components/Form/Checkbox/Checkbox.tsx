@@ -24,6 +24,7 @@ export interface LocalCheckboxProps extends ThemeProps {
   unthemed?: boolean;
   validity?: 'danger';
   value?: string | number;
+  variant?: 'primary' | 'secondary';
 }
 
 export type CheckboxProps = MergeElementPropsWithoutRef<'label', LocalCheckboxProps>;
@@ -47,6 +48,7 @@ export function CheckboxBase(
     unthemed,
     validity,
     value,
+    variant = 'primary',
     ...props
   }: CheckboxProps,
   forwardedRef: React.ForwardedRef<HTMLInputElement>,
@@ -82,18 +84,19 @@ export function CheckboxBase(
       htmlFor={generateComponentId()}
       className={cx(
         styles.checkbox,
-        validity && styles[`is-${validity}`],
-        reverse && styles['checkbox--reverse'],
-        themeId && !unthemed && styles[`checkbox--${themeId}`],
         color && !unthemed && styles[`checkbox--${color}`],
         full && styles['checkbox--full'],
         grouped && styles[`checkbox--grouped--${grouped}`],
+        reverse && styles['checkbox--reverse'],
+        themeId && !unthemed && styles[`checkbox--${themeId}`],
+        variant && styles[`checkbox--${variant}`],
         checked && styles['is-checked'],
         indeterminate && styles['is-indeterminate'],
         !checked && !indeterminate && styles['is-unchecked'],
         accessible && styles['is-accessible'],
         disabled && styles['is-disabled'],
         focused && styles['is-focused'],
+        validity && styles[`is-${validity}`],
         className,
       )}
       onFocus={forwardFocus}

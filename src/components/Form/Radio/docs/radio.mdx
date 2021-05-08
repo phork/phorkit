@@ -5,10 +5,13 @@ route: /components/FormRadio
 ---
 
 import { Playground, Props } from 'docz';
+import { Flex } from 'components/Flex';
+import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
 import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Radio, RadioGroup, NotifiedRadioGroup } from '../index';
 import { radioGroup, logValue } from './helpers/utils';
 
@@ -17,62 +20,153 @@ import { radioGroup, logValue } from './helpers/utils';
 ## Basic radio button
 
 <Playground>
-  <FormComponentDemo property="checked" initialValue={false}>
-    <Radio name="basic-radio" id="demo-basic-radio" value="basic" onChange={logValue} />
-  </FormComponentDemo>
-</Playground>
-
-## Labeled radio button
-
-<Playground>
-  <FormComponentDemo property="checked" initialValue={true}>
-    <Radio name="labeled-radio" id="demo-labeled-radio" value="labeled" onChange={logValue}>
-      Super fantastic label
-    </Radio>
-  </FormComponentDemo>
-  <FormComponentDemo property="checked" initialValue={true}>
-    <Radio name="labeled-reverse-radio" id="demo-labeled-reverse-radio" onChange={logValue} reverse>
-      Super fantastic label
-    </Radio>
-  </FormComponentDemo>
+  <ThemeWrapper>
+    <Flex direction="row" wrap>
+      <Rhythm m={2}>
+        <Flex direction="column">
+          <Rhythm my={2}>
+            <Radio name="basic" onChange={logValue} checked />
+            <Radio name="basic" onChange={logValue} />
+            <Radio name="basic" onChange={logValue} checked>
+              Primary checked
+            </Radio>
+            <Radio name="basic" onChange={logValue}>
+              Primary unchecked
+            </Radio>
+            <Radio name="basic" onChange={logValue} disabled checked>
+              Primary checked disabled
+            </Radio>
+            <Radio name="basic" onChange={logValue} disabled>
+              Primary unchecked disabled
+            </Radio>
+          </Rhythm>
+        </Flex>
+        <Flex direction="column">
+          <Rhythm my={2}>
+            <Radio name="basic" onChange={logValue} checked variant="secondary" />
+            <Radio name="basic" onChange={logValue} variant="secondary" />
+            <Radio name="basic" onChange={logValue} checked variant="secondary">
+              Secondary checked
+            </Radio>
+            <Radio name="basic" onChange={logValue} variant="secondary">
+              Secondary unchecked
+            </Radio>
+            <Radio name="basic" onChange={logValue} disabled checked variant="secondary">
+              Secondary checked disabled
+            </Radio>
+            <Radio name="basic" onChange={logValue} disabled variant="secondary">
+              Secondary unchecked disabled
+            </Radio>
+          </Rhythm>
+        </Flex>
+      </Rhythm>
+    </Flex>
+  </ThemeWrapper>
 </Playground>
 
 ## Full width labeled radio button
 
 <Playground>
-  <FormComponentDemo property="checked" initialValue={true} style={{ width: 240 }}>
-    <Radio name="labeled-radio" id="demo-labeled-radio" value="labeled" onChange={logValue} full>
-      Super fantastic label
-    </Radio>
-  </FormComponentDemo>
-  <FormComponentDemo property="checked" initialValue={true} style={{ width: 240 }}>
-    <Radio name="labeled-reverse-radio" id="demo-labeled-reverse-radio" onChange={logValue} full reverse>
-      Super fantastic label
-    </Radio>
-  </FormComponentDemo>
+  <ThemeWrapper>
+    <Flex direction="column" style={{ width: 240 }}>
+      <Rhythm my={2}>
+        <Radio name="labeled-radio" onChange={logValue} full checked>
+          Super fantastic label
+        </Radio>
+        <Radio name="labeled-radio" onChange={logValue} full reverse>
+          Super fantastic label
+        </Radio>
+      </Rhythm>
+    </Flex>
+  </ThemeWrapper>
 </Playground>
 
-## Disabled radio button
+## Variations
+
+### Danger radio button
 
 <Playground>
-  <Radio checked disabled name="disabled-radio" id="demo-disabled-checked-radio" value="disabled">
-    Super fantastic label
-  </Radio>
-  <br />
-  <br />
-  <Radio disabled name="disabled-radio" id="demo-disabled-unchecked-radio" value="disabled">
-    Super fantastic label
-  </Radio>
+  <ThemeWrapper>
+    <Flex direction="row" wrap>
+      <Rhythm m={2}>
+        <Flex direction="column">
+          <Rhythm my={2}>
+            <Radio name="danger" onChange={logValue} checked validity="danger">
+              Primary checked
+            </Radio>
+            <Radio name="danger" onChange={logValue} validity="danger">
+              Primary unchecked
+            </Radio>
+            <Radio name="danger" onChange={logValue} disabled checked validity="danger">
+              Primary checked disabled
+            </Radio>
+            <Radio name="danger" onChange={logValue} disabled validity="danger">
+              Primary unchecked disabled
+            </Radio>
+          </Rhythm>
+        </Flex>
+        <Flex direction="column">
+          <Rhythm my={2}>
+            <Radio name="danger" onChange={logValue} checked validity="danger" variant="secondary">
+              Secondary checked
+            </Radio>
+            <Radio name="danger" onChange={logValue} validity="danger" variant="secondary">
+              Secondary unchecked
+            </Radio>
+            <Radio name="danger" onChange={logValue} disabled checked validity="danger" variant="secondary">
+              Secondary checked disabled
+            </Radio>
+            <Radio name="danger" onChange={logValue} disabled validity="danger" variant="secondary">
+              Secondary unchecked disabled
+            </Radio>
+          </Rhythm>
+        </Flex>
+      </Rhythm>
+    </Flex>
+  </ThemeWrapper>
 </Playground>
 
-## Contrast radio button
+### Contrast radio button
 
 <Playground>
-  <FormComponentDemo property="checked" initialValue={false} contrast>
-    <Radio contrast name="contrast-radio" id="contrast-basic-radio" onChange={logValue}>
-      Super fantastic label
-    </Radio>
-  </FormComponentDemo>
+  <ThemeWrapper contrast>
+    <Flex direction="row" wrap>
+      <Rhythm m={2}>
+        <Flex direction="column">
+          <Rhythm my={2}>
+            <Radio name="contrast" onChange={logValue} checked contrast>
+              Primary checked
+            </Radio>
+            <Radio name="contrast" onChange={logValue} contrast>
+              Primary unchecked
+            </Radio>
+            <Radio name="contrast" onChange={logValue} disabled checked contrast>
+              Primary checked disabled
+            </Radio>
+            <Radio name="contrast" onChange={logValue} disabled contrast>
+              Primary unchecked disabled
+            </Radio>
+          </Rhythm>
+        </Flex>
+        <Flex direction="column">
+          <Rhythm my={2}>
+            <Radio name="contrast" onChange={logValue} checked contrast variant="secondary">
+              Secondary checked
+            </Radio>
+            <Radio name="contrast" onChange={logValue} contrast variant="secondary">
+              Secondary unchecked
+            </Radio>
+            <Radio name="contrast" onChange={logValue} disabled checked contrast variant="secondary">
+              Secondary checked disabled
+            </Radio>
+            <Radio name="contrast" onChange={logValue} disabled contrast variant="secondary">
+              Secondary unchecked disabled
+            </Radio>
+          </Rhythm>
+        </Flex>
+      </Rhythm>
+    </Flex>
+  </ThemeWrapper>
 </Playground>
 
 # <br />
@@ -121,6 +215,21 @@ import { radioGroup, logValue } from './helpers/utils';
       name="inline-radio-group"
       onChange={logValue}
       radios={radioGroup}
+    />
+  </FormComponentDemo>
+</Playground>
+
+## Inline secondary group
+
+<Playground>
+  <FormComponentDemo property="value" initialValue="one">
+    <RadioGroup
+      layout="inline"
+      legend="Super fantastic label says what?"
+      name="inline-secondary-radio-group"
+      onChange={logValue}
+      radios={radioGroup}
+      variant="secondary"
     />
   </FormComponentDemo>
 </Playground>

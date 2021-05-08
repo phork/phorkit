@@ -5,105 +5,198 @@ route: /components/FormCheckbox
 ---
 
 import { Playground, Props } from 'docz';
+import { Flex } from 'components/Flex';
+import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
 import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Checkbox, CheckboxGroup, NotifiedCheckboxGroup } from '../index';
-import { checkboxGroup, logChecked, logValues } from './helpers/utils';
+import { checkboxGroup, logChecked } from './helpers/utils';
 
 <PageTitle title="Checkbox" src="components/Form/Checkbox" />
 
 ## Basic checkbox
 
 <Playground>
-  <FormComponentDemo property="checked" initialValue={false}>
-    <Checkbox id="demo-basic-checkbox" onChange={logChecked} />
-  </FormComponentDemo>
+  <ThemeWrapper>
+    <Flex direction="row" wrap>
+      <Rhythm m={2}>
+        <Flex direction="column">
+          <Rhythm my={2}>
+            <Checkbox name="basic" onChange={logChecked} checked />
+            <Checkbox name="basic" onChange={logChecked} />
+            <Checkbox name="basic" onChange={logChecked} checked>
+              Primary checked
+            </Checkbox>
+            <Checkbox name="basic" onChange={logChecked}>
+              Primary unchecked
+            </Checkbox>
+            <Checkbox name="basic" onChange={logChecked} disabled checked>
+              Primary checked disabled
+            </Checkbox>
+            <Checkbox name="basic" onChange={logChecked} disabled>
+              Primary unchecked disabled
+            </Checkbox>
+          </Rhythm>
+        </Flex>
+        <Flex direction="column">
+          <Rhythm my={2}>
+            <Checkbox name="basic" onChange={logChecked} checked variant="secondary" />
+            <Checkbox name="basic" onChange={logChecked} variant="secondary" />
+            <Checkbox name="basic" onChange={logChecked} checked variant="secondary">
+              Secondary checked
+            </Checkbox>
+            <Checkbox name="basic" onChange={logChecked} variant="secondary">
+              Secondary unchecked
+            </Checkbox>
+            <Checkbox name="basic" onChange={logChecked} disabled checked variant="secondary">
+              Secondary checked disabled
+            </Checkbox>
+            <Checkbox name="basic" onChange={logChecked} disabled variant="secondary">
+              Secondary unchecked disabled
+            </Checkbox>
+          </Rhythm>
+        </Flex>
+      </Rhythm>
+    </Flex>
+  </ThemeWrapper>
 </Playground>
 
 ## Indeterminate checkbox
 
 <Playground>
-  <FormComponentDemo property="checked" initialValue={false}>
-    <Checkbox id="demo-indeterminate-checkbox" indeterminate onChange={logChecked} />
-  </FormComponentDemo>
-</Playground>
-
-## Labeled checkbox
-
-<Playground>
-  <FormComponentDemo property="checked" initialValue={true}>
-    <Checkbox id="demo-labeled-checkbox" onChange={logChecked}>
-      Super fantastic label
-    </Checkbox>
-  </FormComponentDemo>
-  <FormComponentDemo property="checked" initialValue={true}>
-    <Checkbox id="demo-labeled-reverse-checkbox" onChange={logChecked} reverse>
-      Super fantastic label
-    </Checkbox>
-  </FormComponentDemo>
+  <ThemeWrapper>
+    <Rhythm my={2}>
+      <FormComponentDemo property="checked" initialValue={false} unwrapped>
+        <Checkbox indeterminate onChange={logChecked} />
+      </FormComponentDemo>
+      <FormComponentDemo property="checked" initialValue={false} unwrapped>
+        <Checkbox variant="secondary" indeterminate onChange={logChecked} />
+      </FormComponentDemo>
+    </Rhythm>
+  </ThemeWrapper>
 </Playground>
 
 ## Full width labeled checkbox
 
 <Playground>
-  <FormComponentDemo property="checked" initialValue={true} style={{ width: 240 }}>
-    <Checkbox id="demo-labeled-reverse-full-checkbox" onChange={logChecked} full>
-      Super fantastic label
-    </Checkbox>
-  </FormComponentDemo>
-  <FormComponentDemo property="checked" initialValue={true} style={{ width: 240 }}>
-    <Checkbox id="demo-labeled-reverse-full-checkbox" onChange={logChecked} full reverse>
-      Super fantastic label
-    </Checkbox>
-  </FormComponentDemo>
+  <ThemeWrapper>
+    <Flex direction="column" style={{ width: 240 }}>
+      <Rhythm my={2}>
+        <Checkbox name="labeled-Checkbox" onChange={logChecked} full checked>
+          Super fantastic label
+        </Checkbox>
+        <Checkbox name="labeled-Checkbox" onChange={logChecked} full reverse>
+          Super fantastic label
+        </Checkbox>
+      </Rhythm>
+    </Flex>
+  </ThemeWrapper>
 </Playground>
 
 ## Wrapped labeled checkbox
 
 <Playground>
-  <FormComponentDemo property="checked" initialValue={true}>
-    <Checkbox id="demo-wrapped-labeled-checkbox" onChange={logChecked}>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget dui eu orci ultrices maximus eu eu ante.
-      Vestibulum ligula velit, scelerisque vitae venenatis tempor, consectetur a orci. Aenean molestie eu tortor in
-      pharetra. Nulla lobortis, sapien quis ornare venenatis, nunc libero finibus justo, non tempor nisi urna quis
-      justo. Integer sit amet venenatis leo.
-    </Checkbox>
-  </FormComponentDemo>
+  <ThemeWrapper>
+    <FormComponentDemo property="checked" initialValue={true} unwrapped>
+      <Checkbox onChange={logChecked}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget dui eu orci ultrices maximus eu eu ante.
+        Vestibulum ligula velit, scelerisque vitae venenatis tempor, consectetur a orci. Aenean molestie eu tortor in
+        pharetra. Nulla lobortis, sapien quis ornare venenatis, nunc libero finibus justo, non tempor nisi urna quis
+        justo. Integer sit amet venenatis leo.
+      </Checkbox>
+    </FormComponentDemo>
+  </ThemeWrapper>
 </Playground>
 
-## Disabled checkbox
+## Variations
+
+### Danger checkbox
 
 <Playground>
-  <Checkbox checked disabled id="demo-disabled-checked-checkbox">
-    Super fantastic label
-  </Checkbox>
-  <br />
-  <br />
-  <Checkbox disabled id="demo-disabled-unchecked-checkbox">
-    Super fantastic label
-  </Checkbox>
+  <ThemeWrapper>
+    <Flex direction="row" wrap>
+      <Rhythm m={2}>
+        <Flex direction="column">
+          <Rhythm my={2}>
+            <Checkbox name="danger" onChange={logChecked} checked validity="danger">
+              Primary checked
+            </Checkbox>
+            <Checkbox name="danger" onChange={logChecked} validity="danger">
+              Primary unchecked
+            </Checkbox>
+            <Checkbox name="danger" onChange={logChecked} disabled checked validity="danger">
+              Primary checked disabled
+            </Checkbox>
+            <Checkbox name="danger" onChange={logChecked} disabled validity="danger">
+              Primary unchecked disabled
+            </Checkbox>
+          </Rhythm>
+        </Flex>
+        <Flex direction="column">
+          <Rhythm my={2}>
+            <Checkbox name="danger" onChange={logChecked} checked validity="danger" variant="secondary">
+              Secondary checked
+            </Checkbox>
+            <Checkbox name="danger" onChange={logChecked} validity="danger" variant="secondary">
+              Secondary unchecked
+            </Checkbox>
+            <Checkbox name="danger" onChange={logChecked} disabled checked validity="danger" variant="secondary">
+              Secondary checked disabled
+            </Checkbox>
+            <Checkbox name="danger" onChange={logChecked} disabled validity="danger" variant="secondary">
+              Secondary unchecked disabled
+            </Checkbox>
+          </Rhythm>
+        </Flex>
+      </Rhythm>
+    </Flex>
+  </ThemeWrapper>
 </Playground>
 
-## Danger checkbox
+### Contrast checkbox
 
 <Playground>
-  <FormComponentDemo property="checked" initialValue={true}>
-    <Checkbox id="demo-danger-checkbox" onChange={logChecked} validity="danger">
-      Super fantastic label
-    </Checkbox>
-  </FormComponentDemo>
-</Playground>
-
-## Contrast checkbox
-
-<Playground>
-  <FormComponentDemo property="checked" initialValue={true} contrast>
-    <Checkbox contrast id="demo-contrast-checkbox" onChange={logChecked}>
-      Super fantastic label
-    </Checkbox>
-  </FormComponentDemo>
+  <ThemeWrapper contrast>
+    <Flex direction="row" wrap>
+      <Rhythm m={2}>
+        <Flex direction="column">
+          <Rhythm my={2}>
+            <Checkbox name="contrast" onChange={logChecked} checked contrast>
+              Primary checked
+            </Checkbox>
+            <Checkbox name="contrast" onChange={logChecked} contrast>
+              Primary unchecked
+            </Checkbox>
+            <Checkbox name="contrast" onChange={logChecked} disabled checked contrast>
+              Primary checked disabled
+            </Checkbox>
+            <Checkbox name="contrast" onChange={logChecked} disabled contrast>
+              Primary unchecked disabled
+            </Checkbox>
+          </Rhythm>
+        </Flex>
+        <Flex direction="column">
+          <Rhythm my={2}>
+            <Checkbox name="contrast" onChange={logChecked} checked contrast variant="secondary">
+              Secondary checked
+            </Checkbox>
+            <Checkbox name="contrast" onChange={logChecked} contrast variant="secondary">
+              Secondary unchecked
+            </Checkbox>
+            <Checkbox name="contrast" onChange={logChecked} disabled checked contrast variant="secondary">
+              Secondary checked disabled
+            </Checkbox>
+            <Checkbox name="contrast" onChange={logChecked} disabled contrast variant="secondary">
+              Secondary unchecked disabled
+            </Checkbox>
+          </Rhythm>
+        </Flex>
+      </Rhythm>
+    </Flex>
+  </ThemeWrapper>
 </Playground>
 
 # <br />
@@ -139,7 +232,7 @@ import { checkboxGroup, logChecked, logValues } from './helpers/utils';
       layout="stacked"
       legend="Super fantastic legend says what?"
       name="stacked-checkbox-group"
-      onChange={logValues}
+      onChange={logChecked}
       checkboxes={checkboxGroup}
     />
   </FormComponentDemo>
@@ -153,8 +246,23 @@ import { checkboxGroup, logChecked, logValues } from './helpers/utils';
       layout="inline"
       legend="Super fantastic legend says what?"
       name="inline-checkbox-group"
-      onChange={logValues}
+      onChange={logChecked}
       checkboxes={checkboxGroup}
+    />
+  </FormComponentDemo>
+</Playground>
+
+## Inline secondary group
+
+<Playground>
+  <FormComponentDemo property="values" initialValue={['one']}>
+    <CheckboxGroup
+      layout="inline"
+      legend="Super fantastic legend says what?"
+      name="inline-secondary-checkbox-group"
+      onChange={logChecked}
+      checkboxes={checkboxGroup}
+      variant="secondary"
     />
   </FormComponentDemo>
 </Playground>
@@ -171,7 +279,7 @@ import { checkboxGroup, logChecked, logValues } from './helpers/utils';
         </Typography>
       }
       name="custom-checkbox-group"
-      onChange={logValues}
+      onChange={logChecked}
       checkboxes={checkboxGroup}
     />
   </FormComponentDemo>
@@ -188,7 +296,7 @@ import { checkboxGroup, logChecked, logValues } from './helpers/utils';
           layout="inline"
           legend="Super fantastic legend says what?"
           name="inline-checkbox-group"
-          onChange={logValues}
+          onChange={logChecked}
           checkboxes={checkboxGroup}
           level={level}
           notification={`This is an example ${level} notification.`}

@@ -24,6 +24,7 @@ export interface LocalRadioProps extends ThemeProps {
   unthemed?: boolean;
   validity?: 'danger';
   value?: string | number;
+  variant?: 'primary' | 'secondary';
 }
 
 export type RadioProps = MergeElementPropsWithoutRef<'label', LocalRadioProps>;
@@ -44,7 +45,9 @@ export function RadioBase(
     reverse,
     themeId: initThemeId,
     unthemed,
+    validity,
     value,
+    variant = 'primary',
     ...props
   }: RadioProps,
   forwardedRef: React.ForwardedRef<HTMLInputElement>,
@@ -75,16 +78,18 @@ export function RadioBase(
       htmlFor={generateComponentId()}
       className={cx(
         styles.radio,
+        color && !unthemed && styles[`radio--${color}`],
         full && styles['radio--full'],
+        grouped && styles[`radio--grouped--${grouped}`],
         reverse && styles['radio--reverse'],
         themeId && !unthemed && styles[`radio--${themeId}`],
-        color && !unthemed && styles[`radio--${color}`],
-        grouped && styles[`radio--grouped--${grouped}`],
+        variant && styles[`radio--${variant}`],
         checked && styles['is-checked'],
         !checked && styles['is-unchecked'],
         accessible && styles['is-accessible'],
         disabled && styles['is-disabled'],
         focused && styles['is-focused'],
+        validity && styles[`is-${validity}`],
         className,
       )}
       onFocus={forwardFocus}

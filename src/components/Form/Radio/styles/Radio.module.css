@@ -66,6 +66,7 @@ input.radioInput {
   .radio.is-checked & {
     &:before {
       background-color: var(--radio-checked-background-color);
+      border: 1px solid var(--radio-checked-border-color);
       border-radius: inherit;
       content: '';
       height: 100%;
@@ -123,6 +124,7 @@ input.radioInput {
     box-shadow: 0 0 0 0 transparent;
     content: '';
     left: -2px;
+    pointer-events: none;
     position: absolute;
     right: -2px;
     top: -2px;
@@ -146,7 +148,8 @@ input.radioInput {
   }
 }
 
-.radio:hover {
+.radio:hover,
+.radio.is-focused:not(.is-accessible) {
   .radioInputContainerFocusRing {
     &:before {
       box-shadow: var(--radio-unchecked-hovered-box-shadow);
@@ -182,6 +185,7 @@ input.radioInput {
 .radio--primary {
   @mixin themed .radio {
     --radio-checked-background-color: $theme-color-accent-primary;
+    --radio-checked-border-color: $theme-color-accent-primary;
     --radio-checked-hovered-box-shadow: 0 0 0 4px $theme-color-accent-primary;
     --radio-checked-focused-box-shadow: 0 0 0 1px $theme-color-accent-primary;
     --radio-checked-icon-color: $theme-color-accent-primary-contrast;
@@ -189,6 +193,12 @@ input.radioInput {
     --radio-unchecked-hovered-box-shadow: 0 0 0 4px $theme-color-FG0-O40;
     --radio-unchecked-focused-box-shadow: 0 0 0 1px $theme-color-FG0-O40;
     --radio-focused-box-shadow: 0 0 0 1px $theme-color-accent-primary;
+
+    &.radio--secondary {
+      --radio-checked-background-color: transparent;
+      --radio-checked-border-color: $theme-color-accent-primary;
+      --radio-checked-icon-color: $theme-color-accent-primary;
+    }
   }
 
   &.radio--dark {
@@ -199,6 +209,7 @@ input.radioInput {
 .radio--contrast {
   @mixin themed .radio {
     --radio-checked-background-color: $theme-contrast-palette-accent-color;
+    --radio-checked-border-color: $theme-contrast-palette-accent-color;
     --radio-checked-hovered-box-shadow: 0 0 0 4px $theme-contrast-palette-accent-color;
     --radio-checked-focused-box-shadow: 0 0 0 1px $theme-contrast-palette-accent-color;
     --radio-checked-icon-color: var(--contrast-color, $theme-contrast-palette-background-color);
@@ -206,12 +217,19 @@ input.radioInput {
     --radio-unchecked-hovered-box-shadow: 0 0 0 4px $theme-contrast-palette-quietest-color;
     --radio-unchecked-focused-box-shadow: 0 0 0 1px $theme-contrast-palette-quietest-color;
     --radio-focused-box-shadow: 0 0 0 1px $theme-contrast-palette-accent-color;
+
+    &.radio--secondary {
+      --radio-checked-background-color: transparent;
+      --radio-checked-border-color: $theme-contrast-palette-accent-color;
+      --radio-checked-icon-color: $theme-contrast-palette-accent-color;
+    }
   }
 }
 
 .radio.is-danger {
   @mixin themed .radio {
     --radio-checked-background-color: $theme-color-danger;
+    --radio-checked-border-color: $theme-color-danger;
     --radio-checked-hovered-box-shadow: 0 0 0 4px $theme-color-danger;
     --radio-checked-focused-box-shadow: 0 0 0 1px $theme-color-danger;
     --radio-checked-icon-color: $theme-color-danger-contrast;
@@ -219,6 +237,12 @@ input.radioInput {
     --radio-unchecked-hovered-box-shadow: 0 0 0 4px $theme-color-FG0-O40;
     --radio-unchecked-focused-box-shadow: 0 0 0 1px $theme-color-FG0-O40;
     --radio-focused-box-shadow: 0 0 0 1px $theme-color-danger-D10;
+
+    &.radio--secondary {
+      --radio-checked-background-color: transparent;
+      --radio-checked-border-color: $theme-color-danger;
+      --radio-checked-icon-color: $theme-color-danger;
+    }
   }
 
   &.radio--dark {
