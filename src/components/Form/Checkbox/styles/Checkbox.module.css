@@ -116,19 +116,6 @@ input.checkboxInput {
     top: 0;
     transition: box-shadow 200ms ease;
   }
-
-  &:after {
-    border-radius: 0.25em;
-    bottom: -2px;
-    box-shadow: 0 0 0 0 transparent;
-    content: '';
-    left: -2px;
-    pointer-events: none;
-    position: absolute;
-    right: -2px;
-    top: -2px;
-    transition: box-shadow 200ms ease;
-  }
 }
 
 .checkbox.is-checked {
@@ -139,25 +126,8 @@ input.checkboxInput {
   }
 }
 
-.checkbox.is-focused.is-accessible {
-  .checkboxInputContainerFocusRing {
-    &:after {
-      box-shadow: var(--checkbox-unchecked-focused-box-shadow);
-    }
-  }
-
-  &.is-checked,
-  &.is-indeterminate {
-    .checkboxInputContainerFocusRing {
-      &:after {
-        box-shadow: var(--checkbox-checked-focused-box-shadow);
-      }
-    }
-  }
-}
-
 .checkbox:hover,
-.checkbox.is-focused:not(.is-accessible) {
+.checkbox.is-focused {
   .checkboxInputContainerFocusRing {
     &:before {
       box-shadow: var(--checkbox-unchecked-hovered-box-shadow);

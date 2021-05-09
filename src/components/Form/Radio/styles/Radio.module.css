@@ -117,39 +117,10 @@ input.radioInput {
     top: 0;
     transition: box-shadow 200ms ease;
   }
-
-  &:after {
-    border-radius: 100%;
-    bottom: -2px;
-    box-shadow: 0 0 0 0 transparent;
-    content: '';
-    left: -2px;
-    pointer-events: none;
-    position: absolute;
-    right: -2px;
-    top: -2px;
-    transition: box-shadow 200ms ease;
-  }
-}
-
-.radio.is-focused.is-accessible {
-  .radioInputContainerFocusRing {
-    &:after {
-      box-shadow: var(--radio-unchecked-focused-box-shadow);
-    }
-  }
-
-  &.is-checked {
-    .radioInputContainerFocusRing {
-      &:after {
-        box-shadow: var(--radio-checked-focused-box-shadow);
-      }
-    }
-  }
 }
 
 .radio:hover,
-.radio.is-focused:not(.is-accessible) {
+.radio.is-focused {
   .radioInputContainerFocusRing {
     &:before {
       box-shadow: var(--radio-unchecked-hovered-box-shadow);
