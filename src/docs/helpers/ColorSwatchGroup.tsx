@@ -15,13 +15,21 @@ const SwatchGroup = styled(Flex, {
   ${({ joined }) =>
     joined &&
     `
-    border-radius: 3px;
-    overflow: hidden;
+    div:first-of-type {
+      border-bottom-left-radius: 3px;
+      border-top-left-radius: 3px;
+    }
+
+    div:last-of-type {
+      border-bottom-right-radius: 3px;
+      border-top-right-radius: 3px;
+    }
 `}
 `;
 
 const SwatchBlock = styled('div', {
-  shouldForwardProp: (prop: string) => !['backgroundColor', 'color', 'height', 'rounded', 'width'].includes(prop),
+  shouldForwardProp: (prop: string) =>
+    !['backgroundColor', 'color', 'height', 'joined', 'rounded', 'width'].includes(prop),
 })<{
   backgroundColor: string;
   color?: string;
@@ -42,24 +50,25 @@ const SwatchBlock = styled('div', {
   position: relative;
   width: ${props => `${props.width}${typeof props.width === 'number' ? 'px' : ''}`};
 
-  &:after {
-    background: transparent;
-    border-radius: inherit;
-    bottom: 1px;
+  &:before {
+    border-radius: 4px;
+    bottom: 0;
+    box-shadow: 0 0 0 0 transparent;
     content: '';
-    left: 1px;
-    opacity: 0.2;
+    left: 0;
     position: absolute;
-    right: 1px;
-    top: 1px;
-    transition-color: background-color 100ms;
+    right: 0;
+    top: 0;
+    transition: box-shadow 100ms;
   }
 
+  &:hover,
   &:focus {
     outline: none;
+    z-index: 1;
 
-    &:after {
-      background-color: #fff;
+    &:before {
+      box-shadow: 0 0 0 3px ${props => props.backgroundColor};
     }
   }
 
@@ -105,7 +114,7 @@ export interface ColorSwatchGroupProps {
   withIcon?: boolean;
 }
 
-export function ColorSwatchGroup({
+export const ColorSwatchGroup = React.memo(function ColorSwatchGroup({
   children,
   colors,
   direction = 'row',
@@ -180,6 +189,6 @@ export function ColorSwatchGroup({
       ))}
     </SwatchGroup>
   );
-}
+});
 
 ColorSwatchGroup.displayName = 'ColorSwatchGroup';
