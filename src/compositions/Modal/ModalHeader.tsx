@@ -6,6 +6,7 @@ import { useModalComponentIds } from './useModalComponentIds';
 
 export interface ModalHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   align?: 'left' | 'center' | 'right';
+  bordered?: boolean;
   children?: React.ReactNode;
   className?: string;
   modalId?: string;
@@ -14,6 +15,7 @@ export interface ModalHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export function ModalHeader({
   align = 'center',
+  bordered,
   children,
   className,
   modalId,
@@ -23,7 +25,7 @@ export function ModalHeader({
   const { generateTitleId } = useModalComponentIds(modalId);
 
   return (
-    <div className={cx(styles.modalHeader, className)} {...props}>
+    <div className={cx(styles.modalHeader, bordered && styles['modalHeader--bordered'], className)} {...props}>
       {title && (
         <Typography<'div'> id={generateTitleId()} align={align} as="div" color="secondary" size="xxxl" weight="light">
           {title}

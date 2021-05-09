@@ -267,6 +267,7 @@ input.formboxInput[type='number'] {
   position: absolute;
   top: 0;
   transition: all 150ms ease;
+  user-select: none;
   white-space: nowrap;
   z-index: 1;
 }
