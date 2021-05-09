@@ -193,6 +193,7 @@ import { FormDemo } from './helpers/FormDemo';
                   name="checkbox"
                   onChange={(event, checked) => setValues({ ...values, checkbox: checked })}
                   persistEvents={persistEvents}
+                  variant="secondary"
                 >
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget dui eu orci ultrices maximus eu
                   eu ante. Vestibulum ligula velit, scelerisque vitae venenatis tempor, consectetur a orci. Aenean
@@ -209,6 +210,7 @@ import { FormDemo } from './helpers/FormDemo';
                   value="one"
                   onChange={(event, checked, value) => checked && setValues({ ...values, radio: value })}
                   persistEvents={persistEvents}
+                  variant="secondary"
                 >
                   Lorem ipsum dolor sit amet
                 </Radio>
@@ -220,6 +222,7 @@ import { FormDemo } from './helpers/FormDemo';
                   value="two"
                   onChange={(event, checked, value) => checked && setValues({ ...values, radio: value })}
                   persistEvents={persistEvents}
+                  variant="secondary"
                 >
                   Consectetur adipiscing elit
                 </Radio>
