@@ -5,9 +5,12 @@ route: /components/FormToggle
 ---
 
 import { Playground, Props } from 'docz';
+import { Flex } from 'components/Flex';
+import { Rhythm } from 'components/Rhythm';
 import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
 import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Toggle, NotifiedToggle } from '../index';
 
 <PageTitle title="Toggle" src="components/Form/Toggle" />
@@ -15,13 +18,14 @@ import { Toggle, NotifiedToggle } from '../index';
 ## Basic toggle
 
 <Playground>
-  <FormComponentDemo property="checked" initialValue={true}>
-    <Toggle
-      id="demo-basic-toggle"
-      onChange={(event, checked) => console.log(checked)}
-      aria-label="Super fantastic label"
-    />
-  </FormComponentDemo>
+  <ThemeWrapper>
+    <Flex direction="column">
+      <Rhythm my={2}>
+        <Toggle id="demo-checked-toggle" checked onChange={Function.prototype} aria-label="Super fantastic label" />
+        <Toggle id="demo-unchecked-toggle" onChange={Function.prototype} aria-label="Super fantastic label" />
+      </Rhythm>
+    </Flex>
+  </ThemeWrapper>
 </Playground>
 
 ## Labeled toggle
@@ -99,26 +103,18 @@ import { Toggle, NotifiedToggle } from '../index';
 ## Contrast toggles
 
 <Playground>
-  <FormComponentDemo property="checked" initialValue={true} contrast>
-    <Toggle
-      contrast
-      id="demo-contrast-toggle"
-      onChange={(event, checked) => console.log(checked)}
-    >
-      Super fantastic label
-    </Toggle>
-  </FormComponentDemo>
-
-   <FormComponentDemo property="checked" initialValue={true} contrast>
-    <Toggle
-      contrast
-      id="demo-standalone-toggle"
-      onChange={(event, checked) => console.log(checked)}
-      standalone
-    >
-      Super standalone label
-    </Toggle>
-  </FormComponentDemo>
+  <ThemeWrapper contrast>
+    <Flex direction="column">
+      <Rhythm my={2}>
+        <Toggle contrast id="demo-checked-contrast-toggle" checked onChange={Function.prototype}>
+          Super fantastic label
+        </Toggle>
+        <Toggle contrast id="demo-unchecked-contrast-toggle" onChange={Function.prototype}>
+          Super fantastic label
+        </Toggle>
+      </Rhythm>
+    </Flex>
+  </ThemeWrapper>
 </Playground>
 
 ## Notifications

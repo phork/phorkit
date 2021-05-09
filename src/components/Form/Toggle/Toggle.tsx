@@ -20,8 +20,6 @@ export interface LocalToggleProps extends ThemeProps {
   persistEvents?: boolean;
   reverse?: boolean;
   size?: 'small';
-  /** A stronger version of the toggle that doesn't have its colors muted to match the other form inputs */
-  standalone?: boolean;
   value?: string;
 }
 
@@ -45,7 +43,6 @@ export function ToggleBase(
     ref: ignoredRef,
     reverse,
     size,
-    standalone,
     themeId: initThemeId,
     unthemed,
     value,
@@ -81,7 +78,6 @@ export function ToggleBase(
         styles.toggle,
         full && styles['toggle--full'],
         reverse && styles['toggle--reverse'],
-        standalone && styles['toggle--standalone'],
         size && styles[`toggle--${size}`],
         themeId && !unthemed && styles[`toggle--${themeId}`],
         color && !unthemed && styles[`toggle--${color}`],
