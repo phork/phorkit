@@ -6,7 +6,6 @@ import { useSafeTimeout } from '../../hooks/useSafeTimeout';
 import { useThemeId } from '../../hooks/useThemeId';
 import { useTranslations } from '../../hooks/useTranslations';
 import { getFirstFocusableElement } from '../../utils/getFocusableElements';
-import { RenderFromPropElement, renderFromProp } from '../../utils/renderFromProp';
 import { TimesIcon } from '../../icons/TimesIcon';
 import { IconButton } from '../../components/Button/IconButton';
 import styles from './styles/Modal.module.css';
@@ -20,11 +19,13 @@ export const modalTranslations: ModalTranslations = {
   closeLabel: 'Close modal',
 };
 
+type RenderProps = { focusRef?: React.MutableRefObject<HTMLElement | null>; id?: string };
+
 export interface ModalProps extends ThemeProps {
   allowOverflow?: boolean;
   /* if a header isn't included with a title this should be used to label the modal */
   ariaLabel?: string;
-  children: RenderFromPropElement | RenderFromPropElement[];
+  children: ((props: RenderProps) => React.ReactElement) | React.ReactElement | React.ReactElement[];
   className?: string;
   focusable?: boolean;
   id?: string;
@@ -67,25 +68,21 @@ export function Modal({
     [id, onClose],
   );
 
-  type RenderProps = { focusRef?: React.MutableRefObject<HTMLElement | null> };
-
-  const renderProps: RenderProps = {};
-  focusable && typeof children === 'function' && (renderProps.focusRef = focusRef);
-  const content = renderFromProp(children, { id: componentId, ...renderProps });
-
   useLayoutEffect(() => {
     !hasTransitioned && setSafeTimeout(() => setHasTransitioned(true), 100);
   }, [hasTransitioned, setSafeTimeout]);
 
   // focus either a predefined element or the first one and then reset the scrolling back to the top
-  useEffect((): (() => void) => {
-    changeFocus(focusRef.current || (ref.current && getFirstFocusableElement(ref.current)));
-    if (ref.current) {
-      ref.current.scrollTop = 0;
-      ref.current.scrollLeft = 0;
+  useEffect((): (() => void) | void => {
+    if (focusable) {
+      changeFocus(focusRef.current || (ref.current && getFirstFocusableElement(ref.current)));
+      if (ref.current) {
+        ref.current.scrollTop = 0;
+        ref.current.scrollLeft = 0;
+      }
+      return () => returnFocus();
     }
-    return () => returnFocus();
-  }, [changeFocus, returnFocus]);
+  }, [changeFocus, focusable, returnFocus]);
 
   type AriaProps = {
     'aria-label'?: string;
@@ -127,7 +124,9 @@ export function Modal({
         )}
       </div>
 
-      {content}
+      {typeof children === 'function'
+        ? children({ id: componentId, focusRef: focusable ? focusRef : undefined })
+        : children}
     </div>
   );
 }
