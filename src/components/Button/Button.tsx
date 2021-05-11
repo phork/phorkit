@@ -22,6 +22,8 @@ export interface LocalButtonProps extends ThemeProps {
   focused?: boolean;
   fullWidth?: boolean;
   href?: string;
+  /** an imitation button looks like a button but doesn't have any functionality */
+  imitation?: boolean;
   loader?: React.ReactElement;
   loading?: boolean;
   noHeight?: boolean;
@@ -51,6 +53,7 @@ function ButtonBase<T extends ButtonElementType = 'button'>(
     focused,
     fullWidth,
     href,
+    imitation,
     loader,
     loading,
     noHeight,
@@ -99,6 +102,8 @@ function ButtonBase<T extends ButtonElementType = 'button'>(
   const element = href ? 'a' : as || 'button';
 
   const elementProps = (() => {
+    if (imitation) return {};
+
     switch (element) {
       case 'a': {
         const elementProps = {} as React.HTMLProps<HTMLAnchorElement>;

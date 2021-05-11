@@ -1,20 +1,18 @@
 import React from 'react';
-import { Typography } from '../../components/Typography/Typography';
+import { EllipsisIcon } from '../../icons';
+import { Button, ButtonProps } from '../../components/Button/Button';
+import { Rhythm } from '../../components/Rhythm/Rhythm';
 
-export interface PaginationEllipsisProps extends React.HTMLAttributes<HTMLDivElement> {
-  children?: React.ReactNode;
-}
+export type PaginationEllipsisProps = Omit<ButtonProps<'div'>, 'as' | 'children'>;
 
-export function PaginationEllipsis({
-  children,
-  ...props
-}: PaginationEllipsisProps): React.ReactElement<HTMLDivElement> {
-  return children ? (
-    <div {...props}>{children}</div>
-  ) : (
-    <Typography volume="quieter" size="xs" {...props}>
-      ...
-    </Typography>
+/** This uses an unclickable div Button to make it easier to share styles with the rest of the pagination */
+export function PaginationEllipsis(props: PaginationEllipsisProps): ReturnType<typeof Button> | null {
+  return (
+    <Button<'div'> as="div" imitation noPadding {...(props as ButtonProps<'div'>)}>
+      <Rhythm mx={2}>
+        <EllipsisIcon scale="medium" />
+      </Rhythm>
+    </Button>
   );
 }
 

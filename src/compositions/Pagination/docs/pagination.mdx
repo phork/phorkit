@@ -5,14 +5,194 @@ route: /compositions/Pagination
 ---
 
 import { Playground, Props } from 'docz';
-import { Pagination } from '../index';
+import { PageTitle } from 'docs/helpers/PageTitle';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { PageTitle } from 'docs/helpers/PageTitle';
+import { Pagination } from '../index';
 
 <PageTitle title="Pagination" src="compositions/Pagination" />
 
-## Page links
+## Pagination with custom styles
+
+### Page links with icons
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={8}>
+      {({ state: currentPage, setState: setCurrentPage }) => (
+        <Pagination
+          activeProps={{ weight: 'solid', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          inactiveProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          jumpProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          onChangePage={pageTo => setCurrentPage(pageTo)}
+          page={currentPage}
+          pageLinks={6}
+          pageSize={10}
+          spacing="joined"
+          totalItems={300}
+          withIcons
+          withPageLinks
+          withPreviousAndNext
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+### Page links with text
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={8}>
+      {({ state: currentPage, setState: setCurrentPage }) => (
+        <Pagination
+          activeProps={{ weight: 'solid', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          inactiveProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          jumpProps={{ weight: 'shaded', color: 'primary', shape: 'brick' }}
+          onChangePage={pageTo => setCurrentPage(pageTo)}
+          page={currentPage}
+          pageLinks={6}
+          pageSize={10}
+          spacing="joined"
+          totalItems={300}
+          withPageLinks
+          withPreviousAndNext
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+### Everything with icons
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={8}>
+      {({ state: currentPage, setState: setCurrentPage }) => (
+        <Pagination
+          activeProps={{
+            weight: 'shaded',
+            color: 'primary',
+            shape: 'brick',
+            noPadding: true,
+            style: { marginLeft: 4, marginRight: 4, width: 32 },
+          }}
+          ellipsisProps={{
+            disabled: true,
+            weight: 'ghost',
+            color: 'neutral',
+            shape: 'brick',
+            noPadding: true,
+            style: { width: 32 },
+          }}
+          inactiveProps={{ weight: 'ghost', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          jumpProps={{ weight: 'ghost', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          onChangePage={pageTo => setCurrentPage(pageTo)}
+          page={currentPage}
+          pageLabelProps={{ style: { marginRight: 30 } }}
+          pageLinks={6}
+          pageSize={10}
+          totalItems={300}
+          withEllipsis
+          withFirstAndLast
+          withIcons
+          withPageLabel
+          withPageLinks
+          withPreviousAndNext
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+### Everything with text
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={8}>
+      {({ state: currentPage, setState: setCurrentPage }) => (
+        <Pagination
+          activeProps={{ weight: 'solid', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          ellipsisProps={{
+            disabled: true,
+            weight: 'ghost',
+            color: 'neutral',
+            shape: 'brick',
+            noPadding: true,
+            style: { marginLeft: 8, marginRight: 8, width: 32 },
+          }}
+          inactiveProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          jumpProps={{ weight: 'shaded', color: 'primary', shape: 'brick' }}
+          onChangePage={pageTo => setCurrentPage(pageTo)}
+          page={currentPage}
+          pageLabelProps={{ style: { marginRight: 30 } }}
+          pageLinks={6}
+          pageSize={10}
+          spacing="joined"
+          totalItems={300}
+          withEllipsis
+          withFirstAndLast
+          withPageLabel
+          withPageLinks
+          withPreviousAndNext
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+### Minimal with icons
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={1}>
+      {({ state: currentPage, setState: setCurrentPage }) => (
+        <Pagination
+          jumpProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          justify="end"
+          onChangePage={pageTo => setCurrentPage(pageTo)}
+          page={currentPage}
+          pageSize={10}
+          spacing="joined"
+          totalItems={128}
+          withIcons
+          withPreviousAndNext
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+### Minimal with text
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={1}>
+      {({ state: currentPage, setState: setCurrentPage }) => (
+        <Pagination
+          jumpProps={{
+            weight: 'ghost',
+            color: 'primary',
+            shape: 'brick',
+            noPadding: true,
+            style: { paddingLeft: 8, paddingRight: 8, marginLeft: 8, marginRight: 8 },
+          }}
+          justify="end"
+          onChangePage={pageTo => setCurrentPage(pageTo)}
+          page={currentPage}
+          pageSize={10}
+          totalItems={128}
+          withPreviousAndNext
+        />
+      )}
+    </StateWrapper>
+
+  </ThemeWrapper>
+</Playground>
+
+## Unstyled pagination
+
+### Page links with icons
 
 <Playground>
   <ThemeWrapper>
@@ -24,6 +204,8 @@ import { PageTitle } from 'docs/helpers/PageTitle';
           pageLinks={6}
           pageSize={10}
           totalItems={300}
+          withIcons
+          withPageLinks
           withPreviousAndNext
         />
       )}
@@ -31,20 +213,19 @@ import { PageTitle } from 'docs/helpers/PageTitle';
   </ThemeWrapper>
 </Playground>
 
-## Current page only
+### Page links with text
 
 <Playground>
   <ThemeWrapper>
     <StateWrapper initialState={8}>
       {({ state: currentPage, setState: setCurrentPage }) => (
         <Pagination
-          justify="center"
           onChangePage={pageTo => setCurrentPage(pageTo)}
           page={currentPage}
+          pageLinks={6}
           pageSize={10}
-          totalItems={83}
-          withFirstAndLast
-          withPageLabel
+          totalItems={300}
+          withPageLinks
           withPreviousAndNext
         />
       )}
@@ -52,7 +233,74 @@ import { PageTitle } from 'docs/helpers/PageTitle';
   </ThemeWrapper>
 </Playground>
 
-## Minimal
+### Everything with icons
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={8}>
+      {({ state: currentPage, setState: setCurrentPage }) => (
+        <Pagination
+          onChangePage={pageTo => setCurrentPage(pageTo)}
+          page={currentPage}
+          pageLinks={6}
+          pageSize={10}
+          totalItems={300}
+          withEllipsis
+          withFirstAndLast
+          withIcons
+          withPageLabel
+          withPageLinks
+          withPreviousAndNext
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+### Everything with text
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={8}>
+      {({ state: currentPage, setState: setCurrentPage }) => (
+        <Pagination
+          onChangePage={pageTo => setCurrentPage(pageTo)}
+          page={currentPage}
+          pageLinks={6}
+          pageSize={10}
+          totalItems={300}
+          withEllipsis
+          withFirstAndLast
+          withPageLabel
+          withPageLinks
+          withPreviousAndNext
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+### Minimal with icons
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={1}>
+      {({ state: currentPage, setState: setCurrentPage }) => (
+        <Pagination
+          justify="end"
+          onChangePage={pageTo => setCurrentPage(pageTo)}
+          page={currentPage}
+          pageSize={10}
+          totalItems={128}
+          withIcons
+          withPreviousAndNext
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+### Minimal with text
 
 <Playground>
   <ThemeWrapper>
@@ -68,6 +316,16 @@ import { PageTitle } from 'docs/helpers/PageTitle';
         />
       )}
     </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+### Current page only
+
+<Playground>
+  <ThemeWrapper>
+    <Pagination justify="center" page={8} pageSize={10} totalItems={83} withPageLabel />
+    <br />
+    <Pagination justify="center" page={8} pageSize={10} totalItems={83} withPageAndTotalLabel />
   </ThemeWrapper>
 </Playground>
 

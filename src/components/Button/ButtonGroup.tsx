@@ -2,6 +2,7 @@ import { cx } from '@emotion/css';
 import React, { useCallback } from 'react';
 import { MergeElementProps, Orientation, ThemeProps } from '../../types';
 import { useThemeId } from '../../hooks/useThemeId';
+import { renderFromProp } from '../../utils';
 import { Button, ButtonColor, ButtonProps, ButtonSize, ButtonWeight } from './Button';
 import styles from './styles/ButtonGroup.module.css';
 
@@ -9,7 +10,7 @@ export type ButtonGroupSpacing = 'divided' | 'joined' | 'cozy' | 'comfy';
 
 export type ButtonGroupItem = {
   id: string;
-  label: React.ReactNode;
+  label: (selected: boolean) => JSX.Element;
   selected?: boolean;
   style?: React.CSSProperties;
 } & Omit<ButtonProps, 'children' | 'id' | 'key' | 'size' | 'style' | 'value'>;
@@ -17,7 +18,8 @@ export type ButtonGroupItem = {
 export interface LocalButtonGroupProps extends Pick<ButtonProps, 'color' | 'fullWidth' | 'shape'>, ThemeProps {
   align?: 'left' | 'right';
   buttons?: ButtonGroupItem[];
-  children?: React.ReactElement[];
+  /** children can be null or false so this doesn't fail if children are conditional */
+  children?: Array<React.ReactElement | null | false>;
   className?: string;
   /** if onClick is undefined then each button must have its own onClick prop */
   onClick?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, value: string) => void;
@@ -68,7 +70,7 @@ export function ButtonGroup({
     selected: ButtonGroupItem['selected'],
   ) => {
     if (typeof label === 'function') {
-      return React.cloneElement(label(selected), {
+      return React.cloneElement(label(!!selected), {
         key: id,
         className: styles.buttonGroup__button,
         ...(onClick ? { onClick: handleClick } : {}),
@@ -81,10 +83,12 @@ export function ButtonGroup({
   const renderButtonsFromChildren = () => {
     return children
       ? children.map(child =>
-          React.cloneElement(child, {
-            className: styles.buttonGroup__button,
-            ...(onClick ? { onClick: handleClick } : {}),
-          }),
+          child
+            ? renderFromProp(child, {
+                className: styles.buttonGroup__button,
+                ...(onClick ? { onClick: handleClick } : {}),
+              })
+            : null,
         )
       : undefined;
   };

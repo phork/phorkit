@@ -5,6 +5,7 @@ export { ArrowLeftIcon } from './ArrowLeftIcon';
 export { ArrowRightIcon } from './ArrowRightIcon';
 export { ArrowUpDownIcon } from './ArrowUpDownIcon';
 export { ArrowUpIcon } from './ArrowUpIcon';
+export { EllipsisIcon } from './EllipsisIcon';
 export { EyeSlashIcon } from './EyeSlashIcon';
 export { EyeIcon } from './EyeIcon';
 export { MinusIcon } from './MinusIcon';

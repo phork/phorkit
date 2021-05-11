@@ -9,7 +9,7 @@ export interface PaperProps extends React.HTMLAttributes<HTMLDivElement>, ThemeP
   children: React.ReactNode;
   className?: string;
   color?: StateColor | SequentialVariant | AccentColor | 'contrast' | 'transparent' | 'extreme';
-  /** Whether the paper is contained within a relative element and should fill it */
+  /** whether the paper is contained within a relative element and should fill it */
   contained?: boolean;
   container?: 'page' | 'panel' | 'popover' | 'banner';
   flexible?: boolean;

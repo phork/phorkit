@@ -31,7 +31,7 @@ export interface LocalSliderProps extends ThemeProps {
   persistEvents?: boolean;
   scale?: 'small';
   snap?: boolean;
-  /** Force the snap to the next value; otherwise goes to the closest */
+  /** force the snap to the next value; otherwise goes to the closest */
   snapNext?: boolean;
   step?: number;
   tick?: number;

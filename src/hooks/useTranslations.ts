@@ -14,3 +14,17 @@ export function useTranslations<T extends Record<string, string>>({
     fallbackTranslations,
   ]);
 }
+
+/**
+ * Accepts a string and its replacement args. The string must use
+ * sequential placeholders in the format {0}, {1}, {2}, etc.
+ *
+ * @param translation string eg. "My favor color is {0}. My favorite number is {1}."
+ * @param args string | number
+ * @returns string eg. My favorite color is yellow and my favorite number is 42.
+ */
+export function substituteTranslationArgs(translation: string, ...args: Array<string | number>): string {
+  return args.reduce((substituted: string, arg, i): string => {
+    return substituted.replace(new RegExp(`\\{${i}\\}`, 'g'), arg + '');
+  }, translation);
+}
