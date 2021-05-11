@@ -85,6 +85,7 @@ function ButtonBase<T extends ButtonElementType = 'button'>(
         align && styles[`button--${align}`],
         color && !unthemed && styles[`button--${color}`],
         fullWidth && styles['button--fullWidth'],
+        imitation && styles['button--imitation'],
         (noHeight || weight === 'inline') && styles['button--noHeight'],
         (noPadding || weight === 'inline') && styles['button--noPadding'],
         shape && weight !== 'inline' && styles[`button--${shape}`],

@@ -66,6 +66,11 @@ button.button {
   }
 }
 
+.button--imitation {
+  cursor: default;
+  pointer-events: none;
+}
+
 /* Button weights (these should go before other defs) */
 
 .button--solid {

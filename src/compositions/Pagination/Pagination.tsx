@@ -140,121 +140,128 @@ export function Pagination({
 
         <ButtonGroup
           buttons={[
-            withFirstAndLast && {
-              id: generateComponentId('firstPage'),
-              label: (_selected: boolean) => (
-                <JumpButton
-                  disabled={page <= 1}
-                  href={getHref ? getHref(1) : undefined}
-                  onChangePage={onChangePage}
-                  page={1}
-                  themeId={themeId}
-                  title={firstPageLabel}
-                  type="first"
-                  {...jumpProps}
-                />
-              ),
-            },
-            withPreviousAndNext && {
-              id: generateComponentId('previousPage'),
-              label: (_selected: boolean) => (
-                <JumpButton
-                  disabled={page <= 1}
-                  href={getHref ? getHref(page - 1) : undefined}
-                  onChangePage={onChangePage}
-                  page={page - 1}
-                  themeId={themeId}
-                  title={previousPageLabel}
-                  type="previous"
-                  {...jumpProps}
-                />
-              ),
-            },
+            withFirstAndLast &&
+              ({
+                id: generateComponentId('firstPage'),
+                label: () => (
+                  <JumpButton
+                    disabled={page <= 1}
+                    href={getHref ? getHref(1) : undefined}
+                    onChangePage={onChangePage}
+                    page={1}
+                    themeId={themeId}
+                    title={firstPageLabel}
+                    type="first"
+                    {...jumpProps}
+                  />
+                ),
+              } as ButtonGroupItem),
+            withPreviousAndNext &&
+              ({
+                id: generateComponentId('previousPage'),
+                label: () => (
+                  <JumpButton
+                    disabled={page <= 1}
+                    href={getHref ? getHref(page - 1) : undefined}
+                    onChangePage={onChangePage}
+                    page={page - 1}
+                    themeId={themeId}
+                    title={previousPageLabel}
+                    type="previous"
+                    {...jumpProps}
+                  />
+                ),
+              } as ButtonGroupItem),
 
             ...(withEllipsis && withPageLinks && pageLinksBefore[0] > 1 && page !== 1
               ? [
                   {
                     id: generateComponentId('page1'),
-                    label: (_selected: boolean) => (
+                    label: () => (
                       <PaginationPage href={getHref?.(1)} page={1} onChangePage={onChangePage} {...jumpProps} />
                     ),
-                  },
-                  pageLinksBefore[0] > 2 && {
-                    id: generateComponentId('ellipsisBefore'),
-                    label: (_selected: boolean) => <PaginationEllipsis {...ellipsisProps} />,
-                  },
+                  } as ButtonGroupItem,
+                  pageLinksBefore[0] > 2 &&
+                    ({
+                      id: generateComponentId('ellipsisBefore'),
+                      label: () => <PaginationEllipsis {...ellipsisProps} />,
+                    } as ButtonGroupItem),
                 ]
               : []),
 
             ...(withPageLinks && pageLinksBefore
-              ? pageLinksBefore.map(i => ({
-                  id: generateComponentId(`page${i}`),
-                  label: (_selected: boolean) => (
-                    <PaginationPage page={i} onChangePage={onChangePage} {...inactiveProps} />
-                  ),
-                }))
+              ? pageLinksBefore.map(
+                  i =>
+                    ({
+                      id: generateComponentId(`page${i}`),
+                      label: () => <PaginationPage page={i} onChangePage={onChangePage} {...inactiveProps} />,
+                    } as ButtonGroupItem),
+                )
               : []),
 
-            withPageLinks && {
-              id: generateComponentId('activePage'),
-              label: (_selected: boolean) => <PaginationPage active page={page} {...activeProps} />,
-              selected: true,
-            },
+            withPageLinks &&
+              ({
+                id: generateComponentId('activePage'),
+                label: () => <PaginationPage<'div'> active as="div" page={page} imitation {...activeProps} />,
+                selected: true,
+              } as ButtonGroupItem),
 
             ...(withPageLinks && pageLinksAfter
-              ? pageLinksAfter.map(i => ({
-                  id: generateComponentId(`page${i}`),
-                  label: (_selected: boolean) => (
-                    <PaginationPage page={i} onChangePage={onChangePage} {...inactiveProps} />
-                  ),
-                }))
+              ? pageLinksAfter.map(
+                  i =>
+                    ({
+                      id: generateComponentId(`page${i}`),
+                      label: () => <PaginationPage page={i} onChangePage={onChangePage} {...inactiveProps} />,
+                    } as ButtonGroupItem),
+                )
               : []),
 
             ...(withEllipsis && withPageLinks && pageLinksAfter.slice(-1)[0] < pages - 1 && page !== pages
               ? [
-                  pageLinksAfter.slice(-1)[0] < pages - 1 && {
-                    id: generateComponentId('ellipsisAfter'),
-                    label: (_selected: boolean) => <PaginationEllipsis {...ellipsisProps} />,
-                  },
+                  pageLinksAfter.slice(-1)[0] < pages - 1 &&
+                    ({
+                      id: generateComponentId('ellipsisAfter'),
+                      label: () => <PaginationEllipsis {...ellipsisProps} />,
+                    } as ButtonGroupItem),
                   {
                     id: generateComponentId(`page${pages}`),
-                    label: (_selected: boolean) => (
-                      <PaginationPage page={pages} onChangePage={onChangePage} {...inactiveProps} />
-                    ),
-                  },
+                    label: () => <PaginationPage page={pages} onChangePage={onChangePage} {...inactiveProps} />,
+                  } as ButtonGroupItem,
                 ]
               : []),
 
-            withPreviousAndNext && {
-              id: generateComponentId('nextPage'),
-              label: (_selected: boolean) => (
-                <JumpButton
-                  disabled={page >= pages}
-                  href={getHref ? getHref(page + 1) : undefined}
-                  onChangePage={onChangePage}
-                  page={page + 1}
-                  themeId={themeId}
-                  title={nextPageLabel}
-                  type="next"
-                  {...jumpProps}
-                />
-              ),
-            },
-            withFirstAndLast && {
-              id: generateComponentId('lastPage'),
-              label: (_selected: boolean) => (
-                <JumpButton
-                  disabled={page >= pages}
-                  href={getHref ? getHref(pages) : undefined}
-                  onChangePage={onChangePage}
-                  page={pages}
-                  themeId={themeId}
-                  title={lastPageLabel}
-                  type="last"
-                  {...jumpProps}
-                />
-              ),
-            },
+            withPreviousAndNext &&
+              ({
+                id: generateComponentId('nextPage'),
+                label: () => (
+                  <JumpButton
+                    disabled={page >= pages}
+                    href={getHref ? getHref(page + 1) : undefined}
+                    onChangePage={onChangePage}
+                    page={page + 1}
+                    themeId={themeId}
+                    title={nextPageLabel}
+                    type="next"
+                    {...jumpProps}
+                  />
+                ),
+              } as ButtonGroupItem),
+            withFirstAndLast &&
+              ({
+                id: generateComponentId('lastPage'),
+                label: () => (
+                  <JumpButton
+                    disabled={page >= pages}
+                    href={getHref ? getHref(pages) : undefined}
+                    onChangePage={onChangePage}
+                    page={pages}
+                    themeId={themeId}
+                    title={lastPageLabel}
+                    type="last"
+                    {...jumpProps}
+                  />
+                ),
+              } as ButtonGroupItem),
           ].filter((x): x is ButtonGroupItem => !!x)}
           className={buttonGroupClassName}
           style={buttonGroupStyle}

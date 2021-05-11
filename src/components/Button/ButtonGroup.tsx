@@ -10,7 +10,7 @@ export type ButtonGroupSpacing = 'divided' | 'joined' | 'cozy' | 'comfy';
 
 export type ButtonGroupItem = {
   id: string;
-  label: (selected: boolean) => JSX.Element;
+  label: React.ReactNode | ((selected: boolean) => JSX.Element);
   selected?: boolean;
   style?: React.CSSProperties;
 } & Omit<ButtonProps, 'children' | 'id' | 'key' | 'size' | 'style' | 'value'>;
@@ -64,6 +64,7 @@ export function ButtonGroup({
     [onClick],
   );
 
+  // if this returns undefined then it renders a normal button
   const renderLabel = (
     id: ButtonGroupItem['id'],
     label: ButtonGroupItem['label'],
