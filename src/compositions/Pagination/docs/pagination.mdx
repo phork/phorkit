@@ -12,6 +12,8 @@ import { Pagination } from '../index';
 
 <PageTitle title="Pagination" src="compositions/Pagination" />
 
+The pagination is a wrapper for the [ButtonGroup](../components/ButtonGroup). It can use either `ButtonGroup` styles or custom styles on top of an unstyled `ButtonGroup`.
+
 ## Pagination with custom styles
 
 ### Page links with icons
@@ -89,7 +91,7 @@ import { Pagination } from '../index';
           jumpProps={{ weight: 'ghost', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
           onChangePage={pageTo => setCurrentPage(pageTo)}
           page={currentPage}
-          pageLabelProps={{ style: { marginRight: 30 } }}
+          pageLabelProps={{ size: 'm', style: { marginRight: 30 } }}
           pageLinks={6}
           pageSize={10}
           totalItems={300}
@@ -125,7 +127,7 @@ import { Pagination } from '../index';
           jumpProps={{ weight: 'shaded', color: 'primary', shape: 'brick' }}
           onChangePage={pageTo => setCurrentPage(pageTo)}
           page={currentPage}
-          pageLabelProps={{ style: { marginRight: 30 } }}
+          pageLabelProps={{ size: 'm', style: { marginRight: 30 } }}
           pageLinks={6}
           pageSize={10}
           spacing="joined"

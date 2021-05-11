@@ -88,7 +88,7 @@ export function Pagination({
   justify = 'start',
   onChangePage,
   page,
-  pageLabelProps,
+  pageLabelProps = { size: 'm' },
   pageLinks = 0,
   pageSize,
   style,
@@ -129,7 +129,7 @@ export function Pagination({
     <ErrorBoundary>
       <Flex alignItems="center" direction="row" inflexible justifyContent={justification[justify]} wrap={false}>
         {(withPageLabel || withPageAndTotalLabel) && (
-          <Typography size="s" variants={['letter-spacing-comfy']} {...pageLabelProps}>
+          <Typography {...pageLabelProps}>
             {substituteTranslationArgs(
               translations[withPageAndTotalLabel ? 'pageLabel' : 'pageAndTotalLabel'],
               page,
