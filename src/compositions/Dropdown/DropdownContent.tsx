@@ -1,6 +1,11 @@
 import { cx } from '@emotion/css';
 import React, { useMemo, useRef } from 'react';
 import { MergeElementProps, ThemeProps } from '../../types';
+import { useAccessibility } from '../../context';
+import { InteractiveList, InteractiveListProps } from '../InteractiveList/InteractiveList';
+import { DropdownEmpty, DropdownEmptyProps } from './DropdownEmpty';
+import { DropdownState } from './dropdownReducer';
+import styles from './styles/Dropdown.module.css';
 import {
   DropdownInputVariant,
   DropdownLayout,
@@ -9,12 +14,6 @@ import {
   DropdownListVariant,
   DropdownOption,
 } from './types';
-import { useAccessibility } from '../../context';
-import { RenderFromPropElement } from '../../utils';
-import { InteractiveList, InteractiveListProps } from '../InteractiveList/InteractiveList';
-import { DropdownEmpty } from './DropdownEmpty';
-import { DropdownState } from './dropdownReducer';
-import styles from './styles/Dropdown.module.css';
 
 export interface LocalDropdownContentProps extends ThemeProps {
   /** allowReselect is used by DropdownWithTags so an item can be added, removed and re-added */
@@ -22,7 +21,7 @@ export interface LocalDropdownContentProps extends ThemeProps {
   className?: string;
   containerRef: React.RefObject<HTMLDivElement>;
   disabledIds?: Array<DropdownOption['id']>;
-  emptyNotification?: RenderFromPropElement;
+  emptyNotification?: DropdownEmptyProps['children'];
   inputVariant?: DropdownInputVariant;
   isDropdownVisible?: boolean;
   isEmpty?: boolean;

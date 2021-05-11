@@ -1,10 +1,10 @@
 import React from 'react';
 import { ThemeProps } from '../../types';
-import { ToastContainerPosition } from './types';
 import { useThemeId } from '../../hooks/useThemeId';
 import { ToastConsumer } from './ToastConsumer';
 import { ToastContainer } from './ToastContainer';
 import { ToastFromContext } from './ToastFromContext';
+import { ToastContainerPosition } from './types';
 
 export interface ToastsFromContextProps extends ThemeProps {
   position: ToastContainerPosition;

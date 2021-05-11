@@ -1,5 +1,5 @@
-import { BannerItemType } from './types';
 import { bannerActions as ACTIONS, BannerStateAction } from './bannerActions';
+import { BannerItemType } from './types';
 
 export type BannerState = Map<string, BannerItemType>;
 

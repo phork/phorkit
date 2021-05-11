@@ -1,4 +1,3 @@
-export * from './Dropover';
 export * from './DropoverContent';
 export * from './DropoverInputLabel';
 export * from './DropoverLabel';

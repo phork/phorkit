@@ -5,11 +5,11 @@ route: /compositions/Dropover
 ---
 
 import { Playground, Props } from 'docz';
-import { Dropover, DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, PortalDropover } from '../index';
 import { Link } from 'components/Link';
 import { Typography } from 'components/Typography';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, PortalDropover } from '../index';
 
 <PageTitle title="Dropover" src="compositions/Dropover" />
 
@@ -89,7 +89,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 <Playground>
   <ThemeWrapper>
     <PortalDropover
-      contentProps={{ portal: 'absolute' }}
+      portal="absolute"
       label={
         <DropoverLabel>
           <Typography color="primary" size="l" variants="line-height-normal" weight="bold">
@@ -113,7 +113,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 <Playground>
   <ThemeWrapper>
     <PortalDropover
-      contentProps={{ portal: 'absolute' }}
+      portal="absolute"
       align="right"
       width={400}
       label={
@@ -139,7 +139,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 <Playground>
   <ThemeWrapper>
     <PortalDropover
-      contentProps={{ portal: 'absolute' }}
+      portal="absolute"
       label={
         <DropoverLabel noTriangle>
           <Typography color="primary" size="l" variants="line-height-normal" weight="bold">
@@ -163,7 +163,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 <Playground>
   <ThemeWrapper>
     <PortalDropover
-      contentProps={{ portal: 'absolute' }}
+      portal="absolute"
       align="right"
       passiveLabel
       width={400}
@@ -209,9 +209,13 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 
 ## \[props\]
 
-### Dropover
+### InlineDropover
 
-<Props of={Dropover} />
+<Props of={InlineDropover} />
+
+### PortalDropover
+
+<Props of={PortalDropover} />
 
 ### DropoverContent
 

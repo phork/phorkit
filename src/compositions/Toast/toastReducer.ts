@@ -1,6 +1,6 @@
 import React from 'react';
-import { ToastItemType } from './types';
 import { toastActions as ACTIONS, ToastStateAction } from './toastActions';
+import { ToastItemType } from './types';
 
 export type ToastState = Map<string, ToastItemType>;
 

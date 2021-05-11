@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef } from 'react';
-import { EventListenerItemType } from './types';
 import { EventListenerContext } from './EventListenerContext';
+import { EventListenerItemType } from './types';
 
 export interface UseEventListenerInterface extends Pick<EventListenerItemType, 'eventType' | 'listener' | 'options'> {
   precedeOtherEvents?: boolean;

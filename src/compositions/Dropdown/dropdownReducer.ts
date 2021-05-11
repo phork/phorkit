@@ -1,5 +1,5 @@
-import { DropdownOption } from './types';
 import { dropdownActions as ACTIONS, DropdownStateAction } from './dropdownActions';
+import { DropdownOption } from './types';
 
 export type DropdownState = {
   busy?: boolean;

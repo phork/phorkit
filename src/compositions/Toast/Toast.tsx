@@ -1,7 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useLayoutEffect, useState } from 'react';
 import { MergeElementPropsWithoutRef, ThemeProps } from '../../types';
-import { ToastNotificationLevel } from './types';
 import { useSafeTimeout } from '../../hooks/useSafeTimeout';
 import { useThemeId } from '../../hooks/useThemeId';
 import { useTranslations } from '../../hooks/useTranslations';
@@ -12,6 +11,7 @@ import { ButtonColor } from '../../components/Button';
 import { IconButton } from '../../components/Button/IconButton';
 import { ToastCountdownBar } from './ToastCountdownBar';
 import styles from './styles/Toast.module.css';
+import { ToastNotificationLevel } from './types';
 import { useToastComponentIds } from './useToastComponentIds';
 
 export type ToastTranslations = {

@@ -1,9 +1,9 @@
-import { InteractiveGroupItemType } from './types';
 import {
   interactiveGroupActions as ACTIONS,
   InteractiveGroupStateAction,
   InteractiveGroupEventTypes,
 } from './interactiveGroupActions';
+import { InteractiveGroupItemType } from './types';
 
 export type GeneratedInteractiveGroupActions = {
   setItems: (items: InteractiveGroupItemType[]) => void;

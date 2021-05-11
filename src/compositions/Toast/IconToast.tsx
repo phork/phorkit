@@ -1,9 +1,9 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import { SvgIconProps } from '../../types';
-import { ToastNotificationLevel } from './types';
 import { Toast, ToastProps } from './Toast';
 import styles from './styles/Toast.module.css';
+import { ToastNotificationLevel } from './types';
 import { useToastComponentIds } from './useToastComponentIds';
 
 export interface IconToastProps extends ToastProps {

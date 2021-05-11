@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { ThemeProps } from '../../types';
-import { TabsVariant } from './types';
 import { useComponentId } from '../../hooks/useComponentId';
 import {
   InteractiveGroupProvider,
@@ -10,6 +9,7 @@ import { ListRegistryProvider } from '../../components/ListRegistry/ListRegistry
 import { TabList, TabListProps } from './TabList';
 import { TabPanelGroup, TabPanelGroupProps } from './TabPanelGroup';
 import { TabsContainer } from './TabsContainer';
+import { TabsVariant } from './types';
 
 export type TabsRenderChildren = (
   props: Pick<

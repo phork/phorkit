@@ -1,7 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useContext } from 'react';
 import { ThemeProps } from '../../types';
-import { TabsVariant } from './types';
 import { useAccessibility } from '../../context/Accessibility';
 import { useComponentId } from '../../hooks/useComponentId';
 import { useThemeId } from '../../hooks/useThemeId';
@@ -11,6 +10,7 @@ import {
 } from '../../components/InteractiveGroup/InteractiveGroupContext';
 import { TabPanel, TabPanelProps } from './TabPanel';
 import styles from './styles/TabPanelGroup.module.css';
+import { TabsVariant } from './types';
 
 export interface TabPanelGroupProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
   className?: string;

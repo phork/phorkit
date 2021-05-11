@@ -3,11 +3,9 @@ import debounce from 'lodash.debounce';
 import React, { useCallback, useMemo, useEffect, useReducer, useRef } from 'react';
 import { v4 as uuid } from 'uuid';
 import { StateColor, ThemeProps } from '../../types';
-import { DropdownOption, DropdownInputVariant, DropdownLayout, DropdownListSize, DropdownListVariant } from './types';
 import { useClickAndEscape } from '../../hooks/useClickAndEscape';
 import { useSafeTimeout } from '../../hooks/useSafeTimeout';
 import { useThemeId } from '../../hooks/useThemeId';
-import { RenderFromPropElement } from '../../utils/renderFromProp';
 import { SearchIcon } from '../../icons';
 import { ArrowDownIcon } from '../../icons/ArrowDownIcon';
 import { SpinnerIcon } from '../../icons/SpinnerIcon';
@@ -16,6 +14,7 @@ import { DropdownContent, DropdownContentProps } from './DropdownContent';
 import { dropdownActions as ACTIONS } from './dropdownActions';
 import { dropdownReducer as reducer } from './dropdownReducer';
 import styles from './styles/Dropdown.module.css';
+import { DropdownOption, DropdownInputVariant, DropdownLayout, DropdownListSize, DropdownListVariant } from './types';
 
 export interface DropdownProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'onSelect' | 'onSubmit'>,
@@ -26,8 +25,8 @@ export interface DropdownProps
   disabled?: boolean;
   disabledIds?: Array<DropdownOption['id']>;
   dropdownContent: typeof DropdownContent;
-  iconBefore?: RenderFromPropElement;
-  iconAfter?: RenderFromPropElement;
+  iconBefore?: TextboxProps['iconBefore'];
+  iconAfter?: TextboxProps['iconAfter'];
   id?: string;
   initialSelected?: DropdownOption;
   inputVariant?: DropdownInputVariant;

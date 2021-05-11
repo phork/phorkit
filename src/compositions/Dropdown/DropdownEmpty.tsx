@@ -1,13 +1,15 @@
 import { cx } from '@emotion/css';
 import React, { useMemo } from 'react';
 import { ThemeProps } from '../../types';
-import { DropdownLayout } from './types';
 import { useThemeId } from '../../hooks/useThemeId';
 import { RenderFromPropElement, renderFromPropWithFallback } from '../../utils/renderFromProp';
 import styles from './styles/DropdownEmpty.module.css';
+import { DropdownLayout } from './types';
+
+type RenderFromPropProps = { filter?: string };
 
 export interface DropdownEmptyProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
-  children?: RenderFromPropElement;
+  children?: RenderFromPropElement<RenderFromPropProps>;
   filter?: string;
   layout?: DropdownLayout;
 }
@@ -21,10 +23,10 @@ export function DropdownEmpty({
   ...props
 }: DropdownEmptyProps): React.ReactElement<DropdownEmptyProps, 'div'> | null {
   const themeId = useThemeId(initThemeId);
-  const content = useMemo(() => (children ? renderFromPropWithFallback(children, { filter }) : undefined), [
-    children,
-    filter,
-  ]);
+  const content = useMemo(
+    () => (children ? renderFromPropWithFallback<RenderFromPropProps>(children, { filter }) : undefined),
+    [children, filter],
+  );
 
   const color = contrast ? 'contrast' : 'primary';
 

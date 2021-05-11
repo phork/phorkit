@@ -1,7 +1,6 @@
 import produce from 'immer';
 import React, { useCallback, useEffect, useReducer, useRef } from 'react';
 import { v4 as uuid } from 'uuid';
-import { eventListenerOptions as OPTIONS, EventListenerItemType } from './types';
 import { EventListenerContext, EventListenerContextValue } from './EventListenerContext';
 import { eventListenerActions as ACTIONS } from './eventListenerActions';
 import {
@@ -10,6 +9,7 @@ import {
   getOptionsFromMapKey,
   EventListenerState,
 } from './eventListenerReducer';
+import { eventListenerOptions as OPTIONS, EventListenerItemType } from './types';
 
 export interface EventListenerProviderProps {
   children: React.ReactNode;

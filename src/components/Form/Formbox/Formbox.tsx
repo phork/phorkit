@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useRef } from 'react';
-import { AsType, StateColor, MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
+import { AsType, StateColor, MergeElementPropsWithoutRef, ThemeProps, IconScale } from '../../../types';
 import { useComponentId } from '../../../hooks/useComponentId';
 import { useDeepFocus } from '../../../hooks/useDeepFocus';
 import { useThemeId } from '../../../hooks/useThemeId';
@@ -8,6 +8,12 @@ import { useTranslations } from '../../../hooks/useTranslations';
 import { renderFromProp, RenderFromPropElement } from '../../../utils/renderFromProp';
 import { PencilSlashIcon } from '../../../icons/PencilSlashIcon';
 import styles from './styles/Formbox.module.css';
+
+type RenderIconFromPropProps = {
+  className?: string;
+  onBlur?: React.FocusEventHandler;
+  onFocus?: React.FocusEventHandler;
+};
 
 export type FormboxTranslations = {
   readOnlyLabel: string;
@@ -32,9 +38,9 @@ export interface LocalFormboxProps<I extends FormboxInputElementType> extends Th
   className?: string;
   disabled?: boolean;
   empty?: boolean;
-  iconAfter?: RenderFromPropElement;
+  iconAfter?: RenderFromPropElement<RenderIconFromPropProps>;
   iconAfterActionable?: boolean;
-  iconBefore?: RenderFromPropElement;
+  iconBefore?: RenderFromPropElement<RenderIconFromPropProps>;
   iconBeforeActionable?: boolean;
   id?: string;
   input: React.ReactElement<HTMLElementTagNameMap[I]>;
@@ -178,7 +184,11 @@ function FormboxBase<T extends FormboxContainerElementType, I extends FormboxInp
   );
 
   // the best practice is to pass a button for the icon if it's actionable
-  const renderIcon = (icon: RenderFromPropElement, position: FormboxIconPosition, actionable: boolean | undefined) => {
+  const renderIcon = (
+    icon: RenderFromPropElement<RenderIconFromPropProps & { size?: number; scale?: IconScale }>,
+    position: FormboxIconPosition,
+    actionable: boolean | undefined,
+  ) => {
     const autoSize = !(
       typeof icon === 'object' &&
       (icon.type === 'button' || (icon.props && (icon.props.size || icon.props.scale)))
@@ -192,7 +202,7 @@ function FormboxBase<T extends FormboxContainerElementType, I extends FormboxInp
       typeof icon === 'object' && icon.props && icon.props.className,
     );
 
-    return renderFromProp(icon, {
+    return renderFromProp<RenderIconFromPropProps>(icon, {
       className,
       onBlur: actionable ? (event: React.FocusEvent) => onIconBlur && onIconBlur(event, position) : undefined,
       onFocus: actionable ? (event: React.FocusEvent) => onIconFocus && onIconFocus(event, position) : undefined,

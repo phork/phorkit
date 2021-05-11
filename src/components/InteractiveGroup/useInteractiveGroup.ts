@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useMemo, useReducer, useRef } from 'react';
-import { InteractiveGroupItemType } from './types';
 import { useElementEventListener } from '../../hooks/useElementEventListener';
 import { generateInteractiveGroupActions, GeneratedInteractiveGroupActions } from './generateInteractiveGroupActions';
 import { InteractiveGroupEventTypes } from './interactiveGroupActions';
@@ -18,6 +17,7 @@ import {
   selectTriggeredId,
   selectSelectedId,
 } from './interactiveGroupSelector';
+import { InteractiveGroupItemType } from './types';
 
 export interface UseInteractiveGroupInterface {
   allowMultiSelect?: boolean;

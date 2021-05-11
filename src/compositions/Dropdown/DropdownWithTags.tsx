@@ -1,5 +1,4 @@
 import React, { useCallback, useState } from 'react';
-import { DropdownOption } from './types';
 import { useComponentId } from '../../hooks/useComponentId';
 import { useThemeId } from '../../hooks/useThemeId';
 import { useTranslations } from '../../hooks/useTranslations';
@@ -11,6 +10,7 @@ import { Tag, TagGroup, TagSize, TagVariant } from '../../components/Tag';
 import { TypographyWithSvg } from '../../components/Typography';
 import { Dropdown, DropdownProps } from './Dropdown';
 import { DropdownContent } from './DropdownContent';
+import { DropdownOption } from './types';
 
 export type DropdownWithTagsTranslations = {
   numSelectedSingular: string;

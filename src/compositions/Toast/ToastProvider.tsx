@@ -1,12 +1,12 @@
 import produce from 'immer';
 import React, { useCallback, useReducer, useRef } from 'react';
 import { v4 as uuid } from 'uuid';
-import { ToastItemType, ToastNotificationLevel } from './types';
 import { useSafeTimeout } from '../../hooks/useSafeTimeout';
 import { ToastProps } from './Toast';
 import { ToastContext, ToastContextValue } from './ToastContext';
 import { toastActions as ACTIONS } from './toastActions';
 import { toastReducer as reducer, ToastState } from './toastReducer';
+import { ToastItemType, ToastNotificationLevel } from './types';
 
 const durations: Record<ToastNotificationLevel, number> = {
   custom: 8000,

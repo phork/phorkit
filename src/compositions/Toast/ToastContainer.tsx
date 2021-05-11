@@ -1,9 +1,9 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ToastContainerPosition } from './types';
 import { lowerCamelize } from '../../utils/case';
 import styles from './styles/ToastContainer.module.css';
+import { ToastContainerPosition } from './types';
 
 export interface ToastContainerProps {
   children: React.ReactNode;

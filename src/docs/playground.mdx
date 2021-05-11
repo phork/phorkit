@@ -1104,7 +1104,6 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
       {({ state: searchTerm, setState: setSearchTerm }) => (
         <Rhythm mb={6} grouped>
           <PortalDropover
-            contentProps={{ portal: 'fixed' }}
             label={
               <DropoverInputLabel>
                 <Textbox
@@ -1120,6 +1119,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
               </DropoverInputLabel>
             }
             passiveLabel
+            portal="fixed"
             width={400}
           >
             <DropoverContent>

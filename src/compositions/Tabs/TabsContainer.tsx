@@ -1,10 +1,10 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import { ThemeProps } from '../../types';
-import { TabsVariant } from './types';
 import { useAccessibility } from '../../context/Accessibility';
 import { useThemeId } from '../../hooks/useThemeId';
 import styles from './styles/TabsContainer.module.css';
+import { TabsVariant } from './types';
 
 export interface TabsContainerProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
   children: React.ReactNode;

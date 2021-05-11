@@ -1,5 +1,5 @@
-import { eventListenerOptions as OPTIONS, EventListenerItemType } from './types';
 import { eventListenerActions as ACTIONS, EventListenerStateAction } from './eventListenerActions';
+import { eventListenerOptions as OPTIONS, EventListenerItemType } from './types';
 
 type OptionsFromMapKey = {
   [key in keyof typeof OPTIONS]: boolean;

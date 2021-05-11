@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import React from 'react';
-import { InlinePopover, PopoverContentRenderChildrenProps, ForwardProps, TimesIcon } from 'lib';
+import { InlinePopover, TimesIcon } from 'lib';
 
 describe('<InlinePopover />', () => {
   it('should render a basic popover', () => {
@@ -15,22 +15,20 @@ describe('<InlinePopover />', () => {
   it('should render a basic popover and forward the position', () => {
     const { getByText } = render(
       <InlinePopover
-        contentProps={{ withChildrenProps: true }}
         focusable
         height={80}
         permanent
+        position="bottom-right"
+        renderChildren={({ position }) => (
+          <React.Fragment>
+            <div>Hello world</div>
+            <div>{position}</div>
+          </React.Fragment>
+        )}
         toggler={<TimesIcon scale="xxxlarge" />}
         width={300}
-      >
-        <ForwardProps<Partial<PopoverContentRenderChildrenProps>>>
-          {({ position }) => (
-            <React.Fragment>
-              <div>Hello world</div>
-              <div>{position}</div>
-            </React.Fragment>
-          )}
-        </ForwardProps>
-      </InlinePopover>,
+        withChildrenProps
+      />,
     );
     expect(getByText('Hello world')).toBeTruthy();
     expect(getByText('bottom-right')).toBeTruthy();

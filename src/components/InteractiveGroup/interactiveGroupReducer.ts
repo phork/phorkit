@@ -1,4 +1,3 @@
-import { InteractiveGroupItemType } from './types';
 import {
   interactiveGroupActions as ACTIONS,
   InteractiveGroupStateAction,
@@ -8,6 +7,7 @@ import {
   InteractiveGroupStateActionSelectFocused,
 } from './interactiveGroupActions';
 import { interactiveGroupItemsFactory, InteractiveGroupItems } from './interactiveGroupItemsFactory';
+import { InteractiveGroupItemType } from './types';
 
 export type InteractiveGroupState = {
   events: {

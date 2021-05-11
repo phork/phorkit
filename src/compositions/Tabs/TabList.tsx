@@ -1,7 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useContext, useRef } from 'react';
 import { MergeElementProps, ThemeProps } from '../../types';
-import { TabsVariant } from './types';
 import { useAccessibility } from '../../context/Accessibility';
 import { useComponentId } from '../../hooks/useComponentId';
 import { useDeepFocus } from '../../hooks/useDeepFocus';
@@ -13,6 +12,7 @@ import {
 } from '../../components/InteractiveGroup/InteractiveGroupContext';
 import { Tab, TabProps } from './Tab';
 import styles from './styles/Tabs.module.css';
+import { TabsVariant } from './types';
 
 export type TabListItemProps = Pick<TabProps, 'disabled' | 'iconOnly'> & {
   id: string;

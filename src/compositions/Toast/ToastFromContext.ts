@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThemeProps } from '../../types';
-import { ToastItemType } from './types';
 import { useThemeId } from '../../hooks';
+import { ToastItemType } from './types';
 
 export interface ToastFromContextProps extends ThemeProps {
   element: ToastItemType;

@@ -1,8 +1,8 @@
 import React, { useCallback, useContext } from 'react';
 import { ThemeProps } from '../../types';
-import { ModalItemType } from './types';
 import { useThemeId } from '../../hooks/useThemeId';
 import { ModalContext } from './ModalContext';
+import { ModalItemType } from './types';
 
 export interface ModalFromContextProps extends ThemeProps {
   id: string;

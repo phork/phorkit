@@ -10,14 +10,13 @@ import { useThemeId } from '../../hooks/useThemeId';
 import { getFirstFocusableElement, isFocusWithin } from '../../utils/getFocusableElements';
 import { getPositionOffset } from '../../utils/getPositionOffset';
 import { renderFromProp, RenderFromPropElement } from '../../utils/renderFromProp';
-import { Portal } from '../../components/Portal';
-import { PopoverContentInline, PopoverContentInlineProps } from './PopoverContentInline';
 import styles from './styles/Popover.module.css';
+import { PopoverContentProps } from './types';
 import { usePopoverComponentIds } from './usePopoverComponentIds';
 
 const CLOSE_TIMEOUT_ID = 'close';
 
-type TogglerProps = {
+export type PopoverTogglerProps = {
   id: string;
   className?: string;
   onBlur: () => void;
@@ -30,36 +29,37 @@ type TogglerProps = {
   visible?: boolean;
 };
 
-export interface PopoverProps
-  extends Pick<PopoverContentInlineProps, 'alwaysRender' | 'centered' | 'children' | 'focusable' | 'height' | 'width'>,
-    ThemeProps {
+export type PopoverRenderContentProps = Pick<
+  PopoverContentProps,
+  | 'close'
+  | 'focusable'
+  | 'focusRef'
+  | 'isTogglerFocused'
+  | 'offset'
+  | 'onMouseEnter'
+  | 'parentRef'
+  | 'position'
+  | 'visible'
+> &
+  Required<Pick<PopoverContentProps, 'offset'>> & {
+    'aria-hidden': boolean;
+    id: string;
+    ref: (node: HTMLElement | null) => void;
+    role: 'tooltip' | 'dialog';
+  };
+
+export interface PopoverProps extends ThemeProps {
   className?: string;
   closeDelay?: number;
-  content: typeof PopoverContentInline | typeof Portal;
-  contentProps?: Partial<
-    Omit<
-      PopoverContentInlineProps,
-      | 'alwaysRender'
-      | 'centered'
-      | 'childrenProps'
-      | 'className'
-      | 'focusable'
-      | 'focusRef'
-      | 'height'
-      | 'id'
-      | 'offset'
-      | 'onMouseEnter'
-      | 'parentRef'
-      | 'position'
-      | 'ref'
-      | 'role'
-      | 'visible'
-      | 'width'
-    >
-  >;
+  focusable?: boolean;
+  /** popovers are show own click by default unless hoverable is true */
   hoverable?: boolean;
   ignoreClickOutside?: boolean;
+  /** the popover should be shown immediately and doesn't need an initial click/hover action */
   initialVisible?: boolean;
+  /** if the popover is a tooltip it will have different aria props */
+  isTooltip?: boolean;
+  /** an orientation can be used to position the popup if a position isn't set */
   layout?: Orientation;
   offset?: {
     horizontal: number;
@@ -67,33 +67,26 @@ export interface PopoverProps
   };
   onClose?: () => void;
   onOpen?: () => void;
+  /** permanent popovers can't be closed */
   permanent?: boolean;
-  popoverClassName?: string;
   position?: AnyPosition | StackedPosition;
+  renderContent: (props: PopoverRenderContentProps) => React.ReactNode;
   style?: React.CSSProperties;
-  toggler: RenderFromPropElement;
-  /** if the popover is a tooltip it will have different aria props */
-  tooltip?: boolean;
-  width?: number | string;
-  /** if the toggle handles the focus styles this can be used to hide the standard focus outline */
+  toggler: RenderFromPropElement<PopoverTogglerProps>;
+  /** if the toggler handles the focus styles this can be used to hide the standard focus outline */
   withoutTogglerFocusStyle?: boolean;
   /** pass extra props to the toggler (to be used with ForwardProps) */
-  withTogglerProps?: boolean;
+  withPopoverTogglerProps?: boolean;
 }
 
 export function Popover({
-  alwaysRender,
-  centered,
-  children,
   className,
   closeDelay = 500,
-  content: PopoverContent,
-  contentProps = {},
   focusable,
-  height,
   hoverable,
   ignoreClickOutside,
   initialVisible,
+  isTooltip,
   layout,
   offset: initOffset = {
     horizontal: 0,
@@ -102,22 +95,20 @@ export function Popover({
   onClose,
   onOpen,
   permanent,
-  popoverClassName,
   position: initPosition,
+  renderContent,
   style,
   themeId: initThemeId,
   toggler,
-  tooltip,
-  width,
   withoutTogglerFocusStyle,
-  withTogglerProps,
+  withPopoverTogglerProps,
   ...props
 }: PopoverProps): React.ReactElement<PopoverProps, 'div'> {
   const accessible = useAccessibility();
   const themeId = useThemeId(initThemeId);
   const { setSafeTimeout, clearSafeTimeout } = useSafeTimeout();
   const { changeFocus, returnFocus } = useFocusReturn();
-  const [togglerFocused, setTogglerFocused] = useState<boolean>(false);
+  const [isTogglerFocused, setIsTogglerFocused] = useState<boolean>(false);
   const [hasContentRef, setHasContentRef] = useState<boolean>();
   const contentRef = useRef<HTMLElement>(null!);
   const focusRef = useRef<HTMLElement>(null!);
@@ -158,21 +149,24 @@ export function Popover({
     clearSafeTimeout(CLOSE_TIMEOUT_ID);
   };
 
-  const closePopover = (timeout?: number) => {
-    if (!permanent) {
-      if (timeout) {
-        setSafeTimeout(
-          () => {
-            setIsComponentVisible(false);
-          },
-          timeout,
-          CLOSE_TIMEOUT_ID,
-        );
-      } else {
-        setIsComponentVisible(false);
+  const closePopover = useCallback(
+    (timeout?: number) => {
+      if (!permanent) {
+        if (timeout) {
+          setSafeTimeout(
+            () => {
+              setIsComponentVisible(false);
+            },
+            timeout,
+            CLOSE_TIMEOUT_ID,
+          );
+        } else {
+          setIsComponentVisible(false);
+        }
       }
-    }
-  };
+    },
+    [permanent, setIsComponentVisible, setSafeTimeout],
+  );
 
   const openPopover = () => {
     cancelClose();
@@ -187,20 +181,20 @@ export function Popover({
     }
   };
 
-  const handleClick: TogglerProps['onClick'] = (event: React.MouseEvent | React.TouchEvent) => {
+  const handleClick: PopoverTogglerProps['onClick'] = (event: React.MouseEvent | React.TouchEvent) => {
     event.preventDefault();
     event.stopPropagation();
 
     !hoverable && togglePopover();
   };
 
-  const handleMouseEnter: TogglerProps['onMouseEnter'] = () => {
+  const handleMouseEnter: PopoverTogglerProps['onMouseEnter'] = () => {
     if (hoverable) {
       openPopover();
     }
   };
 
-  const handleKeyDown: TogglerProps['onKeyDown'] = (event: React.KeyboardEvent) => {
+  const handleKeyDown: PopoverTogglerProps['onKeyDown'] = (event: React.KeyboardEvent) => {
     if (event.key === ' ' || event.key === 'Enter') {
       event.preventDefault();
       event.stopPropagation();
@@ -209,11 +203,11 @@ export function Popover({
     }
   };
 
-  const handleTogglerBlur: TogglerProps['onBlur'] = useCallback(() => setTogglerFocused(false), []);
-  const handleTogglerFocus: TogglerProps['onFocus'] = useCallback(() => setTogglerFocused(true), []);
+  const handleTogglerBlur: PopoverTogglerProps['onBlur'] = useCallback(() => setIsTogglerFocused(false), []);
+  const handleTogglerFocus: PopoverTogglerProps['onFocus'] = useCallback(() => setIsTogglerFocused(true), []);
 
   const renderToggler = () => {
-    const togglerProps: TogglerProps = {
+    const togglerProps: PopoverTogglerProps = {
       id: generateTogglerId(),
       className: cx(
         styles.popoverToggler,
@@ -229,11 +223,11 @@ export function Popover({
       tabIndex: 0,
     };
 
-    if (withTogglerProps) {
+    if (withPopoverTogglerProps) {
       togglerProps.visible = isComponentVisible;
     }
 
-    return renderFromProp<TogglerProps>(toggler, togglerProps, { createFromString: true });
+    return renderFromProp<PopoverTogglerProps>(toggler, togglerProps, { createFromString: true });
   };
 
   // reset the focus if the visibility changes or when the contentRef value is set on initial render (needed for portals)
@@ -264,7 +258,7 @@ export function Popover({
 
   return (
     <div
-      aria-describedby={tooltip ? generatePopoverId() : undefined}
+      aria-describedby={isTooltip ? generatePopoverId() : undefined}
       className={cx(styles.popoverContainer, className)}
       onMouseLeave={() => hoverable && closePopover(closeDelay)}
       ref={parentRef}
@@ -272,35 +266,23 @@ export function Popover({
       {...props}
     >
       {renderToggler()}
-
-      {position && offset && (
-        <PopoverContent
-          alwaysRender={alwaysRender}
-          aria-hidden={!isComponentVisible}
-          centered={centered}
-          childrenProps={{
-            close: closePopover,
-            togglerFocused,
-            visible: isComponentVisible,
-          }}
-          className={popoverClassName}
-          focusable={focusable}
-          focusRef={focusRef}
-          height={height}
-          id={generatePopoverId()}
-          offset={offset}
-          onMouseEnter={cancelClose}
-          parentRef={parentRef}
-          position={position}
-          ref={setContentRef}
-          role={tooltip ? 'tooltip' : 'dialog'}
-          visible={isComponentVisible}
-          width={width}
-          {...contentProps}
-        >
-          {children}
-        </PopoverContent>
-      )}
+      {position &&
+        offset &&
+        renderContent({
+          'aria-hidden': !isComponentVisible,
+          close: closePopover,
+          focusable,
+          focusRef,
+          id: generatePopoverId(),
+          isTogglerFocused,
+          offset,
+          onMouseEnter: cancelClose,
+          parentRef,
+          position,
+          ref: setContentRef,
+          role: isTooltip ? 'tooltip' : 'dialog',
+          visible: isComponentVisible,
+        })}
     </div>
   );
 }

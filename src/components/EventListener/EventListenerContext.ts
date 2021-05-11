@@ -1,6 +1,6 @@
 import { createContext } from 'react';
-import { AddEventListenerCallback, RemoveEventListenerCallback } from './types';
 import { EventListenerState } from './eventListenerReducer';
+import { AddEventListenerCallback, RemoveEventListenerCallback } from './types';
 
 export interface EventListenerContextValue {
   events: EventListenerState;

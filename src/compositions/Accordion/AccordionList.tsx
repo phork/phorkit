@@ -1,7 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useContext, useRef } from 'react';
 import { ThemeProps } from '../../types';
-import { AccordionItemType } from './types';
 import { useAccessibility } from '../../context/Accessibility';
 import { useComponentId } from '../../hooks/useComponentId';
 import { useDeepFocus } from '../../hooks/useDeepFocus';
@@ -14,6 +13,7 @@ import {
 import { AccordionContent, AccordionContentProps } from './AccordionContent';
 import { AccordionLabel } from './AccordionLabel';
 import styles from './styles/AccordionList.module.css';
+import { AccordionItemType } from './types';
 
 export interface AccordionListProps
   extends React.HTMLAttributes<HTMLDivElement>,

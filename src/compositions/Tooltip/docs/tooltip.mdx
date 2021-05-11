@@ -16,7 +16,7 @@ import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } from '../index';
+import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } from '../index';
 
 <PageTitle title="Tooltip" src="compositions/Tooltip" />
 
@@ -28,23 +28,12 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
       <React.Fragment>
         <p>(There should be a permanent tooltip in the top right)</p>
         <PortalTooltip
-          contentProps={{ portal: 'fixed' }}
           height={80}
           initialVisible
           layout="vertical"
           permanent
-          style={{ position: 'fixed', top: '100px', right: '140px', zIndex: 2000 }}
-          toggler={
-            <BlobbrIcon
-              aria-label="Blobbr"
-              scale="xxxlarge"
-              style={{ color: themes[themeId]['color-accent-primary-D10'] }}
-            />
-          }
-          triangleColor={themes[themeId]['color-accent-primary']}
-          width={300}
-        >
-          {({ position }) => {
+          portal="fixed"
+          renderChildren={({ position }) => {
             const arrowCornerRadiusProperty = {
               'left-top': 'borderTopRightRadius',
               'left-bottom': 'borderBottomRightRadius',
@@ -60,6 +49,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
                   container="popover"
                   contained
                   scrollable
+                  scrollbar="s"
                 >
                   <Typography as="div" size="s" variants="line-height-comfy">
                     The quick brown fox jumped over the {position} dog The quick brown fox jumped over the {position}{' '}
@@ -71,7 +61,18 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
               </Card>
             );
           }}
-        </PortalTooltip>
+          style={{ position: 'fixed', top: '100px', right: '140px', zIndex: 2000 }}
+          toggler={
+            <BlobbrIcon
+              aria-label="Blobbr"
+              scale="xxxlarge"
+              style={{ color: themes[themeId]['color-accent-primary-D10'] }}
+            />
+          }
+          triangleColor={themes[themeId]['color-accent-primary']}
+          width={300}
+          withChildrenProps
+        />
       </React.Fragment>
     )}
   </ThemeWrapper>
@@ -84,17 +85,12 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
     {({ themeId }) => (
       <React.Fragment>
         <InlineTooltip
-          contentProps={{ withChildrenProps: true }}
           focusable
           height={80}
-          hoverable
-          toggler={<BlobbrIcon scale="xxxlarge" />}
-          triangleColor={themes[themeId]['color-accent-primary']}
-          width={300}
-        >
-          {({ position }) => (
+          permanent
+          renderChildren={({ position }) => (
             <Card raised full>
-              <Paper color="accent-primary" container="popover" contained scrollable>
+              <Paper color="accent-primary" container="popover" contained scrollable scrollbar="s">
                 <Typography as="div" size="s" variants="line-height-comfy">
                   The quick brown fox jumped over the {position} dog The quick brown fox jumped over the {position} dog
                   The quick brown fox jumped over the {position} dog The quick brown fox jumped over the {position} dog
@@ -103,7 +99,11 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
               </Paper>
             </Card>
           )}
-        </InlineTooltip>
+          toggler={<BlobbrIcon scale="xxxlarge" />}
+          triangleColor={themes[themeId]['color-accent-primary']}
+          width={300}
+          withChildrenProps
+        />
       </React.Fragment>
     )}
   </ThemeWrapper>
@@ -118,7 +118,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
         direction="row"
         justifyContent="space-between"
         alignContent="center"
-        style={{ margin: 'auto', height: '220px', width: '400px' }}
+        style={{ margin: 'auto', height: '220px', width: '500px' }}
         wrap
       >
         <div
@@ -147,6 +147,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
               container="popover"
               contained
               scrollable
+              scrollbar="s"
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -182,6 +183,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
               container="popover"
               contained
               scrollable
+              scrollbar="s"
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -217,6 +219,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
               container="popover"
               contained
               scrollable
+              scrollbar="s"
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -252,6 +255,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
               container="popover"
               contained
               scrollable
+              scrollbar="s"
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -287,6 +291,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
               container="popover"
               contained
               scrollable
+              scrollbar="s"
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -322,6 +327,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
               container="popover"
               contained
               scrollable
+              scrollbar="s"
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -529,7 +535,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
   </ThemeWrapper>
 </Playground>
 
-## Top and bottom portals
+## Top and bottom portal tooltips
 
 <Playground>
   <ThemeWrapper withThemeId>
@@ -538,7 +544,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
         direction="row"
         justifyContent="space-between"
         alignContent="center"
-        style={{ margin: 'auto', height: '220px', width: '400px' }}
+        style={{ margin: 'auto', height: '220px', width: '500px' }}
         wrap
       >
         <div
@@ -567,6 +573,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
               container="popover"
               contained
               scrollable
+              scrollbar="s"
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -602,6 +609,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
               container="popover"
               contained
               scrollable
+              scrollbar="s"
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -637,6 +645,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
               container="popover"
               contained
               scrollable
+              scrollbar="s"
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -672,6 +681,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
               container="popover"
               contained
               scrollable
+              scrollbar="s"
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -707,6 +717,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
               container="popover"
               contained
               scrollable
+              scrollbar="s"
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -742,6 +753,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
               container="popover"
               contained
               scrollable
+              scrollbar="s"
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -756,7 +768,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
   </ThemeWrapper>
 </Playground>
 
-## Left and right portals
+## Left and right portal tooltips
 
 <Playground>
   <ThemeWrapper withThemeId>
@@ -994,17 +1006,10 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
         <Typography as="div" size="m">
           <span>Hello, world.</span>
           <InlineTextTooltip
-            contentProps={{ withChildrenProps: true }}
             focusable
             hoverable
             position="bottom-center"
-            toggler={
-              <Typography color="accent-primary" variants={['space-after', 'space-before']}>
-                I am a friendly tooltip with a manually focused link.
-              </Typography>
-            }
-          >
-            {({ focusRef }) => (
+            renderChildren={({ focusRef }) => (
               <React.Fragment>
                 <p style={{ marginTop: 0 }}>
                   The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -1015,7 +1020,7 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
                   <p>
                     <a href="#linked">I am not a focused link</a>
                     <br />
-                    <a ref={focusRef} href="#linked">
+                    <a href="#linked" ref={focusRef}>
                       I am a focused link
                     </a>
                   </p>
@@ -1027,7 +1032,13 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
                 </p>
               </React.Fragment>
             )}
-          </InlineTextTooltip>
+            toggler={
+              <Typography color="accent-primary" variants={['space-after', 'space-before']}>
+                I am a friendly tooltip with a manually focused link.
+              </Typography>
+            }
+            withChildrenProps
+          />
           <span>There are others like me as well.</span>
         </Typography>
         <Typography as="div" size="m">
@@ -1087,10 +1098,18 @@ import { TextTooltip, Tooltip, InlineTooltip, InlineTextTooltip, PortalTooltip, 
 
 ## \[props\]
 
-### Tooltip
+### InlineTooltip
 
-<Props of={Tooltip} />
+<Props of={InlineTooltip} />
 
-### TextTooltip
+### PortalTooltip
 
-<Props of={TextTooltip} />
+<Props of={PortalTooltip} />
+
+### InlineTextTooltip
+
+<Props of={InlineTextTooltip} />
+
+### PortalTextTooltip
+
+<Props of={PortalTextTooltip} />

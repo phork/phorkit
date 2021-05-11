@@ -1,0 +1,128 @@
+---
+name: Rendering
+menu: Utilities
+route: /utils/renderFromProp
+---
+
+import { Playground, Props } from 'docz';
+import { renderFromProp, renderFromPropWithFallback } from '../index';
+
+## renderFromProp
+
+### As a function
+
+<Playground>{() => renderFromProp(() => <div>Hello world</div>)}</Playground>
+
+### As a function with props
+
+<Playground>{() => renderFromProp(({ recipient }) => <div>Hello {recipient}</div>, { recipient: 'world' })}</Playground>
+
+### As a function with children
+
+<Playground>
+  {() => renderFromProp(({ children }) => <div>{children}</div>, {}, { children: 'Hello world' })}
+</Playground>
+
+### As a fragment with a function with children
+
+<Playground>
+  {() =>
+    renderFromProp(
+      <React.Fragment>{({ children }) => <div>{children}</div>}</React.Fragment>,
+      {},
+      { children: 'Hello world' },
+    )
+  }
+</Playground>
+
+### As a React node
+
+<Playground>
+  {() => {
+    const HelloWorld = () => <div>Hello world</div>;
+    return renderFromProp(<HelloWorld />);
+  }}
+</Playground>
+
+### As a React node with props
+
+<Playground>
+  {() => {
+    const HelloWorld = ({ recipient }) => <div>Hello {recipient}</div>;
+    return renderFromProp(<HelloWorld />, { recipient: 'world' });
+  }}
+</Playground>
+
+### As a React node with children
+
+<Playground>
+  {() => {
+    const HelloWorld = ({ children }) => <div>{children}</div>;
+    return renderFromProp(<HelloWorld />, {}, { children: 'Hello world' });
+  }}
+</Playground>
+
+### As a fragment with a React node with children
+
+<Playground>
+  {() => {
+    const HelloWorld = ({ children }) => <div>{children}</div>;
+    return renderFromProp(
+      <React.Fragment>
+        <HelloWorld />
+      </React.Fragment>,
+      {},
+      { children: 'Hello world' },
+    );
+  }}
+</Playground>
+
+### As a React element
+
+<Playground>
+  {() => {
+    const HelloWorld = () => <div>Hello world</div>;
+    return renderFromProp(HelloWorld);
+  }}
+</Playground>
+
+### As a React element with props
+
+<Playground>
+  {() => {
+    const HelloWorld = ({ recipient }) => `Hello ${recipient}`;
+    return renderFromProp(HelloWorld, { recipient: 'world' });
+  }}
+</Playground>
+
+### As a React element with children
+
+<Playground>
+  {() => {
+    const HelloWorld = ({ children }) => <div>{children}</div>;
+    return renderFromProp(HelloWorld, {}, { children: 'Hello world' });
+  }}
+</Playground>
+
+### As a fragment with a React element with children
+
+<Playground>
+  {() => {
+    const HelloWorld = ({ children }) => <div>{children}</div>;
+    return renderFromProp(<React.Fragment>{HelloWorld}</React.Fragment>, {}, { children: 'Hello world' });
+  }}
+</Playground>
+
+### As a string with createFromString
+
+<Playground>{() => renderFromProp('div', {}, { children: 'Hello world', createFromString: true })}</Playground>
+
+## renderFromPropWithFallback
+
+### With a fallback string
+
+<Playground>{() => renderFromPropWithFallback('Hello world')}</Playground>
+
+### As a fragment with a fallback string
+
+<Playground>{() => renderFromPropWithFallback(<React.Fragment>Hello world</React.Fragment>)}</Playground>

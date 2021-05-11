@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
-import { ListRegistryItemType } from './types';
 import { ListRegistryContext } from './ListRegistryContext';
+import { ListRegistryItemType } from './types';
 
 export interface UseListRegistryItemInterface<E extends ListRegistryItemType> {
   id: string;

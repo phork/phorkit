@@ -1,5 +1,5 @@
-import { ModalItemType } from './types';
 import { modalActions as ACTIONS, ModalStateAction } from './modalActions';
+import { ModalItemType } from './types';
 
 export type ModalState = Map<string, ModalItemType>;
 

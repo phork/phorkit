@@ -1,5 +1,5 @@
-import { ListRegistryItemType } from './types';
 import { listRegistryActions as ACTIONS, ListRegistryStateAction } from './listRegistryActions';
+import { ListRegistryItemType } from './types';
 
 export type ListRegistryState = Map<string, ListRegistryItemType>;
 

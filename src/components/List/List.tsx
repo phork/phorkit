@@ -1,11 +1,11 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import { AsReactType, MergeElementProps, ThemeProps } from '../../types';
-import { ListItemElementMap, ListElementType } from './types';
 import { useAccessibility } from '../../context/Accessibility';
 import { useThemeId } from '../../hooks/useThemeId';
 import { ListItem, ListItemProps } from './ListItem';
 import styles from './styles/List.module.css';
+import { ListItemElementMap, ListElementType } from './types';
 
 export const listItemElementMap: ListItemElementMap = {
   ul: 'li',

@@ -8,8 +8,10 @@ import styles from './styles/Button.module.css';
 export type IconButtonShape = 'round' | 'square';
 export type IconButtonElementType = ButtonElementType;
 
+type RenderFromPropProps = {};
+
 export interface LocalIconButtonProps extends Omit<LocalButtonProps, 'children' | 'shape'> {
-  children: RenderFromPropElement;
+  children: RenderFromPropElement<RenderFromPropProps>;
   shape?: IconButtonShape;
 }
 
@@ -26,7 +28,7 @@ function IconButtonBase<T extends IconButtonElementType = 'button'>(
   forwardedRef: React.ForwardedRef<HTMLElementTagNameMap[T]>,
 ): React.ReactElement {
   const classes = cx(styles['button--icon'], shape && styles[`button--${shapeMap[shape]}`], className);
-  const content = renderFromPropWithFallback(children);
+  const content = renderFromPropWithFallback<RenderFromPropProps>(children);
   const weight = initWeight || (shape && 'solid') || (!shape && 'inline');
 
   return (

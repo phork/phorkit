@@ -2,20 +2,33 @@ import React, { useCallback, useContext, useLayoutEffect } from 'react';
 import { useColorMode } from 'theme-ui';
 import { SequentialVariant, Theme } from 'types';
 import { ThemeContext } from 'context/Theme';
-import { renderFromProp, RenderFromPropElement } from 'utils/renderFromProp';
+import { isValidRenderElement, renderFromProp, RenderFromPropElement } from 'utils/renderFromProp';
 import { MoonIcon } from 'icons/internal/MoonIcon';
 import { SunIcon } from 'icons/internal/SunIcon';
 import { IconButton } from 'components/Button';
 
 const variables = require('../../postcss/vars/index');
 
-export interface ThemeWrapperProps {
-  children: RenderFromPropElement | RenderFromPropElement[];
+type RenderFromPropProps = { themeId?: Theme };
+
+interface CommonThemeWrapperProps {
   contrast?: boolean;
   style?: React.CSSProperties;
   variant?: SequentialVariant;
-  withThemeId?: boolean;
 }
+
+type ThemeWrapperPropsWithThemeId = {
+  children: RenderFromPropElement<RenderFromPropProps>;
+  withThemeId: true;
+};
+
+type ThemeWrapperPropsWithChildren = {
+  children: React.ReactNode;
+  withThemeId?: false;
+};
+
+export type ThemeWrapperProps = CommonThemeWrapperProps &
+  (ThemeWrapperPropsWithThemeId | ThemeWrapperPropsWithChildren);
 
 export function ThemeWrapper({
   children,
@@ -40,7 +53,12 @@ export function ThemeWrapper({
   const variant = contrast ? 'contrast' : initVariant;
   const backgroundColor = variant ? variables[`${themeId}-${variant}-palette-background-color`] : 'transparent';
   const color = variant ? variables[`${themeId}-${variant}-palette-text-color`] : 'currentColor';
-  const content = withThemeId ? renderFromProp(children, { themeId }) : children;
+
+  const content = withThemeId
+    ? (isValidRenderElement<RenderFromPropProps>(children) &&
+        renderFromProp<RenderFromPropProps>(children, { themeId })) ||
+      null
+    : children;
 
   return (
     <div
