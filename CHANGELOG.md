@@ -1,5 +1,11 @@
 # Changelog
 
+# [6.1.0](https://github.com/phork/phorkit/compare/v6.0.0...v6.1.0) (2021-05-12)
+
+### ✨ Features
+
+- allow custom tooltip triangle sizes and offsets ([07f2c4b](https://github.com/phork/phorkit/commit/07f2c4b))
+
 # [6.0.0](https://github.com/phork/phorkit/compare/v5.0.0...v6.0.0) (2021-05-12)
 
 ### ♻ Code Refactoring
