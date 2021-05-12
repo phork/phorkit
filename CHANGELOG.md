@@ -1,5 +1,21 @@
 # Changelog
 
+# [6.0.0](https://github.com/phork/phorkit/compare/v5.0.0...v6.0.0) (2021-05-12)
+
+### ♻ Code Refactoring
+
+- **major**: refactored popover, tooltip, dropover, and renderFromProp ([15b5e25](https://github.com/phork/phorkit/commit/15b5e25))
+- remove accessible checkbox, radio focus style ([22739aa](https://github.com/phork/phorkit/commit/22739aa))
+- remove default pagination page label styles ([cf13ad1](https://github.com/phork/phorkit/commit/cf13ad1))
+- remove renderFromProp from Modal ([880238d](https://github.com/phork/phorkit/commit/880238d))
+- update modal spacing ([649e35d](https://github.com/phork/phorkit/commit/649e35d))
+- update toggle focus styles ([5f57b41](https://github.com/phork/phorkit/commit/5f57b41))
+- use ghost button for modal close ([28d813c](https://github.com/phork/phorkit/commit/28d813c))
+
+### ✨ Features
+
+- redesigned pagination ([ca2f6e4](https://github.com/phork/phorkit/commit/ca2f6e4))
+
 # [5.0.0](https://github.com/phork/phorkit/compare/v4.0.0...v5.0.0) (2021-05-08)
 
 ### ♻ Code Refactoring
