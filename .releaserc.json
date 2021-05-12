@@ -10,6 +10,7 @@
         "releaseRules": [
           { "type": "build", "release": "patch" },
           { "scope": "major", "release": "major" },
+          { "scope": "minor", "release": "minor" },
           { "scope": "no-release", "release": false }
         ]
       }

@@ -13,6 +13,7 @@ export interface InlineTextTooltipProps
     Pick<TextTooltipContentProps, 'scrollable' | 'width'> {
   position?: AnyPosition;
   tooltipClassName?: string;
+  triangleSize?: number;
 }
 
 /** A tooltip is just a popover with an arrow pointing towards the toggler */
@@ -20,11 +21,13 @@ export function InlineTextTooltip({
   children,
   contrast,
   layout,
+  offset: initOffset,
   position,
   renderChildren,
   scrollable,
   themeId: initThemeId,
   tooltipClassName,
+  triangleSize,
   width,
   withChildrenProps,
   ...props
@@ -32,7 +35,7 @@ export function InlineTextTooltip({
   const themeId = useThemeId(initThemeId);
   const { backgroundColor, borderColor } = getTextTooltipColors(themeId, contrast);
 
-  const offset = getTooltipOffset({ position, layout });
+  const offset = initOffset || getTooltipOffset({ position, layout });
 
   return (
     <InlinePopover
@@ -52,6 +55,7 @@ export function InlineTextTooltip({
             position={position}
             triangleBorderColor={borderColor}
             triangleColor={backgroundColor}
+            triangleSize={triangleSize}
           >
             <TextTooltipContent
               contrast={contrast}

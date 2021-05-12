@@ -63,35 +63,6 @@ import { horizontal, vertical } from './helpers/config';
   </ThemeWrapper>
 </Playground>
 
-## Unpositioned popover
-
-<Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <React.Fragment>
-        <InlinePopover
-          focusable
-          height={80}
-          renderChildren={({ position }) => (
-            <Card raised full>
-              <Paper color="accent-primary" container="popover" contained scrollable scrollbar="s">
-                <Typography as="div" size="s" variants="line-height-comfy">
-                  The quick brown fox jumped over the {position} dog The quick brown fox jumped over the {position} dog
-                  The quick brown fox jumped over the {position} dog The quick brown fox jumped over the {position} dog
-                  The quick brown fox jumped over the {position} dog The quick brown fox jumped over the {position} dog
-                </Typography>
-              </Paper>
-            </Card>
-          )}
-          toggler={<BlobbrIcon scale="xxxlarge" />}
-          width={300}
-          withChildrenProps
-        />
-      </React.Fragment>
-    )}
-  </ThemeWrapper>
-</Playground>
-
 ## Top and bottom popovers
 
 <Playground>
@@ -100,7 +71,7 @@ import { horizontal, vertical } from './helpers/config';
       direction="row"
       justifyContent="space-between"
       alignContent="center"
-      style={{ margin: 'auto', height: '220px', width: '400px' }}
+      style={{ margin: 'auto', height: '280px', width: '400px' }}
       wrap
     >
       <div
@@ -442,7 +413,7 @@ import { horizontal, vertical } from './helpers/config';
       direction="row"
       justifyContent="space-between"
       alignContent="center"
-      style={{ margin: 'auto', height: '220px', width: '400px' }}
+      style={{ margin: 'auto', height: '280px', width: '400px' }}
       wrap
     >
       <div
@@ -779,7 +750,7 @@ import { horizontal, vertical } from './helpers/config';
 ## Fixed portal with redraw
 
 <Playground>
-  <ThemeWrapper>
+  <ThemeWrapper style={{ paddingTop: 60, paddingBottom: 60 }}>
     <PortalPopover
       initialVisible
       offset={{ vertical }}
@@ -803,8 +774,8 @@ import { horizontal, vertical } from './helpers/config';
 
 <Playground>
   <ThemeWrapper>
-    <Flex justifyContent="space-between">
-      <div>
+    <Flex justifyContent="space-between" wrap>
+      <div style={{ width: 220, height: 120, textAlign: 'center' }}>
         <h3>Manual focus</h3>
         <InlinePopover
           focusable
@@ -832,7 +803,7 @@ import { horizontal, vertical } from './helpers/config';
           withChildrenProps
         />
       </div>
-      <div>
+      <div style={{ width: 220, height: 120, textAlign: 'center' }}>
         <h3>Manual focus portal</h3>
         <PortalPopover
           focusable
@@ -860,7 +831,7 @@ import { horizontal, vertical } from './helpers/config';
           withChildrenProps
         />
       </div>
-      <div>
+      <div style={{ width: 220, height: 120, textAlign: 'center' }}>
         <h3>Auto focus</h3>
         <InlinePopover
           focusable
@@ -886,7 +857,7 @@ import { horizontal, vertical } from './helpers/config';
           </Card>
         </InlinePopover>
       </div>
-      <div>
+      <div style={{ width: 220, height: 120, textAlign: 'center' }}>
         <h3>Auto focus portal</h3>
         <PortalPopover
           focusable

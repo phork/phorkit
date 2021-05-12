@@ -91,7 +91,7 @@ The pagination is a wrapper for the [ButtonGroup](../components/ButtonGroup). It
           jumpProps={{ weight: 'ghost', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
           onChangePage={pageTo => setCurrentPage(pageTo)}
           page={currentPage}
-          pageLabelProps={{ size: 'm', style: { marginRight: 30 } }}
+          pageLabelProps={{ size: 'm', style: { marginRight: 30 }, variants: ['no-wrap'] }}
           pageLinks={6}
           pageSize={10}
           totalItems={300}
@@ -127,7 +127,7 @@ The pagination is a wrapper for the [ButtonGroup](../components/ButtonGroup). It
           jumpProps={{ weight: 'shaded', color: 'primary', shape: 'brick' }}
           onChangePage={pageTo => setCurrentPage(pageTo)}
           page={currentPage}
-          pageLabelProps={{ size: 'm', style: { marginRight: 30 } }}
+          pageLabelProps={{ size: 'm', style: { marginRight: 30 }, variants: ['no-wrap'] }}
           pageLinks={6}
           pageSize={10}
           spacing="joined"

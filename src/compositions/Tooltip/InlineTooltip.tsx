@@ -11,21 +11,24 @@ export interface InlineTooltipProps extends Omit<InlinePopoverProps, 'position'>
   tooltipClassName?: string;
   triangleBorderColor?: string;
   triangleColor: string;
+  triangleSize?: number;
 }
 
 /** A tooltip is just a popover with an arrow pointing towards the toggler */
 export function InlineTooltip({
   children,
   layout,
+  offset: initOffset,
   position,
   renderChildren,
   tooltipClassName,
   triangleBorderColor,
   triangleColor,
+  triangleSize,
   withChildrenProps,
   ...props
 }: InlineTooltipProps): React.ReactElement {
-  const offset = getTooltipOffset({ position, layout });
+  const offset = initOffset || getTooltipOffset({ position, layout });
 
   return (
     <InlinePopover
@@ -45,6 +48,7 @@ export function InlineTooltip({
             position={position}
             triangleBorderColor={triangleBorderColor}
             triangleColor={triangleColor}
+            triangleSize={triangleSize}
           >
             {withChildrenProps
               ? renderFromPropWithFallback<PopoverRenderChildrenProps>(renderChildren!, {
