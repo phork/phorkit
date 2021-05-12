@@ -6,6 +6,7 @@ import { StateColor, ThemeProps } from '../../types';
 import { useClickAndEscape } from '../../hooks/useClickAndEscape';
 import { useSafeTimeout } from '../../hooks/useSafeTimeout';
 import { useThemeId } from '../../hooks/useThemeId';
+import { makeCombineRefs } from '../../utils/combineRefs';
 import { SearchIcon } from '../../icons';
 import { ArrowDownIcon } from '../../icons/ArrowDownIcon';
 import { SpinnerIcon } from '../../icons/SpinnerIcon';
@@ -25,10 +26,13 @@ export interface DropdownProps
   disabled?: boolean;
   disabledIds?: Array<DropdownOption['id']>;
   dropdownContent: typeof DropdownContent;
+  /** After the select events have been registered then reset the dropdown to empty */
+  forgetSelection?: boolean;
   iconBefore?: TextboxProps['iconBefore'];
   iconAfter?: TextboxProps['iconAfter'];
   id?: string;
   initialSelected?: DropdownOption;
+  inputRef?: React.Ref<HTMLInputElement>;
   inputVariant?: DropdownInputVariant;
   label?: string;
   layout?: DropdownLayout;
@@ -41,50 +45,59 @@ export interface DropdownProps
   onSelect: (option?: DropdownOption) => void;
   onSubmit?: TextboxProps['onSubmit'];
   options: DropdownOption[];
+  ref?: React.Ref<HTMLDivElement>;
   readOnlyValue?: React.ReactChild;
   transitional?: boolean;
   validity?: StateColor;
 }
 
 /** The dropdown is a controlled component */
-export function Dropdown({
-  arrowIconSize = 8,
-  className,
-  contrast,
-  disabled,
-  disabledIds,
-  dropdownContent: DropdownContent,
-  emptyNotification,
-  iconAfter: initIconAfter,
-  iconBefore: initIconBefore,
-  id,
-  initialSelected,
-  inputVariant = 'underline',
-  label,
-  layout = 'raised',
-  listVariant,
-  listSize,
-  listColor,
-  mimicSelectOnFocus,
-  onChange,
-  onClear,
-  onClose,
-  onFilter,
-  onOpen,
-  onSelect,
-  onSubmit,
-  options: initOptions,
-  placeholder,
-  readOnlyValue,
-  themeId: initThemeId,
-  unthemed,
-  transitional,
-  validity,
-  ...props
-}: DropdownProps): React.ReactElement<DropdownProps, 'div'> {
+function DropdownBase(
+  {
+    arrowIconSize = 8,
+    className,
+    contrast,
+    disabled,
+    disabledIds,
+    dropdownContent: DropdownContent,
+    emptyNotification,
+    forgetSelection,
+    iconAfter: initIconAfter,
+    iconBefore: initIconBefore,
+    id,
+    initialSelected,
+    inputRef: forwardedInputRef,
+    inputVariant = 'underline',
+    label,
+    layout = 'raised',
+    listVariant,
+    listSize,
+    listColor,
+    mimicSelectOnFocus,
+    onChange,
+    onClear,
+    onClose,
+    onFilter,
+    onOpen,
+    onSelect,
+    onSubmit,
+    options: initOptions,
+    placeholder,
+    readOnlyValue,
+    themeId: initThemeId,
+    unthemed,
+    transitional,
+    validity,
+    ...props
+  }: DropdownProps,
+  forwardedRef: React.ForwardedRef<HTMLDivElement>,
+): React.ReactElement<DropdownProps, 'div'> {
   const ref = useRef<HTMLDivElement>(null!);
   const listRef = useRef<HTMLUListElement | null>(null);
   const inputRef = useRef<HTMLInputElement>(null!);
+
+  const combineRefs = makeCombineRefs<HTMLDivElement>(ref, forwardedRef);
+  const combineInputRefs = makeCombineRefs<HTMLInputElement>(inputRef, forwardedInputRef);
 
   const mouseDownRef = useRef<{
     isFocused?: boolean;
@@ -198,9 +211,13 @@ export function Dropdown({
       Object.prototype.hasOwnProperty.call(previous.current, 'selected')
     ) {
       onSelect && onSelect(state.selected);
+
+      if (forgetSelection) {
+        dispatch({ type: ACTIONS.UNSET_SELECTED });
+      }
     }
     previous.current.selected = state.selected;
-  }, [state.selected, onSelect]);
+  }, [state.selected, onSelect, forgetSelection]);
 
   // when the cleared counter changes ...
   useEffect(() => {
@@ -344,7 +361,7 @@ export function Dropdown({
       onMouseDown={handleMouseDown}
       onKeyDown={handleKeyDown}
       onFocus={handleFocus}
-      ref={ref}
+      ref={combineRefs}
       {...props}
     >
       <Textbox
@@ -355,7 +372,6 @@ export function Dropdown({
         clearable={isClearable}
         className={styles.dropdownInput}
         contrast={contrast}
-        ref={inputRef}
         iconAfter={(state.busy && state.listVisible && SpinnerIcon) || iconAfter}
         iconBefore={iconBefore}
         id={state.id}
@@ -372,6 +388,7 @@ export function Dropdown({
         placeholder={placeholder}
         readOnly={!onFilter}
         readOnlyValue={readOnlyValue || selectedView}
+        ref={combineInputRefs}
         role={onFilter ? undefined : 'button'}
         silentReadOnly
         // don't allow this to be tabbed to if input is read only and focus is already in the component
@@ -414,4 +431,5 @@ export function Dropdown({
   );
 }
 
-Dropdown.displayName = 'Dropdown';
+export const Dropdown = React.forwardRef(DropdownBase) as typeof DropdownBase;
+DropdownBase.displayName = 'Dropdown';

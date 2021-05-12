@@ -13,12 +13,14 @@ export type ButtonColor = SemanticColor | 'neutralAndPrimary' | 'black' | 'white
 export type ButtonElementType = Extract<keyof JSX.IntrinsicElements, 'button' | 'a' | 'div' | 'span'>;
 
 export interface LocalButtonProps extends ThemeProps {
+  /** manually apply the active styles; this does not actually make it active */
   active?: boolean;
   align?: ButtonAlignment;
   children: React.ReactNode;
   className?: string;
   color?: ButtonColor;
   disabled?: boolean;
+  /** manually apply the focus styles; this does not affect focus */
   focused?: boolean;
   fullWidth?: boolean;
   href?: string;

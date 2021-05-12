@@ -1,7 +1,7 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useComponentId } from '../../hooks/useComponentId';
 import { useThemeId } from '../../hooks/useThemeId';
-import { useTranslations } from '../../hooks/useTranslations';
+import { substituteTranslationArgs, useTranslations } from '../../hooks/useTranslations';
 import { TimesIcon } from '../../icons/TimesIcon';
 import { Flex } from '../../components/Flex';
 import { IconText } from '../../components/IconText';
@@ -43,8 +43,11 @@ export function DropdownWithTags({
   translations: customTranslations,
   ...props
 }: DropdownWithTagsProps): React.ReactElement<DropdownWithTagsProps, 'div'> | null {
-  const { generateComponentId } = useComponentId();
+  const dropdownRef = useRef<HTMLInputElement>(null!);
+  const tagRef = useRef<HTMLButtonElement>(null!);
+  const previousNumSelected = useRef<number>(initialSelected?.length || 0);
   const [selected, setSelected] = useState<DropdownOption[]>(initialSelected);
+  const { generateComponentId } = useComponentId();
   const themeId = useThemeId(initThemeId);
 
   const translations = useTranslations<DropdownWithTagsTranslations>({
@@ -52,6 +55,20 @@ export function DropdownWithTags({
     fallbackTranslations: dropdownWithTagsTranslations,
   });
   const { numSelectedSingular, numSelectedPlural } = translations;
+
+  // if a tag is removed then change the focus to the first tag or, if none, the input
+  useEffect(() => {
+    if (selected.length !== previousNumSelected.current) {
+      if (selected.length < previousNumSelected.current) {
+        if (selected.length >= 1) {
+          tagRef.current?.focus();
+        } else {
+          dropdownRef.current?.focus();
+        }
+      }
+      previousNumSelected.current = selected.length;
+    }
+  }, [selected.length]);
 
   const handleSelect = useCallback(
     option => {
@@ -74,9 +91,9 @@ export function DropdownWithTags({
 
   const getNumSelectedLabel = (): string | undefined => {
     if (selected.length > 0) {
-      return (selected.length === 1 ? numSelectedSingular : numSelectedPlural).replace(
-        '{0}',
-        selected.length.toString(),
+      return substituteTranslationArgs(
+        selected.length === 1 ? numSelectedSingular : numSelectedPlural,
+        selected.length,
       );
     }
     return undefined;
@@ -88,8 +105,10 @@ export function DropdownWithTags({
         contrast={contrast}
         disabledIds={selected.map(({ id }) => id)}
         dropdownContent={DropdownContent}
-        mimicSelectOnFocus
+        forgetSelection
         id={id}
+        inputRef={dropdownRef}
+        mimicSelectOnFocus
         onSelect={handleSelect}
         options={options}
         readOnlyValue={readOnlyValue || getNumSelectedLabel()}
@@ -98,7 +117,7 @@ export function DropdownWithTags({
       />
       <Rhythm mt={6} grouped>
         <TagGroup size={tagSize}>
-          {selected.filter(Boolean).map(({ id: itemId, label }) => (
+          {selected.filter(Boolean).map(({ id: itemId, label }, i) => (
             <Tag<'button'>
               actionable
               as="button"
@@ -116,6 +135,7 @@ export function DropdownWithTags({
                 />
               }
               onClick={() => removeItem(itemId)}
+              ref={i === 0 ? tagRef : undefined}
               shape="pill"
               size={tagSize}
               variant={tagVariant}
