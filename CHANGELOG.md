@@ -1,5 +1,16 @@
 # Changelog
 
+## [6.1.2](https://github.com/phork/phorkit/compare/v6.1.1...v6.1.2) (2021-05-13)
+
+### ♻ Code Refactoring
+
+- update small, xsmall scrollbar styles to use mixin ([468d944](https://github.com/phork/phorkit/commit/468d944))
+
+### 🐛 Bug Fixes
+
+- hide accessible slider handle when not focused ([dccfd98](https://github.com/phork/phorkit/commit/dccfd98))
+- remove unnecessary accessibility check from multi color slider ([04ec2c6](https://github.com/phork/phorkit/commit/04ec2c6))
+
 ## [6.1.1](https://github.com/phork/phorkit/compare/v6.1.0...v6.1.1) (2021-05-13)
 
 ### ♻ Code Refactoring
