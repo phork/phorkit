@@ -171,22 +171,6 @@ import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index
   </FormComponentDemo>
 </Playground>
 
-## Multi-color slider
-
-<Playground>
-  <FormComponentDemo property="value" initialValue={2}>
-    <MultiColorSlider
-      id="demo-multi-color-slider"
-      width="100%"
-      colors={['danger', 'warning', 'success']}
-      valuePosition="right"
-      onChange={(event, value) => console.log(value)}
-      aria-label="Super fantastic label"
-      scale="small"
-    />
-  </FormComponentDemo>
-</Playground>
-
 ## Multi-color slider with dividers
 
 <Playground>
@@ -194,12 +178,12 @@ import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index
     <MultiColorSlider
       id="demo-multi-color-slider-divider"
       width="100%"
-      colors={['danger', 'warning', 'success']}
+      colors={['danger', 'warning', 'success', 'accent-primary']}
+      formatValue={value => ['danger', 'warning', 'success', 'accent-primary'][value - 1] || '-'}
       valuePosition="right"
       variant="divider"
       onChange={(event, value) => console.log(value)}
       aria-label="Super fantastic label"
-      scale="small"
     />
   </FormComponentDemo>
 </Playground>

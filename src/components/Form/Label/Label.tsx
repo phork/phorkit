@@ -10,6 +10,7 @@ export interface LocalLabelProps extends ThemeProps {
   disabled?: boolean;
   focused?: boolean;
   muted?: boolean;
+  noWrap?: boolean;
   strength?: 'transitioned' | 'standard' | 'legend';
   validity?: StateColor;
 }
@@ -25,6 +26,7 @@ export function Label<T extends React.ElementType = 'div'>({
   disabled,
   focused,
   muted,
+  noWrap,
   strength,
   themeId: initThemeId,
   unthemed,
@@ -43,6 +45,7 @@ export function Label<T extends React.ElementType = 'div'>({
     strength && styles[`label--${strength}`],
     themeId && !unthemed && styles[`label--${themeId}`],
     color && !unthemed && styles[`label--${color}`],
+    noWrap && styles['label--noWrap'],
     className,
   );
 

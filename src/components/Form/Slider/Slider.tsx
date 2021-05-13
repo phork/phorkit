@@ -30,9 +30,9 @@ export interface LocalSliderProps extends ThemeProps {
   onChange?: (event: SliderEvent, value: number) => void;
   persistEvents?: boolean;
   scale?: 'small';
-  /** Snap the value to the closest allowed value */
+  /** Snap the value to the closest step */
   snap?: boolean;
-  /** Force the snap to the next value; otherwise it goes to the closest value */
+  /** Force the snap to the next step; otherwise it goes to the closest one */
   snapNext?: boolean;
   step?: number;
   tick?: number;
@@ -299,6 +299,7 @@ function SliderBase(
         <Label
           className={cx(styles.sliderValue, styles[`sliderValue--${valuePosition}`])}
           contrast={contrast}
+          noWrap
           strength="standard"
           themeId={themeId}
         >

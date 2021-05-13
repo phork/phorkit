@@ -1,3 +1,12 @@
+/**
+ * 1. Add a bit of padding to make for a friendlier
+ *    click area. Also accounts for space taken up
+ *    by the slider button.
+ */
+$vertical-padding: 8px; /* [1] */
+$track-height: 4px;
+$animation-timing: 200ms;
+
 .slider {
   display: inline-block;
   font-size: $font-size-m;
@@ -7,12 +16,23 @@
     opacity: 0.6;
     pointer-events: none;
   }
+
+  &:focus {
+    outline: none;
+  }
 }
 
+/**
+ * 1. The width of the divider ticks minus 1px for the space
+ *    between the track and the outline.
+ */
 .slider--noHandle {
-  .sliderHandle {
-    opacity: 0;
-    pointer-events: none;
+  &:not(.is-accessible),
+  &.is-accessible:not(.is-focused) {
+    .sliderHandle {
+      display: none;
+      pointer-events: none;
+    }
   }
 }
 
@@ -32,16 +52,7 @@
   position: absolute;
 }
 
-/**
- * 1. Add a bit of padding to make for a friendlier
- *    click area. Also accounts for space taken up
- *    by the slider button.
- */
 .sliderInputContainer {
-  $vertical-padding: 8px; /* [1] */
-  $track-height: 4px;
-  $animation-timing: 200ms;
-
   align-items: center;
   border-radius: 3px;
   display: flex;
@@ -122,14 +133,7 @@
     transition: none;
   }
 
-  .slider.is-focused.is-accessible & {
-    box-shadow: 0 0 0 3px var(--slider-handle-mask-color);
-
-    &:before {
-      box-shadow: 0 0 0 1px var(--slider-handle-background-color);
-    }
-  }
-
+  .slider.is-focused &,
   .slider:hover & {
     &:after {
       box-shadow: 0 0 0 4px var(--slider-handle-background-color);
@@ -172,7 +176,6 @@ input.sliderInput {
     --slider-track-background-color: $theme-color-FG0-O10;
     --slider-track-fill-background-color: $theme-color-accent-primary;
     --slider-handle-background-color: $theme-color-accent-primary;
-    --slider-handle-mask-color: $theme-primary-palette-background-color;
     --slider-tick-background-color: $theme-color-BG50;
   }
 
@@ -186,7 +189,6 @@ input.sliderInput {
     --slider-track-background-color: $theme-contrast-palette-quietest-color;
     --slider-track-fill-background-color: $theme-contrast-palette-accent-color;
     --slider-handle-background-color: $theme-contrast-palette-accent-color;
-    --slider-handle-mask-color: $theme-contrast-palette-background-color;
     --slider-tick-background-color: $theme-contrast-palette-quiet-color;
   }
 }
@@ -195,7 +197,6 @@ input.sliderInput {
   @mixin themed .slider {
     --slider-track-fill-background-color: $theme-color-danger;
     --slider-handle-background-color: $theme-color-danger;
-    --slider-handle-mask-color: $theme-primary-palette-background-color;
     --slider-tick-background-color: $theme-color-BG50;
   }
 

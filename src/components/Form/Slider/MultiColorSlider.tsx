@@ -50,11 +50,11 @@ export function MultiColorSlider({
     [initColors, theme],
   );
 
-  const [activeColor, setActiveColor] = useState<string>((value && colors[value - 1]) || theme['color-accent-primary']);
+  const [activeColor, setActiveColor] = useState<string>((value && colors[value - 1]) || theme['color-neutral']);
 
   const handleChange = useCallback(
     (event, value) => {
-      setActiveColor(colors[value - 1] || theme['color-accent-primary']);
+      setActiveColor(colors[value - 1] || theme['color-neutral']);
       onChange && onChange(event, value);
     },
     [colors, onChange, theme],
@@ -62,7 +62,7 @@ export function MultiColorSlider({
 
   return (
     <StyledSlider
-      className={variant === 'divider' && !accessible ? styles['slider--noHandle'] : undefined}
+      className={variant === 'divider' ? styles['slider--noHandle'] : undefined}
       handleBackgroundColor={activeColor}
       max={colors.length}
       min={0}

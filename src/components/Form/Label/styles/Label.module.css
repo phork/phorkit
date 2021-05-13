@@ -40,6 +40,10 @@
   line-height: 20px;
 }
 
+.label--noWrap {
+  white-space: nowrap;
+}
+
 .label--primary {
   @mixin themed .label {
     --label-text-color: $theme-primary-palette-text-color;
