@@ -31,4 +31,6 @@ export function IconTextButtonBase<T extends IconTextButtonElementType = 'button
 }
 
 export const IconTextButton = React.forwardRef(IconTextButtonBase) as typeof IconTextButtonBase;
+
 IconTextButtonBase.displayName = 'IconTextButtonBase';
+IconTextButton.displayName = 'IconTextButton';

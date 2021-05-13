@@ -23,7 +23,7 @@ type RenderProps = { focusRef?: React.MutableRefObject<HTMLElement | null>; id?:
 
 export interface ModalProps extends ThemeProps {
   allowOverflow?: boolean;
-  /* if a header isn't included with a title this should be used to label the modal */
+  /** If a header isn't included with a title this should be used to label the modal */
   ariaLabel?: string;
   children: ((props: RenderProps) => React.ReactElement) | React.ReactElement | React.ReactElement[];
   className?: string;

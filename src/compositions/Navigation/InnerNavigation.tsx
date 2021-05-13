@@ -17,14 +17,14 @@ import { NavigationItem, NavigationItemProps } from './NavigationItem';
 import styles from './styles/Navigation.module.css';
 
 export interface InnerNavigationProps extends React.HTMLAttributes<HTMLElement>, ThemeProps {
-  /** allowRightClickLinks will make each nav item a link only for the purpose of right clicking */
+  /** This will make each nav item a link only for the purpose of right clicking; it still uses an onClick event */
   allowRightClickLinks?: boolean;
   animated?: boolean;
   className?: string;
   fullHeight?: boolean;
   fullWidth?: boolean;
   highlightRadius?: number;
-  /** triggerOnly can be ignored as it is handled by the interactive group system */
+  /** The triggerOnly prop can be ignored as it is handled by the interactive group system */
   items: Array<
     Omit<NavigationItemProps, 'children' | 'componentId' | 'key' | 'onClick' | 'variant' | 'vertical'> & {
       label: React.ReactNode;
@@ -115,7 +115,7 @@ export const InnerNavigation = React.forwardRef<HTMLElement, InnerNavigationProp
       <nav
         className={cx(
           styles.navigation,
-          /* by checking for selectedCoords here it prevents animating in */
+          // by checking for selectedCoords here it prevents animating in
           animated && selectedCoords && styles['navigation--animated'],
           fullHeight && styles['navigation--fullHeight'],
           fullWidth && styles['navigation--fullWidth'],

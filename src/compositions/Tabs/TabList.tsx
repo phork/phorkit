@@ -141,4 +141,6 @@ function TabListBase(
 }
 
 export const TabList = React.forwardRef(TabListBase) as typeof TabListBase;
+
 TabListBase.displayName = 'TabListBase';
+TabList.displayName = 'TabList';

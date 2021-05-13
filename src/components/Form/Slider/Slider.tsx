@@ -30,8 +30,9 @@ export interface LocalSliderProps extends ThemeProps {
   onChange?: (event: SliderEvent, value: number) => void;
   persistEvents?: boolean;
   scale?: 'small';
+  /** Snap the value to the closest allowed value */
   snap?: boolean;
-  /** force the snap to the next value; otherwise goes to the closest */
+  /** Force the snap to the next value; otherwise it goes to the closest value */
   snapNext?: boolean;
   step?: number;
   tick?: number;
@@ -309,4 +310,6 @@ function SliderBase(
 }
 
 export const Slider = React.forwardRef(SliderBase);
+
 SliderBase.displayName = 'SliderBase';
+Slider.displayName = 'Slider';

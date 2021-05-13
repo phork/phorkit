@@ -38,7 +38,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
               label="Super awesome dropdown"
               layout="raised"
               onChange={value => console.log('change', value)}
-              onClear={value => console.log('clear')}
+              onItemFocus={(event, value) => console.log('focus', value)}
               onSelect={value => console.log('select', value)}
               options={options}
               transitional
@@ -66,7 +66,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
               label="Super awesome dropdown"
               layout="contained"
               onChange={value => console.log('change', value)}
-              onClear={value => console.log('clear')}
               onSelect={value => console.log('select', value)}
               options={options}
               transitional
@@ -93,6 +92,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
               inputVariant={variant}
               label="Super awesome dropdown"
               onChange={value => console.log(value)}
+              onClear={value => console.log('clear')}
               onFilter={handleFilter}
               onSelect={value => console.log('select', value)}
               onSubmit={(event, value) =>
@@ -121,6 +121,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
             emptyNotification={filter ? `No options were found for "${filter}".` : ''}
             label="Super awesome dropdown"
             onChange={setFilter}
+            onClear={value => console.log('clear')}
             onFilter={handleFilter}
             onSelect={value => console.log('select', value)}
             onSubmit={(event, value) =>

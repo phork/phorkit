@@ -102,13 +102,13 @@ export function DropdownWithTags({
   return (
     <Flex direction="column">
       <Dropdown
+        allowReselect
         contrast={contrast}
         disabledIds={selected.map(({ id }) => id)}
         dropdownContent={DropdownContent}
         forgetSelection
         id={id}
         inputRef={dropdownRef}
-        mimicSelectOnFocus
         onSelect={handleSelect}
         options={options}
         readOnlyValue={readOnlyValue || getNumSelectedLabel()}

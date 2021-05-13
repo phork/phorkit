@@ -14,9 +14,9 @@ export interface UseDeepFocusEventHandlers {
 export type UseDeepFocusOptions = {
   alwaysTriggerBlur?: boolean;
   alwaysTriggerFocus?: boolean;
-  /** to allow access to the event object’s properties after the event handler has run */
+  /** This allow access to the event object’s properties after the event handler has run */
   persistEvents?: boolean;
-  /** delay the blur so that another focus can cancel it */
+  /** The will delay the blur so that another focus can cancel it */
   blurDelay?: number;
 };
 

@@ -18,14 +18,14 @@ export interface LocalListProps extends ThemeProps {
   className?: string;
   color?: 'primary' | 'minimal';
   focused?: boolean;
-  /** this should only be used when something else containing the list has a focus variant (eg. a dropdown) */
+  /** The focus outline should only be hidden when something else containing the list has a focus style (eg. a dropdown) */
   hideFocusOutline?: boolean;
   inactive?: boolean;
   inline?: boolean;
   items?: (Omit<ListItemProps, 'children'> & { id: string; label: string })[];
-  /** mimicSelectOnFocus uses selected styles for focused items */
+  /** This will set put selected item styles on a focused item but doesn't actually select the item (useful for dropdowns) */
   mimicSelectOnFocus?: boolean;
-  /** the default role is list or listbox but it can be overridden or set to undefined */
+  /** The default role is list or listbox but it can be overridden or set to undefined */
   role?: string;
   rounded?: boolean;
   size?: 'xsmall' | 'small' | 'medium';
@@ -107,4 +107,6 @@ function ListBase<T extends ListElementType = 'ul'>(
 }
 
 export const List = React.forwardRef(ListBase) as typeof ListBase;
+
 ListBase.displayName = 'ListBase';
+List.displayName = 'List';

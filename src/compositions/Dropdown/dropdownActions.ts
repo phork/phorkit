@@ -1,7 +1,6 @@
 import { DropdownOption } from './types';
 
 export enum dropdownActions {
-  CLEAR_ALL = 'CLEAR_ALL',
   CLEAR_FILTER = 'CLEAR_FILTER',
   HIDE_DROPDOWN = 'HIDE_DROPDOWN',
   SET_BUSY = 'SET_BUSY',
@@ -19,10 +18,6 @@ export enum dropdownActions {
   UNSET_INPUT_FOCUS = 'UNSET_INPUT_FOCUS',
   UNSET_LIST_FOCUS = 'UNSET_LIST_FOCUS',
 }
-
-export type DropdownStateActionClearAll = {
-  type: dropdownActions.CLEAR_ALL;
-};
 
 export type DropdownStateActionClearFilter = {
   type: dropdownActions.CLEAR_FILTER;
@@ -97,7 +92,6 @@ export type DropdownStateActionUnsetListFocus = {
 };
 
 export type DropdownStateAction =
-  | DropdownStateActionClearAll
   | DropdownStateActionClearFilter
   | DropdownStateActionHideDropdown
   | DropdownStateActionSetBusy

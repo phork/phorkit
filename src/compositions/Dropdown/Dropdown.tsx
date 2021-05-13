@@ -19,7 +19,12 @@ import { DropdownOption, DropdownInputVariant, DropdownLayout, DropdownListSize,
 
 export interface DropdownProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'onSelect' | 'onSubmit'>,
-    Partial<Pick<DropdownContentProps, 'emptyNotification' | 'listVariant' | 'listSize' | 'listColor'>>,
+    Partial<
+      Pick<
+        DropdownContentProps,
+        'allowReselect' | 'emptyNotification' | 'listVariant' | 'listSize' | 'listColor' | 'onItemFocus'
+      >
+    >,
     ThemeProps {
   arrowIconSize?: number;
   className?: string;
@@ -36,7 +41,6 @@ export interface DropdownProps
   inputVariant?: DropdownInputVariant;
   label?: string;
   layout?: DropdownLayout;
-  mimicSelectOnFocus?: boolean;
   onChange?: (input?: string) => void;
   onClear?: () => void;
   onClose?: () => void;
@@ -54,6 +58,7 @@ export interface DropdownProps
 /** The dropdown is a controlled component */
 function DropdownBase(
   {
+    allowReselect,
     arrowIconSize = 8,
     className,
     contrast,
@@ -73,11 +78,11 @@ function DropdownBase(
     listVariant,
     listSize,
     listColor,
-    mimicSelectOnFocus,
     onChange,
     onClear,
     onClose,
     onFilter,
+    onItemFocus,
     onOpen,
     onSelect,
     onSubmit,
@@ -109,13 +114,11 @@ function DropdownBase(
     isDropdownVisible?: boolean;
     selected?: DropdownOption;
     options?: DropdownOption[];
-    cleared?: number;
   }>({});
 
   const themeId = useThemeId(initThemeId);
   const [state, dispatch] = useReducer(reducer, {
     busy: false,
-    cleared: 0,
     clearFocus: false,
     id: id || uuid(),
     input: '',
@@ -181,6 +184,7 @@ function DropdownBase(
     [onFilter],
   );
 
+  // define a cleanup event to cancel the filtering
   useEffect((): (() => void) => () => handleFilter.cancel(), [handleFilter]);
 
   // when the dropdown visibility changes ...
@@ -219,17 +223,6 @@ function DropdownBase(
     previous.current.selected = state.selected;
   }, [state.selected, onSelect, forgetSelection]);
 
-  // when the cleared counter changes ...
-  useEffect(() => {
-    if (
-      state.cleared !== previous.current.cleared &&
-      Object.prototype.hasOwnProperty.call(previous.current, 'cleared')
-    ) {
-      onClear && onClear();
-    }
-    previous.current.cleared = state.cleared;
-  }, [state.cleared, onClear]);
-
   // when the search or filter input changes ...
   useEffect(() => {
     if (state.input !== previous.current.input && Object.prototype.hasOwnProperty.call(previous.current, 'input')) {
@@ -258,10 +251,14 @@ function DropdownBase(
     (
       event: React.ChangeEvent | React.KeyboardEvent | React.MouseEvent | React.TouchEvent,
       value: string | number,
-      props?: { cleared?: boolean },
+      { cleared }: { cleared?: boolean } = {},
     ) => {
       event.preventDefault();
-      props && props.cleared && focusInput();
+
+      if (cleared) {
+        focusInput();
+        onClear && onClear();
+      }
 
       if (value !== state.input) {
         if (value) {
@@ -274,7 +271,7 @@ function DropdownBase(
       }
       return undefined;
     },
-    [state.input],
+    [onClear, state.input],
   );
 
   /**
@@ -403,6 +400,7 @@ function DropdownBase(
       />
 
       <DropdownContent
+        allowReselect={allowReselect}
         containerRef={ref}
         contrast={contrast}
         disabledIds={disabledIds}
@@ -415,7 +413,7 @@ function DropdownBase(
         listVariant={listVariant}
         listSize={listSize}
         listColor={listColor}
-        mimicSelectOnFocus={mimicSelectOnFocus}
+        onItemFocus={onItemFocus}
         onListBlur={handleListBlur}
         onListFocus={handleListFocus}
         onListKeyDown={handleListKeyDown}
@@ -432,4 +430,6 @@ function DropdownBase(
 }
 
 export const Dropdown = React.forwardRef(DropdownBase) as typeof DropdownBase;
-DropdownBase.displayName = 'Dropdown';
+
+DropdownBase.displayName = 'DropdownBase';
+Dropdown.displayName = 'Dropdown';

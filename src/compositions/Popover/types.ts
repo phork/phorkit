@@ -20,7 +20,7 @@ export interface PopoverContentProps
   height?: number;
   isTogglerFocused?: boolean;
   observe?: boolean;
-  /** parentRef is really only needed for portal popovers */
+  /** A parentRef is really only needed for portal popovers */
   parentRef: React.MutableRefObject<HTMLDivElement>;
   visible?: boolean;
   width?: number | string;
@@ -33,7 +33,7 @@ export interface PopoverContentPropsRenderChildren {
   withChildrenProps: true;
 }
 
-/** if withChildrenProps is not true then children should be a regular react node */
+/** If withChildrenProps is not true then children should be a regular React node */
 export interface PopoverContentPropsChildren {
   children: React.ReactNode;
   renderChildren?: never;

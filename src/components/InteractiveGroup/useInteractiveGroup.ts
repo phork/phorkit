@@ -21,11 +21,11 @@ import { InteractiveGroupItemType } from './types';
 
 export interface UseInteractiveGroupInterface {
   allowMultiSelect?: boolean;
-  /* determines if selected item can be re-triggered */
+  /* This will allow an already selected item to be re-triggered */
   allowReselect?: boolean;
   disableUnselect?: boolean;
   containerRef?: React.RefObject<HTMLElement>;
-  /* determines whether interaction is disabled */
+  /* This disables interaction across the whole group */
   disabled?: boolean;
   initialSelected?: string | string[];
   items: InteractiveGroupItemType[];
@@ -35,7 +35,7 @@ export interface UseInteractiveGroupInterface {
   onSelect?: (event: InteractiveGroupEventTypes['event'], props: { id?: string; index?: number }) => void;
   onUnselect?: (event: InteractiveGroupEventTypes['event'], props: { id?: string }) => void;
   selectOnFocus?: boolean;
-  /** when true the first link in the item will be triggered when the item is selected */
+  /** If this is set and an item contains a link, when the item is selected that link will be triggered */
   triggerLinks?: boolean;
 }
 

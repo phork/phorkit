@@ -46,11 +46,11 @@ export function PortalDropover({
     [label],
   );
 
-  /** portal dropovers must re-draw the label on top of the dropover content */
+  // portal dropovers must re-draw the label on top of the dropover content
   const renderPortalToggler = (focused?: boolean) =>
     renderFromProp(label, { cloned: true, focused }, { createFromString: true });
 
-  /** the re-drawn portal label can close the portal again if it's not a passive label */
+  // the re-drawn portal label can close the portal again if it's not a passive label
   const getPortalTogglerInteractiveProps = (
     close: PopoverContentProps['close'],
   ):

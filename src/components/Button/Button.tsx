@@ -13,18 +13,18 @@ export type ButtonColor = SemanticColor | 'neutralAndPrimary' | 'black' | 'white
 export type ButtonElementType = Extract<keyof JSX.IntrinsicElements, 'button' | 'a' | 'div' | 'span'>;
 
 export interface LocalButtonProps extends ThemeProps {
-  /** manually apply the active styles; this does not actually make it active */
+  /** Manually apply the active styles; this does not actually make it active */
   active?: boolean;
   align?: ButtonAlignment;
   children: React.ReactNode;
   className?: string;
   color?: ButtonColor;
   disabled?: boolean;
-  /** manually apply the focus styles; this does not affect focus */
+  /** Manually apply the focus styles; this does not affect focus */
   focused?: boolean;
   fullWidth?: boolean;
   href?: string;
-  /** an imitation button looks like a button but doesn't have any functionality */
+  /** An imitation button looks like a button but doesn't have any functionality */
   imitation?: boolean;
   loader?: React.ReactElement;
   loading?: boolean;
@@ -160,4 +160,6 @@ function ButtonBase<T extends ButtonElementType = 'button'>(
 }
 
 export const Button = React.forwardRef(ButtonBase) as typeof ButtonBase;
+
 ButtonBase.displayName = 'ButtonBase';
+Button.displayName = 'Button';

@@ -29,7 +29,7 @@ export type TypographyVariants =
 
 export interface LocalTypographyProps {
   align?: HorizontalPosition | 'center';
-  /* children aren't required so that <Typography /> can be used as a wrapper */
+  /** children aren't required so that <Typography /> can be used as a wrapper */
   children?: React.ReactNode;
   className?: string;
   color?: string;

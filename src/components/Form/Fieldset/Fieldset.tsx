@@ -36,4 +36,6 @@ export function FieldsetBase(
 }
 
 export const Fieldset = React.forwardRef(FieldsetBase);
-FieldsetBase.displayName = 'Fieldset';
+
+FieldsetBase.displayName = 'FieldsetBase';
+Fieldset.displayName = 'Fieldset';

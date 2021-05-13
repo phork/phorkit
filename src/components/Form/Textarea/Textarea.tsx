@@ -90,4 +90,6 @@ function TextareaBase(
 }
 
 export const Textarea = React.forwardRef(TextareaBase);
+
 TextareaBase.displayName = 'TextareaBase';
+Textarea.displayName = 'Textarea';

@@ -3,7 +3,6 @@ import { DropdownOption } from './types';
 
 export type DropdownState = {
   busy?: boolean;
-  cleared?: number;
   clearFocus?: boolean;
   id: string;
   input?: string;
@@ -16,16 +15,6 @@ export type DropdownState = {
 
 export function dropdownReducer(state: DropdownState, action: DropdownStateAction): DropdownState {
   switch (action.type) {
-    case ACTIONS.CLEAR_ALL:
-      return {
-        ...state,
-        cleared: state.cleared ? state.cleared + 1 : 1,
-        input: '',
-        listVisible: false,
-        options: undefined,
-        selected: undefined,
-      };
-
     case ACTIONS.CLEAR_FILTER:
       return {
         ...state,

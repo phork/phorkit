@@ -89,4 +89,6 @@ function CheckboxGroupBase(
 }
 
 export const CheckboxGroup = React.forwardRef(CheckboxGroupBase);
+
 CheckboxGroupBase.displayName = 'CheckboxGroupBase';
+CheckboxGroup.displayName = 'CheckboxGroup';

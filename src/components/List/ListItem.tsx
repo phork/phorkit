@@ -13,7 +13,7 @@ export interface LocalListItemProps extends ThemeProps {
   inactive?: boolean;
   mimicSelectOnFocus?: boolean;
   onClick?: (event: React.MouseEvent | React.TouchEvent) => void;
-  /** the default role is listitem or option but it can be overridden or set to undefined */
+  /** The default role is listitem or option but it can be overridden or set to undefined */
   role?: string;
   selected?: boolean;
   transparent?: boolean;
@@ -69,4 +69,6 @@ function ListItemBase<T extends ListItemElementType = 'li'>(
 }
 
 export const ListItem = React.forwardRef(ListItemBase) as typeof ListItemBase;
+
 ListItemBase.displayName = 'ListItemBase';
+ListItem.displayName = 'ListItem';

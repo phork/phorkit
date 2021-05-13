@@ -52,14 +52,14 @@ export interface PopoverProps extends ThemeProps {
   className?: string;
   closeDelay?: number;
   focusable?: boolean;
-  /** popovers are show own click by default unless hoverable is true */
+  /** Popovers are show own click by default unless hoverable is true */
   hoverable?: boolean;
   ignoreClickOutside?: boolean;
-  /** the popover should be shown immediately and doesn't need an initial click/hover action */
+  /** The popover should be shown immediately and doesn't need an initial click/hover action */
   initialVisible?: boolean;
-  /** if the popover is a tooltip it will have different aria props */
+  /** If the popover is a tooltip it will have different aria props */
   isTooltip?: boolean;
-  /** an orientation can be used to position the popup if a position isn't set */
+  /** An orientation can be used to position the popup if a position isn't set */
   layout?: Orientation;
   offset?: {
     horizontal: number;
@@ -67,15 +67,15 @@ export interface PopoverProps extends ThemeProps {
   };
   onClose?: () => void;
   onOpen?: () => void;
-  /** permanent popovers can't be closed */
+  /** Permanent popovers can't be closed */
   permanent?: boolean;
   position?: AnyPosition | StackedPosition;
   renderContent: (props: PopoverRenderContentProps) => React.ReactNode;
   style?: React.CSSProperties;
   toggler: RenderFromPropElement<PopoverTogglerProps>;
-  /** if the toggler handles the focus styles this can be used to hide the standard focus outline */
+  /** If the toggler handles the focus styles this can be used to hide the standard focus outline */
   withoutTogglerFocusStyle?: boolean;
-  /** pass extra props to the toggler (to be used with ForwardProps) */
+  /** Pass extra props to the toggler (to be used with ForwardProps) */
   withPopoverTogglerProps?: boolean;
 }
 

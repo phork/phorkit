@@ -126,4 +126,6 @@ export function ToggleBase(
 }
 
 export const Toggle = React.forwardRef(ToggleBase);
+
 ToggleBase.displayName = 'ToggleBase';
+Toggle.displayName = 'Toggle';

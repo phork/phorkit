@@ -12,7 +12,7 @@ export interface UsePaginationInterface {
   pageLinks: number;
   pageSize: number;
   totalItems: number;
-  /** always show "1 ..." before the page links and then "... [last page]" after them */
+  /** This will show "1 ..." before the page links and then "... [last page]" after them */
   withEllipsis?: boolean;
 }
 

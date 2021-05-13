@@ -6,7 +6,7 @@ export interface FlexProps extends React.HTMLAttributes<HTMLDivElement> {
   alignItems?: 'baseline' | 'center' | 'flex-end' | 'flex-start';
   alignContent?: 'center' | 'flex-end' | 'flex-start' | 'space-around' | 'space-between' | 'stretch';
   alignSelf?: 'baseline' | 'center' | 'flex-end' | 'flex-start' | 'space-around' | 'space-between' | 'stretch';
-  /** children are optional so that <Typography /> can be used as a wrapper */
+  /** The children are optional so that <Typography /> can be used as a wrapper */
   children?: React.ReactNode;
   className?: string;
   direction?: 'column' | 'row';

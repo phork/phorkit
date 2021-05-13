@@ -58,4 +58,6 @@ const InlinePopoverContentBase = React.forwardRef<HTMLDivElement, InlinePopoverC
 );
 
 export const InlinePopoverContent = React.memo<InlinePopoverContentProps>(InlinePopoverContentBase);
+
 InlinePopoverContentBase.displayName = 'InlinePopoverContentBase';
+InlinePopoverContent.displayName = 'InlinePopoverContent';

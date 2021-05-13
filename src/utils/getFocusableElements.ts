@@ -27,6 +27,6 @@ export const getFirstFocusableElement = (initParent: HTMLElement): HTMLElement |
 export const getLastFocusableElement = (initParent: HTMLElement): HTMLElement | undefined =>
   getSortedFocusableElements(initParent)?.slice(-1)[0];
 
-/** allow for null parent here so it can be easily used with refs */
+/** This allows for a null parent so that it can be easily used with refs */
 export const isFocusWithin = (parent: HTMLElement | null): boolean =>
   !!(parent && parent.contains(document.activeElement));

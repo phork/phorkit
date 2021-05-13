@@ -18,10 +18,10 @@ export type ButtonGroupItem = {
 export interface LocalButtonGroupProps extends Pick<ButtonProps, 'color' | 'fullWidth' | 'shape'>, ThemeProps {
   align?: 'left' | 'right';
   buttons?: ButtonGroupItem[];
-  /** children can be null or false so this doesn't fail if children are conditional */
+  /** The children are allowed to be null or false so this won't fail if children are conditional */
   children?: Array<React.ReactElement | null | false>;
   className?: string;
-  /** if onClick is undefined then each button must have its own onClick prop */
+  /** If onClick is undefined then each button must have its own onClick prop */
   onClick?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, value: string) => void;
   orientation?: Orientation;
   selectedColor?: ButtonColor;

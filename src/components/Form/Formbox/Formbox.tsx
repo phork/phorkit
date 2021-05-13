@@ -58,15 +58,15 @@ export interface LocalFormboxProps<I extends FormboxInputElementType> extends Th
   persistEvents?: boolean;
   placeholder?: React.ReactChild;
   readOnly?: boolean;
-  /** readOnlyValue can be used to show HTML; if undefined it will default to the regular value */
+  /** This can be used to show HTML, or if it's undefined it will default to the plain input value */
   readOnlyValue?: React.ReactChild;
-  /** silentReadOnly cannot be edited but has all the functionality of a regular input (focus, blur, etc.) */
+  /** A silentReadOnly input cannot be edited but has all the functionality of a regular input (focus, blur, etc.) */
   silentReadOnly?: boolean;
   style?: React.CSSProperties;
   tabIndex?: number;
   transitional?: boolean;
   translations?: FormboxTranslations;
-  /** transparent inputs can be used inside styled containers (eg. a contained dropdown) */
+  /** Transparent inputs can be used inside styled containers (eg. a contained dropdown) */
   transparent?: boolean;
   validity?: StateColor;
   value?: FormboxValue | FormboxValue[];
@@ -278,4 +278,6 @@ function FormboxBase<T extends FormboxContainerElementType, I extends FormboxInp
 }
 
 export const Formbox = React.forwardRef(FormboxBase) as typeof FormboxBase;
+
 FormboxBase.displayName = 'FormboxBase';
+Formbox.displayName = 'Formbox';

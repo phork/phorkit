@@ -16,7 +16,7 @@ import {
 } from './types';
 
 export interface LocalDropdownContentProps extends ThemeProps {
-  /** allowReselect is used by DropdownWithTags so an item can be added, removed and re-added */
+  /** This is used by DropdownWithTags so an item can be added, removed and re-added */
   allowReselect?: boolean;
   className?: string;
   containerRef: React.RefObject<HTMLDivElement>;
@@ -30,8 +30,7 @@ export interface LocalDropdownContentProps extends ThemeProps {
   listDefaults: { variant: DropdownListVariant; size: DropdownListSize; color: DropdownListColor };
   listSize?: DropdownListSize;
   listVariant?: DropdownListVariant;
-  /** mimicSelectOnFocus is required by DropdownWithTags so keyboard navigation doesn't keep selecting items but it looks like a regular dropdown */
-  mimicSelectOnFocus?: boolean;
+  onItemFocus: InteractiveListProps['onItemFocus'];
   onListBlur: InteractiveListProps['onBlur'];
   onListFocus: InteractiveListProps['onFocus'];
   onListKeyDown: InteractiveListProps['onKeyDown'];
@@ -59,7 +58,7 @@ function DropdownContentBase(
     listVariant,
     listSize,
     listColor,
-    mimicSelectOnFocus,
+    onItemFocus,
     onListBlur,
     onListFocus,
     onListKeyDown,
@@ -105,14 +104,15 @@ function DropdownContentBase(
           hideFocusOutline
           initialSelected={state.selected ? state.selected.id : undefined}
           items={items}
-          mimicSelectOnFocus={mimicSelectOnFocus}
+          // mimicSelectOnFocus is necessary so that keyboard navigation doesn't keep selecting items but it looks like a regular dropdown
+          mimicSelectOnFocus
           onBlur={onListBlur}
           onFocus={onListFocus}
+          onItemFocus={onItemFocus}
           onKeyDown={onListKeyDown}
           onSelect={onSelect}
           onUnselect={onUnselect}
           ref={forwardedRef}
-          selectOnFocus={!mimicSelectOnFocus}
           size={listSize || listDefaults.size}
           tabIndex={isDropdownVisible ? 0 : -1}
           unthemed={unthemed}
@@ -128,4 +128,6 @@ function DropdownContentBase(
 }
 
 export const DropdownContent = React.forwardRef(DropdownContentBase);
+
 DropdownContentBase.displayName = 'DropdownContentBase';
+DropdownContent.displayName = 'DropdownContent';
