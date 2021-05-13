@@ -1,7 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { AccentColor, MergeProps, StateColor } from '../../../types';
 import { ThemeColors, themes } from '../../../config/themes';
-import { useAccessibility } from '../../../context/Accessibility';
 import { useThemeId } from '../../../hooks/useThemeId';
 import { MultiColorSliderTick } from './MultiColorSliderTick';
 import { MultiColorSliderTrack } from './MultiColorSliderTrack';
@@ -36,7 +35,6 @@ export function MultiColorSlider({
   variant,
   ...props
 }: MultiColorSliderProps) {
-  const accessible = useAccessibility();
   const themeId = useThemeId(initThemeId);
   const theme = themes[themeId];
 
