@@ -1,5 +1,15 @@
 # Changelog
 
+## [6.1.1](https://github.com/phork/phorkit/compare/v6.1.0...v6.1.1) (2021-05-13)
+
+### ♻ Code Refactoring
+
+- improve dropdown clear callback, update displayNames ([f154e18](https://github.com/phork/phorkit/commit/f154e18))
+
+### 🐛 Bug Fixes
+
+- update DropdownWithTags focus on tag remove ([7d32ea3](https://github.com/phork/phorkit/commit/7d32ea3))
+
 # [6.1.0](https://github.com/phork/phorkit/compare/v6.0.0...v6.1.0) (2021-05-12)
 
 ### ✨ Features
