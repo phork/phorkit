@@ -5,11 +5,11 @@
 }
 
 .scrollbar--small {
-  @mixin addScrollbar var(--scrollbar-thumb-color), var(--scrollbar-track-color, transparent), $scrollbar-small-width, $scrollbar-small-border-radius, $scrollbar-small-min-height, $scrollbar-small-offset;
+  @mixin addSmallScrollbar var(--scrollbar-thumb-color), var(--scrollbar-track-color, transparent);
 }
 
 .scrollbar--xsmall {
-  @mixin addScrollbar var(--scrollbar-thumb-color), var(--scrollbar-track-color, transparent), $scrollbar-xsmall-width, $scrollbar-xsmall-border-radius, $scrollbar-xsmall-min-height, $scrollbar-xsmall-offset;
+  @mixin addXSmallScrollbar var(--scrollbar-thumb-color), var(--scrollbar-track-color, transparent);
 }
 
 .scrollbar--primary {
