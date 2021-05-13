@@ -5,15 +5,15 @@ route: /compositions/DropdownWithTags
 ---
 
 import { Playground, Props } from 'docz';
-import { DropdownWithTags } from '../index';
-import { TagIcon } from 'icons/internal/TagIcon';
+import { themes } from 'config/themes';
 import { SearchIcon } from 'icons/SearchIcon';
+import { TagIcon } from 'icons/internal/TagIcon';
+import { ListProps } from 'docs/helpers/ListProps';
+import { PageTitle } from 'docs/helpers/PageTitle';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { ListProps } from 'docs/helpers/ListProps';
+import { DropdownWithTags } from '../index';
 import { options, handleFilter, handleEmptyFilter } from './helpers/options';
-import { themes } from 'config/themes';
-import { PageTitle } from 'docs/helpers/PageTitle';
 
 <PageTitle title="DropdownWithTags" src="compositions/Dropdown" />
 
@@ -23,7 +23,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
-    <div style={{ maxWidth: 300 }}>
+    <div style={{ maxWidth: 300, marginLeft: 20, marginRight: 20 }}>
       <DropdownWithTags
         initialSelected={[options[3]]}
         label="Super awesome dropdown"
@@ -42,7 +42,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
-    <div style={{ maxWidth: 300 }}>
+    <div style={{ maxWidth: 300, marginLeft: 20, marginRight: 20 }}>
       <DropdownWithTags
         initialSelected={[options[3]]}
         inputVariant="filled"
@@ -62,7 +62,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
-    <div style={{ maxWidth: 300 }}>
+    <div style={{ maxWidth: 300, marginLeft: 20, marginRight: 20 }}>
       <DropdownWithTags
         initialSelected={[options[3]]}
         inputVariant="outline"
@@ -82,18 +82,19 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
-    <br />
-    <DropdownWithTags
-      initialSelected={[options[3]]}
-      label="Super awesome dropdown"
-      layout="contained"
-      onChange={value => console.log('change', value)}
-      onClear={value => console.log('clear')}
-      onSelect={value => console.log('select', value)}
-      options={options}
-      style={{ width: '300px' }}
-      transitional
-    />
+    <div style={{ maxWidth: 300, marginLeft: 20, marginRight: 20 }}>
+      <DropdownWithTags
+        initialSelected={[options[3]]}
+        label="Super awesome dropdown"
+        layout="contained"
+        onChange={value => console.log('change', value)}
+        onClear={value => console.log('clear')}
+        onSelect={value => console.log('select', value)}
+        options={options}
+        style={{ width: '300px' }}
+        transitional
+      />
+    </div>
   </ThemeWrapper>
 </Playground>
 
@@ -101,7 +102,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
-    <div style={{ maxWidth: 300 }}>
+    <div style={{ maxWidth: 300, marginLeft: 20, marginRight: 20 }}>
       <DropdownWithTags
         iconAfter={<SearchIcon size={14} />}
         initialSelected={[options[3]]}
@@ -125,7 +126,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 
 <Playground>
   <ThemeWrapper contrast style={{ height: '300px' }}>
-    <div style={{ maxWidth: 300 }}>
+    <div style={{ maxWidth: 300, marginLeft: 20, marginRight: 20 }}>
       <DropdownWithTags
         contrast
         id="demo-contrast-dropdown"
