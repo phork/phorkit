@@ -586,6 +586,96 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
   </ThemeWrapper>
 </Playground>
 
+<div style={{ height: 50 }} />
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => {
+      const options = [
+        { id: 1, value: 'one' },
+        { id: 2, value: 'two' },
+        { id: 3, value: 'three' },
+        { id: 4, value: 'four' },
+        { id: 5, value: 'five', label: 'Plain text option' },
+      ].map(option => ({
+        label: ({ selected }) => (
+          <Flex flexible direction="row" alignItems="center" justifyContent="flex-start">
+            <Avatar
+              imgSrc="/public/images/avatar.jpg"
+              initials="EC"
+              size="xlarge"
+              style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
+            />
+            <Rhythm ml={4}>
+              <Flex direction="column" justifyContent="center" flexible>
+                <Typography weight="bold">Elenor C.</Typography>
+                <Typography size="s" volume="quiet" variants={['line-height-comfy']}>
+                  Something something something
+                </Typography>
+              </Flex>
+            </Rhythm>
+            <Typography color={selected ? 'contrast' : 'accent-primary'} variants="line-height-smash">
+              <CheckIcon scale="medium" />
+            </Typography>
+          </Flex>
+        ),
+        selectedLabel: option.label || (
+          <Rhythm pl={1} pr={4}>
+            <Flex flexible direction="row" alignItems="center" justifyContent="flex-start">
+              <Avatar
+                imgSrc="/public/images/avatar.jpg"
+                initials="EC"
+                size="xlarge"
+                style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
+              />
+              <Rhythm ml={4}>
+                <Flex direction="column" justifyContent="center" flexible>
+                  <Typography weight="bold">Elenor C.</Typography>
+                  <Typography size="s" volume="quiet" variants={['line-height-comfy']}>
+                    Something something something
+                  </Typography>
+                </Flex>
+              </Rhythm>
+            </Flex>
+          </Rhythm>
+        ),
+        ...option,
+      }));
+      return (
+        <div style={{ width: '300px', maxWidth: '100%', height: '300px' }}>
+          <Dropdown
+            arrowIconSize={12}
+            dropdownContent={DropdownContent}
+            initialSelected={options[0]}
+            inputVariant="outline"
+            layout="raised"
+            listVariant="divided"
+            listSize="medium"
+            onChange={value => console.log('change', value)}
+            onClear={value => console.log('clear')}
+            onSelect={value => console.log('select', value)}
+            options={options}
+            placeholder={
+              <Rhythm pl={1} pr={4} style={{ opacity: 0.5 }}>
+                <Flex flexible direction="row" alignItems="center" justifyContent="flex-start">
+                  <StyledAvatar
+                    backgroundColor={themes[themeId]['secondary-palette-quietest-color']}
+                    initials=" "
+                    size="xlarge"
+                  />
+                  <Rhythm ml={4}>
+                    <Flex flexible>Choose your person</Flex>
+                  </Rhythm>
+                </Flex>
+              </Rhythm>
+            }
+          />
+        </div>
+      );
+    }}
+  </ThemeWrapper>
+</Playground>
+
 ## Fancy tabs
 
 <Playground>

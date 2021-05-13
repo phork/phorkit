@@ -30,7 +30,7 @@ ul.unlist {
 }
 
 /**
- * Don't raise the shadowed and unboxed list items
+ * Don't raise the divided and unboxed list items
  * on hover or focus.
  */
 .list--bordered,

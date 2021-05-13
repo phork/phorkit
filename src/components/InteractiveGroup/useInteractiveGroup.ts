@@ -118,7 +118,7 @@ export function useInteractiveGroup<E extends HTMLElement = HTMLDivElement, I ex
       ? state.selectedId !== undefined && Array.isArray(state.selectedId) && state.selectedId.includes(id)
       : state.selectedId === id;
 
-  // update the reducer if the items change
+  // update the state if the items change
   useEffect(() => {
     setItems(initialItems);
   }, [initialItems, setItems]);
