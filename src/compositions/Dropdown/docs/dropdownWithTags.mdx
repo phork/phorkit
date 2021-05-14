@@ -23,7 +23,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
-    <div style={{ maxWidth: 300, marginLeft: 20, marginRight: 20 }}>
+    <div style={{ maxWidth: '100%', marginLeft: 20, marginRight: 20 }}>
       <DropdownWithTags
         initialSelected={[options[3]]}
         label="Super awesome dropdown"
@@ -32,6 +32,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         onClear={value => console.log('clear')}
         onSelect={value => console.log('select', value)}
         options={options}
+        style={{ width: 300 }}
         transitional
       />
     </div>
@@ -42,7 +43,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
-    <div style={{ maxWidth: 300, marginLeft: 20, marginRight: 20 }}>
+    <div style={{ maxWidth: '100%', marginLeft: 20, marginRight: 20 }}>
       <DropdownWithTags
         initialSelected={[options[3]]}
         inputVariant="filled"
@@ -52,6 +53,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         onClear={value => console.log('clear')}
         onSelect={value => console.log('select', value)}
         options={options}
+        style={{ width: 300 }}
         transitional
       />
     </div>
@@ -62,7 +64,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
-    <div style={{ maxWidth: 300, marginLeft: 20, marginRight: 20 }}>
+    <div style={{ maxWidth: '100%', marginLeft: 20, marginRight: 20 }}>
       <DropdownWithTags
         initialSelected={[options[3]]}
         inputVariant="outline"
@@ -72,6 +74,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         onClear={value => console.log('clear')}
         onSelect={value => console.log('select', value)}
         options={options}
+        style={{ width: 300 }}
         transitional
       />
     </div>
@@ -82,7 +85,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
-    <div style={{ maxWidth: 300, marginLeft: 20, marginRight: 20 }}>
+    <div style={{ maxWidth: '100%', marginLeft: 20, marginRight: 20 }}>
       <DropdownWithTags
         initialSelected={[options[3]]}
         label="Super awesome dropdown"
@@ -91,7 +94,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         onClear={value => console.log('clear')}
         onSelect={value => console.log('select', value)}
         options={options}
-        style={{ width: '300px' }}
+        style={{ width: 300 }}
         transitional
       />
     </div>
@@ -102,7 +105,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
-    <div style={{ maxWidth: 300, marginLeft: 20, marginRight: 20 }}>
+    <div style={{ maxWidth: '100%', marginLeft: 20, marginRight: 20 }}>
       <DropdownWithTags
         iconAfter={<SearchIcon size={14} />}
         initialSelected={[options[3]]}
@@ -114,6 +117,65 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
           !options.some(option => option.id === value) && options.push({ id: value, label: value })
         }
         options={options}
+        style={{ width: 300 }}
+        transitional
+      />
+    </div>
+  </ThemeWrapper>
+</Playground>
+
+## Dropdown with custom props
+
+<Playground>
+  <ThemeWrapper style={{ height: '300px' }}>
+    <div style={{ maxWidth: '100%', marginLeft: 20, marginRight: 20 }}>
+      <DropdownWithTags
+        initialSelected={[options[3]]}
+        label="Super awesome dropdown"
+        layout="contained"
+        onChange={value => console.log('change', value)}
+        onClear={value => console.log('clear')}
+        onSelect={value => console.log('select', value)}
+        options={options.map(option => ({
+          ...option,
+          tagProps: {
+            unthemed: true,
+            style: {
+              '--tag-primary-color': '#57278C',
+            },
+          },
+        }))}
+        tagGroupProps={{ style: { maxWidth: 500 } }}
+        tagShape="brick"
+        tagSize="small"
+        style={{
+          '--dropdown-options-bottom-border-color': '#9D69D5',
+          '--dropdown-options-focused-border-color': '#57278C',
+          '--dropdown-options-contained-background-color': '#fff',
+          '--dropdown-options-contained-box-shadow': '0px 1px 2px 0px rgba(0, 0, 0, 0.3)',
+          '--dropdown-options-contained-border-color': '#B995E1',
+          '--dropdown-options-raised-box-shadow': '0px 1px 2px 0px rgba(0, 0, 0, 0.3)',
+          '--dropdown-options-scrollbar-thumb-color': '#DDDDE0',
+          '--list-focused-border-color': '#642da0',
+          '--list-item-selected-background-color': '#642da0',
+          '--list-item-selected-text-color': '#ffffff',
+          '--list-item-background-color': 'transparent',
+          '--list-item-border-color': '#642da0',
+          '--list-item-focused-border-color': '#57278C',
+          '--list-item-focused-text-color': '#642da0',
+          '--list-item-text-color': '#B995E1',
+          '--formbox-icon-color': '#9D69D5',
+          '--formbox-icon-hovered-color': '#642da0',
+          '--formbox-input-container-background-color': 'transparent',
+          '--formbox-input-container-border-color': '#9D69D5',
+          '--formbox-input-container-focused-border-color': '#57278C',
+          '--formbox-input-container-hovered-border-color': '#642da0',
+          '--formbox-input-text-color': '#642da0',
+          '--formbox-label-text-color': '#B995E1',
+          width: 300,
+        }}
+        unthemed
+        variant="underline"
         transitional
       />
     </div>
@@ -126,7 +188,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 
 <Playground>
   <ThemeWrapper contrast style={{ height: '300px' }}>
-    <div style={{ maxWidth: 300, marginLeft: 20, marginRight: 20 }}>
+    <div style={{ maxWidth: '100%', marginLeft: 20, marginRight: 20 }}>
       <DropdownWithTags
         contrast
         id="demo-contrast-dropdown"
@@ -134,6 +196,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         label="Super awesome dropdown"
         onChange={value => console.log('change', value)}
         options={options}
+        style={{ width: 300 }}
       />
     </div>
   </ThemeWrapper>

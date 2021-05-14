@@ -25,12 +25,13 @@ export function TagGroup<T extends TagElementType = 'div'>({
   size,
   tags,
   themeId: initThemeId,
+  ...props
 }: TagGroupProps<T>): React.ReactElement<TagGroupProps, 'div'> {
   const themeId = useThemeId(initThemeId);
   const classes = cx(styles.tagGroup, className);
 
   return (
-    <div className={classes}>
+    <div className={classes} {...props}>
       {tags &&
         tags.map(tag => (
           <Tag<T>

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useComponentId } from '../../hooks/useComponentId';
 import { useThemeId } from '../../hooks/useThemeId';
 import { substituteTranslationArgs, useTranslations } from '../../hooks/useTranslations';
@@ -6,7 +6,7 @@ import { TimesIcon } from '../../icons/TimesIcon';
 import { Flex } from '../../components/Flex';
 import { IconText } from '../../components/IconText';
 import { Rhythm } from '../../components/Rhythm/Rhythm';
-import { Tag, TagGroup, TagSize, TagVariant } from '../../components/Tag';
+import { Tag, TagGroup, TagGroupProps, TagProps, TagShape, TagSize, TagVariant } from '../../components/Tag';
 import { TypographyWithSvg } from '../../components/Typography';
 import { Dropdown, DropdownProps } from './Dropdown';
 import { DropdownContent } from './DropdownContent';
@@ -22,9 +22,16 @@ export const dropdownWithTagsTranslations: DropdownWithTagsTranslations = {
   numSelectedPlural: '{0} items selected',
 };
 
-export interface DropdownWithTagsProps extends Omit<DropdownProps, 'initialSelected' | 'dropdownContent'> {
+export type DropdownWithTagsOption = DropdownOption & {
+  tagProps?: TagProps<'button'>;
+};
+
+export interface DropdownWithTagsProps extends Omit<DropdownProps, 'initialSelected' | 'dropdownContent' | 'options'> {
   initialSelected?: DropdownOption[];
+  options: DropdownWithTagsOption[];
   readOnlyValue?: React.ReactChild;
+  tagGroupProps: Omit<TagGroupProps, 'size'>;
+  tagShape?: TagShape;
   tagSize?: TagSize;
   tagVariant?: TagVariant;
   translations?: DropdownWithTagsTranslations;
@@ -37,6 +44,8 @@ export function DropdownWithTags({
   onSelect,
   options,
   readOnlyValue,
+  tagGroupProps,
+  tagShape = 'pill',
   tagSize = 'xsmall',
   tagVariant = 'outlined',
   themeId: initThemeId,
@@ -49,6 +58,17 @@ export function DropdownWithTags({
   const [selected, setSelected] = useState<DropdownOption[]>(initialSelected);
   const { generateComponentId } = useComponentId();
   const themeId = useThemeId(initThemeId);
+
+  // don't pass the tag props on to the dropdown, but map them by ID so they can be applied to the tags
+  const strippedOptions = useMemo(() => options.map(({ tagProps, ...option }) => option), [options]);
+  const mappedProps = useMemo(
+    () =>
+      options.reduce((acc, { id, tagProps }) => {
+        acc[id] = tagProps;
+        return acc;
+      }, {} as Record<DropdownWithTagsOption['id'], DropdownWithTagsOption['tagProps']>),
+    [options],
+  );
 
   const translations = useTranslations<DropdownWithTagsTranslations>({
     customTranslations,
@@ -110,13 +130,13 @@ export function DropdownWithTags({
         id={id}
         inputRef={dropdownRef}
         onSelect={handleSelect}
-        options={options}
+        options={strippedOptions}
         readOnlyValue={readOnlyValue || getNumSelectedLabel()}
         themeId={themeId}
         {...props}
       />
       <Rhythm mt={6} grouped>
-        <TagGroup size={tagSize}>
+        <TagGroup size={tagSize} {...tagGroupProps}>
           {selected.filter(Boolean).map(({ id: itemId, label }, i) => (
             <Tag<'button'>
               actionable
@@ -136,10 +156,11 @@ export function DropdownWithTags({
               }
               onClick={() => removeItem(itemId)}
               ref={i === 0 ? tagRef : undefined}
-              shape="pill"
+              shape={tagShape}
               size={tagSize}
               variant={tagVariant}
               themeId={themeId}
+              {...mappedProps[itemId]}
             />
           ))}
         </TagGroup>

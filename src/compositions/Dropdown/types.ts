@@ -5,6 +5,7 @@ export type DropdownOption = {
   label: React.ReactElement | string;
   /** The selectedLabel is what's shown in the main dropdown view when the item is selected */
   selectedLabel?: string;
+  [x: string]: unknown;
 };
 
 export type DropdownInputVariant = 'underline' | 'filled' | 'outline' | 'minimal';
