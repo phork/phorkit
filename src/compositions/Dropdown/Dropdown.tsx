@@ -288,10 +288,10 @@ function DropdownBase(
   }, [isDropdownVisible, isFocused]);
 
   const handleClick = useCallback(() => {
-    if (mouseDownRef.current.isDropdownVisible) {
+    if (mouseDownRef.current.isDropdownVisible && !isClearable) {
       handleHideDropdown();
     }
-  }, [handleHideDropdown]);
+  }, [handleHideDropdown, isClearable]);
 
   const handleKeyDown = useCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === ' ' && (event.target as HTMLDivElement).tagName.toLowerCase() !== 'input') {
@@ -349,6 +349,7 @@ function DropdownBase(
       className={cx(
         styles.dropdown,
         disabled && styles['is-disabled'],
+        isClearable && styles['is-clearable'],
         isDropdownVisible && styles['is-visible'],
         themeId && !unthemed && styles[`dropdown--${themeId}`],
         color && !unthemed && styles[`dropdown--${color}`],

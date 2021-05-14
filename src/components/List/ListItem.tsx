@@ -41,6 +41,9 @@ function ListItemBase<T extends ListItemElementType = 'li'>(
   }: ListItemProps<T>,
   forwardedRef: React.ForwardedRef<HTMLElementTagNameMap[T]>,
 ): React.ReactElement {
+  const showAsFocused = focused && !mimicSelectOnFocus;
+  const showAsSelected = (selected && !mimicSelectOnFocus) || (focused && mimicSelectOnFocus);
+
   return React.createElement(
     as || 'li',
     {
@@ -49,12 +52,11 @@ function ListItemBase<T extends ListItemElementType = 'li'>(
         : cx(
             styles.listItem,
             flush && styles['listItem--flush'],
-            mimicSelectOnFocus && styles['listItem--mimicSelectOnFocus'],
             transparent && styles['listItem--transparent'],
             disabled && styles['is-disabled'],
-            focused && styles['is-focused'],
             inactive && styles['is-inactive'],
-            selected && styles['is-selected'],
+            showAsFocused && styles['is-focused'],
+            showAsSelected && styles['is-selected'],
             className,
           ),
       'aria-selected': inactive ? undefined : selected,

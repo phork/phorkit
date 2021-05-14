@@ -67,8 +67,6 @@ ul.unlist {
       background-color: transparent;
     }
 
-    &.listItem--mimicSelectOnFocus:focus,
-    &.listItem--mimicSelectOnFocus.is-focused,
     &.is-selected {
       background-color: var(--list-item-selected-background-color);
       color: var(--list-item-selected-text-color);
@@ -114,9 +112,8 @@ ul.unlist {
    */
   &.is-accessible:focus,
   &.is-accessible.is-focused {
-    .listItem:not(.listItem--mimicSelectOnFocus) {
-      &.is-focused {
-        /* [1] */
+    .listItem {
+      &.is-focused /* [1] */ {
         &:not(:active):not(.is-selected) {
           color: var(--list-item-focused-text-color);
           z-index: var(--list-item-focused-z-index, 0);
@@ -235,9 +232,8 @@ ul.unlist {
    */
   &.is-accessible:focus,
   &.is-accessible.is-focused {
-    .listItem:not(.listItem--mimicSelectOnFocus) {
-      &.is-focused {
-        /* [1] */
+    .listItem {
+      &.is-focused /* [1] */ {
         &:not(:active):not(.is-selected) {
           border-color: var(--list-item-focused-border-color);
         }
@@ -306,7 +302,7 @@ ul.unlist {
    */
   &.is-accessible:focus,
   &.is-accessible.is-focused {
-    .listItem:not(.listItem--mimicSelectOnFocus) {
+    .listItem {
       &.is-focused { /* [1] */
         &:not(:active):not(.is-selected) {
           @mixin shadowBorder var(--list-item-focused-border-color);

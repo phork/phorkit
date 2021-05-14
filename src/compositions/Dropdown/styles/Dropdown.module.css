@@ -6,10 +6,18 @@
   position: relative;
 }
 
+/**
+ * 1. Disable the input when the dropdown is open to prevent
+ *    a flash when clicking to close the dropdown.
+ */
 .dropdownInput {
   cursor: pointer;
   padding: 0;
   z-index: calc($layout-z-index-popover + 1);
+
+  .dropdown.is-visible:not(.is-clearable) & {
+    pointer-events: none; /* [1] */
+  }
 }
 
 .dropdownOptionsContainer {
