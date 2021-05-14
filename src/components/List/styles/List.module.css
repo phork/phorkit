@@ -43,7 +43,7 @@ ul.unlist {
 .list--bordered,
 .list--shadowed,
 .list--unboxed {
-  &:focus,
+  &:focus-within,
   &.is-focused {
     outline: none;
 
@@ -110,8 +110,8 @@ ul.unlist {
    * 1. Purposefully exclude :focus here because the browser
    *    focus is no longer relevant in accessible mode.
    */
-  &.is-accessible:focus,
-  &.is-accessible.is-focused {
+  &.is-accessible:focus-within,
+  &.is-accessible {
     .listItem {
       &.is-focused /* [1] */ {
         &:not(:active):not(.is-selected) {
@@ -230,7 +230,7 @@ ul.unlist {
    * 1. Purposefully exclude :focus here because the browser
    *    focus is no longer relevant in accessible mode.
    */
-  &.is-accessible:focus,
+  &.is-accessible:focus-within,
   &.is-accessible.is-focused {
     .listItem {
       &.is-focused /* [1] */ {
@@ -300,7 +300,7 @@ ul.unlist {
    * 1. Purposefully exclude :focus here because the browser
    *    focus is no longer relevant in accessible mode.
    */
-  &.is-accessible:focus,
+  &.is-accessible:focus-within,
   &.is-accessible.is-focused {
     .listItem {
       &.is-focused { /* [1] */

@@ -24,7 +24,6 @@ export interface UseInteractiveGroupInterface {
   /* This will allow an already selected item to be re-triggered */
   allowReselect?: boolean;
   disableUnselect?: boolean;
-  containerRef?: React.RefObject<HTMLElement>;
   /* This disables interaction across the whole group */
   disabled?: boolean;
   initialSelected?: string | string[];
@@ -34,6 +33,7 @@ export interface UseInteractiveGroupInterface {
   onKeyDown?: (event: KeyboardEvent, props?: { used?: boolean }) => void;
   onSelect?: (event: InteractiveGroupEventTypes['event'], props: { id?: string; index?: number }) => void;
   onUnselect?: (event: InteractiveGroupEventTypes['event'], props: { id?: string }) => void;
+  parentRef?: React.RefObject<HTMLElement>;
   selectOnFocus?: boolean;
   /** If this is set and an item contains a link, when the item is selected that link will be triggered */
   triggerLinks?: boolean;
@@ -53,14 +53,12 @@ export type UseInteractiveGroupResponse<E extends HTMLElement = HTMLDivElement, 
 /**
  * - E is the type of the element that the returned ref gets attached to
  * - I is the type of item element
- * - C is the containerRef element type (optional)
  */
 export function useInteractiveGroup<E extends HTMLElement = HTMLDivElement, I extends HTMLElement = HTMLElement>({
   allowMultiSelect,
   allowReselect,
-  disableUnselect,
-  containerRef,
   disabled,
+  disableUnselect,
   initialSelected,
   items: initialItems,
   onItemClick,
@@ -68,6 +66,7 @@ export function useInteractiveGroup<E extends HTMLElement = HTMLDivElement, I ex
   onKeyDown,
   onSelect,
   onUnselect,
+  parentRef,
   selectOnFocus,
   triggerLinks,
 }: UseInteractiveGroupInterface): UseInteractiveGroupResponse<E, I> {
@@ -81,21 +80,21 @@ export function useInteractiveGroup<E extends HTMLElement = HTMLDivElement, I ex
   const [state, dispatch] = useReducer(reducer, { initialItems, initialSelected }, getInitialState);
 
   const {
-    setItems,
-    setFocusedByIndex,
-    setSelected,
-    unsetSelected,
-    toggleSelected,
-    selectFocused,
-    toggleSelectedFocused,
-    selectPrevious,
-    focusPrevious,
-    selectNext,
-    focusNext,
-    selectFirst,
     focusFirst,
-    selectLast,
     focusLast,
+    focusNext,
+    focusPrevious,
+    selectFirst,
+    selectFocused,
+    selectLast,
+    selectNext,
+    selectPrevious,
+    setFocusedByIndex,
+    setItems,
+    setSelected,
+    toggleSelected,
+    toggleSelectedFocused,
+    unsetSelected,
   } = useMemo(() => generateInteractiveGroupActions(dispatch, disableUnselect, allowMultiSelect, allowReselect), [
     dispatch,
     disableUnselect,
@@ -257,6 +256,8 @@ export function useInteractiveGroup<E extends HTMLElement = HTMLDivElement, I ex
   const handleItemClick: UseInteractiveGroupResponse['handleItemClick'] = useCallback(
     (event, id) => {
       event.persist();
+      event.stopPropagation();
+
       !disabled && toggleSelected(id, { event });
       onItemClick && onItemClick(event, id);
     },
@@ -268,7 +269,7 @@ export function useInteractiveGroup<E extends HTMLElement = HTMLDivElement, I ex
       if (disabled) return undefined;
 
       const isEventWithinContainer = (event: KeyboardEvent): boolean => {
-        const container = (containerRef && containerRef.current) || ref.current;
+        const container = (parentRef && parentRef.current) || ref.current;
         return !!container && container.contains(event.target as HTMLElement);
       };
       if (!isEventWithinContainer(event)) return undefined;
@@ -309,7 +310,6 @@ export function useInteractiveGroup<E extends HTMLElement = HTMLDivElement, I ex
       return undefined;
     },
     [
-      containerRef,
       disabled,
       focusFirst,
       focusLast,
@@ -317,6 +317,7 @@ export function useInteractiveGroup<E extends HTMLElement = HTMLDivElement, I ex
       focusPrevious,
       items,
       onKeyDown,
+      parentRef,
       selectFirst,
       selectFocused,
       selectLast,

@@ -2,13 +2,13 @@ import produce from 'immer';
 import { useCallback, useRef, useState } from 'react';
 import { useSafeTimeout } from './useSafeTimeout';
 
-export interface UseDeepFocusEventHandlers {
-  onBlur?: React.FocusEventHandler;
+export interface UseDeepFocusEventHandlers<E> {
+  onBlur?: React.FocusEventHandler<E>;
   onBlurChild?: React.FocusEventHandler;
-  onBlurSelf?: React.FocusEventHandler;
-  onFocus?: React.FocusEventHandler;
+  onBlurSelf?: React.FocusEventHandler<E>;
+  onFocus?: React.FocusEventHandler<E>;
   onFocusChild?: React.FocusEventHandler;
-  onFocusSelf?: React.FocusEventHandler;
+  onFocusSelf?: React.FocusEventHandler<E>;
 }
 
 export type UseDeepFocusOptions = {
@@ -16,20 +16,20 @@ export type UseDeepFocusOptions = {
   alwaysTriggerFocus?: boolean;
   /** This allow access to the event object’s properties after the event handler has run */
   persistEvents?: boolean;
-  /** The will delay the blur so that another focus can cancel it */
+  /** This will delay the blur so that another focus can cancel it */
   blurDelay?: number;
 };
 
-export type UseDeepFocusResponse<T> = {
+export type UseDeepFocusResponse<E> = {
   focused: boolean;
-  handleBlur: React.FocusEventHandler<T>;
-  handleFocus: React.FocusEventHandler<T>;
+  handleBlur: React.FocusEventHandler<E>;
+  handleFocus: React.FocusEventHandler<E>;
 };
 
 /** useDeepFocus calls onBlur when neither the element nor its children have focus */
 export function useDeepFocus<E extends HTMLElement>(
   ref: React.RefObject<E | null> | null,
-  { onBlur, onBlurChild, onBlurSelf, onFocus, onFocusChild, onFocusSelf }: UseDeepFocusEventHandlers = {},
+  { onBlur, onBlurChild, onBlurSelf, onFocus, onFocusChild, onFocusSelf }: UseDeepFocusEventHandlers<E> = {},
   { persistEvents, blurDelay, alwaysTriggerBlur, alwaysTriggerFocus }: UseDeepFocusOptions = {},
 ): UseDeepFocusResponse<E> {
   const previousResponse = useRef<UseDeepFocusResponse<E>>({} as UseDeepFocusResponse<E>);
@@ -43,7 +43,7 @@ export function useDeepFocus<E extends HTMLElement>(
     [ref],
   );
 
-  const handleFocus = useCallback<React.FocusEventHandler>(
+  const handleFocus = useCallback<React.FocusEventHandler<E>>(
     event => {
       clearBlurTimeoutId.current && clearSafeTimeout(clearBlurTimeoutId.current);
 
@@ -69,11 +69,11 @@ export function useDeepFocus<E extends HTMLElement>(
   );
 
   // remove focus if neither the element or its children have focus
-  const handleBlur = useCallback<React.FocusEventHandler>(
+  const handleBlur = useCallback<React.FocusEventHandler<E>>(
     event => {
       persistEvents && event.persist();
 
-      const blurCallback = (event: React.FocusEvent) => {
+      const blurCallback = (event: React.FocusEvent<E>) => {
         setFocused(false);
 
         if (previousFocused.current !== false) {

@@ -11,7 +11,7 @@ import { SearchIcon } from '../../icons';
 import { ArrowDownIcon } from '../../icons/ArrowDownIcon';
 import { SpinnerIcon } from '../../icons/SpinnerIcon';
 import { Textbox, TextboxProps } from '../../components/Form/Textbox/Textbox';
-import { DropdownContent, DropdownContentProps } from './DropdownContent';
+import { DropdownContent, DropdownContentProps, DropdownContentHandles } from './DropdownContent';
 import { dropdownActions as ACTIONS } from './dropdownActions';
 import { dropdownReducer as reducer } from './dropdownReducer';
 import styles from './styles/Dropdown.module.css';
@@ -98,7 +98,7 @@ function DropdownBase(
   forwardedRef: React.ForwardedRef<HTMLDivElement>,
 ): React.ReactElement<DropdownProps, 'div'> {
   const ref = useRef<HTMLDivElement>(null!);
-  const listRef = useRef<HTMLUListElement | null>(null);
+  const contentRef = useRef<DropdownContentHandles>(null!);
   const inputRef = useRef<HTMLInputElement>(null!);
 
   const combineRefs = makeCombineRefs<HTMLDivElement>(ref, forwardedRef);
@@ -107,6 +107,7 @@ function DropdownBase(
   const mouseDownRef = useRef<{
     isFocused?: boolean;
     isDropdownVisible?: boolean;
+    isDropdownClicked?: boolean;
   }>({});
 
   const previous = useRef<{
@@ -153,7 +154,7 @@ function DropdownBase(
   const isClearable = onFilter && !!state.input && (state.inputFocus || state.clearFocus || isDropdownVisible);
 
   const focusInput = () => inputRef.current?.focus();
-  const focusList = () => listRef.current?.focus();
+  const focusList = () => contentRef.current?.list?.focus();
 
   const handleHideDropdown = useCallback(() => dispatch({ type: ACTIONS.HIDE_DROPDOWN }), []);
   const handleShowDropdown = useCallback(() => dispatch({ type: ACTIONS.SHOW_DROPDOWN }), []);
@@ -164,9 +165,6 @@ function DropdownBase(
   const handleInputBlur = useCallback(() => dispatch({ type: ACTIONS.UNSET_INPUT_FOCUS }), []);
   const handleInputFocus = useCallback(() => dispatch({ type: ACTIONS.SET_INPUT_FOCUS }), []);
   const handleInputClick = useCallback(() => !onFilter && focusList(), [onFilter]);
-
-  const handleBlur = handleHideDropdown;
-  const handleFocus = handleShowDropdown;
 
   const { setSafeTimeout } = useSafeTimeout();
   const safeHandleInputFocus = () => setSafeTimeout(handleInputFocus);
@@ -280,15 +278,21 @@ function DropdownBase(
    * other events interfere. The ensures that the click event will be
    * able to know what the state was when it was actually clicked.
    */
-  const handleMouseDown = useCallback(() => {
-    mouseDownRef.current = {
-      isFocused,
-      isDropdownVisible,
-    };
-  }, [isDropdownVisible, isFocused]);
+  const handleMouseDown = useCallback(
+    (event: React.MouseEvent<HTMLElement>) => {
+      event.stopPropagation();
+
+      mouseDownRef.current = {
+        isFocused,
+        isDropdownVisible,
+        isDropdownClicked: contentRef.current?.container?.contains(event.target as Node),
+      };
+    },
+    [isDropdownVisible, isFocused],
+  );
 
   const handleClick = useCallback(() => {
-    if (mouseDownRef.current.isDropdownVisible && !isClearable) {
+    if (mouseDownRef.current.isDropdownVisible && !mouseDownRef.current.isDropdownClicked && !isClearable) {
       handleHideDropdown();
     }
   }, [handleHideDropdown, isClearable]);
@@ -318,7 +322,12 @@ function DropdownBase(
     [state.listFocus, state.listVisible],
   );
 
-  useClickAndEscape({ ref, onBlur: handleBlur, onFocus: handleFocus, stopPropagation: isDropdownVisible });
+  useClickAndEscape({
+    ref,
+    onBlur: handleHideDropdown,
+    onFocus: handleShowDropdown,
+    stopPropagation: isDropdownVisible,
+  });
 
   const showFilter = onFilter && (state.inputFocus || (isDropdownVisible && state.input));
   const inputValue = showFilter
@@ -358,7 +367,7 @@ function DropdownBase(
       onClick={handleClick}
       onMouseDown={handleMouseDown}
       onKeyDown={handleKeyDown}
-      onFocus={handleFocus}
+      onFocus={handleShowDropdown}
       ref={combineRefs}
       {...props}
     >
@@ -402,7 +411,6 @@ function DropdownBase(
 
       <DropdownContent
         allowReselect={allowReselect}
-        containerRef={ref}
         contrast={contrast}
         disabledIds={disabledIds}
         emptyNotification={emptyNotification}
@@ -410,10 +418,10 @@ function DropdownBase(
         isDropdownVisible={isDropdownVisible}
         isEmpty={isEmpty}
         layout={layout}
-        listDefaults={listDefaults}
-        listVariant={listVariant}
-        listSize={listSize}
         listColor={listColor}
+        listDefaults={listDefaults}
+        listSize={listSize}
+        listVariant={listVariant}
         onItemFocus={onItemFocus}
         onListBlur={handleListBlur}
         onListFocus={handleListFocus}
@@ -421,7 +429,8 @@ function DropdownBase(
         onSelect={handleSelect}
         onUnselect={handleUnselect}
         options={options}
-        ref={listRef}
+        parentRef={ref}
+        ref={contentRef}
         state={state}
         themeId={themeId}
         unthemed={unthemed}

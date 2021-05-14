@@ -135,11 +135,11 @@ export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps
                   {label}
                 </AccordionLabel>
                 <AccordionContent
-                  containerRef={forwardedRef}
                   duration={duration}
                   easing={easing}
                   horizontal={horizontal}
                   id={generateComponentId(id, 'panel')}
+                  parentRef={forwardedRef}
                   role="region"
                   {...contentProps}
                   {...stateProps}

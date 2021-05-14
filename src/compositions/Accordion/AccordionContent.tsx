@@ -15,10 +15,10 @@ export interface AccordionContentProps
     Partial<Pick<UsePanelCollapserInterface, 'duration' | 'easing'>> {
   children: React.ReactNode;
   className?: string;
-  containerRef: React.Ref<HTMLDivElement>;
   disabled?: boolean;
   focused?: boolean;
   horizontal?: boolean;
+  parentRef: React.Ref<HTMLDivElement>;
   selected?: boolean;
   unstyled?: boolean;
 }
@@ -28,7 +28,6 @@ export const AccordionContent = React.forwardRef<HTMLDivElement, AccordionConten
     {
       children,
       className,
-      containerRef,
       disabled,
       duration = 150,
       easing,
@@ -38,6 +37,7 @@ export const AccordionContent = React.forwardRef<HTMLDivElement, AccordionConten
       onCloseStart,
       onOpenFinish,
       onOpenStart,
+      parentRef,
       selected,
       unstyled,
       ...props
@@ -51,8 +51,7 @@ export const AccordionContent = React.forwardRef<HTMLDivElement, AccordionConten
     useEffect(() => {
       if (ref.current) {
         const { width: containerWidth, height: containerHeight } =
-          (typeof containerRef === 'object' && containerRef?.current && containerRef.current.getBoundingClientRect()) ||
-          {};
+          (typeof parentRef === 'object' && parentRef?.current && parentRef.current.getBoundingClientRect()) || {};
 
         setDimension(
           measureDomNode(
@@ -66,18 +65,18 @@ export const AccordionContent = React.forwardRef<HTMLDivElement, AccordionConten
           )?.[horizontal ? 'width' : 'height'],
         );
       }
-    }, [containerRef, ref, horizontal]);
+    }, [parentRef, ref, horizontal]);
 
     usePanelCollapser({
       duration,
       easing,
       height: (!horizontal && dimension) || undefined,
-      position,
       onCloseFinish,
       onCloseStart,
       onOpenFinish,
       onOpenStart,
       open: selected,
+      position,
       ref,
       transition: 'squashable',
       unit: 'px',

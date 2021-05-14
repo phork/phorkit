@@ -1,6 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { MergeProps, ThemeProps } from '../../types';
-import { useDeepFocus } from '../../hooks/useDeepFocus';
 import { useThemeId } from '../../hooks/useThemeId';
 import { makeCombineRefs } from '../../utils/combineRefs';
 import { InteractiveGroupConsumer } from '../../components/InteractiveGroup/InteractiveGroupConsumer';
@@ -16,7 +15,6 @@ type ExplicitProviderProps = Pick<
   | 'allowMultiSelect'
   | 'allowReselect'
   | 'disableUnselect'
-  | 'containerRef'
   | 'disabled'
   | 'initialSelected'
   | 'items'
@@ -25,16 +23,17 @@ type ExplicitProviderProps = Pick<
   | 'onKeyDown'
   | 'onSelect'
   | 'onUnselect'
+  | 'parentRef'
   | 'selectOnFocus'
   | 'triggerLinks'
 >;
 
 export interface LocalInteractiveListProps extends ExplicitProviderProps {
   children: React.ReactNode;
+  /** The focused state can be set outside of this component so that focus styles can be applied when, for example, a parent is focused */
+  focused?: boolean;
   items: (Omit<InteractiveListItemProps, 'onClick'> & { selectedLabel?: string })[];
   listComponent?: typeof List;
-  onBlur?: () => void;
-  onFocus?: () => void;
   providerProps?: Omit<
     InteractiveGroupProviderProps<HTMLUListElement, HTMLLIElement>,
     keyof ExplicitProviderProps | 'children'
@@ -49,20 +48,19 @@ function InteractiveListBase(
     allowMultiSelect,
     allowReselect,
     children,
-    containerRef,
     disabled,
     disableUnselect,
+    focused,
     initialSelected,
     items,
     listComponent,
     mimicSelectOnFocus,
-    onBlur,
-    onFocus,
     onItemClick,
     onItemFocus,
     onKeyDown,
     onSelect,
     onUnselect,
+    parentRef,
     providerProps,
     rounded,
     selectOnFocus,
@@ -76,31 +74,17 @@ function InteractiveListBase(
   forwardedRef: React.ForwardedRef<HTMLUListElement>,
 ): React.ReactElement {
   const ref = useRef<HTMLUListElement>(null!);
-  const previous = useRef<{ focused?: boolean }>({});
-  const { focused, handleBlur, handleFocus } = useDeepFocus<HTMLUListElement>(ref);
+  const combineRefs = makeCombineRefs<HTMLUListElement>(ref, forwardedRef);
+
   const themeId = useThemeId(initThemeId);
 
   // this allows the consumer to passed a styled list which can react to accessible, focused, etc.
   const ListComponent = listComponent || List;
 
-  useEffect(() => {
-    if (focused !== previous.current.focused && previous.current.focused !== undefined) {
-      if (focused) {
-        onFocus && onFocus();
-      } else {
-        onBlur && onBlur();
-      }
-    }
-    previous.current.focused = !!focused;
-  }, [focused, onFocus, onBlur]);
-
-  const combineRefs = makeCombineRefs<HTMLUListElement>(ref, forwardedRef);
-
   return (
     <InteractiveGroupProvider<HTMLUListElement, HTMLLIElement>
       allowMultiSelect={allowMultiSelect}
       allowReselect={allowReselect}
-      containerRef={containerRef}
       disabled={disabled}
       disableUnselect={disableUnselect}
       initialSelected={initialSelected}
@@ -110,6 +94,7 @@ function InteractiveListBase(
       onKeyDown={onKeyDown}
       onSelect={onSelect}
       onUnselect={onUnselect}
+      parentRef={parentRef}
       selectOnFocus={selectOnFocus}
       triggerLinks={triggerLinks}
       {...providerProps}
@@ -122,8 +107,6 @@ function InteractiveListBase(
               focused={focused}
               inactive={disabled}
               mimicSelectOnFocus={mimicSelectOnFocus}
-              onBlur={handleBlur}
-              onFocus={handleFocus}
               ref={combineRefs}
               rounded={rounded}
               tabIndex={disabled ? -1 : 0}
