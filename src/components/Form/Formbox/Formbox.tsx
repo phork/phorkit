@@ -39,8 +39,10 @@ export interface LocalFormboxProps<I extends FormboxInputElementType> extends Th
   disabled?: boolean;
   empty?: boolean;
   iconAfter?: RenderFromPropElement<RenderIconFromPropProps>;
+  /** The best practice is to pass a button it the icon is actionable */
   iconAfterActionable?: boolean;
   iconBefore?: RenderFromPropElement<RenderIconFromPropProps>;
+  /** The best practice is to pass a button it the icon is actionable */
   iconBeforeActionable?: boolean;
   id?: string;
   input: React.ReactElement<HTMLElementTagNameMap[I]>;
@@ -74,7 +76,7 @@ export interface LocalFormboxProps<I extends FormboxInputElementType> extends Th
   width?: string | number;
 }
 
-// because the forwardedRef goes on the input, we need to MergeElementPropsWithoutRef and then add a separate input ref
+/** Because the forwardedRef goes on the input, we need to MergeElementPropsWithoutRef and then add a separate input ref */
 export type FormboxProps<T extends FormboxContainerElementType, I extends FormboxInputElementType> = AsType<T> & {
   ref?: React.Ref<HTMLElement>;
   type?: I;
@@ -183,9 +185,8 @@ function FormboxBase<T extends FormboxContainerElementType, I extends FormboxInp
     </div>
   );
 
-  // the best practice is to pass a button for the icon if it's actionable
   const renderIcon = (
-    icon: RenderFromPropElement<RenderIconFromPropProps & { size?: number; scale?: IconScale }>,
+    icon: RenderFromPropElement<RenderIconFromPropProps & { size?: number; scale?: IconScale; tabIndex?: number }>,
     position: FormboxIconPosition,
     actionable: boolean | undefined,
   ) => {
@@ -202,10 +203,11 @@ function FormboxBase<T extends FormboxContainerElementType, I extends FormboxInp
       typeof icon === 'object' && icon.props && icon.props.className,
     );
 
-    return renderFromProp<RenderIconFromPropProps>(icon, {
+    return renderFromProp<RenderIconFromPropProps & { tabIndex?: number }>(icon, {
       className,
       onBlur: actionable ? (event: React.FocusEvent) => onIconBlur && onIconBlur(event, position) : undefined,
       onFocus: actionable ? (event: React.FocusEvent) => onIconFocus && onIconFocus(event, position) : undefined,
+      tabIndex: actionable ? 0 : undefined,
     });
   };
 

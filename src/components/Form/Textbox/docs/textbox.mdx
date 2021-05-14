@@ -5,7 +5,10 @@ route: /components/FormTextbox
 ---
 
 import { Playground, Props } from 'docz';
+import { ArrowLeftIcon } from 'icons/ArrowLeftIcon';
+import { ArrowRightIcon } from 'icons/ArrowRightIcon';
 import { SearchIcon } from 'icons/SearchIcon';
+import { SpinnerIcon } from 'icons/SpinnerIcon';
 import { TimesIcon } from 'icons/TimesIcon';
 import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
 import { Looper } from 'docs/helpers/Looper';
@@ -80,10 +83,34 @@ import { textbox as variants } from './helpers/variants.js';
     render={variant => (
       <FormComponentDemo property="value" key={variant}>
         <Textbox
-          clearable
           iconBefore={SearchIcon}
-          iconAfter={<TimesIcon size={8} />}
+          iconAfter={<SpinnerIcon size={14} />}
           id={`demo-transitional-labeled-textbox-icon-${variant}`}
+          label="Super fantastic label"
+          onChange={(event, value) => console.log(value)}
+          transitional
+          variant={variant}
+        />
+      </FormComponentDemo>
+    )}
+  />
+</Playground>
+
+## Transitional labeled textbox with actionable icons
+
+_Note that the best practice is to pass a button that has an onClick event for an actionable icon._
+
+<Playground>
+  <Looper
+    list={variants}
+    render={variant => (
+      <FormComponentDemo property="value" key={variant}>
+        <Textbox
+          iconBefore={<ArrowLeftIcon size={12} onClick={() => console.log('left')} />}
+          iconBeforeActionable
+          iconAfter={<ArrowRightIcon size={12} onClick={() => console.log('right')} />}
+          iconAfterActionable
+          id={`demo-transitional-labeled-textbox-icon-actionable-${variant}`}
           label="Super fantastic label"
           onChange={(event, value) => console.log(value)}
           transitional

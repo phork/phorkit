@@ -246,8 +246,9 @@ input.formboxInput[type='number'] {
 
   &:focus,
   &:hover,
-  &.is-hovereded {
+  &.is-hovered {
     color: var(--formbox-icon-hovered-color);
+    outline: none;
   }
 }
 
