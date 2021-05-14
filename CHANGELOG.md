@@ -1,5 +1,15 @@
 # Changelog
 
+## [6.1.3](https://github.com/phork/phorkit/compare/v6.1.2...v6.1.3) (2021-05-14)
+
+### ♻ Code Refactoring
+
+- move focus event from list component to dropdown ([fbd2fa9](https://github.com/phork/phorkit/commit/fbd2fa9))
+
+### 🐛 Bug Fixes
+
+- fix dropdown focus styles and click to close jumpiness ([04decee](https://github.com/phork/phorkit/commit/04decee))
+
 ## [6.1.2](https://github.com/phork/phorkit/compare/v6.1.1...v6.1.2) (2021-05-13)
 
 ### ♻ Code Refactoring
