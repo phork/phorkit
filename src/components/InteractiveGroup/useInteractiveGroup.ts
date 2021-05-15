@@ -19,6 +19,8 @@ import {
 } from './interactiveGroupSelector';
 import { InteractiveGroupItemType } from './types';
 
+export type InteractiveGroupSelectedId = string | string[];
+
 export interface UseInteractiveGroupInterface {
   allowMultiSelect?: boolean;
   /* This will allow an already selected item to be re-triggered */
@@ -31,8 +33,16 @@ export interface UseInteractiveGroupInterface {
   onItemClick?: (event: React.MouseEvent | React.TouchEvent, id: string) => void;
   onItemFocus?: (event: InteractiveGroupEventTypes['event'] | undefined, props: { id: string; index: number }) => void;
   onKeyDown?: (event: KeyboardEvent, props?: { used?: boolean }) => void;
-  onSelect?: (event: InteractiveGroupEventTypes['event'], props: { id?: string; index?: number }) => void;
-  onUnselect?: (event: InteractiveGroupEventTypes['event'], props: { id?: string }) => void;
+  onSelect?: (
+    event: InteractiveGroupEventTypes['event'],
+    props: { id?: string; index?: number },
+    selected?: InteractiveGroupSelectedId,
+  ) => void;
+  onUnselect?: (
+    event: InteractiveGroupEventTypes['event'],
+    props: { id?: string; index?: number },
+    selected?: InteractiveGroupSelectedId,
+  ) => void;
   parentRef?: React.RefObject<HTMLElement>;
   selectOnFocus?: boolean;
   /** If this is set and an item contains a link, when the item is selected that link will be triggered */
@@ -44,7 +54,7 @@ export type UseInteractiveGroupResponse<E extends HTMLElement = HTMLDivElement, 
   handleItemClick: (event: React.MouseEvent<I> | React.TouchEvent<I>, id: string) => void;
   ref: React.Ref<E>;
   isSelected: (id: string) => boolean;
-  selectedId?: string | string[];
+  selectedId?: InteractiveGroupSelectedId;
   setFocused: (id: string, props: Parameters<GeneratedInteractiveGroupActions['setFocusedByIndex']>[1]) => void;
   setSelected: GeneratedInteractiveGroupActions['setSelected'];
   unsetSelected: GeneratedInteractiveGroupActions['unsetSelected'];
@@ -173,19 +183,28 @@ export function useInteractiveGroup<E extends HTMLElement = HTMLDivElement, I ex
 
       const handleSelectedId = (id: string | undefined, allowReselect?: boolean) => {
         if (id && onSelect && (allowReselect || !wasPreviouslySelected(id))) {
-          onSelect(selectedEvent, {
-            ...items.getItemById(id),
-            id,
-            index: items.getIndexById(id),
-          });
+          onSelect(
+            selectedEvent,
+            {
+              ...items.getItemById(id),
+              id,
+              index: items.getIndexById(id),
+            },
+            selectedId,
+          );
         }
       };
 
       const handleUnselectedId = (id: string | undefined) => {
         if (id && onUnselect && !isCurrentlySelected(id)) {
-          onUnselect(unselectedEvent, {
-            id,
-          });
+          onUnselect(
+            unselectedEvent,
+            {
+              id,
+              index: items.getIndexById(id),
+            },
+            selectedId,
+          );
         }
       };
 

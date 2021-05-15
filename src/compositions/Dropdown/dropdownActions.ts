@@ -59,12 +59,12 @@ export type DropdownStateActionSetOptions = {
 
 export type DropdownStateActionSetSelected = {
   type: dropdownActions.SET_SELECTED;
-  selected: DropdownOption | undefined;
+  selected: DropdownOption | DropdownOption[] | undefined;
 };
 
 export type DropdownStateActionSetSelectedAndHideDropdown = {
   type: dropdownActions.SET_SELECTED_AND_HIDE_DROPDOWN;
-  selected: DropdownOption | undefined;
+  selected: DropdownOption | DropdownOption[] | undefined;
 };
 
 export type DropdownStateActionShowDropdown = {

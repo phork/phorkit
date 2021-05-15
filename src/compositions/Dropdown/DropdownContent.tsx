@@ -3,6 +3,7 @@ import React, { useImperativeHandle, useMemo, useRef } from 'react';
 import { MergeElementProps, ThemeProps } from '../../types';
 import { useAccessibility } from '../../context';
 import { useDeepFocus } from '../../hooks/useDeepFocus';
+import { InteractiveGroupSelectedId } from '../../components/InteractiveGroup/useInteractiveGroup';
 import { InteractiveList, InteractiveListProps } from '../InteractiveList/InteractiveList';
 import { DropdownEmpty, DropdownEmptyProps } from './DropdownEmpty';
 import { DropdownState } from './dropdownReducer';
@@ -15,8 +16,10 @@ import {
   DropdownListVariant,
   DropdownOption,
 } from './types';
+import { getListDefaults, isItemSelected } from './utils';
 
 export interface LocalDropdownContentProps extends ThemeProps {
+  allowMultiSelect?: boolean;
   /** This is used by DropdownWithTags so an item can be added, removed and re-added */
   allowReselect?: boolean;
   className?: string;
@@ -27,7 +30,6 @@ export interface LocalDropdownContentProps extends ThemeProps {
   isEmpty?: boolean;
   layout: DropdownLayout;
   listColor?: DropdownListColor;
-  listDefaults: { variant: DropdownListVariant; size: DropdownListSize; color: DropdownListColor };
   listSize?: DropdownListSize;
   listVariant?: DropdownListVariant;
   onItemFocus: InteractiveListProps['onItemFocus'];
@@ -35,8 +37,8 @@ export interface LocalDropdownContentProps extends ThemeProps {
   onListFocus: React.FocusEventHandler<HTMLDivElement>;
   onListKeyDown: InteractiveListProps['onKeyDown'];
   onSelect: InteractiveListProps['onSelect'];
-  onUnselect: () => void;
-  options: DropdownOption[];
+  onUnselect: InteractiveListProps['onUnselect'];
+  options?: DropdownOption[];
   parentRef: React.RefObject<HTMLDivElement>;
   state: Pick<DropdownState, 'clearFocus' | 'input' | 'listFocus' | 'listVisible' | 'selected'>;
 }
@@ -50,6 +52,7 @@ export interface DropdownContentHandles {
 
 function DropdownContentBase(
   {
+    allowMultiSelect,
     allowReselect,
     className,
     parentRef,
@@ -61,7 +64,6 @@ function DropdownContentBase(
     isEmpty,
     layout = 'raised',
     listColor,
-    listDefaults,
     listSize,
     listVariant,
     onItemFocus,
@@ -79,15 +81,14 @@ function DropdownContentBase(
   forwardedRef: React.ForwardedRef<DropdownContentHandles>,
 ): React.ReactElement<HTMLDivElement> | null {
   const accessible = useAccessibility();
+  const initialSelected = useRef<InteractiveGroupSelectedId | undefined>(
+    (Array.isArray(state.selected) ? state.selected.map(({ id }) => id) : state.selected?.id) || undefined,
+  );
 
   const containerRef = useRef<HTMLDivElement>(null!);
   const listRef = useRef<HTMLUListElement>(null!);
 
-  const { focused, handleBlur, handleFocus } = useDeepFocus<HTMLDivElement>(containerRef, {
-    onBlur: onListBlur ? event => onListBlur(event) : undefined,
-    onFocus: onListFocus ? event => onListFocus(event) : undefined,
-  });
-
+  // the parent component can call forwardedRef.current.container and forwardedRef.current.list
   useImperativeHandle(forwardedRef, () => ({
     get container(): HTMLDivElement {
       return containerRef.current;
@@ -97,10 +98,27 @@ function DropdownContentBase(
     },
   }));
 
+  const { focused, handleBlur, handleFocus } = useDeepFocus<HTMLDivElement>(containerRef, {
+    onBlur: onListBlur ? event => onListBlur(event) : undefined,
+    onFocus: onListFocus ? event => onListFocus(event) : undefined,
+  });
+
+  /**
+   * Remove the selected label from the items because the
+   * interactive list doesn't need it, and add a disabled
+   * and highlighted flag.
+   */
   const items = useMemo(
-    () => options?.map(({ selectedLabel, ...option }) => ({ ...option, disabled: disabledIds?.includes(option.id) })),
-    [disabledIds, options],
+    () =>
+      options?.map(({ selectedLabel, ...option }) => ({
+        ...option,
+        disabled: disabledIds?.includes(option.id),
+        highlighted: isItemSelected(option, state.selected),
+      })),
+    [disabledIds, options, state.selected],
   );
+
+  const listDefaults = getListDefaults(layout);
 
   return items ? (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
@@ -121,15 +139,16 @@ function DropdownContentBase(
     >
       <div className={cx(styles.dropdownOptions, isEmpty && styles['is-empty'])}>
         <InteractiveList
+          allowMultiSelect={allowMultiSelect}
           allowReselect={allowReselect}
-          // mimicSelectOnFocus is necessary so that keyboard navigation doesn't keep selecting items but it looks like a regular dropdown
           color={listColor || listDefaults.color}
           contrast={contrast}
           disabled={!state.listVisible || state.clearFocus}
           focused={focused}
           hideFocusOutline
-          initialSelected={state.selected ? state.selected.id : undefined}
+          initialSelected={initialSelected.current}
           items={items}
+          // mimicSelectOnFocus is necessary so that keyboard navigation doesn't keep selecting items but it looks like a regular dropdown
           mimicSelectOnFocus
           onItemFocus={onItemFocus}
           onKeyDown={onListKeyDown}

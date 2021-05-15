@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useComponentId } from '../../hooks/useComponentId';
 import { useThemeId } from '../../hooks/useThemeId';
-import { substituteTranslationArgs, useTranslations } from '../../hooks/useTranslations';
 import { TimesIcon } from '../../icons/TimesIcon';
 import { Flex } from '../../components/Flex';
 import { IconText } from '../../components/IconText';
@@ -11,16 +10,6 @@ import { TypographyWithSvg } from '../../components/Typography';
 import { Dropdown, DropdownProps } from './Dropdown';
 import { DropdownContent } from './DropdownContent';
 import { DropdownOption } from './types';
-
-export type DropdownWithTagsTranslations = {
-  numSelectedSingular: string;
-  numSelectedPlural: string;
-};
-
-export const dropdownWithTagsTranslations: DropdownWithTagsTranslations = {
-  numSelectedSingular: '{0} item selected',
-  numSelectedPlural: '{0} items selected',
-};
 
 export type DropdownWithTagsOption = DropdownOption & {
   tagProps?: TagProps<'button'>;
@@ -34,7 +23,6 @@ export interface DropdownWithTagsProps extends Omit<DropdownProps, 'initialSelec
   tagShape?: TagShape;
   tagSize?: TagSize;
   tagVariant?: TagVariant;
-  translations?: DropdownWithTagsTranslations;
 }
 
 export function DropdownWithTags({
@@ -42,8 +30,9 @@ export function DropdownWithTags({
   id,
   initialSelected = [],
   onSelect,
+  onSelectionChange,
+  onUnselect,
   options,
-  readOnlyValue,
   tagGroupProps,
   tagShape = 'pill',
   tagSize = 'xsmall',
@@ -54,6 +43,7 @@ export function DropdownWithTags({
 }: DropdownWithTagsProps): React.ReactElement<DropdownWithTagsProps, 'div'> | null {
   const dropdownRef = useRef<HTMLInputElement>(null!);
   const tagRef = useRef<HTMLButtonElement>(null!);
+  const isDropdownOpen = useRef<boolean>(false);
   const previousNumSelected = useRef<number>(initialSelected?.length || 0);
   const [selected, setSelected] = useState<DropdownOption[]>(initialSelected);
   const { generateComponentId } = useComponentId();
@@ -70,15 +60,17 @@ export function DropdownWithTags({
     [options],
   );
 
-  const translations = useTranslations<DropdownWithTagsTranslations>({
-    customTranslations,
-    fallbackTranslations: dropdownWithTagsTranslations,
-  });
-  const { numSelectedSingular, numSelectedPlural } = translations;
-
-  // if a tag is removed then change the focus to the first tag or, if none, the input
+  /**
+   * If a tag is removed then change the focus to the first
+   * tag or, if none, the input. This must use useEffect
+   * rather than an onClick on the tag otherwise the redraw
+   * will break this.
+   *
+   * This should only fire when the dropdown is closed so
+   * that it doesn't take focus away from it.
+   */
   useEffect(() => {
-    if (selected.length !== previousNumSelected.current) {
+    if (!isDropdownOpen.current && selected.length !== previousNumSelected.current) {
       if (selected.length < previousNumSelected.current) {
         if (selected.length >= 1) {
           tagRef.current?.focus();
@@ -90,48 +82,56 @@ export function DropdownWithTags({
     }
   }, [selected.length]);
 
-  const handleSelect = useCallback(
-    option => {
-      if (option && !selected.includes(option)) {
-        setSelected(selected => [...selected, option]);
-        onSelect && onSelect(option);
-      } else {
-        // update the selected items to close the dropdown
-        setSelected(selected => [...selected]);
-      }
+  const handleOpen = useCallback(() => {
+    isDropdownOpen.current = true;
+  }, []);
+
+  const handleClose = useCallback(() => {
+    isDropdownOpen.current = false;
+  }, []);
+
+  const handleSelect = useCallback<DropdownProps['onSelect']>(
+    (option, selected) => {
+      setSelected(selected as DropdownOption[]);
+      onSelect && onSelect(option, selected);
     },
-    [onSelect, selected],
+    [onSelect],
+  );
+
+  const handleUnselect = useCallback<DropdownProps['onUnselect']>(
+    (option, selected) => {
+      setSelected((selected ? selected : []) as DropdownOption[]);
+      onUnselect && onUnselect(option, selected);
+    },
+    [onUnselect],
   );
 
   const removeItem = (itemId: string) => {
     if (itemId) {
-      setSelected(selected => selected.filter(({ id }) => id !== itemId));
-    }
-  };
+      setSelected(selected => selected?.filter(({ id }) => id !== itemId));
 
-  const getNumSelectedLabel = (): string | undefined => {
-    if (selected.length > 0) {
-      return substituteTranslationArgs(
-        selected.length === 1 ? numSelectedSingular : numSelectedPlural,
-        selected.length,
-      );
+      if (selected.length >= 1) {
+        tagRef.current?.focus();
+      } else {
+        dropdownRef.current?.focus();
+      }
     }
-    return undefined;
   };
 
   return (
     <Flex direction="column">
       <Dropdown
-        allowReselect
+        allowMultiSelect
         contrast={contrast}
-        disabledIds={selected.map(({ id }) => id)}
         dropdownContent={DropdownContent}
-        forgetSelection
         id={id}
         inputRef={dropdownRef}
+        onClose={handleClose}
+        onOpen={handleOpen}
         onSelect={handleSelect}
+        onSelectionChange={onSelectionChange}
+        onUnselect={handleUnselect}
         options={strippedOptions}
-        readOnlyValue={readOnlyValue || getNumSelectedLabel()}
         themeId={themeId}
         {...props}
       />

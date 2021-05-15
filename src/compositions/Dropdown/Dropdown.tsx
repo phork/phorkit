@@ -1,11 +1,12 @@
 import { cx } from '@emotion/css';
 import debounce from 'lodash.debounce';
-import React, { useCallback, useMemo, useEffect, useReducer, useRef } from 'react';
+import React, { useCallback, useEffect, useReducer, useRef } from 'react';
 import { v4 as uuid } from 'uuid';
 import { StateColor, ThemeProps } from '../../types';
 import { useClickAndEscape } from '../../hooks/useClickAndEscape';
 import { useSafeTimeout } from '../../hooks/useSafeTimeout';
 import { useThemeId } from '../../hooks/useThemeId';
+import { useTranslations } from '../../hooks/useTranslations';
 import { makeCombineRefs } from '../../utils/combineRefs';
 import { SearchIcon } from '../../icons';
 import { ArrowDownIcon } from '../../icons/ArrowDownIcon';
@@ -15,14 +16,26 @@ import { DropdownContent, DropdownContentProps, DropdownContentHandles } from '.
 import { dropdownActions as ACTIONS } from './dropdownActions';
 import { dropdownReducer as reducer } from './dropdownReducer';
 import styles from './styles/Dropdown.module.css';
-import { DropdownOption, DropdownInputVariant, DropdownLayout, DropdownListSize, DropdownListVariant } from './types';
+import { DropdownOption, DropdownInputVariant, DropdownLayout, DropdownTranslations } from './types';
+import { getDropdownSelectedView } from './utils';
+
+export const dropdownTranslations: DropdownTranslations = {
+  numSelectedSingular: '{0} item selected',
+  numSelectedPlural: '{0} items selected',
+};
 
 export interface DropdownProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'onSelect' | 'onSubmit'>,
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onInputChange' | 'onSelect' | 'onSubmit'>,
     Partial<
       Pick<
         DropdownContentProps,
-        'allowReselect' | 'emptyNotification' | 'listVariant' | 'listSize' | 'listColor' | 'onItemFocus'
+        | 'allowMultiSelect'
+        | 'allowReselect'
+        | 'emptyNotification'
+        | 'listVariant'
+        | 'listSize'
+        | 'listColor'
+        | 'onItemFocus'
       >
     >,
     ThemeProps {
@@ -31,33 +44,36 @@ export interface DropdownProps
   disabled?: boolean;
   disabledIds?: Array<DropdownOption['id']>;
   dropdownContent: typeof DropdownContent;
-  /** After the select events have been registered then reset the dropdown to empty */
-  forgetSelection?: boolean;
   iconBefore?: TextboxProps['iconBefore'];
   iconAfter?: TextboxProps['iconAfter'];
   id?: string;
-  initialSelected?: DropdownOption;
+  initialSelected?: DropdownOption | DropdownOption[];
   inputRef?: React.Ref<HTMLInputElement>;
   inputVariant?: DropdownInputVariant;
+  filterOptions?: (filter: string) => Promise<DropdownOption[]>;
   label?: string;
   layout?: DropdownLayout;
-  onChange?: (input?: string) => void;
   onClear?: () => void;
   onClose?: () => void;
-  onFilter?: (filter: string) => Promise<DropdownOption[]>;
+  onInputChange?: (input?: string) => void;
   onOpen?: () => void;
-  onSelect: (option?: DropdownOption) => void;
+  onSelect: (option: DropdownOption, selected: DropdownOption | DropdownOption[]) => void;
+  /** This fires when items are selected or unselected */
+  onSelectionChange: (selected: DropdownOption | DropdownOption[] | undefined) => void;
   onSubmit?: TextboxProps['onSubmit'];
+  onUnselect: (option: DropdownOption, selected: DropdownOption | DropdownOption[] | undefined) => void;
   options: DropdownOption[];
-  ref?: React.Ref<HTMLDivElement>;
   readOnlyValue?: React.ReactChild;
+  ref?: React.Ref<HTMLDivElement>;
   transitional?: boolean;
+  translations?: DropdownTranslations;
   validity?: StateColor;
 }
 
 /** The dropdown is a controlled component */
 function DropdownBase(
   {
+    allowMultiSelect,
     allowReselect,
     arrowIconSize = 8,
     className,
@@ -66,7 +82,6 @@ function DropdownBase(
     disabledIds,
     dropdownContent: DropdownContent,
     emptyNotification,
-    forgetSelection,
     iconAfter: initIconAfter,
     iconBefore: initIconBefore,
     id,
@@ -78,13 +93,15 @@ function DropdownBase(
     listVariant,
     listSize,
     listColor,
-    onChange,
+    onInputChange,
     onClear,
     onClose,
-    onFilter,
+    filterOptions,
     onItemFocus,
     onOpen,
     onSelect,
+    onSelectionChange,
+    onUnselect,
     onSubmit,
     options: initOptions,
     placeholder,
@@ -92,6 +109,7 @@ function DropdownBase(
     themeId: initThemeId,
     unthemed,
     transitional,
+    translations: customTranslations,
     validity,
     ...props
   }: DropdownProps,
@@ -113,9 +131,14 @@ function DropdownBase(
   const previous = useRef<{
     input?: string;
     isDropdownVisible?: boolean;
-    selected?: DropdownOption;
+    selected?: DropdownOption | DropdownOption[];
     options?: DropdownOption[];
   }>({});
+
+  const translations = useTranslations<DropdownTranslations>({
+    customTranslations,
+    fallbackTranslations: dropdownTranslations,
+  });
 
   const themeId = useThemeId(initThemeId);
   const [state, dispatch] = useReducer(reducer, {
@@ -126,32 +149,14 @@ function DropdownBase(
     inputFocus: false,
     listFocus: false,
     listVisible: false,
-    options: undefined,
+    options: initOptions,
     selected: initialSelected,
   });
 
-  const listDefaults = useMemo(
-    () =>
-      ({
-        raised: {
-          color: 'primary',
-          size: 'medium' as DropdownListSize,
-          variant: 'unboxed' as DropdownListVariant,
-        } as DropdownContentProps['listDefaults'],
-        contained: {
-          color: 'primary',
-          size: 'medium' as DropdownListSize,
-          variant: 'unboxed' as DropdownListVariant,
-        } as DropdownContentProps['listDefaults'],
-      }[layout]),
-    [layout],
-  );
-
-  const options = useMemo(() => state.options || initOptions, [state.options, initOptions]);
   const isFocused = state.inputFocus || state.listFocus || state.clearFocus;
   const isDropdownVisible = isFocused && state.listVisible;
-  const isEmpty = !options || !options.length;
-  const isClearable = onFilter && !!state.input && (state.inputFocus || state.clearFocus || isDropdownVisible);
+  const isEmpty = !state.options?.length;
+  const isClearable = filterOptions && !!state.input && (state.inputFocus || state.clearFocus || isDropdownVisible);
 
   const focusInput = () => inputRef.current?.focus();
   const focusList = () => contentRef.current?.list?.focus();
@@ -164,7 +169,7 @@ function DropdownBase(
   const handleClearFocus = useCallback(() => dispatch({ type: ACTIONS.SET_CLEAR_FOCUS }), []);
   const handleInputBlur = useCallback(() => dispatch({ type: ACTIONS.UNSET_INPUT_FOCUS }), []);
   const handleInputFocus = useCallback(() => dispatch({ type: ACTIONS.SET_INPUT_FOCUS }), []);
-  const handleInputClick = useCallback(() => !onFilter && focusList(), [onFilter]);
+  const handleInputClick = useCallback(() => !filterOptions && focusList(), [filterOptions]);
 
   const { setSafeTimeout } = useSafeTimeout();
   const safeHandleInputFocus = () => setSafeTimeout(handleInputFocus);
@@ -172,14 +177,14 @@ function DropdownBase(
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleFilter = useCallback(
     debounce(input => {
-      onFilter?.(input).then(options => {
+      filterOptions?.(input).then(options => {
         dispatch({
           type: ACTIONS.SET_OPTIONS,
           options,
         });
       });
     }, 1000),
-    [onFilter],
+    [filterOptions],
   );
 
   // define a cleanup event to cancel the filtering
@@ -189,37 +194,22 @@ function DropdownBase(
   useEffect(() => {
     if (isDropdownVisible !== previous.current.isDropdownVisible) {
       if (isDropdownVisible) {
-        !onFilter && focusList();
+        !filterOptions && focusList();
         onOpen && onOpen();
       } else {
         onClose && onClose();
       }
     }
     previous.current.isDropdownVisible = !!isDropdownVisible;
-  }, [isDropdownVisible, onFilter, onOpen, onClose]);
+  }, [isDropdownVisible, filterOptions, onOpen, onClose]);
 
   // when the options change ...
   useEffect(() => {
-    if (options !== previous.current.options) {
+    if (state.options !== previous.current.options) {
       handleShowDropdown();
     }
-    previous.current.options = options;
-  }, [handleShowDropdown, options]);
-
-  // when the selected item changes ...
-  useEffect(() => {
-    if (
-      state.selected !== previous.current.selected &&
-      Object.prototype.hasOwnProperty.call(previous.current, 'selected')
-    ) {
-      onSelect && onSelect(state.selected);
-
-      if (forgetSelection) {
-        dispatch({ type: ACTIONS.UNSET_SELECTED });
-      }
-    }
-    previous.current.selected = state.selected;
-  }, [state.selected, onSelect, forgetSelection]);
+    previous.current.options = state.options;
+  }, [handleShowDropdown, state.options]);
 
   // when the search or filter input changes ...
   useEffect(() => {
@@ -228,22 +218,66 @@ function DropdownBase(
         dispatch({ type: ACTIONS.SET_BUSY });
         handleFilter(state.input);
       }
-      onChange && onChange(state.input);
+      onInputChange && onInputChange(state.input);
     }
     previous.current.input = state.input;
-  }, [state.input, handleFilter, onChange]);
+  }, [state.input, handleFilter, onInputChange]);
 
-  const handleSelect: DropdownContentProps['onSelect'] = (event, { index }) => {
-    dispatch({
-      type:
-        event && (event.type === 'click' || (event.type === 'keydown' && 'key' in event && event.key === 'Enter'))
-          ? ACTIONS.SET_SELECTED_AND_HIDE_DROPDOWN
-          : ACTIONS.SET_SELECTED,
-      selected: index !== undefined ? options[index] : undefined,
-    });
+  // when the selected item(s) change due to either select or unselect ...
+  useEffect(() => {
+    if (
+      state.selected !== previous.current.selected &&
+      Object.prototype.hasOwnProperty.call(previous.current, 'selected')
+    ) {
+      onSelectionChange && onSelectionChange(state.selected);
+    }
+    previous.current.selected = state.selected;
+  }, [state.selected, onSelect, onSelectionChange]);
+
+  const handleSelect: DropdownContentProps['onSelect'] = (event, { index }, selected) => {
+    if (index !== undefined) {
+      const selectedOptions = Array.isArray(selected)
+        ? state.options?.filter(({ id }) => selected.includes(id))
+        : state.options?.[index];
+
+      dispatch({
+        type:
+          event &&
+          !allowMultiSelect &&
+          (event.type === 'click' || (event.type === 'keydown' && 'key' in event && event.key === 'Enter'))
+            ? ACTIONS.SET_SELECTED_AND_HIDE_DROPDOWN
+            : ACTIONS.SET_SELECTED,
+        // the selected value(s) come in as IDs and need to be mapped to full options
+        selected: selectedOptions,
+      });
+
+      onSelect && onSelect(state.options![index], selectedOptions!);
+    }
   };
 
-  const handleUnselect: DropdownContentProps['onUnselect'] = () => dispatch({ type: ACTIONS.UNSET_SELECTED });
+  const handleUnselect: DropdownContentProps['onUnselect'] = (event, { index }, selected) => {
+    if (index !== undefined) {
+      const selectedOptions = Array.isArray(selected)
+        ? state.options?.filter(({ id }) => selected.includes(id))
+        : undefined;
+
+      if (Array.isArray(selected)) {
+        dispatch({
+          type:
+            event &&
+            !allowMultiSelect &&
+            (event.type === 'click' || (event.type === 'keydown' && 'key' in event && event.key === 'Enter'))
+              ? ACTIONS.SET_SELECTED_AND_HIDE_DROPDOWN
+              : ACTIONS.SET_SELECTED,
+          selected: selectedOptions,
+        });
+      } else {
+        dispatch({ type: ACTIONS.UNSET_SELECTED });
+      }
+
+      onUnselect && onUnselect(state.options![index], selectedOptions);
+    }
+  };
 
   const handleInputChange = useCallback(
     (
@@ -329,14 +363,9 @@ function DropdownBase(
     stopPropagation: isDropdownVisible,
   });
 
-  const showFilter = onFilter && (state.inputFocus || (isDropdownVisible && state.input));
-  const inputValue = showFilter
-    ? state.input
-    : state.selected &&
-      ((typeof state.selected.label === 'string' ? state.selected.label : undefined) ||
-        (typeof state.selected.label === 'number' ? state.selected.label : undefined) ||
-        state.selected.value);
-  const selectedView = state.selected?.selectedLabel;
+  const showFilter = !!(filterOptions && (state.inputFocus || (isDropdownVisible && state.input)));
+  const inputValue = showFilter ? state.input : undefined;
+  const selectedView = getDropdownSelectedView({ allowMultiSelect, state, translations });
   const color = contrast ? 'contrast' : 'primary';
 
   // remove the dropdown arrows to make room for the clearable "x"
@@ -383,7 +412,7 @@ function DropdownBase(
         iconBefore={iconBefore}
         id={state.id}
         // the key is used to force an update on select
-        key={initialSelected && initialSelected.id}
+        key={Array.isArray(state.selected) ? state.selected.length : state.selected?.id}
         label={label}
         onBlur={handleInputBlur}
         onChange={handleInputChange}
@@ -393,13 +422,13 @@ function DropdownBase(
         onIconFocus={handleClearFocus}
         onSubmit={onSubmit}
         placeholder={placeholder}
-        readOnly={!onFilter}
+        readOnly={!filterOptions}
         readOnlyValue={readOnlyValue || selectedView}
         ref={combineInputRefs}
-        role={onFilter ? undefined : 'button'}
+        role={filterOptions ? undefined : 'button'}
         silentReadOnly
         // don't allow this to be tabbed to if input is read only and focus is already in the component
-        tabIndex={isFocused && !onFilter ? -1 : 0}
+        tabIndex={isFocused && !filterOptions ? -1 : 0}
         themeId={themeId}
         transitional={transitional}
         transparent={layout === 'contained' && isDropdownVisible && ['underline', 'filled'].includes(inputVariant)}
@@ -410,6 +439,7 @@ function DropdownBase(
       />
 
       <DropdownContent
+        allowMultiSelect={allowMultiSelect}
         allowReselect={allowReselect}
         contrast={contrast}
         disabledIds={disabledIds}
@@ -419,7 +449,6 @@ function DropdownBase(
         isEmpty={isEmpty}
         layout={layout}
         listColor={listColor}
-        listDefaults={listDefaults}
         listSize={listSize}
         listVariant={listVariant}
         onItemFocus={onItemFocus}
@@ -428,7 +457,7 @@ function DropdownBase(
         onListKeyDown={handleListKeyDown}
         onSelect={handleSelect}
         onUnselect={handleUnselect}
-        options={options}
+        options={state.options}
         parentRef={ref}
         ref={contentRef}
         state={state}

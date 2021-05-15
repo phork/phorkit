@@ -10,7 +10,7 @@ export type DropdownState = {
   listFocus?: boolean;
   listVisible?: boolean;
   options?: DropdownOption[];
-  selected?: DropdownOption;
+  selected?: DropdownOption | DropdownOption[];
 };
 
 export function dropdownReducer(state: DropdownState, action: DropdownStateAction): DropdownState {
