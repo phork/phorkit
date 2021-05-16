@@ -1,5 +1,15 @@
 # Changelog
 
+# [6.2.0](https://github.com/phork/phorkit/compare/v6.1.3...v6.2.0) (2021-05-16)
+
+### ✨ Features
+
+- add more customization options to DropdownWithTags ([ac3c710](https://github.com/phork/phorkit/commit/ac3c710))
+
+### 🐛 Bug Fixes
+
+- add tabIndex to formbox actionable icons ([cce9641](https://github.com/phork/phorkit/commit/cce9641))
+
 ## [6.1.3](https://github.com/phork/phorkit/compare/v6.1.2...v6.1.3) (2021-05-14)
 
 ### ♻ Code Refactoring
