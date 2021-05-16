@@ -14,8 +14,6 @@ type ExplicitProviderProps = Pick<
   UnmanagedInteractiveGroupProviderProps<string, HTMLUListElement, HTMLLIElement>,
   | 'allowReselect'
   | 'disabled'
-  | 'initialSelected'
-  | 'items'
   | 'maxSelect'
   | 'minSelect'
   | 'onItemClick'
@@ -33,7 +31,6 @@ export interface LocalUnmanagedInteractiveListProps extends ExplicitProviderProp
   children: React.ReactNode;
   /** The focused state can be set outside of this component so that focus styles can be applied when, for example, a parent is focused */
   focused?: boolean;
-  items: (Omit<InteractiveListItemProps, 'onClick'> & { selectedLabel?: string })[];
   listComponent?: typeof List;
   providerProps?: Omit<
     UnmanagedInteractiveGroupProviderProps<string, HTMLUListElement, HTMLLIElement>,
@@ -51,8 +48,6 @@ function UnmanagedInteractiveListBase(
     children,
     disabled,
     focused,
-    initialSelected,
-    items,
     listComponent,
     maxSelect,
     mimicSelectOnFocus,
@@ -79,6 +74,9 @@ function UnmanagedInteractiveListBase(
   const ref = useRef<HTMLUListElement>(null!);
   const combineRefs = makeCombineRefs<HTMLUListElement>(ref, forwardedRef);
 
+  const [state] = reducer;
+  const items = state.items.getAll();
+
   const themeId = useThemeId(initThemeId);
 
   // this allows the consumer to passed a styled list which can react to accessible, focused, etc.
@@ -88,8 +86,6 @@ function UnmanagedInteractiveListBase(
     <UnmanagedInteractiveGroupProvider<string, HTMLUListElement, HTMLLIElement>
       allowReselect={allowReselect}
       disabled={disabled}
-      initialSelected={initialSelected}
-      items={items}
       maxSelect={maxSelect}
       minSelect={minSelect}
       onItemClick={onItemClick}

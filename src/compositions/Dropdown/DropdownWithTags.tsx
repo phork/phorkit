@@ -93,19 +93,19 @@ export function DropdownWithTags({
   }, []);
 
   const handleSelect = useCallback<NonNullable<DropdownProps['onSelect']>>(
-    (option, selected) => {
-      setSelected(selected as DropdownOption[]);
-      onSelect && onSelect(option, selected);
+    (option, selectedIds) => {
+      setSelected(options.filter(({ id }) => selectedIds.includes(id)));
+      onSelect && onSelect(option, selectedIds);
     },
-    [onSelect],
+    [onSelect, options],
   );
 
   const handleUnselect = useCallback<NonNullable<DropdownProps['onUnselect']>>(
-    (option, selected) => {
-      setSelected((selected ? selected : []) as DropdownOption[]);
-      onUnselect && onUnselect(option, selected);
+    (option, selectedIds) => {
+      setSelected(options.filter(({ id }) => selectedIds?.includes(id)));
+      onUnselect && onUnselect(option, selectedIds);
     },
-    [onUnselect],
+    [onUnselect, options],
   );
 
   const removeItem = (itemId: string) => {

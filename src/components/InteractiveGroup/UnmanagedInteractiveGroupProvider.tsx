@@ -29,8 +29,6 @@ export function UnmanagedInteractiveGroupProvider<
   allowReselect,
   children,
   disabled,
-  initialSelected,
-  items,
   maxSelect,
   minSelect,
   onItemClick,
@@ -60,7 +58,6 @@ export function UnmanagedInteractiveGroupProvider<
   } = useInteractiveGroup<T, E, I>({
     allowReselect,
     disabled,
-    items,
     maxSelect,
     minSelect,
     onItemClick,

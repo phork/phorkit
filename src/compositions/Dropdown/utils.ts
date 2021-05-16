@@ -1,47 +1,44 @@
 import { substituteTranslationArgs } from '../../hooks/useTranslations';
-import { DropdownState } from './dropdownReducer';
+import { InteractiveGroupState } from '../../components/InteractiveGroup/interactiveGroupReducer';
 import {
   DropdownListSize,
   DropdownListVariant,
-  DropdownOption,
   DropdownTranslations,
   DropdownLayout,
   DropdownListColor,
+  DropdownOption,
 } from './types';
 
 export const getDropdownSelectedView = ({
+  options,
   maxSelect,
-  state,
+  selectedState,
   translations,
 }: {
+  options: DropdownOption[];
   maxSelect: number;
-  state: DropdownState;
+  selectedState: InteractiveGroupState<string>;
   translations: DropdownTranslations;
 }): React.ReactChild | undefined => {
   if (maxSelect === -1 || maxSelect > 1) {
     const { numSelectedSingular, numSelectedPlural } = translations;
 
-    if (Array.isArray(state.selected) && state.selected.length > 0) {
+    if (Array.isArray(selectedState.selectedIds) && selectedState.selectedIds.length > 0) {
       return substituteTranslationArgs(
-        state.selected.length === 1 ? numSelectedSingular : numSelectedPlural,
-        state.selected.length,
+        selectedState.selectedIds.length === 1 ? numSelectedSingular : numSelectedPlural,
+        selectedState.selectedIds.length,
       );
     }
     return undefined;
   }
 
-  if (state.selected && state.selected.length > 0) {
-    return state.selected[0]?.selectedLabel || state.selected[0]?.label;
+  if (selectedState.selectedIds && selectedState.selectedIds.length > 0) {
+    const selectedId = selectedState.selectedIds[0];
+    const selectedOption = options.find(({ id }) => id === selectedId);
+    return selectedOption?.selectedLabel || selectedOption?.label;
   }
 
   return undefined;
-};
-
-export const isItemSelected = (item: DropdownOption, selected: DropdownState['selected']): boolean => {
-  if (item && selected) {
-    return selected.some(({ id }) => id === item.id);
-  }
-  return false;
 };
 
 export const getListDefaults = (layout: DropdownLayout) => {

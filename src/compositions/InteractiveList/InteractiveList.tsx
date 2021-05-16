@@ -1,13 +1,16 @@
-import React, { Reducer, useReducer } from 'react';
+import React, { Reducer, useEffect, useReducer } from 'react';
 import {
+  getInteractiveGroupInitialState,
   InteractiveGroupState,
   InteractiveGroupStateAction,
   interactiveGroupReducer,
-  getInteractiveGroupInitialState,
+  InteractiveGroupProviderProps,
+  interactiveGroupActions as ACTIONS,
 } from '../../components/InteractiveGroup';
 import { UnmanagedInteractiveList, UnmanagedInteractiveListProps } from './UnmanagedInteractiveList';
 
-export type InteractiveListProps = Omit<UnmanagedInteractiveListProps, 'reducer'>;
+export type InteractiveListProps = Omit<UnmanagedInteractiveListProps, 'reducer'> &
+  Pick<InteractiveGroupProviderProps, 'initialSelected'>;
 
 /** The interactive list is a managed wrapper around the unmanaged interactive list */
 function InteractiveListBase(
@@ -19,15 +22,18 @@ function InteractiveListBase(
     getInteractiveGroupInitialState({ items, selectedIds: initialSelected }),
   );
 
-  return (
-    <UnmanagedInteractiveList
-      initialSelected={initialSelected}
-      items={items}
-      reducer={reducer}
-      ref={forwardedRef}
-      {...props}
-    />
-  );
+  const [, dispatch] = reducer;
+
+  // this is a managed component so we must watch for items changes
+  useEffect(() => {
+    dispatch({
+      items: items || [],
+      timestamp: Date.now(),
+      type: ACTIONS.SET_ITEMS,
+    });
+  }, [dispatch, items]);
+
+  return <UnmanagedInteractiveList reducer={reducer} ref={forwardedRef} {...props} />;
 }
 
 export const InteractiveList = React.forwardRef(InteractiveListBase) as typeof InteractiveListBase;

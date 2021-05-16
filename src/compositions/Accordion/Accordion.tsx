@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { ThemeProps } from '../../types';
 import { useComponentId } from '../../hooks/useComponentId';
-import { InteractiveGroupProvider } from '../../components/InteractiveGroup/InteractiveGroupProvider';
-import { UseInteractiveGroupInterface } from '../../components/InteractiveGroup/useInteractiveGroup';
+import {
+  InteractiveGroupProvider,
+  InteractiveGroupProviderProps,
+} from '../../components/InteractiveGroup/InteractiveGroupProvider';
 import { ListRegistryProvider } from '../../components/ListRegistry/ListRegistryProvider';
 import { AccordionContainer } from './AccordionContainer';
 import { AccordionList, AccordionListProps } from './AccordionList';
@@ -18,7 +20,7 @@ export type AccordionRenderChildren = (
 ) => React.ReactElement<HTMLDivElement>;
 
 export interface AccordionProps
-  extends Pick<UseInteractiveGroupInterface, 'maxSelect' | 'minSelect' | 'initialSelected' | 'onSelect'>,
+  extends Pick<InteractiveGroupProviderProps, 'maxSelect' | 'minSelect' | 'initialSelected' | 'onSelect'>,
     Pick<AccordionListProps, 'duration' | 'easing' | 'horizontal' | 'items' | 'variant'>,
     ThemeProps {
   children?: AccordionRenderChildren;

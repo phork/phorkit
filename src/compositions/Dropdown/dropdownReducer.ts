@@ -1,5 +1,4 @@
 import { dropdownActions as ACTIONS, DropdownStateAction } from './dropdownActions';
-import { DropdownOption } from './types';
 
 export type DropdownState = {
   busy?: boolean;
@@ -9,8 +8,6 @@ export type DropdownState = {
   inputFocus?: boolean;
   listFocus?: boolean;
   listVisible?: boolean;
-  options?: DropdownOption[];
-  selected?: DropdownOption[];
 };
 
 export function dropdownReducer(state: DropdownState, action: DropdownStateAction): DropdownState {
@@ -19,7 +16,6 @@ export function dropdownReducer(state: DropdownState, action: DropdownStateActio
       return {
         ...state,
         input: '',
-        options: undefined,
       };
 
     case ACTIONS.HIDE_DROPDOWN:
@@ -58,26 +54,6 @@ export function dropdownReducer(state: DropdownState, action: DropdownStateActio
         listFocus: true,
       };
 
-    case ACTIONS.SET_OPTIONS:
-      return {
-        ...state,
-        busy: false,
-        options: action.options,
-      };
-
-    case ACTIONS.SET_SELECTED:
-      return {
-        ...state,
-        selected: action.selected,
-      };
-
-    case ACTIONS.SET_SELECTED_AND_HIDE_DROPDOWN:
-      return {
-        ...state,
-        selected: action.selected,
-        listVisible: false,
-      };
-
     case ACTIONS.SHOW_DROPDOWN:
       return {
         ...state,
@@ -88,12 +64,6 @@ export function dropdownReducer(state: DropdownState, action: DropdownStateActio
       return {
         ...state,
         listVisible: !state.listVisible,
-      };
-
-    case ACTIONS.UNSET_SELECTED:
-      return {
-        ...state,
-        selected: undefined,
       };
 
     case ACTIONS.UNSET_CLEAR_FOCUS:

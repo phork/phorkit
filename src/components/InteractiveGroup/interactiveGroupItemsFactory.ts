@@ -7,6 +7,10 @@ export class InteractiveGroupItems<T extends InteractiveGroupItemId = string> {
     this.items = items;
   }
 
+  public getAll(): InteractiveGroupItemType<T>[] {
+    return this.items;
+  }
+
   public getItemId(item: InteractiveGroupItemType<T>): T {
     return item.id;
   }

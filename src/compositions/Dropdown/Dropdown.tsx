@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import debounce from 'lodash.debounce';
-import React, { useCallback, useEffect, useReducer, useRef } from 'react';
+import React, { Reducer, useCallback, useEffect, useReducer, useRef } from 'react';
 import { v4 as uuid } from 'uuid';
 import { StateColor, ThemeProps } from '../../types';
 import { useClickAndEscape } from '../../hooks/useClickAndEscape';
@@ -12,9 +12,15 @@ import { SearchIcon } from '../../icons';
 import { ArrowDownIcon } from '../../icons/ArrowDownIcon';
 import { SpinnerIcon } from '../../icons/SpinnerIcon';
 import { Textbox, TextboxProps } from '../../components/Form/Textbox/Textbox';
+import { InteractiveGroupStateAction } from '../../components/InteractiveGroup/interactiveGroupActions';
+import {
+  getInteractiveGroupInitialState,
+  interactiveGroupReducer,
+  InteractiveGroupState,
+} from '../../components/InteractiveGroup/interactiveGroupReducer';
 import { DropdownContent, DropdownContentProps, DropdownContentHandles } from './DropdownContent';
 import { dropdownActions as ACTIONS } from './dropdownActions';
-import { dropdownReducer as reducer } from './dropdownReducer';
+import { dropdownReducer } from './dropdownReducer';
 import styles from './styles/Dropdown.module.css';
 import { DropdownOption, DropdownInputVariant, DropdownLayout, DropdownTranslations } from './types';
 import { getDropdownSelectedView } from './utils';
@@ -58,11 +64,11 @@ export interface DropdownProps
   onClose?: () => void;
   onInputChange?: (input?: string) => void;
   onOpen?: () => void;
-  onSelect?: (option: DropdownOption, selected: DropdownOption[]) => void;
+  onSelect?: (option: DropdownOption, selectedIds: string[]) => void;
   /** This fires when items are selected or unselected */
-  onSelectionChange?: (selected: DropdownOption[] | undefined) => void;
+  onSelectionChange?: (selectedIds: string[] | undefined) => void;
   onSubmit?: TextboxProps['onSubmit'];
-  onUnselect?: (option: DropdownOption, selected: DropdownOption[] | undefined) => void;
+  onUnselect?: (option: DropdownOption, selectedIds: string[] | undefined) => void;
   options: DropdownOption[];
   readOnlyValue?: React.ReactChild;
   ref?: React.Ref<HTMLDivElement>;
@@ -105,7 +111,7 @@ function DropdownBase(
     onSelectionChange,
     onUnselect,
     onSubmit,
-    options: initOptions,
+    options,
     placeholder,
     readOnlyValue,
     themeId: initThemeId,
@@ -117,6 +123,14 @@ function DropdownBase(
   }: DropdownProps,
   forwardedRef: React.ForwardedRef<HTMLDivElement>,
 ): React.ReactElement<DropdownProps, 'div'> {
+  const reducer = useReducer<Reducer<InteractiveGroupState<string>, InteractiveGroupStateAction<string>>>(
+    interactiveGroupReducer,
+    getInteractiveGroupInitialState({ items: [], selectedIds: initialSelected?.map(({ id }) => id) }),
+  );
+
+  // the state is managed by the interactive list, but this is for reading
+  const [selectedState] = reducer;
+
   const ref = useRef<HTMLDivElement>(null!);
   const contentRef = useRef<DropdownContentHandles>(null!);
   const inputRef = useRef<HTMLInputElement>(null!);
@@ -133,7 +147,7 @@ function DropdownBase(
   const previous = useRef<{
     input?: string;
     isDropdownVisible?: boolean;
-    selected?: DropdownOption[];
+    selectedIds?: string[];
     options?: DropdownOption[];
   }>({});
 
@@ -143,7 +157,7 @@ function DropdownBase(
   });
 
   const themeId = useThemeId(initThemeId);
-  const [state, dispatch] = useReducer(reducer, {
+  const [dropdownState, dropdownDispatch] = useReducer(dropdownReducer, {
     busy: false,
     clearFocus: false,
     id: id || uuid(),
@@ -151,26 +165,27 @@ function DropdownBase(
     inputFocus: false,
     listFocus: false,
     listVisible: false,
-    options: initOptions,
-    selected: initialSelected,
   });
 
-  const isFocused = state.inputFocus || state.listFocus || state.clearFocus;
-  const isDropdownVisible = isFocused && state.listVisible;
-  const isEmpty = !state.options?.length;
-  const isClearable = filterOptions && !!state.input && (state.inputFocus || state.clearFocus || isDropdownVisible);
+  const isFocused = dropdownState.inputFocus || dropdownState.listFocus || dropdownState.clearFocus;
+  const isDropdownVisible = isFocused && dropdownState.listVisible;
+  const isEmpty = !selectedState.items?.getAll().length;
+  const isClearable =
+    filterOptions &&
+    !!dropdownState.input &&
+    (dropdownState.inputFocus || dropdownState.clearFocus || isDropdownVisible);
 
   const focusInput = () => inputRef.current?.focus();
   const focusList = () => contentRef.current?.list?.focus();
 
-  const handleHideDropdown = useCallback(() => dispatch({ type: ACTIONS.HIDE_DROPDOWN }), []);
-  const handleShowDropdown = useCallback(() => dispatch({ type: ACTIONS.SHOW_DROPDOWN }), []);
-  const handleListBlur = useCallback(() => dispatch({ type: ACTIONS.UNSET_LIST_FOCUS }), []);
-  const handleListFocus = useCallback(() => dispatch({ type: ACTIONS.SET_LIST_FOCUS }), []);
-  const handleClearBlur = useCallback(() => dispatch({ type: ACTIONS.UNSET_CLEAR_FOCUS }), []);
-  const handleClearFocus = useCallback(() => dispatch({ type: ACTIONS.SET_CLEAR_FOCUS }), []);
-  const handleInputBlur = useCallback(() => dispatch({ type: ACTIONS.UNSET_INPUT_FOCUS }), []);
-  const handleInputFocus = useCallback(() => dispatch({ type: ACTIONS.SET_INPUT_FOCUS }), []);
+  const hideDropdown = useCallback(() => dropdownDispatch({ type: ACTIONS.HIDE_DROPDOWN }), []);
+  const showDropdown = useCallback(() => dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN }), []);
+  const handleListBlur = useCallback(() => dropdownDispatch({ type: ACTIONS.UNSET_LIST_FOCUS }), []);
+  const handleListFocus = useCallback(() => dropdownDispatch({ type: ACTIONS.SET_LIST_FOCUS }), []);
+  const handleClearBlur = useCallback(() => dropdownDispatch({ type: ACTIONS.UNSET_CLEAR_FOCUS }), []);
+  const handleClearFocus = useCallback(() => dropdownDispatch({ type: ACTIONS.SET_CLEAR_FOCUS }), []);
+  const handleInputBlur = useCallback(() => dropdownDispatch({ type: ACTIONS.UNSET_INPUT_FOCUS }), []);
+  const handleInputFocus = useCallback(() => dropdownDispatch({ type: ACTIONS.SET_INPUT_FOCUS }), []);
   const handleInputClick = useCallback(() => !filterOptions && focusList(), [filterOptions]);
 
   const { setSafeTimeout } = useSafeTimeout();
@@ -180,7 +195,7 @@ function DropdownBase(
   const handleFilter = useCallback(
     debounce(input => {
       filterOptions?.(input).then(options => {
-        dispatch({
+        dropdownDispatch({
           type: ACTIONS.SET_OPTIONS,
           options,
         });
@@ -207,73 +222,65 @@ function DropdownBase(
 
   // when the options change ...
   useEffect(() => {
-    if (state.options !== previous.current.options) {
-      handleShowDropdown();
+    if (options !== previous.current.options) {
+      showDropdown();
     }
-    previous.current.options = state.options;
-  }, [handleShowDropdown, state.options]);
+    previous.current.options = options;
+  }, [showDropdown, options]);
 
   // when the search or filter input changes ...
   useEffect(() => {
-    if (state.input !== previous.current.input && Object.prototype.hasOwnProperty.call(previous.current, 'input')) {
-      if (state.input) {
-        dispatch({ type: ACTIONS.SET_BUSY });
-        handleFilter(state.input);
+    if (
+      dropdownState.input !== previous.current.input &&
+      Object.prototype.hasOwnProperty.call(previous.current, 'input')
+    ) {
+      if (dropdownState.input) {
+        dropdownDispatch({ type: ACTIONS.SET_BUSY });
+        handleFilter(dropdownState.input);
       }
-      onInputChange && onInputChange(state.input);
+      onInputChange && onInputChange(dropdownState.input);
     }
-    previous.current.input = state.input;
-  }, [state.input, handleFilter, onInputChange]);
+    previous.current.input = dropdownState.input;
+  }, [dropdownState.input, handleFilter, onInputChange]);
 
   // when the selected item(s) change due to either select or unselect ...
   useEffect(() => {
     if (
-      state.selected !== previous.current.selected &&
+      selectedState.selectedIds !== previous.current.selectedIds &&
       Object.prototype.hasOwnProperty.call(previous.current, 'selected')
     ) {
-      onSelectionChange && onSelectionChange(state.selected);
+      onSelectionChange && onSelectionChange(selectedState.selectedIds);
     }
-    previous.current.selected = state.selected;
-  }, [state.selected, onSelect, onSelectionChange]);
+    previous.current.selectedIds = selectedState.selectedIds;
+  }, [selectedState.selectedIds, onSelect, onSelectionChange]);
 
   const handleSelect: DropdownContentProps['onSelect'] = (event, { index }, selected) => {
     if (index !== undefined) {
-      const selectedOptions = selected ? state.options?.filter(({ id }) => selected.includes(id)) : undefined;
+      if (
+        event &&
+        maxSelect === 1 &&
+        (event.type === 'click' || (event.type === 'keydown' && 'key' in event && event.key === 'Enter'))
+      ) {
+        hideDropdown();
+      }
 
-      dispatch({
-        type:
-          event &&
-          maxSelect === 1 &&
-          (event.type === 'click' || (event.type === 'keydown' && 'key' in event && event.key === 'Enter'))
-            ? ACTIONS.SET_SELECTED_AND_HIDE_DROPDOWN
-            : ACTIONS.SET_SELECTED,
-        // the selected value(s) come in as IDs and need to be mapped to full options
-        selected: selectedOptions,
-      });
-
-      onSelect && onSelect(state.options![index], selectedOptions!);
+      onSelect && onSelect(options![index], selected);
     }
   };
 
   const handleUnselect: DropdownContentProps['onUnselect'] = (event, { index }, selected) => {
     if (index !== undefined) {
-      const selectedOptions = selected ? state.options?.filter(({ id }) => selected.includes(id)) : undefined;
-
       if (Array.isArray(selected)) {
-        dispatch({
-          type:
-            event &&
-            maxSelect === 1 &&
-            (event.type === 'click' || (event.type === 'keydown' && 'key' in event && event.key === 'Enter'))
-              ? ACTIONS.SET_SELECTED_AND_HIDE_DROPDOWN
-              : ACTIONS.SET_SELECTED,
-          selected: selectedOptions,
-        });
-      } else {
-        dispatch({ type: ACTIONS.UNSET_SELECTED });
+        if (
+          event &&
+          maxSelect === 1 &&
+          (event.type === 'click' || (event.type === 'keydown' && 'key' in event && event.key === 'Enter'))
+        ) {
+          hideDropdown();
+        }
       }
 
-      onUnselect && onUnselect(state.options![index], selectedOptions);
+      onUnselect && onUnselect(options![index], selected);
     }
   };
 
@@ -290,25 +297,25 @@ function DropdownBase(
         onClear && onClear();
       }
 
-      if (value !== state.input) {
+      if (value !== dropdownState.input) {
         if (value) {
-          return dispatch({
+          return dropdownDispatch({
             type: ACTIONS.SET_FILTER,
             input: value as string,
           });
         }
-        return dispatch({ type: ACTIONS.CLEAR_FILTER });
+        return dropdownDispatch({ type: ACTIONS.CLEAR_FILTER });
       }
       return undefined;
     },
-    [onClear, state.input],
+    [onClear, dropdownState.input],
   );
 
   /**
    * Because focus and blur events fire before the click events we must
-   * capture the component state in the mousedown phase before these
+   * capture the component dropdownState in the mousedown phase before these
    * other events interfere. The ensures that the click event will be
-   * able to know what the state was when it was actually clicked.
+   * able to know what the dropdownState was when it was actually clicked.
    */
   const handleMouseDown = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
@@ -325,14 +332,14 @@ function DropdownBase(
 
   const handleClick = useCallback(() => {
     if (mouseDownRef.current.isDropdownVisible && !mouseDownRef.current.isDropdownClicked && !isClearable) {
-      handleHideDropdown();
+      hideDropdown();
     }
-  }, [handleHideDropdown, isClearable]);
+  }, [hideDropdown, isClearable]);
 
   const handleKeyDown = useCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === ' ' && (event.target as HTMLDivElement).tagName.toLowerCase() !== 'input') {
       event.preventDefault();
-      dispatch({
+      dropdownDispatch({
         type: ACTIONS.SHOW_DROPDOWN,
       });
     }
@@ -341,29 +348,29 @@ function DropdownBase(
   // if the `used` flag is true the list provider has already used that keydown event
   const handleListKeyDown = useCallback(
     (event: KeyboardEvent, { used }: { used?: boolean } = {}) => {
-      if (!used && !state.listVisible && event.key === 'Enter') {
-        dispatch({
+      if (!used && !dropdownState.listVisible && event.key === 'Enter') {
+        dropdownDispatch({
           type: ACTIONS.SHOW_DROPDOWN,
         });
-      } else if (state.listFocus && state.listVisible && event.key === 'Enter') {
-        dispatch({
+      } else if (dropdownState.listFocus && dropdownState.listVisible && event.key === 'Enter') {
+        dropdownDispatch({
           type: ACTIONS.HIDE_DROPDOWN,
         });
       }
     },
-    [state.listFocus, state.listVisible],
+    [dropdownState.listFocus, dropdownState.listVisible],
   );
 
   useClickAndEscape({
     ref,
-    onBlur: handleHideDropdown,
-    onFocus: handleShowDropdown,
+    onBlur: hideDropdown,
+    onFocus: showDropdown,
     stopPropagation: isDropdownVisible,
   });
 
-  const showFilter = !!(filterOptions && (state.inputFocus || (isDropdownVisible && state.input)));
-  const inputValue = showFilter ? state.input : undefined;
-  const selectedView = getDropdownSelectedView({ maxSelect, state, translations });
+  const showFilter = !!(filterOptions && (dropdownState.inputFocus || (isDropdownVisible && dropdownState.input)));
+  const inputValue = showFilter ? dropdownState.input : undefined;
+  const selectedView = getDropdownSelectedView({ options, maxSelect, selectedState, translations });
   const color = contrast ? 'contrast' : 'primary';
 
   // remove the dropdown arrows to make room for the clearable "x"
@@ -394,7 +401,7 @@ function DropdownBase(
       onClick={handleClick}
       onMouseDown={handleMouseDown}
       onKeyDown={handleKeyDown}
-      onFocus={handleShowDropdown}
+      onFocus={showDropdown}
       ref={combineRefs}
       {...props}
     >
@@ -406,11 +413,11 @@ function DropdownBase(
         clearable={isClearable}
         className={styles.dropdownInput}
         contrast={contrast}
-        iconAfter={(state.busy && state.listVisible && SpinnerIcon) || iconAfter}
+        iconAfter={(dropdownState.busy && dropdownState.listVisible && SpinnerIcon) || iconAfter}
         iconBefore={iconBefore}
-        id={state.id}
+        id={dropdownState.id}
         // the key is used to force an update on select
-        key={state.selected?.slice(-1)[0].id}
+        key={selectedState.selectedIds?.join(',')}
         label={label}
         onBlur={handleInputBlur}
         onChange={handleInputChange}
@@ -456,10 +463,11 @@ function DropdownBase(
         onListKeyDown={handleListKeyDown}
         onSelect={handleSelect}
         onUnselect={handleUnselect}
-        options={state.options}
+        options={options}
         parentRef={ref}
+        reducer={reducer}
         ref={contentRef}
-        state={state}
+        dropdownState={dropdownState}
         themeId={themeId}
         unthemed={unthemed}
       />

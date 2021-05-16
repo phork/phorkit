@@ -14,15 +14,13 @@ import {
   selectTriggeredId,
   selectSelectedIds,
 } from './interactiveGroupSelector';
-import { InteractiveGroupItemId, InteractiveGroupItemType } from './types';
+import { InteractiveGroupItemId } from './types';
 
 export interface UseInteractiveGroupInterface<T extends InteractiveGroupItemId = string> {
   /* This will allow an already selected item to be re-triggered */
   allowReselect?: boolean;
   /* This disables interaction across the whole group */
   disabled?: boolean;
-  initialSelected?: T[];
-  items: InteractiveGroupItemType<T>[];
   /** Set minSelect to 0 to allow unselecting the current item */
   minSelect?: number;
   /** Set maxSelect to -1 to allow an unlimited amount */
@@ -30,7 +28,7 @@ export interface UseInteractiveGroupInterface<T extends InteractiveGroupItemId =
   onItemClick?: (event: React.MouseEvent | React.TouchEvent, id: T) => void;
   onItemFocus?: (event: InteractiveGroupEventTypes['event'] | undefined, props: { id: T; index: number }) => void;
   onKeyDown?: (event: KeyboardEvent, props?: { used?: boolean }) => void;
-  onSelect?: (event: InteractiveGroupEventTypes['event'], props: { id?: T; index?: number }, selected?: T[]) => void;
+  onSelect?: (event: InteractiveGroupEventTypes['event'], props: { id?: T; index?: number }, selected: T[]) => void;
   onSelectionChange?: (event: InteractiveGroupEventTypes['event'], selection: T[]) => void;
   onUnselect?: (event: InteractiveGroupEventTypes['event'], props: { id?: T; index?: number }, selected?: T[]) => void;
   parentRef?: React.RefObject<HTMLElement>;
@@ -68,7 +66,6 @@ export function useInteractiveGroup<
 >({
   allowReselect,
   disabled,
-  items: initialItems,
   minSelect = 1,
   maxSelect = 1,
   onItemClick,
@@ -103,7 +100,6 @@ export function useInteractiveGroup<
     selectNext,
     selectPrevious,
     setFocusedByIndex,
-    setItems,
     toggleSelected,
     toggleSelectedFocused,
     unselectId,
@@ -126,11 +122,6 @@ export function useInteractiveGroup<
 
   const isSelected: UseInteractiveGroupResponse<T, E, I>['isSelected'] = id =>
     !!(Array.isArray(state.selectedIds) && state.selectedIds.includes(id));
-
-  // update the state if the items change
-  useEffect(() => {
-    setItems(initialItems);
-  }, [initialItems, setItems]);
 
   // call the onItemFocus callback if the focus changes
   useEffect(() => {
