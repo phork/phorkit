@@ -64,7 +64,7 @@ export function DropdownWithTags({
   const dropdownRef = useRef<HTMLInputElement>(null!);
   const tagRef = useRef<HTMLButtonElement>(null!);
   const isDropdownOpen = useRef<boolean>(false);
-  const previousNumSelected = useRef<number>(initialSelected?.length || 0);
+  const previousSelectedIds = useRef<string[]>(state.selectedIds);
   const { generateComponentId } = useComponentId();
   const themeId = useThemeId(initThemeId);
 
@@ -89,17 +89,17 @@ export function DropdownWithTags({
    * that it doesn't take focus away from it.
    */
   useEffect(() => {
-    if (!isDropdownOpen.current && state.selectedIds.length !== previousNumSelected.current) {
-      if (state.selectedIds.length < previousNumSelected.current) {
+    if (!isDropdownOpen.current && state.selectedIds !== previousSelectedIds.current) {
+      if (state.selectedIds.length < previousSelectedIds.current.length) {
         if (state.selectedIds.length >= 1) {
           tagRef.current?.focus();
         } else {
           dropdownRef.current?.focus();
         }
       }
-      previousNumSelected.current = state.selectedIds.length;
     }
-  }, [state.selectedIds.length]);
+    previousSelectedIds.current = state.selectedIds;
+  }, [state.selectedIds]);
 
   const handleOpen = useCallback(() => {
     isDropdownOpen.current = true;
