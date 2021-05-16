@@ -1,90 +1,48 @@
-import produce from 'immer';
-import React, { useRef } from 'react';
-import { InteractiveGroupContext } from './InteractiveGroupContext';
-import { useInteractiveGroup, UseInteractiveGroupInterface, UseInteractiveGroupResponse } from './useInteractiveGroup';
+import React, { Reducer, useEffect, useReducer } from 'react';
+import {
+  UnmanagedInteractiveGroupProvider,
+  UnmanagedInteractiveGroupProviderProps,
+} from './UnmanagedInteractiveGroupProvider';
+import { InteractiveGroupStateAction, interactiveGroupActions as ACTIONS } from './interactiveGroupActions';
+import {
+  interactiveGroupReducer,
+  getInteractiveGroupInitialState,
+  InteractiveGroupState,
+} from './interactiveGroupReducer';
+import { InteractiveGroupItemId, InteractiveGroupItemType } from './types';
 
 export interface InteractiveGroupProviderProps<
+  T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,
   I extends HTMLElement = HTMLElement
-> extends Omit<React.HTMLAttributes<E>, 'onKeyDown' | 'onSelect'>,
-    UseInteractiveGroupInterface {
-  children:
-    | React.ReactElement
-    | ((ref: UseInteractiveGroupResponse<E, I>['ref'], props: unknown) => React.ReactElement<E>)
-    | null;
+> extends Omit<UnmanagedInteractiveGroupProviderProps<T, E, I>, 'reducer'> {
+  initialSelected?: T[];
+  items: InteractiveGroupItemType<T>[];
 }
 
-/**
- * - E is the type of the element that the returned ref gets attached to
- * - I is the type of item element
- */
-export function InteractiveGroupProvider<E extends HTMLElement = HTMLDivElement, I extends HTMLElement = HTMLElement>({
-  allowMultiSelect,
-  allowReselect,
-  children,
-  disabled,
-  disableUnselect,
-  initialSelected,
-  items,
-  onItemClick,
-  onItemFocus,
-  onKeyDown,
-  onSelect,
-  onUnselect,
-  parentRef,
-  selectOnFocus,
-  triggerLinks,
-  ...props
-}: InteractiveGroupProviderProps<E, I>): React.ReactElement {
-  const previousValue = useRef<Omit<UseInteractiveGroupResponse<E, I>, 'ref'>>({} as UseInteractiveGroupResponse<E, I>);
-  const {
-    focusedIndex,
-    handleItemClick,
-    isSelected,
-    ref,
-    selectedId,
-    setFocused,
-    setSelected,
-    unsetSelected,
-  } = useInteractiveGroup<E, I>({
-    allowMultiSelect,
-    allowReselect,
-    disabled,
-    disableUnselect,
-    initialSelected,
-    items,
-    onItemClick,
-    onItemFocus,
-    onKeyDown,
-    onSelect,
-    onUnselect,
-    parentRef,
-    selectOnFocus,
-    triggerLinks,
-  });
-
-  const value = produce(previousValue.current, draftState => {
-    draftState.focusedIndex = focusedIndex;
-    draftState.handleItemClick = handleItemClick;
-    draftState.isSelected = isSelected;
-    draftState.selectedId = selectedId;
-    draftState.setFocused = setFocused;
-    draftState.setSelected = setSelected;
-    draftState.unsetSelected = unsetSelected;
-  });
-  previousValue.current = value;
-
-  return (
-    <InteractiveGroupContext.Provider value={value}>
-      {typeof children === 'function' ? (
-        children(ref, props)
-      ) : (
-        <div ref={ref as React.Ref<HTMLDivElement>} {...(props as React.HTMLAttributes<HTMLDivElement>)}>
-          {children}
-        </div>
-      )}
-    </InteractiveGroupContext.Provider>
+/** The interactive group provider is a managed wrapper around the unmanaged interactive group provider */
+export function InteractiveGroupProvider<
+  T extends InteractiveGroupItemId = string,
+  E extends HTMLElement = HTMLDivElement,
+  I extends HTMLElement = HTMLElement
+>({ initialSelected, items, ...props }: InteractiveGroupProviderProps<T, E, I>): React.ReactElement {
+  const reducer = useReducer<Reducer<InteractiveGroupState<T>, InteractiveGroupStateAction<T>>>(
+    interactiveGroupReducer,
+    getInteractiveGroupInitialState({ items, selectedIds: initialSelected }),
   );
+
+  const [, dispatch] = reducer;
+
+  // this is a managed component so we must watch for items changes
+  useEffect(() => {
+    dispatch({
+      items: items || [],
+      timestamp: Date.now(),
+      type: ACTIONS.SET_ITEMS,
+    });
+  }, [dispatch, items]);
+
+  return <UnmanagedInteractiveGroupProvider<T, E, I> reducer={reducer} {...props} />;
 }
 
 InteractiveGroupProvider.displayName = 'InteractiveGroupProvider';

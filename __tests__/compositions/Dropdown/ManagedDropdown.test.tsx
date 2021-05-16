@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import React from 'react';
-import { InlineDropdown } from 'lib';
+import { ManagedDropdown } from 'lib';
 
 export const options = [
   { id: 'red', value: 'fancy-red', label: 'Red' },
@@ -19,13 +19,13 @@ export const options = [
   { id: 'violet-red', label: 'Violet red' },
 ];
 
-describe('<InlineDropdown />', () => {
+describe('<ManagedDropdown />', () => {
   it('should render a basic inline dropdown', () => {
     const onSelect = jest.fn();
 
     const { getByText } = render(
-      <InlineDropdown
-        initialSelected={options[3]}
+      <ManagedDropdown
+        initialSelected={[options[3]]}
         label="Super fantastic label"
         layout="raised"
         onSelect={onSelect}

@@ -9,7 +9,7 @@ import { Playground, Props } from 'docz';
 import { InteractiveGroupItem, InteractiveGroupConsumer } from 'components/InteractiveGroup';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { InteractiveList } from '../index';
+import { InteractiveList, UnmanagedInteractiveList } from '../index';
 import { options, navigationOptions } from './helpers/options';
 import scrollbar from 'styles/common/Scrollbar.module.css';
 
@@ -28,7 +28,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
           scrollbar['scrollbar--primary'],
           scrollbar[`scrollbar--${themeId}`],
         )}
-        initialSelected="violet-red"
+        initialSelected={['violet-red']}
         items={options}
         onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
         onSelect={(event, { id, index }) => console.log('select', { id, index })}
@@ -53,7 +53,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
           scrollbar['scrollbar--primary'],
           scrollbar[`scrollbar--${themeId}`],
         )}
-        initialSelected="red"
+        initialSelected={['red']}
         items={options}
         onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
         onSelect={(event, { id, index }) => console.log('select', { id, index })}
@@ -79,7 +79,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
           scrollbar['scrollbar--primary'],
           scrollbar[`scrollbar--${themeId}`],
         )}
-        initialSelected="red"
+        initialSelected={['red']}
         items={options}
         mimicSelectOnFocus
         onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
@@ -100,7 +100,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <InteractiveList
-        allowMultiSelect
         className={cx(
           scrollbar['scrollbar--small'],
           scrollbar['scrollbar--primary'],
@@ -108,6 +107,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         )}
         initialSelected={['violet-red']}
         items={options}
+        maxSelect={-1}
         onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
         onSelect={(event, { id, index }) => console.log('select', { id, index })}
         onUnselect={(event, { id }) => console.log('unselect', id)}
@@ -120,7 +120,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   </ThemeWrapper>
 </Playground>
 
-## Disable unselect
+## Allow unselect
 
 <Playground>
   <ThemeWrapper withThemeId>
@@ -131,9 +131,9 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
           scrollbar['scrollbar--primary'],
           scrollbar[`scrollbar--${themeId}`],
         )}
-        disableUnselect
-        initialSelected="red"
+        initialSelected={['red']}
         items={options}
+        minSelect={0}
         onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
         onSelect={(event, { id, index }) => console.log('select', { id, index })}
         onUnselect={(event, { id }) => console.log('unselect', id)}
@@ -158,9 +158,9 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
           scrollbar['scrollbar--primary'],
           scrollbar[`scrollbar--${themeId}`],
         )}
-        disableUnselect
-        initialSelected="red"
+        initialSelected={['red']}
         items={options}
+        minSelect={1}
         onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
         onSelect={(event, { id, index }) => console.log('select', { id, index })}
         onUnselect={(event, { id }) => console.log('unselect', id)}
@@ -239,7 +239,7 @@ _Note that the links will cause the page to reload so the state will appear unch
           scrollbar['scrollbar--primary'],
           scrollbar[`scrollbar--${themeId}`],
         )}
-        initialSelected="red"
+        initialSelected={['red']}
         items={[
           {
             id: 'first',
@@ -297,7 +297,7 @@ _Note that the links will cause the page to reload so the state will appear unch
           scrollbar['scrollbar--primary'],
           scrollbar[`scrollbar--${themeId}`],
         )}
-        initialSelected="violet-red"
+        initialSelected={['violet-red']}
         items={navigationOptions}
         onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
         onSelect={(event, { id, index }) => console.log('select', { id, index })}
@@ -329,3 +329,7 @@ _Note that the links will cause the page to reload so the state will appear unch
 ### InteractiveList
 
 <Props of={InteractiveList} />
+
+### UnmanagedInteractiveList
+
+<Props of={UnmanagedInteractiveList} />

@@ -1,17 +1,19 @@
 import { createContext } from 'react';
+import { InteractiveGroupItemId } from './types';
 import { UseInteractiveGroupResponse } from './useInteractiveGroup';
 
 export type InteractiveGroupContextValue<
+  T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,
   I extends HTMLElement = HTMLElement
-> = Omit<UseInteractiveGroupResponse<E, I>, 'ref'>;
+> = Omit<UseInteractiveGroupResponse<T, E, I>, 'ref'>;
 
-export const InteractiveGroupContext = createContext<InteractiveGroupContextValue<any, any>>({
+export const InteractiveGroupContext = createContext<InteractiveGroupContextValue<any, any, any>>({
   focusedIndex: undefined,
   handleItemClick: (/* event, id */) => {},
   isSelected: (/* id */) => false,
-  selectedId: undefined,
+  selectedIds: undefined,
+  selectId: (/* id, [props] */) => {},
   setFocused: (/* id, [props] */) => {},
-  setSelected: (/* id, [props] */) => {},
-  unsetSelected: (/* id, [props] */) => {},
+  unselectId: (/* id, [props] */) => {},
 });

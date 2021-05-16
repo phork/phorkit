@@ -67,6 +67,12 @@ ul.unlist {
       background-color: transparent;
     }
 
+    &.is-highlighted {
+      @mixin prepareShade;
+      @mixin makeShade var(--list-item-selected-background-color);
+      color: var(--list-item-selected-background-color);
+    }
+
     &.is-selected {
       background-color: var(--list-item-selected-background-color);
       color: var(--list-item-selected-text-color);

@@ -10,6 +10,8 @@ export interface LocalListItemProps extends ThemeProps {
   disabled?: boolean;
   flush?: boolean;
   focused?: boolean;
+  /** A highlighted item is one that has a different style but no change in functionality */
+  highlighted?: boolean;
   inactive?: boolean;
   mimicSelectOnFocus?: boolean;
   onClick?: (event: React.MouseEvent | React.TouchEvent) => void;
@@ -31,6 +33,7 @@ function ListItemBase<T extends ListItemElementType = 'li'>(
     disabled,
     flush,
     focused,
+    highlighted,
     inactive,
     mimicSelectOnFocus,
     onClick,
@@ -54,6 +57,7 @@ function ListItemBase<T extends ListItemElementType = 'li'>(
             flush && styles['listItem--flush'],
             transparent && styles['listItem--transparent'],
             disabled && styles['is-disabled'],
+            highlighted && styles['is-highlighted'],
             inactive && styles['is-inactive'],
             showAsFocused && styles['is-focused'],
             showAsSelected && styles['is-selected'],

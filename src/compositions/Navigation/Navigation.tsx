@@ -46,13 +46,13 @@ export function Navigation({
 }: NavigationProps): React.ReactElement {
   return (
     <ListRegistryProvider>
-      <InteractiveGroupProvider<HTMLElement, HTMLDivElement>
+      <InteractiveGroupProvider<string, HTMLElement, HTMLDivElement>
         allowReselect
-        disableUnselect
+        maxSelect={1}
+        minSelect={1}
         onSelect={onSelect}
         items={items}
         triggerLinks={triggerLinks}
-        {...props}
       >
         {ref => (
           <InnerNavigation

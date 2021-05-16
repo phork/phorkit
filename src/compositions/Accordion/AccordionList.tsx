@@ -57,7 +57,7 @@ export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps
     const variant = contrast ? 'contrast' : initVariant;
 
     const { handleItemClick, isSelected, focusedIndex } = useContext<
-      InteractiveGroupContextValue<HTMLDivElement, HTMLDivElement>
+      InteractiveGroupContextValue<string, HTMLDivElement, HTMLDivElement>
     >(InteractiveGroupContext);
 
     const combineRefs = makeCombineRefs<HTMLDivElement>(ref, forwardedRef);

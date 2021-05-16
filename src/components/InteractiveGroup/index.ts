@@ -10,3 +10,4 @@ export * from './useInteractiveGroup';
 export * from './useInteractiveGroupItem';
 export * from './interactiveGroupSelector';
 export * from './types';
+export * from './UnmanagedInteractiveGroupProvider';

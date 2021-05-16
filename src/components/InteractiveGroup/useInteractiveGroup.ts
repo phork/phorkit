@@ -1,11 +1,8 @@
-import { useCallback, useEffect, useMemo, useReducer, useRef } from 'react';
+import { Dispatch, useCallback, useEffect, useMemo, useRef } from 'react';
 import { useElementEventListener } from '../../hooks/useElementEventListener';
 import { generateInteractiveGroupActions, GeneratedInteractiveGroupActions } from './generateInteractiveGroupActions';
-import { InteractiveGroupEventTypes } from './interactiveGroupActions';
-import {
-  interactiveGroupReducer as reducer,
-  getInteractiveGroupInitialState as getInitialState,
-} from './interactiveGroupReducer';
+import { InteractiveGroupEventTypes, InteractiveGroupStateAction } from './interactiveGroupActions';
+import { InteractiveGroupState } from './interactiveGroupReducer';
 import {
   selectFocusedIndex,
   selectFocusedEvent,
@@ -15,69 +12,81 @@ import {
   selectSelectedTime,
   selectUnselectedEvent,
   selectTriggeredId,
-  selectSelectedId,
+  selectSelectedIds,
 } from './interactiveGroupSelector';
-import { InteractiveGroupItemType } from './types';
+import { InteractiveGroupItemId } from './types';
 
-export interface UseInteractiveGroupInterface {
-  allowMultiSelect?: boolean;
+export interface UseInteractiveGroupInterface<T extends InteractiveGroupItemId = string> {
   /* This will allow an already selected item to be re-triggered */
   allowReselect?: boolean;
-  disableUnselect?: boolean;
   /* This disables interaction across the whole group */
   disabled?: boolean;
-  initialSelected?: string | string[];
-  items: InteractiveGroupItemType[];
-  onItemClick?: (event: React.MouseEvent | React.TouchEvent, id: string) => void;
-  onItemFocus?: (event: InteractiveGroupEventTypes['event'] | undefined, props: { id: string; index: number }) => void;
+  /** Set minSelect to 0 to allow unselecting the current item */
+  minSelect?: number;
+  /** Set maxSelect to -1 to allow an unlimited amount */
+  maxSelect?: number;
+  onItemClick?: (event: React.MouseEvent | React.TouchEvent, id: T) => void;
+  onItemFocus?: (event: InteractiveGroupEventTypes['event'] | undefined, props: { id: T; index: number }) => void;
   onKeyDown?: (event: KeyboardEvent, props?: { used?: boolean }) => void;
-  onSelect?: (event: InteractiveGroupEventTypes['event'], props: { id?: string; index?: number }) => void;
-  onUnselect?: (event: InteractiveGroupEventTypes['event'], props: { id?: string }) => void;
+  onSelect?: (event: InteractiveGroupEventTypes['event'], props: { id?: T; index?: number }, selected: T[]) => void;
+  onSelectionChange?: (event: InteractiveGroupEventTypes['event'], selection: T[]) => void;
+  onUnselect?: (event: InteractiveGroupEventTypes['event'], props: { id?: T; index?: number }, selected?: T[]) => void;
   parentRef?: React.RefObject<HTMLElement>;
+  /** The reducer comes directly from useReducer() and is managed separately so that other components can manage the state */
+  reducer: [InteractiveGroupState<T>, Dispatch<InteractiveGroupStateAction<T>>];
   selectOnFocus?: boolean;
   /** If this is set and an item contains a link, when the item is selected that link will be triggered */
   triggerLinks?: boolean;
 }
 
-export type UseInteractiveGroupResponse<E extends HTMLElement = HTMLDivElement, I extends HTMLElement = HTMLElement> = {
+export type UseInteractiveGroupResponse<
+  T extends InteractiveGroupItemId = string,
+  E extends HTMLElement = HTMLDivElement,
+  I extends HTMLElement = HTMLElement
+> = {
   focusedIndex?: number;
-  handleItemClick: (event: React.MouseEvent<I> | React.TouchEvent<I>, id: string) => void;
+  handleItemClick: (event: React.MouseEvent<I> | React.TouchEvent<I>, id: T) => void;
   ref: React.Ref<E>;
-  isSelected: (id: string) => boolean;
-  selectedId?: string | string[];
-  setFocused: (id: string, props: Parameters<GeneratedInteractiveGroupActions['setFocusedByIndex']>[1]) => void;
-  setSelected: GeneratedInteractiveGroupActions['setSelected'];
-  unsetSelected: GeneratedInteractiveGroupActions['unsetSelected'];
+  isSelected: (id: T) => boolean;
+  selectedIds?: T[];
+  setFocused: (id: T, props: Parameters<GeneratedInteractiveGroupActions<T>['setFocusedByIndex']>[1]) => void;
+  selectId: GeneratedInteractiveGroupActions<T>['selectId'];
+  unselectId: GeneratedInteractiveGroupActions<T>['unselectId'];
 };
 
 /**
+ * - T is the type of IDs allowed
  * - E is the type of the element that the returned ref gets attached to
  * - I is the type of item element
  */
-export function useInteractiveGroup<E extends HTMLElement = HTMLDivElement, I extends HTMLElement = HTMLElement>({
-  allowMultiSelect,
+export function useInteractiveGroup<
+  T extends InteractiveGroupItemId = string,
+  E extends HTMLElement = HTMLDivElement,
+  I extends HTMLElement = HTMLElement
+>({
   allowReselect,
   disabled,
-  disableUnselect,
-  initialSelected,
-  items: initialItems,
+  minSelect = 1,
+  maxSelect = 1,
   onItemClick,
   onItemFocus,
   onKeyDown,
   onSelect,
   onUnselect,
   parentRef,
+  reducer,
   selectOnFocus,
   triggerLinks,
-}: UseInteractiveGroupInterface): UseInteractiveGroupResponse<E, I> {
+}: UseInteractiveGroupInterface<T>): UseInteractiveGroupResponse<T, E, I> {
   const previousState = useRef<{
-    focusedIndex?: number;
-    triggeredTime?: number;
+    focusedIndex?: InteractiveGroupState<T>['focusedIndex'];
+    selectedIds?: InteractiveGroupState<T>['selectedIds'];
     selectedTime?: number;
-    selectedId?: string | string[];
+    triggeredTime?: number;
   }>({});
+
+  const [state, dispatch] = reducer;
   const ref = useRef<E>(null!);
-  const [state, dispatch] = useReducer(reducer, { initialItems, initialSelected }, getInitialState);
 
   const {
     focusFirst,
@@ -86,19 +95,18 @@ export function useInteractiveGroup<E extends HTMLElement = HTMLDivElement, I ex
     focusPrevious,
     selectFirst,
     selectFocused,
+    selectId,
     selectLast,
     selectNext,
     selectPrevious,
     setFocusedByIndex,
-    setItems,
-    setSelected,
     toggleSelected,
     toggleSelectedFocused,
-    unsetSelected,
-  } = useMemo(() => generateInteractiveGroupActions(dispatch, disableUnselect, allowMultiSelect, allowReselect), [
+    unselectId,
+  } = useMemo(() => generateInteractiveGroupActions(dispatch, minSelect, maxSelect, allowReselect), [
     dispatch,
-    disableUnselect,
-    allowMultiSelect,
+    minSelect,
+    maxSelect,
     allowReselect,
   ]);
 
@@ -106,21 +114,14 @@ export function useInteractiveGroup<E extends HTMLElement = HTMLDivElement, I ex
   const focusedEvent = selectFocusedEvent(state);
   const focusedIndex = selectFocusedIndex(state);
   const selectedEvent = selectSelectedEvent(state);
-  const selectedId = selectSelectedId(state);
+  const selectedIds = selectSelectedIds(state);
   const selectedTime = selectSelectedTime(state);
   const triggeredId = selectTriggeredId(state);
   const triggeredTime = selectTriggeredTime(state);
   const unselectedEvent = selectUnselectedEvent(state);
 
-  const isSelected: UseInteractiveGroupResponse<E, I>['isSelected'] = id =>
-    allowMultiSelect
-      ? state.selectedId !== undefined && Array.isArray(state.selectedId) && state.selectedId.includes(id)
-      : state.selectedId === id;
-
-  // update the state if the items change
-  useEffect(() => {
-    setItems(initialItems);
-  }, [initialItems, setItems]);
+  const isSelected: UseInteractiveGroupResponse<T, E, I>['isSelected'] = id =>
+    !!(Array.isArray(state.selectedIds) && state.selectedIds.includes(id));
 
   // call the onItemFocus callback if the focus changes
   useEffect(() => {
@@ -147,74 +148,59 @@ export function useInteractiveGroup<E extends HTMLElement = HTMLDivElement, I ex
   // call the onSelect or onUnselect callback if the selected item changes
   useEffect(() => {
     if (
-      (previousState.current.selectedId !== selectedId ||
+      (previousState.current.selectedIds !== selectedIds ||
         (allowReselect && previousState.current.selectedTime !== selectedTime)) &&
-      Object.prototype.hasOwnProperty.call(previousState.current, 'selectedId')
+      Object.prototype.hasOwnProperty.call(previousState.current, 'selectedIds')
     ) {
-      const wasPreviouslySelected = (id: string): boolean => {
-        if (previousState.current.selectedId) {
-          if (Array.isArray(previousState.current.selectedId)) {
-            return previousState.current.selectedId.includes(id);
-          }
-          return previousState.current.selectedId === id;
-        }
-        return false;
-      };
+      const wasPreviouslySelected = (id: T): boolean => previousState.current.selectedIds?.includes(id) || false;
+      const isCurrentlySelected = (id: T): boolean => selectedIds?.includes(id) || false;
 
-      const isCurrentlySelected = (id: string): boolean => {
-        if (selectedId) {
-          if (Array.isArray(selectedId)) {
-            return selectedId.includes(id);
-          }
-          return selectedId === id;
-        }
-        return false;
-      };
-
-      const handleSelectedId = (id: string | undefined, allowReselect?: boolean) => {
-        if (id && onSelect && (allowReselect || !wasPreviouslySelected(id))) {
-          onSelect(selectedEvent, {
-            ...items.getItemById(id),
-            id,
-            index: items.getIndexById(id),
-          });
+      const handleSelectedId = (id: T, allowReselect?: boolean) => {
+        if (id !== undefined && onSelect && (allowReselect || !wasPreviouslySelected(id))) {
+          onSelect(
+            selectedEvent,
+            {
+              ...items.getItemById(id),
+              id,
+              index: items.getIndexById(id),
+            },
+            selectedIds,
+          );
         }
       };
 
-      const handleUnselectedId = (id: string | undefined) => {
-        if (id && onUnselect && !isCurrentlySelected(id)) {
-          onUnselect(unselectedEvent, {
-            id,
-          });
+      const handleUnselectedId = (id: T) => {
+        if (id !== undefined && onUnselect && !isCurrentlySelected(id)) {
+          onUnselect(
+            unselectedEvent,
+            {
+              id,
+              index: items.getIndexById(id),
+            },
+            selectedIds,
+          );
         }
       };
 
       // trigger onUnselect callbacks for any former selections
-      if (onUnselect) {
-        if (Array.isArray(previousState.current.selectedId)) {
-          previousState.current.selectedId.forEach(id => handleUnselectedId(id));
-        } else {
-          handleUnselectedId(previousState.current.selectedId);
-        }
+      if (onUnselect && Array.isArray(previousState.current.selectedIds)) {
+        previousState.current.selectedIds.forEach(id => handleUnselectedId(id));
       }
 
       // trigger onSelect callbacks for any new selections
-      if (onSelect) {
-        if (Array.isArray(selectedId)) {
-          selectedId.forEach(id => handleSelectedId(id));
-        } else {
-          handleSelectedId(selectedId);
-        }
+      if (onSelect && Array.isArray(selectedIds)) {
+        selectedIds.forEach(id => handleSelectedId(id));
       }
 
       // trigger the onSelect callback for a re-select if not multi-select
       if (
         allowReselect &&
-        previousState.current.selectedId === selectedId &&
+        maxSelect === 1 &&
+        previousState.current.selectedIds === selectedIds &&
         previousState.current.selectedTime !== selectedTime &&
-        !Array.isArray(selectedId)
+        selectedIds.length > 0
       ) {
-        handleSelectedId(selectedId, true);
+        handleSelectedId(selectedIds[0], true);
       }
 
       // manually trigger the link of <a> tags (if the target is the <a> tag don't trigger on click or Enter)
@@ -234,10 +220,10 @@ export function useInteractiveGroup<E extends HTMLElement = HTMLDivElement, I ex
       }
     }
 
-    previousState.current.selectedId = selectedId;
-    selectedId && (previousState.current.selectedTime = selectedTime);
+    previousState.current.selectedIds = selectedIds;
+    selectedIds && (previousState.current.selectedTime = selectedTime);
   }, [
-    selectedId,
+    selectedIds,
     selectedEvent,
     unselectedEvent,
     onSelect,
@@ -246,14 +232,15 @@ export function useInteractiveGroup<E extends HTMLElement = HTMLDivElement, I ex
     selectedTime,
     allowReselect,
     triggerLinks,
+    maxSelect,
   ]);
 
-  const setFocused: UseInteractiveGroupResponse['setFocused'] = useCallback(
+  const setFocused: UseInteractiveGroupResponse<T>['setFocused'] = useCallback(
     (id, props) => setFocusedByIndex(items.getIndexById(id), props),
     [items, setFocusedByIndex],
   );
 
-  const handleItemClick: UseInteractiveGroupResponse['handleItemClick'] = useCallback(
+  const handleItemClick: UseInteractiveGroupResponse<T>['handleItemClick'] = useCallback(
     (event, id) => {
       event.persist();
       event.stopPropagation();
@@ -335,9 +322,9 @@ export function useInteractiveGroup<E extends HTMLElement = HTMLDivElement, I ex
     handleItemClick,
     isSelected,
     ref,
-    selectedId,
+    selectedIds,
     setFocused,
-    setSelected,
-    unsetSelected,
+    selectId,
+    unselectId,
   };
 }

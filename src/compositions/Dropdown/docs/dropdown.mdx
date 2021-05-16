@@ -14,7 +14,7 @@ import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { Dropdown, DropdownContent, DropdownEmpty, InlineDropdown } from '../index';
+import { Dropdown, DropdownContent, DropdownEmpty, ManagedDropdown } from '../index';
 import { MultiVariantDropdown } from './helpers/MultiVariantDropdown';
 import { options, handleFilter, handleEmptyFilter } from './helpers/options';
 import { variants } from './helpers/variants.js';
@@ -32,14 +32,15 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
-            <InlineDropdown
-              initialSelected={options[3]}
+            <ManagedDropdown
+              initialSelected={[options[3]]}
               inputVariant={variant}
               label="Super awesome dropdown"
               layout="raised"
-              onChange={value => console.log('change', value)}
               onItemFocus={(event, value) => console.log('focus', value)}
               onSelect={value => console.log('select', value)}
+              onUnselect={value => console.log('unselect', value)}
+              onSelectionChange={value => console.log('selection change', value)}
               options={options}
               transitional
             />
@@ -60,13 +61,43 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
-            <InlineDropdown
-              initialSelected={options[3]}
+            <ManagedDropdown
+              initialSelected={[options[3]]}
               inputVariant={variant}
               label="Super awesome dropdown"
               layout="contained"
-              onChange={value => console.log('change', value)}
               onSelect={value => console.log('select', value)}
+              onUnselect={value => console.log('unselect', value)}
+              onSelectionChange={value => console.log('selection change', value)}
+              options={options}
+              transitional
+            />
+          </div>
+        )}
+      />
+    </Flex>
+  </ThemeWrapper>
+</Playground>
+
+## Multi-select dropdown
+
+<Playground>
+  <ThemeWrapper>
+    <br />
+    <Flex direction="row" justifyContent="space-between" full wrap>
+      <Looper
+        list={variants}
+        render={variant => (
+          <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
+            <ManagedDropdown
+              initialSelected={[options[3]]}
+              inputVariant={variant}
+              label="Super awesome dropdown"
+              layout="contained"
+              maxSelect={-1}
+              onSelect={value => console.log('select', value)}
+              onUnselect={value => console.log('unselect', value)}
+              onSelectionChange={value => console.log('selection change', value)}
               options={options}
               transitional
             />
@@ -86,14 +117,14 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
-            <InlineDropdown
+            <ManagedDropdown
+              getFilteredOptions={handleFilter}
               iconAfter={<TagIcon size={12} />}
-              initialSelected={options[3]}
+              initialSelected={[options[3]]}
               inputVariant={variant}
               label="Super awesome dropdown"
-              onChange={value => console.log(value)}
               onClear={value => console.log('clear')}
-              onFilter={handleFilter}
+              onInputChange={value => console.log(value)}
               onSelect={value => console.log('select', value)}
               onSubmit={(event, value) =>
                 !options.some(option => option.id === value) && options.push({ id: value, label: value })
@@ -117,12 +148,12 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
     <StateWrapper initialState={''}>
       {({ state: filter, setState: setFilter }) => (
         <div style={{ height: 300, maxWidth: 300 }}>
-          <InlineDropdown
+          <ManagedDropdown
             emptyNotification={filter ? `No options were found for "${filter}".` : ''}
+            getFilteredOptions={handleFilter}
             label="Super awesome dropdown"
-            onChange={setFilter}
             onClear={value => console.log('clear')}
-            onFilter={handleFilter}
+            onInputChange={setFilter}
             onSelect={value => console.log('select', value)}
             onSubmit={(event, value) =>
               !options.some(option => option.id === value) && options.push({ id: value, label: value })
@@ -140,9 +171,8 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
     <div style={{ maxWidth: 300 }}>
-      <InlineDropdown
+      <ManagedDropdown
         label="Super awesome dropdown"
-        onChange={value => console.log('change', value)}
         onSelect={value => console.log('select', value)}
         options={[]}
         transitional
@@ -156,11 +186,11 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
     <div style={{ maxWidth: 300 }}>
-      <InlineDropdown
+      <ManagedDropdown
+        getFilteredOptions={handleEmptyFilter}
         iconBefore={<SearchIcon size={14} />}
         label="Super awesome dropdown"
-        onChange={value => console.log('change', value)}
-        onFilter={handleEmptyFilter}
+        onInputChange={value => console.log('change', value)}
         onSelect={value => console.log('select', value)}
         options={[]}
         transitional
@@ -176,11 +206,10 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
     <div style={{ maxWidth: 300 }}>
-      <InlineDropdown
+      <ManagedDropdown
         id="demo-danger-dropdown"
-        initialSelected={options[3]}
+        initialSelected={[options[3]]}
         label="Super awesome dropdown"
-        onChange={value => console.log('change', value)}
         onSelect={value => console.log('select', value)}
         options={options}
         validity="danger"
@@ -194,11 +223,11 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
     <div style={{ maxWidth: 300 }}>
-      <InlineDropdown
+      <ManagedDropdown
         id="demo-danger-dropdown"
-        initialSelected={options[3]}
+        initialSelected={[options[3]]}
         label="Super awesome dropdown"
-        onChange={value => console.log('change', value)}
+        onInputChange={value => console.log('change', value)}
         onSelect={value => console.log('select', value)}
         options={options}
         validity="warning"
@@ -212,11 +241,10 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
     <div style={{ maxWidth: 300 }}>
-      <InlineDropdown
+      <ManagedDropdown
         id="demo-danger-dropdown"
-        initialSelected={options[3]}
+        initialSelected={[options[3]]}
         label="Super awesome dropdown"
-        onChange={value => console.log('change', value)}
         onSelect={value => console.log('select', value)}
         options={options}
         validity="success"
@@ -230,12 +258,11 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 <Playground>
   <ThemeWrapper contrast style={{ height: '300px' }}>
     <div style={{ maxWidth: 300 }}>
-      <InlineDropdown
+      <ManagedDropdown
         contrast
         id="demo-contrast-dropdown"
-        initialSelected={options[3]}
+        initialSelected={[options[3]]}
         label="Super awesome dropdown"
-        onChange={value => console.log('change', value)}
         onSelect={value => console.log('select', value)}
         options={options}
       />
@@ -247,12 +274,11 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 
 <Playground>
   <div style={{ height: 300, maxWidth: 300, marginLeft: 20, marginRight: 20 }}>
-    <InlineDropdown
+    <ManagedDropdown
       id="demo-contrast-dropdown"
-      initialSelected={options[3]}
+      initialSelected={[options[3]]}
       label="Super awesome dropdown"
       layout="contained"
-      onChange={value => console.log('change', value)}
       onSelect={value => console.log('select', value)}
       options={options}
       style={{
@@ -292,13 +318,13 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
   <ThemeWrapper withThemeId style={{ height: '300px' }}>
     {({ themeId }) => (
       <MultiVariantDropdown
+        getFilteredOptions={handleFilter}
         iconBefore={<SearchIcon size={14} />}
-        initialSelected={options[3]}
+        initialSelected={[options[3]]}
         label="Super awesome dropdown"
         layout="contained"
-        onChange={value => console.log('change', value)}
         onClear={value => console.log('clear')}
-        onFilter={handleFilter}
+        onInputChange={value => console.log('change', value)}
         onSelect={value => console.log('select', value)}
         options={options}
         outline="unboxed"
@@ -331,6 +357,10 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 ### Dropdown
 
 <Props of={Dropdown} />
+
+### ManagedDropdown
+
+<Props of={ManagedDropdown} />
 
 ### DropdownEmpty
 

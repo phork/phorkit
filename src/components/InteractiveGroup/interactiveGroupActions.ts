@@ -1,4 +1,4 @@
-import { InteractiveGroupItemType } from './types';
+import { InteractiveGroupItemType, InteractiveGroupItemId } from './types';
 
 export enum interactiveGroupActions {
   CLEAR = 'CLEAR',
@@ -9,15 +9,15 @@ export enum interactiveGroupActions {
   RESET = 'RESET',
   SELECT_FIRST = 'SELECT_FIRST',
   SELECT_FOCUSED = 'SELECT_FOCUSED',
+  SELECT_ID = 'SELECT_ID',
   SELECT_LAST = 'SELECT_LAST',
   SELECT_NEXT = 'SELECT_NEXT',
   SELECT_PREVIOUS = 'SELECT_PREVIOUS',
   SET_FOCUSED = 'SET_FOCUSED',
   SET_ITEMS = 'SET_ITEMS',
-  SET_SELECTED = 'SET_SELECTED',
-  TOGGLE_SELECTED_FOCUSED = 'TOGGLE_SELECTED_FOCUSED',
   TOGGLE_SELECTED = 'TOGGLE_SELECTED',
-  UNSET_SELECTED = 'UNSET_SELECTED',
+  TOGGLE_SELECTED_FOCUSED = 'TOGGLE_SELECTED_FOCUSED',
+  UNSELECT_ID = 'UNSELECT_ID',
 }
 
 export type InteractiveGroupEventTypes = { event?: React.SyntheticEvent | KeyboardEvent };
@@ -27,7 +27,7 @@ export type InteractiveGroupStateActionClear = InteractiveGroupEventTypes & {
   type: interactiveGroupActions.CLEAR;
 };
 
-export type InteractiveGroupStateActionFocus = InteractiveGroupEventTypes & {
+export type InteractiveGroupStateActionFocusSequential = InteractiveGroupEventTypes & {
   timestamp: number;
   type:
     | interactiveGroupActions.FOCUS_FIRST
@@ -40,8 +40,8 @@ export type InteractiveGroupStateActionReset = {
   type: interactiveGroupActions.RESET;
 };
 
-export type InteractiveGroupStateActionSelect = InteractiveGroupEventTypes & {
-  allowMultiSelect?: boolean;
+export type InteractiveGroupStateActionSelectSequential = InteractiveGroupEventTypes & {
+  maxSelect: number;
   timestamp: number;
   type:
     | interactiveGroupActions.SELECT_FIRST
@@ -51,9 +51,8 @@ export type InteractiveGroupStateActionSelect = InteractiveGroupEventTypes & {
 };
 
 export type InteractiveGroupStateActionSelectFocused = InteractiveGroupEventTypes & {
-  allowMultiSelect?: boolean;
   allowReselect?: boolean;
-  disableUnselect?: boolean;
+  maxSelect: number;
   timestamp: number;
   type: interactiveGroupActions.SELECT_FOCUSED;
 };
@@ -64,54 +63,59 @@ export type InteractiveGroupStateActionSetFocused = InteractiveGroupEventTypes &
   type: interactiveGroupActions.SET_FOCUSED;
 };
 
-export type InteractiveGroupStateActionSetItems = {
-  items: InteractiveGroupItemType[];
+export type InteractiveGroupStateActionSetItems<T extends InteractiveGroupItemId = string> = {
+  items: InteractiveGroupItemType<T>[];
   timestamp: number;
   type: interactiveGroupActions.SET_ITEMS;
 };
 
-export type InteractiveGroupStateActionSetSelected = InteractiveGroupEventTypes & {
-  allowMultiSelect?: boolean;
+export type InteractiveGroupStateActionSelectId<
+  T extends InteractiveGroupItemId = string
+> = InteractiveGroupEventTypes & {
   allowReselect?: boolean;
-  selectedId: string;
+  id: T;
+  maxSelect: number;
   timestamp: number;
-  type: interactiveGroupActions.SET_SELECTED;
+  type: interactiveGroupActions.SELECT_ID;
 };
 
 export type InteractiveGroupStateActionToggleSelectedFocused = InteractiveGroupEventTypes & {
-  allowMultiSelect?: boolean;
   allowReselect?: boolean;
-  disableUnselect?: boolean;
+  maxSelect: number;
+  minSelect: number;
   timestamp: number;
   type: interactiveGroupActions.TOGGLE_SELECTED_FOCUSED;
 };
 
-export type InteractiveGroupStateActionToggleSelected = InteractiveGroupEventTypes & {
-  allowMultiSelect?: boolean;
+export type InteractiveGroupStateActionToggleSelected<
+  T extends InteractiveGroupItemId = string
+> = InteractiveGroupEventTypes & {
   allowReselect?: boolean;
-  disableUnselect?: boolean;
-  selectedId: string;
+  id: T;
+  maxSelect: number;
+  minSelect: number;
   timestamp: number;
   type: interactiveGroupActions.TOGGLE_SELECTED;
 };
 
-export type InteractiveGroupStateActionUnsetSelected = InteractiveGroupEventTypes & {
-  allowMultiSelect?: boolean;
-  disableUnselect?: boolean;
-  selectedId: string;
+export type InteractiveGroupStateActionUnselectId<
+  T extends InteractiveGroupItemId = string
+> = InteractiveGroupEventTypes & {
+  id: T;
+  minSelect: number;
   timestamp: number;
-  type: interactiveGroupActions.UNSET_SELECTED;
+  type: interactiveGroupActions.UNSELECT_ID;
 };
 
-export type InteractiveGroupStateAction =
+export type InteractiveGroupStateAction<T extends InteractiveGroupItemId = string> =
   | InteractiveGroupStateActionClear
-  | InteractiveGroupStateActionFocus
+  | InteractiveGroupStateActionFocusSequential
   | InteractiveGroupStateActionReset
-  | InteractiveGroupStateActionSelect
+  | InteractiveGroupStateActionSelectSequential
   | InteractiveGroupStateActionSelectFocused
   | InteractiveGroupStateActionSetFocused
-  | InteractiveGroupStateActionSetItems
-  | InteractiveGroupStateActionSetSelected
+  | InteractiveGroupStateActionSetItems<T>
+  | InteractiveGroupStateActionSelectId<T>
   | InteractiveGroupStateActionToggleSelectedFocused
-  | InteractiveGroupStateActionToggleSelected
-  | InteractiveGroupStateActionUnsetSelected;
+  | InteractiveGroupStateActionToggleSelected<T>
+  | InteractiveGroupStateActionUnselectId<T>;

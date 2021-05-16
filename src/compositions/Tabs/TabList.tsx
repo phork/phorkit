@@ -64,10 +64,11 @@ function TabListBase(
   const themeId = useThemeId(initThemeId);
   const variant = contrast ? 'contrast' : initVariant;
 
-  const { handleItemClick, focusedIndex, selectedId } = useContext<
-    InteractiveGroupContextValue<HTMLDivElement, HTMLDivElement>
+  const { handleItemClick, focusedIndex, selectedIds } = useContext<
+    InteractiveGroupContextValue<string, HTMLDivElement, HTMLDivElement>
   >(InteractiveGroupContext);
 
+  const selectedId = selectedIds?.[0];
   const combineRefs = makeCombineRefs(ref, forwardedRef);
 
   const handleBlurMemoized = useCallback(
