@@ -107,10 +107,10 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   <ThemeWrapper style={{ height: '300px' }}>
     <div style={{ maxWidth: '100%', marginLeft: 20, marginRight: 20 }}>
       <DropdownWithTags
+        getFilteredOptions={handleFilter}
         initialSelected={[options[3]]}
         label="Super awesome dropdown"
         onChange={value => console.log(value)}
-        filterOptions={handleFilter}
         onSelect={value => console.log('select', value)}
         onSubmit={(event, value) =>
           !options.some(option => option.id === value) && options.push({ id: value, label: value })

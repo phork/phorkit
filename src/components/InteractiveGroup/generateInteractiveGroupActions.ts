@@ -6,20 +6,20 @@ import {
 import { InteractiveGroupItemId, InteractiveGroupItemType } from './types';
 
 export type GeneratedInteractiveGroupActions<T extends InteractiveGroupItemId = string> = {
-  focusFirst: (props: InteractiveGroupEventTypes) => void;
-  focusLast: (props: InteractiveGroupEventTypes) => void;
-  focusNext: (props: InteractiveGroupEventTypes) => void;
-  focusPrevious: (props: InteractiveGroupEventTypes) => void;
-  selectFirst: (props: InteractiveGroupEventTypes) => void;
-  selectFocused: (props: InteractiveGroupEventTypes) => void;
+  focusFirst: (props?: InteractiveGroupEventTypes) => void;
+  focusLast: (props?: InteractiveGroupEventTypes) => void;
+  focusNext: (props?: InteractiveGroupEventTypes) => void;
+  focusPrevious: (props?: InteractiveGroupEventTypes) => void;
+  selectFirst: (props?: InteractiveGroupEventTypes) => void;
+  selectFocused: (props?: InteractiveGroupEventTypes) => void;
   selectId: (id: T, props?: InteractiveGroupEventTypes) => void;
-  selectLast: (props: InteractiveGroupEventTypes) => void;
-  selectNext: (props: InteractiveGroupEventTypes) => void;
-  selectPrevious: (props: InteractiveGroupEventTypes) => void;
-  setFocusedByIndex: (index: number | undefined, props: InteractiveGroupEventTypes) => void;
+  selectLast: (props?: InteractiveGroupEventTypes) => void;
+  selectNext: (props?: InteractiveGroupEventTypes) => void;
+  selectPrevious: (props?: InteractiveGroupEventTypes) => void;
+  setFocusedByIndex: (index: number | undefined, props?: InteractiveGroupEventTypes) => void;
   setItems: (items: InteractiveGroupItemType<T>[]) => void;
   toggleSelected: (id: T, props?: InteractiveGroupEventTypes) => void;
-  toggleSelectedFocused: (props: InteractiveGroupEventTypes) => void;
+  toggleSelectedFocused: (props?: InteractiveGroupEventTypes) => void;
   unselectId: (id: T, props?: InteractiveGroupEventTypes) => void;
 };
 
@@ -74,7 +74,7 @@ export function generateInteractiveGroupActions<T extends InteractiveGroupItemId
         type: ACTIONS.TOGGLE_SELECTED,
       }),
 
-    selectFocused: ({ event }) =>
+    selectFocused: ({ event } = {}) =>
       dispatch({
         event,
         maxSelect,
@@ -82,7 +82,7 @@ export function generateInteractiveGroupActions<T extends InteractiveGroupItemId
         type: ACTIONS.SELECT_FOCUSED,
       }),
 
-    toggleSelectedFocused: ({ event }) =>
+    toggleSelectedFocused: ({ event } = {}) =>
       dispatch({
         allowReselect,
         event,
@@ -92,7 +92,7 @@ export function generateInteractiveGroupActions<T extends InteractiveGroupItemId
         type: ACTIONS.TOGGLE_SELECTED_FOCUSED,
       }),
 
-    selectPrevious: ({ event }) =>
+    selectPrevious: ({ event } = {}) =>
       dispatch({
         maxSelect,
         event,
@@ -100,14 +100,14 @@ export function generateInteractiveGroupActions<T extends InteractiveGroupItemId
         type: ACTIONS.SELECT_PREVIOUS,
       }),
 
-    focusPrevious: ({ event }) =>
+    focusPrevious: ({ event } = {}) =>
       dispatch({
         event,
         timestamp: Date.now(),
         type: ACTIONS.FOCUS_PREVIOUS,
       }),
 
-    selectNext: ({ event }) =>
+    selectNext: ({ event } = {}) =>
       dispatch({
         event,
         maxSelect,
@@ -115,14 +115,14 @@ export function generateInteractiveGroupActions<T extends InteractiveGroupItemId
         type: ACTIONS.SELECT_NEXT,
       }),
 
-    focusNext: ({ event }) =>
+    focusNext: ({ event } = {}) =>
       dispatch({
         event,
         timestamp: Date.now(),
         type: ACTIONS.FOCUS_NEXT,
       }),
 
-    selectFirst: ({ event }) =>
+    selectFirst: ({ event } = {}) =>
       dispatch({
         event,
         maxSelect,
@@ -130,14 +130,14 @@ export function generateInteractiveGroupActions<T extends InteractiveGroupItemId
         type: ACTIONS.SELECT_FIRST,
       }),
 
-    focusFirst: ({ event }) =>
+    focusFirst: ({ event } = {}) =>
       dispatch({
         event,
         timestamp: Date.now(),
         type: ACTIONS.FOCUS_FIRST,
       }),
 
-    selectLast: ({ event }) =>
+    selectLast: ({ event } = {}) =>
       dispatch({
         event,
         maxSelect,
@@ -145,7 +145,7 @@ export function generateInteractiveGroupActions<T extends InteractiveGroupItemId
         type: ACTIONS.SELECT_LAST,
       }),
 
-    focusLast: ({ event }) =>
+    focusLast: ({ event } = {}) =>
       dispatch({
         event,
         timestamp: Date.now(),

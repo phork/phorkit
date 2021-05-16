@@ -197,7 +197,8 @@ export function useInteractiveGroup<
         allowReselect &&
         maxSelect === 1 &&
         previousState.current.selectedIds === selectedIds &&
-        previousState.current.selectedTime !== selectedTime
+        previousState.current.selectedTime !== selectedTime &&
+        selectedIds.length > 0
       ) {
         handleSelectedId(selectedIds[0], true);
       }

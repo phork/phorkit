@@ -118,7 +118,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
             <ManagedDropdown
-              filterOptions={handleFilter}
+              getFilteredOptions={handleFilter}
               iconAfter={<TagIcon size={12} />}
               initialSelected={[options[3]]}
               inputVariant={variant}
@@ -150,7 +150,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
         <div style={{ height: 300, maxWidth: 300 }}>
           <ManagedDropdown
             emptyNotification={filter ? `No options were found for "${filter}".` : ''}
-            filterOptions={handleFilter}
+            getFilteredOptions={handleFilter}
             label="Super awesome dropdown"
             onClear={value => console.log('clear')}
             onInputChange={setFilter}
@@ -187,7 +187,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
   <ThemeWrapper style={{ height: '300px' }}>
     <div style={{ maxWidth: 300 }}>
       <ManagedDropdown
-        filterOptions={handleEmptyFilter}
+        getFilteredOptions={handleEmptyFilter}
         iconBefore={<SearchIcon size={14} />}
         label="Super awesome dropdown"
         onInputChange={value => console.log('change', value)}
@@ -318,7 +318,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
   <ThemeWrapper withThemeId style={{ height: '300px' }}>
     {({ themeId }) => (
       <MultiVariantDropdown
-        filterOptions={handleFilter}
+        getFilteredOptions={handleFilter}
         iconBefore={<SearchIcon size={14} />}
         initialSelected={[options[3]]}
         label="Super awesome dropdown"

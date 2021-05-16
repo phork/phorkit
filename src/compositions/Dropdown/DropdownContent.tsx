@@ -3,7 +3,7 @@ import React, { useEffect, useImperativeHandle, useMemo, useRef } from 'react';
 import { MergeElementProps, ThemeProps } from '../../types';
 import { useAccessibility } from '../../context';
 import { useDeepFocus } from '../../hooks/useDeepFocus';
-import { interactiveGroupActions as ACTIONS } from '../../components/InteractiveGroup/interactiveGroupActions';
+import { generateInteractiveGroupActions } from '../../components/InteractiveGroup/generateInteractiveGroupActions';
 import { UnmanagedInteractiveList, UnmanagedInteractiveListProps } from '../InteractiveList/UnmanagedInteractiveList';
 import { DropdownEmpty, DropdownEmptyProps } from './DropdownEmpty';
 import { DropdownState } from './dropdownReducer';
@@ -67,8 +67,8 @@ function DropdownContentBase(
     listColor,
     listSize,
     listVariant,
-    maxSelect,
-    minSelect,
+    maxSelect = 1,
+    minSelect = 0,
     onItemFocus,
     onListBlur,
     onListFocus,
@@ -85,6 +85,11 @@ function DropdownContentBase(
   forwardedRef: React.ForwardedRef<DropdownContentHandles>,
 ): React.ReactElement<HTMLDivElement> | null {
   const [selectedState, selectedDispatch] = reducer;
+
+  const { setItems, focusFirst } = useMemo(
+    () => generateInteractiveGroupActions(selectedDispatch, minSelect, maxSelect, false),
+    [selectedDispatch, minSelect, maxSelect],
+  );
 
   const accessible = useAccessibility();
   const containerRef = useRef<HTMLDivElement>(null!);
@@ -116,18 +121,19 @@ function DropdownContentBase(
         ...option,
         disabled: disabledIds?.includes(option.id),
         highlighted: selectedState.selectedIds?.includes(option.id),
-      })),
+      })) || [],
     [options, disabledIds, selectedState.selectedIds],
   );
 
+  const numItems = items.length;
+
   // if the items change then update the interactive list state
   useEffect(() => {
-    selectedDispatch({
-      type: ACTIONS.SET_ITEMS,
-      items: items || [],
-      timestamp: Date.now(),
-    });
-  }, [items, selectedDispatch]);
+    if (items.length !== numItems) {
+      focusFirst();
+    }
+    setItems(items);
+  }, [items, selectedDispatch, focusFirst, setItems, numItems]);
 
   const listDefaults = getListDefaults(layout);
 
