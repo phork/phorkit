@@ -29,12 +29,13 @@ export interface DropdownProps
     Partial<
       Pick<
         DropdownContentProps,
-        | 'allowMultiSelect'
         | 'allowReselect'
         | 'emptyNotification'
         | 'listVariant'
         | 'listSize'
         | 'listColor'
+        | 'maxSelect'
+        | 'minSelect'
         | 'onItemFocus'
       >
     >,
@@ -47,7 +48,7 @@ export interface DropdownProps
   iconBefore?: TextboxProps['iconBefore'];
   iconAfter?: TextboxProps['iconAfter'];
   id?: string;
-  initialSelected?: DropdownOption | DropdownOption[];
+  initialSelected?: DropdownOption[];
   inputRef?: React.Ref<HTMLInputElement>;
   inputVariant?: DropdownInputVariant;
   filterOptions?: (filter: string) => Promise<DropdownOption[]>;
@@ -57,11 +58,11 @@ export interface DropdownProps
   onClose?: () => void;
   onInputChange?: (input?: string) => void;
   onOpen?: () => void;
-  onSelect: (option: DropdownOption, selected: DropdownOption | DropdownOption[]) => void;
+  onSelect?: (option: DropdownOption, selected: DropdownOption[]) => void;
   /** This fires when items are selected or unselected */
-  onSelectionChange: (selected: DropdownOption | DropdownOption[] | undefined) => void;
+  onSelectionChange?: (selected: DropdownOption[] | undefined) => void;
   onSubmit?: TextboxProps['onSubmit'];
-  onUnselect: (option: DropdownOption, selected: DropdownOption | DropdownOption[] | undefined) => void;
+  onUnselect?: (option: DropdownOption, selected: DropdownOption[] | undefined) => void;
   options: DropdownOption[];
   readOnlyValue?: React.ReactChild;
   ref?: React.Ref<HTMLDivElement>;
@@ -73,7 +74,6 @@ export interface DropdownProps
 /** The dropdown is a controlled component */
 function DropdownBase(
   {
-    allowMultiSelect,
     allowReselect,
     arrowIconSize = 8,
     className,
@@ -93,6 +93,8 @@ function DropdownBase(
     listVariant,
     listSize,
     listColor,
+    maxSelect = 1,
+    minSelect = 1,
     onInputChange,
     onClear,
     onClose,
@@ -131,7 +133,7 @@ function DropdownBase(
   const previous = useRef<{
     input?: string;
     isDropdownVisible?: boolean;
-    selected?: DropdownOption | DropdownOption[];
+    selected?: DropdownOption[];
     options?: DropdownOption[];
   }>({});
 
@@ -236,14 +238,12 @@ function DropdownBase(
 
   const handleSelect: DropdownContentProps['onSelect'] = (event, { index }, selected) => {
     if (index !== undefined) {
-      const selectedOptions = Array.isArray(selected)
-        ? state.options?.filter(({ id }) => selected.includes(id))
-        : state.options?.[index];
+      const selectedOptions = selected ? state.options?.filter(({ id }) => selected.includes(id)) : undefined;
 
       dispatch({
         type:
           event &&
-          !allowMultiSelect &&
+          maxSelect <= 1 &&
           (event.type === 'click' || (event.type === 'keydown' && 'key' in event && event.key === 'Enter'))
             ? ACTIONS.SET_SELECTED_AND_HIDE_DROPDOWN
             : ACTIONS.SET_SELECTED,
@@ -257,15 +257,13 @@ function DropdownBase(
 
   const handleUnselect: DropdownContentProps['onUnselect'] = (event, { index }, selected) => {
     if (index !== undefined) {
-      const selectedOptions = Array.isArray(selected)
-        ? state.options?.filter(({ id }) => selected.includes(id))
-        : undefined;
+      const selectedOptions = selected ? state.options?.filter(({ id }) => selected.includes(id)) : undefined;
 
       if (Array.isArray(selected)) {
         dispatch({
           type:
             event &&
-            !allowMultiSelect &&
+            (maxSelect === -1 || maxSelect > 1) &&
             (event.type === 'click' || (event.type === 'keydown' && 'key' in event && event.key === 'Enter'))
               ? ACTIONS.SET_SELECTED_AND_HIDE_DROPDOWN
               : ACTIONS.SET_SELECTED,
@@ -365,7 +363,7 @@ function DropdownBase(
 
   const showFilter = !!(filterOptions && (state.inputFocus || (isDropdownVisible && state.input)));
   const inputValue = showFilter ? state.input : undefined;
-  const selectedView = getDropdownSelectedView({ allowMultiSelect, state, translations });
+  const selectedView = getDropdownSelectedView({ maxSelect, state, translations });
   const color = contrast ? 'contrast' : 'primary';
 
   // remove the dropdown arrows to make room for the clearable "x"
@@ -412,7 +410,7 @@ function DropdownBase(
         iconBefore={iconBefore}
         id={state.id}
         // the key is used to force an update on select
-        key={Array.isArray(state.selected) ? state.selected.length : state.selected?.id}
+        key={state.selected?.slice(-1)[0].id}
         label={label}
         onBlur={handleInputBlur}
         onChange={handleInputChange}
@@ -439,7 +437,6 @@ function DropdownBase(
       />
 
       <DropdownContent
-        allowMultiSelect={allowMultiSelect}
         allowReselect={allowReselect}
         contrast={contrast}
         disabledIds={disabledIds}
@@ -451,6 +448,8 @@ function DropdownBase(
         listColor={listColor}
         listSize={listSize}
         listVariant={listVariant}
+        maxSelect={maxSelect}
+        minSelect={minSelect}
         onItemFocus={onItemFocus}
         onListBlur={handleListBlur}
         onListFocus={handleListFocus}

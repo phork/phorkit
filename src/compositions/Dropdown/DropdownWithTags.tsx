@@ -121,7 +121,6 @@ export function DropdownWithTags({
   return (
     <Flex direction="column">
       <Dropdown
-        allowMultiSelect
         contrast={contrast}
         dropdownContent={DropdownContent}
         id={id}

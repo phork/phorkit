@@ -18,10 +18,9 @@ export type AccordionRenderChildren = (
 ) => React.ReactElement<HTMLDivElement>;
 
 export interface AccordionProps
-  extends Pick<UseInteractiveGroupInterface, 'allowMultiSelect' | 'initialSelected' | 'onSelect'>,
+  extends Pick<UseInteractiveGroupInterface, 'maxSelect' | 'minSelect' | 'initialSelected' | 'onSelect'>,
     Pick<AccordionListProps, 'duration' | 'easing' | 'horizontal' | 'items' | 'variant'>,
     ThemeProps {
-  allowUnselect?: boolean;
   children?: AccordionRenderChildren;
   className?: string;
   listProps?: Omit<
@@ -44,8 +43,6 @@ export interface AccordionProps
 }
 
 export function Accordion({
-  allowMultiSelect,
-  allowUnselect,
   children,
   className,
   contrast,
@@ -55,6 +52,8 @@ export function Accordion({
   initialSelected,
   items,
   listProps,
+  maxSelect,
+  minSelect,
   onSelect,
   style,
   themeId,
@@ -71,12 +70,12 @@ export function Accordion({
 
   return (
     <ListRegistryProvider>
-      <InteractiveGroupProvider<HTMLDivElement, HTMLDivElement>
-        allowMultiSelect={allowMultiSelect}
-        disableUnselect={!allowUnselect && !allowMultiSelect}
+      <InteractiveGroupProvider<string, HTMLDivElement, HTMLDivElement>
         onSelect={onSelect}
         items={items}
-        initialSelected={initialSelected || (items[0] && items[0].id)}
+        initialSelected={initialSelected || (items[0] && [items[0].id])}
+        maxSelect={maxSelect}
+        minSelect={minSelect}
         {...props}
       >
         {

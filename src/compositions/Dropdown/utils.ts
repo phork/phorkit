@@ -10,15 +10,15 @@ import {
 } from './types';
 
 export const getDropdownSelectedView = ({
-  allowMultiSelect,
+  maxSelect,
   state,
   translations,
 }: {
-  allowMultiSelect?: boolean;
+  maxSelect: number;
   state: DropdownState;
   translations: DropdownTranslations;
 }): React.ReactChild | undefined => {
-  if (allowMultiSelect) {
+  if (maxSelect === -1 || maxSelect > 1) {
     const { numSelectedSingular, numSelectedPlural } = translations;
 
     if (Array.isArray(state.selected) && state.selected.length > 0) {
@@ -30,8 +30,8 @@ export const getDropdownSelectedView = ({
     return undefined;
   }
 
-  if (state.selected && !Array.isArray(state.selected)) {
-    return state.selected.selectedLabel || state.selected.label;
+  if (state.selected && state.selected.length > 0) {
+    return state.selected[0]?.selectedLabel || state.selected[0]?.label;
   }
 
   return undefined;
@@ -39,11 +39,7 @@ export const getDropdownSelectedView = ({
 
 export const isItemSelected = (item: DropdownOption, selected: DropdownState['selected']): boolean => {
   if (item && selected) {
-    if (Array.isArray(selected)) {
-      return selected.some(({ id }) => id === item.id);
-    } else {
-      return selected.id === item.id;
-    }
+    return selected.some(({ id }) => id === item.id);
   }
   return false;
 };

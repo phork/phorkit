@@ -88,20 +88,19 @@ function ListBase<T extends ListElementType = 'ul'>(
       role: inactive ? 'list' : 'listbox',
       ...props,
     },
-    items &&
-      items.map(({ id, label, ...item }) => (
-        <ListItem<ListItemElementMap[T]>
-          as={listItemElement}
-          key={id}
-          inactive={inactive}
-          mimicSelectOnFocus={mimicSelectOnFocus}
-          transparent={transparent}
-          unstyled={unstyled}
-          {...(item as ListItemProps<ListItemElementMap[T]>)}
-        >
-          {label}
-        </ListItem>
-      )),
+    items?.map(({ id, label, ...item }) => (
+      <ListItem<ListItemElementMap[T]>
+        as={listItemElement}
+        key={id}
+        inactive={inactive}
+        mimicSelectOnFocus={mimicSelectOnFocus}
+        transparent={transparent}
+        unstyled={unstyled}
+        {...(item as ListItemProps<ListItemElementMap[T]>)}
+      >
+        {label}
+      </ListItem>
+    )),
     children,
   );
 }

@@ -1,41 +1,43 @@
-import { InteractiveGroupItemType } from './types';
+import { InteractiveGroupItemId, InteractiveGroupItemType } from './types';
 
-export class InteractiveGroupItems {
-  items: InteractiveGroupItemType[];
+export class InteractiveGroupItems<T extends InteractiveGroupItemId = string> {
+  items: InteractiveGroupItemType<T>[];
 
-  constructor(items: InteractiveGroupItemType[] = []) {
+  constructor(items: InteractiveGroupItemType<T>[] = []) {
     this.items = items;
   }
 
-  public getItemId(item: InteractiveGroupItemType): string {
+  public getItemId(item: InteractiveGroupItemType<T>): T {
     return item.id;
   }
 
-  public isItemDisabled(item: InteractiveGroupItemType): boolean {
+  public isItemDisabled(item: InteractiveGroupItemType<T>): boolean {
     return !!item.disabled;
   }
 
-  public isItemTriggerOnly(item: InteractiveGroupItemType): boolean {
+  public isItemTriggerOnly(item: InteractiveGroupItemType<T>): boolean {
     return !item || !!item.triggerOnly;
   }
 
-  public getIndexById(id?: string): number | undefined {
+  public getIndexById(id?: T): number | undefined {
     const index = this.items.findIndex(item => this.getItemId(item) === id);
     return index === -1 ? undefined : index;
   }
 
-  public getIndexByIds(ids: Array<string | undefined>): number[] | undefined {
+  public getIndexByIds(ids: T[]): number[] | undefined {
     const indexes = ids?.map(id => this.getIndexById(id)).filter(index => index !== undefined) as number[];
     return indexes?.length > 0 ? indexes : undefined;
   }
 
-  public getItemById(id?: string): InteractiveGroupItemType | undefined {
+  public getItemById(id?: T): InteractiveGroupItemType<T> | undefined {
     const index = id ? this.getIndexById(id) : undefined;
     return index !== undefined ? this.items[index as number] : undefined;
   }
 
-  public getItemByIds(ids: Array<string | undefined>): InteractiveGroupItemType[] | undefined {
-    const items = ids?.map(id => this.getItemById(id)).filter(item => item !== undefined) as InteractiveGroupItemType[];
+  public getItemByIds(ids: T[]): InteractiveGroupItemType<T>[] | undefined {
+    const items = ids
+      ?.map(id => this.getItemById(id))
+      .filter(item => item !== undefined) as InteractiveGroupItemType<T>[];
     return items?.length > 0 ? items : undefined;
   }
 
@@ -63,7 +65,7 @@ export class InteractiveGroupItems {
     return undefined;
   }
 
-  at(index: number): InteractiveGroupItemType {
+  at(index: number): InteractiveGroupItemType<T> {
     return this.items[index];
   }
 
@@ -84,4 +86,6 @@ export class InteractiveGroupItems {
   }
 }
 
-export const interactiveGroupItemsFactory = (items: InteractiveGroupItemType[]) => new InteractiveGroupItems(items);
+export const interactiveGroupItemsFactory = <T extends InteractiveGroupItemId = string>(
+  items: InteractiveGroupItemType<T>[],
+) => new InteractiveGroupItems<T>(items);

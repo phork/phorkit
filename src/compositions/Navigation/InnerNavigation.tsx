@@ -28,7 +28,7 @@ export interface InnerNavigationProps extends React.HTMLAttributes<HTMLElement>,
   items: Array<
     Omit<NavigationItemProps, 'children' | 'componentId' | 'key' | 'onClick' | 'variant' | 'vertical'> & {
       label: React.ReactNode;
-      triggerOnly?: InteractiveGroupItemType['triggerOnly'];
+      triggerOnly?: InteractiveGroupItemType<string>['triggerOnly'];
     }
   >;
   selectedId: string;
@@ -67,8 +67,8 @@ export const InnerNavigation = React.forwardRef<HTMLElement, InnerNavigationProp
     const { componentId } = useComponentId();
     const { isInitialized } = useInitializer();
 
-    const { focusedIndex, handleItemClick, setSelected } = useContext<
-      InteractiveGroupContextValue<HTMLElement, HTMLDivElement>
+    const { focusedIndex, handleItemClick, selectId } = useContext<
+      InteractiveGroupContextValue<string, HTMLElement, HTMLDivElement>
     >(InteractiveGroupContext);
 
     const combineRefs = makeCombineRefs(ref, forwardedRef);
@@ -92,8 +92,8 @@ export const InnerNavigation = React.forwardRef<HTMLElement, InnerNavigationProp
 
     // update the reducer from the selected ID passed; skip on the first run
     useEffect(() => {
-      isInitialized('selectedId') && setSelected(selectedId);
-    }, [setSelected, selectedId, isInitialized]);
+      isInitialized('selectedId') && selectId(selectedId);
+    }, [selectedId, isInitialized, selectId]);
 
     // update dummy state to force redraw; use a string because an array or object would trigger redraw every time
     const handleWindowResize = useCallback(() => {

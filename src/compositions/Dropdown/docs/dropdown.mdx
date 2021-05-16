@@ -33,14 +33,14 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
             <InlineDropdown
-              initialSelected={options[3]}
+              initialSelected={[options[3]]}
               inputVariant={variant}
               label="Super awesome dropdown"
               layout="raised"
               onItemFocus={(event, value) => console.log('focus', value)}
               onSelect={value => console.log('select', value)}
               onUnselect={value => console.log('unselect', value)}
-              onSelectionChange={options => console.log('selected', options)}
+              onSelectionChange={value => console.log('selection change', value)}
               options={options}
               transitional
             />
@@ -62,11 +62,13 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
             <InlineDropdown
-              initialSelected={options[3]}
+              initialSelected={[options[3]]}
               inputVariant={variant}
               label="Super awesome dropdown"
               layout="contained"
               onSelect={value => console.log('select', value)}
+              onUnselect={value => console.log('unselect', value)}
+              onSelectionChange={value => console.log('selection change', value)}
               options={options}
               transitional
             />
@@ -88,12 +90,14 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
             <InlineDropdown
-              allowMultiSelect
               initialSelected={[options[3]]}
               inputVariant={variant}
               label="Super awesome dropdown"
               layout="contained"
+              maxSelect={-1}
               onSelect={value => console.log('select', value)}
+              onUnselect={value => console.log('unselect', value)}
+              onSelectionChange={value => console.log('selection change', value)}
               options={options}
               transitional
             />
@@ -116,7 +120,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
             <InlineDropdown
               filterOptions={handleFilter}
               iconAfter={<TagIcon size={12} />}
-              initialSelected={options[3]}
+              initialSelected={[options[3]]}
               inputVariant={variant}
               label="Super awesome dropdown"
               onClear={value => console.log('clear')}
@@ -204,7 +208,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
     <div style={{ maxWidth: 300 }}>
       <InlineDropdown
         id="demo-danger-dropdown"
-        initialSelected={options[3]}
+        initialSelected={[options[3]]}
         label="Super awesome dropdown"
         onSelect={value => console.log('select', value)}
         options={options}
@@ -221,7 +225,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
     <div style={{ maxWidth: 300 }}>
       <InlineDropdown
         id="demo-danger-dropdown"
-        initialSelected={options[3]}
+        initialSelected={[options[3]]}
         label="Super awesome dropdown"
         onInputChange={value => console.log('change', value)}
         onSelect={value => console.log('select', value)}
@@ -239,7 +243,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
     <div style={{ maxWidth: 300 }}>
       <InlineDropdown
         id="demo-danger-dropdown"
-        initialSelected={options[3]}
+        initialSelected={[options[3]]}
         label="Super awesome dropdown"
         onSelect={value => console.log('select', value)}
         options={options}
@@ -257,7 +261,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
       <InlineDropdown
         contrast
         id="demo-contrast-dropdown"
-        initialSelected={options[3]}
+        initialSelected={[options[3]]}
         label="Super awesome dropdown"
         onSelect={value => console.log('select', value)}
         options={options}
@@ -272,7 +276,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
   <div style={{ height: 300, maxWidth: 300, marginLeft: 20, marginRight: 20 }}>
     <InlineDropdown
       id="demo-contrast-dropdown"
-      initialSelected={options[3]}
+      initialSelected={[options[3]]}
       label="Super awesome dropdown"
       layout="contained"
       onSelect={value => console.log('select', value)}
@@ -316,7 +320,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
       <MultiVariantDropdown
         filterOptions={handleFilter}
         iconBefore={<SearchIcon size={14} />}
-        initialSelected={options[3]}
+        initialSelected={[options[3]]}
         label="Super awesome dropdown"
         layout="contained"
         onClear={value => console.log('clear')}

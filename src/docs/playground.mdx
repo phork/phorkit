@@ -559,7 +559,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
           <Dropdown
             arrowIconSize={12}
             dropdownContent={DropdownContent}
-            initialSelected={options[0]}
+            initialSelected={[options[0]]}
             label="Super awesome dropdown"
             layout="raised"
             listVariant="divided"
@@ -646,7 +646,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
           <Dropdown
             arrowIconSize={12}
             dropdownContent={DropdownContent}
-            initialSelected={options[0]}
+            initialSelected={[options[0]]}
             inputVariant="outline"
             layout="raised"
             listVariant="divided"
@@ -685,7 +685,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
         <Card hoverable raised full style={{ maxWidth: '300px' }}>
           <ColoredTabs
             colorId="P50"
-            initialSelected="check"
+            initialSelected={['check']}
             vertical
             onSelect={(event, id) => console.log(id)}
             items={[
@@ -738,7 +738,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                 label: <CheckIcon style={{ display: 'block' }} />,
                 content: (
                   <InteractiveList
-                    initialSelected={4}
+                    initialSelected={[4]}
                     selectOnFocus
                     variant="divided"
                     items={[{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }].map(option => ({

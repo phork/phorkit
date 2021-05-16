@@ -1,31 +1,44 @@
-import produce from 'immer';
-import React, { useRef } from 'react';
-import { InteractiveGroupContext } from './InteractiveGroupContext';
+import produce, { Draft } from 'immer';
+import React, { Reducer, useReducer, useRef } from 'react';
+import { InteractiveGroupContext, InteractiveGroupContextValue } from './InteractiveGroupContext';
+import { InteractiveGroupStateAction } from './interactiveGroupActions';
+import {
+  interactiveGroupReducer,
+  getInteractiveGroupInitialState as getInitialState,
+  InteractiveGroupState,
+} from './interactiveGroupReducer';
+import { InteractiveGroupItemId } from './types';
 import { useInteractiveGroup, UseInteractiveGroupInterface, UseInteractiveGroupResponse } from './useInteractiveGroup';
 
 export interface InteractiveGroupProviderProps<
+  T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,
   I extends HTMLElement = HTMLElement
 > extends Omit<React.HTMLAttributes<E>, 'onKeyDown' | 'onSelect'>,
-    UseInteractiveGroupInterface {
+    Omit<UseInteractiveGroupInterface<T>, 'reducer'> {
   children:
     | React.ReactElement
-    | ((ref: UseInteractiveGroupResponse<E, I>['ref'], props: unknown) => React.ReactElement<E>)
+    | ((ref: UseInteractiveGroupResponse<T, E, I>['ref'], props: unknown) => React.ReactElement<E>)
     | null;
 }
 
 /**
+ * - T is the type of IDs allowed
  * - E is the type of the element that the returned ref gets attached to
  * - I is the type of item element
  */
-export function InteractiveGroupProvider<E extends HTMLElement = HTMLDivElement, I extends HTMLElement = HTMLElement>({
-  allowMultiSelect,
+export function InteractiveGroupProvider<
+  T extends InteractiveGroupItemId = string,
+  E extends HTMLElement = HTMLDivElement,
+  I extends HTMLElement = HTMLElement
+>({
   allowReselect,
   children,
   disabled,
-  disableUnselect,
   initialSelected,
   items,
+  maxSelect,
+  minSelect,
   onItemClick,
   onItemFocus,
   onKeyDown,
@@ -35,43 +48,55 @@ export function InteractiveGroupProvider<E extends HTMLElement = HTMLDivElement,
   selectOnFocus,
   triggerLinks,
   ...props
-}: InteractiveGroupProviderProps<E, I>): React.ReactElement {
-  const previousValue = useRef<Omit<UseInteractiveGroupResponse<E, I>, 'ref'>>({} as UseInteractiveGroupResponse<E, I>);
+}: InteractiveGroupProviderProps<T, E, I>): React.ReactElement {
+  const previousValue = useRef<Omit<UseInteractiveGroupResponse<T, E, I>, 'ref'>>(
+    {} as UseInteractiveGroupResponse<T, E, I>,
+  );
+
+  const reducer = useReducer<Reducer<InteractiveGroupState<T>, InteractiveGroupStateAction<T>>>(
+    interactiveGroupReducer,
+    getInitialState({ items, selectedIds: initialSelected }),
+  );
+
   const {
     focusedIndex,
     handleItemClick,
     isSelected,
     ref,
-    selectedId,
+    selectedIds,
+    selectId,
     setFocused,
-    setSelected,
-    unsetSelected,
-  } = useInteractiveGroup<E, I>({
-    allowMultiSelect,
+    unselectId,
+  } = useInteractiveGroup<T, E, I>({
     allowReselect,
     disabled,
-    disableUnselect,
-    initialSelected,
     items,
+    maxSelect,
+    minSelect,
     onItemClick,
     onItemFocus,
     onKeyDown,
     onSelect,
     onUnselect,
     parentRef,
+    reducer,
     selectOnFocus,
     triggerLinks,
   });
 
-  const value = produce(previousValue.current, draftState => {
-    draftState.focusedIndex = focusedIndex;
-    draftState.handleItemClick = handleItemClick;
-    draftState.isSelected = isSelected;
-    draftState.selectedId = selectedId;
-    draftState.setFocused = setFocused;
-    draftState.setSelected = setSelected;
-    draftState.unsetSelected = unsetSelected;
-  });
+  const value = produce<InteractiveGroupContextValue<T, E, I>, Draft<InteractiveGroupContextValue<T, E, I>>>(
+    previousValue.current,
+    draftState => {
+      draftState.focusedIndex = focusedIndex;
+      draftState.handleItemClick = handleItemClick;
+      draftState.isSelected = isSelected;
+      // @ts-ignore [TODO:ts] WTF
+      draftState.selectedIds = selectedIds;
+      draftState.selectId = selectId;
+      draftState.setFocused = setFocused;
+      draftState.unselectId = unselectId;
+    },
+  );
   previousValue.current = value;
 
   return (

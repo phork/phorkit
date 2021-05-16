@@ -100,7 +100,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 <Playground>
   <ThemeWrapper>
     <Tabs
-      initialSelected="second"
+      initialSelected={['second']}
       onSelect={(event, id) => console.log(id)}
       items={[
         {
@@ -191,7 +191,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         render={({ id }) => (
           <Rhythm key={id} my={1}>
             <ColoredTabs
-              initialSelected="third"
+              initialSelected={['third']}
               colorId={id}
               vertical
               onSelect={(event, id) => console.log(id)}
@@ -215,7 +215,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   <ThemeWrapper>
     <Tabs
       unstyled
-      initialSelected="second"
+      initialSelected={['second']}
       style={{ outline: 'none' }}
       onSelect={(event, id) => console.log(id)}
       items={[
@@ -326,7 +326,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 <Playground>
   <ThemeWrapper>
     <Tabs
-      allowUnselect
+      minSelect={0}
       onSelect={(event, id) => console.log(id)}
       items={[
         { id: 'first', label: 'First', content: 'First panel' },

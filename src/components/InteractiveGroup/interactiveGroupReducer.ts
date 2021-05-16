@@ -2,14 +2,14 @@ import {
   interactiveGroupActions as ACTIONS,
   InteractiveGroupStateAction,
   InteractiveGroupEventTypes,
-  InteractiveGroupStateActionUnsetSelected,
-  InteractiveGroupStateActionSetSelected,
+  InteractiveGroupStateActionUnselectId,
+  InteractiveGroupStateActionSelectId,
   InteractiveGroupStateActionSelectFocused,
 } from './interactiveGroupActions';
 import { interactiveGroupItemsFactory, InteractiveGroupItems } from './interactiveGroupItemsFactory';
-import { InteractiveGroupItemType } from './types';
+import { InteractiveGroupItemId, InteractiveGroupItemType } from './types';
 
-export type InteractiveGroupState = {
+export type InteractiveGroupState<T extends InteractiveGroupItemId> = {
   events: {
     cleared?: InteractiveGroupEventTypes['event'];
     focused?: InteractiveGroupEventTypes['event'];
@@ -18,9 +18,9 @@ export type InteractiveGroupState = {
     triggered?: InteractiveGroupEventTypes['event'];
   };
   focusedIndex?: number;
-  items: InteractiveGroupItems;
-  selectedId?: string | string[];
-  triggeredId?: string;
+  items: InteractiveGroupItems<T>;
+  selectedIds: T[];
+  triggeredId?: T;
   times: {
     cleared?: number;
     focused?: number;
@@ -30,120 +30,129 @@ export type InteractiveGroupState = {
   };
 };
 
-export const getInteractiveGroupInitialState = ({
-  initialItems = [],
-  initialSelected,
+export const getInteractiveGroupInitialState = <T extends InteractiveGroupItemId>({
+  items: initialItems = [],
+  selectedIds: initialSelectedIds = [],
 }: {
-  initialItems?: InteractiveGroupItemType[];
-  initialSelected?: string | string[];
-} = {}): InteractiveGroupState => {
+  items?: InteractiveGroupItemType<T>[];
+  selectedIds?: T[];
+} = {}): InteractiveGroupState<T> => {
   const items = interactiveGroupItemsFactory(initialItems);
-  const selectedIndex = Array.isArray(initialSelected)
-    ? items.getIndexByIds(initialSelected)
-    : items.getIndexById(initialSelected);
+  const selectedIndex = items.getIndexByIds(initialSelectedIds);
 
   return {
     events: {},
-    focusedIndex: (Array.isArray(selectedIndex) ? selectedIndex[0] : selectedIndex) || 0,
+    focusedIndex: (Array.isArray(selectedIndex) && selectedIndex[0]) || 0,
     items,
-    selectedId: initialSelected,
+    selectedIds: initialSelectedIds,
     times: {},
   };
 };
 
-export function interactiveGroupReducer(
-  state = getInteractiveGroupInitialState(),
-  initAction: InteractiveGroupStateAction,
-): InteractiveGroupState {
-  let action = { ...initAction };
+const isIdSelected = <T extends InteractiveGroupItemId>(state: InteractiveGroupState<T>, id: T): boolean =>
+  (id !== undefined && state.selectedIds?.includes(id)) || false;
 
-  const isIdSelected = (id: string): boolean =>
-    Array.isArray(state.selectedId) ? state.selectedId.includes(id) : state.selectedId === id;
+const getSelectedIdsIncludingId = <T extends InteractiveGroupItemId>(state: InteractiveGroupState<T>, id: T): T[] => {
+  if (!state.selectedIds.includes(id)) {
+    return [...state.selectedIds, id];
+  }
+  return state.selectedIds;
+};
 
-  // a helper to convert selected Ids between multi-select and single select
-  const getSelectedIds = (): string | string[] | undefined => {
-    if ('allowMultiSelect' in action && action.allowMultiSelect) {
-      if (state.selectedId !== undefined) {
-        if (Array.isArray(state.selectedId)) {
-          return [...state.selectedId];
-        }
-        return [state.selectedId];
-      }
-      return [];
-    }
-    return Array.isArray(state.selectedId) ? state.selectedId.slice(-1) : state.selectedId;
-  };
+const getSelectedIdsExcludingId = <T extends InteractiveGroupItemId>(state: InteractiveGroupState<T>, id: T): T[] => {
+  if (state.selectedIds.includes(id)) {
+    return state.selectedIds.filter((i: InteractiveGroupItemId) => i !== id);
+  }
+  return state.selectedIds;
+};
 
-  const getSelectedIdsIncludingId = (id: string): string | string[] => {
-    if ('allowMultiSelect' in action && action.allowMultiSelect) {
-      const ids = getSelectedIds() || [];
-      if (Array.isArray(ids) && !ids.includes(id)) ids.push(id);
-      return ids;
-    }
-    return id;
-  };
+const getIndexByActionType = <T extends InteractiveGroupItemId>(
+  state: InteractiveGroupState<T>,
+  type: ACTIONS,
+): number | undefined => {
+  switch (type) {
+    case ACTIONS.FOCUS_FIRST:
+    case ACTIONS.SELECT_FIRST:
+      return state.items.firstIndex();
 
-  const getSelectedIdsExcludingId = (id: string): string | string[] | undefined => {
-    if ('allowMultiSelect' in action && action.allowMultiSelect) {
-      const ids = getSelectedIds();
-      if (Array.isArray(ids) && ids.includes(id)) return ids.filter(i => i !== id);
-      return ids;
-    }
-    return undefined;
-  };
+    case ACTIONS.FOCUS_LAST:
+    case ACTIONS.SELECT_LAST:
+      return state.items.lastIndex();
 
+    case ACTIONS.FOCUS_NEXT:
+    case ACTIONS.SELECT_NEXT:
+      return state.focusedIndex !== undefined ? state.items.nextIndex(state.focusedIndex) : undefined;
+
+    case ACTIONS.FOCUS_PREVIOUS:
+    case ACTIONS.SELECT_PREVIOUS:
+      return state.focusedIndex !== undefined ? state.items.previousIndex(state.focusedIndex) : undefined;
+
+    default:
+      throw new Error('Invalid action type');
+  }
+};
+
+/** This turns a toggle action into a select or unselect action based on its current state */
+const forwardAction = <T extends InteractiveGroupItemId>(
+  state = getInteractiveGroupInitialState<T>(),
+  action: InteractiveGroupStateAction<T>,
+): InteractiveGroupStateAction<T> => {
   if (action.type === ACTIONS.TOGGLE_SELECTED) {
-    if (isIdSelected(action.selectedId) && !action.allowReselect) {
-      action = {
+    if (isIdSelected<T>(state, action.id) && !action.allowReselect) {
+      return {
         ...action,
-        type: ACTIONS.UNSET_SELECTED,
-      } as InteractiveGroupStateActionUnsetSelected;
-    } else {
-      action = {
-        ...action,
-        type: ACTIONS.SET_SELECTED,
-      } as InteractiveGroupStateActionSetSelected;
+        type: ACTIONS.UNSELECT_ID,
+      } as InteractiveGroupStateActionUnselectId<T>;
     }
+    return {
+      ...action,
+      type: ACTIONS.SELECT_ID,
+    } as InteractiveGroupStateActionSelectId<T>;
   }
 
   if (action.type === ACTIONS.TOGGLE_SELECTED_FOCUSED && state.focusedIndex !== undefined) {
     const focusedId = (state.items.at(state.focusedIndex) || {}).id;
-    if (isIdSelected(focusedId) && !action.allowReselect) {
-      action = {
+    if (isIdSelected<T>(state, focusedId) && !action.allowReselect) {
+      return {
         ...action,
-        type: ACTIONS.UNSET_SELECTED,
-        selectedId: focusedId,
-      } as InteractiveGroupStateActionUnsetSelected;
-    } else {
-      action = {
-        ...action,
-        type: ACTIONS.SELECT_FOCUSED,
-      } as InteractiveGroupStateActionSelectFocused;
+        id: focusedId,
+        type: ACTIONS.UNSELECT_ID,
+      } as InteractiveGroupStateActionUnselectId<T>;
     }
+    return {
+      ...action,
+      type: ACTIONS.SELECT_FOCUSED,
+    } as InteractiveGroupStateActionSelectFocused;
   }
+  return action;
+};
 
-  const getIndexByActionType = (type: ACTIONS): number | undefined => {
-    switch (type) {
-      case ACTIONS.FOCUS_FIRST:
-      case ACTIONS.SELECT_FIRST:
-        return state.items.firstIndex();
+// if only 1 item can be selected then we still allow for selection, but we must replace the item not add to it
+const canSelectItem = <T extends InteractiveGroupItemId>(
+  state = getInteractiveGroupInitialState<T>(),
+  action: InteractiveGroupStateAction<T>,
+): boolean => {
+  if ('maxSelect' in action) {
+    return !(action.maxSelect !== -1 && action.maxSelect !== 1 && state.selectedIds.length + 1 > action.maxSelect);
+  }
+  return true;
+};
 
-      case ACTIONS.FOCUS_LAST:
-      case ACTIONS.SELECT_LAST:
-        return state.items.lastIndex();
+const canUnselectItem = <T extends InteractiveGroupItemId>(
+  state = getInteractiveGroupInitialState<T>(),
+  action: InteractiveGroupStateAction<T>,
+): boolean => {
+  if ('minSelect' in action) {
+    return !(action.minSelect !== undefined && state.selectedIds.length - 1 < action.minSelect);
+  }
+  return true;
+};
 
-      case ACTIONS.FOCUS_NEXT:
-      case ACTIONS.SELECT_NEXT:
-        return state.focusedIndex !== undefined ? state.items.nextIndex(state.focusedIndex) : undefined;
-
-      case ACTIONS.FOCUS_PREVIOUS:
-      case ACTIONS.SELECT_PREVIOUS:
-        return state.focusedIndex !== undefined ? state.items.previousIndex(state.focusedIndex) : undefined;
-
-      default:
-        throw new Error('Invalid action type');
-    }
-  };
+export function interactiveGroupReducer<T extends InteractiveGroupItemId>(
+  state = getInteractiveGroupInitialState<T>(),
+  initAction: InteractiveGroupStateAction<T>,
+): InteractiveGroupState<T> {
+  const action = forwardAction<T>(state, initAction);
 
   switch (action.type) {
     case ACTIONS.SET_ITEMS:
@@ -156,7 +165,7 @@ export function interactiveGroupReducer(
     case ACTIONS.FOCUS_LAST:
     case ACTIONS.FOCUS_NEXT:
     case ACTIONS.FOCUS_PREVIOUS: {
-      const focusedIndex = getIndexByActionType(action.type);
+      const focusedIndex = getIndexByActionType<T>(state, action.type);
       return {
         ...state,
         focusedIndex,
@@ -189,16 +198,20 @@ export function interactiveGroupReducer(
     case ACTIONS.SELECT_LAST:
     case ACTIONS.SELECT_NEXT:
     case ACTIONS.SELECT_PREVIOUS: {
-      const focusedIndex = getIndexByActionType(action.type);
+      const focusedIndex = getIndexByActionType<T>(state, action.type);
       const item = focusedIndex !== undefined && state.items.at(focusedIndex);
       if (!item) return state;
+
+      if (!canSelectItem<T>(state, action)) return state;
 
       const isTriggerOnly = state.items.isItemTriggerOnly(item);
       return {
         ...state,
         focusedIndex,
         ...(isTriggerOnly && { triggeredId: item.id }),
-        ...(!isTriggerOnly && { selectedId: getSelectedIdsIncludingId(item.id) }),
+        ...(!isTriggerOnly && {
+          selectedIds: action.maxSelect === 1 ? [item.id] : getSelectedIdsIncludingId<T>(state, item.id),
+        }),
         events: {
           ...state.events,
           focused: action.event,
@@ -216,11 +229,15 @@ export function interactiveGroupReducer(
       const item = state.focusedIndex !== undefined && state.items.at(state.focusedIndex);
       if (!item) return state;
 
+      if (!canSelectItem<T>(state, action)) return state;
+
       const isTriggerOnly = state.items.isItemTriggerOnly(item);
       return {
         ...state,
         ...(isTriggerOnly && { triggeredId: item.id }),
-        ...(!isTriggerOnly && { selectedId: getSelectedIdsIncludingId(item.id) }),
+        ...(!isTriggerOnly && {
+          selectedIds: action.maxSelect === 1 ? [item.id] : getSelectedIdsIncludingId<T>(state, item.id),
+        }),
         events: {
           ...state.events,
           [isTriggerOnly ? 'triggered' : 'selected']: action.event,
@@ -232,16 +249,20 @@ export function interactiveGroupReducer(
       };
     }
 
-    case ACTIONS.SET_SELECTED: {
-      if (isIdSelected(action.selectedId) && !action.allowReselect) return state;
+    case ACTIONS.SELECT_ID: {
+      if (isIdSelected<T>(state, action.id) && !action.allowReselect) return state;
 
-      const focusedIndex = state.items.getIndexById(action.selectedId) as number | undefined;
+      if (!canSelectItem<T>(state, action)) return state;
+
+      const focusedIndex = state.items.getIndexById(action.id) as number | undefined;
       const isTriggerOnly = focusedIndex !== undefined && state.items.isItemTriggerOnly(state.items.at(focusedIndex));
       return {
         ...state,
         focusedIndex,
-        ...(isTriggerOnly && { triggeredId: action.selectedId }),
-        ...(!isTriggerOnly && { selectedId: getSelectedIdsIncludingId(action.selectedId) }),
+        ...(isTriggerOnly && { triggeredId: action.id }),
+        ...(!isTriggerOnly && {
+          selectedIds: action.maxSelect === 1 ? [action.id] : getSelectedIdsIncludingId<T>(state, action.id),
+        }),
         events: {
           ...state.events,
           [isTriggerOnly ? 'triggered' : 'selected']: action.event,
@@ -253,12 +274,13 @@ export function interactiveGroupReducer(
       };
     }
 
-    case ACTIONS.UNSET_SELECTED:
-      if (action.disableUnselect) return state;
+    case ACTIONS.UNSELECT_ID:
+      if (!isIdSelected<T>(state, action.id)) return state;
+      if (!canUnselectItem<T>(state, action)) return state;
 
       return {
         ...state,
-        selectedId: getSelectedIdsExcludingId(action.selectedId),
+        selectedIds: getSelectedIdsExcludingId<T>(state, action.id),
         events: {
           ...state.events,
           unselected: action.event,
@@ -273,7 +295,7 @@ export function interactiveGroupReducer(
       return {
         ...state,
         focusedIndex: undefined,
-        selectedId: undefined,
+        selectedIds: [],
         triggeredId: undefined,
         events: {
           ...state.events,

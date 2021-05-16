@@ -11,13 +11,13 @@ import { List, ListProps } from '../../components/List';
 import { InteractiveListItem, InteractiveListItemProps } from './InteractiveListItem';
 
 type ExplicitProviderProps = Pick<
-  InteractiveGroupProviderProps<HTMLUListElement, HTMLLIElement>,
-  | 'allowMultiSelect'
+  InteractiveGroupProviderProps<string, HTMLUListElement, HTMLLIElement>,
   | 'allowReselect'
-  | 'disableUnselect'
   | 'disabled'
   | 'initialSelected'
   | 'items'
+  | 'maxSelect'
+  | 'minSelect'
   | 'onItemClick'
   | 'onItemFocus'
   | 'onKeyDown'
@@ -35,7 +35,7 @@ export interface LocalInteractiveListProps extends ExplicitProviderProps {
   items: (Omit<InteractiveListItemProps, 'onClick'> & { selectedLabel?: string })[];
   listComponent?: typeof List;
   providerProps?: Omit<
-    InteractiveGroupProviderProps<HTMLUListElement, HTMLLIElement>,
+    InteractiveGroupProviderProps<string, HTMLUListElement, HTMLLIElement>,
     keyof ExplicitProviderProps | 'children'
   >;
   unstyled?: boolean;
@@ -45,16 +45,16 @@ export type InteractiveListProps = MergeProps<ListProps<'ul'>, LocalInteractiveL
 
 function InteractiveListBase(
   {
-    allowMultiSelect,
     allowReselect,
     children,
     disabled,
-    disableUnselect,
     focused,
     initialSelected,
     items,
     listComponent,
+    maxSelect,
     mimicSelectOnFocus,
+    minSelect,
     onItemClick,
     onItemFocus,
     onKeyDown,
@@ -82,13 +82,13 @@ function InteractiveListBase(
   const ListComponent = listComponent || List;
 
   return (
-    <InteractiveGroupProvider<HTMLUListElement, HTMLLIElement>
-      allowMultiSelect={allowMultiSelect}
+    <InteractiveGroupProvider<string, HTMLUListElement, HTMLLIElement>
       allowReselect={allowReselect}
       disabled={disabled}
-      disableUnselect={disableUnselect}
       initialSelected={initialSelected}
       items={items}
+      maxSelect={maxSelect}
+      minSelect={minSelect}
       onItemClick={onItemClick}
       onItemFocus={onItemFocus}
       onKeyDown={onKeyDown}

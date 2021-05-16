@@ -3,32 +3,32 @@ import {
   InteractiveGroupStateAction,
   InteractiveGroupEventTypes,
 } from './interactiveGroupActions';
-import { InteractiveGroupItemType } from './types';
+import { InteractiveGroupItemId, InteractiveGroupItemType } from './types';
 
-export type GeneratedInteractiveGroupActions = {
-  setItems: (items: InteractiveGroupItemType[]) => void;
-  setFocusedByIndex: (index: number | undefined, props: InteractiveGroupEventTypes) => void;
-  setSelected: (id: string, props?: InteractiveGroupEventTypes) => void;
-  unsetSelected: (id: string, props?: InteractiveGroupEventTypes) => void;
-  toggleSelected: (id: string, props?: InteractiveGroupEventTypes) => void;
-  selectFocused: (props: InteractiveGroupEventTypes) => void;
-  toggleSelectedFocused: (props: InteractiveGroupEventTypes) => void;
-  selectPrevious: (props: InteractiveGroupEventTypes) => void;
-  focusPrevious: (props: InteractiveGroupEventTypes) => void;
-  selectNext: (props: InteractiveGroupEventTypes) => void;
-  focusNext: (props: InteractiveGroupEventTypes) => void;
-  selectFirst: (props: InteractiveGroupEventTypes) => void;
+export type GeneratedInteractiveGroupActions<T extends InteractiveGroupItemId = string> = {
   focusFirst: (props: InteractiveGroupEventTypes) => void;
-  selectLast: (props: InteractiveGroupEventTypes) => void;
   focusLast: (props: InteractiveGroupEventTypes) => void;
+  focusNext: (props: InteractiveGroupEventTypes) => void;
+  focusPrevious: (props: InteractiveGroupEventTypes) => void;
+  selectFirst: (props: InteractiveGroupEventTypes) => void;
+  selectFocused: (props: InteractiveGroupEventTypes) => void;
+  selectId: (id: T, props?: InteractiveGroupEventTypes) => void;
+  selectLast: (props: InteractiveGroupEventTypes) => void;
+  selectNext: (props: InteractiveGroupEventTypes) => void;
+  selectPrevious: (props: InteractiveGroupEventTypes) => void;
+  setFocusedByIndex: (index: number | undefined, props: InteractiveGroupEventTypes) => void;
+  setItems: (items: InteractiveGroupItemType<T>[]) => void;
+  toggleSelected: (id: T, props?: InteractiveGroupEventTypes) => void;
+  toggleSelectedFocused: (props: InteractiveGroupEventTypes) => void;
+  unselectId: (id: T, props?: InteractiveGroupEventTypes) => void;
 };
 
-export function generateInteractiveGroupActions(
-  dispatch: React.Dispatch<InteractiveGroupStateAction>,
-  disableUnselect?: boolean,
-  allowMultiSelect?: boolean,
+export function generateInteractiveGroupActions<T extends InteractiveGroupItemId = string>(
+  dispatch: React.Dispatch<InteractiveGroupStateAction<T>>,
+  minSelect: number,
+  maxSelect: number,
   allowReselect?: boolean,
-): GeneratedInteractiveGroupActions {
+): GeneratedInteractiveGroupActions<T> {
   return {
     setItems: items =>
       dispatch({
@@ -45,58 +45,56 @@ export function generateInteractiveGroupActions(
         type: ACTIONS.SET_FOCUSED,
       }),
 
-    setSelected: (id, { event } = {}) =>
+    selectId: (id, { event } = {}) =>
       dispatch({
-        allowMultiSelect,
         event,
-        selectedId: id,
+        id,
+        maxSelect,
         timestamp: Date.now(),
-        type: ACTIONS.SET_SELECTED,
+        type: ACTIONS.SELECT_ID,
       }),
 
-    unsetSelected: (id, { event } = {}) =>
+    unselectId: (id, { event } = {}) =>
       dispatch({
-        allowMultiSelect,
-        disableUnselect,
         event,
-        selectedId: id,
+        id,
+        minSelect,
         timestamp: Date.now(),
-        type: ACTIONS.UNSET_SELECTED,
+        type: ACTIONS.UNSELECT_ID,
       }),
 
     toggleSelected: (id, { event } = {}) =>
       dispatch({
-        allowMultiSelect,
         allowReselect,
-        disableUnselect,
         event,
-        selectedId: id,
+        id,
+        minSelect,
+        maxSelect,
         timestamp: Date.now(),
         type: ACTIONS.TOGGLE_SELECTED,
       }),
 
     selectFocused: ({ event }) =>
       dispatch({
-        allowMultiSelect,
-        disableUnselect,
         event,
+        maxSelect,
         timestamp: Date.now(),
         type: ACTIONS.SELECT_FOCUSED,
       }),
 
     toggleSelectedFocused: ({ event }) =>
       dispatch({
-        allowMultiSelect,
         allowReselect,
-        disableUnselect,
         event,
+        minSelect,
+        maxSelect,
         timestamp: Date.now(),
         type: ACTIONS.TOGGLE_SELECTED_FOCUSED,
       }),
 
     selectPrevious: ({ event }) =>
       dispatch({
-        allowMultiSelect,
+        maxSelect,
         event,
         timestamp: Date.now(),
         type: ACTIONS.SELECT_PREVIOUS,
@@ -111,8 +109,8 @@ export function generateInteractiveGroupActions(
 
     selectNext: ({ event }) =>
       dispatch({
-        allowMultiSelect,
         event,
+        maxSelect,
         timestamp: Date.now(),
         type: ACTIONS.SELECT_NEXT,
       }),
@@ -126,8 +124,8 @@ export function generateInteractiveGroupActions(
 
     selectFirst: ({ event }) =>
       dispatch({
-        allowMultiSelect,
         event,
+        maxSelect,
         timestamp: Date.now(),
         type: ACTIONS.SELECT_FIRST,
       }),
@@ -141,8 +139,8 @@ export function generateInteractiveGroupActions(
 
     selectLast: ({ event }) =>
       dispatch({
-        allowMultiSelect,
         event,
+        maxSelect,
         timestamp: Date.now(),
         type: ACTIONS.SELECT_LAST,
       }),

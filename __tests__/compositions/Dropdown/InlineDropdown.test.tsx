@@ -25,7 +25,7 @@ describe('<InlineDropdown />', () => {
 
     const { getByText } = render(
       <InlineDropdown
-        initialSelected={options[3]}
+        initialSelected={[options[3]]}
         label="Super fantastic label"
         layout="raised"
         onSelect={onSelect}

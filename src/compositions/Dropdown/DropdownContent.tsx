@@ -3,7 +3,6 @@ import React, { useImperativeHandle, useMemo, useRef } from 'react';
 import { MergeElementProps, ThemeProps } from '../../types';
 import { useAccessibility } from '../../context';
 import { useDeepFocus } from '../../hooks/useDeepFocus';
-import { InteractiveGroupSelectedId } from '../../components/InteractiveGroup/useInteractiveGroup';
 import { InteractiveList, InteractiveListProps } from '../InteractiveList/InteractiveList';
 import { DropdownEmpty, DropdownEmptyProps } from './DropdownEmpty';
 import { DropdownState } from './dropdownReducer';
@@ -19,7 +18,6 @@ import {
 import { getListDefaults, isItemSelected } from './utils';
 
 export interface LocalDropdownContentProps extends ThemeProps {
-  allowMultiSelect?: boolean;
   /** This is used by DropdownWithTags so an item can be added, removed and re-added */
   allowReselect?: boolean;
   className?: string;
@@ -32,6 +30,8 @@ export interface LocalDropdownContentProps extends ThemeProps {
   listColor?: DropdownListColor;
   listSize?: DropdownListSize;
   listVariant?: DropdownListVariant;
+  maxSelect?: number;
+  minSelect?: number;
   onItemFocus: InteractiveListProps['onItemFocus'];
   onListBlur: React.FocusEventHandler<HTMLDivElement>;
   onListFocus: React.FocusEventHandler<HTMLDivElement>;
@@ -52,7 +52,6 @@ export interface DropdownContentHandles {
 
 function DropdownContentBase(
   {
-    allowMultiSelect,
     allowReselect,
     className,
     parentRef,
@@ -66,6 +65,8 @@ function DropdownContentBase(
     listColor,
     listSize,
     listVariant,
+    maxSelect,
+    minSelect,
     onItemFocus,
     onListBlur,
     onListFocus,
@@ -81,8 +82,8 @@ function DropdownContentBase(
   forwardedRef: React.ForwardedRef<DropdownContentHandles>,
 ): React.ReactElement<HTMLDivElement> | null {
   const accessible = useAccessibility();
-  const initialSelected = useRef<InteractiveGroupSelectedId | undefined>(
-    (Array.isArray(state.selected) ? state.selected.map(({ id }) => id) : state.selected?.id) || undefined,
+  const initialSelected = useRef<string[]>(
+    state.selected?.filter(({ id }) => id !== undefined).map(({ id }) => id) || [],
   );
 
   const containerRef = useRef<HTMLDivElement>(null!);
@@ -139,7 +140,6 @@ function DropdownContentBase(
     >
       <div className={cx(styles.dropdownOptions, isEmpty && styles['is-empty'])}>
         <InteractiveList
-          allowMultiSelect={allowMultiSelect}
           allowReselect={allowReselect}
           color={listColor || listDefaults.color}
           contrast={contrast}
@@ -150,6 +150,8 @@ function DropdownContentBase(
           items={items}
           // mimicSelectOnFocus is necessary so that keyboard navigation doesn't keep selecting items but it looks like a regular dropdown
           mimicSelectOnFocus
+          maxSelect={maxSelect}
+          minSelect={minSelect}
           onItemFocus={onItemFocus}
           onKeyDown={onListKeyDown}
           onSelect={onSelect}

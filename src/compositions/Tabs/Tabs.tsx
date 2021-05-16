@@ -21,16 +21,18 @@ export type TabsRenderChildren = (
   },
 ) => React.ReactElement<HTMLDivElement>;
 
-export interface TabsProps extends ThemeProps {
-  allowUnselect?: boolean;
+export interface TabsProps
+  extends Omit<
+      InteractiveGroupProviderProps<string, HTMLDivElement, HTMLDivElement>,
+      'children' | 'items' | 'maxSelect'
+    >,
+    ThemeProps {
   children?: TabsRenderChildren;
   className?: string;
   contrast?: boolean;
   fullWidth?: boolean;
-  initialSelected?: string;
   items: Array<TabListProps['items'][0] & TabPanelGroupProps['items'][0]>;
   listProps?: React.HTMLAttributes<HTMLDivElement>;
-  onSelect?: InteractiveGroupProviderProps['onSelect'];
   panelGroupProps?: React.HTMLAttributes<HTMLDivElement>;
   style?: React.CSSProperties;
   unstyled?: boolean;
@@ -39,7 +41,6 @@ export interface TabsProps extends ThemeProps {
 }
 
 export function Tabs({
-  allowUnselect,
   children,
   className,
   contrast,
@@ -47,6 +48,7 @@ export function Tabs({
   initialSelected,
   items,
   listProps = {},
+  minSelect,
   onSelect,
   panelGroupProps = {},
   style,
@@ -65,11 +67,12 @@ export function Tabs({
 
   return (
     <ListRegistryProvider>
-      <InteractiveGroupProvider<HTMLDivElement, HTMLDivElement>
-        disableUnselect={!allowUnselect}
+      <InteractiveGroupProvider<string, HTMLDivElement, HTMLDivElement>
         onSelect={onSelect}
+        maxSelect={1}
+        minSelect={minSelect}
         items={items}
-        initialSelected={initialSelected || (items[0] && items[0].id)}
+        initialSelected={initialSelected || (items[0] && [items[0].id])}
         {...props}
       >
         {
