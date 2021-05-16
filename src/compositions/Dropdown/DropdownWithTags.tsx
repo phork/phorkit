@@ -29,6 +29,8 @@ export function DropdownWithTags({
   contrast,
   id,
   initialSelected = [],
+  minSelect = 1,
+  maxSelect = -1,
   onSelect,
   onSelectionChange,
   onUnselect,
@@ -90,7 +92,7 @@ export function DropdownWithTags({
     isDropdownOpen.current = false;
   }, []);
 
-  const handleSelect = useCallback<DropdownProps['onSelect']>(
+  const handleSelect = useCallback<NonNullable<DropdownProps['onSelect']>>(
     (option, selected) => {
       setSelected(selected as DropdownOption[]);
       onSelect && onSelect(option, selected);
@@ -98,7 +100,7 @@ export function DropdownWithTags({
     [onSelect],
   );
 
-  const handleUnselect = useCallback<DropdownProps['onUnselect']>(
+  const handleUnselect = useCallback<NonNullable<DropdownProps['onUnselect']>>(
     (option, selected) => {
       setSelected((selected ? selected : []) as DropdownOption[]);
       onUnselect && onUnselect(option, selected);
@@ -125,6 +127,7 @@ export function DropdownWithTags({
         dropdownContent={DropdownContent}
         id={id}
         inputRef={dropdownRef}
+        maxSelect={maxSelect}
         onClose={handleClose}
         onOpen={handleOpen}
         onSelect={handleSelect}

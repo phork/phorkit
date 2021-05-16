@@ -243,7 +243,7 @@ function DropdownBase(
       dispatch({
         type:
           event &&
-          maxSelect <= 1 &&
+          maxSelect === 1 &&
           (event.type === 'click' || (event.type === 'keydown' && 'key' in event && event.key === 'Enter'))
             ? ACTIONS.SET_SELECTED_AND_HIDE_DROPDOWN
             : ACTIONS.SET_SELECTED,
@@ -263,7 +263,7 @@ function DropdownBase(
         dispatch({
           type:
             event &&
-            (maxSelect === -1 || maxSelect > 1) &&
+            maxSelect === 1 &&
             (event.type === 'click' || (event.type === 'keydown' && 'key' in event && event.key === 'Enter'))
               ? ACTIONS.SET_SELECTED_AND_HIDE_DROPDOWN
               : ACTIONS.SET_SELECTED,
