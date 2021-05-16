@@ -9,7 +9,7 @@ import { SearchIcon } from 'icons/SearchIcon';
 import { Button, ButtonGroup } from 'components/Button';
 import { Flex } from 'components/Flex';
 import { Rhythm } from 'components/Rhythm';
-import { InlineDropdown } from 'compositions/Dropdown';
+import { ManagedDropdown } from 'compositions/Dropdown';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import {
@@ -163,7 +163,7 @@ import { FormDemo } from './helpers/FormDemo';
                 />
               </Rhythm>
               <Rhythm my={2}>
-                <InlineDropdown
+                <ManagedDropdown
                   inputVariant={variant}
                   label="A custom dropdown"
                   layout="raised"

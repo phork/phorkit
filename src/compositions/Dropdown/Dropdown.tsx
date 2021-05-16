@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import debounce from 'lodash.debounce';
-import React, { Reducer, useCallback, useEffect, useReducer, useRef } from 'react';
+import React, { useCallback, useEffect, useReducer, useRef } from 'react';
 import { v4 as uuid } from 'uuid';
 import { StateColor, ThemeProps } from '../../types';
 import { useClickAndEscape } from '../../hooks/useClickAndEscape';
@@ -12,12 +12,7 @@ import { SearchIcon } from '../../icons';
 import { ArrowDownIcon } from '../../icons/ArrowDownIcon';
 import { SpinnerIcon } from '../../icons/SpinnerIcon';
 import { Textbox, TextboxProps } from '../../components/Form/Textbox/Textbox';
-import { InteractiveGroupStateAction } from '../../components/InteractiveGroup/interactiveGroupActions';
-import {
-  getInteractiveGroupInitialState,
-  interactiveGroupReducer,
-  InteractiveGroupState,
-} from '../../components/InteractiveGroup/interactiveGroupReducer';
+import { UnmanagedInteractiveListProps } from '../InteractiveList';
 import { DropdownContent, DropdownContentProps, DropdownContentHandles } from './DropdownContent';
 import { dropdownActions as ACTIONS } from './dropdownActions';
 import { dropdownReducer } from './dropdownReducer';
@@ -50,11 +45,9 @@ export interface DropdownProps
   className?: string;
   disabled?: boolean;
   disabledIds?: Array<DropdownOption['id']>;
-  dropdownContent: typeof DropdownContent;
   iconBefore?: TextboxProps['iconBefore'];
   iconAfter?: TextboxProps['iconAfter'];
   id?: string;
-  initialSelected?: DropdownOption[];
   inputRef?: React.Ref<HTMLInputElement>;
   inputVariant?: DropdownInputVariant;
   filterOptions?: (filter: string) => Promise<DropdownOption[]>;
@@ -71,6 +64,7 @@ export interface DropdownProps
   onUnselect?: (option: DropdownOption, selectedIds: string[] | undefined) => void;
   options: DropdownOption[];
   readOnlyValue?: React.ReactChild;
+  reducer: UnmanagedInteractiveListProps['reducer'];
   ref?: React.Ref<HTMLDivElement>;
   transitional?: boolean;
   translations?: DropdownTranslations;
@@ -86,12 +80,10 @@ function DropdownBase(
     contrast,
     disabled,
     disabledIds,
-    dropdownContent: DropdownContent,
     emptyNotification,
     iconAfter: initIconAfter,
     iconBefore: initIconBefore,
     id,
-    initialSelected,
     inputRef: forwardedInputRef,
     inputVariant = 'underline',
     label,
@@ -100,7 +92,7 @@ function DropdownBase(
     listSize,
     listColor,
     maxSelect = 1,
-    minSelect = 1,
+    minSelect = 0,
     onInputChange,
     onClear,
     onClose,
@@ -114,6 +106,7 @@ function DropdownBase(
     options,
     placeholder,
     readOnlyValue,
+    reducer,
     themeId: initThemeId,
     unthemed,
     transitional,
@@ -123,12 +116,6 @@ function DropdownBase(
   }: DropdownProps,
   forwardedRef: React.ForwardedRef<HTMLDivElement>,
 ): React.ReactElement<DropdownProps, 'div'> {
-  const reducer = useReducer<Reducer<InteractiveGroupState<string>, InteractiveGroupStateAction<string>>>(
-    interactiveGroupReducer,
-    getInteractiveGroupInitialState({ items: [], selectedIds: initialSelected?.map(({ id }) => id) }),
-  );
-
-  // the state is managed by the interactive list, but this is for reading
   const [selectedState] = reducer;
 
   const ref = useRef<HTMLDivElement>(null!);

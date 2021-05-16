@@ -9,7 +9,7 @@ import { Playground, Props } from 'docz';
 import { InteractiveGroupItem, InteractiveGroupConsumer } from 'components/InteractiveGroup';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { InteractiveList } from '../index';
+import { InteractiveList, UnmanagedInteractiveList } from '../index';
 import { options, navigationOptions } from './helpers/options';
 import scrollbar from 'styles/common/Scrollbar.module.css';
 
@@ -329,3 +329,7 @@ _Note that the links will cause the page to reload so the state will appear unch
 ### InteractiveList
 
 <Props of={InteractiveList} />
+
+### UnmanagedInteractiveList
+
+<Props of={UnmanagedInteractiveList} />
