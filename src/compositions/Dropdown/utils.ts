@@ -34,7 +34,7 @@ export const getDropdownSelectedView = ({
 
   if (selectedState.selectedIds && selectedState.selectedIds.length > 0) {
     const selectedId = selectedState.selectedIds[0];
-    const selectedOption = options.find(({ id }) => id === selectedId);
+    const selectedOption = options?.find(({ id }) => id === selectedId);
     return selectedOption?.selectedLabel || selectedOption?.label;
   }
 

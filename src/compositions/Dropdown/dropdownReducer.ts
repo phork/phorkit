@@ -66,6 +66,12 @@ export function dropdownReducer(state: DropdownState, action: DropdownStateActio
         listVisible: !state.listVisible,
       };
 
+    case ACTIONS.UNSET_BUSY:
+      return {
+        ...state,
+        busy: false,
+      };
+
     case ACTIONS.UNSET_CLEAR_FOCUS:
       return {
         ...state,

@@ -110,17 +110,17 @@ export function DropdownWithTags({
   }, []);
 
   const handleSelect = useCallback<NonNullable<DropdownProps['onSelect']>>(
-    (option, selectedIds) => {
-      selectId(option.id);
-      onSelect && onSelect(option, selectedIds);
+    (id, selectedIds) => {
+      selectId(id);
+      onSelect && onSelect(id, selectedIds);
     },
     [onSelect, selectId],
   );
 
   const handleUnselect = useCallback<NonNullable<DropdownProps['onUnselect']>>(
-    (option, selectedIds) => {
-      unselectId(option.id);
-      onUnselect && onUnselect(option, selectedIds);
+    (id, selectedIds) => {
+      unselectId(id);
+      onUnselect && onUnselect(id, selectedIds);
     },
     [onUnselect, unselectId],
   );

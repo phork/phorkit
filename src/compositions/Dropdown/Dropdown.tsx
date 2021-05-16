@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import debounce from 'lodash.debounce';
-import React, { useCallback, useEffect, useReducer, useRef } from 'react';
+import React, { useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import { StateColor, ThemeProps } from '../../types';
 import { useClickAndEscape } from '../../hooks/useClickAndEscape';
@@ -57,11 +57,11 @@ export interface DropdownProps
   onClose?: () => void;
   onInputChange?: (input?: string) => void;
   onOpen?: () => void;
-  onSelect?: (option: DropdownOption, selectedIds: string[]) => void;
+  onSelect?: (id: string, selectedIds: string[]) => void;
   /** This fires when items are selected or unselected */
   onSelectionChange?: (selectedIds: string[] | undefined) => void;
   onSubmit?: TextboxProps['onSubmit'];
-  onUnselect?: (option: DropdownOption, selectedIds: string[] | undefined) => void;
+  onUnselect?: (id: string, selectedIds: string[] | undefined) => void;
   options: DropdownOption[];
   readOnlyValue?: React.ReactChild;
   reducer: UnmanagedInteractiveListProps['reducer'];
@@ -117,6 +117,7 @@ function DropdownBase(
   forwardedRef: React.ForwardedRef<HTMLDivElement>,
 ): React.ReactElement<DropdownProps, 'div'> {
   const [selectedState] = reducer;
+  const [filtered, setFiltered] = useState<DropdownOption[] | undefined>();
 
   const ref = useRef<HTMLDivElement>(null!);
   const contentRef = useRef<DropdownContentHandles>(null!);
@@ -182,10 +183,8 @@ function DropdownBase(
   const handleFilter = useCallback(
     debounce(input => {
       filterOptions?.(input).then(options => {
-        dropdownDispatch({
-          type: ACTIONS.SET_OPTIONS,
-          options,
-        });
+        setFiltered(options || []);
+        dropdownDispatch({ type: ACTIONS.UNSET_BUSY });
       });
     }, 1000),
     [filterOptions],
@@ -241,8 +240,8 @@ function DropdownBase(
     previous.current.selectedIds = selectedState.selectedIds;
   }, [selectedState.selectedIds, onSelect, onSelectionChange]);
 
-  const handleSelect: DropdownContentProps['onSelect'] = (event, { index }, selected) => {
-    if (index !== undefined) {
+  const handleSelect: DropdownContentProps['onSelect'] = (event, { id }, selected) => {
+    if (id !== undefined) {
       if (
         event &&
         maxSelect === 1 &&
@@ -251,12 +250,12 @@ function DropdownBase(
         hideDropdown();
       }
 
-      onSelect && onSelect(options![index], selected);
+      onSelect && onSelect(id, selected);
     }
   };
 
-  const handleUnselect: DropdownContentProps['onUnselect'] = (event, { index }, selected) => {
-    if (index !== undefined) {
+  const handleUnselect: DropdownContentProps['onUnselect'] = (event, { id }, selected) => {
+    if (id !== undefined) {
       if (Array.isArray(selected)) {
         if (
           event &&
@@ -267,7 +266,7 @@ function DropdownBase(
         }
       }
 
-      onUnselect && onUnselect(options![index], selected);
+      onUnselect && onUnselect(id, selected);
     }
   };
 
@@ -276,24 +275,28 @@ function DropdownBase(
       event: React.ChangeEvent | React.KeyboardEvent | React.MouseEvent | React.TouchEvent,
       value: string | number,
       { cleared }: { cleared?: boolean } = {},
-    ) => {
+    ): void => {
       event.preventDefault();
+
+      if (value !== dropdownState.input) {
+        if (value) {
+          dropdownDispatch({
+            type: ACTIONS.SET_FILTER,
+            input: value as string,
+          });
+        } else {
+          dropdownDispatch({ type: ACTIONS.CLEAR_FILTER });
+        }
+      }
 
       if (cleared) {
         focusInput();
         onClear && onClear();
       }
 
-      if (value !== dropdownState.input) {
-        if (value) {
-          return dropdownDispatch({
-            type: ACTIONS.SET_FILTER,
-            input: value as string,
-          });
-        }
-        return dropdownDispatch({ type: ACTIONS.CLEAR_FILTER });
+      if (cleared || !value) {
+        setFiltered(undefined);
       }
-      return undefined;
     },
     [onClear, dropdownState.input],
   );
@@ -450,7 +453,7 @@ function DropdownBase(
         onListKeyDown={handleListKeyDown}
         onSelect={handleSelect}
         onUnselect={handleUnselect}
-        options={options}
+        options={filtered || options}
         parentRef={ref}
         reducer={reducer}
         ref={contentRef}
