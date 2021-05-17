@@ -17,9 +17,9 @@ import {
 import { InteractiveGroupItemId } from './types';
 
 export interface UseInteractiveGroupInterface<T extends InteractiveGroupItemId = string> {
-  /* This will allow an already selected item to be re-triggered */
+  /** This will allow an already selected item to be re-triggered */
   allowReselect?: boolean;
-  /* This disables interaction across the whole group */
+  /** This disables interaction across the whole group */
   disabled?: boolean;
   /** Set minSelect to 0 to allow unselecting the current item */
   minSelect?: number;
@@ -203,8 +203,11 @@ export function useInteractiveGroup<
         handleSelectedId(selectedIds[0], true);
       }
 
-      // manually trigger the link of <a> tags (if the target is the <a> tag don't trigger on click or Enter)
-      // dispatch a MouseEvent so it doesn't interfere with the accessibility context
+      /**
+       * Manually trigger the link of <a> tags. If the target is the <a>
+       * tag don't trigger on click or Enter. This dispatches a
+       * MouseEvent so it doesn't interfere with the accessibility context.
+       */
       const event = selectedEvent;
       if (
         typeof window !== 'undefined' &&

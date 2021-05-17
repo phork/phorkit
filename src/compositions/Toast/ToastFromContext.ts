@@ -24,7 +24,8 @@ export function ToastFromContext({
     duration: permanent ? 0 : duration,
     onClose: permanent ? undefined : () => removeNotification(id),
     onPin: () => (permanent ? undefined : pinNotification(id)),
-    permanent: undefined /* this effectively removes the permanent prop which is invalid on <Toast> */,
+    // this effectively removes the permanent prop which is invalid on <Toast>
+    permanent: undefined,
     themeId,
     variant,
   });
