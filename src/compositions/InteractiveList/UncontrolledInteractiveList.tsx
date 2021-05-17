@@ -4,14 +4,14 @@ import { useThemeId } from '../../hooks/useThemeId';
 import { makeCombineRefs } from '../../utils/combineRefs';
 import { InteractiveGroupConsumer } from '../../components/InteractiveGroup/InteractiveGroupConsumer';
 import {
-  UnmanagedInteractiveGroupProvider,
-  UnmanagedInteractiveGroupProviderProps,
-} from '../../components/InteractiveGroup/UnmanagedInteractiveGroupProvider';
+  UncontrolledInteractiveGroupProvider,
+  UncontrolledInteractiveGroupProviderProps,
+} from '../../components/InteractiveGroup/UncontrolledInteractiveGroupProvider';
 import { List, ListProps } from '../../components/List';
 import { InteractiveListItem, InteractiveListItemProps } from './InteractiveListItem';
 
 type ExplicitProviderProps = Pick<
-  UnmanagedInteractiveGroupProviderProps<string, HTMLUListElement, HTMLLIElement>,
+  UncontrolledInteractiveGroupProviderProps<string, HTMLUListElement, HTMLLIElement>,
   | 'allowReselect'
   | 'disabled'
   | 'maxSelect'
@@ -20,6 +20,7 @@ type ExplicitProviderProps = Pick<
   | 'onItemFocus'
   | 'onKeyDown'
   | 'onSelect'
+  | 'onSelectionChange'
   | 'onUnselect'
   | 'parentRef'
   | 'reducer'
@@ -27,22 +28,22 @@ type ExplicitProviderProps = Pick<
   | 'triggerLinks'
 >;
 
-export interface LocalUnmanagedInteractiveListProps extends ExplicitProviderProps {
+export interface LocalUncontrolledInteractiveListProps extends ExplicitProviderProps {
   children: React.ReactNode;
   /** The focused state can be set outside of this component so that focus styles can be applied when, for example, a parent is focused */
   focused?: boolean;
   listComponent?: typeof List;
   providerProps?: Omit<
-    UnmanagedInteractiveGroupProviderProps<string, HTMLUListElement, HTMLLIElement>,
+    UncontrolledInteractiveGroupProviderProps<string, HTMLUListElement, HTMLLIElement>,
     keyof ExplicitProviderProps | 'children'
   >;
   unstyled?: boolean;
 }
 
-export type UnmanagedInteractiveListProps = MergeProps<ListProps<'ul'>, LocalUnmanagedInteractiveListProps> &
+export type UncontrolledInteractiveListProps = MergeProps<ListProps<'ul'>, LocalUncontrolledInteractiveListProps> &
   ThemeProps;
 
-function UnmanagedInteractiveListBase(
+function UncontrolledInteractiveListBase(
   {
     allowReselect,
     children,
@@ -56,6 +57,7 @@ function UnmanagedInteractiveListBase(
     onItemFocus,
     onKeyDown,
     onSelect,
+    onSelectionChange,
     onUnselect,
     parentRef,
     providerProps,
@@ -68,7 +70,7 @@ function UnmanagedInteractiveListBase(
     unstyled,
     unthemed,
     ...props
-  }: UnmanagedInteractiveListProps,
+  }: UncontrolledInteractiveListProps,
   forwardedRef: React.ForwardedRef<HTMLUListElement>,
 ): React.ReactElement {
   const ref = useRef<HTMLUListElement>(null!);
@@ -83,7 +85,7 @@ function UnmanagedInteractiveListBase(
   const ListComponent = listComponent || List;
 
   return (
-    <UnmanagedInteractiveGroupProvider<string, HTMLUListElement, HTMLLIElement>
+    <UncontrolledInteractiveGroupProvider<string, HTMLUListElement, HTMLLIElement>
       allowReselect={allowReselect}
       disabled={disabled}
       maxSelect={maxSelect}
@@ -92,6 +94,7 @@ function UnmanagedInteractiveListBase(
       onItemFocus={onItemFocus}
       onKeyDown={onKeyDown}
       onSelect={onSelect}
+      onSelectionChange={onSelectionChange}
       onUnselect={onUnselect}
       parentRef={parentRef}
       reducer={reducer}
@@ -152,13 +155,13 @@ function UnmanagedInteractiveListBase(
           )
         }
       </InteractiveGroupConsumer>
-    </UnmanagedInteractiveGroupProvider>
+    </UncontrolledInteractiveGroupProvider>
   );
 }
 
-export const UnmanagedInteractiveList = React.forwardRef(
-  UnmanagedInteractiveListBase,
-) as typeof UnmanagedInteractiveListBase;
+export const UncontrolledInteractiveList = React.forwardRef(
+  UncontrolledInteractiveListBase,
+) as typeof UncontrolledInteractiveListBase;
 
-UnmanagedInteractiveListBase.displayName = 'UnmanagedInteractiveListBase';
-UnmanagedInteractiveList.displayName = 'UnmanagedInteractiveList';
+UncontrolledInteractiveListBase.displayName = 'UncontrolledInteractiveListBase';
+UncontrolledInteractiveList.displayName = 'UncontrolledInteractiveList';

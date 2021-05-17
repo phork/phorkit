@@ -28,12 +28,20 @@ export interface UseInteractiveGroupInterface<T extends InteractiveGroupItemId =
   onItemClick?: (event: React.MouseEvent | React.TouchEvent, id: T) => void;
   onItemFocus?: (event: InteractiveGroupEventTypes['event'] | undefined, props: { id: T; index: number }) => void;
   onKeyDown?: (event: KeyboardEvent, props?: { used?: boolean }) => void;
-  onSelect?: (event: InteractiveGroupEventTypes['event'], props: { id?: T; index?: number }, selected: T[]) => void;
-  onSelectionChange?: (event: InteractiveGroupEventTypes['event'], selection: T[]) => void;
-  onUnselect?: (event: InteractiveGroupEventTypes['event'], props: { id?: T; index?: number }, selected?: T[]) => void;
+  /** This fires for every item that has been selected */
+  onSelect?: (event: InteractiveGroupEventTypes['event'], props: { id?: T; index?: number }, selectedIds: T[]) => void;
+  /** This fires whenever a selection changes, and groups together select and unselect changes */
+  onSelectionChange?: (selectedIds: T[]) => void;
+  /** This fires for every item that is unselected, including when the item is unselected because another item has been selected */
+  onUnselect?: (
+    event: InteractiveGroupEventTypes['event'],
+    props: { id?: T; index?: number },
+    selectedIds?: T[],
+  ) => void;
   parentRef?: React.RefObject<HTMLElement>;
   /** The reducer comes directly from useReducer() and is managed separately so that other components can manage the state */
   reducer: [InteractiveGroupState<T>, Dispatch<InteractiveGroupStateAction<T>>];
+  /** If this is set then an item will be selected automatically when it's focused */
   selectOnFocus?: boolean;
   /** If this is set and an item contains a link, when the item is selected that link will be triggered */
   triggerLinks?: boolean;
@@ -55,6 +63,12 @@ export type UseInteractiveGroupResponse<
 };
 
 /**
+ * When the selectedIds change, first the onUnselect
+ * callback is fired for every ID that was removed,
+ * then an onSelect callback is fired for every ID
+ * that was added, and finally the onSelectionChange
+ * callback is fired once.
+ *
  * - T is the type of IDs allowed
  * - E is the type of the element that the returned ref gets attached to
  * - I is the type of item element
@@ -72,6 +86,7 @@ export function useInteractiveGroup<
   onItemFocus,
   onKeyDown,
   onSelect,
+  onSelectionChange,
   onUnselect,
   parentRef,
   reducer,
@@ -136,7 +151,7 @@ export function useInteractiveGroup<
     previousState.current.focusedIndex = focusedIndex;
   }, [focusedIndex, focusedEvent, onItemFocus, items]);
 
-  // call the trigger callback if the triggered item changes (use timestamp tracking here so trigger can fire multiple times)
+  // call the item's trigger function if the triggered item changes (use timestamp tracking here so trigger can fire multiple times)
   useEffect(() => {
     if (triggeredTime && triggeredTime !== previousState.current.triggeredTime) {
       const item = items.getItemById(triggeredId);
@@ -145,7 +160,7 @@ export function useInteractiveGroup<
     previousState.current.triggeredTime = triggeredTime;
   }, [items, triggeredTime, triggeredId]);
 
-  // call the onSelect or onUnselect callback if the selected item changes
+  // call onSelect and/or onUnselect if the selected item changes
   useEffect(() => {
     if (
       (previousState.current.selectedIds !== selectedIds ||
@@ -203,6 +218,9 @@ export function useInteractiveGroup<
         handleSelectedId(selectedIds[0], true);
       }
 
+      // trigger the onSelection change callback with the new selection
+      onSelectionChange && onSelectionChange(selectedIds);
+
       /**
        * Manually trigger the link of <a> tags. If the target is the <a>
        * tag don't trigger on click or Enter. This dispatches a
@@ -236,6 +254,7 @@ export function useInteractiveGroup<
     allowReselect,
     triggerLinks,
     maxSelect,
+    onSelectionChange,
   ]);
 
   const setFocused: UseInteractiveGroupResponse<T>['setFocused'] = useCallback(

@@ -31,6 +31,8 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         onChange={value => console.log('change', value)}
         onClear={value => console.log('clear')}
         onSelect={value => console.log('select', value)}
+        onSelectionChange={value => console.log('selection', value)}
+        onUnselect={value => console.log('unselect', value)}
         options={options}
         style={{ width: 300 }}
         transitional
@@ -51,7 +53,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         layout="raised"
         onChange={value => console.log('change', value)}
         onClear={value => console.log('clear')}
-        onSelect={value => console.log('select', value)}
+        onSelectionChange={value => console.log('selection', value)}
         options={options}
         style={{ width: 300 }}
         transitional
@@ -72,7 +74,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         layout="raised"
         onChange={value => console.log('change', value)}
         onClear={value => console.log('clear')}
-        onSelect={value => console.log('select', value)}
+        onSelectionChange={value => console.log('selection', value)}
         options={options}
         style={{ width: 300 }}
         transitional
@@ -92,7 +94,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         layout="contained"
         onChange={value => console.log('change', value)}
         onClear={value => console.log('clear')}
-        onSelect={value => console.log('select', value)}
+        onSelectionChange={value => console.log('selection', value)}
         options={options}
         style={{ width: 300 }}
         transitional
@@ -111,7 +113,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         initialSelected={[options[3]]}
         label="Super awesome dropdown"
         onChange={value => console.log(value)}
-        onSelect={value => console.log('select', value)}
+        onSelectionChange={value => console.log('selection', value)}
         onSubmit={(event, value) =>
           !options.some(option => option.id === value) && options.push({ id: value, label: value })
         }
@@ -134,7 +136,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         layout="contained"
         onChange={value => console.log('change', value)}
         onClear={value => console.log('clear')}
-        onSelect={value => console.log('select', value)}
+        onSelectionChange={value => console.log('selection', value)}
         options={options.map(option => ({
           ...option,
           tagProps: {
@@ -193,7 +195,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         id="demo-contrast-dropdown"
         initialSelected={[options[3]]}
         label="Super awesome dropdown"
-        onChange={value => console.log('change', value)}
+        onSelectionChange={value => console.log('selection', value)}
         options={options}
         style={{ width: 300 }}
       />

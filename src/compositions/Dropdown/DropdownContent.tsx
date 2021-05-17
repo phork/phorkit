@@ -4,7 +4,10 @@ import { MergeElementProps, ThemeProps } from '../../types';
 import { useAccessibility } from '../../context';
 import { useDeepFocus } from '../../hooks/useDeepFocus';
 import { generateInteractiveGroupActions } from '../../components/InteractiveGroup/generateInteractiveGroupActions';
-import { UnmanagedInteractiveList, UnmanagedInteractiveListProps } from '../InteractiveList/UnmanagedInteractiveList';
+import {
+  UncontrolledInteractiveList,
+  UncontrolledInteractiveListProps,
+} from '../InteractiveList/UncontrolledInteractiveList';
 import { DropdownEmpty, DropdownEmptyProps } from './DropdownEmpty';
 import { DropdownState } from './dropdownReducer';
 import styles from './styles/Dropdown.module.css';
@@ -34,15 +37,16 @@ export interface LocalDropdownContentProps extends ThemeProps {
   listVariant?: DropdownListVariant;
   maxSelect?: number;
   minSelect?: number;
-  onItemFocus: UnmanagedInteractiveListProps['onItemFocus'];
+  onItemFocus: UncontrolledInteractiveListProps['onItemFocus'];
   onListBlur: React.FocusEventHandler<HTMLDivElement>;
   onListFocus: React.FocusEventHandler<HTMLDivElement>;
-  onListKeyDown: UnmanagedInteractiveListProps['onKeyDown'];
-  onSelect: UnmanagedInteractiveListProps['onSelect'];
-  onUnselect: UnmanagedInteractiveListProps['onUnselect'];
+  onListKeyDown: UncontrolledInteractiveListProps['onKeyDown'];
+  onSelect: UncontrolledInteractiveListProps['onSelect'];
+  onSelectionChange: UncontrolledInteractiveListProps['onSelectionChange'];
+  onUnselect: UncontrolledInteractiveListProps['onUnselect'];
   options?: DropdownOption[];
   parentRef: React.RefObject<HTMLDivElement>;
-  reducer: UnmanagedInteractiveListProps['reducer'];
+  reducer: UncontrolledInteractiveListProps['reducer'];
 }
 
 export type DropdownContentProps = MergeElementProps<'div', LocalDropdownContentProps>;
@@ -74,6 +78,7 @@ function DropdownContentBase(
     onListFocus,
     onListKeyDown,
     onSelect,
+    onSelectionChange,
     onUnselect,
     options,
     reducer,
@@ -155,7 +160,7 @@ function DropdownContentBase(
       {...props}
     >
       <div className={cx(styles.dropdownOptions, isEmpty && styles['is-empty'])}>
-        <UnmanagedInteractiveList
+        <UncontrolledInteractiveList
           allowReselect={allowReselect}
           color={listColor || listDefaults.color}
           contrast={contrast}
@@ -169,6 +174,7 @@ function DropdownContentBase(
           onItemFocus={onItemFocus}
           onKeyDown={onListKeyDown}
           onSelect={onSelect}
+          onSelectionChange={onSelectionChange}
           onUnselect={onUnselect}
           parentRef={containerRef}
           reducer={reducer}
@@ -181,7 +187,7 @@ function DropdownContentBase(
           <DropdownEmpty contrast={contrast} themeId={themeId} filter={dropdownState.input} layout={layout}>
             {emptyNotification}
           </DropdownEmpty>
-        </UnmanagedInteractiveList>
+        </UncontrolledInteractiveList>
       </div>
     </div>
   ) : null;

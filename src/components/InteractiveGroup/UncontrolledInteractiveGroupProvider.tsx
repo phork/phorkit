@@ -4,7 +4,7 @@ import { InteractiveGroupContext, InteractiveGroupContextValue } from './Interac
 import { InteractiveGroupItemId } from './types';
 import { useInteractiveGroup, UseInteractiveGroupInterface, UseInteractiveGroupResponse } from './useInteractiveGroup';
 
-export interface UnmanagedInteractiveGroupProviderProps<
+export interface UncontrolledInteractiveGroupProviderProps<
   T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,
   I extends HTMLElement = HTMLElement
@@ -17,11 +17,18 @@ export interface UnmanagedInteractiveGroupProviderProps<
 }
 
 /**
+ * The interactive group provider accepts a reducer
+ * that contains an array of items and, through that
+ * reducer, manages which items are focused and
+ * selected. It listens for keyDown events to track
+ * the focus, and provides a handleItemClick function
+ * which should be called when an item is clicked.
+ *
  * - T is the type of IDs allowed
  * - E is the type of the element that the returned ref gets attached to
  * - I is the type of item element
  */
-export function UnmanagedInteractiveGroupProvider<
+export function UncontrolledInteractiveGroupProvider<
   T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,
   I extends HTMLElement = HTMLElement
@@ -35,13 +42,14 @@ export function UnmanagedInteractiveGroupProvider<
   onItemFocus,
   onKeyDown,
   onSelect,
+  onSelectionChange,
   onUnselect,
   parentRef,
   reducer,
   selectOnFocus,
   triggerLinks,
   ...props
-}: UnmanagedInteractiveGroupProviderProps<T, E, I>): React.ReactElement {
+}: UncontrolledInteractiveGroupProviderProps<T, E, I>): React.ReactElement {
   const previousValue = useRef<Omit<UseInteractiveGroupResponse<T, E, I>, 'ref'>>(
     {} as UseInteractiveGroupResponse<T, E, I>,
   );
@@ -64,6 +72,7 @@ export function UnmanagedInteractiveGroupProvider<
     onItemFocus,
     onKeyDown,
     onSelect,
+    onSelectionChange,
     onUnselect,
     parentRef,
     reducer,
@@ -99,4 +108,4 @@ export function UnmanagedInteractiveGroupProvider<
   );
 }
 
-UnmanagedInteractiveGroupProvider.displayName = 'UnmanagedInteractiveGroupProvider';
+UncontrolledInteractiveGroupProvider.displayName = 'UncontrolledInteractiveGroupProvider';

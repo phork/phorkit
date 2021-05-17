@@ -7,9 +7,9 @@ import {
   InteractiveGroupProviderProps,
   interactiveGroupActions as ACTIONS,
 } from '../../components/InteractiveGroup';
-import { UnmanagedInteractiveList, UnmanagedInteractiveListProps } from './UnmanagedInteractiveList';
+import { UncontrolledInteractiveList, UncontrolledInteractiveListProps } from './UncontrolledInteractiveList';
 
-export type InteractiveListProps = Omit<UnmanagedInteractiveListProps, 'reducer'> &
+export type InteractiveListProps = Omit<UncontrolledInteractiveListProps, 'reducer'> &
   Pick<InteractiveGroupProviderProps, 'initialSelected'>;
 
 /** The interactive list is a managed wrapper around the unmanaged interactive list */
@@ -33,7 +33,7 @@ function InteractiveListBase(
     });
   }, [dispatch, items]);
 
-  return <UnmanagedInteractiveList reducer={reducer} ref={forwardedRef} {...props} />;
+  return <UncontrolledInteractiveList reducer={reducer} ref={forwardedRef} {...props} />;
 }
 
 export const InteractiveList = React.forwardRef(InteractiveListBase) as typeof InteractiveListBase;

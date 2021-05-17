@@ -14,7 +14,7 @@ import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { Dropdown, DropdownContent, DropdownEmpty, ManagedDropdown } from '../index';
+import { Dropdown, DropdownContent, DropdownEmpty, ControlledDropdown } from '../index';
 import { MultiVariantDropdown } from './helpers/MultiVariantDropdown';
 import { options, handleFilter, handleEmptyFilter } from './helpers/options';
 import { variants } from './helpers/variants.js';
@@ -32,7 +32,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
-            <ManagedDropdown
+            <ControlledDropdown
               initialSelected={[options[3]]}
               inputVariant={variant}
               label="Super awesome dropdown"
@@ -61,7 +61,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
-            <ManagedDropdown
+            <ControlledDropdown
               initialSelected={[options[3]]}
               inputVariant={variant}
               label="Super awesome dropdown"
@@ -89,7 +89,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
-            <ManagedDropdown
+            <ControlledDropdown
               initialSelected={[options[3]]}
               inputVariant={variant}
               label="Super awesome dropdown"
@@ -117,7 +117,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
-            <ManagedDropdown
+            <ControlledDropdown
               getFilteredOptions={handleFilter}
               iconAfter={<TagIcon size={12} />}
               initialSelected={[options[3]]}
@@ -148,7 +148,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
     <StateWrapper initialState={''}>
       {({ state: filter, setState: setFilter }) => (
         <div style={{ height: 300, maxWidth: 300 }}>
-          <ManagedDropdown
+          <ControlledDropdown
             emptyNotification={filter ? `No options were found for "${filter}".` : ''}
             getFilteredOptions={handleFilter}
             label="Super awesome dropdown"
@@ -171,7 +171,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
     <div style={{ maxWidth: 300 }}>
-      <ManagedDropdown
+      <ControlledDropdown
         label="Super awesome dropdown"
         onSelect={value => console.log('select', value)}
         options={[]}
@@ -186,7 +186,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
     <div style={{ maxWidth: 300 }}>
-      <ManagedDropdown
+      <ControlledDropdown
         getFilteredOptions={handleEmptyFilter}
         iconBefore={<SearchIcon size={14} />}
         label="Super awesome dropdown"
@@ -206,7 +206,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
     <div style={{ maxWidth: 300 }}>
-      <ManagedDropdown
+      <ControlledDropdown
         id="demo-danger-dropdown"
         initialSelected={[options[3]]}
         label="Super awesome dropdown"
@@ -223,7 +223,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
     <div style={{ maxWidth: 300 }}>
-      <ManagedDropdown
+      <ControlledDropdown
         id="demo-danger-dropdown"
         initialSelected={[options[3]]}
         label="Super awesome dropdown"
@@ -241,7 +241,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
     <div style={{ maxWidth: 300 }}>
-      <ManagedDropdown
+      <ControlledDropdown
         id="demo-danger-dropdown"
         initialSelected={[options[3]]}
         label="Super awesome dropdown"
@@ -258,7 +258,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 <Playground>
   <ThemeWrapper contrast style={{ height: '300px' }}>
     <div style={{ maxWidth: 300 }}>
-      <ManagedDropdown
+      <ControlledDropdown
         contrast
         id="demo-contrast-dropdown"
         initialSelected={[options[3]]}
@@ -274,7 +274,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 
 <Playground>
   <div style={{ height: 300, maxWidth: 300, marginLeft: 20, marginRight: 20 }}>
-    <ManagedDropdown
+    <ControlledDropdown
       id="demo-contrast-dropdown"
       initialSelected={[options[3]]}
       label="Super awesome dropdown"
@@ -358,9 +358,9 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 
 <Props of={Dropdown} />
 
-### ManagedDropdown
+### ControlledDropdown
 
-<Props of={ManagedDropdown} />
+<Props of={ControlledDropdown} />
 
 ### DropdownEmpty
 

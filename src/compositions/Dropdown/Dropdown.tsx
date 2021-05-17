@@ -12,7 +12,7 @@ import { SearchIcon } from '../../icons';
 import { ArrowDownIcon } from '../../icons/ArrowDownIcon';
 import { SpinnerIcon } from '../../icons/SpinnerIcon';
 import { Textbox, TextboxProps } from '../../components/Form/Textbox/Textbox';
-import { UnmanagedInteractiveListProps } from '../InteractiveList';
+import { UncontrolledInteractiveListProps } from '../InteractiveList';
 import { DropdownContent, DropdownContentProps, DropdownContentHandles } from './DropdownContent';
 import { dropdownActions as ACTIONS } from './dropdownActions';
 import { dropdownReducer } from './dropdownReducer';
@@ -64,14 +64,14 @@ export interface DropdownProps
   onUnselect?: (id: string, selectedIds: string[] | undefined) => void;
   options: DropdownOption[];
   readOnlyValue?: React.ReactChild;
-  reducer: UnmanagedInteractiveListProps['reducer'];
+  reducer: UncontrolledInteractiveListProps['reducer'];
   ref?: React.Ref<HTMLDivElement>;
   transitional?: boolean;
   translations?: DropdownTranslations;
   validity?: StateColor;
 }
 
-/** The dropdown is a controlled component */
+/** The dropdown is an uncontrolled component */
 function DropdownBase(
   {
     allowReselect,
@@ -104,7 +104,7 @@ function DropdownBase(
     onUnselect,
     onSubmit,
     options,
-    placeholder: initPlaceholder,
+    placeholder,
     readOnlyValue: initReadOnlyValue,
     reducer,
     themeId: initThemeId,
@@ -257,18 +257,7 @@ function DropdownBase(
     previous.current.input = dropdownState.input;
   }, [dropdownState.input, handleFilter, onInputChange]);
 
-  // when the selected item(s) change due to either select or unselect ...
-  useEffect(() => {
-    if (
-      selectedState.selectedIds !== previous.current.selectedIds &&
-      Object.prototype.hasOwnProperty.call(previous.current, 'selected')
-    ) {
-      onSelectionChange && onSelectionChange(selectedState.selectedIds);
-    }
-    previous.current.selectedIds = selectedState.selectedIds;
-  }, [selectedState.selectedIds, onSelect, onSelectionChange]);
-
-  const handleSelect: DropdownContentProps['onSelect'] = (event, { id }, selected) => {
+  const handleSelect: DropdownContentProps['onSelect'] = (event, { id }, selectedIds) => {
     if (id !== undefined) {
       if (
         event &&
@@ -278,13 +267,13 @@ function DropdownBase(
         hideDropdown();
       }
 
-      onSelect && onSelect(id, selected);
+      onSelect && onSelect(id, selectedIds);
     }
   };
 
-  const handleUnselect: DropdownContentProps['onUnselect'] = (event, { id }, selected) => {
+  const handleUnselect: DropdownContentProps['onUnselect'] = (event, { id }, selectedIds) => {
     if (id !== undefined) {
-      if (Array.isArray(selected)) {
+      if (Array.isArray(selectedIds)) {
         if (
           event &&
           maxSelect === 1 &&
@@ -294,7 +283,7 @@ function DropdownBase(
         }
       }
 
-      onUnselect && onUnselect(id, selected);
+      onUnselect && onUnselect(id, selectedIds);
     }
   };
 
@@ -330,10 +319,11 @@ function DropdownBase(
   );
 
   /**
-   * Because focus and blur events fire before the click events we must
-   * capture the component dropdownState in the mousedown phase before these
-   * other events interfere. The ensures that the click event will be
-   * able to know what the dropdownState was when it was actually clicked.
+   * Because focus and blur events fire before the click events,
+   * we must capture the component dropdownState in the mousedown
+   * phase before these other events interfere. The ensures that
+   * the click event will be able to know what the dropdownState
+   * was when it was actually clicked.
    */
   const handleMouseDown = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
@@ -407,9 +397,6 @@ function DropdownBase(
   // readOnly cannot change during focus because the re-render may mess up tabbing to change focus
   const readOnly = !(getFilteredOptions && isDropdownVisible) || !isFocused;
   const readOnlyValue = initReadOnlyValue || selectedView;
-
-  // because a placeholder can be HTML
-  const placeholder = typeof initPlaceholder === 'string' ? initPlaceholder : undefined;
 
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
@@ -487,6 +474,7 @@ function DropdownBase(
         onListFocus={handleListFocus}
         onListKeyDown={handleListKeyDown}
         onSelect={handleSelect}
+        onSelectionChange={onSelectionChange}
         onUnselect={handleUnselect}
         options={processedOptions}
         parentRef={ref}

@@ -8,15 +8,14 @@ import {
 import { Dropdown, DropdownProps } from './Dropdown';
 import { DropdownOption } from './types';
 
-export interface ManagedDropdownProps extends Omit<DropdownProps, 'reducer'> {
+export interface ControlledDropdownProps extends Omit<DropdownProps, 'reducer'> {
   initialSelected: DropdownOption[];
 }
 
-/** The dropdown is a controlled component */
-function ManagedDropdownBase(
-  { initialSelected, options, ...props }: ManagedDropdownProps,
+function ControlledDropdownBase(
+  { initialSelected, options, ...props }: ControlledDropdownProps,
   forwardedRef: React.ForwardedRef<HTMLDivElement>,
-): React.ReactElement<ManagedDropdownProps, 'div'> {
+): React.ReactElement<ControlledDropdownProps, 'div'> {
   const reducer = useReducer<Reducer<InteractiveGroupState<string>, InteractiveGroupStateAction<string>>>(
     interactiveGroupReducer,
     getInteractiveGroupInitialState({ items: [], selectedIds: initialSelected?.map(({ id }) => id) }),
@@ -25,7 +24,7 @@ function ManagedDropdownBase(
   return <Dropdown options={options} reducer={reducer} ref={forwardedRef} {...props} />;
 }
 
-export const ManagedDropdown = React.forwardRef(ManagedDropdownBase) as typeof ManagedDropdownBase;
+export const ControlledDropdown = React.forwardRef(ControlledDropdownBase) as typeof ControlledDropdownBase;
 
-ManagedDropdownBase.displayName = 'ManagedDropdownBase';
-ManagedDropdown.displayName = 'ManagedDropdown';
+ControlledDropdownBase.displayName = 'ControlledDropdownBase';
+ControlledDropdown.displayName = 'ControlledDropdown';
