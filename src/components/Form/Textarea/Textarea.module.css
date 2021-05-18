@@ -1,0 +1,10 @@
+/*
+.textareaIcon {}
+*/
+
+.textareaIcon--filled,
+.textareaIcon--outline {
+  &:last-child {
+    margin-right: 8px;
+  }
+}

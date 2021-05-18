@@ -4,10 +4,12 @@ menu: Forms
 route: /components/FormTextarea
 ---
 
+import { Playground, Props } from 'docz';
+import { Rhythm } from 'components/Rhythm';
+import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
 import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'docs/helpers/PageTitle';
-import { Playground, Props } from 'docz';
-import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Textarea, NotifiedTextarea } from '../index';
 import { variants } from './helpers/variants';
 
@@ -16,224 +18,276 @@ import { variants } from './helpers/variants';
 ## Basic textarea
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value" initialValue="Hello world">
-        <Textarea variant={variant} onChange={(event, value) => console.log(value)} />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" initialValue="Hello world" unwrapped>
+            <Textarea variant={variant} onChange={(event, value) => console.log(value)} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
-## Textarea with height
+## Textarea with rows and cols
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value" initialValue="Hello world">
-        <Textarea variant={variant} height={100} onChange={(event, value) => console.log(value)} />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" initialValue="Hello world" unwrapped>
+            <Textarea variant={variant} rows={2} cols={12} onChange={(event, value) => console.log(value)} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## Textarea with max length
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value" initialValue="Hello world">
-        <Textarea variant={variant} maxLength={12} onChange={(event, value) => console.log(value)} />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" initialValue="Hello world" unwrapped>
+            <Textarea variant={variant} maxLength={12} onChange={(event, value) => console.log(value)} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## Labeled textarea
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value" initialValue="Hello world">
-        <Textarea variant={variant} label="Super fantastic label" onChange={(event, value) => console.log(value)} />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" initialValue="Hello world" unwrapped>
+            <Textarea variant={variant} label="Super fantastic label" onChange={(event, value) => console.log(value)} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## Transitional labeled textarea
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value">
-        <Textarea
-          variant={variant}
-          label="Super fantastic label"
-          onChange={(event, value) => console.log(value)}
-          transitional
-        />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" unwrapped>
+            <Textarea
+              variant={variant}
+              label="Super fantastic label"
+              onChange={(event, value) => console.log(value)}
+              transitional
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## Labeled textarea with placeholder
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value">
-        <Textarea
-          variant={variant}
-          label="Super fantastic label"
-          onChange={(event, value) => console.log(value)}
-          placeholder="Hello world"
-        />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" unwrapped>
+            <Textarea
+              variant={variant}
+              label="Super fantastic label"
+              onChange={(event, value) => console.log(value)}
+              placeholder="Hello world"
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## Disabled textarea
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value" initialValue="Hello world">
-        <Textarea
-          disabled
-          variant={variant}
-          label="Super fantastic label"
-          onChange={(event, value) => console.log(value)}
-        />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" initialValue="Hello world" unwrapped>
+            <Textarea
+              disabled
+              variant={variant}
+              label="Super fantastic label"
+              onChange={(event, value) => console.log(value)}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## Read only textarea
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value" initialValue="Hello world">
-        <Textarea
-          variant={variant}
-          label="Super fantastic label"
-          onChange={(event, value) => console.log(value)}
-          readOnly
-        />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" initialValue="Hello world" unwrapped>
+            <Textarea
+              variant={variant}
+              label="Super fantastic label"
+              onChange={(event, value) => console.log(value)}
+              readOnly
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## Danger textarea
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value" initialValue="Hello world">
-        <Textarea
-          variant={variant}
-          label="Super fantastic label"
-          onChange={(event, value) => console.log(value)}
-          transitional
-          validity="danger"
-        />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" initialValue="Hello world" unwrapped>
+            <Textarea
+              variant={variant}
+              label="Super fantastic label"
+              onChange={(event, value) => console.log(value)}
+              transitional
+              validity="danger"
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## Warning textarea
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value" initialValue="Hello world">
-        <Textarea
-          variant={variant}
-          label="Super fantastic label"
-          onChange={(event, value) => console.log(value)}
-          transitional
-          validity="warning"
-        />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" initialValue="Hello world" unwrapped>
+            <Textarea
+              variant={variant}
+              label="Super fantastic label"
+              onChange={(event, value) => console.log(value)}
+              transitional
+              validity="warning"
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## Success textarea
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value" initialValue="Hello world">
-        <Textarea
-          variant={variant}
-          label="Super fantastic label"
-          onChange={(event, value) => console.log(value)}
-          transitional
-          validity="success"
-        />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" initialValue="Hello world" unwrapped>
+            <Textarea
+              variant={variant}
+              label="Super fantastic label"
+              onChange={(event, value) => console.log(value)}
+              transitional
+              validity="success"
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## Contrast textarea
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value" initialValue="Hello world" contrast>
-        <Textarea
-          contrast
-          variant={variant}
-          label="Super fantastic label"
-          onChange={(event, value) => console.log(value)}
-          transitional
-        />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper contrast>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" initialValue="Hello world" contrast unwrapped>
+            <Textarea
+              contrast
+              variant={variant}
+              label="Super fantastic label"
+              onChange={(event, value) => console.log(value)}
+              transitional
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## Notifications
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <Looper
-        list={['success', 'danger', 'warning', 'primary', 'neutral']}
-        render={level => (
-          <FormComponentDemo property="value" initialValue="Hello world">
-            <NotifiedTextarea
-              variant={variant}
-              onChange={(event, value) => console.log(value)}
-              level={level}
-              notification={`This is an example ${level} notification.`}
-            />
-          </FormComponentDemo>
-        )}
-      />
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Looper
+          list={['success', 'danger', 'warning', 'primary', 'neutral']}
+          render={level => (
+            <Rhythm py={3}>
+              <FormComponentDemo property="value" initialValue="Hello world" unwrapped>
+                <NotifiedTextarea
+                  variant={variant}
+                  onChange={(event, value) => console.log(value)}
+                  level={level}
+                  notification={`This is an example ${level} notification.`}
+                />
+              </FormComponentDemo>
+            </Rhythm>
+          )}
+        />
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## \[props\]

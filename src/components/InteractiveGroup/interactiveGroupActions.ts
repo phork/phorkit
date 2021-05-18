@@ -6,6 +6,7 @@ export enum interactiveGroupActions {
   FOCUS_LAST = 'FOCUS_LAST',
   FOCUS_NEXT = 'FOCUS_NEXT',
   FOCUS_PREVIOUS = 'FOCUS_PREVIOUS',
+  FOCUS_SELECTED = 'FOCUS_SELECTED',
   RESET = 'RESET',
   SELECT_FIRST = 'SELECT_FIRST',
   SELECT_FOCUSED = 'SELECT_FOCUSED',
@@ -34,6 +35,11 @@ export type InteractiveGroupStateActionFocusSequential = InteractiveGroupEventTy
     | interactiveGroupActions.FOCUS_LAST
     | interactiveGroupActions.FOCUS_NEXT
     | interactiveGroupActions.FOCUS_PREVIOUS;
+};
+
+export type InteractiveGroupStateActionFocusSelected = InteractiveGroupEventTypes & {
+  timestamp: number;
+  type: interactiveGroupActions.FOCUS_SELECTED;
 };
 
 export type InteractiveGroupStateActionReset = {
@@ -110,6 +116,7 @@ export type InteractiveGroupStateActionUnselectId<
 export type InteractiveGroupStateAction<T extends InteractiveGroupItemId = string> =
   | InteractiveGroupStateActionClear
   | InteractiveGroupStateActionFocusSequential
+  | InteractiveGroupStateActionFocusSelected
   | InteractiveGroupStateActionReset
   | InteractiveGroupStateActionSelectSequential
   | InteractiveGroupStateActionSelectFocused

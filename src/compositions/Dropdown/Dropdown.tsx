@@ -1,17 +1,25 @@
 import { cx } from '@emotion/css';
 import debounce from 'lodash.debounce';
-import React, { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useImperativeHandle, useMemo, useReducer, useRef, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import { StateColor, ThemeProps } from '../../types';
+import { useTriggerFocus } from '../../hooks';
 import { useClickAndEscape } from '../../hooks/useClickAndEscape';
-import { useSafeTimeout } from '../../hooks/useSafeTimeout';
+import { useDeepFocusGroup } from '../../hooks/useDeepFocusGroup';
 import { useThemeId } from '../../hooks/useThemeId';
 import { useTranslations } from '../../hooks/useTranslations';
-import { makeCombineRefs } from '../../utils/combineRefs';
-import { SearchIcon } from '../../icons';
+import { RenderFromPropElement } from '../../utils/renderFromProp';
+import { PencilSlashIcon, SearchIcon, TimesIcon } from '../../icons';
 import { ArrowDownIcon } from '../../icons/ArrowDownIcon';
 import { SpinnerIcon } from '../../icons/SpinnerIcon';
-import { Textbox, TextboxProps } from '../../components/Form/Textbox/Textbox';
+import {
+  FormboxContainer,
+  FormboxIcon,
+  FormboxIconRenderProps,
+  FormboxInputWithFormatting,
+  FormboxReadOnly,
+  FormboxValue,
+} from '../../components/Form/Formbox';
 import { UncontrolledInteractiveListProps } from '../InteractiveList';
 import { DropdownContent, DropdownContentProps, DropdownContentHandles } from './DropdownContent';
 import { dropdownActions as ACTIONS } from './dropdownActions';
@@ -20,13 +28,23 @@ import styles from './styles/Dropdown.module.css';
 import { DropdownOption, DropdownInputVariant, DropdownLayout, DropdownTranslations } from './types';
 import { getDropdownSelectedView } from './utils';
 
+const FOCUS_REFS = {
+  CLEAR: 'clear',
+  CONTAINER: 'container',
+  INPUT: 'input',
+  LIST: 'list',
+  TOGGLE: 'toggle',
+};
+
 export const dropdownTranslations: DropdownTranslations = {
   numSelectedSingular: '{0} item selected',
   numSelectedPlural: '{0} items selected',
+  readOnlyLabel: 'Read only',
+  clearLabel: 'Clear',
 };
 
 export interface DropdownProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onInputChange' | 'onSelect' | 'onSubmit'>,
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onInputChange' | 'onSelect' | 'onSubmit' | 'placeholder'>,
     Partial<
       Pick<
         DropdownContentProps,
@@ -45,11 +63,10 @@ export interface DropdownProps
   className?: string;
   disabled?: boolean;
   disabledIds?: Array<DropdownOption['id']>;
+  formattedValue?: React.ReactChild;
   getFilteredOptions?: (filter: string) => Promise<DropdownOption[]>;
-  iconAfter?: TextboxProps['iconAfter'];
-  iconBefore?: TextboxProps['iconBefore'];
+  iconBefore?: RenderFromPropElement<FormboxIconRenderProps>;
   id?: string;
-  inputRef?: React.Ref<HTMLInputElement>;
   inputVariant?: DropdownInputVariant;
   label?: string;
   layout?: DropdownLayout;
@@ -60,18 +77,26 @@ export interface DropdownProps
   onSelect?: (id: string, selectedIds: string[]) => void;
   /** This fires when items are selected or unselected */
   onSelectionChange?: (selectedIds: string[] | undefined) => void;
-  onSubmit?: TextboxProps['onSubmit'];
+  onSubmit?: (event: React.KeyboardEvent<HTMLInputElement>, value: string) => void;
   onUnselect?: (id: string, selectedIds: string[] | undefined) => void;
   options: DropdownOption[];
-  readOnlyValue?: React.ReactChild;
+  placeholder?: FormboxValue | React.ReactChild;
+  readOnly?: boolean;
   reducer: UncontrolledInteractiveListProps['reducer'];
-  ref?: React.Ref<HTMLDivElement>;
+  searchable?: boolean;
   transitional?: boolean;
   translations?: DropdownTranslations;
   validity?: StateColor;
 }
 
-/** The dropdown is an uncontrolled component */
+export interface DropdownHandles {
+  container: HTMLDivElement;
+  list: DropdownContentHandles;
+  input: HTMLInputElement;
+  toggle: HTMLDivElement;
+}
+
+/** The dropdown selection is managed by the reducer prop */
 function DropdownBase(
   {
     allowReselect,
@@ -81,11 +106,10 @@ function DropdownBase(
     disabled,
     disabledIds,
     emptyNotification,
+    formattedValue: initFormattedValue,
     getFilteredOptions,
-    iconAfter: initIconAfter,
     iconBefore: initIconBefore,
     id,
-    inputRef: forwardedInputRef,
     inputVariant = 'underline',
     label,
     layout = 'raised',
@@ -101,12 +125,13 @@ function DropdownBase(
     onOpen,
     onSelect,
     onSelectionChange,
-    onUnselect,
     onSubmit,
+    onUnselect,
     options,
     placeholder,
-    readOnlyValue: initReadOnlyValue,
+    readOnly,
     reducer,
+    searchable,
     themeId: initThemeId,
     unthemed,
     transitional,
@@ -114,82 +139,89 @@ function DropdownBase(
     validity,
     ...props
   }: DropdownProps,
-  forwardedRef: React.ForwardedRef<HTMLDivElement>,
+  forwardedRef: React.ForwardedRef<DropdownHandles>,
 ): React.ReactElement<DropdownProps, 'div'> {
   const [selectedState] = reducer;
-  const [isFocused, setIsFocused] = useState<boolean>(false);
   const [filteredOptions, setFilteredOptions] = useState<DropdownOption[] | undefined>();
-
-  const ref = useRef<HTMLDivElement>(null!);
-  const contentRef = useRef<DropdownContentHandles>(null!);
-  const inputRef = useRef<HTMLInputElement>(null!);
-
-  const combineRefs = makeCombineRefs<HTMLDivElement>(ref, forwardedRef);
-  const combineInputRefs = makeCombineRefs<HTMLInputElement>(inputRef, forwardedInputRef);
-
-  const mouseDownRef = useRef<{
-    isFocused?: boolean;
-    isDropdownVisible?: boolean;
-    isDropdownClicked?: boolean;
-  }>({});
-
-  const previous = useRef<{
-    input?: string;
-    isDropdownVisible?: boolean;
-    selectedIds?: string[];
-    options?: DropdownOption[];
-  }>({});
+  const themeId = useThemeId(initThemeId);
 
   const translations = useTranslations<DropdownTranslations>({
     customTranslations,
     fallbackTranslations: dropdownTranslations,
   });
 
-  const themeId = useThemeId(initThemeId);
+  const clearRef = useRef<HTMLButtonElement>(null!);
+  const containerRef = useRef<HTMLDivElement>(null!);
+  const inputRef = useRef<HTMLInputElement>(null!);
+  const listRef = useRef<DropdownContentHandles>(null!);
+  const toggleRef = useRef<HTMLDivElement>(null!);
+
+  // the parent component can call forwardedRef.current.[container | input | list | toggle]
+  useImperativeHandle(forwardedRef, () => ({
+    get container(): HTMLDivElement {
+      return containerRef.current;
+    },
+    get input(): HTMLInputElement {
+      return inputRef.current;
+    },
+    get list(): DropdownContentHandles {
+      return listRef.current;
+    },
+    get toggle(): HTMLDivElement {
+      return toggleRef.current;
+    },
+  }));
+
+  const mouseDownRef = useRef<{
+    isFocused?: boolean;
+    isDropdownVisible?: boolean;
+    isListClicked?: boolean;
+    isToggleClicked?: boolean;
+  }>({});
+
+  const previous = useRef<{
+    input?: string;
+    isDropdownVisible?: boolean;
+    isInputFocused?: boolean;
+    isFocused?: boolean;
+    selectedIds?: string[];
+  }>({});
+
   const [dropdownState, dropdownDispatch] = useReducer(dropdownReducer, {
     busy: false,
-    clearFocus: false,
     id: id || uuid(),
     input: '',
-    inputFocus: false,
-    listFocus: false,
     listVisible: false,
   });
 
-  const isDropdownVisible = isFocused && dropdownState.listVisible;
-  const isEmpty = !selectedState.items?.getAll().length;
-  const isClearable =
-    getFilteredOptions &&
-    !!dropdownState.input &&
-    (dropdownState.inputFocus || dropdownState.clearFocus || isDropdownVisible);
+  const { addRef, handleFocus, handleBlur, isIdFocused } = useDeepFocusGroup({}, { blurDelay: 150 });
+  const { focus, cancel } = useTriggerFocus({ focusDelay: 150 });
 
-  // prepend the currently selected options to the filtered options
+  const isClearFocused = isIdFocused(FOCUS_REFS.CLEAR);
+  const isContainerFocused = isIdFocused(FOCUS_REFS.CONTAINER);
+  const isInputFocused = isIdFocused(FOCUS_REFS.INPUT);
+  const isListFocused = isIdFocused(FOCUS_REFS.LIST);
+  const isToggleFocused = isIdFocused(FOCUS_REFS.TOGGLE);
+  const isFocused = isClearFocused || isContainerFocused || isInputFocused || isListFocused || isToggleFocused;
+
+  const isDropdownVisible = isFocused && dropdownState.listVisible;
+  const isListEmpty = !selectedState.items?.getAll().length;
+  const isFilterable = !!getFilteredOptions;
+  const isClearable = isFilterable && !!dropdownState.input && (isInputFocused || isClearFocused || isDropdownVisible);
+
+  // prepend the currently selected option(s) to the filtered options
   const processedOptions = useMemo(() => {
     if (filteredOptions) {
       const filteredIds = filteredOptions?.map(({ id }) => id);
       return [
-        ...options.filter(option => selectedState.selectedIds?.includes(option.id) && !filteredIds.includes(option.id)),
+        ...(options?.filter(
+          option => selectedState.selectedIds?.includes(option.id) && !filteredIds.includes(option.id),
+        ) || []),
         ...(filteredOptions || []),
       ];
     }
     return options;
   }, [filteredOptions, options, selectedState.selectedIds]);
-
-  const focusInput = () => inputRef.current?.focus();
-  const focusList = () => contentRef.current?.list?.focus();
-
-  const hideDropdown = useCallback(() => dropdownDispatch({ type: ACTIONS.HIDE_DROPDOWN }), []);
-  const showDropdown = useCallback(() => dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN }), []);
-  const handleListBlur = useCallback(() => dropdownDispatch({ type: ACTIONS.UNSET_LIST_FOCUS }), []);
-  const handleListFocus = useCallback(() => dropdownDispatch({ type: ACTIONS.SET_LIST_FOCUS }), []);
-  const handleClearBlur = useCallback(() => dropdownDispatch({ type: ACTIONS.UNSET_CLEAR_FOCUS }), []);
-  const handleClearFocus = useCallback(() => dropdownDispatch({ type: ACTIONS.SET_CLEAR_FOCUS }), []);
-  const handleInputBlur = useCallback(() => dropdownDispatch({ type: ACTIONS.UNSET_INPUT_FOCUS }), []);
-  const handleInputFocus = useCallback(() => dropdownDispatch({ type: ACTIONS.SET_INPUT_FOCUS }), []);
-  const handleInputClick = useCallback(() => !getFilteredOptions && focusList(), [getFilteredOptions]);
-
-  const { setSafeTimeout, clearSafeTimeout } = useSafeTimeout();
-  const safeHandleInputFocus = () => setSafeTimeout(handleInputFocus);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleFilter = useCallback(
@@ -205,42 +237,55 @@ function DropdownBase(
   // define a cleanup event to cancel the filtering
   useEffect((): (() => void) => () => handleFilter.cancel(), [handleFilter]);
 
-  /**
-   * When any of the focus states change to false, wait a
-   * moment for them to reconcile, otherwise changing from
-   * one focused element to another will trigger a momentary
-   * unfocus event which will break tabbing from a filtered
-   * list to the dropdown.
-   */
+  // only initialize the deep focus handlers once
   useEffect(() => {
-    clearSafeTimeout('setIsFocused');
-    if (dropdownState.inputFocus || dropdownState.listFocus || dropdownState.clearFocus) {
-      setIsFocused(true);
-    } else {
-      setSafeTimeout(() => setIsFocused(false), 150, 'setIsFocused');
+    addRef<HTMLButtonElement>({ id: FOCUS_REFS.CLEAR, ref: clearRef, passive: true });
+    addRef<HTMLInputElement>({ id: FOCUS_REFS.INPUT, ref: inputRef, passive: true });
+    addRef<HTMLDivElement>({ id: FOCUS_REFS.TOGGLE, ref: toggleRef, passive: true });
+    addRef<HTMLDivElement, 'container'>({ id: FOCUS_REFS.LIST, ref: listRef, passive: true, handle: 'container' });
+    addRef<HTMLDivElement>({ id: FOCUS_REFS.CONTAINER, ref: containerRef, passive: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // when the overall component focus state changes ...
+  useEffect(() => {
+    if (!isFocused && previous.current.isFocused) {
+      dropdownDispatch({ type: ACTIONS.HIDE_DROPDOWN });
+    } else if (isFocused && !previous.current.isFocused) {
+      if (isFilterable) {
+        focus<HTMLInputElement>(inputRef);
+      }
     }
-  }, [dropdownState.inputFocus, dropdownState.listFocus, dropdownState.clearFocus, clearSafeTimeout, setSafeTimeout]);
+    previous.current.isFocused = isFocused;
+  }, [focus, isFilterable, isFocused, isToggleFocused]);
+
+  // when a specific focus state changes ...
+  useEffect(() => {
+    if (isInputFocused && !previous.current.isInputFocused && options !== undefined) {
+      dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
+    }
+    previous.current.isInputFocused = isInputFocused;
+  }, [isInputFocused, options]);
 
   // when the dropdown visibility changes ...
   useEffect(() => {
     if (isDropdownVisible !== previous.current.isDropdownVisible) {
       if (isDropdownVisible) {
-        !getFilteredOptions && focusList();
+        !isFilterable && focus<HTMLUListElement, 'list'>(listRef, 'list');
         onOpen && onOpen();
       } else {
         onClose && onClose();
       }
     }
     previous.current.isDropdownVisible = !!isDropdownVisible;
-  }, [isDropdownVisible, getFilteredOptions, onOpen, onClose]);
+  }, [focus, isDropdownVisible, isFilterable, isListFocused, onClose, onOpen]);
 
   // when the options change ...
   useEffect(() => {
-    if (options !== previous.current.options) {
-      showDropdown();
+    if (options !== undefined) {
+      dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
     }
-    previous.current.options = options;
-  }, [showDropdown, options]);
+  }, [options]);
 
   // when the search or filter input changes ...
   useEffect(() => {
@@ -257,6 +302,7 @@ function DropdownBase(
     previous.current.input = dropdownState.input;
   }, [dropdownState.input, handleFilter, onInputChange]);
 
+  // if the select is handled by Enter or click and only one option can be selected then hide the dropdown
   const handleSelect: DropdownContentProps['onSelect'] = (event, { id }, selectedIds) => {
     if (id !== undefined) {
       if (
@@ -264,13 +310,15 @@ function DropdownBase(
         maxSelect === 1 &&
         (event.type === 'click' || (event.type === 'keydown' && 'key' in event && event.key === 'Enter'))
       ) {
-        hideDropdown();
+        dropdownDispatch({ type: ACTIONS.HIDE_DROPDOWN });
+        focus<HTMLDivElement>(toggleRef);
       }
 
       onSelect && onSelect(id, selectedIds);
     }
   };
 
+  // if the unselect is handled by Enter or click and only one option can be selected then hide the dropdown
   const handleUnselect: DropdownContentProps['onUnselect'] = (event, { id }, selectedIds) => {
     if (id !== undefined) {
       if (Array.isArray(selectedIds)) {
@@ -279,7 +327,8 @@ function DropdownBase(
           maxSelect === 1 &&
           (event.type === 'click' || (event.type === 'keydown' && 'key' in event && event.key === 'Enter'))
         ) {
-          hideDropdown();
+          dropdownDispatch({ type: ACTIONS.HIDE_DROPDOWN });
+          focus<HTMLDivElement>(toggleRef);
         }
       }
 
@@ -287,42 +336,11 @@ function DropdownBase(
     }
   };
 
-  const handleInputChange = useCallback(
-    (
-      event: React.ChangeEvent | React.KeyboardEvent | React.MouseEvent | React.TouchEvent,
-      value: string | number,
-      { cleared }: { cleared?: boolean } = {},
-    ): void => {
-      event.preventDefault();
-
-      if (value !== dropdownState.input) {
-        if (value) {
-          dropdownDispatch({
-            type: ACTIONS.SET_FILTER,
-            input: value as string,
-          });
-        } else {
-          dropdownDispatch({ type: ACTIONS.CLEAR_FILTER });
-        }
-      }
-
-      if (cleared) {
-        focusInput();
-        onClear && onClear();
-      }
-
-      if (cleared || !value) {
-        setFilteredOptions(undefined);
-      }
-    },
-    [onClear, dropdownState.input],
-  );
-
   /**
    * Because focus and blur events fire before the click events,
-   * we must capture the component dropdownState in the mousedown
-   * phase before these other events interfere. The ensures that
-   * the click event will be able to know what the dropdownState
+   * we must capture the dropdown states in the mousedown phase
+   * before these other events interfere. The ensures that the
+   * click event will be able to know what the dropdownState
    * was when it was actually clicked.
    */
   const handleMouseDown = useCallback(
@@ -332,26 +350,41 @@ function DropdownBase(
       mouseDownRef.current = {
         isFocused,
         isDropdownVisible,
-        isDropdownClicked: contentRef.current?.container?.contains(event.target as Node),
+        isListClicked: listRef.current?.container?.contains(event.target as Node),
+        isToggleClicked: toggleRef.current?.contains(event.target as Node),
       };
     },
-    [isDropdownVisible, isFocused],
+    [isFocused, isDropdownVisible],
   );
 
   const handleClick = useCallback(() => {
-    if (mouseDownRef.current.isDropdownVisible && !mouseDownRef.current.isDropdownClicked && !isClearable) {
-      hideDropdown();
+    if (!mouseDownRef.current.isListClicked) {
+      if (mouseDownRef.current.isDropdownVisible) {
+        isFilterable ? focus<HTMLInputElement>(inputRef) : focus<HTMLDivElement>(toggleRef);
+        dropdownDispatch({ type: ACTIONS.HIDE_DROPDOWN });
+      } else {
+        isFilterable && focus<HTMLInputElement>(inputRef);
+        dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
+      }
     }
-  }, [hideDropdown, isClearable]);
 
-  const handleKeyDown = useCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === ' ' && (event.target as HTMLDivElement).tagName.toLowerCase() !== 'input') {
-      event.preventDefault();
-      dropdownDispatch({
-        type: ACTIONS.SHOW_DROPDOWN,
-      });
-    }
-  }, []);
+    mouseDownRef.current = {};
+  }, [focus, isFilterable]);
+
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLDivElement>) => {
+      if (
+        (event.key === ' ' || (event.key === 'Enter' && !isListFocused && !isClearFocused)) &&
+        (event.target as HTMLDivElement).tagName.toLowerCase() !== 'input'
+      ) {
+        event.preventDefault();
+        dropdownDispatch({
+          type: ACTIONS.SHOW_DROPDOWN,
+        });
+      }
+    },
+    [isClearFocused, isListFocused],
+  );
 
   // if the `used` flag is true the list provider has already used that keydown event
   const handleListKeyDown = useCallback(
@@ -360,49 +393,98 @@ function DropdownBase(
         dropdownDispatch({
           type: ACTIONS.SHOW_DROPDOWN,
         });
-      } else if (dropdownState.listFocus && dropdownState.listVisible && event.key === 'Enter') {
+      } else if (isListFocused && dropdownState.listVisible && event.key === 'Enter') {
         dropdownDispatch({
           type: ACTIONS.HIDE_DROPDOWN,
         });
       }
     },
-    [dropdownState.listFocus, dropdownState.listVisible],
+    [isListFocused, dropdownState.listVisible],
   );
 
+  const handleInputChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>(
+    (event): void => {
+      event.preventDefault();
+
+      const value = event.target.value;
+      if (value !== dropdownState.input) {
+        if (value && value !== '') {
+          dropdownDispatch({
+            type: ACTIONS.SET_FILTER,
+            input: value as string,
+          });
+        } else {
+          dropdownDispatch({ type: ACTIONS.CLEAR_FILTER });
+        }
+      }
+
+      if (!value && value !== '') {
+        setFilteredOptions(undefined);
+      }
+    },
+    [dropdownState.input],
+  );
+
+  const handleInputKeyDown = useCallback((event: React.KeyboardEvent<HTMLInputElement>): void => {
+    if (event.key === 'Enter') {
+      dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
+    }
+  }, []);
+
+  const handleInputClear = useCallback(
+    (
+      event:
+        | React.KeyboardEvent<HTMLButtonElement>
+        | React.MouseEvent<HTMLButtonElement>
+        | React.TouchEvent<HTMLButtonElement>,
+    ): void => {
+      event.stopPropagation();
+      dropdownDispatch({ type: ACTIONS.CLEAR_FILTER });
+      setFilteredOptions(undefined);
+      focus<HTMLInputElement>(inputRef);
+
+      onClear && onClear();
+    },
+    [focus, onClear],
+  );
+
+  const handleClickAndEscape = useCallback(() => {
+    cancel();
+    dropdownDispatch({
+      type: ACTIONS.HIDE_DROPDOWN,
+    });
+  }, [cancel]);
+
   useClickAndEscape({
-    ref,
-    onBlur: hideDropdown,
-    onFocus: showDropdown,
+    ref: containerRef,
+    onBlur: handleClickAndEscape,
     stopPropagation: isDropdownVisible,
   });
 
-  const showFilter = !!(getFilteredOptions && (dropdownState.inputFocus || (isDropdownVisible && dropdownState.input)));
-  const inputValue = showFilter ? dropdownState.input : undefined;
-  const selectedView = getDropdownSelectedView({ options, maxSelect, selectedState, translations });
   const color = contrast ? 'contrast' : 'primary';
+  const transparent = layout === 'contained' && isDropdownVisible && ['underline', 'filled'].includes(inputVariant);
 
-  // remove the dropdown arrows to make room for the clearable "x"
-  const iconAfter = isClearable
-    ? undefined
-    : initIconAfter || (
-        <ArrowDownIcon
-          size={arrowIconSize}
-          className={cx(styles.dropdownArrowIcon, isDropdownVisible && styles['dropdownArrowIcon--inverted'])}
-        />
-      );
+  const hasInputValue = dropdownState.input && dropdownState.input !== '';
+  const showFilter = isFilterable && (isInputFocused || isClearFocused || (isDropdownVisible && hasInputValue));
+  const inputValue = showFilter ? dropdownState.input : '';
+  const selectedView = getDropdownSelectedView({ options: processedOptions, maxSelect, selectedState, translations });
+  const formattedValue = initFormattedValue || selectedView;
 
-  // when showing a search input add a search icon
+  // the no content notice should be hidden when searching or when the dropdown is searchable and has not been searched
+  const hideNoContent = dropdownState.busy || (searchable && !dropdownState.input);
+
   const iconBefore = showFilter ? <SearchIcon size={12} /> : initIconBefore;
-
-  // readOnly cannot change during focus because the re-render may mess up tabbing to change focus
-  const readOnly = !(getFilteredOptions && isDropdownVisible) || !isFocused;
-  const readOnlyValue = initReadOnlyValue || selectedView;
+  const showReadOnlyIcon = readOnly;
+  const showSpinnerIcon = !!dropdownState.busy;
+  const showClearableIcon = isClearable && !dropdownState.busy;
+  const showArrowIcons = !showReadOnlyIcon && !showSpinnerIcon && !showClearableIcon;
 
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
       className={cx(
         styles.dropdown,
+        readOnly && styles['dropdown--readOnly'],
         disabled && styles['is-disabled'],
         isClearable && styles['is-clearable'],
         isDropdownVisible && styles['is-visible'],
@@ -413,56 +495,118 @@ function DropdownBase(
       onClick={handleClick}
       onMouseDown={handleMouseDown}
       onKeyDown={handleKeyDown}
-      onFocus={showDropdown}
-      ref={combineRefs}
+      ref={containerRef}
       {...props}
     >
-      <Textbox
-        // make sure that a focus transfer from the icon to the input is registered
-        alwaysTriggerFocus
-        // eslint-disable-next-line jsx-a11y/no-autofocus
-        autoFocus={isFocused}
-        clearable={isClearable}
+      <FormboxContainer<'div'>
+        aria-haspopup={readOnly ? false : 'listbox'}
+        as="div"
         className={styles.dropdownInput}
         contrast={contrast}
-        iconAfter={(dropdownState.busy && dropdownState.listVisible && SpinnerIcon) || iconAfter}
-        iconBefore={iconBefore}
-        id={dropdownState.id}
-        // the key is used to force an update on select
-        key={selectedState.selectedIds?.join(',')}
+        disabled={disabled}
+        empty={selectedState.selectedIds?.length === 0 && !placeholder}
+        focused={isFocused}
+        hasIconAfter
+        hasIconBefore={!!iconBefore}
         label={label}
-        onBlur={handleInputBlur}
-        onChange={handleInputChange}
-        onClick={handleInputClick}
-        onFocus={safeHandleInputFocus}
-        onIconBlur={handleClearBlur}
-        onIconFocus={handleClearFocus}
-        onSubmit={onSubmit}
-        placeholder={placeholder}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
         readOnly={readOnly}
-        readOnlyValue={readOnlyValue}
-        ref={combineInputRefs}
-        role={getFilteredOptions ? undefined : 'button'}
-        silentReadOnly
-        // don't allow this to be tabbed to if input is read only and focus is already in the component
-        tabIndex={isFocused && !getFilteredOptions ? -1 : 0}
+        ref={toggleRef}
+        role={readOnly ? undefined : 'button'}
+        tabIndex={readOnly || (isListFocused && !isFilterable) ? -1 : 0}
         themeId={themeId}
         transitional={transitional}
-        transparent={layout === 'contained' && isDropdownVisible && ['underline', 'filled'].includes(inputVariant)}
-        unthemed={unthemed}
+        transparent={transparent}
+        type="input"
         validity={validity}
-        value={inputValue}
         variant={inputVariant}
-      />
+        {...props}
+      >
+        {iconBefore && <FormboxIcon icon={iconBefore} position="before" variant={inputVariant} />}
+
+        {isFilterable && !readOnly ? (
+          <FormboxInputWithFormatting<'input'>
+            alwaysUseFormatting
+            contrast={contrast}
+            focused={isFocused}
+            formattedValue={isInputFocused || isClearFocused ? undefined : formattedValue}
+            hasValue={inputValue !== undefined && inputValue !== ''}
+            placeholder={placeholder}
+            themeId={themeId}
+          >
+            <input
+              disabled={disabled}
+              onBlur={handleBlur}
+              onFocus={handleFocus}
+              onChange={handleInputChange}
+              onKeyDown={handleInputKeyDown}
+              ref={inputRef}
+              type="text"
+              value={inputValue}
+            />
+          </FormboxInputWithFormatting>
+        ) : (
+          <FormboxReadOnly formattedValue={formattedValue} placeholder={placeholder} />
+        )}
+
+        {showReadOnlyIcon && (
+          <FormboxIcon
+            icon={<PencilSlashIcon scale="small" title={translations.readOnlyLabel} />}
+            position="after"
+            variant={inputVariant}
+          />
+        )}
+
+        {showArrowIcons && (
+          <FormboxIcon
+            icon={
+              <ArrowDownIcon
+                size={arrowIconSize}
+                className={cx(styles.dropdownArrowIcon, isDropdownVisible && styles['dropdownArrowIcon--inverted'])}
+              />
+            }
+            position="after"
+            variant={inputVariant}
+          />
+        )}
+
+        {showSpinnerIcon && <FormboxIcon icon={<SpinnerIcon size={12} />} position="after" variant={inputVariant} />}
+
+        {showClearableIcon && (
+          <FormboxIcon
+            actionable
+            icon={
+              <button
+                aria-label={translations.clearLabel}
+                className={styles.dropdownButtonIcon}
+                onBlur={handleBlur}
+                onClick={handleInputClear}
+                onFocus={handleFocus}
+                ref={clearRef}
+                type="button"
+              >
+                <TimesIcon scale="xsmall" title={translations.clearLabel} />
+              </button>
+            }
+            position="after"
+            variant={inputVariant}
+          />
+        )}
+      </FormboxContainer>
 
       <DropdownContent
         allowReselect={allowReselect}
         contrast={contrast}
+        disabled={!isDropdownVisible || isClearFocused}
         disabledIds={disabledIds}
         emptyNotification={emptyNotification}
+        filter={dropdownState.input}
+        focused={isListFocused}
+        hideNoContent={hideNoContent}
         inputVariant={inputVariant}
         isDropdownVisible={isDropdownVisible}
-        isEmpty={isEmpty}
+        isEmpty={isListEmpty}
         layout={layout}
         listColor={listColor}
         listSize={listSize}
@@ -470,17 +614,15 @@ function DropdownBase(
         maxSelect={maxSelect}
         minSelect={minSelect}
         onItemFocus={onItemFocus}
-        onListBlur={handleListBlur}
-        onListFocus={handleListFocus}
+        onListBlur={handleBlur}
+        onListFocus={handleFocus}
         onListKeyDown={handleListKeyDown}
         onSelect={handleSelect}
         onSelectionChange={onSelectionChange}
         onUnselect={handleUnselect}
         options={processedOptions}
-        parentRef={ref}
         reducer={reducer}
-        ref={contentRef}
-        dropdownState={dropdownState}
+        ref={listRef}
         themeId={themeId}
         unthemed={unthemed}
       />
@@ -488,7 +630,7 @@ function DropdownBase(
   );
 }
 
-export const Dropdown = React.forwardRef(DropdownBase) as typeof DropdownBase;
+export const Dropdown = React.forwardRef(DropdownBase);
 
 DropdownBase.displayName = 'DropdownBase';
 Dropdown.displayName = 'Dropdown';

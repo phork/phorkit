@@ -138,11 +138,13 @@ const canSelectItem = <T extends InteractiveGroupItemId>(
   return true;
 };
 
+// if minSelect === maxSelect we have to allow unselect otherwise a different selection can't be added
 const canUnselectItem = <T extends InteractiveGroupItemId>(
   state = getInteractiveGroupInitialState<T>(),
   action: InteractiveGroupStateAction<T>,
 ): boolean => {
   if ('minSelect' in action) {
+    if ('maxSelect' in action && action.minSelect === action.maxSelect && action.minSelect !== 1) return true;
     return !(action.minSelect !== undefined && state.selectedIds.length - 1 < action.minSelect);
   }
   return true;
@@ -155,10 +157,20 @@ export function interactiveGroupReducer<T extends InteractiveGroupItemId>(
   const action = forwardAction<T>(state, initAction);
 
   switch (action.type) {
-    case ACTIONS.SET_ITEMS:
+    case ACTIONS.CLEAR:
       return {
         ...state,
-        items: interactiveGroupItemsFactory(action.items),
+        focusedIndex: undefined,
+        selectedIds: [],
+        triggeredId: undefined,
+        events: {
+          ...state.events,
+          cleared: action.event,
+        },
+        times: {
+          ...state.times,
+          cleared: action.timestamp,
+        },
       };
 
     case ACTIONS.FOCUS_FIRST:
@@ -180,10 +192,10 @@ export function interactiveGroupReducer<T extends InteractiveGroupItemId>(
       };
     }
 
-    case ACTIONS.SET_FOCUSED:
+    case ACTIONS.FOCUS_SELECTED: {
       return {
         ...state,
-        focusedIndex: action.focusedIndex,
+        focusedIndex: state.items.getIndexByIds(state.selectedIds)?.sort()[0] || 0,
         events: {
           ...state.events,
           focused: action.event,
@@ -192,6 +204,12 @@ export function interactiveGroupReducer<T extends InteractiveGroupItemId>(
           ...state.times,
           focused: action.timestamp,
         },
+      };
+    }
+
+    case ACTIONS.RESET:
+      return {
+        ...getInteractiveGroupInitialState(),
       };
 
     case ACTIONS.SELECT_FIRST:
@@ -274,6 +292,26 @@ export function interactiveGroupReducer<T extends InteractiveGroupItemId>(
       };
     }
 
+    case ACTIONS.SET_FOCUSED:
+      return {
+        ...state,
+        focusedIndex: action.focusedIndex,
+        events: {
+          ...state.events,
+          focused: action.event,
+        },
+        times: {
+          ...state.times,
+          focused: action.timestamp,
+        },
+      };
+
+    case ACTIONS.SET_ITEMS:
+      return {
+        ...state,
+        items: interactiveGroupItemsFactory(action.items),
+      };
+
     case ACTIONS.UNSELECT_ID:
       if (!isIdSelected<T>(state, action.id)) return state;
       if (!canUnselectItem<T>(state, action)) return state;
@@ -289,27 +327,6 @@ export function interactiveGroupReducer<T extends InteractiveGroupItemId>(
           ...state.times,
           unselected: action.timestamp,
         },
-      };
-
-    case ACTIONS.CLEAR:
-      return {
-        ...state,
-        focusedIndex: undefined,
-        selectedIds: [],
-        triggeredId: undefined,
-        events: {
-          ...state.events,
-          cleared: action.event,
-        },
-        times: {
-          ...state.times,
-          cleared: action.timestamp,
-        },
-      };
-
-    case ACTIONS.RESET:
-      return {
-        ...getInteractiveGroupInitialState(),
       };
 
     default:

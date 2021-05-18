@@ -4,13 +4,15 @@ menu: Forms
 route: /components/FormSelect
 ---
 
-import { Looper } from 'docs/helpers/Looper';
-import { PageTitle } from 'docs/helpers/PageTitle';
 import { Playground, Props } from 'docz';
 import { SearchIcon } from 'icons/SearchIcon';
 import { TimesIcon } from 'icons/TimesIcon';
 import { TagIcon } from 'icons/internal/TagIcon';
+import { Rhythm } from 'components/Rhythm';
 import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
+import { Looper } from 'docs/helpers/Looper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Select, NotifiedSelect } from '../index';
 import { options } from './helpers/options';
 import { variants } from './helpers/variants.js';
@@ -20,344 +22,401 @@ import { variants } from './helpers/variants.js';
 ## Basic select
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value" initialValue="yellow">
-        <Select onChange={(event, value) => console.log(value)} options={options} variant={variant} />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" initialValue="yellow" unwrapped>
+            <Select onChange={(event, value) => console.log(value)} options={options} variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## Multiple select
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value" initialValue={['yellow', 'blue']}>
-        <Select
-          label="Super fantastic label"
-          multiple
-          onChange={(event, value) => console.log(value)}
-          options={options}
-          variant={variant}
-        />
-      </FormComponentDemo>
-    )}
-  />
-</Playground>
-
-## Numeric select
-
-<Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value" initialValue={7}>
-        <Select
-          label="Super fantastic label"
-          onChange={(event, value) => console.log(value)}
-          type="number"
-          width="120px"
-          options={[
-            { value: 1, label: 'One' },
-            { value: 2, label: 'Two' },
-            { value: 3, label: 'Threee' },
-            { value: 4, label: 'Four' },
-            { value: 5, label: 'Five' },
-            { value: 6, label: 'Six' },
-            { value: 7, label: 'Seven' },
-            { value: 8, label: 'Eight' },
-            { value: 9, label: 'Nine' },
-            { value: 10, label: 'Ten' },
-          ]}
-          variant={variant}
-        />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="values" initialValue={['yellow', 'blue']} unwrapped>
+            <Select
+              label="Super fantastic label"
+              multiple
+              onChange={(event, value) => console.log(value)}
+              options={options}
+              variant={variant}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## Labeled select
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value" initialValue="yellow">
-        <Select
-          label="Super fantastic label"
-          onChange={(event, value) => console.log(value)}
-          options={options}
-          variant={variant}
-        />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" initialValue="yellow" unwrapped>
+            <Select
+              label="Super fantastic label"
+              onChange={(event, value) => console.log(value)}
+              options={options}
+              variant={variant}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## Transitional labeled select
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value">
-        <Select
-          label="Super fantastic label"
-          onChange={(event, value) => console.log(value)}
-          options={options}
-          transitional
-          variant={variant}
-        />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" unwrapped>
+            <Select
+              label="Super fantastic label"
+              onChange={(event, value) => console.log(value)}
+              options={options}
+              transitional
+              variant={variant}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## Transitional labeled select with icons
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value">
-        <Select
-          iconBefore={SearchIcon}
-          iconAfter={<TimesIcon size={8} />}
-          label="Super fantastic label"
-          onChange={(event, value) => console.log(value)}
-          options={options}
-          transitional
-          variant={variant}
-        />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" unwrapped>
+            <Select
+              iconBefore={SearchIcon}
+              iconAfter={<TimesIcon size={8} />}
+              label="Super fantastic label"
+              onChange={(event, value) => console.log(value)}
+              options={options}
+              transitional
+              variant={variant}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
-## Placeholder select (string)
+## Select with placeholder
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value">
-        <Select
-          label="Super fantastic label"
-          onChange={(event, value) => console.log(value)}
-          options={options}
-          placeholder="Choose a color"
-          transitional
-          variant={variant}
-        />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" unwrapped>
+            <Select
+              label="Super fantastic label"
+              onChange={(event, value) => console.log(value)}
+              options={options}
+              placeholder={{ label: 'Choose a color' }}
+              variant={variant}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
-## Placeholder select (object)
+## Select with separate list and view placeholder
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value">
-        <Select
-          label="Super fantastic label"
-          onChange={(event, value) => console.log(value)}
-          options={options}
-          placeholder={{ label: 'Choose a color', value: 'none' }}
-          transitional
-          variant={variant}
-        />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" unwrapped>
+            <Select
+              label="Super fantastic label"
+              onChange={(event, value) => console.log(value)}
+              options={options}
+              placeholder={{ optionLabel: '(None)', label: 'Choose a color' }}
+              transitional
+              variant={variant}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Playground>
+
+## Select with list placeholder only
+
+<Playground>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" unwrapped>
+            <Select
+              label="Super fantastic label"
+              onChange={(event, value) => console.log(value)}
+              options={options}
+              placeholder={{ optionLabel: '(None)', label: undefined }}
+              transitional
+              variant={variant}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Playground>
+
+## Select with disabled placeholder
+
+<Playground>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" unwrapped>
+            <Select
+              label="Super fantastic label"
+              onChange={(event, value) => console.log(value)}
+              options={options}
+              placeholder={{ label: 'Choose a color', disabled: true }}
+              transitional
+              variant={variant}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## Disabled select
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value" initialValue="yellow">
-        <Select
-          disabled
-          label="Super fantastic label"
-          onChange={(event, value) => console.log(value)}
-          options={options}
-          variant={variant}
-        />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" initialValue="yellow" unwrapped>
+            <Select
+              disabled
+              label="Super fantastic label"
+              onChange={(event, value) => console.log(value)}
+              options={options}
+              variant={variant}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## Read only select
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value" initialValue="yellow">
-        <Select
-          label="Super fantastic label"
-          onChange={(event, value) => console.log(value)}
-          options={options}
-          readOnly
-          variant={variant}
-        />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" initialValue="yellow" unwrapped>
+            <Select
+              label="Super fantastic label"
+              onChange={(event, value) => console.log(value)}
+              options={options}
+              readOnly
+              variant={variant}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## Read only multiple select
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value" initialValue={['yellow', 'blue']}>
-        <Select
-          label="Super fantastic label"
-          onChange={(event, value) => console.log(value)}
-          options={options}
-          readOnly
-          variant={variant}
-        />
-      </FormComponentDemo>
-    )}
-  />
-</Playground>
-
-## Icon select
-
-<Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value" initialValue="yellow">
-        <Select
-          iconBefore={<TagIcon scale="small" />}
-          label="Super fantastic label"
-          onChange={(event, value) => console.log(value)}
-          options={options}
-          transitional
-          variant={variant}
-        />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="values" initialValue={['yellow', 'blue']} unwrapped>
+            <Select
+              label="Super fantastic label"
+              multiple
+              onChange={(event, value) => console.log(value)}
+              options={options}
+              readOnly
+              variant={variant}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## Danger select
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value" initialValue="yellow">
-        <Select
-          label="Super fantastic label"
-          onChange={(event, value) => console.log(value)}
-          options={options}
-          transitional
-          validity="danger"
-          variant={variant}
-        />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" initialValue="yellow" unwrapped>
+            <Select
+              label="Super fantastic label"
+              onChange={(event, value) => console.log(value)}
+              options={options}
+              transitional
+              validity="danger"
+              variant={variant}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## Warning select
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value" initialValue="yellow">
-        <Select
-          label="Super fantastic label"
-          onChange={(event, value) => console.log(value)}
-          options={options}
-          transitional
-          validity="warning"
-          variant={variant}
-        />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" initialValue="yellow" unwrapped>
+            <Select
+              label="Super fantastic label"
+              onChange={(event, value) => console.log(value)}
+              options={options}
+              transitional
+              validity="warning"
+              variant={variant}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## Success select
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value" initialValue="yellow">
-        <Select
-          label="Super fantastic label"
-          onChange={(event, value) => console.log(value)}
-          options={options}
-          transitional
-          validity="success"
-          variant={variant}
-        />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" initialValue="yellow" unwrapped>
+            <Select
+              label="Super fantastic label"
+              onChange={(event, value) => console.log(value)}
+              options={options}
+              transitional
+              validity="success"
+              variant={variant}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## Contrast select
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <FormComponentDemo property="value" initialValue="yellow" contrast>
-        <Select
-          contrast
-          id="demo-contrast-select"
-          label="Super fantastic label"
-          onChange={(event, value) => console.log(value)}
-          options={options}
-          variant={variant}
-        />
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper contrast>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="value" initialValue="yellow" contrast unwrapped>
+            <Select
+              contrast
+              id="demo-contrast-select"
+              label="Super fantastic label"
+              onChange={(event, value) => console.log(value)}
+              options={options}
+              variant={variant}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## Notifications
 
 <Playground>
-  <Looper
-    list={variants}
-    render={variant => (
-      <Looper
-        list={['success', 'danger', 'warning', 'primary', 'neutral']}
-        render={level => (
-          <FormComponentDemo property="value" initialValue="yellow">
-            <NotifiedSelect
-              label="Super fantastic label"
-              onChange={(event, value) => console.log(value)}
-              options={options}
-              variant={variant}
-              level={level}
-              notification={`This is an example ${level} notification.`}
-            />
-          </FormComponentDemo>
-        )}
-      />
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Looper
+          list={['success', 'danger', 'warning', 'primary', 'neutral']}
+          render={level => (
+            <Rhythm py={3}>
+              <FormComponentDemo property="value" initialValue="yellow" unwrapped>
+                <NotifiedSelect
+                  label="Super fantastic label"
+                  onChange={(event, value) => console.log(value)}
+                  options={options}
+                  variant={variant}
+                  level={level}
+                  notification={`This is an example ${level} notification.`}
+                />
+              </FormComponentDemo>
+            </Rhythm>
+          )}
+        />
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## \[props\]

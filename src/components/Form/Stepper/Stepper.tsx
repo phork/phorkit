@@ -25,7 +25,7 @@ export interface LocalStepperProps {
     event: React.ChangeEvent | React.KeyboardEvent | React.MouseEvent | React.TouchEvent,
     value: number,
   ) => void;
-  persistEvents?: boolean;
+  placeholder?: number;
   translations?: StepperTranslations;
   value?: number;
 }
@@ -42,11 +42,11 @@ export function StepperBase(
     max,
     min,
     onChange,
-    persistEvents,
+    placeholder = 0,
     readOnly,
     step = 1,
     translations: customTranslations,
-    value = 0,
+    value,
     ...props
   }: StepperProps,
   forwardedRef: React.ForwardedRef<HTMLInputElement>,
@@ -59,37 +59,37 @@ export function StepperBase(
 
   const handleChange = useCallback(
     (event: React.ChangeEvent | React.KeyboardEvent | React.MouseEvent | React.TouchEvent, value: FormboxValue) => {
-      persistEvents && event.persist();
-
       let clamped = +value;
       clamped = min ? Math.max(min, clamped) : clamped;
       clamped = max ? Math.min(max, clamped) : clamped;
       onChange && onChange(event, clamped);
     },
-    [max, min, onChange, persistEvents],
+    [max, min, onChange],
   );
 
   const decrement = useCallback(
     (event: React.KeyboardEvent | React.MouseEvent | React.TouchEvent) => {
-      const value = +inputRef.current?.value;
+      const inputValue = inputRef.current?.value;
+      const value = inputValue === undefined || inputValue === '' ? placeholder : +inputValue;
       handleChange(event, (value || 0) - step + '');
     },
-    [handleChange, step],
+    [handleChange, placeholder, step],
   );
 
   const increment = useCallback(
     (event: React.KeyboardEvent | React.MouseEvent | React.TouchEvent) => {
-      const value = +inputRef.current?.value;
+      const inputValue = inputRef.current?.value;
+      const value = inputValue === undefined || inputValue === '' ? placeholder : +inputValue;
       handleChange(event, (value || 0) + step + '');
     },
-    [handleChange, step],
+    [handleChange, placeholder, step],
   );
 
-  const isMax = max !== undefined && value >= max;
-  const isMin = min !== undefined && value <= min;
+  const isMax = max !== undefined && value !== undefined && value >= max;
+  const isMin = min !== undefined && value !== undefined && value <= min;
 
   const renderDecrementIcon = () => {
-    return (
+    return readOnly ? undefined : (
       <button
         aria-label={decrementLabel}
         className={styles.stepperButton}
@@ -103,7 +103,7 @@ export function StepperBase(
   };
 
   const renderIncrementIcon = () => {
-    return (
+    return readOnly ? undefined : (
       <button
         aria-label={incrementLabel}
         className={styles.stepperButton}
@@ -130,11 +130,12 @@ export function StepperBase(
       iconBeforeActionable={!disabled && !isMin}
       iconAfterActionable={!disabled && !isMax}
       inputWidth={inputWidth}
+      placeholder={placeholder}
       ref={combineRefs}
       step={step}
       translations={Object.keys(restTranslations).length ? restTranslations : undefined}
       type="number"
-      value={value || ''}
+      value={value}
       {...props}
     />
   );

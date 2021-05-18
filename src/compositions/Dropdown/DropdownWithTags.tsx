@@ -14,7 +14,7 @@ import {
 import { Rhythm } from '../../components/Rhythm/Rhythm';
 import { Tag, TagGroup, TagGroupProps, TagProps, TagShape, TagSize, TagVariant } from '../../components/Tag';
 import { TypographyWithSvg } from '../../components/Typography';
-import { Dropdown, DropdownProps } from './Dropdown';
+import { Dropdown, DropdownHandles, DropdownProps } from './Dropdown';
 import { DropdownOption } from './types';
 
 export type DropdownWithTagsOption = DropdownOption & {
@@ -24,7 +24,6 @@ export type DropdownWithTagsOption = DropdownOption & {
 export interface DropdownWithTagsProps extends Omit<DropdownProps, 'initialSelected' | 'options' | 'reducer'> {
   initialSelected?: DropdownOption[];
   options: DropdownWithTagsOption[];
-  readOnlyValue?: React.ReactChild;
   tagGroupProps: Omit<TagGroupProps, 'size'>;
   tagShape?: TagShape;
   tagSize?: TagSize;
@@ -61,7 +60,7 @@ export function DropdownWithTags({
     [dispatch, minSelect, maxSelect],
   );
 
-  const dropdownRef = useRef<HTMLInputElement>(null!);
+  const dropdownRef = useRef<DropdownHandles>(null!);
   const tagRef = useRef<HTMLButtonElement>(null!);
   const isDropdownOpen = useRef<boolean>(false);
   const previousSelectedIds = useRef<string[]>(state.selectedIds);
@@ -94,7 +93,7 @@ export function DropdownWithTags({
         if (state.selectedIds.length >= 1) {
           tagRef.current?.focus();
         } else {
-          dropdownRef.current?.focus();
+          dropdownRef.current?.toggle?.focus();
         }
       }
     }
@@ -136,7 +135,6 @@ export function DropdownWithTags({
       <Dropdown
         contrast={contrast}
         id={id}
-        inputRef={dropdownRef}
         maxSelect={maxSelect}
         onClose={handleClose}
         onOpen={handleOpen}
@@ -145,6 +143,7 @@ export function DropdownWithTags({
         onUnselect={handleUnselect}
         options={strippedOptions}
         reducer={reducer}
+        ref={dropdownRef}
         themeId={themeId}
         {...props}
       />

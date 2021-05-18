@@ -16,6 +16,8 @@ type ExplicitProviderProps = Pick<
   | 'disabled'
   | 'maxSelect'
   | 'minSelect'
+  | 'onBlur'
+  | 'onFocus'
   | 'onItemClick'
   | 'onItemFocus'
   | 'onKeyDown'
@@ -30,8 +32,8 @@ type ExplicitProviderProps = Pick<
 
 export interface LocalUncontrolledInteractiveListProps extends ExplicitProviderProps {
   children: React.ReactNode;
-  /** The focused state can be set outside of this component so that focus styles can be applied when, for example, a parent is focused */
-  focused?: boolean;
+  /** A superficial focus state can be set outside of this component so that focus styles can be applied when, for example, a parent is focused */
+  focused?: true;
   listComponent?: typeof List;
   providerProps?: Omit<
     UncontrolledInteractiveGroupProviderProps<string, HTMLUListElement, HTMLLIElement>,
@@ -53,6 +55,8 @@ function UncontrolledInteractiveListBase(
     maxSelect,
     mimicSelectOnFocus,
     minSelect,
+    onBlur,
+    onFocus,
     onItemClick,
     onItemFocus,
     onKeyDown,
@@ -110,6 +114,8 @@ function UncontrolledInteractiveListBase(
               focused={focused}
               inactive={disabled}
               mimicSelectOnFocus={mimicSelectOnFocus}
+              onBlur={onBlur}
+              onFocus={onFocus}
               ref={combineRefs}
               rounded={rounded}
               tabIndex={disabled ? -1 : 0}
@@ -119,17 +125,7 @@ function UncontrolledInteractiveListBase(
               unthemed={unthemed}
               {...(props as Omit<
                 ListProps<'ul'>,
-                | 'as'
-                | 'children'
-                | 'focused'
-                | 'inactive'
-                | 'items'
-                | 'onBlur'
-                | 'onFocus'
-                | 'ref'
-                | 'tabIndex'
-                | 'themeId'
-                | 'unstyled'
+                'as' | 'children' | 'focused' | 'inactive' | 'items' | 'ref' | 'tabIndex' | 'themeId' | 'unstyled'
               >)}
             >
               {items.map(({ id, label, disabled, ...itemProps }, index) => {

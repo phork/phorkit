@@ -5,7 +5,15 @@ import { useThemeId } from '../../../hooks/useThemeId';
 import { useTranslations } from '../../../hooks/useTranslations';
 import { makeCombineRefs } from '../../../utils/combineRefs';
 import { TimesIcon } from '../../../icons/TimesIcon';
-import { Formbox, FormboxProps, FormboxValue, FormboxTranslations, formboxTranslations } from '../Formbox/Formbox';
+import {
+  Formbox,
+  FormboxInputWithFormatting,
+  FormboxReadOnly,
+  FormboxProps,
+  FormboxValue,
+  FormboxTranslations,
+  formboxTranslations,
+} from '../Formbox';
 import styles from './styles/Textbox.module.css';
 
 export type TextboxTranslations = FormboxTranslations & {
@@ -18,41 +26,49 @@ export const textboxTranslations: TextboxTranslations = {
 };
 
 export interface LocalTextboxProps {
+  /** This should be set to true if the value has custom HTML formatting */
+  alwaysUseFormatting?: boolean;
+  /** This should rarely be used because it's not a11y friendly */
+  autoFocus?: boolean;
   centered?: boolean;
+  /** This can be used to show an HTML value or any sort of value that's different from the actual value */
+  formattedValue?: React.ReactChild;
   clearable?: boolean;
-  inputProps?: Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onKeyDown' | 'placeholder' | 'type'>;
+  inputClassName?: string;
+  inputProps?: Omit<React.InputHTMLAttributes<HTMLInputElement>, 'className' | 'onKeyDown' | 'ref' | 'type'>;
   max?: number;
   min?: number;
+  name?: string;
   onChange?: (
     event: React.ChangeEvent | React.KeyboardEvent | React.MouseEvent | React.TouchEvent,
     value: FormboxValue,
     props?: { cleared?: boolean },
   ) => void;
   onSubmit?: (event: React.KeyboardEvent<HTMLInputElement>, value: string) => void;
-  placeholder?: string;
+  /** This can be used to show HTML, or if it's undefined it will default to the plain input placeholder */
+  placeholder?: FormboxValue | React.ReactChild;
   step?: number;
-  type?: 'text' | 'number' | 'email' | 'password';
+  type?: 'color' | 'date' | 'email' | 'number' | 'password' | 'text' | 'time';
+  value?: FormboxValue;
 }
 
-export type TextboxProps = MergeProps<
-  Omit<FormboxProps<'label', 'input'>, 'as' | 'input' | 'ref'>,
-  LocalTextboxProps
-> & {
-  ref?: React.Ref<HTMLInputElement>;
-};
+export type TextboxProps = MergeProps<Omit<FormboxProps, 'as' | 'children' | 'ref'>, LocalTextboxProps>;
 
 function TextboxBase(
   {
+    alwaysUseFormatting,
     autoFocus,
     centered,
     className,
     clearable: initClearable,
     contrast,
     disabled,
+    formattedValue,
     iconAfter,
     iconAfterActionable,
     iconBefore,
     id,
+    inputClassName,
     inputProps: initInputProps,
     label,
     max,
@@ -61,14 +77,11 @@ function TextboxBase(
     onBlur,
     onChange,
     onFocus,
-    onIconBlur,
-    onIconFocus,
     onSubmit,
     placeholder,
     readOnly,
-    silentReadOnly,
     step = 1,
-    tabIndex,
+    tabIndex = 0,
     themeId: initThemeId,
     transitional,
     translations: customTranslations,
@@ -82,20 +95,27 @@ function TextboxBase(
   }: TextboxProps,
   forwardedRef: React.ForwardedRef<HTMLInputElement>,
 ): React.ReactElement<TextboxProps, 'label'> {
-  const inputRef = useRef<HTMLInputElement>(null!);
   const themeId = useThemeId(initThemeId);
-  const empty = !(type === 'number' ? Number.isFinite(value) : Boolean(value) || placeholder);
-  const clearable = !!(initClearable && (!readOnly || silentReadOnly));
   const translations = useTranslations({ customTranslations, fallbackTranslations: textboxTranslations });
   const { clearLabel } = translations;
 
+  const inputRef = useRef<HTMLInputElement>(null);
   const combineRefs = makeCombineRefs<HTMLInputElement>(inputRef, forwardedRef);
 
-  const handleChange = useCallback(
-    (event: React.ChangeEvent | React.KeyboardEvent | React.MouseEvent | React.TouchEvent, value: string) => {
-      onChange && onChange(event, type === 'number' ? parseFloat(value) : value);
+  const inputProps = { ...initInputProps };
+  if (type === 'number') {
+    inputProps.max = max;
+    inputProps.min = min;
+    inputProps.step = step;
+  }
+
+  const handleChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>(
+    event => {
+      if (value !== event.target.value) {
+        onChange && onChange(event, event.target.value);
+      }
     },
-    [onChange, type],
+    [onChange, value],
   );
 
   const handleClear = useCallback(
@@ -124,61 +144,67 @@ function TextboxBase(
     );
   };
 
-  const renderInput = (): React.ReactElement<HTMLInputElement> => {
-    const inputProps = { ...initInputProps };
-    if (type === 'number') {
-      inputProps.max = max;
-      inputProps.min = min;
-      inputProps.step = step;
-    }
-
-    return (
-      <input
-        className={cx(styles.textboxInput, centered && styles['textboxInput--centered'])}
-        onKeyDown={handleKeyDown}
-        placeholder={placeholder}
-        type={type}
-        {...inputProps}
-      />
-    );
-  };
+  // an input is considered empty if there is nothing to show in the input (eg. value or placeholder)
+  const hasValue = type === 'number' ? Number.isFinite(value) : Boolean(value);
+  const isEmpty = !hasValue && !formattedValue && placeholder === undefined;
+  const isClearable = initClearable && hasValue && !readOnly;
 
   return (
-    <Formbox<'label', 'input'>
-      as="label"
-      // eslint-disable-next-line jsx-a11y/no-autofocus
-      autoFocus={autoFocus}
+    <Formbox
       className={className}
       contrast={contrast}
       disabled={disabled}
-      empty={empty}
-      iconAfter={iconAfter || (clearable && !empty && renderClearableIcon()) || undefined}
-      iconAfterActionable={iconAfterActionable || clearable}
+      empty={isEmpty}
+      iconAfter={iconAfter || (isClearable && renderClearableIcon()) || undefined}
+      iconAfterActionable={iconAfterActionable || isClearable}
       iconBefore={iconBefore}
       id={id}
-      input={renderInput()}
       label={label}
-      name={name}
       onBlur={onBlur}
-      onChange={handleChange}
       onFocus={onFocus}
-      onIconBlur={onIconBlur}
-      onIconFocus={onIconFocus}
-      placeholder={placeholder}
       readOnly={readOnly}
-      ref={combineRefs}
-      silentReadOnly={silentReadOnly}
-      tabIndex={tabIndex}
       themeId={themeId}
       transitional={transitional}
       type="input"
       unthemed={unthemed}
       validity={validity}
-      value={value}
       variant={variant}
       width={width}
       {...props}
-    />
+    >
+      {({ id, focused, required }) =>
+        readOnly ? (
+          <FormboxReadOnly formattedValue={formattedValue} id={id} value={value} />
+        ) : (
+          <FormboxInputWithFormatting<'input'>
+            alwaysUseFormatting={alwaysUseFormatting}
+            contrast={contrast}
+            focused={focused}
+            formattedValue={formattedValue}
+            hasValue={hasValue}
+            placeholder={placeholder}
+            tabIndex={tabIndex}
+            themeId={themeId}
+          >
+            <input
+              // eslint-disable-next-line jsx-a11y/no-autofocus
+              autoFocus={autoFocus}
+              className={cx(styles.textboxInput, centered && styles['textboxInput--centered'], inputClassName)}
+              disabled={disabled}
+              id={id}
+              name={name}
+              onChange={handleChange}
+              onKeyDown={handleKeyDown}
+              ref={combineRefs}
+              required={required}
+              type={type}
+              value={value}
+              {...inputProps}
+            />
+          </FormboxInputWithFormatting>
+        )
+      }
+    </Formbox>
   );
 }
 

@@ -1,19 +1,15 @@
-import { cx } from '@emotion/css';
 import React, { useRef } from 'react';
-import { AsType, StateColor, MergeElementPropsWithoutRef, ThemeProps, IconScale } from '../../../types';
+import { ThemeProps } from '../../../types';
 import { useComponentId } from '../../../hooks/useComponentId';
 import { useDeepFocus } from '../../../hooks/useDeepFocus';
 import { useThemeId } from '../../../hooks/useThemeId';
 import { useTranslations } from '../../../hooks/useTranslations';
-import { renderFromProp, RenderFromPropElement } from '../../../utils/renderFromProp';
+import { makeCombineRefs } from '../../../utils/combineRefs';
+import { RenderFromPropElement } from '../../../utils/renderFromProp';
 import { PencilSlashIcon } from '../../../icons/PencilSlashIcon';
-import styles from './styles/Formbox.module.css';
-
-type RenderIconFromPropProps = {
-  className?: string;
-  onBlur?: React.FocusEventHandler;
-  onFocus?: React.FocusEventHandler;
-};
+import { FormboxContainer, FormboxContainerProps } from './FormboxContainer';
+import { FormboxIcon, FormboxIconRenderProps } from './FormboxIcon';
+import { FormboxContainerElementType } from './types';
 
 export type FormboxTranslations = {
   readOnlyLabel: string;
@@ -23,96 +19,60 @@ export const formboxTranslations: FormboxTranslations = {
   readOnlyLabel: 'Read only',
 };
 
-export type FormboxValue = string | number;
-export type FormboxContainerElementType = Extract<keyof JSX.IntrinsicElements, 'label' | 'div'>;
-export type FormboxInputElementType = Extract<keyof JSX.IntrinsicElements, 'input' | 'select' | 'textarea'>;
-export type FormboxVariant = 'underline' | 'filled' | 'outline' | 'pill' | 'minimal';
-export type FormboxIconPosition = 'before' | 'after';
+export type FormboxRenderInput = (props: {
+  focused?: boolean;
+  id: string;
+  required?: boolean;
+}) => React.ReactElement<HTMLElement>;
 
-export interface LocalFormboxProps<I extends FormboxInputElementType> extends ThemeProps {
+export interface FormboxProps extends Omit<FormboxContainerProps<'label'>, 'children' | 'id'>, ThemeProps {
   /** alwaysTriggerFocus means the a focus transfer within the formbox will trigger the blur event */
   alwaysTriggerBlur?: boolean;
   /** alwaysTriggerFocus means the a focus transfer within the formbox will trigger the focus event */
   alwaysTriggerFocus?: boolean;
-  autoFocus?: boolean;
-  className?: string;
-  disabled?: boolean;
-  empty?: boolean;
-  iconAfter?: RenderFromPropElement<RenderIconFromPropProps>;
-  /** The best practice is to pass a button it the icon is actionable */
+  children: FormboxRenderInput;
+  iconAfter?: RenderFromPropElement<FormboxIconRenderProps>;
+  /** The best practice is to pass a button if the icon is actionable */
   iconAfterActionable?: boolean;
-  iconBefore?: RenderFromPropElement<RenderIconFromPropProps>;
-  /** The best practice is to pass a button it the icon is actionable */
+  iconAfterClassName?: string;
+  iconBefore?: RenderFromPropElement<FormboxIconRenderProps>;
+  /** The best practice is to pass a button if the icon is actionable */
   iconBeforeActionable?: boolean;
+  iconBeforeClassName?: string;
   id?: string;
-  input: React.ReactElement<HTMLElementTagNameMap[I]>;
-  inputWidth?: number | string;
-  label?: string;
-  name?: string;
   onBlur?: (event: React.FocusEvent<Element>) => void;
-  onChange?: (
-    event: React.ChangeEvent | React.KeyboardEvent | React.MouseEvent | React.TouchEvent,
-    value: string,
-  ) => void;
   onFocus?: (event: React.FocusEvent<Element>) => void;
-  onIconBlur?: (event: React.FocusEvent, position: FormboxIconPosition) => void;
-  onIconFocus?: (event: React.FocusEvent, position: FormboxIconPosition) => void;
   persistEvents?: boolean;
-  placeholder?: React.ReactChild;
-  readOnly?: boolean;
-  /** This can be used to show HTML, or if it's undefined it will default to the plain input value */
-  readOnlyValue?: React.ReactChild;
-  /** A silentReadOnly input cannot be edited but has all the functionality of a regular input (focus, blur, etc.) */
-  silentReadOnly?: boolean;
-  style?: React.CSSProperties;
-  tabIndex?: number;
-  transitional?: boolean;
+  required?: boolean;
   translations?: FormboxTranslations;
-  /** Transparent inputs can be used inside styled containers (eg. a contained dropdown) */
-  transparent?: boolean;
-  validity?: StateColor;
-  value?: FormboxValue | FormboxValue[];
-  variant?: FormboxVariant;
-  width?: string | number;
+  /** Show the form input as focused even though it isn't */
+  visuallyFocused?: boolean;
 }
 
-/** Because the forwardedRef goes on the input, we need to MergeElementPropsWithoutRef and then add a separate input ref */
-export type FormboxProps<T extends FormboxContainerElementType, I extends FormboxInputElementType> = AsType<T> & {
-  ref?: React.Ref<HTMLElement>;
-  type?: I;
-} & MergeElementPropsWithoutRef<T, LocalFormboxProps<I>>;
-
-function FormboxBase<T extends FormboxContainerElementType, I extends FormboxInputElementType>(
+function FormboxBase<T extends FormboxContainerElementType>(
   {
     alwaysTriggerBlur,
     alwaysTriggerFocus,
-    as,
-    autoFocus,
+    children: renderInput,
     className,
     contrast,
     disabled,
     empty,
     iconAfter,
     iconAfterActionable,
+    iconAfterClassName,
     iconBefore,
     iconBeforeActionable,
+    iconBeforeClassName,
     id,
-    input,
     inputWidth,
     label,
-    name,
     onBlur,
-    onChange,
     onFocus,
-    onIconBlur,
-    onIconFocus,
     persistEvents,
-    placeholder,
     readOnly,
-    readOnlyValue,
-    silentReadOnly,
+    required,
     style,
-    tabIndex,
     themeId: initThemeId,
     transitional,
     translations: customTranslations,
@@ -120,17 +80,16 @@ function FormboxBase<T extends FormboxContainerElementType, I extends FormboxInp
     type,
     unthemed,
     validity,
-    value,
     variant = 'underline',
+    visuallyFocused,
     width = '100%',
     ...props
-  }: FormboxProps<T, I>,
-  forwardedRef: React.ForwardedRef<HTMLElement>,
+  }: FormboxProps,
+  forwardedRef: React.ForwardedRef<HTMLLabelElement>,
 ): React.ReactElement {
-  const ref = useRef<HTMLElementTagNameMap[T] | null>(null);
+  const ref = useRef<HTMLLabelElement | null>(null);
   const themeId = useThemeId(initThemeId);
-  const color = contrast ? 'contrast' : 'primary';
-  const { focused, handleBlur, handleFocus } = useDeepFocus<HTMLElementTagNameMap[T]>(
+  const { focused, handleBlur, handleFocus } = useDeepFocus<HTMLLabelElement>(
     ref,
     { onBlur, onFocus },
     { alwaysTriggerBlur, alwaysTriggerFocus, persistEvents },
@@ -139,143 +98,67 @@ function FormboxBase<T extends FormboxContainerElementType, I extends FormboxInp
   const translations = useTranslations({ customTranslations, fallbackTranslations: formboxTranslations });
   const { readOnlyLabel } = translations;
 
-  const handleChange: React.ChangeEventHandler<HTMLElementTagNameMap[I]> = event => {
-    persistEvents && 'persist' in event && event.persist();
-    if (value !== event.target.value) {
-      onChange && onChange(event, event.target.value);
-    }
-  };
+  const combineRefs = makeCombineRefs<HTMLLabelElement>(ref, forwardedRef);
 
-  const renderInput = (): React.ReactElement | null => {
-    return React.isValidElement(input)
-      ? React.cloneElement(input as React.ReactElement, {
-          autoFocus,
-          className: cx(styles.formboxInput, variant && styles[`formboxInput--${variant}`], input.props.className),
-          disabled,
-          ref: forwardedRef,
-          id: generateComponentId(),
-          name,
-          onChange: handleChange,
-          tabIndex,
-          value,
-        })
-      : null;
-  };
-
-  const renderReadOnly = () => (
-    <div
-      className={styles.formboxReadOnly}
-      {...(silentReadOnly && {
-        ref: forwardedRef as React.ForwardedRef<HTMLDivElement>,
-        tabIndex,
-      })}
+  return (
+    <FormboxContainer<'label'>
+      as="label"
+      className={className}
+      contrast={contrast}
+      disabled={disabled}
+      empty={empty}
+      focused={focused || visuallyFocused}
+      hasIconAfter={!!iconAfter}
+      hasIconBefore={!!iconBefore}
+      id={generateComponentId()}
+      inputWidth={inputWidth}
+      label={label}
+      onBlur={handleBlur}
+      onFocus={handleFocus}
+      readOnly={readOnly}
+      ref={combineRefs}
+      style={{ ...style, ...(width !== undefined ? { width: typeof width === 'number' ? `${width}px` : width } : {}) }}
+      themeId={themeId}
+      transitional={transitional}
+      transparent={transparent}
+      type={type}
+      validity={validity}
+      variant={variant}
+      width={width}
+      {...props}
     >
-      {readOnlyValue ||
-        (Array.isArray(value) ? (
-          <div className={cx(styles.formboxReadOnlyList)}>
-            {value.map((value: number | string) => (
-              <div key={value}>{value}</div>
-            ))}
-          </div>
-        ) : (
-          value
-        )) ||
-        placeholder}
-      &nbsp;
-    </div>
-  );
-
-  const renderIcon = (
-    icon: RenderFromPropElement<RenderIconFromPropProps & { size?: number; scale?: IconScale; tabIndex?: number }>,
-    position: FormboxIconPosition,
-    actionable: boolean | undefined,
-  ) => {
-    const autoSize = !(
-      typeof icon === 'object' &&
-      (icon.type === 'button' || (icon.props && (icon.props.size || icon.props.scale)))
-    );
-    const className = cx(
-      styles.formboxIcon,
-      actionable && styles['formboxIcon--actionable'],
-      autoSize && styles['formboxIcon--autoSize'],
-      position && styles[`formboxIcon--${position}`],
-      variant && styles[`formboxIcon--${variant}`],
-      typeof icon === 'object' && icon.props && icon.props.className,
-    );
-
-    return renderFromProp<RenderIconFromPropProps & { tabIndex?: number }>(icon, {
-      className,
-      onBlur: actionable ? (event: React.FocusEvent) => onIconBlur && onIconBlur(event, position) : undefined,
-      onFocus: actionable ? (event: React.FocusEvent) => onIconFocus && onIconFocus(event, position) : undefined,
-      tabIndex: actionable ? 0 : undefined,
-    });
-  };
-
-  const renderIconAfter = () => iconAfter && renderIcon(iconAfter, 'after', iconAfterActionable);
-  const renderIconBefore = () => iconBefore && renderIcon(iconBefore, 'before', iconBeforeActionable);
-
-  return React.createElement(
-    as || 'label',
-    {
-      className: cx(
-        styles.formbox,
-        styles[`formbox--${type}`],
-        color && !unthemed && styles[`formbox--${color}`],
-        themeId && !unthemed && styles[`formbox--${themeId}`],
-        transparent && styles['formbox--transparent'],
-        variant && styles[`formbox--${variant}`],
-        empty && styles['is-empty'],
-        disabled && styles['is-disabled'],
-        !!label && styles['is-labeled'],
-        (focused || autoFocus) && styles['is-focused'],
-        validity && styles[`is-${validity}`],
-        className,
-      ),
-      htmlFor: as === 'label' ? generateComponentId() : undefined,
-      onBlur: handleBlur,
-      onFocus: handleFocus,
-      ref,
-      style: { ...style, ...(width !== undefined ? { width: typeof width === 'number' ? `${width}px` : width } : {}) },
-      ...props,
-    },
-    label && (
-      <div
-        className={cx(
-          styles.formboxLabel,
-          variant && styles[`formboxLabel--${variant}`],
-          transitional &&
-            empty &&
-            (!focused || type === 'select') &&
-            !placeholder &&
-            !(readOnly && readOnlyValue) &&
-            styles['formboxLabel--placeholder'],
-          iconBefore && styles['formboxLabel--hasIconBefore'],
-          iconAfter && styles['formboxLabel--hasIconAfter'],
-        )}
-      >
-        {label}
-      </div>
-    ),
-    <div
-      className={cx(
-        styles.formboxInputContainer,
-        variant && styles[`formboxInputContainer--${variant}`],
-        readOnly && !silentReadOnly && styles['formboxInputContainer--readOnly'],
-        (focused || autoFocus) && styles['is-focused'],
-      )}
-      style={{ width: typeof inputWidth === 'number' ? `${inputWidth}px` : inputWidth }}
-    >
-      {renderIconBefore()}
-      {readOnly ? renderReadOnly() : renderInput()}
-      {readOnly && !silentReadOnly && (
-        <PencilSlashIcon
-          scale="small"
-          className={cx(styles.formboxIcon, variant && styles[`formboxIcon--${variant}`], styles['formboxIcon--after'])}
-          title={readOnlyLabel}
+      {iconBefore && (
+        <FormboxIcon
+          actionable={iconBeforeActionable}
+          className={iconBeforeClassName}
+          icon={iconBefore}
+          position="before"
+          variant={variant}
         />
       )}
-      {renderIconAfter()}
-    </div>,
+      {renderInput({
+        focused: focused || visuallyFocused,
+        id: generateComponentId(),
+        required,
+      })}
+      {readOnly && (
+        <FormboxIcon
+          className={iconAfterClassName}
+          icon={<PencilSlashIcon scale="small" title={readOnlyLabel} />}
+          position="after"
+          variant={variant}
+        />
+      )}
+      {iconAfter && (
+        <FormboxIcon
+          actionable={iconAfterActionable}
+          className={iconAfterClassName}
+          icon={iconAfter}
+          position="after"
+          variant={variant}
+        />
+      )}
+    </FormboxContainer>
   );
 }
 

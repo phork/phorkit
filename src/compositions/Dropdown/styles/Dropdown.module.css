@@ -4,6 +4,12 @@
   outline: none;
   padding: 0;
   position: relative;
+  cursor: pointer;
+}
+
+.dropdown--readOnly {
+  pointer-events: none;
+  cursor: default;
 }
 
 /**
@@ -143,6 +149,10 @@
   }
 }
 
+.dropdownOptionsContainer--filled {
+  margin-top: -2px;
+}
+
 .dropdownOptionsContainer--outline,
 .dropdownOptionsContainer--pill {
   margin-top: 8px;
@@ -261,4 +271,13 @@
   &.dropdownArrowIcon--inverted {
     transform: rotate(180deg);
   }
+}
+
+/**
+ * 1. Add some padding for easier clicking
+ */
+.dropdownButtonIcon {
+  @mixin unbutton;
+
+  padding: 2px 0 2px 4px; /* [1] */
 }

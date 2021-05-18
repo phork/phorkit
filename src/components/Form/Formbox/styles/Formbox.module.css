@@ -2,6 +2,10 @@
   display: inline-block;
   font-size: $font-size-s;
   position: relative;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .formbox--underline {
@@ -21,6 +25,14 @@
   &.is-labeled {
     padding-top: 16px;
   }
+}
+
+/**
+ * 1. Shift the label and the icons up so they're in the
+ *    middle of the filled container.
+ */
+.formbox--filled.is-labeled.is-transitional.is-empty:not(.is-focused) {
+  --formbox-input-content-shift: -7px; /* [1] */
 }
 
 /**
@@ -102,17 +114,19 @@
     transition: background-color 150ms ease;
   }
 
-  &:hover,
-  &.is-hovered {
-    &:before {
-      background-color: var(--formbox-input-container-hovered-border-color);
+  &:not(.formboxInputContainer--readOnly) {
+    &:hover,
+    &.is-hovered {
+      &:before {
+        background-color: var(--formbox-input-container-hovered-border-color);
+      }
     }
-  }
 
-  &:focus,
-  &.is-focused {
-    &:before {
-      background-color: var(--formbox-input-container-focused-border-color);
+    &:focus,
+    &.is-focused {
+      &:before {
+        background-color: var(--formbox-input-container-focused-border-color);
+      }
     }
   }
 }
@@ -126,31 +140,26 @@
   border: 1px solid var(--formbox-input-container-border-color);
   min-height: $element-height-medium;
 
-  @mixin prepareFocusRing;
-  &:after {
-    opacity: 0.1;
-    bottom: -1px; /* [1] */
-    top: -1px; /* [1] */
-    left: -1px; /* [1] */
-    right: -1px; /* [1] */
-  }
+  &:not(.formboxInputContainer--readOnly) {
+    @mixin prepareFocusRing;
+    &:after {
+      opacity: 0.1;
+      bottom: -1px; /* [1] */
+      top: -1px; /* [1] */
+      left: -1px; /* [1] */
+      right: -1px; /* [1] */
+    }
 
-  &:hover,
-  &.is-hovered {
-    border-color: var(--formbox-input-container-hovered-border-color);
-  }
+    &:hover,
+    &.is-hovered {
+      border-color: var(--formbox-input-container-hovered-border-color);
+    }
 
-  &:focus,
-  &.is-focused {
-    @mixin makeFocusRing var(--formbox-input-container-focused-border-color);
-    border-color: var(--formbox-input-container-focused-border-color);
-  }
-}
-
-.formboxInputContainer--minimal {
-  &:focus,
-  &.is-focused {
-    caret-color: var(formbox-input-container-focused-border-color);
+    &:focus,
+    &.is-focused {
+      @mixin makeFocusRing var(--formbox-input-container-focused-border-color);
+      border-color: var(--formbox-input-container-focused-border-color);
+    }
   }
 }
 
@@ -164,100 +173,13 @@
   padding: 4px 16px 2px 16px;
 }
 
-input.formboxInput,
-select.formboxInput,
-textarea.formboxInput {
-  appearance: none;
-  background-color: transparent;
-  border: none;
-  color: var(--formbox-input-text-color);
-  flex: 1;
-  font-size: $font-size-l;
-  line-height: 1.15;
-  min-width: 0;
-  outline: none;
-  padding: 4px 0;
-}
-
-input.formboxInput[type='number'] {
-  -moz-appearance: textfield;
-
-  &::-webkit-inner-spin-button,
-  &::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+.formboxInputContainer--minimal {
+  &:not(.formboxInputContainer--readOnly) {
+    &:focus,
+    &.is-focused {
+      caret-color: var(formbox-input-container-focused-border-color);
+    }
   }
-}
-
-.formboxReadOnly {
-  color: var(--formbox-input-text-color);
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-  font-size: $font-size-l;
-  line-height: 1.15;
-  padding: 4px 0;
-
-  &:focus,
-  &.is-focused {
-    outline: none;
-  }
-}
-
-.formboxReadOnlyList {
-  display: flex;
-  flex-direction: column;
-
-  > * {
-    padding: 2px 0;
-  }
-}
-
-/**
- * 1. Prevent a tiny bit of extra space showing below
- *    the input.
- */
-.formboxIcon {
-  color: var(--formbox-icon-color);
-  height: 100%; /* [1] */
-  line-height: 1; /* [1] */
-  pointer-events: none;
-  position: relative;
-}
-
-.formboxIcon--filled {
-  transition: top 150ms ease;
-  top: -1px;
-
-  .formbox.formbox--select.is-labeled.is-empty &,
-  .formbox:not(.formbox--select).is-labeled.is-empty:not(.is-focused) & {
-    top: -7px;
-  }
-}
-
-.formboxIcon--autoSize {
-  height: 12px;
-  width: 12px;
-}
-
-.formboxIcon--actionable {
-  cursor: pointer;
-  pointer-events: all;
-
-  &:focus,
-  &:hover,
-  &.is-hovered {
-    color: var(--formbox-icon-hovered-color);
-    outline: none;
-  }
-}
-
-.formboxIcon--before {
-  margin-right: 8px;
-}
-
-.formboxIcon--after {
-  margin-left: 8px;
 }
 
 .formboxLabel {
@@ -301,17 +223,17 @@ input.formboxInput[type='number'] {
   }
 
   &.formboxLabel--filled {
-    top: 15px;
+    top: calc(21px + var(--formbox-input-content-shift, 0px));
   }
 
   &.formboxLabel--outline {
     left: 8px;
-    top: 26px;
+    top: 25px;
   }
 
   &.formboxLabel--pill {
     left: 16px;
-    top: 26px;
+    top: 25px;
   }
 
   &.formboxLabel--minimal {
@@ -336,16 +258,7 @@ input.formboxInput[type='number'] {
     --formbox-input-container-border-color: $theme-primary-palette-quietest-color;
     --formbox-input-container-focused-border-color: $theme-color-accent-primary;
     --formbox-input-container-hovered-border-color: $theme-primary-palette-quieter-color;
-    --formbox-input-text-color: $theme-primary-palette-text-color;
     --formbox-label-text-color: $theme-primary-palette-quiet-color;
-  }
-
-  &.formbox--light {
-    --formbox-placeholder-opacity: 0.3;
-  }
-
-  &.formbox--dark {
-    --formbox-placeholder-opacity: 0.5;
   }
 }
 
@@ -357,7 +270,6 @@ input.formboxInput[type='number'] {
     --formbox-input-container-border-color: $theme-contrast-palette-quieter-color;
     --formbox-input-container-focused-border-color: $theme-contrast-palette-accent-color;
     --formbox-input-container-hovered-border-color: $theme-contrast-palette-quieter-color;
-    --formbox-input-text-color: $theme-contrast-palette-text-color;
     --formbox-label-text-color: $theme-contrast-palette-quiet-color;
   }
 }
@@ -400,29 +312,12 @@ input.formboxInput[type='number'] {
 /* input-specific - these must go last */
 
 /**
- * 1. Prevent Chrome autocomplete from changing the form
- *    background to yellow.
- */
-input.formboxInput {
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover,
-  &:-webkit-autofill:focus,
-  &:-webkit-autofill:active {
-    -webkit-transition-delay: 99999s; /* [1] */
-  }
-
-  &::placeholder {
-    opacity: var(--formbox-placeholder-opacity);
-  }
-}
-
-/**
  * 1. Allow clicking on the down arrow to show the dropdown.
  * 2. Prevent the text from overflowing into the arrow.
  * 3. Visually align the options with the container.
  */
-select.formboxInput {
-  &:not([multiple]) {
+.formbox--select {
+  select:not([multiple]) {
     margin-right: -20px; /* [1] */
     padding-right: 20px; /* [2] */
 
@@ -442,7 +337,7 @@ select.formboxInput {
     }
   }
 
-  &[multiple] {
+  select[multiple] {
     .formboxInputContainer--filled & {
       margin-left: -8px; /* [3] */
       margin-right: -12px; /* [3] */
@@ -508,26 +403,5 @@ select.formboxInput {
     &.formboxLabel--filled {
       top: 6px;
     }
-  }
-
-  .formboxIcon--filled,
-  .formboxIcon--outline {
-    &.formboxIcon--after:last-child {
-      margin-right: 8px;
-    }
-  }
-}
-
-/**
- * 1. To add some space to the drag corner.
- */
-textarea.formboxInput {
-  font-size: $font-size-l;
-  line-height: 1.4;
-  margin-right: 4px; /* [1] */
-  padding: 2px 0 4px 0;
-
-  &::placeholder {
-    opacity: var(--formbox-placeholder-opacity);
   }
 }

@@ -1,0 +1,46 @@
+/**
+ * 1. Prevent a tiny bit of extra space showing below
+ *    the input.
+ */
+.formboxIcon {
+  color: var(--formbox-icon-color);
+  height: 100%; /* [1] */
+  line-height: 1; /* [1] */
+  pointer-events: none;
+  position: relative;
+}
+
+.formboxIcon--filled {
+  transition: top 150ms ease;
+  top: calc(0 + var(--formbox-input-content-shift, 0px));
+}
+
+.formboxIcon--outline,
+.formboxIcon--pill {
+  top: 0;
+}
+
+.formboxIcon--autoSize {
+  height: 12px;
+  width: 12px;
+}
+
+.formboxIcon--actionable {
+  cursor: pointer;
+  pointer-events: all;
+
+  &:focus,
+  &:hover,
+  &.is-hovered {
+    color: var(--formbox-icon-hovered-color);
+    outline: none;
+  }
+}
+
+.formboxIcon--before {
+  margin-right: 8px;
+}
+
+.formboxIcon--after {
+  margin-left: 8px;
+}

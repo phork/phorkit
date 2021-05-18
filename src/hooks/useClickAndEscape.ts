@@ -13,7 +13,10 @@ export function useClickAndEscape({ ref, onBlur, onFocus, stopPropagation }: Use
   const handleClick = useCallback(
     (event: MouseEvent | TouchEvent): void => {
       if (ref.current && event.target instanceof Node) {
-        if (ref.current.contains(event.target)) {
+        if (
+          (typeof document !== undefined && event.target === document.activeElement) ||
+          ref.current.contains(event.target)
+        ) {
           if (ref.current?.querySelectorAll(':focus').length !== 1) {
             onFocus && onFocus(event);
           }

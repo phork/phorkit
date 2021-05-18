@@ -17,4 +17,6 @@ export type DropdownListColor = 'primary' | 'minimal';
 export type DropdownTranslations = {
   numSelectedSingular: string;
   numSelectedPlural: string;
+  readOnlyLabel: string;
+  clearLabel: string;
 };

@@ -2,14 +2,13 @@ import { cx } from '@emotion/css';
 import React, { useEffect, useImperativeHandle, useMemo, useRef } from 'react';
 import { MergeElementProps, ThemeProps } from '../../types';
 import { useAccessibility } from '../../context';
-import { useDeepFocus } from '../../hooks/useDeepFocus';
+import { InteractiveGroupItemType } from '../../components';
 import { generateInteractiveGroupActions } from '../../components/InteractiveGroup/generateInteractiveGroupActions';
 import {
   UncontrolledInteractiveList,
   UncontrolledInteractiveListProps,
 } from '../InteractiveList/UncontrolledInteractiveList';
 import { DropdownEmpty, DropdownEmptyProps } from './DropdownEmpty';
-import { DropdownState } from './dropdownReducer';
 import styles from './styles/Dropdown.module.css';
 import {
   DropdownInputVariant,
@@ -25,9 +24,12 @@ export interface LocalDropdownContentProps extends ThemeProps {
   /** This is used by DropdownWithTags so an item can be added, removed and re-added */
   allowReselect?: boolean;
   className?: string;
+  disabled?: boolean;
   disabledIds?: Array<DropdownOption['id']>;
-  dropdownState: Pick<DropdownState, 'clearFocus' | 'input' | 'listFocus' | 'listVisible'>;
   emptyNotification?: DropdownEmptyProps['children'];
+  filter?: string;
+  focused?: boolean;
+  hideNoContent?: boolean;
   inputVariant?: DropdownInputVariant;
   isDropdownVisible?: boolean;
   isEmpty?: boolean;
@@ -38,14 +40,13 @@ export interface LocalDropdownContentProps extends ThemeProps {
   maxSelect?: number;
   minSelect?: number;
   onItemFocus: UncontrolledInteractiveListProps['onItemFocus'];
-  onListBlur: React.FocusEventHandler<HTMLDivElement>;
-  onListFocus: React.FocusEventHandler<HTMLDivElement>;
+  onListBlur: React.FocusEventHandler<HTMLUListElement>;
+  onListFocus: React.FocusEventHandler<HTMLUListElement>;
   onListKeyDown: UncontrolledInteractiveListProps['onKeyDown'];
   onSelect: UncontrolledInteractiveListProps['onSelect'];
   onSelectionChange: UncontrolledInteractiveListProps['onSelectionChange'];
   onUnselect: UncontrolledInteractiveListProps['onUnselect'];
   options?: DropdownOption[];
-  parentRef: React.RefObject<HTMLDivElement>;
   reducer: UncontrolledInteractiveListProps['reducer'];
 }
 
@@ -60,10 +61,13 @@ function DropdownContentBase(
   {
     allowReselect,
     className,
-    parentRef,
     contrast,
+    disabled,
     disabledIds,
     emptyNotification,
+    filter,
+    focused,
+    hideNoContent,
     inputVariant,
     isDropdownVisible,
     isEmpty,
@@ -82,7 +86,6 @@ function DropdownContentBase(
     onUnselect,
     options,
     reducer,
-    dropdownState,
     themeId,
     unthemed,
     ...props
@@ -91,7 +94,7 @@ function DropdownContentBase(
 ): React.ReactElement<HTMLDivElement> | null {
   const [selectedState, selectedDispatch] = reducer;
 
-  const { setItems, focusFirst } = useMemo(
+  const { setItems, focusSelected } = useMemo(
     () => generateInteractiveGroupActions(selectedDispatch, minSelect, maxSelect, false),
     [selectedDispatch, minSelect, maxSelect],
   );
@@ -99,6 +102,11 @@ function DropdownContentBase(
   const accessible = useAccessibility();
   const containerRef = useRef<HTMLDivElement>(null!);
   const listRef = useRef<HTMLUListElement>(null!);
+
+  const previous = useRef<{
+    isDropdownVisible?: boolean;
+    items?: InteractiveGroupItemType<string>[];
+  }>({});
 
   // the parent component can call forwardedRef.current.container and forwardedRef.current.list
   useImperativeHandle(forwardedRef, () => ({
@@ -110,11 +118,6 @@ function DropdownContentBase(
     },
   }));
 
-  const { focused, handleBlur, handleFocus } = useDeepFocus<HTMLDivElement>(containerRef, {
-    onBlur: onListBlur ? event => onListBlur(event) : undefined,
-    onFocus: onListFocus ? event => onListFocus(event) : undefined,
-  });
-
   /**
    * Remove the selected label from the items because the
    * interactive list doesn't need it, and add a disabled
@@ -122,25 +125,37 @@ function DropdownContentBase(
    */
   const items = useMemo(
     () =>
-      options?.map(({ selectedLabel, ...option }) => ({
-        ...option,
-        disabled: disabledIds?.includes(option.id),
-        highlighted: selectedState.selectedIds?.includes(option.id),
-      })) || [],
+      options?.map(({ selectedLabel, ...option }) => {
+        const isSelected = selectedState.selectedIds?.includes(option.id);
+        return {
+          ...option,
+          disabled: disabledIds?.includes(option.id),
+          highlighted: isSelected,
+        };
+      }) || [],
     [options, disabledIds, selectedState.selectedIds],
   );
 
-  const numItems = items.length;
-
-  // if the items change then update the interactive list state
+  // if the items change then update the items
   useEffect(() => {
-    if (items.length !== numItems) {
-      focusFirst();
-    }
     setItems(items);
-  }, [items, selectedDispatch, focusFirst, setItems, numItems]);
+  }, [items, setItems]);
+
+  // if the dropdown changes visibility or the item length changes then focus the selected item
+  useEffect(() => {
+    if (
+      (isDropdownVisible && !previous.current.isDropdownVisible) ||
+      selectedState.items.getAll().length !== previous.current.items?.length
+    ) {
+      focusSelected();
+
+      previous.current.isDropdownVisible = !!isDropdownVisible;
+      previous.current.items = selectedState.items.getAll();
+    }
+  }, [focusSelected, isDropdownVisible, selectedState.items]);
 
   const listDefaults = getListDefaults(layout);
+  const variant = listVariant || listDefaults.variant;
 
   return items ? (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
@@ -150,12 +165,10 @@ function DropdownContentBase(
         layout && styles[`dropdownOptionsContainer--${layout}`],
         inputVariant && styles[`dropdownOptionsContainer--${inputVariant}`],
         accessible && styles['is-accessible'],
-        dropdownState.listFocus && styles['is-focused'],
+        focused && styles['is-focused'],
         isDropdownVisible && styles['is-visible'],
         className,
       )}
-      onBlur={handleBlur}
-      onFocus={handleFocus}
       ref={containerRef}
       {...props}
     >
@@ -164,8 +177,8 @@ function DropdownContentBase(
           allowReselect={allowReselect}
           color={listColor || listDefaults.color}
           contrast={contrast}
-          disabled={!dropdownState.listVisible || dropdownState.clearFocus}
-          focused={focused}
+          disabled={disabled}
+          focused={focused === true ? true : undefined}
           hideFocusOutline
           // mimicSelectOnFocus is necessary so that keyboard navigation doesn't keep selecting items but it looks like a regular dropdown
           mimicSelectOnFocus
@@ -173,20 +186,25 @@ function DropdownContentBase(
           minSelect={minSelect}
           onItemFocus={onItemFocus}
           onKeyDown={onListKeyDown}
+          onBlur={onListBlur}
+          onFocus={onListFocus}
           onSelect={onSelect}
           onSelectionChange={onSelectionChange}
           onUnselect={onUnselect}
           parentRef={containerRef}
           reducer={reducer}
+          rounded={layout === 'contained' && inputVariant && ['underline', 'filled'].includes(inputVariant)}
           ref={listRef}
           size={listSize || listDefaults.size}
           tabIndex={isDropdownVisible ? 0 : -1}
           unthemed={unthemed}
-          variant={listVariant || listDefaults.variant}
+          variant={variant}
         >
-          <DropdownEmpty contrast={contrast} themeId={themeId} filter={dropdownState.input} layout={layout}>
-            {emptyNotification}
-          </DropdownEmpty>
+          {!hideNoContent && (
+            <DropdownEmpty contrast={contrast} themeId={themeId} filter={filter} layout={layout}>
+              {emptyNotification}
+            </DropdownEmpty>
+          )}
         </UncontrolledInteractiveList>
       </div>
     </div>

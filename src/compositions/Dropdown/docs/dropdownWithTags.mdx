@@ -103,6 +103,26 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   </ThemeWrapper>
 </Playground>
 
+## Dropdown with placeholder
+
+<Playground>
+  <ThemeWrapper style={{ height: '300px' }}>
+    <div style={{ maxWidth: '100%', marginLeft: 20, marginRight: 20 }}>
+      <DropdownWithTags
+        label="Super awesome dropdown"
+        layout="contained"
+        onChange={value => console.log('change', value)}
+        onClear={value => console.log('clear')}
+        onSelectionChange={value => console.log('selection', value)}
+        options={options}
+        placeholder="Select colors"
+        style={{ width: 300 }}
+        transitional
+      />
+    </div>
+  </ThemeWrapper>
+</Playground>
+
 ## Filterable dropdown
 
 <Playground>

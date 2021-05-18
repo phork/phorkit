@@ -20,7 +20,7 @@ export interface InteractiveGroupProviderProps<
   items: InteractiveGroupItemType<T>[];
 }
 
-/** The interactive group provider is a managed wrapper around the unmanaged interactive group provider */
+/** The interactive group provider is a wrapper around the uncontrolled interactive group provider */
 export function InteractiveGroupProvider<
   T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,
@@ -33,7 +33,7 @@ export function InteractiveGroupProvider<
 
   const [, dispatch] = reducer;
 
-  // this is a managed component so we must watch for items changes
+  // watch for item changes and updates the reducer with the new items
   useEffect(() => {
     dispatch({
       items: items || [],

@@ -10,6 +10,7 @@ export type GeneratedInteractiveGroupActions<T extends InteractiveGroupItemId = 
   focusLast: (props?: InteractiveGroupEventTypes) => void;
   focusNext: (props?: InteractiveGroupEventTypes) => void;
   focusPrevious: (props?: InteractiveGroupEventTypes) => void;
+  focusSelected: (props?: InteractiveGroupEventTypes) => void;
   selectFirst: (props?: InteractiveGroupEventTypes) => void;
   selectFocused: (props?: InteractiveGroupEventTypes) => void;
   selectId: (id: T, props?: InteractiveGroupEventTypes) => void;
@@ -30,19 +31,55 @@ export function generateInteractiveGroupActions<T extends InteractiveGroupItemId
   allowReselect?: boolean,
 ): GeneratedInteractiveGroupActions<T> {
   return {
-    setItems: items =>
-      dispatch({
-        items,
-        timestamp: Date.now(),
-        type: ACTIONS.SET_ITEMS,
-      }),
-
-    setFocusedByIndex: (index, { event } = {}) =>
+    focusFirst: ({ event } = {}) =>
       dispatch({
         event,
-        focusedIndex: index || 0,
         timestamp: Date.now(),
-        type: ACTIONS.SET_FOCUSED,
+        type: ACTIONS.FOCUS_FIRST,
+      }),
+
+    focusLast: ({ event } = {}) =>
+      dispatch({
+        event,
+        timestamp: Date.now(),
+        type: ACTIONS.FOCUS_LAST,
+      }),
+
+    focusNext: ({ event } = {}) =>
+      dispatch({
+        event,
+        timestamp: Date.now(),
+        type: ACTIONS.FOCUS_NEXT,
+      }),
+
+    focusPrevious: ({ event } = {}) =>
+      dispatch({
+        event,
+        timestamp: Date.now(),
+        type: ACTIONS.FOCUS_PREVIOUS,
+      }),
+
+    focusSelected: ({ event } = {}) =>
+      dispatch({
+        event,
+        timestamp: Date.now(),
+        type: ACTIONS.FOCUS_SELECTED,
+      }),
+
+    selectFirst: ({ event } = {}) =>
+      dispatch({
+        event,
+        maxSelect,
+        timestamp: Date.now(),
+        type: ACTIONS.SELECT_FIRST,
+      }),
+
+    selectFocused: ({ event } = {}) =>
+      dispatch({
+        event,
+        maxSelect,
+        timestamp: Date.now(),
+        type: ACTIONS.SELECT_FOCUSED,
       }),
 
     selectId: (id, { event } = {}) =>
@@ -54,13 +91,43 @@ export function generateInteractiveGroupActions<T extends InteractiveGroupItemId
         type: ACTIONS.SELECT_ID,
       }),
 
-    unselectId: (id, { event } = {}) =>
+    selectLast: ({ event } = {}) =>
       dispatch({
         event,
-        id,
-        minSelect,
+        maxSelect,
         timestamp: Date.now(),
-        type: ACTIONS.UNSELECT_ID,
+        type: ACTIONS.SELECT_LAST,
+      }),
+
+    selectNext: ({ event } = {}) =>
+      dispatch({
+        event,
+        maxSelect,
+        timestamp: Date.now(),
+        type: ACTIONS.SELECT_NEXT,
+      }),
+
+    selectPrevious: ({ event } = {}) =>
+      dispatch({
+        maxSelect,
+        event,
+        timestamp: Date.now(),
+        type: ACTIONS.SELECT_PREVIOUS,
+      }),
+
+    setFocusedByIndex: (index, { event } = {}) =>
+      dispatch({
+        event,
+        focusedIndex: index || 0,
+        timestamp: Date.now(),
+        type: ACTIONS.SET_FOCUSED,
+      }),
+
+    setItems: items =>
+      dispatch({
+        items,
+        timestamp: Date.now(),
+        type: ACTIONS.SET_ITEMS,
       }),
 
     toggleSelected: (id, { event } = {}) =>
@@ -74,14 +141,6 @@ export function generateInteractiveGroupActions<T extends InteractiveGroupItemId
         type: ACTIONS.TOGGLE_SELECTED,
       }),
 
-    selectFocused: ({ event } = {}) =>
-      dispatch({
-        event,
-        maxSelect,
-        timestamp: Date.now(),
-        type: ACTIONS.SELECT_FOCUSED,
-      }),
-
     toggleSelectedFocused: ({ event } = {}) =>
       dispatch({
         allowReselect,
@@ -92,64 +151,13 @@ export function generateInteractiveGroupActions<T extends InteractiveGroupItemId
         type: ACTIONS.TOGGLE_SELECTED_FOCUSED,
       }),
 
-    selectPrevious: ({ event } = {}) =>
-      dispatch({
-        maxSelect,
-        event,
-        timestamp: Date.now(),
-        type: ACTIONS.SELECT_PREVIOUS,
-      }),
-
-    focusPrevious: ({ event } = {}) =>
+    unselectId: (id, { event } = {}) =>
       dispatch({
         event,
+        id,
+        minSelect,
         timestamp: Date.now(),
-        type: ACTIONS.FOCUS_PREVIOUS,
-      }),
-
-    selectNext: ({ event } = {}) =>
-      dispatch({
-        event,
-        maxSelect,
-        timestamp: Date.now(),
-        type: ACTIONS.SELECT_NEXT,
-      }),
-
-    focusNext: ({ event } = {}) =>
-      dispatch({
-        event,
-        timestamp: Date.now(),
-        type: ACTIONS.FOCUS_NEXT,
-      }),
-
-    selectFirst: ({ event } = {}) =>
-      dispatch({
-        event,
-        maxSelect,
-        timestamp: Date.now(),
-        type: ACTIONS.SELECT_FIRST,
-      }),
-
-    focusFirst: ({ event } = {}) =>
-      dispatch({
-        event,
-        timestamp: Date.now(),
-        type: ACTIONS.FOCUS_FIRST,
-      }),
-
-    selectLast: ({ event } = {}) =>
-      dispatch({
-        event,
-        maxSelect,
-        timestamp: Date.now(),
-        type: ACTIONS.SELECT_LAST,
-      }),
-
-    focusLast: ({ event } = {}) =>
-      dispatch({
-        event,
-        timestamp: Date.now(),
-        type: ACTIONS.FOCUS_LAST,
+        type: ACTIONS.UNSELECT_ID,
       }),
   };
 }

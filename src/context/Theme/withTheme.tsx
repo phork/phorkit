@@ -1,4 +1,3 @@
-import get from 'lodash.get';
 import React from 'react';
 import { Theme } from '../../types';
 import { ThemeContext } from './ThemeContext';
@@ -13,7 +12,7 @@ export function withTheme<WrappedComponentProps extends {} = {}>(
   function ThemedComponent({ themeId, ...props }: WithThemeProps): React.ReactElement {
     return (
       <ThemeContext.Consumer>
-        {value => <WrappedComponent themeId={themeId || get(value, 'themeId')} {...(props as WrappedComponentProps)} />}
+        {value => <WrappedComponent themeId={themeId || value?.themeId} {...(props as WrappedComponentProps)} />}
       </ThemeContext.Consumer>
     );
   }

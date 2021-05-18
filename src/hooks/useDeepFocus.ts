@@ -46,7 +46,6 @@ export function useDeepFocus<E extends HTMLElement>(
   const handleFocus = useCallback<React.FocusEventHandler<E>>(
     event => {
       clearBlurTimeoutId.current && clearSafeTimeout(clearBlurTimeoutId.current);
-
       persistEvents && event.persist();
       setFocused(true);
 
@@ -92,7 +91,7 @@ export function useDeepFocus<E extends HTMLElement>(
         previousFocused.current = false;
       };
 
-      if (!(ref && isSelfFocused() && ref.current?.querySelectorAll(':focus').length === 1)) {
+      if (!isSelfFocused() && !ref?.current?.contains(event.relatedTarget as Node)) {
         if (blurDelay) {
           clearBlurTimeoutId.current = setSafeTimeout(() => blurCallback(event), blurDelay);
         } else {

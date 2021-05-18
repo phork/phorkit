@@ -1,10 +1,21 @@
 @import '../../../../styles/common/mixins/addScrollbar.css';
 
+/**
+ * 1. The select is positioned absolutely so all
+ *    this does is visually add some vertical space
+ *    before options.
+ */
 .selectInput {
   @mixin addSmallScrollbar var(--select-scrollbar-thumb-color);
 
+  min-height: 30px; /* [1] */
+
   & option {
     padding: 4px 8px;
+
+    &:disabled {
+      opacity: .6;
+    }
   }
 
   &:not([multiple]) option {
@@ -14,4 +25,8 @@
   @mixin themed {
     --select-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
   }
+}
+
+.selectInput--hidden {
+  opacity: 0;
 }

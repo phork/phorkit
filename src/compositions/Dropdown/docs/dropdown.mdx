@@ -79,6 +79,34 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   </ThemeWrapper>
 </Playground>
 
+## Dropdown with placeholder
+
+<Playground>
+  <ThemeWrapper>
+    <br />
+    <Flex direction="row" justifyContent="space-between" full wrap>
+      <Looper
+        list={variants}
+        render={variant => (
+          <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
+            <ControlledDropdown
+              inputVariant={variant}
+              label="Super awesome dropdown"
+              layout="contained"
+              onSelect={value => console.log('select', value)}
+              onUnselect={value => console.log('unselect', value)}
+              onSelectionChange={value => console.log('selection change', value)}
+              options={options}
+              placeholder="Select one"
+              transitional
+            />
+          </div>
+        )}
+      />
+    </Flex>
+  </ThemeWrapper>
+</Playground>
+
 ## Multi-select dropdown
 
 <Playground>
@@ -108,6 +136,36 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   </ThemeWrapper>
 </Playground>
 
+## Multi-select dropdown with minSelect, maxSelect
+
+<Playground>
+  <ThemeWrapper>
+    <br />
+    <Flex direction="row" justifyContent="space-between" full wrap>
+      <Looper
+        list={variants}
+        render={variant => (
+          <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
+            <ControlledDropdown
+              initialSelected={[options[3], options[4], options[5]]}
+              inputVariant={variant}
+              label="Super awesome dropdown"
+              layout="contained"
+              maxSelect={3}
+              minSelect={1}
+              onSelect={value => console.log('select', value)}
+              onUnselect={value => console.log('unselect', value)}
+              onSelectionChange={value => console.log('selection change', value)}
+              options={options}
+              transitional
+            />
+          </div>
+        )}
+      />
+    </Flex>
+  </ThemeWrapper>
+</Playground>
+
 ## Filterable dropdown
 
 <Playground>
@@ -119,7 +177,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
             <ControlledDropdown
               getFilteredOptions={handleFilter}
-              iconAfter={<TagIcon size={12} />}
               initialSelected={[options[3]]}
               inputVariant={variant}
               label="Super awesome dropdown"
@@ -158,6 +215,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
             onSubmit={(event, value) =>
               !options.some(option => option.id === value) && options.push({ id: value, label: value })
             }
+            searchable
             transitional
           />
         </div>
@@ -315,21 +373,23 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 ### Multi-variant dropdown
 
 <Playground>
-  <ThemeWrapper withThemeId style={{ height: '300px' }}>
+  <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <MultiVariantDropdown
-        getFilteredOptions={handleFilter}
-        iconBefore={<SearchIcon size={14} />}
-        initialSelected={[options[3]]}
-        label="Super awesome dropdown"
-        layout="contained"
-        onClear={value => console.log('clear')}
-        onInputChange={value => console.log('change', value)}
-        onSelect={value => console.log('select', value)}
-        options={options}
-        outline="unboxed"
-        style={{ width: '300px', marginLeft: 20, '--contrast-color': themes[themeId]['color-FG40'] }}
-      />
+      <div style={{ height: 300, maxWidth: 300, marginLeft: 20, marginRight: 20 }}>
+        <MultiVariantDropdown
+          getFilteredOptions={handleFilter}
+          iconBefore={<SearchIcon size={14} />}
+          initialSelected={[options[3]]}
+          label="Super awesome dropdown"
+          layout="contained"
+          onClear={value => console.log('clear')}
+          onInputChange={value => console.log('change', value)}
+          onSelect={value => console.log('select', value)}
+          options={options}
+          outline="unboxed"
+          style={{ width: '100%', '--contrast-color': themes[themeId]['color-FG40'] }}
+        />
+      </div>
     )}
   </ThemeWrapper>
 </Playground>

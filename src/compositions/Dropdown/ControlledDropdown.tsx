@@ -5,7 +5,7 @@ import {
   interactiveGroupReducer,
   InteractiveGroupState,
 } from '../../components/InteractiveGroup/interactiveGroupReducer';
-import { Dropdown, DropdownProps } from './Dropdown';
+import { Dropdown, DropdownHandles, DropdownProps } from './Dropdown';
 import { DropdownOption } from './types';
 
 export interface ControlledDropdownProps extends Omit<DropdownProps, 'reducer'> {
@@ -14,7 +14,7 @@ export interface ControlledDropdownProps extends Omit<DropdownProps, 'reducer'> 
 
 function ControlledDropdownBase(
   { initialSelected, options, ...props }: ControlledDropdownProps,
-  forwardedRef: React.ForwardedRef<HTMLDivElement>,
+  forwardedRef: React.ForwardedRef<DropdownHandles>,
 ): React.ReactElement<ControlledDropdownProps, 'div'> {
   const reducer = useReducer<Reducer<InteractiveGroupState<string>, InteractiveGroupStateAction<string>>>(
     interactiveGroupReducer,

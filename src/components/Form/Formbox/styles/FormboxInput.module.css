@@ -1,0 +1,126 @@
+.formboxReadOnlyList {
+  > div {
+    padding: 4px 0;
+  }
+}
+
+/**
+ * 1. This should not use `display: hidden` because it should
+ *    make space in the composition so toggling visibility won't
+ *    reshift things. And using `visibility: hidden` doesn't
+ *    allow the input to be focused.
+ */
+.formboxInputWithFormatting {
+  cursor: pointer;
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+.formboxInputWithFormatting__input {
+  left: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  z-index: 1;
+}
+
+.formboxInputWithFormatting__formatted {
+  pointer-events: none;
+}
+
+.formboxInput {
+  color: var(--formbox-input-text-color);
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  font-size: $font-size-l;
+  line-height: 1.15;
+  min-height: 22px;
+  min-width: 0;
+  outline: none;
+  padding: 4px 0;
+
+  &:focus,
+  &.is-focused {
+    outline: none;
+  }
+}
+
+.formboxInput--hidden {
+  visibility: hidden;
+}
+
+.formboxInput--placeholder {
+  opacity: var(--formbox-input-placeholder-opacity);
+}
+
+.formboxInput--primary {
+  @mixin themed .formbox {
+    --formbox-input-text-color: $theme-primary-palette-quiet-color;
+  }
+
+  &.formboxInput--light {
+    --formbox-input-placeholder-opacity: 0.4;
+  }
+
+  &.formboxInput--dark {
+    --formbox-input-placeholder-opacity: 0.5;
+  }
+}
+
+.formboxInput--contrast {
+  @mixin themed .formboxInput {
+    --formbox-input-text-color: $theme-contrast-palette-quiet-color;
+    --formbox-input-placeholder-opacity: 0.5;
+  }
+}
+
+/* input-specific - these must go last */
+
+input.formboxInput,
+select.formboxInput,
+textarea.formboxInput {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+
+  &::placeholder {
+    color: var(--formbox-input-text-color);
+    opacity: var(--formbox-input-placeholder-opacity);
+  }
+}
+
+input.formboxInput[type='number'] {
+  -moz-appearance: textfield;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+/**
+ * 1. Prevent Chrome autocomplete from changing the form
+ *    background to yellow.
+ */
+input.formboxInput {
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-transition-delay: 99999s; /* [1] */
+  }
+}
+
+/**
+ * 1. To add some space to the drag corner.
+ */
+textarea.formboxInput {
+  font-size: $font-size-l;
+  line-height: 1.4;
+  margin-right: 4px; /* [1] */
+  padding: 2px 0 4px 0;
+}

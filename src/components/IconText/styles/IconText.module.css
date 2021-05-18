@@ -20,3 +20,7 @@
 .iconText__icon {
   flex: none;
 }
+
+.iconText__text {
+  flex: 1;
+}

@@ -31,37 +31,45 @@ import { Toggle, NotifiedToggle } from '../index';
 ## Labeled toggle
 
 <Playground>
-  <FormComponentDemo property="checked" initialValue={true}>
-    <Toggle id="demo-labeled-toggle" onChange={(event, checked) => console.log(checked)}>
-      Super fantastic label
-    </Toggle>
-  </FormComponentDemo>
-  <FormComponentDemo property="checked" initialValue={true}>
-    <Toggle id="demo-labeled-reverse-toggle" reverse onChange={(event, checked) => console.log(checked)}>
-      Super fantastic label
-    </Toggle>
-  </FormComponentDemo>
+  <ThemeWrapper>
+    <Rhythm py={3}>
+      <FormComponentDemo property="checked" initialValue={true} unwrapped>
+        <Toggle id="demo-labeled-toggle" onChange={(event, checked) => console.log(checked)}>
+          Super fantastic label
+        </Toggle>
+      </FormComponentDemo>
+      <FormComponentDemo property="checked" initialValue={true} unwrapped>
+        <Toggle id="demo-labeled-reverse-toggle" reverse onChange={(event, checked) => console.log(checked)}>
+          Super fantastic label
+        </Toggle>
+      </FormComponentDemo>
+    </Rhythm>
+  </ThemeWrapper>
 </Playground>
 
 ## Full width labeled toggle
 
 <Playground>
-  <FormComponentDemo property="checked" initialValue={true} style={{ width: 240 }}>
-    <Toggle id="demo-labeled-full-toggle" onChange={(event, checked) => console.log(checked)} full>
-      Super fantastic label
-    </Toggle>
-  </FormComponentDemo>
-  <FormComponentDemo property="checked" initialValue={true} style={{ width: 240 }}>
-    <Toggle
-      id="demo-labeled-reverse-fulltoggle"
-      reverse
-      onChange={(event, checked) => console.log(checked)}
-      full
-      reverse
-    >
-      Super fantastic label
-    </Toggle>
-  </FormComponentDemo>
+  <ThemeWrapper>
+    <Rhythm py={3}>
+      <FormComponentDemo property="checked" initialValue={true} style={{ width: 240 }} unwrapped>
+        <Toggle id="demo-labeled-full-toggle" onChange={(event, checked) => console.log(checked)} full>
+          Super fantastic label
+        </Toggle>
+      </FormComponentDemo>
+      <FormComponentDemo property="checked" initialValue={true} style={{ width: 240 }} unwrapped>
+        <Toggle
+          id="demo-labeled-reverse-fulltoggle"
+          reverse
+          onChange={(event, checked) => console.log(checked)}
+          full
+          reverse
+        >
+          Super fantastic label
+        </Toggle>
+      </FormComponentDemo>
+    </Rhythm>
+  </ThemeWrapper>
 </Playground>
 
 ## Wrapped labeled toggle
@@ -120,20 +128,24 @@ import { Toggle, NotifiedToggle } from '../index';
 ## Notifications
 
 <Playground>
-  <Looper
-    list={['success', 'danger', 'warning', 'primary', 'neutral']}
-    render={level => (
-      <FormComponentDemo property="checked" initialValue={true}>
-        <NotifiedToggle
-          onChange={(event, checked) => console.log(checked)}
-          level={level}
-          notification={`This is an example ${level} notification.`}
-        >
-          Super fantastic label
-        </NotifiedToggle>
-      </FormComponentDemo>
-    )}
-  />
+  <ThemeWrapper>
+    <Looper
+      list={['success', 'danger', 'warning', 'primary', 'neutral']}
+      render={level => (
+        <Rhythm py={3}>
+          <FormComponentDemo property="checked" initialValue={true} unwrapped>
+            <NotifiedToggle
+              onChange={(event, checked) => console.log(checked)}
+              level={level}
+              notification={`This is an example ${level} notification.`}
+            >
+              Super fantastic label
+            </NotifiedToggle>
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## \[props\]
