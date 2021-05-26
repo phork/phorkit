@@ -1,14 +1,22 @@
 .tabs {
   border-radius: $border-radius-s;
   border: 1px solid var(--tabs-border-color);
-  display: flex;
-  flex-direction: column;
   font-size: $font-size-m;
   position: relative;
 
   &.is-focused.is-accessible {
     border-color: var(--tabs-focused-border-color);
   }
+}
+
+.tabs--horizontal {
+  display: flex;
+  flex-direction: column;
+}
+
+.tabs--vertical {
+  display: flex;
+  flex-direction: row;
 }
 
 .tabs--colored {
@@ -31,10 +39,6 @@
       border-color: var(--tabs-focused-border-color);
     }
   }
-}
-
-.tabs--vertical {
-  flex-direction: row;
 }
 
 .tabs--primary,
