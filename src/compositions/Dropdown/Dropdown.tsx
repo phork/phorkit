@@ -182,9 +182,8 @@ function DropdownBase(
   const previous = useRef<{
     input?: string;
     isDropdownVisible?: boolean;
-    isInputFocused?: boolean;
     isFocused?: boolean;
-    selectedIds?: string[];
+    isInputFocused?: boolean;
   }>({});
 
   const [dropdownState, dropdownDispatch] = useReducer(dropdownReducer, {
@@ -229,6 +228,7 @@ function DropdownBase(
       getFilteredOptions?.(input).then(options => {
         setFilteredOptions(options || []);
         dropdownDispatch({ type: ACTIONS.UNSET_BUSY });
+        dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
       });
     }, 1000),
     [getFilteredOptions],
@@ -279,13 +279,6 @@ function DropdownBase(
     }
     previous.current.isDropdownVisible = !!isDropdownVisible;
   }, [focus, isDropdownVisible, isFilterable, isListFocused, onClose, onOpen]);
-
-  // when the options change ...
-  useEffect(() => {
-    if (options !== undefined) {
-      dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
-    }
-  }, [options]);
 
   // when the search or filter input changes ...
   useEffect(() => {
@@ -378,25 +371,20 @@ function DropdownBase(
         (event.target as HTMLDivElement).tagName.toLowerCase() !== 'input'
       ) {
         event.preventDefault();
-        dropdownDispatch({
-          type: ACTIONS.SHOW_DROPDOWN,
-        });
+        dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
+        focus<HTMLUListElement, 'list'>(listRef, 'list');
       }
     },
-    [isClearFocused, isListFocused],
+    [focus, isClearFocused, isListFocused],
   );
 
   // if the `used` flag is true the list provider has already used that keydown event
   const handleListKeyDown = useCallback(
     (event: KeyboardEvent, { used }: { used?: boolean } = {}) => {
       if (!used && !dropdownState.listVisible && event.key === 'Enter') {
-        dropdownDispatch({
-          type: ACTIONS.SHOW_DROPDOWN,
-        });
+        dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
       } else if (isListFocused && dropdownState.listVisible && event.key === 'Enter') {
-        dropdownDispatch({
-          type: ACTIONS.HIDE_DROPDOWN,
-        });
+        dropdownDispatch({ type: ACTIONS.HIDE_DROPDOWN });
       }
     },
     [isListFocused, dropdownState.listVisible],
@@ -425,11 +413,18 @@ function DropdownBase(
     [dropdownState.input],
   );
 
-  const handleInputKeyDown = useCallback((event: React.KeyboardEvent<HTMLInputElement>): void => {
-    if (event.key === 'Enter') {
-      dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
-    }
-  }, []);
+  const handleInputKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLInputElement>): void => {
+      if (event.key === 'Enter') {
+        dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
+      }
+      if (event.key === 'ArrowDown') {
+        dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
+        focus<HTMLUListElement, 'list'>(listRef, 'list');
+      }
+    },
+    [focus],
+  );
 
   const handleInputClear = useCallback(
     (
@@ -450,9 +445,7 @@ function DropdownBase(
 
   const handleClickAndEscape = useCallback(() => {
     cancel();
-    dropdownDispatch({
-      type: ACTIONS.HIDE_DROPDOWN,
-    });
+    dropdownDispatch({ type: ACTIONS.HIDE_DROPDOWN });
   }, [cancel]);
 
   useClickAndEscape({
@@ -514,7 +507,7 @@ function DropdownBase(
         readOnly={readOnly}
         ref={toggleRef}
         role={readOnly ? undefined : 'button'}
-        tabIndex={readOnly || (isListFocused && !isFilterable) ? -1 : 0}
+        tabIndex={readOnly || (isListFocused && !isFilterable) || isInputFocused ? -1 : 0}
         themeId={themeId}
         transitional={transitional}
         transparent={transparent}

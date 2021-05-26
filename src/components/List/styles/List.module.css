@@ -95,20 +95,16 @@ ul.unlist {
       }
     }
 
+    &:hover,
+    &.is-hovered {
+      &:not(:active):not(.is-selected) {
+        color: var(--list-item-focused-text-color);
+        z-index: var(--list-item-focused-z-index, 0);
+      }
+    }
+
     &:focus {
       outline: none;
-    }
-  }
-
-  &:not(.is-accessible) {
-    .listItem {
-      &:hover,
-      &.is-hovered {
-        &:not(:active):not(.is-selected) {
-          color: var(--list-item-focused-text-color);
-          z-index: var(--list-item-focused-z-index, 0);
-        }
-      }
     }
   }
 
@@ -309,7 +305,8 @@ ul.unlist {
   &.is-accessible:focus-within,
   &.is-accessible.is-focused {
     .listItem {
-      &.is-focused { /* [1] */
+      &.is-focused {
+        /* [1] */
         &:not(:active):not(.is-selected) {
           @mixin shadowBorder var(--list-item-focused-border-color);
         }
