@@ -1,5 +1,18 @@
 # Changelog
 
+# [7.0.0](https://github.com/phork/phorkit/compare/v6.2.0...v7.0.0) (2021-05-26)
+
+### ♻ Code Refactoring
+
+- **major**: interactive group, interactive list, dropdown ([8fb8659](https://github.com/phork/phorkit/commit/8fb8659))
+- **major**: refactored formbox and dropdown ([cfc9772](https://github.com/phork/phorkit/commit/cfc9772))
+
+### 🐛 Bug Fixes
+
+- form input tab index fixes ([0b97725](https://github.com/phork/phorkit/commit/0b97725))
+- minor dropdown focus fixes ([11b20b4](https://github.com/phork/phorkit/commit/11b20b4))
+- withTheme displayName ([8b08633](https://github.com/phork/phorkit/commit/8b08633))
+
 # [6.2.0](https://github.com/phork/phorkit/compare/v6.1.3...v6.2.0) (2021-05-16)
 
 ### ✨ Features
