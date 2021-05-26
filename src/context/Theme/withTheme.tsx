@@ -18,7 +18,7 @@ export function withTheme<WrappedComponentProps extends {} = {}>(
   }
 
   const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
-  ThemedComponent.displayName = `withNotification(${displayName})`;
+  ThemedComponent.displayName = `withTheme(${displayName})`;
 
   return ThemedComponent;
 }
