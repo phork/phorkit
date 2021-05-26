@@ -1,5 +1,15 @@
 # Changelog
 
+## [7.0.1](https://github.com/phork/phorkit/compare/v7.0.0...v7.0.1) (2021-05-26)
+
+### ♻ Code Refactoring
+
+- update tabs flex styles ([830b9c1](https://github.com/phork/phorkit/commit/830b9c1))
+
+### 🐛 Bug Fixes
+
+- remove errant semi-colon (fixes tabs) ([82ce3be](https://github.com/phork/phorkit/commit/82ce3be))
+
 # [7.0.0](https://github.com/phork/phorkit/compare/v6.2.0...v7.0.0) (2021-05-26)
 
 ### ♻ Code Refactoring
