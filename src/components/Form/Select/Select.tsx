@@ -168,6 +168,7 @@ export function SelectBase(
                 hasPlaceholder && !focused && styles['selectInput--hidden'],
                 selectProps?.className,
               )}
+              disabled={disabled}
               id={id}
               multiple={multiple}
               name={name}

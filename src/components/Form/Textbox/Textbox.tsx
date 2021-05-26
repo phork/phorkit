@@ -183,7 +183,6 @@ function TextboxBase(
             formattedValue={formattedValue}
             hasValue={hasValue}
             placeholder={placeholder}
-            tabIndex={tabIndex}
             themeId={themeId}
           >
             <input
@@ -197,6 +196,7 @@ function TextboxBase(
               onKeyDown={handleKeyDown}
               ref={combineRefs}
               required={required}
+              tabIndex={tabIndex}
               type={type}
               value={value}
               {...inputProps}
