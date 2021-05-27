@@ -19,7 +19,9 @@ const passwordTranslations: PasswordTranslations = {
 
 export interface LocalPasswordProps {
   iconHide?: React.FC<SvgIconProps>;
+  iconHideSize?: number;
   iconShow?: React.FC<SvgIconProps>;
+  iconShowSize?: number;
   initialType?: 'password' | 'text';
   translations?: PasswordTranslations;
 }
@@ -27,7 +29,16 @@ export interface LocalPasswordProps {
 export type PasswordProps = MergeProps<TextboxProps, LocalPasswordProps>;
 
 function PasswordBase(
-  { disabled, iconHide, iconShow, initialType = 'password', translations: customTranslations, ...props }: PasswordProps,
+  {
+    disabled,
+    iconHide,
+    iconHideSize = 16,
+    iconShow,
+    iconShowSize = 16,
+    initialType = 'password',
+    translations: customTranslations,
+    ...props
+  }: PasswordProps,
   forwardedRef: React.ForwardedRef<HTMLInputElement>,
 ) {
   const [type, setType] = useState<'text' | 'password'>(initialType);
@@ -41,20 +52,23 @@ function PasswordBase(
   // eslint-disable-next-line react/prop-types
   const renderButton = ({
     icon: Icon,
+    iconSize,
     label,
     onClick,
   }: {
     icon: React.FC<SvgIconProps>;
+    iconSize?: number;
     label: string;
     onClick: React.MouseEventHandler;
   }) => (
     <button aria-label={label} className={styles.textboxButton} type="button" onClick={onClick}>
-      <Icon size={16} title={label} />
+      <Icon size={iconSize} title={label} />
     </button>
   );
 
   const renderIcon = () => {
     const icon = type === 'password' ? iconShow : iconHide;
+    const iconSize = type === 'password' ? iconShowSize : iconHideSize;
     const handleClick = type === 'password' ? showPassword : hidePassword;
     const label = type === 'password' ? showPasswordLabel : hidePasswordLabel;
 
@@ -69,6 +83,7 @@ function PasswordBase(
         icon,
         label,
         onClick: handleClick,
+        iconSize,
       });
     }
 
@@ -76,6 +91,7 @@ function PasswordBase(
       icon: type === 'password' ? EyeIcon : EyeSlashIcon,
       label,
       onClick: handleClick,
+      iconSize,
     });
   };
 
