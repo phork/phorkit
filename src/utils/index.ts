@@ -10,6 +10,7 @@ export * from './getPositionOffset';
 export * from './getTabIndex';
 export * from './isElementFocusable';
 export * from './isElementVisible';
+export * from './makeCancelable';
 export * from './measureDomNode';
 export * from './renderFromProp';
 export * from './setStyle';

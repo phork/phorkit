@@ -3,11 +3,12 @@ import debounce from 'lodash.debounce';
 import React, { useCallback, useEffect, useImperativeHandle, useMemo, useReducer, useRef, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import { StateColor, ThemeProps } from '../../types';
-import { useTriggerFocus } from '../../hooks';
 import { useClickAndEscape } from '../../hooks/useClickAndEscape';
 import { useDeepFocusGroup } from '../../hooks/useDeepFocusGroup';
 import { useThemeId } from '../../hooks/useThemeId';
 import { useTranslations } from '../../hooks/useTranslations';
+import { useTriggerFocus } from '../../hooks/useTriggerFocus';
+import { makeCancelable } from '../../utils/makeCancelable';
 import { RenderFromPropElement } from '../../utils/renderFromProp';
 import { PencilSlashIcon, SearchIcon, TimesIcon } from '../../icons';
 import { ArrowDownIcon } from '../../icons/ArrowDownIcon';
@@ -173,10 +174,8 @@ function DropdownBase(
   }));
 
   const mouseDownRef = useRef<{
-    isFocused?: boolean;
     isDropdownVisible?: boolean;
     isListClicked?: boolean;
-    isToggleClicked?: boolean;
   }>({});
 
   const previous = useRef<{
@@ -222,20 +221,32 @@ function DropdownBase(
     return options;
   }, [filteredOptions, options, selectedState.selectedIds]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleFilter = useCallback(
-    debounce(input => {
-      getFilteredOptions?.(input).then(options => {
-        setFilteredOptions(options || []);
-        dropdownDispatch({ type: ACTIONS.UNSET_BUSY });
-        dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
-      });
-    }, 1000),
-    [getFilteredOptions],
-  );
+  // debounce the filtering; use a ref so it doesn't recreate the function on re-render
+  const debouncedFilter = useRef<ReturnType<typeof debounce> | undefined>();
+  const cancelFilterPromise = useRef<(() => void) | undefined>();
 
-  // define a cleanup event to cancel the filtering
-  useEffect((): (() => void) => () => handleFilter.cancel(), [handleFilter]);
+  useEffect(() => {
+    debouncedFilter.current = debounce((input: string) => {
+      if (getFilteredOptions) {
+        const { promise, cancel } = makeCancelable<DropdownOption[] | undefined>(getFilteredOptions?.(input));
+        cancelFilterPromise.current = cancel;
+
+        promise
+          .then(options => {
+            setFilteredOptions(options || []);
+            dropdownDispatch({ type: ACTIONS.UNSET_BUSY });
+            dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
+          })
+          // getFilteredOptions should handle error cases, this is here to catch canceled promises
+          .catch(() => {});
+      }
+    }, 1000);
+
+    return () => {
+      debouncedFilter.current?.cancel();
+      cancelFilterPromise.current?.();
+    };
+  }, [getFilteredOptions]);
 
   // only initialize the deep focus handlers once
   useEffect(() => {
@@ -288,12 +299,12 @@ function DropdownBase(
     ) {
       if (dropdownState.input) {
         dropdownDispatch({ type: ACTIONS.SET_BUSY });
-        handleFilter(dropdownState.input);
+        debouncedFilter.current?.(dropdownState.input);
       }
       onInputChange && onInputChange(dropdownState.input);
     }
     previous.current.input = dropdownState.input;
-  }, [dropdownState.input, handleFilter, onInputChange]);
+  }, [dropdownState.input, onInputChange]);
 
   // if the select is handled by Enter or click and only one option can be selected then hide the dropdown
   const handleSelect: DropdownContentProps['onSelect'] = (event, { id }, selectedIds) => {
@@ -341,13 +352,11 @@ function DropdownBase(
       event.stopPropagation();
 
       mouseDownRef.current = {
-        isFocused,
         isDropdownVisible,
         isListClicked: listRef.current?.container?.contains(event.target as Node),
-        isToggleClicked: toggleRef.current?.contains(event.target as Node),
       };
     },
-    [isFocused, isDropdownVisible],
+    [isDropdownVisible],
   );
 
   const handleClick = useCallback(() => {

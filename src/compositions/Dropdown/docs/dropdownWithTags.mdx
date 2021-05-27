@@ -28,7 +28,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         initialSelected={[options[3]]}
         label="Super awesome dropdown"
         layout="raised"
-        onChange={value => console.log('change', value)}
         onClear={value => console.log('clear')}
         onSelect={value => console.log('select', value)}
         onSelectionChange={value => console.log('selection', value)}
@@ -51,7 +50,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         inputVariant="filled"
         label="Super awesome dropdown"
         layout="raised"
-        onChange={value => console.log('change', value)}
         onClear={value => console.log('clear')}
         onSelectionChange={value => console.log('selection', value)}
         options={options}
@@ -72,7 +70,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         inputVariant="outline"
         label="Super awesome dropdown"
         layout="raised"
-        onChange={value => console.log('change', value)}
         onClear={value => console.log('clear')}
         onSelectionChange={value => console.log('selection', value)}
         options={options}
@@ -92,7 +89,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         initialSelected={[options[3]]}
         label="Super awesome dropdown"
         layout="contained"
-        onChange={value => console.log('change', value)}
         onClear={value => console.log('clear')}
         onSelectionChange={value => console.log('selection', value)}
         options={options}
@@ -111,7 +107,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
       <DropdownWithTags
         label="Super awesome dropdown"
         layout="contained"
-        onChange={value => console.log('change', value)}
         onClear={value => console.log('clear')}
         onSelectionChange={value => console.log('selection', value)}
         options={options}
@@ -132,7 +127,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         getFilteredOptions={handleFilter}
         initialSelected={[options[3]]}
         label="Super awesome dropdown"
-        onChange={value => console.log(value)}
         onSelectionChange={value => console.log('selection', value)}
         onSubmit={(event, value) =>
           !options.some(option => option.id === value) && options.push({ id: value, label: value })
@@ -154,7 +148,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         initialSelected={[options[3]]}
         label="Super awesome dropdown"
         layout="contained"
-        onChange={value => console.log('change', value)}
         onClear={value => console.log('clear')}
         onSelectionChange={value => console.log('selection', value)}
         options={options.map(option => ({
