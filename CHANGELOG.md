@@ -1,5 +1,19 @@
 # Changelog
 
+# [7.1.0](https://github.com/phork/phorkit/compare/v7.0.1...v7.1.0) (2021-05-27)
+
+### ♻ Code Refactoring
+
+- update useThemeId import paths ([501b62a](https://github.com/phork/phorkit/commit/501b62a))
+
+### ✨ Features
+
+- allow custom password icon sizes ([e37fdba](https://github.com/phork/phorkit/commit/e37fdba))
+
+### 🐛 Bug Fixes
+
+- debounced dropdown search ([8ecf379](https://github.com/phork/phorkit/commit/8ecf379))
+
 ## [7.0.1](https://github.com/phork/phorkit/compare/v7.0.0...v7.0.1) (2021-05-26)
 
 ### ♻ Code Refactoring
