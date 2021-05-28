@@ -117,6 +117,7 @@ export function Modal({
             color="neutral"
             onClick={handleClose}
             shape="square"
+            size="small"
             weight="ghost"
           >
             <TimesIcon size={12} title={closeLabel} />

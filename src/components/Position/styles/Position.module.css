@@ -1,12 +1,15 @@
-/*
-.position {}
-*/
+.position {
+  display: flex;
+  flex: none;
+}
 
 .position--raised {
   z-index: 1;
 }
 
 .position--center {
+  align-items: center;
+  justify-content: center;
   left: 50%;
   position: absolute;
   top: 50%;
@@ -18,11 +21,20 @@
   left: 0;
   position: absolute;
 
+  &.position--inside {
+    align-items: center;
+    justify-content: center;
+  }
+
   &.position--outside {
+    align-items: flex-start;
+    justify-content: flex-end;
     transform: translate(-100%, 100%);
   }
 
   &.position--middle {
+    align-items: center;
+    justify-content: center;
     transform: translate(-50%, 50%);
   }
 }
@@ -31,16 +43,22 @@
   bottom: 0;
   left: 50%;
   position: absolute;
-  
+
   &.position--inside {
+    align-items: center;
+    justify-content: center;
     transform: translateX(-50%);
   }
 
   &.position--outside {
+    align-items: flex-start;
+    justify-content: center;
     transform: translate(-50%, 100%);
   }
 
   &.position--middle {
+    align-items: center;
+    justify-content: center;
     transform: translate(-50%, 50%);
   }
 }
@@ -49,12 +67,19 @@
   bottom: 0;
   position: absolute;
   right: 0;
-  
+
+  &.position--inside {
+    align-items: center;
+    justify-content: center;
+  }
+
   &.position--outside {
     transform: translate(100%, 100%);
   }
 
   &.position--middle {
+    align-items: center;
+    justify-content: center;
     transform: translate(50%, 50%);
   }
 }
@@ -64,11 +89,20 @@
   position: absolute;
   top: 0;
 
+  &.position--inside {
+    align-items: center;
+    justify-content: center;
+  }
+
   &.position--outside {
+    align-items: flex-end;
+    justify-content: flex-end;
     transform: translate(-100%, -100%);
   }
 
   &.position--middle {
+    align-items: center;
+    justify-content: center;
     transform: translate(-50%, -50%);
   }
 }
@@ -77,16 +111,22 @@
   left: 50%;
   position: absolute;
   top: 0;
-  
+
   &.position--inside {
+    align-items: center;
+    justify-content: center;
     transform: translateX(-50%);
   }
 
   &.position--outside {
+    align-items: flex-end;
+    justify-content: center;
     transform: translate(-50%, -100%);
   }
 
   &.position--middle {
+    align-items: center;
+    justify-content: center;
     transform: translate(-50%, -50%);
   }
 }
@@ -95,12 +135,21 @@
   position: absolute;
   right: 0;
   top: 0;
-  
+
+  &.position--inside {
+    align-items: center;
+    justify-content: center;
+  }
+
   &.position--outside {
+    align-items: flex-end;
+    justify-content: flex-start;
     transform: translate(100%, -100%);
   }
 
   &.position--middle {
+    align-items: center;
+    justify-content: center;
     transform: translate(50%, -50%);
   }
 }
@@ -109,34 +158,46 @@
   left: 0;
   position: absolute;
   top: 50%;
-  
+
   &.position--inside {
+    align-items: center;
+    justify-content: center;
     transform: translateY(-50%);
   }
 
   &.position--outside {
+    align-items: center;
+    justify-content: flex-end;
     transform: translate(-100%, -50%);
   }
 
   &.position--middle {
+    align-items: center;
+    justify-content: center;
     transform: translate(-50%, -50%);
   }
 }
 
-.position--rightCenter { 
+.position--rightCenter {
   position: absolute;
   right: 0;
   top: 50%;
-  
+
   &.position--inside {
+    align-items: center;
+    justify-content: center;
     transform: translateY(-50%);
   }
 
   &.position--outside {
+    align-items: center;
+    justify-content: flex-start;
     transform: translate(100%, -50%);
   }
 
   &.position--middle {
+    align-items: center;
+    justify-content: center;
     transform: translate(50%, -50%);
   }
 }
