@@ -1,5 +1,11 @@
 # Changelog
 
+## [7.1.1](https://github.com/phork/phorkit/compare/v7.1.0...v7.1.1) (2021-05-28)
+
+### 🐛 Bug Fixes
+
+- position changed to flexbox with alignment ([55e0d82](https://github.com/phork/phorkit/commit/55e0d82))
+
 # [7.1.0](https://github.com/phork/phorkit/compare/v7.0.1...v7.1.0) (2021-05-27)
 
 ### ♻ Code Refactoring
