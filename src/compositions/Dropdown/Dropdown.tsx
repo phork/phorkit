@@ -270,7 +270,7 @@ function DropdownBase(
     previous.current.isFocused = isFocused;
   }, [focus, isFilterable, isFocused, isToggleFocused]);
 
-  // when a specific focus state changes ...
+  // when the input focus state changes ...
   useEffect(() => {
     if (isInputFocused && !previous.current.isInputFocused && options !== undefined) {
       dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });

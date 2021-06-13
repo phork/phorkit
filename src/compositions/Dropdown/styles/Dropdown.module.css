@@ -179,7 +179,7 @@
  *    is hidden.
  */
 .dropdownOptions {
-  @mixin addSmallScrollbar var(--dropdown-options-scrollbar-thumb-color);
+  @mixin addXSmallScrollbar var(--dropdown-options-scrollbar-thumb-color);
 
   border-radius: inherit;
   margin-top: -1px; /* [1] */
@@ -241,7 +241,7 @@
     --dropdown-options-contained-box-shadow: $theme-box-shadow-0;
     --dropdown-options-contained-border-color: $theme-primary-palette-border-color;
     --dropdown-options-raised-box-shadow: $theme-box-shadow-0;
-    --dropdown-options-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
+    --dropdown-options-scrollbar-thumb-color: transparent;
   }
 }
 
@@ -252,7 +252,7 @@
     --dropdown-options-contained-box-shadow: $theme-box-shadow-0;
     --dropdown-options-contained-border-color: $theme-contrast-palette-text-color;
     --dropdown-options-raised-box-shadow: $theme-box-shadow-0;
-    --dropdown-options-scrollbar-thumb-color: $theme-contrast-scrollbar-thumb-color;
+    --dropdown-options-scrollbar-thumb-color: transparent;
   }
 
   &.dropdown--light {

@@ -16,6 +16,7 @@ import {
   Avatar,
   Badge,
   Banner,
+  BannerContainer,
   Button,
   ButtonGroup,
   Card,
@@ -1019,31 +1020,33 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
 
 ## Banner time
 
-<Playground style={{ display: 'flex', margin: '-40px', height: '300px' }}>
-  <ThemeWrapper>
-    <PanelContainer orientation="horizontal">
+<Playground>
+  <ThemeWrapper style={{ display: 'flex', margin: '-40px', height: 280, maxHeight: 300, overflow: 'hidden' }}>
+    <PanelContainer orientation="horizontal" full style={{ borderRadius: 4 }}>
       <StackPanel position="top" open>
         <Card squared raised>
-          <Banner immediate level="info">
-            <IconText
-              icon={<BlobbrIcon size={18} />}
-              text={
-                <Rhythm ml={3} wrapper="span">
-                  This is a simple info banner because something happened. Cool.
-                </Rhythm>
-              }
-            />
-          </Banner>
-          <Banner immediate level="success">
-            <IconText
-              icon={<BlobbrIcon size={18} />}
-              text={
-                <Rhythm ml={3} wrapper="span">
-                  This is a simple success banner because something was successful. Yay.
-                </Rhythm>
-              }
-            />
-          </Banner>
+          <BannerContainer>
+            <Banner immediate level="info">
+              <IconText
+                icon={<BlobbrIcon size={18} />}
+                text={
+                  <Rhythm ml={3} wrapper="span">
+                    This is a simple info banner because something happened. Cool.
+                  </Rhythm>
+                }
+              />
+            </Banner>
+            <Banner immediate level="success">
+              <IconText
+                icon={<BlobbrIcon size={18} />}
+                text={
+                  <Rhythm ml={3} wrapper="span">
+                    This is a simple success banner because something was successful. Yay.
+                  </Rhythm>
+                }
+              />
+            </Banner>
+          </BannerContainer>
         </Card>
       </StackPanel>
       <MainPanel>
@@ -1065,15 +1068,31 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
 
 <div style="height: 50px" />
 
-<Playground style={{ display: 'flex', flexDirection: 'column', margin: '-40px', height: '300px' }}>
-  <ThemeWrapper>
-    <Banner immediate level="warning">
-      This is a simple warning banner because something concerning happened. Meh.
-    </Banner>
-    <Banner immediate level="danger">
-      This is a simple danger banner because something went wrong. Boo.
-    </Banner>
-    <Paper scrollable flexible color="primary" container="panel">
+<Playground>
+  <ThemeWrapper
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+      margin: '-40px',
+      height: 280,
+      maxHeight: 300,
+    }}
+  >
+    <BannerContainer style={{ borderTopLeftRadius: 4, borderTopRightRadius: 4 }}>
+      <Banner immediate level="warning" style={{ height: 50 }}>
+        This is a simple warning banner because something concerning happened. Meh.
+      </Banner>
+      <Banner immediate level="danger" style={{ height: 50 }}>
+        This is a simple danger banner because something went wrong. Boo.
+      </Banner>
+    </BannerContainer>
+    <Paper
+      scrollable
+      flexible
+      color="primary"
+      container="panel"
+      style={{ borderBottomLeftRadius: 4, borderBottomRightRadius: 4 }}
+    >
       <Looper
         start={0}
         end={10}
@@ -1189,7 +1208,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
   <ThemeWrapper>
     <StateWrapper>
       {({ state: searchTerm, setState: setSearchTerm }) => (
-        <Rhythm mb={6} grouped>
+        <Rhythm mb={12} p={4} grouped>
           <PortalDropover
             label={
               <DropoverInputLabel>
@@ -1211,7 +1230,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
           >
             <DropoverContent>
               <Rhythm py={5}>
-                <div>{searchTerm || 'What are you searching for?'}</div>
+                <div>{searchTerm ? `Searching for ${searchTerm}` : 'What are you searching for?'}</div>
               </Rhythm>
             </DropoverContent>
           </PortalDropover>
