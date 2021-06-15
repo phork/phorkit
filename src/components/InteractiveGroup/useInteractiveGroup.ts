@@ -204,7 +204,7 @@ export function useInteractiveGroup<
 
       // trigger onSelect callbacks for any new selections
       if (onSelect && Array.isArray(selectedIds)) {
-        selectedIds.forEach(id => handleSelectedId(id));
+        selectedIds.forEach(id => handleSelectedId(id, allowReselect));
       }
 
       // trigger the onSelect callback for a re-select if not multi-select

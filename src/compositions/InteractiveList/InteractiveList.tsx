@@ -12,7 +12,7 @@ import { UncontrolledInteractiveList, UncontrolledInteractiveListProps } from '.
 export type InteractiveListProps = Omit<UncontrolledInteractiveListProps, 'reducer'> &
   Pick<InteractiveGroupProviderProps, 'initialSelected'>;
 
-/** The interactive list is a managed wrapper around the unmanaged interactive list */
+/** The interactive list is a wrapper around the uncontrolled interactive list */
 function InteractiveListBase(
   { initialSelected, items, ...props }: InteractiveListProps,
   forwardedRef: React.ForwardedRef<HTMLUListElement>,
@@ -24,7 +24,7 @@ function InteractiveListBase(
 
   const [, dispatch] = reducer;
 
-  // this is a managed component so we must watch for items changes
+  // update the items in the reducer if the items change
   useEffect(() => {
     dispatch({
       items: items || [],

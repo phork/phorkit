@@ -24,6 +24,7 @@ export type UseDeepFocusGroupResponse = {
   addRef: <E extends HTMLElement, H extends string | undefined = undefined>(props: {
     id: string;
     ref: H extends string ? UseDeepFocusGroupRefWithHandle<E, H> : UseDeepFocusGroupRef<E>;
+    /** If passive is true then the ref is added but no focus or blur events are triggered at the time of addition */
     passive?: boolean;
     /** To be used with the imperative handle hook */
     handle?: string;
