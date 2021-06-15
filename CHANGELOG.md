@@ -1,5 +1,11 @@
 # Changelog
 
+## [7.1.2](https://github.com/phork/phorkit/compare/v7.1.1...v7.1.2) (2021-06-15)
+
+### 🐛 Bug Fixes
+
+- fix interactive list allow reselect ([f86aaaf](https://github.com/phork/phorkit/commit/f86aaaf))
+
 ## [7.1.1](https://github.com/phork/phorkit/compare/v7.1.0...v7.1.1) (2021-05-28)
 
 ### 🐛 Bug Fixes
