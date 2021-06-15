@@ -13,6 +13,7 @@ export interface InlineTextTooltipProps
     Pick<TextTooltipContentProps, 'scrollable' | 'width'> {
   position?: AnyPosition;
   tooltipClassName?: string;
+  triangleBorderWidth?: number;
   triangleSize?: number;
 }
 
@@ -27,6 +28,7 @@ export function InlineTextTooltip({
   scrollable,
   themeId: initThemeId,
   tooltipClassName,
+  triangleBorderWidth,
   triangleSize,
   width,
   withChildrenProps,
@@ -42,7 +44,7 @@ export function InlineTextTooltip({
       centered
       offset={offset}
       position={position}
-      renderChildren={({ focusable, focusRef, isTogglerFocused, offset, position, visible }) => {
+      renderChildren={({ close, focusable, focusRef, isTogglerFocused, offset, position, visible }) => {
         if (position === 'stacked' || position === 'stacked-right') {
           throw new Error('Invalid tooltip position');
         }
@@ -54,6 +56,7 @@ export function InlineTextTooltip({
             offset={offset}
             position={position}
             triangleBorderColor={borderColor}
+            triangleBorderWidth={triangleBorderWidth}
             triangleColor={backgroundColor}
             triangleSize={triangleSize}
           >

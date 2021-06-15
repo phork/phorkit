@@ -7,7 +7,7 @@ route: /compositions/Tooltip
 import { Playground, Props } from 'docz';
 import { themes } from 'config/themes';
 import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
-import { IconButton } from 'components/Button';
+import { Button, IconButton } from 'components/Button';
 import { Card } from 'components/Card';
 import { Flex } from 'components/Flex';
 import { LinkContainer } from 'components/Link';
@@ -966,7 +966,38 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
   </ThemeWrapper>
 </Playground>
 
-# <br />
+## Tooltip with close button
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <PortalTooltip
+        offset={{ horizontal: 20 }}
+        position="right-center"
+        renderChildren={({ close }) => (
+          <Paper themeId={themeId} style={{ borderRadius: '2px' }} color="accent-primary">
+            <Button
+              onClick={() => {
+                console.log('closing');
+                close();
+              }}
+              contrast
+              shape="brick"
+              weight="ghost"
+            >
+              Close
+            </Button>
+          </Paper>
+        )}
+        toggler={<BlobbrIcon scale="xxxlarge" />}
+        triangleColor={themes[themeId]['color-accent-primary']}
+        withChildrenProps
+      />
+    )}
+  </ThemeWrapper>
+</Playground>
+
+<div style={{ height: 50 }} />
 
 # TextTooltip
 

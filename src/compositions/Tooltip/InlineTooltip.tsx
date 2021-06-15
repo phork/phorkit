@@ -10,6 +10,7 @@ export interface InlineTooltipProps extends Omit<InlinePopoverProps, 'position'>
   position?: AnyPosition;
   tooltipClassName?: string;
   triangleBorderColor?: string;
+  triangleBorderWidth?: number;
   triangleColor: string;
   triangleSize?: number;
 }
@@ -23,6 +24,7 @@ export function InlineTooltip({
   renderChildren,
   tooltipClassName,
   triangleBorderColor,
+  triangleBorderWidth,
   triangleColor,
   triangleSize,
   withChildrenProps,
@@ -35,7 +37,7 @@ export function InlineTooltip({
       centered
       offset={offset}
       position={position}
-      renderChildren={({ focusable, focusRef, isTogglerFocused, offset, position, visible }) => {
+      renderChildren={({ close, focusable, focusRef, isTogglerFocused, offset, position, visible }) => {
         if (position === 'stacked' || position === 'stacked-right') {
           throw new Error('Invalid tooltip position');
         }
@@ -47,6 +49,7 @@ export function InlineTooltip({
             offset={offset}
             position={position}
             triangleBorderColor={triangleBorderColor}
+            triangleBorderWidth={triangleBorderWidth}
             triangleColor={triangleColor}
             triangleSize={triangleSize}
           >

@@ -78,7 +78,7 @@ export function PortalDropover({
       height={height}
       offset={offset}
       position={isRightAligned ? 'stacked-right' : 'stacked'}
-      renderChildren={({ focusable, focusRef, isTogglerFocused, offset: childrenOffset, position, visible }) => {
+      renderChildren={({ close, focusable, focusRef, isTogglerFocused, offset: childrenOffset, position, visible }) => {
         if (position !== 'stacked' && position !== 'stacked-right') {
           throw new Error('Invalid dropover position');
         }

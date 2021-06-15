@@ -5,6 +5,7 @@ route: /compositions/Dropover
 ---
 
 import { Playground, Props } from 'docz';
+import { Button } from 'components/Button';
 import { Link } from 'components/Link';
 import { Typography } from 'components/Typography';
 import { PageTitle } from 'docs/helpers/PageTitle';
@@ -155,6 +156,43 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
         </Typography>
       </DropoverContent>
     </PortalDropover>
+  </ThemeWrapper>
+</Playground>
+
+## Portal dropover with close button
+
+<Playground>
+  <ThemeWrapper>
+    <PortalDropover
+      portal="absolute"
+      label={
+        <DropoverLabel>
+          <Typography color="primary" size="l" variants="line-height-normal" weight="bold">
+            Hello world
+          </Typography>
+        </DropoverLabel>
+      }
+      renderChildren={({ close }) => (
+        <DropoverContent>
+          <Typography size="m" variants="line-height-comfy">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eros neque, ullamcorper at erat quis,
+            eleifend gravida{' '}
+            <Button
+              color="primary"
+              weight="inline"
+              onClick={() => {
+                console.log('closing');
+                close();
+              }}
+            >
+              close
+            </Button>
+            .
+          </Typography>
+        </DropoverContent>
+      )}
+      withChildrenProps
+    />
   </ThemeWrapper>
 </Playground>
 

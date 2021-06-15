@@ -770,6 +770,34 @@ import { horizontal, vertical } from './helpers/config';
   </ThemeWrapper>
 </Playground>
 
+## Popover with close button
+
+<Playground>
+  <ThemeWrapper>
+    <PortalPopover
+      focusable
+      height={32}
+      offset={{ vertical, horizontal: 20 }}
+      position="right-center"
+      renderChildren={({ close }) => (
+        <Button
+          onClick={() => {
+            console.log('closing');
+            close();
+          }}
+          color="primary"
+          weight="shaded"
+        >
+          Close
+        </Button>
+      )}
+      toggler={<BlobbrIcon scale="xxxlarge" />}
+      width={150}
+      withChildrenProps
+    />
+  </ThemeWrapper>
+</Playground>
+
 ## Popovers with focus
 
 <Playground>

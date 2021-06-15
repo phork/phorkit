@@ -12,6 +12,7 @@ export interface TooltipContentProps extends React.HTMLAttributes<HTMLDivElement
   offset: PositionOffset;
   position?: AnyPosition;
   triangleBorderColor?: string;
+  triangleBorderWidth?: number;
   triangleColor: string;
   triangleSize?: number;
 }
@@ -43,30 +44,30 @@ const getTrianglePosition = (position: AnyPosition): SimplePosition | CornerPosi
 
 const getTriangleSize = ({
   baseSize,
-  borderWidth,
+  triangleBorderWidth,
   isBorder,
   position,
 }: {
   baseSize?: number;
-  borderWidth?: number;
+  triangleBorderWidth?: number;
   isBorder?: boolean;
   position: AnyPosition;
 }) => {
   const trianglePosition = getTrianglePosition(position);
   if (trianglePosition && ['top-left', 'top-right', 'bottom-left', 'bottom-right'].includes(trianglePosition)) {
-    return (baseSize || 6) + (isBorder && borderWidth ? borderWidth : 0);
+    return (baseSize || 6) + (isBorder && triangleBorderWidth ? triangleBorderWidth : 0);
   }
-  return (baseSize || 8) + (isBorder && borderWidth ? borderWidth * 2 : 0);
+  return (baseSize || 8) + (isBorder && triangleBorderWidth ? triangleBorderWidth * 2 : 0);
 };
 
 const getTriangleStyle = ({
-  borderWidth,
+  triangleBorderWidth,
   hasBorder,
   isBorder,
   offset,
   position,
 }: {
-  borderWidth?: number;
+  triangleBorderWidth?: number;
   hasBorder?: boolean;
   isBorder?: boolean;
   offset?: PositionOffset;
@@ -84,21 +85,21 @@ const getTriangleStyle = ({
   }
 
   // adjust the triangle to create the border effect
-  if (hasBorder && borderWidth) {
+  if (hasBorder && triangleBorderWidth) {
     if (['bottom-left', 'bottom-center', 'bottom-right'].includes(position)) {
-      triangleStyle.top = isBorder ? -borderWidth : borderWidth;
+      triangleStyle.top = isBorder ? -triangleBorderWidth : triangleBorderWidth;
     } else if (['top-left', 'top-center', 'top-right'].includes(position)) {
-      triangleStyle.bottom = isBorder ? -borderWidth : borderWidth;
+      triangleStyle.bottom = isBorder ? -triangleBorderWidth : triangleBorderWidth;
     } else if (['left-top', 'left-center', 'left-bottom'].includes(position)) {
-      triangleStyle.right = isBorder ? -borderWidth : borderWidth;
+      triangleStyle.right = isBorder ? -triangleBorderWidth : triangleBorderWidth;
     } else if (['right-top', 'right-center', 'right-bottom'].includes(position)) {
-      triangleStyle.left = isBorder ? -borderWidth : borderWidth;
+      triangleStyle.left = isBorder ? -triangleBorderWidth : triangleBorderWidth;
     }
 
     if (['left-top', 'right-top'].includes(position) && !isBorder) {
-      triangleStyle.top = borderWidth;
+      triangleStyle.top = triangleBorderWidth;
     } else if (['left-bottom', 'right-bottom'].includes(position) && !isBorder) {
-      triangleStyle.bottom = borderWidth;
+      triangleStyle.bottom = triangleBorderWidth;
     }
   }
 
@@ -113,12 +114,11 @@ export function TooltipContent({
   position = 'top-center',
   style,
   triangleBorderColor,
+  triangleBorderWidth = 1,
   triangleColor,
   triangleSize,
   ...props
 }: TooltipContentProps): React.ReactElement | null {
-  const borderWidth = 1;
-
   return position ? (
     <div
       className={cx(styles.tooltip, styles[`tooltip--${lowerCamelize(position)}`], className)}
@@ -135,8 +135,8 @@ export function TooltipContent({
           className={cx(styles.tooltip__triangle)}
           color={triangleBorderColor}
           position={getTrianglePosition(position)}
-          size={getTriangleSize({ baseSize: triangleSize, position, borderWidth, isBorder: true })}
-          style={getTriangleStyle({ position, offset, borderWidth, hasBorder: true, isBorder: true })}
+          size={getTriangleSize({ baseSize: triangleSize, position, triangleBorderWidth, isBorder: true })}
+          style={getTriangleStyle({ position, offset, triangleBorderWidth, hasBorder: true, isBorder: true })}
         />
       )}
 
@@ -144,8 +144,8 @@ export function TooltipContent({
         className={cx(styles.tooltip__triangle)}
         color={triangleColor}
         position={getTrianglePosition(position)}
-        size={getTriangleSize({ baseSize: triangleSize, position, borderWidth })}
-        style={getTriangleStyle({ position, offset, hasBorder: !!triangleBorderColor, borderWidth })}
+        size={getTriangleSize({ baseSize: triangleSize, position, triangleBorderWidth })}
+        style={getTriangleStyle({ position, offset, hasBorder: !!triangleBorderColor, triangleBorderWidth })}
       />
 
       {children}
