@@ -9,12 +9,13 @@ import { themes } from 'config/themes';
 import { SearchIcon } from 'icons/SearchIcon';
 import { TagIcon } from 'icons/internal/TagIcon';
 import { Flex } from 'components/Flex';
+import { Rhythm } from 'components/Rhythm';
 import { ListProps } from 'docs/helpers/ListProps';
 import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { Dropdown, DropdownContent, DropdownEmpty, ControlledDropdown } from '../index';
+import { Dropdown, DropdownContent, DropdownEmpty, ControlledDropdown, NotifiedControlledDropdown } from '../index';
 import { MultiVariantDropdown } from './helpers/MultiVariantDropdown';
 import { options, handleFilter, handleEmptyFilter } from './helpers/options';
 import { variants } from './helpers/variants.js';
@@ -224,7 +225,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
   </ThemeWrapper>
 </Playground>
 
-## Empty dropdown
+## Dropdown without options
 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
@@ -239,7 +240,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
   </ThemeWrapper>
 </Playground>
 
-### Empty filterable dropdown
+### Filterable dropdown without options
 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
@@ -262,69 +263,101 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 ### Danger dropdown
 
 <Playground>
-  <ThemeWrapper style={{ height: '300px' }}>
-    <div style={{ maxWidth: 300 }}>
-      <ControlledDropdown
-        id="demo-danger-dropdown"
-        initialSelected={[options[3]]}
-        label="Super awesome dropdown"
-        onSelect={value => console.log('select', value)}
-        options={options}
-        validity="danger"
+  <ThemeWrapper>
+    <Flex direction="row" justifyContent="space-between" full wrap>
+      <Looper
+        list={variants}
+        render={variant => (
+          <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
+            <ControlledDropdown
+              id="demo-danger-dropdown"
+              initialSelected={[options[3]]}
+              inputVariant={variant}
+              label="Super awesome dropdown"
+              onSelect={value => console.log('select', value)}
+              options={options}
+              validity="danger"
+            />
+          </div>
+        )}
       />
-    </div>
+    </Flex>
   </ThemeWrapper>
 </Playground>
 
 ### Warning dropdown
 
 <Playground>
-  <ThemeWrapper style={{ height: '300px' }}>
-    <div style={{ maxWidth: 300 }}>
-      <ControlledDropdown
-        id="demo-danger-dropdown"
-        initialSelected={[options[3]]}
-        label="Super awesome dropdown"
-        onInputChange={value => console.log('change', value)}
-        onSelect={value => console.log('select', value)}
-        options={options}
-        validity="warning"
+  <ThemeWrapper>
+    <Flex direction="row" justifyContent="space-between" full wrap>
+      <Looper
+        list={variants}
+        render={variant => (
+          <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
+            <ControlledDropdown
+              initialSelected={[options[3]]}
+              inputVariant={variant}
+              label="Super awesome dropdown"
+              onInputChange={value => console.log('change', value)}
+              onSelect={value => console.log('select', value)}
+              options={options}
+              transitional
+              validity="warning"
+            />
+          </div>
+        )}
       />
-    </div>
+    </Flex>
   </ThemeWrapper>
 </Playground>
 
 ### Success dropdown
 
 <Playground>
-  <ThemeWrapper style={{ height: '300px' }}>
-    <div style={{ maxWidth: 300 }}>
-      <ControlledDropdown
-        id="demo-danger-dropdown"
-        initialSelected={[options[3]]}
-        label="Super awesome dropdown"
-        onSelect={value => console.log('select', value)}
-        options={options}
-        validity="success"
+  <ThemeWrapper>
+    <Flex direction="row" justifyContent="space-between" full wrap>
+      <Looper
+        list={variants}
+        render={variant => (
+          <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
+            <ControlledDropdown
+              initialSelected={[options[3]]}
+              inputVariant={variant}
+              label="Super awesome dropdown"
+              onSelect={value => console.log('select', value)}
+              options={options}
+              transitional
+              validity="success"
+            />
+          </div>
+        )}
       />
-    </div>
+    </Flex>
   </ThemeWrapper>
 </Playground>
 
 ### Contrast dropdown
 
 <Playground>
-  <ThemeWrapper contrast style={{ height: '300px' }}>
-    <div style={{ maxWidth: 300 }}>
-      <ControlledDropdown
-        contrast
-        id="demo-contrast-dropdown"
-        initialSelected={[options[3]]}
-        label="Super awesome dropdown"
-        onSelect={value => console.log('select', value)}
-        options={options}
+  <ThemeWrapper contrast>
+    <Flex direction="row" justifyContent="space-between" full wrap>
+      <Looper
+        list={variants}
+        render={variant => (
+          <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
+            <ControlledDropdown
+              contrast
+              initialSelected={[options[3]]}
+              inputVariant={variant}
+              label="Super awesome dropdown"
+              onSelect={value => console.log('select', value)}
+              options={options}
+              transitional
+            />
+          </div>
+        )}
       />
-    </div>
+    </Flex>
   </ThemeWrapper>
 </Playground>
 
@@ -391,6 +424,62 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
         />
       </div>
     )}
+  </ThemeWrapper>
+</Playground>
+
+## Notifications
+
+<Playground>
+  <ThemeWrapper>
+    <Looper
+      list={['success', 'danger', 'warning', 'primary', 'neutral']}
+      render={level => (
+        <Rhythm py={3}>
+          <Flex direction="row" justifyContent="space-between" full wrap>
+            <Looper
+              list={variants}
+              render={variant => (
+                <div
+                  style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}
+                >
+                  <NotifiedControlledDropdown
+                    initialSelected={[options[3]]}
+                    inputVariant={variant}
+                    label="Super awesome dropdown"
+                    layout="raised"
+                    onItemFocus={(event, value) => console.log('focus', value)}
+                    onSelect={value => console.log('select', value)}
+                    onUnselect={value => console.log('unselect', value)}
+                    onSelectionChange={value => console.log('selection change', value)}
+                    options={options}
+                    transitional
+                    level={level}
+                    notification={`This is an example ${level} notification.`}
+                  />
+                </div>
+              )}
+            />
+          </Flex>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Playground>
+
+<div style={{ height: 50 }} />
+
+<Playground>
+  <ThemeWrapper style={{ height: '300px' }}>
+    <div style={{ maxWidth: 300 }}>
+      <NotifiedControlledDropdown
+        label="Super awesome dropdown"
+        onSelect={value => console.log('select', value)}
+        options={[]}
+        transitional
+        level="primary"
+        notification={`This dropdown has no options.`}
+      />
+    </div>
   </ThemeWrapper>
 </Playground>
 

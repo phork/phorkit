@@ -87,6 +87,7 @@ export interface DropdownProps
   searchable?: boolean;
   transitional?: boolean;
   translations?: DropdownTranslations;
+  usingNotification?: boolean;
   validity?: StateColor;
 }
 
@@ -135,6 +136,7 @@ function DropdownBase(
     searchable,
     themeId: initThemeId,
     unthemed,
+    usingNotification,
     transitional,
     translations: customTranslations,
     validity,
@@ -606,6 +608,7 @@ function DropdownBase(
         filter={dropdownState.input}
         focused={isListFocused}
         hideNoContent={hideNoContent}
+        inlineDropdownEmpty={usingNotification}
         inputVariant={inputVariant}
         isDropdownVisible={isDropdownVisible}
         isEmpty={isListEmpty}

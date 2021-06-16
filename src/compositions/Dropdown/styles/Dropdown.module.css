@@ -68,6 +68,10 @@
   }
 }
 
+.dropdownOptionsContainer--inline {
+  position: relative;
+}
+
 .dropdownOptionsContainer--contained {
   &:before {
     background-color: var(--dropdown-options-contained-background-color);

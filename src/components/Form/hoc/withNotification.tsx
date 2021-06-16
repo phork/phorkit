@@ -16,9 +16,10 @@ export type NotifiedComponentProps<WrappedComponentProps extends {}> = MergeProp
   LocalNotifiedComponentProps
 >;
 
-export function withNotification<WrappedComponentProps, E extends HTMLElement>(
+export function withNotification<WrappedComponentProps, E>(
   WrappedComponent: React.FC<WrappedComponentProps>,
   { withDivider }: WithNotificationOptions = {},
+  componentProps?: Partial<Omit<WrappedComponentProps, 'contrast' | 'width' | 'ref'>>,
 ) {
   function NotifiedComponent({
     contrast,
@@ -42,6 +43,7 @@ export function withNotification<WrappedComponentProps, E extends HTMLElement>(
           contrast={contrast}
           width={width}
           ref={forwardedRef}
+          {...((componentProps as unknown) as WrappedComponentProps)}
           {...((props as unknown) as WrappedComponentProps)}
         />
       </Notification>

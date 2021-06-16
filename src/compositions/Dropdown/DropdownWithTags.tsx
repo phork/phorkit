@@ -24,7 +24,7 @@ export type DropdownWithTagsOption = DropdownOption & {
 export interface DropdownWithTagsProps extends Omit<DropdownProps, 'initialSelected' | 'options' | 'reducer'> {
   initialSelected?: DropdownOption[];
   options: DropdownWithTagsOption[];
-  tagGroupProps: Omit<TagGroupProps, 'size'>;
+  tagGroupProps?: Omit<TagGroupProps, 'size'>;
   tagShape?: TagShape;
   tagSize?: TagSize;
   tagVariant?: TagVariant;

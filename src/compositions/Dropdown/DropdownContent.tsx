@@ -30,6 +30,8 @@ export interface LocalDropdownContentProps extends ThemeProps {
   filter?: string;
   focused?: boolean;
   hideNoContent?: boolean;
+  /** The empty dropdown notification should be inline when using withNotification */
+  inlineDropdownEmpty?: boolean;
   inputVariant?: DropdownInputVariant;
   isDropdownVisible?: boolean;
   isEmpty?: boolean;
@@ -68,6 +70,7 @@ function DropdownContentBase(
     filter,
     focused,
     hideNoContent,
+    inlineDropdownEmpty,
     inputVariant,
     isDropdownVisible,
     isEmpty,
@@ -156,6 +159,7 @@ function DropdownContentBase(
 
   const listDefaults = getListDefaults(layout);
   const variant = listVariant || listDefaults.variant;
+  const showNoContent = !hideNoContent && items.length === 0;
 
   return items ? (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
@@ -163,6 +167,7 @@ function DropdownContentBase(
       className={cx(
         styles.dropdownOptionsContainer,
         layout && styles[`dropdownOptionsContainer--${layout}`],
+        inlineDropdownEmpty && showNoContent && styles['dropdownOptionsContainer--inline'],
         inputVariant && styles[`dropdownOptionsContainer--${inputVariant}`],
         accessible && styles['is-accessible'],
         focused && styles['is-focused'],

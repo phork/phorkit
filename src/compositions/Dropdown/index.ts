@@ -5,4 +5,6 @@ export * from './DropdownContent';
 export * from './DropdownEmpty';
 export * from './dropdownReducer';
 export * from './DropdownWithTags';
+export * from './NotifiedControlledDropdown';
+export * from './NotifiedDropdown';
 export * from './types';
