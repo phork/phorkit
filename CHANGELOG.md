@@ -1,5 +1,15 @@
 # Changelog
 
+# [7.2.0](https://github.com/phork/phorkit/compare/v7.1.3...v7.2.0) (2021-06-16)
+
+### ✨ Features
+
+- added notified dropdown components ([93fb1fe](https://github.com/phork/phorkit/commit/93fb1fe))
+
+### 🐛 Bug Fixes
+
+- totally hide dropdown scrollbar ([28f59f6](https://github.com/phork/phorkit/commit/28f59f6))
+
 ## [7.1.3](https://github.com/phork/phorkit/compare/v7.1.2...v7.1.3) (2021-06-16)
 
 ### 🐛 Bug Fixes
