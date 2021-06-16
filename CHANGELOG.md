@@ -1,5 +1,11 @@
 # Changelog
 
+## [7.1.3](https://github.com/phork/phorkit/compare/v7.1.2...v7.1.3) (2021-06-16)
+
+### 🐛 Bug Fixes
+
+- pass correct close function to popover children ([2592c07](https://github.com/phork/phorkit/commit/2592c07))
+
 ## [7.1.2](https://github.com/phork/phorkit/compare/v7.1.1...v7.1.2) (2021-06-15)
 
 ### 🐛 Bug Fixes
