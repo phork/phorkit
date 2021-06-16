@@ -183,7 +183,7 @@
  *    is hidden.
  */
 .dropdownOptions {
-  @mixin addScrollbar transparent, transparent, 0, 0, 0, 0;
+  @mixin removeScrollbar;
 
   border-radius: inherit;
   margin-top: -1px; /* [1] */

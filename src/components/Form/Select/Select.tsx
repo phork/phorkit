@@ -15,6 +15,7 @@ export type SelectOption = {
 };
 
 export type SelectOptionPlaceholder = {
+  /** If a placeholder is disabled it can't be clicked as a way to unselect the current value */
   disabled?: boolean;
   /** The placeholder label shown in the form view when the select is closed */
   label: string;

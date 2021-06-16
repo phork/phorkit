@@ -16,7 +16,7 @@
  *  a single color for the border and text. On hover an outlined
  *  fill should transition to a shaded fill.
  *
- * Ghost: A transparent background and border. This inly uses the
+ * Ghost: A transparent background and border. This only uses the
  *  color for the text. On hover a ghost fill should transition to
  *  a shaded fill without a border.
  *
@@ -105,7 +105,7 @@ const makeShade = (mixin, primaryColor) => ({
   },
 });
 
-// this is necessary so that makeShade's :after doesn't overwrite prepareShade's
+// this is necessary so that makeShade's :before doesn't overwrite prepareShade's
 const prepareAndMakeShade = (mixin, primaryColor, withBorder) => ({
   '&:before': {
     ...Object.values(prepareShade(mixin, withBorder))[0],

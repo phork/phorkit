@@ -47,3 +47,7 @@
 @define-mixin addXSmallScrollbar $thumbColor: var(--scrollbar-thumb-color), $trackColor: var(--scrollbar-track-color, transparent) {
   @mixin addScrollbar $thumbColor, $trackColor, 2px, 0, 32px, 0;
 }
+
+@define-mixin removeScrollbar {
+  @mixin addScrollbar transparent, transparent, 0, 0, 0, 0;
+}
