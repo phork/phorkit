@@ -48,6 +48,6 @@
   @mixin addScrollbar $thumbColor, $trackColor, 2px, 0, 32px, 0;
 }
 
-@define-mixin removeScrollbar {
+@define-mixin addHiddenScrollbar {
   @mixin addScrollbar transparent, transparent, 0, 0, 0, 0;
 }

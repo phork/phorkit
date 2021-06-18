@@ -12,6 +12,10 @@
   @mixin addXSmallScrollbar var(--scrollbar-thumb-color), var(--scrollbar-track-color, transparent);
 }
 
+.scrollbar--hidden {
+  @mixin addHiddenScrollbar;
+}
+
 .scrollbar--primary {
   &.scrollbar--light {
     --scrollbar-thumb-color: $light-primary-scrollbar-thumb-color;

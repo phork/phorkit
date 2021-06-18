@@ -121,11 +121,11 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <Rhythm m={6}>
+      <Rhythm my={6} mx={8}>
         <InlinePopover
           hoverable
           position="top-center"
-          toggler={<BlobbrIcon scale="xlarge" />}
+          toggler={<BlobbrIcon scale="xlarge" title="" />}
           offset={{ vertical: 10 }}
           closeDelay={0}
         >
@@ -390,119 +390,63 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
 <div style="height: 50px" />
 
 <Playground>
-  <ThemeWrapper withThemeId>
+  <ThemeWrapper style={{ paddingTop: 100, paddingBottom: 100 }} withThemeId>
     {({ themeId }) => (
-      <Flex direction="row" justifyContent="space-between" alignItems="center" wrap>
-        <PortalTooltip
-          height={200}
-          initialVisible
-          permanent
-          position="right-center"
-          toggler={<BlobbrIcon size={40} />}
-          triangleBorderColor={themes[themeId]['secondary-palette-border-color']}
-          triangleColor={themes[themeId]['secondary-palette-background-color']}
-          width={300}
+      <PortalTooltip
+        height={200}
+        initialVisible
+        permanent
+        position="right-center"
+        toggler={<BlobbrIcon size={40} />}
+        triangleBorderColor={themes[themeId]['secondary-palette-border-color']}
+        triangleColor={themes[themeId]['secondary-palette-background-color']}
+        width={300}
+      >
+        <div
+          className={cx(
+            scrollbar['scrollbar--small'],
+            scrollbar['scrollbar--primary'],
+            scrollbar[`scrollbar--${themeId}`],
+          )}
+          style={{
+            height: '200px',
+            width: '300px',
+            overflowY: 'auto',
+            margin: '1px',
+            boxShadow: themes[themeId]['box-shadow-10'],
+          }}
         >
-          <div
-            className={cx(
-              scrollbar['scrollbar--small'],
-              scrollbar['scrollbar--primary'],
-              scrollbar[`scrollbar--${themeId}`],
-            )}
-            style={{
-              height: '200px',
-              width: '300px',
-              overflowY: 'auto',
-              margin: '1px',
-              boxShadow: themes[themeId]['box-shadow-10'],
-            }}
-          >
-            <List as="div" variant="bordered">
-              <Looper
-                start={0}
-                end={5}
-                render={i => (
-                  <ListItem
-                    key={i}
-                    disabled={i === 4}
-                    style={{ '--list-item-text-color': themes[themeId]['primary-palette-text-color'] }}
-                  >
-                    <Flex direction="row" alignItems="center" justifyContent="flex-start">
-                      <Avatar
-                        imgSrc="/public/images/avatar.jpg"
-                        initials="EC"
-                        style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
-                      />
-                      <Rhythm mx={4}>
-                        <Flex flexible>
-                          <Typography weight="bold">Elenor C.</Typography>
-                        </Flex>
-                      </Rhythm>
-                      <Typography color="accent-primary" variants="line-height-smash">
-                        <CheckIcon scale="medium" />
-                      </Typography>
-                    </Flex>
-                  </ListItem>
-                )}
-              />
-            </List>
-          </div>
-        </PortalTooltip>
-        <PortalPopover
-          height={200}
-          offset={{ vertical: -3 }}
-          position="bottom-center"
-          toggler={
-            <Toast level="info" title="Hello world">
-              This is a clickable toast with a fancy list popover.
-            </Toast>
-          }
-          width={300}
-        >
-          <div
-            className={cx(
-              scrollbar['scrollbar--small'],
-              scrollbar['scrollbar--primary'],
-              scrollbar[`scrollbar--${themeId}`],
-            )}
-            style={{ height: '100%', overflowY: 'auto', boxShadow: themes[themeId]['box-shadow-10'] }}
-          >
-            <List
-              as="div"
-              style={{ borderLeft: `4px solid ${themes[themeId]['secondary-palette-accent-color']}` }}
-              variant="divided"
-            >
-              <Looper
-                start={0}
-                end={5}
-                render={i => (
-                  <ListItem
-                    key={i}
-                    disabled={i === 4}
-                    style={{ '--list-item-text-color': themes[themeId]['primary-palette-text-color'] }}
-                  >
-                    <Flex direction="row" alignItems="center" justifyContent="flex-start">
-                      <Avatar
-                        imgSrc="/public/images/avatar.jpg"
-                        initials="EC"
-                        style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
-                      />
-                      <Rhythm mx={4}>
-                        <Flex flexible>
-                          <Typography weight="bold">Elenor C.</Typography>
-                        </Flex>
-                      </Rhythm>
-                      <Typography color="accent-primary" variants="line-height-smash">
-                        <CheckIcon scale="medium" />
-                      </Typography>
-                    </Flex>
-                  </ListItem>
-                )}
-              />
-            </List>
-          </div>
-        </PortalPopover>
-      </Flex>
+          <List as="div" variant="bordered">
+            <Looper
+              start={0}
+              end={5}
+              render={i => (
+                <ListItem
+                  key={i}
+                  disabled={i === 4}
+                  style={{ '--list-item-text-color': themes[themeId]['primary-palette-text-color'] }}
+                >
+                  <Flex direction="row" alignItems="center" justifyContent="flex-start">
+                    <Avatar
+                      imgSrc="/public/images/avatar.jpg"
+                      initials="EC"
+                      style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
+                    />
+                    <Rhythm mx={4}>
+                      <Flex flexible>
+                        <Typography weight="bold">Elenor C.</Typography>
+                      </Flex>
+                    </Rhythm>
+                    <Typography color="accent-primary" variants="line-height-smash">
+                      <CheckIcon scale="medium" />
+                    </Typography>
+                  </Flex>
+                </ListItem>
+              )}
+            />
+          </List>
+        </div>
+      </PortalTooltip>
     )}
   </ThemeWrapper>
 </Playground>
@@ -555,7 +499,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
         ...option,
       }));
       return (
-        <div style={{ width: '400px', maxWidth: '100%', height: '200px' }}>
+        <div style={{ width: '400px', maxWidth: '100%', height: '224px' }}>
           <ControlledDropdown
             arrowIconSize={12}
             initialSelected={[options[0]]}
@@ -641,7 +585,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
         ...option,
       }));
       return (
-        <div style={{ width: '300px', maxWidth: '100%', height: '300px' }}>
+        <div style={{ width: '300px', maxWidth: '100%', height: '224px' }}>
           <ControlledDropdown
             arrowIconSize={12}
             initialSelected={[options[0]]}
@@ -671,6 +615,150 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
         </div>
       );
     }}
+  </ThemeWrapper>
+</Playground>
+
+## Fancy toast
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <Toast id="demo-triangle-toast" immediate title="Hello world" level="info">
+        This is an info toast with a triangle!
+        <Position location="top-right" variant="inside">
+          <Triangle position="top-right" size={18} color={themes[themeId]['secondary-palette-accent-color']}>
+            <Typography
+              color="contrast"
+              as="div"
+              size="xxs"
+              style={{ position: 'absolute', top: 0, left: 0, transform: 'rotate(45deg) translate(50%, -20%)' }}
+              variants={['uppercase', 'letter-spacing-comfy']}
+              weight="bold"
+            >
+              Beta
+            </Typography>
+          </Triangle>
+        </Position>
+      </Toast>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+## Fancy cards
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <Rhythm m={2} grouped style={{ width: '300px' }}>
+        <Card raised full>
+          <StyledHeader backgroundColor="#393945" textColor="#fff" height={50}>
+            <Rhythm px={5}>Fancy card</Rhythm>
+          </StyledHeader>
+          <Paper color="secondary">
+            <Rhythm my={12}>
+              <Flex direction="row" alignItems="center" justifyContent="center" full>
+                <Typography volume="quietest">
+                  <MoonIcon size={48} />
+                </Typography>
+              </Flex>
+            </Rhythm>
+          </Paper>
+          <Divider volume="quieter" />
+          <Rhythm px={5} py={4}>
+            <Paper color="primary">
+              <Flex direction="row" justifyContent="space-between">
+                {[
+                  { id: 'first', label: 'First', value: 'Super' },
+                  { id: 'second', label: 'Second', value: 'Awesome' },
+                  { id: 'third', label: 'Third', value: 'Value' },
+                ].map(({ id, label, value }, i) => (
+                  <React.Fragment key={id}>
+                    <Flex justifyContent="center" direction="column" flexible>
+                      <Typography color="secondary" size="xs" weight="bold" variants={['line-height-comfy', 'no-wrap']}>
+                        {value}
+                      </Typography>
+                      <Typography variants={['xsmall-caps']} volume="quiet">
+                        {label}
+                      </Typography>
+                    </Flex>
+                    {i < 2 && (
+                      <Rhythm mr={4}>
+                        <Divider volume="quieter" orientation="vertical" style={{ height: '24px' }} />
+                      </Rhythm>
+                    )}
+                  </React.Fragment>
+                ))}
+              </Flex>
+            </Paper>
+          </Rhythm>
+          <Footer bordered volume="quiet">
+            <Rhythm px={5}>
+              <Flex full direction="row" alignItems="center" justifyContent="space-between" style={{ height: '48px' }}>
+                <IconCount label="Example" icon={CheckIcon} count={13} />
+                <IconCount label="Example" icon={TimesIcon} iconSize={10} count={24} />
+                <IconCount label="Example" icon={HeartIcon} iconSize={15} count={9} />
+                <IconCount label="Example" icon={BlobbrIcon} />
+              </Flex>
+            </Rhythm>
+          </Footer>
+        </Card>
+      </Rhythm>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+<div style={{ height: 50 }} />
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <Rhythm m={2} grouped style={{ width: '200px', maxWidth: '100%' }}>
+        <Card hoverable raised magnify full>
+          <div style={{ position: 'relative' }}>
+            <img
+              src="/public/images/avatar.jpg"
+              width="100%"
+              alt="Card hero"
+              style={{
+                opacity: 0.3,
+                filter: 'blur(3px) grayscale(1)',
+                transform: 'scale(1.1)',
+              }}
+            />
+            <Position location="top-right" variant="inside">
+              <Triangle position="top-right" size={18} color={themes[themeId]['secondary-palette-accent-color']}>
+                <Typography
+                  color="contrast"
+                  as="div"
+                  size="xxs"
+                  style={{ position: 'absolute', top: 0, left: 0, transform: 'rotate(45deg) translate(50%, -20%)' }}
+                  variants={['uppercase', 'letter-spacing-comfy']}
+                  weight="bold"
+                >
+                  Beta
+                </Typography>
+              </Triangle>
+            </Position>
+            <StyledLoader size={90} color="#fff" style={{ opacity: 0.9 }} position="absolute" />
+          </div>
+          <Paper color="primary">
+            <Rhythm p={3}>
+              <List
+                inactive
+                rounded
+                variant="unboxed"
+                items={[
+                  { id: 'normal0', label: 'Normal' },
+                  { id: 'selected', label: 'Selected', selected: true },
+                  { id: 'normal1', label: 'Normal' },
+                  { id: 'normal2', label: 'Normal' },
+                ]}
+              />
+            </Rhythm>
+          </Paper>
+        </Card>
+      </Rhythm>
+    )}
   </ThemeWrapper>
 </Playground>
 
@@ -793,176 +881,6 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
           />
         </Card>
       </ScaleProvider>
-    )}
-  </ThemeWrapper>
-</Playground>
-
-## Fancy toast
-
-<Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <Flex direction="row" justifyContent="space-between" wrap>
-        <Toast id="demo-triangle-toast" immediate title="Hello world" level="info">
-          This is an info toast with a triangle!
-          <Position location="top-right" variant="inside">
-            <Triangle position="top-right" size={18} color={themes[themeId]['secondary-palette-accent-color']}>
-              <Typography
-                color="contrast"
-                as="div"
-                size="xxs"
-                style={{ position: 'absolute', top: 0, left: 0, transform: 'rotate(45deg) translate(50%, -20%)' }}
-                variants={['uppercase', 'letter-spacing-comfy']}
-                weight="bold"
-              >
-                Beta
-              </Typography>
-            </Triangle>
-          </Position>
-        </Toast>
-        <Toast id="demo-marker-toast" level="info">
-          <Flex direction="row" justifyContent="flex-start" alignItems="center">
-            <Rhythm mr={2}>
-              <Badge shape="marker" color="danger" />
-            </Rhythm>
-            <Typography color="danger">I am a bad thing.</Typography>
-          </Flex>
-          <Flex direction="row" justifyContent="flex-start" alignItems="center">
-            <Rhythm mr={2}>
-              <Badge shape="marker" color="warning" />
-            </Rhythm>
-            <Typography color="warning">I am an ok thing.</Typography>
-          </Flex>
-          <Flex direction="row" justifyContent="flex-start" alignItems="center">
-            <Rhythm mr={2}>
-              <Badge shape="marker" color="success" />
-            </Rhythm>
-            <Typography color="success">I am a good thing.</Typography>
-          </Flex>
-        </Toast>
-      </Flex>
-    )}
-  </ThemeWrapper>
-</Playground>
-
-## Fancy cards
-
-<Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <Flex direction="row" alignItems="flex-start" justifyContent="space-between" wrap>
-        <Rhythm m={2} grouped style={{ width: '200px', maxWidth: '100%' }}>
-          <Card hoverable raised magnify full>
-            <div style={{ position: 'relative' }}>
-              <img
-                src="/public/images/avatar.jpg"
-                width="100%"
-                alt="Card hero"
-                style={{
-                  opacity: 0.3,
-                  filter: 'blur(3px) grayscale(1)',
-                  transform: 'scale(1.1)',
-                }}
-              />
-              <Position location="top-right" variant="inside">
-                <Triangle position="top-right" size={18} color={themes[themeId]['secondary-palette-accent-color']}>
-                  <Typography
-                    color="contrast"
-                    as="div"
-                    size="xxs"
-                    style={{ position: 'absolute', top: 0, left: 0, transform: 'rotate(45deg) translate(50%, -20%)' }}
-                    variants={['uppercase', 'letter-spacing-comfy']}
-                    weight="bold"
-                  >
-                    Beta
-                  </Typography>
-                </Triangle>
-              </Position>
-              <StyledLoader size={90} color="#fff" style={{ opacity: 0.9 }} position="absolute" />
-            </div>
-            <Paper color="primary">
-              <Rhythm p={3}>
-                <List
-                  inactive
-                  rounded
-                  variant="unboxed"
-                  items={[
-                    { id: 'normal0', label: 'Normal' },
-                    { id: 'selected', label: 'Selected', selected: true },
-                    { id: 'normal1', label: 'Normal' },
-                    { id: 'normal2', label: 'Normal' },
-                  ]}
-                />
-              </Rhythm>
-            </Paper>
-          </Card>
-        </Rhythm>
-        <Rhythm m={2} grouped style={{ width: '300px' }}>
-          <Card raised full>
-            <StyledHeader backgroundColor="#393945" textColor="#fff" height={50}>
-              <Rhythm px={5}>Fancy card</Rhythm>
-            </StyledHeader>
-            <Paper color="secondary">
-              <Rhythm my={12}>
-                <Flex direction="row" alignItems="center" justifyContent="center" full>
-                  <Typography volume="quietest">
-                    <MoonIcon size={48} />
-                  </Typography>
-                </Flex>
-              </Rhythm>
-            </Paper>
-            <Divider volume="quieter" />
-            <Rhythm px={5} py={4}>
-              <Paper color="primary">
-                <Flex direction="row" justifyContent="space-between">
-                  {[
-                    { id: 'first', label: 'First', value: 'Super' },
-                    { id: 'second', label: 'Second', value: 'Awesome' },
-                    { id: 'third', label: 'Third', value: 'Value' },
-                  ].map(({ id, label, value }, i) => (
-                    <React.Fragment key={id}>
-                      <Flex justifyContent="center" direction="column" flexible>
-                        <Typography
-                          color="secondary"
-                          size="xs"
-                          weight="bold"
-                          variants={['line-height-comfy', 'no-wrap']}
-                        >
-                          {value}
-                        </Typography>
-                        <Typography variants={['xsmall-caps']} volume="quiet">
-                          {label}
-                        </Typography>
-                      </Flex>
-                      {i < 2 && (
-                        <Rhythm mr={4}>
-                          <Divider volume="quieter" orientation="vertical" style={{ height: '24px' }} />
-                        </Rhythm>
-                      )}
-                    </React.Fragment>
-                  ))}
-                </Flex>
-              </Paper>
-            </Rhythm>
-            <Footer bordered volume="quiet">
-              <Rhythm px={5}>
-                <Flex
-                  full
-                  direction="row"
-                  alignItems="center"
-                  justifyContent="space-between"
-                  style={{ height: '48px' }}
-                >
-                  <IconCount label="Example" icon={CheckIcon} count={13} />
-                  <IconCount label="Example" icon={TimesIcon} iconSize={10} count={24} />
-                  <IconCount label="Example" icon={HeartIcon} iconSize={15} count={9} />
-                  <IconCount label="Example" icon={BlobbrIcon} />
-                </Flex>
-              </Rhythm>
-            </Footer>
-          </Card>
-        </Rhythm>
-      </Flex>
     )}
   </ThemeWrapper>
 </Playground>
