@@ -1,5 +1,15 @@
 # Changelog
 
+# [8.0.0](https://github.com/phork/phorkit/compare/v7.2.0...v8.0.0) (2021-06-19)
+
+### ♻ Code Refactoring
+
+- **major**: refactored icon text button component ([80eea5a](https://github.com/phork/phorkit/commit/80eea5a))
+
+### ✨ Features
+
+- new removeScrollbar CSS mixin ([b319dc6](https://github.com/phork/phorkit/commit/b319dc6))
+
 # [7.2.0](https://github.com/phork/phorkit/compare/v7.1.3...v7.2.0) (2021-06-16)
 
 ### ✨ Features
