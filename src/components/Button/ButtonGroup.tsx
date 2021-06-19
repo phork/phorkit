@@ -3,8 +3,9 @@ import React, { useCallback } from 'react';
 import { MergeElementProps, Orientation, ThemeProps } from '../../types';
 import { useThemeId } from '../../hooks/useThemeId';
 import { renderFromProp } from '../../utils';
-import { Button, ButtonColor, ButtonProps, ButtonSize, ButtonWeight } from './Button';
+import { Button, ButtonProps } from './Button';
 import styles from './styles/ButtonGroup.module.css';
+import { ButtonColor, ButtonSize, ButtonWeight } from './types';
 
 export type ButtonGroupSpacing = 'divided' | 'joined' | 'cozy' | 'comfy';
 

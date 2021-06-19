@@ -3,21 +3,21 @@ import * as React from 'react';
 import { GithubIcon } from 'icons/internal/GithubIcon';
 import { IconButton } from 'components/Button/IconButton';
 import { Flex } from 'components/Flex';
-import { Rhythm } from 'components/Rhythm';
+import { Rhythm, RhythmProps } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 
-export interface PageTitleProps {
+export interface PageTitleProps extends RhythmProps {
   src?: string;
   title: string;
   url?: string;
 }
 
-export function PageTitle({ title, src, url: initUrl }: PageTitleProps): React.ReactElement {
+export function PageTitle({ title, src, url: initUrl, ...props }: PageTitleProps): React.ReactElement {
   const { repository } = useConfig();
   const url = initUrl || (repository && src && `${repository}/tree/develop/src/${src}`) || undefined;
 
   return (
-    <Rhythm mb={4}>
+    <Rhythm mb={4} {...props}>
       <Flex alignItems="center" justifyContent="space-between" wrap>
         <Typography heading="h1" weight="lighter" style={{ fontSize: 48 }}>
           {title}

@@ -3,7 +3,8 @@ import React from 'react';
 import { MergeProps, Theme } from '../../types';
 import { themes, ThemeColors, ThemeColorIds } from '../../config';
 import { withTheme } from '../../context/Theme';
-import { Button, ButtonElementType, ButtonProps } from './Button';
+import { Button, ButtonProps } from './Button';
+import { ButtonElementType } from './types';
 
 export type ColoredButtonProps<T extends ButtonElementType = 'button'> = MergeProps<
   Omit<ButtonProps<T>, 'width'>,

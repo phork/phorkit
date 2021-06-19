@@ -15,45 +15,6 @@ import { Badge, ColoredBadge, StyledBadge } from '../index';
 
 <PageTitle title="Badge" src="components/Badge" />
 
-## Marker badges
-
-<Playground>
-  <ThemeWrapper>
-    <Flex direction="row" alignItems="center">
-      <div
-        style={{
-          position: 'relative',
-          width: '20px',
-          height: '20px',
-          backgroundColor: themes.light['color-BG50-O40'],
-          margin: '20px',
-        }}
-      >
-        <Badge position="top-left" shape="marker" color="primary" />
-        <Badge position="top-right" shape="marker" color="success" />
-        <Badge position="bottom-left" shape="marker" color="warning" />
-        <Badge position="bottom-right" shape="marker" color="danger" />
-      </div>
-      <Flex direction="row" alignItems="center" wrap>
-        <Rhythm m={2}>
-          <Badge shape="marker" color="primary" />
-          <Badge shape="marker" color="success" />
-          <Badge shape="marker" color="warning" />
-          <Badge shape="marker" color="danger" />
-          <Badge shape="marker" color="neutral" />
-        </Rhythm>
-        <Rhythm m={2}>
-          <Badge shape="marker" color="primary" pulsing />
-          <Badge shape="marker" color="success" pulsing />
-          <Badge shape="marker" color="warning" pulsing />
-          <Badge shape="marker" color="danger" pulsing />
-          <Badge shape="marker" color="neutral" pulsing />
-        </Rhythm>
-      </Flex>
-    </Flex>
-  </ThemeWrapper>
-</Playground>
-
 ## Point badges
 
 <Playground>
@@ -87,6 +48,45 @@ import { Badge, ColoredBadge, StyledBadge } from '../index';
           <Badge shape="point" color="warning" pulsing />
           <Badge shape="point" color="danger" pulsing />
           <Badge shape="point" color="neutral" pulsing />
+        </Rhythm>
+      </Flex>
+    </Flex>
+  </ThemeWrapper>
+</Playground>
+
+## Marker badges
+
+<Playground>
+  <ThemeWrapper>
+    <Flex direction="row" alignItems="center">
+      <div
+        style={{
+          position: 'relative',
+          width: '20px',
+          height: '20px',
+          backgroundColor: themes.light['color-BG50-O40'],
+          margin: '20px',
+        }}
+      >
+        <Badge position="top-left" shape="marker" color="primary" />
+        <Badge position="top-right" shape="marker" color="success" />
+        <Badge position="bottom-left" shape="marker" color="warning" />
+        <Badge position="bottom-right" shape="marker" color="danger" />
+      </div>
+      <Flex direction="row" alignItems="center" wrap>
+        <Rhythm m={2}>
+          <Badge shape="marker" color="primary" />
+          <Badge shape="marker" color="success" />
+          <Badge shape="marker" color="warning" />
+          <Badge shape="marker" color="danger" />
+          <Badge shape="marker" color="neutral" />
+        </Rhythm>
+        <Rhythm m={2}>
+          <Badge shape="marker" color="primary" pulsing />
+          <Badge shape="marker" color="success" pulsing />
+          <Badge shape="marker" color="warning" pulsing />
+          <Badge shape="marker" color="danger" pulsing />
+          <Badge shape="marker" color="neutral" pulsing />
         </Rhythm>
       </Flex>
     </Flex>
@@ -336,7 +336,7 @@ import { Badge, ColoredBadge, StyledBadge } from '../index';
           position: 'relative',
           width: '60px',
           height: '40px',
-          backgroundColor: themes.light['contrast-palette-quietest-color'],
+          backgroundColor: themes.light['color-BG50-O40'],
           margin: '20px',
           marginRight: 40,
           flex: 'none',

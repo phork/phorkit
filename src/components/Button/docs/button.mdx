@@ -10,14 +10,13 @@ import { SpinnerIcon } from 'icons/SpinnerIcon';
 import { TimesIcon } from 'icons/TimesIcon';
 import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { Flex } from 'components/Flex';
-import { Hoverable } from 'components/Hoverable';
 import { Rhythm } from 'components/Rhythm';
 import { ColorLooper } from 'docs/helpers/ColorLooper';
 import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextButton } from '../index';
+import { Button, ColoredButton, StyledButton } from '../index';
 
 <PageTitle title="Button" src="components/Button" />
 
@@ -28,61 +27,38 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
     <Looper
       list={['small', 'medium', 'large']}
       render={size => (
-        <Rhythm py={1} grouped key={`buttonSize-${size}`}>
+        <Rhythm py={2} grouped key={`buttonSize-${size}`}>
           <Looper
-            list={[false, true]}
-            render={loading => (
-              <Rhythm py={1} grouped key={`buttonSize-${size}-${loading ? 'loading' : 'standard'}`}>
+            list={['pill', 'brick']}
+            render={shape => (
+              <Rhythm py={2} grouped key={`buttonSize-${size}-${shape}`}>
                 <Looper
-                  list={['pill', 'brick']}
-                  render={shape => (
-                    <Rhythm m={2} mb={0} key={`buttonSize-${size}-${shape}-${loading ? 'loading' : 'standard'}`}>
-                      <Button
-                        color="primary"
-                        loader={<SpinnerIcon scale={size} />}
-                        loading={loading}
-                        onClick={() => console.log('click')}
-                        shape={shape}
-                        size={size}
-                        weight="solid"
-                      >
-                        {ucfirst(size)} {shape} solid
-                      </Button>
-                      <Button
-                        color="primary"
-                        loader={<SpinnerIcon scale={size} />}
-                        loading={loading}
-                        onClick={() => console.log('click')}
-                        shape={shape}
-                        size={size}
-                        weight="shaded"
-                      >
-                        {ucfirst(size)} {shape} shaded
-                      </Button>
-                      <Button
-                        color="primary"
-                        loader={<SpinnerIcon scale={size} />}
-                        loading={loading}
-                        onClick={() => console.log('click')}
-                        shape={shape}
-                        size={size}
-                        weight="outlined"
-                      >
-                        {ucfirst(size)} {shape} outlined
-                      </Button>
-                      <Button
-                        color="primary"
-                        loader={<SpinnerIcon scale={size} />}
-                        loading={loading}
-                        shape={shape}
-                        weight="ghost"
-                        onClick={() => console.log('click')}
-                        size={size}
-                      >
-                        {ucfirst(size)} {shape} ghost
-                      </Button>
-                      <br />
-                    </Rhythm>
+                  list={[false, true]}
+                  render={loading => (
+                    <Flex direction="row" key={`buttonSize-${size}-${shape}-${loading ? 'loading' : 'standard'}`} wrap>
+                      <Looper
+                        list={['solid', 'shaded', 'outlined', 'ghost']}
+                        render={weight => (
+                          <Rhythm
+                            m={2}
+                            mb={0}
+                            key={`buttonSize-${size}-${shape}-${weight}-${loading ? 'loading' : 'standard'}`}
+                          >
+                            <Button
+                              color="primary"
+                              loader={<SpinnerIcon scale={size} />}
+                              loading={loading}
+                              onClick={() => console.log('click')}
+                              shape={shape}
+                              size={size}
+                              weight={weight}
+                            >
+                              {ucfirst(size)} {shape} {weight}
+                            </Button>
+                          </Rhythm>
+                        )}
+                      />
+                    </Flex>
                   )}
                 />
               </Rhythm>
@@ -94,83 +70,10 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
   </ThemeWrapper>
 </Playground>
 
-<div style="height: 50px" />
+### Inline buttons
 
 <Playground>
-  <ThemeWrapper>
-    <Looper
-      list={['small', 'medium', 'large']}
-      render={size => (
-        <Rhythm py={1} grouped key={`iconButtonSize-${size}`}>
-          <Looper
-            list={[false, true]}
-            render={loading => (
-              <Rhythm py={1} grouped key={`iconButtonSize-${size}-${loading ? 'loading' : 'standard'}`}>
-                <Looper
-                  list={['pill', 'brick']}
-                  render={shape => (
-                    <Rhythm m={2} mb={0} key={`iconButtonSize-${size}-${shape}-${loading ? 'loading' : 'standard'}`}>
-                      <IconTextButton
-                        color="primary"
-                        icon={<BlobbrIcon scale={size} />}
-                        loader={<SpinnerIcon scale={size} />}
-                        loading={loading}
-                        onClick={() => console.log('click')}
-                        shape={shape}
-                        size={size}
-                        text={`${ucfirst(size)} ${shape} solid`}
-                        weight="solid"
-                      />
-                      <IconTextButton
-                        color="primary"
-                        icon={<BlobbrIcon scale={size} />}
-                        loader={<SpinnerIcon scale={size} />}
-                        loading={loading}
-                        onClick={() => console.log('click')}
-                        shape={shape}
-                        size={size}
-                        text={`${ucfirst(size)} ${shape} shaded`}
-                        weight="shaded"
-                      />
-                      <IconTextButton
-                        color="primary"
-                        icon={<BlobbrIcon scale={size} />}
-                        loader={<SpinnerIcon scale={size} />}
-                        loading={loading}
-                        onClick={() => console.log('click')}
-                        shape={shape}
-                        size={size}
-                        text={`${ucfirst(size)} ${shape} outlined`}
-                        weight="outlined"
-                      />
-                      <IconTextButton
-                        color="primary"
-                        icon={<BlobbrIcon scale={size} />}
-                        loader={<SpinnerIcon scale={size} />}
-                        loading={loading}
-                        shape={shape}
-                        text={`${ucfirst(size)} ${shape} ghost`}
-                        weight="ghost"
-                        onClick={() => console.log('click')}
-                        size={size}
-                      />
-                      <br />
-                    </Rhythm>
-                  )}
-                />
-              </Rhythm>
-            )}
-          />
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
-</Playground>
-
-<div style="height: 50px" />
-
-<Playground>
-  <ThemeWrapper>
+  <ThemeWrapper style={{ fontSize: 14 }}>
     <Looper
       list={[false, true]}
       render={loading => (
@@ -182,7 +85,7 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
               weight="inline"
               loader={<SpinnerIcon scale="small" />}
               loading={loading}
-              onClick={() => console.log('primary')}
+              onClick={() => console.log('small')}
             >
               Small inline
             </Button>
@@ -192,7 +95,7 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
               weight="inline"
               loader={<SpinnerIcon scale="medium" />}
               loading={loading}
-              onClick={() => console.log('primary')}
+              onClick={() => console.log('medium')}
             >
               Medium inline
             </Button>
@@ -202,9 +105,19 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
               weight="inline"
               loader={<SpinnerIcon scale="large" />}
               loading={loading}
-              onClick={() => console.log('primary')}
+              onClick={() => console.log('large')}
             >
               Large inline
+            </Button>
+            <Button
+              color="primary"
+              size="relative"
+              weight="inline"
+              loader={<SpinnerIcon scale="large" />}
+              loading={loading}
+              onClick={() => console.log('relative')}
+            >
+              Relative inline
             </Button>
           </Rhythm>
         </Rhythm>
@@ -220,104 +133,36 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
     <Looper
       list={['solid', 'shaded', 'outlined', 'ghost']}
       render={weight => (
-        <div key={weight || 'undefined'}>
-          <Rhythm m={2}>
-            <Button color="primary" weight={weight} onClick={() => console.log('primary')}>
-              Primary
-            </Button>
-            <Button color="success" weight={weight} onClick={() => console.log('success')}>
-              Success
-            </Button>
-            <Button color="warning" weight={weight} onClick={() => console.log('warning')}>
-              Warning
-            </Button>
-            <Button color="danger" weight={weight} onClick={() => console.log('danger')}>
-              Danger
-            </Button>
-            <Button color="neutral" weight={weight} onClick={() => console.log('neutral')}>
-              Neutral
-            </Button>
-            <Button color="black" weight={weight} onClick={() => console.log('black')}>
-              Black
-            </Button>
-            <Button color="white" weight={weight} onClick={() => console.log('white')}>
-              White
-            </Button>
-          </Rhythm>
+        <Rhythm m={2} key={weight || 'undefined'} grouped>
+          <Looper
+            list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+            render={color => (
+              <Rhythm mx={2} my={1} key={`buttonColor-${weight}-${color}`}>
+                <Button color={color} weight={weight} onClick={() => console.log(color)}>
+                  {ucfirst(color)}
+                </Button>
+              </Rhythm>
+            )}
+          />
           <br />
-          <Rhythm m={2}>
-            <Button
-              color="primary"
-              disabled
-              loader={<SpinnerIcon scale="medium" />}
-              loading
-              onClick={() => console.log('primary')}
-              weight={weight}
-            >
-              Primary
-            </Button>
-            <Button
-              color="success"
-              disabled
-              loader={<SpinnerIcon scale="medium" />}
-              loading
-              onClick={() => console.log('success')}
-              weight={weight}
-            >
-              Success
-            </Button>
-            <Button
-              color="warning"
-              disabled
-              loader={<SpinnerIcon scale="medium" />}
-              loading
-              onClick={() => console.log('warning')}
-              weight={weight}
-            >
-              Warning
-            </Button>
-            <Button
-              color="danger"
-              disabled
-              loader={<SpinnerIcon scale="medium" />}
-              loading
-              onClick={() => console.log('danger')}
-              weight={weight}
-            >
-              Danger
-            </Button>
-            <Button
-              color="neutral"
-              disabled
-              loader={<SpinnerIcon scale="medium" />}
-              loading
-              onClick={() => console.log('neutral')}
-              weight={weight}
-            >
-              Neutral
-            </Button>
-            <Button
-              color="black"
-              disabled
-              loader={<SpinnerIcon scale="medium" />}
-              loading
-              onClick={() => console.log('black')}
-              weight={weight}
-            >
-              Black
-            </Button>
-            <Button
-              color="white"
-              disabled
-              loader={<SpinnerIcon scale="medium" />}
-              loading
-              onClick={() => console.log('white')}
-              weight={weight}
-            >
-              White
-            </Button>
-          </Rhythm>
-        </div>
+          <Looper
+            list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+            render={color => (
+              <Rhythm mx={2} my={1} key={`buttonColorLoading-${weight}-${color}`}>
+                <Button
+                  color={color}
+                  disabled
+                  loader={<SpinnerIcon scale="medium" />}
+                  loading
+                  onClick={() => console.log(color)}
+                  weight={weight}
+                >
+                  {ucfirst(color)}
+                </Button>
+              </Rhythm>
+            )}
+          />
+        </Rhythm>
       )}
     />
   </ThemeWrapper>
@@ -330,336 +175,79 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
     <Looper
       list={['solid', 'shaded', 'outlined', 'ghost']}
       render={weight => (
-        <div key={weight || 'undefined'}>
-          <Rhythm m={2}>
-            <Button color="primary" shape="brick" weight={weight} onClick={() => console.log('primary')}>
-              Primary
-            </Button>
-            <Button color="success" shape="brick" weight={weight} onClick={() => console.log('success')}>
-              Success
-            </Button>
-            <Button color="warning" shape="brick" weight={weight} onClick={() => console.log('warning')}>
-              Warning
-            </Button>
-            <Button color="danger" shape="brick" weight={weight} onClick={() => console.log('danger')}>
-              Danger
-            </Button>
-            <Button color="neutral" shape="brick" weight={weight} onClick={() => console.log('neutral')}>
-              Neutral
-            </Button>
-            <Button color="black" shape="brick" weight={weight} onClick={() => console.log('black')}>
-              Black
-            </Button>
-            <Button color="white" shape="brick" weight={weight} onClick={() => console.log('white')}>
-              White
-            </Button>
-          </Rhythm>
+        <Rhythm m={2} key={weight || 'undefined'} grouped>
+          <Looper
+            list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+            render={color => (
+              <Rhythm mx={2} my={1} key={`buttonColor-${weight}-${color}`}>
+                <Button color={color} weight={weight} onClick={() => console.log(color)} shape="brick">
+                  {ucfirst(color)}
+                </Button>
+              </Rhythm>
+            )}
+          />
           <br />
-          <Rhythm m={2}>
-            <Button
-              color="primary"
-              disabled
-              loader={<SpinnerIcon scale="medium" />}
-              loading
-              onClick={() => console.log('primary')}
-              shape="brick"
-              weight={weight}
-            >
-              Primary
-            </Button>
-            <Button
-              color="success"
-              disabled
-              loader={<SpinnerIcon scale="medium" />}
-              loading
-              onClick={() => console.log('success')}
-              shape="brick"
-              weight={weight}
-            >
-              Success
-            </Button>
-            <Button
-              color="warning"
-              disabled
-              loader={<SpinnerIcon scale="medium" />}
-              loading
-              onClick={() => console.log('warning')}
-              shape="brick"
-              weight={weight}
-            >
-              Warning
-            </Button>
-            <Button
-              color="danger"
-              disabled
-              loader={<SpinnerIcon scale="medium" />}
-              loading
-              onClick={() => console.log('danger')}
-              shape="brick"
-              weight={weight}
-            >
-              Danger
-            </Button>
-            <Button
-              color="neutral"
-              disabled
-              loader={<SpinnerIcon scale="medium" />}
-              loading
-              onClick={() => console.log('neutral')}
-              shape="brick"
-              weight={weight}
-            >
-              Neutral
-            </Button>
-            <Button
-              color="black"
-              disabled
-              loader={<SpinnerIcon scale="medium" />}
-              loading
-              onClick={() => console.log('black')}
-              shape="brick"
-              weight={weight}
-            >
-              Black
-            </Button>
-            <Button
-              color="white"
-              disabled
-              loader={<SpinnerIcon scale="medium" />}
-              loading
-              onClick={() => console.log('white')}
-              shape="brick"
-              weight={weight}
-            >
-              White
-            </Button>
-          </Rhythm>
-        </div>
+          <Looper
+            list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+            render={color => (
+              <Rhythm mx={2} my={1} key={`buttonColorLoading-${weight}-${color}`}>
+                <Button
+                  color={color}
+                  disabled
+                  loader={<SpinnerIcon scale="medium" />}
+                  loading
+                  onClick={() => console.log(color)}
+                  shape="brick"
+                  weight={weight}
+                >
+                  {ucfirst(color)}
+                </Button>
+              </Rhythm>
+            )}
+          />
+        </Rhythm>
       )}
     />
   </ThemeWrapper>
 </Playground>
 
-<div style="height: 50px" />
+<div style={{ height: 50 }} />
 
 <Playground>
   <ThemeWrapper>
-    <Rhythm m={2}>
-      <Button weight="inline" color="primary" onClick={() => console.log('primary')}>
-        Primary
-      </Button>
-      <Button weight="inline" color="success" onClick={() => console.log('success')}>
-        Success
-      </Button>
-      <Button weight="inline" color="warning" onClick={() => console.log('warning')}>
-        Warning
-      </Button>
-      <Button weight="inline" color="danger" onClick={() => console.log('danger')}>
-        Danger
-      </Button>
-      <Button weight="inline" color="neutral" onClick={() => console.log('neutral')}>
-        Neutral
-      </Button>
-      <Button weight="inline" color="black" onClick={() => console.log('black')}>
-        Black
-      </Button>
-      <Button weight="inline" color="white" onClick={() => console.log('white')}>
-        White
-      </Button>
-    </Rhythm>
+    <Looper
+      list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+      render={color => (
+        <Rhythm m={2} key={`buttonColor-inline-${color}`}>
+          <Button color={color} weight="inline" onClick={() => console.log(color)} shape="brick">
+            {ucfirst(color)}
+          </Button>
+        </Rhythm>
+      )}
+    />
     <br />
-    <Rhythm m={2}>
-      <Button
-        color="primary"
-        loader={<SpinnerIcon scale="medium" />}
-        loading
-        onClick={() => console.log('primary')}
-        weight="inline"
-      >
-        Primary
-      </Button>
-      <Button
-        color="success"
-        loader={<SpinnerIcon scale="medium" />}
-        loading
-        onClick={() => console.log('success')}
-        weight="inline"
-      >
-        Success
-      </Button>
-      <Button
-        color="warning"
-        loader={<SpinnerIcon scale="medium" />}
-        loading
-        onClick={() => console.log('warning')}
-        weight="inline"
-      >
-        Warning
-      </Button>
-      <Button
-        color="danger"
-        loader={<SpinnerIcon scale="medium" />}
-        loading
-        onClick={() => console.log('danger')}
-        weight="inline"
-      >
-        Danger
-      </Button>
-      <Button
-        color="neutral"
-        loader={<SpinnerIcon scale="medium" />}
-        loading
-        onClick={() => console.log('neutral')}
-        weight="inline"
-      >
-        Neutral
-      </Button>
-      <Button
-        color="black"
-        loader={<SpinnerIcon scale="medium" />}
-        loading
-        onClick={() => console.log('black')}
-        weight="inline"
-      >
-        Black
-      </Button>
-      <Button
-        color="white"
-        loader={<SpinnerIcon scale="medium" />}
-        loading
-        onClick={() => console.log('white')}
-        weight="inline"
-      >
-        White
-      </Button>
-    </Rhythm>
-  </ThemeWrapper>
-</Playground>
-
-## IconText buttons
-
-<Playground>
-  <ThemeWrapper>
     <Looper
-      list={['solid', 'shaded', 'outlined', 'ghost']}
-      render={weight => (
-        <Rhythm mb={2} key={`iconText-${weight}`} grouped>
-          <Looper
-            list={['pill', 'brick']}
-            render={shape => (
-              <div key={`iconText-${weight}-${shape}`}>
-                <Looper
-                  list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
-                  render={color => (
-                    <Rhythm m={2} key={`iconText-${weight}-${shape}-${color}`}>
-                      <IconTextButton
-                        color={color}
-                        icon={<BlobbrIcon scale="medium" />}
-                        shape={shape}
-                        text={ucfirst(color)}
-                        weight={weight}
-                      />
-                    </Rhythm>
-                  )}
-                />
-                <br />
-              </div>
-            )}
-          />
+      list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+      render={color => (
+        <Rhythm m={2} key={`buttonColorLoading-inline-${color}`}>
+          <Button
+            color={color}
+            disabled
+            loader={<SpinnerIcon scale="medium" />}
+            loading
+            onClick={() => console.log(color)}
+            shape="brick"
+            weight="inline"
+          >
+            {ucfirst(color)}
+          </Button>
         </Rhythm>
       )}
     />
-    <Rhythm mt={4} grouped>
-      <Looper
-        list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
-        render={color => (
-          <Rhythm mx={4} key={`inline-${color}`}>
-            <IconTextButton color={color} icon={<BlobbrIcon scale="medium" />} text={ucfirst(color)} weight="inline" />
-          </Rhythm>
-        )}
-      />
-    </Rhythm>
-  </ThemeWrapper>
-</Playground>
-
-<div style="height: 50px" />
-
-<Playground>
-  <ThemeWrapper>
-    <Looper
-      list={['solid', 'shaded', 'outlined', 'ghost']}
-      render={weight => (
-        <Rhythm mb={2} key={`iconText-${weight}`} grouped>
-          <Looper
-            list={['pill', 'brick']}
-            render={shape => (
-              <div key={`iconText-${weight}-${shape}`}>
-                <Looper
-                  list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
-                  render={color => (
-                    <Rhythm m={2} key={`iconTextReverse-${weight}-${shape}-${color}`}>
-                      <IconTextButton
-                        color={color}
-                        icon={<TimesIcon scale="xsmall" />}
-                        reverse
-                        shape={shape}
-                        text={ucfirst(color)}
-                        weight={weight}
-                      />
-                    </Rhythm>
-                  )}
-                />
-                <br />
-              </div>
-            )}
-          />
-        </Rhythm>
-      )}
-    />
-    <Rhythm mt={4} grouped>
-      <Looper
-        list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
-        render={color => (
-          <Rhythm mx={4} key={`inline-${color}`}>
-            <IconTextButton
-              color={color}
-              icon={<TimesIcon scale="xsmall" />}
-              reverse
-              text={ucfirst(color)}
-              weight="inline"
-            />
-          </Rhythm>
-        )}
-      />
-    </Rhythm>
   </ThemeWrapper>
 </Playground>
 
 ## Variations
-
-### Neutral and primary buttons
-
-<Playground>
-  <ThemeWrapper>
-    <Rhythm m={2}>
-      <Button color="neutralAndPrimary" weight="solid">
-        Pill solid
-      </Button>
-      <Button color="neutralAndPrimary" weight="shaded">
-        Pill shaded
-      </Button>
-      <Button color="neutralAndPrimary" weight="outlined">
-        Pill outlined
-      </Button>
-      <Button color="neutralAndPrimary" weight="ghost">
-        Pill ghost
-      </Button>
-      <Button color="neutralAndPrimary" weight="inline">
-        Inline
-      </Button>
-    </Rhythm>
-  </ThemeWrapper>
-</Playground>
 
 ### Contrast buttons
 
@@ -679,7 +267,7 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
         Pill ghost
       </Button>
       <Button contrast weight="inline">
-        Inline
+        Pill inline
       </Button>
     </Rhythm>
     <br />
@@ -697,13 +285,13 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
         Pill ghost
       </Button>
       <Button contrast weight="inline" loading loader={<SpinnerIcon scale="medium" />}>
-        Inline
+        Pill inline
       </Button>
     </Rhythm>
   </ThemeWrapper>
 </Playground>
 
-## Colored buttons
+### Colored buttons
 
 <Playground>
   <ThemeWrapper withThemeId>
@@ -713,60 +301,48 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
           themeId={themeId}
           group="primary"
           render={({ id }) => (
-            <Flex direction="row" key={`coloredButton-${id}`} wrap>
-              <Rhythm key={`coloredButtonSolid-${id}`} m={2}>
-                <ColoredIconTextButton
-                  colorId={id}
-                  icon={<BlobbrIcon scale="medium" />}
-                  shape="pill"
-                  text={`Color ${id}`}
-                  weight="solid"
-                />
-                <ColoredButton shape="brick" weight="solid" colorId={id}>
-                  {`Color ${id}`}
-                </ColoredButton>
-              </Rhythm>
-              <Rhythm key={`coloredButtonShaded-${id}`} m={2}>
-                <ColoredIconTextButton
-                  colorId={id}
-                  icon={<BlobbrIcon scale="medium" />}
-                  shape="pill"
-                  text={`Color ${id}`}
-                  weight="shaded"
-                />
-                <ColoredButton shape="brick" weight="shaded" colorId={id}>
-                  {`Color ${id}`}
-                </ColoredButton>
-              </Rhythm>
-              <Rhythm key={`coloredButtonOutlined-${id}`} m={2}>
-                <ColoredIconTextButton
-                  colorId={id}
-                  icon={<BlobbrIcon scale="medium" />}
-                  shape="pill"
-                  text={`Color ${id}`}
-                  weight="outlined"
-                />
-                <ColoredButton shape="brick" weight="outlined" colorId={id}>
-                  {`Color ${id}`}
-                </ColoredButton>
-              </Rhythm>
-              <Rhythm key={`coloredButtonText-${id}`} m={2}>
-                <ColoredIconTextButton
-                  colorId={id}
-                  icon={<BlobbrIcon scale="medium" />}
-                  shape="pill"
-                  text={`Color ${id}`}
-                  weight="ghost"
-                />
-                <ColoredButton shape="brick" weight="ghost" colorId={id}>
-                  {`Color ${id}`}
-                </ColoredButton>
-                <ColoredButton weight="inline" colorId={id}>
-                  {`Color ${id}`}
-                </ColoredButton>
-              </Rhythm>
-              <div style={{ width: '100%', height: '4px' }} />
-            </Flex>
+            <Rhythm my={2} key={`coloredButton-${id}`}>
+              <Flex direction="column">
+                <Flex durection="row" wrap>
+                  <Rhythm mx={2} my={1}>
+                    <ColoredButton colorId={id} weight="solid">
+                      {`Color ${id}`}
+                    </ColoredButton>
+                    <ColoredButton colorId={id} weight="shaded">
+                      {`Color ${id}`}
+                    </ColoredButton>
+                    <ColoredButton colorId={id} weight="outlined">
+                      {`Color ${id}`}
+                    </ColoredButton>
+                    <ColoredButton colorId={id} weight="ghost">
+                      {`Color ${id}`}
+                    </ColoredButton>
+                    <ColoredButton colorId={id} weight="inline">
+                      {`Color ${id}`}
+                    </ColoredButton>
+                  </Rhythm>
+                </Flex>
+                <Flex durection="row" wrap>
+                  <Rhythm mx={2} my={1}>
+                    <ColoredButton colorId={id} weight="solid" loading loader={<SpinnerIcon scale="medium" />}>
+                      {`Color ${id}`}
+                    </ColoredButton>
+                    <ColoredButton colorId={id} weight="shaded" loading loader={<SpinnerIcon scale="medium" />}>
+                      {`Color ${id}`}
+                    </ColoredButton>
+                    <ColoredButton colorId={id} weight="outlined" loading loader={<SpinnerIcon scale="medium" />}>
+                      {`Color ${id}`}
+                    </ColoredButton>
+                    <ColoredButton colorId={id} weight="ghost" loading loader={<SpinnerIcon scale="medium" />}>
+                      {`Color ${id}`}
+                    </ColoredButton>
+                    <ColoredButton colorId={id} weight="inline" loading loader={<SpinnerIcon scale="medium" />}>
+                      {`Color ${id}`}
+                    </ColoredButton>
+                  </Rhythm>
+                </Flex>
+              </Flex>
+            </Rhythm>
           )}
         />
       </Flex>
@@ -787,36 +363,36 @@ import { Button, ColoredButton, ColoredIconTextButton, StyledButton, IconTextBut
     return (
       <React.Fragment>
         <Rhythm m={2}>
-          <StyledButton {...styles}>Styled</StyledButton>
-          <StyledButton weight="outlined" {...styles}>
-            Styled
-          </StyledButton>
+          <StyledButton {...styles}>Styled solid</StyledButton>
           <StyledButton weight="shaded" {...styles}>
-            Styled
+            Styled shaded
+          </StyledButton>
+          <StyledButton weight="outlined" {...styles}>
+            Styled outlined
           </StyledButton>
           <StyledButton weight="ghost" {...styles}>
-            Styled
+            Styled ghost
           </StyledButton>
           <StyledButton weight="inline" {...styles}>
-            Styled
+            Styled inline
           </StyledButton>
         </Rhythm>
         <br />
         <Rhythm m={2}>
           <StyledButton loading loader={<SpinnerIcon scale="medium" />} {...styles}>
-            Styled
-          </StyledButton>
-          <StyledButton weight="outlined" loading loader={<SpinnerIcon scale="medium" />} {...styles}>
-            Styled
+            Styled solid
           </StyledButton>
           <StyledButton weight="shaded" loading loader={<SpinnerIcon scale="medium" />} {...styles}>
-            Styled
+            Styled shaded
+          </StyledButton>
+          <StyledButton weight="outlined" loading loader={<SpinnerIcon scale="medium" />} {...styles}>
+            Styled outlined
           </StyledButton>
           <StyledButton weight="ghost" loading loader={<SpinnerIcon scale="medium" />} {...styles}>
-            Styled
+            Styled ghost
           </StyledButton>
           <StyledButton weight="inline" loading loader={<SpinnerIcon scale="medium" />} {...styles}>
-            Styled
+            Styled inline
           </StyledButton>
         </Rhythm>
       </React.Fragment>
@@ -832,19 +408,19 @@ _Note that the links will cause the page to reload so the state will appear unch
   <ThemeWrapper>
     <Rhythm m={2}>
       <Button href="#linked" onClick={() => console.log('linked clicked')} color="primary">
-        Linked
+        Linked solid
       </Button>
       <Button href="#linked" onClick={() => console.log('linked clicked')} weight="shaded" color="primary">
-        Linked
+        Linked shaded
       </Button>
       <Button href="#linked" onClick={() => console.log('linked clicked')} weight="outlined" color="primary">
-        Linked
+        Linked outlined
       </Button>
       <Button href="#linked" onClick={() => console.log('linked clicked')} weight="ghost" color="primary">
-        Linked
+        Linked ghost
       </Button>
       <Button href="#linked" onClick={() => console.log('linked clicked')} weight="inline" color="primary">
-        Linked
+        Linked inline
       </Button>
     </Rhythm>
     <br />
@@ -856,7 +432,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         loading
         onClick={() => console.log('linked clicked')}
       >
-        Linked
+        Linked solid
       </Button>
       <Button
         color="primary"
@@ -866,7 +442,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         onClick={() => console.log('linked clicked')}
         weight="shaded"
       >
-        Linked
+        Linked shaded
       </Button>
       <Button
         color="primary"
@@ -876,7 +452,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         onClick={() => console.log('linked clicked')}
         weight="outlined"
       >
-        Linked
+        Linked outlined
       </Button>
       <Button
         color="primary"
@@ -886,7 +462,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         onClick={() => console.log('linked clicked')}
         weight="ghost"
       >
-        Linked
+        Linked ghost
       </Button>
       <Button
         color="primary"
@@ -896,7 +472,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         onClick={() => console.log('linked clicked')}
         weight="inline"
       >
-        Linked
+        Linked inline
       </Button>
     </Rhythm>
   </ThemeWrapper>
@@ -1045,11 +621,3 @@ _Note that the links will cause the page to reload so the state will appear unch
 ### StyledButton
 
 <Props of={StyledButton} />
-
-### IconTextButton
-
-<Props of={IconTextButton} />
-
-### ColoredIconTextButton
-
-<Props of={ColoredIconTextButton} />

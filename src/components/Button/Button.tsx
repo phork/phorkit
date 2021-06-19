@@ -1,16 +1,9 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { SemanticColor, ThemeProps, MergeElementProps, AsReactType } from '../../types';
+import { ThemeProps, MergeElementProps, AsReactType } from '../../types';
 import { useThemeId } from '../../hooks/useThemeId';
 import styles from './styles/Button.module.css';
-
-export type ButtonAlignment = 'left' | 'right' | 'center';
-export type ButtonWeight = 'solid' | 'shaded' | 'outlined' | 'ghost' | 'inline';
-export type ButtonShape = 'pill' | 'brick';
-export type ButtonSize = 'small' | 'medium' | 'large' | 'relative';
-export type ButtonColor = SemanticColor | 'neutralAndPrimary' | 'black' | 'white';
-
-export type ButtonElementType = Extract<keyof JSX.IntrinsicElements, 'button' | 'a' | 'div' | 'span'>;
+import { ButtonAlignment, ButtonWeight, ButtonShape, ButtonSize, ButtonColor, ButtonElementType } from './types';
 
 export interface LocalButtonProps extends ThemeProps {
   /** Manually apply the active styles; this does not actually make it active */

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { AsReactType, MergeProps } from '../../types';
 import { useThemeId } from '../../hooks/useThemeId';
-import { Button, ButtonElementType, ButtonProps } from '../../components/Button/Button';
+import { Button, ButtonElementType, ButtonProps } from '../../components/Button';
 
 export interface LocalPaginationPageProps {
   active?: boolean;

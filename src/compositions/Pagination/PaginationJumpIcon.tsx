@@ -5,7 +5,7 @@ import { ArrowDoubleLeftIcon } from '../../icons/ArrowDoubleLeftIcon';
 import { ArrowDoubleRightIcon } from '../../icons/ArrowDoubleRightIcon';
 import { ArrowLeftIcon } from '../../icons/ArrowLeftIcon';
 import { ArrowRightIcon } from '../../icons/ArrowRightIcon';
-import { Button, ButtonElementType, ButtonProps } from '../../components/Button/Button';
+import { Button, ButtonElementType, ButtonProps } from '../../components/Button';
 import { Rhythm } from '../../components/Rhythm/Rhythm';
 
 const icons: Record<string, React.FC<SvgIconProps>> = {

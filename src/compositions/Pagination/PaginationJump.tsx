@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { AsReactType, MergeProps } from '../../types';
-import { Button, ButtonElementType, ButtonProps } from '../../components/Button/Button';
+import { Button, ButtonElementType, ButtonProps } from '../../components/Button';
 
 export interface LocalPaginationJumpProps {
   href?: string;

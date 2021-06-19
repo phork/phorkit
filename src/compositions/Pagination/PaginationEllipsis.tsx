@@ -1,6 +1,6 @@
 import React from 'react';
 import { EllipsisIcon } from '../../icons';
-import { Button, ButtonProps } from '../../components/Button/Button';
+import { Button, ButtonProps } from '../../components/Button';
 import { Rhythm } from '../../components/Rhythm/Rhythm';
 
 export type PaginationEllipsisProps = Omit<ButtonProps<'div'>, 'as' | 'children'>;

@@ -1,10 +1,9 @@
 import styled from '@emotion/styled';
 import { MergeProps } from '../../types';
-import { Button, ButtonProps } from './Button';
-import { ButtonElementType } from './types';
+import { IconTextButton, IconTextButtonElementType, IconTextButtonProps } from './IconTextButton';
 
-export type StyledButtonProps<T extends ButtonElementType = 'button'> = MergeProps<
-  Omit<ButtonProps<T>, 'width'>,
+export type StyledIconTextButtonProps<T extends IconTextButtonElementType = 'button'> = MergeProps<
+  Omit<IconTextButtonProps<T>, 'width'>,
   {
     primaryColor?: string;
     inverseColor?: string;
@@ -15,10 +14,10 @@ export type StyledButtonProps<T extends ButtonElementType = 'button'> = MergePro
 >;
 
 // @ts-ignore [TODO:ts] WTF
-export const StyledButton = styled(Button, {
+export const StyledIconTextButton = styled(IconTextButton, {
   shouldForwardProp: (prop: string) =>
     !['primaryColor', 'inverseColor', 'hoveredPrimaryColor', 'activePrimaryColor', 'width'].includes(prop),
-})<StyledButtonProps>`
+})<StyledIconTextButtonProps>`
   ${({ primaryColor }) => primaryColor && `--button-primary-color: ${primaryColor};`}
   ${({ inverseColor }) => inverseColor && `--button-inverse-color: ${inverseColor};`}
   ${({ hoveredPrimaryColor }) => hoveredPrimaryColor && `--button-hovered-primary-color: ${hoveredPrimaryColor};`}
@@ -26,4 +25,4 @@ export const StyledButton = styled(Button, {
   ${({ width }) => width !== undefined && `width: ${Number.isNaN(width) ? width : `${width}px`};`}
 `;
 
-StyledButton.displayName = 'StyledButton';
+StyledIconTextButton.displayName = 'StyledIconTextButton';

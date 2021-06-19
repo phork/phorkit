@@ -2,8 +2,9 @@ import { cx } from '@emotion/css';
 import React from 'react';
 import { AsReactType, MergeElementProps } from '../../types';
 import { renderFromPropWithFallback, RenderFromPropElement } from '../../utils/renderFromProp';
-import { Button, ButtonElementType, ButtonProps, LocalButtonProps } from './Button';
+import { Button, ButtonProps, LocalButtonProps } from './Button';
 import styles from './styles/Button.module.css';
+import { ButtonElementType } from './types';
 
 export type IconButtonShape = 'round' | 'square';
 export type IconButtonElementType = ButtonElementType;

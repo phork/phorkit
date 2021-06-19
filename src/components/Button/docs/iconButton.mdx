@@ -13,7 +13,7 @@ import { ColorLooper } from 'docs/helpers/ColorLooper';
 import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { ColoredIconButton, IconButton } from '../index';
+import { ColoredIconButton, IconButton, StyledIconButton } from '../index';
 
 <PageTitle title="IconButton" src="components/Button" />
 
@@ -319,6 +319,109 @@ import { ColoredIconButton, IconButton } from '../index';
   </ThemeWrapper>
 </Playground>
 
+### Styled icon buttons
+
+<Playground>
+  {() => {
+    const styles = {
+      primaryColor: '#556270',
+      inverseColor: '#fff',
+      hoveredPrimaryColor: '#454f58',
+      activePrimaryColor: '#798796',
+    };
+    return (
+      <Flex direction="row" alignItems="center" wrap key={`styledIconButton`}>
+        <Looper
+          list={[false, true]}
+          render={loading => (
+            <Flex direction="row" alignItems="center" key={`styledIconButton-${loading}`}>
+              <Rhythm m={2}>
+                <StyledIconButton
+                  loader={<SpinnerIcon size={20} />}
+                  loading={loading}
+                  onClick={() => console.log('round')}
+                  shape="round"
+                  weight="ghost"
+                  {...styles}
+                >
+                  <BlobbrIcon size={20} />
+                </StyledIconButton>
+                <StyledIconButton
+                  loader={<SpinnerIcon scale="medium" />}
+                  loading={loading}
+                  onClick={() => console.log('round')}
+                  shape="round"
+                  {...styles}
+                >
+                  <BlobbrIcon scale="medium" />
+                </StyledIconButton>
+                <StyledIconButton
+                  loader={<SpinnerIcon scale="medium" />}
+                  loading={loading}
+                  onClick={() => console.log('square')}
+                  shape="square"
+                  {...styles}
+                >
+                  <BlobbrIcon scale="medium" />
+                </StyledIconButton>
+                <StyledIconButton
+                  loader={<SpinnerIcon scale="medium" />}
+                  loading={loading}
+                  onClick={() => console.log('round shaded')}
+                  shape="round"
+                  weight="shaded"
+                  {...styles}
+                >
+                  <BlobbrIcon scale="medium" />
+                </StyledIconButton>
+                <StyledIconButton
+                  loader={<SpinnerIcon scale="medium" />}
+                  loading={loading}
+                  onClick={() => console.log('square shaded')}
+                  shape="square"
+                  weight="shaded"
+                  {...styles}
+                >
+                  <BlobbrIcon scale="medium" />
+                </StyledIconButton>
+                <StyledIconButton
+                  loader={<SpinnerIcon scale="medium" />}
+                  loading={loading}
+                  onClick={() => console.log('round outline')}
+                  shape="round"
+                  weight="outlined"
+                  {...styles}
+                >
+                  <BlobbrIcon scale="medium" />
+                </StyledIconButton>
+                <StyledIconButton
+                  loader={<SpinnerIcon scale="medium" />}
+                  loading={loading}
+                  onClick={() => console.log('square outline')}
+                  shape="square"
+                  weight="outlined"
+                  {...styles}
+                >
+                  <BlobbrIcon scale="medium" />
+                </StyledIconButton>
+                <StyledIconButton
+                  loader={<SpinnerIcon scale="xlarge" />}
+                  loading={loading}
+                  onClick={() => console.log('xlarge')}
+                  weight="inline"
+                  {...styles}
+                >
+                  <BlobbrIcon scale="xlarge" />
+                </StyledIconButton>
+              </Rhythm>
+            </Flex>
+          )}
+        />
+      </Flex>
+    );
+  }}
+</Playground>
+
 ### Link icon buttons
 
 _Note that the links will cause the page to reload so the state will appear unchanged._
@@ -376,3 +479,7 @@ _Note that the links will cause the page to reload so the state will appear unch
 ### ColoredIconButton
 
 <Props of={ColoredIconButton} />
+
+### StyledIconButton
+
+<Props of={StyledIconButton} />

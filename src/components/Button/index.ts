@@ -6,3 +6,6 @@ export * from './ColoredIconTextButton';
 export * from './IconButton';
 export * from './IconTextButton';
 export * from './StyledButton';
+export * from './StyledIconButton';
+export * from './StyledIconTextButton';
+export * from './types';
