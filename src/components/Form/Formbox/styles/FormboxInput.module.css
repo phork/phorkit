@@ -4,12 +4,6 @@
   }
 }
 
-/**
- * 1. This should not use `display: hidden` because it should
- *    make space in the composition so toggling visibility won't
- *    reshift things. And using `visibility: hidden` doesn't
- *    allow the input to be focused.
- */
 .formboxInputWithFormatting {
   cursor: pointer;
   display: flex;
@@ -48,8 +42,12 @@
   }
 }
 
+/**
+ * This cannot use `display: none` or `visibility: hidden`
+ * because that will break tab to focus.
+ */
 .formboxInput--hidden {
-  visibility: hidden;
+  opacity: 0;
 }
 
 .formboxInput--placeholder {
