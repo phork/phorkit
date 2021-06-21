@@ -451,6 +451,54 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
   </ThemeWrapper>
 </Playground>
 
+## Fancy Textbox
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <div style={{ width: '300px', maxWidth: '100%' }}>
+        <StateWrapper>
+          {({ state: value, setState: setValue }) => (
+            <Textbox
+              alwaysShowFormatting
+              alwaysUseFormatting
+              clearable
+              formattedValue={
+                value ? (
+                  <Rhythm px={4}>
+                    <Flex flexible direction="row" alignItems="center" justifyContent="flex-start">
+                      <Avatar initials={value[0].toUpperCase()} color="primary" size="small" />
+                      <Rhythm mx={4}>{value}</Rhythm>
+                    </Flex>
+                  </Rhythm>
+                ) : (
+                  <Rhythm px={4}>
+                    <Flex flexible direction="row" alignItems="center" justifyContent="flex-start">
+                      <Avatar initials=" " color="neutral" size="small" style={{ opacity: 0.2 }} />
+                    </Flex>
+                  </Rhythm>
+                )
+              }
+              inputProps={{
+                style: {
+                  paddingLeft: 60,
+                  caretColor: themes[themeId]['primary-palette-text-color'],
+                  color: 'transparent',
+                },
+              }}
+              onChange={(event, value) => setValue(value)}
+              label="Who are you?"
+              transitional
+              value={value}
+              variant="underline"
+            />
+          )}
+        </StateWrapper>
+      </div>
+    )}
+  </ThemeWrapper>
+</Playground>
+
 ## Fancy dropdown
 
 <Playground>

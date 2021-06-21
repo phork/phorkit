@@ -9,6 +9,9 @@ import { FormboxInputElementType, FormboxValue } from './types';
 export interface FormboxInputWithFormattingProps<I extends FormboxInputElementType>
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'placeholder'>,
     ThemeProps {
+  /** The formatted value will be hidden while the input is focused unless this is true */
+  alwaysShowFormatting?: boolean;
+  /** If the value will have HTML formatting then this should be true */
   alwaysUseFormatting?: boolean;
   children?: React.ReactElement<HTMLElementTagNameMap[I]>;
   className?: string;
@@ -22,6 +25,7 @@ export interface FormboxInputWithFormattingProps<I extends FormboxInputElementTy
 
 /** This is a wrapper for formbox inputs that can have HTML values and placeholders */
 export const FormboxInputWithFormatting = <I extends FormboxInputElementType>({
+  alwaysShowFormatting,
   alwaysUseFormatting,
   children,
   className,
@@ -37,14 +41,14 @@ export const FormboxInputWithFormatting = <I extends FormboxInputElementType>({
 
   // if either the placeholder or the value is formatted we should always show the formatted configuration
   const hasHtmlValueOrPlaceholder =
-    (placeholder && typeof placeholder !== 'string' && typeof placeholder !== 'number') || formattedValue;
+    (placeholder && typeof placeholder !== 'string' && typeof placeholder !== 'number') || formattedValue !== undefined;
 
   return alwaysUseFormatting || hasHtmlValueOrPlaceholder ? (
     <div className={cx(styles.formboxInputWithFormatting, className)} {...props}>
       <FormboxInputFormatted
         contrast={contrast}
         className={styles.formboxInputWithFormatting__formatted}
-        hidden={focused && hasValue}
+        hidden={focused && hasValue && !alwaysShowFormatting}
         isPlaceholder={isPlaceholder}
         themeId={themeId}
       >

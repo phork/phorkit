@@ -26,7 +26,9 @@ export const textboxTranslations: TextboxTranslations = {
 };
 
 export interface LocalTextboxProps {
-  /** This should be set to true if the value has custom HTML formatting */
+  /** The formatted value will be hidden while the input is focused unless this is true */
+  alwaysShowFormatting?: boolean;
+  /** If the value will have HTML formatting then this should be true */
   alwaysUseFormatting?: boolean;
   /** This should rarely be used because it's not a11y friendly */
   autoFocus?: boolean;
@@ -56,6 +58,7 @@ export type TextboxProps = MergeProps<Omit<FormboxProps, 'as' | 'children' | 're
 
 function TextboxBase(
   {
+    alwaysShowFormatting,
     alwaysUseFormatting,
     autoFocus,
     centered,
@@ -177,6 +180,7 @@ function TextboxBase(
           <FormboxReadOnly formattedValue={formattedValue} id={id} value={value} />
         ) : (
           <FormboxInputWithFormatting<'input'>
+            alwaysShowFormatting={alwaysShowFormatting}
             alwaysUseFormatting={alwaysUseFormatting}
             contrast={contrast}
             focused={focused}
