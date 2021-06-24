@@ -1,5 +1,17 @@
 # Changelog
 
+# [8.1.0](https://github.com/phork/phorkit/compare/v8.0.0...v8.1.0) (2021-06-24)
+
+### ✨ Features
+
+- added autoFill styles for select, textarea ([b3bbe92](https://github.com/phork/phorkit/commit/b3bbe92))
+- added autoFill styles for textbox inputs ([5dbf496](https://github.com/phork/phorkit/commit/5dbf496))
+- added fancy textbox ([276401a](https://github.com/phork/phorkit/commit/276401a))
+
+### 🐛 Bug Fixes
+
+- textbox with formatting is tabbable ([a3556c1](https://github.com/phork/phorkit/commit/a3556c1))
+
 # [8.0.0](https://github.com/phork/phorkit/compare/v7.2.0...v8.0.0) (2021-06-19)
 
 ### ♻ Code Refactoring
