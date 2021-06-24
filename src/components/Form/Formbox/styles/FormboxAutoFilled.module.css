@@ -1,0 +1,31 @@
+/**
+ * These animations can be used for autofill detection
+ * along with the useAutoFilled hook. The animations
+ * can't be empty so this uses a harmless transition.
+ */
+
+.formboxAutoFilled:-webkit-autofill {
+  animation-name: onAutoFillStart;
+}
+
+.formboxAutoFilled:not(:-webkit-autofill) {
+  animation-name: onAutoFillCancel;
+}
+
+@keyframes onAutoFillStart {
+  from {
+    border-color: transparent;
+  }
+  to {
+    border-color: transparent;
+  }
+}
+
+@keyframes onAutoFillCancel {
+  from {
+    border-color: transparent;
+  }
+  to {
+    border-color: transparent;
+  }
+}

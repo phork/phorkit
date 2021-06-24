@@ -10,6 +10,7 @@ import { ArrowRightIcon } from 'icons/ArrowRightIcon';
 import { SearchIcon } from 'icons/SearchIcon';
 import { SpinnerIcon } from 'icons/SpinnerIcon';
 import { TimesIcon } from 'icons/TimesIcon';
+import { EmailIcon } from 'icons/internal/EmailIcon';
 import { Button } from 'components/Button';
 import { Rhythm } from 'components/Rhythm';
 import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
@@ -457,14 +458,22 @@ import { textbox as variants } from './helpers/variants.js';
       <Looper
         list={variants}
         render={variant => (
-          <Rhythm p={3} grouped>
+          <Rhythm p={2} grouped>
             <FormComponentDemo property="value" key={variant} unwrapped>
-              <Textbox clearable label="Email" name={`email-${variant}`} transitional type="email" variant={variant} />
+              <Textbox
+                clearable
+                iconBefore={EmailIcon}
+                label="Email"
+                name={`email-${variant}`}
+                transitional
+                type="email"
+                variant={variant}
+              />
             </FormComponentDemo>
           </Rhythm>
         )}
       />
-      <Rhythm mt={2}>
+      <Rhythm mt={4} ml={3}>
         <Button type="submit" color="primary" weight="shaded" shape="brick">
           Submit
         </Button>

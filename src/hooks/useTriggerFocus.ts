@@ -20,19 +20,19 @@ export type UseTriggerFocusResponse = {
   cancel: () => void;
 };
 
-// to be used as a type-guard
+// to be used as a type guard
 const isRefWithImperativeHandle = (
   ref: UseTriggerFocusRef | UseTriggerFocusRefWithHandle,
 ): ref is UseTriggerFocusRefWithHandle => {
   return (ref as UseTriggerFocusRefWithHandle) !== undefined;
 };
 
-// to be used as a type-guard
+// to be used as a type guard
 const isRefObject = (ref: UseTriggerFocusRef | UseTriggerFocusRefWithHandle): ref is UseTriggerFocusRef => {
   return (ref as UseTriggerFocusRef).current !== undefined;
 };
 
-// useTriggerFocus can focus a ref with an optional delay
+/** useTriggerFocus can focus a ref with an optional delay */
 export function useTriggerFocus({ focusDelay }: UseTriggerFocusOptions = {}): UseTriggerFocusResponse {
   const previousResponse = useRef<UseTriggerFocusResponse>({} as UseTriggerFocusResponse);
   const { setSafeTimeout, clearSafeTimeout } = useSafeTimeout();

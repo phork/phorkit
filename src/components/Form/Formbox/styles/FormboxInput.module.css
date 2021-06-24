@@ -101,19 +101,6 @@ input.formboxInput[type='number'] {
 }
 
 /**
- * 1. Prevent Chrome autocomplete from changing the form
- *    background to yellow.
- */
-input.formboxInput {
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover,
-  &:-webkit-autofill:focus,
-  &:-webkit-autofill:active {
-    -webkit-transition-delay: 99999s; /* [1] */
-  }
-}
-
-/**
  * 1. To add some space to the drag corner.
  */
 textarea.formboxInput {
@@ -121,4 +108,22 @@ textarea.formboxInput {
   line-height: 1.4;
   margin-right: 4px; /* [1] */
   padding: 2px 0 4px 0;
+}
+
+/**
+ * Remove any autofill styles. Instead styles should be
+ * put on the input container.
+ */
+input.formboxInput:-webkit-autofill,
+input.formboxInput:-webkit-autofill:hover,
+input.formboxInput:-webkit-autofill:focus,
+textarea.formboxInput:-webkit-autofill,
+textarea.formboxInput:-webkit-autofill:hover,
+textarea.formboxInput:-webkit-autofill:focus,
+select.formboxInput:-webkit-autofill,
+select.formboxInput:-webkit-autofill:hover,
+select.formboxInput:-webkit-autofill:focus {
+  background-color: transparent;
+  color: var(--formbox-input-text-color);
+  transition: background-color 50000s ease-in-out 0s;
 }

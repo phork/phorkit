@@ -83,10 +83,13 @@ export interface DropdownProps
   options: DropdownOption[];
   placeholder?: FormboxValue | React.ReactChild;
   readOnly?: boolean;
+  /** The reducer comes from `useReducer(interactiveGroupReducer)` and is used to track selection */
   reducer: UncontrolledInteractiveListProps['reducer'];
+  /** A searchable dropdown has no options unless a search term has been entered */
   searchable?: boolean;
   transitional?: boolean;
   translations?: DropdownTranslations;
+  /** When using the withNotification HOC the empty content notice must be inline if there's a notification */
   usingNotification?: boolean;
   validity?: StateColor;
 }

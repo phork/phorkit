@@ -13,6 +13,7 @@ import {
   FormboxValue,
   FormboxTranslations,
   formboxTranslations,
+  useAutoFilled,
 } from '../Formbox';
 import styles from './styles/Textbox.module.css';
 
@@ -102,6 +103,8 @@ function TextboxBase(
   const translations = useTranslations({ customTranslations, fallbackTranslations: textboxTranslations });
   const { clearLabel } = translations;
 
+  const { autoFilled, handleAnimationStart } = useAutoFilled<HTMLInputElement>();
+
   const inputRef = useRef<HTMLInputElement>(null);
   const combineRefs = makeCombineRefs<HTMLInputElement>(inputRef, forwardedRef);
 
@@ -154,6 +157,7 @@ function TextboxBase(
 
   return (
     <Formbox
+      autoFilled={autoFilled}
       className={className}
       contrast={contrast}
       disabled={disabled}
@@ -182,6 +186,7 @@ function TextboxBase(
           <FormboxInputWithFormatting<'input'>
             alwaysShowFormatting={alwaysShowFormatting}
             alwaysUseFormatting={alwaysUseFormatting}
+            autoFilled={autoFilled}
             contrast={contrast}
             focused={focused}
             formattedValue={formattedValue}
@@ -196,6 +201,7 @@ function TextboxBase(
               disabled={disabled}
               id={id}
               name={name}
+              onAnimationStart={handleAnimationStart}
               onChange={handleChange}
               onKeyDown={handleKeyDown}
               ref={combineRefs}

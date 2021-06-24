@@ -6,3 +6,4 @@ export * from './FormboxInputWithFormatting';
 export * from './FormboxInputFormatted';
 export * from './FormboxReadOnly';
 export * from './types';
+export * from './useAutoFilled';

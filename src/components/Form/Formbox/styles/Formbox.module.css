@@ -10,7 +10,7 @@
 
 .formbox--underline {
   &.is-labeled {
-    padding-top: 16px;
+    padding-top: 12px;
   }
 }
 
@@ -82,7 +82,12 @@
 }
 
 .formboxInputContainer--underline {
-  padding: 1px 0 3px;
+  padding: 3px 0;
+
+  &.formboxInputContainer--autoFilled {
+    margin-top: 2px;
+    padding: 3px 4px;
+  }
 }
 
 /**
@@ -165,21 +170,29 @@
 
 .formboxInputContainer--outline {
   border-radius: $border-radius-m;
-  padding: 4px 8px 2px 8px;
+  padding: 3px 8px 3px 8px;
 }
 
 .formboxInputContainer--pill {
   border-radius: $element-height-medium;
-  padding: 4px 16px 2px 16px;
+  padding: 3px 16px 3px 16px;
 }
 
 .formboxInputContainer--minimal {
   &:not(.formboxInputContainer--readOnly) {
     &:focus,
     &.is-focused {
-      caret-color: var(formbox-input-container-focused-border-color);
+      caret-color: var(--formbox-input-container-focused-border-color);
     }
   }
+
+  &.formboxInputContainer--autoFilled {
+    padding: 0 4px;
+  }
+}
+
+.formboxInputContainer--autoFilled {
+  background: var(--formbox-input-container-autofilled-background-color);
 }
 
 .formboxLabel {
@@ -219,7 +232,7 @@
   }
 
   &.formboxLabel--underline {
-    top: 18px;
+    top: 16px;
   }
 
   &.formboxLabel--filled {
@@ -254,6 +267,7 @@
   @mixin themed .formbox {
     --formbox-icon-color: $theme-primary-palette-quieter-color;
     --formbox-icon-hovered-color: $theme-primary-palette-accent-color;
+    --formbox-input-container-autofilled-background-color: $theme-color-BG50-O10;
     --formbox-input-container-background-color: transparent;
     --formbox-input-container-border-color: $theme-primary-palette-quietest-color;
     --formbox-input-container-focused-border-color: $theme-color-accent-primary;
@@ -266,6 +280,7 @@
   @mixin themed .formbox {
     --formbox-icon-color: $theme-contrast-palette-quieter-color;
     --formbox-icon-hovered-color: $theme-contrast-palette-accent-color;
+    --formbox-input-container-autofilled-background-color: $theme-color-BG50-O10;
     --formbox-input-container-background-color: transparent;
     --formbox-input-container-border-color: $theme-contrast-palette-quieter-color;
     --formbox-input-container-focused-border-color: $theme-contrast-palette-accent-color;

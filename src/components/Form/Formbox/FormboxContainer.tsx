@@ -6,6 +6,8 @@ import styles from './styles/Formbox.module.css';
 import { FormboxContainerElementType, FormboxInputElementType, FormboxVariant } from './types';
 
 export interface LocalFormboxContainerProps extends ThemeProps {
+  /** Whether the formbox input was auto-filled (see useAutoFilled hook) */
+  autoFilled?: boolean;
   children: React.ReactNode;
   className?: string;
   disabled?: boolean;
@@ -42,11 +44,12 @@ export type FormboxContainerProps<T extends FormboxContainerElementType> = AsTyp
 function FormboxContainerBase<T extends FormboxContainerElementType>(
   {
     as,
+    autoFilled,
     children,
     className,
     contrast,
     disabled,
-    empty,
+    empty: inputEmpty,
     focused,
     hasIconAfter,
     hasIconBefore,
@@ -69,6 +72,7 @@ function FormboxContainerBase<T extends FormboxContainerElementType>(
 ): React.ReactElement {
   const themeId = useThemeId(initThemeId);
   const color = contrast ? 'contrast' : 'primary';
+  const empty = inputEmpty && !autoFilled;
 
   const labeled = !!label;
   const isLabelPlaceholder = transitional && empty && !readOnly && !focused;
@@ -115,6 +119,7 @@ function FormboxContainerBase<T extends FormboxContainerElementType>(
       className={cx(
         styles.formboxInputContainer,
         variant && styles[`formboxInputContainer--${variant}`],
+        autoFilled && styles['formboxInputContainer--autoFilled'],
         readOnly && styles['formboxInputContainer--readOnly'],
         focused && styles['is-focused'],
       )}

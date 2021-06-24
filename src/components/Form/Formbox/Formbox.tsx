@@ -26,6 +26,8 @@ export type FormboxRenderInput = (props: {
 }) => React.ReactElement<HTMLElement>;
 
 export interface FormboxProps extends Omit<FormboxContainerProps<'label'>, 'children' | 'id'>, ThemeProps {
+  /** Whether the formbox input was auto-filled (see useAutoFilled hook) */
+  autoFilled?: boolean;
   /** alwaysTriggerFocus means the a focus transfer within the formbox will trigger the blur event */
   alwaysTriggerBlur?: boolean;
   /** alwaysTriggerFocus means the a focus transfer within the formbox will trigger the focus event */
@@ -53,6 +55,7 @@ function FormboxBase<T extends FormboxContainerElementType>(
   {
     alwaysTriggerBlur,
     alwaysTriggerFocus,
+    autoFilled,
     children: renderInput,
     className,
     contrast,
@@ -103,6 +106,7 @@ function FormboxBase<T extends FormboxContainerElementType>(
   return (
     <FormboxContainer<'label'>
       as="label"
+      autoFilled={autoFilled}
       className={className}
       contrast={contrast}
       disabled={disabled}

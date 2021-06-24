@@ -2,6 +2,7 @@ import { cx } from '@emotion/css';
 import React from 'react';
 import { ThemeProps } from '../../../types';
 import { useThemeId } from '../../../hooks/useThemeId';
+import autoFilledStyles from './styles/FormboxAutoFilled.module.css';
 import styles from './styles/FormboxInput.module.css';
 import { FormboxInputElementType } from './types';
 
@@ -34,6 +35,7 @@ export const FormboxInput = <I extends FormboxInputElementType>({
           themeId && styles[`formboxInput--${themeId}`],
           hidden && styles['formboxInput--hidden'],
           styles[`formboxInput--${color}`],
+          autoFilledStyles.formboxAutoFilled,
           children.props.className,
           className,
         ),
