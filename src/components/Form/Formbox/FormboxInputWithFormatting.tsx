@@ -13,7 +13,6 @@ export interface FormboxInputWithFormattingProps<I extends FormboxInputElementTy
   alwaysShowFormatting?: boolean;
   /** If the value will have HTML formatting then this should be true */
   alwaysUseFormatting?: boolean;
-  autoFilled?: boolean;
   children?: React.ReactElement<HTMLElementTagNameMap[I]>;
   className?: string;
   contrast?: boolean;
@@ -28,7 +27,6 @@ export interface FormboxInputWithFormattingProps<I extends FormboxInputElementTy
 export const FormboxInputWithFormatting = <I extends FormboxInputElementType>({
   alwaysShowFormatting,
   alwaysUseFormatting,
-  autoFilled,
   children,
   className,
   contrast,

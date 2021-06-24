@@ -5,7 +5,14 @@ import { MergeProps } from '../../../types';
 import { useThemeId } from '../../../hooks/useThemeId';
 import { makeCombineRefs } from '../../../utils/combineRefs';
 import { ArrowDownIcon } from '../../../icons/ArrowDownIcon';
-import { FormboxReadOnly, Formbox, FormboxProps, FormboxValue, FormboxInputWithFormatting } from '../Formbox';
+import {
+  FormboxReadOnly,
+  Formbox,
+  FormboxProps,
+  FormboxValue,
+  FormboxInputWithFormatting,
+  useAutoFilled,
+} from '../Formbox';
 import styles from './styles/Select.module.css';
 
 export type SelectOption = {
@@ -88,6 +95,8 @@ export function SelectBase(
   const inputRef = useRef<HTMLSelectElement>(null);
   const combineRefs = makeCombineRefs<HTMLSelectElement>(inputRef, forwardedRef);
 
+  const { autoFilled, handleAnimationStart } = useAutoFilled<HTMLSelectElement>();
+
   const handleChange = useCallback<React.ChangeEventHandler<HTMLSelectElement>>(
     event => {
       if (multiple) {
@@ -131,6 +140,7 @@ export function SelectBase(
 
   return (
     <Formbox
+      autoFilled={autoFilled}
       className={className}
       contrast={contrast}
       disabled={disabled}
@@ -173,6 +183,7 @@ export function SelectBase(
               id={id}
               multiple={multiple}
               name={name}
+              onAnimationStart={handleAnimationStart}
               onChange={handleChange}
               ref={combineRefs}
               required={required}

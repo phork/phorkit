@@ -186,7 +186,6 @@ function TextboxBase(
           <FormboxInputWithFormatting<'input'>
             alwaysShowFormatting={alwaysShowFormatting}
             alwaysUseFormatting={alwaysUseFormatting}
-            autoFilled={autoFilled}
             contrast={contrast}
             focused={focused}
             formattedValue={formattedValue}

@@ -3,7 +3,7 @@ import React, { useCallback, useRef } from 'react';
 import { MergeProps } from '../../../types';
 import { useThemeId } from '../../../hooks/useThemeId';
 import { makeCombineRefs } from '../../../utils/combineRefs';
-import { FormboxInput, FormboxReadOnly, Formbox, FormboxProps, FormboxValue } from '../Formbox';
+import { FormboxInput, FormboxReadOnly, Formbox, FormboxProps, FormboxValue, useAutoFilled } from '../Formbox';
 import styles from './styles/Textarea.module.css';
 
 export interface LocalTextareaProps {
@@ -53,6 +53,8 @@ function TextareaBase(
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const combineRefs = makeCombineRefs<HTMLTextAreaElement>(inputRef, forwardedRef);
 
+  const { autoFilled, handleAnimationStart } = useAutoFilled<HTMLTextAreaElement>();
+
   const handleChange = useCallback<React.ChangeEventHandler<HTMLTextAreaElement>>(
     event => {
       if (value !== event.target.value) {
@@ -70,6 +72,7 @@ function TextareaBase(
 
   return (
     <Formbox
+      autoFilled={autoFilled}
       className={className}
       contrast={contrast}
       disabled={disabled}
@@ -96,6 +99,7 @@ function TextareaBase(
               disabled={disabled}
               id={id}
               name={name}
+              onAnimationStart={handleAnimationStart}
               onChange={handleChange}
               ref={combineRefs}
               rows={rows}
