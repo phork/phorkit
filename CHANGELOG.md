@@ -1,5 +1,15 @@
 # Changelog
 
+# [8.2.0](https://github.com/phork/phorkit/compare/v8.1.0...v8.2.0) (2021-06-25)
+
+### ✨ Features
+
+- allow HTML in form labels ([028d280](https://github.com/phork/phorkit/commit/028d280))
+
+### 🐛 Bug Fixes
+
+- update form input auto-fill colors ([d8d6db9](https://github.com/phork/phorkit/commit/d8d6db9))
+
 # [8.1.0](https://github.com/phork/phorkit/compare/v8.0.0...v8.1.0) (2021-06-24)
 
 ### ✨ Features
