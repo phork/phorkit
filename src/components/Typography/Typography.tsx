@@ -22,6 +22,7 @@ export type TypographyVariants =
   | 'space-before'
   | 'no-select'
   | 'no-wrap'
+  | 'wrap'
   | 'reset'
   | 'medium-caps'
   | 'small-caps'

@@ -11,6 +11,7 @@ import { TimesIcon } from 'icons/TimesIcon';
 import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { CheckIcon } from 'icons/internal/CheckIcon';
 import { HeartIcon } from 'icons/internal/HeartIcon';
+import { HelpIcon } from 'icons/internal/HelpIcon';
 import { MoonIcon } from 'icons/internal/MoonIcon';
 import {
   Avatar,
@@ -32,6 +33,7 @@ import {
   IconGroup,
   IconText,
   InlinePopover,
+  InlineTextTooltip,
   InlineTooltip,
   InteractiveList,
   Link,
@@ -496,6 +498,35 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
         </StateWrapper>
       </div>
     )}
+  </ThemeWrapper>
+</Playground>
+
+<div style={{ height: 50 }} />
+
+<Playground>
+  <ThemeWrapper>
+    <div style={{ width: '300px', maxWidth: '100%' }}>
+      <StateWrapper>
+        {({ state: value, setState: setValue }) => (
+          <Textbox
+            label={
+              <Flex direction="row" alignItems="center">
+                <Rhythm mr={2}>
+                  <Typography variants="xsmall-caps">Super fantastic label</Typography>
+                </Rhythm>
+                <InlineTextTooltip hoverable position="top-center" toggler={<HelpIcon size={10} />} width={180}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porttitor purus augue.
+                </InlineTextTooltip>
+              </Flex>
+            }
+            onChange={(event, value) => setValue(value)}
+            placeholder="Hello world"
+            value={value}
+            variant="underline"
+          />
+        )}
+      </StateWrapper>
+    </div>
   </ThemeWrapper>
 </Playground>
 

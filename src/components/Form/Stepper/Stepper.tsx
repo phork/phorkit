@@ -136,6 +136,7 @@ export function StepperBase(
       translations={Object.keys(restTranslations).length ? restTranslations : undefined}
       type="number"
       value={value}
+      width="auto"
       {...props}
     />
   );

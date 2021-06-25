@@ -67,7 +67,7 @@ export function TextTooltipContent({
         style={{ borderRadius: '2px', width: typeof width === 'number' ? `${width}px` : width, ...paperStyle }}
         container="popover"
       >
-        <Typography as="div" size="s" themeId={themeId} variants="line-height-comfy">
+        <Typography as="div" size="s" themeId={themeId} variants={['line-height-comfy', 'wrap']}>
           {children}
         </Typography>
       </StyledPaper>

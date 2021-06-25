@@ -19,7 +19,7 @@ export interface LocalFormboxContainerProps extends ThemeProps {
   hasIconBefore?: boolean;
   id?: string;
   inputWidth?: string | number;
-  label?: string;
+  label?: React.ReactChild | React.ReactFragment | string;
   /** If the formbox container is read only then there are no hover events */
   readOnly?: boolean;
   style?: React.CSSProperties;
