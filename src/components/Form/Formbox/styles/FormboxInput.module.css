@@ -51,7 +51,9 @@
 }
 
 .formboxInput--placeholder {
-  opacity: var(--formbox-input-placeholder-opacity);
+  &:not(.formboxInput--hidden) {
+    opacity: var(--formbox-input-placeholder-opacity);
+  }
 }
 
 .formboxInput--primary {
@@ -125,5 +127,9 @@ select.formboxInput:-webkit-autofill:hover,
 select.formboxInput:-webkit-autofill:focus {
   background-color: transparent;
   color: var(--formbox-input-text-color);
-  transition: background-color 50000s ease-in-out 0s;
+  font-size: $font-size-l;
+  transition-property: background-color, color;
+  transition-duration: 50000s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s;
 }

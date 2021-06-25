@@ -8,9 +8,17 @@
   }
 }
 
+/**
+ * 1. Change the background of the entire input when
+ *    the content is auto-filled.
+ */
 .formbox--underline {
   &.is-labeled {
-    padding-top: 12px;
+    padding-top: 16px;
+  }
+
+  &.is-autoFilled {
+    background: var(--formbox-autofilled-background-color); /* [1] */
   }
 }
 
@@ -45,7 +53,9 @@
   flex-direction: row;
   flex: none;
   position: relative;
-  transition: background-color 150ms ease;
+  transition-duration: 150ms;
+  transition-property: background-color, padding;
+  transition-timing-function: ease;
 }
 
 .formboxInputContainer--underline,
@@ -84,9 +94,9 @@
 .formboxInputContainer--underline {
   padding: 3px 0;
 
-  &.formboxInputContainer--autoFilled {
-    margin-top: 2px;
-    padding: 3px 4px;
+  &.is-autoFilled {
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }
 
@@ -185,14 +195,18 @@
       caret-color: var(--formbox-input-container-focused-border-color);
     }
   }
-
-  &.formboxInputContainer--autoFilled {
-    padding: 0 4px;
-  }
 }
 
-.formboxInputContainer--autoFilled {
-  background: var(--formbox-input-container-autofilled-background-color);
+/**
+ * Change the background color of the input container
+ * when the content is auto-filled.
+ */
+.formboxInputContainer--outline,
+.formboxInputContainer--pill,
+.formboxInputContainer--filled {
+  &.is-autoFilled {
+    background: var(--formbox-autofilled-background-color);
+  }
 }
 
 .formboxLabel {
@@ -201,6 +215,7 @@
   left: 0;
   line-height: 1.5;
   position: absolute;
+  right: 0;
   top: 0;
   transition: all 150ms ease;
   user-select: none;
@@ -215,6 +230,14 @@
 
 .formboxLabel--pill {
   left: 17px;
+}
+
+.formboxLabel--underline {
+  top: 4px;
+
+  &.is-autoFilled {
+    padding-left: 8px;
+  }
 }
 
 .formboxLabel--placeholder {
@@ -232,7 +255,7 @@
   }
 
   &.formboxLabel--underline {
-    top: 16px;
+    top: 20px;
   }
 
   &.formboxLabel--filled {
@@ -265,9 +288,9 @@
 
 .formbox--primary {
   @mixin themed .formbox {
+    --formbox-autofilled-background-color: $theme-color-accent-primary-O5;
     --formbox-icon-color: $theme-primary-palette-quieter-color;
     --formbox-icon-hovered-color: $theme-primary-palette-accent-color;
-    --formbox-input-container-autofilled-background-color: $theme-color-BG50-O10;
     --formbox-input-container-background-color: transparent;
     --formbox-input-container-border-color: $theme-primary-palette-quietest-color;
     --formbox-input-container-focused-border-color: $theme-color-accent-primary;
@@ -278,9 +301,9 @@
 
 .formbox--contrast {
   @mixin themed .formbox {
+    --formbox-autofilled-background-color: $theme-color-BG50-O10;
     --formbox-icon-color: $theme-contrast-palette-quieter-color;
     --formbox-icon-hovered-color: $theme-contrast-palette-accent-color;
-    --formbox-input-container-autofilled-background-color: $theme-color-BG50-O10;
     --formbox-input-container-background-color: transparent;
     --formbox-input-container-border-color: $theme-contrast-palette-quieter-color;
     --formbox-input-container-focused-border-color: $theme-contrast-palette-accent-color;

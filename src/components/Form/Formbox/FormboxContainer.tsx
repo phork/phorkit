@@ -87,6 +87,7 @@ function FormboxContainerBase<T extends FormboxContainerElementType>(
         themeId && !unthemed && styles[`formbox--${themeId}`],
         transparent && styles['formbox--transparent'],
         variant && styles[`formbox--${variant}`],
+        autoFilled && styles['is-autoFilled'],
         empty && styles['is-empty'],
         disabled && styles['is-disabled'],
         focused && styles['is-focused'],
@@ -110,6 +111,7 @@ function FormboxContainerBase<T extends FormboxContainerElementType>(
           isLabelPlaceholder && styles['formboxLabel--placeholder'],
           hasIconBefore && styles['formboxLabel--hasIconBefore'],
           hasIconAfter && styles['formboxLabel--hasIconAfter'],
+          autoFilled && styles['is-autoFilled'],
         )}
       >
         {label}
@@ -119,8 +121,8 @@ function FormboxContainerBase<T extends FormboxContainerElementType>(
       className={cx(
         styles.formboxInputContainer,
         variant && styles[`formboxInputContainer--${variant}`],
-        autoFilled && styles['formboxInputContainer--autoFilled'],
         readOnly && styles['formboxInputContainer--readOnly'],
+        autoFilled && styles['is-autoFilled'],
         focused && styles['is-focused'],
       )}
       style={{ width: typeof inputWidth === 'number' ? `${inputWidth}px` : inputWidth }}

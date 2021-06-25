@@ -20,13 +20,15 @@ export function FormDemo({ children, contrast, style }) {
       console.log(values);
     },
     {
+      checkbox: true,
       checkboxes: ['one'],
       danger: '',
       dropdown: '',
       manifesto:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis blandit nibh a ante accumsan, non euismod tellus maximus. Aliquam interdum faucibus metus id tincidunt. Donec nec justo vel purus feugiat mollis. Integer ut quam et eros egestas laoreet non nec nisi. Nunc at ligula tincidunt odio condimentum facilisis id in odio. Ut eget quam magna. Maecenas semper sagittis velit, non aliquet enim tempor sagittis. Cras eget quam sit amet nisl consectetur vulputate eu quis urna. Aliquam eu congue enim. Integer commodo lobortis dolor. Nunc tempor, eros nec imperdiet tempor, eros augue faucibus magna, eget vestibulum turpis sapien non elit.',
       password: '123456',
-      radios: 'two',
+      radio: 'one',
+      radios: 'one',
       search: '',
       select: '',
       selected: 'Yellow',
