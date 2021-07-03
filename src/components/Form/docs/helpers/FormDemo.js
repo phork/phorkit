@@ -14,7 +14,7 @@ const options = [
 ];
 
 export function FormDemo({ children, contrast, style }) {
-  const { values, setValues, handleChange, handleSubmit } = useForm(
+  const { values, setValues, handleChange, handleClear, handleSubmit } = useForm(
     () => {
       /* eslint-disable-next-line */
       console.log(values);
@@ -44,7 +44,7 @@ export function FormDemo({ children, contrast, style }) {
 
   return (
     <form onSubmit={handleSubmit} style={style}>
-      {children(handleChange, setValues, values, contrast, { options, persistEvents: true })}
+      {children(handleChange, handleClear, setValues, values, contrast, { options, persistEvents: true })}
     </form>
   );
 }

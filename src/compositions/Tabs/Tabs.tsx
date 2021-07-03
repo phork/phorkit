@@ -66,7 +66,7 @@ export function Tabs({
   const handleFocus: React.FocusEventHandler<HTMLDivElement> = () => setFocused(true);
 
   return (
-    <ListRegistryProvider>
+    <ListRegistryProvider<HTMLDivElement>>
       <InteractiveGroupProvider<string, HTMLDivElement, HTMLDivElement>
         onSelect={onSelect}
         maxSelect={1}

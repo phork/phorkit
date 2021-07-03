@@ -15,8 +15,13 @@ export const useForm = (callback, initialValues) => {
     setValues(values => ({ ...values, [event.target.name]: value === undefined ? event.target.value : value }));
   }, []);
 
+  const handleClear = useCallback((event, value) => {
+    setValues(values => ({ ...values, [event.target.name]: '' }));
+  }, []);
+
   return {
     handleChange,
+    handleClear,
     handleSubmit,
     setValues,
     values,

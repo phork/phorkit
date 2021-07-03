@@ -13,6 +13,10 @@ export function FormComponentDemo({ contrast, children, initialValue, property, 
           setValue(value);
           children.props.onChange && children.props.onChange(event, value);
         },
+        onClear: event => {
+          setValue('');
+          children.props.onClear && children.props.onClear(event);
+        },
       })}
     </div>
   );

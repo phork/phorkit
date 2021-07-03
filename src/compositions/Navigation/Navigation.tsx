@@ -45,7 +45,7 @@ export function Navigation({
   ...props
 }: NavigationProps): React.ReactElement {
   return (
-    <ListRegistryProvider>
+    <ListRegistryProvider<HTMLDivElement>>
       <InteractiveGroupProvider<string, HTMLElement, HTMLDivElement>
         allowReselect
         maxSelect={1}

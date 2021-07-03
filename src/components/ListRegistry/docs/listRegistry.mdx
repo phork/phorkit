@@ -24,7 +24,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
     {({ themeId }) => (
       <ListRegistryProvider>
         <ListRegistryConsumer>
-          {({ getItem }) => (
+          {({ getItem, items }) => (
             <React.Fragment>
               <Looper
                 start={0}
@@ -35,7 +35,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                     <Button
                       color="primary"
                       onClick={() =>
-                        getItem(i).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
+                        getItem(i).current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
                       }
                     >{`Scroll to ${i}`}</Button>
                   </Rhythm>
@@ -50,7 +50,9 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                   end={40}
                   render={i => (
                     <ListRegistryItem id={i} key={i}>
-                      <Rhythm px={2} my={1}>{`Hello world ${i}`}</Rhythm>
+                      <div>
+                        <Rhythm px={2} my={1}>{`Hello world ${i}`}</Rhythm>
+                      </div>
                     </ListRegistryItem>
                   )}
                 />
@@ -84,7 +86,11 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                           color="primary"
                           onClick={() => {
                             setCount(count + 1);
-                            getItem(i).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                            getItem(i).current.scrollIntoView({
+                              behavior: 'smooth',
+                              block: 'nearest',
+                              inline: 'start',
+                            });
                           }}
                         >{`Scroll to ${i}`}</Button>
                       </Rhythm>
@@ -103,11 +109,9 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                       end={40}
                       render={i => (
                         <ListRegistryItem id={i} key={i}>
-                          {({ ref }) => (
-                            <div ref={ref}>
-                              <Rhythm px={2} my={1}>{`Hello world ${i}${count > 0 ? ` ${count}` : ''}`}</Rhythm>
-                            </div>
-                          )}
+                          <div>
+                            <Rhythm px={2} my={1}>{`Hello world ${i}${count > 0 ? ` ${count}` : ''}`}</Rhythm>
+                          </div>
                         </ListRegistryItem>
                       )}
                     />

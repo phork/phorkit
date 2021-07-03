@@ -97,6 +97,7 @@ import { textbox as variants } from './helpers/variants.js';
               clearable
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
+              onClear={(event, value) => console.log('cleared')}
               transitional
               variant={variant}
             />
@@ -193,6 +194,7 @@ import { textbox as variants } from './helpers/variants.js';
                 formattedValue={value ? <i>{value}</i> : undefined}
                 label="Super fantastic label"
                 onChange={(event, value) => setValue(value)}
+                onClear={(event, value) => console.log('cleared')}
                 transitional
                 value={value}
                 variant={variant}
@@ -241,6 +243,7 @@ import { textbox as variants } from './helpers/variants.js';
               iconBefore={<SearchIcon />}
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
+              onClear={(event, value) => console.log('cleared')}
               transitional
               variant={variant}
             />
@@ -281,6 +284,7 @@ import { textbox as variants } from './helpers/variants.js';
       <FormComponentDemo property="value">
         <Textbox
           label={isFocused ? 'Focused label' : 'Blurred label'}
+          onChange={(event, value) => console.log(value)}
           onFocus={event => setFocused(true)}
           onBlur={event => setFocused(false)}
           placeholder="Hello world"
@@ -374,6 +378,7 @@ import { textbox as variants } from './helpers/variants.js';
               iconBefore={<SearchIcon />}
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
+              onClear={(event, value) => console.log('cleared')}
               placeholder="Hello world"
               transitional
               variant={variant}
@@ -435,11 +440,12 @@ import { textbox as variants } from './helpers/variants.js';
                 <NotifiedTextbox
                   clearable
                   label="Super fantastic label"
-                  onChange={(event, value) => console.log(value)}
-                  transitional
-                  variant={variant}
                   level={level}
                   notification={`This is an example ${level} notification.`}
+                  onChange={(event, value) => console.log(value)}
+                  onClear={(event, value) => console.log('cleared')}
+                  transitional
+                  variant={variant}
                 />
               </FormComponentDemo>
             </Rhythm>
@@ -466,6 +472,7 @@ import { textbox as variants } from './helpers/variants.js';
                 iconBefore={EmailIcon}
                 label="Email"
                 name={`email-${variant}`}
+                onChange={(event, value) => console.log(value)}
                 transitional
                 type="email"
                 variant={variant}

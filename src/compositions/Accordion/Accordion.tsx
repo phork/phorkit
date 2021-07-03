@@ -71,7 +71,7 @@ export function Accordion({
   const handleFocus = () => setFocused(true);
 
   return (
-    <ListRegistryProvider>
+    <ListRegistryProvider<HTMLDivElement>>
       <InteractiveGroupProvider<string, HTMLDivElement, HTMLDivElement>
         onSelect={onSelect}
         items={items}

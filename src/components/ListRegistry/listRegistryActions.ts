@@ -6,10 +6,10 @@ export enum listRegistryActions {
   UNREGISTER = 'UNREGISTER',
 }
 
-export type ListRegistryStateActionRegister = {
+export type ListRegistryStateActionRegister<E extends HTMLElement = HTMLElement> = {
   type: listRegistryActions.REGISTER;
   id: string;
-  element: ListRegistryItemType;
+  ref: ListRegistryItemType<E>;
 };
 
 export type ListRegistryStateActionUnregister = {
@@ -21,7 +21,7 @@ export type ListRegistryStateActionClear = {
   type: listRegistryActions.CLEAR;
 };
 
-export type ListRegistryStateAction =
-  | ListRegistryStateActionRegister
+export type ListRegistryStateAction<E extends HTMLElement = HTMLElement> =
+  | ListRegistryStateActionRegister<E>
   | ListRegistryStateActionUnregister
   | ListRegistryStateActionClear;

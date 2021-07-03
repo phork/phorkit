@@ -27,7 +27,7 @@ export interface LocalSliderProps extends ThemeProps {
   max?: number;
   min?: number;
   name?: string;
-  onChange?: (event: SliderEvent, value: number) => void;
+  onChange: (event: SliderEvent, value: number) => void;
   persistEvents?: boolean;
   scale?: 'small';
   /** Snap the value to the closest step */

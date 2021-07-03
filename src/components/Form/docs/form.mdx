@@ -35,7 +35,7 @@ import { FormDemo } from './helpers/FormDemo';
     {({ state: variant, setState: setVariant }) => (
       <ThemeWrapper>
         <FormDemo contrast={false} style={{ maxWidth: '400px' }}>
-          {(onChange, setValues, values, contrast, { options, persistEvents }) => (
+          {(onChange, onClear, setValues, values, contrast, { options, persistEvents }) => (
             <React.Fragment>
               <Rhythm mt={4} mb={2}>
                 <ButtonGroup
@@ -86,6 +86,7 @@ import { FormDemo } from './helpers/FormDemo';
                   label="Search"
                   name="search"
                   onChange={(event, value) => setValues({ ...values, search: value })}
+                  onClear={onClear}
                   persistEvents={persistEvents}
                   transitional
                   value={values.search}

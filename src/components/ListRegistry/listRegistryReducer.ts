@@ -1,14 +1,15 @@
 import { listRegistryActions as ACTIONS, ListRegistryStateAction } from './listRegistryActions';
-import { ListRegistryItemType } from './types';
+import { ListRegistryState } from './types';
 
-export type ListRegistryState = Map<string, ListRegistryItemType>;
-
-export function listRegistryReducer(state: ListRegistryState, action: ListRegistryStateAction): ListRegistryState {
-  const mutable: ListRegistryState = new Map(state);
+export function listRegistryReducer<E extends HTMLElement = HTMLElement>(
+  state: ListRegistryState<E>,
+  action: ListRegistryStateAction<E>,
+): ListRegistryState<E> {
+  const mutable: ListRegistryState<E> = new Map(state);
 
   switch (action.type) {
     case ACTIONS.REGISTER:
-      mutable.set(action.id, action.element);
+      mutable.set(action.id, action.ref);
       return mutable;
 
     case ACTIONS.UNREGISTER:

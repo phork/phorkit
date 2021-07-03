@@ -9,10 +9,7 @@ import styles from './styles/Textarea.module.css';
 export interface LocalTextareaProps {
   cols?: number;
   maxLength?: number;
-  onChange?: (
-    event: React.ChangeEvent | React.KeyboardEvent | React.MouseEvent | React.TouchEvent,
-    value: FormboxValue,
-  ) => void;
+  onChange: (event: React.ChangeEvent<HTMLTextAreaElement>, value: FormboxValue) => void;
   name?: string;
   placeholder?: string;
   required?: boolean;
@@ -117,5 +114,3 @@ export const Textarea = React.forwardRef(TextareaBase);
 
 TextareaBase.displayName = 'TextareaBase';
 Textarea.displayName = 'Textarea';
-
-<Textarea rows={23} />;

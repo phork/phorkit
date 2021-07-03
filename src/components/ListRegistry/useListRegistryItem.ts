@@ -1,20 +1,20 @@
-import { useContext, useEffect } from 'react';
-import { ListRegistryContext } from './ListRegistryContext';
+import { useEffect } from 'react';
 import { ListRegistryItemType } from './types';
+import { useListRegistry } from './useListRegistry';
 
-export interface UseListRegistryItemInterface<E extends ListRegistryItemType> {
+export interface UseListRegistryItemInterface<E extends HTMLElement = HTMLElement> {
   id: string;
-  ref: React.MutableRefObject<E | null>;
+  ref: ListRegistryItemType<E>;
 }
 
-export function useListRegistryItem<E extends ListRegistryItemType>({
+export function useListRegistryItem<E extends HTMLElement = HTMLElement>({
   id,
   ref,
 }: UseListRegistryItemInterface<E>): React.MutableRefObject<E | null> {
-  const { registerItem, unregisterItem } = useContext(ListRegistryContext);
+  const { registerItem, unregisterItem } = useListRegistry<E>();
 
   useEffect((): (() => void) => {
-    ref.current && registerItem(id, ref.current);
+    ref && registerItem(id, ref);
 
     return () => {
       unregisterItem(id);

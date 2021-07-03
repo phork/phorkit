@@ -48,7 +48,7 @@ type MultipleSelectProps = {
 export type LocalSelectProps = {
   children?: FormboxValue | FormboxValue[];
   name?: string;
-  onChange?: (
+  onChange: (
     event: React.ChangeEvent | React.KeyboardEvent | React.MouseEvent | React.TouchEvent,
     value?: FormboxValue | FormboxValue[],
   ) => void;

@@ -1,26 +1,32 @@
-import React, { useCallback, useMemo, useReducer, useEffect } from 'react';
+import React, { useCallback, useMemo, useReducer, useEffect, Reducer } from 'react';
 import { ListRegistryContext, ListRegistryContextValue } from './ListRegistryContext';
-import { listRegistryActions as ACTIONS } from './listRegistryActions';
-import { listRegistryReducer as reducer, ListRegistryState } from './listRegistryReducer';
+import { listRegistryActions as ACTIONS, ListRegistryStateAction } from './listRegistryActions';
+import { listRegistryReducer as reducer } from './listRegistryReducer';
+import { ListRegistryItemType, ListRegistryState } from './types';
 
 export interface ListRegistryProviderProps {
   children: React.ReactNode;
 }
 
-export function ListRegistryProvider({ children }: ListRegistryProviderProps): React.ReactElement {
-  const [state, dispatch] = useReducer(reducer, new Map() as ListRegistryState);
+export function ListRegistryProvider<E extends HTMLElement = HTMLElement>({
+  children,
+}: ListRegistryProviderProps): React.ReactElement {
+  const [state, dispatch] = useReducer<Reducer<ListRegistryState<E>, ListRegistryStateAction<E>>>(
+    reducer,
+    new Map<string, ListRegistryItemType<E>>(),
+  );
 
-  const registerItem = useCallback<ListRegistryContextValue['registerItem']>(
-    (id, element) =>
+  const registerItem = useCallback<ListRegistryContextValue<E>['registerItem']>(
+    (id, ref) =>
       dispatch({
         id,
-        element,
+        ref,
         type: ACTIONS.REGISTER,
       }),
     [],
   );
 
-  const unregisterItem = useCallback<ListRegistryContextValue['unregisterItem']>(
+  const unregisterItem = useCallback<ListRegistryContextValue<E>['unregisterItem']>(
     id =>
       dispatch({
         id,
@@ -29,7 +35,7 @@ export function ListRegistryProvider({ children }: ListRegistryProviderProps): R
     [],
   );
 
-  const getItem = useCallback<ListRegistryContextValue['getItem']>(id => state.get(id), [state]);
+  const getItem = useCallback<ListRegistryContextValue<E>['getItem']>(id => state.get(id), [state]);
 
   useEffect(() => {
     return () => {
@@ -44,8 +50,9 @@ export function ListRegistryProvider({ children }: ListRegistryProviderProps): R
       registerItem,
       unregisterItem,
       getItem,
+      items: state,
     }),
-    [getItem, registerItem, unregisterItem],
+    [getItem, registerItem, state, unregisterItem],
   );
 
   return <ListRegistryContext.Provider value={value}>{children}</ListRegistryContext.Provider>;

@@ -38,9 +38,17 @@
 /**
  * 1. Shift the label and the icons up so they're in the
  *    middle of the filled container.
+ * 2. Unlike the others, put the padding on the parent so
+ *    the background color encompasses the label
  */
-.formbox--filled.is-labeled.is-transitional.is-empty:not(.is-focused) {
-  --formbox-input-content-shift: -7px; /* [1] */
+.formbox--filled.is-labeled {
+  &.is-transitional.is-empty:not(.is-focused) {
+    --formbox-input-content-shift: -7px; /* [1] */
+  }
+
+  > .formboxInputContainer--filled {
+    padding-top: 20px; /* [2] */
+  }
 }
 
 /**
@@ -102,17 +110,12 @@
 
 /**
  * 1. Prevent the underline from being hidden.
- * 2. Unlike the others, put the padding on the parent so the background color encompasses the label
  */
 .formboxInputContainer--filled {
   border-top-left-radius: $border-radius-s;
   border-top-right-radius: $border-radius-s;
   margin-bottom: 1px; /* [1] */
   padding: 6px 8px 2px 8px;
-
-  .is-labeled & {
-    padding-top: 20px; /* [2] */
-  }
 
   &:before {
     background-color: var(--formbox-input-container-border-color);

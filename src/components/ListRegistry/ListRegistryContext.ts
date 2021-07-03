@@ -1,14 +1,16 @@
 import { createContext } from 'react';
-import { ListRegistryItemType } from './types';
+import { ListRegistryItemType, ListRegistryState } from './types';
 
-export interface ListRegistryContextValue {
-  registerItem: (id: string, item: ListRegistryItemType) => void;
+export interface ListRegistryContextValue<E extends HTMLElement = HTMLElement> {
+  registerItem: (id: string, item: ListRegistryItemType<E>) => void;
   unregisterItem: (id: string) => void;
-  getItem: (id: string) => ListRegistryItemType | undefined;
+  getItem: (id: string) => ListRegistryItemType<E> | undefined;
+  items: ListRegistryState<E>;
 }
 
-export const ListRegistryContext = createContext<ListRegistryContextValue>({
-  registerItem: (/* id, ref */) => {},
-  unregisterItem: (/* id */) => {},
-  getItem: (/* id */) => undefined,
+export const ListRegistryContext = createContext<ListRegistryContextValue<any>>({
+  registerItem: (_id, _ref) => {},
+  unregisterItem: _id => {},
+  getItem: _id => undefined,
+  items: new Map<string, ListRegistryItemType>(),
 });

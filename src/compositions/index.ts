@@ -11,5 +11,6 @@ export * from './Navigation';
 export * from './Pagination';
 export * from './Popover';
 export * from './Tabs';
+export * from './TextboxGroup';
 export * from './Toast';
 export * from './Tooltip';

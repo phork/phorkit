@@ -93,10 +93,10 @@ import { variants } from './helpers/variants';
         <Rhythm py={3}>
           <FormComponentDemo property="value" unwrapped>
             <Textarea
-              variant={variant}
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
               transitional
+              variant={variant}
             />
           </FormComponentDemo>
         </Rhythm>
@@ -115,10 +115,10 @@ import { variants } from './helpers/variants';
         <Rhythm py={3}>
           <FormComponentDemo property="value" unwrapped>
             <Textarea
-              variant={variant}
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
               placeholder="Hello world"
+              variant={variant}
             />
           </FormComponentDemo>
         </Rhythm>
@@ -138,9 +138,9 @@ import { variants } from './helpers/variants';
           <FormComponentDemo property="value" initialValue="Hello world" unwrapped>
             <Textarea
               disabled
-              variant={variant}
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
+              variant={variant}
             />
           </FormComponentDemo>
         </Rhythm>
@@ -159,10 +159,10 @@ import { variants } from './helpers/variants';
         <Rhythm py={3}>
           <FormComponentDemo property="value" initialValue="Hello world" unwrapped>
             <Textarea
-              variant={variant}
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
               readOnly
+              variant={variant}
             />
           </FormComponentDemo>
         </Rhythm>
@@ -181,11 +181,11 @@ import { variants } from './helpers/variants';
         <Rhythm py={3}>
           <FormComponentDemo property="value" initialValue="Hello world" unwrapped>
             <Textarea
-              variant={variant}
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
               transitional
               validity="danger"
+              variant={variant}
             />
           </FormComponentDemo>
         </Rhythm>
@@ -204,11 +204,11 @@ import { variants } from './helpers/variants';
         <Rhythm py={3}>
           <FormComponentDemo property="value" initialValue="Hello world" unwrapped>
             <Textarea
-              variant={variant}
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
               transitional
               validity="warning"
+              variant={variant}
             />
           </FormComponentDemo>
         </Rhythm>
@@ -227,11 +227,11 @@ import { variants } from './helpers/variants';
         <Rhythm py={3}>
           <FormComponentDemo property="value" initialValue="Hello world" unwrapped>
             <Textarea
-              variant={variant}
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
               transitional
               validity="success"
+              variant={variant}
             />
           </FormComponentDemo>
         </Rhythm>
@@ -251,10 +251,10 @@ import { variants } from './helpers/variants';
           <FormComponentDemo property="value" initialValue="Hello world" contrast unwrapped>
             <Textarea
               contrast
-              variant={variant}
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
               transitional
+              variant={variant}
             />
           </FormComponentDemo>
         </Rhythm>
@@ -276,10 +276,10 @@ import { variants } from './helpers/variants';
             <Rhythm py={3}>
               <FormComponentDemo property="value" initialValue="Hello world" unwrapped>
                 <NotifiedTextarea
-                  variant={variant}
-                  onChange={(event, value) => console.log(value)}
                   level={level}
                   notification={`This is an example ${level} notification.`}
+                  onChange={(event, value) => console.log(value)}
+                  variant={variant}
                 />
               </FormComponentDemo>
             </Rhythm>

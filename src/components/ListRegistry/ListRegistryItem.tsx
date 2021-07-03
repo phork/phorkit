@@ -1,24 +1,24 @@
 import React, { useRef } from 'react';
+import { RenderFromPropElement, renderFromProp } from '../../utils/renderFromProp';
 import { useListRegistryItem } from './useListRegistryItem';
 
-export interface ListRegistryItemProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'id'> {
-  children: React.ReactNode;
+export type ListRegistryItemRenderChildrenProps<E extends HTMLElement = HTMLElement> = {
+  ref: React.MutableRefObject<E>;
+};
+
+export interface ListRegistryItemProps<E extends HTMLElement = HTMLElement>
+  extends Omit<React.HTMLAttributes<E>, 'id'> {
+  children: RenderFromPropElement<ListRegistryItemRenderChildrenProps<E>>;
   id: string;
 }
 
-export function ListRegistryItem({
-  children: render,
+export function ListRegistryItem<E extends HTMLElement = HTMLElement>({
+  children,
   id,
   ...props
-}: ListRegistryItemProps): React.ReactElement<HTMLDivElement> {
-  const ref = useRef<HTMLDivElement>(null!);
-  useListRegistryItem({ id, ref });
+}: ListRegistryItemProps<E>): React.ReactElement<E> | null {
+  const ref = useRef<E>(null!);
+  useListRegistryItem<E>({ id, ref });
 
-  return typeof render === 'function' ? (
-    render({ ref, ...props })
-  ) : (
-    <div ref={ref} {...props}>
-      {render}
-    </div>
-  );
+  return renderFromProp<ListRegistryItemRenderChildrenProps<E>>(children, { ref, ...props });
 }

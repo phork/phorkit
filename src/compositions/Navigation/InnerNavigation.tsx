@@ -12,7 +12,7 @@ import {
   InteractiveGroupContextValue,
   InteractiveGroupItemType,
 } from '../../components/InteractiveGroup';
-import { ListRegistryContext } from '../../components/ListRegistry/ListRegistryContext';
+import { useListRegistry } from '../../components/ListRegistry/useListRegistry';
 import { NavigationItem, NavigationItemProps } from './NavigationItem';
 import styles from './styles/Navigation.module.css';
 
@@ -60,7 +60,7 @@ export const InnerNavigation = React.forwardRef<HTMLElement, InnerNavigationProp
   ): React.ReactElement<InnerNavigationProps, 'nav'> => {
     const ref = useRef<HTMLElement>(null!);
     const accessible = useAccessibility();
-    const { getItem } = useContext(ListRegistryContext);
+    const { getItem } = useListRegistry<HTMLDivElement>();
     const [, setContainerSize] = useState<string>();
     const { focused, handleBlur, handleFocus } = useDeepFocus<HTMLElement>(ref);
     const themeId = useThemeId(initThemeId);
@@ -75,7 +75,7 @@ export const InnerNavigation = React.forwardRef<HTMLElement, InnerNavigationProp
 
     const getSelectedCoords = (selectedId: string) => {
       if (animated && ref.current) {
-        const item = getItem(selectedId);
+        const item = getItem(selectedId)?.current;
         if (item) {
           const offset = ref.current && ref.current.getBoundingClientRect();
           const { left, top, width, height } = item.getBoundingClientRect();

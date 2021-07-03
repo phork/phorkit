@@ -4,13 +4,13 @@ menu: Utilities
 route: /components/EventListener
 ---
 
-import { PageTitle } from 'docs/helpers/PageTitle';
-import { StateWrapper } from 'docs/helpers/StateWrapper';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { Button } from 'components/Button';
 import { Textbox, CheckboxGroup } from 'components/Form';
 import { Rhythm } from 'components/Rhythm';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import {
   EventListenerProvider,
   EventListenerConsumer,
@@ -53,6 +53,7 @@ import { HookDemo } from './helpers/HookDemo';
                         label="Logged text"
                         name="text"
                         onChange={(event, value) => setState({ ...state, text: value })}
+                        onClear={(event, value) => setState({ ...state, text: '' })}
                         transitional
                         value={state.text}
                       />

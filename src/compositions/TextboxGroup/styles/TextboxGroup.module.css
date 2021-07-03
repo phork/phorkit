@@ -1,0 +1,24 @@
+/*
+.textboxGroup {
+}
+*/
+
+.textboxGroup--2fa {
+  margin-left: -8px;
+  margin-right: -8px;
+
+  &.textboxGroup--filled,
+  &.textboxGroup--outline {
+    margin-top: 2px;
+  }
+}
+
+/*
+.textboxGroupInput {
+}
+*/
+
+.textboxGroupInput--2fa {
+  margin-left: 8px;
+  margin-right: 8px;
+}

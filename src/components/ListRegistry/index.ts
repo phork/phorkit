@@ -4,5 +4,6 @@ export * from './ListRegistryContext';
 export * from './ListRegistryItem';
 export * from './ListRegistryProvider';
 export * from './listRegistryReducer';
-export * from './useListRegistryItem';
 export * from './types';
+export * from './useListRegistry';
+export * from './useListRegistryItem';

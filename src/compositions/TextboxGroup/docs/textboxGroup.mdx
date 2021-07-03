@@ -1,0 +1,85 @@
+---
+name: TextboxGroup
+menu: Components
+route: /compositions/TextboxGroup
+---
+
+import { Playground, Props } from 'docz';
+import { FormboxContainer } from 'components/Form/Formbox';
+import { Rhythm } from 'components/Rhythm';
+import { Looper } from 'docs/helpers/Looper';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { TextboxGroup2FA, TextboxGroupContainer } from '../index';
+import { textbox as variants } from './helpers/variants.js';
+
+<PageTitle title="TextboxGroup" src="compositions/Form/TextboxGroup" />
+
+## Two factor authentication
+
+<Playground>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <StateWrapper initialState="">
+          {({ state, setState }) => (
+            <TextboxGroupContainer>
+              <Rhythm py={3}>
+                <TextboxGroup2FA
+                  length={6}
+                  onChange={(event, value) => setState(value)}
+                  value={state}
+                  variant={variant}
+                />
+              </Rhythm>
+            </TextboxGroupContainer>
+          )}
+        </StateWrapper>
+      )}
+    />
+  </ThemeWrapper>
+</Playground>
+
+## Two factor authentication, labeled
+
+<Playground>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <StateWrapper initialState={{ focused: false, value: '' }}>
+          {({ state, setState }) => (
+            <TextboxGroupContainer>
+              <Rhythm py={3} grouped>
+                <FormboxContainer
+                  as="label"
+                  focused={state.focused}
+                  label="Two-factor code"
+                  onBlur={() => setState({ ...state, focused: false })}
+                  onFocus={() => setState({ ...state, focused: true })}
+                  transitional
+                  transparent
+                  type="input"
+                  variant="minimal"
+                >
+                  <TextboxGroup2FA
+                    length={6}
+                    onChange={(event, value) => setState({ ...state, value })}
+                    value={state.value}
+                    variant={variant}
+                  />
+                </FormboxContainer>
+              </Rhythm>
+            </TextboxGroupContainer>
+          )}
+        </StateWrapper>
+      )}
+    />
+  </ThemeWrapper>
+</Playground>
+
+## \[props\]
+
+<Props of={TextboxGroup2FA} />

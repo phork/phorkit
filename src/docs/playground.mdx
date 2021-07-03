@@ -489,6 +489,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                 },
               }}
               onChange={(event, value) => setValue(value)}
+              onClear={(event, value) => setValue('')}
               label="Who are you?"
               transitional
               value={value}
@@ -1213,9 +1214,10 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                   aria-label="Search"
                   clearable
                   iconBefore={<SearchIcon size={14} />}
-                  onChange={(event, value, { cleared } = {}) => {
-                    setSearchTerm(cleared ? '' : value);
+                  onChange={(event, value) => {
+                    setSearchTerm(value);
                   }}
+                  onClear={(event, value) => setSearchTerm('')}
                   value={searchTerm || ''}
                   width={200}
                 />
