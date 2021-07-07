@@ -81,13 +81,6 @@ export function TextboxGroup2FA({
     values,
   });
 
-  /**
-   * This intentionally excludes maxLength from the input
-   * so that if someone enters a digit faster than the focus
-   * automatically changes it's not ignored. The digit will
-   * still be placed in the right box because of how the join
-   * in `handleChange` works.
-   */
   return looper.length ? (
     <div
       className={cx(
@@ -111,7 +104,7 @@ export function TextboxGroup2FA({
           inputId={inputId}
           inputSize={1}
           key={generateComponentId(inputId)}
-          // maxLength is intentionally excluded (see note)
+          maxLength={1}
           size={size}
           style={inputStyle}
           value={values[inputId] === ' ' ? '' : values[inputId]}
