@@ -17,6 +17,18 @@ import {
 } from '../Formbox';
 import styles from './styles/Textbox.module.css';
 
+const clearableIconSizes = {
+  medium: 8,
+  large: 8,
+  xlarge: 9,
+  xxlarge: 11,
+  xxxlarge: 12,
+  xxxxlarge: 12,
+  xxxxxlarge: 12,
+  xxxxxxlarge: 12,
+  xxxxxxxlarge: 14,
+};
+
 export type TextboxTranslations = FormboxTranslations & {
   clearLabel: string;
 };
@@ -39,6 +51,7 @@ export interface LocalTextboxProps {
   clearable?: boolean;
   inputClassName?: string;
   inputProps?: Omit<React.InputHTMLAttributes<HTMLInputElement>, 'className' | 'onKeyDown' | 'ref' | 'type'>;
+  inputSize?: number;
   max?: number;
   maxLength?: number;
   min?: number;
@@ -50,7 +63,6 @@ export interface LocalTextboxProps {
   onSubmit?: (event: React.KeyboardEvent<HTMLInputElement>, value: string) => void;
   /** This can be used to show HTML, or if it's undefined it will default to the plain input placeholder */
   placeholder?: FormboxValue | React.ReactChild;
-  size?: number;
   step?: number;
   type?: 'color' | 'date' | 'email' | 'number' | 'password' | 'text' | 'time';
   value?: FormboxValue;
@@ -66,7 +78,7 @@ function TextboxBase(
     centered,
     className,
     clearable: initClearable,
-    contrast,
+    contrast = false,
     disabled,
     formattedValue,
     iconAfter,
@@ -75,6 +87,7 @@ function TextboxBase(
     id,
     inputClassName,
     inputProps: initInputProps,
+    inputSize,
     label,
     max,
     maxLength,
@@ -89,14 +102,14 @@ function TextboxBase(
     onSubmit,
     placeholder,
     readOnly,
-    size,
+    size = 'large',
     step = 1,
     tabIndex = 0,
     themeId: initThemeId,
     transitional,
     translations: customTranslations,
     type = 'text',
-    unthemed,
+    unthemed = false,
     validity,
     value = '',
     variant,
@@ -153,7 +166,7 @@ function TextboxBase(
   const renderClearableIcon = () => {
     return (
       <button aria-label={clearLabel} className={styles.textboxButton} type="button" onClick={handleClear}>
-        <TimesIcon scale="xsmall" title={clearLabel} />
+        <TimesIcon size={clearableIconSizes[size]} title={clearLabel} />
       </button>
     );
   };
@@ -178,6 +191,7 @@ function TextboxBase(
       onBlur={onBlur}
       onFocus={onFocus}
       readOnly={readOnly}
+      size={size}
       themeId={themeId}
       transitional={transitional}
       type="input"
@@ -187,7 +201,7 @@ function TextboxBase(
       width={width}
       {...props}
     >
-      {({ id, focused, required }) =>
+      {({ id, focused, required, variant }) =>
         readOnly ? (
           <FormboxReadOnly formattedValue={formattedValue} id={id} value={value} />
         ) : (
@@ -200,6 +214,7 @@ function TextboxBase(
             hasValue={hasValue}
             placeholder={placeholder}
             themeId={themeId}
+            variant={variant}
           >
             <input
               // eslint-disable-next-line jsx-a11y/no-autofocus
@@ -214,7 +229,7 @@ function TextboxBase(
               onKeyDown={handleKeyDown}
               onKeyUp={onKeyUp}
               ref={combineRefs}
-              size={size}
+              size={inputSize}
               required={required}
               tabIndex={tabIndex}
               type={type}

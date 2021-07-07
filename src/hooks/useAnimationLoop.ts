@@ -82,7 +82,7 @@ export const useAnimationLoop = ({
   animate,
   duration,
   loops,
-  manual,
+  manual = false,
   onFinish,
   onLoop,
   percent,

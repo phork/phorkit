@@ -14,7 +14,7 @@ export function ThemeProvider({
   children,
   onChange,
   themeId: initThemeId = 'light',
-  unthemed,
+  unthemed = false,
 }: ThemeProviderProps): React.ReactElement {
   const previousValue = useRef<ThemeContextValue>({} as ThemeContextValue);
   const [themeId, setThemeId] = useState<Theme | undefined>(unthemed ? undefined : initThemeId);

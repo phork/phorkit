@@ -17,9 +17,9 @@ export interface AccordionContainerProps extends React.HTMLAttributes<HTMLDivEle
 export function AccordionContainer({
   children,
   className,
-  contrast,
-  focused,
-  horizontal,
+  contrast = false,
+  focused = false,
+  horizontal = false,
   style,
   themeId: initThemeId,
   variant: initVariant,

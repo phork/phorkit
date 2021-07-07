@@ -12,7 +12,7 @@ export interface ModalBodyProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const ModalBody = React.forwardRef<HTMLDivElement, ModalBodyProps>(
   (
-    { children, className, flush, scrollable, style, ...props },
+    { children, className, flush = false, scrollable = false, style, ...props },
     forwardedRef,
   ): React.ReactElement<ModalBodyProps, 'div'> => {
     return (

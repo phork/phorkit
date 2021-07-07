@@ -15,7 +15,7 @@ import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index
 ## Basic slider
 
 <Playground>
-  <FormComponentDemo property="value" initialValue={10}>
+  <FormComponentDemo type="slider" property="value" initialValue={10}>
     <Slider
       aria-label="Super fantastic label"
       onChange={(event, value) => console.log(value)}
@@ -28,7 +28,7 @@ import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index
 ## Small slider
 
 <Playground>
-  <FormComponentDemo property="value" initialValue={10}>
+  <FormComponentDemo type="slider" property="value" initialValue={10}>
     <Slider
       aria-label="Super fantastic label"
       onChange={(event, value) => console.log(value)}
@@ -42,7 +42,7 @@ import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index
 ## Negative slider
 
 <Playground>
-  <FormComponentDemo property="value" initialValue={-10}>
+  <FormComponentDemo type="slider" property="value" initialValue={-10}>
     <Slider
       aria-label="Super fantastic label"
       max={0}
@@ -57,7 +57,7 @@ import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index
 ## Ticked slider
 
 <Playground>
-  <FormComponentDemo property="value" initialValue={10}>
+  <FormComponentDemo type="slider" property="value" initialValue={10}>
     <Slider
       aria-label="Super fantastic label"
       max={100}
@@ -74,7 +74,7 @@ import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index
 ## Ticked snap slider
 
 <Playground>
-  <FormComponentDemo property="value" initialValue={2}>
+  <FormComponentDemo type="slider" property="value" initialValue={2}>
     <Slider
       aria-label="Super fantastic label"
       max={5}
@@ -92,7 +92,7 @@ import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index
 ## Labeled slider
 
 <Playground>
-  <FormComponentDemo property="value" initialValue={4.5}>
+  <FormComponentDemo type="slider" property="value" initialValue={4.5}>
     <Slider
       max={12}
       min={2}
@@ -109,7 +109,7 @@ import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index
 ## Disabled slider
 
 <Playground>
-  <FormComponentDemo property="value" initialValue={30}>
+  <FormComponentDemo type="slider" property="value" initialValue={30}>
     <Slider aria-label="Super fantastic label" disabled onChange={(event, value) => console.log(value)} width="100%" />
   </FormComponentDemo>
 </Playground>
@@ -117,7 +117,7 @@ import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index
 ## Danger slider
 
 <Playground>
-  <FormComponentDemo property="value" initialValue={60}>
+  <FormComponentDemo type="slider" property="value" initialValue={60}>
     <Slider
       aria-label="Super fantastic label"
       onChange={(event, value) => console.log(value)}
@@ -130,7 +130,7 @@ import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index
 ## Contrast slider
 
 <Playground>
-  <FormComponentDemo property="value" initialValue={30} contrast>
+  <FormComponentDemo type="slider" property="value" initialValue={30} contrast>
     <Slider aria-label="Super fantastic label" contrast onChange={(event, value) => console.log(value)} width="100%" />
   </FormComponentDemo>
 </Playground>
@@ -138,7 +138,7 @@ import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index
 ## Styled slider
 
 <Playground>
-  <FormComponentDemo property="value" initialValue={30}>
+  <FormComponentDemo type="slider" property="value" initialValue={30}>
     <StyledSlider
       aria-label="Super fantastic label"
       handleBackgroundColor="#283992"
@@ -154,7 +154,7 @@ import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index
 ## Multi-color slider with dividers
 
 <Playground>
-  <FormComponentDemo property="value" initialValue={2}>
+  <FormComponentDemo type="slider" property="value" initialValue={2}>
     <MultiColorSlider
       aria-label="Super fantastic label"
       colors={['danger', 'warning', 'success', 'accent-primary']}
@@ -173,7 +173,7 @@ import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index
   <Looper
     list={['success', 'danger', 'warning', 'primary', 'neutral']}
     render={level => (
-      <FormComponentDemo property="value" initialValue="20">
+      <FormComponentDemo type="slider" property="value" initialValue="20">
         <NotifiedSlider
           aria-label="Super fantastic label"
           level={level}

@@ -15,7 +15,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Select, NotifiedSelect } from '../index';
 import { options } from './helpers/options';
-import { variants } from './helpers/variants.js';
+import { variants, sizes } from './helpers/variants.js';
 
 <PageTitle title="Select" src="components/Form/Select" />
 
@@ -27,7 +27,7 @@ import { variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" initialValue="yellow" unwrapped>
+          <FormComponentDemo type="select" property="value" initialValue="yellow" unwrapped>
             <Select onChange={(event, value) => console.log(value)} options={options} variant={variant} />
           </FormComponentDemo>
         </Rhythm>
@@ -44,7 +44,7 @@ import { variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="values" initialValue={['yellow', 'blue']} unwrapped>
+          <FormComponentDemo type="select" property="values" initialValue={['yellow', 'blue']} unwrapped>
             <Select
               label="Super fantastic label"
               multiple
@@ -67,7 +67,7 @@ import { variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" initialValue="yellow" unwrapped>
+          <FormComponentDemo type="select" property="value" initialValue="yellow" unwrapped>
             <Select
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -89,7 +89,7 @@ import { variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" unwrapped>
+          <FormComponentDemo type="select" property="value" unwrapped>
             <Select
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -112,7 +112,7 @@ import { variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" unwrapped>
+          <FormComponentDemo type="select" property="value" unwrapped>
             <Select
               iconBefore={SearchIcon}
               iconAfter={<TimesIcon size={8} />}
@@ -137,7 +137,7 @@ import { variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" unwrapped>
+          <FormComponentDemo type="select" property="value" unwrapped>
             <Select
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -160,7 +160,7 @@ import { variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" unwrapped>
+          <FormComponentDemo type="select" property="value" unwrapped>
             <Select
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -184,7 +184,7 @@ import { variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" unwrapped>
+          <FormComponentDemo type="select" property="value" unwrapped>
             <Select
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -208,7 +208,7 @@ import { variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" unwrapped>
+          <FormComponentDemo type="select" property="value" unwrapped>
             <Select
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -232,7 +232,7 @@ import { variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" initialValue="yellow" unwrapped>
+          <FormComponentDemo type="select" property="value" initialValue="yellow" unwrapped>
             <Select
               disabled
               label="Super fantastic label"
@@ -255,7 +255,7 @@ import { variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" initialValue="yellow" unwrapped>
+          <FormComponentDemo type="select" property="value" initialValue="yellow" unwrapped>
             <Select
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -278,7 +278,7 @@ import { variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="values" initialValue={['yellow', 'blue']} unwrapped>
+          <FormComponentDemo type="select" property="values" initialValue={['yellow', 'blue']} unwrapped>
             <Select
               label="Super fantastic label"
               multiple
@@ -302,7 +302,7 @@ import { variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" initialValue="yellow" unwrapped>
+          <FormComponentDemo type="select" property="value" initialValue="yellow" unwrapped>
             <Select
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -326,7 +326,7 @@ import { variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" initialValue="yellow" unwrapped>
+          <FormComponentDemo type="select" property="value" initialValue="yellow" unwrapped>
             <Select
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -350,7 +350,7 @@ import { variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" initialValue="yellow" unwrapped>
+          <FormComponentDemo type="select" property="value" initialValue="yellow" unwrapped>
             <Select
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -374,7 +374,7 @@ import { variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" initialValue="yellow" contrast unwrapped>
+          <FormComponentDemo type="select" property="value" initialValue="yellow" contrast unwrapped>
             <Select
               contrast
               id="demo-contrast-select"
@@ -401,7 +401,7 @@ import { variants } from './helpers/variants.js';
           list={['success', 'danger', 'warning', 'primary', 'neutral']}
           render={level => (
             <Rhythm py={3}>
-              <FormComponentDemo property="value" initialValue="yellow" unwrapped>
+              <FormComponentDemo type="select" property="value" initialValue="yellow" unwrapped>
                 <NotifiedSelect
                   label="Super fantastic label"
                   onChange={(event, value) => console.log(value)}
@@ -414,6 +414,38 @@ import { variants } from './helpers/variants.js';
             </Rhythm>
           )}
         />
+      )}
+    />
+  </ThemeWrapper>
+</Playground>
+
+## Sizes
+
+<Playground>
+  <ThemeWrapper>
+    <Looper
+      list={sizes}
+      render={size => (
+        <Rhythm my={3} grouped>
+          <Looper
+            list={variants}
+            render={variant => (
+              <Rhythm py={3}>
+                <FormComponentDemo type="select" property="value" key={variant} unwrapped>
+                  <Select
+                    iconBefore={SearchIcon}
+                    label={`Size ${size}`}
+                    onChange={(event, value) => console.log(value)}
+                    options={options}
+                    size={size}
+                    transitional
+                    variant={variant}
+                  />
+                </FormComponentDemo>
+              </Rhythm>
+            )}
+          />
+        </Rhythm>
       )}
     />
   </ThemeWrapper>

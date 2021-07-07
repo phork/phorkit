@@ -4,26 +4,27 @@ import { ThemeProps } from '../../../types';
 import { useThemeId } from '../../../hooks/useThemeId';
 import autoFilledStyles from './styles/FormboxAutoFilled.module.css';
 import styles from './styles/FormboxInput.module.css';
-import { FormboxInputElementType } from './types';
+import { FormboxInputElementType, FormboxVariant } from './types';
 
 export interface FormboxInputProps<I extends FormboxInputElementType> extends ThemeProps {
   children?: React.ReactElement<HTMLElementTagNameMap[I]>;
   className?: string;
-  contrast?: boolean;
   hidden?: boolean;
   placeholder?: string | number;
   tabIndex?: number;
+  variant: FormboxVariant;
 }
 
 /** This clones its input/select/textarea child and adds the styles and placeholder to it */
 export const FormboxInput = <I extends FormboxInputElementType>({
   children,
   className,
-  contrast,
-  hidden,
+  contrast = false,
+  hidden = false,
   placeholder,
   tabIndex,
   themeId: initThemeId,
+  variant,
 }: FormboxInputProps<I>): React.ReactElement<HTMLElementTagNameMap[I]> | null => {
   const themeId = useThemeId(initThemeId);
   const color = contrast ? 'contrast' : 'primary';
@@ -35,6 +36,7 @@ export const FormboxInput = <I extends FormboxInputElementType>({
           themeId && styles[`formboxInput--${themeId}`],
           hidden && styles['formboxInput--hidden'],
           styles[`formboxInput--${color}`],
+          styles[`formboxInput--${variant}`],
           autoFilledStyles.formboxAutoFilled,
           children.props.className,
           className,

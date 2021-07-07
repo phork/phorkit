@@ -30,7 +30,7 @@ export type CheckboxGroupProps = MergeElementPropsWithoutRef<'div', LocalCheckbo
 function CheckboxGroupBase(
   {
     className,
-    contrast,
+    contrast = false,
     layout = 'inline',
     legend,
     onChange,

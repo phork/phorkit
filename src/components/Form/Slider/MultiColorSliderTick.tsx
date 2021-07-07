@@ -16,7 +16,7 @@ export interface LocalMultiColorSliderTickProps extends ThemeProps {
 export type MultiColorSliderTickProps = MergeElementPropsWithoutRef<'div', LocalMultiColorSliderTickProps>;
 
 export function MultiColorSliderTick({
-  active,
+  active = false,
   number,
   className,
   colors,

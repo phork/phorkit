@@ -19,7 +19,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Textbox, NotifiedTextbox } from '../index';
-import { textbox as variants } from './helpers/variants.js';
+import { textbox as variants, sizes } from './helpers/variants.js';
 
 <PageTitle title="Textbox" src="components/Form/Textbox" />
 
@@ -31,7 +31,7 @@ import { textbox as variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" initialValue="Hello world" key={variant} unwrapped>
+          <FormComponentDemo type="textbox" property="value" initialValue="Hello world" key={variant} unwrapped>
             <Textbox variant={variant} onChange={(event, value) => console.log(value)} />
           </FormComponentDemo>
         </Rhythm>
@@ -48,7 +48,7 @@ import { textbox as variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" initialValue="Hello world" key={variant} unwrapped>
+          <FormComponentDemo type="textbox" property="value" initialValue="Hello world" key={variant} unwrapped>
             <Textbox
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -70,7 +70,7 @@ import { textbox as variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" key={variant} unwrapped>
+          <FormComponentDemo type="textbox" property="value" key={variant} unwrapped>
             <Textbox
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -92,7 +92,7 @@ import { textbox as variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" key={variant} unwrapped>
+          <FormComponentDemo type="textbox" property="value" key={variant} unwrapped>
             <Textbox
               clearable
               label="Super fantastic label"
@@ -116,7 +116,7 @@ import { textbox as variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" key={variant} unwrapped>
+          <FormComponentDemo type="textbox" property="value" key={variant} unwrapped>
             <Textbox
               iconBefore={SearchIcon}
               iconAfter={<SpinnerIcon size={14} />}
@@ -140,7 +140,7 @@ import { textbox as variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" key={variant} unwrapped>
+          <FormComponentDemo type="textbox" property="value" key={variant} unwrapped>
             <Textbox
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -163,7 +163,7 @@ import { textbox as variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" key={variant} unwrapped>
+          <FormComponentDemo type="textbox" property="value" key={variant} unwrapped>
             <Textbox
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -215,7 +215,7 @@ import { textbox as variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" initialValue="Hello world" key={variant} unwrapped>
+          <FormComponentDemo type="textbox" property="value" initialValue="Hello world" key={variant} unwrapped>
             <Textbox
               disabled
               label="Super fantastic label"
@@ -237,7 +237,7 @@ import { textbox as variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" initialValue="Hello world" key={variant} unwrapped>
+          <FormComponentDemo type="textbox" property="value" initialValue="Hello world" key={variant} unwrapped>
             <Textbox
               clearable
               iconBefore={<SearchIcon />}
@@ -262,7 +262,7 @@ import { textbox as variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" initialValue="Hello world" key={variant} unwrapped>
+          <FormComponentDemo type="textbox" property="value" initialValue="Hello world" key={variant} unwrapped>
             <Textbox
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -281,7 +281,7 @@ import { textbox as variants } from './helpers/variants.js';
 <Playground>
   <StateWrapper initialState={false}>
     {({ state: isFocused, setState: setFocused }) => (
-      <FormComponentDemo property="value">
+      <FormComponentDemo type="textbox" property="value">
         <Textbox
           label={isFocused ? 'Focused label' : 'Blurred label'}
           onChange={(event, value) => console.log(value)}
@@ -302,7 +302,7 @@ import { textbox as variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" initialValue="Hello world" key={variant} unwrapped>
+          <FormComponentDemo type="textbox" property="value" initialValue="Hello world" key={variant} unwrapped>
             <Textbox
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -325,7 +325,7 @@ import { textbox as variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" initialValue="Hello world" key={variant} unwrapped>
+          <FormComponentDemo type="textbox" property="value" initialValue="Hello world" key={variant} unwrapped>
             <Textbox
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -348,7 +348,7 @@ import { textbox as variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" initialValue="Hello world" key={variant} unwrapped>
+          <FormComponentDemo type="textbox" property="value" initialValue="Hello world" key={variant} unwrapped>
             <Textbox
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -371,7 +371,7 @@ import { textbox as variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" contrast key={variant} unwrapped>
+          <FormComponentDemo type="textbox" property="value" contrast key={variant} unwrapped>
             <Textbox
               clearable
               contrast
@@ -398,7 +398,7 @@ import { textbox as variants } from './helpers/variants.js';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo property="value" key={variant} unwrapped>
+          <FormComponentDemo type="textbox" property="value" key={variant} unwrapped>
             <Textbox
               clearable
               label="Super fantastic label"
@@ -436,7 +436,7 @@ import { textbox as variants } from './helpers/variants.js';
           list={['success', 'danger', 'warning', 'primary', 'neutral']}
           render={level => (
             <Rhythm py={3}>
-              <FormComponentDemo property="value" initialValue="Hello world" key={variant} unwrapped>
+              <FormComponentDemo type="textbox" property="value" initialValue="Hello world" key={variant} unwrapped>
                 <NotifiedTextbox
                   clearable
                   label="Super fantastic label"
@@ -465,7 +465,7 @@ import { textbox as variants } from './helpers/variants.js';
         list={variants}
         render={variant => (
           <Rhythm p={2} grouped>
-            <FormComponentDemo property="value" key={variant} unwrapped>
+            <FormComponentDemo type="textbox" property="value" key={variant} unwrapped>
               <Textbox
                 autoComplete="email"
                 clearable
@@ -487,6 +487,38 @@ import { textbox as variants } from './helpers/variants.js';
         </Button>
       </Rhythm>
     </form>
+  </ThemeWrapper>
+</Playground>
+
+## Sizes
+
+<Playground>
+  <ThemeWrapper>
+    <Looper
+      list={sizes}
+      render={size => (
+        <Rhythm my={3} grouped>
+          <Looper
+            list={variants}
+            render={variant => (
+              <Rhythm py={3}>
+                <FormComponentDemo type="textbox" property="value" key={variant} unwrapped>
+                  <Textbox
+                    iconBefore={ArrowLeftIcon}
+                    iconAfter={ArrowRightIcon}
+                    label={`Size ${size}`}
+                    onChange={(event, value) => console.log(value)}
+                    size={size}
+                    transitional
+                    variant={variant}
+                  />
+                </FormComponentDemo>
+              </Rhythm>
+            )}
+          />
+        </Rhythm>
+      )}
+    />
   </ThemeWrapper>
 </Playground>
 

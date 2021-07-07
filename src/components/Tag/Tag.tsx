@@ -23,17 +23,17 @@ export type TagProps<T extends TagElementType = 'div'> = AsReactType<T> & MergeE
 
 export function TagBase<T extends TagElementType = 'div'>(
   {
-    actionable,
+    actionable = false,
     as,
     className,
-    contrast,
-    flush,
+    contrast = false,
+    flush = false,
     label,
     shape = 'pill',
     size = 'small',
     themeId: initThemeId,
     variant = 'shaded',
-    unthemed,
+    unthemed = false,
     ...props
   }: TagProps<T>,
   forwardedRef: React.ForwardedRef<HTMLElementTagNameMap[T]>,

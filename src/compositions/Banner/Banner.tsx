@@ -35,7 +35,7 @@ export function Banner({
   children,
   className,
   id,
-  immediate,
+  immediate = false,
   level,
   onClose,
   style,

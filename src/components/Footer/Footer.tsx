@@ -14,13 +14,13 @@ export interface FooterProps extends React.HTMLAttributes<HTMLDivElement>, Theme
 }
 
 export function Footer({
-  bordered,
+  bordered = false,
   children,
   className,
-  contrast,
-  full,
+  contrast = false,
+  full = false,
   themeId: initThemeId,
-  unthemed,
+  unthemed = false,
   variant: initVariant = 'primary',
   volume,
   ...props

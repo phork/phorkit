@@ -27,14 +27,14 @@ export function Flex({
   children,
   className,
   direction,
-  flexible,
-  full,
-  inflexible,
-  inline,
+  flexible = false,
+  full = false,
+  inflexible = false,
+  inline = false,
   justifyContent,
-  max,
-  reverse,
-  wrap,
+  max = false,
+  reverse = false,
+  wrap = false,
   ...props
 }: FlexProps): React.ReactElement<FlexProps, 'div'> {
   return (

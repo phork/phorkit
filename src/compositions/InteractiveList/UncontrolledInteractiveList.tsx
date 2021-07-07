@@ -47,9 +47,9 @@ export type UncontrolledInteractiveListProps = MergeProps<ListProps<'ul'>, Local
 
 function UncontrolledInteractiveListBase(
   {
-    allowReselect,
+    allowReselect = false,
     children,
-    disabled,
+    disabled = false,
     focused,
     listComponent,
     maxSelect,
@@ -66,13 +66,13 @@ function UncontrolledInteractiveListBase(
     parentRef,
     providerProps,
     reducer,
-    rounded,
-    selectOnFocus,
+    rounded = false,
+    selectOnFocus = false,
     themeId: initThemeId,
-    transparent,
-    triggerLinks,
-    unstyled,
-    unthemed,
+    transparent = false,
+    triggerLinks = false,
+    unstyled = false,
+    unthemed = false,
     ...props
   }: UncontrolledInteractiveListProps,
   forwardedRef: React.ForwardedRef<HTMLUListElement>,

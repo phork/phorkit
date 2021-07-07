@@ -26,8 +26,40 @@ import { DropdownContent, DropdownContentProps, DropdownContentHandles } from '.
 import { dropdownActions as ACTIONS } from './dropdownActions';
 import { dropdownReducer } from './dropdownReducer';
 import styles from './styles/Dropdown.module.css';
-import { DropdownOption, DropdownInputVariant, DropdownLayout, DropdownTranslations } from './types';
+import sizeStyles from './styles/DropdownSizes.module.css';
+import {
+  DropdownOption,
+  DropdownInputVariant,
+  DropdownLayout,
+  DropdownTranslations,
+  DropdownListSize,
+  DropdownSize,
+} from './types';
 import { getDropdownSelectedView } from './utils';
+
+const arrowIconSizes = {
+  medium: 8,
+  large: 8,
+  xlarge: 9,
+  xxlarge: 11,
+  xxxlarge: 13,
+  xxxxlarge: 14,
+  xxxxxlarge: 14,
+  xxxxxxlarge: 14,
+  xxxxxxxlarge: 16,
+};
+
+const listSizes: Record<string, DropdownListSize> = {
+  medium: 'small',
+  large: 'medium',
+  xlarge: 'large',
+  xxlarge: 'large',
+  xxxlarge: 'xlarge',
+  xxxxlarge: 'xlarge',
+  xxxxxlarge: 'xlarge',
+  xxxxxxlarge: 'xlarge',
+  xxxxxxxlarge: 'xlarge',
+};
 
 const FOCUS_REFS = {
   CLEAR: 'clear',
@@ -87,6 +119,7 @@ export interface DropdownProps
   reducer: UncontrolledInteractiveListProps['reducer'];
   /** A searchable dropdown has no options unless a search term has been entered */
   searchable?: boolean;
+  size?: DropdownSize;
   transitional?: boolean;
   translations?: DropdownTranslations;
   /** When using the withNotification HOC the empty content notice must be inline if there's a notification */
@@ -104,11 +137,11 @@ export interface DropdownHandles {
 /** The dropdown selection is managed by the reducer prop */
 function DropdownBase(
   {
-    allowReselect,
-    arrowIconSize = 8,
+    allowReselect = false,
+    arrowIconSize: initArrowIconSize,
     className,
-    contrast,
-    disabled,
+    contrast = false,
+    disabled = false,
     disabledIds,
     emptyNotification,
     formattedValue: initFormattedValue,
@@ -119,7 +152,7 @@ function DropdownBase(
     label,
     layout = 'raised',
     listColor,
-    listSize,
+    listSize: initListSize,
     listVariant,
     maxSelect = 1,
     minSelect = 0,
@@ -134,14 +167,15 @@ function DropdownBase(
     onUnselect,
     options,
     placeholder,
-    readOnly,
+    readOnly = false,
     reducer,
-    searchable,
+    searchable = false,
+    size = 'large',
     themeId: initThemeId,
-    unthemed,
-    usingNotification,
-    transitional,
+    transitional = false,
     translations: customTranslations,
+    unthemed = false,
+    usingNotification = false,
     validity,
     ...props
   }: DropdownProps,
@@ -486,12 +520,16 @@ function DropdownBase(
   const showClearableIcon = isClearable && !dropdownState.busy;
   const showArrowIcons = !showReadOnlyIcon && !showSpinnerIcon && !showClearableIcon;
 
+  const listSize = initListSize || listSizes[size];
+  const arrowIconSize = initArrowIconSize || arrowIconSizes[size];
+
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
       className={cx(
         styles.dropdown,
         readOnly && styles['dropdown--readOnly'],
+        sizeStyles[`dropdown--${size}`],
         disabled && styles['is-disabled'],
         isClearable && styles['is-clearable'],
         isDropdownVisible && styles['is-visible'],
@@ -521,6 +559,7 @@ function DropdownBase(
         readOnly={readOnly}
         ref={toggleRef}
         role={readOnly ? undefined : 'button'}
+        size={size}
         tabIndex={readOnly || (isListFocused && !isFilterable) || isInputFocused ? -1 : 0}
         themeId={themeId}
         transitional={transitional}
@@ -541,6 +580,7 @@ function DropdownBase(
             hasValue={inputValue !== undefined && inputValue !== ''}
             placeholder={placeholder}
             themeId={themeId}
+            variant={inputVariant}
           >
             <input
               disabled={disabled}
@@ -631,6 +671,7 @@ function DropdownBase(
         options={processedOptions}
         reducer={reducer}
         ref={listRef}
+        size={size}
         themeId={themeId}
         unthemed={unthemed}
       />

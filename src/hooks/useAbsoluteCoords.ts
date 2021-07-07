@@ -10,10 +10,10 @@ export interface UseAbsoluteCoordsInterface
 }
 
 export const useAbsoluteCoords = ({
-  centered,
-  fixed,
+  centered = false,
+  fixed = false,
   initialCoords,
-  observe,
+  observe = false,
   offset,
   position,
   ref,

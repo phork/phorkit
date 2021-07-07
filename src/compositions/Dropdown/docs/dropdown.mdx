@@ -18,7 +18,7 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Dropdown, DropdownContent, DropdownEmpty, ControlledDropdown, NotifiedControlledDropdown } from '../index';
 import { MultiVariantDropdown } from './helpers/MultiVariantDropdown';
 import { options, handleFilter, handleEmptyFilter } from './helpers/options';
-import { variants } from './helpers/variants.js';
+import { variants, sizes } from './helpers/variants.js';
 
 <PageTitle title="Dropdown" src="compositions/Dropdown" />
 
@@ -34,7 +34,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
             <ControlledDropdown
-              initialSelected={[options[3]]}
               inputVariant={variant}
               label="Super awesome dropdown"
               layout="raised"
@@ -375,9 +374,9 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
       style={{
         '--dropdown-options-bottom-border-color': '#9D69D5',
         '--dropdown-options-focused-border-color': '#57278C',
-        '--dropdown-options-contained-background-color': '#fff',
-        '--dropdown-options-contained-box-shadow': '0px 1px 2px 0px rgba(0, 0, 0, 0.3)',
-        '--dropdown-options-contained-border-color': '#B995E1',
+        '--dropdown-options-container-background-color': '#fff',
+        '--dropdown-options-container-box-shadow': '0px 1px 2px 0px rgba(0, 0, 0, 0.3)',
+        '--dropdown-options-container-border-color': '#B995E1',
         '--dropdown-options-raised-box-shadow': '0px 1px 2px 0px rgba(0, 0, 0, 0.3)',
         '--dropdown-options-scrollbar-thumb-color': '#DDDDE0',
         '--list-focused-border-color': '#642da0',
@@ -480,6 +479,39 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
         notification={`This dropdown has no options.`}
       />
     </div>
+  </ThemeWrapper>
+</Playground>
+
+## Sizes
+
+<Playground>
+  <ThemeWrapper>
+    <Looper
+      list={sizes}
+      render={size => (
+        <Rhythm my={3} grouped>
+          <Looper
+            list={variants}
+            render={variant => (
+              <Rhythm py={3} style={{ maxWidth: 300 }} grouped>
+                <ControlledDropdown
+                  inputVariant={variant}
+                  label={`Size ${size}`}
+                  layout="contained"
+                  onSelect={value => console.log('select', value)}
+                  onUnselect={value => console.log('unselect', value)}
+                  onSelectionChange={value => console.log('selection change', value)}
+                  options={options}
+                  placeholder="Select one"
+                  size={size}
+                  transitional
+                />
+              </Rhythm>
+            )}
+          />
+        </Rhythm>
+      )}
+    />
   </ThemeWrapper>
 </Playground>
 

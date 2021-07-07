@@ -14,13 +14,13 @@ export interface HeaderProps extends React.HTMLAttributes<HTMLDivElement>, Theme
 }
 
 export function Header({
-  bordered,
+  bordered = false,
   children,
   className,
-  contrast,
-  full,
+  contrast = false,
+  full = false,
   themeId: initThemeId,
-  unthemed,
+  unthemed = false,
   variant: initVariant = 'primary',
   volume,
   ...props

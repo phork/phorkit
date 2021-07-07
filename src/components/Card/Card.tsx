@@ -18,16 +18,16 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement>, ThemePr
 export const Card = React.forwardRef<HTMLDivElement, CardProps>(
   (
     {
-      bordered,
+      bordered = false,
       children,
       className,
-      full,
-      hoverable,
-      magnify,
-      raised,
-      squared,
+      full = false,
+      hoverable = false,
+      magnify = false,
+      raised = false,
+      squared = false,
       themeId: initThemeId,
-      unthemed,
+      unthemed = false,
       ...props
     },
     forwardedRef,

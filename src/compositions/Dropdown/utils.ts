@@ -1,13 +1,6 @@
 import { substituteTranslationArgs } from '../../hooks/useTranslations';
 import { InteractiveGroupState } from '../../components/InteractiveGroup/interactiveGroupReducer';
-import {
-  DropdownListSize,
-  DropdownListVariant,
-  DropdownTranslations,
-  DropdownLayout,
-  DropdownListColor,
-  DropdownOption,
-} from './types';
+import { DropdownTranslations, DropdownOption } from './types';
 
 export const getDropdownSelectedView = ({
   options,
@@ -39,20 +32,4 @@ export const getDropdownSelectedView = ({
   }
 
   return undefined;
-};
-
-export const getListDefaults = (layout: DropdownLayout) => {
-  const defaults = {
-    raised: {
-      color: 'primary' as DropdownListColor,
-      size: 'medium' as DropdownListSize,
-      variant: 'unboxed' as DropdownListVariant,
-    },
-    contained: {
-      color: 'primary' as DropdownListColor,
-      size: 'medium' as DropdownListSize,
-      variant: 'unboxed' as DropdownListVariant,
-    },
-  };
-  return defaults[layout] || defaults.raised;
 };

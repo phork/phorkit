@@ -14,7 +14,7 @@ export interface IconTextProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const IconText = React.forwardRef<HTMLDivElement, IconTextProps>(
   (
-    { className: initClassName, icon, iconClassName, inline, reverse, text, textClassName, ...props },
+    { className: initClassName, icon, iconClassName, inline = false, reverse = false, text, textClassName, ...props },
     forwardedRef,
   ): React.ReactElement<IconTextProps, 'div'> => {
     return (

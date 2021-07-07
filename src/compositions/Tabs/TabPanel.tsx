@@ -12,10 +12,10 @@ export interface TabPanelProps {
 
 export function TabPanel({
   children,
-  flush,
+  flush = false,
   id,
-  selected,
-  vertical,
+  selected = false,
+  vertical = false,
   ...props
 }: TabPanelProps): React.ReactElement<TabPanelProps, 'div'> {
   return (

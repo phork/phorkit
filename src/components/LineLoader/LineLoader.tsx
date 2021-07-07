@@ -28,9 +28,9 @@ export interface LineLoaderProps extends React.HTMLAttributes<HTMLDivElement>, T
 
 export function LineLoader({
   className,
-  contrast,
+  contrast = false,
   duration = 2500,
-  fixed,
+  fixed = false,
   loops,
   onFinish,
   onLoop,
@@ -38,7 +38,7 @@ export function LineLoader({
   position,
   themeId: initThemeId,
   translations: customTranslations,
-  unthemed,
+  unthemed = false,
   ...props
 }: LineLoaderProps): React.ReactElement<LineLoaderProps, 'div'> {
   const ref = useRef<HTMLDivElement>(null!);

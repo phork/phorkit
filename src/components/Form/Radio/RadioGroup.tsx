@@ -31,7 +31,7 @@ export type RadioGroupProps = MergeElementPropsWithoutRef<'div', LocalRadioGroup
 function RadioGroupBase(
   {
     className,
-    contrast,
+    contrast = false,
     layout,
     legend,
     name,

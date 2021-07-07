@@ -15,9 +15,9 @@ export type PaginationPageProps<T extends ButtonElementType = 'button'> = AsReac
   MergeProps<Omit<ButtonProps<T>, 'as' | 'children'>, LocalPaginationPageProps>;
 
 export function PaginationPage<T extends ButtonElementType = 'button'>({
-  active,
+  active = false,
   as,
-  disabled,
+  disabled = false,
   href,
   onChangePage,
   page,

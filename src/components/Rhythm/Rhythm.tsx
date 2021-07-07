@@ -46,7 +46,13 @@ export interface RhythmProps extends RhythmLocation, React.HTMLAttributes<unknow
   wrapper?: keyof JSX.IntrinsicElements | React.ReactElement;
 }
 
-export function Rhythm({ children, className, grouped, wrapper, ...props }: RhythmProps): React.ReactElement | null {
+export function Rhythm({
+  children,
+  className,
+  grouped = false,
+  wrapper,
+  ...props
+}: RhythmProps): React.ReactElement | null {
   const classes = cx(
     ...([
       'm',

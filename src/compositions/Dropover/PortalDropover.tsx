@@ -29,7 +29,7 @@ export function PortalDropover({
     vertical: -12,
   },
   /** A passive label doesn't allow re-clicking to close the dropover */
-  passiveLabel,
+  passiveLabel = false,
   renderChildren,
   themeId: initThemeId,
   triangleSize = 4,

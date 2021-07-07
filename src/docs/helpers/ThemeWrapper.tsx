@@ -32,7 +32,7 @@ export type ThemeWrapperProps = CommonThemeWrapperProps &
 
 export function ThemeWrapper({
   children,
-  contrast,
+  contrast = false,
   style,
   variant: initVariant,
   withThemeId,

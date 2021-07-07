@@ -10,7 +10,7 @@ export interface ModalFooterProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export function ModalFooter({
-  bordered,
+  bordered = false,
   children,
   className,
   ...props

@@ -27,18 +27,18 @@ export interface LocalAvatarProps extends ThemeProps {
 export type AvatarProps<T extends React.ElementType = 'div'> = AsReactType<T> & MergeElementProps<T, LocalAvatarProps>;
 
 export function Avatar<T extends React.ElementType = 'div'>({
-  actionable,
+  actionable = false,
   as,
   className,
   color: initColor,
-  contrast,
+  contrast = false,
   imgSrc,
   initials,
   size = 'medium',
   style,
   themeId: initThemeId,
   translations: customTranslations,
-  unthemed,
+  unthemed = false,
   ...props
 }: AvatarProps<T>): React.ReactElement<AvatarProps, T> {
   const themeId = useThemeId(initThemeId);

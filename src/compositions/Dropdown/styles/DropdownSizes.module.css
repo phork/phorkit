@@ -1,0 +1,36 @@
+.dropdown--medium {
+  --dropdown-options-container-top-height: 51px;
+}
+
+.dropdown,
+.dropdown--large {
+  --dropdown-options-container-top-height: 52px;
+}
+
+.dropdown--xlarge {
+  --dropdown-options-container-top-height: 53px;
+}
+
+.dropdown--xxlarge {
+  --dropdown-options-container-top-height: 55px;
+}
+
+.dropdown--xxxlarge {
+  --dropdown-options-container-top-height: 57px;
+}
+
+.dropdown--xxxxlarge {
+  --dropdown-options-container-top-height: 59px;
+}
+
+.dropdown--xxxxxlarge {
+  --dropdown-options-container-top-height: 63px;
+}
+
+.dropdown--xxxxxxlarge {
+  --dropdown-options-container-top-height: 67px;
+}
+
+.dropdown--xxxxxxxlarge {
+  --dropdown-options-container-top-height: 73px;
+}

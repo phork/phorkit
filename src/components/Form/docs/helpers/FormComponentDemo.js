@@ -2,8 +2,18 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 
-export function FormComponentDemo({ contrast, children, initialValue, property, unwrapped, variant, ...props }) {
+export function FormComponentDemo({
+  contrast = false,
+  children,
+  initialValue,
+  property,
+  unwrapped = false,
+  type,
+  variant,
+  ...props
+}) {
   const [value, setValue] = useState(initialValue);
+  const clearable = ['textbox', 'password'].includes(type);
 
   const content = (
     <div style={{ maxWidth: 400 }}>
@@ -13,10 +23,14 @@ export function FormComponentDemo({ contrast, children, initialValue, property, 
           setValue(value);
           children.props.onChange && children.props.onChange(event, value);
         },
-        onClear: event => {
-          setValue('');
-          children.props.onClear && children.props.onClear(event);
-        },
+        ...(clearable
+          ? {
+              onClear: event => {
+                setValue('');
+                children.props.onClear && children.props.onClear(event);
+              },
+            }
+          : {}),
       })}
     </div>
   );

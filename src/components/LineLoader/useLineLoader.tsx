@@ -41,7 +41,7 @@ export function useLineLoader({
   duration,
   component: TransitionedLineLoader = LineLoader,
   position,
-  fixed,
+  fixed = false,
   style,
   ...props
 }: UseLineLoaderInterface): UseLineLoaderResponse {

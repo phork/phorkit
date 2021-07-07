@@ -21,14 +21,14 @@ export type LabelWrapperProps<T extends React.ElementType = 'div'> = AsReactType
 export function LabelWrapper<T extends React.ElementType = 'div'>({
   as,
   className,
-  fullWidth,
+  fullWidth = false,
   input,
   inputWidth,
   label,
   labelWidth,
-  reverse,
-  spread,
-  vertical,
+  reverse = false,
+  spread = false,
+  vertical = false,
   ...props
 }: LabelWrapperProps<T>): React.ReactElement<LocalLabelWrapperProps, T> {
   const Element = as || 'div';

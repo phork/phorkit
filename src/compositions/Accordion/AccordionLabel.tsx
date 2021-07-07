@@ -22,13 +22,13 @@ export type AccordionLabelProps = MergeElementPropsWithoutRef<'div', LocalAccord
 export function AccordionLabel({
   children,
   className,
-  disabled,
-  focused,
-  horizontal,
-  iconOnly,
+  disabled = false,
+  focused = false,
+  horizontal = false,
+  iconOnly = false,
   id,
-  selected,
-  unstyled,
+  selected = false,
+  unstyled = false,
   ...props
 }: AccordionLabelProps): React.ReactElement | null {
   const ref = useRef<HTMLDivElement>(null!);

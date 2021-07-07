@@ -13,7 +13,7 @@ const options = [
   { id: 'violet', value: 'violet', label: 'Violet' },
 ];
 
-export function FormDemo({ children, contrast, style }) {
+export function FormDemo({ children, contrast = false, style }) {
   const { values, setValues, handleChange, handleClear, handleSubmit } = useForm(
     () => {
       /* eslint-disable-next-line */

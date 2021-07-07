@@ -16,7 +16,7 @@ export interface DropdownEmptyProps extends React.HTMLAttributes<HTMLDivElement>
 
 export function DropdownEmpty({
   children,
-  contrast,
+  contrast = false,
   layout,
   filter,
   themeId: initThemeId,

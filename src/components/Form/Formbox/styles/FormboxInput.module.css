@@ -4,37 +4,18 @@
   }
 }
 
-.formboxInputWithFormatting {
-  cursor: pointer;
-  display: flex;
-  flex: 1;
-  position: relative;
-}
-
-.formboxInputWithFormatting__input {
-  left: 0;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 100%;
-  z-index: 1;
-}
-
-.formboxInputWithFormatting__formatted {
-  pointer-events: none;
-}
-
 .formboxInput {
   color: var(--formbox-input-text-color);
   display: flex;
   flex: 1;
   flex-direction: row;
-  font-size: $font-size-l;
+  font-size: var(--formbox-input-font-size, $font-size-l);
   line-height: 1.15;
   min-height: 22px;
   min-width: 0;
   outline: none;
   padding: 4px 0;
+  position: relative;
 
   &:focus,
   &.is-focused {
@@ -77,6 +58,28 @@
   }
 }
 
+/* input with formatting - these must go after .formboxInput */
+
+.formboxInputWithFormatting {
+  cursor: pointer;
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+.formboxInputWithFormatting__input {
+  left: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  z-index: 1;
+}
+
+.formboxInputWithFormatting__formatted {
+  pointer-events: none;
+}
+
 /* input-specific - these must go last */
 
 input.formboxInput,
@@ -106,7 +109,7 @@ input.formboxInput[type='number'] {
  * 1. To add some space to the drag corner.
  */
 textarea.formboxInput {
-  font-size: $font-size-l;
+  font-size: var(--formbox-input-font-size, $font-size-l);
   line-height: 1.4;
   margin-right: 4px; /* [1] */
   padding: 2px 0 4px 0;
@@ -132,4 +135,22 @@ select.formboxInput:-webkit-autofill:focus {
   transition-duration: 50000s;
   transition-timing-function: ease-in-out;
   transition-delay: 0s;
+}
+
+/**
+ * 1. Shift the input up to the center of the visual input
+ *    field so that if any app adds a "fill password" icon
+ *    it appears centered and in line with the placeholder
+ *    and/or the other icons.
+ */
+input.formboxInput--filled {
+  &:not(.formboxInputWithFormatting__input) {
+    transform: translateY(var(--formbox-input-vertical-content-shift, 0px));
+    transition: transform 150ms ease;
+  }
+
+  &.formboxInputWithFormatting__input {
+    transform: translateY(calc(-50% + var(--formbox-input-vertical-content-shift, 0px)));
+    transition: transform 150ms ease;
+  }
 }

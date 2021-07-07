@@ -26,14 +26,14 @@ export function Tab({
   children,
   className,
   componentId,
-  disabled,
-  focused,
-  iconOnly,
+  disabled = false,
+  focused = false,
+  iconOnly = false,
   id,
   onClick,
-  selected,
-  unstyled,
-  vertical,
+  selected = false,
+  unstyled = false,
+  vertical = false,
   ...props
 }: TabProps): React.ReactElement {
   const ref = useRef<HTMLDivElement>(null!);

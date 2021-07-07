@@ -17,9 +17,9 @@ export interface PositionProps extends React.HTMLAttributes<HTMLDivElement> {
 export function Position({
   children,
   className,
-  fixed,
+  fixed = false,
   location,
-  raised,
+  raised = false,
   style,
   variant = 'middle',
   ...props

@@ -7,7 +7,6 @@ import { FormboxValue } from './types';
 
 export interface FormboxReadOnlyProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'placeholder'>, ThemeProps {
   className?: string;
-  contrast?: boolean;
   formattedValue?: React.ReactChild;
   id?: string;
   placeholder?: FormboxValue | React.ReactChild;
@@ -16,7 +15,7 @@ export interface FormboxReadOnlyProps extends Omit<React.HTMLAttributes<HTMLDivE
 
 export const FormboxReadOnly = React.forwardRef<HTMLDivElement, FormboxReadOnlyProps>(
   (
-    { className, contrast, formattedValue, id, placeholder, themeId: initThemeId, value, ...props },
+    { className, contrast = false, formattedValue, id, placeholder, themeId: initThemeId, value, ...props },
     forwardedRef,
   ): React.ReactElement<FormboxReadOnlyProps, 'div'> => {
     const themeId = useThemeId(initThemeId);

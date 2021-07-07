@@ -8,7 +8,7 @@ export interface InteractiveGroupItemProps<E extends HTMLElement> {
 
 export function InteractiveGroupItem<E extends HTMLElement>({
   children: render,
-  focused,
+  focused = false,
 }: InteractiveGroupItemProps<E>): React.ReactElement {
   const ref = useRef<E>(null!);
   useInteractiveGroupItem<E>({ focused, ref });

@@ -24,20 +24,21 @@ function TextareaBase(
   {
     className,
     cols,
-    contrast,
-    disabled,
+    contrast = false,
+    disabled = false,
     id,
     label,
     maxLength,
     name,
     onChange,
     placeholder,
-    readOnly,
-    required,
+    readOnly = false,
+    required = false,
     rows = 3,
+    size,
     textareaProps,
     themeId: initThemeId,
-    transitional,
+    transitional = false,
     validity,
     value = '',
     variant,
@@ -78,6 +79,7 @@ function TextareaBase(
       id={id}
       label={label}
       readOnly={readOnly}
+      size={size}
       themeId={themeId}
       transitional={transitional}
       type="textarea"
@@ -86,11 +88,11 @@ function TextareaBase(
       width={width}
       {...props}
     >
-      {({ id }) =>
+      {({ id, variant }) =>
         readOnly ? (
           <FormboxReadOnly id={id} value={value} />
         ) : (
-          <FormboxInput<'textarea'> contrast={contrast} placeholder={placeholder} themeId={themeId}>
+          <FormboxInput<'textarea'> contrast={contrast} placeholder={placeholder} themeId={themeId} variant={variant}>
             <textarea
               cols={cols}
               disabled={disabled}

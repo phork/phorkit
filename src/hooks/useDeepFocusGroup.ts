@@ -55,7 +55,7 @@ const isRefObject = (ref: UseDeepFocusGroupRef | UseDeepFocusGroupRefWithHandle)
  */
 export function useDeepFocusGroup(
   { onBlur, onFocus }: UseDeepFocusGroupEventHandlers = {},
-  { persistEvents, blurDelay }: UseDeepFocusGroupOptions = {},
+  { persistEvents = false, blurDelay = 0 }: UseDeepFocusGroupOptions = {},
 ): UseDeepFocusGroupResponse {
   const previousResponse = useRef<UseDeepFocusGroupResponse>({} as UseDeepFocusGroupResponse);
   const previousFocusedIds = useRef<string[] | undefined>();

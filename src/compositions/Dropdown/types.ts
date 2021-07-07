@@ -1,3 +1,7 @@
+import { FormboxSize } from '../../components/Form/Formbox';
+
+export type DropdownSize = FormboxSize;
+
 export type DropdownOption = {
   id: string;
   value?: string | number;
@@ -11,7 +15,7 @@ export type DropdownOption = {
 export type DropdownInputVariant = 'underline' | 'filled' | 'outline' | 'minimal';
 export type DropdownLayout = 'raised' | 'contained';
 export type DropdownListVariant = 'bordered' | 'shadowed' | 'divided' | 'unboxed';
-export type DropdownListSize = 'xsmall' | 'small' | 'medium';
+export type DropdownListSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
 export type DropdownListColor = 'primary' | 'minimal';
 
 export type DropdownTranslations = {

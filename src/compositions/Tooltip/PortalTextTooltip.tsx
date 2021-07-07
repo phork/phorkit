@@ -20,7 +20,7 @@ export interface PortalTextTooltipProps
 /** A tooltip is just a popover with an arrow pointing towards the toggler */
 export function PortalTextTooltip({
   children,
-  contrast,
+  contrast = false,
   layout,
   offset: initOffset,
   position,

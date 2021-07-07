@@ -15,7 +15,7 @@ export interface ModalHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export function ModalHeader({
   align = 'center',
-  bordered,
+  bordered = false,
   children,
   className,
   modalId,

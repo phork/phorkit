@@ -29,22 +29,22 @@ export type ToggleProps = MergeElementPropsWithoutRef<'label', LocalToggleProps>
 
 export function ToggleBase(
   {
-    checked,
+    checked = false,
     children,
     className,
-    contrast,
-    disabled,
-    full,
+    contrast = false,
+    disabled = false,
+    full = false,
     id,
     name,
     onChange,
     persistEvents,
     // this allows us to spread the rest of the props without typescript erroring
     ref: ignoredRef,
-    reverse,
+    reverse = false,
     size,
     themeId: initThemeId,
-    unthemed,
+    unthemed = false,
     value,
     ...props
   }: ToggleProps,

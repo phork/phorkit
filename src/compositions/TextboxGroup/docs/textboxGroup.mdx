@@ -28,8 +28,10 @@ import { textbox as variants } from './helpers/variants.js';
             <TextboxGroupContainer>
               <Rhythm py={3}>
                 <TextboxGroup2FA
+                  inputWidth={64}
                   length={6}
                   onChange={(event, value) => setState(value)}
+                  size="xxxxxxxlarge"
                   value={state}
                   variant={variant}
                 />
@@ -59,14 +61,17 @@ import { textbox as variants } from './helpers/variants.js';
                   label="Two-factor code"
                   onBlur={() => setState({ ...state, focused: false })}
                   onFocus={() => setState({ ...state, focused: true })}
+                  size="xxxxxxxlarge"
                   transitional
                   transparent
                   type="input"
                   variant="minimal"
                 >
                   <TextboxGroup2FA
+                    inputWidth={64}
                     length={6}
                     onChange={(event, value) => setState({ ...state, value })}
+                    size="xxxxxxxlarge"
                     value={state.value}
                     variant={variant}
                   />
@@ -77,6 +82,7 @@ import { textbox as variants } from './helpers/variants.js';
         </StateWrapper>
       )}
     />
+
   </ThemeWrapper>
 </Playground>
 

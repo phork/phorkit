@@ -47,10 +47,10 @@ export interface AccordionProps
 export function Accordion({
   children,
   className,
-  contrast,
+  contrast = false,
   duration,
   easing,
-  horizontal,
+  horizontal = false,
   initialSelected,
   items,
   listProps,
@@ -59,7 +59,7 @@ export function Accordion({
   onSelect,
   style,
   themeId,
-  unstyled,
+  unstyled = false,
   variant: initVariant = 'primary',
   ...props
 }: AccordionProps): React.ReactElement {

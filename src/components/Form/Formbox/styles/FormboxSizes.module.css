@@ -1,0 +1,63 @@
+.formbox--medium {
+  --formbox-left-icon-space: 20px;
+  --formbox-right-icon-space: 20px;
+  --formbox-input-font-size: $font-size-m;
+  --formbox-placeholder-top-margin: 17px;
+}
+
+.formbox,
+.formbox--large {
+  --formbox-left-icon-space: 20px;
+  --formbox-right-icon-space: 20px;
+  --formbox-input-font-size: $font-size-l;
+  --formbox-placeholder-top-margin: 17px;
+}
+
+.formbox--xlarge {
+  --formbox-left-icon-space: 21px;
+  --formbox-right-icon-space: 21px;
+  --formbox-input-font-size: $font-size-xl;
+  --formbox-placeholder-top-margin: 16px;
+}
+
+.formbox--xxlarge {
+  --formbox-left-icon-space: 23px;
+  --formbox-right-icon-space: 23px;
+  --formbox-input-font-size: $font-size-xxl;
+  --formbox-placeholder-top-margin: 16px;
+}
+
+.formbox--xxxlarge {
+  --formbox-left-icon-space: 25px;
+  --formbox-right-icon-space: 25px;
+  --formbox-input-font-size: $font-size-xxxl;
+  --formbox-placeholder-top-margin: 15px;
+}
+
+.formbox--xxxxlarge {
+  --formbox-left-icon-space: 27px;
+  --formbox-right-icon-space: 27px;
+  --formbox-input-font-size: $font-size-xxxxl;
+  --formbox-placeholder-top-margin: 15px;
+}
+
+.formbox--xxxxxlarge {
+  --formbox-left-icon-space: 31px;
+  --formbox-right-icon-space: 31px;
+  --formbox-input-font-size: $font-size-xxxxxl;
+  --formbox-placeholder-top-margin: 14px;
+}
+
+.formbox--xxxxxxlarge {
+  --formbox-left-icon-space: 35px;
+  --formbox-right-icon-space: 35px;
+  --formbox-input-font-size: $font-size-xxxxxxl;
+  --formbox-placeholder-top-margin: 14px;
+}
+
+.formbox--xxxxxxxlarge {
+  --formbox-left-icon-space: 43px;
+  --formbox-right-icon-space: 43px;
+  --formbox-input-font-size: $font-size-xxxxxxxl;
+  --formbox-placeholder-top-margin: 12px;
+}

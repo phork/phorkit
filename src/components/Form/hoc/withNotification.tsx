@@ -18,11 +18,11 @@ export type NotifiedComponentProps<WrappedComponentProps extends {}> = MergeProp
 
 export function withNotification<WrappedComponentProps, E>(
   WrappedComponent: React.FC<WrappedComponentProps>,
-  { withDivider }: WithNotificationOptions = {},
+  { withDivider = false }: WithNotificationOptions = {},
   componentProps?: Partial<Omit<WrappedComponentProps, 'contrast' | 'width' | 'ref'>>,
 ) {
   function NotifiedComponent({
-    contrast,
+    contrast = false,
     forwardedRef,
     hideNotification,
     level = 'neutral',

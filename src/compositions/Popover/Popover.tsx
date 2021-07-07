@@ -82,11 +82,11 @@ export interface PopoverProps extends ThemeProps {
 export function Popover({
   className,
   closeDelay = 500,
-  focusable,
-  hoverable,
-  ignoreClickOutside,
+  focusable = false,
+  hoverable = false,
+  ignoreClickOutside = false,
   initialVisible,
-  isTooltip,
+  isTooltip = false,
   layout,
   offset: initOffset = {
     horizontal: 0,
@@ -94,14 +94,14 @@ export function Popover({
   },
   onClose,
   onOpen,
-  permanent,
+  permanent = false,
   position: initPosition,
   renderContent,
   style,
   themeId: initThemeId,
   toggler,
-  withoutTogglerFocusStyle,
-  withPopoverTogglerProps,
+  withoutTogglerFocusStyle = false,
+  withPopoverTogglerProps = false,
   ...props
 }: PopoverProps): React.ReactElement<PopoverProps, 'div'> {
   const accessible = useAccessibility();

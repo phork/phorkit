@@ -30,15 +30,15 @@ export interface TabPanelGroupProps extends React.HTMLAttributes<HTMLDivElement>
 export function TabPanelGroup({
   className,
   componentId,
-  contrast,
-  focused,
+  contrast = false,
+  focused = false,
   items,
   style,
   themeId: initThemeId,
-  unstyled,
-  unthemed,
+  unstyled = false,
+  unthemed = false,
   variant: initVariant = 'primary',
-  vertical,
+  vertical = false,
   ...props
 }: TabPanelGroupProps): React.ReactElement<TabPanelGroupProps, 'div'> {
   const accessible = useAccessibility();

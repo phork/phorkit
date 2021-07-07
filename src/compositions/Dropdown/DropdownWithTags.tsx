@@ -31,7 +31,7 @@ export interface DropdownWithTagsProps extends Omit<DropdownProps, 'initialSelec
 }
 
 export function DropdownWithTags({
-  contrast,
+  contrast = false,
   id,
   initialSelected = [],
   minSelect = 0,

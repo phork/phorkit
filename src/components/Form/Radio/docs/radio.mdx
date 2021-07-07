@@ -194,7 +194,7 @@ import { radioGroup, logValue } from './helpers/utils';
 ## Stacked group
 
 <Playground>
-  <FormComponentDemo property="value" initialValue="one">
+  <FormComponentDemo type="radio" property="value" initialValue="one">
     <RadioGroup
       layout="stacked"
       legend="Super fantastic label says what?"
@@ -208,7 +208,7 @@ import { radioGroup, logValue } from './helpers/utils';
 ## Inline group
 
 <Playground>
-  <FormComponentDemo property="value" initialValue="one">
+  <FormComponentDemo type="radio" property="value" initialValue="one">
     <RadioGroup
       layout="inline"
       legend="Super fantastic label says what?"
@@ -222,7 +222,7 @@ import { radioGroup, logValue } from './helpers/utils';
 ## Inline secondary group
 
 <Playground>
-  <FormComponentDemo property="value" initialValue="one">
+  <FormComponentDemo type="radio" property="value" initialValue="one">
     <RadioGroup
       layout="inline"
       legend="Super fantastic label says what?"
@@ -237,7 +237,7 @@ import { radioGroup, logValue } from './helpers/utils';
 ## Custom label
 
 <Playground>
-  <FormComponentDemo property="value" initialValue="one">
+  <FormComponentDemo type="radio" property="value" initialValue="one">
     <RadioGroup
       layout="inline"
       legend={
@@ -258,7 +258,7 @@ import { radioGroup, logValue } from './helpers/utils';
   <Looper
     list={['success', 'danger', 'warning', 'primary', 'neutral']}
     render={level => (
-      <FormComponentDemo property="value" initialValue="one">
+      <FormComponentDemo type="radio" property="value" initialValue="one">
         <NotifiedRadioGroup
           layout="inline"
           legend="Super fantastic label says what?"

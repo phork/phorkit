@@ -28,19 +28,19 @@ export interface LocalNavigationItemProps extends NavigationItemStateProps {
 export type NavigationItemProps = MergeElementPropsWithoutRef<'div', LocalNavigationItemProps>;
 
 export function NavigationItem({
-  allowRightClickLinks,
+  allowRightClickLinks = false,
   children,
   className,
   componentId,
-  disabled,
-  flush,
-  focused,
+  disabled = false,
+  flush = false,
+  focused = false,
   href,
   id,
   onClick,
-  selected,
+  selected = false,
   variant = 'primary',
-  vertical,
+  vertical = false,
   ...props
 }: NavigationItemProps): React.ReactElement<NavigationItemProps, 'div'> {
   const ref = useRef<HTMLDivElement>(null!);

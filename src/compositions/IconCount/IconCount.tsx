@@ -15,12 +15,12 @@ export interface IconCountProps extends Omit<FlexProps, 'children'>, ThemeProps 
 }
 
 export function IconCount({
-  active,
+  active = false,
   count,
   icon: Icon,
   iconSize = 15,
   label,
-  reverse,
+  reverse = false,
   themeId: initThemeId,
   typographySize = 'xs',
   ...props

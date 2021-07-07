@@ -15,7 +15,7 @@ export const useEventListener = ({
   eventType,
   listener,
   options,
-  precedeOtherEvents,
+  precedeOtherEvents = false,
 }: UseEventListenerInterface): UseEventListenerResponse => {
   const { unshiftEventListener, pushEventListener, removeEventListener } = useContext(EventListenerContext);
   const ref = useRef<UseEventListenerResponse['removeListener']>();

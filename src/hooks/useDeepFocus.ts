@@ -30,7 +30,12 @@ export type UseDeepFocusResponse<E> = {
 export function useDeepFocus<E extends HTMLElement>(
   ref: React.RefObject<E | null> | null,
   { onBlur, onBlurChild, onBlurSelf, onFocus, onFocusChild, onFocusSelf }: UseDeepFocusEventHandlers<E> = {},
-  { persistEvents, blurDelay, alwaysTriggerBlur, alwaysTriggerFocus }: UseDeepFocusOptions = {},
+  {
+    persistEvents = false,
+    blurDelay = 0,
+    alwaysTriggerBlur = false,
+    alwaysTriggerFocus = false,
+  }: UseDeepFocusOptions = {},
 ): UseDeepFocusResponse<E> {
   const previousResponse = useRef<UseDeepFocusResponse<E>>({} as UseDeepFocusResponse<E>);
   const previousFocused = useRef<boolean>();

@@ -22,15 +22,15 @@ export type InteractiveListItemProps = Omit<
 >;
 
 export function InteractiveListItemBase({
-  disabled,
-  focused,
+  disabled = false,
+  focused = false,
   id,
   label,
-  mimicSelectOnFocus,
+  mimicSelectOnFocus = false,
   onClick,
   onKeyDown,
-  selected,
-  transparent,
+  selected = false,
+  transparent = false,
   ...props
 }: InteractiveListItemProps): React.ReactElement {
   const stateProps: StateProps = {

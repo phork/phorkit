@@ -25,13 +25,13 @@ export interface LoaderProps extends React.HTMLAttributes<HTMLDivElement>, Theme
 
 export function Loader({
   className,
-  contrast,
+  contrast = false,
   position,
   scale,
   size = 60,
   themeId: initThemeId,
   translations: customTranslations,
-  unthemed,
+  unthemed = false,
   ...props
 }: LoaderProps): React.ReactElement<LoaderProps, 'div'> | React.ReactPortal | null {
   const themeId = useThemeId(initThemeId);

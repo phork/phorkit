@@ -9,7 +9,7 @@ import { RenderFromPropElement } from '../../../utils/renderFromProp';
 import { PencilSlashIcon } from '../../../icons/PencilSlashIcon';
 import { FormboxContainer, FormboxContainerProps } from './FormboxContainer';
 import { FormboxIcon, FormboxIconRenderProps } from './FormboxIcon';
-import { FormboxContainerElementType } from './types';
+import { FormboxContainerElementType, FormboxSize, FormboxVariant } from './types';
 
 export type FormboxTranslations = {
   readOnlyLabel: string;
@@ -23,15 +23,16 @@ export type FormboxRenderInput = (props: {
   focused?: boolean;
   id: string;
   required?: boolean;
+  variant: FormboxVariant;
 }) => React.ReactElement<HTMLElement>;
 
 export interface FormboxProps extends Omit<FormboxContainerProps<'label'>, 'children' | 'id'>, ThemeProps {
-  /** Whether the formbox input was auto-filled (see useAutoFilled hook) */
-  autoFilled?: boolean;
   /** alwaysTriggerFocus means the a focus transfer within the formbox will trigger the blur event */
   alwaysTriggerBlur?: boolean;
   /** alwaysTriggerFocus means the a focus transfer within the formbox will trigger the focus event */
   alwaysTriggerFocus?: boolean;
+  /** Whether the formbox input was auto-filled (see useAutoFilled hook) */
+  autoFilled?: boolean;
   children: FormboxRenderInput;
   iconAfter?: RenderFromPropElement<FormboxIconRenderProps>;
   /** The best practice is to pass a button if the icon is actionable */
@@ -46,6 +47,7 @@ export interface FormboxProps extends Omit<FormboxContainerProps<'label'>, 'chil
   onFocus?: (event: React.FocusEvent<Element>) => void;
   persistEvents?: boolean;
   required?: boolean;
+  size?: FormboxSize;
   translations?: FormboxTranslations;
   /** Show the form input as focused even though it isn't */
   visuallyFocused?: boolean;
@@ -53,38 +55,39 @@ export interface FormboxProps extends Omit<FormboxContainerProps<'label'>, 'chil
 
 function FormboxBase<T extends FormboxContainerElementType>(
   {
-    alwaysTriggerBlur,
-    alwaysTriggerFocus,
-    autoFilled,
+    alwaysTriggerBlur = false,
+    alwaysTriggerFocus = false,
+    autoFilled = false,
     children: renderInput,
     className,
-    contrast,
-    disabled,
-    empty,
+    contrast = false,
+    disabled = false,
+    empty = false,
     iconAfter,
-    iconAfterActionable,
+    iconAfterActionable = false,
     iconAfterClassName,
     iconBefore,
-    iconBeforeActionable,
+    iconBeforeActionable = false,
     iconBeforeClassName,
     id,
     inputWidth,
     label,
     onBlur,
     onFocus,
-    persistEvents,
-    readOnly,
-    required,
+    persistEvents = false,
+    readOnly = false,
+    required = false,
+    size = 'large',
     style,
     themeId: initThemeId,
-    transitional,
+    transitional = false,
     translations: customTranslations,
-    transparent,
+    transparent = false,
     type,
-    unthemed,
+    unthemed = false,
     validity,
     variant = 'underline',
-    visuallyFocused,
+    visuallyFocused = false,
     width = '100%',
     ...props
   }: FormboxProps,
@@ -121,6 +124,7 @@ function FormboxBase<T extends FormboxContainerElementType>(
       onFocus={handleFocus}
       readOnly={readOnly}
       ref={combineRefs}
+      size={size}
       style={{ ...style, ...(width !== undefined ? { width: typeof width === 'number' ? `${width}px` : width } : {}) }}
       themeId={themeId}
       transitional={transitional}
@@ -144,6 +148,7 @@ function FormboxBase<T extends FormboxContainerElementType>(
         focused: focused || visuallyFocused,
         id: generateComponentId(),
         required,
+        variant,
       })}
       {readOnly && (
         <FormboxIcon

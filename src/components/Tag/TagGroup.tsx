@@ -20,7 +20,7 @@ export function TagGroup<T extends TagElementType = 'div'>({
   actionable,
   children,
   className,
-  contrast,
+  contrast = false,
   shape,
   size,
   tags,

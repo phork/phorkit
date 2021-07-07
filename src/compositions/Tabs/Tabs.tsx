@@ -43,8 +43,8 @@ export interface TabsProps
 export function Tabs({
   children,
   className,
-  contrast,
-  fullWidth,
+  contrast = false,
+  fullWidth = false,
   initialSelected,
   items,
   listProps = {},
@@ -53,9 +53,9 @@ export function Tabs({
   panelGroupProps = {},
   style,
   themeId,
-  unstyled,
+  unstyled = false,
   variant: initVariant = 'primary',
-  vertical,
+  vertical = false,
   ...props
 }: TabsProps): React.ReactElement {
   const { componentId } = useComponentId();

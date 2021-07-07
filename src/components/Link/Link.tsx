@@ -15,16 +15,16 @@ export interface LinkProps extends React.HTMLAttributes<HTMLAnchorElement>, Them
 }
 
 export function Link({
-  block,
+  block = false,
   children,
   className,
-  contrast,
+  contrast = false,
   href,
   themeId: initThemeId,
   target,
-  underline,
-  unstyled,
-  unthemed,
+  underline = false,
+  unstyled = false,
+  unthemed = false,
   ...props
 }: LinkProps): React.ReactElement<LinkProps, 'a'> {
   const themeId = useThemeId(initThemeId);

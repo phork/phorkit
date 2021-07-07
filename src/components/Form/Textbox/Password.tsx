@@ -6,6 +6,18 @@ import { EyeSlashIcon } from '../../../icons/EyeSlashIcon';
 import { Textbox, TextboxProps, TextboxTranslations, textboxTranslations } from './Textbox';
 import styles from './styles/Textbox.module.css';
 
+const iconSizes = {
+  medium: 16,
+  large: 16,
+  xlarge: 17,
+  xxlarge: 19,
+  xxxlarge: 21,
+  xxxxlarge: 23,
+  xxxxxlarge: 24,
+  xxxxxxlarge: 24,
+  xxxxxxxlarge: 24,
+};
+
 export type PasswordTranslations = TextboxTranslations & {
   hidePasswordLabel: string;
   showPasswordLabel: string;
@@ -32,10 +44,11 @@ function PasswordBase(
   {
     disabled,
     iconHide,
-    iconHideSize = 16,
+    iconHideSize: initIconHideSize,
     iconShow,
-    iconShowSize = 16,
+    iconShowSize: initIconShowSize,
     initialType = 'password',
+    size = 'large',
     translations: customTranslations,
     ...props
   }: PasswordProps,
@@ -67,6 +80,9 @@ function PasswordBase(
   );
 
   const renderIcon = () => {
+    const iconHideSize = initIconHideSize || iconSizes[size];
+    const iconShowSize = initIconShowSize || iconSizes[size];
+
     const icon = type === 'password' ? iconShow : iconHide;
     const iconSize = type === 'password' ? iconShowSize : iconHideSize;
     const handleClick = type === 'password' ? showPassword : hidePassword;
@@ -101,6 +117,7 @@ function PasswordBase(
       disabled={disabled}
       iconAfter={!disabled ? renderIcon() : undefined}
       iconAfterActionable
+      size={size}
       type={type}
       {...props}
     />

@@ -6,7 +6,10 @@ interface UseInteractiveGroupItemInterface<E extends HTMLElement> {
   ref: React.MutableRefObject<E | null>;
 }
 
-export function useInteractiveGroupItem<E extends HTMLElement>({ focused, ref }: UseInteractiveGroupItemInterface<E>) {
+export function useInteractiveGroupItem<E extends HTMLElement>({
+  focused = false,
+  ref,
+}: UseInteractiveGroupItemInterface<E>) {
   const previous = useRef<{ focused?: UseInteractiveGroupItemInterface<E>['focused'] }>({});
   useScrollIntoView({ ref, focused });
 

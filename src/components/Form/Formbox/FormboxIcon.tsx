@@ -23,7 +23,7 @@ export interface FormboxIconProps {
 }
 
 export const FormboxIcon = ({
-  actionable,
+  actionable = false,
   className,
   icon,
   onBlur,

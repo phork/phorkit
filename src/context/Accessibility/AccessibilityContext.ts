@@ -9,7 +9,7 @@ export interface AccessibilityContextValue {
 }
 
 export const AccessibilityContext = createContext<AccessibilityContextValue>({
-  accessible: undefined,
+  accessible: false,
   focusType: undefined,
   setFocusType: (/* focusType */) => {},
 });

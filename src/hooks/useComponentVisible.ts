@@ -19,13 +19,13 @@ export type UseComponentVisibleResponse<C> = {
 
 // clickOutsideExclusions are areas that can be clicked without triggering close (required for portals)
 export function useComponentVisible<C extends HTMLElement>({
-  ignoreClickOutside,
-  initialVisible,
+  ignoreClickOutside = false,
+  initialVisible = false,
   onHide,
   onShow,
-  permanent,
+  permanent = false,
   clickOutsideExclusions,
-  stopPropagation,
+  stopPropagation = false,
 }: UseComponentVisibleInterface): UseComponentVisibleResponse<C> {
   const [isComponentVisible, setIsComponentVisible] = useState<boolean>(initialVisible || permanent ? true : false);
   const ref = useRef<C>(null!);

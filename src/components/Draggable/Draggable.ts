@@ -24,14 +24,14 @@ export interface DraggableProps {
 }
 
 export function Draggable({
-  blocking: initBlocking,
+  blocking: initBlocking = false,
   boundary,
   children,
   onDragEnd,
   onDragMove,
   onDragStart,
-  paused,
-  touchOnly,
+  paused = false,
+  touchOnly = false,
 }: DraggableProps): React.ReactElement {
   const blocking = (initBlocking === undefined && true) || initBlocking;
   const [dragging, setDragging] = useState<boolean>(false);

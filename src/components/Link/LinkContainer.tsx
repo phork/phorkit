@@ -20,10 +20,10 @@ export function LinkContainer<T extends LinkContainerElementType = 'div'>({
   as,
   children,
   className: initClassName,
-  contrast,
+  contrast = false,
   themeId: initThemeId,
-  underline,
-  unthemed,
+  underline = false,
+  unthemed = false,
   ...props
 }: LinkContainerProps<T>): React.ReactElement {
   const themeId = useThemeId(initThemeId);

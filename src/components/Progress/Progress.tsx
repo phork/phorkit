@@ -25,21 +25,21 @@ export interface ProgressProps extends React.HTMLAttributes<HTMLDivElement>, The
 }
 
 export function Progress({
-  animated,
+  animated = false,
   children,
   className,
   color,
-  contrast,
+  contrast = false,
   data,
-  floating,
+  floating = false,
   orientation = 'horizontal',
   percent = 0,
-  pill,
-  quiet,
+  pill = false,
+  quiet = false,
   size = 'medium',
-  spaced,
+  spaced = false,
   themeId: initThemeId,
-  unthemed,
+  unthemed = false,
   ...props
 }: ProgressProps): React.ReactElement<ProgressProps, 'div'> {
   const themeId = useThemeId(initThemeId);

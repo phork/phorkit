@@ -15,6 +15,18 @@ import {
 } from '../Formbox';
 import styles from './styles/Select.module.css';
 
+const arrowIconSizes = {
+  medium: 8,
+  large: 8,
+  xlarge: 9,
+  xxlarge: 11,
+  xxxlarge: 13,
+  xxxxlarge: 14,
+  xxxxxlarge: 14,
+  xxxxxxlarge: 14,
+  xxxxxxxlarge: 16,
+};
+
 export type SelectOption = {
   disabled?: boolean;
   label?: string;
@@ -46,6 +58,7 @@ type MultipleSelectProps = {
 };
 
 export type LocalSelectProps = {
+  arrowIconSize?: number;
   children?: FormboxValue | FormboxValue[];
   name?: string;
   onChange: (
@@ -65,10 +78,11 @@ export type SelectProps = MergeProps<
 
 export function SelectBase(
   {
+    arrowIconSize: initArrowIconSize,
     children,
     className,
-    contrast,
-    disabled,
+    contrast = false,
+    disabled = false,
     iconAfter,
     iconBefore,
     id,
@@ -78,11 +92,12 @@ export function SelectBase(
     options,
     persistEvents,
     placeholder,
-    readOnly,
+    readOnly = false,
     selectProps,
+    size = 'large',
     themeId: initThemeId,
-    transitional,
-    unthemed,
+    transitional = false,
+    unthemed = false,
     validity,
     value,
     values,
@@ -138,6 +153,8 @@ export function SelectBase(
   const hasPlaceholder = !multiple && !hasValue && (transitional || placeholder);
   const isEmpty = !hasValue && (!placeholder || !placeholder.value);
 
+  const arrowIconSize = initArrowIconSize || arrowIconSizes[size];
+
   return (
     <Formbox
       autoFilled={autoFilled}
@@ -145,10 +162,11 @@ export function SelectBase(
       contrast={contrast}
       disabled={disabled}
       empty={isEmpty && !placeholder?.label}
-      iconAfter={!multiple && !readOnly ? <ArrowDownIcon scale="xsmall" /> : undefined}
+      iconAfter={iconAfter || (!multiple && !readOnly ? <ArrowDownIcon size={arrowIconSize} /> : undefined)}
       iconBefore={iconBefore}
       id={id}
       readOnly={readOnly}
+      size={size}
       themeId={themeId}
       transitional={transitional}
       type="select"
@@ -157,7 +175,7 @@ export function SelectBase(
       width={width}
       {...props}
     >
-      {({ id, focused, required }) =>
+      {({ id, focused, required, variant }) =>
         readOnly ? (
           <FormboxReadOnly
             id={id}
@@ -168,9 +186,11 @@ export function SelectBase(
           <FormboxInputWithFormatting<'select'>
             alwaysUseFormatting={!multiple}
             contrast={contrast}
+            focused={focused}
             hasValue={hasValue}
             placeholder={focused ? undefined : placeholder?.label}
             themeId={themeId}
+            variant={variant}
           >
             <select
               className={cx(

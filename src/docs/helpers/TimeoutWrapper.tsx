@@ -11,7 +11,7 @@ export function TimeoutWrapper({
   callback,
   children,
   milliseconds,
-  infinite,
+  infinite = false,
 }: TimeoutWrapperProps): React.ReactElement {
   useEffect(() => {
     const id = (infinite ? setInterval : setTimeout)(callback, milliseconds);

@@ -23,13 +23,13 @@ export function Badge({
   children,
   className,
   color: initColor,
-  contrast,
-  outlined,
+  contrast = false,
+  outlined = false,
   position,
-  pulsing,
+  pulsing = false,
   shape,
   themeId: initThemeId,
-  unthemed,
+  unthemed = false,
   ...props
 }: BadgeProps): React.ReactElement<BadgeProps, 'div'> {
   const themeId = useThemeId(initThemeId);

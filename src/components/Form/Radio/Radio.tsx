@@ -16,7 +16,6 @@ export interface LocalRadioProps extends ThemeProps {
   full?: boolean;
   grouped?: 'stacked' | 'inline';
   id?: string;
-  indeterminate?: boolean;
   name?: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>, checked: boolean, value: string | number) => void;
   persistEvents?: boolean;
@@ -31,20 +30,20 @@ export type RadioProps = MergeElementPropsWithoutRef<'label', LocalRadioProps>;
 
 export function RadioBase(
   {
-    checked,
+    checked = false,
     children,
     className,
-    contrast,
-    disabled,
-    full,
+    contrast = false,
+    disabled = false,
+    full = false,
     grouped,
     id,
     name,
     onChange,
-    persistEvents,
-    reverse,
+    persistEvents = false,
+    reverse = false,
     themeId: initThemeId,
-    unthemed,
+    unthemed = false,
     validity,
     value,
     variant = 'primary',

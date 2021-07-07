@@ -19,14 +19,14 @@ export interface TabsContainerProps extends React.HTMLAttributes<HTMLDivElement>
 export function TabsContainer({
   children,
   className,
-  contrast,
-  focused,
+  contrast = false,
+  focused = false,
   style,
   themeId: initThemeId,
-  unstyled,
-  unthemed,
+  unstyled = false,
+  unthemed = false,
   variant: initVariant = 'primary',
-  vertical,
+  vertical = false,
 }: TabsContainerProps): React.ReactElement<HTMLDivElement> {
   const accessible = useAccessibility();
   const themeId = useThemeId(initThemeId);

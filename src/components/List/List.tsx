@@ -28,7 +28,7 @@ export interface LocalListProps extends ThemeProps {
   /** The default role is list or listbox but it can be overridden or set to undefined */
   role?: string;
   rounded?: boolean;
-  size?: 'xsmall' | 'small' | 'medium';
+  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
   transparent?: boolean;
   unstyled?: boolean;
   variant?: 'bordered' | 'shadowed' | 'divided' | 'unboxed';
@@ -38,24 +38,24 @@ export type ListProps<T extends ListElementType = 'ul'> = AsReactType<T> & Merge
 
 function ListBase<T extends ListElementType = 'ul'>(
   {
-    children,
     as,
+    children,
     className,
-    contrast,
-    focused,
-    hideFocusOutline,
-    inactive,
-    inline,
+    color: initColor = 'primary',
+    contrast = false,
+    focused = false,
+    hideFocusOutline = false,
+    inactive = false,
+    inline = false,
     items,
-    mimicSelectOnFocus,
-    variant,
-    rounded,
+    mimicSelectOnFocus = false,
+    rounded = false,
     size = 'medium',
     themeId: initThemeId,
-    transparent,
-    unstyled,
-    unthemed,
-    color: initColor = 'primary',
+    transparent = false,
+    unstyled = false,
+    unthemed = false,
+    variant,
     ...props
   }: ListProps<T>,
   forwardedRef: React.ForwardedRef<HTMLElementTagNameMap[T]>,

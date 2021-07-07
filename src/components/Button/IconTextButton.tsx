@@ -18,7 +18,7 @@ export type IconTextButtonProps<T extends ButtonElementType = 'button'> = AsReac
   MergeElementProps<T, LocalIconTextButtonProps>;
 
 export function IconTextButtonBase<T extends IconTextButtonElementType = 'button'>(
-  { as, children, className, icon, reverse, ...props }: IconTextButtonProps<T>,
+  { as, children, className, icon, reverse = false, ...props }: IconTextButtonProps<T>,
   forwardedRef: React.ForwardedRef<HTMLElementTagNameMap[T]>,
 ): React.ReactElement {
   const classes = cx(reverse ? styles['button--iconTextReverse'] : styles['button--iconText'], className);

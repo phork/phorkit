@@ -37,15 +37,15 @@ export interface ModalProps extends ThemeProps {
 }
 
 export function Modal({
-  allowOverflow,
+  allowOverflow = false,
   ariaLabel,
   children,
   className,
-  focusable,
+  focusable = false,
   id,
-  immediate,
+  immediate = false,
   onClose,
-  permanent,
+  permanent = false,
   size,
   themeId: initThemeId,
   translations: customTranslations,

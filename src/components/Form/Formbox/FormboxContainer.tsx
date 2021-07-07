@@ -3,7 +3,8 @@ import React from 'react';
 import { AsType, StateColor, MergeElementProps, ThemeProps } from '../../../types';
 import { useThemeId } from '../../../hooks/useThemeId';
 import styles from './styles/Formbox.module.css';
-import { FormboxContainerElementType, FormboxInputElementType, FormboxVariant } from './types';
+import sizeStyles from './styles/FormboxSizes.module.css';
+import { FormboxContainerElementType, FormboxInputElementType, FormboxSize, FormboxVariant } from './types';
 
 export interface LocalFormboxContainerProps extends ThemeProps {
   /** Whether the formbox input was auto-filled (see useAutoFilled hook) */
@@ -22,6 +23,7 @@ export interface LocalFormboxContainerProps extends ThemeProps {
   label?: React.ReactChild | React.ReactFragment | string;
   /** If the formbox container is read only then there are no hover events */
   readOnly?: boolean;
+  size?: FormboxSize;
   style?: React.CSSProperties;
   /** A transitional input show the label as a placeholder which moves out of the way on focus or if there's a value */
   transitional?: boolean;
@@ -44,25 +46,26 @@ export type FormboxContainerProps<T extends FormboxContainerElementType> = AsTyp
 function FormboxContainerBase<T extends FormboxContainerElementType>(
   {
     as,
-    autoFilled,
+    autoFilled = false,
     children,
     className,
-    contrast,
-    disabled,
-    empty: inputEmpty,
-    focused,
-    hasIconAfter,
-    hasIconBefore,
+    contrast = false,
+    disabled = false,
+    empty: inputEmpty = false,
+    focused = false,
+    hasIconAfter = false,
+    hasIconBefore = false,
     id,
     inputWidth,
     label,
-    readOnly,
+    readOnly = false,
+    size = 'large',
     style,
     themeId: initThemeId,
-    transitional,
-    transparent,
+    transitional = false,
+    transparent = false,
     type,
-    unthemed,
+    unthemed = false,
     validity,
     variant = 'underline',
     width = '100%',
@@ -82,6 +85,7 @@ function FormboxContainerBase<T extends FormboxContainerElementType>(
     {
       className: cx(
         styles.formbox,
+        sizeStyles[`formbox--${size}`],
         styles[`formbox--${type}`],
         color && !unthemed && styles[`formbox--${color}`],
         themeId && !unthemed && styles[`formbox--${themeId}`],

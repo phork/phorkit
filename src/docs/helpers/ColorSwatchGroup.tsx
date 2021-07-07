@@ -12,7 +12,7 @@ const SwatchGroup = styled(Flex, {
 })<{
   joined?: boolean;
 }>`
-  ${({ joined }) =>
+  ${({ joined = false }) =>
     joined &&
     `
     div:first-of-type {
@@ -118,7 +118,7 @@ export const ColorSwatchGroup = React.memo(function ColorSwatchGroup({
   children,
   colors,
   direction = 'row',
-  joined,
+  joined = false,
   label,
   labelHeight,
   labelWidth,

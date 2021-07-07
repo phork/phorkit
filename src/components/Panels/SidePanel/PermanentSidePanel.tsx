@@ -13,7 +13,7 @@ export interface PermanentSidePanelProps extends React.HTMLAttributes<HTMLDivEle
 
 export const PermanentSidePanel = React.forwardRef<HTMLDivElement, PermanentSidePanelProps>(
   (
-    { children, className, fixed, position, style: initStyle, width, ...props },
+    { children, className, fixed = false, position, style: initStyle, width, ...props },
     forwardedRef,
   ): React.ReactElement<PermanentSidePanelProps, 'div'> => {
     const classes = cx(

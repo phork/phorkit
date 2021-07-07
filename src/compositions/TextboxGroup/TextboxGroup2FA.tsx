@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { MergeElementProps, ThemeProps } from '../../types';
 import { useComponentId } from '../../hooks/useComponentId';
 import { useThemeId } from '../../hooks/useThemeId';
-import { FormboxVariant } from '../../components/Form/Formbox/types';
+import { FormboxSize, FormboxVariant } from '../../components/Form/Formbox/types';
 import { useListRegistry } from '../../components/ListRegistry';
 import { TextboxGroupInput } from './TextboxGroupInput';
 import styles from './styles/TextboxGroup.module.css';
@@ -12,8 +12,10 @@ import { useTextboxGroup, UseTextboxGroupOptions } from './useTextboxGroup';
 export interface LocalTextboxGroup2FAProps extends ThemeProps {
   inputClassName?: string;
   inputStyle?: React.CSSProperties;
+  inputWidth?: number | string;
   length?: number;
   onChange: (event: React.ChangeEvent<HTMLInputElement>, value: string) => void;
+  size?: FormboxSize;
   value: string;
   variant?: FormboxVariant;
 }
@@ -24,8 +26,10 @@ export function TextboxGroup2FA({
   className,
   inputClassName,
   inputStyle,
+  inputWidth,
   length = 6,
   onChange,
+  size,
   themeId: initThemeId,
   value = '',
   variant = 'outline',
@@ -77,6 +81,13 @@ export function TextboxGroup2FA({
     values,
   });
 
+  /**
+   * This intentionally excludes maxLength from the input
+   * so that if someone enters a digit faster than the focus
+   * automatically changes it's not ignored. The digit will
+   * still be placed in the right box because of how the join
+   * in `handleChange` works.
+   */
   return looper.length ? (
     <div
       className={cx(
@@ -98,13 +109,14 @@ export function TextboxGroup2FA({
             inputClassName,
           )}
           inputId={inputId}
+          inputSize={1}
           key={generateComponentId(inputId)}
-          maxLength={1}
-          size={1}
+          // maxLength is intentionally excluded (see note)
+          size={size}
           style={inputStyle}
           value={values[inputId] === ' ' ? '' : values[inputId]}
           variant={variant}
-          width="auto"
+          width={inputWidth || 'unset'}
           {...inputProps}
         />
       ))}

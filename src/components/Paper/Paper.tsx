@@ -22,18 +22,18 @@ export interface PaperProps extends React.HTMLAttributes<HTMLDivElement>, ThemeP
 export const Paper = React.forwardRef<HTMLDivElement, PaperProps>(
   (
     {
-      bordered,
+      bordered = false,
       children,
       className,
       color,
-      contained,
+      contained = false,
       container,
-      flexible,
-      full,
-      scrollable,
+      flexible = false,
+      full = false,
+      scrollable = false,
       scrollbar,
       themeId: initThemeId,
-      unthemed,
+      unthemed = false,
       ...props
     },
     forwardedRef,

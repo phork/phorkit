@@ -33,12 +33,12 @@ import { Toggle, NotifiedToggle } from '../index';
 <Playground>
   <ThemeWrapper>
     <Rhythm py={3}>
-      <FormComponentDemo property="checked" initialValue={true} unwrapped>
+      <FormComponentDemo type="toggle" property="checked" initialValue={true} unwrapped>
         <Toggle id="demo-labeled-toggle" onChange={(event, checked) => console.log(checked)}>
           Super fantastic label
         </Toggle>
       </FormComponentDemo>
-      <FormComponentDemo property="checked" initialValue={true} unwrapped>
+      <FormComponentDemo type="toggle" property="checked" initialValue={true} unwrapped>
         <Toggle id="demo-labeled-reverse-toggle" reverse onChange={(event, checked) => console.log(checked)}>
           Super fantastic label
         </Toggle>
@@ -52,12 +52,12 @@ import { Toggle, NotifiedToggle } from '../index';
 <Playground>
   <ThemeWrapper>
     <Rhythm py={3}>
-      <FormComponentDemo property="checked" initialValue={true} style={{ width: 240 }} unwrapped>
+      <FormComponentDemo type="toggle" property="checked" initialValue={true} style={{ width: 240 }} unwrapped>
         <Toggle id="demo-labeled-full-toggle" onChange={(event, checked) => console.log(checked)} full>
           Super fantastic label
         </Toggle>
       </FormComponentDemo>
-      <FormComponentDemo property="checked" initialValue={true} style={{ width: 240 }} unwrapped>
+      <FormComponentDemo type="toggle" property="checked" initialValue={true} style={{ width: 240 }} unwrapped>
         <Toggle
           id="demo-labeled-reverse-fulltoggle"
           reverse
@@ -75,7 +75,7 @@ import { Toggle, NotifiedToggle } from '../index';
 ## Wrapped labeled toggle
 
 <Playground>
-  <FormComponentDemo property="checked" initialValue={true}>
+  <FormComponentDemo type="toggle" property="checked" initialValue={true}>
     <Toggle id="demo-wrapped-labeled-toggle" onChange={(event, checked) => console.log(checked)}>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget dui eu orci ultrices maximus eu eu ante.
       Vestibulum ligula velit, scelerisque vitae venenatis tempor, consectetur a orci. Aenean molestie eu tortor in
@@ -101,7 +101,7 @@ import { Toggle, NotifiedToggle } from '../index';
 ## Small toggle
 
 <Playground>
-  <FormComponentDemo property="checked" initialValue={true}>
+  <FormComponentDemo type="toggle" property="checked" initialValue={true}>
     <Toggle size="small" id="demo-small-toggle" onChange={(event, checked) => console.log(checked)}>
       Super fantastic label
     </Toggle>
@@ -133,7 +133,7 @@ import { Toggle, NotifiedToggle } from '../index';
       list={['success', 'danger', 'warning', 'primary', 'neutral']}
       render={level => (
         <Rhythm py={3}>
-          <FormComponentDemo property="checked" initialValue={true} unwrapped>
+          <FormComponentDemo type="toggle" property="checked" initialValue={true} unwrapped>
             <NotifiedToggle
               onChange={(event, checked) => console.log(checked)}
               level={level}

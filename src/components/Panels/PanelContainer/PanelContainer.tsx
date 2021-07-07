@@ -14,13 +14,13 @@ export interface PanelContainerProps extends React.HTMLAttributes<HTMLDivElement
 }
 
 export function PanelContainer({
-  absolute,
+  absolute = false,
   children,
   className,
-  full,
+  full = false,
   orientation,
-  reverse,
-  viewport,
+  reverse = false,
+  viewport = false,
   ...props
 }: PanelContainerProps): React.ReactElement<PanelContainerProps, 'div'> {
   const classes = cx(

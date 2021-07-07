@@ -9,7 +9,7 @@ export interface UseClickAndEscapeInterface {
 }
 
 // used to handle focus and blur callbacks on elements where any child can focus
-export function useClickAndEscape({ ref, onBlur, onFocus, stopPropagation }: UseClickAndEscapeInterface): void {
+export function useClickAndEscape({ ref, onBlur, onFocus, stopPropagation = false }: UseClickAndEscapeInterface): void {
   const handleClick = useCallback(
     (event: MouseEvent | TouchEvent): void => {
       if (ref.current && event.target instanceof Node) {

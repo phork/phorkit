@@ -20,7 +20,7 @@ export interface InlineTextTooltipProps
 /** A tooltip is just a popover with an arrow pointing towards the toggler */
 export function InlineTextTooltip({
   children,
-  contrast,
+  contrast = false,
   layout,
   offset: initOffset,
   position,

@@ -11,7 +11,7 @@ export interface DropoverInputLabelProps {
 
 export const DropoverInputLabel = React.forwardRef<HTMLDivElement, DropoverInputLabelProps>(
   (
-    { children, className, cloned, focused, ...props },
+    { children, className, cloned = false, focused = false, ...props },
     forwardedRef,
   ): React.ReactElement<DropoverInputLabelProps, 'div'> => {
     return (

@@ -8,6 +8,18 @@ import { FormboxValue } from '../Formbox';
 import { Textbox, TextboxProps, TextboxTranslations, textboxTranslations } from '../Textbox';
 import styles from './styles/Stepper.module.css';
 
+const iconSizes = {
+  medium: 12,
+  large: 12,
+  xlarge: 14,
+  xxlarge: 14,
+  xxxlarge: 14,
+  xxxxlarge: 16,
+  xxxxxlarge: 16,
+  xxxxxxlarge: 18,
+  xxxxxxxlarge: 18,
+};
+
 export type StepperTranslations = TextboxTranslations & {
   decrementLabel: string;
   incrementLabel: string;
@@ -20,6 +32,7 @@ export const stepperTranslations: StepperTranslations = {
 };
 
 export interface LocalStepperProps {
+  iconSize?: number;
   inputWidth?: number | string;
   onChange?: (
     event: React.ChangeEvent | React.KeyboardEvent | React.MouseEvent | React.TouchEvent,
@@ -44,6 +57,7 @@ export function StepperBase(
     onChange,
     placeholder = 0,
     readOnly,
+    size = 'large',
     step = 1,
     translations: customTranslations,
     value,
@@ -87,6 +101,7 @@ export function StepperBase(
 
   const isMax = max !== undefined && value !== undefined && value >= max;
   const isMin = min !== undefined && value !== undefined && value <= min;
+  const iconSize = iconSizes[size];
 
   const renderDecrementIcon = () => {
     return readOnly ? undefined : (
@@ -97,7 +112,7 @@ export function StepperBase(
         type="button"
         onClick={decrement}
       >
-        <MinusIcon title={decrementLabel} scale="small" />
+        <MinusIcon title={decrementLabel} size={iconSize} />
       </button>
     );
   };
@@ -111,7 +126,7 @@ export function StepperBase(
         type="button"
         onClick={increment}
       >
-        <PlusIcon title={incrementLabel} scale="small" />
+        <PlusIcon title={incrementLabel} size={iconSize} />
       </button>
     );
   };
@@ -132,6 +147,7 @@ export function StepperBase(
       inputWidth={inputWidth}
       placeholder={placeholder}
       ref={combineRefs}
+      size={size}
       step={step}
       translations={Object.keys(restTranslations).length ? restTranslations : undefined}
       type="number"

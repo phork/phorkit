@@ -110,7 +110,7 @@ const getProperties = ({ position, transition, width, height, useMax }: GetPrope
 };
 
 export const usePanelCollapser = ({
-  disableHiding,
+  disableHiding = false,
   duration,
   easing,
   height,
@@ -118,12 +118,12 @@ export const usePanelCollapser = ({
   onCloseStart,
   onOpenFinish,
   onOpenStart,
-  open,
+  open = false,
   position,
   ref,
   transition,
   unit: initUnit,
-  useMax,
+  useMax = false,
   width,
 }: UsePanelCollapserInterface): void => {
   const originalPanelDisplayProp = useRef<CSSStyleDeclaration['display']>();

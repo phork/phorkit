@@ -31,24 +31,48 @@ import { FormDemo } from './helpers/FormDemo';
 # All form components
 
 <Playground>
-  <StateWrapper initialState={'underline'}>
-    {({ state: variant, setState: setVariant }) => (
+  <StateWrapper initialState={{ variant: 'underline', size: 'large' }}>
+    {({ state, setState }) => (
       <ThemeWrapper>
         <FormDemo contrast={false} style={{ maxWidth: '400px' }}>
-          {(onChange, onClear, setValues, values, contrast, { options, persistEvents }) => (
+          {(onChange, onClear, setValues, values, contrast = false, { options, persistEvents }) => (
             <React.Fragment>
               <Rhythm mt={4} mb={2}>
                 <ButtonGroup
                   buttons={[
-                    { id: 'underline', label: 'Underline', selected: variant === 'underline' },
-                    { id: 'filled', label: 'Filled', selected: variant === 'filled' },
-                    { id: 'outline', label: 'Outline', selected: variant === 'outline' },
+                    { id: 'underline', label: 'Underline', selected: state.variant === 'underline' },
+                    { id: 'filled', label: 'Filled', selected: state.variant === 'filled' },
+                    { id: 'outline', label: 'Outline', selected: state.variant === 'outline' },
                   ]}
                   color="primary"
                   fullWidth
-                  onClick={(event, id) => setVariant(id)}
+                  onClick={(event, id) => setState({ ...state, variant: id })}
                   shape="brick"
                   spacing="joined"
+                />
+              </Rhythm>
+              <Rhythm mt={4} mb={2}>
+                <ButtonGroup
+                  buttons={[
+                    { id: 'medium', label: 'M', selected: state.size === 'medium' },
+                    { id: 'large', label: 'L', selected: state.size === 'large' },
+                    { id: 'xlarge', label: 'XL', selected: state.size === 'xlarge' },
+                    { id: 'xxlarge', label: '2XL', selected: state.size === 'xxlarge' },
+                    { id: 'xxxlarge', label: '3XL', selected: state.size === 'xxxlarge' },
+                    { id: 'xxxxlarge', label: '4XL', selected: state.size === 'xxxxlarge' },
+                    { id: 'xxxxxlarge', label: '5XL', selected: state.size === 'xxxxxlarge' },
+                    { id: 'xxxxxxlarge', label: '6XL', selected: state.size === 'xxxxxxlarge' },
+                    { id: 'xxxxxxxlarge', label: '7XL', selected: state.size === 'xxxxxxxlarge' },
+                  ]}
+                  color="neutral"
+                  fullWidth
+                  onClick={(event, id) => setState({ ...state, size: id })}
+                  selectedColor="primary"
+                  selectedWeight="inline"
+                  shape="brick"
+                  size="small"
+                  spacing="cozy"
+                  weight="inline"
                 />
               </Rhythm>
               <Rhythm my={2}>
@@ -59,9 +83,10 @@ import { FormDemo } from './helpers/FormDemo';
                   name="username"
                   onChange={onChange}
                   persistEvents={persistEvents}
+                  size={state.size}
                   transitional
                   value={values.username}
-                  variant={variant}
+                  variant={state.variant}
                 />
               </Rhythm>
               <Rhythm my={2}>
@@ -72,9 +97,10 @@ import { FormDemo } from './helpers/FormDemo';
                   name="password"
                   onChange={onChange}
                   persistEvents={persistEvents}
+                  size={state.size}
                   transitional
                   value={values.password}
-                  variant={variant}
+                  variant={state.variant}
                 />
               </Rhythm>
               <Rhythm my={2}>
@@ -88,9 +114,10 @@ import { FormDemo } from './helpers/FormDemo';
                   onChange={(event, value) => setValues({ ...values, search: value })}
                   onClear={onClear}
                   persistEvents={persistEvents}
+                  size={state.size}
                   transitional
                   value={values.search}
-                  variant={variant}
+                  variant={state.variant}
                 />
               </Rhythm>
               <Rhythm my={2}>
@@ -101,10 +128,11 @@ import { FormDemo } from './helpers/FormDemo';
                   name="success"
                   onChange={onChange}
                   persistEvents={persistEvents}
+                  size={state.size}
                   transitional
                   validity="success"
                   value={values.success}
-                  variant={variant}
+                  variant={state.variant}
                 />
               </Rhythm>
               <Rhythm my={2}>
@@ -115,10 +143,11 @@ import { FormDemo } from './helpers/FormDemo';
                   name="warning"
                   onChange={onChange}
                   persistEvents={persistEvents}
+                  size={state.size}
                   transitional
                   validity="warning"
                   value={values.warning}
-                  variant={variant}
+                  variant={state.variant}
                 />
               </Rhythm>
               <Rhythm my={2}>
@@ -129,10 +158,11 @@ import { FormDemo } from './helpers/FormDemo';
                   name="danger"
                   onChange={onChange}
                   persistEvents={persistEvents}
+                  size={state.size}
                   transitional
                   validity="danger"
                   value={values.danger}
-                  variant={variant}
+                  variant={state.variant}
                 />
               </Rhythm>
               <Rhythm my={2}>
@@ -143,10 +173,11 @@ import { FormDemo } from './helpers/FormDemo';
                   name="select"
                   onChange={onChange}
                   persistEvents={persistEvents}
+                  size={state.size}
                   transitional
                   value={values.select}
                   options={options}
-                  variant={variant}
+                  variant={state.variant}
                 />
               </Rhythm>
               <Rhythm my={2}>
@@ -157,19 +188,21 @@ import { FormDemo } from './helpers/FormDemo';
                   name="selected"
                   onChange={onChange}
                   persistEvents={persistEvents}
+                  size={state.size}
                   transitional
                   value={values.selected}
                   options={options}
-                  variant={variant}
+                  variant={state.variant}
                 />
               </Rhythm>
               <Rhythm my={2}>
                 <ControlledDropdown
-                  inputVariant={variant}
+                  inputVariant={state.variant}
                   label="A custom dropdown"
                   layout="raised"
                   onChange={value => onChange({ target: { name: 'dropdown' } }, value)}
                   options={options}
+                  size={state.size}
                   transitional
                 />
               </Rhythm>
@@ -181,9 +214,10 @@ import { FormDemo } from './helpers/FormDemo';
                   name="manifesto"
                   onChange={onChange}
                   persistEvents={persistEvents}
+                  size={state.size}
                   transitional
                   value={values.manifesto}
-                  variant={variant}
+                  variant={state.variant}
                 />
               </Rhythm>
               <Rhythm my={2}>
@@ -243,25 +277,28 @@ import { FormDemo } from './helpers/FormDemo';
                       name="stepper1"
                       onChange={(event, value) => setValues({ ...values, stepper1: value })}
                       persistEvents={persistEvents}
+                      size={state.size}
                       step={100}
                       value={values.stepper1}
                       width="50%"
-                      variant={variant}
+                      variant={state.variant}
                     />
                   </div>
                   <Stepper
                     contrast={contrast}
                     id="demo-stepper2"
+                    inputWidth={100}
                     label="Pick another number"
                     max={100}
                     min={0}
+                    size={state.size}
                     step={10}
                     name="stepper2"
                     onChange={(event, value) => setValues({ ...values, stepper2: value })}
                     persistEvents={persistEvents}
                     value={values.stepper2}
                     width="50%"
-                    variant={variant}
+                    variant={state.variant}
                   />
                 </Flex>
               </Rhythm>

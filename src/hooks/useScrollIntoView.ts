@@ -5,7 +5,7 @@ export interface UseScrollIntoViewInterface {
   ref: React.MutableRefObject<HTMLElement | null>;
 }
 
-export function useScrollIntoView({ focused, ref }: UseScrollIntoViewInterface): void {
+export function useScrollIntoView({ focused = false, ref }: UseScrollIntoViewInterface): void {
   const previous = useRef<{ focused?: boolean }>({});
 
   // make sure focused has previously been set so this doesn't scroll the whole page to this element on load

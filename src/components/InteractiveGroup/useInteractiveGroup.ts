@@ -78,8 +78,8 @@ export function useInteractiveGroup<
   E extends HTMLElement = HTMLDivElement,
   I extends HTMLElement = HTMLElement
 >({
-  allowReselect,
-  disabled,
+  allowReselect = false,
+  disabled = false,
   minSelect = 1,
   maxSelect = 1,
   onItemClick,
@@ -90,8 +90,8 @@ export function useInteractiveGroup<
   onUnselect,
   parentRef,
   reducer,
-  selectOnFocus,
-  triggerLinks,
+  selectOnFocus = false,
+  triggerLinks = false,
 }: UseInteractiveGroupInterface<T>): UseInteractiveGroupResponse<T, E, I> {
   const previousState = useRef<{
     focusedIndex?: InteractiveGroupState<T>['focusedIndex'];

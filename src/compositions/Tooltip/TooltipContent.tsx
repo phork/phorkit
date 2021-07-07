@@ -62,8 +62,8 @@ const getTriangleSize = ({
 
 const getTriangleStyle = ({
   triangleBorderWidth,
-  hasBorder,
-  isBorder,
+  hasBorder = false,
+  isBorder = false,
   offset,
   position,
 }: {

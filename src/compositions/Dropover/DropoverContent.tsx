@@ -13,7 +13,7 @@ export function DropoverContent({
   children,
   className,
   color: initColor = 'primary',
-  contrast,
+  contrast = false,
   themeId: initThemeId,
   ...props
 }: DropoverContentProps): React.ReactElement<DropoverContentProps, 'div'> {

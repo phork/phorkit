@@ -25,22 +25,22 @@ export interface PortalProps
 export const Portal = React.forwardRef<HTMLDivElement, PortalProps>(
   (
     {
-      alwaysRender,
-      centered,
+      alwaysRender = false,
+      centered = false,
       children,
       className,
       container: initContainer,
-      focusable,
+      focusable = false,
       focusRef,
       height,
       initialCoords,
-      observe,
+      observe = false,
       offset,
       parentRef,
       portal = 'absolute',
       position,
       style,
-      visible,
+      visible = false,
       width,
       ...props
     },

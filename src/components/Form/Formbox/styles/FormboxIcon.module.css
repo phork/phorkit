@@ -12,7 +12,7 @@
 
 .formboxIcon--filled {
   transition: top 150ms ease;
-  top: calc(0 + var(--formbox-input-content-shift, 0px));
+  top: calc(0 + var(--formbox-input-vertical-content-shift, 0px));
 }
 
 .formboxIcon--outline,
@@ -21,8 +21,8 @@
 }
 
 .formboxIcon--autoSize {
-  height: 13px;
-  width: 13px;
+  height: var(--formbox-input-font-size, $font-size-l);
+  width: var(--formbox-input-font-size, $font-size-l);
 }
 
 .formboxIcon--actionable {

@@ -13,10 +13,10 @@ export interface DividerProps extends React.HTMLAttributes<HTMLDivElement>, Them
 
 export function Divider({
   className,
-  contrast,
+  contrast = false,
   orientation = 'horizontal',
   themeId: initThemeId,
-  unthemed,
+  unthemed = false,
   variant: initVariant = 'primary',
   volume,
   ...props

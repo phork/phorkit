@@ -36,14 +36,14 @@
 }
 
 /**
- * 1. Shift the label and the icons up so they're in the
+ * 1. Shift the input, label and the icons up so they're in the
  *    middle of the filled container.
  * 2. Unlike the others, put the padding on the parent so
  *    the background color encompasses the label
  */
 .formbox--filled.is-labeled {
   &.is-transitional.is-empty:not(.is-focused) {
-    --formbox-input-content-shift: -7px; /* [1] */
+    --formbox-input-vertical-content-shift: -7px; /* [1] */
   }
 
   > .formboxInputContainer--filled {
@@ -243,40 +243,49 @@
   }
 }
 
+/**
+ * 1. The input container top margin and top padding.
+ * 2. The input container left padding.
+ */
 .formboxLabel--placeholder {
-  font-size: $font-size-l;
+  font-size: var(--formbox-input-font-size, $font-size-l);
   opacity: 0.7;
   pointer-events: none;
   user-select: none;
 
   &.formboxLabel--hasIconBefore {
-    padding-left: 20px;
+    padding-left: var(--formbox-left-icon-space, 20px);
   }
 
   &.formboxLabel--hasIconAfter {
-    padding-right: 20px;
+    padding-right: var(--formbox-right-icon-space, 20px);
   }
 
   &.formboxLabel--underline {
-    top: 20px;
+    margin-top: var(--formbox-placeholder-top-margin, 17px);
+    top: 4px; /* [1] */
   }
 
   &.formboxLabel--filled {
-    top: calc(21px + var(--formbox-input-content-shift, 0px));
+    top: calc(6px + var(--formbox-input-vertical-content-shift, 0px)); /* [1] */
+    margin-top: var(--formbox-placeholder-top-margin, 17px);
   }
 
   &.formboxLabel--outline {
     left: 8px;
-    top: 25px;
+    top: 8px; /* [1] */
+    margin-top: var(--formbox-placeholder-top-margin, 17px);
   }
 
   &.formboxLabel--pill {
     left: 16px;
-    top: 25px;
+    top: 8px; /* [1] */
+    margin-top: var(--formbox-placeholder-top-margin, 17px);
   }
 
   &.formboxLabel--minimal {
-    top: 18px;
+    top: 1px;
+    margin-top: var(--formbox-placeholder-top-margin, 17px);
   }
 }
 
@@ -435,11 +444,12 @@
   /**
    * 1. The input container top margin and top padding plus the
    *    original 17px.
-   * 2. The left padding.
+   * 2. The input container left padding.
    */
   .formboxLabel--placeholder {
     top: 25px; /* [1] */
     left: 8px; /* [2] */
+    margin-top: 0;
 
     &.formboxLabel--filled {
       top: 6px;

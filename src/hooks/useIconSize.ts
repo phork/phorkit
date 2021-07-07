@@ -26,7 +26,7 @@ export type UseIconSizeResponse = UseIconSizeInterface & {
 export function useIconSize({
   size: initSize,
   scale: initScale,
-  noSize,
+  noSize = false,
   ...props
 }: UseIconSizeInterface): UseIconSizeResponse {
   const { size: contextSize, scale: contextScale } = useContext(ScaleContext);

@@ -24,9 +24,9 @@ export const getTextTooltipColors = (themeId: Theme, contrast?: boolean) => {
 
 export function TextTooltipContent({
   children,
-  contrast,
+  contrast = false,
   position,
-  scrollable,
+  scrollable = false,
   themeId: initThemeId,
   width = 300,
   ...props

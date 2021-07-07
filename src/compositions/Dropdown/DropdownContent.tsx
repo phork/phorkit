@@ -17,8 +17,8 @@ import {
   DropdownListSize,
   DropdownListVariant,
   DropdownOption,
+  DropdownSize,
 } from './types';
-import { getListDefaults } from './utils';
 
 export interface LocalDropdownContentProps extends ThemeProps {
   /** This is used by DropdownWithTags so an item can be added, removed and re-added */
@@ -50,6 +50,7 @@ export interface LocalDropdownContentProps extends ThemeProps {
   onUnselect: UncontrolledInteractiveListProps['onUnselect'];
   options?: DropdownOption[];
   reducer: UncontrolledInteractiveListProps['reducer'];
+  size: DropdownSize;
 }
 
 export type DropdownContentProps = MergeElementProps<'div', LocalDropdownContentProps>;
@@ -61,23 +62,23 @@ export interface DropdownContentHandles {
 
 function DropdownContentBase(
   {
-    allowReselect,
+    allowReselect = false,
     className,
-    contrast,
-    disabled,
+    contrast = false,
+    disabled = false,
     disabledIds,
     emptyNotification,
     filter,
-    focused,
-    hideNoContent,
-    inlineDropdownEmpty,
+    focused = false,
+    hideNoContent = false,
+    inlineDropdownEmpty = false,
     inputVariant,
-    isDropdownVisible,
-    isEmpty,
+    isDropdownVisible = false,
+    isEmpty = false,
     layout = 'raised',
-    listColor,
-    listSize,
-    listVariant,
+    listColor = 'primary',
+    listSize = 'medium',
+    listVariant = 'unboxed',
     maxSelect = 1,
     minSelect = 0,
     onItemFocus,
@@ -89,8 +90,9 @@ function DropdownContentBase(
     onUnselect,
     options,
     reducer,
+    size,
     themeId,
-    unthemed,
+    unthemed = false,
     ...props
   }: DropdownContentProps,
   forwardedRef: React.ForwardedRef<DropdownContentHandles>,
@@ -157,8 +159,6 @@ function DropdownContentBase(
     }
   }, [focusSelected, isDropdownVisible, selectedState.items]);
 
-  const listDefaults = getListDefaults(layout);
-  const variant = listVariant || listDefaults.variant;
   const showNoContent = !hideNoContent && items.length === 0;
 
   return items ? (
@@ -180,7 +180,7 @@ function DropdownContentBase(
       <div className={cx(styles.dropdownOptions, isEmpty && styles['is-empty'])}>
         <UncontrolledInteractiveList
           allowReselect={allowReselect}
-          color={listColor || listDefaults.color}
+          color={listColor}
           contrast={contrast}
           disabled={disabled}
           focused={focused === true ? true : undefined}
@@ -200,10 +200,10 @@ function DropdownContentBase(
           reducer={reducer}
           rounded={layout === 'contained' && inputVariant && ['underline', 'filled'].includes(inputVariant)}
           ref={listRef}
-          size={listSize || listDefaults.size}
+          size={listSize}
           tabIndex={isDropdownVisible ? 0 : -1}
           unthemed={unthemed}
-          variant={variant}
+          variant={listVariant}
         >
           {!hideNoContent && (
             <DropdownEmpty contrast={contrast} themeId={themeId} filter={filter} layout={layout}>

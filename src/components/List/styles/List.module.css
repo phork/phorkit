@@ -155,6 +155,26 @@ ul.unlist {
   }
 }
 
+.list--large {
+  .listItem {
+    font-size: $font-size-l;
+
+    &:not(.listItem--flush) {
+      padding: 8px 16px;
+    }
+  }
+}
+
+.list--xlarge {
+  .listItem {
+    font-size: $font-size-xl;
+
+    &:not(.listItem--flush) {
+      padding: 8px 16px;
+    }
+  }
+}
+
 .list--divided {
   &.list--inline {
     .listItem {

@@ -28,20 +28,20 @@ export interface NavigationProps
 }
 
 export function Navigation({
-  allowRightClickLinks,
-  animated,
+  allowRightClickLinks = false,
+  animated = false,
   className,
-  fullHeight,
-  fullWidth,
+  fullHeight = false,
+  fullWidth = false,
   highlightRadius,
   items,
   onSelect,
   selectedId,
   style,
-  triggerLinks,
-  unthemed,
+  triggerLinks = false,
+  unthemed = false,
   variant = 'primary',
-  vertical,
+  vertical = false,
   ...props
 }: NavigationProps): React.ReactElement {
   return (

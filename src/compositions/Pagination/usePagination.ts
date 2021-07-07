@@ -27,7 +27,7 @@ export const usePagination = ({
   pageLinks,
   pageSize,
   totalItems,
-  withEllipsis,
+  withEllipsis = false,
 }: UsePaginationInterface): UsePaginationResponse => {
   const previousResponse = useRef<UsePaginationResponse>({} as UsePaginationResponse);
   const pages = Math.ceil(totalItems / pageSize);
