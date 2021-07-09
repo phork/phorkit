@@ -14,7 +14,7 @@ export interface LocalTextboxGroup2FAProps extends ThemeProps {
   inputStyle?: React.CSSProperties;
   inputWidth?: number | string;
   length?: number;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>, value: string) => void;
+  onChange: (event: React.SyntheticEvent<HTMLInputElement>, value: string) => void;
   size?: FormboxSize;
   value: string;
   variant?: FormboxVariant;
@@ -73,7 +73,11 @@ export function TextboxGroup2FA({
     [looper, onChange],
   );
 
-  const inputProps = useTextboxGroup({
+  // select the input on focus so that typing a new value will replace it
+  const handleInputFocus = useCallback<React.FocusEventHandler<HTMLInputElement>>(event => event.target.select(), []);
+
+  // use the onInput prop instead of the onChange prop
+  const { onChange: ignoreOnChange, ...inputProps } = useTextboxGroup({
     onChange: handleChange,
     orderBy: looper,
     refs: items,
@@ -105,6 +109,7 @@ export function TextboxGroup2FA({
           inputSize={1}
           key={generateComponentId(inputId)}
           maxLength={1}
+          onInputFocus={handleInputFocus}
           size={size}
           style={inputStyle}
           value={values[inputId] === ' ' ? '' : values[inputId]}

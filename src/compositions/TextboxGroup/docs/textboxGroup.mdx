@@ -86,6 +86,28 @@ import { textbox as variants } from './helpers/variants.js';
   </ThemeWrapper>
 </Playground>
 
+## Two factor authentication, unspaced
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState="">
+      {({ state, setState }) => (
+        <TextboxGroupContainer>
+          <TextboxGroup2FA
+            inputWidth={32}
+            length={6}
+            onChange={(event, value) => setState(value)}
+            size="xxxlarge"
+            style={{ '--textbox-group-input-spacing': '0px' }}
+            value={state}
+            variant="filled"
+          />
+        </TextboxGroupContainer>
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
 ## \[props\]
 
 <Props of={TextboxGroup2FA} />

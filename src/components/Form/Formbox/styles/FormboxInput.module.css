@@ -110,7 +110,7 @@ input.formboxInput[type='number'] {
  */
 textarea.formboxInput {
   font-size: var(--formbox-input-font-size, $font-size-l);
-  line-height: 1.4;
+  line-height: var(--formbox-input-multi-line-height, 1.4);
   margin-right: 4px; /* [1] */
   padding: 2px 0 4px 0;
 }

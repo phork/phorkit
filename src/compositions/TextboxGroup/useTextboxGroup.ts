@@ -1,31 +1,32 @@
-import { useCallback, useRef } from 'react';
+import { useCallback } from 'react';
+import { FormboxValue } from '../../components/Form/Formbox';
 import { TextboxProps } from '../../components/Form/Textbox/Textbox';
 import { ListRegistryItemType } from './../../components/ListRegistry/types';
 
+// refs are used so that the focus can automatically change to the next/prev input
 export type TextboxGroupRef = ListRegistryItemType<HTMLInputElement>;
 
 export type TextboxGroupRefWithValidator = {
   ref: TextboxGroupRef;
-  validator: (value: string) => boolean;
+  validator: (value: FormboxValue) => boolean;
 };
 
 export type UseTextboxGroupOptions = {
   /** A map of the input refs (and optional validator function) keyed by their ID */
   refs: Map<string, TextboxGroupRef | TextboxGroupRefWithValidator>;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>, values: Record<string, string>) => void;
-  onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  onChange: (event: React.SyntheticEvent<HTMLInputElement>, values: Record<string, string>) => void;
   /** An array of the ref IDs in the order they should be tabbed through */
   orderBy?: string[];
   /** A common validator function for each input */
-  validator?: (value: string) => boolean;
+  validator?: (value: FormboxValue) => boolean;
   /** The value of each input keyed by its ID */
   values: Record<string, string>;
 };
 
 export type UseTextboxGroupResponse = {
   onChange: NonNullable<TextboxProps['onChange']>;
+  onInput: NonNullable<TextboxProps['onInput']>;
   onKeyDown: NonNullable<TextboxProps['onKeyDown']>;
-  onKeyUp: NonNullable<TextboxProps['onKeyUp']>;
 };
 
 // to be used as a type guard
@@ -38,14 +39,11 @@ const isRefWithValidator = (
 /** When an input is considered valid the focus automatically moves to the next input */
 export const useTextboxGroup = ({
   refs,
-  onChange,
-  onKeyUp,
+  onChange: forwardChange,
   orderBy,
   validator,
   values,
 }: UseTextboxGroupOptions): UseTextboxGroupResponse => {
-  const previousValue = useRef<string>();
-
   const changeFocus = useCallback(
     (startId: string, numPlaces: number): void => {
       const orderByIndex = orderBy?.findIndex(id => id === startId);
@@ -56,7 +54,6 @@ export const useTextboxGroup = ({
           if (nextRef !== undefined) {
             const element = isRefWithValidator(nextRef) ? nextRef.ref.current : nextRef.current;
             element.focus();
-            element.select();
           }
         }
       }
@@ -64,61 +61,46 @@ export const useTextboxGroup = ({
     [orderBy, refs],
   );
 
-  const onInputChange = useCallback<UseTextboxGroupResponse['onChange']>(
-    (event, value) => {
-      const id = (event.target as HTMLInputElement).getAttribute('data-id');
-      if (id) {
-        const newValues = { ...values, [id]: `${value}` };
-        onChange && onChange(event, newValues);
+  const handleInput = useCallback(
+    (event: React.SyntheticEvent<HTMLInputElement>) => {
+      const target = event.target as HTMLInputElement;
+      const id = target.getAttribute('data-id');
+      const ref = id !== null ? refs.get(id) : undefined;
+      const { value } = target;
+
+      const isValid = ref && (isRefWithValidator(ref) ? ref.validator(value) : !validator || validator(value));
+      if (isValid) {
+        changeFocus(id!, 1);
+        forwardChange?.(event, { ...values, [id!]: `${value}` });
       }
     },
-    [onChange, values],
+    [changeFocus, forwardChange, refs, validator, values],
   );
 
-  const onInputKeyDown = useCallback<UseTextboxGroupResponse['onKeyDown']>(event => {
-    const value = (event.target as HTMLInputElement).value;
-    previousValue.current = value;
-  }, []);
+  // change focus to the next input if the current input is valid
+  const onChange = useCallback<UseTextboxGroupResponse['onChange']>(event => handleInput(event), [handleInput]);
 
-  const onInputKeyUp = useCallback<UseTextboxGroupResponse['onKeyUp']>(
+  // the same as onChange, but can be applied if the form input replaces the same value
+  const onInput = useCallback<UseTextboxGroupResponse['onInput']>(event => handleInput(event), [handleInput]);
+
+  // change focus to the previous input when backspacing from an empty input
+  const onKeyDown = useCallback<UseTextboxGroupResponse['onKeyDown']>(
     event => {
-      onKeyUp && onKeyUp(event);
-
-      const id = (event.target as HTMLInputElement).getAttribute('data-id');
-      const value = (event.target as HTMLInputElement).value;
+      const target = event.target as HTMLInputElement;
+      const id = target.getAttribute('data-id');
       const ref = id !== null ? refs.get(id) : undefined;
 
       if (ref) {
-        if (
-          ![
-            'Alt',
-            'ArrowDown',
-            'ArrowLeft',
-            'ArrowRight',
-            'ArrowUp',
-            'Control',
-            'Enter',
-            'Escape',
-            'Meta',
-            'Shift',
-            'Tab',
-          ].includes(event.key)
-        ) {
-          // change focus to the previous input when backspacing from an empty input
-          if (event.key === 'Backspace' && previousValue.current === '') {
-            id && changeFocus(id, -1);
+        if (event.key === 'Backspace') {
+          if (target.value === '') {
+            changeFocus(id!, -1);
           }
-
-          // change focus to the next input if the current input is valid
-          if (event.key !== 'Backspace' && event.key !== 'Delete') {
-            const isValid = ref && (isRefWithValidator(ref) ? ref.validator(value) : !validator || validator(value));
-            isValid && changeFocus(id!, 1);
-          }
+          forwardChange && forwardChange(event, { ...values, [id!]: '' });
         }
       }
     },
-    [changeFocus, onKeyUp, refs, validator],
+    [changeFocus, forwardChange, refs, values],
   );
 
-  return { onChange: onInputChange, onKeyDown: onInputKeyDown, onKeyUp: onInputKeyUp };
+  return { onChange, onInput, onKeyDown };
 };

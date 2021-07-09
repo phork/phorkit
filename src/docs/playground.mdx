@@ -481,12 +481,10 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                   </Rhythm>
                 )
               }
-              inputProps={{
-                style: {
-                  paddingLeft: 60,
-                  caretColor: themes[themeId]['primary-palette-text-color'],
-                  color: 'transparent',
-                },
+              inputStyle={{
+                paddingLeft: 60,
+                caretColor: themes[themeId]['primary-palette-text-color'],
+                color: 'transparent',
               }}
               onChange={(event, value) => setValue(value)}
               onClear={(event, value) => setValue('')}

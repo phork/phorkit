@@ -38,6 +38,7 @@
   --formbox-left-icon-space: 27px;
   --formbox-right-icon-space: 27px;
   --formbox-input-font-size: $font-size-xxxxl;
+  --formbox-input-multi-line-height: 1.3;
   --formbox-placeholder-top-margin: 15px;
 }
 
@@ -45,6 +46,7 @@
   --formbox-left-icon-space: 31px;
   --formbox-right-icon-space: 31px;
   --formbox-input-font-size: $font-size-xxxxxl;
+  --formbox-input-multi-line-height: 1.2;
   --formbox-placeholder-top-margin: 14px;
 }
 
@@ -52,6 +54,7 @@
   --formbox-left-icon-space: 35px;
   --formbox-right-icon-space: 35px;
   --formbox-input-font-size: $font-size-xxxxxxl;
+  --formbox-input-multi-line-height: 1.2;
   --formbox-placeholder-top-margin: 14px;
 }
 
@@ -59,5 +62,6 @@
   --formbox-left-icon-space: 43px;
   --formbox-right-icon-space: 43px;
   --formbox-input-font-size: $font-size-xxxxxxxl;
+  --formbox-input-multi-line-height: 1.2;
   --formbox-placeholder-top-margin: 12px;
 }

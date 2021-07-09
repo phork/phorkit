@@ -38,7 +38,39 @@ export const textboxTranslations: TextboxTranslations = {
   clearLabel: 'Clear',
 };
 
-export interface LocalTextboxProps {
+export interface LocalTextboxProps
+  extends Pick<
+    FormboxProps,
+    | 'alwaysTriggerBlur'
+    | 'alwaysTriggerFocus'
+    | 'className'
+    | 'contrast'
+    | 'disabled'
+    | 'empty'
+    | 'iconAfter'
+    | 'iconAfterActionable'
+    | 'iconBefore'
+    | 'iconBeforeActionable'
+    | 'id'
+    | 'inputWidth'
+    | 'label'
+    | 'onBlur'
+    | 'onFocus'
+    | 'persistEvents'
+    | 'readOnly'
+    | 'required'
+    | 'size'
+    | 'style'
+    | 'themeId'
+    | 'transitional'
+    | 'translations'
+    | 'transparent'
+    | 'unthemed'
+    | 'validity'
+    | 'variant'
+    | 'visuallyFocused'
+    | 'width'
+  > {
   /** The formatted value will be hidden while the input is focused unless this is true */
   alwaysShowFormatting?: boolean;
   /** If the value will have HTML formatting then this should be true */
@@ -50,16 +82,17 @@ export interface LocalTextboxProps {
   formattedValue?: React.ReactChild;
   clearable?: boolean;
   inputClassName?: string;
-  inputProps?: Omit<React.InputHTMLAttributes<HTMLInputElement>, 'className' | 'onKeyDown' | 'ref' | 'type'>;
   inputSize?: number;
+  inputStyle?: React.CSSProperties;
   max?: number;
   maxLength?: number;
   min?: number;
   name?: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>, value: FormboxValue) => void;
-  onClear?: (event: React.KeyboardEvent | React.MouseEvent | React.TouchEvent) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>, value: FormboxValue) => void;
+  onInputBlur?: React.FocusEventHandler<HTMLInputElement>;
+  onInputFocus?: React.FocusEventHandler<HTMLInputElement>;
   onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>, value: string) => void;
-  onKeyUp?: React.KeyboardEventHandler<HTMLInputElement>;
+  onClear?: (event: React.KeyboardEvent | React.MouseEvent | React.TouchEvent) => void;
   onSubmit?: (event: React.KeyboardEvent<HTMLInputElement>, value: string) => void;
   /** This can be used to show HTML, or if it's undefined it will default to the plain input placeholder */
   placeholder?: FormboxValue | React.ReactChild;
@@ -68,11 +101,18 @@ export interface LocalTextboxProps {
   value?: FormboxValue;
 }
 
-export type TextboxProps = MergeProps<Omit<FormboxProps, 'as' | 'children' | 'ref'>, LocalTextboxProps>;
+export type TextboxProps = MergeProps<
+  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'className' | 'size' | 'style' | 'width'>,
+  LocalTextboxProps
+> & {
+  formboxProps?: Omit<Omit<FormboxProps, 'autoFilled'>, keyof LocalTextboxProps>;
+};
 
 function TextboxBase(
   {
     alwaysShowFormatting,
+    alwaysTriggerBlur,
+    alwaysTriggerFocus,
     alwaysUseFormatting,
     autoFocus,
     centered,
@@ -81,13 +121,16 @@ function TextboxBase(
     contrast = false,
     disabled,
     formattedValue,
+    formboxProps,
     iconAfter,
     iconAfterActionable,
     iconBefore,
+    iconBeforeActionable,
     id,
     inputClassName,
-    inputProps: initInputProps,
     inputSize,
+    inputStyle,
+    inputWidth,
     label,
     max,
     maxLength,
@@ -97,22 +140,30 @@ function TextboxBase(
     onChange,
     onClear,
     onFocus,
+    onInputBlur,
+    onInputFocus,
     onKeyDown,
     onKeyUp,
+    onPaste,
     onSubmit,
+    persistEvents,
     placeholder,
     readOnly,
+    required,
     size = 'large',
     step = 1,
+    style,
     tabIndex = 0,
     themeId: initThemeId,
     transitional,
     translations: customTranslations,
+    transparent,
     type = 'text',
     unthemed = false,
     validity,
     value = '',
     variant,
+    visuallyFocused,
     width,
     ...props
   }: TextboxProps,
@@ -126,13 +177,6 @@ function TextboxBase(
 
   const inputRef = useRef<HTMLInputElement>(null);
   const combineRefs = makeCombineRefs<HTMLInputElement>(inputRef, forwardedRef);
-
-  const inputProps = { ...initInputProps };
-  if (type === 'number') {
-    inputProps.max = max;
-    inputProps.min = min;
-    inputProps.step = step;
-  }
 
   const handleChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>(
     event => {
@@ -178,6 +222,8 @@ function TextboxBase(
 
   return (
     <Formbox
+      alwaysTriggerBlur={alwaysTriggerBlur}
+      alwaysTriggerFocus={alwaysTriggerFocus}
       autoFilled={autoFilled}
       className={className}
       contrast={contrast}
@@ -186,20 +232,28 @@ function TextboxBase(
       iconAfter={iconAfter || (isClearable && renderClearableIcon()) || undefined}
       iconAfterActionable={iconAfterActionable || isClearable}
       iconBefore={iconBefore}
+      iconBeforeActionable={iconBeforeActionable}
       id={id}
+      inputWidth={inputWidth}
       label={label}
       onBlur={onBlur}
       onFocus={onFocus}
+      persistEvents={persistEvents}
       readOnly={readOnly}
+      required={required}
       size={size}
+      style={style}
       themeId={themeId}
       transitional={transitional}
+      translations={translations}
+      transparent={transparent}
       type="input"
       unthemed={unthemed}
       validity={validity}
       variant={variant}
+      visuallyFocused={visuallyFocused}
       width={width}
-      {...props}
+      {...formboxProps}
     >
       {({ id, focused, required, variant }) =>
         readOnly ? (
@@ -225,16 +279,27 @@ function TextboxBase(
               maxLength={maxLength}
               name={name}
               onAnimationStart={handleAnimationStart}
+              onBlur={onInputBlur}
               onChange={handleChange}
+              onFocus={onInputFocus}
               onKeyDown={handleKeyDown}
               onKeyUp={onKeyUp}
+              onPaste={onPaste}
               ref={combineRefs}
               size={inputSize}
+              style={inputStyle}
               required={required}
               tabIndex={tabIndex}
               type={type}
               value={value}
-              {...inputProps}
+              {...(type === 'number'
+                ? {
+                    max,
+                    min,
+                    step,
+                  }
+                : {})}
+              {...props}
             />
           </FormboxInputWithFormatting>
         )
