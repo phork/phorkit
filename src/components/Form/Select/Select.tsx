@@ -57,50 +57,109 @@ type MultipleSelectProps = {
   values?: FormboxValue[];
 };
 
-export type LocalSelectProps = {
+export type LocalSelectProps = Pick<
+  FormboxProps,
+  | 'alwaysTriggerBlur'
+  | 'alwaysTriggerFocus'
+  | 'className'
+  | 'contrast'
+  | 'disabled'
+  | 'empty'
+  | 'iconAfter'
+  | 'iconAfterActionable'
+  | 'iconAfterClassName'
+  | 'iconBefore'
+  | 'iconBeforeActionable'
+  | 'iconBeforeClassName'
+  | 'id'
+  | 'inputWidth'
+  | 'label'
+  | 'onBlur'
+  | 'onFocus'
+  | 'persistEvents'
+  | 'readOnly'
+  | 'required'
+  | 'size'
+  | 'style'
+  | 'themeId'
+  | 'transitional'
+  | 'translations'
+  | 'transparent'
+  | 'unthemed'
+  | 'validity'
+  | 'variant'
+  | 'visuallyFocused'
+  | 'width'
+> & {
   arrowIconSize?: number;
   children?: FormboxValue | FormboxValue[];
+  inputClassName?: string;
+  inputStyle?: React.CSSProperties;
   name?: string;
   onChange: (
     event: React.ChangeEvent | React.KeyboardEvent | React.MouseEvent | React.TouchEvent,
     value?: FormboxValue | FormboxValue[],
   ) => void;
+  onInputBlur?: React.FocusEventHandler<HTMLSelectElement>;
+  onInputFocus?: React.FocusEventHandler<HTMLSelectElement>;
   options: SelectOption[];
   /** If an option cannot be unselected then a placeholder with `disabled: true` should be used */
   placeholder?: SelectOptionPlaceholder;
-  selectProps?: Omit<React.HTMLAttributes<HTMLSelectElement>, 'multiple'>;
 } & (SingleSelectProps | MultipleSelectProps);
 
 export type SelectProps = MergeProps<
-  Omit<FormboxProps, 'as' | 'children' | 'ref' | 'transitional' | 'type'>,
+  Omit<React.InputHTMLAttributes<HTMLSelectElement>, 'className' | 'size' | 'style' | 'width'>,
   LocalSelectProps
->;
+> & {
+  formboxProps?: Omit<Omit<FormboxProps, 'autoFilled'>, keyof LocalSelectProps>;
+};
 
 export function SelectBase(
   {
+    alwaysTriggerBlur,
+    alwaysTriggerFocus,
     arrowIconSize: initArrowIconSize,
     children,
     className,
     contrast = false,
     disabled = false,
+    empty,
+    formboxProps,
     iconAfter,
+    iconAfterActionable,
+    iconAfterClassName,
     iconBefore,
+    iconBeforeActionable,
+    iconBeforeClassName,
     id,
+    inputClassName,
+    inputStyle,
+    inputWidth,
+    label,
     multiple,
     name,
+    onBlur,
     onChange,
+    onFocus,
+    onInputBlur,
+    onInputFocus,
     options,
     persistEvents,
     placeholder,
     readOnly = false,
-    selectProps,
+    required,
     size = 'large',
+    style,
     themeId: initThemeId,
     transitional = false,
+    translations,
+    transparent,
     unthemed = false,
     validity,
     value,
     values,
+    variant,
+    visuallyFocused,
     width,
     ...props
   }: SelectProps,
@@ -157,23 +216,40 @@ export function SelectBase(
 
   return (
     <Formbox
+      alwaysTriggerBlur={alwaysTriggerBlur}
+      alwaysTriggerFocus={alwaysTriggerFocus}
       autoFilled={autoFilled}
       className={className}
       contrast={contrast}
       disabled={disabled}
       empty={isEmpty && !placeholder?.label}
       iconAfter={iconAfter || (!multiple && !readOnly ? <ArrowDownIcon size={arrowIconSize} /> : undefined)}
+      iconAfterActionable={iconAfterActionable}
+      iconAfterClassName={iconAfterClassName}
       iconBefore={iconBefore}
+      iconBeforeActionable={iconBeforeActionable}
+      iconBeforeClassName={iconBeforeClassName}
       id={id}
+      inputWidth={inputWidth}
+      label={label}
+      onBlur={onBlur}
+      onFocus={onFocus}
+      persistEvents={persistEvents}
       readOnly={readOnly}
+      required={required}
       size={size}
+      style={style}
       themeId={themeId}
       transitional={transitional}
+      translations={translations}
+      transparent={transparent}
       type="select"
       unthemed={unthemed}
       validity={validity}
+      variant={variant}
+      visuallyFocused={visuallyFocused}
       width={width}
-      {...props}
+      {...formboxProps}
     >
       {({ id, focused, required, variant }) =>
         readOnly ? (
@@ -197,18 +273,21 @@ export function SelectBase(
                 styles.selectInput,
                 themeId && !unthemed && styles[`selectInput--${themeId}`],
                 hasPlaceholder && !focused && styles['selectInput--hidden'],
-                selectProps?.className,
+                inputClassName,
               )}
               disabled={disabled}
               id={id}
               multiple={multiple}
               name={name}
               onAnimationStart={handleAnimationStart}
+              onBlur={onInputBlur}
               onChange={handleChange}
+              onFocus={onInputFocus}
               ref={combineRefs}
               required={required}
+              style={inputStyle}
               value={formattedValue}
-              {...selectProps}
+              {...props}
             >
               {!multiple && placeholder && focused && (
                 <option value={placeholder.value || ''} disabled={placeholder.disabled}>

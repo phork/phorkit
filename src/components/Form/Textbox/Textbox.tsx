@@ -286,9 +286,9 @@ function TextboxBase(
               onKeyUp={onKeyUp}
               onPaste={onPaste}
               ref={combineRefs}
+              required={required}
               size={inputSize}
               style={inputStyle}
-              required={required}
               tabIndex={tabIndex}
               type={type}
               value={value}

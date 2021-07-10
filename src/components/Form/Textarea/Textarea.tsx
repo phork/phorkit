@@ -6,42 +6,106 @@ import { makeCombineRefs } from '../../../utils/combineRefs';
 import { FormboxInput, FormboxReadOnly, Formbox, FormboxProps, FormboxValue, useAutoFilled } from '../Formbox';
 import styles from './styles/Textarea.module.css';
 
-export interface LocalTextareaProps {
+export interface LocalTextareaProps
+  extends Pick<
+    FormboxProps,
+    | 'alwaysTriggerBlur'
+    | 'alwaysTriggerFocus'
+    | 'className'
+    | 'contrast'
+    | 'disabled'
+    | 'empty'
+    | 'iconAfter'
+    | 'iconAfterActionable'
+    | 'iconAfterClassName'
+    | 'iconBefore'
+    | 'iconBeforeActionable'
+    | 'iconBeforeClassName'
+    | 'id'
+    | 'inputWidth'
+    | 'label'
+    | 'onBlur'
+    | 'onFocus'
+    | 'persistEvents'
+    | 'readOnly'
+    | 'required'
+    | 'size'
+    | 'style'
+    | 'themeId'
+    | 'transitional'
+    | 'translations'
+    | 'transparent'
+    | 'unthemed'
+    | 'validity'
+    | 'variant'
+    | 'visuallyFocused'
+    | 'width'
+  > {
   cols?: number;
+  inputClassName?: string;
+  inputStyle?: React.CSSProperties;
   maxLength?: number;
   onChange: (event: React.ChangeEvent<HTMLTextAreaElement>, value: FormboxValue) => void;
+  onInputBlur?: React.FocusEventHandler<HTMLTextAreaElement>;
+  onInputFocus?: React.FocusEventHandler<HTMLTextAreaElement>;
   name?: string;
   placeholder?: string;
   required?: boolean;
   rows?: number;
-  textareaProps?: Omit<React.InputHTMLAttributes<HTMLTextAreaElement>, 'className' | 'onChange' | 'ref'>;
   value?: FormboxValue;
 }
 
-export type TextareaProps = MergeProps<Omit<FormboxProps, 'as' | 'children' | 'ref' | 'type'>, LocalTextareaProps>;
+export type TextareaProps = MergeProps<
+  Omit<React.InputHTMLAttributes<HTMLTextAreaElement>, 'className' | 'size' | 'style' | 'width'>,
+  LocalTextareaProps
+> & {
+  formboxProps?: Omit<Omit<FormboxProps, 'autoFilled'>, keyof LocalTextareaProps>;
+};
 
 function TextareaBase(
   {
+    alwaysTriggerBlur,
+    alwaysTriggerFocus,
     className,
     cols,
     contrast = false,
     disabled = false,
+    empty,
+    formboxProps,
+    iconAfter,
+    iconAfterActionable,
+    iconAfterClassName,
+    iconBefore,
+    iconBeforeActionable,
+    iconBeforeClassName,
     id,
+    inputClassName,
+    inputStyle,
+    inputWidth,
     label,
     maxLength,
     name,
+    onBlur,
     onChange,
+    onFocus,
+    onInputBlur,
+    onInputFocus,
+    persistEvents,
     placeholder,
     readOnly = false,
     required = false,
     rows = 3,
     size,
-    textareaProps,
+    style,
     themeId: initThemeId,
     transitional = false,
+    translations,
+    transparent,
+    unthemed,
     validity,
     value = '',
     variant,
+    visuallyFocused,
     width,
     ...props
   }: TextareaProps,
@@ -70,23 +134,40 @@ function TextareaBase(
 
   return (
     <Formbox
+      alwaysTriggerBlur={alwaysTriggerBlur}
+      alwaysTriggerFocus={alwaysTriggerFocus}
       autoFilled={autoFilled}
       className={className}
       contrast={contrast}
       disabled={disabled}
       empty={isEmpty}
-      iconAfterClassName={cx(styles.textareaIcon, styles[`textareaIcon--${variant}`])}
+      iconAfter={iconAfter}
+      iconAfterActionable={iconAfterActionable}
+      iconAfterClassName={cx(styles.textareaIcon, styles[`textareaIcon--${variant}`], iconAfterClassName)}
+      iconBefore={iconBefore}
+      iconBeforeActionable={iconBeforeActionable}
+      iconBeforeClassName={iconBeforeClassName}
       id={id}
+      inputWidth={inputWidth}
       label={label}
+      onBlur={onBlur}
+      onFocus={onFocus}
+      persistEvents={persistEvents}
       readOnly={readOnly}
+      required={required}
       size={size}
+      style={style}
       themeId={themeId}
       transitional={transitional}
+      translations={translations}
+      transparent={transparent}
       type="textarea"
+      unthemed={unthemed}
       validity={validity}
       variant={variant}
+      visuallyFocused={visuallyFocused}
       width={width}
-      {...props}
+      {...formboxProps}
     >
       {({ id, variant }) =>
         readOnly ? (
@@ -94,16 +175,20 @@ function TextareaBase(
         ) : (
           <FormboxInput<'textarea'> contrast={contrast} placeholder={placeholder} themeId={themeId} variant={variant}>
             <textarea
+              className={inputClassName}
               cols={cols}
               disabled={disabled}
               id={id}
               name={name}
               onAnimationStart={handleAnimationStart}
+              onBlur={onInputBlur}
               onChange={handleChange}
+              onFocus={onInputFocus}
               ref={combineRefs}
               rows={rows}
+              style={inputStyle}
               value={value}
-              {...textareaProps}
+              {...props}
             />
           </FormboxInput>
         )
