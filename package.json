@@ -166,7 +166,7 @@
     "@semantic-release/npm": "^7.1.0",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
-    "@testing-library/user-event": "^13.1.5",
+    "@testing-library/user-event": "^13.1.9",
     "@trivago/prettier-plugin-sort-imports": "^2.0.2",
     "@types/jest": "^26.0.21",
     "@types/lodash.debounce": "^4.0.6",

@@ -5,6 +5,7 @@ import { useComponentId } from '../../hooks/useComponentId';
 import { useThemeId } from '../../hooks/useThemeId';
 import { FormboxSize, FormboxVariant } from '../../components/Form/Formbox/types';
 import { useListRegistry } from '../../components/ListRegistry';
+import { TextboxGroupContainer } from './TextboxGroupContainer';
 import { TextboxGroupInput } from './TextboxGroupInput';
 import styles from './styles/TextboxGroup.module.css';
 import { useTextboxGroup, UseTextboxGroupOptions } from './useTextboxGroup';
@@ -22,7 +23,7 @@ export interface LocalTextboxGroup2FAProps extends ThemeProps {
 
 export type TextboxGroup2FAProps = MergeElementProps<'div', LocalTextboxGroup2FAProps>;
 
-export function TextboxGroup2FA({
+function TextboxGroup2FAContent({
   className,
   inputClassName,
   inputStyle,
@@ -122,4 +123,13 @@ export function TextboxGroup2FA({
   ) : null;
 }
 
+export function TextboxGroup2FA(props: TextboxGroup2FAProps): React.ReactElement | null {
+  return (
+    <TextboxGroupContainer>
+      <TextboxGroup2FAContent {...props} />
+    </TextboxGroupContainer>
+  );
+}
+
+TextboxGroup2FAContent.displayName = 'TextboxGroup2FAContent';
 TextboxGroup2FA.displayName = 'TextboxGroup2FA';

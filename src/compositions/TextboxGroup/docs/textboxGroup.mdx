@@ -11,7 +11,7 @@ import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { TextboxGroup2FA, TextboxGroupContainer } from '../index';
+import { TextboxGroup2FA } from '../index';
 import { textbox as variants } from './helpers/variants.js';
 
 <PageTitle title="TextboxGroup" src="compositions/TextboxGroup" />
@@ -25,18 +25,16 @@ import { textbox as variants } from './helpers/variants.js';
       render={variant => (
         <StateWrapper initialState="">
           {({ state, setState }) => (
-            <TextboxGroupContainer>
-              <Rhythm py={3}>
-                <TextboxGroup2FA
-                  inputWidth={64}
-                  length={6}
-                  onChange={(event, value) => setState(value)}
-                  size="xxxxxxxlarge"
-                  value={state}
-                  variant={variant}
-                />
-              </Rhythm>
-            </TextboxGroupContainer>
+            <Rhythm py={3}>
+              <TextboxGroup2FA
+                inputWidth={64}
+                length={6}
+                onChange={(event, value) => setState(value)}
+                size="xxxxxxxlarge"
+                value={state}
+                variant={variant}
+              />
+            </Rhythm>
           )}
         </StateWrapper>
       )}
@@ -53,7 +51,6 @@ import { textbox as variants } from './helpers/variants.js';
       render={variant => (
         <StateWrapper initialState={{ focused: false, value: '' }}>
           {({ state, setState }) => (
-            <TextboxGroupContainer>
               <Rhythm py={3} grouped>
                 <FormboxContainer
                   as="label"
@@ -77,7 +74,6 @@ import { textbox as variants } from './helpers/variants.js';
                   />
                 </FormboxContainer>
               </Rhythm>
-            </TextboxGroupContainer>
           )}
         </StateWrapper>
       )}
@@ -86,23 +82,21 @@ import { textbox as variants } from './helpers/variants.js';
   </ThemeWrapper>
 </Playground>
 
-## Two factor authentication, unspaced
+## Two factor authentication, joined
 
 <Playground>
   <ThemeWrapper>
     <StateWrapper initialState="">
       {({ state, setState }) => (
-        <TextboxGroupContainer>
-          <TextboxGroup2FA
-            inputWidth={32}
-            length={6}
-            onChange={(event, value) => setState(value)}
-            size="xxxlarge"
-            style={{ '--textbox-group-input-spacing': '0px' }}
-            value={state}
-            variant="filled"
-          />
-        </TextboxGroupContainer>
+        <TextboxGroup2FA
+          inputWidth={32}
+          length={6}
+          onChange={(event, value) => setState(value)}
+          size="xxxlarge"
+          style={{ '--textbox-group-input-spacing': '0px' }}
+          value={state}
+          variant="filled"
+        />
       )}
     </StateWrapper>
   </ThemeWrapper>
