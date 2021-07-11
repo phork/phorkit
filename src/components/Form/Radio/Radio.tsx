@@ -8,7 +8,9 @@ import { makeCombineRefs } from '../../../utils';
 import { Label } from '../Label';
 import styles from './styles/Radio.module.css';
 
-export interface LocalRadioProps extends ThemeProps {
+export type RadioValue = string | number;
+
+export interface LocalRadioProps<V extends RadioValue = string> extends ThemeProps {
   checked?: boolean;
   children: React.ReactNode;
   className?: string;
@@ -16,31 +18,27 @@ export interface LocalRadioProps extends ThemeProps {
   full?: boolean;
   grouped?: 'stacked' | 'inline';
   id?: string;
-  inputStyle?: React.CSSProperties;
   name?: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>, checked: boolean, value: string | number) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>, checked: boolean, value: V) => void;
   persistEvents?: boolean;
   reverse?: boolean;
-  style?: React.CSSProperties;
   unthemed?: boolean;
   validity?: 'danger';
-  value?: string | number;
+  value?: V;
   variant?: 'primary' | 'secondary';
 }
 
-export type RadioProps = MergeProps<
-  Omit<React.ComponentPropsWithoutRef<'input'>, 'onBlur' | 'onFocus' | 'tabIndex' | 'type'>,
-  LocalRadioProps
+export type RadioProps<V extends RadioValue = string> = MergeProps<
+  Omit<React.ComponentProps<'input'>, 'onBlur' | 'onFocus' | 'tabIndex' | 'type'>,
+  LocalRadioProps<V>
 > & {
   labelProps?: Omit<
     Omit<React.ComponentPropsWithoutRef<'label'>, 'htmlFor' | 'onFocus' | 'tabIndex'>,
-    keyof LocalRadioProps
+    keyof LocalRadioProps<V>
   >;
 };
 
-export type RadioRef = React.ForwardedRef<HTMLInputElement>;
-
-export function RadioBase(
+export function RadioBase<V extends RadioValue = string>(
   {
     checked = false,
     children,
@@ -50,22 +48,20 @@ export function RadioBase(
     full = false,
     grouped,
     id,
-    inputStyle,
     labelProps,
     name,
     onChange,
     persistEvents = false,
     reverse = false,
-    style,
     themeId: initThemeId,
     unthemed = false,
     validity,
     value,
     variant = 'primary',
     ...props
-  }: RadioProps,
+  }: RadioProps<V>,
   forwardedRef: React.ForwardedRef<HTMLInputElement>,
-): React.ReactElement<RadioProps, 'label'> {
+): React.ReactElement<RadioProps<V>, 'label'> {
   const accessible = useAccessibility();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const themeId = useThemeId(initThemeId);
@@ -78,7 +74,7 @@ export function RadioBase(
   const handleChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>(
     event => {
       persistEvents && event.persist();
-      onChange && onChange(event, event.target.checked, event.target.value);
+      onChange && onChange(event, event.target.checked, event.target.value as V);
     },
     [onChange, persistEvents],
   );
@@ -107,7 +103,6 @@ export function RadioBase(
         className,
       )}
       onFocus={forwardFocus}
-      style={style}
       tabIndex={focused || disabled ? -1 : 0}
       {...labelProps}
     >
@@ -123,7 +118,6 @@ export function RadioBase(
           onChange={handleChange}
           onFocus={handleFocus}
           ref={combineRefs}
-          style={inputStyle}
           tabIndex={-1}
           type="radio"
           value={value}
@@ -136,9 +130,9 @@ export function RadioBase(
           contrast={contrast}
           disabled={disabled}
           focused={focused}
-          muted={!checked}
           strength="standard"
           themeId={themeId}
+          muted={!checked}
         >
           {children}
         </Label>
@@ -147,7 +141,7 @@ export function RadioBase(
   );
 }
 
-export const Radio = React.forwardRef(RadioBase);
+export const Radio = React.forwardRef(RadioBase) as typeof RadioBase;
 
 RadioBase.displayName = 'RadioBase';
 Radio.displayName = 'Radio';

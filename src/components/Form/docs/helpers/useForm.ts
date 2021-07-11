@@ -1,16 +1,14 @@
 import { Dispatch, SetStateAction, useCallback, useState } from 'react';
 import { FormboxValue } from '../../Formbox';
 
-type PartialEvent = {
-  target: {
-    name: string;
-    value: FormboxValue;
-  };
-};
-
 export type UseFormResponse<V> = {
-  handleChange: (event: PartialEvent, value?: FormboxValue | undefined) => void;
-  handleClear: (event: PartialEvent) => void;
+  handleChange: (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+      | React.ChangeEvent<HTMLTextAreaElement>,
+    value?: FormboxValue | FormboxValue[] | undefined,
+  ) => void;
   handleSubmit: React.FormEventHandler;
   setValues: Dispatch<SetStateAction<V>>;
   values: V;
@@ -31,13 +29,8 @@ export const useForm = <V>(callback: (event: React.SyntheticEvent) => void, init
     setValues(values => ({ ...values, [event.target.name]: value === undefined ? event.target.value : value }));
   }, []);
 
-  const handleClear = useCallback<UseFormResponse<V>['handleClear']>(event => {
-    setValues(values => ({ ...values, [event.target.name]: '' }));
-  }, []);
-
   return {
     handleChange,
-    handleClear,
     handleSubmit,
     setValues,
     values,

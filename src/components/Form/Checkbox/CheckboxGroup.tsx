@@ -4,29 +4,33 @@ import { MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
 import { useComponentId } from '../../../hooks/useComponentId';
 import { useThemeId } from '../../../hooks/useThemeId';
 import { Fieldset } from '../Fieldset/Fieldset';
-import { Checkbox, CheckboxProps } from './Checkbox';
+import { Checkbox, CheckboxProps, CheckboxValue } from './Checkbox';
 import styles from './styles/CheckboxGroup.module.css';
 
-export interface CheckboxGroupItem extends Omit<CheckboxProps, 'children' | 'grouped' | 'id' | 'onChange' | 'value'> {
+export interface CheckboxGroupItem<V extends CheckboxValue = string>
+  extends Omit<CheckboxProps<V>, 'children' | 'grouped' | 'id' | 'onChange' | 'value'> {
   id: string;
-  label: CheckboxProps['children'];
-  value: string | number;
+  label: CheckboxProps<V>['children'];
+  value: V;
 }
 
-export interface LocalCheckboxGroupProps extends ThemeProps {
+export interface LocalCheckboxGroupProps<V extends CheckboxValue = string> extends ThemeProps {
   className?: string;
   legend: React.ReactNode;
   layout: 'stacked' | 'inline';
-  onChange: (event: React.ChangeEvent<HTMLInputElement>, values: Array<CheckboxProps['value']>) => void;
-  checkboxes: CheckboxGroupItem[];
-  values: Array<CheckboxProps['value']>;
-  variant?: CheckboxProps['variant'];
+  onChange: (event: React.ChangeEvent<HTMLInputElement>, values: Array<V>) => void;
+  checkboxes: CheckboxGroupItem<V>[];
+  values?: Array<V>;
+  variant?: CheckboxProps<V>['variant'];
 }
 
-export type CheckboxGroupProps = MergeElementPropsWithoutRef<'div', LocalCheckboxGroupProps>;
+export type CheckboxGroupProps<V extends CheckboxValue = string> = MergeElementPropsWithoutRef<
+  'div',
+  LocalCheckboxGroupProps<V>
+>;
 export type CheckboxGroupRef = React.ForwardedRef<HTMLFieldSetElement>;
 
-function CheckboxGroupBase(
+function CheckboxGroupBase<V extends CheckboxValue = string>(
   {
     className,
     contrast = false,
@@ -38,18 +42,19 @@ function CheckboxGroupBase(
     values,
     variant,
     ...props
-  }: CheckboxGroupProps,
+  }: CheckboxGroupProps<V>,
   forwardedRef: React.ForwardedRef<HTMLFieldSetElement>,
-): React.ReactElement<CheckboxGroupProps, 'fieldset'> {
+): React.ReactElement<CheckboxGroupProps<V>, 'fieldset'> {
   const themeId = useThemeId(initThemeId);
   const { generateComponentId } = useComponentId();
 
-  const handleChange = useCallback<CheckboxProps['onChange']>(
+  const handleChange = useCallback<CheckboxProps<V>['onChange']>(
     (event, checked, value) => {
-      const addValue = (event: React.ChangeEvent<HTMLInputElement>, value: string | number) =>
-        !values.includes(value) && onChange(event, [...values, value]);
-      const removeValue = (event: React.ChangeEvent<HTMLInputElement>, value: string | number) =>
-        values.includes(value) &&
+      const addValue = (event: React.ChangeEvent<HTMLInputElement>, value: V) =>
+        !values?.includes(value) && onChange(event, [...(values || []), value]);
+
+      const removeValue = (event: React.ChangeEvent<HTMLInputElement>, value: V) =>
+        values?.includes(value) &&
         onChange(
           event,
           values.filter(item => item !== value),
@@ -65,8 +70,8 @@ function CheckboxGroupBase(
       <div className={cx(styles.checkboxGroup, layout && styles[`checkboxGroup--${layout}`])} {...props}>
         {checkboxes &&
           checkboxes.map(({ id, label, value: checkboxValue, ...checkboxProps }) => (
-            <Checkbox
-              checked={values.includes(checkboxValue)}
+            <Checkbox<V>
+              checked={values?.includes(checkboxValue)}
               contrast={contrast}
               grouped={layout}
               id={generateComponentId(id)}
@@ -85,7 +90,7 @@ function CheckboxGroupBase(
   );
 }
 
-export const CheckboxGroup = React.forwardRef(CheckboxGroupBase);
+export const CheckboxGroup = React.forwardRef(CheckboxGroupBase) as typeof CheckboxGroupBase;
 
 CheckboxGroupBase.displayName = 'CheckboxGroupBase';
 CheckboxGroup.displayName = 'CheckboxGroup';

@@ -97,10 +97,7 @@ export type LocalSelectProps = Pick<
   inputStyle?: React.CSSProperties;
   name?: string;
   onAnimationStart?: React.AnimationEventHandler<HTMLSelectElement>;
-  onChange: (
-    event: React.ChangeEvent | React.KeyboardEvent | React.MouseEvent | React.TouchEvent,
-    value?: FormboxValue | FormboxValue[],
-  ) => void;
+  onChange: (event: React.ChangeEvent<HTMLSelectElement>, value?: FormboxValue | FormboxValue[]) => void;
   onInputBlur?: React.FocusEventHandler<HTMLSelectElement>;
   onInputFocus?: React.FocusEventHandler<HTMLSelectElement>;
   options: SelectOption[];

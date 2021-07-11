@@ -4,30 +4,34 @@ import { MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
 import { useComponentId } from '../../../hooks/useComponentId';
 import { useThemeId } from '../../../hooks/useThemeId';
 import { Fieldset } from '../Fieldset/Fieldset';
-import { Radio, RadioProps } from './Radio';
+import { Radio, RadioProps, RadioValue } from './Radio';
 import styles from './styles/RadioGroup.module.css';
 
-export interface RadioGroupItem extends Omit<RadioProps, 'children' | 'grouped' | 'id' | 'onChange' | 'value'> {
+export interface RadioGroupItem<V extends RadioValue = string>
+  extends Omit<RadioProps<V>, 'children' | 'grouped' | 'id' | 'onChange' | 'value'> {
   id: string;
-  label: RadioProps['children'];
-  value: string | number;
+  label: RadioProps<V>['children'];
+  value: V;
 }
 
-export interface LocalRadioGroupProps extends ThemeProps {
+export interface LocalRadioGroupProps<V extends RadioValue = string> extends ThemeProps {
   className?: string;
   legend: React.ReactNode;
   layout: 'stacked' | 'inline';
   name: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>, value: RadioProps['value']) => void;
-  radios: RadioGroupItem[];
-  value?: string | number;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>, value: V) => void;
+  radios: RadioGroupItem<V>[];
+  value?: V;
   variant?: RadioProps['variant'];
 }
 
-export type RadioGroupProps = MergeElementPropsWithoutRef<'div', LocalRadioGroupProps>;
+export type RadioGroupProps<V extends RadioValue = string> = MergeElementPropsWithoutRef<
+  'div',
+  LocalRadioGroupProps<V>
+>;
 export type RadioGroupRef = React.ForwardedRef<HTMLFieldSetElement>;
 
-function RadioGroupBase(
+function RadioGroupBase<V extends RadioValue = string>(
   {
     className,
     contrast = false,
@@ -40,15 +44,15 @@ function RadioGroupBase(
     value,
     variant,
     ...props
-  }: RadioGroupProps,
+  }: RadioGroupProps<V>,
   forwardedRef: React.ForwardedRef<HTMLFieldSetElement>,
-): React.ReactElement<RadioGroupProps, 'fieldset'> {
+): React.ReactElement<RadioGroupProps<V>, 'fieldset'> {
   const themeId = useThemeId(initThemeId);
   const { generateComponentId } = useComponentId();
 
-  const handleChange = useCallback<RadioProps['onChange']>(
+  const handleChange = useCallback<RadioProps<V>['onChange']>(
     (event, checked) => {
-      checked && onChange(event, event.target.value);
+      checked && onChange(event, event.target.value as V);
     },
     [onChange],
   );
@@ -58,7 +62,7 @@ function RadioGroupBase(
       <div className={cx(styles.radioGroup, layout && styles[`radioGroup--${layout}`])} {...props}>
         {radios &&
           radios.map(({ id, label, value: radioValue, ...radioProps }) => (
-            <Radio
+            <Radio<V>
               checked={radioValue === value}
               contrast={contrast}
               grouped={layout}
@@ -79,7 +83,7 @@ function RadioGroupBase(
   );
 }
 
-export const RadioGroup = React.forwardRef(RadioGroupBase);
+export const RadioGroup = React.forwardRef(RadioGroupBase) as typeof RadioGroupBase;
 
 RadioGroupBase.displayName = 'RadioGroupBase';
 RadioGroup.displayName = 'RadioGroup';

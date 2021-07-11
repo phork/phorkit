@@ -8,7 +8,9 @@ import { makeCombineRefs } from '../../../utils/combineRefs';
 import { Label } from '../Label';
 import styles from './styles/Checkbox.module.css';
 
-export interface LocalCheckboxProps extends ThemeProps {
+export type CheckboxValue = string | number | undefined;
+
+export interface LocalCheckboxProps<V extends CheckboxValue = string> extends ThemeProps {
   checked?: boolean;
   children: React.ReactNode;
   className?: string;
@@ -19,29 +21,29 @@ export interface LocalCheckboxProps extends ThemeProps {
   indeterminate?: boolean;
   inputStyle?: React.CSSProperties;
   name?: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>, checked: boolean, value: string | number) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>, checked: boolean, value: V) => void;
   persistEvents?: boolean;
   reverse?: boolean;
   style?: React.CSSProperties;
   unthemed?: boolean;
   validity?: 'danger';
-  value?: string | number;
+  value?: V;
   variant?: 'primary' | 'secondary';
 }
 
-export type CheckboxProps = MergeProps<
-  Omit<React.ComponentPropsWithoutRef<'input'>, 'onBlur' | 'onFocus' | 'tabIndex' | 'type'>,
-  LocalCheckboxProps
+export type CheckboxProps<V extends CheckboxValue = string> = MergeProps<
+  Omit<React.ComponentProps<'input'>, 'onBlur' | 'onFocus' | 'tabIndex' | 'type'>,
+  LocalCheckboxProps<V>
 > & {
   labelProps?: Omit<
     Omit<React.ComponentPropsWithoutRef<'label'>, 'htmlFor' | 'onFocus' | 'tabIndex'>,
-    keyof LocalCheckboxProps
+    keyof LocalCheckboxProps<V>
   >;
 };
 
 export type CheckboxRef = React.ForwardedRef<HTMLInputElement>;
 
-export function CheckboxBase(
+export function CheckboxBase<V extends CheckboxValue = string>(
   {
     checked = false,
     children,
@@ -65,9 +67,9 @@ export function CheckboxBase(
     value,
     variant = 'primary',
     ...props
-  }: CheckboxProps,
+  }: CheckboxProps<V>,
   forwardedRef: React.ForwardedRef<HTMLInputElement>,
-): React.ReactElement<CheckboxProps, 'label'> {
+): React.ReactElement<CheckboxProps<V>, 'label'> {
   const accessible = useAccessibility();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const themeId = useThemeId(initThemeId);
@@ -84,7 +86,7 @@ export function CheckboxBase(
       persistEvents && event.persist();
       if (onChange) {
         const value = event.target.getAttribute('data-type') === 'number' ? +event.target.value : event.target.value;
-        onChange(event, event.target.checked, value);
+        onChange(event, event.target.checked, value as V);
       }
     },
     [onChange, persistEvents],
@@ -156,7 +158,7 @@ export function CheckboxBase(
   );
 }
 
-export const Checkbox = React.forwardRef(CheckboxBase);
+export const Checkbox = React.forwardRef(CheckboxBase) as typeof CheckboxBase;
 
 CheckboxBase.displayName = 'CheckboxBase';
 Checkbox.displayName = 'Checkbox';

@@ -36,16 +36,7 @@ import { FormDemo } from './helpers/FormDemo';
       <ThemeWrapper>
         <Rhythm mx={3} grouped>
           <FormDemo contrast={false} style={{ maxWidth: '400px' }}>
-            {({
-              contrast = false,
-              handleChange: onChange,
-              handleClear: onClear,
-              options,
-              persistEvents,
-              refs,
-              setValues,
-              values,
-            }) => (
+            {({ contrast = false, handleChange: onChange, options, persistEvents, refs, setValues, values }) => (
               <React.Fragment>
                 <Rhythm mt={4} mb={2}>
                   <ButtonGroup
@@ -124,8 +115,8 @@ import { FormDemo } from './helpers/FormDemo';
                     iconBefore={<SearchIcon />}
                     label="Search"
                     name="search"
-                    onChange={(event, value) => setValues({ ...values, search: value })}
-                    onClear={onClear}
+                    onChange={onChange}
+                    onClear={() => setValues({ ...values, search: '' })}
                     persistEvents={persistEvents}
                     ref={e => {
                       refs.current.search = e;
@@ -370,21 +361,21 @@ import { FormDemo } from './helpers/FormDemo';
                         id: 'demo-checkbox-group1',
                         label: 'Super fantastic label one',
                         name: 'checkboxes1',
-                        ref: refs.checkboxes1,
+                        ref: refs.current.checkboxes1,
                         value: 'one',
                       },
                       {
                         id: 'demo-checkbox-group2',
                         label: 'Super fantastic label two',
                         name: 'checkboxes2',
-                        ref: refs.checkboxes2,
+                        ref: refs.current.checkboxes2,
                         value: 'two',
                       },
                       {
                         id: 'demo-checkbox-group3',
                         label: 'Super fantastic label three',
                         name: 'checkboxes3',
-                        ref: refs.checkboxes3,
+                        ref: refs.current.checkboxes3,
                         value: 'three',
                       },
                     ]}
@@ -402,19 +393,19 @@ import { FormDemo } from './helpers/FormDemo';
                       {
                         id: 'demo-radio-group1',
                         label: 'Super fantastic label one',
-                        ref: refs.radios1,
+                        ref: refs.current.radios1,
                         value: 'one',
                       },
                       {
                         id: 'demo-radio-group2',
                         label: 'Super fantastic label two',
-                        ref: refs.radios2,
+                        ref: refs.current.radios2,
                         value: 'two',
                       },
                       {
                         id: 'demo-radio-group3',
                         label: 'Super fantastic label three',
-                        ref: refs.radios3,
+                        ref: refs.current.radios3,
                         value: 'three',
                       },
                     ]}

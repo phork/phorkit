@@ -15,8 +15,8 @@ const initialValues = {
   checkbox: true,
   checkboxes: ['one'],
   danger: '',
-  dropdown: '',
-  dropdownContained: '',
+  dropdown: [] as string[],
+  dropdownContained: [] as string[],
   password: '123456',
   radio: 'one',
   radios: 'one',
@@ -34,7 +34,27 @@ const initialValues = {
   warning: '',
 };
 
-type FormDemoValues = typeof initialValues;
+type FormDemoValues = {
+  checkbox?: boolean;
+  checkboxes?: string[];
+  danger?: string;
+  dropdown?: string[];
+  dropdownContained?: string[];
+  password?: string;
+  radio?: string;
+  radios?: string;
+  search?: string;
+  selectAnotherColor?: string;
+  selectColor?: string;
+  slider?: number;
+  stepper1?: number;
+  stepper2?: number;
+  success?: string;
+  textarea?: string;
+  toggle?: boolean;
+  username?: string;
+  warning?: string;
+};
 
 type FormDemoRefs = {
   username?: HTMLInputElement | null;
@@ -79,7 +99,7 @@ interface FormDemoProps {
 export function FormDemo({ children, contrast = false, style }: FormDemoProps): React.ReactElement {
   const refs = useRef<FormDemoRefs>({});
 
-  const { values, setValues, handleChange, handleClear, handleSubmit } = useForm<FormDemoValues>(() => {
+  const { values, setValues, handleChange, handleSubmit } = useForm<FormDemoValues>(() => {
     /* eslint-disable-next-line */
     console.log(values);
   }, initialValues);
@@ -89,7 +109,6 @@ export function FormDemo({ children, contrast = false, style }: FormDemoProps): 
       {children({
         contrast,
         handleChange,
-        handleClear,
         options,
         persistEvents: true,
         refs,
