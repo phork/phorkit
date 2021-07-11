@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useRef, useState } from 'react';
-import { MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
+import { MergeProps, ThemeProps } from '../../../types';
 import { useAccessibility } from '../../../context/Accessibility/useAccessibility';
 import { useComponentId } from '../../../hooks/useComponentId';
 import { useThemeId } from '../../../hooks/useThemeId';
@@ -16,17 +16,29 @@ export interface LocalRadioProps extends ThemeProps {
   full?: boolean;
   grouped?: 'stacked' | 'inline';
   id?: string;
+  inputStyle?: React.CSSProperties;
   name?: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>, checked: boolean, value: string | number) => void;
   persistEvents?: boolean;
   reverse?: boolean;
+  style?: React.CSSProperties;
   unthemed?: boolean;
   validity?: 'danger';
   value?: string | number;
   variant?: 'primary' | 'secondary';
 }
 
-export type RadioProps = MergeElementPropsWithoutRef<'label', LocalRadioProps>;
+export type RadioProps = MergeProps<
+  Omit<React.ComponentPropsWithoutRef<'input'>, 'onBlur' | 'onFocus' | 'tabIndex' | 'type'>,
+  LocalRadioProps
+> & {
+  labelProps?: Omit<
+    Omit<React.ComponentPropsWithoutRef<'label'>, 'htmlFor' | 'onFocus' | 'tabIndex'>,
+    keyof LocalRadioProps
+  >;
+};
+
+export type RadioRef = React.ForwardedRef<HTMLInputElement>;
 
 export function RadioBase(
   {
@@ -38,10 +50,13 @@ export function RadioBase(
     full = false,
     grouped,
     id,
+    inputStyle,
+    labelProps,
     name,
     onChange,
     persistEvents = false,
     reverse = false,
+    style,
     themeId: initThemeId,
     unthemed = false,
     validity,
@@ -92,8 +107,9 @@ export function RadioBase(
         className,
       )}
       onFocus={forwardFocus}
+      style={style}
       tabIndex={focused || disabled ? -1 : 0}
-      {...props}
+      {...labelProps}
     >
       <div className={styles.radioInputContainer}>
         <div className={styles.radioInputContainerFocusRing} />
@@ -107,9 +123,11 @@ export function RadioBase(
           onChange={handleChange}
           onFocus={handleFocus}
           ref={combineRefs}
+          style={inputStyle}
           tabIndex={-1}
           type="radio"
           value={value}
+          {...props}
         />
       </div>
       {children && (
@@ -118,9 +136,9 @@ export function RadioBase(
           contrast={contrast}
           disabled={disabled}
           focused={focused}
+          muted={!checked}
           strength="standard"
           themeId={themeId}
-          muted={!checked}
         >
           {children}
         </Label>

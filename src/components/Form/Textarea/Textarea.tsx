@@ -45,10 +45,11 @@ export interface LocalTextareaProps
   inputClassName?: string;
   inputStyle?: React.CSSProperties;
   maxLength?: number;
+  name?: string;
+  onAnimationStart?: React.AnimationEventHandler<HTMLTextAreaElement>;
   onChange: (event: React.ChangeEvent<HTMLTextAreaElement>, value: FormboxValue) => void;
   onInputBlur?: React.FocusEventHandler<HTMLTextAreaElement>;
   onInputFocus?: React.FocusEventHandler<HTMLTextAreaElement>;
-  name?: string;
   placeholder?: string;
   required?: boolean;
   rows?: number;
@@ -56,11 +57,13 @@ export interface LocalTextareaProps
 }
 
 export type TextareaProps = MergeProps<
-  Omit<React.InputHTMLAttributes<HTMLTextAreaElement>, 'className' | 'size' | 'style' | 'width'>,
+  Omit<React.ComponentPropsWithoutRef<'textarea'>, 'className' | 'size' | 'style' | 'width'>,
   LocalTextareaProps
 > & {
   formboxProps?: Omit<Omit<FormboxProps, 'autoFilled'>, keyof LocalTextareaProps>;
 };
+
+export type TextareaRef = React.ForwardedRef<HTMLTextAreaElement>;
 
 function TextareaBase(
   {
@@ -85,6 +88,7 @@ function TextareaBase(
     label,
     maxLength,
     name,
+    onAnimationStart,
     onBlur,
     onChange,
     onFocus,
@@ -115,7 +119,7 @@ function TextareaBase(
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const combineRefs = makeCombineRefs<HTMLTextAreaElement>(inputRef, forwardedRef);
 
-  const { autoFilled, handleAnimationStart } = useAutoFilled<HTMLTextAreaElement>();
+  const { autoFilled, handleAnimationStart } = useAutoFilled<HTMLTextAreaElement>({ onAnimationStart });
 
   const handleChange = useCallback<React.ChangeEventHandler<HTMLTextAreaElement>>(
     event => {

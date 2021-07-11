@@ -88,6 +88,7 @@ export interface LocalTextboxProps
   maxLength?: number;
   min?: number;
   name?: string;
+  onAnimationStart?: React.AnimationEventHandler<HTMLInputElement>;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>, value: FormboxValue) => void;
   onInputBlur?: React.FocusEventHandler<HTMLInputElement>;
   onInputFocus?: React.FocusEventHandler<HTMLInputElement>;
@@ -102,11 +103,13 @@ export interface LocalTextboxProps
 }
 
 export type TextboxProps = MergeProps<
-  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'className' | 'size' | 'style' | 'width'>,
+  Omit<React.ComponentPropsWithoutRef<'input'>, 'className' | 'onAnimationStart' | 'size' | 'style' | 'width'>,
   LocalTextboxProps
 > & {
   formboxProps?: Omit<Omit<FormboxProps, 'autoFilled'>, keyof LocalTextboxProps>;
 };
+
+export type TextboxRef = React.ForwardedRef<HTMLInputElement>;
 
 function TextboxBase(
   {
@@ -136,6 +139,7 @@ function TextboxBase(
     maxLength,
     min,
     name,
+    onAnimationStart,
     onBlur,
     onChange,
     onClear,
@@ -143,7 +147,6 @@ function TextboxBase(
     onInputBlur,
     onInputFocus,
     onKeyDown,
-    onKeyUp,
     onPaste,
     onSubmit,
     persistEvents,
@@ -173,7 +176,7 @@ function TextboxBase(
   const translations = useTranslations({ customTranslations, fallbackTranslations: textboxTranslations });
   const { clearLabel } = translations;
 
-  const { autoFilled, handleAnimationStart } = useAutoFilled<HTMLInputElement>();
+  const { autoFilled, handleAnimationStart } = useAutoFilled<HTMLInputElement>({ onAnimationStart });
 
   const inputRef = useRef<HTMLInputElement>(null);
   const combineRefs = makeCombineRefs<HTMLInputElement>(inputRef, forwardedRef);
@@ -283,7 +286,6 @@ function TextboxBase(
               onChange={handleChange}
               onFocus={onInputFocus}
               onKeyDown={handleKeyDown}
-              onKeyUp={onKeyUp}
               onPaste={onPaste}
               ref={combineRefs}
               required={required}

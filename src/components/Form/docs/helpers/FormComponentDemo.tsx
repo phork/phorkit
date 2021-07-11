@@ -1,6 +1,15 @@
-import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { ThemeWrapper, ThemeWrapperProps } from 'docs/helpers/ThemeWrapper';
+
+export interface FormComponentDemoProps {
+  contrast?: boolean;
+  children: React.ReactElement;
+  initialValue?: string | number | boolean | string[];
+  property: string;
+  unwrapped?: boolean;
+  type: 'checkbox' | 'password' | 'radio' | 'select' | 'slider' | 'stepper' | 'textarea' | 'textbox' | 'toggle';
+  variant?: ThemeWrapperProps['variant'];
+}
 
 export function FormComponentDemo({
   contrast = false,
@@ -11,21 +20,21 @@ export function FormComponentDemo({
   type,
   variant,
   ...props
-}) {
-  const [value, setValue] = useState(initialValue);
+}: FormComponentDemoProps) {
+  const [value, setValue] = useState<FormComponentDemoProps['initialValue']>(initialValue);
   const clearable = ['textbox', 'password'].includes(type);
 
   const content = (
     <div style={{ maxWidth: 400 }}>
       {React.cloneElement(children, {
         [property]: value,
-        onChange: (event, value) => {
+        onChange: (event: React.ChangeEvent, value: FormComponentDemoProps['initialValue']) => {
           setValue(value);
           children.props.onChange && children.props.onChange(event, value);
         },
         ...(clearable
           ? {
-              onClear: event => {
+              onClear: (event: React.KeyboardEvent | React.MouseEvent | React.TouchEvent) => {
                 setValue('');
                 children.props.onClear && children.props.onClear(event);
               },
@@ -43,19 +52,3 @@ export function FormComponentDemo({
     </ThemeWrapper>
   );
 }
-
-FormComponentDemo.defaultProps = {
-  contrast: false,
-  initialValue: undefined,
-  unwrapped: false,
-  variant: undefined,
-};
-
-FormComponentDemo.propTypes = {
-  property: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-  contrast: PropTypes.bool,
-  initialValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool, PropTypes.array]),
-  unwrapped: PropTypes.bool,
-  variant: PropTypes.string,
-};

@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useRef, useState } from 'react';
-import { MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
+import { MergeProps, ThemeProps } from '../../../types';
 import { useAccessibility } from '../../../context/Accessibility/useAccessibility';
 import { useComponentId } from '../../../hooks/useComponentId';
 import { useThemeId } from '../../../hooks/useThemeId';
@@ -17,17 +17,29 @@ export interface LocalCheckboxProps extends ThemeProps {
   grouped?: 'stacked' | 'inline';
   id?: string;
   indeterminate?: boolean;
+  inputStyle?: React.CSSProperties;
   name?: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>, checked: boolean, value: string | number) => void;
   persistEvents?: boolean;
   reverse?: boolean;
+  style?: React.CSSProperties;
   unthemed?: boolean;
   validity?: 'danger';
   value?: string | number;
   variant?: 'primary' | 'secondary';
 }
 
-export type CheckboxProps = MergeElementPropsWithoutRef<'label', LocalCheckboxProps>;
+export type CheckboxProps = MergeProps<
+  Omit<React.ComponentPropsWithoutRef<'input'>, 'onBlur' | 'onFocus' | 'tabIndex' | 'type'>,
+  LocalCheckboxProps
+> & {
+  labelProps?: Omit<
+    Omit<React.ComponentPropsWithoutRef<'label'>, 'htmlFor' | 'onFocus' | 'tabIndex'>,
+    keyof LocalCheckboxProps
+  >;
+};
+
+export type CheckboxRef = React.ForwardedRef<HTMLInputElement>;
 
 export function CheckboxBase(
   {
@@ -40,10 +52,13 @@ export function CheckboxBase(
     grouped,
     id,
     indeterminate = false,
+    inputStyle,
+    labelProps,
     name,
     onChange,
     persistEvents = false,
     reverse = false,
+    style,
     themeId: initThemeId,
     unthemed = false,
     validity,
@@ -100,14 +115,16 @@ export function CheckboxBase(
         className,
       )}
       onFocus={forwardFocus}
+      style={style}
       tabIndex={focused || disabled ? -1 : 0}
-      {...props}
+      {...labelProps}
     >
       <div className={styles.checkboxInputContainer}>
         <div className={styles.checkboxInputContainerFocusRing} />
         <input
           checked={checked}
           className={styles.checkboxInput}
+          data-type={typeof value}
           disabled={disabled}
           id={generateComponentId()}
           name={name}
@@ -115,10 +132,11 @@ export function CheckboxBase(
           onChange={handleChange}
           onFocus={handleFocus}
           ref={combineRefs}
+          style={inputStyle}
           tabIndex={-1}
           type="checkbox"
           value={value}
-          data-type={typeof value}
+          {...props}
         />
       </div>
       {children && (
@@ -127,9 +145,9 @@ export function CheckboxBase(
           contrast={contrast}
           disabled={disabled}
           focused={focused}
+          muted={!checked && !indeterminate}
           strength="standard"
           themeId={themeId}
-          muted={!checked && !indeterminate}
         >
           {children}
         </Label>

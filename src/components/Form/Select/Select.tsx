@@ -96,6 +96,7 @@ export type LocalSelectProps = Pick<
   inputClassName?: string;
   inputStyle?: React.CSSProperties;
   name?: string;
+  onAnimationStart?: React.AnimationEventHandler<HTMLSelectElement>;
   onChange: (
     event: React.ChangeEvent | React.KeyboardEvent | React.MouseEvent | React.TouchEvent,
     value?: FormboxValue | FormboxValue[],
@@ -108,11 +109,13 @@ export type LocalSelectProps = Pick<
 } & (SingleSelectProps | MultipleSelectProps);
 
 export type SelectProps = MergeProps<
-  Omit<React.InputHTMLAttributes<HTMLSelectElement>, 'className' | 'size' | 'style' | 'width'>,
+  Omit<React.ComponentPropsWithoutRef<'select'>, 'className' | 'onAnimationStart' | 'size' | 'style' | 'width'>,
   LocalSelectProps
 > & {
   formboxProps?: Omit<Omit<FormboxProps, 'autoFilled'>, keyof LocalSelectProps>;
 };
+
+export type SelectRef = React.ForwardedRef<HTMLSelectElement>;
 
 export function SelectBase(
   {
@@ -138,6 +141,7 @@ export function SelectBase(
     label,
     multiple,
     name,
+    onAnimationStart,
     onBlur,
     onChange,
     onFocus,
@@ -169,7 +173,7 @@ export function SelectBase(
   const inputRef = useRef<HTMLSelectElement>(null);
   const combineRefs = makeCombineRefs<HTMLSelectElement>(inputRef, forwardedRef);
 
-  const { autoFilled, handleAnimationStart } = useAutoFilled<HTMLSelectElement>();
+  const { autoFilled, handleAnimationStart } = useAutoFilled<HTMLSelectElement>({ onAnimationStart });
 
   const handleChange = useCallback<React.ChangeEventHandler<HTMLSelectElement>>(
     event => {

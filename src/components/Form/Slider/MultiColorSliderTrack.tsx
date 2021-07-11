@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import React, { useMemo } from 'react';
-import { MergeElementProps } from '../../../types';
+import { MergeElementPropsWithoutRef } from '../../../types';
 
 export interface LocalMultiColorSliderTrackProps {
   children: React.ReactNode;
@@ -9,7 +9,7 @@ export interface LocalMultiColorSliderTrackProps {
   sliderWidth?: number;
 }
 
-export type MultiColorSliderTrackProps = MergeElementProps<'div', LocalMultiColorSliderTrackProps>;
+export type MultiColorSliderTrackProps = MergeElementPropsWithoutRef<'div', LocalMultiColorSliderTrackProps>;
 
 const StyledTrack = styled('div', {
   shouldForwardProp: (prop: string) => !['trackBackground', 'sliderWidth'].includes(prop),

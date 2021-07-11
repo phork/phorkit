@@ -23,9 +23,8 @@ export interface LocalCheckboxGroupProps extends ThemeProps {
   variant?: CheckboxProps['variant'];
 }
 
-export type CheckboxGroupProps = MergeElementPropsWithoutRef<'div', LocalCheckboxGroupProps> & {
-  ref?: React.Ref<HTMLFieldSetElement>;
-};
+export type CheckboxGroupProps = MergeElementPropsWithoutRef<'div', LocalCheckboxGroupProps>;
+export type CheckboxGroupRef = React.ForwardedRef<HTMLFieldSetElement>;
 
 function CheckboxGroupBase(
   {
@@ -35,8 +34,6 @@ function CheckboxGroupBase(
     legend,
     onChange,
     checkboxes,
-    // this allows us to spread the rest of the props without typescript erroring
-    ref: ignoredRef,
     themeId: initThemeId,
     values,
     variant,

@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useMemo, useRef, useState } from 'react';
-import { MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
+import { MergeProps, ThemeProps } from '../../../types';
 import { useAccessibility } from '../../../context/Accessibility/useAccessibility';
 import { useComponentId } from '../../../hooks/useComponentId';
 import { useDimensions } from '../../../hooks/useDimensions';
@@ -47,9 +47,17 @@ export interface LocalSliderProps extends ThemeProps {
   width?: string;
 }
 
-export type SliderProps = MergeElementPropsWithoutRef<'label', LocalSliderProps> & {
-  ref?: React.Ref<HTMLInputElement>;
+export type SliderProps = MergeProps<
+  Omit<React.ComponentPropsWithoutRef<'input'>, 'tabIndex' | 'type'>,
+  LocalSliderProps
+> & {
+  labelProps?: Omit<
+    Omit<React.ComponentPropsWithoutRef<'label'>, 'htmlFor' | 'onFocus' | 'tabIndex'>,
+    keyof LocalSliderProps
+  >;
 };
+
+export type SliderRef = React.ForwardedRef<HTMLInputElement>;
 
 function SliderBase(
   {
@@ -59,13 +67,14 @@ function SliderBase(
     disabled = false,
     formatValue,
     id,
+    labelProps,
     max = 100,
     min = 0,
     name,
+    onBlur,
     onChange,
+    onFocus,
     persistEvents = false,
-    // this allows us to spread the rest of the props without typescript erroring
-    ref: ignoredRef,
     scale,
     snap = false,
     snapNext = false,
@@ -198,16 +207,27 @@ function SliderBase(
 
   const handleDragStart: DraggableProps['onDragStart'] = useCallback(() => setFocused(true), []);
 
-  const handleBlur = useCallback<React.FocusEventHandler<HTMLInputElement>>(() => !dragging && setFocused(false), [
-    dragging,
-  ]);
+  const handleBlur = useCallback<React.FocusEventHandler<HTMLInputElement>>(
+    event => {
+      !dragging && setFocused(false);
+      onBlur?.(event);
+    },
+    [dragging, onBlur],
+  );
 
-  const handleFocus = useCallback<React.FocusEventHandler<HTMLInputElement>>(() => setFocused(true), []);
+  const handleFocus = useCallback<React.FocusEventHandler<HTMLInputElement>>(
+    event => {
+      setFocused(true);
+      onFocus?.(event);
+    },
+    [onFocus],
+  );
+
   const forwardFocus = useCallback<React.FocusEventHandler<HTMLLabelElement>>(() => inputRef.current?.focus(), []);
 
   const filledPercent = () => calcFillFromValue(getValue()) || 0;
 
-  const [ref, { width: sliderWidth }] = useDimensions<HTMLLabelElement>({ propsToMeasure: ['width'] });
+  const [labelRef, { width: sliderWidth }] = useDimensions<HTMLLabelElement>({ propsToMeasure: ['width'] });
 
   return (
     <label
@@ -225,9 +245,9 @@ function SliderBase(
       )}
       style={{ width: propWidth }}
       onFocus={forwardFocus}
-      ref={ref}
+      ref={labelRef}
       tabIndex={focused ? -1 : 0}
-      {...props}
+      {...labelProps}
     >
       {children && (
         <Label className={styles.sliderValue} contrast={contrast} strength="legend" themeId={themeId}>
@@ -293,6 +313,7 @@ function SliderBase(
         tabIndex={-1}
         type="range"
         value={value}
+        {...props}
       />
 
       {valuePosition && (

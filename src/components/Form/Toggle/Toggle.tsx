@@ -23,9 +23,8 @@ export interface LocalToggleProps extends ThemeProps {
   value?: string;
 }
 
-export type ToggleProps = MergeElementPropsWithoutRef<'label', LocalToggleProps> & {
-  ref?: React.Ref<HTMLInputElement>;
-};
+export type ToggleProps = MergeElementPropsWithoutRef<'label', LocalToggleProps>;
+export type ToggleRef = React.ForwardedRef<HTMLInputElement>;
 
 export function ToggleBase(
   {
@@ -39,8 +38,6 @@ export function ToggleBase(
     name,
     onChange,
     persistEvents,
-    // this allows us to spread the rest of the props without typescript erroring
-    ref: ignoredRef,
     reverse = false,
     size,
     themeId: initThemeId,

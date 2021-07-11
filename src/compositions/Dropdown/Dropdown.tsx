@@ -134,6 +134,8 @@ export interface DropdownHandles {
   toggle: HTMLDivElement;
 }
 
+export type DropdownRef = React.ForwardedRef<DropdownHandles>;
+
 /** The dropdown selection is managed by the reducer prop */
 function DropdownBase(
   {

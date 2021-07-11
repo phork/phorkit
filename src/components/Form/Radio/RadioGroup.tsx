@@ -24,9 +24,8 @@ export interface LocalRadioGroupProps extends ThemeProps {
   variant?: RadioProps['variant'];
 }
 
-export type RadioGroupProps = MergeElementPropsWithoutRef<'div', LocalRadioGroupProps> & {
-  ref?: React.Ref<HTMLFieldSetElement>;
-};
+export type RadioGroupProps = MergeElementPropsWithoutRef<'div', LocalRadioGroupProps>;
+export type RadioGroupRef = React.ForwardedRef<HTMLFieldSetElement>;
 
 function RadioGroupBase(
   {
@@ -37,8 +36,6 @@ function RadioGroupBase(
     name,
     onChange,
     radios,
-    // this allows us to spread the rest of the props without typescript erroring
-    ref: ignoredRef,
     themeId: initThemeId,
     value,
     variant,

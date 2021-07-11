@@ -43,9 +43,8 @@ export interface LocalStepperProps {
   value?: number;
 }
 
-export type StepperProps = MergeProps<TextboxProps, LocalStepperProps> & {
-  ref?: React.Ref<HTMLInputElement>;
-};
+export type StepperProps = MergeProps<TextboxProps, LocalStepperProps>;
+export type StepperRef = React.ForwardedRef<HTMLInputElement>;
 
 export function StepperBase(
   {

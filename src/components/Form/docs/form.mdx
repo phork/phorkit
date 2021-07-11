@@ -36,7 +36,16 @@ import { FormDemo } from './helpers/FormDemo';
       <ThemeWrapper>
         <Rhythm mx={3} grouped>
           <FormDemo contrast={false} style={{ maxWidth: '400px' }}>
-            {(onChange, onClear, setValues, values, contrast = false, { options, persistEvents }) => (
+            {({
+              contrast = false,
+              handleChange: onChange,
+              handleClear: onClear,
+              options,
+              persistEvents,
+              refs,
+              setValues,
+              values,
+            }) => (
               <React.Fragment>
                 <Rhythm mt={4} mb={2}>
                   <ButtonGroup
@@ -83,6 +92,9 @@ import { FormDemo } from './helpers/FormDemo';
                     name="username"
                     onChange={onChange}
                     persistEvents={persistEvents}
+                    ref={e => {
+                      refs.current.username = e;
+                    }}
                     size={state.size}
                     transitional
                     value={values.username}
@@ -96,6 +108,9 @@ import { FormDemo } from './helpers/FormDemo';
                     name="password"
                     onChange={onChange}
                     persistEvents={persistEvents}
+                    ref={e => {
+                      refs.current.password = e;
+                    }}
                     size={state.size}
                     transitional
                     value={values.password}
@@ -112,6 +127,9 @@ import { FormDemo } from './helpers/FormDemo';
                     onChange={(event, value) => setValues({ ...values, search: value })}
                     onClear={onClear}
                     persistEvents={persistEvents}
+                    ref={e => {
+                      refs.current.search = e;
+                    }}
                     size={state.size}
                     transitional
                     value={values.search}
@@ -125,6 +143,9 @@ import { FormDemo } from './helpers/FormDemo';
                     name="success"
                     onChange={onChange}
                     persistEvents={persistEvents}
+                    ref={e => {
+                      refs.current.success = e;
+                    }}
                     size={state.size}
                     transitional
                     validity="success"
@@ -139,6 +160,9 @@ import { FormDemo } from './helpers/FormDemo';
                     name="warning"
                     onChange={onChange}
                     persistEvents={persistEvents}
+                    ref={e => {
+                      refs.current.warning = e;
+                    }}
                     size={state.size}
                     transitional
                     validity="warning"
@@ -153,6 +177,9 @@ import { FormDemo } from './helpers/FormDemo';
                     name="danger"
                     onChange={onChange}
                     persistEvents={persistEvents}
+                    ref={e => {
+                      refs.current.danger = e;
+                    }}
                     size={state.size}
                     transitional
                     validity="danger"
@@ -167,6 +194,9 @@ import { FormDemo } from './helpers/FormDemo';
                     name="selectColor"
                     onChange={onChange}
                     persistEvents={persistEvents}
+                    ref={e => {
+                      refs.current.selectColor = e;
+                    }}
                     size={state.size}
                     transitional
                     value={values.selectColor}
@@ -181,6 +211,9 @@ import { FormDemo } from './helpers/FormDemo';
                     name="selectAnotherColor"
                     onChange={onChange}
                     persistEvents={persistEvents}
+                    ref={e => {
+                      refs.current.selectAnotherColor = e;
+                    }}
                     size={state.size}
                     transitional
                     value={values.selectAnotherColor}
@@ -195,6 +228,9 @@ import { FormDemo } from './helpers/FormDemo';
                     layout="raised"
                     onChange={value => onChange({ target: { name: 'dropdown' } }, value)}
                     options={options}
+                    ref={e => {
+                      refs.current.dropdown = e && e.container;
+                    }}
                     size={state.size}
                     transitional
                   />
@@ -206,6 +242,9 @@ import { FormDemo } from './helpers/FormDemo';
                     layout="contained"
                     onChange={value => onChange({ target: { name: 'dropdownContained' } }, value)}
                     options={options}
+                    ref={e => {
+                      refs.current.dropdownContained = e && e.container;
+                    }}
                     size={state.size}
                     transitional
                   />
@@ -217,6 +256,9 @@ import { FormDemo } from './helpers/FormDemo';
                     name="textarea"
                     onChange={onChange}
                     persistEvents={persistEvents}
+                    ref={e => {
+                      refs.current.textarea = e;
+                    }}
                     size={state.size}
                     transitional
                     value={values.textarea}
@@ -230,6 +272,9 @@ import { FormDemo } from './helpers/FormDemo';
                     name="checkbox"
                     onChange={(event, checked) => setValues({ ...values, checkbox: checked })}
                     persistEvents={persistEvents}
+                    ref={e => {
+                      refs.current.checkbox = e;
+                    }}
                     variant="secondary"
                   >
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget dui eu orci ultrices maximus
@@ -246,6 +291,9 @@ import { FormDemo } from './helpers/FormDemo';
                     value="one"
                     onChange={(event, checked, value) => checked && setValues({ ...values, radio: value })}
                     persistEvents={persistEvents}
+                    ref={e => {
+                      refs.current.radio1 = e;
+                    }}
                     variant="secondary"
                   >
                     Lorem ipsum dolor sit amet
@@ -257,6 +305,9 @@ import { FormDemo } from './helpers/FormDemo';
                     value="two"
                     onChange={(event, checked, value) => checked && setValues({ ...values, radio: value })}
                     persistEvents={persistEvents}
+                    ref={e => {
+                      refs.current.radio2 = e;
+                    }}
                     variant="secondary"
                   >
                     Consectetur adipiscing elit
@@ -276,6 +327,9 @@ import { FormDemo } from './helpers/FormDemo';
                         name="stepper1"
                         onChange={(event, value) => setValues({ ...values, stepper1: value })}
                         persistEvents={persistEvents}
+                        ref={e => {
+                          refs.current.stepper1 = e;
+                        }}
                         size={state.size}
                         step={100}
                         value={values.stepper1}
@@ -294,6 +348,9 @@ import { FormDemo } from './helpers/FormDemo';
                       name="stepper2"
                       onChange={(event, value) => setValues({ ...values, stepper2: value })}
                       persistEvents={persistEvents}
+                      ref={e => {
+                        refs.current.stepper2 = e;
+                      }}
                       value={values.stepper2}
                       width="50%"
                       variant={state.variant}
@@ -311,21 +368,24 @@ import { FormDemo } from './helpers/FormDemo';
                     checkboxes={[
                       {
                         id: 'demo-checkbox-group1',
-                        name: 'checkbox-group1',
-                        value: 'one',
                         label: 'Super fantastic label one',
+                        name: 'checkboxes1',
+                        ref: refs.checkboxes1,
+                        value: 'one',
                       },
                       {
                         id: 'demo-checkbox-group2',
-                        name: 'checkbox-group2',
-                        value: 'two',
                         label: 'Super fantastic label two',
+                        name: 'checkboxes2',
+                        ref: refs.checkboxes2,
+                        value: 'two',
                       },
                       {
                         id: 'demo-checkbox-group3',
-                        name: 'checkbox-group3',
-                        value: 'three',
                         label: 'Super fantastic label three',
+                        name: 'checkboxes3',
+                        ref: refs.checkboxes3,
+                        value: 'three',
                       },
                     ]}
                   />
@@ -341,18 +401,21 @@ import { FormDemo } from './helpers/FormDemo';
                     radios={[
                       {
                         id: 'demo-radio-group1',
-                        value: 'one',
                         label: 'Super fantastic label one',
+                        ref: refs.radios1,
+                        value: 'one',
                       },
                       {
                         id: 'demo-radio-group2',
-                        value: 'two',
                         label: 'Super fantastic label two',
+                        ref: refs.radios2,
+                        value: 'two',
                       },
                       {
                         id: 'demo-radio-group3',
-                        value: 'three',
                         label: 'Super fantastic label three',
+                        ref: refs.radios3,
+                        value: 'three',
                       },
                     ]}
                   />
@@ -366,6 +429,9 @@ import { FormDemo } from './helpers/FormDemo';
                     name="slider"
                     onChange={(event, value) => setValues({ ...values, slider: value })}
                     persistEvents={persistEvents}
+                    ref={e => {
+                      refs.current.slider = e;
+                    }}
                     value={values.slider}
                     valuePosition="top"
                     width="100%"
@@ -380,6 +446,9 @@ import { FormDemo } from './helpers/FormDemo';
                     name="toggle"
                     onChange={(event, checked) => setValues({ ...values, toggle: checked })}
                     persistEvents={persistEvents}
+                    ref={e => {
+                      refs.current.toggle = e;
+                    }}
                     value={true}
                   >
                     Activate super powers
@@ -390,7 +459,7 @@ import { FormDemo } from './helpers/FormDemo';
                         <Button weight="ghost" color="neutral" shape="brick">
                           Cancel
                         </Button>
-                        <Button type="submit" color="primary" shape="brick">
+                        <Button type="submit" color="primary" shape="brick" onClick={() => console.log(refs.current)}>
                           Submit
                         </Button>
                       </Rhythm>
