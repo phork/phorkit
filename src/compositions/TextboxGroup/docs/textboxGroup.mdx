@@ -49,15 +49,13 @@ import { textbox as variants } from './helpers/variants.js';
     <Looper
       list={variants}
       render={variant => (
-        <StateWrapper initialState={{ focused: false, value: '' }}>
+        <StateWrapper initialState="">
           {({ state, setState }) => (
               <Rhythm py={3} grouped>
                 <FormboxContainer
                   as="label"
                   focused={state.focused}
                   label="Two-factor code"
-                  onBlur={() => setState({ ...state, focused: false })}
-                  onFocus={() => setState({ ...state, focused: true })}
                   size="xxxxxxxlarge"
                   transitional
                   type="input"
@@ -66,9 +64,9 @@ import { textbox as variants } from './helpers/variants.js';
                   <TextboxGroup2FA
                     inputWidth={64}
                     length={6}
-                    onChange={(event, value) => setState({ ...state, value })}
+                    onChange={(event, value) => setState(value)}
                     size="xxxxxxxlarge"
-                    value={state.value}
+                    value={state}
                     variant={variant}
                   />
                 </FormboxContainer>

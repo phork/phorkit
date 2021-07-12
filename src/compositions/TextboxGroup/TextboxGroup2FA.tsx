@@ -95,6 +95,8 @@ function TextboxGroup2FAContent({
         const concatenated = (value.substring(0, position).padStart(position, ' ') + clipboard).substr(0, length);
         onChange(event, concatenated);
         changeFocus(Math.max(0, concatenated.length - 1) + '', 0);
+      } else {
+        event.preventDefault();
       }
     },
     [changeFocus, length, looper, onChange, validator, value],
