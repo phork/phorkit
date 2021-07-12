@@ -15,7 +15,7 @@ export interface LocalTextboxGroup2FAProps extends ThemeProps {
   inputStyle?: React.CSSProperties;
   inputWidth?: number | string;
   length?: number;
-  onChange: (event: React.SyntheticEvent<HTMLInputElement>, value: string) => void;
+  onChange: (event: React.SyntheticEvent<HTMLElement>, value: string) => void;
   size?: FormboxSize;
   value: string;
   variant?: FormboxVariant;
@@ -56,10 +56,10 @@ function TextboxGroup2FAContent({
     return acc;
   }, {} as Record<string, string>);
 
-  const validator = useCallback(
-    value => value.trim() !== '' && Number.isInteger(+value) && value >= 0 && value <= 9,
-    [],
-  );
+  const validator = useCallback(value => {
+    const isValid = value.trim() !== '' && Number.isInteger(+value) && value >= 0 && value <= 9;
+    return { isValid, focusNext: isValid };
+  }, []);
 
   // fill any empty values with spaces so the values populate in the right box
   const handleChange = useCallback<NonNullable<UseTextboxGroupOptions['onChange']>>(
@@ -78,13 +78,27 @@ function TextboxGroup2FAContent({
   const handleInputFocus = useCallback<React.FocusEventHandler<HTMLInputElement>>(event => event.target.select(), []);
 
   // use the onInput prop instead of the onChange prop
-  const { onChange: ignoreOnChange, ...inputProps } = useTextboxGroup({
+  const { changeFocus, onChange: ignoreOnChange, ...inputProps } = useTextboxGroup({
     onChange: handleChange,
     orderBy: looper,
     refs: items,
     validator,
     values,
   });
+
+  // if every pasted char is valid then append the value
+  const handlePaste = useCallback<React.ClipboardEventHandler<HTMLInputElement>>(
+    event => {
+      const clipboard = (event.clipboardData || (window as any).clipboardData).getData('text');
+      if (clipboard.split('').every(char => validator(char).isValid)) {
+        const position = looper.findIndex(id => id === (event.target as HTMLInputElement).getAttribute('data-id'));
+        const concatenated = (value.substring(0, position) + clipboard).substr(0, length);
+        onChange(event, concatenated);
+        changeFocus(Math.max(0, concatenated.length - 1) + '', 0);
+      }
+    },
+    [changeFocus, length, looper, onChange, validator, value],
+  );
 
   return looper.length ? (
     <div
@@ -111,6 +125,7 @@ function TextboxGroup2FAContent({
           key={generateComponentId(inputId)}
           maxLength={1}
           onInputFocus={handleInputFocus}
+          onPaste={handlePaste}
           size={size}
           style={inputStyle}
           value={values[inputId] === ' ' ? '' : values[inputId]}

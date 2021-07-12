@@ -6,9 +6,11 @@ import { ListRegistryItemType } from './../../components/ListRegistry/types';
 // refs are used so that the focus can automatically change to the next/prev input
 export type TextboxGroupRef = ListRegistryItemType<HTMLInputElement>;
 
+export type TextboxGroupValidator = (value: FormboxValue) => { isValid: boolean; focusNext: boolean };
+
 export type TextboxGroupRefWithValidator = {
   ref: TextboxGroupRef;
-  validator: (value: FormboxValue) => boolean;
+  validator: TextboxGroupValidator;
 };
 
 export type UseTextboxGroupOptions = {
@@ -18,12 +20,13 @@ export type UseTextboxGroupOptions = {
   /** An array of the ref IDs in the order they should be tabbed through */
   orderBy?: string[];
   /** A common validator function for each input */
-  validator?: (value: FormboxValue) => boolean;
+  validator?: TextboxGroupValidator;
   /** The value of each input keyed by its ID */
   values: Record<string, string>;
 };
 
 export type UseTextboxGroupResponse = {
+  changeFocus: (startId: string, numPlaces?: number) => void;
   onChange: NonNullable<TextboxProps['onChange']>;
   onInput: NonNullable<TextboxProps['onInput']>;
   onKeyDown: NonNullable<TextboxProps['onKeyDown']>;
@@ -41,11 +44,11 @@ export const useTextboxGroup = ({
   refs,
   onChange: forwardChange,
   orderBy,
-  validator,
+  validator = () => ({ isValid: true, focusNext: true }),
   values,
 }: UseTextboxGroupOptions): UseTextboxGroupResponse => {
   const changeFocus = useCallback(
-    (startId: string, numPlaces: number): void => {
+    (startId: string, numPlaces: number = 0): HTMLInputElement | undefined => {
       const orderByIndex = orderBy?.findIndex(id => id === startId);
       if (orderByIndex !== undefined) {
         const nextId = orderBy?.[orderByIndex + numPlaces];
@@ -54,12 +57,16 @@ export const useTextboxGroup = ({
           if (nextRef !== undefined) {
             const element = isRefWithValidator(nextRef) ? nextRef.ref.current : nextRef.current;
             element.focus();
+            return element;
           }
         }
       }
+      return undefined;
     },
     [orderBy, refs],
   );
+
+  const backspace = (value: string) => (value ? value.substring(0, value.length - 1) : '');
 
   const handleInput = useCallback(
     (event: React.SyntheticEvent<HTMLInputElement>) => {
@@ -68,9 +75,9 @@ export const useTextboxGroup = ({
       const ref = id !== null ? refs.get(id) : undefined;
       const { value } = target;
 
-      const isValid = ref && (isRefWithValidator(ref) ? ref.validator(value) : !validator || validator(value));
+      const { isValid, focusNext } = ref && isRefWithValidator(ref) ? ref.validator(value) : validator(value);
       if (isValid) {
-        changeFocus(id!, 1);
+        focusNext && changeFocus(id!, 1);
         forwardChange?.(event, { ...values, [id!]: `${value}` });
       }
     },
@@ -83,24 +90,36 @@ export const useTextboxGroup = ({
   // the same as onChange, but can be applied if the form input replaces the same value
   const onInput = useCallback<UseTextboxGroupResponse['onInput']>(event => handleInput(event), [handleInput]);
 
-  // change focus to the previous input when backspacing from an empty input
+  // change focus to the previous input and remove its last char when backspacing from an empty input
   const onKeyDown = useCallback<UseTextboxGroupResponse['onKeyDown']>(
     event => {
       const target = event.target as HTMLInputElement;
       const id = target.getAttribute('data-id');
       const ref = id !== null ? refs.get(id) : undefined;
+      const newValues = { ...values };
 
       if (ref) {
         if (event.key === 'Backspace') {
-          if (target.value === '') {
-            changeFocus(id!, -1);
+          if (id !== null) {
+            newValues[id] = backspace(values[id]);
           }
-          forwardChange && forwardChange(event, { ...values, [id!]: '' });
+
+          if (target.value === '') {
+            const element = changeFocus(id!, -1);
+            if (element) {
+              const focusedId = element.getAttribute('data-id');
+              if (focusedId !== null) {
+                newValues[focusedId] = backspace(values[focusedId]);
+              }
+            }
+          }
+
+          forwardChange?.(event, newValues);
         }
       }
     },
     [changeFocus, forwardChange, refs, values],
   );
 
-  return { onChange, onInput, onKeyDown };
+  return { changeFocus, onChange, onInput, onKeyDown };
 };
