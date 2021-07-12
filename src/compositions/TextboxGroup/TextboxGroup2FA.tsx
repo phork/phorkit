@@ -92,7 +92,7 @@ function TextboxGroup2FAContent({
       const clipboard = (event.clipboardData || (window as any).clipboardData).getData('text');
       if (clipboard.split('').every(char => validator(char).isValid)) {
         const position = looper.findIndex(id => id === (event.target as HTMLInputElement).getAttribute('data-id'));
-        const concatenated = (value.substring(0, position) + clipboard).substr(0, length);
+        const concatenated = (value.substring(0, position).padStart(position, ' ') + clipboard).substr(0, length);
         onChange(event, concatenated);
         changeFocus(Math.max(0, concatenated.length - 1) + '', 0);
       }
