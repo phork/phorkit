@@ -15,7 +15,7 @@ export const StyledFooter = styled(Footer, {
   ${({ backgroundColor }) => backgroundColor && `--footer-background-color: ${backgroundColor};`}
   ${({ borderColor }) => borderColor && `--footer-border-color: ${borderColor};`}
   ${({ textColor }) => textColor && `--footer-text-color: ${textColor};`}
-  ${({ height }) => height !== undefined && `height: ${Number.isNaN(height) ? height : `${height}px`};`}
+  ${({ height }) => height !== undefined && `height: ${Number.isNaN(Number(height)) ? height : `${height}px`};`}
 `;
 
 StyledFooter.displayName = 'StyledFooter';

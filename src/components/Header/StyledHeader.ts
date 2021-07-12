@@ -15,7 +15,7 @@ export const StyledHeader = styled(Header, {
   ${({ backgroundColor }) => backgroundColor && `--header-background-color: ${backgroundColor};`}
   ${({ borderColor }) => borderColor && `--header-border-color: ${borderColor};`}
   ${({ textColor }) => textColor && `--header-text-color: ${textColor};`}
-  ${({ height }) => height !== undefined && `height: ${Number.isNaN(height) ? height : `${height}px`};`}
+  ${({ height }) => height !== undefined && `height: ${Number.isNaN(Number(height)) ? height : `${height}px`};`}
 `;
 
 StyledHeader.displayName = 'StyledHeader';

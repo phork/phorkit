@@ -1,5 +1,7 @@
 .label {
   color: var(--label-text-color);
+  font-size: var(--label-font-size, inherit);
+  line-height: var(--label-line-height, inherit);
   transition: color 200ms ease;
 
   &.is-disabled {

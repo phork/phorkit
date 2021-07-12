@@ -23,7 +23,7 @@ export const StyledButton = styled(Button, {
   ${({ inverseColor }) => inverseColor && `--button-inverse-color: ${inverseColor};`}
   ${({ hoveredPrimaryColor }) => hoveredPrimaryColor && `--button-hovered-primary-color: ${hoveredPrimaryColor};`}
   ${({ activePrimaryColor }) => activePrimaryColor && `--button-active-primary-color: ${activePrimaryColor};`}
-  ${({ width }) => width !== undefined && `width: ${Number.isNaN(width) ? width : `${width}px`};`}
+  ${({ width }) => width !== undefined && `width: ${Number.isNaN(Number(width)) ? width : `${width}px`};`}
 `;
 
 StyledButton.displayName = 'StyledButton';

@@ -2,13 +2,21 @@ import styled from '@emotion/styled';
 import { Label, LabelProps } from './Label';
 
 export interface StyledLabelProps extends LabelProps {
-  mutedTextColor: string;
-  textColor: string;
+  fontSize?: number | string;
+  lineHeight?: number | string;
+  mutedTextColor?: string;
+  textColor?: string;
 }
 
 export const StyledLabel = styled(Label, {
-  shouldForwardProp: (prop: string) => !['mutedTextColor', 'textColor', 'themeId'].includes(prop),
+  shouldForwardProp: (prop: string) =>
+    !['fontSize', 'lineHeight', 'mutedTextColor', 'textColor', 'themeId'].includes(prop),
 })<StyledLabelProps>`
+  ${({ fontSize }) =>
+    fontSize !== undefined && `--label-font-size: ${Number.isNaN(Number(fontSize)) ? fontSize : `${fontSize}px`};`}
+  ${({ lineHeight }) =>
+    lineHeight !== undefined &&
+    `--label-line-height: ${Number.isNaN(Number(lineHeight)) ? lineHeight : `${lineHeight}px`};`}
   ${({ mutedTextColor }) => mutedTextColor && `--label-muted-text-color: ${mutedTextColor};`}
   ${({ textColor }) => textColor && `--label-text-color: ${textColor};`}
 `;
