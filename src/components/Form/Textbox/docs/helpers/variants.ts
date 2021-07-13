@@ -1,7 +1,7 @@
 import { SizeMapToAbbr } from 'config/constants';
 
-export const textbox = ['underline', 'filled', 'outline', 'pill', 'minimal'];
-export const password = ['underline', 'filled', 'outline', 'minimal'];
+export const textbox = ['underline', 'filled', 'outline', 'pill', 'minimal'] as const;
+export const password = ['underline', 'filled', 'outline', 'minimal'] as const;
 export const sizes = [
   'medium',
   'large',
@@ -12,6 +12,7 @@ export const sizes = [
   'xxxxxlarge',
   'xxxxxxlarge',
   'xxxxxxxlarge',
-];
+  'xxxxxxxxlarge',
+] as const;
 
 export const SizeMap = SizeMapToAbbr;

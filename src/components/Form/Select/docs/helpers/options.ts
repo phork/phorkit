@@ -6,4 +6,4 @@ export const options = [
   { value: 'blue', label: 'Blue' },
   { value: 'indigo', label: 'Indigo' },
   { value: 'violet', label: 'Violet' },
-];
+] as const;

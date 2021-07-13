@@ -1,5 +1,7 @@
+import { RadioProps } from '../../Radio';
+
 // eslint-disable-next-line no-console
-export const logValue = (event, value) => console.log(value);
+export const logValue: RadioProps['onChange'] = (_event, value) => console.log(value);
 
 export const radioGroup = [
   {
@@ -17,4 +19,4 @@ export const radioGroup = [
     value: 'three',
     label: 'Super fantastic label three',
   },
-];
+] as const;

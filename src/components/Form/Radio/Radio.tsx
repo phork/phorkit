@@ -7,8 +7,21 @@ import { useThemeId } from '../../../hooks/useThemeId';
 import { makeCombineRefs } from '../../../utils';
 import { Label } from '../Label';
 import styles from './styles/Radio.module.css';
+import sizeStyles from './styles/RadioSizes.module.css';
 
 export type RadioValue = string | number;
+
+export type RadioSize =
+  | 'medium'
+  | 'large'
+  | 'xlarge'
+  | 'xxlarge'
+  | 'xxxlarge'
+  | 'xxxxlarge'
+  | 'xxxxxlarge'
+  | 'xxxxxxlarge'
+  | 'xxxxxxxlarge'
+  | 'xxxxxxxxlarge';
 
 export interface LocalRadioProps<V extends RadioValue = string> extends ThemeProps {
   checked?: boolean;
@@ -22,6 +35,7 @@ export interface LocalRadioProps<V extends RadioValue = string> extends ThemePro
   onChange: (event: React.ChangeEvent<HTMLInputElement>, checked: boolean, value: V) => void;
   persistEvents?: boolean;
   reverse?: boolean;
+  size?: RadioSize;
   unthemed?: boolean;
   validity?: 'danger';
   value?: V;
@@ -53,6 +67,7 @@ export function RadioBase<V extends RadioValue = string>(
     onChange,
     persistEvents = false,
     reverse = false,
+    size = 'large',
     themeId: initThemeId,
     unthemed = false,
     validity,
@@ -88,6 +103,7 @@ export function RadioBase<V extends RadioValue = string>(
       htmlFor={generateComponentId()}
       className={cx(
         styles.radio,
+        sizeStyles[`radio--${size}`],
         color && !unthemed && styles[`radio--${color}`],
         full && styles['radio--full'],
         grouped && styles[`radio--grouped--${grouped}`],

@@ -4,7 +4,7 @@ import { MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
 import { useComponentId } from '../../../hooks/useComponentId';
 import { useThemeId } from '../../../hooks/useThemeId';
 import { Fieldset } from '../Fieldset/Fieldset';
-import { Radio, RadioProps, RadioValue } from './Radio';
+import { Radio, RadioProps, RadioSize, RadioValue } from './Radio';
 import styles from './styles/RadioGroup.module.css';
 
 export interface RadioGroupItem<V extends RadioValue = string>
@@ -21,6 +21,7 @@ export interface LocalRadioGroupProps<V extends RadioValue = string> extends The
   name: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>, value: V) => void;
   radios: RadioGroupItem<V>[];
+  size?: RadioSize;
   value?: V;
   variant?: RadioProps['variant'];
 }
@@ -40,6 +41,7 @@ function RadioGroupBase<V extends RadioValue = string>(
     name,
     onChange,
     radios,
+    size,
     themeId: initThemeId,
     value,
     variant,
@@ -70,6 +72,7 @@ function RadioGroupBase<V extends RadioValue = string>(
               key={id}
               name={name}
               onChange={handleChange}
+              size={size}
               themeId={themeId}
               value={radioValue}
               variant={variant}

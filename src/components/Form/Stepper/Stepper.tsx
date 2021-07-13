@@ -18,6 +18,7 @@ const iconSizes = {
   xxxxxlarge: 16,
   xxxxxxlarge: 18,
   xxxxxxxlarge: 18,
+  xxxxxxxxlarge: 18,
 };
 
 export type StepperTranslations = TextboxTranslations & {

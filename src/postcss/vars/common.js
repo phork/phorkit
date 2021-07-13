@@ -10,7 +10,8 @@ const fontSizes = {
   'font-size-xxxxl': '20px',
   'font-size-xxxxxl': '24px',
   'font-size-xxxxxxl': '28px',
-  'font-size-xxxxxxxl': '36px',
+  'font-size-xxxxxxxl': '32px',
+  'font-size-xxxxxxxxl': '36px',
 };
 
 const elementSizes = {

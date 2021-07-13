@@ -13,4 +13,5 @@ export type FormboxSize =
   | 'xxxxlarge'
   | 'xxxxxlarge'
   | 'xxxxxxlarge'
-  | 'xxxxxxxlarge';
+  | 'xxxxxxxlarge'
+  | 'xxxxxxxxlarge';

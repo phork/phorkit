@@ -7,8 +7,21 @@ import { useThemeId } from '../../../hooks/useThemeId';
 import { makeCombineRefs } from '../../../utils/combineRefs';
 import { Label } from '../Label';
 import styles from './styles/Checkbox.module.css';
+import sizeStyles from './styles/CheckboxSizes.module.css';
 
 export type CheckboxValue = string | number | undefined;
+
+export type CheckboxSize =
+  | 'medium'
+  | 'large'
+  | 'xlarge'
+  | 'xxlarge'
+  | 'xxxlarge'
+  | 'xxxxlarge'
+  | 'xxxxxlarge'
+  | 'xxxxxxlarge'
+  | 'xxxxxxxlarge'
+  | 'xxxxxxxxlarge';
 
 export interface LocalCheckboxProps<V extends CheckboxValue = string> extends ThemeProps {
   checked?: boolean;
@@ -24,6 +37,7 @@ export interface LocalCheckboxProps<V extends CheckboxValue = string> extends Th
   onChange: (event: React.ChangeEvent<HTMLInputElement>, checked: boolean, value: V) => void;
   persistEvents?: boolean;
   reverse?: boolean;
+  size?: CheckboxSize;
   style?: React.CSSProperties;
   unthemed?: boolean;
   validity?: 'danger';
@@ -60,6 +74,7 @@ export function CheckboxBase<V extends CheckboxValue = string>(
     onChange,
     persistEvents = false,
     reverse = false,
+    size = 'large',
     style,
     themeId: initThemeId,
     unthemed = false,
@@ -101,6 +116,7 @@ export function CheckboxBase<V extends CheckboxValue = string>(
       htmlFor={generateComponentId()}
       className={cx(
         styles.checkbox,
+        sizeStyles[`checkbox--${size}`],
         color && !unthemed && styles[`checkbox--${color}`],
         full && styles['checkbox--full'],
         grouped && styles[`checkbox--grouped--${grouped}`],
@@ -148,7 +164,6 @@ export function CheckboxBase<V extends CheckboxValue = string>(
           disabled={disabled}
           focused={focused}
           muted={!checked && !indeterminate}
-          strength="standard"
           themeId={themeId}
         >
           {children}

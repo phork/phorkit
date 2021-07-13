@@ -1,4 +1,4 @@
-export const variants = ['underline', 'filled', 'outline', 'minimal'];
+export const variants = ['underline', 'filled', 'outline', 'minimal'] as const;
 export const sizes = [
   'medium',
   'large',
@@ -9,4 +9,5 @@ export const sizes = [
   'xxxxxlarge',
   'xxxxxxlarge',
   'xxxxxxxlarge',
-];
+  'xxxxxxxxlarge',
+] as const;

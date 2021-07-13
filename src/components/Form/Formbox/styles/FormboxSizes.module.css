@@ -59,9 +59,17 @@
 }
 
 .formbox--xxxxxxxlarge {
+  --formbox-left-icon-space: 39px;
+  --formbox-right-icon-space: 39px;
+  --formbox-input-font-size: $font-size-xxxxxxxl;
+  --formbox-input-multi-line-height: 1.2;
+  --formbox-placeholder-top-margin: 14px;
+}
+
+.formbox--xxxxxxxxlarge {
   --formbox-left-icon-space: 43px;
   --formbox-right-icon-space: 43px;
-  --formbox-input-font-size: $font-size-xxxxxxxl;
+  --formbox-input-font-size: $font-size-xxxxxxxxl;
   --formbox-input-multi-line-height: 1.2;
   --formbox-placeholder-top-margin: 12px;
 }

@@ -13,6 +13,7 @@ import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Radio, RadioGroup, NotifiedRadioGroup } from '../index';
+import { sizes } from './helpers/sizes';
 import { radioGroup, logValue } from './helpers/utils';
 
 <PageTitle title="Radio" src="components/Form/Radio" />
@@ -271,6 +272,23 @@ import { radioGroup, logValue } from './helpers/utils';
       </FormComponentDemo>
     )}
   />
+</Playground>
+
+## Sizes
+
+<Playground>
+  <ThemeWrapper>
+    <Looper
+      list={sizes}
+      render={size => (
+        <Rhythm py={3} grouped>
+          <Radio size={size} onChange={logValue} checked>
+            Lorem ipsum dolor sit amet
+          </Radio>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## \[props\]

@@ -4,7 +4,7 @@ import { MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
 import { useComponentId } from '../../../hooks/useComponentId';
 import { useThemeId } from '../../../hooks/useThemeId';
 import { Fieldset } from '../Fieldset/Fieldset';
-import { Checkbox, CheckboxProps, CheckboxValue } from './Checkbox';
+import { Checkbox, CheckboxProps, CheckboxSize, CheckboxValue } from './Checkbox';
 import styles from './styles/CheckboxGroup.module.css';
 
 export interface CheckboxGroupItem<V extends CheckboxValue = string>
@@ -20,6 +20,7 @@ export interface LocalCheckboxGroupProps<V extends CheckboxValue = string> exten
   layout: 'stacked' | 'inline';
   onChange: (event: React.ChangeEvent<HTMLInputElement>, values: Array<V>) => void;
   checkboxes: CheckboxGroupItem<V>[];
+  size?: CheckboxSize;
   values?: Array<V>;
   variant?: CheckboxProps<V>['variant'];
 }
@@ -32,12 +33,13 @@ export type CheckboxGroupRef = React.ForwardedRef<HTMLFieldSetElement>;
 
 function CheckboxGroupBase<V extends CheckboxValue = string>(
   {
+    checkboxes,
     className,
     contrast = false,
     layout = 'inline',
     legend,
     onChange,
-    checkboxes,
+    size,
     themeId: initThemeId,
     values,
     variant,
@@ -76,9 +78,10 @@ function CheckboxGroupBase<V extends CheckboxValue = string>(
               grouped={layout}
               id={generateComponentId(id)}
               key={id}
+              onChange={handleChange}
+              size={size}
               themeId={themeId}
               value={checkboxValue}
-              onChange={handleChange}
               variant={variant}
               {...checkboxProps}
             >

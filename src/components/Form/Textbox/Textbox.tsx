@@ -27,6 +27,7 @@ const clearableIconSizes = {
   xxxxxlarge: 12,
   xxxxxxlarge: 12,
   xxxxxxxlarge: 14,
+  xxxxxxxxlarge: 14,
 };
 
 export type TextboxTranslations = FormboxTranslations & {

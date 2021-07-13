@@ -11,4 +11,5 @@ export const SizeMapToAbbr = {
   'xxxxxlarge': 'xxxxxl',
   'xxxxxxlarge': 'xxxxxxl',
   'xxxxxxxlarge': 'xxxxxxxl',
+  'xxxxxxxxlarge': 'xxxxxxxxl'
 } as const;

@@ -47,6 +47,7 @@ const arrowIconSizes = {
   xxxxxlarge: 14,
   xxxxxxlarge: 14,
   xxxxxxxlarge: 16,
+  xxxxxxxxlarge: 16,
 };
 
 const listSizes: Record<string, DropdownListSize> = {
@@ -59,6 +60,7 @@ const listSizes: Record<string, DropdownListSize> = {
   xxxxxlarge: 'xlarge',
   xxxxxxlarge: 'xlarge',
   xxxxxxxlarge: 'xlarge',
+  xxxxxxxxlarge: 'xlarge',
 };
 
 const FOCUS_REFS = {

@@ -32,5 +32,9 @@
 }
 
 .dropdown--xxxxxxxlarge {
+  --dropdown-options-container-top-height: 71px;
+}
+
+.dropdown--xxxxxxxxlarge {
   --dropdown-options-container-top-height: 73px;
 }

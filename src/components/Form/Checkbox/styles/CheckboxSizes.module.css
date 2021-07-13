@@ -1,0 +1,50 @@
+.checkbox--medium {
+  --checkbox-input-font-size: $font-size-m;
+  --checkbox-label-font-size: $font-size-s;
+}
+
+.checkbox,
+.checkbox--large {
+  --checkbox-input-font-size: $font-size-l;
+  --checkbox-label-font-size: $font-size-m;
+}
+
+.checkbox--xlarge {
+  --checkbox-input-font-size: $font-size-xl;
+  --checkbox-label-font-size: $font-size-l;
+}
+
+.checkbox--xxlarge {
+  --checkbox-input-font-size: $font-size-xxl;
+  --checkbox-label-font-size: $font-size-xl;
+}
+
+.checkbox--xxxlarge {
+  --checkbox-input-font-size: $font-size-xxxl;
+  --checkbox-label-font-size: $font-size-xxl;
+}
+
+.checkbox--xxxxlarge {
+  --checkbox-input-font-size: $font-size-xxxxl;
+  --checkbox-label-font-size: $font-size-xxxl;
+}
+
+.checkbox--xxxxxlarge {
+  --checkbox-input-font-size: $font-size-xxxxxl;
+  --checkbox-label-font-size: $font-size-xxxxl;
+}
+
+.checkbox--xxxxxxlarge {
+  --checkbox-input-font-size: $font-size-xxxxxxl;
+  --checkbox-label-font-size: $font-size-xxxxxl;
+}
+
+.checkbox--xxxxxxxlarge {
+  --checkbox-input-font-size: $font-size-xxxxxxxl;
+  --checkbox-label-font-size: $font-size-xxxxxxl;
+}
+
+.checkbox--xxxxxxxxlarge {
+  --checkbox-input-font-size: $font-size-xxxxxxxxl;
+  --checkbox-label-font-size: $font-size-xxxxxxxl;
+}

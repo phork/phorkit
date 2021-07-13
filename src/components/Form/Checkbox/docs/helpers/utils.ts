@@ -1,8 +1,7 @@
-// eslint-disable-next-line no-console
-export const logChecked = (event, checked) => console.log(checked);
+import { CheckboxProps } from '../../Checkbox';
 
 // eslint-disable-next-line no-console
-export const logValues = (event, values) => console.log(values);
+export const logChecked: CheckboxProps['onChange'] = (_event, checked) => console.log(checked);
 
 export const checkboxGroup = [
   {
@@ -23,4 +22,4 @@ export const checkboxGroup = [
     value: 'three',
     label: 'Super fantastic label three',
   },
-];
+] as const;

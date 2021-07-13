@@ -64,6 +64,7 @@ import { FormDemo } from './helpers/FormDemo';
                       { id: 'xxxxxlarge', label: '5XL', selected: state.size === 'xxxxxlarge' },
                       { id: 'xxxxxxlarge', label: '6XL', selected: state.size === 'xxxxxxlarge' },
                       { id: 'xxxxxxxlarge', label: '7XL', selected: state.size === 'xxxxxxxlarge' },
+                      { id: 'xxxxxxxxlarge', label: '8XL', selected: state.size === 'xxxxxxxxlarge' },
                     ]}
                     color="neutral"
                     fullWidth
@@ -266,6 +267,7 @@ import { FormDemo } from './helpers/FormDemo';
                     ref={e => {
                       refs.current.checkbox = e;
                     }}
+                    size={state.size}
                     variant="secondary"
                   >
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget dui eu orci ultrices maximus
@@ -285,6 +287,7 @@ import { FormDemo } from './helpers/FormDemo';
                     ref={e => {
                       refs.current.radio1 = e;
                     }}
+                    size={state.size}
                     variant="secondary"
                   >
                     Lorem ipsum dolor sit amet
@@ -299,6 +302,7 @@ import { FormDemo } from './helpers/FormDemo';
                     ref={e => {
                       refs.current.radio2 = e;
                     }}
+                    size={state.size}
                     variant="secondary"
                   >
                     Consectetur adipiscing elit
@@ -355,6 +359,7 @@ import { FormDemo } from './helpers/FormDemo';
                     legend="Super fantastic label says what?"
                     name="checkboxes"
                     onChange={(event, value) => setValues({ ...values, checkboxes: value })}
+                    size={state.size}
                     values={values.checkboxes}
                     checkboxes={[
                       {
@@ -388,6 +393,7 @@ import { FormDemo } from './helpers/FormDemo';
                     legend="Super fantastic label says what?"
                     name="radios"
                     onChange={(event, value) => setValues({ ...values, radios: value })}
+                    size={state.size}
                     value={values.radios}
                     radios={[
                       {

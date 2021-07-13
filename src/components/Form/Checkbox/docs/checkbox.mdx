@@ -13,6 +13,7 @@ import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Checkbox, CheckboxGroup, NotifiedCheckboxGroup } from '../index';
+import { sizes } from './helpers/sizes';
 import { checkboxGroup, logChecked } from './helpers/utils';
 
 <PageTitle title="Checkbox" src="components/Form/Checkbox" />
@@ -304,6 +305,26 @@ import { checkboxGroup, logChecked } from './helpers/utils';
       </FormComponentDemo>
     )}
   />
+</Playground>
+
+## Sizes
+
+<Playground>
+  <ThemeWrapper>
+    <Looper
+      list={sizes}
+      render={size => (
+        <Rhythm py={3}>
+          <FormComponentDemo type="checkbox" property="checked" initialValue={true} unwrapped>
+            <Checkbox size={size} onChange={logChecked}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget dui eu orci ultrices maximus eu eu
+              ante. Vestibulum ligula velit, scelerisque vitae venenatis tempor, consectetur a orci.
+            </Checkbox>
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
 </Playground>
 
 ## \[props\]

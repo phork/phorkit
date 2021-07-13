@@ -16,6 +16,7 @@ const iconSizes = {
   xxxxxlarge: 24,
   xxxxxxlarge: 24,
   xxxxxxxlarge: 24,
+  xxxxxxxxlarge: 24,
 };
 
 export type PasswordTranslations = TextboxTranslations & {

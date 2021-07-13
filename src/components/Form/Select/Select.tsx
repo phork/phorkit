@@ -24,7 +24,8 @@ const arrowIconSizes = {
   xxxxlarge: 14,
   xxxxxlarge: 14,
   xxxxxxlarge: 14,
-  xxxxxxxlarge: 16,
+  xxxxxxxlarge: 14,
+  xxxxxxxxlarge: 16,
 };
 
 export type SelectOption = {
