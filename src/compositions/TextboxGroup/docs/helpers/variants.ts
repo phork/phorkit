@@ -1,1 +1,1 @@
-export type textbox = ['underline', 'filled', 'outline'];
+export const variants = ['underline', 'filled', 'outline'] as const;
