@@ -15,10 +15,8 @@ const StyledTabs = styled(Tabs, {
   shouldForwardProp: (prop: string) => prop !== 'colorId',
 })<ColoredTabsProps>`
   --tab-background-color: ${props => themes[props.themeId][`color-${props.colorId}` as keyof ThemeColors]};
-  --tab-focused-background-color: ${props =>
-    themes[props.themeId][`color-${props.colorId}-${props.themeId === 'dark' ? 'D10' : 'L10'}` as keyof ThemeColors]};
-  --tab-selected-background-color: ${props =>
-    themes[props.themeId][`color-${props.colorId}-${props.themeId === 'dark' ? 'L10' : 'D10'}` as keyof ThemeColors]};
+  --tab-focused-background-color: ${props => themes[props.themeId][`color-${props.colorId}-D10` as keyof ThemeColors]};
+  --tab-selected-background-color: ${props => themes[props.themeId][`color-${props.colorId}-L10` as keyof ThemeColors]};
   --tab-text-color: ${props => themes[props.themeId][`color-${props.colorId}-contrast` as keyof ThemeColors]};
   --tab-panel-group-background-color: ${props =>
     themes[props.themeId][`color-${props.colorId}-contrast` as keyof ThemeColors]};

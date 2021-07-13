@@ -117,7 +117,7 @@ function TabListBase(
         items.map(({ disabled, id, iconOnly, label, labelProps = {} }, index) => {
           const stateProps = {
             disabled,
-            focused: focusedIndex === index,
+            focused: focused && focusedIndex === index,
             selected: selectedId === id,
           };
 

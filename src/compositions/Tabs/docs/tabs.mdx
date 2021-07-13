@@ -87,7 +87,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         { id: 'first', label: '1', content: 'First panel' },
         { id: 'second', label: '2', content: 'Second panel' },
         { id: 'third', label: '3', content: 'Third panel', disabled: true },
-        { id: 'fourth', label: '4', content: 'Fourth panel' },
+        { id: 'fourth', label: '4', content: 'Fourth panel '.repeat(150).trim() },
       ]}
     />
   </ThemeWrapper>
@@ -224,11 +224,12 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
           label: ({ disabled, focused, selected }) => (
             <Rhythm mr={2}>
               <Button
-                disabled={disabled}
-                focused={focused}
                 as="div"
                 color="neutral"
-                weight={selected ? undefined : 'outlined'}
+                disabled={disabled}
+                focused={focused}
+                shape="brick"
+                weight={selected ? 'shaded' : 'outlined'}
               >
                 First
               </Button>
@@ -243,11 +244,12 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
           label: ({ disabled, focused, selected }) => (
             <Rhythm mx={2}>
               <Button
-                disabled={disabled}
-                focused={focused}
                 as="div"
                 color="neutral"
-                weight={selected ? undefined : 'outlined'}
+                disabled={disabled}
+                focused={focused}
+                shape="brick"
+                weight={selected ? 'shaded' : 'outlined'}
               >
                 Second
               </Button>
@@ -262,11 +264,12 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
           label: ({ disabled, focused, selected }) => (
             <Rhythm mx={2}>
               <Button
-                disabled={disabled}
-                focused={focused}
                 as="div"
                 color="neutral"
-                weight={selected ? undefined : 'outlined'}
+                disabled={disabled}
+                focused={focused}
+                shape="brick"
+                weight={selected ? 'shaded' : 'outlined'}
               >
                 Third
               </Button>
@@ -282,11 +285,12 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
           label: ({ disabled, focused, selected }) => (
             <Rhythm ml={2}>
               <Button
-                disabled={disabled}
-                focused={focused}
                 as="div"
                 color="neutral"
-                weight={selected ? undefined : 'outlined'}
+                disabled={disabled}
+                focused={focused}
+                shape="brick"
+                weight={selected ? 'shaded' : 'outlined'}
               >
                 Fourth
               </Button>

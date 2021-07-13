@@ -61,25 +61,22 @@ const mixins = {
   // x: ['left' | 'right'], y: ['top' | 'bottom']
   externalTabRadius: (_mixin, color, size = 4, y, x) => {
     const rotation = {
-      'top-left': -45,
-      'top-right': -145,
-      'bottom-left': 45,
-      'bottom-right': 145,
+      'top-left': 180,
+      'top-right': 90,
+      'bottom-left': 270,
+      'bottom-right': 0,
     }[[y, x].join('-')];
 
     return {
-      [x]: `${-size * 2.5}px`,
-      [y]: `${-size}px`,
-      background: 'transparent',
-      borderColor: `transparent ${color} transparent transparent`,
-      borderRadius: '100%',
-      borderStyle: 'solid',
-      borderWidth: `${size}px`,
+      [x]: `${-size}px`,
+      [y]: 0,
+      background: color,
       content: '""',
-      height: `${size * 3.5}px`,
+      height: `${size}px`,
+      maskImage: `url(data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M0 40L38.18 40C17.07 40 0 22.93 0 1.82L0 40Z' /%3E%3C/svg%3E);`,
       position: 'absolute',
       transform: `rotate(${rotation}deg)`,
-      width: `${size * 3.5}px`,
+      width: `${size}px`,
     };
   },
 };

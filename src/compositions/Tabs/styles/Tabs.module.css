@@ -1,4 +1,4 @@
-@import "../../../styles/common/mixins/addScrollbar.css";
+@import '../../../styles/common/mixins/addScrollbar.css';
 
 .tabList {
   @mixin addSmallScrollbar var(--tab-list-scrollbar-thumb-color), transparent;
@@ -69,7 +69,6 @@
       &.is-selected {
         &:before {
           @mixin externalTabRadius var(--tab-selected-background-color), 4, bottom, left;
-
         }
 
         &:after {
@@ -95,7 +94,7 @@
  *    won't overflow.
  */
 .tabList--vertical {
-  border-top-left-radius: $border-radius-s;  /* [1] */
+  border-top-left-radius: $border-radius-s; /* [1] */
   border-bottom-left-radius: $border-radius-s; /* [1] */
   flex-direction: column;
   overflow-x: hidden;
@@ -116,6 +115,9 @@ button.tab {
   }
 }
 
+/**
+ * 1. Raise the selected tab so the corners are on top.
+ */
 .tab {
   align-items: center;
   background-color: transparent;
@@ -126,12 +128,13 @@ button.tab {
   justify-content: center;
   position: relative;
   text-decoration: none;
-  transition: background-color 100ms ease;
+  transition: background-color 150ms ease;
   user-select: none;
 
   &.is-selected {
     background-color: var(--tab-selected-background-color);
     color: var(--tab-selected-text-color);
+    z-index: 1; /* [1] */
   }
 
   .tabList:not(.is-accessible) & {
@@ -154,7 +157,8 @@ button.tab {
    */
   .tabList.is-accessible:focus &,
   .tabList.is-accessible.is-focused & {
-    &.is-focused { /* [1] */
+    &.is-focused {
+      /* [1] */
       color: var(--tab-focused-text-color);
     }
   }
@@ -175,7 +179,7 @@ button.tab {
     pointer-events: none;
 
     & > .tab__content {
-      opacity: .5;
+      opacity: 0.5;
     }
   }
 }
@@ -186,18 +190,37 @@ button.tab {
   border-top-right-radius: $border-radius-s;
   min-height: $element-height-medium;
   padding: 8px 30px;
+
+  .tabList--colored & {
+    border-radius: 0;
+  }
 }
 
-.tab--horizontal:not(.is-selected) + .tab--horizontal:not(.is-selected),
-.tabList--transparent .tab--horizontal:not(:first-child) {
+/**
+ * Vertical dividers between unselected tabs in horizontal
+ * mode to be shown conditionally based on select or selected
+ * and hover states.
+ */
+.tab--horizontal:not(:first-child) {
   &:after {
     background-color: var(--tab-text-color);
-    content: "";
-    opacity: .3;
-    position: absolute;
-    left: 0;
+    content: '';
     height: 50%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    transition: opacity 150ms ease;
     width: 1px;
+  }
+}
+
+.tabList--transparent .tab--horizontal,
+.tabList--colored
+  .tab--horizontal:not(.is-selected):not(.is-hovered):not(:hover)
+  + .tab--horizontal:not(.is-selected):not(.is-hovered):not(:hover),
+.tabList:not(.tabList--colored) .tab--horizontal:not(.is-selected) + .tab--horizontal:not(.is-selected) {
+  &:after {
+    opacity: 0.3;
   }
 }
 

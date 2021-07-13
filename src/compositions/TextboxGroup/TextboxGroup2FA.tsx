@@ -41,7 +41,7 @@ function TextboxGroup2FAContent({
   const { items } = useListRegistry<HTMLInputElement>();
   const [looper, setLooper] = useState<string[]>([]);
 
-  // create an array of string IDs with 1 ID per digit
+  // create an array of input IDs with 1 ID per digit
   useEffect(() => {
     setLooper(
       Array(length)

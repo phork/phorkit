@@ -48,7 +48,7 @@ export function Tabs({
   initialSelected,
   items,
   listProps = {},
-  minSelect,
+  minSelect = 1,
   onSelect,
   panelGroupProps = {},
   style,
@@ -72,7 +72,7 @@ export function Tabs({
         maxSelect={1}
         minSelect={minSelect}
         items={items}
-        initialSelected={initialSelected || (items[0] && [items[0].id])}
+        initialSelected={initialSelected || (minSelect ? items[0] && [items[0].id] : undefined)}
         {...props}
       >
         {
