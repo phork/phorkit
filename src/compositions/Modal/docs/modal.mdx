@@ -397,8 +397,8 @@ import {
               onClick={event =>
                 event.persist() ||
                 createModal(
-                  <Modal id="permanent-modal" permanent size="small">
-                    {({ id }) => (
+                  <Modal id="permanent-modal" focusable permanent size="small">
+                    {({ id, focusRef }) => (
                       <React.Fragment>
                         <ModalHeader align="left" modalId={id} title="A permanent modal" />
                         <ModalBody>
@@ -411,7 +411,7 @@ import {
                             .
                           </div>
                           <Rhythm my={3}>
-                            <Button weight="inline" color="danger" onClick={() => popModal(true)}>
+                            <Button weight="inline" color="danger" onClick={() => popModal(true)} ref={focusRef}>
                               Forceably remove
                             </Button>
                           </Rhythm>

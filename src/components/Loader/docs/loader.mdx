@@ -5,9 +5,10 @@ route: /components/Loader
 ---
 
 import { Playground, Props } from 'docz';
-import { Loader, StyledLoader } from '../index';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { Flex } from 'components/Flex';
 import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { Loader, StyledLoader } from '../index';
 
 <PageTitle title="Loader" src="components/Loader" />
 
@@ -18,13 +19,14 @@ import { PageTitle } from 'docs/helpers/PageTitle';
     <p>(There should be a loader in the middle of the page)</p>
 
     <Loader position="fixed" />
+
   </ThemeWrapper>
 </Playground>
 
 ## Absolutely positioned loader
 
 <Playground>
-  <ThemeWrapper style={{height: 100}}>
+  <ThemeWrapper style={{ height: 100 }}>
     <Loader position="absolute" />
   </ThemeWrapper>
 </Playground>
@@ -34,7 +36,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 ### Contrast loader
 
 <Playground>
-  <ThemeWrapper style={{height: 100}} contrast>
+  <ThemeWrapper style={{ height: 100 }} contrast>
     <Loader contrast position="absolute" />
   </ThemeWrapper>
 </Playground>
@@ -42,18 +44,20 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 ### Sized loaders
 
 <Playground>
-  <ThemeWrapper style={{height: 100}}>
-    <Loader size={24} position="absolute" />
-    <Loader size={40} position="absolute" />
-    <Loader size={60} position="absolute" />
-    <Loader size={82} position="absolute" />
+  <ThemeWrapper>
+    <Flex direction="row" alignItems="center" justifyContent="space-around">
+      <Loader size={24} />
+      <Loader size={40} />
+      <Loader size={60} />
+      <Loader size={82} />
+    </Flex>
   </ThemeWrapper>
 </Playground>
 
 ### Styled loader
 
 <Playground>
-  <ThemeWrapper style={{height: 100}}>
+  <ThemeWrapper style={{ height: 100 }}>
     <StyledLoader color="#0060ce" position="absolute" />
   </ThemeWrapper>
 </Playground>
