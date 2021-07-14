@@ -1,7 +1,7 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { Typography, TypographyProps } from './Typography';
 import styles from './styles/Typography.module.css';
+import { Typography, TypographyProps } from './Typography';
 
 export function TypographyWithSvg<T extends keyof JSX.IntrinsicElements = 'span'>({
   className,

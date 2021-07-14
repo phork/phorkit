@@ -12,7 +12,7 @@ export interface IconGroupProps {
 export function IconGroup({ children, className, scale, size }: IconGroupProps): React.ReactElement {
   return (
     <ScaleProvider scale={scale} size={size}>
-      <Flex alignItems="center" direction="row" wrap={false} className={className}>
+      <Flex alignItems="center" className={className} direction="row" wrap={false}>
         {children}
       </Flex>
     </ScaleProvider>

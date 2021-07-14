@@ -7,7 +7,6 @@ describe('<List />', () => {
   it('should render a basic list', () => {
     const { container, getByText } = render(
       <List
-        variant="bordered"
         items={[
           { id: 'normal0', label: 'First' },
           { id: 'selected', label: 'Second', selected: true },
@@ -17,6 +16,7 @@ describe('<List />', () => {
           { id: 'disabled', label: 'Sixth', disabled: true },
           { id: 'inactive', label: 'Seventh', inactive: true },
         ]}
+        variant="bordered"
       />,
     );
     expect(container.firstChild?.nodeName).toBe('UL');
@@ -34,7 +34,6 @@ describe('<List />', () => {
     const { container } = render(
       <List<'div'>
         as={AsTypeDiv}
-        variant="bordered"
         items={[
           { id: 'normal0', label: 'First' },
           { id: 'selected', label: 'Second', selected: true },
@@ -44,6 +43,7 @@ describe('<List />', () => {
           { id: 'disabled', label: 'Sixth', disabled: true },
           { id: 'inactive', label: 'Seventh', inactive: true },
         ]}
+        variant="bordered"
       />,
     );
     expect(container.firstChild?.nodeName).toBe('DIV');

@@ -14,7 +14,7 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { AccessibilityProvider, useAccessibility, useInputFocusType } from '../index';
 import styles from './AccessibilityDemo.module.css';
 
-<PageTitle title="Accessibility" src="context/Accessibility" />
+<PageTitle src="context/Accessibility" title="Accessibility" />
 
 ## AccessibilityProvider, useAccessibility and useInputFocusType
 
@@ -31,27 +31,27 @@ import styles from './AccessibilityDemo.module.css';
               .join(' ');
             return (
               <div>
-                <Flex direction="row" wrap>
+                <Flex wrap direction="row">
                   <Rhythm m={2} mb={4}>
-                    <Typography as="div" variants={['xsmall-caps']} style={{ width: '120px' }}>
+                    <Typography as="div" style={{ width: '120px' }} variants={['xsmall-caps']}>
                       <Typography volume="quiet">Is accessible</Typography> {accessible ? 'yes' : 'no'}
                     </Typography>
-                    <Typography as="div" variants={['xsmall-caps']} style={{ width: '140px' }}>
+                    <Typography as="div" style={{ width: '140px' }} variants={['xsmall-caps']}>
                       <Typography volume="quiet">Focus type</Typography> {focusType || '-'}
                     </Typography>
                   </Rhythm>
                 </Flex>
                 <Flex direction="row">
-                  <button type="button" className={buttonClassName}>
+                  <button className={buttonClassName} type="button">
                     Action
                   </button>
-                  <button type="button" className={buttonClassName}>
+                  <button className={buttonClassName} type="button">
                     Action
                   </button>
-                  <button type="button" className={buttonClassName}>
+                  <button className={buttonClassName} type="button">
                     Action
                   </button>
-                  <button type="button" className={buttonClassName}>
+                  <button className={buttonClassName} type="button">
                     Action
                   </button>
                 </Flex>

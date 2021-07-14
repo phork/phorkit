@@ -6,32 +6,32 @@ route: /components/Rhythm
 
 import { Playground, Props } from 'docz';
 import { Flex } from 'components/Flex';
-import { Rhythm } from '../index';
-import { RhythmBox } from './helpers/RhythmBox';
 import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'docs/helpers/PageTitle';
+import { Rhythm } from '../index';
+import { RhythmBox } from './helpers/RhythmBox';
 
-<PageTitle title="Rhythm" src="components/Rhythm" />
+<PageTitle src="components/Rhythm" title="Rhythm" />
 
 ## Padding
 
 <Playground>
   <Looper
-    start={0}
     end={12}
     render={i => (
       <Rhythm key={i} p={i}>
         <RhythmBox inline>{i}</RhythmBox>
       </Rhythm>
     )}
+    start={0}
   />
 </Playground>
 
 ## Padding grouped
 
 <Playground>
-  <Rhythm p={4} style={{ background: '#556270' }} grouped>
-    <Looper start={0} end={12} render={i => <RhythmBox inline>{i}</RhythmBox>} />
+  <Rhythm grouped p={4} style={{ background: '#556270' }}>
+    <Looper end={12} render={i => <RhythmBox inline>{i}</RhythmBox>} start={0} />
   </Rhythm>
 </Playground>
 
@@ -39,23 +39,23 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 
 <Playground>
   <Looper
-    start={0}
     end={12}
     render={i => (
       <Rhythm key={i} m={i}>
-        <RhythmBox height={20} width={20} inline>
+        <RhythmBox inline height={20} width={20}>
           {i}
         </RhythmBox>
       </Rhythm>
     )}
+    start={0}
   />
 </Playground>
 
 ## Margin grouped
 
 <Playground>
-  <Rhythm m={4} style={{ background: '#556270' }} grouped>
-    <Looper start={0} end={12} render={i => <RhythmBox inline>{i}</RhythmBox>} />
+  <Rhythm grouped m={4} style={{ background: '#556270' }}>
+    <Looper end={12} render={i => <RhythmBox inline>{i}</RhythmBox>} start={0} />
   </Rhythm>
 </Playground>
 
@@ -63,15 +63,15 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 
 <Playground>
   <Looper
-    start={0}
     end={12}
     render={i => (
-      <Rhythm key={i} mt={i} mb={i} ml={i} mr={i}>
-        <RhythmBox height={20} width={20} inline>
+      <Rhythm key={i} mb={i} ml={i} mr={i} mt={i}>
+        <RhythmBox inline height={20} width={20}>
           {i}
         </RhythmBox>
       </Rhythm>
     )}
+    start={0}
   />
 </Playground>
 
@@ -79,17 +79,17 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 
 <Playground>
   <Looper
-    start={-4}
     end={0}
     render={i => (
       <div key={i} style={{ margin: '32px' }}>
-        <Rhythm mt={i} mb={i} ml={i} mr={i}>
+        <Rhythm mb={i} ml={i} mr={i} mt={i}>
           <RhythmBox height={40} width={40}>
             {i}
           </RhythmBox>
         </Rhythm>
       </div>
     )}
+    start={-4}
   />
 </Playground>
 

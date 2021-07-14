@@ -1,8 +1,8 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import { SvgIconProps } from '../../types';
-import { Toast, ToastProps } from './Toast';
 import styles from './styles/Toast.module.css';
+import { Toast, ToastProps } from './Toast';
 import { ToastNotificationLevel } from './types';
 import { useToastComponentIds } from './useToastComponentIds';
 
@@ -25,7 +25,7 @@ export function IconToast({
   const { componentId: id, generateTitleId } = useToastComponentIds(initId);
 
   return (
-    <Toast className={cx(styles['toast--withIcon'], className)} id={id} noTitleIdOnContent {...props}>
+    <Toast noTitleIdOnContent className={cx(styles['toast--withIcon'], className)} id={id} {...props}>
       <div className={styles.toastIconContainer}>
         <div className={styles.toastIcon}>
           <Icon size={iconSize} />
@@ -33,7 +33,7 @@ export function IconToast({
 
         <div className={styles.toastContent}>
           {title && (
-            <div id={generateTitleId()} className={cx(styles.toastTitle)}>
+            <div className={cx(styles.toastTitle)} id={generateTitleId()}>
               {title}
             </div>
           )}

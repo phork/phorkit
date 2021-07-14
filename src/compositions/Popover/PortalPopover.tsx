@@ -56,8 +56,8 @@ export function PortalPopover({
         return (
           <Portal
             className={contentClassName}
-            focusable={focusable}
             focusRef={focusRef}
+            focusable={focusable}
             offset={offset}
             portal={portal}
             position={position}
@@ -81,8 +81,8 @@ export function PortalPopover({
       }}
       style={style}
       toggler={toggler}
-      withoutTogglerFocusStyle={withoutTogglerFocusStyle}
       withPopoverTogglerProps={withPopoverTogglerProps}
+      withoutTogglerFocusStyle={withoutTogglerFocusStyle}
     />
   );
 }

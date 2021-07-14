@@ -8,54 +8,54 @@ import { Playground, Props } from 'docz';
 import { Flex } from 'components/Flex';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
-import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
 import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
 import { Radio, RadioGroup, NotifiedRadioGroup } from '../index';
 import { sizes } from './helpers/sizes';
 import { radioGroup, logValue } from './helpers/utils';
 
-<PageTitle title="Radio" src="components/Form/Radio" />
+<PageTitle src="components/Form/Radio" title="Radio" />
 
 ## Basic radio button
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" wrap>
+    <Flex wrap direction="row">
       <Rhythm m={2}>
         <Flex direction="column">
           <Rhythm my={2}>
-            <Radio name="basic" onChange={logValue} checked />
+            <Radio checked name="basic" onChange={logValue} />
             <Radio name="basic" onChange={logValue} />
-            <Radio name="basic" onChange={logValue} checked>
+            <Radio checked name="basic" onChange={logValue}>
               Primary checked
             </Radio>
             <Radio name="basic" onChange={logValue}>
               Primary unchecked
             </Radio>
-            <Radio name="basic" onChange={logValue} disabled checked>
+            <Radio checked disabled name="basic" onChange={logValue}>
               Primary checked disabled
             </Radio>
-            <Radio name="basic" onChange={logValue} disabled>
+            <Radio disabled name="basic" onChange={logValue}>
               Primary unchecked disabled
             </Radio>
           </Rhythm>
         </Flex>
         <Flex direction="column">
           <Rhythm my={2}>
-            <Radio name="basic" onChange={logValue} checked variant="secondary" />
+            <Radio checked name="basic" onChange={logValue} variant="secondary" />
             <Radio name="basic" onChange={logValue} variant="secondary" />
-            <Radio name="basic" onChange={logValue} checked variant="secondary">
+            <Radio checked name="basic" onChange={logValue} variant="secondary">
               Secondary checked
             </Radio>
             <Radio name="basic" onChange={logValue} variant="secondary">
               Secondary unchecked
             </Radio>
-            <Radio name="basic" onChange={logValue} disabled checked variant="secondary">
+            <Radio checked disabled name="basic" onChange={logValue} variant="secondary">
               Secondary checked disabled
             </Radio>
-            <Radio name="basic" onChange={logValue} disabled variant="secondary">
+            <Radio disabled name="basic" onChange={logValue} variant="secondary">
               Secondary unchecked disabled
             </Radio>
           </Rhythm>
@@ -71,10 +71,10 @@ import { radioGroup, logValue } from './helpers/utils';
   <ThemeWrapper>
     <Flex direction="column" style={{ width: 240 }}>
       <Rhythm my={2}>
-        <Radio name="labeled-radio" onChange={logValue} full checked>
+        <Radio checked full name="labeled-radio" onChange={logValue}>
           Super fantastic label
         </Radio>
-        <Radio name="labeled-radio" onChange={logValue} full reverse>
+        <Radio full reverse name="labeled-radio" onChange={logValue}>
           Super fantastic label
         </Radio>
       </Rhythm>
@@ -88,36 +88,36 @@ import { radioGroup, logValue } from './helpers/utils';
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" wrap>
+    <Flex wrap direction="row">
       <Rhythm m={2}>
         <Flex direction="column">
           <Rhythm my={2}>
-            <Radio name="danger" onChange={logValue} checked validity="danger">
+            <Radio checked name="danger" onChange={logValue} validity="danger">
               Primary checked
             </Radio>
             <Radio name="danger" onChange={logValue} validity="danger">
               Primary unchecked
             </Radio>
-            <Radio name="danger" onChange={logValue} disabled checked validity="danger">
+            <Radio checked disabled name="danger" onChange={logValue} validity="danger">
               Primary checked disabled
             </Radio>
-            <Radio name="danger" onChange={logValue} disabled validity="danger">
+            <Radio disabled name="danger" onChange={logValue} validity="danger">
               Primary unchecked disabled
             </Radio>
           </Rhythm>
         </Flex>
         <Flex direction="column">
           <Rhythm my={2}>
-            <Radio name="danger" onChange={logValue} checked validity="danger" variant="secondary">
+            <Radio checked name="danger" onChange={logValue} validity="danger" variant="secondary">
               Secondary checked
             </Radio>
             <Radio name="danger" onChange={logValue} validity="danger" variant="secondary">
               Secondary unchecked
             </Radio>
-            <Radio name="danger" onChange={logValue} disabled checked validity="danger" variant="secondary">
+            <Radio checked disabled name="danger" onChange={logValue} validity="danger" variant="secondary">
               Secondary checked disabled
             </Radio>
-            <Radio name="danger" onChange={logValue} disabled validity="danger" variant="secondary">
+            <Radio disabled name="danger" onChange={logValue} validity="danger" variant="secondary">
               Secondary unchecked disabled
             </Radio>
           </Rhythm>
@@ -131,36 +131,36 @@ import { radioGroup, logValue } from './helpers/utils';
 
 <Playground>
   <ThemeWrapper contrast>
-    <Flex direction="row" wrap>
+    <Flex wrap direction="row">
       <Rhythm m={2}>
         <Flex direction="column">
           <Rhythm my={2}>
-            <Radio name="contrast" onChange={logValue} checked contrast>
+            <Radio checked contrast name="contrast" onChange={logValue}>
               Primary checked
             </Radio>
-            <Radio name="contrast" onChange={logValue} contrast>
+            <Radio contrast name="contrast" onChange={logValue}>
               Primary unchecked
             </Radio>
-            <Radio name="contrast" onChange={logValue} disabled checked contrast>
+            <Radio checked contrast disabled name="contrast" onChange={logValue}>
               Primary checked disabled
             </Radio>
-            <Radio name="contrast" onChange={logValue} disabled contrast>
+            <Radio contrast disabled name="contrast" onChange={logValue}>
               Primary unchecked disabled
             </Radio>
           </Rhythm>
         </Flex>
         <Flex direction="column">
           <Rhythm my={2}>
-            <Radio name="contrast" onChange={logValue} checked contrast variant="secondary">
+            <Radio checked contrast name="contrast" onChange={logValue} variant="secondary">
               Secondary checked
             </Radio>
-            <Radio name="contrast" onChange={logValue} contrast variant="secondary">
+            <Radio contrast name="contrast" onChange={logValue} variant="secondary">
               Secondary unchecked
             </Radio>
-            <Radio name="contrast" onChange={logValue} disabled checked contrast variant="secondary">
+            <Radio checked contrast disabled name="contrast" onChange={logValue} variant="secondary">
               Secondary checked disabled
             </Radio>
-            <Radio name="contrast" onChange={logValue} disabled contrast variant="secondary">
+            <Radio contrast disabled name="contrast" onChange={logValue} variant="secondary">
               Secondary unchecked disabled
             </Radio>
           </Rhythm>
@@ -195,7 +195,7 @@ import { radioGroup, logValue } from './helpers/utils';
 ## Stacked group
 
 <Playground>
-  <FormComponentDemo type="radio" property="value" initialValue="one">
+  <FormComponentDemo initialValue="one" property="value" type="radio">
     <RadioGroup
       layout="stacked"
       legend="Super fantastic label says what?"
@@ -209,7 +209,7 @@ import { radioGroup, logValue } from './helpers/utils';
 ## Inline group
 
 <Playground>
-  <FormComponentDemo type="radio" property="value" initialValue="one">
+  <FormComponentDemo initialValue="one" property="value" type="radio">
     <RadioGroup
       layout="inline"
       legend="Super fantastic label says what?"
@@ -223,7 +223,7 @@ import { radioGroup, logValue } from './helpers/utils';
 ## Inline secondary group
 
 <Playground>
-  <FormComponentDemo type="radio" property="value" initialValue="one">
+  <FormComponentDemo initialValue="one" property="value" type="radio">
     <RadioGroup
       layout="inline"
       legend="Super fantastic label says what?"
@@ -238,11 +238,11 @@ import { radioGroup, logValue } from './helpers/utils';
 ## Custom label
 
 <Playground>
-  <FormComponentDemo type="radio" property="value" initialValue="one">
+  <FormComponentDemo initialValue="one" property="value" type="radio">
     <RadioGroup
       layout="inline"
       legend={
-        <Typography as="legend" variants="medium-caps" style={{ marginBottom: '8px' }}>
+        <Typography as="legend" style={{ marginBottom: '8px' }} variants="medium-caps">
           Super fantastic legend says what?
         </Typography>
       }
@@ -259,15 +259,15 @@ import { radioGroup, logValue } from './helpers/utils';
   <Looper
     list={['success', 'danger', 'warning', 'primary', 'neutral']}
     render={level => (
-      <FormComponentDemo type="radio" property="value" initialValue="one">
+      <FormComponentDemo initialValue="one" property="value" type="radio">
         <NotifiedRadioGroup
           layout="inline"
           legend="Super fantastic label says what?"
+          level={level}
           name={`notified-radio-group-${level}`}
+          notification={`This is an example ${level} notification.`}
           onChange={logValue}
           radios={radioGroup}
-          level={level}
-          notification={`This is an example ${level} notification.`}
         />
       </FormComponentDemo>
     )}
@@ -281,8 +281,8 @@ import { radioGroup, logValue } from './helpers/utils';
     <Looper
       list={sizes}
       render={size => (
-        <Rhythm py={3} grouped>
-          <Radio size={size} onChange={logValue} checked>
+        <Rhythm grouped py={3}>
+          <Radio checked onChange={logValue} size={size}>
             Lorem ipsum dolor sit amet
           </Radio>
         </Rhythm>

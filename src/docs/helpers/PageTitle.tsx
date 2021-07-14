@@ -18,12 +18,12 @@ export function PageTitle({ title, src, url: initUrl, ...props }: PageTitleProps
 
   return (
     <Rhythm mb={4} {...props}>
-      <Flex alignItems="center" justifyContent="space-between" wrap>
-        <Typography heading="h1" weight="lighter" style={{ fontSize: 48 }}>
+      <Flex wrap alignItems="center" justifyContent="space-between">
+        <Typography heading="h1" style={{ fontSize: 48 }} weight="lighter">
           {title}
         </Typography>
 
-        <IconButton as="a" color="neutral" themeId="light" href={url} target="_blank">
+        <IconButton as="a" color="neutral" href={url} target="_blank" themeId="light">
           <GithubIcon size={24} />
         </IconButton>
       </Flex>

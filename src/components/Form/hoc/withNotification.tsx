@@ -41,8 +41,8 @@ export function withNotification<WrappedComponentProps, E>(
       >
         <WrappedComponent
           contrast={contrast}
-          width={width}
           ref={forwardedRef}
+          width={width}
           {...((componentProps as unknown) as WrappedComponentProps)}
           {...((props as unknown) as WrappedComponentProps)}
         />

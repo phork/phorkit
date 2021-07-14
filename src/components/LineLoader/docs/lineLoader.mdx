@@ -5,15 +5,15 @@ route: /components/LineLoader
 ---
 
 import { Playground, Props } from 'docz';
-import { LineLoader, ColoredLineLoader, StyledLineLoader, useLineLoader } from '../index';
-import { Button } from '../../Button/Button';
-import { Rhythm } from '../../Rhythm/Rhythm';
+import { Button } from 'components/Button/Button';
+import { Rhythm } from 'components/Rhythm/Rhythm';
 import { Looper } from 'docs/helpers/Looper';
+import { PageTitle } from 'docs/helpers/PageTitle';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { PageTitle } from 'docs/helpers/PageTitle';
+import { LineLoader, ColoredLineLoader, StyledLineLoader, useLineLoader } from '../index';
 
-<PageTitle title="LineLoader" src="components/LineLoader" />
+<PageTitle src="components/LineLoader" title="LineLoader" />
 
 ## Basic line loader
 
@@ -43,7 +43,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 
 <Playground>
   <ThemeWrapper>
-    <LineLoader position="top" fixed />
+    <LineLoader fixed position="top" />
     (There should be a loader at the top of the page)
   </ThemeWrapper>
 </Playground>
@@ -55,16 +55,21 @@ import { PageTitle } from 'docs/helpers/PageTitle';
     <StateWrapper initialState={3}>
       {({ state: loops, setState: setLoops }) => (
         <React.Fragment>
-          <Looper start={1} end={5} step={1} render={i => (
-            <Rhythm key={i} m={1}>
-              <Button color={i === loops ? 'primary' : 'neutral'} onClick={() => setLoops(i)}>{`${i} loops`}</Button>
-            </Rhythm>
-          )} />
+          <Looper
+            end={5}
+            render={i => (
+              <Rhythm key={i} m={1}>
+                <Button color={i === loops ? 'primary' : 'neutral'} onClick={() => setLoops(i)}>{`${i} loops`}</Button>
+              </Rhythm>
+            )}
+            start={1}
+            step={1}
+          />
           <LineLoader
             key={loops}
             loops={loops}
-            onLoop={({ loop }) => console.log(`finite loop ${loop}`)}
             onFinish={() => console.log('finished')}
+            onLoop={({ loop }) => console.log(`finite loop ${loop}`)}
             position="top"
           />
         </React.Fragment>
@@ -80,8 +85,14 @@ import { PageTitle } from 'docs/helpers/PageTitle';
     <StateWrapper>
       {({ state: percent, setState: setPercent }) => (
         <React.Fragment>
-          <Button color="primary" onClick={() => setPercent(percent? undefined : 50)}>{percent ? 'Restart' : 'Stop'}</Button>
-          <LineLoader percent={percent} position="bottom" onLoop={({ loop }) => console.log(`stoppable loop ${loop}`)} />
+          <Button color="primary" onClick={() => setPercent(percent ? undefined : 50)}>
+            {percent ? 'Restart' : 'Stop'}
+          </Button>
+          <LineLoader
+            onLoop={({ loop }) => console.log(`stoppable loop ${loop}`)}
+            percent={percent}
+            position="bottom"
+          />
         </React.Fragment>
       )}
     </StateWrapper>
@@ -121,13 +132,23 @@ import { PageTitle } from 'docs/helpers/PageTitle';
           {({ state: loaded, setState: setLoaded }) => (
             <React.Fragment>
               {(!loaded || loaderFinishing) && loader}
-              {!loaded && <Button color="primary" onClick={() => { setLoaded(true); onLoad() }}>Trigger</Button>}
+              {!loaded && (
+                <Button
+                  color="primary"
+                  onClick={() => {
+                    setLoaded(true);
+                    onLoad();
+                  }}
+                >
+                  Trigger
+                </Button>
+              )}
               {loaded && 'Loaded!'}
             </React.Fragment>
           )}
         </StateWrapper>
       </ThemeWrapper>
-    )
+    );
   }}
 </Playground>
 
@@ -135,20 +156,34 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 
 <Playground>
   {() => {
-    const { loader, onLoad, loaderFinishing } = useLineLoader({ position: 'top', component: ColoredLineLoader, colorId: 'P20' });
+    const { loader, onLoad, loaderFinishing } = useLineLoader({
+      position: 'top',
+      component: ColoredLineLoader,
+      colorId: 'P20',
+    });
     return (
       <ThemeWrapper>
         <StateWrapper initialState={false}>
           {({ state: loaded, setState: setLoaded }) => (
             <React.Fragment>
               {(!loaded || loaderFinishing) && loader}
-              {!loaded && <Button color="primary" onClick={() => { setLoaded(true); onLoad() }}>Trigger</Button>}
+              {!loaded && (
+                <Button
+                  color="primary"
+                  onClick={() => {
+                    setLoaded(true);
+                    onLoad();
+                  }}
+                >
+                  Trigger
+                </Button>
+              )}
               {loaded && 'Loaded!'}
             </React.Fragment>
           )}
         </StateWrapper>
       </ThemeWrapper>
-    )
+    );
   }}
 </Playground>
 
@@ -156,20 +191,34 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 
 <Playground>
   {() => {
-    const { loader, onLoad, loaderFinishing } = useLineLoader({ position: 'top', component: StyledLineLoader, color: '#556270' });
+    const { loader, onLoad, loaderFinishing } = useLineLoader({
+      position: 'top',
+      component: StyledLineLoader,
+      color: '#556270',
+    });
     return (
       <ThemeWrapper>
         <StateWrapper initialState={false}>
           {({ state: loaded, setState: setLoaded }) => (
             <React.Fragment>
               {(!loaded || loaderFinishing) && loader}
-              {!loaded && <Button color="primary" onClick={() => { setLoaded(true); onLoad() }}>Trigger</Button>}
+              {!loaded && (
+                <Button
+                  color="primary"
+                  onClick={() => {
+                    setLoaded(true);
+                    onLoad();
+                  }}
+                >
+                  Trigger
+                </Button>
+              )}
               {loaded && 'Loaded!'}
             </React.Fragment>
           )}
         </StateWrapper>
       </ThemeWrapper>
-    )
+    );
   }}
 </Playground>
 

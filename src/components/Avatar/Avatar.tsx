@@ -52,6 +52,7 @@ export function Avatar<T extends React.ElementType = 'div'>({
 
   return (
     <Element
+      aria-label={label}
       className={cx(
         styles.avatar,
         color && styles[`avatar--${color}`],
@@ -63,7 +64,6 @@ export function Avatar<T extends React.ElementType = 'div'>({
       )}
       style={{ backgroundImage: imgSrc && `url(${imgSrc})`, ...style }}
       tabIndex={actionable ? 0 : undefined}
-      aria-label={label}
       {...props}
     >
       <div className={styles.avatar__content}>{initials}</div>

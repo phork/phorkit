@@ -34,26 +34,27 @@ import { FormDemo } from './helpers/FormDemo';
   <StateWrapper initialState={{ variant: 'underline', size: 'large' }}>
     {({ state, setState }) => (
       <ThemeWrapper>
-        <Rhythm mx={3} grouped>
+        <Rhythm grouped mx={3}>
           <FormDemo contrast={false} style={{ maxWidth: '400px' }}>
             {({ contrast = false, handleChange: onChange, options, persistEvents, refs, setValues, values }) => (
               <React.Fragment>
-                <Rhythm mt={4} mb={2}>
+                <Rhythm mb={2} mt={4}>
                   <ButtonGroup
+                    fullWidth
                     buttons={[
                       { id: 'underline', label: 'Underline', selected: state.variant === 'underline' },
                       { id: 'filled', label: 'Filled', selected: state.variant === 'filled' },
                       { id: 'outline', label: 'Outline', selected: state.variant === 'outline' },
                     ]}
                     color="primary"
-                    fullWidth
                     onClick={(event, id) => setState({ ...state, variant: id })}
                     shape="brick"
                     spacing="joined"
                   />
                 </Rhythm>
-                <Rhythm mt={4} mb={2}>
+                <Rhythm mb={2} mt={4}>
                   <ButtonGroup
+                    fullWidth
                     buttons={[
                       { id: 'medium', label: 'M', selected: state.size === 'medium' },
                       { id: 'large', label: 'L', selected: state.size === 'large' },
@@ -67,7 +68,6 @@ import { FormDemo } from './helpers/FormDemo';
                       { id: 'xxxxxxxxlarge', label: '8XL', selected: state.size === 'xxxxxxxxlarge' },
                     ]}
                     color="neutral"
-                    fullWidth
                     onClick={(event, id) => setState({ ...state, size: id })}
                     selectedColor="primary"
                     selectedWeight="inline"
@@ -79,6 +79,7 @@ import { FormDemo } from './helpers/FormDemo';
                 </Rhythm>
                 <Rhythm my={2}>
                   <Textbox
+                    transitional
                     contrast={contrast}
                     label="Username"
                     name="username"
@@ -88,13 +89,13 @@ import { FormDemo } from './helpers/FormDemo';
                       refs.current.username = e;
                     }}
                     size={state.size}
-                    transitional
                     value={values.username}
                     variant={state.variant}
                   />
                 </Rhythm>
                 <Rhythm my={2}>
                   <Password
+                    transitional
                     contrast={contrast}
                     label="Password"
                     name="password"
@@ -104,7 +105,6 @@ import { FormDemo } from './helpers/FormDemo';
                       refs.current.password = e;
                     }}
                     size={state.size}
-                    transitional
                     value={values.password}
                     variant={state.variant}
                   />
@@ -112,6 +112,7 @@ import { FormDemo } from './helpers/FormDemo';
                 <Rhythm my={2}>
                   <Textbox
                     clearable
+                    transitional
                     contrast={contrast}
                     iconBefore={<SearchIcon />}
                     label="Search"
@@ -123,13 +124,13 @@ import { FormDemo } from './helpers/FormDemo';
                       refs.current.search = e;
                     }}
                     size={state.size}
-                    transitional
                     value={values.search}
                     variant={state.variant}
                   />
                 </Rhythm>
                 <Rhythm my={2}>
                   <Textbox
+                    transitional
                     contrast={contrast}
                     label="Successful"
                     name="success"
@@ -139,7 +140,6 @@ import { FormDemo } from './helpers/FormDemo';
                       refs.current.success = e;
                     }}
                     size={state.size}
-                    transitional
                     validity="success"
                     value={values.success}
                     variant={state.variant}
@@ -147,6 +147,7 @@ import { FormDemo } from './helpers/FormDemo';
                 </Rhythm>
                 <Rhythm my={2}>
                   <Textbox
+                    transitional
                     contrast={contrast}
                     label="Warningish"
                     name="warning"
@@ -156,7 +157,6 @@ import { FormDemo } from './helpers/FormDemo';
                       refs.current.warning = e;
                     }}
                     size={state.size}
-                    transitional
                     validity="warning"
                     value={values.warning}
                     variant={state.variant}
@@ -164,6 +164,7 @@ import { FormDemo } from './helpers/FormDemo';
                 </Rhythm>
                 <Rhythm my={2}>
                   <Textbox
+                    transitional
                     contrast={contrast}
                     label="Dangerous"
                     name="danger"
@@ -173,7 +174,6 @@ import { FormDemo } from './helpers/FormDemo';
                       refs.current.danger = e;
                     }}
                     size={state.size}
-                    transitional
                     validity="danger"
                     value={values.danger}
                     variant={state.variant}
@@ -181,40 +181,41 @@ import { FormDemo } from './helpers/FormDemo';
                 </Rhythm>
                 <Rhythm my={2}>
                   <Select
+                    transitional
                     contrast={contrast}
                     label="Choose a color"
                     name="selectColor"
                     onChange={onChange}
+                    options={options}
                     persistEvents={persistEvents}
                     ref={e => {
                       refs.current.selectColor = e;
                     }}
                     size={state.size}
-                    transitional
                     value={values.selectColor}
-                    options={options}
                     variant={state.variant}
                   />
                 </Rhythm>
                 <Rhythm my={2}>
                   <Select
+                    transitional
                     contrast={contrast}
                     label="Choose another color"
                     name="selectAnotherColor"
                     onChange={onChange}
+                    options={options}
                     persistEvents={persistEvents}
                     ref={e => {
                       refs.current.selectAnotherColor = e;
                     }}
                     size={state.size}
-                    transitional
                     value={values.selectAnotherColor}
-                    options={options}
                     variant={state.variant}
                   />
                 </Rhythm>
                 <Rhythm my={2}>
                   <ControlledDropdown
+                    transitional
                     inputVariant={state.variant}
                     label="A custom dropdown"
                     layout="raised"
@@ -224,11 +225,11 @@ import { FormDemo } from './helpers/FormDemo';
                       refs.current.dropdown = e && e.container;
                     }}
                     size={state.size}
-                    transitional
                   />
                 </Rhythm>
                 <Rhythm my={2}>
                   <ControlledDropdown
+                    transitional
                     inputVariant={state.variant}
                     label="A contained dropdown"
                     layout="contained"
@@ -238,11 +239,11 @@ import { FormDemo } from './helpers/FormDemo';
                       refs.current.dropdownContained = e && e.container;
                     }}
                     size={state.size}
-                    transitional
                   />
                 </Rhythm>
                 <Rhythm my={2}>
                   <Textarea
+                    transitional
                     contrast={contrast}
                     label="Manifesto"
                     name="textarea"
@@ -252,7 +253,6 @@ import { FormDemo } from './helpers/FormDemo';
                       refs.current.textarea = e;
                     }}
                     size={state.size}
-                    transitional
                     value={values.textarea}
                     variant={state.variant}
                   />
@@ -276,18 +276,18 @@ import { FormDemo } from './helpers/FormDemo';
                     justo, non tempor nisi urna quis justo. Integer sit amet venenatis leo.
                   </Checkbox>
                 </Rhythm>
-                <Rhythm my={2} mr={2}>
+                <Rhythm mr={2} my={2}>
                   <Radio
                     checked={values.radio === 'one'}
                     contrast={contrast}
                     name="radio"
-                    value="one"
                     onChange={(event, checked, value) => checked && setValues({ ...values, radio: value })}
                     persistEvents={persistEvents}
                     ref={e => {
                       refs.current.radio1 = e;
                     }}
                     size={state.size}
+                    value="one"
                     variant="secondary"
                   >
                     Lorem ipsum dolor sit amet
@@ -296,20 +296,20 @@ import { FormDemo } from './helpers/FormDemo';
                     checked={values.radio === 'two'}
                     contrast={contrast}
                     name="radio"
-                    value="two"
                     onChange={(event, checked, value) => checked && setValues({ ...values, radio: value })}
                     persistEvents={persistEvents}
                     ref={e => {
                       refs.current.radio2 = e;
                     }}
                     size={state.size}
+                    value="two"
                     variant="secondary"
                   >
                     Consectetur adipiscing elit
                   </Radio>
                 </Rhythm>
-                <Rhythm mt={4} mb={2} grouped>
-                  <Flex direction="row" alignItems="flex-end" justifyContent="space-between" flexible>
+                <Rhythm grouped mb={2} mt={4}>
+                  <Flex flexible alignItems="flex-end" direction="row" justifyContent="space-between">
                     <div>
                       <Label as="legend" contrast={contrast} strength="legend">
                         Pick a big number
@@ -328,8 +328,8 @@ import { FormDemo } from './helpers/FormDemo';
                         size={state.size}
                         step={100}
                         value={values.stepper1}
-                        width="50%"
                         variant={state.variant}
+                        width="50%"
                       />
                     </div>
                     <Stepper
@@ -338,29 +338,22 @@ import { FormDemo } from './helpers/FormDemo';
                       label="Pick another number"
                       max={100}
                       min={0}
-                      size={state.size}
-                      step={10}
                       name="stepper2"
                       onChange={(event, value) => setValues({ ...values, stepper2: value })}
                       persistEvents={persistEvents}
                       ref={e => {
                         refs.current.stepper2 = e;
                       }}
+                      size={state.size}
+                      step={10}
                       value={values.stepper2}
-                      width="50%"
                       variant={state.variant}
+                      width="50%"
                     />
                   </Flex>
                 </Rhythm>
-                <Rhythm mt={4} mb={2}>
+                <Rhythm mb={2} mt={4}>
                   <CheckboxGroup
-                    contrast={contrast}
-                    layout="stacked"
-                    legend="Super fantastic label says what?"
-                    name="checkboxes"
-                    onChange={(event, value) => setValues({ ...values, checkboxes: value })}
-                    size={state.size}
-                    values={values.checkboxes}
                     checkboxes={[
                       {
                         id: 'demo-checkbox-group1',
@@ -384,17 +377,22 @@ import { FormDemo } from './helpers/FormDemo';
                         value: 'three',
                       },
                     ]}
+                    contrast={contrast}
+                    layout="stacked"
+                    legend="Super fantastic label says what?"
+                    name="checkboxes"
+                    onChange={(event, value) => setValues({ ...values, checkboxes: value })}
+                    size={state.size}
+                    values={values.checkboxes}
                   />
                 </Rhythm>
-                <Rhythm mt={4} mb={2}>
+                <Rhythm mb={2} mt={4}>
                   <RadioGroup
                     contrast={contrast}
                     layout="inline"
                     legend="Super fantastic label says what?"
                     name="radios"
                     onChange={(event, value) => setValues({ ...values, radios: value })}
-                    size={state.size}
-                    value={values.radios}
                     radios={[
                       {
                         id: 'demo-radio-group1',
@@ -415,9 +413,11 @@ import { FormDemo } from './helpers/FormDemo';
                         value: 'three',
                       },
                     ]}
+                    size={state.size}
+                    value={values.radios}
                   />
                 </Rhythm>
-                <Rhythm mt={4} mb={2}>
+                <Rhythm mb={2} mt={4}>
                   <Slider
                     contrast={contrast}
                     formatValue={value => value + '%'}
@@ -436,7 +436,7 @@ import { FormDemo } from './helpers/FormDemo';
                     Percentage
                   </Slider>
                 </Rhythm>
-                <Flex justifyContent="space-between" alignItems="center" wrap>
+                <Flex wrap alignItems="center" justifyContent="space-between">
                   <Toggle
                     checked={values.toggle}
                     contrast={contrast}
@@ -452,11 +452,11 @@ import { FormDemo } from './helpers/FormDemo';
                   </Toggle>
                   <Rhythm mr={-2}>
                     <Flex flexible alignItems="center" justifyContent="flex-end">
-                      <Rhythm my={1} mr={2}>
-                        <Button weight="ghost" color="neutral" shape="brick">
+                      <Rhythm mr={2} my={1}>
+                        <Button color="neutral" shape="brick" weight="ghost">
                           Cancel
                         </Button>
-                        <Button type="submit" color="primary" shape="brick" onClick={() => console.log(refs.current)}>
+                        <Button color="primary" onClick={() => console.log(refs.current)} shape="brick" type="submit">
                           Submit
                         </Button>
                       </Rhythm>

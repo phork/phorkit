@@ -4,8 +4,8 @@ import { MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
 import { useComponentId } from '../../../hooks/useComponentId';
 import { useThemeId } from '../../../hooks/useThemeId';
 import { Fieldset } from '../Fieldset/Fieldset';
-import { Checkbox, CheckboxProps, CheckboxSize, CheckboxValue } from './Checkbox';
 import styles from './styles/CheckboxGroup.module.css';
+import { Checkbox, CheckboxProps, CheckboxSize, CheckboxValue } from './Checkbox';
 
 export interface CheckboxGroupItem<V extends CheckboxValue = string>
   extends Omit<CheckboxProps<V>, 'children' | 'grouped' | 'id' | 'onChange' | 'value'> {
@@ -68,7 +68,7 @@ function CheckboxGroupBase<V extends CheckboxValue = string>(
   );
 
   return (
-    <Fieldset className={className} contrast={contrast} legend={legend} themeId={themeId} ref={forwardedRef}>
+    <Fieldset className={className} contrast={contrast} legend={legend} ref={forwardedRef} themeId={themeId}>
       <div className={cx(styles.checkboxGroup, layout && styles[`checkboxGroup--${layout}`])} {...props}>
         {checkboxes &&
           checkboxes.map(({ id, label, value: checkboxValue, ...checkboxProps }) => (

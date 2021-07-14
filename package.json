@@ -52,7 +52,7 @@
     "clean-icons": "npx rimraf src/icons",
     "deploy-docs": "yarn build-docs && yarn transfer-docs",
     "deploy-lib": "yarn build-lib && yarn transfer-lib",
-    "eslint": "npx eslint \"{src,__tests__}/**/*.{js,json,ts,tsx}\" --fix",
+    "eslint": "npx eslint \"{src,__tests__}/**/*.{js,json,ts,tsx,mdx}\" --fix",
     "gen-component-info": "node ./scripts/generate-component-info.js",
     "gen-icons": "node ./scripts/generate-svg-icons.js",
     "gen-lib-config": "node ./scripts/generate-config-json.js",
@@ -87,6 +87,7 @@
   "lint-staged": {
     "*.{md,mdx}": [
       "yarn prettier",
+      "yarn eslint",
       "git add"
     ],
     "*.{js,json,ts,tsx}": [
@@ -193,6 +194,7 @@
     "eslint-plugin-jest": "^24.3.2",
     "eslint-plugin-json": "^2.1.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-mdx": "^1.14.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",

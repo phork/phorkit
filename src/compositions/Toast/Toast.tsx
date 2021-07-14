@@ -9,8 +9,8 @@ import { PinIcon } from '../../icons/PinIcon';
 import { TimesIcon } from '../../icons/TimesIcon';
 import { ButtonColor } from '../../components/Button';
 import { IconButton } from '../../components/Button/IconButton';
-import { ToastCountdownBar } from './ToastCountdownBar';
 import styles from './styles/Toast.module.css';
+import { ToastCountdownBar } from './ToastCountdownBar';
 import { ToastNotificationLevel } from './types';
 import { useToastComponentIds } from './useToastComponentIds';
 
@@ -95,6 +95,8 @@ export function Toast({
 
   return (
     <div
+      aria-describedby={generateTitleId()}
+      aria-label={`${ucfirst(level)} notification`}
       className={cx(
         styles.toast,
         level && level !== 'custom' && styles[`toast--${level}`],
@@ -105,25 +107,23 @@ export function Toast({
         className,
       )}
       role="alertdialog"
-      aria-label={`${ucfirst(level)} notification`}
-      aria-describedby={generateTitleId()}
       {...props}
     >
       <div className={styles.toastActions}>
         {onPin && duration > 0 && (
-          <IconButton aria-label={pinNotificationLabel} themeId={themeId} color={buttonColor} onClick={handlePin}>
-            <PinIcon title={pinNotificationLabel} scale="xsmall" />
+          <IconButton aria-label={pinNotificationLabel} color={buttonColor} onClick={handlePin} themeId={themeId}>
+            <PinIcon scale="xsmall" title={pinNotificationLabel} />
           </IconButton>
         )}
         {onClose && (
-          <IconButton aria-label={closeNotificationLabel} themeId={themeId} color={buttonColor} onClick={handleClose}>
-            <TimesIcon title={closeNotificationLabel} scale="xsmall" />
+          <IconButton aria-label={closeNotificationLabel} color={buttonColor} onClick={handleClose} themeId={themeId}>
+            <TimesIcon scale="xsmall" title={closeNotificationLabel} />
           </IconButton>
         )}
       </div>
 
       {title && (
-        <div id={noTitleIdOnContent ? generateTitleId() : undefined} className={cx(styles.toastTitle)}>
+        <div className={cx(styles.toastTitle)} id={noTitleIdOnContent ? generateTitleId() : undefined}>
           {title}
         </div>
       )}

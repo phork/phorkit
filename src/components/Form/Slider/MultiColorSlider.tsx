@@ -2,10 +2,10 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { AccentColor, MergeProps, StateColor } from '../../../types';
 import { ThemeColors, themes } from '../../../config/themes';
 import { useThemeId } from '../../../hooks/useThemeId';
+import styles from './styles/Slider.module.css';
 import { MultiColorSliderTick } from './MultiColorSliderTick';
 import { MultiColorSliderTrack } from './MultiColorSliderTrack';
 import { StyledSlider, StyledSliderProps } from './StyledSlider';
-import styles from './styles/Slider.module.css';
 
 export interface LocalMultiColorSliderProps {
   colors: Array<StateColor | AccentColor | string>;
@@ -60,12 +60,12 @@ export function MultiColorSlider({
 
   return (
     <StyledSlider
+      snap
       className={variant === 'divider' ? styles['slider--noHandle'] : undefined}
       handleBackgroundColor={activeColor}
       max={colors.length}
       min={0}
       onChange={handleChange}
-      snap
       snapNext={variant === 'divider'}
       step={1}
       tick={1}

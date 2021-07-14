@@ -28,10 +28,10 @@ export const navigationOptions = options.map(({ id, label, ...option }: Interact
       unstyled
       unthemed
       href={`#${id}`}
-      style={{ padding: '8px 16px' }}
-      // prevent the link from clicking because it's only here for right clicking
       onClick={event => event.preventDefault()}
+      // prevent the link from clicking because it's only here for right clicking
       onKeyDown={event => event.preventDefault()}
+      style={{ padding: '8px 16px' }}
       tabIndex={-1}
     >
       {label}

@@ -292,13 +292,13 @@ export function SelectBase(
               {...props}
             >
               {!multiple && placeholder && focused && (
-                <option value={placeholder.value || ''} disabled={placeholder.disabled}>
+                <option disabled={placeholder.disabled} value={placeholder.value || ''}>
                   {(focused && placeholder.optionLabel) || placeholder.label}
                 </option>
               )}
               {children ||
                 options.map(({ disabled, label, value }) => (
-                  <option key={value} value={value} disabled={disabled}>
+                  <option disabled={disabled} key={value} value={value}>
                     {label}
                   </option>
                 ))}

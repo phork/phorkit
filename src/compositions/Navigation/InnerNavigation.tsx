@@ -13,8 +13,8 @@ import {
   InteractiveGroupItemType,
 } from '../../components/InteractiveGroup';
 import { useListRegistry } from '../../components/ListRegistry/useListRegistry';
-import { NavigationItem, NavigationItemProps } from './NavigationItem';
 import styles from './styles/Navigation.module.css';
+import { NavigationItem, NavigationItemProps } from './NavigationItem';
 
 export interface InnerNavigationProps extends React.HTMLAttributes<HTMLElement>, ThemeProps {
   /** This will make each nav item a link only for the purpose of right clicking; it still uses an onClick event */
@@ -156,8 +156,8 @@ export const InnerNavigation = React.forwardRef<HTMLElement, InnerNavigationProp
               <NavigationItem
                 allowRightClickLinks={allowRightClickLinks}
                 componentId={componentId}
-                key={id}
                 id={id}
+                key={id}
                 onClick={handleItemClick}
                 variant={variant}
                 vertical={vertical}

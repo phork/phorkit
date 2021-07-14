@@ -9,47 +9,47 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Label, StyledLabel } from '../index';
 
-<PageTitle title="Label" src="components/Form/Label" />
+<PageTitle src="components/Form/Label" title="Label" />
 
 ## Standard Label
 
 <Playground>
   <ThemeWrapper>
     <Label strength="standard">Super awesome label</Label>
-    <Label strength="standard" muted>
+    <Label muted strength="standard">
       Super awesome muted label
     </Label>
-    <Label strength="standard" disabled>
+    <Label disabled strength="standard">
       Super awesome disabled label
     </Label>
     <br />
     <Label strength="standard" validity="danger">
       Super awesome label
     </Label>
-    <Label strength="standard" validity="danger" muted>
+    <Label muted strength="standard" validity="danger">
       Super awesome muted label
     </Label>
-    <Label strength="standard" validity="danger" disabled>
+    <Label disabled strength="standard" validity="danger">
       Super awesome disabled label
     </Label>
     <br />
     <Label strength="standard" validity="warning">
       Super awesome label
     </Label>
-    <Label strength="standard" validity="warning" muted>
+    <Label muted strength="standard" validity="warning">
       Super awesome muted label
     </Label>
-    <Label strength="standard" validity="warning" disabled>
+    <Label disabled strength="standard" validity="warning">
       Super awesome disabled label
     </Label>
     <br />
     <Label strength="standard" validity="success">
       Super awesome label
     </Label>
-    <Label strength="standard" validity="success" muted>
+    <Label muted strength="standard" validity="success">
       Super awesome muted label
     </Label>
-    <Label strength="standard" validity="success" disabled>
+    <Label disabled strength="standard" validity="success">
       Super awesome disabled label
     </Label>
   </ThemeWrapper>
@@ -60,40 +60,40 @@ import { Label, StyledLabel } from '../index';
 <Playground>
   <ThemeWrapper>
     <Label strength="transitioned">Super awesome label</Label>
-    <Label strength="transitioned" muted>
+    <Label muted strength="transitioned">
       Super awesome muted label
     </Label>
-    <Label strength="transitioned" disabled>
+    <Label disabled strength="transitioned">
       Super awesome disabled label
     </Label>
     <br />
     <Label strength="transitioned" validity="danger">
       Super awesome label
     </Label>
-    <Label strength="transitioned" validity="danger" muted>
+    <Label muted strength="transitioned" validity="danger">
       Super awesome muted label
     </Label>
-    <Label strength="transitioned" validity="danger" disabled>
+    <Label disabled strength="transitioned" validity="danger">
       Super awesome disabled label
     </Label>
     <br />
     <Label strength="transitioned" validity="warning">
       Super awesome label
     </Label>
-    <Label strength="transitioned" validity="warning" muted>
+    <Label muted strength="transitioned" validity="warning">
       Super awesome muted label
     </Label>
-    <Label strength="transitioned" validity="warning" disabled>
+    <Label disabled strength="transitioned" validity="warning">
       Super awesome disabled label
     </Label>
     <br />
     <Label strength="transitioned" validity="success">
       Super awesome label
     </Label>
-    <Label strength="transitioned" validity="success" muted>
+    <Label muted strength="transitioned" validity="success">
       Super awesome muted label
     </Label>
-    <Label strength="transitioned" validity="success" disabled>
+    <Label disabled strength="transitioned" validity="success">
       Super awesome disabled label
     </Label>
   </ThemeWrapper>
@@ -104,40 +104,40 @@ import { Label, StyledLabel } from '../index';
 <Playground>
   <ThemeWrapper>
     <Label strength="legend">Super awesome label</Label>
-    <Label strength="legend" muted>
+    <Label muted strength="legend">
       Super awesome muted label
     </Label>
-    <Label strength="legend" disabled>
+    <Label disabled strength="legend">
       Super awesome disabled label
     </Label>
     <br />
     <Label strength="legend" validity="danger">
       Super awesome label
     </Label>
-    <Label strength="legend" validity="danger" muted>
+    <Label muted strength="legend" validity="danger">
       Super awesome muted label
     </Label>
-    <Label strength="legend" validity="danger" disabled>
+    <Label disabled strength="legend" validity="danger">
       Super awesome disabled label
     </Label>
     <br />
     <Label strength="legend" validity="warning">
       Super awesome label
     </Label>
-    <Label strength="legend" validity="warning" muted>
+    <Label muted strength="legend" validity="warning">
       Super awesome muted label
     </Label>
-    <Label strength="legend" validity="warning" disabled>
+    <Label disabled strength="legend" validity="warning">
       Super awesome disabled label
     </Label>
     <br />
     <Label strength="legend" validity="success">
       Super awesome label
     </Label>
-    <Label strength="legend" validity="success" muted>
+    <Label muted strength="legend" validity="success">
       Super awesome muted label
     </Label>
-    <Label strength="legend" validity="success" disabled>
+    <Label disabled strength="legend" validity="success">
       Super awesome disabled label
     </Label>
   </ThemeWrapper>
@@ -150,40 +150,40 @@ import { Label, StyledLabel } from '../index';
     <Label contrast strength="standard">
       Super awesome label
     </Label>
-    <Label contrast strength="standard" muted>
+    <Label contrast muted strength="standard">
       Super awesome muted label
     </Label>
-    <Label contrast strength="standard" disabled>
+    <Label contrast disabled strength="standard">
       Super awesome disabled label
     </Label>
     <br />
     <Label contrast strength="standard" validity="danger">
       Super awesome label
     </Label>
-    <Label contrast strength="standard" validity="danger" muted>
+    <Label contrast muted strength="standard" validity="danger">
       Super awesome muted label
     </Label>
-    <Label contrast strength="standard" validity="danger" disabled>
+    <Label contrast disabled strength="standard" validity="danger">
       Super awesome disabled label
     </Label>
     <br />
     <Label contrast strength="standard" validity="warning">
       Super awesome label
     </Label>
-    <Label contrast strength="standard" validity="warning" muted>
+    <Label contrast muted strength="standard" validity="warning">
       Super awesome muted label
     </Label>
-    <Label contrast strength="standard" validity="warning" disabled>
+    <Label contrast disabled strength="standard" validity="warning">
       Super awesome disabled label
     </Label>
     <br />
     <Label contrast strength="standard" validity="success">
       Super awesome label
     </Label>
-    <Label contrast strength="standard" validity="success" muted>
+    <Label contrast muted strength="standard" validity="success">
       Super awesome muted label
     </Label>
-    <Label contrast strength="standard" validity="success" disabled>
+    <Label contrast disabled strength="standard" validity="success">
       Super awesome disabled label
     </Label>
   </ThemeWrapper>
@@ -192,17 +192,17 @@ import { Label, StyledLabel } from '../index';
 ## Styled Label
 
 <Playground>
-  <StyledLabel strength="standard" textColor="#0060ce" mutedTextColor="#81BCFF">
+  <StyledLabel mutedTextColor="#81BCFF" strength="standard" textColor="#0060ce">
     Super awesome label
   </StyledLabel>
-  <StyledLabel strength="standard" textColor="#0060ce" mutedTextColor="#81BCFF" muted>
+  <StyledLabel muted mutedTextColor="#81BCFF" strength="standard" textColor="#0060ce">
     Super awesome muted label
   </StyledLabel>
-  <StyledLabel strength="standard" textColor="#0060ce" mutedTextColor="#81BCFF" disabled>
+  <StyledLabel disabled mutedTextColor="#81BCFF" strength="standard" textColor="#0060ce">
     Super awesome disabled label
   </StyledLabel>
   <br />
-  <StyledLabel fontSize={20} lineHeight={24} unthemed={false} muted>
+  <StyledLabel muted fontSize={20} lineHeight={24} unthemed={false}>
     Super awesome giant label
   </StyledLabel>
 </Playground>

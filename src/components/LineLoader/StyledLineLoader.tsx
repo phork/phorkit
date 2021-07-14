@@ -9,13 +9,13 @@ export const StyledLineLoader = ({ color, style, ...props }: StyledLineLoaderPro
   return (
     <LineLoader
       {...props}
+      unthemed
       style={
         {
           '--line-loader-color': color,
           ...style,
         } as React.CSSProperties
       }
-      unthemed
     />
   );
 };

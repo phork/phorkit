@@ -113,7 +113,6 @@ export function CheckboxBase<V extends CheckboxValue = string>(
 
   return (
     <label
-      htmlFor={generateComponentId()}
       className={cx(
         styles.checkbox,
         sizeStyles[`checkbox--${size}`],
@@ -132,6 +131,7 @@ export function CheckboxBase<V extends CheckboxValue = string>(
         validity && styles[`is-${validity}`],
         className,
       )}
+      htmlFor={generateComponentId()}
       onFocus={forwardFocus}
       style={style}
       tabIndex={focused || disabled ? -1 : 0}

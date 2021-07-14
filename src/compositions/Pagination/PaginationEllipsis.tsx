@@ -8,7 +8,7 @@ export type PaginationEllipsisProps = Omit<ButtonProps<'div'>, 'as' | 'children'
 /** This uses an unclickable div Button to make it easier to share styles with the rest of the pagination */
 export function PaginationEllipsis(props: PaginationEllipsisProps): ReturnType<typeof Button> | null {
   return (
-    <Button<'div'> as="div" imitation noPadding {...(props as ButtonProps<'div'>)}>
+    <Button<'div'> imitation noPadding as="div" {...(props as ButtonProps<'div'>)}>
       <Rhythm mx={2}>
         <EllipsisIcon scale="medium" />
       </Rhythm>

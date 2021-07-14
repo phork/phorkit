@@ -5,7 +5,7 @@ import { Modal, ModalBody, ModalHeader, ModalFooter } from 'lib';
 describe('<Modal />', () => {
   it('should render a basic modal', () => {
     const { getByText } = render(
-      <Modal ariaLabel="Example modal" immediate>
+      <Modal immediate ariaLabel="Example modal">
         <ModalBody key="content">Hello world</ModalBody>
       </Modal>,
     );

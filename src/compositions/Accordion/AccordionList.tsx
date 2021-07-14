@@ -10,9 +10,9 @@ import {
   InteractiveGroupContext,
   InteractiveGroupContextValue,
 } from '../../components/InteractiveGroup/InteractiveGroupContext';
+import styles from './styles/AccordionList.module.css';
 import { AccordionContent, AccordionContentProps } from './AccordionContent';
 import { AccordionLabel } from './AccordionLabel';
-import styles from './styles/AccordionList.module.css';
 import { AccordionItemType } from './types';
 
 export interface AccordionListProps

@@ -13,13 +13,13 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Badge, ColoredBadge, StyledBadge } from '../index';
 
-<PageTitle title="Badge" src="components/Badge" />
+<PageTitle src="components/Badge" title="Badge" />
 
 ## Point badges
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" alignItems="center">
+    <Flex alignItems="center" direction="row">
       <div
         style={{
           position: 'relative',
@@ -29,25 +29,25 @@ import { Badge, ColoredBadge, StyledBadge } from '../index';
           margin: '20px',
         }}
       >
-        <Badge position="top-left" shape="point" color="primary" />
-        <Badge position="top-right" shape="point" color="success" />
-        <Badge position="bottom-left" shape="point" color="warning" />
-        <Badge position="bottom-right" shape="point" color="danger" />
+        <Badge color="primary" position="top-left" shape="point" />
+        <Badge color="success" position="top-right" shape="point" />
+        <Badge color="warning" position="bottom-left" shape="point" />
+        <Badge color="danger" position="bottom-right" shape="point" />
       </div>
-      <Flex direction="row" alignItems="center" wrap>
+      <Flex wrap alignItems="center" direction="row">
         <Rhythm m={2}>
-          <Badge shape="point" color="primary" />
-          <Badge shape="point" color="success" />
-          <Badge shape="point" color="warning" />
-          <Badge shape="point" color="danger" />
-          <Badge shape="point" color="neutral" />
+          <Badge color="primary" shape="point" />
+          <Badge color="success" shape="point" />
+          <Badge color="warning" shape="point" />
+          <Badge color="danger" shape="point" />
+          <Badge color="neutral" shape="point" />
         </Rhythm>
         <Rhythm m={2}>
-          <Badge shape="point" color="primary" pulsing />
-          <Badge shape="point" color="success" pulsing />
-          <Badge shape="point" color="warning" pulsing />
-          <Badge shape="point" color="danger" pulsing />
-          <Badge shape="point" color="neutral" pulsing />
+          <Badge pulsing color="primary" shape="point" />
+          <Badge pulsing color="success" shape="point" />
+          <Badge pulsing color="warning" shape="point" />
+          <Badge pulsing color="danger" shape="point" />
+          <Badge pulsing color="neutral" shape="point" />
         </Rhythm>
       </Flex>
     </Flex>
@@ -58,7 +58,7 @@ import { Badge, ColoredBadge, StyledBadge } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" alignItems="center">
+    <Flex alignItems="center" direction="row">
       <div
         style={{
           position: 'relative',
@@ -68,25 +68,25 @@ import { Badge, ColoredBadge, StyledBadge } from '../index';
           margin: '20px',
         }}
       >
-        <Badge position="top-left" shape="marker" color="primary" />
-        <Badge position="top-right" shape="marker" color="success" />
-        <Badge position="bottom-left" shape="marker" color="warning" />
-        <Badge position="bottom-right" shape="marker" color="danger" />
+        <Badge color="primary" position="top-left" shape="marker" />
+        <Badge color="success" position="top-right" shape="marker" />
+        <Badge color="warning" position="bottom-left" shape="marker" />
+        <Badge color="danger" position="bottom-right" shape="marker" />
       </div>
-      <Flex direction="row" alignItems="center" wrap>
+      <Flex wrap alignItems="center" direction="row">
         <Rhythm m={2}>
-          <Badge shape="marker" color="primary" />
-          <Badge shape="marker" color="success" />
-          <Badge shape="marker" color="warning" />
-          <Badge shape="marker" color="danger" />
-          <Badge shape="marker" color="neutral" />
+          <Badge color="primary" shape="marker" />
+          <Badge color="success" shape="marker" />
+          <Badge color="warning" shape="marker" />
+          <Badge color="danger" shape="marker" />
+          <Badge color="neutral" shape="marker" />
         </Rhythm>
         <Rhythm m={2}>
-          <Badge shape="marker" color="primary" pulsing />
-          <Badge shape="marker" color="success" pulsing />
-          <Badge shape="marker" color="warning" pulsing />
-          <Badge shape="marker" color="danger" pulsing />
-          <Badge shape="marker" color="neutral" pulsing />
+          <Badge pulsing color="primary" shape="marker" />
+          <Badge pulsing color="success" shape="marker" />
+          <Badge pulsing color="warning" shape="marker" />
+          <Badge pulsing color="danger" shape="marker" />
+          <Badge pulsing color="neutral" shape="marker" />
         </Rhythm>
       </Flex>
     </Flex>
@@ -97,7 +97,7 @@ import { Badge, ColoredBadge, StyledBadge } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" alignItems="center">
+    <Flex alignItems="center" direction="row">
       <div
         style={{
           position: 'relative',
@@ -108,51 +108,51 @@ import { Badge, ColoredBadge, StyledBadge } from '../index';
           marginRight: 40,
         }}
       >
-        <Badge position="top-left" shape="count" color="primary">
+        <Badge color="primary" position="top-left" shape="count">
           0
         </Badge>
-        <Badge position="top-right" shape="count" color="success">
+        <Badge color="success" position="top-right" shape="count">
           99
         </Badge>
-        <Badge position="bottom-left" shape="count" color="warning">
+        <Badge color="warning" position="bottom-left" shape="count">
           99+
         </Badge>
-        <Badge position="bottom-right" shape="count" color="danger">
+        <Badge color="danger" position="bottom-right" shape="count">
           10000
         </Badge>
       </div>
-      <Flex direction="row" alignItems="center" wrap>
+      <Flex wrap alignItems="center" direction="row">
         <Rhythm m={2}>
-          <Badge shape="count" color="primary">
+          <Badge color="primary" shape="count">
             99
           </Badge>
-          <Badge shape="count" color="success">
+          <Badge color="success" shape="count">
             99
           </Badge>
-          <Badge shape="count" color="warning">
+          <Badge color="warning" shape="count">
             99
           </Badge>
-          <Badge shape="count" color="danger">
+          <Badge color="danger" shape="count">
             99
           </Badge>
-          <Badge shape="count" color="neutral">
+          <Badge color="neutral" shape="count">
             99
           </Badge>
         </Rhythm>
         <Rhythm m={2}>
-          <Badge shape="count" color="primary" pulsing>
+          <Badge pulsing color="primary" shape="count">
             99
           </Badge>
-          <Badge shape="count" color="success" pulsing>
+          <Badge pulsing color="success" shape="count">
             99
           </Badge>
-          <Badge shape="count" color="warning" pulsing>
+          <Badge pulsing color="warning" shape="count">
             99
           </Badge>
-          <Badge shape="count" color="danger" pulsing>
+          <Badge pulsing color="danger" shape="count">
             99
           </Badge>
-          <Badge shape="count" color="neutral" pulsing>
+          <Badge pulsing color="neutral" shape="count">
             99
           </Badge>
         </Rhythm>
@@ -165,7 +165,7 @@ import { Badge, ColoredBadge, StyledBadge } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" alignItems="center">
+    <Flex alignItems="center" direction="row">
       <div
         style={{
           position: 'relative',
@@ -176,51 +176,51 @@ import { Badge, ColoredBadge, StyledBadge } from '../index';
           marginRight: 60,
         }}
       >
-        <Badge position="top-left" shape="label" color="primary">
+        <Badge color="primary" position="top-left" shape="label">
           Alpha
         </Badge>
-        <Badge position="top-right" shape="label" color="success">
+        <Badge color="success" position="top-right" shape="label">
           Beta
         </Badge>
-        <Badge position="bottom-left" shape="label" color="warning">
+        <Badge color="warning" position="bottom-left" shape="label">
           Gamma
         </Badge>
-        <Badge position="bottom-right" shape="label" color="danger">
+        <Badge color="danger" position="bottom-right" shape="label">
           Hello world
         </Badge>
       </div>
-      <Flex direction="row" alignItems="center" wrap>
+      <Flex wrap alignItems="center" direction="row">
         <Rhythm m={2}>
-          <Badge shape="label" color="primary">
+          <Badge color="primary" shape="label">
             Beta
           </Badge>
-          <Badge shape="label" color="success">
+          <Badge color="success" shape="label">
             Beta
           </Badge>
-          <Badge shape="label" color="warning">
+          <Badge color="warning" shape="label">
             Beta
           </Badge>
-          <Badge shape="label" color="danger">
+          <Badge color="danger" shape="label">
             Beta
           </Badge>
-          <Badge shape="label" color="neutral">
+          <Badge color="neutral" shape="label">
             Beta
           </Badge>
         </Rhythm>
         <Rhythm m={2}>
-          <Badge shape="label" color="primary" pulsing>
+          <Badge pulsing color="primary" shape="label">
             Beta
           </Badge>
-          <Badge shape="label" color="success" pulsing>
+          <Badge pulsing color="success" shape="label">
             Beta
           </Badge>
-          <Badge shape="label" color="warning" pulsing>
+          <Badge pulsing color="warning" shape="label">
             Beta
           </Badge>
-          <Badge shape="label" color="danger" pulsing>
+          <Badge pulsing color="danger" shape="label">
             Beta
           </Badge>
-          <Badge shape="label" color="neutral" pulsing>
+          <Badge pulsing color="neutral" shape="label">
             Beta
           </Badge>
         </Rhythm>
@@ -235,7 +235,7 @@ import { Badge, ColoredBadge, StyledBadge } from '../index';
 
 <Playground>
   <ThemeWrapper contrast>
-    <Flex direction="row" alignItems="center">
+    <Flex alignItems="center" direction="row">
       <div
         style={{
           position: 'relative',
@@ -257,27 +257,27 @@ import { Badge, ColoredBadge, StyledBadge } from '../index';
           Beta
         </Badge>
       </div>
-      <Flex direction="row" alignItems="center" wrap>
-        <Flex direction="row" alignItems="center">
+      <Flex wrap alignItems="center" direction="row">
+        <Flex alignItems="center" direction="row">
           <Rhythm m={2}>
-            <Badge shape="point" contrast />
-            <Badge shape="marker" contrast />
-            <Badge shape="count" contrast>
+            <Badge contrast shape="point" />
+            <Badge contrast shape="marker" />
+            <Badge contrast shape="count">
               99
             </Badge>
-            <Badge shape="label" contrast>
+            <Badge contrast shape="label">
               Beta
             </Badge>
           </Rhythm>
         </Flex>
-        <Flex direction="row" alignItems="center">
+        <Flex alignItems="center" direction="row">
           <Rhythm m={2}>
-            <Badge shape="point" contrast pulsing />
-            <Badge shape="marker" contrast pulsing />
-            <Badge shape="count" contrast pulsing>
+            <Badge contrast pulsing shape="point" />
+            <Badge contrast pulsing shape="marker" />
+            <Badge contrast pulsing shape="count">
               99
             </Badge>
-            <Badge shape="label" contrast pulsing>
+            <Badge contrast pulsing shape="label">
               Beta
             </Badge>
           </Rhythm>
@@ -294,32 +294,32 @@ import { Badge, ColoredBadge, StyledBadge } from '../index';
     {({ themeId }) => (
       <Flex wrap>
         <ColorLooper
-          themeId={themeId}
           render={({ id }) => (
-            <Rhythm mx={2} key={`P${id}`}>
-              <Flex direction="column" alignItems="center" justifyContent="center">
+            <Rhythm key={id} mx={2}>
+              <Flex alignItems="center" direction="column" justifyContent="center">
                 <Rhythm my={2}>
-                  <ColoredBadge themeId={themeId} shape="point" colorId={id} />
-                  <ColoredBadge themeId={themeId} shape="marker" colorId={id} />
-                  <ColoredBadge themeId={themeId} shape="count" colorId={id}>
+                  <ColoredBadge colorId={id} shape="point" themeId={themeId} />
+                  <ColoredBadge colorId={id} shape="marker" themeId={themeId} />
+                  <ColoredBadge colorId={id} shape="count" themeId={themeId}>
                     {id.replace(/[^0-9]/g, '')}
                   </ColoredBadge>
-                  <ColoredBadge themeId={themeId} shape="label" colorId={id}>
+                  <ColoredBadge colorId={id} shape="label" themeId={themeId}>
                     {id}
                   </ColoredBadge>
                   <br />
-                  <ColoredBadge themeId={themeId} shape="point" colorId={id} pulsing />
-                  <ColoredBadge themeId={themeId} shape="marker" colorId={id} pulsing />
-                  <ColoredBadge themeId={themeId} shape="count" colorId={id} pulsing>
+                  <ColoredBadge pulsing colorId={id} shape="point" themeId={themeId} />
+                  <ColoredBadge pulsing colorId={id} shape="marker" themeId={themeId} />
+                  <ColoredBadge pulsing colorId={id} shape="count" themeId={themeId}>
                     {id.replace(/[^0-9]/g, '')}
                   </ColoredBadge>
-                  <ColoredBadge themeId={themeId} shape="label" colorId={id} pulsing>
+                  <ColoredBadge pulsing colorId={id} shape="label" themeId={themeId}>
                     {id}
                   </ColoredBadge>
                 </Rhythm>
               </Flex>
             </Rhythm>
           )}
+          themeId={themeId}
         />
       </Flex>
     )}
@@ -330,7 +330,7 @@ import { Badge, ColoredBadge, StyledBadge } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" alignItems="center">
+    <Flex alignItems="center" direction="row">
       <div
         style={{
           position: 'relative',
@@ -342,44 +342,44 @@ import { Badge, ColoredBadge, StyledBadge } from '../index';
           flex: 'none',
         }}
       >
-        <StyledBadge position="top-left" shape="marker" backgroundColor="#556270" textColor="#fff" />
-        <StyledBadge position="top-right" shape="count" backgroundColor="#556270" textColor="#fff">
+        <StyledBadge backgroundColor="#556270" position="top-left" shape="marker" textColor="#fff" />
+        <StyledBadge backgroundColor="#556270" position="top-right" shape="count" textColor="#fff">
           0
         </StyledBadge>
-        <StyledBadge position="bottom-left" shape="label" backgroundColor="#556270" textColor="#fff">
+        <StyledBadge backgroundColor="#556270" position="bottom-left" shape="label" textColor="#fff">
           Beta
         </StyledBadge>
         <StyledBadge
+          backgroundColor="#556270"
           position="bottom-right"
           shape="label"
-          backgroundColor="#556270"
-          textColor="#fff"
           style={{ fontSize: '16px' }}
+          textColor="#fff"
         >
           Beta
         </StyledBadge>
       </div>
-      <Flex direction="row" alignItems="center" wrap>
-        <Flex direction="row" alignItems="center">
+      <Flex wrap alignItems="center" direction="row">
+        <Flex alignItems="center" direction="row">
           <Rhythm m={2}>
-            <StyledBadge shape="point" backgroundColor="#556270" textColor="#fff" />
-            <StyledBadge shape="marker" backgroundColor="#556270" textColor="#fff" />
-            <StyledBadge shape="count" backgroundColor="#556270" textColor="#fff">
+            <StyledBadge backgroundColor="#556270" shape="point" textColor="#fff" />
+            <StyledBadge backgroundColor="#556270" shape="marker" textColor="#fff" />
+            <StyledBadge backgroundColor="#556270" shape="count" textColor="#fff">
               99
             </StyledBadge>
-            <StyledBadge shape="label" backgroundColor="#556270" textColor="#fff">
+            <StyledBadge backgroundColor="#556270" shape="label" textColor="#fff">
               Beta
             </StyledBadge>
           </Rhythm>
         </Flex>
-        <Flex direction="row" alignItems="center">
+        <Flex alignItems="center" direction="row">
           <Rhythm m={2}>
-            <StyledBadge shape="point" backgroundColor="#556270" textColor="#fff" pulsing />
-            <StyledBadge shape="marker" backgroundColor="#556270" textColor="#fff" pulsing />
-            <StyledBadge shape="count" backgroundColor="#556270" textColor="#fff" pulsing>
+            <StyledBadge pulsing backgroundColor="#556270" shape="point" textColor="#fff" />
+            <StyledBadge pulsing backgroundColor="#556270" shape="marker" textColor="#fff" />
+            <StyledBadge pulsing backgroundColor="#556270" shape="count" textColor="#fff">
               99
             </StyledBadge>
-            <StyledBadge shape="label" backgroundColor="#556270" textColor="#fff" pulsing>
+            <StyledBadge pulsing backgroundColor="#556270" shape="label" textColor="#fff">
               Beta
             </StyledBadge>
           </Rhythm>

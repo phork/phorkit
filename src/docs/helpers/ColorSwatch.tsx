@@ -22,12 +22,13 @@ const renderColorSwatches = (
   props: Omit<ColorSwatchGroupProps, 'colors'>,
   key?: number | string,
 ): React.ReactElement => {
-  return <ColorSwatchGroup key={key} colors={colors} {...props} />;
+  return <ColorSwatchGroup colors={colors} key={key} {...props} />;
 };
 
 type ColorGridVector = {
   colors: Color[];
   label?: string;
+  id: string;
 };
 
 const renderColorGrid = (
@@ -37,7 +38,7 @@ const renderColorGrid = (
   const direction = props.direction === 'column' ? 'row' : 'column';
   return (
     <ColorGrid direction={direction}>
-      {colorGrid.map(({ colors, label }, i) => renderColorSwatches(colors, { ...props, label, labelHeight: 20 }, i))}
+      {colorGrid.map(({ colors, label, id }) => renderColorSwatches(colors, { ...props, label, labelHeight: 20 }, id))}
     </ColorGrid>
   );
 };
@@ -73,6 +74,7 @@ export function ColorSwatch({ group, themeId, variant, ...props }: ColorSwatchPr
               mapColors(root, shade, shade ? { children: shade } : undefined),
             ),
             label: root.replace('color-', ''),
+            id: root,
           })),
         props,
       );

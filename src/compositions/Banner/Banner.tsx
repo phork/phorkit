@@ -76,8 +76,8 @@ export function Banner({
       color={level === 'info' ? 'accent-primary' : level}
       container="banner"
       role="banner"
-      themeId={themeId}
       style={style}
+      themeId={themeId}
     >
       <Flex flexible alignItems="center" style={{ position: 'relative' }}>
         {children}
@@ -86,16 +86,16 @@ export function Banner({
           <Position location="right-center" variant="outside">
             <Rhythm ml={-1} p={2}>
               <IconButton
+                noHeight
                 aria-label={closeLabel}
                 color="neutral"
                 contrast={isColoredBanner}
-                noHeight
                 onClick={handleClose}
                 shape="square"
                 themeId={themeId}
                 weight="ghost"
               >
-                <TimesIcon title={closeLabel} scale="xsmall" />
+                <TimesIcon scale="xsmall" title={closeLabel} />
               </IconButton>
             </Rhythm>
           </Position>

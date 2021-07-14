@@ -63,10 +63,10 @@ export function InlinePopover({
         return (
           <InlinePopoverContent
             className={contentClassName}
+            focusRef={focusRef}
             focusable={focusable}
             offset={offset}
             position={position}
-            focusRef={focusRef}
             style={contentStyle}
             visible={visible}
             {...contentProps}
@@ -88,8 +88,8 @@ export function InlinePopover({
       }}
       style={style}
       toggler={toggler}
-      withoutTogglerFocusStyle={withoutTogglerFocusStyle}
       withPopoverTogglerProps={withPopoverTogglerProps}
+      withoutTogglerFocusStyle={withoutTogglerFocusStyle}
     />
   );
 }

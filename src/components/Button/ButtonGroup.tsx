@@ -3,8 +3,8 @@ import React, { useCallback } from 'react';
 import { MergeElementProps, Orientation, ThemeProps } from '../../types';
 import { useThemeId } from '../../hooks/useThemeId';
 import { renderFromProp } from '../../utils';
-import { Button, ButtonProps } from './Button';
 import styles from './styles/ButtonGroup.module.css';
+import { Button, ButtonProps } from './Button';
 import { ButtonColor, ButtonSize, ButtonWeight } from './types';
 
 export type ButtonGroupSpacing = 'divided' | 'joined' | 'cozy' | 'comfy';
@@ -121,6 +121,7 @@ export function ButtonGroup({
                 themeId={themeId}
                 weight={selected && selectedWeight ? selectedWeight : weight}
                 {...button}
+                data-value={id}
                 key={id}
                 size={size}
                 style={
@@ -134,7 +135,6 @@ export function ButtonGroup({
                       }
                     : { ...style, ...(selected ? selectedStyle : {}) }
                 }
-                data-value={id}
               >
                 {label}
               </Button>

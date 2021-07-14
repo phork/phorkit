@@ -5,9 +5,9 @@ import { useComponentId } from '../../hooks/useComponentId';
 import { useThemeId } from '../../hooks/useThemeId';
 import { FormboxSize, FormboxVariant } from '../../components/Form/Formbox/types';
 import { useListRegistry } from '../../components/ListRegistry';
+import styles from './styles/TextboxGroup.module.css';
 import { TextboxGroupContainer } from './TextboxGroupContainer';
 import { TextboxGroupInput } from './TextboxGroupInput';
-import styles from './styles/TextboxGroup.module.css';
 import { useTextboxGroup, UseTextboxGroupOptions } from './useTextboxGroup';
 
 export interface LocalTextboxGroup2FAProps extends ThemeProps {

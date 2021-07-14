@@ -70,7 +70,6 @@ export function ToggleBase(
 
   return (
     <label
-      htmlFor={generateComponentId(id)}
       className={cx(
         styles.toggle,
         full && styles['toggle--full'],
@@ -84,6 +83,7 @@ export function ToggleBase(
         focused && styles['is-focused'],
         className,
       )}
+      htmlFor={generateComponentId(id)}
       onFocus={forwardFocus}
       tabIndex={focused || disabled ? -1 : 0}
       {...props}
@@ -111,9 +111,9 @@ export function ToggleBase(
           contrast={contrast}
           disabled={disabled}
           focused={focused}
+          muted={!checked}
           strength="standard"
           themeId={themeId}
-          muted={!checked}
         >
           {children}
         </Label>

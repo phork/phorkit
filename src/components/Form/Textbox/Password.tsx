@@ -3,8 +3,8 @@ import { MergeProps, SvgIconProps } from '../../../types';
 import { useTranslations } from '../../../hooks/useTranslations';
 import { EyeIcon } from '../../../icons/EyeIcon';
 import { EyeSlashIcon } from '../../../icons/EyeSlashIcon';
-import { Textbox, TextboxProps, TextboxTranslations, textboxTranslations } from './Textbox';
 import styles from './styles/Textbox.module.css';
+import { Textbox, TextboxProps, TextboxTranslations, textboxTranslations } from './Textbox';
 
 const iconSizes = {
   medium: 16,
@@ -76,7 +76,7 @@ function PasswordBase(
     label: string;
     onClick: React.MouseEventHandler;
   }) => (
-    <button aria-label={label} className={styles.textboxButton} type="button" onClick={onClick}>
+    <button aria-label={label} className={styles.textboxButton} onClick={onClick} type="button">
       <Icon size={iconSize} title={label} />
     </button>
   );
@@ -115,10 +115,10 @@ function PasswordBase(
 
   return (
     <Textbox
-      ref={forwardedRef}
+      iconAfterActionable
       disabled={disabled}
       iconAfter={!disabled ? renderIcon() : undefined}
-      iconAfterActionable
+      ref={forwardedRef}
       size={size}
       type={type}
       {...props}

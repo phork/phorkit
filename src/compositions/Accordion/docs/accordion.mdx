@@ -13,7 +13,7 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { AccordionList } from '../AccordionList';
 import { Accordion, AccordionContent, AccordionLabel, AccordionContainer } from '../index';
 
-<PageTitle title="Accordion" src="compositions/Accordion" />
+<PageTitle src="compositions/Accordion" title="Accordion" />
 
 Keyboard navigation is available for this component. Navigate with `Up`, `Down`, `Left`, `Right`, `Home` or `End`. Select with `Space` or `Enter`.
 
@@ -22,7 +22,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 <Playground>
   <ThemeWrapper>
     <Accordion
-      onSelect={(event, id) => console.log(id)}
       items={[
         {
           id: 'first',
@@ -56,11 +55,12 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
           label: 'Fourth',
           content: (
             <Rhythm px={5} py={2} wrapper="div">
-              <Looper start={0} end={40} render={i => <span>Fourth panel </span>} />
+              <Looper end={40} render={i => <span>Fourth panel </span>} start={0} />
             </Rhythm>
           ),
         },
       ]}
+      onSelect={(event, id) => console.log(id)}
     />
   </ThemeWrapper>
 </Playground>
@@ -70,8 +70,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 <Playground>
   <ThemeWrapper>
     <Accordion
-      maxSelect={-1}
-      onSelect={(event, id) => console.log(id)}
       items={[
         {
           id: 'first',
@@ -105,11 +103,13 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
           label: 'Fourth',
           content: (
             <Rhythm px={5} py={2} wrapper="div">
-              <Looper start={0} end={40} render={i => <span>Fourth panel </span>} />
+              <Looper end={40} render={i => <span>Fourth panel </span>} start={0} />
             </Rhythm>
           ),
         },
       ]}
+      maxSelect={-1}
+      onSelect={(event, id) => console.log(id)}
     />
   </ThemeWrapper>
 </Playground>
@@ -120,13 +120,12 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   <ThemeWrapper>
     <Accordion
       horizontal
-      onSelect={(event, id) => console.log(id)}
       items={[
         {
           id: 'first',
           label: '1',
           content: (
-            <Rhythm my={2} mx={4}>
+            <Rhythm mx={4} my={2}>
               First
             </Rhythm>
           ),
@@ -135,7 +134,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
           id: 'second',
           label: '2',
           content: (
-            <Rhythm my={2} mx={4}>
+            <Rhythm mx={4} my={2}>
               Second
             </Rhythm>
           ),
@@ -144,7 +143,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
           id: 'third',
           label: '3',
           content: (
-            <Rhythm my={2} mx={4}>
+            <Rhythm mx={4} my={2}>
               Third
             </Rhythm>
           ),
@@ -154,12 +153,13 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
           id: 'fourth',
           label: '4',
           content: (
-            <Rhythm my={2} mx={4}>
+            <Rhythm mx={4} my={2}>
               Fourth
             </Rhythm>
           ),
         },
       ]}
+      onSelect={(event, id) => console.log(id)}
     />
   </ThemeWrapper>
 </Playground>
@@ -172,7 +172,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   <ThemeWrapper>
     <Accordion
       initialSelected={['second']}
-      onSelect={(event, id) => console.log(id)}
       items={[
         {
           id: 'first',
@@ -196,6 +195,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
           content: ({ selected }) => <Rhythm px={5} py={2}>{`Fourth panel${selected ? ' is selected' : ''}`}</Rhythm>,
         },
       ]}
+      onSelect={(event, id) => console.log(id)}
     />
   </ThemeWrapper>
 </Playground>
@@ -206,7 +206,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   <ThemeWrapper contrast>
     <Accordion
       contrast
-      onSelect={(event, id) => console.log(id)}
       items={[
         {
           id: 'first',
@@ -246,6 +245,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
           ),
         },
       ]}
+      onSelect={(event, id) => console.log(id)}
     />
   </ThemeWrapper>
 </Playground>
@@ -255,8 +255,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 <Playground>
   <ThemeWrapper>
     <Accordion
-      minSelect={0}
-      onSelect={(event, id) => console.log(id)}
       items={[
         {
           id: 'first',
@@ -296,6 +294,8 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
           ),
         },
       ]}
+      minSelect={0}
+      onSelect={(event, id) => console.log(id)}
     />
   </ThemeWrapper>
 </Playground>

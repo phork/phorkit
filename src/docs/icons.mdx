@@ -16,9 +16,9 @@ import { ThemeWrapper } from './helpers/ThemeWrapper';
       <Flex wrap>
         <IconLooper>
           {(name, Icon) => (
-            <Rhythm m={2} px={4} py={2} key={name}>
+            <Rhythm key={name} m={2} px={4} py={2}>
               <Paper bordered color="secondary">
-                <Typography weight="light" size="l" variants={['letter-spacing-comfy']} volume="quiet">
+                <Typography size="l" variants={['letter-spacing-comfy']} volume="quiet" weight="light">
                   {name}
                 </Typography>
                 <Flex alignItems="center">

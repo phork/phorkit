@@ -8,8 +8,8 @@ import {
   UncontrolledInteractiveList,
   UncontrolledInteractiveListProps,
 } from '../InteractiveList/UncontrolledInteractiveList';
-import { DropdownEmpty, DropdownEmptyProps } from './DropdownEmpty';
 import styles from './styles/Dropdown.module.css';
+import { DropdownEmpty, DropdownEmptyProps } from './DropdownEmpty';
 import {
   DropdownInputVariant,
   DropdownLayout,
@@ -179,34 +179,34 @@ function DropdownContentBase(
     >
       <div className={cx(styles.dropdownOptions, isEmpty && styles['is-empty'])}>
         <UncontrolledInteractiveList
+          hideFocusOutline
+          mimicSelectOnFocus
           allowReselect={allowReselect}
           color={listColor}
           contrast={contrast}
           disabled={disabled}
-          focused={focused === true ? true : undefined}
-          hideFocusOutline
           // mimicSelectOnFocus is necessary so that keyboard navigation doesn't keep selecting items but it looks like a regular dropdown
-          mimicSelectOnFocus
+          focused={focused === true ? true : undefined}
           maxSelect={maxSelect}
           minSelect={minSelect}
-          onItemFocus={onItemFocus}
-          onKeyDown={onListKeyDown}
           onBlur={onListBlur}
           onFocus={onListFocus}
+          onItemFocus={onItemFocus}
+          onKeyDown={onListKeyDown}
           onSelect={onSelect}
           onSelectionChange={onSelectionChange}
           onUnselect={onUnselect}
           parentRef={containerRef}
           reducer={reducer}
-          rounded={layout === 'contained' && inputVariant && ['underline', 'filled'].includes(inputVariant)}
           ref={listRef}
+          rounded={layout === 'contained' && inputVariant && ['underline', 'filled'].includes(inputVariant)}
           size={listSize}
           tabIndex={isDropdownVisible ? 0 : -1}
           unthemed={unthemed}
           variant={listVariant}
         >
           {!hideNoContent && (
-            <DropdownEmpty contrast={contrast} themeId={themeId} filter={filter} layout={layout}>
+            <DropdownEmpty contrast={contrast} filter={filter} layout={layout} themeId={themeId}>
               {emptyNotification}
             </DropdownEmpty>
           )}

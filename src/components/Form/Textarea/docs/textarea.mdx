@@ -6,14 +6,14 @@ route: /components/FormTextarea
 
 import { Playground, Props } from 'docz';
 import { Rhythm } from 'components/Rhythm';
-import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
 import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
 import { Textarea, NotifiedTextarea } from '../index';
 import { variants, sizes } from './helpers/variants';
 
-<PageTitle title="Textarea" src="components/Form/Textarea" />
+<PageTitle src="components/Form/Textarea" title="Textarea" />
 
 ## Basic textarea
 
@@ -23,8 +23,8 @@ import { variants, sizes } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo type="textarea" property="value" initialValue="Hello world" unwrapped>
-            <Textarea variant={variant} onChange={(event, value) => console.log(value)} />
+          <FormComponentDemo unwrapped initialValue="Hello world" property="value" type="textarea">
+            <Textarea onChange={(event, value) => console.log(value)} variant={variant} />
           </FormComponentDemo>
         </Rhythm>
       )}
@@ -40,8 +40,8 @@ import { variants, sizes } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo type="textarea" property="value" initialValue="Hello world" unwrapped>
-            <Textarea variant={variant} rows={2} cols={12} onChange={(event, value) => console.log(value)} />
+          <FormComponentDemo unwrapped initialValue="Hello world" property="value" type="textarea">
+            <Textarea cols={12} onChange={(event, value) => console.log(value)} rows={2} variant={variant} />
           </FormComponentDemo>
         </Rhythm>
       )}
@@ -57,8 +57,8 @@ import { variants, sizes } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo type="textarea" property="value" initialValue="Hello world" unwrapped>
-            <Textarea variant={variant} maxLength={12} onChange={(event, value) => console.log(value)} />
+          <FormComponentDemo unwrapped initialValue="Hello world" property="value" type="textarea">
+            <Textarea maxLength={12} onChange={(event, value) => console.log(value)} variant={variant} />
           </FormComponentDemo>
         </Rhythm>
       )}
@@ -74,8 +74,8 @@ import { variants, sizes } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo type="textarea" property="value" initialValue="Hello world" unwrapped>
-            <Textarea variant={variant} label="Super fantastic label" onChange={(event, value) => console.log(value)} />
+          <FormComponentDemo unwrapped initialValue="Hello world" property="value" type="textarea">
+            <Textarea label="Super fantastic label" onChange={(event, value) => console.log(value)} variant={variant} />
           </FormComponentDemo>
         </Rhythm>
       )}
@@ -91,11 +91,11 @@ import { variants, sizes } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo type="textarea" property="value" unwrapped>
+          <FormComponentDemo unwrapped property="value" type="textarea">
             <Textarea
+              transitional
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
-              transitional
               variant={variant}
             />
           </FormComponentDemo>
@@ -113,7 +113,7 @@ import { variants, sizes } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo type="textarea" property="value" unwrapped>
+          <FormComponentDemo unwrapped property="value" type="textarea">
             <Textarea
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -135,7 +135,7 @@ import { variants, sizes } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo type="textarea" property="value" initialValue="Hello world" unwrapped>
+          <FormComponentDemo unwrapped initialValue="Hello world" property="value" type="textarea">
             <Textarea
               disabled
               label="Super fantastic label"
@@ -157,11 +157,11 @@ import { variants, sizes } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo type="textarea" property="value" initialValue="Hello world" unwrapped>
+          <FormComponentDemo unwrapped initialValue="Hello world" property="value" type="textarea">
             <Textarea
+              readOnly
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
-              readOnly
               variant={variant}
             />
           </FormComponentDemo>
@@ -179,11 +179,11 @@ import { variants, sizes } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo type="textarea" property="value" initialValue="Hello world" unwrapped>
+          <FormComponentDemo unwrapped initialValue="Hello world" property="value" type="textarea">
             <Textarea
+              transitional
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
-              transitional
               validity="danger"
               variant={variant}
             />
@@ -202,11 +202,11 @@ import { variants, sizes } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo type="textarea" property="value" initialValue="Hello world" unwrapped>
+          <FormComponentDemo unwrapped initialValue="Hello world" property="value" type="textarea">
             <Textarea
+              transitional
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
-              transitional
               validity="warning"
               variant={variant}
             />
@@ -225,11 +225,11 @@ import { variants, sizes } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo type="textarea" property="value" initialValue="Hello world" unwrapped>
+          <FormComponentDemo unwrapped initialValue="Hello world" property="value" type="textarea">
             <Textarea
+              transitional
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
-              transitional
               validity="success"
               variant={variant}
             />
@@ -248,12 +248,12 @@ import { variants, sizes } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo type="textarea" property="value" initialValue="Hello world" contrast unwrapped>
+          <FormComponentDemo contrast unwrapped initialValue="Hello world" property="value" type="textarea">
             <Textarea
               contrast
+              transitional
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
-              transitional
               variant={variant}
             />
           </FormComponentDemo>
@@ -274,7 +274,7 @@ import { variants, sizes } from './helpers/variants';
           list={['success', 'danger', 'warning', 'primary', 'neutral']}
           render={level => (
             <Rhythm py={3}>
-              <FormComponentDemo type="textarea" property="value" initialValue="Hello world" unwrapped>
+              <FormComponentDemo unwrapped initialValue="Hello world" property="value" type="textarea">
                 <NotifiedTextarea
                   level={level}
                   notification={`This is an example ${level} notification.`}
@@ -297,17 +297,17 @@ import { variants, sizes } from './helpers/variants';
     <Looper
       list={sizes}
       render={size => (
-        <Rhythm my={3} grouped>
+        <Rhythm grouped my={3}>
           <Looper
             list={variants}
             render={variant => (
-              <Rhythm py={3}>
-                <FormComponentDemo type="textarea" property="value" key={variant} unwrapped>
+              <Rhythm key={variant} py={3}>
+                <FormComponentDemo unwrapped property="value" type="textarea">
                   <Textarea
+                    transitional
                     label={`Size ${size}`}
                     onChange={(event, value) => console.log(value)}
                     size={size}
-                    transitional
                     variant={variant}
                   />
                 </FormComponentDemo>

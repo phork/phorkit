@@ -2,8 +2,8 @@ import { cx } from '@emotion/css';
 import React from 'react';
 import { ThemeProps } from '../../types';
 import { useThemeId } from '../../hooks/useThemeId';
-import { Tag, TagElementType, TagShape, TagSize, TagProps } from './Tag';
 import styles from './styles/Tag.module.css';
+import { Tag, TagElementType, TagShape, TagSize, TagProps } from './Tag';
 
 export interface TagGroupProps<T extends TagElementType = 'div'>
   extends React.HTMLAttributes<HTMLDivElement>,
@@ -35,12 +35,12 @@ export function TagGroup<T extends TagElementType = 'div'>({
       {tags &&
         tags.map(tag => (
           <Tag<T>
+            actionable={actionable}
             contrast={contrast}
             key={tag.id}
             shape={shape}
             size={size}
             themeId={themeId}
-            actionable={actionable}
             {...tag}
           />
         ))}

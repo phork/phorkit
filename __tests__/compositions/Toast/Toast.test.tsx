@@ -5,7 +5,7 @@ import { Toast } from 'lib';
 describe('<Toast />', () => {
   it('should render a basic toast with a title', () => {
     const { getByText } = render(
-      <Toast title="Hello world" level="success" immediate>
+      <Toast immediate level="success" title="Hello world">
         This is a success toast.
       </Toast>,
     );

@@ -10,7 +10,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Card, StyledCard } from '../index';
 
-<PageTitle title="Card" src="components/Card" />
+<PageTitle src="components/Card" title="Card" />
 
 ## Inactive card
 
@@ -56,7 +56,7 @@ import { Card, StyledCard } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Card raised hoverable>
+    <Card hoverable raised>
       <Rhythm p={3}>Hello world</Rhythm>
     </Card>
   </ThemeWrapper>
@@ -67,19 +67,19 @@ import { Card, StyledCard } from '../index';
 <Playground>
   <ThemeWrapper>
     <Rhythm my={3}>
-      <Card raised={0} hoverable>
+      <Card hoverable raised={0}>
         <Rhythm p={3}>Hello world (0)</Rhythm>
       </Card>
-      <Card raised={10} hoverable>
+      <Card hoverable raised={10}>
         <Rhythm p={3}>Hello world (10)</Rhythm>
       </Card>
-      <Card raised={20} hoverable>
+      <Card hoverable raised={20}>
         <Rhythm p={3}>Hello world (20)</Rhythm>
       </Card>
-      <Card raised={100} hoverable>
+      <Card hoverable raised={100}>
         <Rhythm p={3}>Hello world (100)</Rhythm>
       </Card>
-      <Card raised={200} hoverable>
+      <Card hoverable raised={200}>
         <Rhythm p={3}>Hello world (200)</Rhythm>
       </Card>
     </Rhythm>
@@ -101,7 +101,7 @@ import { Card, StyledCard } from '../index';
 <Playground>
   <ThemeWrapper>
     <div style={{ width: '300px', height: '200px' }}>
-      <Card hoverable raised magnify full>
+      <Card full hoverable magnify raised>
         <Rhythm p={3}>Hello world</Rhythm>
       </Card>
     </div>
@@ -114,7 +114,7 @@ import { Card, StyledCard } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <StyledCard borderColor="#556270" hoveredBorderColor="#393945" bordered hoverable>
+    <StyledCard bordered hoverable borderColor="#556270" hoveredBorderColor="#393945">
       <Rhythm p={3}>Hello world</Rhythm>
     </StyledCard>
   </ThemeWrapper>

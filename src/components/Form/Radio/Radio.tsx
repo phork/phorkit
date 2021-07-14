@@ -100,7 +100,6 @@ export function RadioBase<V extends RadioValue = string>(
 
   return (
     <label
-      htmlFor={generateComponentId()}
       className={cx(
         styles.radio,
         sizeStyles[`radio--${size}`],
@@ -118,6 +117,7 @@ export function RadioBase<V extends RadioValue = string>(
         validity && styles[`is-${validity}`],
         className,
       )}
+      htmlFor={generateComponentId()}
       onFocus={forwardFocus}
       tabIndex={focused || disabled ? -1 : 0}
       {...labelProps}
@@ -146,9 +146,9 @@ export function RadioBase<V extends RadioValue = string>(
           contrast={contrast}
           disabled={disabled}
           focused={focused}
+          muted={!checked}
           strength="standard"
           themeId={themeId}
-          muted={!checked}
         >
           {children}
         </Label>

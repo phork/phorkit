@@ -11,7 +11,7 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Paper } from '../Paper';
 import { ColoredPaper, StyledPaper } from '../index';
 
-<PageTitle title="Paper" src="components/Paper" />
+<PageTitle src="components/Paper" title="Paper" />
 
 ## Standard paper
 
@@ -19,7 +19,7 @@ import { ColoredPaper, StyledPaper } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Paper bordered container="panel" color="extreme">
+    <Paper bordered color="extreme" container="panel">
       Hello world
     </Paper>
   </ThemeWrapper>
@@ -29,7 +29,7 @@ import { ColoredPaper, StyledPaper } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Paper bordered container="panel" color="primary">
+    <Paper bordered color="primary" container="panel">
       Hello world
     </Paper>
   </ThemeWrapper>
@@ -39,7 +39,7 @@ import { ColoredPaper, StyledPaper } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Paper bordered container="panel" color="secondary">
+    <Paper bordered color="secondary" container="panel">
       Hello world
     </Paper>
   </ThemeWrapper>
@@ -49,7 +49,7 @@ import { ColoredPaper, StyledPaper } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Paper bordered container="panel" color="tertiary">
+    <Paper bordered color="tertiary" container="panel">
       Hello world
     </Paper>
   </ThemeWrapper>
@@ -59,7 +59,7 @@ import { ColoredPaper, StyledPaper } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Paper bordered container="panel" color="transparent">
+    <Paper bordered color="transparent" container="panel">
       Hello world
     </Paper>
   </ThemeWrapper>
@@ -69,7 +69,7 @@ import { ColoredPaper, StyledPaper } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Paper bordered container="panel" color="accent-primary">
+    <Paper bordered color="accent-primary" container="panel">
       Hello world
     </Paper>
   </ThemeWrapper>
@@ -79,7 +79,7 @@ import { ColoredPaper, StyledPaper } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Paper bordered container="panel" color="contrast">
+    <Paper bordered color="contrast" container="panel">
       Hello world
     </Paper>
   </ThemeWrapper>
@@ -91,7 +91,7 @@ import { ColoredPaper, StyledPaper } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Paper bordered container="panel" color="success">
+    <Paper bordered color="success" container="panel">
       Hello world
     </Paper>
   </ThemeWrapper>
@@ -101,7 +101,7 @@ import { ColoredPaper, StyledPaper } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Paper bordered container="panel" color="warning">
+    <Paper bordered color="warning" container="panel">
       Hello world
     </Paper>
   </ThemeWrapper>
@@ -111,7 +111,7 @@ import { ColoredPaper, StyledPaper } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Paper bordered container="panel" color="danger">
+    <Paper bordered color="danger" container="panel">
       Hello world
     </Paper>
   </ThemeWrapper>
@@ -149,7 +149,7 @@ import { ColoredPaper, StyledPaper } from '../index';
 
 <Playground>
   <ThemeWrapper style={{ position: 'relative', maxHeight: '100px', padding: 0, overflow: 'hidden' }}>
-    <Paper scrollable scrollbar="s" color="primary" style={{ height: '100px' }}>
+    <Paper scrollable color="primary" scrollbar="s" style={{ height: '100px' }}>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam sem, tincidunt nec vehicula non, auctor ac
         nulla. Aenean accumsan mi et odio tempus, ac consectetur lorem porta. Quisque fermentum porttitor laoreet. Ut
@@ -175,7 +175,7 @@ import { ColoredPaper, StyledPaper } from '../index';
 
 <Playground>
   <ThemeWrapper style={{ position: 'relative', maxHeight: '100px', padding: 0, overflow: 'hidden' }}>
-    <Paper scrollable scrollbar="xs" color="primary" style={{ height: '100px' }}>
+    <Paper scrollable color="primary" scrollbar="xs" style={{ height: '100px' }}>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam sem, tincidunt nec vehicula non, auctor ac
         nulla. Aenean accumsan mi et odio tempus, ac consectetur lorem porta. Quisque fermentum porttitor laoreet. Ut
@@ -229,13 +229,13 @@ import { ColoredPaper, StyledPaper } from '../index';
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <ColorLooper
-        themeId={themeId}
         group="primary"
         render={({ id }) => (
-          <ColoredPaper bordered key={id} colorId={id} container="panel" scrollable style={{ height: '45px' }}>
+          <ColoredPaper bordered scrollable colorId={id} container="panel" key={id} style={{ height: '45px' }}>
             <div style={{ height: '60px' }}>The quick brown fox jumped over the lazy dog {id}</div>
           </ColoredPaper>
         )}
+        themeId={themeId}
       />
     )}
   </ThemeWrapper>
@@ -246,14 +246,14 @@ import { ColoredPaper, StyledPaper } from '../index';
 <Playground>
   <ThemeWrapper>
     <StyledPaper
-      backgroundColor="#556270"
-      textColor="#fff"
-      borderColor="#000"
-      scrollbarColor="#ccc"
       bordered
-      container="panel"
       scrollable
+      backgroundColor="#556270"
+      borderColor="#000"
+      container="panel"
+      scrollbarColor="#ccc"
       style={{ height: '45px' }}
+      textColor="#fff"
     >
       <div style={{ height: '60px' }}>The quick brown fox jumped over the lazy dog</div>
     </StyledPaper>
@@ -266,7 +266,7 @@ import { ColoredPaper, StyledPaper } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Paper bordered container="page" color="primary">
+    <Paper bordered color="primary" container="page">
       Hello world
     </Paper>
   </ThemeWrapper>
@@ -276,7 +276,7 @@ import { ColoredPaper, StyledPaper } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Paper bordered container="panel" color="primary">
+    <Paper bordered color="primary" container="panel">
       Hello world
     </Paper>
   </ThemeWrapper>
@@ -286,7 +286,7 @@ import { ColoredPaper, StyledPaper } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Paper bordered container="popover" color="primary">
+    <Paper bordered color="primary" container="popover">
       Hello world
     </Paper>
   </ThemeWrapper>
@@ -296,7 +296,7 @@ import { ColoredPaper, StyledPaper } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Paper bordered container="banner" color="primary">
+    <Paper bordered color="primary" container="banner">
       Hello world
     </Paper>
   </ThemeWrapper>

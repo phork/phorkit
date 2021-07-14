@@ -20,7 +20,7 @@ import {
 } from '../index';
 import { HookDemo } from './helpers/HookDemo';
 
-<PageTitle title="EventListener" src="components/EventListener" />
+<PageTitle src="components/EventListener" title="EventListener" />
 
 ## console.log on event
 
@@ -50,19 +50,14 @@ import { HookDemo } from './helpers/HookDemo';
                   <React.Fragment>
                     <Rhythm m={2}>
                       <Textbox
+                        transitional
                         label="Logged text"
                         name="text"
                         onChange={(event, value) => setState({ ...state, text: value })}
                         onClear={(event, value) => setState({ ...state, text: '' })}
-                        transitional
                         value={state.text}
                       />
                       <CheckboxGroup
-                        layout="inline"
-                        legend="Options"
-                        name="checkboxes"
-                        onChange={(event, values) => setState({ ...state, options: values })}
-                        values={state.options}
                         checkboxes={[
                           {
                             id: 'capture',
@@ -83,6 +78,11 @@ import { HookDemo } from './helpers/HookDemo';
                             label: 'Passive',
                           },
                         ]}
+                        layout="inline"
+                        legend="Options"
+                        name="checkboxes"
+                        onChange={(event, values) => setState({ ...state, options: values })}
+                        values={state.options}
                       />
                     </Rhythm>
                     <Rhythm m={2}>

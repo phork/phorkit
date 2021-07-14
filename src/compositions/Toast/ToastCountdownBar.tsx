@@ -49,8 +49,8 @@ export function ToastCountdownBar({ created, duration, level, themeId, variant }
     >
       <div
         className={cx(styles.toastCountdownBar, themeId && styles[`toastCountdownBar--${themeId}`])}
-        ref={ref}
         data-reset={reset}
+        ref={ref}
         style={{ '--toast-countdown-bar-duration': `${duration}ms` } as React.CSSProperties}
       />
     </div>

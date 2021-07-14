@@ -25,7 +25,7 @@ import {
   ModalsFromContext,
 } from '../index';
 
-<PageTitle title="Modals" src="compositions/Modal" />
+<PageTitle src="compositions/Modal" title="Modals" />
 
 ## Modal layouts
 
@@ -33,7 +33,7 @@ import {
 
 <Playground>
   <ThemeWrapper style={{ width: 600, maxWidth: '100%' }}>
-    <Modal ariaLabel="Example modal" id="demo-basic-modal" immediate>
+    <Modal immediate ariaLabel="Example modal" id="demo-basic-modal">
       <ModalBody>This is an example modal.</ModalBody>
     </Modal>
   </ThemeWrapper>
@@ -43,7 +43,7 @@ import {
 
 <Playground>
   <ThemeWrapper style={{ width: 600, maxWidth: '100%' }}>
-    <Modal id="demo-modal-header" immediate>
+    <Modal immediate id="demo-modal-header">
       <ModalHeader modalId="demo-header" title="Hello world" />
       <ModalBody scrollable>This is a modal with a header.</ModalBody>
     </Modal>
@@ -54,7 +54,7 @@ import {
 
 <Playground>
   <ThemeWrapper style={{ width: 600, maxWidth: '100%' }}>
-    <Modal id="demo-modal-close" onClose={Function.prototype} immediate>
+    <Modal immediate id="demo-modal-close" onClose={Function.prototype}>
       <ModalHeader modalId="demo-header-close" title="Hello world" />
       <ModalBody scrollable>This is a modal with a header and close button.</ModalBody>
     </Modal>
@@ -65,11 +65,11 @@ import {
 
 <Playground>
   <ThemeWrapper style={{ width: 600, maxWidth: '100%' }}>
-    <Modal id="demo-modal-header-footer" immediate>
+    <Modal immediate id="demo-modal-header-footer">
       <ModalHeader modalId="demo-modal-header-footer" title="Hello world" />
       <ModalBody scrollable>This is a modal with a header and footer.</ModalBody>
       <ModalFooter>
-        <Typography as="div" align="right" size="xs" variants={['italic']} volume="quiet">
+        <Typography align="right" as="div" size="xs" variants={['italic']} volume="quiet">
           To be continued ...
         </Typography>
       </ModalFooter>
@@ -81,8 +81,8 @@ import {
 
 <Playground>
   <ThemeWrapper style={{ width: 600, maxWidth: '100%' }}>
-    <Modal id="demo-modal-header-footer" onClose={Function.prototype} style={{ height: 400 }} immediate>
-      <ModalHeader align="left" bordered modalId="demo-modal-header-footer" title="Hello world" />
+    <Modal immediate id="demo-modal-header-footer" onClose={Function.prototype} style={{ height: 400 }}>
+      <ModalHeader bordered align="left" modalId="demo-modal-header-footer" title="Hello world" />
       <ModalBody scrollable>
         <Typography variants={['line-height-comfy']}>
           <p>
@@ -107,7 +107,7 @@ import {
         </Typography>
       </ModalBody>
       <ModalFooter bordered>
-        <Typography as="div" align="right" size="xs" variants={['italic']} volume="quiet">
+        <Typography align="right" as="div" size="xs" variants={['italic']} volume="quiet">
           To be continued ...
         </Typography>
       </ModalFooter>
@@ -120,10 +120,10 @@ import {
 <Playground>
   <ThemeWrapper style={{ width: 600, maxWidth: '100%', height: 380 }}>
     <Modal
-      id="demo-modal-overflow"
-      size="medium"
       allowOverflow
       immediate
+      id="demo-modal-overflow"
+      size="medium"
       style={{ borderRadius: '12px', maxWidth: 'calc(100% - 20px)' }}
     >
       <ModalBody flush style={{ height: '300px' }}>
@@ -189,7 +189,7 @@ import {
               onClick={event =>
                 event.persist() ||
                 createModal(
-                  <Modal id="demo-large-modal" focusable size="large" style={{ height: '400px' }}>
+                  <Modal focusable id="demo-large-modal" size="large" style={{ height: '400px' }}>
                     {({ id, focusRef }) => (
                       <React.Fragment>
                         <ModalHeader modalId={id} title="A large modal" />
@@ -236,11 +236,10 @@ import {
                         <ModalFooter bordered>
                           <Flex justifyContent="flex-end">
                             <Button
-                              ref={focusRef}
                               color="primary"
                               onClick={() =>
                                 createModal(
-                                  <Modal id="demo-medium-modal" focusable size="medium">
+                                  <Modal focusable id="demo-medium-modal" size="medium">
                                     {({ id, focusRef }) => (
                                       <React.Fragment>
                                         <ModalHeader modalId={id} title="A medium modal" />
@@ -293,30 +292,29 @@ import {
                                         <ModalFooter>
                                           <Flex justifyContent="flex-end">
                                             <Button
-                                              ref={focusRef}
                                               color="primary"
                                               onClick={() =>
                                                 createModal(
                                                   <Modal
-                                                    id="demo-small-modal"
-                                                    ariaLabel="Hello world"
                                                     focusable
+                                                    ariaLabel="Hello world"
+                                                    id="demo-small-modal"
                                                     size="small"
                                                   >
                                                     {({ id, focusRef }) => (
                                                       <React.Fragment>
                                                         <ModalHeader modalId="demo-small-modal">
                                                           <IconText
+                                                            inline
                                                             icon={<BlobbrIcon scale="medium" />}
                                                             text={
                                                               <Rhythm ml={2}>
                                                                 <Typography size="l">Hello world</Typography>
                                                               </Rhythm>
                                                             }
-                                                            inline
                                                           />
                                                         </ModalHeader>
-                                                        <ModalBody style={{ paddingTop: 0 }} scrollable>
+                                                        <ModalBody scrollable style={{ paddingTop: 0 }}>
                                                           <Typography variants={['line-height-comfy']}>
                                                             <p>
                                                               This is a small modal with a custom header and no top
@@ -343,18 +341,18 @@ import {
                                                               spacing="cozy"
                                                             >
                                                               <Button
-                                                                key="jump-large-modal"
-                                                                weight="inline"
                                                                 color="primary"
+                                                                key="jump-large-modal"
                                                                 onClick={() => jumpModal('demo-large-modal')}
+                                                                weight="inline"
                                                               >
                                                                 Jump to the large modal
                                                               </Button>
                                                               <Button
-                                                                key="jump-medium-modal"
-                                                                weight="inline"
                                                                 color="primary"
+                                                                key="jump-medium-modal"
                                                                 onClick={() => jumpModal('demo-medium-modal')}
+                                                                weight="inline"
                                                               >
                                                                 Jump to the medium modal
                                                               </Button>
@@ -367,6 +365,7 @@ import {
                                                   { onClose: () => console.log('closed 3') },
                                                 )
                                               }
+                                              ref={focusRef}
                                             >
                                               Open another modal
                                             </Button>
@@ -378,6 +377,7 @@ import {
                                   { onClose: () => console.log('closed 2') },
                                 )
                               }
+                              ref={focusRef}
                             >
                               Open another modal
                             </Button>
@@ -397,7 +397,7 @@ import {
               onClick={event =>
                 event.persist() ||
                 createModal(
-                  <Modal id="permanent-modal" focusable permanent size="small">
+                  <Modal focusable permanent id="permanent-modal" size="small">
                     {({ id, focusRef }) => (
                       <React.Fragment>
                         <ModalHeader align="left" modalId={id} title="A permanent modal" />
@@ -405,13 +405,13 @@ import {
                           <div>
                             This is a permanent modal that uses a render function to receive its parent's ID. It also
                             has a left-aligned header. Note that it does not have a close button. However you can still{' '}
-                            <Button weight="inline" color="primary" onClick={() => clearModals()}>
+                            <Button color="primary" onClick={() => clearModals()} weight="inline">
                               clear all modals
                             </Button>
                             .
                           </div>
                           <Rhythm my={3}>
-                            <Button weight="inline" color="danger" onClick={() => popModal(true)} ref={focusRef}>
+                            <Button color="danger" onClick={() => popModal(true)} ref={focusRef} weight="inline">
                               Forceably remove
                             </Button>
                           </Rhythm>

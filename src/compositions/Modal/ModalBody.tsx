@@ -17,13 +17,13 @@ export const ModalBody = React.forwardRef<HTMLDivElement, ModalBodyProps>(
   ): React.ReactElement<ModalBodyProps, 'div'> => {
     return (
       <div
-        ref={forwardedRef}
         className={cx(
           styles.modalBody,
           flush && styles['modalBody--flush'],
           scrollable && styles['modalBody--scrollable'],
           className,
         )}
+        ref={forwardedRef}
         style={style}
         {...props}
       >

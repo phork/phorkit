@@ -10,16 +10,14 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Loader, StyledLoader } from '../index';
 
-<PageTitle title="Loader" src="components/Loader" />
+<PageTitle src="components/Loader" title="Loader" />
 
 ## Fixed position loader
 
 <Playground>
   <ThemeWrapper>
     <p>(There should be a loader in the middle of the page)</p>
-
     <Loader position="fixed" />
-
   </ThemeWrapper>
 </Playground>
 
@@ -36,7 +34,7 @@ import { Loader, StyledLoader } from '../index';
 ### Contrast loader
 
 <Playground>
-  <ThemeWrapper style={{ height: 100 }} contrast>
+  <ThemeWrapper contrast style={{ height: 100 }}>
     <Loader contrast position="absolute" />
   </ThemeWrapper>
 </Playground>
@@ -45,7 +43,7 @@ import { Loader, StyledLoader } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" alignItems="center" justifyContent="space-around">
+    <Flex alignItems="center" direction="row" justifyContent="space-around">
       <Loader size={24} />
       <Loader size={40} />
       <Loader size={60} />

@@ -6,16 +6,16 @@ route: /components/ListRegistry
 
 import { cx } from '@emotion/css';
 import { Playground, Props } from 'docz';
+import { Button } from 'components/Button/Button';
+import { Rhythm } from 'components/Rhythm/Rhythm';
 import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { Button } from '../../Button/Button';
-import { Rhythm } from '../../Rhythm/Rhythm';
-import { ListRegistryItem, ListRegistryConsumer, ListRegistryProvider } from '../index';
 import scrollbar from 'styles/common/Scrollbar.module.css';
+import { ListRegistryItem, ListRegistryConsumer, ListRegistryProvider } from '../index';
 
-<PageTitle title="ListRegistry" src="components/ListRegistry" />
+<PageTitle src="components/ListRegistry" title="ListRegistry" />
 
 ## Scroll to element
 
@@ -27,9 +27,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
           {({ getItem, items }) => (
             <React.Fragment>
               <Looper
-                start={0}
                 end={40}
-                step={10}
                 render={i => (
                   <Rhythm key={i} m={1}>
                     <Button
@@ -40,21 +38,23 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                     >{`Scroll to ${i}`}</Button>
                   </Rhythm>
                 )}
+                start={0}
+                step={10}
               />
               <div
                 className={cx(scrollbar.scrollbar, scrollbar['scrollbar--primary'], scrollbar[`scrollbar--${themeId}`])}
                 style={{ marginTop: '20px', height: '100px', overflow: 'auto' }}
               >
                 <Looper
-                  start={0}
                   end={40}
                   render={i => (
                     <ListRegistryItem id={i} key={i}>
                       <div>
-                        <Rhythm px={2} my={1}>{`Hello world ${i}`}</Rhythm>
+                        <Rhythm my={1} px={2}>{`Hello world ${i}`}</Rhythm>
                       </div>
                     </ListRegistryItem>
                   )}
+                  start={0}
                 />
               </div>
             </React.Fragment>
@@ -77,9 +77,7 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
               {({ getItem }) => (
                 <React.Fragment>
                   <Looper
-                    start={0}
                     end={40}
-                    step={10}
                     render={i => (
                       <Rhythm key={i} m={1}>
                         <Button
@@ -95,6 +93,8 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                         >{`Scroll to ${i}`}</Button>
                       </Rhythm>
                     )}
+                    start={0}
+                    step={10}
                   />
                   <div
                     className={cx(
@@ -105,15 +105,15 @@ import scrollbar from 'styles/common/Scrollbar.module.css';
                     style={{ marginTop: '20px', height: '100px', overflow: 'auto' }}
                   >
                     <Looper
-                      start={0}
                       end={40}
                       render={i => (
                         <ListRegistryItem id={i} key={i}>
                           <div>
-                            <Rhythm px={2} my={1}>{`Hello world ${i}${count > 0 ? ` ${count}` : ''}`}</Rhythm>
+                            <Rhythm my={1} px={2}>{`Hello world ${i}${count > 0 ? ` ${count}` : ''}`}</Rhythm>
                           </div>
                         </ListRegistryItem>
                       )}
+                      start={0}
                     />
                   </div>
                 </React.Fragment>

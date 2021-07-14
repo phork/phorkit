@@ -46,6 +46,7 @@ export function InlineDropover({
   return (
     <InlinePopover
       centered
+      withChildrenProps
       className={cx(styles.dropover, themeId && styles[`dropover--${themeId}`], className)}
       height={height}
       offset={offset}
@@ -72,7 +73,6 @@ export function InlineDropover({
       }}
       toggler={renderToggler}
       width={width}
-      withChildrenProps
       {...props}
     />
   );

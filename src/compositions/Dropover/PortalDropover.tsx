@@ -74,6 +74,7 @@ export function PortalDropover({
   return (
     <PortalPopover
       centered
+      withChildrenProps
       className={cx(styles.dropover, themeId && styles[`dropover--${themeId}`], className)}
       height={height}
       offset={offset}
@@ -112,7 +113,6 @@ export function PortalDropover({
       }}
       toggler={renderToggler}
       width={width}
-      withChildrenProps
       {...props}
     />
   );

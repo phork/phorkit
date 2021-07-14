@@ -11,13 +11,13 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { TagGroup } from '../index';
 
-<PageTitle title="TagGroup" src="components/Tag" />
+<PageTitle src="components/Tag" title="TagGroup" />
 
 ## Actionable tag group
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" justifyContent="space-between" wrap>
+    <Flex wrap direction="row" justifyContent="space-between">
       <Flex direction="column">
         <Rhythm my={1}>
           <TagGroup
@@ -29,8 +29,8 @@ import { TagGroup } from '../index';
             ]}
           />
           <TagGroup
-            shape="brick"
             actionable
+            shape="brick"
             tags={[
               { id: 'super', label: 'Super', onClick: () => console.log('super') },
               { id: 'awesome', label: 'Awesome', onClick: () => console.log('awesome') },
@@ -42,8 +42,8 @@ import { TagGroup } from '../index';
       <Flex direction="column">
         <Rhythm my={1}>
           <TagGroup
-            size="medium"
             actionable
+            size="medium"
             tags={[
               { id: 'super', label: 'Super', onClick: () => console.log('super') },
               { id: 'awesome', label: 'Awesome', onClick: () => console.log('awesome') },
@@ -51,9 +51,9 @@ import { TagGroup } from '../index';
             ]}
           />
           <TagGroup
-            size="medium"
-            shape="brick"
             actionable
+            shape="brick"
+            size="medium"
             tags={[
               { id: 'super', label: 'Super', onClick: () => console.log('super') },
               { id: 'awesome', label: 'Awesome', onClick: () => console.log('awesome') },
@@ -65,8 +65,8 @@ import { TagGroup } from '../index';
       <Flex direction="column">
         <Rhythm my={1}>
           <TagGroup
-            size="large"
             actionable
+            size="large"
             tags={[
               { id: 'super', label: 'Super', onClick: () => console.log('super') },
               { id: 'awesome', label: 'Awesome', onClick: () => console.log('awesome') },
@@ -74,9 +74,9 @@ import { TagGroup } from '../index';
             ]}
           />
           <TagGroup
-            size="large"
-            shape="brick"
             actionable
+            shape="brick"
+            size="large"
             tags={[
               { id: 'super', label: 'Super', onClick: () => console.log('super') },
               { id: 'awesome', label: 'Awesome', onClick: () => console.log('awesome') },

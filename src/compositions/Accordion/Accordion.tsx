@@ -73,11 +73,11 @@ export function Accordion({
   return (
     <ListRegistryProvider<HTMLDivElement>>
       <InteractiveGroupProvider<string, HTMLDivElement, HTMLDivElement>
-        onSelect={onSelect}
-        items={items}
         initialSelected={initialSelected || (items[0] && [items[0].id])}
+        items={items}
         maxSelect={maxSelect}
         minSelect={minSelect}
+        onSelect={onSelect}
         {...props}
       >
         {

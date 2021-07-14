@@ -147,7 +147,7 @@ export function DropdownWithTags({
         themeId={themeId}
         {...props}
       />
-      <Rhythm mt={6} grouped>
+      <Rhythm grouped mt={6}>
         <TagGroup size={tagSize} {...tagGroupProps}>
           {options
             .filter(({ id }) => state.selectedIds.includes(id))
@@ -159,21 +159,21 @@ export function DropdownWithTags({
                 key={`${generateComponentId(id, itemId)}_tag`}
                 label={
                   <IconText
+                    reverse
                     icon={
                       <TypographyWithSvg volume="quiet">
                         <TimesIcon scale="xsmall" />
                       </TypographyWithSvg>
                     }
                     text={<Rhythm mr={2}>{label}</Rhythm>}
-                    reverse
                   />
                 }
                 onClick={() => removeItem(itemId)}
                 ref={i === 0 ? tagRef : undefined}
                 shape={tagShape}
                 size={tagSize}
-                variant={tagVariant}
                 themeId={themeId}
+                variant={tagVariant}
                 {...mappedProps[itemId]}
               />
             ))}

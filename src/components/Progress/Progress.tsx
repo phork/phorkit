@@ -48,7 +48,6 @@ export function Progress({
     const withSpace = spaced && data && i < data.length - 1;
     return (
       <div
-        key={color}
         className={cx(
           styles.progressSegment,
           styles[`progressSegment--${orientation}`],
@@ -57,6 +56,7 @@ export function Progress({
           color && !unthemed && styles[`progressSegment--${color}`],
           contrast && styles['progressSegment--contrast'],
         )}
+        key={color}
         style={{
           [orientation === 'vertical' ? 'marginBottom' : 'marginRight']: withSpace ? '1px' : undefined,
           [orientation === 'vertical' ? 'height' : 'width']: withSpace ? `calc(${percent}% - 1px)` : `${percent}%`,

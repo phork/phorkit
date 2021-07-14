@@ -13,15 +13,15 @@ import { TimesIcon } from 'icons/TimesIcon';
 import { EmailIcon } from 'icons/internal/EmailIcon';
 import { Button } from 'components/Button';
 import { Rhythm } from 'components/Rhythm';
-import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
 import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
 import { Textbox, NotifiedTextbox } from '../index';
 import { textbox as variants, sizes } from './helpers/variants';
 
-<PageTitle title="Textbox" src="components/Form/Textbox" />
+<PageTitle src="components/Form/Textbox" title="Textbox" />
 
 ## Basic textbox
 
@@ -30,9 +30,9 @@ import { textbox as variants, sizes } from './helpers/variants';
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo type="textbox" property="value" initialValue="Hello world" key={variant} unwrapped>
-            <Textbox variant={variant} onChange={(event, value) => console.log(value)} />
+        <Rhythm key={variant} py={3}>
+          <FormComponentDemo unwrapped initialValue="Hello world" property="value" type="textbox">
+            <Textbox onChange={(event, value) => console.log(value)} variant={variant} />
           </FormComponentDemo>
         </Rhythm>
       )}
@@ -47,8 +47,8 @@ import { textbox as variants, sizes } from './helpers/variants';
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo type="textbox" property="value" initialValue="Hello world" key={variant} unwrapped>
+        <Rhythm key={variant} py={3}>
+          <FormComponentDemo unwrapped initialValue="Hello world" property="value" type="textbox">
             <Textbox
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -69,12 +69,12 @@ import { textbox as variants, sizes } from './helpers/variants';
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo type="textbox" property="value" key={variant} unwrapped>
+        <Rhythm key={variant} py={3}>
+          <FormComponentDemo unwrapped property="value" type="textbox">
             <Textbox
+              transitional
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
-              transitional
               variant={variant}
             />
           </FormComponentDemo>
@@ -91,14 +91,14 @@ import { textbox as variants, sizes } from './helpers/variants';
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo type="textbox" property="value" key={variant} unwrapped>
+        <Rhythm key={variant} py={3}>
+          <FormComponentDemo unwrapped property="value" type="textbox">
             <Textbox
               clearable
+              transitional
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
               onClear={(event, value) => console.log('cleared')}
-              transitional
               variant={variant}
             />
           </FormComponentDemo>
@@ -115,14 +115,14 @@ import { textbox as variants, sizes } from './helpers/variants';
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo type="textbox" property="value" key={variant} unwrapped>
+        <Rhythm key={variant} py={3}>
+          <FormComponentDemo unwrapped property="value" type="textbox">
             <Textbox
-              iconBefore={SearchIcon}
+              transitional
               iconAfter={<SpinnerIcon size={14} />}
+              iconBefore={SearchIcon}
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
-              transitional
               variant={variant}
             />
           </FormComponentDemo>
@@ -139,8 +139,8 @@ import { textbox as variants, sizes } from './helpers/variants';
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo type="textbox" property="value" key={variant} unwrapped>
+        <Rhythm key={variant} py={3}>
+          <FormComponentDemo unwrapped property="value" type="textbox">
             <Textbox
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -162,8 +162,8 @@ import { textbox as variants, sizes } from './helpers/variants';
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo type="textbox" property="value" key={variant} unwrapped>
+        <Rhythm key={variant} py={3}>
+          <FormComponentDemo unwrapped property="value" type="textbox">
             <Textbox
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -185,17 +185,17 @@ import { textbox as variants, sizes } from './helpers/variants';
     <Looper
       list={variants}
       render={variant => (
-        <StateWrapper>
+        <StateWrapper key={variant}>
           {({ state: value, setState: setValue }) => (
-            <Rhythm py={3} style={{ maxWidth: 400 }} grouped>
+            <Rhythm grouped py={3} style={{ maxWidth: 400 }}>
               <Textbox
                 alwaysUseFormatting
                 clearable
+                transitional
                 formattedValue={value ? <i>{value}</i> : undefined}
                 label="Super fantastic label"
                 onChange={(event, value) => setValue(value)}
                 onClear={(event, value) => console.log('cleared')}
-                transitional
                 value={value}
                 variant={variant}
               />
@@ -214,8 +214,8 @@ import { textbox as variants, sizes } from './helpers/variants';
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo type="textbox" property="value" initialValue="Hello world" key={variant} unwrapped>
+        <Rhythm key={variant} py={3}>
+          <FormComponentDemo unwrapped initialValue="Hello world" property="value" type="textbox">
             <Textbox
               disabled
               label="Super fantastic label"
@@ -236,15 +236,15 @@ import { textbox as variants, sizes } from './helpers/variants';
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo type="textbox" property="value" initialValue="Hello world" key={variant} unwrapped>
+        <Rhythm key={variant} py={3}>
+          <FormComponentDemo unwrapped initialValue="Hello world" property="value" type="textbox">
             <Textbox
               clearable
+              transitional
               iconBefore={<SearchIcon />}
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
               onClear={(event, value) => console.log('cleared')}
-              transitional
               variant={variant}
             />
           </FormComponentDemo>
@@ -261,12 +261,12 @@ import { textbox as variants, sizes } from './helpers/variants';
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo type="textbox" property="value" initialValue="Hello world" key={variant} unwrapped>
+        <Rhythm key={variant} py={3}>
+          <FormComponentDemo unwrapped initialValue="Hello world" property="value" type="textbox">
             <Textbox
+              readOnly
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
-              readOnly
               variant={variant}
             />
           </FormComponentDemo>
@@ -281,12 +281,12 @@ import { textbox as variants, sizes } from './helpers/variants';
 <Playground>
   <StateWrapper initialState={false}>
     {({ state: isFocused, setState: setFocused }) => (
-      <FormComponentDemo type="textbox" property="value">
+      <FormComponentDemo property="value" type="textbox">
         <Textbox
           label={isFocused ? 'Focused label' : 'Blurred label'}
+          onBlur={event => setFocused(false)}
           onChange={(event, value) => console.log(value)}
           onFocus={event => setFocused(true)}
-          onBlur={event => setFocused(false)}
           placeholder="Hello world"
         />
       </FormComponentDemo>
@@ -301,12 +301,12 @@ import { textbox as variants, sizes } from './helpers/variants';
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo type="textbox" property="value" initialValue="Hello world" key={variant} unwrapped>
+        <Rhythm key={variant} py={3}>
+          <FormComponentDemo unwrapped initialValue="Hello world" property="value" type="textbox">
             <Textbox
+              transitional
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
-              transitional
               validity="danger"
               variant={variant}
             />
@@ -324,12 +324,12 @@ import { textbox as variants, sizes } from './helpers/variants';
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo type="textbox" property="value" initialValue="Hello world" key={variant} unwrapped>
+        <Rhythm key={variant} py={3}>
+          <FormComponentDemo unwrapped initialValue="Hello world" property="value" type="textbox">
             <Textbox
+              transitional
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
-              transitional
               validity="warning"
               variant={variant}
             />
@@ -347,12 +347,12 @@ import { textbox as variants, sizes } from './helpers/variants';
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo type="textbox" property="value" initialValue="Hello world" key={variant} unwrapped>
+        <Rhythm key={variant} py={3}>
+          <FormComponentDemo unwrapped initialValue="Hello world" property="value" type="textbox">
             <Textbox
+              transitional
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
-              transitional
               validity="success"
               variant={variant}
             />
@@ -370,17 +370,17 @@ import { textbox as variants, sizes } from './helpers/variants';
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo type="textbox" property="value" contrast key={variant} unwrapped>
+        <Rhythm key={variant} py={3}>
+          <FormComponentDemo contrast unwrapped property="value" type="textbox">
             <Textbox
               clearable
               contrast
+              transitional
               iconBefore={<SearchIcon />}
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
               onClear={(event, value) => console.log('cleared')}
               placeholder="Hello world"
-              transitional
               variant={variant}
             />
           </FormComponentDemo>
@@ -397,16 +397,15 @@ import { textbox as variants, sizes } from './helpers/variants';
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo type="textbox" property="value" key={variant} unwrapped>
+        <Rhythm key={variant} py={3}>
+          <FormComponentDemo unwrapped property="value" type="textbox">
             <Textbox
               clearable
+              transitional
+              unthemed
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
               placeholder={<i>Hello world</i>}
-              transitional
-              unthemed
-              variant={variant}
               style={{
                 '--formbox-icon-color': '#9D69D5',
                 '--formbox-icon-hovered-color': '#642da0',
@@ -417,6 +416,7 @@ import { textbox as variants, sizes } from './helpers/variants';
                 '--formbox-input-text-color': '#642da0',
                 '--formbox-label-text-color': '#B995E1',
               }}
+              variant={variant}
             />
           </FormComponentDemo>
         </Rhythm>
@@ -435,16 +435,16 @@ import { textbox as variants, sizes } from './helpers/variants';
         <Looper
           list={['success', 'danger', 'warning', 'primary', 'neutral']}
           render={level => (
-            <Rhythm py={3}>
-              <FormComponentDemo type="textbox" property="value" initialValue="Hello world" key={variant} unwrapped>
+            <Rhythm key={`${variant}-${level}`} py={3}>
+              <FormComponentDemo unwrapped initialValue="Hello world" property="value" type="textbox">
                 <NotifiedTextbox
                   clearable
+                  transitional
                   label="Super fantastic label"
                   level={level}
                   notification={`This is an example ${level} notification.`}
                   onChange={(event, value) => console.log(value)}
                   onClear={(event, value) => console.log('cleared')}
-                  transitional
                   variant={variant}
                 />
               </FormComponentDemo>
@@ -460,20 +460,20 @@ import { textbox as variants, sizes } from './helpers/variants';
 
 <Playground>
   <ThemeWrapper>
-    <form name="autoComplete" autoComplete="on">
+    <form autoComplete="on" name="autoComplete">
       <Looper
         list={variants}
         render={variant => (
-          <Rhythm p={2} grouped>
-            <FormComponentDemo type="textbox" property="value" key={variant} unwrapped>
+          <Rhythm grouped key={variant} p={2}>
+            <FormComponentDemo unwrapped property="value" type="textbox">
               <Textbox
-                autoComplete="email"
                 clearable
+                transitional
+                autoComplete="email"
                 iconBefore={EmailIcon}
                 label="Email"
                 name={`email-${variant}`}
                 onChange={(event, value) => console.log(value)}
-                transitional
                 type="email"
                 variant={variant}
               />
@@ -481,8 +481,8 @@ import { textbox as variants, sizes } from './helpers/variants';
           </Rhythm>
         )}
       />
-      <Rhythm mt={4} ml={3}>
-        <Button type="submit" color="primary" weight="shaded" shape="brick">
+      <Rhythm ml={3} mt={4}>
+        <Button color="primary" shape="brick" type="submit" weight="shaded">
           Submit
         </Button>
       </Rhythm>
@@ -497,19 +497,19 @@ import { textbox as variants, sizes } from './helpers/variants';
     <Looper
       list={sizes}
       render={size => (
-        <Rhythm my={3} grouped>
+        <Rhythm grouped key={size} my={3}>
           <Looper
             list={variants}
             render={variant => (
-              <Rhythm py={3}>
-                <FormComponentDemo type="textbox" property="value" key={variant} unwrapped>
+              <Rhythm key={`${size}-${variant}`} py={3}>
+                <FormComponentDemo unwrapped property="value" type="textbox">
                   <Textbox
-                    iconBefore={ArrowLeftIcon}
+                    transitional
                     iconAfter={ArrowRightIcon}
+                    iconBefore={ArrowLeftIcon}
                     label={`Size ${size}`}
                     onChange={(event, value) => console.log(value)}
                     size={size}
-                    transitional
                     variant={variant}
                   />
                 </FormComponentDemo>

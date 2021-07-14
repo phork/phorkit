@@ -10,7 +10,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Link, LinkContainer, StyledLink } from '../index';
 
-<PageTitle title="Link" src="components/Link" />
+<PageTitle src="components/Link" title="Link" />
 
 ## Basic link
 
@@ -43,7 +43,7 @@ import { Link, LinkContainer, StyledLink } from '../index';
       </Link> Goodbye.
     </Typography>
     <br />
-    <LinkContainer as="p" underline>
+    <LinkContainer underline as="p">
       <Typography size="xl">
         Hello world.
         <a href="http://phork.org" target="_blank">
@@ -83,7 +83,7 @@ import { Link, LinkContainer, StyledLink } from '../index';
 <Playground>
   <Typography size="l">
     Hello world.
-    <StyledLink color="#ff8e0d" hoveredColor="#ff9b28" activeColor="#f18100" href="http://phork.org" target="_blank">
+    <StyledLink activeColor="#f18100" color="#ff8e0d" hoveredColor="#ff9b28" href="http://phork.org" target="_blank">
       I am a StyledLink.
     </StyledLink>
   </Typography>
@@ -92,8 +92,8 @@ import { Link, LinkContainer, StyledLink } from '../index';
 ### Unstyled block link
 
 <Playground>
-  <Typography size="l" color="warning">
-    <Link unstyled unthemed block href="http://phork.org" target="_blank">
+  <Typography color="warning" size="l">
+    <Link block unstyled unthemed href="http://phork.org" target="_blank">
       I am an unstyled link. I use currentColor.
     </Link>
   </Typography>

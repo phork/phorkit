@@ -4,7 +4,7 @@ import { IconCount, TimesIcon } from 'lib';
 
 describe('<IconCount />', () => {
   it('should render a basic icon + count', () => {
-    const { getByText } = render(<IconCount icon={TimesIcon} label="Example" count={24} />);
+    const { getByText } = render(<IconCount count={24} icon={TimesIcon} label="Example" />);
     expect(getByText('24')).toBeTruthy();
   });
 });

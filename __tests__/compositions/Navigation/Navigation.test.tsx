@@ -6,13 +6,13 @@ describe('<Navigation />', () => {
   it('should render a basic navigation', () => {
     const { getByText } = render(
       <Navigation
-        selectedId="first"
         items={[
           { id: 'first', label: 'First' },
           { id: 'second', label: 'Second' },
           { id: 'third', label: 'Third', disabled: true },
           { id: 'fourth', label: 'Fourth' },
         ]}
+        selectedId="first"
       />,
     );
     expect(getByText('First')).toBeTruthy();

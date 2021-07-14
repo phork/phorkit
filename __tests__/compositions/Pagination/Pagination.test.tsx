@@ -6,14 +6,14 @@ describe('<Pagination />', () => {
   it('should render a basic pagination with previous and next buttons', () => {
     const { container, queryByText } = render(
       <Pagination
+        withPageLinks
+        withPreviousAndNext
         activeProps={{ color: 'primary' }}
         inactiveProps={{ color: 'neutral' }}
         page={8}
         pageLinks={6}
         pageSize={10}
         totalItems={300}
-        withPageLinks
-        withPreviousAndNext
       />,
     );
     expect(queryByText('Previous page')).toBeTruthy();
@@ -25,15 +25,15 @@ describe('<Pagination />', () => {
   it('should render a basic pagination with previous and next icons', () => {
     const { container } = render(
       <Pagination
+        withIcons
+        withPageLinks
+        withPreviousAndNext
         activeProps={{ color: 'primary' }}
         inactiveProps={{ color: 'neutral' }}
         page={8}
         pageLinks={6}
         pageSize={10}
         totalItems={300}
-        withIcons
-        withPageLinks
-        withPreviousAndNext
       />,
     );
     expect(container.querySelectorAll('svg').length).toBe(2);
@@ -43,14 +43,14 @@ describe('<Pagination />', () => {
   it('should render a basic pagination with first and last buttons', () => {
     const { container, queryByText } = render(
       <Pagination
+        withFirstAndLast
+        withPageLinks
         activeProps={{ color: 'primary' }}
         inactiveProps={{ color: 'neutral' }}
         page={8}
         pageLinks={6}
         pageSize={10}
         totalItems={300}
-        withFirstAndLast
-        withPageLinks
       />,
     );
     expect(queryByText('First page')).toBeTruthy();

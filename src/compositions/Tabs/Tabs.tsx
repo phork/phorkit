@@ -68,11 +68,11 @@ export function Tabs({
   return (
     <ListRegistryProvider<HTMLDivElement>>
       <InteractiveGroupProvider<string, HTMLDivElement, HTMLDivElement>
-        onSelect={onSelect}
+        initialSelected={initialSelected || (minSelect ? items[0] && [items[0].id] : undefined)}
+        items={items}
         maxSelect={1}
         minSelect={minSelect}
-        items={items}
-        initialSelected={initialSelected || (minSelect ? items[0] && [items[0].id] : undefined)}
+        onSelect={onSelect}
         {...props}
       >
         {
@@ -106,10 +106,10 @@ export function Tabs({
                   componentId={componentId}
                   contrast={contrast}
                   fullWidth={fullWidth}
-                  ref={ref}
                   items={items}
                   onBlur={handleBlur}
                   onFocus={handleFocus}
+                  ref={ref}
                   themeId={themeId}
                   unstyled={unstyled}
                   variant={variant}

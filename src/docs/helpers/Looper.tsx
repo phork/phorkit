@@ -13,9 +13,11 @@ export function Looper({ end: initEnd, list, render, start = 0, step = 1 }: Loop
   const end = list ? list.length - 1 : initEnd;
 
   for (let i = start; i <= end; i += step) {
+    const element = render(list ? list[i] : i, i);
+
     items.push(
-      cloneElement(render(list ? list[i] : i, i), {
-        key: list ? list[i] : i,
+      cloneElement(element, {
+        key: element.key ?? (list ? list[i] : i),
       }),
     );
   }

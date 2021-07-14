@@ -74,12 +74,12 @@ describe('<RadioGroup />', () => {
       <NotifiedRadioGroup
         layout="stacked"
         legend="Legendary"
+        level="danger"
         name="radio"
+        notification="Example notification"
         onChange={() => {}}
         radios={items}
         value={'first'}
-        level="danger"
-        notification="Example notification"
       />,
     );
     expect(container.querySelectorAll('input[type="radio"]').length).toBe(3);

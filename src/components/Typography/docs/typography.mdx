@@ -10,48 +10,48 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Typography } from '../index';
 
-<PageTitle title="Typography" src="components/Typography" />
+<PageTitle src="components/Typography" title="Typography" />
 
 ## Font sizes
 
 <Playground>
-  <Rhythm wrapper="div" my={1}>
+  <Rhythm my={1} wrapper="div">
     <Typography size="xxs">The quick brown fox jumped over the lazy dog (xxs)</Typography>
   </Rhythm>
-  <Rhythm wrapper="div" my={1}>
+  <Rhythm my={1} wrapper="div">
     <Typography size="xs">The quick brown fox jumped over the lazy dog (xs)</Typography>
   </Rhythm>
-  <Rhythm wrapper="div" my={1}>
+  <Rhythm my={1} wrapper="div">
     <Typography size="s">The quick brown fox jumped over the lazy dog (s)</Typography>
   </Rhythm>
-  <Rhythm wrapper="div" my={1}>
+  <Rhythm my={1} wrapper="div">
     <Typography size="m">The quick brown fox jumped over the lazy dog (m)</Typography>
   </Rhythm>
-  <Rhythm wrapper="div" my={1}>
+  <Rhythm my={1} wrapper="div">
     <Typography size="l">The quick brown fox jumped over the lazy dog (l)</Typography>
   </Rhythm>
-  <Rhythm wrapper="div" my={1}>
+  <Rhythm my={1} wrapper="div">
     <Typography size="xl">The quick brown fox jumped over the lazy dog (xl)</Typography>
   </Rhythm>
-  <Rhythm wrapper="div" my={1}>
+  <Rhythm my={1} wrapper="div">
     <Typography size="xxl">The quick brown fox jumped over the lazy dog (xxl)</Typography>
   </Rhythm>
-  <Rhythm wrapper="div" my={1}>
+  <Rhythm my={1} wrapper="div">
     <Typography size="xxxl">The quick brown fox jumped over the lazy dog (xxxl)</Typography>
   </Rhythm>
-  <Rhythm wrapper="div" my={1}>
+  <Rhythm my={1} wrapper="div">
     <Typography size="xxxxl">The quick brown fox jumped over the lazy dog (xxxxl)</Typography>
   </Rhythm>
-  <Rhythm wrapper="div" my={1}>
+  <Rhythm my={1} wrapper="div">
     <Typography size="xxxxxl">The quick brown fox jumped over the lazy dog (xxxxxl)</Typography>
   </Rhythm>
-  <Rhythm wrapper="div" my={1}>
+  <Rhythm my={1} wrapper="div">
     <Typography size="xxxxxxl">The quick brown fox jumped over the lazy dog (xxxxxxl)</Typography>
   </Rhythm>
-  <Rhythm wrapper="div" my={1}>
+  <Rhythm my={1} wrapper="div">
     <Typography size="xxxxxxxl">The quick brown fox jumped over the lazy dog (xxxxxxxl)</Typography>
   </Rhythm>
-  <Rhythm wrapper="div" my={1}>
+  <Rhythm my={1} wrapper="div">
     <Typography size="xxxxxxxxl">The quick brown fox jumped over the lazy dog (xxxxxxxxl)</Typography>
   </Rhythm>
 </Playground>
@@ -59,22 +59,22 @@ import { Typography } from '../index';
 ## Font weights
 
 <Playground>
-  <Rhythm wrapper="div" my={1}>
+  <Rhythm my={1} wrapper="div">
     <Typography size="l" weight="lighter">
       The quick brown fox jumped over the lazy dog (lighter)
     </Typography>
   </Rhythm>
-  <Rhythm wrapper="div" my={1}>
+  <Rhythm my={1} wrapper="div">
     <Typography size="l" weight="light">
       The quick brown fox jumped over the lazy dog (light)
     </Typography>
   </Rhythm>
-  <Rhythm wrapper="div" my={1}>
+  <Rhythm my={1} wrapper="div">
     <Typography size="l" weight="regular">
       The quick brown fox jumped over the lazy dog (regular)
     </Typography>
   </Rhythm>
-  <Rhythm wrapper="div" my={1}>
+  <Rhythm my={1} wrapper="div">
     <Typography size="l" weight="bold">
       The quick brown fox jumped over the lazy dog (bold)
     </Typography>
@@ -99,7 +99,7 @@ import { Typography } from '../index';
 ## Truncated
 
 <Playground>
-  <Typography variants="truncated" as="div" style={{ width: '140px' }}>
+  <Typography as="div" style={{ width: '140px' }} variants="truncated">
     The quick brown fox jumped over the lazy dog
   </Typography>
 </Playground>
@@ -121,10 +121,10 @@ import { Typography } from '../index';
 ## Case
 
 <Playground>
-  <Typography variants="uppercase" as="div">
+  <Typography as="div" variants="uppercase">
     The uppercase fox jumped over the lazy dog
   </Typography>
-  <Typography variants="lowercase" as="div">
+  <Typography as="div" variants="lowercase">
     The LOWERCASE fox jumped over the lazy dog
   </Typography>
 </Playground>
@@ -163,13 +163,13 @@ import { Typography } from '../index';
 
 <Playground>
   <Typography as="div">This is normal letter spacing</Typography>
-  <Typography variants="letter-spacing-comfy" as="div">
+  <Typography as="div" variants="letter-spacing-comfy">
     This is comfy letter spacing
   </Typography>
-  <Typography variants="uppercase" as="div">
+  <Typography as="div" variants="uppercase">
     This is normal letter spacing
   </Typography>
-  <Typography variants={['letter-spacing-comfy', 'uppercase']} as="div">
+  <Typography as="div" variants={['letter-spacing-comfy', 'uppercase']}>
     This is comfy letter spacing
   </Typography>
 </Playground>
@@ -197,13 +197,13 @@ import { Typography } from '../index';
 
 <Playground>
   <Typography as="div">This is a normal volume</Typography>
-  <Typography volume="quiet" as="div">
+  <Typography as="div" volume="quiet">
     This is a quiet volume
   </Typography>
-  <Typography volume="quieter" as="div">
+  <Typography as="div" volume="quieter">
     This is a quieter volume
   </Typography>
-  <Typography volume="quietest" as="div">
+  <Typography as="div" volume="quietest">
     This is the quietest volume
   </Typography>
 </Playground>
@@ -212,25 +212,44 @@ import { Typography } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Typography color="primary" as="div">Theme primary</Typography>
-    <Typography color="primary" volume="quiet" as="div">Theme primary quiet</Typography>
-    <Typography color="primary" volume="quieter" as="div">Theme primary quieter</Typography>
-    <Typography color="primary" volume="quietest" as="div">Theme primary quietest</Typography>
-
+    <Typography as="div" color="primary">
+      Theme primary
+    </Typography>
+    <Typography as="div" color="primary" volume="quiet">
+      Theme primary quiet
+    </Typography>
+    <Typography as="div" color="primary" volume="quieter">
+      Theme primary quieter
+    </Typography>
+    <Typography as="div" color="primary" volume="quietest">
+      Theme primary quietest
+    </Typography>
     <br />
-
-    <Typography color="secondary" as="div">Theme secondary</Typography>
-    <Typography color="secondary" volume="quiet" as="div">Theme secondary quiet</Typography>
-    <Typography color="secondary" volume="quieter" as="div">Theme secondary quieter</Typography>
-    <Typography color="secondary" volume="quietest" as="div">Theme secondary quietest</Typography>
-
+    <Typography as="div" color="secondary">
+      Theme secondary
+    </Typography>
+    <Typography as="div" color="secondary" volume="quiet">
+      Theme secondary quiet
+    </Typography>
+    <Typography as="div" color="secondary" volume="quieter">
+      Theme secondary quieter
+    </Typography>
+    <Typography as="div" color="secondary" volume="quietest">
+      Theme secondary quietest
+    </Typography>
     <br />
-
-    <Typography color="accent-primary" as="div">Theme accent primary</Typography>
-    <Typography color="accent-primary" volume="quiet" as="div">Theme accent primary quiet</Typography>
-    <Typography color="accent-primary" volume="quieter" as="div">Theme accent primary quieter</Typography>
-    <Typography color="accent-primary" volume="quietest" as="div">Theme accent primary quietest</Typography>
-
+    <Typography as="div" color="accent-primary">
+      Theme accent primary
+    </Typography>
+    <Typography as="div" color="accent-primary" volume="quiet">
+      Theme accent primary quiet
+    </Typography>
+    <Typography as="div" color="accent-primary" volume="quieter">
+      Theme accent primary quieter
+    </Typography>
+    <Typography as="div" color="accent-primary" volume="quietest">
+      Theme accent primary quietest
+    </Typography>
   </ThemeWrapper>
 </Playground>
 
@@ -238,16 +257,16 @@ import { Typography } from '../index';
 
 <Playground>
   <ThemeWrapper contrast>
-    <Typography color="contrast" as="div">
+    <Typography as="div" color="contrast">
       Theme contrast
     </Typography>
-    <Typography color="contrast" volume="quiet" as="div">
+    <Typography as="div" color="contrast" volume="quiet">
       Theme contrast quiet
     </Typography>
-    <Typography color="contrast" volume="quieter" as="div">
+    <Typography as="div" color="contrast" volume="quieter">
       Theme contrast quieter
     </Typography>
-    <Typography color="contrast" volume="quietest" as="div">
+    <Typography as="div" color="contrast" volume="quietest">
       Theme contrast quietest
     </Typography>
   </ThemeWrapper>

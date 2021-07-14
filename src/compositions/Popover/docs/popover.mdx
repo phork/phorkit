@@ -19,7 +19,7 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { InlinePopover, PortalPopover, Popover } from '../index';
 import { horizontal, vertical } from './helpers/config';
 
-<PageTitle title="Popover" src="compositions/Popover" />
+<PageTitle src="compositions/Popover" title="Popover" />
 
 ## Auto-positioned popover
 
@@ -30,15 +30,16 @@ import { horizontal, vertical } from './helpers/config';
         <p>(There should be a permanent popover in the top right)</p>
         <PortalPopover
           focusable
-          height={80}
           initialVisible
+          permanent
+          withChildrenProps
+          height={80}
           layout="horizontal"
           offset={{ horizontal }}
-          permanent
           portal="fixed"
           renderChildren={({ position }) => (
-            <Card raised full>
-              <Paper color="accent-primary" container="popover" contained scrollable scrollbar="s">
+            <Card full raised>
+              <Paper contained scrollable color="accent-primary" container="popover" scrollbar="s">
                 <Typography as="div" size="s" variants="line-height-comfy">
                   The quick brown fox jumped over the {position} dog The quick brown fox jumped over the {position} dog
                   The quick brown fox jumped over the {position} dog The quick brown fox jumped over the {position} dog
@@ -56,7 +57,6 @@ import { horizontal, vertical } from './helpers/config';
             />
           }
           width={300}
-          withChildrenProps
         />
       </React.Fragment>
     )}
@@ -68,11 +68,11 @@ import { horizontal, vertical } from './helpers/config';
 <Playground>
   <ThemeWrapper>
     <Flex
+      wrap
+      alignContent="center"
       direction="row"
       justifyContent="space-between"
-      alignContent="center"
       style={{ margin: 'auto', height: '280px', width: '400px' }}
-      wrap
     >
       <div
         style={{
@@ -85,14 +85,14 @@ import { horizontal, vertical } from './helpers/config';
         }}
       >
         <InlinePopover
-          height={80}
           initialVisible
+          height={80}
           offset={{ vertical }}
           position="top-left"
           toggler={<BlobbrIcon scale="xxxlarge" />}
           width={300}
         >
-          <Paper color="accent-primary" container="popover" contained scrollable scrollbar="s">
+          <Paper contained scrollable color="accent-primary" container="popover" scrollbar="s">
             <Typography as="div" size="s" variants="line-height-comfy">
               The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
               fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
@@ -112,14 +112,14 @@ import { horizontal, vertical } from './helpers/config';
         }}
       >
         <InlinePopover
-          height={80}
           initialVisible
+          height={80}
           offset={{ vertical }}
           position="top-center"
           toggler={<BlobbrIcon scale="xxxlarge" />}
           width={300}
         >
-          <Paper color="accent-primary" container="popover" contained scrollable scrollbar="s">
+          <Paper contained scrollable color="accent-primary" container="popover" scrollbar="s">
             <Typography as="div" size="s" variants="line-height-comfy">
               The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
               fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
@@ -139,14 +139,14 @@ import { horizontal, vertical } from './helpers/config';
         }}
       >
         <InlinePopover
-          height={80}
           initialVisible
+          height={80}
           offset={{ vertical }}
           position="top-right"
           toggler={<BlobbrIcon scale="xxxlarge" />}
           width={300}
         >
-          <Paper color="accent-primary" container="popover" contained scrollable scrollbar="s">
+          <Paper contained scrollable color="accent-primary" container="popover" scrollbar="s">
             <Typography as="div" size="s" variants="line-height-comfy">
               The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
               fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
@@ -166,14 +166,14 @@ import { horizontal, vertical } from './helpers/config';
         }}
       >
         <InlinePopover
-          height={80}
           initialVisible
+          height={80}
           offset={{ vertical }}
           position="bottom-left"
           toggler={<BlobbrIcon scale="xxxlarge" />}
           width={300}
         >
-          <Paper color="accent-primary" container="popover" contained scrollable scrollbar="s">
+          <Paper contained scrollable color="accent-primary" container="popover" scrollbar="s">
             <Typography as="div" size="s" variants="line-height-comfy">
               The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
               fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
@@ -193,14 +193,14 @@ import { horizontal, vertical } from './helpers/config';
         }}
       >
         <InlinePopover
-          height={80}
           initialVisible
+          height={80}
           offset={{ vertical }}
           position="bottom-center"
           toggler={<BlobbrIcon scale="xxxlarge" />}
           width={300}
         >
-          <Paper color="accent-primary" container="popover" contained scrollable scrollbar="s">
+          <Paper contained scrollable color="accent-primary" container="popover" scrollbar="s">
             <Typography as="div" size="s" variants="line-height-comfy">
               The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
               fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
@@ -220,14 +220,14 @@ import { horizontal, vertical } from './helpers/config';
         }}
       >
         <InlinePopover
-          height={80}
           initialVisible
+          height={80}
           offset={{ vertical }}
           position="bottom-right"
           toggler={<BlobbrIcon scale="xxxlarge" />}
           width={300}
         >
-          <Paper color="accent-primary" container="popover" contained scrollable scrollbar="s">
+          <Paper contained scrollable color="accent-primary" container="popover" scrollbar="s">
             <Typography as="div" size="s" variants="line-height-comfy">
               The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
               fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
@@ -244,7 +244,7 @@ import { horizontal, vertical } from './helpers/config';
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="column" justifyContent="space-between" alignContent="center" style={{ height: '400px' }} wrap>
+    <Flex wrap alignContent="center" direction="column" justifyContent="space-between" style={{ height: '400px' }}>
       <div
         style={{
           display: 'flex',
@@ -410,11 +410,11 @@ import { horizontal, vertical } from './helpers/config';
 <Playground>
   <ThemeWrapper>
     <Flex
+      wrap
+      alignContent="center"
       direction="row"
       justifyContent="space-between"
-      alignContent="center"
       style={{ margin: 'auto', height: '280px', width: '400px' }}
-      wrap
     >
       <div
         style={{
@@ -427,14 +427,14 @@ import { horizontal, vertical } from './helpers/config';
         }}
       >
         <PortalPopover
-          height={80}
           initialVisible
+          height={80}
           offset={{ vertical }}
           position="top-left"
           toggler={<BlobbrIcon scale="xxxlarge" />}
           width={300}
         >
-          <Paper color="accent-primary" container="popover" contained scrollable scrollbar="s">
+          <Paper contained scrollable color="accent-primary" container="popover" scrollbar="s">
             <Typography as="div" size="s" variants="line-height-comfy">
               The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
               fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
@@ -454,14 +454,14 @@ import { horizontal, vertical } from './helpers/config';
         }}
       >
         <PortalPopover
-          height={80}
           initialVisible
+          height={80}
           offset={{ vertical }}
           position="top-center"
           toggler={<BlobbrIcon scale="xxxlarge" />}
           width={300}
         >
-          <Paper color="accent-primary" container="popover" contained scrollable scrollbar="s">
+          <Paper contained scrollable color="accent-primary" container="popover" scrollbar="s">
             <Typography as="div" size="s" variants="line-height-comfy">
               The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
               fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
@@ -481,14 +481,14 @@ import { horizontal, vertical } from './helpers/config';
         }}
       >
         <PortalPopover
-          height={80}
           initialVisible
+          height={80}
           offset={{ vertical }}
           position="top-right"
           toggler={<BlobbrIcon scale="xxxlarge" />}
           width={300}
         >
-          <Paper color="accent-primary" container="popover" contained scrollable scrollbar="s">
+          <Paper contained scrollable color="accent-primary" container="popover" scrollbar="s">
             <Typography as="div" size="s" variants="line-height-comfy">
               The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
               fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
@@ -508,14 +508,14 @@ import { horizontal, vertical } from './helpers/config';
         }}
       >
         <PortalPopover
-          height={80}
           initialVisible
+          height={80}
           offset={{ vertical }}
           position="bottom-left"
           toggler={<BlobbrIcon scale="xxxlarge" />}
           width={300}
         >
-          <Paper color="accent-primary" container="popover" contained scrollable scrollbar="s">
+          <Paper contained scrollable color="accent-primary" container="popover" scrollbar="s">
             <Typography as="div" size="s" variants="line-height-comfy">
               The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
               fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
@@ -535,14 +535,14 @@ import { horizontal, vertical } from './helpers/config';
         }}
       >
         <PortalPopover
-          height={80}
           initialVisible
+          height={80}
           offset={{ vertical }}
           position="bottom-center"
           toggler={<BlobbrIcon scale="xxxlarge" />}
           width={300}
         >
-          <Paper color="accent-primary" container="popover" contained scrollable scrollbar="s">
+          <Paper contained scrollable color="accent-primary" container="popover" scrollbar="s">
             <Typography as="div" size="s" variants="line-height-comfy">
               The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
               fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
@@ -562,14 +562,14 @@ import { horizontal, vertical } from './helpers/config';
         }}
       >
         <PortalPopover
-          height={80}
           initialVisible
+          height={80}
           offset={{ vertical }}
           position="bottom-right"
           toggler={<BlobbrIcon scale="xxxlarge" />}
           width={300}
         >
-          <Paper color="accent-primary" container="popover" contained scrollable scrollbar="s">
+          <Paper contained scrollable color="accent-primary" container="popover" scrollbar="s">
             <Typography as="div" size="s" variants="line-height-comfy">
               The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
               fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
@@ -586,7 +586,7 @@ import { horizontal, vertical } from './helpers/config';
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="column" justifyContent="space-between" alignContent="center" style={{ height: '400px' }} wrap>
+    <Flex wrap alignContent="center" direction="column" justifyContent="space-between" style={{ height: '400px' }}>
       <div
         style={{
           display: 'flex',
@@ -776,16 +776,17 @@ import { horizontal, vertical } from './helpers/config';
   <ThemeWrapper>
     <PortalPopover
       focusable
+      withChildrenProps
       height={32}
       offset={{ vertical, horizontal: 20 }}
       position="right-center"
       renderChildren={({ close }) => (
         <Button
+          color="primary"
           onClick={() => {
             console.log('closing');
             close();
           }}
-          color="primary"
           weight="shaded"
         >
           Close
@@ -793,7 +794,6 @@ import { horizontal, vertical } from './helpers/config';
       )}
       toggler={<BlobbrIcon scale="xxxlarge" />}
       width={150}
-      withChildrenProps
     />
   </ThemeWrapper>
 </Playground>
@@ -802,23 +802,24 @@ import { horizontal, vertical } from './helpers/config';
 
 <Playground>
   <ThemeWrapper>
-    <Flex justifyContent="space-between" wrap>
+    <Flex wrap justifyContent="space-between">
       <div style={{ width: 220, height: 120, textAlign: 'center' }}>
         <h3>Manual focus</h3>
         <InlinePopover
           focusable
+          withChildrenProps
           height={74}
           offset={{ vertical }}
           position="right-center"
           renderChildren={({ focusRef }) => (
-            <Card raised full>
-              <Paper color="accent-primary" container="popover" contained scrollable scrollbar="s">
+            <Card full raised>
+              <Paper contained scrollable color="accent-primary" container="popover" scrollbar="s">
                 <Typography as="div" variants="reset">
                   <Rhythm my={1}>
-                    <Button onClick={() => console.log('clicked')} weight="inline" contrast>
+                    <Button contrast onClick={() => console.log('clicked')} weight="inline">
                       Unfocused button
                     </Button>
-                    <Button ref={focusRef} onClick={() => console.log('clicked')} weight="inline" contrast>
+                    <Button contrast onClick={() => console.log('clicked')} ref={focusRef} weight="inline">
                       Focused button
                     </Button>
                   </Rhythm>
@@ -828,25 +829,25 @@ import { horizontal, vertical } from './helpers/config';
           )}
           toggler={<BlobbrIcon scale="xxxlarge" />}
           width={150}
-          withChildrenProps
         />
       </div>
       <div style={{ width: 220, height: 120, textAlign: 'center' }}>
         <h3>Manual focus portal</h3>
         <PortalPopover
           focusable
+          withChildrenProps
           height={74}
           offset={{ vertical }}
           position="right-center"
           renderChildren={({ focusRef }) => (
-            <Card raised full>
-              <Paper color="accent-primary" container="popover" contained scrollable scrollbar="s">
+            <Card full raised>
+              <Paper contained scrollable color="accent-primary" container="popover" scrollbar="s">
                 <Typography as="div" variants="reset">
                   <Rhythm my={1}>
-                    <Button onClick={() => console.log('clicked')} weight="inline" contrast>
+                    <Button contrast onClick={() => console.log('clicked')} weight="inline">
                       Unfocused button
                     </Button>
-                    <Button ref={focusRef} onClick={() => console.log('clicked')} weight="inline" contrast>
+                    <Button contrast onClick={() => console.log('clicked')} ref={focusRef} weight="inline">
                       Focused button
                     </Button>
                   </Rhythm>
@@ -856,7 +857,6 @@ import { horizontal, vertical } from './helpers/config';
           )}
           toggler={<BlobbrIcon scale="xxxlarge" />}
           width={150}
-          withChildrenProps
         />
       </div>
       <div style={{ width: 220, height: 120, textAlign: 'center' }}>
@@ -869,14 +869,14 @@ import { horizontal, vertical } from './helpers/config';
           toggler={<BlobbrIcon scale="xxxlarge" />}
           width={150}
         >
-          <Card raised full>
-            <Paper color="accent-primary" container="popover" contained scrollable scrollbar="s">
+          <Card full raised>
+            <Paper contained scrollable color="accent-primary" container="popover" scrollbar="s">
               <Typography as="div" variants="reset">
                 <Rhythm my={1}>
-                  <Button onClick={() => console.log('clicked')} weight="inline" contrast>
+                  <Button contrast onClick={() => console.log('clicked')} weight="inline">
                     Focused button
                   </Button>
-                  <Button onClick={() => console.log('clicked')} weight="inline" contrast>
+                  <Button contrast onClick={() => console.log('clicked')} weight="inline">
                     Unfocused button
                   </Button>
                 </Rhythm>
@@ -895,14 +895,14 @@ import { horizontal, vertical } from './helpers/config';
           toggler={<BlobbrIcon scale="xxxlarge" />}
           width={150}
         >
-          <Card raised full>
-            <Paper color="accent-primary" container="popover" contained scrollable scrollbar="s">
+          <Card full raised>
+            <Paper contained scrollable color="accent-primary" container="popover" scrollbar="s">
               <Typography as="div" variants="reset">
                 <Rhythm my={1}>
-                  <Button onClick={() => console.log('clicked')} weight="inline" contrast>
+                  <Button contrast onClick={() => console.log('clicked')} weight="inline">
                     Focused button
                   </Button>
-                  <Button onClick={() => console.log('clicked')} weight="inline" contrast>
+                  <Button contrast onClick={() => console.log('clicked')} weight="inline">
                     Unfocused button
                   </Button>
                 </Rhythm>

@@ -60,9 +60,9 @@ export function useLineLoader({
     () => (
       <TransitionedLineLoader
         duration={duration || 1500}
+        fixed={fixed}
         percent={loaderFinishing ? 50 : undefined}
         position={position || 'top'}
-        fixed={fixed}
         style={{
           transition: `opacity ${fadeOutDuration}ms`,
           transitionDelay: `${fadeOutDelay}ms`,

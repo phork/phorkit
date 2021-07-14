@@ -1,9 +1,9 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import { ThemeProps } from '../../../types';
+import styles from './styles/FormboxInput.module.css';
 import { FormboxInput } from './FormboxInput';
 import { FormboxInputFormatted, FormboxInputFormattedProps } from './FormboxInputFormatted';
-import styles from './styles/FormboxInput.module.css';
 import { FormboxInputElementType, FormboxValue, FormboxVariant } from './types';
 
 export interface FormboxInputWithFormattingProps<I extends FormboxInputElementType>
@@ -56,8 +56,8 @@ export const FormboxInputWithFormatting = <I extends FormboxInputElementType>({
   return shouldUseFormatting ? (
     <div className={cx(styles.formboxInputWithFormatting, className)} {...props}>
       <FormboxInputFormatted
-        contrast={contrast}
         className={styles.formboxInputWithFormatting__formatted}
+        contrast={contrast}
         hidden={isFormattedHidden && !alwaysShowFormatting}
         isPlaceholder={isFormattedUsedAsPlaceholder}
         themeId={themeId}

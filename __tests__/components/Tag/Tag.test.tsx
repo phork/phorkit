@@ -12,7 +12,7 @@ describe('<Tag />', () => {
   });
 
   it('should render a tag as an anchor', () => {
-    const { container, getByText } = render(<Tag<'a'> as="a" actionable href="#tag" label="Click me!" />);
+    const { container, getByText } = render(<Tag<'a'> actionable as="a" href="#tag" label="Click me!" />);
     expect(container.firstChild?.nodeName).toBe('A');
     expect(container.firstChild).toHaveAttribute('href', '#tag');
     expect(getByText('Click me!')).toBeTruthy();
@@ -21,7 +21,7 @@ describe('<Tag />', () => {
   it('should render a tag as a clickable button', () => {
     const onClick = jest.fn();
     const { container, getByText } = render(
-      <Tag<'button'> as="button" actionable onClick={onClick} label="Click me!" />,
+      <Tag<'button'> actionable as="button" label="Click me!" onClick={onClick} />,
     );
     expect(container.firstChild?.nodeName).toBe('BUTTON');
     expect(getByText('Click me!')).toBeTruthy();
@@ -35,7 +35,7 @@ describe('<Tag />', () => {
   });
 
   it('should render a tag using a functional component', () => {
-    const { container, getByText } = render(<Tag<'a'> as={AsTypeA} actionable href="#tag" label="Click me!" />);
+    const { container, getByText } = render(<Tag<'a'> actionable as={AsTypeA} href="#tag" label="Click me!" />);
     expect(container.firstChild?.nodeName).toBe('A');
     expect(container.firstChild).toHaveAttribute('href', '#tag');
     expect(getByText('Click me!')).toBeTruthy();

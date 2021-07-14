@@ -11,7 +11,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, BannersFromContext } from '../index';
 
-<PageTitle title="Banner" src="compositions/Banner" />
+<PageTitle src="compositions/Banner" title="Banner" />
 
 ## Page banners
 
@@ -126,7 +126,7 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
               color="warning"
               onClick={() =>
                 createNotification(
-                  <Banner level="warning" permanent>
+                  <Banner permanent level="warning">
                     This is a permanent warning banner because something not so great happened. Meh.
                   </Banner>,
                 )
@@ -163,7 +163,7 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
 
 <Playground>
   <ThemeWrapper>
-    <Banners style={{ marginTop: '18px' }} bannerStyle={{ paddingLeft: '24px' }}>
+    <Banners bannerStyle={{ paddingLeft: '24px' }} style={{ marginTop: '18px' }}>
       <BannerConsumer>
         {({ createNotification, clearNotifications }) => (
           <Rhythm m={2}>
@@ -193,7 +193,7 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
               color="warning"
               onClick={() =>
                 createNotification(
-                  <Banner level="warning" permanent>
+                  <Banner permanent level="warning">
                     This is a permanent warning banner because something not so great happened. Meh.
                   </Banner>,
                 )

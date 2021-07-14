@@ -3,8 +3,8 @@ import React from 'react';
 import { AsReactType, MergeElementProps, ThemeProps } from '../../types';
 import { useAccessibility } from '../../context/Accessibility';
 import { useThemeId } from '../../hooks/useThemeId';
-import { ListItem, ListItemProps } from './ListItem';
 import styles from './styles/List.module.css';
+import { ListItem, ListItemProps } from './ListItem';
 import { ListItemElementMap, ListElementType } from './types';
 
 export const listItemElementMap: ListItemElementMap = {
@@ -91,8 +91,8 @@ function ListBase<T extends ListElementType = 'ul'>(
     items?.map(({ id, label, ...item }) => (
       <ListItem<ListItemElementMap[T]>
         as={listItemElement}
-        key={id}
         inactive={inactive}
+        key={id}
         mimicSelectOnFocus={mimicSelectOnFocus}
         transparent={transparent}
         unstyled={unstyled}

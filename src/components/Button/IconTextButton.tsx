@@ -2,8 +2,8 @@ import { cx } from '@emotion/css';
 import React from 'react';
 import { AsReactType, MergeElementProps } from '../../types';
 import { renderFromProp, renderFromPropWithFallback, RenderFromPropElement } from '../../utils/renderFromProp';
-import { Button, LocalButtonProps, ButtonProps } from './Button';
 import styles from './styles/Button.module.css';
+import { Button, LocalButtonProps, ButtonProps } from './Button';
 import { ButtonElementType } from './types';
 
 export type IconTextButtonElementType = ButtonElementType;

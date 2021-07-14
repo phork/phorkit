@@ -10,7 +10,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { List, ListItem } from '../index';
 
-<PageTitle title="List" src="components/List" />
+<PageTitle src="components/List" title="List" />
 
 See also the [InteractiveList](../compositions/InteractiveList) composition which extends this component with keyboard and mouse interaction.
 
@@ -18,11 +18,10 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" justifyContent="space-between" wrap>
+    <Flex wrap direction="row" justifyContent="space-between">
       <div style={{ width: '200px', maxWidth: '100%' }}>
         <h3>Bordered list</h3>
         <List
-          variant="bordered"
           items={[
             { id: 'normal0', label: 'Normal' },
             { id: 'selected', label: 'Selected', selected: true },
@@ -33,12 +32,12 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
             { id: 'disabled', label: 'Disabled', disabled: true },
             { id: 'inactive', label: 'Inactive', inactive: true },
           ]}
+          variant="bordered"
         />
       </div>
       <div style={{ width: '200px', maxWidth: '100%' }}>
         <h3>Box shadowed list</h3>
         <List
-          variant="shadowed"
           items={[
             { id: 'normal0', label: 'Normal' },
             { id: 'selected', label: 'Selected', selected: true },
@@ -49,12 +48,12 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
             { id: 'disabled', label: 'Disabled', disabled: true },
             { id: 'inactive', label: 'Inactive', inactive: true },
           ]}
+          variant="shadowed"
         />
       </div>
       <div style={{ width: '200px', maxWidth: '100%' }}>
         <h3>Divided list</h3>
         <List
-          variant="divided"
           items={[
             { id: 'normal0', label: 'Normal' },
             { id: 'selected', label: 'Selected', selected: true },
@@ -65,12 +64,12 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
             { id: 'disabled', label: 'Disabled', disabled: true },
             { id: 'inactive', label: 'Inactive', inactive: true },
           ]}
+          variant="divided"
         />
       </div>
       <div style={{ width: '200px', maxWidth: '100%' }}>
         <h3>Unboxed list</h3>
         <List
-          variant="unboxed"
           rounded
           transparent
           items={[
@@ -83,6 +82,7 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
             { id: 'disabled', label: 'Disabled', disabled: true },
             { id: 'inactive', label: 'Inactive', inactive: true },
           ]}
+          variant="unboxed"
         />
       </div>
     </Flex>
@@ -96,51 +96,49 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
     <h3>Bordered list</h3>
     <List
       inline
-      variant="bordered"
       items={[
         { id: 'first', label: 'First' },
         { id: 'second', label: 'Second' },
         { id: 'third', label: 'Third', selected: true },
         { id: 'fourth', label: 'Fourth' },
       ]}
+      variant="bordered"
     />
     <h3>Box shadowed list</h3>
     <List
       inline
-      variant="shadowed"
       items={[
         { id: 'first', label: 'First' },
         { id: 'second', label: 'Second' },
         { id: 'third', label: 'Third', selected: true },
         { id: 'fourth', label: 'Fourth' },
       ]}
+      variant="shadowed"
     />
     <h3>Divided list</h3>
     <List
       inline
-      variant="divided"
       items={[
         { id: 'first', label: 'First' },
         { id: 'second', label: 'Second' },
         { id: 'third', label: 'Third', selected: true },
         { id: 'fourth', label: 'Fourth' },
       ]}
+      variant="divided"
     />
-
     <h3>Unboxed list</h3>
     <List
       inline
       rounded
       transparent
-      variant="unboxed"
       items={[
         { id: 'first', label: 'First' },
         { id: 'second', label: 'Second' },
         { id: 'third', label: 'Third', selected: true },
         { id: 'fourth', label: 'Fourth' },
       ]}
+      variant="unboxed"
     />
-
   </ThemeWrapper>
 </Playground>
 
@@ -150,30 +148,30 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
   <ThemeWrapper>
     <List
       rounded
-      size="xlarge"
       transparent
-      variant="unboxed"
       items={[
         { id: 'first', label: 'First' },
         { id: 'second', label: 'Second' },
         { id: 'third', label: 'Third', selected: true },
         { id: 'fourth', label: 'Fourth' },
       ]}
+      size="xlarge"
       style={{ maxWidth: 200 }}
+      variant="unboxed"
     />
     <br />
     <List
       inline
       rounded
-      size="xlarge"
       transparent
-      variant="unboxed"
       items={[
         { id: 'first', label: 'First' },
         { id: 'second', label: 'Second' },
         { id: 'third', label: 'Third', selected: true },
         { id: 'fourth', label: 'Fourth' },
       ]}
+      size="xlarge"
+      variant="unboxed"
     />
   </ThemeWrapper>
 </Playground>
@@ -184,30 +182,30 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
   <ThemeWrapper>
     <List
       rounded
-      size="large"
       transparent
-      variant="unboxed"
       items={[
         { id: 'first', label: 'First' },
         { id: 'second', label: 'Second' },
         { id: 'third', label: 'Third', selected: true },
         { id: 'fourth', label: 'Fourth' },
       ]}
+      size="large"
       style={{ maxWidth: 200 }}
+      variant="unboxed"
     />
     <br />
     <List
       inline
       rounded
-      size="large"
       transparent
-      variant="unboxed"
       items={[
         { id: 'first', label: 'First' },
         { id: 'second', label: 'Second' },
         { id: 'third', label: 'Third', selected: true },
         { id: 'fourth', label: 'Fourth' },
       ]}
+      size="large"
+      variant="unboxed"
     />
   </ThemeWrapper>
 </Playground>
@@ -218,30 +216,30 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
   <ThemeWrapper>
     <List
       rounded
-      size="small"
       transparent
-      variant="unboxed"
       items={[
         { id: 'first', label: 'First' },
         { id: 'second', label: 'Second' },
         { id: 'third', label: 'Third', selected: true },
         { id: 'fourth', label: 'Fourth' },
       ]}
+      size="small"
       style={{ maxWidth: 200 }}
+      variant="unboxed"
     />
     <br />
     <List
       inline
       rounded
-      size="small"
       transparent
-      variant="unboxed"
       items={[
         { id: 'first', label: 'First' },
         { id: 'second', label: 'Second' },
         { id: 'third', label: 'Third', selected: true },
         { id: 'fourth', label: 'Fourth' },
       ]}
+      size="small"
+      variant="unboxed"
     />
   </ThemeWrapper>
 </Playground>
@@ -252,30 +250,30 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
   <ThemeWrapper>
     <List
       rounded
-      size="xsmall"
       transparent
-      variant="unboxed"
       items={[
         { id: 'first', label: 'First' },
         { id: 'second', label: 'Second' },
         { id: 'third', label: 'Third', selected: true },
         { id: 'fourth', label: 'Fourth' },
       ]}
+      size="xsmall"
       style={{ maxWidth: 200 }}
+      variant="unboxed"
     />
     <br />
     <List
       inline
       rounded
-      size="xsmall"
       transparent
-      variant="unboxed"
       items={[
         { id: 'first', label: 'First' },
         { id: 'second', label: 'Second' },
         { id: 'third', label: 'Third', selected: true },
         { id: 'fourth', label: 'Fourth' },
       ]}
+      size="xsmall"
+      variant="unboxed"
     />
   </ThemeWrapper>
 </Playground>
@@ -286,12 +284,11 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" justifyContent="space-between" wrap>
+    <Flex wrap direction="row" justifyContent="space-between">
       <div style={{ width: '200px', maxWidth: '100%' }}>
         <h3>Bordered list</h3>
         <List
           color="minimal"
-          variant="bordered"
           items={[
             { id: 'normal0', label: 'Normal' },
             { id: 'selected', label: 'Selected', selected: true },
@@ -301,15 +298,15 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
             { id: 'disabled', label: 'Disabled', disabled: true },
             { id: 'inactive', label: 'Inactive', inactive: true },
           ]}
+          variant="bordered"
         />
       </div>
       <div style={{ width: '200px', maxWidth: '100%' }}>
         <h3>Unboxed list</h3>
         <List
-          color="minimal"
-          variant="unboxed"
           rounded
           transparent
+          color="minimal"
           items={[
             { id: 'normal0', label: 'Normal' },
             { id: 'selected', label: 'Selected', selected: true },
@@ -319,6 +316,7 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
             { id: 'disabled', label: 'Disabled', disabled: true },
             { id: 'inactive', label: 'Inactive', inactive: true },
           ]}
+          variant="unboxed"
         />
       </div>
     </Flex>
@@ -329,12 +327,11 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
 
 <Playground>
   <ThemeWrapper contrast>
-    <Flex direction="row" justifyContent="space-between" wrap>
+    <Flex wrap direction="row" justifyContent="space-between">
       <div style={{ width: '200px', maxWidth: '100%' }}>
         <h3>Bordered list</h3>
         <List
           contrast
-          variant="bordered"
           items={[
             { id: 'normal0', label: 'Normal' },
             { id: 'selected', label: 'Selected', selected: true },
@@ -344,13 +341,13 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
             { id: 'disabled', label: 'Disabled', disabled: true },
             { id: 'inactive', label: 'Inactive', inactive: true },
           ]}
+          variant="bordered"
         />
       </div>
       <div style={{ width: '200px', maxWidth: '100%' }}>
         <h3>Unboxed list</h3>
         <List
           contrast
-          variant="unboxed"
           rounded
           transparent
           items={[
@@ -363,6 +360,7 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
             { id: 'disabled', label: 'Disabled', disabled: true },
             { id: 'inactive', label: 'Inactive', inactive: true },
           ]}
+          variant="unboxed"
         />
       </div>
     </Flex>
@@ -375,13 +373,13 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
   <ThemeWrapper>
     <List
       inactive
-      variant="shadowed"
       items={[
         { id: 'first', label: 'First' },
         { id: 'second', label: 'Second' },
         { id: 'third', label: 'Third', selected: true },
         { id: 'fourth', label: 'Fourth' },
       ]}
+      variant="shadowed"
     />
   </ThemeWrapper>
 </Playground>
@@ -392,13 +390,13 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
   <ThemeWrapper>
     <List
       as="div"
-      variant="shadowed"
       items={[
         { id: 'first', label: 'First' },
         { id: 'second', label: 'Second' },
         { id: 'third', label: 'Third', selected: true },
         { id: 'fourth', label: 'Fourth' },
       ]}
+      variant="shadowed"
     />
   </ThemeWrapper>
 </Playground>
@@ -411,7 +409,6 @@ _Note that the links will cause the page to reload so the state will appear unch
   <ThemeWrapper>
     <List
       as="div"
-      variant="shadowed"
       items={[
         { id: 'first', label: 'First', as: 'a', href: '#first', style: { display: 'block' } },
         { id: 'second', label: 'Second', as: 'a', href: '#second', style: { display: 'block' } },
@@ -425,6 +422,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         },
         { id: 'fourth', label: 'Fourth', as: 'a', href: '#fourth', style: { display: 'block' } },
       ]}
+      variant="shadowed"
     />
   </ThemeWrapper>
 </Playground>

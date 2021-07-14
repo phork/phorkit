@@ -7,7 +7,7 @@ describe('<Password />', () => {
     const onChange = jest.fn();
 
     const { container, getByText } = render(
-      <Password label="Super fantastic label" onChange={onChange} initialType="text" value="my password" />,
+      <Password initialType="text" label="Super fantastic label" onChange={onChange} value="my password" />,
     );
     expect(getByText('Super fantastic label')).toBeTruthy();
     expect(container.querySelector('input[type=text]')).toBeTruthy();
@@ -26,7 +26,7 @@ describe('<Password />', () => {
     const onChange = jest.fn();
 
     const { container, getByText } = render(
-      <Password label="Super fantastic label" onChange={onChange} initialType="password" value="my password" />,
+      <Password initialType="password" label="Super fantastic label" onChange={onChange} value="my password" />,
     );
     expect(getByText('Super fantastic label')).toBeTruthy();
     expect(container.querySelector('input[type=text]')).not.toBeTruthy();

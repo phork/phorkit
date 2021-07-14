@@ -10,7 +10,7 @@ import { ColorSwatch } from './helpers/ColorSwatch';
 import { ColorTheme } from './helpers/ColorTheme';
 import { ThemeWrapper } from './helpers/ThemeWrapper';
 
-<PageTitle title="Colors" src="postcss/vars" />
+<PageTitle src="postcss/vars" title="Colors" />
 
 Clicking on any color block will copy that color ID to your clipboard.
 
@@ -19,7 +19,7 @@ Clicking on any color block will copy that color ID to your clipboard.
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <ColorSwatch themeId={themeId} group="primary" direction="column" swatchWidth={60} swatchHeight={40}>
+      <ColorSwatch direction="column" group="primary" swatchHeight={40} swatchWidth={60} themeId={themeId}>
         <BlobbrIcon size={24} />
       </ColorSwatch>
     )}
@@ -31,7 +31,7 @@ Clicking on any color block will copy that color ID to your clipboard.
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <ColorSwatch themeId={themeId} group="state" variant="accent-primary" joined swatchWidth={80} swatchHeight={60}>
+      <ColorSwatch joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="accent-primary">
         <BlobbrIcon size={30} />
       </ColorSwatch>
     )}
@@ -43,7 +43,7 @@ Clicking on any color block will copy that color ID to your clipboard.
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <ColorSwatch themeId={themeId} group="state" variant="success" joined swatchWidth={80} swatchHeight={60}>
+      <ColorSwatch joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="success">
         <BlobbrIcon size={30} />
       </ColorSwatch>
     )}
@@ -55,7 +55,7 @@ Clicking on any color block will copy that color ID to your clipboard.
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <ColorSwatch themeId={themeId} group="state" variant="warning" joined swatchWidth={80} swatchHeight={60}>
+      <ColorSwatch joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="warning">
         <BlobbrIcon size={30} />
       </ColorSwatch>
     )}
@@ -67,7 +67,7 @@ Clicking on any color block will copy that color ID to your clipboard.
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <ColorSwatch themeId={themeId} group="state" variant="danger" joined swatchWidth={80} swatchHeight={60}>
+      <ColorSwatch joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="danger">
         <BlobbrIcon size={30} />
       </ColorSwatch>
     )}
@@ -79,7 +79,7 @@ Clicking on any color block will copy that color ID to your clipboard.
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <ColorSwatch themeId={themeId} group="state" variant="neutral" joined swatchWidth={80} swatchHeight={60}>
+      <ColorSwatch joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="neutral">
         <BlobbrIcon size={30} />
       </ColorSwatch>
     )}
@@ -90,7 +90,7 @@ Clicking on any color block will copy that color ID to your clipboard.
 
 <Playground>
   <ThemeWrapper withThemeId>
-    {({ themeId }) => <ColorSwatch themeId={themeId} group="background" swatchWidth={60} swatchHeight={40} />}
+    {({ themeId }) => <ColorSwatch group="background" swatchHeight={40} swatchWidth={60} themeId={themeId} />}
   </ThemeWrapper>
 </Playground>
 
@@ -98,7 +98,7 @@ Clicking on any color block will copy that color ID to your clipboard.
 
 <Playground>
   <ThemeWrapper withThemeId>
-    {({ themeId }) => <ColorSwatch themeId={themeId} group="foreground" swatchWidth={60} swatchHeight={40} />}
+    {({ themeId }) => <ColorSwatch group="foreground" swatchHeight={40} swatchWidth={60} themeId={themeId} />}
   </ThemeWrapper>
 </Playground>
 
@@ -109,15 +109,15 @@ Clicking on any color block will copy that color ID to your clipboard.
     {({ themeId }) => (
       <React.Fragment>
         <ColorSwatch
-          themeId={themeId}
           group="transparent"
-          variant="accent-primary"
-          swatchWidth={60}
           swatchHeight={40}
+          swatchWidth={60}
+          themeId={themeId}
+          variant="accent-primary"
         />
-        <ColorSwatch themeId={themeId} group="transparent" variant="FG0" swatchWidth={60} swatchHeight={40} />
-        <ColorSwatch themeId={themeId} group="transparent" variant="BG50" swatchWidth={60} swatchHeight={40} />
-        <ColorSwatch themeId={themeId} group="transparent" variant="BG0" swatchWidth={60} swatchHeight={40} />
+        <ColorSwatch group="transparent" swatchHeight={40} swatchWidth={60} themeId={themeId} variant="FG0" />
+        <ColorSwatch group="transparent" swatchHeight={40} swatchWidth={60} themeId={themeId} variant="BG50" />
+        <ColorSwatch group="transparent" swatchHeight={40} swatchWidth={60} themeId={themeId} variant="BG0" />
       </React.Fragment>
     )}
   </ThemeWrapper>

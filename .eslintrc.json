@@ -45,6 +45,17 @@
     "react/jsx-filename-extension": 0,
     "react/jsx-props-no-spreading": 0,
     "react/jsx-no-undef": "error",
+    "react/jsx-sort-props": [
+      "warn",
+      {
+        "callbacksLast": false,
+        "shorthandFirst":true,
+        "shorthandLast": false,
+        "ignoreCase": false,
+        "noSortAlphabetically": false,
+        "reservedFirst": false
+      }
+    ],
     "jsx-a11y/anchor-is-valid": ["error", { "components": ["Link"], "specialLink": ["onClick", "to"] }]
   },
   "globals": {
@@ -60,6 +71,20 @@
     }
   },
   "overrides": [
+    {
+      "files": "*.mdx",
+      "extends":[
+        "prettier",
+        "plugin:jsx-a11y/recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:mdx/recommended"
+      ],
+      "rules": {
+        "no-console": 0,
+        "jsx-a11y/anchor-is-valid": 0
+      }
+    },
     {
       "files": ["**/*.ts", "**/*.tsx"],
       "extends": [

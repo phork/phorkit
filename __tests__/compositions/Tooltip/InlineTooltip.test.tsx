@@ -7,8 +7,8 @@ describe('<InlineTooltip />', () => {
     const { getByText } = render(
       <InlineTooltip
         focusable
-        height={80}
         permanent
+        height={80}
         toggler={<TimesIcon scale="xxxlarge" />}
         triangleColor="#fff"
         width={300}
@@ -23,8 +23,9 @@ describe('<InlineTooltip />', () => {
     const { getByText } = render(
       <InlineTooltip
         focusable
-        height={80}
         permanent
+        withChildrenProps
+        height={80}
         position="bottom-right"
         renderChildren={({ position }) => (
           <React.Fragment>
@@ -35,7 +36,6 @@ describe('<InlineTooltip />', () => {
         toggler={<TimesIcon scale="xxxlarge" />}
         triangleColor="#fff"
         width={300}
-        withChildrenProps
       />,
     );
     expect(getByText('Hello world')).toBeTruthy();

@@ -12,7 +12,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { ColoredTabs, Tabs, Tab, TabList, TabPanelGroup, TabPanel, TabsContainer } from '../index';
 
-<PageTitle title="Tabs" src="compositions/Tabs" />
+<PageTitle src="compositions/Tabs" title="Tabs" />
 
 Keyboard navigation is available for this component. Navigate with `Up`, `Down`, `Left`, `Right`, `Home` or `End`. Select with `Space` or `Enter`.
 
@@ -21,13 +21,13 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 <Playground>
   <ThemeWrapper>
     <Tabs
-      onSelect={(event, id) => console.log(id)}
       items={[
         { id: 'first', label: 'First', content: 'First panel' },
         { id: 'second', label: 'Second', content: 'Second panel' },
         { id: 'third', label: 'Third', content: 'Third panel', disabled: true },
         { id: 'fourth', label: 'Fourth', content: 'Fourth panel' },
       ]}
+      onSelect={(event, id) => console.log(id)}
     />
   </ThemeWrapper>
 </Playground>
@@ -38,13 +38,13 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   <ThemeWrapper>
     <Tabs
       fullWidth
-      onSelect={(event, id) => console.log(id)}
       items={[
         { id: 'first', label: 'First', content: 'First panel' },
         { id: 'second', label: 'Second', content: 'Second panel' },
         { id: 'third', label: 'Third', content: 'Third panel', disabled: true },
         { id: 'fourth', label: 'Fourth', content: 'Fourth panel' },
       ]}
+      onSelect={(event, id) => console.log(id)}
     />
   </ThemeWrapper>
 </Playground>
@@ -54,7 +54,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 <Playground>
   <ThemeWrapper>
     <Tabs
-      onSelect={(event, id) => console.log(id)}
       items={[
         { id: 'first', label: 'First', content: 'First panel' },
         { id: 'second', label: 'Second', content: 'Second panel' },
@@ -72,6 +71,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         { id: 'fourteenth', label: 'Fourteenth', content: 'Fourteenth panel' },
         { id: 'fifteenth', label: 'Fifteenth', content: 'Fifteenth panel' },
       ]}
+      onSelect={(event, id) => console.log(id)}
     />
   </ThemeWrapper>
 </Playground>
@@ -82,13 +82,13 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   <ThemeWrapper>
     <Tabs
       vertical
-      onSelect={(event, id) => console.log(id)}
       items={[
         { id: 'first', label: '1', content: 'First panel' },
         { id: 'second', label: '2', content: 'Second panel' },
         { id: 'third', label: '3', content: 'Third panel', disabled: true },
         { id: 'fourth', label: '4', content: 'Fourth panel '.repeat(150).trim() },
       ]}
+      onSelect={(event, id) => console.log(id)}
     />
   </ThemeWrapper>
 </Playground>
@@ -101,7 +101,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   <ThemeWrapper>
     <Tabs
       initialSelected={['second']}
-      onSelect={(event, id) => console.log(id)}
       items={[
         {
           id: 'first',
@@ -125,6 +124,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
           content: ({ selected }) => `Fourth panel${selected ? ' is selected' : ''}`,
         },
       ]}
+      onSelect={(event, id) => console.log(id)}
     />
   </ThemeWrapper>
 </Playground>
@@ -135,13 +135,13 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   <ThemeWrapper>
     <ColoredTabs
       colorId="P10"
-      onSelect={(event, id) => console.log(id)}
       items={[
         { id: 'first', label: 'First', content: 'First panel' },
         { id: 'second', label: 'Second', content: 'Second panel' },
         { id: 'third', label: 'Third', content: 'Third panel', disabled: true },
         { id: 'fourth', label: 'Fourth', content: 'Fourth panel' },
       ]}
+      onSelect={(event, id) => console.log(id)}
     />
   </ThemeWrapper>
 </Playground>
@@ -151,14 +151,14 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 <Playground>
   <ThemeWrapper>
     <Tabs
-      variant="transparent"
-      onSelect={(event, id) => console.log(id)}
       items={[
         { id: 'first', label: 'First', content: 'First panel' },
         { id: 'second', label: 'Second', content: 'Second panel' },
         { id: 'third', label: 'Third', content: 'Third panel', disabled: true },
         { id: 'fourth', label: 'Fourth', content: 'Fourth panel' },
       ]}
+      onSelect={(event, id) => console.log(id)}
+      variant="transparent"
     />
   </ThemeWrapper>
 </Playground>
@@ -169,13 +169,13 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   <ThemeWrapper contrast>
     <Tabs
       contrast
-      onSelect={(event, id) => console.log(id)}
       items={[
         { id: 'first', label: 'First', content: 'First panel' },
         { id: 'second', label: 'Second', content: 'Second panel' },
         { id: 'third', label: 'Third', content: 'Third panel', disabled: true },
         { id: 'fourth', label: 'Fourth', content: 'Fourth panel' },
       ]}
+      onSelect={(event, id) => console.log(id)}
     />
   </ThemeWrapper>
 </Playground>
@@ -186,24 +186,24 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <ColorLooper
-        themeId={themeId}
         group="primary"
         render={({ id }) => (
           <Rhythm key={id} my={1}>
             <ColoredTabs
-              initialSelected={['third']}
-              colorId={id}
               vertical
-              onSelect={(event, id) => console.log(id)}
+              colorId={id}
+              initialSelected={['third']}
               items={[
                 { id: 'first', label: '1', content: 'First panel' },
                 { id: 'second', label: '2', content: 'Second panel' },
                 { id: 'third', label: '3', content: 'Third panel' },
                 { id: 'fourth', label: '4', content: 'Fourth panel' },
               ]}
+              onSelect={(event, id) => console.log(id)}
             />
           </Rhythm>
         )}
+        themeId={themeId}
       />
     )}
   </ThemeWrapper>
@@ -216,8 +216,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
     <Tabs
       unstyled
       initialSelected={['second']}
-      style={{ outline: 'none' }}
-      onSelect={(event, id) => console.log(id)}
       items={[
         {
           id: 'first',
@@ -301,24 +299,26 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
           contentProps: { flush: true },
         },
       ]}
+      onSelect={(event, id) => console.log(id)}
+      style={{ outline: 'none' }}
     >
       {({ componentId, items, ref, themeId, vertical }) => (
         <TabsContainer style={{ border: 'none' }} vertical={vertical}>
           <TabList
-            componentId={componentId}
-            ref={ref}
-            items={items}
-            themeId={themeId}
             unstyled
-            vertical={vertical}
+            componentId={componentId}
+            items={items}
+            ref={ref}
             style={{
               alignItems: 'center',
               display: 'flex',
               flexDirection: vertical ? 'column' : 'row',
               outline: 'none',
             }}
+            themeId={themeId}
+            vertical={vertical}
           />
-          <TabPanelGroup componentId={componentId} items={items} themeId={themeId} unstyled vertical={vertical} />
+          <TabPanelGroup unstyled componentId={componentId} items={items} themeId={themeId} vertical={vertical} />
         </TabsContainer>
       )}
     </Tabs>
@@ -330,14 +330,14 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 <Playground>
   <ThemeWrapper>
     <Tabs
-      minSelect={0}
-      onSelect={(event, id) => console.log(id)}
       items={[
         { id: 'first', label: 'First', content: 'First panel' },
         { id: 'second', label: 'Second', content: 'Second panel' },
         { id: 'third', label: 'Third', content: 'Third panel', disabled: true },
         { id: 'fourth', label: 'Fourth', content: 'Fourth panel' },
       ]}
+      minSelect={0}
+      onSelect={(event, id) => console.log(id)}
     />
   </ThemeWrapper>
 </Playground>

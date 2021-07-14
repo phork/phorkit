@@ -4,14 +4,14 @@ menu: Forms
 route: /components/Notification
 ---
 
-import { PageTitle } from 'docs/helpers/PageTitle';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { Flex } from 'components/Flex';
 import { Rhythm } from 'components/Rhythm';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Notification } from '../index';
 
-<PageTitle title="Notification" src="components/Form/Notification" />
+<PageTitle src="components/Form/Notification" title="Notification" />
 
 ## Basic notification
 
@@ -19,7 +19,7 @@ import { Notification } from '../index';
   <ThemeWrapper>
     <Notification notification="Basic notification">Content that the basic notification refers to.</Notification>
     <br />
-    <Notification notification="Divided notification" divided>
+    <Notification divided notification="Divided notification">
       Content that the divided notification refers to.
     </Notification>
   </ThemeWrapper>
@@ -34,7 +34,7 @@ import { Notification } from '../index';
         <Notification color="success" notification="Success notification" />
         <Notification color="warning" notification="Warning notification" />
         <Notification color="danger" notification="Danger notification" />
-        <Notification color="primary" notification="Primary notification" divided />
+        <Notification divided color="primary" notification="Primary notification" />
         <Notification color="neutral" notification="Neutral notification" />
       </Rhythm>
     </Flex>

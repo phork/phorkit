@@ -18,10 +18,10 @@ describe('<Select />', () => {
 
     const { container, getByText } = render(
       <Select
+        transitional
         label="Super fantastic label"
         onChange={onChange}
         options={options.map(item => ({ ...item, 'data-testid': 'select-option' }))}
-        transitional
       />,
     );
     expect(getByText('Super fantastic label')).toBeTruthy();
@@ -40,12 +40,12 @@ describe('<Select />', () => {
 
     const { container, getByText } = render(
       <NotifiedSelect
-        label="Super fantastic label"
-        onChange={onChange}
-        options={options.map(item => ({ ...item, 'data-testid': 'select-option' }))}
         transitional
+        label="Super fantastic label"
         level="danger"
         notification="Example notification"
+        onChange={onChange}
+        options={options.map(item => ({ ...item, 'data-testid': 'select-option' }))}
       />,
     );
     expect(getByText('Super fantastic label')).toBeTruthy();

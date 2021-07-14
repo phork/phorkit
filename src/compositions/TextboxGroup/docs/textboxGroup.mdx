@@ -14,7 +14,7 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { TextboxGroup2FA } from '../index';
 import { variants } from './helpers/variants';
 
-<PageTitle title="TextboxGroup" src="compositions/TextboxGroup" />
+<PageTitle src="compositions/TextboxGroup" title="TextboxGroup" />
 
 ## Two factor authentication
 
@@ -51,31 +51,30 @@ import { variants } from './helpers/variants';
       render={variant => (
         <StateWrapper initialState="">
           {({ state, setState }) => (
-              <Rhythm py={3} grouped>
-                <FormboxContainer
-                  as="label"
-                  focused={state.focused}
-                  label="Two-factor code"
+            <Rhythm grouped py={3}>
+              <FormboxContainer
+                transitional
+                as="label"
+                focused={state.focused}
+                label="Two-factor code"
+                size="xxxxxxxlarge"
+                type="input"
+                variant="minimal"
+              >
+                <TextboxGroup2FA
+                  inputWidth={64}
+                  length={6}
+                  onChange={(event, value) => setState(value)}
                   size="xxxxxxxlarge"
-                  transitional
-                  type="input"
-                  variant="minimal"
-                >
-                  <TextboxGroup2FA
-                    inputWidth={64}
-                    length={6}
-                    onChange={(event, value) => setState(value)}
-                    size="xxxxxxxlarge"
-                    value={state}
-                    variant={variant}
-                  />
-                </FormboxContainer>
-              </Rhythm>
+                  value={state}
+                  variant={variant}
+                />
+              </FormboxContainer>
+            </Rhythm>
           )}
         </StateWrapper>
       )}
     />
-
   </ThemeWrapper>
 </Playground>
 

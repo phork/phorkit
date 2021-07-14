@@ -24,9 +24,9 @@ describe('<Textarea />', () => {
     const { container, getByText } = render(
       <NotifiedTextarea
         label="Super fantastic label"
-        onChange={onChange}
         level="danger"
         notification="Example notification"
+        onChange={onChange}
       />,
     );
     expect(getByText('Super fantastic label')).toBeTruthy();

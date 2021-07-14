@@ -58,10 +58,10 @@ export const MultiColorSliderTrack = React.forwardRef(
 
     return (
       <StyledTrack
-        ref={forwardedRef}
-        trackBackground={trackBackground}
-        sliderWidth={sliderWidth}
         className={className}
+        ref={forwardedRef}
+        sliderWidth={sliderWidth}
+        trackBackground={trackBackground}
         {...props}
       >
         {children}

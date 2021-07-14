@@ -20,7 +20,7 @@ import { MultiVariantDropdown } from './helpers/MultiVariantDropdown';
 import { options, handleFilter, handleEmptyFilter } from './helpers/options';
 import { variants, sizes } from './helpers/variants';
 
-<PageTitle title="Dropdown" src="compositions/Dropdown" />
+<PageTitle src="compositions/Dropdown" title="Dropdown" />
 
 Keyboard navigation is available for this component. Navigate with `Up`, `Down`, `Left`, `Right`, `Home` or `End`. Toggle with `Space`. Select with `Enter`. Close with `Escape`.
 
@@ -28,21 +28,21 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" justifyContent="space-between" full wrap>
+    <Flex full wrap direction="row" justifyContent="space-between">
       <Looper
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
             <ControlledDropdown
+              transitional
               inputVariant={variant}
               label="Super awesome dropdown"
               layout="raised"
               onItemFocus={(event, value) => console.log('focus', value)}
               onSelect={value => console.log('select', value)}
-              onUnselect={value => console.log('unselect', value)}
               onSelectionChange={value => console.log('selection change', value)}
+              onUnselect={value => console.log('unselect', value)}
               options={options}
-              transitional
             />
           </div>
         )}
@@ -56,21 +56,21 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 <Playground>
   <ThemeWrapper>
     <br />
-    <Flex direction="row" justifyContent="space-between" full wrap>
+    <Flex full wrap direction="row" justifyContent="space-between">
       <Looper
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
             <ControlledDropdown
+              transitional
               initialSelected={[options[3]]}
               inputVariant={variant}
               label="Super awesome dropdown"
               layout="contained"
               onSelect={value => console.log('select', value)}
-              onUnselect={value => console.log('unselect', value)}
               onSelectionChange={value => console.log('selection change', value)}
+              onUnselect={value => console.log('unselect', value)}
               options={options}
-              transitional
             />
           </div>
         )}
@@ -84,21 +84,21 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 <Playground>
   <ThemeWrapper>
     <br />
-    <Flex direction="row" justifyContent="space-between" full wrap>
+    <Flex full wrap direction="row" justifyContent="space-between">
       <Looper
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
             <ControlledDropdown
+              transitional
               inputVariant={variant}
               label="Super awesome dropdown"
               layout="contained"
               onSelect={value => console.log('select', value)}
-              onUnselect={value => console.log('unselect', value)}
               onSelectionChange={value => console.log('selection change', value)}
+              onUnselect={value => console.log('unselect', value)}
               options={options}
               placeholder="Select one"
-              transitional
             />
           </div>
         )}
@@ -112,22 +112,22 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 <Playground>
   <ThemeWrapper>
     <br />
-    <Flex direction="row" justifyContent="space-between" full wrap>
+    <Flex full wrap direction="row" justifyContent="space-between">
       <Looper
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
             <ControlledDropdown
+              transitional
               initialSelected={[options[3]]}
               inputVariant={variant}
               label="Super awesome dropdown"
               layout="contained"
               maxSelect={-1}
               onSelect={value => console.log('select', value)}
-              onUnselect={value => console.log('unselect', value)}
               onSelectionChange={value => console.log('selection change', value)}
+              onUnselect={value => console.log('unselect', value)}
               options={options}
-              transitional
             />
           </div>
         )}
@@ -141,12 +141,13 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 <Playground>
   <ThemeWrapper>
     <br />
-    <Flex direction="row" justifyContent="space-between" full wrap>
+    <Flex full wrap direction="row" justifyContent="space-between">
       <Looper
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
             <ControlledDropdown
+              transitional
               initialSelected={[options[3], options[4], options[5]]}
               inputVariant={variant}
               label="Super awesome dropdown"
@@ -154,10 +155,9 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
               maxSelect={3}
               minSelect={1}
               onSelect={value => console.log('select', value)}
-              onUnselect={value => console.log('unselect', value)}
               onSelectionChange={value => console.log('selection change', value)}
+              onUnselect={value => console.log('unselect', value)}
               options={options}
-              transitional
             />
           </div>
         )}
@@ -170,12 +170,13 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" justifyContent="space-between" full wrap>
+    <Flex full wrap direction="row" justifyContent="space-between">
       <Looper
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
             <ControlledDropdown
+              transitional
               getFilteredOptions={handleFilter}
               initialSelected={[options[3]]}
               inputVariant={variant}
@@ -187,7 +188,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
                 !options.some(option => option.id === value) && options.push({ id: value, label: value })
               }
               options={options}
-              transitional
             />
           </div>
         )}
@@ -206,6 +206,8 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
       {({ state: filter, setState: setFilter }) => (
         <div style={{ height: 300, maxWidth: 300 }}>
           <ControlledDropdown
+            searchable
+            transitional
             emptyNotification={filter ? `No options were found for "${filter}".` : ''}
             getFilteredOptions={handleFilter}
             label="Super awesome dropdown"
@@ -215,8 +217,6 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
             onSubmit={(event, value) =>
               !options.some(option => option.id === value) && options.push({ id: value, label: value })
             }
-            searchable
-            transitional
           />
         </div>
       )}
@@ -230,10 +230,10 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
   <ThemeWrapper style={{ height: '300px' }}>
     <div style={{ maxWidth: 300 }}>
       <ControlledDropdown
+        transitional
         label="Super awesome dropdown"
         onSelect={value => console.log('select', value)}
         options={[]}
-        transitional
       />
     </div>
   </ThemeWrapper>
@@ -245,13 +245,13 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
   <ThemeWrapper style={{ height: '300px' }}>
     <div style={{ maxWidth: 300 }}>
       <ControlledDropdown
+        transitional
         getFilteredOptions={handleEmptyFilter}
         iconBefore={<SearchIcon size={14} />}
         label="Super awesome dropdown"
         onInputChange={value => console.log('change', value)}
         onSelect={value => console.log('select', value)}
         options={[]}
-        transitional
       />
     </div>
   </ThemeWrapper>
@@ -263,7 +263,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" justifyContent="space-between" full wrap>
+    <Flex full wrap direction="row" justifyContent="space-between">
       <Looper
         list={variants}
         render={variant => (
@@ -288,19 +288,19 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" justifyContent="space-between" full wrap>
+    <Flex full wrap direction="row" justifyContent="space-between">
       <Looper
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
             <ControlledDropdown
+              transitional
               initialSelected={[options[3]]}
               inputVariant={variant}
               label="Super awesome dropdown"
               onInputChange={value => console.log('change', value)}
               onSelect={value => console.log('select', value)}
               options={options}
-              transitional
               validity="warning"
             />
           </div>
@@ -314,18 +314,18 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" justifyContent="space-between" full wrap>
+    <Flex full wrap direction="row" justifyContent="space-between">
       <Looper
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
             <ControlledDropdown
+              transitional
               initialSelected={[options[3]]}
               inputVariant={variant}
               label="Super awesome dropdown"
               onSelect={value => console.log('select', value)}
               options={options}
-              transitional
               validity="success"
             />
           </div>
@@ -339,19 +339,19 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 
 <Playground>
   <ThemeWrapper contrast>
-    <Flex direction="row" justifyContent="space-between" full wrap>
+    <Flex full wrap direction="row" justifyContent="space-between">
       <Looper
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
             <ControlledDropdown
               contrast
+              transitional
               initialSelected={[options[3]]}
               inputVariant={variant}
               label="Super awesome dropdown"
               onSelect={value => console.log('select', value)}
               options={options}
-              transitional
             />
           </div>
         )}
@@ -365,6 +365,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 <Playground>
   <div style={{ height: 300, maxWidth: 300, marginLeft: 20, marginRight: 20 }}>
     <ControlledDropdown
+      unthemed
       id="demo-contrast-dropdown"
       initialSelected={[options[3]]}
       label="Super awesome dropdown"
@@ -396,7 +397,6 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
         '--formbox-input-text-color': '#642da0',
         '--formbox-label-text-color': '#B995E1',
       }}
-      unthemed
       variant="underline"
     />
   </div>
@@ -434,7 +434,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
       list={['success', 'danger', 'warning', 'primary', 'neutral']}
       render={level => (
         <Rhythm py={3}>
-          <Flex direction="row" justifyContent="space-between" full wrap>
+          <Flex full wrap direction="row" justifyContent="space-between">
             <Looper
               list={variants}
               render={variant => (
@@ -442,18 +442,18 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
                   style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}
                 >
                   <NotifiedControlledDropdown
+                    transitional
                     initialSelected={[options[3]]}
                     inputVariant={variant}
                     label="Super awesome dropdown"
                     layout="raised"
-                    onItemFocus={(event, value) => console.log('focus', value)}
-                    onSelect={value => console.log('select', value)}
-                    onUnselect={value => console.log('unselect', value)}
-                    onSelectionChange={value => console.log('selection change', value)}
-                    options={options}
-                    transitional
                     level={level}
                     notification={`This is an example ${level} notification.`}
+                    onItemFocus={(event, value) => console.log('focus', value)}
+                    onSelect={value => console.log('select', value)}
+                    onSelectionChange={value => console.log('selection change', value)}
+                    onUnselect={value => console.log('unselect', value)}
+                    options={options}
                   />
                 </div>
               )}
@@ -471,12 +471,12 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
   <ThemeWrapper style={{ height: '300px' }}>
     <div style={{ maxWidth: 300 }}>
       <NotifiedControlledDropdown
-        label="Super awesome dropdown"
-        onSelect={value => console.log('select', value)}
-        options={[]}
         transitional
+        label="Super awesome dropdown"
         level="primary"
         notification={`This dropdown has no options.`}
+        onSelect={value => console.log('select', value)}
+        options={[]}
       />
     </div>
   </ThemeWrapper>
@@ -489,22 +489,22 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
     <Looper
       list={sizes}
       render={size => (
-        <Rhythm my={3} grouped>
+        <Rhythm grouped my={3}>
           <Looper
             list={variants}
             render={variant => (
-              <Rhythm py={3} style={{ maxWidth: 300 }} grouped>
+              <Rhythm grouped py={3} style={{ maxWidth: 300 }}>
                 <ControlledDropdown
+                  transitional
                   inputVariant={variant}
                   label={`Size ${size}`}
                   layout="contained"
                   onSelect={value => console.log('select', value)}
-                  onUnselect={value => console.log('unselect', value)}
                   onSelectionChange={value => console.log('selection change', value)}
+                  onUnselect={value => console.log('unselect', value)}
                   options={options}
                   placeholder="Select one"
                   size={size}
-                  transitional
                 />
               </Rhythm>
             )}
@@ -523,13 +523,14 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
   <ThemeWrapper>
     <h3>String</h3>
     <DropdownEmpty>This is a string notification</DropdownEmpty>
-
     <h3>Component</h3>
-    <DropdownEmpty filter="Foobar"><ListProps /></DropdownEmpty>
-
+    <DropdownEmpty filter="Foobar">
+      <ListProps />
+    </DropdownEmpty>
     <h3>Function</h3>
-    <DropdownEmpty filter="Barfoo">{({ filter }) => `This is a functional notification passed "${filter}"`}</DropdownEmpty>
-
+    <DropdownEmpty filter="Barfoo">
+      {({ filter }) => `This is a functional notification passed "${filter}"`}
+    </DropdownEmpty>
   </ThemeWrapper>
 </Playground>
 

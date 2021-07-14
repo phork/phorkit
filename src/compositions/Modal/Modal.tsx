@@ -113,11 +113,11 @@ export function Modal({
         {!permanent && onClose && (
           <IconButton
             aria-label={closeLabel}
-            themeId={themeId}
             color="neutral"
             onClick={handleClose}
             shape="square"
             size="small"
+            themeId={themeId}
             weight="ghost"
           >
             <TimesIcon size={12} title={closeLabel} />

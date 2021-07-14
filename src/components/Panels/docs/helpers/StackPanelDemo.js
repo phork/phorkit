@@ -14,10 +14,10 @@ export function StackPanelDemo({ children, isOpen: initialIsOpen, style }) {
   return (
     <div style={{ display: 'flex', margin: '-20px', borderRadius: '4px', ...style }}>
       <IconButton
-        themeId="light"
         color="neutral"
-        style={{ position: 'absolute', top: '-42px', right: '2px' }}
         onClick={toggleOpen}
+        style={{ position: 'absolute', top: '-42px', right: '2px' }}
+        themeId="light"
         title={isOpen ? 'Close panel' : 'Open panel'}
       >
         <TopPanelIcon size={18} />

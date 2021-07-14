@@ -20,11 +20,11 @@ const Box = styled('div', {
 export function FlexBox({ children, height, width, ...props }) {
   return (
     <Box
-      width={width}
-      height={height}
       backgroundColor={themes[themeId]['color-accent-primary']}
       borderColor={themes[themeId]['color-accent-primary-contrast']}
       color={themes[themeId]['color-accent-primary-contrast']}
+      height={height}
+      width={width}
       {...props}
     >
       {children}

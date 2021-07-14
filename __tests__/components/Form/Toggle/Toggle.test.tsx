@@ -22,7 +22,7 @@ describe('<Toggle />', () => {
     const onChange = jest.fn();
 
     const { container, getByText } = render(
-      <NotifiedToggle onChange={onChange} level="danger" notification="Example notification">
+      <NotifiedToggle level="danger" notification="Example notification" onChange={onChange}>
         Super fantastic label
       </NotifiedToggle>,
     );

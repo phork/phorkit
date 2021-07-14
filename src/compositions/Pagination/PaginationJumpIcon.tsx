@@ -43,9 +43,9 @@ export function PaginationJumpIcon<T extends ButtonElementType = 'button'>({
   }, [onChangePage, page]);
 
   return Icon ? (
-    <Button<T> as={as} href={href} onClick={handleClick} noPadding aria-label={title} {...(props as ButtonProps<T>)}>
+    <Button<T> noPadding aria-label={title} as={as} href={href} onClick={handleClick} {...(props as ButtonProps<T>)}>
       <Rhythm mx={2}>
-        <Icon title={title} scale="small" />
+        <Icon scale="small" title={title} />
       </Rhythm>
     </Button>
   ) : null;

@@ -49,7 +49,7 @@ export function Loader({
       )}
       {...props}
     >
-      <SpinnerIcon title={loadingLabel} scale={scale} size={size} />
+      <SpinnerIcon scale={scale} size={size} title={loadingLabel} />
     </div>
   );
 

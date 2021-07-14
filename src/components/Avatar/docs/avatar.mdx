@@ -13,18 +13,18 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Avatar, ColoredAvatar, StyledAvatar } from '../index';
 
-<PageTitle title="Avatar" src="components/Avatar" />
+<PageTitle src="components/Avatar" title="Avatar" />
 
 ## Image
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" alignItems="center" wrap>
+    <Flex wrap alignItems="center" direction="row">
       <Looper
         list={['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']}
         render={size => (
-          <Rhythm m={2}>
-            <Avatar key={`image-${size}`} imgSrc="/public/images/avatar.jpg" initials="EC" size={size} />
+          <Rhythm key={size} m={2}>
+            <Avatar imgSrc="/public/images/avatar.jpg" initials="EC" size={size} />
           </Rhythm>
         )}
       />
@@ -36,18 +36,12 @@ import { Avatar, ColoredAvatar, StyledAvatar } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" alignItems="center" wrap>
+    <Flex wrap alignItems="center" direction="row">
       <Looper
         list={['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']}
         render={size => (
-          <Rhythm m={2}>
-            <Avatar
-              key={`actionableImage-${size}`}
-              actionable
-              imgSrc="/public/images/avatar.jpg"
-              initials="EC"
-              size={size}
-            />
+          <Rhythm key={size} m={2}>
+            <Avatar actionable imgSrc="/public/images/avatar.jpg" initials="EC" size={size} />
           </Rhythm>
         )}
       />
@@ -62,13 +56,13 @@ import { Avatar, ColoredAvatar, StyledAvatar } from '../index';
     <Flex direction="column">
       <div>
         <h3>Primary color</h3>
-        <Flex direction="row" alignItems="center" wrap>
+        <Flex wrap alignItems="center" direction="row">
           <Rhythm m={2}>
             <Looper
               list={['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']}
               render={size => (
-                <Rhythm m={2}>
-                  <Avatar key={`primaryColorInitials-${size}`} color="primary" initials="EC" size={size} />
+                <Rhythm key={size} m={2}>
+                  <Avatar color="primary" initials="EC" size={size} />
                 </Rhythm>
               )}
             />
@@ -77,13 +71,13 @@ import { Avatar, ColoredAvatar, StyledAvatar } from '../index';
       </div>
       <div>
         <h3>Neutral color</h3>
-        <Flex direction="row" alignItems="center" wrap>
+        <Flex wrap alignItems="center" direction="row">
           <Rhythm m={2}>
             <Looper
               list={['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']}
               render={size => (
-                <Rhythm m={2}>
-                  <Avatar key={`neutralColorInitials-${size}`} color="neutral" initials="EC" size={size} />
+                <Rhythm key={size} m={2}>
+                  <Avatar color="neutral" initials="EC" size={size} />
                 </Rhythm>
               )}
             />
@@ -101,18 +95,12 @@ import { Avatar, ColoredAvatar, StyledAvatar } from '../index';
     <Flex direction="column">
       <div>
         <h3>Primary color</h3>
-        <Flex direction="row" alignItems="center" wrap>
+        <Flex wrap alignItems="center" direction="row">
           <Looper
             list={['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']}
             render={size => (
-              <Rhythm m={2}>
-                <Avatar
-                  key={`primaryColorActionableInitials-${size}`}
-                  actionable
-                  color="primary"
-                  initials="EC"
-                  size={size}
-                />
+              <Rhythm key={size} m={2}>
+                <Avatar actionable color="primary" initials="EC" size={size} />
               </Rhythm>
             )}
           />
@@ -120,18 +108,12 @@ import { Avatar, ColoredAvatar, StyledAvatar } from '../index';
       </div>
       <div>
         <h3>Neutral color</h3>
-        <Flex direction="row" alignItems="center" wrap>
+        <Flex wrap alignItems="center" direction="row">
           <Looper
             list={['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']}
             render={size => (
-              <Rhythm m={2}>
-                <Avatar
-                  key={`neutralColorActionableInitials-${size}`}
-                  actionable
-                  color="neutral"
-                  initials="EC"
-                  size={size}
-                />
+              <Rhythm key={size} m={2}>
+                <Avatar actionable color="neutral" initials="EC" size={size} />
               </Rhythm>
             )}
           />
@@ -147,12 +129,12 @@ import { Avatar, ColoredAvatar, StyledAvatar } from '../index';
 
 <Playground>
   <ThemeWrapper contrast>
-    <Flex direction="row" alignItems="center" wrap>
+    <Flex wrap alignItems="center" direction="row">
       <Looper
         list={['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']}
         render={size => (
-          <Rhythm m={2}>
-            <Avatar key={`contrastActionableInitials-${size}`} actionable contrast initials="EC" size={size} />
+          <Rhythm key={size} m={2}>
+            <Avatar actionable contrast initials="EC" size={size} />
           </Rhythm>
         )}
       />
@@ -168,26 +150,20 @@ import { Avatar, ColoredAvatar, StyledAvatar } from '../index';
       <Rhythm my={2}>
         <Flex direction="column">
           <ColorLooper
-            themeId={themeId}
             group="primary"
             render={({ id }) => (
-              <Flex direction="row" alignItems="center" key={`coloredInitials-${id}`} wrap>
+              <Flex wrap alignItems="center" direction="row" key={id}>
                 <Looper
                   list={['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']}
                   render={size => (
-                    <Rhythm m={2}>
-                      <ColoredAvatar
-                        key={`coloredInitials-${id}-${size}`}
-                        actionable
-                        colorId={id}
-                        initials="EC"
-                        size={size}
-                      />
+                    <Rhythm key={`${id}-${size}`} m={2}>
+                      <ColoredAvatar actionable colorId={id} initials="EC" size={size} />
                     </Rhythm>
                   )}
                 />
               </Flex>
             )}
+            themeId={themeId}
           />
         </Flex>
       </Rhythm>
@@ -199,19 +175,12 @@ import { Avatar, ColoredAvatar, StyledAvatar } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" alignItems="center" wrap>
+    <Flex wrap alignItems="center" direction="row">
       <Looper
         list={['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', 'xxxlarge']}
         render={size => (
-          <Rhythm m={2}>
-            <StyledAvatar
-              key={`styledInitials-${size}`}
-              actionable
-              backgroundColor="#556270"
-              textColor="#fff"
-              initials="EC"
-              size={size}
-            />
+          <Rhythm key={size} m={2}>
+            <StyledAvatar actionable backgroundColor="#556270" initials="EC" size={size} textColor="#fff" />
           </Rhythm>
         )}
       />

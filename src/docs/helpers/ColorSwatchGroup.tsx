@@ -133,17 +133,17 @@ export const ColorSwatchGroup = React.memo(function ColorSwatchGroup({
       textToClipboard(id);
       createNotification(
         <StyledIconToast
-          title="Copied to clipboard"
           icon={ClipboardIcon}
           levelColor={color}
           levelInverseColor={contrast || 'currentColor'}
+          title="Copied to clipboard"
           variant="colored"
         >
           <div>
             The color ID <strong>{id}</strong> has been copied to your clipboard.
           </div>
           <Rhythm mt={2}>
-            <Typography as="div" weight="bold" volume="quieter">
+            <Typography as="div" volume="quieter" weight="bold">
               {color}
             </Typography>
           </Rhythm>
@@ -161,10 +161,10 @@ export const ColorSwatchGroup = React.memo(function ColorSwatchGroup({
   };
 
   return (
-    <SwatchGroup direction={direction} inline joined wrap {...props}>
+    <SwatchGroup inline joined wrap direction={direction} {...props}>
       {label && (
         <Rhythm m={joined ? 0 : 1}>
-          <SwatchLabel width={labelWidth || swatchWidth} height={labelHeight || swatchHeight}>
+          <SwatchLabel height={labelHeight || swatchHeight} width={labelWidth || swatchWidth}>
             {label}
           </SwatchLabel>
         </Rhythm>
@@ -175,13 +175,13 @@ export const ColorSwatchGroup = React.memo(function ColorSwatchGroup({
           <SwatchBlock
             backgroundColor={color}
             color={contrast}
-            rounded={!joined}
-            title={`${id} ${color}`}
-            width={width || swatchWidth}
             height={height || swatchHeight}
             onClick={() => handleClick(id, color, contrast)}
             onKeyDown={event => handleKeyDown(event, id, color, contrast)}
+            rounded={!joined}
             tabIndex={0}
+            title={`${id} ${color}`}
+            width={width || swatchWidth}
           >
             {colorChildren !== undefined ? colorChildren : children}
           </SwatchBlock>

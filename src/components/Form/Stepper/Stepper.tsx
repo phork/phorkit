@@ -109,10 +109,10 @@ export function StepperBase(
         aria-label={decrementLabel}
         className={styles.stepperButton}
         disabled={isMin || readOnly}
-        type="button"
         onClick={decrement}
+        type="button"
       >
-        <MinusIcon title={decrementLabel} size={iconSize} />
+        <MinusIcon size={iconSize} title={decrementLabel} />
       </button>
     );
   };
@@ -123,10 +123,10 @@ export function StepperBase(
         aria-label={incrementLabel}
         className={styles.stepperButton}
         disabled={isMax || readOnly}
-        type="button"
         onClick={increment}
+        type="button"
       >
-        <PlusIcon title={incrementLabel} size={iconSize} />
+        <PlusIcon size={iconSize} title={incrementLabel} />
       </button>
     );
   };
@@ -135,17 +135,17 @@ export function StepperBase(
     <Textbox
       centered
       disabled={disabled}
+      iconAfter={renderIncrementIcon()}
+      iconAfterActionable={!disabled && !isMax}
+      iconBefore={renderDecrementIcon()}
+      iconBeforeActionable={!disabled && !isMin}
+      inputWidth={inputWidth}
       label={label}
       max={max}
       min={min}
       onChange={handleChange}
-      readOnly={readOnly}
-      iconAfter={renderIncrementIcon()}
-      iconBefore={renderDecrementIcon()}
-      iconBeforeActionable={!disabled && !isMin}
-      iconAfterActionable={!disabled && !isMax}
-      inputWidth={inputWidth}
       placeholder={placeholder}
+      readOnly={readOnly}
       ref={combineRefs}
       size={size}
       step={step}

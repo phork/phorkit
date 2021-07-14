@@ -18,7 +18,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } from '../index';
 
-<PageTitle title="Tooltip" src="compositions/Tooltip" />
+<PageTitle src="compositions/Tooltip" title="Tooltip" />
 
 ## Auto-positioned tooltip
 
@@ -28,10 +28,11 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
       <React.Fragment>
         <p>(There should be a permanent tooltip in the top right)</p>
         <PortalTooltip
-          height={80}
           initialVisible
-          layout="vertical"
           permanent
+          withChildrenProps
+          height={80}
+          layout="vertical"
           portal="fixed"
           renderChildren={({ position }) => {
             const arrowCornerRadiusProperty = {
@@ -41,15 +42,15 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
               'right-bottom': 'borderBottomLeftRadius',
             }[position];
             return (
-              <Card raised full>
+              <Card full raised>
                 <Paper
-                  themeId={themeId}
-                  style={{ borderRadius: '2px', [arrowCornerRadiusProperty]: 0 }}
-                  color="accent-primary"
-                  container="popover"
                   contained
                   scrollable
+                  color="accent-primary"
+                  container="popover"
                   scrollbar="s"
+                  style={{ borderRadius: '2px', [arrowCornerRadiusProperty]: 0 }}
+                  themeId={themeId}
                 >
                   <Typography as="div" size="s" variants="line-height-comfy">
                     The quick brown fox jumped over the {position} dog The quick brown fox jumped over the {position}{' '}
@@ -71,7 +72,6 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
           }
           triangleColor={themes[themeId]['color-accent-primary']}
           width={300}
-          withChildrenProps
         />
       </React.Fragment>
     )}
@@ -84,9 +84,9 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
   <ThemeWrapper withThemeId style={{ height: 180, marginLeft: 40 }}>
     {({ themeId }) => (
       <InlineTooltip
-        height={80}
         hoverable
         initialVisible
+        height={80}
         offset={{ horizontal: 42, vertical: 20 }}
         position="bottom-right"
         toggler={<BlobbrIcon scale="xxxlarge" />}
@@ -95,13 +95,13 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
         width={300}
       >
         <Paper
-          themeId={themeId}
-          style={{ borderRadius: '2px' }}
-          color="accent-primary"
-          container="popover"
           contained
           scrollable
+          color="accent-primary"
+          container="popover"
           scrollbar="s"
+          style={{ borderRadius: '2px' }}
+          themeId={themeId}
         >
           <Typography as="div" size="s" variants="line-height-comfy">
             The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
@@ -120,11 +120,11 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <Flex
+        wrap
+        alignContent="center"
         direction="row"
         justifyContent="space-between"
-        alignContent="center"
         style={{ margin: 'auto', height: '300px', width: '500px' }}
-        wrap
       >
         <div
           style={{
@@ -137,22 +137,22 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
           }}
         >
           <InlineTooltip
-            height={80}
             hoverable
             initialVisible
+            height={80}
             position="top-left"
             toggler={<BlobbrIcon scale="xxxlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
             <Paper
-              themeId={themeId}
-              style={{ borderRadius: '2px' }}
-              color="accent-primary"
-              container="popover"
               contained
               scrollable
+              color="accent-primary"
+              container="popover"
               scrollbar="s"
+              style={{ borderRadius: '2px' }}
+              themeId={themeId}
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -173,22 +173,22 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
           }}
         >
           <InlineTooltip
-            height={80}
             hoverable
             initialVisible
+            height={80}
             position="top-center"
             toggler={<BlobbrIcon scale="xxxlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
             <Paper
-              themeId={themeId}
-              style={{ borderRadius: '2px' }}
-              color="accent-primary"
-              container="popover"
               contained
               scrollable
+              color="accent-primary"
+              container="popover"
               scrollbar="s"
+              style={{ borderRadius: '2px' }}
+              themeId={themeId}
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -209,22 +209,22 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
           }}
         >
           <InlineTooltip
-            height={80}
             hoverable
             initialVisible
+            height={80}
             position="top-right"
             toggler={<BlobbrIcon scale="xxxlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
             <Paper
-              themeId={themeId}
-              style={{ borderRadius: '2px' }}
-              color="accent-primary"
-              container="popover"
               contained
               scrollable
+              color="accent-primary"
+              container="popover"
               scrollbar="s"
+              style={{ borderRadius: '2px' }}
+              themeId={themeId}
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -245,22 +245,22 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
           }}
         >
           <InlineTooltip
-            height={80}
             hoverable
             initialVisible
+            height={80}
             position="bottom-left"
             toggler={<BlobbrIcon scale="xxxlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
             <Paper
-              themeId={themeId}
-              style={{ borderRadius: '2px' }}
-              color="accent-primary"
-              container="popover"
               contained
               scrollable
+              color="accent-primary"
+              container="popover"
               scrollbar="s"
+              style={{ borderRadius: '2px' }}
+              themeId={themeId}
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -281,22 +281,22 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
           }}
         >
           <InlineTooltip
-            height={80}
             hoverable
             initialVisible
+            height={80}
             position="bottom-center"
             toggler={<BlobbrIcon scale="xxxlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
             <Paper
-              themeId={themeId}
-              style={{ borderRadius: '2px' }}
-              color="accent-primary"
-              container="popover"
               contained
               scrollable
+              color="accent-primary"
+              container="popover"
               scrollbar="s"
+              style={{ borderRadius: '2px' }}
+              themeId={themeId}
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -317,22 +317,22 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
           }}
         >
           <InlineTooltip
-            height={80}
             hoverable
             initialVisible
+            height={80}
             position="bottom-right"
             toggler={<BlobbrIcon scale="xxxlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
             <Paper
-              themeId={themeId}
-              style={{ borderRadius: '2px' }}
-              color="accent-primary"
-              container="popover"
               contained
               scrollable
+              color="accent-primary"
+              container="popover"
               scrollbar="s"
+              style={{ borderRadius: '2px' }}
+              themeId={themeId}
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -352,7 +352,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <Flex direction="column" justifyContent="space-between" alignContent="center" style={{ height: '460px' }} wrap>
+      <Flex wrap alignContent="center" direction="column" justifyContent="space-between" style={{ height: '460px' }}>
         <div
           style={{
             display: 'flex',
@@ -372,10 +372,10 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             width={300}
           >
             <Paper
-              themeId={themeId}
-              style={{ borderRadius: '2px', borderTopRightRadius: 0 }}
               color="accent-primary"
               container="popover"
+              style={{ borderRadius: '2px', borderTopRightRadius: 0 }}
+              themeId={themeId}
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -403,7 +403,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
-            <Paper themeId={themeId} style={{ borderRadius: '2px' }} color="accent-primary" container="popover">
+            <Paper color="accent-primary" container="popover" style={{ borderRadius: '2px' }} themeId={themeId}>
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
                 brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox
@@ -431,10 +431,10 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             width={300}
           >
             <Paper
-              themeId={themeId}
-              style={{ borderRadius: '2px', borderBottomRightRadius: 0 }}
               color="accent-primary"
               container="popover"
+              style={{ borderRadius: '2px', borderBottomRightRadius: 0 }}
+              themeId={themeId}
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -463,10 +463,10 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             width={300}
           >
             <Paper
-              themeId={themeId}
-              style={{ borderRadius: '2px', borderTopLeftRadius: 0 }}
               color="accent-primary"
               container="popover"
+              style={{ borderRadius: '2px', borderTopLeftRadius: 0 }}
+              themeId={themeId}
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -494,7 +494,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
-            <Paper themeId={themeId} style={{ borderRadius: '2px' }} color="accent-primary" container="popover">
+            <Paper color="accent-primary" container="popover" style={{ borderRadius: '2px' }} themeId={themeId}>
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
                 brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox
@@ -522,10 +522,10 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             width={300}
           >
             <Paper
-              themeId={themeId}
-              style={{ borderRadius: '2px', borderBottomLeftRadius: 0 }}
               color="accent-primary"
               container="popover"
+              style={{ borderRadius: '2px', borderBottomLeftRadius: 0 }}
+              themeId={themeId}
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -546,11 +546,11 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <Flex
+        wrap
+        alignContent="center"
         direction="row"
         justifyContent="space-between"
-        alignContent="center"
         style={{ margin: 'auto', height: '300px', width: '500px' }}
-        wrap
       >
         <div
           style={{
@@ -563,22 +563,22 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
           }}
         >
           <PortalTooltip
-            height={80}
             hoverable
             initialVisible
+            height={80}
             position="top-left"
             toggler={<BlobbrIcon scale="xxxlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
             <Paper
-              themeId={themeId}
-              style={{ borderRadius: '2px' }}
-              color="accent-primary"
-              container="popover"
               contained
               scrollable
+              color="accent-primary"
+              container="popover"
               scrollbar="s"
+              style={{ borderRadius: '2px' }}
+              themeId={themeId}
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -599,22 +599,22 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
           }}
         >
           <PortalTooltip
-            height={80}
             hoverable
             initialVisible
+            height={80}
             position="top-center"
             toggler={<BlobbrIcon scale="xxxlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
             <Paper
-              themeId={themeId}
-              style={{ borderRadius: '2px' }}
-              color="accent-primary"
-              container="popover"
               contained
               scrollable
+              color="accent-primary"
+              container="popover"
               scrollbar="s"
+              style={{ borderRadius: '2px' }}
+              themeId={themeId}
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -635,22 +635,22 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
           }}
         >
           <PortalTooltip
-            height={80}
             hoverable
             initialVisible
+            height={80}
             position="top-right"
             toggler={<BlobbrIcon scale="xxxlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
             <Paper
-              themeId={themeId}
-              style={{ borderRadius: '2px' }}
-              color="accent-primary"
-              container="popover"
               contained
               scrollable
+              color="accent-primary"
+              container="popover"
               scrollbar="s"
+              style={{ borderRadius: '2px' }}
+              themeId={themeId}
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -671,22 +671,22 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
           }}
         >
           <PortalTooltip
-            height={80}
             hoverable
             initialVisible
+            height={80}
             position="bottom-left"
             toggler={<BlobbrIcon scale="xxxlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
             <Paper
-              themeId={themeId}
-              style={{ borderRadius: '2px' }}
-              color="accent-primary"
-              container="popover"
               contained
               scrollable
+              color="accent-primary"
+              container="popover"
               scrollbar="s"
+              style={{ borderRadius: '2px' }}
+              themeId={themeId}
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -707,22 +707,22 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
           }}
         >
           <PortalTooltip
-            height={80}
             hoverable
             initialVisible
+            height={80}
             position="bottom-center"
             toggler={<BlobbrIcon scale="xxxlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
             <Paper
-              themeId={themeId}
-              style={{ borderRadius: '2px' }}
-              color="accent-primary"
-              container="popover"
               contained
               scrollable
+              color="accent-primary"
+              container="popover"
               scrollbar="s"
+              style={{ borderRadius: '2px' }}
+              themeId={themeId}
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -743,22 +743,22 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
           }}
         >
           <PortalTooltip
-            height={80}
             hoverable
             initialVisible
+            height={80}
             position="bottom-right"
             toggler={<BlobbrIcon scale="xxxlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
             <Paper
-              themeId={themeId}
-              style={{ borderRadius: '2px' }}
-              color="accent-primary"
-              container="popover"
               contained
               scrollable
+              color="accent-primary"
+              container="popover"
               scrollbar="s"
+              style={{ borderRadius: '2px' }}
+              themeId={themeId}
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -778,7 +778,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <Flex direction="column" justifyContent="space-between" alignContent="center" style={{ height: '460px' }} wrap>
+      <Flex wrap alignContent="center" direction="column" justifyContent="space-between" style={{ height: '460px' }}>
         <div
           style={{
             display: 'flex',
@@ -798,10 +798,10 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             width={300}
           >
             <Paper
-              themeId={themeId}
-              style={{ borderRadius: '2px', borderTopRightRadius: 0 }}
               color="accent-primary"
               container="popover"
+              style={{ borderRadius: '2px', borderTopRightRadius: 0 }}
+              themeId={themeId}
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -829,7 +829,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
-            <Paper themeId={themeId} style={{ borderRadius: '2px' }} color="accent-primary" container="popover">
+            <Paper color="accent-primary" container="popover" style={{ borderRadius: '2px' }} themeId={themeId}>
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
                 brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox
@@ -857,10 +857,10 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             width={300}
           >
             <Paper
-              themeId={themeId}
-              style={{ borderRadius: '2px', borderBottomRightRadius: 0 }}
               color="accent-primary"
               container="popover"
+              style={{ borderRadius: '2px', borderBottomRightRadius: 0 }}
+              themeId={themeId}
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -889,10 +889,10 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             width={300}
           >
             <Paper
-              themeId={themeId}
-              style={{ borderRadius: '2px', borderTopLeftRadius: 0 }}
               color="accent-primary"
               container="popover"
+              style={{ borderRadius: '2px', borderTopLeftRadius: 0 }}
+              themeId={themeId}
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -920,7 +920,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
-            <Paper themeId={themeId} style={{ borderRadius: '2px' }} color="accent-primary" container="popover">
+            <Paper color="accent-primary" container="popover" style={{ borderRadius: '2px' }} themeId={themeId}>
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
                 brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox
@@ -948,10 +948,10 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             width={300}
           >
             <Paper
-              themeId={themeId}
-              style={{ borderRadius: '2px', borderBottomLeftRadius: 0 }}
               color="accent-primary"
               container="popover"
+              style={{ borderRadius: '2px', borderBottomLeftRadius: 0 }}
+              themeId={themeId}
             >
               <Typography as="div" size="s" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -972,16 +972,17 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <PortalTooltip
+        withChildrenProps
         offset={{ horizontal: 20 }}
         position="right-center"
         renderChildren={({ close }) => (
-          <Paper themeId={themeId} style={{ borderRadius: '2px' }} color="accent-primary">
+          <Paper color="accent-primary" style={{ borderRadius: '2px' }} themeId={themeId}>
             <Button
+              contrast
               onClick={() => {
                 console.log('closing');
                 close();
               }}
-              contrast
               shape="brick"
               weight="ghost"
             >
@@ -991,7 +992,6 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
         )}
         toggler={<BlobbrIcon scale="xxxlarge" />}
         triangleColor={themes[themeId]['color-accent-primary']}
-        withChildrenProps
       />
     )}
   </ThemeWrapper>
@@ -1044,6 +1044,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
           <InlineTextTooltip
             focusable
             hoverable
+            withChildrenProps
             position="bottom-center"
             renderChildren={({ focusRef }) => (
               <React.Fragment>
@@ -1073,7 +1074,6 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
                 I am a friendly tooltip with a manually focused link.
               </Typography>
             }
-            withChildrenProps
           />
           <span>There are others like me as well.</span>
         </Typography>
@@ -1110,7 +1110,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
           hoverable
           layout="vertical"
           toggler={
-            <Typography weight="bold" variants={['space-after', 'space-before']}>
+            <Typography variants={['space-after', 'space-before']} weight="bold">
               I am a friendly tooltip.
             </Typography>
           }

@@ -231,7 +231,6 @@ function SliderBase(
 
   return (
     <label
-      htmlFor={generateComponentId()}
       className={cx(
         styles.slider,
         accessible && styles['is-accessible'],
@@ -243,9 +242,10 @@ function SliderBase(
         color && styles[`slider--${color}`],
         className,
       )}
-      style={{ width: propWidth }}
+      htmlFor={generateComponentId()}
       onFocus={forwardFocus}
       ref={labelRef}
+      style={{ width: propWidth }}
       tabIndex={focused ? -1 : 0}
       {...labelProps}
     >
@@ -269,9 +269,9 @@ function SliderBase(
         {Number.isFinite(sliderWidth) && (
           <Draggable
             boundary={{ x: { min: 0, max: sliderWidth } }}
-            onDragStart={handleDragStart}
-            onDragMove={handleDragMove}
             onDragEnd={handleDragEnd}
+            onDragMove={handleDragMove}
+            onDragStart={handleDragStart}
           >
             <div className={cx(styles.sliderHandle, scale && styles[`sliderHandle--${scale}`])} />
           </Draggable>
@@ -283,9 +283,9 @@ function SliderBase(
               const active = position <= calcFillFromValue(getValue());
               return (
                 <SliderTick
+                  className={cx(styles.sliderTick, active && styles['sliderTick--active'])}
                   key={position}
                   number={i}
-                  className={cx(styles.sliderTick, active && styles['sliderTick--active'])}
                   style={{ left: `${position}%` }}
                   {...(tickElement && {
                     active,
@@ -318,9 +318,9 @@ function SliderBase(
 
       {valuePosition && (
         <Label
+          noWrap
           className={cx(styles.sliderValue, styles[`sliderValue--${valuePosition}`])}
           contrast={contrast}
-          noWrap
           strength="standard"
           themeId={themeId}
         >

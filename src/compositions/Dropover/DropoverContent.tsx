@@ -21,9 +21,9 @@ export function DropoverContent({
   const color = contrast ? 'contrast' : initColor;
 
   return (
-    <Card themeId={themeId} raised full {...props}>
+    <Card full raised themeId={themeId} {...props}>
       <Paper full color={color} container="popover" themeId={themeId}>
-        <Rhythm mt={6} grouped>
+        <Rhythm grouped mt={6}>
           {children}
         </Rhythm>
       </Paper>

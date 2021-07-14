@@ -15,7 +15,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { ColoredIconButton, IconButton, StyledIconButton } from '../index';
 
-<PageTitle title="IconButton" src="components/Button" />
+<PageTitle src="components/Button" title="IconButton" />
 
 ## Basic icon buttons
 
@@ -24,11 +24,11 @@ import { ColoredIconButton, IconButton, StyledIconButton } from '../index';
     <Looper
       list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
       render={color => (
-        <Flex direction="row" alignItems="center" wrap key={`iconButton-${color}`}>
+        <Flex wrap alignItems="center" direction="row" key={color}>
           <Looper
             list={[false, true]}
             render={loading => (
-              <Flex direction="row" alignItems="center" key={`iconButton-${color}-${loading}`}>
+              <Flex alignItems="center" direction="row" key={`${color}-${loading}`}>
                 <Rhythm m={2}>
                   <IconButton
                     color={color}
@@ -123,11 +123,11 @@ import { ColoredIconButton, IconButton, StyledIconButton } from '../index';
 
 <Playground>
   <ThemeWrapper contrast>
-    <Flex direction="row" alignItems="center" wrap key={`contrastIconButton`}>
+    <Flex wrap alignItems="center" direction="row">
       <Looper
         list={[false, true]}
         render={loading => (
-          <Flex direction="row" alignItems="center" key={`contrastIconButton-${loading}`}>
+          <Flex alignItems="center" direction="row" key={loading ? 'loading' : 'standard'}>
             <Rhythm m={2}>
               <IconButton
                 contrast
@@ -221,14 +221,13 @@ import { ColoredIconButton, IconButton, StyledIconButton } from '../index';
     {({ themeId }) => (
       <Flex direction="column">
         <ColorLooper
-          themeId={themeId}
           group="primary"
           render={({ id }) => (
-            <Flex direction="row" alignItems="center" wrap key={`colorediconButton-${id}`}>
+            <Flex wrap alignItems="center" direction="row" key={id}>
               <Looper
                 list={[false, true]}
                 render={loading => (
-                  <Flex direction="row" alignItems="center" key={`colorediconButton-${id}-${loading}`}>
+                  <Flex alignItems="center" direction="row" key={`${id}-${loading ? 'loading' : 'standard'}`}>
                     <Rhythm m={2}>
                       <ColoredIconButton
                         colorId={id}
@@ -313,6 +312,7 @@ import { ColoredIconButton, IconButton, StyledIconButton } from '../index';
               />
             </Flex>
           )}
+          themeId={themeId}
         />
       </Flex>
     )}
@@ -330,11 +330,11 @@ import { ColoredIconButton, IconButton, StyledIconButton } from '../index';
       activePrimaryColor: '#798796',
     };
     return (
-      <Flex direction="row" alignItems="center" wrap key={`styledIconButton`}>
+      <Flex wrap alignItems="center" direction="row">
         <Looper
           list={[false, true]}
           render={loading => (
-            <Flex direction="row" alignItems="center" key={`styledIconButton-${loading}`}>
+            <Flex alignItems="center" direction="row" key={`${loading ? 'loading' : 'standard'}`}>
               <Rhythm m={2}>
                 <StyledIconButton
                   loader={<SpinnerIcon size={20} />}
@@ -428,29 +428,29 @@ _Note that the links will cause the page to reload so the state will appear unch
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" alignItems="center">
+    <Flex alignItems="center" direction="row">
       <Rhythm m={2}>
-        <IconButton href="#linked" onClick={() => console.log('round')} shape="round" color="primary" weight="ghost">
+        <IconButton color="primary" href="#linked" onClick={() => console.log('round')} shape="round" weight="ghost">
           <BlobbrIcon size={20} />
         </IconButton>
-        <IconButton href="#linked" onClick={() => console.log('round')} shape="round" color="primary">
+        <IconButton color="primary" href="#linked" onClick={() => console.log('round')} shape="round">
           <BlobbrIcon scale="medium" />
         </IconButton>
-        <IconButton href="#linked" onClick={() => console.log('square')} shape="square" color="primary">
+        <IconButton color="primary" href="#linked" onClick={() => console.log('square')} shape="square">
           <BlobbrIcon scale="medium" />
         </IconButton>
         <IconButton
-          href="#linked"
-          onClick={() => console.log('square')}
           disabled
           loading
-          shape="square"
           color="primary"
+          href="#linked"
           loader={<SpinnerIcon scale="medium" />}
+          onClick={() => console.log('square')}
+          shape="square"
         >
           <BlobbrIcon scale="medium" />
         </IconButton>
-        <IconButton href="#linked" onClick={() => console.log('default')} color="primary">
+        <IconButton color="primary" href="#linked" onClick={() => console.log('default')}>
           <BlobbrIcon scale="xlarge" />
         </IconButton>
       </Rhythm>
@@ -462,7 +462,7 @@ _Note that the links will cause the page to reload so the state will appear unch
 
 <Playground>
   <ThemeWrapper>
-    <IconButton onClick={() => console.log('default')} color="primary">
+    <IconButton color="primary" onClick={() => console.log('default')}>
       {({ scale = ['medium', 'large', 'xlarge', 'xxlarge'][Math.floor(Math.random() * 4)] }) => (
         <BlobbrIcon scale={scale} />
       )}

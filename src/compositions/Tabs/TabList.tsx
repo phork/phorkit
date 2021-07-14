@@ -10,8 +10,8 @@ import {
   InteractiveGroupContext,
   InteractiveGroupContextValue,
 } from '../../components/InteractiveGroup/InteractiveGroupContext';
-import { Tab, TabProps } from './Tab';
 import styles from './styles/Tabs.module.css';
+import { Tab, TabProps } from './Tab';
 import { TabsVariant } from './types';
 
 export type TabListItemProps = Pick<TabProps, 'disabled' | 'iconOnly'> & {

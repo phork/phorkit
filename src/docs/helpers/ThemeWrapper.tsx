@@ -75,11 +75,11 @@ export function ThemeWrapper({
       {...props}
     >
       <IconButton
-        style={{ position: 'absolute', top: '-30px', right: '10px' }}
-        onClick={updateThemeIds}
         aria-label="Toggle theme"
-        themeId="light"
         color="neutral"
+        onClick={updateThemeIds}
+        style={{ position: 'absolute', top: '-30px', right: '10px' }}
+        themeId="light"
       >
         {themeId === 'dark' ? <SunIcon scale="medium" /> : <MoonIcon scale="medium" />}
       </IconButton>

@@ -61,10 +61,10 @@ describe('<CheckboxGroup />', () => {
         checkboxes={items}
         layout="stacked"
         legend="Legendary"
-        onChange={() => {}}
-        values={['first']}
         level="danger"
         notification="Example notification"
+        onChange={() => {}}
+        values={['first']}
       />,
     );
     expect(container.querySelectorAll('input[type="checkbox"]').length).toBe(3);

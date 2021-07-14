@@ -20,14 +20,14 @@ export default function DocsWrapper({ children }: DocsWrapperProps): React.React
     <AccessibilityProvider>
       <ThemeProvider themeId={colorMode}>
         <Helmet>
-          <link rel="apple-touch-icon" sizes="180x180" href="/public/favicon/apple-touch-icon.png" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon/favicon-32x32.png" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon/favicon-16x16.png" />
-          <link rel="manifest" href="/public/favicon/site.webmanifest" />
-          <link rel="mask-icon" href="/public/favicon/safari-pinned-tab.svg" color="#0060ce" />
-          <meta name="msapplication-TileColor" content="#0060ce" />
-          <meta name="theme-color" content="#fff" />
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" />
+          <link href="/public/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
+          <link href="/public/favicon/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
+          <link href="/public/favicon/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
+          <link href="/public/favicon/site.webmanifest" rel="manifest" />
+          <link color="#0060ce" href="/public/favicon/safari-pinned-tab.svg" rel="mask-icon" />
+          <meta content="#0060ce" name="msapplication-TileColor" />
+          <meta content="#fff" name="theme-color" />
+          <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet" />
           <style type="text/css">{`
             html,
             body {

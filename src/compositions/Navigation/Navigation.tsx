@@ -48,10 +48,10 @@ export function Navigation({
     <ListRegistryProvider<HTMLDivElement>>
       <InteractiveGroupProvider<string, HTMLElement, HTMLDivElement>
         allowReselect
+        items={items}
         maxSelect={1}
         minSelect={1}
         onSelect={onSelect}
-        items={items}
         triggerLinks={triggerLinks}
       >
         {ref => (

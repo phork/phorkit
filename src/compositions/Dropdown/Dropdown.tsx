@@ -22,11 +22,12 @@ import {
   FormboxValue,
 } from '../../components/Form/Formbox';
 import { UncontrolledInteractiveListProps } from '../InteractiveList';
+import { getDropdownSelectedView } from './utils';
+import styles from './styles/Dropdown.module.css';
+import sizeStyles from './styles/DropdownSizes.module.css';
 import { DropdownContent, DropdownContentProps, DropdownContentHandles } from './DropdownContent';
 import { dropdownActions as ACTIONS } from './dropdownActions';
 import { dropdownReducer } from './dropdownReducer';
-import styles from './styles/Dropdown.module.css';
-import sizeStyles from './styles/DropdownSizes.module.css';
 import {
   DropdownOption,
   DropdownInputVariant,
@@ -35,7 +36,6 @@ import {
   DropdownListSize,
   DropdownSize,
 } from './types';
-import { getDropdownSelectedView } from './utils';
 
 const arrowIconSizes = {
   medium: 8,
@@ -542,12 +542,13 @@ function DropdownBase(
         className,
       )}
       onClick={handleClick}
-      onMouseDown={handleMouseDown}
       onKeyDown={handleKeyDown}
+      onMouseDown={handleMouseDown}
       ref={containerRef}
       {...props}
     >
       <FormboxContainer<'div'>
+        hasIconAfter
         aria-haspopup={readOnly ? false : 'listbox'}
         as="div"
         className={styles.dropdownInput}
@@ -555,7 +556,6 @@ function DropdownBase(
         disabled={disabled}
         empty={selectedState.selectedIds?.length === 0 && !placeholder}
         focused={isFocused}
-        hasIconAfter
         hasIconBefore={!!iconBefore}
         label={label}
         onBlur={handleBlur}
@@ -589,8 +589,8 @@ function DropdownBase(
             <input
               disabled={disabled}
               onBlur={handleBlur}
-              onFocus={handleFocus}
               onChange={handleInputChange}
+              onFocus={handleFocus}
               onKeyDown={handleInputKeyDown}
               ref={inputRef}
               type="text"
@@ -613,8 +613,8 @@ function DropdownBase(
           <FormboxIcon
             icon={
               <ArrowDownIcon
-                size={arrowIconSize}
                 className={cx(styles.dropdownArrowIcon, isDropdownVisible && styles['dropdownArrowIcon--inverted'])}
+                size={arrowIconSize}
               />
             }
             position="after"

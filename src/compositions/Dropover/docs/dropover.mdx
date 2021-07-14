@@ -12,7 +12,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, PortalDropover } from '../index';
 
-<PageTitle title="Dropover" src="compositions/Dropover" />
+<PageTitle src="compositions/Dropover" title="Dropover" />
 
 ## Inline dropover
 
@@ -43,7 +43,6 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
   <ThemeWrapper>
     <InlineDropover
       align="right"
-      width={400}
       label={
         <DropoverLabel>
           <Typography color="primary" size="l" variants="line-height-normal" weight="bold">
@@ -51,6 +50,7 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
           </Typography>
         </DropoverLabel>
       }
+      width={400}
     >
       <DropoverContent>
         <Typography size="m" variants="line-height-comfy">
@@ -90,7 +90,6 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
 <Playground>
   <ThemeWrapper>
     <PortalDropover
-      portal="absolute"
       label={
         <DropoverLabel>
           <Typography color="primary" size="l" variants="line-height-normal" weight="bold">
@@ -98,6 +97,7 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
           </Typography>
         </DropoverLabel>
       }
+      portal="absolute"
     >
       <DropoverContent>
         <Typography size="m" variants="line-height-comfy">
@@ -114,9 +114,7 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
 <Playground>
   <ThemeWrapper>
     <PortalDropover
-      portal="absolute"
       align="right"
-      width={400}
       label={
         <DropoverLabel>
           <Typography color="primary" size="l" variants="line-height-normal" weight="bold">
@@ -124,6 +122,8 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
           </Typography>
         </DropoverLabel>
       }
+      portal="absolute"
+      width={400}
     >
       <DropoverContent>
         <Typography size="m" variants="line-height-comfy">
@@ -140,7 +140,6 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
 <Playground>
   <ThemeWrapper>
     <PortalDropover
-      portal="absolute"
       label={
         <DropoverLabel noTriangle>
           <Typography color="primary" size="l" variants="line-height-normal" weight="bold">
@@ -148,6 +147,7 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
           </Typography>
         </DropoverLabel>
       }
+      portal="absolute"
     >
       <DropoverContent>
         <Typography size="m" variants="line-height-comfy">
@@ -164,7 +164,7 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
 <Playground>
   <ThemeWrapper>
     <PortalDropover
-      portal="absolute"
+      withChildrenProps
       label={
         <DropoverLabel>
           <Typography color="primary" size="l" variants="line-height-normal" weight="bold">
@@ -172,6 +172,7 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
           </Typography>
         </DropoverLabel>
       }
+      portal="absolute"
       renderChildren={({ close }) => (
         <DropoverContent>
           <Typography size="m" variants="line-height-comfy">
@@ -179,11 +180,11 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
             eleifend gravida{' '}
             <Button
               color="primary"
-              weight="inline"
               onClick={() => {
                 console.log('closing');
                 close();
               }}
+              weight="inline"
             >
               close
             </Button>
@@ -191,7 +192,6 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
           </Typography>
         </DropoverContent>
       )}
-      withChildrenProps
     />
   </ThemeWrapper>
 </Playground>
@@ -201,15 +201,15 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
 <Playground>
   <ThemeWrapper>
     <PortalDropover
-      portal="absolute"
-      align="right"
       passiveLabel
-      width={400}
+      align="right"
       label={
         <DropoverInputLabel>
           <input type="text" />
         </DropoverInputLabel>
       }
+      portal="absolute"
+      width={400}
     >
       <DropoverContent>
         <Typography size="m" variants="line-height-comfy">

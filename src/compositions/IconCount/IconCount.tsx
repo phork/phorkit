@@ -28,20 +28,20 @@ export function IconCount({
   const themeId = useThemeId(initThemeId);
 
   return (
-    <Flex direction="row" alignItems="center" justifyContent="flex-start" reverse={reverse} {...props}>
+    <Flex alignItems="center" direction="row" justifyContent="flex-start" reverse={reverse} {...props}>
       <TypographyWithSvg
         color={active ? 'accent-primary' : 'secondary'}
         themeId={themeId}
         volume={active ? undefined : 'quietest'}
       >
-        <Icon title={label} size={iconSize} />
+        <Icon size={iconSize} title={label} />
       </TypographyWithSvg>
       <Rhythm ml={reverse ? 0 : 2} mr={reverse ? 2 : 0}>
         <Typography
           color={active ? 'accent-primary' : 'secondary'}
-          volume={active ? undefined : 'quiet'}
           size={typographySize}
           themeId={themeId}
+          volume={active ? undefined : 'quiet'}
           weight="bold"
         >
           {count === undefined ? '-' : count}

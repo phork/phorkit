@@ -17,7 +17,7 @@ import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Button, ButtonGroup, StyledButton } from '../index';
 
-<PageTitle title="ButtonGroup" src="components/Button" />
+<PageTitle src="components/Button" title="ButtonGroup" />
 
 ## Horizontal groups
 
@@ -28,12 +28,12 @@ import { Button, ButtonGroup, StyledButton } from '../index';
     <Looper
       list={['pill', 'brick']}
       render={shape => (
-        <Rhythm my={2} key={`joinedButtonGroup-${shape}`}>
-          <Flex direction="row" justifyContent="space-between" wrap>
+        <Rhythm key={shape} my={2}>
+          <Flex wrap direction="row" justifyContent="space-between">
             <Looper
               list={['small', 'medium', 'large']}
               render={size => (
-                <StateWrapper initialState="first">
+                <StateWrapper initialState="first" key={`${shape}-${size}`}>
                   {({ state, setState }) => (
                     <Rhythm mb={2} mr={2}>
                       <ButtonGroup
@@ -44,7 +44,6 @@ import { Button, ButtonGroup, StyledButton } from '../index';
                           { id: 'fourth', label: 'Fourth', selected: state === 'fourth' },
                         ]}
                         color="primary"
-                        key={`joinedButtonGroup-${shape}-${size}`}
                         onClick={(event, id) => setState(id)}
                         shape={shape}
                         size={size}
@@ -70,12 +69,12 @@ import { Button, ButtonGroup, StyledButton } from '../index';
       <Looper
         list={['pill', 'brick']}
         render={shape => (
-          <Rhythm my={2} key={`dividedButtonGroup-${shape}`}>
-            <Flex direction="row" justifyContent="space-between" wrap>
+          <Rhythm key={shape} my={2}>
+            <Flex wrap direction="row" justifyContent="space-between">
               <Looper
                 list={['small', 'medium', 'large']}
                 render={size => (
-                  <StateWrapper initialState="first">
+                  <StateWrapper initialState="first" key={`${shape}-${size}`}>
                     {({ state, setState }) => (
                       <Rhythm mb={2} mr={2}>
                         <ButtonGroup
@@ -102,12 +101,11 @@ import { Button, ButtonGroup, StyledButton } from '../index';
                             },
                           ]}
                           color="primary"
-                          key={`dividedButtonGroup-${shape}-${size}`}
                           onClick={(event, id) => setState(id)}
+                          selectedStyle={{ opacity: 0.8 }}
                           shape={shape}
                           size={size}
                           spacing="divided"
-                          selectedStyle={{ opacity: 0.8 }}
                           weight="solid"
                         />
                       </Rhythm>
@@ -130,12 +128,12 @@ import { Button, ButtonGroup, StyledButton } from '../index';
     <Looper
       list={['pill', 'brick']}
       render={shape => (
-        <Rhythm my={2} key={`cozyButtonGroup-${shape}`}>
-          <Flex direction="row" justifyContent="space-between" wrap>
+        <Rhythm key={shape} my={2}>
+          <Flex wrap direction="row" justifyContent="space-between">
             <Looper
               list={['small', 'medium', 'large']}
               render={size => (
-                <StateWrapper initialState="first">
+                <StateWrapper initialState="first" key={`${shape}-${size}`}>
                   {({ state, setState }) => (
                     <Rhythm mb={2} mr={2}>
                       <ButtonGroup
@@ -146,12 +144,11 @@ import { Button, ButtonGroup, StyledButton } from '../index';
                           { id: 'fourth', label: 'Fourth', selected: state === 'fourth' },
                         ]}
                         color="primary"
-                        key={`cozyButtonGroup-${shape}-${size}`}
                         onClick={(event, id) => setState(id)}
-                        spacing="cozy"
                         selectedWeight="outlined"
                         shape={shape}
                         size={size}
+                        spacing="cozy"
                         weight="ghost"
                       />
                     </Rhythm>
@@ -170,12 +167,12 @@ import { Button, ButtonGroup, StyledButton } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Rhythm my={2} key="comfyButtonGroup">
-      <Flex direction="row" justifyContent="space-between" wrap>
+    <Rhythm key="comfyButtonGroup" my={2}>
+      <Flex wrap direction="row" justifyContent="space-between">
         <Looper
           list={['small', 'medium', 'large']}
           render={size => (
-            <StateWrapper initialState="first">
+            <StateWrapper initialState="first" key={size}>
               {({ state, setState }) => (
                 <Rhythm mb={2} mr={2}>
                   <ButtonGroup
@@ -186,7 +183,6 @@ import { Button, ButtonGroup, StyledButton } from '../index';
                       { id: 'fourth', label: 'Fourth', selected: state === 'fourth' },
                     ]}
                     color="neutral"
-                    key={`comfyButtonGroup-${size}`}
                     onClick={(event, id) => setState(id)}
                     selectedColor="primary"
                     selectedWeight="inline"
@@ -210,11 +206,11 @@ import { Button, ButtonGroup, StyledButton } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" justifyContent="space-between" wrap>
+    <Flex wrap direction="row" justifyContent="space-between">
       <Looper
         list={['small', 'medium', 'large']}
         render={size => (
-          <StateWrapper initialState="first">
+          <StateWrapper initialState="first" key={size}>
             {({ state, setState }) => (
               <Rhythm mb={2} mr={2}>
                 <ButtonGroup
@@ -225,7 +221,6 @@ import { Button, ButtonGroup, StyledButton } from '../index';
                     { id: 'fourth', label: 'Fourth', selected: state === 'fourth', align: 'left' },
                   ]}
                   color="primary"
-                  key={`verticalJoinedButtonGroup-${size}`}
                   onClick={(event, id) => setState(id)}
                   orientation="vertical"
                   shape="brick"
@@ -246,11 +241,11 @@ import { Button, ButtonGroup, StyledButton } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" justifyContent="space-between" wrap>
+    <Flex wrap direction="row" justifyContent="space-between">
       <Looper
         list={['small', 'medium', 'large']}
         render={size => (
-          <StateWrapper initialState="first">
+          <StateWrapper initialState="first" key={size}>
             {({ state, setState }) => (
               <Rhythm mb={2} mr={2}>
                 <ButtonGroup
@@ -261,7 +256,6 @@ import { Button, ButtonGroup, StyledButton } from '../index';
                     { id: 'fourth', label: 'Fourth', selected: state === 'fourth', align: 'left' },
                   ]}
                   color="primary"
-                  key={`verticalJoinedButtonGroup-${size}`}
                   onClick={(event, id) => setState(id)}
                   orientation="vertical"
                   shape="brick"
@@ -276,7 +270,6 @@ import { Button, ButtonGroup, StyledButton } from '../index';
         )}
       />
     </Flex>
-
   </ThemeWrapper>
 </Playground>
 
@@ -284,21 +277,21 @@ import { Button, ButtonGroup, StyledButton } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" justifyContent="space-between" wrap>
+    <Flex wrap direction="row" justifyContent="space-between">
       <StateWrapper initialState="second">
         {({ state, setState }) => (
           <Rhythm mb={2} mr={2}>
             <ButtonGroup
-              orientation="vertical"
-              spacing="cozy"
-              color="primary"
-              onClick={(event, id) => setState(id)}
               buttons={[
                 { id: 'first', label: 'First', selected: state === 'first', align: 'left' },
                 { id: 'second', label: 'Second', selected: state === 'second', align: 'left' },
                 { id: 'third', label: 'Third', selected: state === 'third', align: 'left' },
                 { id: 'fourth', label: 'Fourth', selected: state === 'fourth', align: 'left' },
               ]}
+              color="primary"
+              onClick={(event, id) => setState(id)}
+              orientation="vertical"
+              spacing="cozy"
               style={{ width: '200px' }}
             />
           </Rhythm>
@@ -308,24 +301,23 @@ import { Button, ButtonGroup, StyledButton } from '../index';
         {({ state, setState }) => (
           <Rhythm mb={2} mr={2}>
             <ButtonGroup
-              orientation="vertical"
-              spacing="cozy"
               align="left"
-              color="primary"
-              onClick={(event, id) => setState(id)}
               buttons={[
                 { id: 'first', label: 'First', selected: state === 'first', weight: 'text' },
                 { id: 'second', label: 'Second', selected: state === 'second', weight: 'text' },
                 { id: 'third', label: 'Third', selected: state === 'third', weight: 'text' },
                 { id: 'fourth', label: 'Fourth', selected: state === 'fourth', weight: 'text' },
               ]}
+              color="primary"
+              onClick={(event, id) => setState(id)}
+              orientation="vertical"
+              spacing="cozy"
               style={{ width: '200px' }}
             />
           </Rhythm>
         )}
       </StateWrapper>
     </Flex>
-
   </ThemeWrapper>
 </Playground>
 
@@ -337,15 +329,15 @@ import { Button, ButtonGroup, StyledButton } from '../index';
       {({ state, setState }) => (
         <ButtonGroup
           fullWidth
-          spacing="joined"
-          color="primary"
-          onClick={(event, id) => setState(id)}
           buttons={[
             { id: 'first', label: 'First', selected: state === 'first' },
             { id: 'second', label: 'Second', selected: state === 'second' },
             { id: 'third', label: 'Third', selected: state === 'third' },
             { id: 'fourth', label: 'Fourth', selected: state === 'fourth' },
           ]}
+          color="primary"
+          onClick={(event, id) => setState(id)}
+          spacing="joined"
         />
       )}
     </StateWrapper>
@@ -358,28 +350,23 @@ import { Button, ButtonGroup, StyledButton } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" alignItems="center" justifyContent="space-between" style={{ maxWidth: 400 }} wrap>
+    <Flex wrap alignItems="center" direction="row" justifyContent="space-between" style={{ maxWidth: 400 }}>
       <Looper
         list={['horizontal', 'vertical']}
         render={orientation => (
-          <React.Fragment>
+          <React.Fragment key={orientation}>
             <StateWrapper initialState="first">
               {({ state, setState }) => (
                 <ButtonGroup
-                  color="primary"
-                  onClick={(event, id) => setState(id)}
-                  orientation={orientation}
-                  size="small"
-                  spacing="joined"
                   buttons={[
                     {
                       id: 'first',
                       label: (
                         <Rhythm
-                          mx={3}
                           ml={orientation === 'horizontal' ? 4 : 3}
-                          my={2}
                           mt={orientation === 'vertical' ? 3 : 2}
+                          mx={3}
+                          my={2}
                         >
                           <TimesIcon scale="xsmall" />
                         </Rhythm>
@@ -411,10 +398,10 @@ import { Button, ButtonGroup, StyledButton } from '../index';
                       id: 'fourth',
                       label: (
                         <Rhythm
-                          mx={3}
-                          mr={orientation === 'horizontal' ? 4 : 3}
-                          my={2}
                           mb={orientation === 'vertical' ? 3 : 2}
+                          mr={orientation === 'horizontal' ? 4 : 3}
+                          mx={3}
+                          my={2}
                         >
                           <TimesIcon scale="xsmall" />
                         </Rhythm>
@@ -423,18 +410,17 @@ import { Button, ButtonGroup, StyledButton } from '../index';
                       noPadding: true,
                     },
                   ]}
+                  color="primary"
+                  onClick={(event, id) => setState(id)}
+                  orientation={orientation}
+                  size="small"
+                  spacing="joined"
                 />
               )}
             </StateWrapper>
             <StateWrapper initialState="first">
               {({ state, setState }) => (
                 <ButtonGroup
-                  color="neutral"
-                  onClick={(event, id) => setState(id)}
-                  orientation={orientation}
-                  shape="brick"
-                  size="small"
-                  spacing="joined"
                   buttons={[
                     {
                       id: 'first',
@@ -457,6 +443,12 @@ import { Button, ButtonGroup, StyledButton } from '../index';
                       noPadding: true,
                     },
                   ]}
+                  color="neutral"
+                  onClick={(event, id) => setState(id)}
+                  orientation={orientation}
+                  shape="brick"
+                  size="small"
+                  spacing="joined"
                 />
               )}
             </StateWrapper>
@@ -475,14 +467,14 @@ import { Button, ButtonGroup, StyledButton } from '../index';
       {({ state, setState }) => (
         <ButtonGroup
           contrast
-          spacing="joined"
-          onClick={(event, id) => setState(id)}
           buttons={[
             { id: 'first', label: 'First', selected: state === 'first' },
             { id: 'second', label: 'Second', selected: state === 'second' },
             { id: 'third', label: 'Third', selected: state === 'third' },
             { id: 'fourth', label: 'Fourth', selected: state === 'fourth' },
           ]}
+          onClick={(event, id) => setState(id)}
+          spacing="joined"
         />
       )}
     </StateWrapper>
@@ -498,15 +490,15 @@ _Note that the links will cause the page to reload._
     <StateWrapper initialState="third">
       {({ state, setState }) => (
         <ButtonGroup
-          spacing="joined"
-          color="primary"
-          onClick={(event, id) => setState(id)}
           buttons={[
             { id: 'first', label: 'First', href: '#first', selected: state === 'first' },
             { id: 'second', label: 'Second', href: '#second', selected: state === 'second' },
             { id: 'third', label: 'Third', href: '#third', selected: state === 'third' },
             { id: 'fourth', label: 'Fourth', href: '#fourth', selected: state === 'fourth' },
           ]}
+          color="primary"
+          onClick={(event, id) => setState(id)}
+          spacing="joined"
         />
       )}
     </StateWrapper>
@@ -519,40 +511,40 @@ _Note that the links will cause the page to reload._
   <ThemeWrapper>
     <StateWrapper initialState="third">
       {({ state, setState }) => (
-        <ButtonGroup spacing="joined" onClick={(event, id) => setState(id)}>
+        <ButtonGroup onClick={(event, id) => setState(id)} spacing="joined">
           <Button
+            color={state === 'first' ? 'primary' : 'neutral'}
+            data-value="first"
             key="first"
             shape="pill"
-            color={state === 'first' ? 'primary' : 'neutral'}
             weight={state === 'first' ? 'solid' : 'outlined'}
-            data-value="first"
           >
             First
           </Button>
           <Button
+            color={state === 'second' ? 'primary' : 'neutral'}
+            data-value="second"
             key="second"
             shape="pill"
-            color={state === 'second' ? 'primary' : 'neutral'}
             weight={state === 'second' ? 'solid' : 'outlined'}
-            data-value="second"
           >
             Second
           </Button>
           <Button
+            color={state === 'third' ? 'primary' : 'neutral'}
+            data-value="third"
             key="third"
             shape="pill"
-            color={state === 'third' ? 'primary' : 'neutral'}
             weight={state === 'third' ? 'solid' : 'outlined'}
-            data-value="third"
           >
             Third
           </Button>
           <Button
+            color={state === 'fourth' ? 'primary' : 'neutral'}
+            data-value="fourth"
             key="fourth"
             shape="pill"
-            color={state === 'fourth' ? 'primary' : 'neutral'}
             weight={state === 'fourth' ? 'solid' : 'outlined'}
-            data-value="fourth"
           >
             Fourth
           </Button>
@@ -569,16 +561,14 @@ _Note that the links will cause the page to reload._
     <StateWrapper initialState="third">
       {({ state, setState }) => (
         <ButtonGroup
-          spacing="joined"
-          onClick={(event, id) => setState(id)}
           buttons={[
             {
               id: 'first',
               label: selected => (
                 <Button
+                  color={selected ? 'primary' : 'neutral'}
                   value="first"
                   weight={selected ? undefined : 'outlined'}
-                  color={selected ? 'primary' : 'neutral'}
                 >
                   First
                 </Button>
@@ -589,9 +579,9 @@ _Note that the links will cause the page to reload._
               id: 'second',
               label: selected => (
                 <Button
+                  color={selected ? 'primary' : 'neutral'}
                   value="second"
                   weight={selected ? undefined : 'outlined'}
-                  color={selected ? 'primary' : 'neutral'}
                 >
                   Second
                 </Button>
@@ -602,9 +592,9 @@ _Note that the links will cause the page to reload._
               id: 'third',
               label: selected => (
                 <Button
+                  color={selected ? 'primary' : 'neutral'}
                   value="third"
                   weight={selected ? undefined : 'outlined'}
-                  color={selected ? 'primary' : 'neutral'}
                 >
                   Third
                 </Button>
@@ -615,9 +605,9 @@ _Note that the links will cause the page to reload._
               id: 'fourth',
               label: selected => (
                 <Button
+                  color={selected ? 'primary' : 'neutral'}
                   value="fourth"
                   weight={selected ? undefined : 'outlined'}
-                  color={selected ? 'primary' : 'neutral'}
                 >
                   Fourth
                 </Button>
@@ -625,6 +615,8 @@ _Note that the links will cause the page to reload._
               selected: state === 'fourth',
             },
           ]}
+          onClick={(event, id) => setState(id)}
+          spacing="joined"
         />
       )}
     </StateWrapper>

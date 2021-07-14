@@ -4,29 +4,29 @@ menu: Forms
 route: /components/LabelWrapper
 ---
 
-import { PageTitle } from 'docs/helpers/PageTitle';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { Label, Textbox } from 'components/Form';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { LabelWrapper } from '../index';
 
-<PageTitle title="LabelWrapper" src="components/Form/LabelWrapper" />
+<PageTitle src="components/Form/LabelWrapper" title="LabelWrapper" />
 
 ## Horizonal
 
 <Playground>
   <ThemeWrapper>
     <LabelWrapper
+      input={<Textbox value="Hello world" variant="filled" />}
       label={<Label strength="standard">Super awesome label</Label>}
-      input={<Textbox variant="filled" value="Hello world" />}
     />
     <br />
     <br />
     <LabelWrapper
-      spread
       fullWidth
+      spread
+      input={<Textbox value="Hello world" variant="filled" />}
       label={<Label strength="standard">Super awesome label</Label>}
-      input={<Textbox variant="filled" value="Hello world" />}
     />
   </ThemeWrapper>
 </Playground>
@@ -37,17 +37,17 @@ import { LabelWrapper } from '../index';
   <ThemeWrapper>
     <LabelWrapper
       reverse
+      input={<Textbox value="Hello world" variant="filled" />}
       label={<Label strength="standard">Super awesome label</Label>}
-      input={<Textbox variant="filled" value="Hello world" />}
     />
     <br />
     <br />
     <LabelWrapper
+      fullWidth
       reverse
       spread
-      fullWidth
+      input={<Textbox value="Hello world" variant="filled" />}
       label={<Label strength="standard">Super awesome label</Label>}
-      input={<Textbox variant="filled" value="Hello world" />}
     />
   </ThemeWrapper>
 </Playground>
@@ -58,8 +58,8 @@ import { LabelWrapper } from '../index';
   <ThemeWrapper>
     <LabelWrapper
       vertical
+      input={<Textbox value="Hello world" variant="filled" />}
       label={<Label strength="standard">Super awesome label</Label>}
-      input={<Textbox variant="filled" value="Hello world" />}
     />
   </ThemeWrapper>
 </Playground>
@@ -69,10 +69,10 @@ import { LabelWrapper } from '../index';
 <Playground>
   <ThemeWrapper>
     <LabelWrapper
-      vertical
       reverse
+      vertical
+      input={<Textbox value="Hello world" variant="filled" />}
       label={<Label strength="standard">Super awesome label</Label>}
-      input={<Textbox variant="filled" value="Hello world" />}
     />
   </ThemeWrapper>
 </Playground>

@@ -4,8 +4,8 @@ import { MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
 import { useComponentId } from '../../../hooks/useComponentId';
 import { useThemeId } from '../../../hooks/useThemeId';
 import { Fieldset } from '../Fieldset/Fieldset';
-import { Radio, RadioProps, RadioSize, RadioValue } from './Radio';
 import styles from './styles/RadioGroup.module.css';
+import { Radio, RadioProps, RadioSize, RadioValue } from './Radio';
 
 export interface RadioGroupItem<V extends RadioValue = string>
   extends Omit<RadioProps<V>, 'children' | 'grouped' | 'id' | 'onChange' | 'value'> {
@@ -60,7 +60,7 @@ function RadioGroupBase<V extends RadioValue = string>(
   );
 
   return (
-    <Fieldset className={className} contrast={contrast} legend={legend} themeId={themeId} ref={forwardedRef}>
+    <Fieldset className={className} contrast={contrast} legend={legend} ref={forwardedRef} themeId={themeId}>
       <div className={cx(styles.radioGroup, layout && styles[`radioGroup--${layout}`])} {...props}>
         {radios &&
           radios.map(({ id, label, value: radioValue, ...radioProps }) => (

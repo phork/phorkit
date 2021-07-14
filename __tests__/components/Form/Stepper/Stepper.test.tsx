@@ -7,7 +7,7 @@ describe('<Stepper />', () => {
     const onChange = jest.fn();
 
     const { container, getByText } = render(
-      <Stepper label="Super fantastic label" min={1} max={10} step={1} onChange={onChange} />,
+      <Stepper label="Super fantastic label" max={10} min={1} onChange={onChange} step={1} />,
     );
     expect(getByText('Super fantastic label')).toBeTruthy();
 
@@ -26,12 +26,12 @@ describe('<Stepper />', () => {
     const { container, getByText } = render(
       <NotifiedStepper
         label="Super fantastic label"
-        min={1}
-        max={10}
-        step={1}
-        onChange={onChange}
         level="danger"
+        max={10}
+        min={1}
         notification="Example notification"
+        onChange={onChange}
+        step={1}
       />,
     );
     expect(getByText('Super fantastic label')).toBeTruthy();

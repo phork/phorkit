@@ -25,12 +25,12 @@ describe('<DropdownWithTags />', () => {
 
     const { getByText, getAllByText } = render(
       <DropdownWithTags
+        transitional
         initialSelected={[options[3]]}
         label="Super fantastic label"
         layout="raised"
         onSelect={onSelect}
         options={options}
-        transitional
       />,
     );
     expect(getByText('Super fantastic label')).toBeTruthy();
@@ -44,12 +44,12 @@ describe('<DropdownWithTags />', () => {
 
     const { getByText, getAllByText } = render(
       <DropdownWithTags
+        transitional
         initialSelected={[options[3], options[5]]}
         label="Super fantastic label"
         layout="raised"
         onSelect={onSelect}
         options={options}
-        transitional
       />,
     );
     expect(getByText('Super fantastic label')).toBeTruthy();
@@ -64,13 +64,13 @@ describe('<DropdownWithTags />', () => {
 
     const { getByText, getAllByText } = render(
       <DropdownWithTags
+        transitional
         initialSelected={[]}
         label="Super fantastic label"
         layout="raised"
         onSelect={onSelect}
         options={options}
         placeholder="Select one"
-        transitional
       />,
     );
     expect(getByText('Super fantastic label')).toBeTruthy();
@@ -83,11 +83,11 @@ describe('<DropdownWithTags />', () => {
 
     const { getByText } = render(
       <DropdownWithTags
+        transitional
         initialSelected={[]}
         label="Super fantastic label"
         onSelect={onSelect}
         options={[]}
-        transitional
       />,
     );
     expect(getByText('Super fantastic label')).toBeTruthy();

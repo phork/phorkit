@@ -4,9 +4,9 @@ import { useThemeId } from '../../hooks/useThemeId';
 import { renderFromPropWithFallback } from '../../utils';
 import { InlinePopover, InlinePopoverProps } from '../Popover/InlinePopover';
 import { PopoverRenderChildrenProps } from '../Popover/types';
+import { getTooltipOffset } from './utils';
 import { getTextTooltipColors, TextTooltipContent, TextTooltipContentProps } from './TextTooltipContent';
 import { TooltipContent } from './TooltipContent';
-import { getTooltipOffset } from './utils';
 
 export interface InlineTextTooltipProps
   extends Omit<InlinePopoverProps, 'position' | 'width'>,
@@ -42,6 +42,7 @@ export function InlineTextTooltip({
   return (
     <InlinePopover
       centered
+      withChildrenProps
       offset={offset}
       position={position}
       renderChildren={({ close, focusable, focusRef, isTogglerFocused, offset, position, visible }) => {
@@ -81,7 +82,6 @@ export function InlineTextTooltip({
           </TooltipContent>
         );
       }}
-      withChildrenProps
       {...props}
     />
   );

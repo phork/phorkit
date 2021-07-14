@@ -27,7 +27,7 @@ export function ModalHeader({
   return (
     <div className={cx(styles.modalHeader, bordered && styles['modalHeader--bordered'], className)} {...props}>
       {title && (
-        <Typography<'div'> id={generateTitleId()} align={align} as="div" color="secondary" size="xxxl" weight="light">
+        <Typography<'div'> align={align} as="div" color="secondary" id={generateTitleId()} size="xxxl" weight="light">
           {title}
         </Typography>
       )}

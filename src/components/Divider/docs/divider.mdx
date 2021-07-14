@@ -11,7 +11,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Divider, ColoredDivider, StyledDivider } from '../index';
 
-<PageTitle title="Divider" src="components/Divider" />
+<PageTitle src="components/Divider" title="Divider" />
 
 ## Horizontal divider
 
@@ -80,24 +80,24 @@ import { Divider, ColoredDivider, StyledDivider } from '../index';
     {({ themeId }) => (
       <React.Fragment>
         <ColorLooper
-          themeId={themeId}
           group="primary"
           render={({ id }) => (
             <div key={id} style={{ marginBottom: '12px' }}>
               <h4>Color: {id}</h4>
-              <ColoredDivider key={id} themeId={themeId} colorId={id} />
+              <ColoredDivider colorId={id} themeId={themeId} />
             </div>
           )}
+          themeId={themeId}
         />
         <ColorLooper
-          themeId={themeId}
           group="neutral"
           render={({ id }) => (
             <div key={id} style={{ marginBottom: '12px' }}>
               <h4>Color: {id}</h4>
-              <ColoredDivider key={id} themeId={themeId} colorId={id} />
+              <ColoredDivider colorId={id} themeId={themeId} />
             </div>
           )}
+          themeId={themeId}
         />
       </React.Fragment>
     )}

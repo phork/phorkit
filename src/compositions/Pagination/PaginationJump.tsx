@@ -27,7 +27,7 @@ export function PaginationJump<T extends ButtonElementType = 'button'>({
   }, [onChangePage, page]);
 
   return title ? (
-    <Button<T> as={as} href={href} onClick={handleClick} aria-label={title} {...(props as ButtonProps<T>)}>
+    <Button<T> aria-label={title} as={as} href={href} onClick={handleClick} {...(props as ButtonProps<T>)}>
       {title}
     </Button>
   ) : null;

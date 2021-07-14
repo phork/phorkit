@@ -2,8 +2,8 @@ import { cx } from '@emotion/css';
 import React from 'react';
 import { AsReactType, MergeElementProps } from '../../types';
 import { renderFromPropWithFallback, RenderFromPropElement } from '../../utils/renderFromProp';
-import { Button, ButtonProps, LocalButtonProps } from './Button';
 import styles from './styles/Button.module.css';
+import { Button, ButtonProps, LocalButtonProps } from './Button';
 import { ButtonElementType } from './types';
 
 export type IconButtonShape = 'round' | 'square';
@@ -34,9 +34,9 @@ function IconButtonBase<T extends IconButtonElementType = 'button'>(
 
   return (
     <Button<T>
+      noPadding
       as={as}
       className={classes}
-      noPadding
       ref={forwardedRef}
       shape={shape ? shapeMap[shape] : undefined}
       weight={weight}

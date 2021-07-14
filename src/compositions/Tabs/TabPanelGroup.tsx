@@ -8,8 +8,8 @@ import {
   InteractiveGroupContext,
   InteractiveGroupContextValue,
 } from '../../components/InteractiveGroup/InteractiveGroupContext';
-import { TabPanel, TabPanelProps } from './TabPanel';
 import styles from './styles/TabPanelGroup.module.css';
+import { TabPanel, TabPanelProps } from './TabPanel';
 import { TabsVariant } from './types';
 
 export interface TabPanelGroupProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {

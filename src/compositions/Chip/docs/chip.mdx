@@ -14,7 +14,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Chip } from '../index';
 
-<PageTitle title="Chip" src="compositions/Chip" />
+<PageTitle src="compositions/Chip" title="Chip" />
 
 ## Small chip
 
@@ -26,9 +26,9 @@ import { Chip } from '../index';
         icon={
           <Rhythm p={1}>
             <IconButton
+              noHeight
               aria-label="Remove tag"
               color="neutral"
-              noHeight
               onClick={e => console.log('remove tag')}
               shape="round"
             >
@@ -51,6 +51,7 @@ import { Chip } from '../index';
       />
       <Chip
         actionable
+        unthemed
         avatar={{
           initials: 'EC',
         }}
@@ -60,7 +61,6 @@ import { Chip } from '../index';
           </Rhythm>
         }
         size="small"
-        text="Hello world"
         style={{
           '--avatar-background-color': '#f41150',
           '--avatar-text-color': '#fff',
@@ -68,7 +68,7 @@ import { Chip } from '../index';
           '--tag-inverse-color': '#fff',
         }}
         text="Hello world"
-        unthemed
+        text="Hello world"
       />
     </Rhythm>
   </ThemeWrapper>
@@ -84,9 +84,9 @@ import { Chip } from '../index';
         icon={
           <Rhythm p={1}>
             <IconButton
+              noHeight
               aria-label="Remove tag"
               color="neutral"
-              noHeight
               onClick={e => console.log('remove tag')}
               shape="round"
             >
@@ -109,6 +109,7 @@ import { Chip } from '../index';
       />
       <Chip
         actionable
+        unthemed
         avatar={{
           initials: 'EC',
         }}
@@ -125,7 +126,6 @@ import { Chip } from '../index';
           '--tag-inverse-color': '#fff',
         }}
         text="Hello world"
-        unthemed
       />
     </Rhythm>
   </ThemeWrapper>
@@ -141,9 +141,9 @@ import { Chip } from '../index';
         icon={
           <Rhythm p={1}>
             <IconButton
+              noHeight
               aria-label="Remove tag"
               color="neutral"
-              noHeight
               onClick={e => console.log('remove tag')}
               shape="round"
             >
@@ -166,6 +166,7 @@ import { Chip } from '../index';
       />
       <Chip
         actionable
+        unthemed
         avatar={{
           initials: 'EC',
         }}
@@ -182,7 +183,6 @@ import { Chip } from '../index';
           '--tag-inverse-color': '#fff',
         }}
         text="Hello world"
-        unthemed
       />
     </Rhythm>
   </ThemeWrapper>

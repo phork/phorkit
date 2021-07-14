@@ -4,15 +4,15 @@ menu: Display
 route: /compositions/IconGroup
 ---
 
-import { PageTitle } from 'docs/helpers/PageTitle';
-import { StateWrapper } from 'docs/helpers/StateWrapper';
-import { TimeoutWrapper } from 'docs/helpers/TimeoutWrapper';
 import { Playground, Props } from 'docz';
 import { TimesIcon } from 'icons/TimesIcon';
 import { Rhythm } from 'components/Rhythm';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { TimeoutWrapper } from 'docs/helpers/TimeoutWrapper';
 import { IconGroup } from '../index';
 
-<PageTitle title="IconGroup" src="compositions/IconGroup" />
+<PageTitle src="compositions/IconGroup" title="IconGroup" />
 
 ## Size small
 
@@ -143,7 +143,7 @@ import { IconGroup } from '../index';
     {({ state: count, setState: setCount }) => {
       const sizes = ['small', 'medium', 'large', 'xlarge', 'xxlarge', 'xxlarge'];
       return (
-        <TimeoutWrapper callback={setCount} milliseconds={500} infinite>
+        <TimeoutWrapper infinite callback={setCount} milliseconds={500}>
           <IconGroup scale={sizes[count % sizes.length]}>
             <Rhythm m={2} style={{ height: '40px', transition: 'all 500ms linear' }}>
               <TimesIcon />

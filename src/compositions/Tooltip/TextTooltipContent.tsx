@@ -56,16 +56,16 @@ export function TextTooltipContent({
   }
 
   return (
-    <Card raised full themeId={themeId} {...props}>
+    <Card full raised themeId={themeId} {...props}>
       <StyledPaper
+        bordered
         backgroundColor={contrast ? `var(--contrast-color, ${backgroundColor})` : backgroundColor}
         borderColor={borderColor}
-        bordered
-        textColor={textColor}
+        container="popover"
         scrollable={scrollable}
         scrollbarColor={scrollbarColor}
         style={{ borderRadius: '2px', width: typeof width === 'number' ? `${width}px` : width, ...paperStyle }}
-        container="popover"
+        textColor={textColor}
       >
         <Typography as="div" size="s" themeId={themeId} variants={['line-height-comfy', 'wrap']}>
           {children}

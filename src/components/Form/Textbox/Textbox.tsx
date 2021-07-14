@@ -213,7 +213,7 @@ function TextboxBase(
 
   const renderClearableIcon = () => {
     return (
-      <button aria-label={clearLabel} className={styles.textboxButton} type="button" onClick={handleClear}>
+      <button aria-label={clearLabel} className={styles.textboxButton} onClick={handleClear} type="button">
         <TimesIcon size={clearableIconSizes[size]} title={clearLabel} />
       </button>
     );

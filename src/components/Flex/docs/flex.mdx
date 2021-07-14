@@ -4,30 +4,30 @@ menu: Utilities
 route: /components/Flex
 ---
 
-import { Looper } from 'docs/helpers/Looper';
-import { PageTitle } from 'docs/helpers/PageTitle';
 import { Playground, Props } from 'docz';
 import { Flex, StyledFlex } from 'components/Flex';
+import { Looper } from 'docs/helpers/Looper';
+import { PageTitle } from 'docs/helpers/PageTitle';
 import { FlexBox } from './helpers/FlexBox';
 
-<PageTitle title="Flex" src="components/Flex" />
+<PageTitle src="components/Flex" title="Flex" />
 
 ## Container row
 
 ### Justify content space between, reverse
 
 <Playground>
-  <Flex direction="row" justifyContent="space-between" reverse>
+  <Flex reverse direction="row" justifyContent="space-between">
     <Looper
-      start={0}
       end={4}
       render={i => (
         <Flex key={i}>
-          <FlexBox width={40} height={40 + i * 10}>
+          <FlexBox height={40 + i * 10} width={40}>
             {i}
           </FlexBox>
         </Flex>
       )}
+      start={0}
     />
   </Flex>
 </Playground>
@@ -37,15 +37,15 @@ import { FlexBox } from './helpers/FlexBox';
 <Playground>
   <Flex direction="row" justifyContent="space-around">
     <Looper
-      start={0}
       end={4}
       render={i => (
         <Flex key={i}>
-          <FlexBox width={40} height={40 + i * 10}>
+          <FlexBox height={40 + i * 10} width={40}>
             {i}
           </FlexBox>
         </Flex>
       )}
+      start={0}
     />
   </Flex>
 </Playground>
@@ -55,15 +55,15 @@ import { FlexBox } from './helpers/FlexBox';
 <Playground>
   <Flex direction="row" justifyContent="space-evenly">
     <Looper
-      start={0}
       end={4}
       render={i => (
         <Flex key={i}>
-          <FlexBox width={40} height={40 + i * 10}>
+          <FlexBox height={40 + i * 10} width={40}>
             {i}
           </FlexBox>
         </Flex>
       )}
+      start={0}
     />
   </Flex>
 </Playground>
@@ -71,17 +71,17 @@ import { FlexBox } from './helpers/FlexBox';
 ### Justify content center, align items center
 
 <Playground>
-  <Flex direction="row" justifyContent="center" alignItems="center">
+  <Flex alignItems="center" direction="row" justifyContent="center">
     <Looper
-      start={0}
       end={4}
       render={i => (
         <Flex key={i}>
-          <FlexBox width={40} height={40 + i * 10}>
+          <FlexBox height={40 + i * 10} width={40}>
             {i}
           </FlexBox>
         </Flex>
       )}
+      start={0}
     />
   </Flex>
 </Playground>
@@ -89,17 +89,17 @@ import { FlexBox } from './helpers/FlexBox';
 ### Justify content start, align items start
 
 <Playground>
-  <Flex direction="row" justifyContent="flex-start" alignItems="flex-start">
+  <Flex alignItems="flex-start" direction="row" justifyContent="flex-start">
     <Looper
-      start={0}
       end={4}
       render={i => (
         <Flex key={i}>
-          <FlexBox width={40} height={40 + i * 10}>
+          <FlexBox height={40 + i * 10} width={40}>
             {i}
           </FlexBox>
         </Flex>
       )}
+      start={0}
     />
   </Flex>
 </Playground>
@@ -107,17 +107,17 @@ import { FlexBox } from './helpers/FlexBox';
 ### Justify content end, align items end
 
 <Playground>
-  <Flex direction="row" justifyContent="flex-end" alignItems="flex-end">
+  <Flex alignItems="flex-end" direction="row" justifyContent="flex-end">
     <Looper
-      start={0}
       end={4}
       render={i => (
         <Flex key={i}>
-          <FlexBox width={40} height={40 + i * 10}>
+          <FlexBox height={40 + i * 10} width={40}>
             {i}
           </FlexBox>
         </Flex>
       )}
+      start={0}
     />
   </Flex>
 </Playground>
@@ -125,9 +125,8 @@ import { FlexBox } from './helpers/FlexBox';
 ### Align content center, wrap
 
 <Playground>
-  <Flex direction="row" alignContent="center" wrap style={{ height: '320px' }}>
+  <Flex wrap alignContent="center" direction="row" style={{ height: '320px' }}>
     <Looper
-      start={0}
       end={30}
       render={i => (
         <Flex key={i}>
@@ -136,6 +135,7 @@ import { FlexBox } from './helpers/FlexBox';
           </FlexBox>
         </Flex>
       )}
+      start={0}
     />
   </Flex>
 </Playground>
@@ -143,9 +143,8 @@ import { FlexBox } from './helpers/FlexBox';
 ### Align content space between, wrap
 
 <Playground>
-  <Flex direction="row" alignContent="space-between" wrap style={{ height: '320px' }}>
+  <Flex wrap alignContent="space-between" direction="row" style={{ height: '320px' }}>
     <Looper
-      start={0}
       end={30}
       render={i => (
         <Flex key={i}>
@@ -154,6 +153,7 @@ import { FlexBox } from './helpers/FlexBox';
           </FlexBox>
         </Flex>
       )}
+      start={0}
     />
   </Flex>
 </Playground>
@@ -163,9 +163,8 @@ import { FlexBox } from './helpers/FlexBox';
 ### Justify content space between, reverse
 
 <Playground>
-  <Flex direction="column" justifyContent="space-between" reverse style={{ height: '320px' }}>
+  <Flex reverse direction="column" justifyContent="space-between" style={{ height: '320px' }}>
     <Looper
-      start={0}
       end={4}
       render={i => (
         <Flex key={i}>
@@ -174,6 +173,7 @@ import { FlexBox } from './helpers/FlexBox';
           </FlexBox>
         </Flex>
       )}
+      start={0}
     />
   </Flex>
 </Playground>
@@ -183,7 +183,6 @@ import { FlexBox } from './helpers/FlexBox';
 <Playground>
   <Flex direction="column" justifyContent="space-around" style={{ height: '320px' }}>
     <Looper
-      start={0}
       end={4}
       render={i => (
         <Flex key={i}>
@@ -192,6 +191,7 @@ import { FlexBox } from './helpers/FlexBox';
           </FlexBox>
         </Flex>
       )}
+      start={0}
     />
   </Flex>
 </Playground>
@@ -201,7 +201,6 @@ import { FlexBox } from './helpers/FlexBox';
 <Playground>
   <Flex direction="column" justifyContent="space-evenly" style={{ height: '320px' }}>
     <Looper
-      start={0}
       end={4}
       render={i => (
         <Flex key={i}>
@@ -210,6 +209,7 @@ import { FlexBox } from './helpers/FlexBox';
           </FlexBox>
         </Flex>
       )}
+      start={0}
     />
   </Flex>
 </Playground>
@@ -217,9 +217,8 @@ import { FlexBox } from './helpers/FlexBox';
 ### Justify content center, align items center
 
 <Playground>
-  <Flex direction="column" justifyContent="center" alignItems="center" style={{ height: '320px' }}>
+  <Flex alignItems="center" direction="column" justifyContent="center" style={{ height: '320px' }}>
     <Looper
-      start={0}
       end={4}
       render={i => (
         <Flex key={i}>
@@ -228,6 +227,7 @@ import { FlexBox } from './helpers/FlexBox';
           </FlexBox>
         </Flex>
       )}
+      start={0}
     />
   </Flex>
 </Playground>
@@ -235,9 +235,8 @@ import { FlexBox } from './helpers/FlexBox';
 ### Justify content start, align items start
 
 <Playground>
-  <Flex direction="column" justifyContent="flex-start" alignItems="flex-start" style={{ height: '320px' }}>
+  <Flex alignItems="flex-start" direction="column" justifyContent="flex-start" style={{ height: '320px' }}>
     <Looper
-      start={0}
       end={4}
       render={i => (
         <Flex key={i}>
@@ -246,6 +245,7 @@ import { FlexBox } from './helpers/FlexBox';
           </FlexBox>
         </Flex>
       )}
+      start={0}
     />
   </Flex>
 </Playground>
@@ -253,9 +253,8 @@ import { FlexBox } from './helpers/FlexBox';
 ### Justify content end, align items end
 
 <Playground>
-  <Flex direction="column" justifyContent="flex-end" alignItems="flex-end" style={{ height: '320px' }}>
+  <Flex alignItems="flex-end" direction="column" justifyContent="flex-end" style={{ height: '320px' }}>
     <Looper
-      start={0}
       end={4}
       render={i => (
         <Flex key={i}>
@@ -264,6 +263,7 @@ import { FlexBox } from './helpers/FlexBox';
           </FlexBox>
         </Flex>
       )}
+      start={0}
     />
   </Flex>
 </Playground>
@@ -271,9 +271,8 @@ import { FlexBox } from './helpers/FlexBox';
 ### Align content center, wrap
 
 <Playground>
-  <Flex direction="column" alignContent="center" wrap style={{ height: '320px' }}>
+  <Flex wrap alignContent="center" direction="column" style={{ height: '320px' }}>
     <Looper
-      start={0}
       end={10}
       render={i => (
         <Flex key={i}>
@@ -282,6 +281,7 @@ import { FlexBox } from './helpers/FlexBox';
           </FlexBox>
         </Flex>
       )}
+      start={0}
     />
   </Flex>
 </Playground>
@@ -289,9 +289,8 @@ import { FlexBox } from './helpers/FlexBox';
 ### Align content space between, wrap
 
 <Playground>
-  <Flex direction="column" alignContent="space-between" wrap style={{ height: '320px' }}>
+  <Flex wrap alignContent="space-between" direction="column" style={{ height: '320px' }}>
     <Looper
-      start={0}
       end={10}
       render={i => (
         <Flex key={i}>
@@ -300,6 +299,7 @@ import { FlexBox } from './helpers/FlexBox';
           </FlexBox>
         </Flex>
       )}
+      start={0}
     />
   </Flex>
 </Playground>
@@ -307,17 +307,17 @@ import { FlexBox } from './helpers/FlexBox';
 ### Styled flex grow
 
 <Playground>
-  <Flex direction="row" wrap>
+  <Flex wrap direction="row">
     <Looper
-      start={0}
       end={10}
       render={i => (
-        <StyledFlex key={i} flexGrow={i}>
+        <StyledFlex flexGrow={i} key={i}>
           <FlexBox height={40} width="100%">
             {i}
           </FlexBox>
         </StyledFlex>
       )}
+      start={0}
     />
   </Flex>
 </Playground>
@@ -327,15 +327,15 @@ import { FlexBox } from './helpers/FlexBox';
 <Playground>
   <Flex direction="row" wrap={false}>
     <Looper
-      start={0}
       end={10}
       render={i => (
-        <StyledFlex key={i} flex={`${i} 0 40px`}>
+        <StyledFlex flex={`${i} 0 40px`} key={i}>
           <FlexBox height={40} width="100%">
             {i}
           </FlexBox>
         </StyledFlex>
       )}
+      start={0}
     />
   </Flex>
 </Playground>

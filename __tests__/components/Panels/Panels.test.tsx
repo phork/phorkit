@@ -5,8 +5,8 @@ import { PanelContainer, MainPanel, SidePanel, StackPanel } from 'lib';
 describe('<Panels />', () => {
   it('should render a set of panels', () => {
     const { getByText } = render(
-      <PanelContainer orientation="horizontal" viewport>
-        <StackPanel position="top" height={50}>
+      <PanelContainer viewport orientation="horizontal">
+        <StackPanel height={50} position="top">
           Top panel
         </StackPanel>
         <MainPanel>

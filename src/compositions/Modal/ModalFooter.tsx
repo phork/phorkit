@@ -1,7 +1,7 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { ModalProviderProps } from './ModalProvider';
 import styles from './styles/Modal.module.css';
+import { ModalProviderProps } from './ModalProvider';
 
 export interface ModalFooterProps extends React.HTMLAttributes<HTMLDivElement> {
   bordered?: boolean;

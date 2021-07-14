@@ -70,14 +70,14 @@ export function ColorTheme({ themeId, variant }: ColorThemeProps): React.ReactEl
 
   return (
     <ThemeElement
-      color={themeProps[`${variant}-palette-text-color` as keyof ThemeColors] as string}
+      accentColor={themeProps[`${variant}-palette-accent-color` as keyof ThemeColors] as string}
       backgroundColor={themeProps[`${variant}-palette-background-color` as keyof ThemeColors] as string}
       borderColor={themeProps[`${variant}-palette-border-color` as keyof ThemeColors] as string}
+      color={themeProps[`${variant}-palette-text-color` as keyof ThemeColors] as string}
       quietBorderColor={themeProps[`${variant}-palette-quiet-border-color` as keyof ThemeColors] as string}
       quietColor={themeProps[`${variant}-palette-quiet-color` as keyof ThemeColors] as string}
       quieterColor={themeProps[`${variant}-palette-quieter-color` as keyof ThemeColors] as string}
       quietestColor={themeProps[`${variant}-palette-quietest-color` as keyof ThemeColors] as string}
-      accentColor={themeProps[`${variant}-palette-accent-color` as keyof ThemeColors] as string}
     >
       <div>The quick brown fox jumped over the lazy dog</div>
       <div className="quiet">The quiet quick brown fox jumped over the lazy dog</div>

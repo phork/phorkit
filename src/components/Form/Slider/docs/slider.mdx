@@ -5,17 +5,17 @@ route: /components/FormSlider
 ---
 
 import { Playground, Props } from 'docz';
-import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
 import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'docs/helpers/PageTitle';
+import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
 import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index';
 
-<PageTitle title="Slider" src="components/Form/Slider" />
+<PageTitle src="components/Form/Slider" title="Slider" />
 
 ## Basic slider
 
 <Playground>
-  <FormComponentDemo type="slider" property="value" initialValue={10}>
+  <FormComponentDemo initialValue={10} property="value" type="slider">
     <Slider
       aria-label="Super fantastic label"
       onChange={(event, value) => console.log(value)}
@@ -28,7 +28,7 @@ import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index
 ## Small slider
 
 <Playground>
-  <FormComponentDemo type="slider" property="value" initialValue={10}>
+  <FormComponentDemo initialValue={10} property="value" type="slider">
     <Slider
       aria-label="Super fantastic label"
       onChange={(event, value) => console.log(value)}
@@ -42,7 +42,7 @@ import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index
 ## Negative slider
 
 <Playground>
-  <FormComponentDemo type="slider" property="value" initialValue={-10}>
+  <FormComponentDemo initialValue={-10} property="value" type="slider">
     <Slider
       aria-label="Super fantastic label"
       max={0}
@@ -57,7 +57,7 @@ import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index
 ## Ticked slider
 
 <Playground>
-  <FormComponentDemo type="slider" property="value" initialValue={10}>
+  <FormComponentDemo initialValue={10} property="value" type="slider">
     <Slider
       aria-label="Super fantastic label"
       max={100}
@@ -74,13 +74,13 @@ import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index
 ## Ticked snap slider
 
 <Playground>
-  <FormComponentDemo type="slider" property="value" initialValue={2}>
+  <FormComponentDemo initialValue={2} property="value" type="slider">
     <Slider
+      snap
       aria-label="Super fantastic label"
       max={5}
       min={0}
       onChange={(event, value) => console.log(value)}
-      snap
       step={1}
       tick={1}
       valuePosition="right"
@@ -92,7 +92,7 @@ import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index
 ## Labeled slider
 
 <Playground>
-  <FormComponentDemo type="slider" property="value" initialValue={4.5}>
+  <FormComponentDemo initialValue={4.5} property="value" type="slider">
     <Slider
       max={12}
       min={2}
@@ -109,15 +109,15 @@ import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index
 ## Disabled slider
 
 <Playground>
-  <FormComponentDemo type="slider" property="value" initialValue={30}>
-    <Slider aria-label="Super fantastic label" disabled onChange={(event, value) => console.log(value)} width="100%" />
+  <FormComponentDemo initialValue={30} property="value" type="slider">
+    <Slider disabled aria-label="Super fantastic label" onChange={(event, value) => console.log(value)} width="100%" />
   </FormComponentDemo>
 </Playground>
 
 ## Danger slider
 
 <Playground>
-  <FormComponentDemo type="slider" property="value" initialValue={60}>
+  <FormComponentDemo initialValue={60} property="value" type="slider">
     <Slider
       aria-label="Super fantastic label"
       onChange={(event, value) => console.log(value)}
@@ -130,15 +130,15 @@ import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index
 ## Contrast slider
 
 <Playground>
-  <FormComponentDemo type="slider" property="value" initialValue={30} contrast>
-    <Slider aria-label="Super fantastic label" contrast onChange={(event, value) => console.log(value)} width="100%" />
+  <FormComponentDemo contrast initialValue={30} property="value" type="slider">
+    <Slider contrast aria-label="Super fantastic label" onChange={(event, value) => console.log(value)} width="100%" />
   </FormComponentDemo>
 </Playground>
 
 ## Styled slider
 
 <Playground>
-  <FormComponentDemo type="slider" property="value" initialValue={30}>
+  <FormComponentDemo initialValue={30} property="value" type="slider">
     <StyledSlider
       aria-label="Super fantastic label"
       handleBackgroundColor="#283992"
@@ -154,7 +154,7 @@ import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index
 ## Multi-color slider with dividers
 
 <Playground>
-  <FormComponentDemo type="slider" property="value" initialValue={2}>
+  <FormComponentDemo initialValue={2} property="value" type="slider">
     <MultiColorSlider
       aria-label="Super fantastic label"
       colors={['danger', 'warning', 'success', 'accent-primary']}
@@ -173,7 +173,7 @@ import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index
   <Looper
     list={['success', 'danger', 'warning', 'primary', 'neutral']}
     render={level => (
-      <FormComponentDemo type="slider" property="value" initialValue="20">
+      <FormComponentDemo initialValue="20" property="value" type="slider">
         <NotifiedSlider
           aria-label="Super fantastic label"
           level={level}

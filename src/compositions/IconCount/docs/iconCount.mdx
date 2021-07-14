@@ -4,12 +4,12 @@ menu: Display
 route: /compositions/IconCount
 ---
 
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { CheckIcon } from 'icons/internal/CheckIcon';
 import { Flex } from 'components/Flex';
 import { Rhythm } from 'components/Rhythm';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { IconCount } from '../index';
 
 # IconCount
@@ -34,7 +34,7 @@ import { IconCount } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <IconCount active count={24} icon={CheckIcon} label="Example" inline reverse />
+    <IconCount active inline reverse count={24} icon={CheckIcon} label="Example" />
   </ThemeWrapper>
 </Playground>
 
@@ -42,12 +42,12 @@ import { IconCount } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Flex direction="row" justifyContent="space-betwee" wrap>
+    <Flex wrap direction="row" justifyContent="space-betwee">
       <Rhythm m={2}>
-        <IconCount count={24} icon={BlobbrIcon} label="Example" iconSize={16} typographySize="s" />
-        <IconCount count={24} icon={BlobbrIcon} label="Example" iconSize={18} typographySize="m" />
-        <IconCount count={24} icon={BlobbrIcon} label="Example" iconSize={20} typographySize="l" />
-        <IconCount count={24} icon={BlobbrIcon} label="Example" iconSize={24} typographySize="xl" />
+        <IconCount count={24} icon={BlobbrIcon} iconSize={16} label="Example" typographySize="s" />
+        <IconCount count={24} icon={BlobbrIcon} iconSize={18} label="Example" typographySize="m" />
+        <IconCount count={24} icon={BlobbrIcon} iconSize={20} label="Example" typographySize="l" />
+        <IconCount count={24} icon={BlobbrIcon} iconSize={24} label="Example" typographySize="xl" />
       </Rhythm>
     </Flex>
   </ThemeWrapper>

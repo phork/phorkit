@@ -5,16 +5,16 @@ route: /components/Panels
 ---
 
 import { Playground, Props } from 'docz';
+import { PageTitle } from 'docs/helpers/PageTitle';
 import { PermanentSidePanel } from '../SidePanel/PermanentSidePanel';
-import { PermanentStackPanel } from '../StackPanel/PermanentStackPanel';
 import { SidePanel } from '../SidePanel/SidePanel';
+import { PermanentStackPanel } from '../StackPanel/PermanentStackPanel';
 import { StackPanel } from '../StackPanel/StackPanel';
 import { MainPanel, PanelContainer } from '../index';
 import { SidePanelDemo } from './helpers/SidePanelDemo';
 import { StackPanelDemo } from './helpers/StackPanelDemo';
-import { PageTitle } from 'docs/helpers/PageTitle';
 
-<PageTitle title="Panels" src="components/Panels" />
+<PageTitle src="components/Panels" title="Panels" />
 
 ## SidePanel
 
@@ -30,7 +30,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
     >
       Main panel
     </MainPanel>
-    <PermanentSidePanel width={200} position="right">
+    <PermanentSidePanel position="right" width={200}>
       Side panel
     </PermanentSidePanel>
   </PanelContainer>
@@ -48,7 +48,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
     >
       Main panel
     </MainPanel>
-    <SidePanel width={200} position="right" open>
+    <SidePanel open position="right" width={200}>
       Side panel
     </SidePanel>
   </PanelContainer>
@@ -80,7 +80,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
           <div>Main panel</div>
           <div>Side panel state: {panelState}</div>
         </MainPanel>
-        <SidePanel width={200} position="right" open={isOpen}>
+        <SidePanel open={isOpen} position="right" width={200}>
           Side panel
         </SidePanel>
       </PanelContainer>
@@ -94,7 +94,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
   <SidePanelDemo style={{ height: '200px' }}>
     {isOpen => (
       <PanelContainer orientation="vertical">
-        <SidePanel width={200} position="left" fixed open={isOpen} style={{ background: '#fff' }}>
+        <SidePanel fixed open={isOpen} position="left" style={{ background: '#fff' }} width={200}>
           Side panel
         </SidePanel>
         <MainPanel
@@ -105,7 +105,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
         >
           Main panel
         </MainPanel>
-        <SidePanel width={200} position="right" fixed open={isOpen} style={{ background: '#fff' }}>
+        <SidePanel fixed open={isOpen} position="right" style={{ background: '#fff' }} width={200}>
           Side panel
         </SidePanel>
       </PanelContainer>
@@ -120,12 +120,12 @@ import { PageTitle } from 'docs/helpers/PageTitle';
     {isOpen => (
       <PanelContainer orientation="vertical">
         <SidePanel
-          transition="squashable"
-          width={200}
-          position="left"
           fixed
           open={isOpen}
+          position="left"
           style={{ background: '#fff' }}
+          transition="squashable"
+          width={200}
         >
           Side panel
         </SidePanel>
@@ -138,12 +138,12 @@ import { PageTitle } from 'docs/helpers/PageTitle';
           Main panel
         </MainPanel>
         <SidePanel
-          transition="squashable"
-          width={200}
-          position="right"
           fixed
           open={isOpen}
+          position="right"
           style={{ background: '#fff' }}
+          transition="squashable"
+          width={200}
         >
           Side panel
         </SidePanel>
@@ -166,7 +166,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
         >
           Main panel
         </MainPanel>
-        <SidePanel width={100} unit="percent" position="right" fixed open={isOpen} style={{ background: '#fff' }}>
+        <SidePanel fixed open={isOpen} position="right" style={{ background: '#fff' }} unit="percent" width={100}>
           Side panel
         </SidePanel>
       </PanelContainer>
@@ -208,7 +208,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
     >
       Main panel
     </MainPanel>
-    <StackPanel height={100} position="bottom" open>
+    <StackPanel open height={100} position="bottom">
       Stack panel
     </StackPanel>
   </PanelContainer>
@@ -240,7 +240,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
           <div>Main panel</div>
           <div>Stack panel state: {panelState}</div>
         </MainPanel>
-        <StackPanel height={50} position="bottom" open={isOpen}>
+        <StackPanel height={50} open={isOpen} position="bottom">
           Stack panel
         </StackPanel>
       </PanelContainer>
@@ -254,7 +254,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
   <StackPanelDemo style={{ height: '200px' }}>
     {isOpen => (
       <PanelContainer orientation="horizontal">
-        <StackPanel height={50} position="bottom" fixed open={isOpen} style={{ background: '#fff' }}>
+        <StackPanel fixed height={50} open={isOpen} position="bottom" style={{ background: '#fff' }}>
           Stack panel
         </StackPanel>
         <MainPanel
@@ -265,7 +265,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
         >
           Main panel
         </MainPanel>
-        <StackPanel height={50} position="top" fixed open={isOpen} style={{ background: '#fff' }}>
+        <StackPanel fixed height={50} open={isOpen} position="top" style={{ background: '#fff' }}>
           Stack panel
         </StackPanel>
       </PanelContainer>
@@ -279,7 +279,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
   <StackPanelDemo style={{ height: '200px' }}>
     {isOpen => (
       <PanelContainer orientation="horizontal">
-        <StackPanel transition="squashable" height={50} position="top" open={isOpen}>
+        <StackPanel height={50} open={isOpen} position="top" transition="squashable">
           Stack panel
         </StackPanel>
         <MainPanel
@@ -290,7 +290,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
         >
           Main panel
         </MainPanel>
-        <StackPanel transition="squashable" height={50} position="bottom" open={isOpen}>
+        <StackPanel height={50} open={isOpen} position="bottom" transition="squashable">
           Stack panel
         </StackPanel>
       </PanelContainer>
@@ -312,7 +312,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
         >
           Main panel
         </MainPanel>
-        <StackPanel transition="squashable" height={100} unit="percent" position="bottom" open={isOpen}>
+        <StackPanel height={100} open={isOpen} position="bottom" transition="squashable" unit="percent">
           Stack panel
         </StackPanel>
       </PanelContainer>

@@ -4,13 +4,13 @@ menu: Surfaces
 route: /components/Footer
 ---
 
-import { PageTitle } from 'docs/helpers/PageTitle';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Playground, Props } from 'docz';
 import { Rhythm } from 'components/Rhythm';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Footer, StyledFooter } from '../index';
 
-<PageTitle title="Footer" src="components/Footer" />
+<PageTitle src="components/Footer" title="Footer" />
 
 ## Basic footer
 
@@ -127,7 +127,7 @@ import { Footer, StyledFooter } from '../index';
 ### Styled footer
 
 <Playground>
-  <StyledFooter bordered backgroundColor="#556270" borderColor="#393a61" textColor="#fff" height={50}>
+  <StyledFooter bordered backgroundColor="#556270" borderColor="#393a61" height={50} textColor="#fff">
     <div>Hello world</div>
     <div>Hello world</div>
   </StyledFooter>

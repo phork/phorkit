@@ -3,8 +3,8 @@ import { AnyPosition } from '../../types';
 import { renderFromPropWithFallback } from '../../utils';
 import { InlinePopover, InlinePopoverProps } from '../Popover/InlinePopover';
 import { PopoverRenderChildrenProps } from '../Popover/types';
-import { TooltipContent } from './TooltipContent';
 import { getTooltipOffset } from './utils';
+import { TooltipContent } from './TooltipContent';
 
 export interface InlineTooltipProps extends Omit<InlinePopoverProps, 'position'> {
   position?: AnyPosition;
@@ -35,6 +35,7 @@ export function InlineTooltip({
   return (
     <InlinePopover
       centered
+      withChildrenProps
       offset={offset}
       position={position}
       renderChildren={({ close, focusable, focusRef, isTogglerFocused, offset, position, visible }) => {
@@ -66,7 +67,6 @@ export function InlineTooltip({
           </TooltipContent>
         );
       }}
-      withChildrenProps
       {...props}
     />
   );

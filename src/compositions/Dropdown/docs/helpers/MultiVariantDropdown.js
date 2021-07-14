@@ -21,8 +21,8 @@ export function MultiVariantDropdown({ style, ...props }) {
   return (
     <ControlledDropdown
       contrast={contrast}
-      onOpen={handleOpen}
       onClose={handleClose}
+      onOpen={handleOpen}
       style={{
         transition: 'color 300ms ease, background-color 300ms ease',
         ...style,

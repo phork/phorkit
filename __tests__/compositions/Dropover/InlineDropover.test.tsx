@@ -16,7 +16,7 @@ describe('<InlineDropover />', () => {
     const onOpen = jest.fn();
 
     const { getByText, getByRole } = render(
-      <InlineDropover onOpen={onOpen} label={<DropoverLabel>Super fantastic label</DropoverLabel>}>
+      <InlineDropover label={<DropoverLabel>Super fantastic label</DropoverLabel>} onOpen={onOpen}>
         <DropoverContent>Hello world</DropoverContent>
       </InlineDropover>,
     );

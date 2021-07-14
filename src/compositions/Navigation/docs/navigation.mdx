@@ -14,7 +14,7 @@ import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Navigation, StyledNavigation } from '../index';
 
-<PageTitle title="Navigation" src="compositions/Navigation" />
+<PageTitle src="compositions/Navigation" title="Navigation" />
 
 Keyboard navigation is available for this component. Navigate with `Up`, `Down`, `Left`, `Right`, `Home` or `End`. Select with `Space` or `Enter`.
 
@@ -28,17 +28,17 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
       <StateWrapper initialState={'first'}>
         {({ state: selectedId, setState: setSelectedId }) => (
           <Navigation
-            selectedId={selectedId}
-            onSelect={(event, item) => {
-              setSelectedId(item.id);
-              console.log(item.id);
-            }}
             items={[
               { id: 'first', label: 'First' },
               { id: 'second', label: 'Second' },
               { id: 'third', label: 'Third', disabled: true },
               { id: 'fourth', label: 'Fourth' },
             ]}
+            onSelect={(event, item) => {
+              setSelectedId(item.id);
+              console.log(item.id);
+            }}
+            selectedId={selectedId}
           />
         )}
       </StateWrapper>
@@ -54,14 +54,14 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
       {({ state: selectedId, setState: setSelectedId }) => (
         <Navigation
           vertical
-          selectedId={selectedId}
-          onSelect={(event, item) => setSelectedId(item.id)}
           items={[
             { id: 'first', label: 'First' },
             { id: 'second', label: 'Second' },
             { id: 'third', label: 'Third', disabled: true },
             { id: 'fourth', label: 'Fourth' },
           ]}
+          onSelect={(event, item) => setSelectedId(item.id)}
+          selectedId={selectedId}
         />
       )}
     </StateWrapper>
@@ -78,15 +78,15 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
       {({ state: selectedId, setState: setSelectedId }) => (
         <Navigation
           animated
-          style={{ height: '50px' }}
-          selectedId={selectedId}
-          onSelect={(event, item) => setSelectedId(item.id)}
           items={[
             { id: 'first', label: 'First' },
             { id: 'second', label: 'Second' },
             { id: 'third', label: 'Third', disabled: true },
             { id: 'fourth', label: 'Fourth' },
           ]}
+          onSelect={(event, item) => setSelectedId(item.id)}
+          selectedId={selectedId}
+          style={{ height: '50px' }}
         />
       )}
     </StateWrapper>
@@ -102,14 +102,14 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         <Navigation
           animated
           vertical
-          selectedId={selectedId}
-          onSelect={(event, item) => setSelectedId(item.id)}
           items={[
             { id: 'first', label: 'First' },
             { id: 'second', label: 'Second' },
             { id: 'third', label: 'Third', disabled: true },
             { id: 'fourth', label: 'Fourth' },
           ]}
+          onSelect={(event, item) => setSelectedId(item.id)}
+          selectedId={selectedId}
         />
       )}
     </StateWrapper>
@@ -127,15 +127,15 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         {({ state: selectedId, setState: setSelectedId }) => (
           <Navigation
             animated
-            selectedId={selectedId}
-            variant="secondary"
-            onSelect={(event, item) => setSelectedId(item.id)}
             items={[
               { id: 'first', label: 'First' },
               { id: 'second', label: 'Second' },
               { id: 'third', label: 'Third', disabled: true },
               { id: 'fourth', label: 'Fourth' },
             ]}
+            onSelect={(event, item) => setSelectedId(item.id)}
+            selectedId={selectedId}
+            variant="secondary"
           />
         )}
       </StateWrapper>
@@ -150,17 +150,17 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
     <StateWrapper initialState={'first'}>
       {({ state: selectedId, setState: setSelectedId }) => (
         <Navigation
-          vertical
           animated
-          selectedId={selectedId}
-          variant="secondary"
-          onSelect={(event, item) => setSelectedId(item.id)}
+          vertical
           items={[
             { id: 'first', label: 'First' },
             { id: 'second', label: 'Second' },
             { id: 'third', label: 'Third', disabled: true },
             { id: 'fourth', label: 'Fourth' },
           ]}
+          onSelect={(event, item) => setSelectedId(item.id)}
+          selectedId={selectedId}
+          variant="secondary"
         />
       )}
     </StateWrapper>
@@ -178,15 +178,15 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         {({ state: selectedId, setState: setSelectedId }) => (
           <Navigation
             animated
-            selectedId={selectedId}
-            variant="tertiary"
-            onSelect={(event, item) => setSelectedId(item.id)}
             items={[
               { id: 'first', label: 'First' },
               { id: 'second', label: 'Second' },
               { id: 'third', label: 'Third', disabled: true },
               { id: 'fourth', label: 'Fourth' },
             ]}
+            onSelect={(event, item) => setSelectedId(item.id)}
+            selectedId={selectedId}
+            variant="tertiary"
           />
         )}
       </StateWrapper>
@@ -201,17 +201,17 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
     <StateWrapper initialState={'first'}>
       {({ state: selectedId, setState: setSelectedId }) => (
         <Navigation
-          vertical
           animated
-          selectedId={selectedId}
-          variant="tertiary"
-          onSelect={(event, item) => setSelectedId(item.id)}
+          vertical
           items={[
             { id: 'first', label: 'First' },
             { id: 'second', label: 'Second' },
             { id: 'third', label: 'Third', disabled: true },
             { id: 'fourth', label: 'Fourth' },
           ]}
+          onSelect={(event, item) => setSelectedId(item.id)}
+          selectedId={selectedId}
+          variant="tertiary"
         />
       )}
     </StateWrapper>
@@ -225,12 +225,9 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
     <StateWrapper initialState={'first'}>
       {({ state: selectedId, setState: setSelectedId }) => (
         <Navigation
-          vertical
           animated
+          vertical
           highlightRadius={4}
-          selectedId={selectedId}
-          variant="tertiary"
-          onSelect={(event, item) => setSelectedId(item.id)}
           items={[
             {
               id: 'first',
@@ -258,6 +255,9 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
               style: { padding: '8px' },
             },
           ]}
+          onSelect={(event, item) => setSelectedId(item.id)}
+          selectedId={selectedId}
+          variant="tertiary"
         />
       )}
     </StateWrapper>
@@ -274,9 +274,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
           <Navigation
             animated
             highlightRadius={4}
-            selectedId={selectedId}
-            variant="tertiary"
-            onSelect={(event, item) => setSelectedId(item.id)}
             items={[
               {
                 id: 'first',
@@ -320,6 +317,9 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
                 ),
               },
             ]}
+            onSelect={(event, item) => setSelectedId(item.id)}
+            selectedId={selectedId}
+            variant="tertiary"
           />
         )}
       </StateWrapper>
@@ -336,15 +336,15 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
     {({ state: selectedId, setState: setSelectedId }) => (
       <Navigation
         animated
-        style={{ height: '50px' }}
-        selectedId={selectedId}
-        onSelect={(event, item) => setSelectedId(item.id)}
         items={[
           { id: 'first', label: 'First' },
           { id: 'second', label: 'Second' },
           { id: 'third', label: 'Third', disabled: true },
           { id: 'fourth', label: 'Trigger', triggerOnly: () => console.log('triggered') },
         ]}
+        onSelect={(event, item) => setSelectedId(item.id)}
+        selectedId={selectedId}
+        style={{ height: '50px' }}
       />
     )}
   </StateWrapper>
@@ -358,11 +358,12 @@ _Note that the links will cause the page to reload so the state will appear unch
   <ThemeWrapper>
     <Navigation
       animated
+      triggerLinks
       items={[
         {
           id: 'first',
           label: (
-            <a tabIndex="-1" href="#first">
+            <a href="#first" tabIndex="-1">
               First
             </a>
           ),
@@ -370,7 +371,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         {
           id: 'second',
           label: (
-            <a tabIndex="-1" href="#second">
+            <a href="#second" tabIndex="-1">
               Second
             </a>
           ),
@@ -378,7 +379,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         {
           id: 'third',
           label: (
-            <a tabIndex="-1" href="#third">
+            <a href="#third" tabIndex="-1">
               Third
             </a>
           ),
@@ -387,7 +388,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         {
           id: 'fourth',
           label: (
-            <a tabIndex="-1" href="#fourth">
+            <a href="#fourth" tabIndex="-1">
               Fourth
             </a>
           ),
@@ -395,7 +396,6 @@ _Note that the links will cause the page to reload so the state will appear unch
       ]}
       selectedId={'first'}
       style={{ height: '50px' }}
-      triggerLinks
     />
   </ThemeWrapper>
 </Playground>
@@ -409,9 +409,6 @@ _Note that the links will cause the page to reload so the state will appear unch
         <Navigation
           allowRightClickLinks
           animated
-          style={{ height: '50px' }}
-          selectedId={selectedId}
-          onSelect={(event, item) => setSelectedId(item.id)}
           items={[
             { id: 'first', label: 'First', href: '#first' },
             { id: 'second', label: 'Second', href: '#second' },
@@ -419,6 +416,9 @@ _Note that the links will cause the page to reload so the state will appear unch
             { id: 'fourth', label: 'Fourth', href: '#fourth' },
             { id: 'fifth', label: 'Trigger', triggerOnly: () => console.log('triggered') },
           ]}
+          onSelect={(event, item) => setSelectedId(item.id)}
+          selectedId={selectedId}
+          style={{ height: '50px' }}
         />
       )}
     </StateWrapper>
@@ -433,14 +433,14 @@ _Note that the links will cause the page to reload so the state will appear unch
       {({ state: selectedId, setState: setSelectedId }) => (
         <Navigation
           animated
-          selectedId={selectedId}
-          onSelect={(event, item) => setSelectedId(item.id)}
           items={[
             { id: 'first', label: ({ selected }) => `First${selected ? ' is selected' : ''}` },
             { id: 'second', label: ({ selected }) => `Second${selected ? ' is selected' : ''}` },
             { id: 'third', label: ({ selected }) => `Third${selected ? ' is selected' : ''}`, disabled: true },
             { id: 'fourth', label: ({ selected }) => `Fourth${selected ? ' is selected' : ''}` },
           ]}
+          onSelect={(event, item) => setSelectedId(item.id)}
+          selectedId={selectedId}
         />
       )}
     </StateWrapper>
@@ -454,14 +454,6 @@ _Note that the links will cause the page to reload so the state will appear unch
     {({ state: selectedId, setState: setSelectedId }) => (
       <StyledNavigation
         animated
-        selectedId={selectedId}
-        onSelect={(event, item) => setSelectedId(item.id)}
-        items={[
-          { id: 'first', label: ({ selected }) => `First${selected ? ' is selected' : ''}` },
-          { id: 'second', label: ({ selected }) => `Second${selected ? ' is selected' : ''}` },
-          { id: 'third', label: ({ selected }) => `Third${selected ? ' is selected' : ''}`, disabled: true },
-          { id: 'fourth', label: ({ selected }) => `Fourth${selected ? ' is selected' : ''}` },
-        ]}
         focusedBorderColor="#f41150"
         itemFocusedBackgroundColor="#f41150"
         itemFocusedBorderColor="#f41150"
@@ -473,6 +465,14 @@ _Note that the links will cause the page to reload so the state will appear unch
         itemSelectedBorderColor="#f41150"
         itemSelectedTextColor="#fff"
         itemTextColor="#f41150"
+        items={[
+          { id: 'first', label: ({ selected }) => `First${selected ? ' is selected' : ''}` },
+          { id: 'second', label: ({ selected }) => `Second${selected ? ' is selected' : ''}` },
+          { id: 'third', label: ({ selected }) => `Third${selected ? ' is selected' : ''}`, disabled: true },
+          { id: 'fourth', label: ({ selected }) => `Fourth${selected ? ' is selected' : ''}` },
+        ]}
+        onSelect={(event, item) => setSelectedId(item.id)}
+        selectedId={selectedId}
       />
     )}
   </StateWrapper>

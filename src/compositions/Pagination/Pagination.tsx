@@ -127,7 +127,7 @@ export function Pagination({
 
   return (
     <ErrorBoundary>
-      <Flex alignItems="center" direction="row" inflexible justifyContent={justification[justify]} wrap={false}>
+      <Flex inflexible alignItems="center" direction="row" justifyContent={justification[justify]} wrap={false}>
         {(withPageLabel || withPageAndTotalLabel) && (
           <Typography {...pageLabelProps}>
             {substituteTranslationArgs(
@@ -179,7 +179,7 @@ export function Pagination({
                     {
                       id: generateComponentId('page1'),
                       label: () => (
-                        <PaginationPage href={getHref?.(1)} page={1} onChangePage={onChangePage} {...jumpProps} />
+                        <PaginationPage href={getHref?.(1)} onChangePage={onChangePage} page={1} {...jumpProps} />
                       ),
                     } as ButtonGroupItem,
                     pageLinksBefore[0] > 2 &&
@@ -195,7 +195,7 @@ export function Pagination({
                     i =>
                       ({
                         id: generateComponentId(`page${i}`),
-                        label: () => <PaginationPage page={i} onChangePage={onChangePage} {...inactiveProps} />,
+                        label: () => <PaginationPage onChangePage={onChangePage} page={i} {...inactiveProps} />,
                       } as ButtonGroupItem),
                   )
                 : []),
@@ -203,7 +203,7 @@ export function Pagination({
               withPageLinks &&
                 ({
                   id: generateComponentId('activePage'),
-                  label: () => <PaginationPage<'div'> active as="div" page={page} imitation {...activeProps} />,
+                  label: () => <PaginationPage<'div'> active imitation as="div" page={page} {...activeProps} />,
                   selected: true,
                 } as ButtonGroupItem),
 
@@ -212,7 +212,7 @@ export function Pagination({
                     i =>
                       ({
                         id: generateComponentId(`page${i}`),
-                        label: () => <PaginationPage page={i} onChangePage={onChangePage} {...inactiveProps} />,
+                        label: () => <PaginationPage onChangePage={onChangePage} page={i} {...inactiveProps} />,
                       } as ButtonGroupItem),
                   )
                 : []),
@@ -226,7 +226,7 @@ export function Pagination({
                       } as ButtonGroupItem),
                     {
                       id: generateComponentId(`page${pages}`),
-                      label: () => <PaginationPage page={pages} onChangePage={onChangePage} {...inactiveProps} />,
+                      label: () => <PaginationPage onChangePage={onChangePage} page={pages} {...inactiveProps} />,
                     } as ButtonGroupItem,
                   ]
                 : []),

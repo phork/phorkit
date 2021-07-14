@@ -7,7 +7,7 @@ describe('<Slider />', () => {
     const onChange = jest.fn();
 
     const { container, getByText } = render(
-      <Slider min={0} max={10} value={4} width="100%" valuePosition="right" onChange={onChange}>
+      <Slider max={10} min={0} onChange={onChange} value={4} valuePosition="right" width="100%">
         Super fantastic label
       </Slider>,
     );
@@ -27,14 +27,14 @@ describe('<Slider />', () => {
 
     const { container, getByText } = render(
       <NotifiedSlider
-        min={0}
-        max={10}
-        value={4}
-        width="100%"
-        valuePosition="right"
-        onChange={onChange}
         level="danger"
+        max={10}
+        min={0}
         notification="Example notification"
+        onChange={onChange}
+        value={4}
+        valuePosition="right"
+        width="100%"
       >
         Super fantastic label
       </NotifiedSlider>,

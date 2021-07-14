@@ -11,7 +11,7 @@ export function TextboxGroupInput({ inputId, ...props }: TextboxGroupInputProps)
   const ref = useRef<HTMLInputElement>(null!);
   useListRegistryItem<HTMLInputElement>({ id: inputId, ref });
 
-  return <Textbox ref={ref} data-id={inputId} {...props} />;
+  return <Textbox data-id={inputId} ref={ref} {...props} />;
 }
 
 TextboxGroupInput.displayName = 'TextboxGroupInput';

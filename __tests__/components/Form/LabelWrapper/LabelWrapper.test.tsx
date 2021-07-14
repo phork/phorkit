@@ -6,7 +6,7 @@ import { AsTypeA } from '__mocks__/AsType.mock';
 describe('<LabelWrapper />', () => {
   it('should render a basic label wrapper', () => {
     const { getByText, getByRole } = render(
-      <LabelWrapper label={<div>Hello world</div>} input={<input type="text" />} />,
+      <LabelWrapper input={<input type="text" />} label={<div>Hello world</div>} />,
     );
     expect(getByText('Hello world')).toBeTruthy();
     expect(getByRole('textbox')).toBeTruthy();
@@ -14,7 +14,7 @@ describe('<LabelWrapper />', () => {
 
   it('should render a label wrapper as a label', () => {
     const { container, getByText, getByRole } = render(
-      <LabelWrapper<'label'> as="label" label={<div>Hello world</div>} input={<input type="text" />} />,
+      <LabelWrapper<'label'> as="label" input={<input type="text" />} label={<div>Hello world</div>} />,
     );
     expect(container.firstChild?.nodeName).toBe('LABEL');
     expect(getByText('Hello world')).toBeTruthy();
@@ -23,7 +23,7 @@ describe('<LabelWrapper />', () => {
 
   it('should render a label wrapper using a functional component', () => {
     const { container, getByText, getByRole } = render(
-      <LabelWrapper<'a'> as={AsTypeA} label={<div>Hello world</div>} input={<input type="text" />} />,
+      <LabelWrapper<'a'> as={AsTypeA} input={<input type="text" />} label={<div>Hello world</div>} />,
     );
     expect(getByText('Hello world')).toBeTruthy();
     expect(getByRole('textbox')).toBeTruthy();

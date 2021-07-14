@@ -4,9 +4,9 @@ import { useThemeId } from '../../hooks/useThemeId';
 import { renderFromPropWithFallback } from '../../utils';
 import { PortalPopover, PortalPopoverProps } from '../Popover/PortalPopover';
 import { PopoverRenderChildrenProps } from '../Popover/types';
+import { getTooltipOffset } from './utils';
 import { getTextTooltipColors, TextTooltipContent, TextTooltipContentProps } from './TextTooltipContent';
 import { TooltipContent } from './TooltipContent';
-import { getTooltipOffset } from './utils';
 
 export interface PortalTextTooltipProps
   extends Omit<PortalPopoverProps, 'position' | 'width'>,
@@ -42,6 +42,7 @@ export function PortalTextTooltip({
   return (
     <PortalPopover
       centered
+      withChildrenProps
       offset={offset}
       position={position}
       renderChildren={({ close, focusable, focusRef, isTogglerFocused, offset, position, visible }) => {
@@ -81,7 +82,6 @@ export function PortalTextTooltip({
           </TooltipContent>
         );
       }}
-      withChildrenProps
       {...props}
     />
   );

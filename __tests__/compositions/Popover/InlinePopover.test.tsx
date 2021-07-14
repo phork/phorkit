@@ -5,7 +5,7 @@ import { InlinePopover, TimesIcon } from 'lib';
 describe('<InlinePopover />', () => {
   it('should render a basic popover', () => {
     const { getByText } = render(
-      <InlinePopover focusable height={80} permanent toggler={<TimesIcon scale="xxxlarge" />} width={300}>
+      <InlinePopover focusable permanent height={80} toggler={<TimesIcon scale="xxxlarge" />} width={300}>
         <div>Hello world</div>
       </InlinePopover>,
     );
@@ -16,8 +16,9 @@ describe('<InlinePopover />', () => {
     const { getByText } = render(
       <InlinePopover
         focusable
-        height={80}
         permanent
+        withChildrenProps
+        height={80}
         position="bottom-right"
         renderChildren={({ position }) => (
           <React.Fragment>
@@ -27,7 +28,6 @@ describe('<InlinePopover />', () => {
         )}
         toggler={<TimesIcon scale="xxxlarge" />}
         width={300}
-        withChildrenProps
       />,
     );
     expect(getByText('Hello world')).toBeTruthy();

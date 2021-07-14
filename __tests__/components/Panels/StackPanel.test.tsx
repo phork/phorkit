@@ -5,7 +5,7 @@ import { StackPanel } from 'lib';
 describe('<StackPanel />', () => {
   it('should render a stack panel', () => {
     const { getByText } = render(
-      <StackPanel position="top" height={200}>
+      <StackPanel height={200} position="top">
         Hello world
       </StackPanel>,
     );

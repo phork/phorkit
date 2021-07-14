@@ -20,13 +20,13 @@ export function TabPanel({
 }: TabPanelProps): React.ReactElement<TabPanelProps, 'div'> {
   return (
     <div
-      id={id}
       className={cx(
         styles.tabPanel,
         flush && styles['tabPanel--flush'],
         styles[`tabPanel--${vertical ? 'vertical' : 'horizontal'}`],
         selected && styles['is-selected'],
       )}
+      id={id}
       role="tabpanel"
       {...props}
     >
