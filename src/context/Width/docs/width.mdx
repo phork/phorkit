@@ -1,0 +1,26 @@
+---
+name: Width
+menu: Utilities
+route: /components/Width
+---
+
+import { Playground, Props } from 'docz';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { WidthConsumer, WidthProvider } from '../index';
+
+<PageTitle src="context/Width" title="Width" />
+
+## WidthProvider, WidthConsumer and useWidth
+
+<Playground>
+  <WidthProvider>
+    <WidthConsumer>
+      {({ width, ref: widthRef }) => (
+        <div
+          ref={widthRef}
+          style={{ background: '#556270', color: '#fff', padding: 16, width: '100%' }}
+        >{`The width of this element is ${width}px`}</div>
+      )}
+    </WidthConsumer>
+  </WidthProvider>
+</Playground>
