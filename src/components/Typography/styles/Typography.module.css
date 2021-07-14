@@ -11,7 +11,7 @@
  * This must be after all other definitions.
  */
 .text-reset {
-  font-size: $font-size-m;
+  font-size: $font-size-medium;
   font-style: normal;
   font-weight: 400;
   letter-spacing: normal;

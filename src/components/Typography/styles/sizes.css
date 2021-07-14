@@ -1,51 +1,51 @@
-.text-size-xxs {
-  font-size: $font-size-xxs;
+.text-size-2xs {
+  font-size: $font-size-2xsmall;
 }
 
-.text-size-xs {
-  font-size: $font-size-xs;
+.text-size-xsmall {
+  font-size: $font-size-xsmall;
 }
 
-.text-size-s {
-  font-size: $font-size-s;
+.text-size-small {
+  font-size: $font-size-small;
 }
 
-.text-size-m {
-  font-size: $font-size-m;
+.text-size-medium {
+  font-size: $font-size-medium;
 }
 
-.text-size-l {
-  font-size: $font-size-l;
+.text-size-large {
+  font-size: $font-size-large;
 }
 
-.text-size-xl {
-  font-size: $font-size-xl;
+.text-size-xlarge {
+  font-size: $font-size-xlarge;
 }
 
-.text-size-xxl {
-  font-size: $font-size-xxl;
+.text-size-2xllarge {
+  font-size: $font-size-2xlarge;
 }
 
-.text-size-xxxl {
-  font-size: $font-size-xxxl;
+.text-size-3xlarge {
+  font-size: $font-size-3xlarge;
 }
 
-.text-size-xxxxl {
-  font-size: $font-size-xxxxl;
+.text-size-4xlarge {
+  font-size: $font-size-4xlarge;
 }
 
-.text-size-xxxxxl {
-  font-size: $font-size-xxxxxl;
+.text-size-5xlarge {
+  font-size: $font-size-5xlarge;
 }
 
-.text-size-xxxxxxl {
-  font-size: $font-size-xxxxxxl;
+.text-size-6xlarge {
+  font-size: $font-size-6xlarge;
 }
 
-.text-size-xxxxxxxl {
-  font-size: $font-size-xxxxxxxl;
+.text-size-7xlarge {
+  font-size: $font-size-7xlarge;
 }
 
-.text-size-xxxxxxxxl {
-  font-size: $font-size-xxxxxxxxl;
+.text-size-8xlarge {
+  font-size: $font-size-8xlarge;
 }

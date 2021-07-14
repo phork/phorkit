@@ -1,7 +1,7 @@
 @import './mixins/addRaised.css';
 
 .card {
-  border-radius: $border-radius-m;
+  border-radius: $border-radius-medium;
   display: flex;
   flex-direction: column;
   float: none;

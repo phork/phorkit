@@ -88,7 +88,7 @@ export function Pagination({
   justify = 'start',
   onChangePage,
   page,
-  pageLabelProps = { size: 'm', variants: ['no-wrap'] },
+  pageLabelProps = { size: 'medium', variants: ['no-wrap'] },
   pageLinks = 0,
   pageSize,
   style,

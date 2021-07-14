@@ -27,7 +27,7 @@ input.checkboxInput {
 }
 
 .checkboxLabel {
-  font-size: var(--checkbox-label-font-size, $font-size-m);
+  font-size: var(--checkbox-label-font-size, $font-size-medium);
   line-height: 1.5;
   margin-left: 12px;
   margin-top: 1px;
@@ -46,7 +46,7 @@ input.checkboxInput {
 .checkboxInputContainer {
   border-radius: 0.2em;
   flex: none;
-  font-size: var(--checkbox-input-font-size, $font-size-l); /* [1] */
+  font-size: var(--checkbox-input-font-size, $font-size-large); /* [1] */
   height: 1.4em; /* [1] */
   position: relative;
   width: 1.4em; /* [1] */

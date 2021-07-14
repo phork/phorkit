@@ -134,7 +134,7 @@ import {
           <Card full raised>
             <Rhythm px={3} py={1}>
               <Paper bordered color="primary">
-                <Typography as="div" size="s" variants={['no-wrap']}>
+                <Typography as="div" size="small" variants={['no-wrap']}>
                   An example title
                 </Typography>
               </Paper>
@@ -192,10 +192,10 @@ import {
         </Badge>
         <Paper flexible color="primary">
           <Rhythm grouped p={6}>
-            <Typography as="div" size="xxxl" variants={['line-height-comfy']} weight="light">
+            <Typography as="div" size="3xlarge" variants={['line-height-comfy']} weight="light">
               Hello world
             </Typography>
-            <Typography as="div" size="m" variants={['line-height-comfy']}>
+            <Typography as="div" size="medium" variants={['line-height-comfy']}>
               How are things?
             </Typography>
           </Rhythm>
@@ -303,7 +303,7 @@ import {
       width={250}
     >
       <ColoredPaper bordered colorId="P50" container="popover" style={{ borderRadius: '2px' }}>
-        <Typography as="div" size="s" variants="line-height-comfy">
+        <Typography as="div" size="small" variants="line-height-comfy">
           The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog
         </Typography>
       </ColoredPaper>
@@ -630,7 +630,7 @@ import {
             <Rhythm ml={4}>
               <Flex flexible direction="column" justifyContent="center">
                 <Typography weight="bold">Elenor C.</Typography>
-                <Typography size="s" variants={['line-height-comfy']} volume="quiet">
+                <Typography size="small" variants={['line-height-comfy']} volume="quiet">
                   Something something something
                 </Typography>
               </Flex>
@@ -652,7 +652,7 @@ import {
               <Rhythm ml={4}>
                 <Flex flexible direction="column" justifyContent="center">
                   <Typography weight="bold">Elenor C.</Typography>
-                  <Typography size="s" variants={['line-height-comfy']} volume="quiet">
+                  <Typography size="small" variants={['line-height-comfy']} volume="quiet">
                     Something something something
                   </Typography>
                 </Flex>
@@ -708,7 +708,7 @@ import {
             <Typography
               as="div"
               color="contrast"
-              size="xxs"
+              size="2xsmall"
               style={{ position: 'absolute', top: 0, left: 0, transform: 'rotate(45deg) translate(50%, -20%)' }}
               variants={['uppercase', 'letter-spacing-comfy']}
               weight="bold"
@@ -752,7 +752,12 @@ import {
                 ].map(({ id, label, value }, i) => (
                   <React.Fragment key={id}>
                     <Flex flexible direction="column" justifyContent="center">
-                      <Typography color="secondary" size="xs" variants={['line-height-comfy', 'no-wrap']} weight="bold">
+                      <Typography
+                        color="secondary"
+                        size="xsmall"
+                        variants={['line-height-comfy', 'no-wrap']}
+                        weight="bold"
+                      >
                         {value}
                       </Typography>
                       <Typography variants={['xsmall-caps']} volume="quiet">
@@ -808,7 +813,7 @@ import {
                 <Typography
                   as="div"
                   color="contrast"
-                  size="xxs"
+                  size="2xsmall"
                   style={{ position: 'absolute', top: 0, left: 0, transform: 'rotate(45deg) translate(50%, -20%)' }}
                   variants={['uppercase', 'letter-spacing-comfy']}
                   weight="bold"
@@ -872,7 +877,7 @@ import {
                         <Typography
                           as="div"
                           color="contrast"
-                          size="xxs"
+                          size="2xsmall"
                           style={{
                             position: 'absolute',
                             left: 0,
@@ -1050,7 +1055,7 @@ import {
           <Looper
             end={10}
             render={i => (
-              <Typography key={i} size="l" variants={['line-height-comfy']}>
+              <Typography key={i} size="large" variants={['line-height-comfy']}>
                 This banner system is using panels. The banners are raised with a Card.
               </Typography>
             )}
@@ -1092,7 +1097,7 @@ import {
       <Looper
         end={10}
         render={i => (
-          <Typography key={i} size="l" variants={['line-height-comfy']}>
+          <Typography key={i} size="large" variants={['line-height-comfy']}>
             This banner system is using scrollable paper.
           </Typography>
         )}

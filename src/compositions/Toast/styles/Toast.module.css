@@ -1,6 +1,6 @@
 .toast {
-  border-radius: $border-radius-s;
-  font-size: $font-size-m;
+  border-radius: $border-radius-small;
+  font-size: $font-size-medium;
   margin: 8px;
   padding: 16px 20px;
   pointer-events: all;

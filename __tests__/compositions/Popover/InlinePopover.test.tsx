@@ -5,7 +5,7 @@ import { InlinePopover, TimesIcon } from 'lib';
 describe('<InlinePopover />', () => {
   it('should render a basic popover', () => {
     const { getByText } = render(
-      <InlinePopover focusable permanent height={80} toggler={<TimesIcon scale="xxxlarge" />} width={300}>
+      <InlinePopover focusable permanent height={80} toggler={<TimesIcon scale="3xlarge" />} width={300}>
         <div>Hello world</div>
       </InlinePopover>,
     );
@@ -26,7 +26,7 @@ describe('<InlinePopover />', () => {
             <div>{position}</div>
           </React.Fragment>
         )}
-        toggler={<TimesIcon scale="xxxlarge" />}
+        toggler={<TimesIcon scale="3xlarge" />}
         width={300}
       />,
     );

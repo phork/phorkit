@@ -1,8 +1,8 @@
 .tabs {
-  border-radius: $border-radius-s;
+  border-radius: $border-radius-small;
   border: 1px solid var(--tabs-border-color);
   display: flex;
-  font-size: $font-size-m;
+  font-size: $font-size-medium;
   position: relative;
 
   &.is-focused.is-accessible {
@@ -22,7 +22,7 @@
   border: none;
 
   &:after {
-    border-radius: $border-radius-s;
+    border-radius: $border-radius-small;
     border: 1px solid var(--tabs-border-color);
     bottom: 0;
     content: '';

@@ -3,12 +3,12 @@
     align-items: center;
     background-color: $theme-primary-palette-accent-color;
     color: $theme-contrast-palette-text-color;
-    border-radius: $border-radius-m;
+    border-radius: $border-radius-medium;
     border: 1px solid transparent;
     cursor: pointer;
     display: inline-flex;
     flex: none;
-    font-size: $font-size-m;
+    font-size: $font-size-medium;
     height: 34px;
     justify-content: center;
     letter-spacing: 0.25px;

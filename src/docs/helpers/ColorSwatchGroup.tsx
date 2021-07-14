@@ -170,7 +170,7 @@ export const ColorSwatchGroup = React.memo(function ColorSwatchGroup({
         </Rhythm>
       )}
 
-      {colors.map(({ color, contrast, id, width, height, children: colorChildren }) => (
+      {colors.map(({ color, contrast, id, width, height, children: colorChildren }: Color) => (
         <Rhythm key={id} m={joined ? 0 : 1}>
           <SwatchBlock
             backgroundColor={color}

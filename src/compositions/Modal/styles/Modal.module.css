@@ -4,12 +4,12 @@
   @mixin addScrollbar var(--modal-scrollbar-thumb-color);
 
   background-color: var(--modal-background-color);
-  border-radius: $border-radius-s;
+  border-radius: $border-radius-small;
   box-shadow: var(--modal-box-shadow);
   color: var(--modal-text-color);
   display: flex;
   flex-direction: column;
-  font-size: $font-size-m;
+  font-size: $font-size-medium;
   margin: 8px;
   max-height: calc(100vh - 20px);
   max-width: calc(100vw - 20px);

@@ -60,38 +60,38 @@ button.avatar {
   }
 }
 
-.avatar--xxxlarge {
-  font-size: $font-size-xxxl;
-  height: $element-height-xxxlarge;
-  width: $element-height-xxxlarge;
+.avatar--3xlarge {
+  font-size: $font-size-3xlarge;
+  height: $element-height-3xlarge;
+  width: $element-height-3xlarge;
 }
 
-.avatar--xxlarge {
-  font-size: $font-size-xxl;
-  height: $element-height-xxlarge;
-  width: $element-height-xxlarge;
+.avatar--2xlarge {
+  font-size: $font-size-2xlarge;
+  height: $element-height-2xlarge;
+  width: $element-height-2xlarge;
 }
 
 .avatar--xlarge {
-  font-size: $font-size-xl;
+  font-size: $font-size-xlarge;
   height: $element-height-xlarge;
   width: $element-height-xlarge;
 }
 
 .avatar--large {
-  font-size: $font-size-l;
+  font-size: $font-size-large;
   height: $element-height-large;
   width: $element-height-large;
 }
 
 .avatar--medium {
-  font-size: $font-size-m;
+  font-size: $font-size-medium;
   height: $element-height-medium;
   width: $element-height-medium;
 }
 
 .avatar--small {
-  font-size: $font-size-s;
+  font-size: $font-size-small;
   height: $element-height-small;
   width: $element-height-small;
 }
@@ -99,7 +99,7 @@ button.avatar {
 .avatar--xsmall {
   --avatar-actionable-border-width: 3px;
 
-  font-size: $font-size-xxs;
+  font-size: $font-size-2xsmall;
   height: $element-height-xsmall;
   width: $element-height-xsmall;
 }

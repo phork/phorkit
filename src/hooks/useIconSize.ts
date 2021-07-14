@@ -8,8 +8,8 @@ const scaleSize = {
   medium: 16,
   large: 20,
   xlarge: 24,
-  xxlarge: 32,
-  xxxlarge: 40,
+  '2xlarge': 32,
+  '3xlarge': 40,
 };
 
 export interface UseIconSizeInterface {

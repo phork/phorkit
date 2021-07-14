@@ -11,7 +11,7 @@
   display: inline-flex;
   flex: none;
   flex-direction: row;
-  font-size: $font-size-xxs;
+  font-size: $font-size-2xsmall;
   font-weight: 700;
   justify-content: center;
   position: relative;
@@ -62,7 +62,7 @@
 }
 
 .badge--label {
-  border-radius: $border-radius-s;
+  border-radius: $border-radius-small;
   height: 1.7em;
   padding: 2px 8px;
 }

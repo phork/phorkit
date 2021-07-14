@@ -1,19 +1,19 @@
 .text-medium-caps {
-  font-size: $font-size-m;
+  font-size: $font-size-medium;
   font-weight: bold;
   letter-spacing: .8px;
   text-transform: uppercase;
 }
 
 .text-small-caps {
-  font-size: $font-size-s;
+  font-size: $font-size-small;
   font-weight: bold;
   letter-spacing: .6px;
   text-transform: uppercase;
 }
 
 .text-xsmall-caps {
-  font-size: $font-size-xs;
+  font-size: $font-size-xsmall;
   font-weight: bold;
   letter-spacing: .6px;
   text-transform: uppercase;

@@ -16,7 +16,7 @@ export interface PaperProps extends React.HTMLAttributes<HTMLDivElement>, ThemeP
   flexible?: boolean;
   full?: boolean;
   scrollable?: boolean;
-  scrollbar?: 'xs' | 's';
+  scrollbar?: 'xsmall' | 'small';
 }
 
 export const Paper = React.forwardRef<HTMLDivElement, PaperProps>(

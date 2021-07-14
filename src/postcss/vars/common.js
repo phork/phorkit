@@ -1,28 +1,28 @@
 const fontSizes = {
-  'font-size-xxs': '9px',
-  'font-size-xs': '10px',
-  'font-size-s': '11px',
-  'font-size-m': '12px',
-  'font-size-l': '13px',
-  'font-size-xl': '14px',
-  'font-size-xxl': '16px',
-  'font-size-xxxl': '18px',
-  'font-size-xxxxl': '20px',
-  'font-size-xxxxxl': '24px',
-  'font-size-xxxxxxl': '28px',
-  'font-size-xxxxxxxl': '32px',
-  'font-size-xxxxxxxxl': '36px',
+  'font-size-2xsmall': '9px',
+  'font-size-xsmall': '10px',
+  'font-size-small': '11px',
+  'font-size-medium': '12px',
+  'font-size-large': '13px',
+  'font-size-xlarge': '14px',
+  'font-size-2xlarge': '16px',
+  'font-size-3xlarge': '18px',
+  'font-size-4xlarge': '20px',
+  'font-size-5xlarge': '24px',
+  'font-size-6xlarge': '28px',
+  'font-size-7xlarge': '32px',
+  'font-size-8xlarge': '36px',
 };
 
 const elementSizes = {
-  'element-height-xxsmall': '20px',
+  'element-height-2xsmall': '20px',
   'element-height-xsmall': '24px',
   'element-height-small': '28px',
   'element-height-medium': '32px',
   'element-height-large': '36px',
   'element-height-xlarge': '40px',
-  'element-height-xxlarge': '44px',
-  'element-height-xxxlarge': '48px',
+  'element-height-2xlarge': '44px',
+  'element-height-3xlarge': '48px',
 };
 
 const layout = {
@@ -37,9 +37,9 @@ const layout = {
   'layout-z-index-modal': 1100,
   'layout-z-index-toast': 1200,
 
-  'border-radius-s': '2px',
-  'border-radius-m': '3px',
-  'border-radius-l': '4px',
+  'border-radius-small': '2px',
+  'border-radius-medium': '3px',
+  'border-radius-large': '4px',
 
   'scrollbar-small-width': '4px',
   'scrollbar-small-border-radius': 0,
@@ -53,13 +53,13 @@ const layout = {
 };
 
 const viewports = {
-  'viewport-xxsmall': { max: 414 },
+  'viewport-2xsmall': { max: 414 },
   'viewport-xsmall': { min: 415, max: 575.999 },
   'viewport-small': { min: 576, max: 768.999 },
   'viewport-medium': { min: 769, max: 992.999 },
   'viewport-large': { min: 993, max: 1200.999 },
   'viewport-xlarge': { min: 1201, max: 1400.999 },
-  'viewport-xxlarge': { min: 1401 },
+  'viewport-2xlarge': { min: 1401 },
 };
 
 module.exports = {

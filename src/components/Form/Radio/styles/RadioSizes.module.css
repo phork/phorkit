@@ -1,50 +1,50 @@
 .radio--medium {
-  --radio-input-font-size: $font-size-m;
-  --radio-label-font-size: $font-size-s;
+  --radio-input-font-size: $font-size-medium;
+  --radio-label-font-size: $font-size-small;
 }
 
 .radio,
 .radio--large {
-  --radio-input-font-size: $font-size-l;
-  --radio-label-font-size: $font-size-m;
+  --radio-input-font-size: $font-size-large;
+  --radio-label-font-size: $font-size-medium;
 }
 
 .radio--xlarge {
-  --radio-input-font-size: $font-size-xl;
-  --radio-label-font-size: $font-size-l;
+  --radio-input-font-size: $font-size-xlarge;
+  --radio-label-font-size: $font-size-large;
 }
 
-.radio--xxlarge {
-  --radio-input-font-size: $font-size-xxl;
-  --radio-label-font-size: $font-size-xl;
+.radio--2xlarge {
+  --radio-input-font-size: $font-size-2xlarge;
+  --radio-label-font-size: $font-size-xlarge;
 }
 
-.radio--xxxlarge {
-  --radio-input-font-size: $font-size-xxxl;
-  --radio-label-font-size: $font-size-xxl;
+.radio--3xlarge {
+  --radio-input-font-size: $font-size-3xlarge;
+  --radio-label-font-size: $font-size-2xlarge;
 }
 
-.radio--xxxxlarge {
-  --radio-input-font-size: $font-size-xxxxl;
-  --radio-label-font-size: $font-size-xxxl;
+.radio--4xlarge {
+  --radio-input-font-size: $font-size-4xlarge;
+  --radio-label-font-size: $font-size-3xlarge;
 }
 
-.radio--xxxxxlarge {
-  --radio-input-font-size: $font-size-xxxxxl;
-  --radio-label-font-size: $font-size-xxxxl;
+.radio--5xlarge {
+  --radio-input-font-size: $font-size-5xlarge;
+  --radio-label-font-size: $font-size-4xlarge;
 }
 
-.radio--xxxxxxlarge {
-  --radio-input-font-size: $font-size-xxxxxxl;
-  --radio-label-font-size: $font-size-xxxxxl;
+.radio--6xlarge {
+  --radio-input-font-size: $font-size-6xlarge;
+  --radio-label-font-size: $font-size-5xlarge;
 }
 
-.radio--xxxxxxxlarge {
-  --radio-input-font-size: $font-size-xxxxxxxl;
-  --radio-label-font-size: $font-size-xxxxxxl;
+.radio--7xlarge {
+  --radio-input-font-size: $font-size-7xlarge;
+  --radio-label-font-size: $font-size-6xlarge;
 }
 
-.radio--xxxxxxxxlarge {
-  --radio-input-font-size: $font-size-xxxxxxxxl;
-  --radio-label-font-size: $font-size-xxxxxxxl;
+.radio--8xlarge {
+  --radio-input-font-size: $font-size-8xlarge;
+  --radio-label-font-size: $font-size-7xlarge;
 }

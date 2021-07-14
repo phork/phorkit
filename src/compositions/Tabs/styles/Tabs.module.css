@@ -59,8 +59,8 @@
  *    only when in full width model.
  */
 .tabList--horizontal {
-  border-top-left-radius: $border-radius-s; /* [1] */
-  border-top-right-radius: $border-radius-s; /* [1] */
+  border-top-left-radius: $border-radius-small; /* [1] */
+  border-top-right-radius: $border-radius-small; /* [1] */
   overflow-x: auto;
   overflow-y: hidden;
 
@@ -94,8 +94,8 @@
  *    won't overflow.
  */
 .tabList--vertical {
-  border-top-left-radius: $border-radius-s; /* [1] */
-  border-bottom-left-radius: $border-radius-s; /* [1] */
+  border-top-left-radius: $border-radius-small; /* [1] */
+  border-bottom-left-radius: $border-radius-small; /* [1] */
   flex-direction: column;
   overflow-x: hidden;
   overflow-y: auto;
@@ -186,8 +186,8 @@ button.tab {
 
 .tab--horizontal {
   border-bottom: none;
-  border-top-left-radius: $border-radius-s;
-  border-top-right-radius: $border-radius-s;
+  border-top-left-radius: $border-radius-small;
+  border-top-right-radius: $border-radius-small;
   min-height: $element-height-medium;
   padding: 8px 30px;
 

@@ -19,7 +19,7 @@ export interface LocalAvatarProps extends ThemeProps {
   color?: 'neutral' | 'primary';
   imgSrc?: string;
   initials?: string;
-  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge' | 'xxxlarge' | 'custom';
+  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge' | '3xlarge' | 'custom';
   style?: React.CSSProperties;
   translations?: AvatarTranslations;
 }

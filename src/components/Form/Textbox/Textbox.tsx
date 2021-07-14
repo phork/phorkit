@@ -21,13 +21,13 @@ const clearableIconSizes = {
   medium: 8,
   large: 8,
   xlarge: 9,
-  xxlarge: 11,
-  xxxlarge: 12,
-  xxxxlarge: 12,
-  xxxxxlarge: 12,
-  xxxxxxlarge: 12,
-  xxxxxxxlarge: 14,
-  xxxxxxxxlarge: 14,
+  '2xlarge': 11,
+  '3xlarge': 12,
+  '4xlarge': 12,
+  '5xlarge': 12,
+  '6xlarge': 12,
+  '7xlarge': 14,
+  '8xlarge': 14,
 };
 
 export type TextboxTranslations = FormboxTranslations & {

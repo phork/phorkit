@@ -6,13 +6,13 @@
 }
 
 .tabPanelGroup--horizontal {
-  border-bottom-left-radius: $border-radius-s;
-  border-bottom-right-radius: $border-radius-s;
+  border-bottom-left-radius: $border-radius-small;
+  border-bottom-right-radius: $border-radius-small;
 }
 
 .tabPanelGroup--vertical {
-  border-bottom-right-radius: $border-radius-s;
-  border-top-right-radius: $border-radius-s;
+  border-bottom-right-radius: $border-radius-small;
+  border-top-right-radius: $border-radius-small;
 }
 
 .tabPanelGroup--primary {

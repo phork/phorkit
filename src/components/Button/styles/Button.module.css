@@ -228,7 +228,7 @@ button.button {
  *    mixin has been called.
  */
 .button--brick {
-  border-radius: $border-radius-m;
+  border-radius: $border-radius-medium;
 
   &:before,
   &:after {
@@ -239,7 +239,7 @@ button.button {
 /* Button sizes */
 
 .button--small {
-  font-size: $font-size-s;
+  font-size: $font-size-small;
 
   &:not(.button--noHeight) {
     min-height: $element-height-small;
@@ -263,7 +263,7 @@ button.button {
 }
 
 .button--medium {
-  font-size: $font-size-m;
+  font-size: $font-size-medium;
 
   &:not(.button--noHeight) {
     min-height: $element-height-medium;
@@ -287,7 +287,7 @@ button.button {
 }
 
 .button--large {
-  font-size: $font-size-l;
+  font-size: $font-size-large;
 
   &:not(.button--noHeight) {
     min-height: $element-height-large;

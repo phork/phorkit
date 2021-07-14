@@ -19,13 +19,13 @@ const arrowIconSizes = {
   medium: 8,
   large: 8,
   xlarge: 9,
-  xxlarge: 11,
-  xxxlarge: 13,
-  xxxxlarge: 14,
-  xxxxxlarge: 14,
-  xxxxxxlarge: 14,
-  xxxxxxxlarge: 14,
-  xxxxxxxxlarge: 16,
+  '2xlarge': 11,
+  '3xlarge': 13,
+  '4xlarge': 14,
+  '5xlarge': 14,
+  '6xlarge': 14,
+  '7xlarge': 14,
+  '8xlarge': 16,
 };
 
 export type SelectOption = {

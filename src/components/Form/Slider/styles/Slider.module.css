@@ -9,7 +9,7 @@ $animation-timing: 200ms;
 
 .slider {
   display: inline-block;
-  font-size: $font-size-m;
+  font-size: $font-size-medium;
   position: relative;
 
   &.is-disabled {

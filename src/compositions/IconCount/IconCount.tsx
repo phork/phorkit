@@ -22,7 +22,7 @@ export function IconCount({
   label,
   reverse = false,
   themeId: initThemeId,
-  typographySize = 'xs',
+  typographySize = 'xsmall',
   ...props
 }: IconCountProps): React.ReactElement {
   const themeId = useThemeId(initThemeId);

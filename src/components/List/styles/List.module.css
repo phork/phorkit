@@ -55,7 +55,7 @@ ul.unlist {
   .listItem {
     background-color: var(--list-item-background-color);
     color: var(--list-item-text-color);
-    font-size: $font-size-m;
+    font-size: $font-size-medium;
     position: relative;
     text-align: left;
 
@@ -127,7 +127,7 @@ ul.unlist {
 
 .list--xsmall {
   .listItem {
-    font-size: $font-size-s;
+    font-size: $font-size-small;
 
     &:not(.listItem--flush) {
       padding: 4px 12px;
@@ -137,7 +137,7 @@ ul.unlist {
 
 .list--small {
   .listItem {
-    font-size: $font-size-m;
+    font-size: $font-size-medium;
 
     &:not(.listItem--flush) {
       padding: 4px 16px;
@@ -147,7 +147,7 @@ ul.unlist {
 
 .list--medium {
   .listItem {
-    font-size: $font-size-m;
+    font-size: $font-size-medium;
 
     &:not(.listItem--flush) {
       padding: 8px 16px;
@@ -157,7 +157,7 @@ ul.unlist {
 
 .list--large {
   .listItem {
-    font-size: $font-size-l;
+    font-size: $font-size-large;
 
     &:not(.listItem--flush) {
       padding: 8px 16px;
@@ -167,7 +167,7 @@ ul.unlist {
 
 .list--xlarge {
   .listItem {
-    font-size: $font-size-xl;
+    font-size: $font-size-xlarge;
 
     &:not(.listItem--flush) {
       padding: 8px 16px;
@@ -337,7 +337,7 @@ ul.unlist {
 
 .list--unboxed.list--rounded {
   .listItem {
-    border-radius: $border-radius-m;
+    border-radius: $border-radius-medium;
   }
 }
 

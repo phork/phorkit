@@ -1,5 +1,5 @@
 export type Theme = 'light' | 'dark';
-export type IconScale = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge' | 'xxxlarge';
+export type IconScale = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge' | '3xlarge';
 
 export type InvalidStateColor = 'warning' | 'danger';
 export type StateColor = 'success' | InvalidStateColor;

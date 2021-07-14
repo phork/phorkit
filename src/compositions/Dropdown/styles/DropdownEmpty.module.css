@@ -1,6 +1,6 @@
 .dropdownEmpty {
   color: var(--dropdown-empty-text-color);
-  font-size: $font-size-s;
+  font-size: $font-size-small;
   padding: 8px 0;
 }
 

@@ -11,30 +11,30 @@
   --dropdown-options-container-top-height: 53px;
 }
 
-.dropdown--xxlarge {
+.dropdown--2xlarge {
   --dropdown-options-container-top-height: 55px;
 }
 
-.dropdown--xxxlarge {
+.dropdown--3xlarge {
   --dropdown-options-container-top-height: 57px;
 }
 
-.dropdown--xxxxlarge {
+.dropdown--4xlarge {
   --dropdown-options-container-top-height: 59px;
 }
 
-.dropdown--xxxxxlarge {
+.dropdown--5xlarge {
   --dropdown-options-container-top-height: 63px;
 }
 
-.dropdown--xxxxxxlarge {
+.dropdown--6xlarge {
   --dropdown-options-container-top-height: 67px;
 }
 
-.dropdown--xxxxxxxlarge {
+.dropdown--7xlarge {
   --dropdown-options-container-top-height: 71px;
 }
 
-.dropdown--xxxxxxxxlarge {
+.dropdown--8xlarge {
   --dropdown-options-container-top-height: 73px;
 }

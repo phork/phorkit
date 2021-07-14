@@ -43,7 +43,7 @@
 
 .banner {
   position: relative;
-  font-size: $font-size-m;
+  font-size: $font-size-medium;
 }
 
 .banner--transitional {

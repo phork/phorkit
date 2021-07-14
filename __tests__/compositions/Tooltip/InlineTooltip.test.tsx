@@ -9,7 +9,7 @@ describe('<InlineTooltip />', () => {
         focusable
         permanent
         height={80}
-        toggler={<TimesIcon scale="xxxlarge" />}
+        toggler={<TimesIcon scale="3xlarge" />}
         triangleColor="#fff"
         width={300}
       >
@@ -33,7 +33,7 @@ describe('<InlineTooltip />', () => {
             <div>{position}</div>
           </React.Fragment>
         )}
-        toggler={<TimesIcon scale="xxxlarge" />}
+        toggler={<TimesIcon scale="3xlarge" />}
         triangleColor="#fff"
         width={300}
       />,

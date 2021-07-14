@@ -10,13 +10,13 @@ const iconSizes = {
   medium: 16,
   large: 16,
   xlarge: 17,
-  xxlarge: 19,
-  xxxlarge: 21,
-  xxxxlarge: 23,
-  xxxxxlarge: 24,
-  xxxxxxlarge: 24,
-  xxxxxxxlarge: 24,
-  xxxxxxxxlarge: 24,
+  '2xlarge': 19,
+  '3xlarge': 21,
+  '4xlarge': 23,
+  '5xlarge': 24,
+  '6xlarge': 24,
+  '7xlarge': 24,
+  '8xlarge': 24,
 };
 
 export type PasswordTranslations = TextboxTranslations & {

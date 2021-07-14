@@ -8,10 +8,10 @@ export type FormboxSize =
   | 'medium'
   | 'large'
   | 'xlarge'
-  | 'xxlarge'
-  | 'xxxlarge'
-  | 'xxxxlarge'
-  | 'xxxxxlarge'
-  | 'xxxxxxlarge'
-  | 'xxxxxxxlarge'
-  | 'xxxxxxxxlarge';
+  | '2xlarge'
+  | '3xlarge'
+  | '4xlarge'
+  | '5xlarge'
+  | '6xlarge'
+  | '7xlarge'
+  | '8xlarge';

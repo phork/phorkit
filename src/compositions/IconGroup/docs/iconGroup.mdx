@@ -74,10 +74,10 @@ import { IconGroup } from '../index';
   </IconGroup>
 </Playground>
 
-## Size xxlarge
+## Size 2xlarge
 
 <Playground>
-  <IconGroup scale="xxlarge">
+  <IconGroup scale="2xlarge">
     <Rhythm m={2}>
       <TimesIcon />
       <TimesIcon />
@@ -89,10 +89,10 @@ import { IconGroup } from '../index';
   </IconGroup>
 </Playground>
 
-## Size xxxlarge
+## Size 3xlarge
 
 <Playground>
-  <IconGroup scale="xxxlarge">
+  <IconGroup scale="3xlarge">
     <Rhythm m={2}>
       <TimesIcon />
       <TimesIcon />
@@ -141,7 +141,7 @@ import { IconGroup } from '../index';
 <Playground>
   <StateWrapper initialState={0} setStateFromPrevious={previous => previous + 1}>
     {({ state: count, setState: setCount }) => {
-      const sizes = ['small', 'medium', 'large', 'xlarge', 'xxlarge', 'xxlarge'];
+      const sizes = ['small', 'medium', 'large', 'xlarge', '2xlarge', '2xlarge'];
       return (
         <TimeoutWrapper infinite callback={setCount} milliseconds={500}>
           <IconGroup scale={sizes[count % sizes.length]}>

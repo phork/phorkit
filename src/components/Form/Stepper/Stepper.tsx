@@ -12,13 +12,13 @@ const iconSizes = {
   medium: 12,
   large: 12,
   xlarge: 14,
-  xxlarge: 14,
-  xxxlarge: 14,
-  xxxxlarge: 16,
-  xxxxxlarge: 16,
-  xxxxxxlarge: 18,
-  xxxxxxxlarge: 18,
-  xxxxxxxxlarge: 18,
+  '2xlarge': 14,
+  '3xlarge': 14,
+  '4xlarge': 16,
+  '5xlarge': 16,
+  '6xlarge': 18,
+  '7xlarge': 18,
+  '8xlarge': 18,
 };
 
 export type StepperTranslations = TextboxTranslations & {

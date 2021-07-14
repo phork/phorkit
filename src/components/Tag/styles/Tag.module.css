@@ -80,43 +80,43 @@ button.tag {
   }
 }
 
-.tag--xxsmall {
-  font-size: $font-size-xxs;
-  height: $element-height-xxsmall;
+.tag--2xsmall {
+  font-size: $font-size-2xsmall;
+  height: $element-height-2xsmall;
   line-height: 1.3em;
   padding: 0.5em 1.2em;
 }
 
 .tag--xsmall {
-  font-size: $font-size-xs;
+  font-size: $font-size-xsmall;
   height: $element-height-xsmall;
   line-height: 1.3em;
   padding: 0.5em 1.4em;
 }
 
 .tag--small {
-  font-size: $font-size-s;
+  font-size: $font-size-small;
   height: $element-height-small;
   line-height: 1.3em;
   padding: 0.5em 1.4em;
 }
 
 .tag--medium {
-  font-size: $font-size-m;
+  font-size: $font-size-medium;
   height: $element-height-medium;
   line-height: 1.3em;
   padding: 0.4em 2em;
 }
 
 .tag--large {
-  font-size: $font-size-l;
+  font-size: $font-size-large;
   height: $element-height-large;
   line-height: 1.3em;
   padding: 0.4em 2.2em;
 }
 
 .tag--flush {
-  &.tag--xxsmall,
+  &.tag--2xsmall,
   &.tag--xsmall,
   &.tag--small,
   &.tag--medium,
@@ -130,7 +130,7 @@ button.tag {
 }
 
 .tag--brick {
-  border-radius: $border-radius-m;
+  border-radius: $border-radius-medium;
 
   &:before,
   &:after {

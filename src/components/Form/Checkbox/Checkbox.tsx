@@ -15,13 +15,13 @@ export type CheckboxSize =
   | 'medium'
   | 'large'
   | 'xlarge'
-  | 'xxlarge'
-  | 'xxxlarge'
-  | 'xxxxlarge'
-  | 'xxxxxlarge'
-  | 'xxxxxxlarge'
-  | 'xxxxxxxlarge'
-  | 'xxxxxxxxlarge';
+  | '2xlarge'
+  | '3xlarge'
+  | '4xlarge'
+  | '5xlarge'
+  | '6xlarge'
+  | '7xlarge'
+  | '8xlarge';
 
 export interface LocalCheckboxProps<V extends CheckboxValue = string> extends ThemeProps {
   checked?: boolean;

@@ -21,8 +21,8 @@
 }
 
 .formboxIcon--autoSize {
-  height: var(--formbox-input-font-size, $font-size-l);
-  width: var(--formbox-input-font-size, $font-size-l);
+  height: var(--formbox-input-font-size, $font-size-large);
+  width: var(--formbox-input-font-size, $font-size-large);
 }
 
 .formboxIcon--actionable {

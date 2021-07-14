@@ -9,7 +9,7 @@
   display: flex;
   flex: 1;
   flex-direction: row;
-  font-size: var(--formbox-input-font-size, $font-size-l);
+  font-size: var(--formbox-input-font-size, $font-size-large);
   line-height: 1.15;
   min-height: 22px;
   min-width: 0;
@@ -109,7 +109,7 @@ input.formboxInput[type='number'] {
  * 1. To add some space to the drag corner.
  */
 textarea.formboxInput {
-  font-size: var(--formbox-input-font-size, $font-size-l);
+  font-size: var(--formbox-input-font-size, $font-size-large);
   line-height: var(--formbox-input-multi-line-height, 1.4);
   margin-right: 4px; /* [1] */
   padding: 2px 0 4px 0;
@@ -153,7 +153,7 @@ select.formboxInput:-webkit-autofill:hover,
 select.formboxInput:-webkit-autofill:focus {
   background-color: transparent;
   color: var(--formbox-input-text-color);
-  font-size: var(--formbox-input-font-size, $font-size-l);
+  font-size: var(--formbox-input-font-size, $font-size-large);
   transition-property: background-color, color;
   transition-duration: 50000s;
   transition-timing-function: ease-in-out;

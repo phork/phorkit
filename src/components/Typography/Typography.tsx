@@ -38,19 +38,19 @@ export interface LocalTypographyProps {
   heading?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
   reset?: boolean;
   size?:
-    | 'xxs'
-    | 'xs'
-    | 's'
-    | 'm'
-    | 'l'
-    | 'xl'
-    | 'xxl'
-    | 'xxxl'
-    | 'xxxxl'
-    | 'xxxxxl'
-    | 'xxxxxxl'
-    | 'xxxxxxxl'
-    | 'xxxxxxxxl';
+    | '2xsmall'
+    | 'xsmall'
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'xlarge'
+    | '2xlarge'
+    | '3xlarge'
+    | '4xlarge'
+    | '5xlarge'
+    | '6xlarge'
+    | '7xlarge'
+    | '8xlarge';
   style?: CSSProperties;
   themeId?: Theme;
   weight?: 'lighter' | 'light' | 'regular' | 'bold' | 200 | 500 | 600;
