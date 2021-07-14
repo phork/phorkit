@@ -1,6 +1,6 @@
 import React from 'react';
 import { SvgIconProps, ThemeProps } from '../../types';
-import { useThemeId } from '../../hooks/useThemeId';
+import { useThemeId } from '../../context/Theme';
 import { Flex, FlexProps } from '../../components/Flex';
 import { Rhythm } from '../../components/Rhythm';
 import { Typography, TypographyProps, TypographyWithSvg } from '../../components/Typography';

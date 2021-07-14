@@ -1,8 +1,8 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useLayoutEffect, useState } from 'react';
 import { SequentialVariant, StateColor, ThemeProps } from '../../types';
+import { useThemeId } from '../../context/Theme';
 import { useSafeTimeout } from '../../hooks/useSafeTimeout';
-import { useThemeId } from '../../hooks/useThemeId';
 import { useTranslations } from '../../hooks/useTranslations';
 import { TimesIcon } from '../../icons/TimesIcon';
 import { IconButton } from '../../components/Button/IconButton';

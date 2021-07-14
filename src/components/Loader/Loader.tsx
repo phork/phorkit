@@ -2,7 +2,7 @@ import { cx } from '@emotion/css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ThemeProps, IconScale } from '../../types';
-import { useThemeId } from '../../hooks/useThemeId';
+import { useThemeId } from '../../context/Theme';
 import { useTranslations } from '../../hooks/useTranslations';
 import { SpinnerIcon } from '../../icons/SpinnerIcon';
 import styles from './styles/Loader.module.css';

@@ -1,7 +1,7 @@
 import { cx } from '@emotion/css';
 import React, { useMemo } from 'react';
 import { ThemeProps } from '../../types';
-import { useThemeId } from '../../hooks/useThemeId';
+import { useThemeId } from '../../context/Theme';
 import { RenderFromPropElement, renderFromPropWithFallback } from '../../utils/renderFromProp';
 import styles from './styles/DropdownEmpty.module.css';
 import { DropdownLayout } from './types';

@@ -2,10 +2,10 @@ import { cx } from '@emotion/css';
 import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { SequentialVariant, ThemeProps } from '../../types';
 import { useAccessibility } from '../../context/Accessibility';
+import { useThemeId } from '../../context/Theme';
 import { useComponentId } from '../../hooks/useComponentId';
 import { useDeepFocus } from '../../hooks/useDeepFocus';
 import { useInitializer } from '../../hooks/useInitializer';
-import { useThemeId } from '../../hooks/useThemeId';
 import { makeCombineRefs } from '../../utils/combineRefs';
 import {
   InteractiveGroupContext,

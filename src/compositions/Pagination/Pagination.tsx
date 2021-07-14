@@ -1,7 +1,7 @@
 import React from 'react';
 import { MergeProps, ThemeProps } from '../../types';
+import { useThemeId } from '../../context/Theme';
 import { useComponentId } from '../../hooks/useComponentId';
-import { useThemeId } from '../../hooks/useThemeId';
 import { useTranslations, substituteTranslationArgs } from '../../hooks/useTranslations';
 import { ButtonGroup, ButtonGroupItem, ButtonGroupProps, ButtonProps } from '../../components/Button';
 import { ErrorBoundary } from '../../components/ErrorBoundary/ErrorBoundary';

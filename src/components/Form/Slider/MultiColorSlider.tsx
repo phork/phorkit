@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { AccentColor, MergeProps, StateColor } from '../../../types';
 import { ThemeColors, themes } from '../../../config/themes';
-import { useThemeId } from '../../../hooks/useThemeId';
+import { useThemeId } from '../../../context/Theme';
 import styles from './styles/Slider.module.css';
 import { MultiColorSliderTick } from './MultiColorSliderTick';
 import { MultiColorSliderTrack } from './MultiColorSliderTrack';

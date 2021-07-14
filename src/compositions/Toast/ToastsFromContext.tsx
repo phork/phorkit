@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProps } from '../../types';
-import { useThemeId } from '../../hooks/useThemeId';
+import { useThemeId } from '../../context/Theme';
 import { ToastConsumer } from './ToastConsumer';
 import { ToastContainer } from './ToastContainer';
 import { ToastFromContext } from './ToastFromContext';

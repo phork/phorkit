@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import { ThemeProps } from '../../../types';
+import { useThemeId } from '../../../context/Theme';
 import { useComponentId } from '../../../hooks/useComponentId';
 import { useDeepFocus } from '../../../hooks/useDeepFocus';
-import { useThemeId } from '../../../hooks/useThemeId';
 import { useTranslations } from '../../../hooks/useTranslations';
 import { makeCombineRefs } from '../../../utils/combineRefs';
 import { RenderFromPropElement } from '../../../utils/renderFromProp';

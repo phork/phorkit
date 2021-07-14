@@ -1,7 +1,7 @@
 import React from 'react';
 import { AnyPosition, Theme } from '../../types';
 import { ThemeColors, themes } from '../../config';
-import { useThemeId } from '../../hooks/useThemeId';
+import { useThemeId } from '../../context/Theme';
 import { Card, CardProps } from '../../components/Card/Card';
 import { StyledPaper } from '../../components/Paper/StyledPaper';
 import { Typography } from '../../components/Typography/Typography';

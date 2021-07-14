@@ -1,6 +1,6 @@
 import React from 'react';
 import { AnyPosition } from '../../types';
-import { useThemeId } from '../../hooks/useThemeId';
+import { useThemeId } from '../../context/Theme';
 import { renderFromPropWithFallback } from '../../utils';
 import { InlinePopover, InlinePopoverProps } from '../Popover/InlinePopover';
 import { PopoverRenderChildrenProps } from '../Popover/types';

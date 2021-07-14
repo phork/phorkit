@@ -16,6 +16,5 @@ export * from './usePopoverPosition';
 export * from './useRefEventListener';
 export * from './useSafeTimeout';
 export * from './useScrollIntoView';
-export * from './useThemeId';
 export * from './useTranslations';
 export * from './useTriggerFocus';

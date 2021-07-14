@@ -1,8 +1,8 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useEffect, useState } from 'react';
 import { MergeElementProps, ThemeProps } from '../../types';
+import { useThemeId } from '../../context/Theme';
 import { useComponentId } from '../../hooks/useComponentId';
-import { useThemeId } from '../../hooks/useThemeId';
 import { FormboxSize, FormboxVariant } from '../../components/Form/Formbox/types';
 import { useListRegistry } from '../../components/ListRegistry';
 import styles from './styles/TextboxGroup.module.css';

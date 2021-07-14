@@ -1,8 +1,8 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useRef } from 'react';
 import { ThemeProps } from '../../types';
+import { useThemeId } from '../../context/Theme';
 import { useAnimationLoop } from '../../hooks/useAnimationLoop';
-import { useThemeId } from '../../hooks/useThemeId';
 import { useTranslations } from '../../hooks/useTranslations';
 import styles from './styles/LineLoader.module.css';
 

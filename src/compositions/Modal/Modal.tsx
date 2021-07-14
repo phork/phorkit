@@ -1,9 +1,9 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { ThemeProps } from '../../types';
+import { useThemeId } from '../../context/Theme';
 import { useFocusReturn } from '../../hooks/useFocusReturn';
 import { useSafeTimeout } from '../../hooks/useSafeTimeout';
-import { useThemeId } from '../../hooks/useThemeId';
 import { useTranslations } from '../../hooks/useTranslations';
 import { getFirstFocusableElement } from '../../utils/getFocusableElements';
 import { TimesIcon } from '../../icons/TimesIcon';

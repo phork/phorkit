@@ -1,7 +1,7 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import { ThemeProps } from '../../../types';
-import { useThemeId } from '../../../hooks/useThemeId';
+import { useThemeId } from '../../../context/Theme';
 import styles from './styles/FormboxInput.module.css';
 
 export interface FormboxInputFormattedProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {

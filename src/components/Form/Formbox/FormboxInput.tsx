@@ -1,7 +1,7 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import { ThemeProps } from '../../../types';
-import { useThemeId } from '../../../hooks/useThemeId';
+import { useThemeId } from '../../../context/Theme';
 import autoFilledStyles from './styles/FormboxAutoFilled.module.css';
 import styles from './styles/FormboxInput.module.css';
 import { FormboxInputElementType, FormboxVariant } from './types';

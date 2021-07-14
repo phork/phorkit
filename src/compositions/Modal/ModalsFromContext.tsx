@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProps } from '../../types';
-import { useThemeId } from '../../hooks/useThemeId';
+import { useThemeId } from '../../context/Theme';
 import { ModalConsumer } from './ModalConsumer';
 import { ModalContainer, ModalContainerProps } from './ModalContainer';
 import { ModalFromContext } from './ModalFromContext';

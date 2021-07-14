@@ -1,7 +1,7 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useRef } from 'react';
 import { HorizontalPosition } from '../../types';
-import { useThemeId } from '../../hooks/useThemeId';
+import { useThemeId } from '../../context/Theme';
 import { renderFromProp, RenderFromPropElement, renderFromPropWithFallback } from '../../utils';
 import { PortalPopover, PortalPopoverProps } from '../Popover/PortalPopover';
 import { PopoverContentProps, PopoverRenderChildrenProps } from '../Popover/types';

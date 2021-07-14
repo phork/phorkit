@@ -2,7 +2,7 @@ import { cx } from '@emotion/css';
 import React from 'react';
 import { ThemeProps } from '../../types';
 import { useAccessibility } from '../../context/Accessibility';
-import { useThemeId } from '../../hooks/useThemeId';
+import { useThemeId } from '../../context/Theme';
 import styles from './styles/Accordion.module.css';
 
 export interface AccordionContainerProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {

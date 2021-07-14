@@ -1,7 +1,7 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import { ThemeProps } from '../../types';
-import { useThemeId } from '../../hooks/useThemeId';
+import { useThemeId } from '../../context/Theme';
 import styles from './styles/Card.module.css';
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {

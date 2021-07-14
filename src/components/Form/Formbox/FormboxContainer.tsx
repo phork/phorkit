@@ -1,7 +1,7 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import { AsType, StateColor, MergeElementProps, ThemeProps } from '../../../types';
-import { useThemeId } from '../../../hooks/useThemeId';
+import { useThemeId } from '../../../context/Theme';
 import styles from './styles/Formbox.module.css';
 import sizeStyles from './styles/FormboxSizes.module.css';
 import { FormboxContainerElementType, FormboxInputElementType, FormboxSize, FormboxVariant } from './types';

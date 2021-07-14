@@ -1,6 +1,6 @@
 import React, { Reducer, useCallback, useEffect, useMemo, useReducer, useRef } from 'react';
+import { useThemeId } from '../../context/Theme';
 import { useComponentId } from '../../hooks/useComponentId';
-import { useThemeId } from '../../hooks/useThemeId';
 import { TimesIcon } from '../../icons/TimesIcon';
 import { Flex } from '../../components/Flex';
 import { IconText } from '../../components/IconText';

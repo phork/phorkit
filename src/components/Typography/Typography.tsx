@@ -1,7 +1,7 @@
 import { cx } from '@emotion/css';
 import React, { CSSProperties } from 'react';
 import { AsReactType, HorizontalPosition, MergeElementPropsWithoutRef, Theme, Volume } from '../../types';
-import { useThemeId } from '../../hooks/useThemeId';
+import { useThemeId } from '../../context/Theme';
 import styles from './styles/Typography.module.css';
 
 export type TypographyVariants =

@@ -2,8 +2,8 @@ import { cx } from '@emotion/css';
 import React, { useContext } from 'react';
 import { ThemeProps } from '../../types';
 import { useAccessibility } from '../../context/Accessibility';
+import { useThemeId } from '../../context/Theme';
 import { useComponentId } from '../../hooks/useComponentId';
-import { useThemeId } from '../../hooks/useThemeId';
 import {
   InteractiveGroupContext,
   InteractiveGroupContextValue,

@@ -1,8 +1,8 @@
 import { cx } from '@emotion/css';
 import React, { useCallback } from 'react';
 import { MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
+import { useThemeId } from '../../../context/Theme';
 import { useComponentId } from '../../../hooks/useComponentId';
-import { useThemeId } from '../../../hooks/useThemeId';
 import { Fieldset } from '../Fieldset/Fieldset';
 import styles from './styles/CheckboxGroup.module.css';
 import { Checkbox, CheckboxProps, CheckboxSize, CheckboxValue } from './Checkbox';

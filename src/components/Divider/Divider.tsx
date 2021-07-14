@@ -1,7 +1,7 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import { ThemeProps, Orientation, SequentialVariant, Volume } from '../../types';
-import { useThemeId } from '../../hooks/useThemeId';
+import { useThemeId } from '../../context/Theme';
 import styles from './styles/Divider.module.css';
 
 export interface DividerProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {

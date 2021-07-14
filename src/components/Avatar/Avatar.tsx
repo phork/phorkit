@@ -1,7 +1,7 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import { AsReactType, MergeElementProps, ThemeProps } from '../../types';
-import { useThemeId } from '../../hooks/useThemeId';
+import { useThemeId } from '../../context/Theme';
 import { useTranslations } from '../../hooks/useTranslations';
 import styles from './styles/Avatar.module.css';
 

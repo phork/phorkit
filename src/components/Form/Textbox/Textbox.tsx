@@ -1,7 +1,7 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useRef } from 'react';
 import { MergeProps } from '../../../types';
-import { useThemeId } from '../../../hooks/useThemeId';
+import { useThemeId } from '../../../context/Theme';
 import { useTranslations } from '../../../hooks/useTranslations';
 import { makeCombineRefs } from '../../../utils/combineRefs';
 import { TimesIcon } from '../../../icons/TimesIcon';

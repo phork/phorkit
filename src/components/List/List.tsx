@@ -2,7 +2,7 @@ import { cx } from '@emotion/css';
 import React from 'react';
 import { AsReactType, MergeElementProps, ThemeProps } from '../../types';
 import { useAccessibility } from '../../context/Accessibility';
-import { useThemeId } from '../../hooks/useThemeId';
+import { useThemeId } from '../../context/Theme';
 import styles from './styles/List.module.css';
 import { ListItem, ListItemProps } from './ListItem';
 import { ListItemElementMap, ListElementType } from './types';

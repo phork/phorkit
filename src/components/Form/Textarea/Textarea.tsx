@@ -1,7 +1,7 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useRef } from 'react';
 import { MergeProps } from '../../../types';
-import { useThemeId } from '../../../hooks/useThemeId';
+import { useThemeId } from '../../../context/Theme';
 import { makeCombineRefs } from '../../../utils/combineRefs';
 import { FormboxInput, FormboxReadOnly, Formbox, FormboxProps, FormboxValue, useAutoFilled } from '../Formbox';
 import styles from './styles/Textarea.module.css';

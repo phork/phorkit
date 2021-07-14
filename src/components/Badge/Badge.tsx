@@ -1,7 +1,7 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import { CornerPosition, MergeElementProps, SemanticColor, ThemeProps } from '../../types';
-import { useThemeId } from '../../hooks/useThemeId';
+import { useThemeId } from '../../context/Theme';
 import { lowerCamelize } from '../../utils/case';
 import styles from './styles/Badge.module.css';
 

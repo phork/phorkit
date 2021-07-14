@@ -1,7 +1,7 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import { AccentColor, SequentialVariant, StateColor, ThemeProps } from '../../types';
-import { useThemeId } from '../../hooks/useThemeId';
+import { useThemeId } from '../../context/Theme';
 import styles from './styles/Paper.module.css';
 
 export interface PaperProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {

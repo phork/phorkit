@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { MergeProps, ThemeProps } from '../../types';
-import { useThemeId } from '../../hooks/useThemeId';
+import { useThemeId } from '../../context/Theme';
 import { makeCombineRefs } from '../../utils/combineRefs';
 import { InteractiveGroupConsumer } from '../../components/InteractiveGroup/InteractiveGroupConsumer';
 import {

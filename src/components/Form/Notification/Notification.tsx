@@ -1,7 +1,7 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import { SemanticColor, ThemeProps } from '../../../types';
-import { useThemeId } from '../../../hooks/useThemeId';
+import { useThemeId } from '../../../context/Theme';
 import styles from './styles/Notification.module.css';
 
 export interface NotificationProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {

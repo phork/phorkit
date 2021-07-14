@@ -2,9 +2,9 @@ import { cx } from '@emotion/css';
 import React, { useCallback, useContext, useRef } from 'react';
 import { ThemeProps } from '../../types';
 import { useAccessibility } from '../../context/Accessibility';
+import { useThemeId } from '../../context/Theme';
 import { useComponentId } from '../../hooks/useComponentId';
 import { useDeepFocus } from '../../hooks/useDeepFocus';
-import { useThemeId } from '../../hooks/useThemeId';
 import { makeCombineRefs } from '../../utils/combineRefs';
 import {
   InteractiveGroupContext,

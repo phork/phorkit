@@ -1,7 +1,7 @@
 import { cx } from '@emotion/css';
 import React, { useCallback } from 'react';
 import { MergeElementProps, Orientation, ThemeProps } from '../../types';
-import { useThemeId } from '../../hooks/useThemeId';
+import { useThemeId } from '../../context/Theme';
 import { renderFromProp } from '../../utils';
 import styles from './styles/ButtonGroup.module.css';
 import { Button, ButtonProps } from './Button';

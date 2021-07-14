@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import { ThemeProps } from '../../types';
-import { useThemeId } from '../../hooks/useThemeId';
+import { useThemeId } from '../../context/Theme';
 import { ModalContext } from './ModalContext';
 import { ModalItemType } from './types';
 

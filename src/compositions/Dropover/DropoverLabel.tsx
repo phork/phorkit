@@ -2,7 +2,7 @@ import { cx } from '@emotion/css';
 import React from 'react';
 import { ThemeProps } from '../../types';
 import { themes } from '../../config';
-import { useThemeId } from '../../hooks/useThemeId';
+import { useThemeId } from '../../context/Theme';
 import { Rhythm } from '../../components/Rhythm/Rhythm';
 import { Triangle } from '../../components/Triangle/Triangle';
 import styles from './styles/Dropover.module.css';

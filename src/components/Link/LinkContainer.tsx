@@ -1,7 +1,7 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import { AsReactType, MergeElementPropsWithoutRef, ThemeProps } from '../../types';
-import { useThemeId } from '../../hooks/useThemeId';
+import { useThemeId } from '../../context/Theme';
 import styles from './styles/Link.module.css';
 
 export type LinkContainerElementType = keyof JSX.IntrinsicElements;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProps } from '../../types';
-import { useThemeId } from '../../hooks/useThemeId';
+import { useThemeId } from '../../context/Theme';
 import { BannerConsumer } from './BannerConsumer';
 import { BannerContainer } from './BannerContainer';
 import { BannerFromContext } from './BannerFromContext';

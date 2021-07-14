@@ -1,6 +1,6 @@
 import React from 'react';
 import { SequentialVariant, StateColor, ThemeProps } from '../../types';
-import { useThemeId } from '../../hooks/useThemeId';
+import { useThemeId } from '../../context/Theme';
 import { Card, CardProps } from '../../components/Card/Card';
 import { Paper } from '../../components/Paper/Paper';
 import { Rhythm } from '../../components/Rhythm/Rhythm';

@@ -1,7 +1,7 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import { ThemeProps } from '../../types';
-import { useThemeId } from '../../hooks/useThemeId';
+import { useThemeId } from '../../context/Theme';
 import styles from './styles/Link.module.css';
 
 export interface LinkProps extends React.HTMLAttributes<HTMLAnchorElement>, ThemeProps {
