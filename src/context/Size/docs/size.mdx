@@ -1,0 +1,91 @@
+---
+name: Size
+menu: Utilities
+route: /components/Size
+---
+
+import { Playground, Props } from 'docz';
+import { Flex } from 'components/Flex';
+import { Toggle } from 'components/Form/Toggle';
+import { Rhythm } from 'components/Rhythm';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { TimeoutWrapper } from 'docs/helpers/TimeoutWrapper';
+import { SizeConsumer, SizeProvider, useSize } from '../index';
+
+<PageTitle src="context/Size" title="Size" />
+
+## SizeProvider, unobserved
+
+<Playground>
+  <StateWrapper initialState={false}>
+    {({ state: observe, setState: setObserve }) => (
+      <React.Fragment>
+        <Rhythm grouped mb={5}>
+          <Flex full justifyContent="flex-end">
+            <Toggle checked={observe} onChange={(event, checked) => setObserve(!!checked)}>
+              Observe size change
+            </Toggle>
+          </Flex>
+        </Rhythm>
+        <SizeProvider observe={observe}>
+          {ref => (
+            <SizeConsumer>
+              {({ height, width }) => (
+                <div ref={ref} style={{ background: '#556270', color: '#fff', padding: 16, width: '100%' }}>
+                  {`The width of this element is ${width === undefined ? 'undefined' : `${width}px`}.${
+                    !observe ? ' It only updates after a resize event.' : ''
+                  }`}
+                  <br />
+                  {`The height of this element is ${height === undefined ? 'undefined' : `${height}px`}.${
+                    !observe ? ' It only updates after a resize event.' : ''
+                  }`}
+                </div>
+              )}
+            </SizeConsumer>
+          )}
+        </SizeProvider>
+      </React.Fragment>
+    )}
+  </StateWrapper>
+</Playground>
+
+## SizeProvider, observed
+
+<Playground>
+  <StateWrapper initialState={0} setStateFromPrevious={previous => previous + 1}>
+    {({ state: count, setState: setCount }) => {
+      const sizes = ['20px', '40px', '60px', '80px', '100px'];
+      return (
+        <TimeoutWrapper infinite callback={setCount} milliseconds={1000}>
+          <SizeProvider observe>
+            {ref => (
+              <SizeConsumer>
+                {({ height, width }) => (
+                  <div ref={ref} style={{ background: '#556270', color: '#fff', padding: 16, width: '100%' }}>
+                    {`The width of this element is ${width}px`}
+                    <br />
+                    {`The height of this element is ${Math.round(height)}px`}
+                    <Rhythm mt={3} style={{ height: sizes[count % sizes.length], transition: 'all 1s linear' }}>
+                      This div resizes on a timer.
+                    </Rhythm>
+                  </div>
+                )}
+              </SizeConsumer>
+            )}
+          </SizeProvider>
+        </TimeoutWrapper>
+      );
+    }}
+  </StateWrapper>
+</Playground>
+
+## \[props\]
+
+### SizeProvider
+
+<Props of={SizeProvider} />
+
+### useSize
+
+<Props of={useSize} />

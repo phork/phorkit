@@ -1,6 +1,6 @@
-import { useLayoutEffect, useCallback, useMemo, useRef, useState } from 'react';
-import { boundsObservable } from '../utils/boundsObservable';
+import { useCallback, useMemo, useState } from 'react';
 import { getAbsoluteCoords } from '../utils/getAbsoluteCoords';
+import { useBoundsObservable } from './useBoundsObservable';
 
 export interface UseAbsoluteCoordsInterface
   extends Pick<Parameters<typeof getAbsoluteCoords>[0], 'centered' | 'fixed' | 'offset' | 'position'> {
@@ -20,43 +20,19 @@ export const useAbsoluteCoords = ({
 }: UseAbsoluteCoordsInterface) => {
   const [coords, setCoords] = useState<UseAbsoluteCoordsInterface['initialCoords']>(initialCoords);
 
-  const processBounds = (bounds: ClientRect): void => {
-    const newCoords = getAbsoluteCoords({ bounds, centered, fixed, offset, position });
-    setCoords(newCoords);
-  };
-
-  const observer = useRef(
-    boundsObservable(
-      {
-        next: bounds => processBounds(bounds),
-        error: err => console.error('Observer error: ', err) /* eslint-disable-line no-console */,
-        complete: () => {},
-      },
-      ref,
-    ),
+  const processBounds = useCallback(
+    (bounds: ClientRect): void => {
+      const newCoords = getAbsoluteCoords({ bounds, centered, fixed, offset, position });
+      setCoords(newCoords);
+    },
+    [centered, fixed, offset, position],
   );
 
-  const update = useCallback(() => {
-    !observer.current.observing() && observer.current.once();
-  }, []);
-
-  const subscribe = useCallback(() => {
-    !observer.current.observing() && observer.current.subscribe();
-  }, []);
-
-  const unsubscribe = useCallback(() => {
-    observer.current.observing() && observer.current.unsubscribe();
-  }, []);
-
-  useLayoutEffect(() => {
-    observe && subscribe();
-    typeof window !== 'undefined' && window.addEventListener('resize', update);
-
-    return () => {
-      unsubscribe();
-      typeof window !== 'undefined' && window.removeEventListener('resize', update);
-    };
-  }, [update, subscribe, unsubscribe, observe]);
+  const { update, subscribe, unsubscribe } = useBoundsObservable({
+    observe,
+    processBounds,
+    ref,
+  });
 
   return useMemo(
     () => ({

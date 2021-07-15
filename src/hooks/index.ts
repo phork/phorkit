@@ -1,5 +1,6 @@
 export * from './useAbsoluteCoords';
 export * from './useAnimationLoop';
+export * from './useBoundsObservable';
 export * from './useClickAndEscape';
 export * from './useComponentId';
 export * from './useComponentVisible';

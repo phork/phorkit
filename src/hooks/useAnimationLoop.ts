@@ -25,11 +25,15 @@ type Action =
 
 export interface UseAnimationLoopInterface {
   animate: (percent: number, options: State['options']) => void;
-  duration: number;
+  /** The duration of the animation before it's considered complete, or falsy for infinite */
+  duration?: number;
+  /** The number of loops to run the animation for, or falsy for infinite */
   loops?: number;
+  /** If manual is true then the start and stop are handled by the consumer */
   manual?: boolean;
   onFinish?: () => void;
   onLoop?: (args: { loop: number }) => void;
+  /** A custom percentage of how complete the animation is */
   percent?: number;
 }
 
@@ -108,9 +112,15 @@ export const useAnimationLoop = ({
         });
       }
 
-      const runtime = loops ? Math.min(duration * loops, timestamp - state.start) : timestamp - state.start;
-      const loop = Math.floor(runtime / duration);
-      const percent = loops && runtime >= duration * loops ? 100 : Math.min(100, ((runtime / duration) * 100) % 100);
+      const calculatePercent = (runtime: number, loops: number | undefined, duration: number | undefined) => {
+        if (!duration) return 0;
+        if (loops && duration && runtime >= duration * loops) return 100;
+        return Math.min(100, ((runtime / duration) * 100) % 100);
+      };
+
+      const runtime = loops && duration ? Math.min(duration * loops, timestamp - state.start) : timestamp - state.start;
+      const loop = duration ? Math.floor(runtime / duration) : 1;
+      const percent = calculatePercent(runtime, loops, duration);
 
       return dispatch({
         type: ACTIONS.SET_DURATION,
