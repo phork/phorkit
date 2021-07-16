@@ -1,5 +1,37 @@
 # Changelog
 
+# [9.0.0](https://github.com/phork/phorkit/compare/v8.2.0...v9.0.0) (2021-07-16)
+
+### ♻ Code Refactoring
+
+- **major**: moved useThemeId from hooks into context folder ([f7b4173](https://github.com/phork/phorkit/commit/f7b4173))
+- **major**: rename Width context to Size ([dd4cf96](https://github.com/phork/phorkit/commit/dd4cf96))
+- **major**: replace useDimensions hook with useSizeListeners ([c273481](https://github.com/phork/phorkit/commit/c273481))
+- **major**: spread remaining form props on inputs ([d29c44f](https://github.com/phork/phorkit/commit/d29c44f))
+- **major**: spread remaining Select, Textarea props on input ([e9befe7](https://github.com/phork/phorkit/commit/e9befe7))
+- **major**: standardized size names (eg. xxxl to 3xlarge) ([a02ae25](https://github.com/phork/phorkit/commit/a02ae25))
+- minor tab improvements ([31d0ee7](https://github.com/phork/phorkit/commit/31d0ee7))
+- update Checkbox, Radio types ([915f47e](https://github.com/phork/phorkit/commit/915f47e))
+- updated eslint, prettier rules; lint mdx files ([eab8b28](https://github.com/phork/phorkit/commit/eab8b28))
+- **major**: spread remaining Textbox props on input ([3e90258](https://github.com/phork/phorkit/commit/3e90258))
+
+### ✨ Features
+
+- added decimal places to size context ([57ce296](https://github.com/phork/phorkit/commit/57ce296))
+- added size to checkbox, radio ([e6936f3](https://github.com/phork/phorkit/commit/e6936f3))
+- added TextboxGroup component ([a884d09](https://github.com/phork/phorkit/commit/a884d09))
+- added Width context ([0c871ad](https://github.com/phork/phorkit/commit/0c871ad))
+- allow paste in 2FA input group ([bfe5989](https://github.com/phork/phorkit/commit/bfe5989))
+- **major**: additional form input sizes ([678672e](https://github.com/phork/phorkit/commit/678672e))
+
+### 🐛 Bug Fixes
+
+- don't allow invalid input in 2FA form ([ec48d52](https://github.com/phork/phorkit/commit/ec48d52))
+- formbox auto-complete respects size ([9be87b7](https://github.com/phork/phorkit/commit/9be87b7))
+- formbox autofill transition no longer overwritten ([9bf72d8](https://github.com/phork/phorkit/commit/9bf72d8))
+- improved styled components number or string checking ([ce6fe61](https://github.com/phork/phorkit/commit/ce6fe61))
+- prevent invalid paste on textbox group ([1dda393](https://github.com/phork/phorkit/commit/1dda393))
+
 # [8.2.0](https://github.com/phork/phorkit/compare/v8.1.0...v8.2.0) (2021-06-25)
 
 ### ✨ Features
