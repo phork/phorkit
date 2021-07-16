@@ -1,5 +1,11 @@
 # Changelog
 
+## [9.0.1](https://github.com/phork/phorkit/compare/v9.0.0...v9.0.1) (2021-07-16)
+
+### 🐛 Bug Fixes
+
+- fix size observer too many renders ([f95d41a](https://github.com/phork/phorkit/commit/f95d41a))
+
 # [9.0.0](https://github.com/phork/phorkit/compare/v8.2.0...v9.0.0) (2021-07-16)
 
 ### ♻ Code Refactoring
