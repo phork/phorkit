@@ -44,22 +44,19 @@ export function useObserveSize<E extends HTMLElement = HTMLDivElement>({
 
   // if this function changes it will start a new observer
   const processBounds = useCallback(
-    (bounds: ClientRect): void => {
+    (initBounds: ClientRect): void => {
       setSize(size => {
+        const bounds = {
+          bottom: Number(initBounds.bottom.toFixed(decimalPlaces)),
+          height: Number(initBounds.height.toFixed(decimalPlaces)),
+          left: Number(initBounds.left.toFixed(decimalPlaces)),
+          right: Number(initBounds.right.toFixed(decimalPlaces)),
+          top: Number(initBounds.top.toFixed(decimalPlaces)),
+          width: Number(initBounds.width.toFixed(decimalPlaces)),
+        };
+
         const measurablePropsHaveChanged = propsToMeasure.some(prop => size[prop] !== bounds[prop]);
-        return measurablePropsHaveChanged
-          ? stripUnmeasuredProps(
-              {
-                bottom: Number(bounds.bottom.toFixed(decimalPlaces)),
-                height: Number(bounds.height.toFixed(decimalPlaces)),
-                left: Number(bounds.left.toFixed(decimalPlaces)),
-                right: Number(bounds.right.toFixed(decimalPlaces)),
-                top: Number(bounds.top.toFixed(decimalPlaces)),
-                width: Number(bounds.width.toFixed(decimalPlaces)),
-              },
-              propsToMeasure,
-            )
-          : size;
+        return measurablePropsHaveChanged ? stripUnmeasuredProps(bounds, propsToMeasure) : size;
       });
     },
     [decimalPlaces, propsToMeasure],
