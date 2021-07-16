@@ -30,10 +30,12 @@ export interface DropdownWithTagsProps extends Omit<DropdownProps, 'initialSelec
   tagVariant?: TagVariant;
 }
 
+const defaultInitialSelected = [] as DropdownOption[];
+
 export function DropdownWithTags({
   contrast = false,
   id,
-  initialSelected = [],
+  initialSelected = defaultInitialSelected,
   minSelect = 0,
   maxSelect = -1,
   onSelect,

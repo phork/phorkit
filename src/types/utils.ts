@@ -33,3 +33,5 @@ export type AsType<T extends keyof JSX.IntrinsicElements> = {
 export type AsReactType<T extends React.ElementType> = {
   as?: T | ((props: any) => React.ReactElement<any, T>);
 };
+
+export type Mutable<T> = { -readonly [P in keyof T]: T[P] };

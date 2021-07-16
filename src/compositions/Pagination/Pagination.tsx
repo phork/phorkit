@@ -76,6 +76,11 @@ export interface LocalPaginationProps extends ThemeProps {
 
 export type PaginationProps = MergeProps<ButtonGroupProps, LocalPaginationProps>;
 
+const defaultPageLabelProps = {
+  size: 'medium' as TypographyProps['size'],
+  variants: 'no-wrap' as TypographyProps['variants'],
+};
+
 export function Pagination({
   activeProps,
   buttonGroupClassName,
@@ -88,7 +93,7 @@ export function Pagination({
   justify = 'start',
   onChangePage,
   page,
-  pageLabelProps = { size: 'medium', variants: ['no-wrap'] },
+  pageLabelProps = defaultPageLabelProps,
   pageLinks = 0,
   pageSize,
   style,

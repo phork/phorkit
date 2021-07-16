@@ -47,10 +47,10 @@ export function Tabs({
   fullWidth = false,
   initialSelected,
   items,
-  listProps = {},
+  listProps,
   minSelect = 1,
   onSelect,
-  panelGroupProps = {},
+  panelGroupProps,
   style,
   themeId,
   unstyled = false,
@@ -114,7 +114,7 @@ export function Tabs({
                   unstyled={unstyled}
                   variant={variant}
                   vertical={vertical}
-                  {...listProps}
+                  {...(listProps || {})}
                 />
                 <TabPanelGroup
                   componentId={componentId}
@@ -125,7 +125,7 @@ export function Tabs({
                   unstyled={unstyled}
                   variant={variant}
                   vertical={vertical}
-                  {...panelGroupProps}
+                  {...(panelGroupProps || {})}
                 />
               </TabsContainer>
             )

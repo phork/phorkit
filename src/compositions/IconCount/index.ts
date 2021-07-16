@@ -1,1 +1,1 @@
-export { IconCount } from './IconCount';
+export * from './IconCount';

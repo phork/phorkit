@@ -1,4 +1,5 @@
-import { useLayoutEffect, useCallback, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
+import { Observable } from '../types/observer';
 import { boundsObservable } from '../utils/boundsObservable';
 
 export interface UseBoundsObservableInterface {
@@ -7,45 +8,54 @@ export interface UseBoundsObservableInterface {
   ref: React.RefObject<HTMLElement>;
 }
 
-export const useBoundsObservable = ({ observe = false, processBounds, ref }: UseBoundsObservableInterface) => {
-  const observer = useRef(
-    boundsObservable(
+export type UseBoundsObservableResponse = {
+  update: () => void;
+  subscribe: () => void;
+  unsubscribe: () => void;
+};
+
+export const useBoundsObservable = ({
+  observe = false,
+  processBounds,
+  ref,
+}: UseBoundsObservableInterface): UseBoundsObservableResponse => {
+  const observer = useRef<Observable | null>();
+
+  const subscribe = useCallback(() => {
+    observer.current && !observer.current?.observing() && observer.current.subscribe();
+  }, []);
+
+  const unsubscribe = useCallback(() => {
+    observer.current && observer.current.observing() && observer.current.unsubscribe();
+  }, []);
+
+  const update = useCallback(() => {
+    observer.current && !observer.current?.observing() && observer.current.once();
+  }, []);
+
+  // if the processBounds callback changes then start a new observer
+  useEffect(() => {
+    const observing = observer.current?.observing();
+    observing && unsubscribe();
+
+    observer.current = boundsObservable(
       {
         next: bounds => processBounds(bounds),
         error: err => console.error('Observer error: ', err) /* eslint-disable-line no-console */,
         complete: () => {},
       },
       ref,
-    ),
-  );
+    );
 
-  const update = useCallback(() => {
-    !observer.current.observing() && observer.current.once();
-  }, []);
-
-  const subscribe = useCallback(() => {
-    !observer.current.observing() && observer.current.subscribe();
-  }, []);
-
-  const unsubscribe = useCallback(() => {
-    observer.current.observing() && observer.current.unsubscribe();
-  }, []);
-
-  useLayoutEffect(() => {
     observe && subscribe();
-    typeof window !== 'undefined' && window.addEventListener('resize', update);
-
-    return () => {
-      unsubscribe();
-      typeof window !== 'undefined' && window.removeEventListener('resize', update);
-    };
-  }, [update, subscribe, unsubscribe, observe]);
+    return () => unsubscribe();
+  }, [observe, processBounds, ref, subscribe, unsubscribe]);
 
   return useMemo(
     () => ({
-      update,
       subscribe,
       unsubscribe,
+      update,
     }),
     [subscribe, unsubscribe, update],
   );

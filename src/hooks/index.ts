@@ -6,7 +6,6 @@ export * from './useComponentId';
 export * from './useComponentVisible';
 export * from './useDeepFocus';
 export * from './useDeepFocusGroup';
-export * from './useDimensions';
 export * from './useElementEventListener';
 export * from './useFocusReturn';
 export * from './useIconSize';

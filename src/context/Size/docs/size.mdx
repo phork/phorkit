@@ -5,13 +5,14 @@ route: /components/Size
 ---
 
 import { Playground, Props } from 'docz';
+import { ucfirst } from 'utils/case';
 import { Flex } from 'components/Flex';
 import { Toggle } from 'components/Form/Toggle';
 import { Rhythm } from 'components/Rhythm';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { TimeoutWrapper } from 'docs/helpers/TimeoutWrapper';
-import { SizeConsumer, SizeProvider, useSize } from '../index';
+import { SizeConsumer, SizeProvider, useGetSize, useObserveSize, useSizeListeners } from '../index';
 
 <PageTitle src="context/Size" title="Size" />
 
@@ -22,24 +23,27 @@ import { SizeConsumer, SizeProvider, useSize } from '../index';
     {({ state: observe, setState: setObserve }) => (
       <React.Fragment>
         <Rhythm grouped mb={5}>
-          <Flex full justifyContent="flex-end">
-            <Toggle checked={observe} onChange={(event, checked) => setObserve(!!checked)}>
-              Observe size change
-            </Toggle>
-          </Flex>
+          <Toggle checked={observe} onChange={(event, checked) => setObserve(!!checked)}>
+            Watch for changes
+          </Toggle>
         </Rhythm>
         <SizeProvider observe={observe}>
           {ref => (
             <SizeConsumer>
-              {({ height, width }) => (
+              {({ width, height }) => (
                 <div ref={ref} style={{ background: '#556270', color: '#fff', padding: 16, width: '100%' }}>
-                  {`The width of this element is ${width === undefined ? 'undefined' : `${width}px`}.${
-                    !observe ? ' It only updates after a resize event.' : ''
-                  }`}
-                  <br />
-                  {`The height of this element is ${height === undefined ? 'undefined' : `${height}px`}.${
-                    !observe ? ' It only updates after a resize event.' : ''
-                  }`}
+                  <Rhythm my={2}>
+                    <div>
+                      {`The ${observe ? 'current' : 'last observed'} width of this element is ${
+                        width === undefined ? 'undefined' : `${Math.round(width)}px`
+                      }`}
+                    </div>
+                    <div>
+                      {`The ${observe ? 'current' : 'last observed'} height of this element is ${
+                        height === undefined ? 'undefined' : `${Math.round(height)}px`
+                      }`}
+                    </div>
+                  </Rhythm>
                 </div>
               )}
             </SizeConsumer>
@@ -50,34 +54,89 @@ import { SizeConsumer, SizeProvider, useSize } from '../index';
   </StateWrapper>
 </Playground>
 
-## SizeProvider, observed
+## SizeProvider, all props observed
 
 <Playground>
-  <StateWrapper initialState={0} setStateFromPrevious={previous => previous + 1}>
-    {({ state: count, setState: setCount }) => {
-      const sizes = ['20px', '40px', '60px', '80px', '100px'];
+  <StateWrapper initialState={['width', 'height', 'top', 'bottom', 'left', 'right']}>
+    {({ state: props, setState: setProps }) => {
       return (
-        <TimeoutWrapper infinite callback={setCount} milliseconds={1000}>
-          <SizeProvider observe>
+        <React.Fragment>
+          <Rhythm grouped mb={5} mx={-2}>
+            <Flex full wrap justifyContent="flex-start">
+              <Rhythm m={2}>
+                {['width', 'height', 'top', 'bottom', 'left', 'right'].map(prop => (
+                  <Toggle
+                    checked={props.includes(prop)}
+                    key={prop}
+                    onChange={(event, checked) => {
+                      if (checked) {
+                        setProps([...props, prop]);
+                      } else {
+                        setProps(props.filter(p => p !== prop));
+                      }
+                    }}
+                  >
+                    {`Watch ${prop}`}
+                  </Toggle>
+                ))}
+              </Rhythm>
+            </Flex>
+          </Rhythm>
+          <SizeProvider observe propsToMeasure={props}>
             {ref => (
               <SizeConsumer>
-                {({ height, width }) => (
+                {({ width, height, top, bottom, left, right }) => (
                   <div ref={ref} style={{ background: '#556270', color: '#fff', padding: 16, width: '100%' }}>
-                    {`The width of this element is ${width}px`}
-                    <br />
-                    {`The height of this element is ${Math.round(height)}px`}
-                    <Rhythm mt={3} style={{ height: sizes[count % sizes.length], transition: 'all 1s linear' }}>
-                      This div resizes on a timer.
+                    <Rhythm my={2}>
+                      {props.includes('width') && <div>{`The width of this element is ${Math.round(width)}px`}</div>}
+                      {props.includes('height') && <div>{`The height of this element is ${Math.round(height)}px`}</div>}
+                      {props.includes('top') && <div>{`The top of this element is ${Math.round(top)}px`}</div>}
+                      {props.includes('bottom') && <div>{`The bottom of this element is ${Math.round(bottom)}px`}</div>}
+                      {props.includes('left') && <div>{`The left of this element is ${Math.round(left)}px`}</div>}
+                      {props.includes('right') && <div>{`The right of this element is ${Math.round(right)}px`}</div>}
                     </Rhythm>
                   </div>
                 )}
               </SizeConsumer>
             )}
           </SizeProvider>
-        </TimeoutWrapper>
+        </React.Fragment>
       );
     }}
   </StateWrapper>
+</Playground>
+
+## SizeProvider, observed
+
+<Playground>
+  <SizeProvider observe>
+    {ref => (
+      <StateWrapper initialState={0} setStateFromPrevious={previous => previous + 1}>
+        {({ state: count, setState: setCount }) => {
+          const sizes = ['20px', '100px'];
+          return (
+            <TimeoutWrapper infinite callback={setCount} milliseconds={1000}>
+              <SizeConsumer>
+                {({ width, height }) => (
+                  <div style={{ width: '100%', height: '210px' }}>
+                    <div ref={ref} style={{ background: '#556270', color: '#fff', padding: 16, width: '100%' }}>
+                      <Rhythm my={2}>
+                        <div>{`The width of this element is ${Math.round(width)}px`}</div>
+                        <div>{`The height of this element is ${Math.round(height)}px`}</div>
+                      </Rhythm>
+                      <Rhythm mt={3} style={{ height: sizes[count % sizes.length], transition: 'all 1s linear' }}>
+                        This div resizes on a timer.
+                      </Rhythm>
+                    </div>
+                  </div>
+                )}
+              </SizeConsumer>
+            </TimeoutWrapper>
+          );
+        }}
+      </StateWrapper>
+    )}
+  </SizeProvider>
 </Playground>
 
 ## \[props\]
@@ -86,6 +145,14 @@ import { SizeConsumer, SizeProvider, useSize } from '../index';
 
 <Props of={SizeProvider} />
 
-### useSize
+### useObserveSize
 
-<Props of={useSize} />
+<Props of={useObserveSize} />
+
+### useSizeListeners
+
+<Props of={useSizeListeners} />
+
+### useGetSize
+
+<Props of={useGetSize} />
