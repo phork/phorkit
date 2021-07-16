@@ -10,19 +10,20 @@ import { StyledIconToast, ToastContext } from 'compositions/Toast';
 const SwatchGroup = styled(Flex, {
   shouldForwardProp: (prop: string) => prop !== 'joined',
 })<{
+  direction: FlexProps['direction'];
   joined?: boolean;
 }>`
-  ${({ joined = false }) =>
+  ${({ direction = 'row', joined = false }) =>
     joined &&
     `
     div:first-of-type {
-      border-bottom-left-radius: 3px;
-      border-top-left-radius: 3px;
+      border-${direction === 'column' ? 'top-left' : 'bottom-left'}-radius: 3px;
+      border-${direction === 'column' ? 'top-right' : 'top-left'}-radius: 3px;
     }
 
     div:last-of-type {
-      border-bottom-right-radius: 3px;
-      border-top-right-radius: 3px;
+      border-${direction === 'column' ? 'bottom-left' : 'bottom-right'}-radius: 3px;
+      border-${direction === 'column' ? 'bottom-right' : 'top-right'}-radius: 3px;
     }
 `}
 `;
@@ -77,9 +78,11 @@ const SwatchBlock = styled('div', {
   }
 `;
 
-const SwatchLabel = styled('div', {
-  shouldForwardProp: (prop: string) => !['height', 'width'].includes(prop),
+// this is a p rather than a div so div:first-of-type can still be used for radii
+const SwatchLabel = styled('p', {
+  shouldForwardProp: (prop: string) => !['direction', 'height', 'width'].includes(prop),
 })<{
+  direction?: FlexProps['direction'];
   height?: string | number;
   width?: string | number;
 }>`
@@ -87,7 +90,7 @@ const SwatchLabel = styled('div', {
   display: flex;
   font-size: 11px;
   height: ${props => `${props.height}${typeof props.height === 'number' ? 'px' : ''}`};
-  justify-content: center;
+  justify-content: ${({ direction }) => (direction === 'column' ? 'center' : 'flex-start')};
   position: relative;
   width: ${props => `${props.width}${typeof props.width === 'number' ? 'px' : ''}`}; ;
 `;
@@ -101,7 +104,7 @@ export type Color = {
   children?: React.ReactNode;
 };
 
-export interface ColorSwatchGroupProps {
+export interface ColorSwatchVectorProps {
   children?: React.ReactNode;
   colors: Color[];
   direction?: FlexProps['direction'];
@@ -114,7 +117,7 @@ export interface ColorSwatchGroupProps {
   withIcon?: boolean;
 }
 
-export const ColorSwatchGroup = React.memo(function ColorSwatchGroup({
+export const ColorSwatchVector = React.memo(function ColorSwatchVector({
   children,
   colors,
   direction = 'row',
@@ -125,7 +128,7 @@ export const ColorSwatchGroup = React.memo(function ColorSwatchGroup({
   swatchHeight = 60,
   swatchWidth = 40,
   ...props
-}: ColorSwatchGroupProps): React.ReactElement {
+}: ColorSwatchVectorProps): React.ReactElement {
   const { createNotification } = useContext(ToastContext);
 
   const handleClick = (id: string, color: string, contrast?: string) => {
@@ -164,7 +167,7 @@ export const ColorSwatchGroup = React.memo(function ColorSwatchGroup({
     <SwatchGroup inline joined wrap direction={direction} {...props}>
       {label && (
         <Rhythm m={joined ? 0 : 1}>
-          <SwatchLabel height={labelHeight || swatchHeight} width={labelWidth || swatchWidth}>
+          <SwatchLabel direction={direction} height={labelHeight} width={labelWidth}>
             {label}
           </SwatchLabel>
         </Rhythm>
@@ -191,4 +194,4 @@ export const ColorSwatchGroup = React.memo(function ColorSwatchGroup({
   );
 });
 
-ColorSwatchGroup.displayName = 'ColorSwatchGroup';
+ColorSwatchVector.displayName = 'ColorSwatchVector';

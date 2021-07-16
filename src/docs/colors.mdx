@@ -6,7 +6,7 @@ route: /colors
 import { Playground, Props } from 'docz';
 import { BlobbrIcon } from 'icons/internal';
 import { PageTitle } from 'docs/helpers/PageTitle';
-import { ColorSwatch } from './helpers/ColorSwatch';
+import { ColorSwatches } from './helpers/ColorSwatches';
 import { ColorTheme } from './helpers/ColorTheme';
 import { ThemeWrapper } from './helpers/ThemeWrapper';
 
@@ -19,9 +19,16 @@ Clicking on any color block will copy that color ID to your clipboard.
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <ColorSwatch direction="column" group="primary" swatchHeight={40} swatchWidth={60} themeId={themeId}>
+      <ColorSwatches
+        direction="column"
+        group="primary"
+        labelHeight={20}
+        swatchHeight={40}
+        swatchWidth={60}
+        themeId={themeId}
+      >
         <BlobbrIcon size={24} />
-      </ColorSwatch>
+      </ColorSwatches>
     )}
   </ThemeWrapper>
 </Playground>
@@ -31,9 +38,9 @@ Clicking on any color block will copy that color ID to your clipboard.
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <ColorSwatch joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="accent-primary">
+      <ColorSwatches joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="accent-primary">
         <BlobbrIcon size={30} />
-      </ColorSwatch>
+      </ColorSwatches>
     )}
   </ThemeWrapper>
 </Playground>
@@ -43,9 +50,9 @@ Clicking on any color block will copy that color ID to your clipboard.
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <ColorSwatch joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="success">
+      <ColorSwatches joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="success">
         <BlobbrIcon size={30} />
-      </ColorSwatch>
+      </ColorSwatches>
     )}
   </ThemeWrapper>
 </Playground>
@@ -55,9 +62,9 @@ Clicking on any color block will copy that color ID to your clipboard.
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <ColorSwatch joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="warning">
+      <ColorSwatches joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="warning">
         <BlobbrIcon size={30} />
-      </ColorSwatch>
+      </ColorSwatches>
     )}
   </ThemeWrapper>
 </Playground>
@@ -67,9 +74,9 @@ Clicking on any color block will copy that color ID to your clipboard.
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <ColorSwatch joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="danger">
+      <ColorSwatches joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="danger">
         <BlobbrIcon size={30} />
-      </ColorSwatch>
+      </ColorSwatches>
     )}
   </ThemeWrapper>
 </Playground>
@@ -79,9 +86,9 @@ Clicking on any color block will copy that color ID to your clipboard.
 <Playground>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
-      <ColorSwatch joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="neutral">
+      <ColorSwatches joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="neutral">
         <BlobbrIcon size={30} />
-      </ColorSwatch>
+      </ColorSwatches>
     )}
   </ThemeWrapper>
 </Playground>
@@ -90,7 +97,7 @@ Clicking on any color block will copy that color ID to your clipboard.
 
 <Playground>
   <ThemeWrapper withThemeId>
-    {({ themeId }) => <ColorSwatch group="background" swatchHeight={40} swatchWidth={60} themeId={themeId} />}
+    {({ themeId }) => <ColorSwatches group="background" swatchHeight={40} swatchWidth={60} themeId={themeId} />}
   </ThemeWrapper>
 </Playground>
 
@@ -98,7 +105,7 @@ Clicking on any color block will copy that color ID to your clipboard.
 
 <Playground>
   <ThemeWrapper withThemeId>
-    {({ themeId }) => <ColorSwatch group="foreground" swatchHeight={40} swatchWidth={60} themeId={themeId} />}
+    {({ themeId }) => <ColorSwatches group="foreground" swatchHeight={40} swatchWidth={60} themeId={themeId} />}
   </ThemeWrapper>
 </Playground>
 
@@ -106,20 +113,7 @@ Clicking on any color block will copy that color ID to your clipboard.
 
 <Playground>
   <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <React.Fragment>
-        <ColorSwatch
-          group="transparent"
-          swatchHeight={40}
-          swatchWidth={60}
-          themeId={themeId}
-          variant="accent-primary"
-        />
-        <ColorSwatch group="transparent" swatchHeight={40} swatchWidth={60} themeId={themeId} variant="FG0" />
-        <ColorSwatch group="transparent" swatchHeight={40} swatchWidth={60} themeId={themeId} variant="BG50" />
-        <ColorSwatch group="transparent" swatchHeight={40} swatchWidth={60} themeId={themeId} variant="BG0" />
-      </React.Fragment>
-    )}
+    {({ themeId }) => <ColorSwatches group="transparent" swatchHeight={40} swatchWidth={60} themeId={themeId} />}
   </ThemeWrapper>
 </Playground>
 
