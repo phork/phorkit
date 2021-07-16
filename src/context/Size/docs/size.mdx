@@ -27,7 +27,7 @@ import { SizeConsumer, SizeProvider, useGetSize, useObserveSize, useSizeListener
             Watch for changes
           </Toggle>
         </Rhythm>
-        <SizeProvider observe={observe}>
+        <SizeProvider decimalPlaces={0} observe={observe}>
           {ref => (
             <SizeConsumer>
               {({ width, height }) => (
@@ -35,12 +35,12 @@ import { SizeConsumer, SizeProvider, useGetSize, useObserveSize, useSizeListener
                   <Rhythm my={2}>
                     <div>
                       {`The ${observe ? 'current' : 'last observed'} width of this element is ${
-                        width === undefined ? 'undefined' : `${Math.round(width)}px`
+                        width === undefined ? 'undefined' : `${width}px`
                       }`}
                     </div>
                     <div>
                       {`The ${observe ? 'current' : 'last observed'} height of this element is ${
-                        height === undefined ? 'undefined' : `${Math.round(height)}px`
+                        height === undefined ? 'undefined' : `${height}px`
                       }`}
                     </div>
                   </Rhythm>
@@ -82,18 +82,18 @@ import { SizeConsumer, SizeProvider, useGetSize, useObserveSize, useSizeListener
               </Rhythm>
             </Flex>
           </Rhythm>
-          <SizeProvider observe propsToMeasure={props}>
+          <SizeProvider observe decimalPlaces={0} propsToMeasure={props}>
             {ref => (
               <SizeConsumer>
                 {({ width, height, top, bottom, left, right }) => (
                   <div ref={ref} style={{ background: '#556270', color: '#fff', padding: 16, width: '100%' }}>
                     <Rhythm my={2}>
-                      {props.includes('width') && <div>{`The width of this element is ${Math.round(width)}px`}</div>}
-                      {props.includes('height') && <div>{`The height of this element is ${Math.round(height)}px`}</div>}
-                      {props.includes('top') && <div>{`The top of this element is ${Math.round(top)}px`}</div>}
-                      {props.includes('bottom') && <div>{`The bottom of this element is ${Math.round(bottom)}px`}</div>}
-                      {props.includes('left') && <div>{`The left of this element is ${Math.round(left)}px`}</div>}
-                      {props.includes('right') && <div>{`The right of this element is ${Math.round(right)}px`}</div>}
+                      {props.includes('width') && <div>{`The width of this element is ${width}px`}</div>}
+                      {props.includes('height') && <div>{`The height of this element is ${height}px`}</div>}
+                      {props.includes('top') && <div>{`The top of this element is ${top}px`}</div>}
+                      {props.includes('bottom') && <div>{`The bottom of this element is ${bottom}px`}</div>}
+                      {props.includes('left') && <div>{`The left of this element is ${left}px`}</div>}
+                      {props.includes('right') && <div>{`The right of this element is ${right}px`}</div>}
                     </Rhythm>
                   </div>
                 )}
@@ -121,8 +121,8 @@ import { SizeConsumer, SizeProvider, useGetSize, useObserveSize, useSizeListener
                   <div style={{ width: '100%', height: '210px' }}>
                     <div ref={ref} style={{ background: '#556270', color: '#fff', padding: 16, width: '100%' }}>
                       <Rhythm my={2}>
-                        <div>{`The width of this element is ${Math.round(width)}px`}</div>
-                        <div>{`The height of this element is ${Math.round(height)}px`}</div>
+                        <div>{`The width of this element is ${width}px`}</div>
+                        <div>{`The height of this element is ${height}px`}</div>
                       </Rhythm>
                       <Rhythm mt={3} style={{ height: sizes[count % sizes.length], transition: 'all 1s linear' }}>
                         This div resizes on a timer.

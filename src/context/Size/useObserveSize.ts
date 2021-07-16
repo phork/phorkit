@@ -4,6 +4,7 @@ import { useBoundsObservable, UseBoundsObservableResponse } from '../../hooks/us
 import { SizeContextValue } from './SizeContext';
 
 export type UseObserveSizeOptions = {
+  decimalPlaces?: number;
   /** Determines if the observer should be actively observing */
   observe?: boolean;
   /** The propsToMeasure array should be memoized */
@@ -33,6 +34,7 @@ const stripUnmeasuredProps = (
 const defaultPropsToMeasure = ['width', 'height'] as (keyof SizeContextValue)[];
 
 export function useObserveSize<E extends HTMLElement = HTMLDivElement>({
+  decimalPlaces = 2,
   observe,
   propsToMeasure = defaultPropsToMeasure,
 }: UseObserveSizeOptions): UseObserveSizeResponse<E> {
@@ -48,19 +50,19 @@ export function useObserveSize<E extends HTMLElement = HTMLDivElement>({
         return measurablePropsHaveChanged
           ? stripUnmeasuredProps(
               {
-                bottom: bounds.bottom,
-                height: bounds.height,
-                left: bounds.left,
-                right: bounds.right,
-                top: bounds.top,
-                width: bounds.width,
+                bottom: Number(bounds.bottom.toFixed(decimalPlaces)),
+                height: Number(bounds.height.toFixed(decimalPlaces)),
+                left: Number(bounds.left.toFixed(decimalPlaces)),
+                right: Number(bounds.right.toFixed(decimalPlaces)),
+                top: Number(bounds.top.toFixed(decimalPlaces)),
+                width: Number(bounds.width.toFixed(decimalPlaces)),
               },
               propsToMeasure,
             )
           : size;
       });
     },
-    [propsToMeasure],
+    [decimalPlaces, propsToMeasure],
   );
 
   const { update } = useBoundsObservable({

@@ -1,19 +1,19 @@
 import React from 'react';
-import { SizeContext, SizeContextValue } from './SizeContext';
-import { useObserveSize } from './useObserveSize';
+import { SizeContext } from './SizeContext';
+import { useObserveSize, UseObserveSizeOptions } from './useObserveSize';
 
-export interface SizeProviderProps<E extends HTMLElement = HTMLDivElement> {
+export interface SizeProviderProps<E extends HTMLElement = HTMLDivElement> extends UseObserveSizeOptions {
   children: (ref: React.MutableRefObject<E | null>) => React.ReactElement;
-  observe?: boolean;
-  propsToMeasure?: (keyof SizeContextValue)[];
 }
 
 export function SizeProvider<E extends HTMLElement = HTMLDivElement>({
   children,
+  decimalPlaces,
   observe,
   propsToMeasure,
 }: SizeProviderProps<E>): React.ReactNode {
   const { ref, value } = useObserveSize<E>({
+    decimalPlaces,
     observe,
     propsToMeasure,
   });
