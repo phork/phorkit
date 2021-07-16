@@ -11,8 +11,6 @@ const allMeasurableProps = ['width', 'height', 'top', 'left', 'right', 'bottom']
  * dimensions and placement of an element. Measurement
  * only happens on resize or on scroll. For a real time
  * measurement system useObserveSize is a better choice.
- *
- * Modified from https://github.com/Swizec/useSizeListeners
  */
 export function useSizeListeners<E extends HTMLElement = HTMLDivElement>({
   observe = true,
