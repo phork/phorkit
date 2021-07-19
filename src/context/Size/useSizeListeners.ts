@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { useObserveSize, UseObserveSizeOptions, UseObserveSizeResponse } from './useObserveSize';
 
-export type UseSizeListenersProps = UseObserveSizeOptions;
+export type UseSizeListenersInterface = UseObserveSizeOptions;
 export type UseSizeListenersResponse<E extends HTMLElement> = Pick<UseObserveSizeResponse<E>, 'ref' | 'value'>;
 
 const allMeasurableProps = ['width', 'height', 'top', 'left', 'right', 'bottom'] as const;
@@ -15,7 +15,7 @@ const allMeasurableProps = ['width', 'height', 'top', 'left', 'right', 'bottom']
 export function useSizeListeners<E extends HTMLElement = HTMLDivElement>({
   observe = true,
   propsToMeasure = allMeasurableProps,
-}: UseSizeListenersProps = {}): UseSizeListenersResponse<E> {
+}: UseSizeListenersInterface = {}): UseSizeListenersResponse<E> {
   const { ref, update, value } = useObserveSize<E>({ propsToMeasure });
 
   useEffect((): (() => void) | undefined => {
