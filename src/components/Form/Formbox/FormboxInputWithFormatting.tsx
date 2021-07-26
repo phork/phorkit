@@ -62,7 +62,7 @@ export const FormboxInputWithFormatting = <I extends FormboxInputElementType>({
         isPlaceholder={isFormattedUsedAsPlaceholder}
         themeId={themeId}
       >
-        {formattedValue || placeholder || '&nbsp;'}
+        {formattedValue || placeholder || ''}
       </FormboxInputFormatted>
       <FormboxInput
         className={styles.formboxInputWithFormatting__input}

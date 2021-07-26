@@ -529,6 +529,34 @@ import {
   </ThemeWrapper>
 </Playground>
 
+<div style={{ height: 50 }} />
+
+<Playground>
+  <ThemeWrapper>
+    <div style={{ width: '300px', maxWidth: '100%' }}>
+      <StateWrapper>
+        {({ state: value, setState: setValue }) => (
+          <Textbox
+            transitional
+            label="Credit card number"
+            maxLength={19}
+            onChange={(event, value) => {
+              const unspaced = value.replace(/\s/g, '');
+              const formatted = unspaced
+                .split(/(\w{4})/g)
+                .filter(Boolean)
+                .join(' ');
+              setValue(!(unspaced.length % 4) && unspaced.length < 16 ? `${formatted} ` : formatted);
+            }}
+            value={value}
+            variant="underline"
+          />
+        )}
+      </StateWrapper>
+    </div>
+  </ThemeWrapper>
+</Playground>
+
 ## Fancy dropdown
 
 <Playground>
