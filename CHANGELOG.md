@@ -1,5 +1,11 @@
 # Changelog
 
+## [9.0.2](https://github.com/phork/phorkit/compare/v9.0.1...v9.0.2) (2021-07-30)
+
+### 🐛 Bug Fixes
+
+- remove nbsp from textbox ([e4a905d](https://github.com/phork/phorkit/commit/e4a905d))
+
 ## [9.0.1](https://github.com/phork/phorkit/compare/v9.0.0...v9.0.1) (2021-07-16)
 
 ### 🐛 Bug Fixes
