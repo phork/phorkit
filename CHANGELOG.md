@@ -1,5 +1,11 @@
 # Changelog
 
+## [9.0.3](https://github.com/phork/phorkit/compare/v9.0.2...v9.0.3) (2021-07-30)
+
+### 🐛 Bug Fixes
+
+- typography missing 2xsmall ([126b66a](https://github.com/phork/phorkit/commit/126b66a))
+
 ## [9.0.2](https://github.com/phork/phorkit/compare/v9.0.1...v9.0.2) (2021-07-30)
 
 ### 🐛 Bug Fixes
