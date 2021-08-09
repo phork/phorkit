@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { ThemeProps, MergeElementProps, AsReactType } from '../../types';
+import { ThemeProps, MergeElementProps, AsType } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Button.module.css';
 import { ButtonAlignment, ButtonWeight, ButtonShape, ButtonSize, ButtonColor, ButtonElementType } from './types';
@@ -32,8 +32,7 @@ export interface LocalButtonProps extends ThemeProps {
   weight?: ButtonWeight;
 }
 
-export type ButtonProps<T extends ButtonElementType = 'button'> = AsReactType<T> &
-  MergeElementProps<T, LocalButtonProps>;
+export type ButtonProps<T extends ButtonElementType = 'button'> = AsType<T> & MergeElementProps<T, LocalButtonProps>;
 
 function ButtonBase<T extends ButtonElementType = 'button'>(
   {
@@ -95,7 +94,7 @@ function ButtonBase<T extends ButtonElementType = 'button'>(
   };
 
   // if an href is passed we should ignore the `as` and force to an anchor
-  const element = href ? 'a' : as || 'button';
+  const element = (href ? 'a' : as || 'button') as string;
 
   const elementProps = (() => {
     if (imitation) return {};
@@ -108,12 +107,14 @@ function ButtonBase<T extends ButtonElementType = 'button'>(
             event.preventDefault();
           }
         };
+        elementProps.href = href;
         return elementProps;
       }
 
       case 'button': {
         const elementProps = {} as React.HTMLProps<HTMLButtonElement>;
         elementProps.type = type || 'button';
+        elementProps.disabled = disabled;
         return elementProps;
       }
 
@@ -139,11 +140,9 @@ function ButtonBase<T extends ButtonElementType = 'button'>(
     element,
     {
       className: classes,
-      disabled,
-      href,
       onClick: handleClick,
       ref: forwardedRef,
-      ...({ ...elementProps, ...props } as React.HTMLProps<HTMLElementTagNameMap[T]>),
+      ...({ ...elementProps, ...props } as React.HTMLAttributes<T>),
     },
     <React.Fragment>
       <span className={styles.button__content}>{children}</span>
