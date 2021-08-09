@@ -1,5 +1,5 @@
 import produce from 'immer';
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Theme } from '../../types';
 import { ThemeContext, ThemeContextValue } from './ThemeContext';
 
@@ -13,11 +13,11 @@ export interface ThemeProviderProps {
 export function ThemeProvider({
   children,
   onChange,
-  themeId: initThemeId = 'light',
+  themeId: propThemeId = 'light',
   unthemed = false,
 }: ThemeProviderProps): React.ReactElement {
   const previousValue = useRef<ThemeContextValue>({} as ThemeContextValue);
-  const [themeId, setThemeId] = useState<Theme | undefined>(unthemed ? undefined : initThemeId);
+  const [themeId, setThemeId] = useState<Theme | undefined>(unthemed ? undefined : propThemeId);
 
   const toggleThemeId = useCallback<ThemeContextValue['toggleThemeId']>(
     forceThemeId => {
@@ -30,6 +30,10 @@ export function ThemeProvider({
   );
 
   const clearThemeId = useCallback(() => setThemeId(undefined), []);
+
+  useEffect(() => {
+    setThemeId(propThemeId);
+  }, [propThemeId]);
 
   const value: ThemeContextValue = produce(previousValue.current, draftState => {
     draftState.themeId = themeId;
