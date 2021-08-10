@@ -1,48 +1,52 @@
 import { action } from '@storybook/addon-actions';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { IconScale } from '../types';
-import { SpinnerIcon } from '../icons/SpinnerIcon';
-import { ButtonProps, Button } from '../components/Button/Button';
-import { ButtonAlignment, ButtonColor, ButtonShape, ButtonSize } from '../components/Button/types';
+import { IconScale } from '../../../types';
+import { ButtonAlignment, ButtonColor, ButtonShape, ButtonSize, ButtonWeight } from '../types';
+import { SpinnerIcon } from '../../../icons/SpinnerIcon';
+import { ButtonProps, Button } from '../Button';
 
 export default {
   title: 'Controls/Button',
   component: Button,
   argTypes: {
+    type: {
+      control: { type: 'inline-radio' },
+    },
+
     align: {
       options: ['left', 'center', 'right'],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Primary controls',
+        category: 'Appearance controls',
       },
     },
     color: {
       options: ['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white'],
       control: { type: 'radio' },
       table: {
-        category: 'Primary controls',
+        category: 'Appearance controls',
       },
     },
     shape: {
       options: ['pill', 'brick'],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Primary controls',
+        category: 'Appearance controls',
       },
     },
     size: {
       options: ['small', 'medium', 'large'],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Primary controls',
+        category: 'Appearance controls',
       },
     },
     weight: {
       options: ['solid', 'shaded', 'outlined', 'ghost'],
       control: { type: 'radio' },
       table: {
-        category: 'Primary controls',
+        category: 'Appearance controls',
       },
     },
 
@@ -67,7 +71,22 @@ export default {
       },
     },
 
+    as: {
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
+    contrast: {
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
     fullWidth: {
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
+    imitation: {
       table: {
         category: 'Uncommon controls',
       },
@@ -92,6 +111,47 @@ export default {
         category: 'Uncommon controls',
       },
     },
+
+    loader: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: 'Remaining props',
+      },
+    },
+    onClick: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: 'Remaining props',
+      },
+    },
+
+    href: {
+      table: {
+        category: 'Link controls',
+        disable: true,
+      },
+    },
+    target: {
+      table: {
+        category: 'Link controls',
+        disable: true,
+      },
+    },
+
+    className: {
+      table: {
+        disable: true,
+      },
+    },
+    themeId: {
+      table: {
+        disable: true,
+      },
+    },
   },
   parameters: {
     controls: {
@@ -104,9 +164,9 @@ export default {
     },
     layout: 'centered',
   },
-} as ComponentMeta<(args: ButtonProps) => React.ReactElement>;
+} as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<(args: ButtonProps) => React.ReactElement> = ({ children, size, ...args }) => (
+const Template: ComponentStory<typeof Button> = ({ children, size, ...args }) => (
   <Button {...args} loader={<SpinnerIcon scale={size as IconScale} />} onClick={action('clicked')} size={size}>
     {children}
   </Button>
@@ -115,6 +175,7 @@ const Template: ComponentStory<(args: ButtonProps) => React.ReactElement> = ({ c
 const defaultArgs = {
   active: false,
   align: 'center' as ButtonAlignment,
+  as: 'button' as ButtonProps['as'],
   children: 'Click me',
   color: 'primary' as ButtonColor,
   disabled: false,
@@ -125,8 +186,10 @@ const defaultArgs = {
   noPadding: false,
   shape: 'pill' as ButtonShape,
   size: 'medium' as ButtonSize,
+  type: 'button' as ButtonProps['type'],
   unstyled: false,
   unthemed: false,
+  weight: 'solid' as ButtonWeight,
 };
 
 export const Default = Template.bind({});
@@ -166,5 +229,7 @@ Link.args = {
 };
 
 Link.argTypes = {
-  loading: { control: { disable: true } },
+  loading: { table: { disable: true } },
+  href: { table: { disable: false } },
+  target: { table: { disable: false } },
 };

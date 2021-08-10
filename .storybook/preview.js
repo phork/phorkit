@@ -16,6 +16,7 @@ export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   backgrounds: { disable: true },
   controls: {
+    expanded: true,
     matchers: {
       date: /Date$/,
     },
