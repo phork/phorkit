@@ -1,5 +1,5 @@
 import { cx } from '@emotion/css';
-import React from 'react';
+import React, { NamedExoticComponent } from 'react';
 import { ThemeProps, MergeElementProps, AsType } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Button.module.css';
@@ -21,11 +21,13 @@ export interface LocalButtonProps extends ThemeProps {
   imitation?: boolean;
   loader?: React.ReactElement;
   loading?: boolean;
+  /** Remove the minimum height styles */
   noHeight?: boolean;
   noPadding?: boolean;
   onClick?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent) => void;
   shape?: ButtonShape;
   size?: ButtonSize;
+  style?: React.CSSProperties;
   type?: 'button' | 'submit';
   unstyled?: boolean;
   unthemed?: boolean;
@@ -151,7 +153,7 @@ function ButtonBase<T extends ButtonElementType = 'button'>(
   );
 }
 
-export const Button = React.forwardRef(ButtonBase) as typeof ButtonBase;
+export const Button = React.forwardRef(ButtonBase);
 
-ButtonBase.displayName = 'ButtonBase';
-Button.displayName = 'Button';
+// note that ButtonBase cannot have a displayName because it breaks Storybook
+(Button as NamedExoticComponent).displayName = 'Button';

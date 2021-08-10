@@ -40,7 +40,7 @@ export function Avatar<T extends React.ElementType = 'div'>({
   translations: customTranslations,
   unthemed = false,
   ...props
-}: AvatarProps<T>): React.ReactElement<AvatarProps, T> {
+}: AvatarProps<T>): React.ReactElement<AvatarProps<T>, T> {
   const themeId = useThemeId(initThemeId);
   const color = contrast ? 'contrast' : initColor;
   const Element = as || (actionable ? 'button' : 'div');
