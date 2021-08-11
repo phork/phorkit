@@ -221,9 +221,10 @@ Ghost.args = {
   weight: 'ghost',
 };
 
-export const Link = (args: ButtonProps<'a'>) => <Button<'a'> as="a" {...args} />;
+export const Link = (args: ButtonProps<'a'>) => <Button<'a'> {...args} />;
 Link.args = {
   ...defaultArgs,
+  as: 'a',
   href: 'https://phorkit.phork.org',
   target: '_blank',
 };

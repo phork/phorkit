@@ -18,6 +18,7 @@ export const parameters = {
   controls: {
     expanded: true,
     matchers: {
+      color: /(.+)Color$/i,
       date: /Date$/,
     },
   },
