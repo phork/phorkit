@@ -1,6 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import imgSrc from '../../../../public/images/avatar.jpg';
 import { Avatar, AvatarProps } from '../Avatar';
 
 export default {
@@ -99,5 +98,5 @@ Initials.args = {
 export const Image = Template.bind({});
 Image.args = {
   ...defaultArgs,
-  imgSrc,
+  imgSrc: '/images/avatar.jpg',
 };

@@ -35,6 +35,8 @@
       "icons/*": ["src/icons/*"],
       "postcss": ["src/postcss"],
       "postcss/*": ["src/postcss/*"],
+      "stories": ["src/stories"],
+      "stories/*": ["src/stories/*"],
       "styles": ["src/styles"],
       "styles/*": ["src/styles/*"],
       "types": ["src/types"],

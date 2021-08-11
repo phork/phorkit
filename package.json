@@ -77,8 +77,8 @@
     "transfer-lib": "rsync -avz --delete --exclude .git --exclude README.md lib/* $npm_config_deploy_lib_path",
     "validate": "npx eslint \"src/**/*.{js,json,ts,tsx}\" && npx stylelint \"src/**/*.css\"",
     "watch": "npx tsc --watch --noEmit --project './tsconfig.json'",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "start-storybook -s ./public -p 6006",
+    "build-storybook": "build-storybook -s ./public"
   },
   "husky": {
     "hooks": {
@@ -228,6 +228,7 @@
     "stylelint-config-recommended": "^4.0.0",
     "ts-jest": "^26.5.4",
     "ts-node": "^9.1.1",
+    "tsconfig-paths-webpack-plugin": "^3.5.1",
     "typescript": "^4.2.3"
   },
   "peerDependencies": {

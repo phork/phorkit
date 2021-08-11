@@ -1,10 +1,6 @@
----
-name: Playground
-route: /playground
----
-
 import { cx } from '@emotion/css';
-import { Playground } from 'docz';
+import { Canvas } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs/blocks';
 import { ArrowDownIcon } from 'icons/ArrowDownIcon';
 import { SearchIcon } from 'icons/SearchIcon';
 import { TimesIcon } from 'icons/TimesIcon';
@@ -16,8 +12,8 @@ import { MoonIcon } from 'icons/internal/MoonIcon';
 import { ColorLooper } from 'docs/helpers/ColorLooper';
 import { Looper } from 'docs/helpers/Looper';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { TimeoutWrapper } from 'docs/helpers/TimeoutWrapper';
+import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 import scrollbar from 'styles/common/Scrollbar.module.css';
 import {
   Avatar,
@@ -40,7 +36,6 @@ import {
   IconText,
   InlinePopover,
   InlineTextTooltip,
-  InlineTooltip,
   InteractiveList,
   Link,
   List,
@@ -80,47 +75,55 @@ import {
   themes,
 } from '../index';
 
-# Playground
+<style>
+  {`
+  h2 {
+    font-family: Roboto,Helvetica,Helvetica Neue,Arial,sans-serif;
+    font-weight: 200;
+    border-bottom: none !important;
+    margin-bottom: 0;
+  }
+`}
+</style>
+
+<Meta title="Playground" />
 
 ## Lots of progress
 
-<Playground>
-  {() => {
-    const getPercent = (min = 20, max = 100) => Math.floor(Math.random() * (max - min + 1) + min);
-    const style = { marginRight: 1, height: 40, '--progress-transition-time': '600ms' };
-    return (
-      <ThemeWrapper withThemeId>
-        {({ themeId }) => (
-          <Flex direction="row" justifyContent="flex-start">
-            <ColorLooper
-              render={({ id }) => (
-                <StateWrapper key={id}>
-                  {({ state: percent, setState: setPercent }) => (
-                    <TimeoutWrapper infinite callback={() => setPercent(getPercent())} milliseconds={600}>
-                      <StyledProgress
-                        floating
-                        orientation="vertical"
-                        percent={percent}
-                        segmentColor={themes[themeId][`color-${id}-L10`]}
-                        size="large"
-                        style={style}
-                      />
-                    </TimeoutWrapper>
-                  )}
-                </StateWrapper>
-              )}
-              themeId={themeId}
-            />
-          </Flex>
-        )}
-      </ThemeWrapper>
-    );
-  }}
-</Playground>
+<Canvas>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => {
+      const getPercent = (min = 20, max = 100) => Math.floor(Math.random() * (max - min + 1) + min);
+      return (
+        <Flex direction="row" justifyContent="flex-start">
+          <ColorLooper
+            render={({ id }) => (
+              <StateWrapper key={id}>
+                {({ state: percent, setState: setPercent }) => (
+                  <TimeoutWrapper infinite callback={() => setPercent(getPercent())} milliseconds={600}>
+                    <StyledProgress
+                      floating
+                      orientation="vertical"
+                      percent={percent}
+                      segmentColor={themes[themeId][`color-${id}-L10`]}
+                      size="large"
+                      style={{ marginRight: 1, height: 40, '--progress-transition-time': '600ms' }}
+                    />
+                  </TimeoutWrapper>
+                )}
+              </StateWrapper>
+            )}
+            themeId={themeId}
+          />
+        </Flex>
+      );
+    }}
+  </ThemeWrapper>
+</Canvas>
 
 ## Popover title
 
-<Playground>
+<Canvas>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <Rhythm mx={8} my={6}>
@@ -144,11 +147,11 @@ import {
       </Rhythm>
     )}
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
 ## Badges on things
 
-<Playground>
+<Canvas>
   <ThemeWrapper>
     <Rhythm m={2}>
       <Button color="primary">
@@ -179,11 +182,9 @@ import {
       </Button>
     </Rhythm>
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
-<div style="height: 50px" />
-
-<Playground>
+<Canvas>
   <ThemeWrapper>
     <div style={{ width: '300px', height: '200px', maxWidth: '100%' }}>
       <Card full hoverable raised style={{ overflow: 'visible' }}>
@@ -215,11 +216,9 @@ import {
       </Card>
     </div>
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
-<div style="height: 50px" />
-
-<Playground>
+<Canvas>
   <ThemeWrapper>
     <Navigation
       animated
@@ -271,11 +270,9 @@ import {
       style={{ maxWidth: '200px' }}
     />
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
-<div style="height: 50px" />
-
-<Playground>
+<Canvas>
   <ThemeWrapper>
     <Toast id="demo-success-toast" level="success" style={{ maxWidth: '100%' }} title="Hello world">
       This is a success toast
@@ -284,13 +281,13 @@ import {
       </Badge>
     </Toast>
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
 ## Tooltips on things
 
-<Playground>
+<Canvas>
   <ThemeWrapper>
-    <InlineTooltip
+    <PortalTooltip
       hoverable={false}
       position="top-center"
       toggler={
@@ -307,13 +304,11 @@ import {
           The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog
         </Typography>
       </ColoredPaper>
-    </InlineTooltip>
+    </PortalTooltip>
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
-<div style="height: 50px" />
-
-<Playground>
+<Canvas>
   <ThemeWrapper>
     <PortalTextTooltip
       hoverable={false}
@@ -334,11 +329,9 @@ import {
       <Typography variants="no-wrap">This field is required</Typography>
     </PortalTextTooltip>
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
-<div style="height: 50px" />
-
-<Playground>
+<Canvas>
   <ThemeWrapper>
     <PortalTextTooltip
       withoutTogglerFocusStyle
@@ -349,11 +342,11 @@ import {
       <Typography variants="no-wrap">You must agree</Typography>
     </PortalTextTooltip>
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
 ## Fancy lists
 
-<Playground>
+<Canvas>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <List as="div" style={{ width: '300px', maxWidth: '100%' }} variant="shadowed">
@@ -367,7 +360,7 @@ import {
             >
               <Flex alignItems="center" direction="row" justifyContent="flex-start">
                 <Avatar
-                  imgSrc="/public/images/avatar.jpg"
+                  imgSrc="/images/avatar.jpg"
                   initials="EC"
                   style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
                 />
@@ -387,11 +380,9 @@ import {
       </List>
     )}
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
-<div style="height: 50px" />
-
-<Playground>
+<Canvas>
   <ThemeWrapper withThemeId style={{ paddingTop: 100, paddingBottom: 100 }}>
     {({ themeId }) => (
       <PortalTooltip
@@ -429,7 +420,7 @@ import {
                 >
                   <Flex alignItems="center" direction="row" justifyContent="flex-start">
                     <Avatar
-                      imgSrc="/public/images/avatar.jpg"
+                      imgSrc="/images/avatar.jpg"
                       initials="EC"
                       style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
                     />
@@ -451,11 +442,11 @@ import {
       </PortalTooltip>
     )}
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
 ## Fancy Textbox
 
-<Playground>
+<Canvas>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <div style={{ width: '300px', maxWidth: '100%' }}>
@@ -498,11 +489,9 @@ import {
       </div>
     )}
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
-<div style={{ height: 50 }} />
-
-<Playground>
+<Canvas>
   <ThemeWrapper>
     <div style={{ width: '300px', maxWidth: '100%' }}>
       <StateWrapper>
@@ -527,11 +516,9 @@ import {
       </StateWrapper>
     </div>
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
-<div style={{ height: 50 }} />
-
-<Playground>
+<Canvas>
   <ThemeWrapper>
     <div style={{ width: '300px', maxWidth: '100%' }}>
       <StateWrapper>
@@ -555,11 +542,11 @@ import {
       </StateWrapper>
     </div>
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
 ## Fancy dropdown
 
-<Playground>
+<Canvas>
   <ThemeWrapper withThemeId>
     {({ themeId }) => {
       const options = [
@@ -572,7 +559,7 @@ import {
         label: ({ selected }) => (
           <Flex flexible alignItems="center" direction="row" justifyContent="flex-start">
             <Avatar
-              imgSrc="/public/images/avatar.jpg"
+              imgSrc="/images/avatar.jpg"
               initials="EC"
               style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
             />
@@ -590,7 +577,7 @@ import {
           <Rhythm px={4}>
             <Flex flexible alignItems="center" direction="row" justifyContent="flex-start">
               <Avatar
-                imgSrc="/public/images/avatar.jpg"
+                imgSrc="/images/avatar.jpg"
                 initials="EC"
                 style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
               />
@@ -633,11 +620,9 @@ import {
       );
     }}
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
-<div style={{ height: 50 }} />
-
-<Playground>
+<Canvas>
   <ThemeWrapper withThemeId>
     {({ themeId }) => {
       const options = [
@@ -650,7 +635,7 @@ import {
         label: ({ selected }) => (
           <Flex flexible alignItems="center" direction="row" justifyContent="flex-start">
             <Avatar
-              imgSrc="/public/images/avatar.jpg"
+              imgSrc="/images/avatar.jpg"
               initials="EC"
               size="xlarge"
               style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
@@ -672,7 +657,7 @@ import {
           <Rhythm pl={1} pr={4}>
             <Flex flexible alignItems="center" direction="row" justifyContent="flex-start">
               <Avatar
-                imgSrc="/public/images/avatar.jpg"
+                imgSrc="/images/avatar.jpg"
                 initials="EC"
                 size="xlarge"
                 style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
@@ -722,11 +707,11 @@ import {
       );
     }}
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
 ## Fancy toast
 
-<Playground>
+<Canvas>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <Toast immediate id="demo-triangle-toast" level="info" title="Hello world">
@@ -748,11 +733,11 @@ import {
       </Toast>
     )}
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
 ## Fancy cards
 
-<Playground>
+<Canvas>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <Rhythm grouped m={2} style={{ width: '300px' }}>
@@ -816,11 +801,9 @@ import {
       </Rhythm>
     )}
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
-<div style={{ height: 50 }} />
-
-<Playground>
+<Canvas>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <Rhythm grouped m={2} style={{ width: '200px', maxWidth: '100%' }}>
@@ -828,7 +811,7 @@ import {
           <div style={{ position: 'relative' }}>
             <img
               alt="Card hero"
-              src="/public/images/avatar.jpg"
+              src="/images/avatar.jpg"
               style={{
                 opacity: 0.3,
                 filter: 'blur(3px) grayscale(1)',
@@ -871,11 +854,11 @@ import {
       </Rhythm>
     )}
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
 ## Fancy tabs
 
-<Playground>
+<Canvas>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <ScaleProvider scale="small">
@@ -892,7 +875,7 @@ import {
                   <React.Fragment>
                     <img
                       alt="Blobbr panel"
-                      src="/public/images/avatar.jpg"
+                      src="/images/avatar.jpg"
                       style={{
                         opacity: 0.1,
                         filter: 'blur(3px) grayscale(1)',
@@ -940,7 +923,7 @@ import {
                       label: ({ selected }) => (
                         <Flex flexible alignItems="center" direction="row" justifyContent="flex-start">
                           <Avatar
-                            imgSrc="/public/images/avatar.jpg"
+                            imgSrc="/images/avatar.jpg"
                             initials="EC"
                             style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
                           />
@@ -994,11 +977,11 @@ import {
       </ScaleProvider>
     )}
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
 ## Fancy icon buttons
 
-<Playground>
+<Canvas>
   <ThemeWrapper>
     <Flex>
       <IconGroup scale="medium">
@@ -1045,12 +1028,12 @@ import {
       </IconGroup>
     </Flex>
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
 ## Banner time
 
-<Playground>
-  <ThemeWrapper style={{ display: 'flex', margin: '-40px', height: 280, maxHeight: 300, overflow: 'hidden' }}>
+<Canvas>
+  <ThemeWrapper style={{ display: 'flex', margin: '-30px -20px', height: 280, maxHeight: 300, overflow: 'hidden' }}>
     <PanelContainer full orientation="horizontal" style={{ borderRadius: 4 }}>
       <StackPanel open position="top">
         <Card raised squared>
@@ -1093,21 +1076,19 @@ import {
       </MainPanel>
     </PanelContainer>
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
-<div style="height: 50px" />
-
-<Playground>
+<Canvas>
   <ThemeWrapper
     style={{
       display: 'flex',
       flexDirection: 'column',
-      margin: '-40px',
+      margin: '-30px -20px',
       height: 280,
       maxHeight: 300,
     }}
   >
-    <BannerContainer style={{ borderTopLeftRadius: 4, borderTopRightRadius: 4 }}>
+    <BannerContainer style={{ borderTopLeftRadius: 4, borderTopRightRadius: 4, overflow: 'hidden' }}>
       <Banner immediate level="warning" style={{ height: 50 }}>
         This is a simple warning banner because something concerning happened. Meh.
       </Banner>
@@ -1133,11 +1114,11 @@ import {
       />
     </Paper>
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
 ## Login modal
 
-<Playground>
+<Canvas>
   <ThemeWrapper>
     <Modals>
       <ModalConsumer>
@@ -1229,11 +1210,11 @@ import {
       </ModalConsumer>
     </Modals>
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
 ## Search dropover
 
-<Playground>
+<Canvas>
   <ThemeWrapper>
     <StateWrapper>
       {({ state: searchTerm, setState: setSearchTerm }) => (
@@ -1268,14 +1249,14 @@ import {
       )}
     </StateWrapper>
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
 ## Typography
 
-<Playground>
+<Canvas>
   <ThemeWrapper>
     <Typography as={Link} href="#typography" volume="quietest">
       Typography as Link
     </Typography>
   </ThemeWrapper>
-</Playground>
+</Canvas>
