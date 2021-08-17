@@ -4,7 +4,7 @@ import { Button, ButtonProps } from './Button';
 import { ButtonElementType } from './types';
 
 export type StyledButtonProps<T extends ButtonElementType = 'button'> = MergeProps<
-  Omit<ButtonProps<T>, 'width'>,
+  ButtonProps<T>,
   {
     primaryColor?: string;
     inverseColor?: string;

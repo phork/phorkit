@@ -6,10 +6,11 @@ import { SpinnerIcon } from '../../../icons/SpinnerIcon';
 import { ButtonProps, Button } from '../Button';
 
 export default {
-  title: 'Controls/Button',
+  title: 'Buttons/Button',
   component: Button,
   argTypes: {
     type: {
+      options: ['button', 'submit'],
       control: { type: 'inline-radio' },
     },
 
@@ -100,6 +101,11 @@ export default {
         category: 'Uncommon controls',
       },
     },
+    style: {
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
     unstyled: {
       table: {
         category: 'Uncommon controls',
@@ -148,7 +154,7 @@ export default {
     },
     docs: {
       description: {
-        component: 'The primary component for clickable interactions.',
+        component: 'A simple text button or a link that looks like a button.',
       },
     },
     layout: 'centered',
@@ -193,27 +199,44 @@ Default.args = {
 };
 
 export const Solid = Template.bind({});
+Solid.storyName = 'Weight: Solid';
 Solid.args = {
   ...defaultArgs,
   weight: 'solid',
 };
 
 export const Shaded = Template.bind({});
+Shaded.storyName = 'Weight: Shaded';
 Shaded.args = {
   ...defaultArgs,
   weight: 'shaded',
 };
 
 export const Outlined = Template.bind({});
+Outlined.storyName = 'Weight: Outlined';
 Outlined.args = {
   ...defaultArgs,
   weight: 'outlined',
 };
 
 export const Ghost = Template.bind({});
+Ghost.storyName = 'Weight: Ghost';
 Ghost.args = {
   ...defaultArgs,
   weight: 'ghost',
+};
+
+export const Brick = Template.bind({});
+Brick.storyName = 'Shape: Brick';
+Brick.args = {
+  ...defaultArgs,
+  shape: 'brick',
+};
+
+export const Loading = Template.bind({});
+Loading.args = {
+  ...defaultArgs,
+  loading: true,
 };
 
 export const Link = (args: ButtonProps<'a'>) => <Button<'a'> {...args} />;

@@ -3,7 +3,7 @@ import { MergeProps } from '../../types';
 import { IconButton, IconButtonElementType, IconButtonProps } from './IconButton';
 
 export type StyledIconButtonProps<T extends IconButtonElementType = 'button'> = MergeProps<
-  Omit<IconButtonProps<T>, 'width'>,
+  IconButtonProps<T>,
   {
     primaryColor?: string;
     inverseColor?: string;
@@ -13,7 +13,6 @@ export type StyledIconButtonProps<T extends IconButtonElementType = 'button'> = 
   }
 >;
 
-// @ts-ignore [TODO:ts] WTF
 export const StyledIconButton = styled(IconButton, {
   shouldForwardProp: (prop: string) =>
     !['primaryColor', 'inverseColor', 'hoveredPrimaryColor', 'activePrimaryColor', 'width'].includes(prop),

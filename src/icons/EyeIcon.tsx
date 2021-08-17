@@ -15,4 +15,5 @@ export function EyeIcon({ title, titleId = uuid(), ...initProps }: SvgIconProps)
     </svg>
   );
 }
-EyeIcon.displayName = 'SvgIcon';
+
+EyeIcon.displayName = 'EyeIcon';

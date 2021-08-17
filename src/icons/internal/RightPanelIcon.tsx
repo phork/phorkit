@@ -23,4 +23,5 @@ export function RightPanelIcon({
     </svg>
   );
 }
-RightPanelIcon.displayName = 'SvgIcon';
+
+RightPanelIcon.displayName = 'RightPanelIcon';

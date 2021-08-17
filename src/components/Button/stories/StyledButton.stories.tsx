@@ -1,11 +1,14 @@
+import { action } from '@storybook/addon-actions';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { IconScale } from '../../../types';
+import { SpinnerIcon } from '../../../icons/SpinnerIcon';
 import { StyledButton, StyledButtonProps } from '../StyledButton';
 import buttonStory from './Button.stories';
 
 export default {
   ...buttonStory,
-  title: 'Controls/Button/StyledButton',
+  title: 'Buttons/Button/StyledButton',
   component: StyledButton,
   argTypes: {
     activePrimaryColor: {
@@ -37,7 +40,15 @@ export default {
   },
 } as ComponentMeta<typeof StyledButton>;
 
-const Template: ComponentStory<typeof StyledButton> = args => <StyledButton {...args} />;
+const Template: ComponentStory<(args: StyledButtonProps) => ReturnType<typeof StyledButton>> = ({
+  children,
+  size,
+  ...args
+}) => (
+  <StyledButton {...args} loader={<SpinnerIcon scale={size as IconScale} />} onClick={action('clicked')} size={size}>
+    {children}
+  </StyledButton>
+);
 
 const defaultArgs = {
   active: false,

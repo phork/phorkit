@@ -19,4 +19,5 @@ export function TopPanelIcon({ title, titleId = uuid(), ...initProps }: SvgIconP
     </svg>
   );
 }
-TopPanelIcon.displayName = 'SvgIcon';
+
+TopPanelIcon.displayName = 'TopPanelIcon';

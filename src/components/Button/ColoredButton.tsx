@@ -7,7 +7,7 @@ import { Button, ButtonProps } from './Button';
 import { ButtonElementType } from './types';
 
 export type ColoredButtonProps<T extends ButtonElementType = 'button'> = MergeProps<
-  Omit<ButtonProps<T>, 'width'>,
+  ButtonProps<T>,
   {
     colorId: ThemeColorIds;
     themeId: Theme;
@@ -24,8 +24,11 @@ const StyledButton = styled(Button, {
   --button-inverse-color: ${props => themes[props.themeId][`color-${props.colorId}-contrast` as keyof ThemeColors]};
 `;
 
-export const ColoredButton = React.memo<ColoredButtonProps>(withTheme<ColoredButtonProps>(StyledButton));
-ColoredButton.displayName = 'ColoredButton';
+export const ColoredButton = withTheme<ColoredButtonProps>(StyledButton) as <T extends ButtonElementType = 'button'>(
+  p: ColoredButtonProps<T>,
+) => React.ReactElement<T>;
+
+(ColoredButton as React.NamedExoticComponent).displayName = 'ColoredButton';
 
 StyledButton.defaultProps = {
   unthemed: true,

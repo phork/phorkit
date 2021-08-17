@@ -20,4 +20,5 @@ export function EllipsisIcon({ title, titleId = uuid(), ...initProps }: SvgIconP
     </svg>
   );
 }
-EllipsisIcon.displayName = 'SvgIcon';
+
+EllipsisIcon.displayName = 'EllipsisIcon';

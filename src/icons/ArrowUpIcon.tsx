@@ -19,4 +19,5 @@ export function ArrowUpIcon({ title, titleId = uuid(), ...initProps }: SvgIconPr
     </svg>
   );
 }
-ArrowUpIcon.displayName = 'SvgIcon';
+
+ArrowUpIcon.displayName = 'ArrowUpIcon';

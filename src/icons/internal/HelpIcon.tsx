@@ -19,4 +19,5 @@ export function HelpIcon({ title, titleId = uuid(), ...initProps }: SvgIconProps
     </svg>
   );
 }
-HelpIcon.displayName = 'SvgIcon';
+
+HelpIcon.displayName = 'HelpIcon';
