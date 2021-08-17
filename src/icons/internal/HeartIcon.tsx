@@ -15,4 +15,5 @@ export function HeartIcon({ title, titleId = uuid(), ...initProps }: SvgIconProp
     </svg>
   );
 }
-HeartIcon.displayName = 'SvgIcon';
+
+HeartIcon.displayName = 'HeartIcon';

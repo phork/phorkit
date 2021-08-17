@@ -15,4 +15,5 @@ export function EmailIcon({ title, titleId = uuid(), ...initProps }: SvgIconProp
     </svg>
   );
 }
-EmailIcon.displayName = 'SvgIcon';
+
+EmailIcon.displayName = 'EmailIcon';

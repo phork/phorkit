@@ -82,18 +82,21 @@ Default.args = {
 };
 
 export const Point = Template.bind({});
+Point.storyName = 'Shape: Point';
 Point.args = {
   ...defaultArgs,
   shape: 'point',
 };
 
 export const Marker = Template.bind({});
+Marker.storyName = 'Shape: Marker';
 Marker.args = {
   ...defaultArgs,
   shape: 'marker',
 };
 
 export const Count = Template.bind({});
+Count.storyName = 'Shape: Count';
 Count.args = {
   ...defaultArgs,
   children: 99,
@@ -101,6 +104,7 @@ Count.args = {
 };
 
 export const Label = Template.bind({});
+Label.storyName = 'Shape: Label';
 Label.args = {
   ...defaultArgs,
   children: 'Beta',

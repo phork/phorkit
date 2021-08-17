@@ -4,46 +4,37 @@ import React from 'react';
 import { IconScale } from '../../../types';
 import { ThemeColorIds } from '../../../config/themes';
 import { SpinnerIcon } from '../../../icons/SpinnerIcon';
-import { getPrimaryColorIds } from '../../../stories/helpers/utils';
-import { ColoredButton, ColoredButtonProps } from '../ColoredButton';
-import buttonStory from './Button.stories';
+import { BlobbrIcon } from '../../../icons/internal/BlobbrIcon';
+import { ColoredIconTextButton, ColoredIconTextButtonProps } from '../ColoredIconTextButton';
+import buttonStory from './ColoredButton.stories';
 
 export default {
   ...buttonStory,
-  title: 'Buttons/Button/ColoredButton',
-  component: ColoredButton,
-  argTypes: {
-    colorId: {
-      options: getPrimaryColorIds('light'),
-      control: { type: 'select' },
-      table: {
-        category: 'Color controls',
-      },
-    },
-    ...buttonStory.argTypes,
-  },
-} as ComponentMeta<typeof ColoredButton>;
+  title: 'Buttons/IconTextButton/ColoredIconTextButton',
+  component: ColoredIconTextButton,
+} as ComponentMeta<typeof ColoredIconTextButton>;
 
-const Template: ComponentStory<(args: ColoredButtonProps) => ReturnType<typeof ColoredButton>> = ({
+const Template: ComponentStory<(args: ColoredIconTextButtonProps) => ReturnType<typeof ColoredIconTextButton>> = ({
   children,
   size,
   ...args
 }) => (
-  <ColoredButton<'button'>
+  <ColoredIconTextButton<'button'>
     {...args}
     as="button"
+    icon={<BlobbrIcon scale={size as IconScale} />}
     loader={<SpinnerIcon scale={size as IconScale} />}
     onClick={action('clicked')}
     size={size}
   >
     {children}
-  </ColoredButton>
+  </ColoredIconTextButton>
 );
 
 const defaultArgs = {
   active: false,
-  align: 'center' as ColoredButtonProps['align'],
-  as: 'button' as ColoredButtonProps['as'],
+  align: 'center' as ColoredIconTextButtonProps['align'],
+  as: 'button' as ColoredIconTextButtonProps['as'],
   children: 'Click me',
   color: undefined,
   colorId: 'P60' as ThemeColorIds,
@@ -53,12 +44,12 @@ const defaultArgs = {
   loading: false,
   noHeight: false,
   noPadding: false,
-  shape: 'pill' as ColoredButtonProps['shape'],
-  size: 'medium' as ColoredButtonProps['size'],
-  type: 'button' as ColoredButtonProps['type'],
+  shape: 'pill' as ColoredIconTextButtonProps['shape'],
+  size: 'medium' as ColoredIconTextButtonProps['size'],
+  type: 'button' as ColoredIconTextButtonProps['type'],
   unstyled: false,
   unthemed: false,
-  weight: 'solid' as ColoredButtonProps['weight'],
+  weight: 'solid' as ColoredIconTextButtonProps['weight'],
 };
 
 export const Default = Template.bind({});

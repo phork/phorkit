@@ -12,4 +12,5 @@ export function CheckIcon({ title, titleId = uuid(), ...initProps }: SvgIconProp
     </svg>
   );
 }
-CheckIcon.displayName = 'SvgIcon';
+
+CheckIcon.displayName = 'CheckIcon';

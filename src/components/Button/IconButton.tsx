@@ -6,7 +6,7 @@ import styles from './styles/Button.module.css';
 import { Button, ButtonProps } from './Button';
 import { ButtonElementType } from './types';
 
-export type IconButtonShape = 'round' | 'square';
+export type IconButtonShape = 'circle' | 'square';
 export type IconButtonElementType = ButtonElementType;
 
 type RenderFromPropProps = {};
@@ -19,7 +19,7 @@ export interface LocalIconButtonProps {
 export type IconButtonProps<T extends ButtonElementType = 'button'> = MergeProps<ButtonProps<T>, LocalIconButtonProps>;
 
 const shapeMap = {
-  round: 'pill',
+  circle: 'pill',
   square: 'brick',
 };
 

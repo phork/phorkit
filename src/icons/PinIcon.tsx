@@ -15,4 +15,5 @@ export function PinIcon({ title, titleId = uuid(), ...initProps }: SvgIconProps)
     </svg>
   );
 }
-PinIcon.displayName = 'SvgIcon';
+
+PinIcon.displayName = 'PinIcon';

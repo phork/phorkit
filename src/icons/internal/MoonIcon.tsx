@@ -16,4 +16,5 @@ export function MoonIcon({ title, titleId = uuid(), ...initProps }: SvgIconProps
     </svg>
   );
 }
-MoonIcon.displayName = 'SvgIcon';
+
+MoonIcon.displayName = 'MoonIcon';

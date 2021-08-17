@@ -27,4 +27,5 @@ export function ArrowDoubleRightIcon({
     </svg>
   );
 }
-ArrowDoubleRightIcon.displayName = 'SvgIcon';
+
+ArrowDoubleRightIcon.displayName = 'ArrowDoubleRightIcon';

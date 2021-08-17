@@ -19,4 +19,5 @@ export function BlobbrIcon({ title, titleId = uuid(), ...initProps }: SvgIconPro
     </svg>
   );
 }
-BlobbrIcon.displayName = 'SvgIcon';
+
+BlobbrIcon.displayName = 'BlobbrIcon';

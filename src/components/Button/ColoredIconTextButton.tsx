@@ -4,16 +4,17 @@ import { MergeProps, Theme } from '../../types';
 import { themes, ThemeColors, ThemeColorIds } from '../../config';
 import { withTheme } from '../../context/Theme';
 import { IconTextButton, IconTextButtonElementType, IconTextButtonProps } from './IconTextButton';
+import { ButtonElementType } from './types';
 
 export type ColoredIconTextButtonProps<T extends IconTextButtonElementType = 'button'> = MergeProps<
-  Omit<IconTextButtonProps<T>, 'width'>,
+  IconTextButtonProps<T>,
   {
     colorId: ThemeColorIds;
     themeId: Theme;
   }
 >;
 
-// @ts-ignore [TODO:ts] WTF, revisit casting
+// [TODO:ts] revisit casting
 const StyledIconTextButton = styled(IconTextButton, {
   shouldForwardProp: (prop: string): boolean => !['colorId', 'themeId'].includes(prop),
 })<ColoredIconTextButtonProps>`
@@ -23,10 +24,13 @@ const StyledIconTextButton = styled(IconTextButton, {
   --button-inverse-color: ${props => themes[props.themeId][`color-${props.colorId}-contrast` as keyof ThemeColors]};
 `;
 
-export const ColoredIconTextButton = React.memo<ColoredIconTextButtonProps>(
-  withTheme<ColoredIconTextButtonProps>(StyledIconTextButton),
-);
-ColoredIconTextButton.displayName = 'ColoredIconTextButton';
+export const ColoredIconTextButton = withTheme<ColoredIconTextButtonProps>(StyledIconTextButton) as <
+  T extends ButtonElementType = 'button'
+>(
+  p: ColoredIconTextButtonProps<T>,
+) => React.ReactElement<T>;
+
+(ColoredIconTextButton as React.NamedExoticComponent).displayName = 'ColoredIconTextButton';
 
 StyledIconTextButton.defaultProps = {
   unthemed: true,

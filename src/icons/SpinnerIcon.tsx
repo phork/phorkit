@@ -24,4 +24,5 @@ export function SpinnerIcon({ title, titleId = uuid(), ...initProps }: SvgIconPr
     </svg>
   );
 }
-SpinnerIcon.displayName = 'SvgIcon';
+
+SpinnerIcon.displayName = 'SpinnerIcon';

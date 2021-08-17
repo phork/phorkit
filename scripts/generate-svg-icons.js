@@ -22,7 +22,9 @@ const generateIcon = ({ fileName, src, dst, level }) => {
     titleProp: true,
     template
   }, { componentName }).then(jsCode => {
-    writeFileSyncRecursive(`${dst}/${componentName}.tsx`, jsCode.replaceAll('../', '../'.repeat(level)));
+    writeFileSyncRecursive(`${dst}/${componentName}.tsx`, `${jsCode.replaceAll('../', '../'.repeat(level))}
+${componentName}.displayName = '${componentName}';
+    `);
   });
 
   return `export { ${componentName} } from './${componentName}';`

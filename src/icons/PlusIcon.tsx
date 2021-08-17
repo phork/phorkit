@@ -13,4 +13,5 @@ export function PlusIcon({ title, titleId = uuid(), ...initProps }: SvgIconProps
     </svg>
   );
 }
-PlusIcon.displayName = 'SvgIcon';
+
+PlusIcon.displayName = 'PlusIcon';
