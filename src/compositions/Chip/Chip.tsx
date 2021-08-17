@@ -16,7 +16,12 @@ export function Chip({ avatar, icon, size = 'medium', text, ...props }: ChipProp
       flush
       label={
         <div className={cx(styles.chip, size && styles[`chip--${size}`])}>
-          <Avatar className={cx(styles.chipImage, styles[`chipImage--${size}`])} size="custom" {...avatar} />
+          <Avatar<'div'>
+            as="div"
+            className={cx(styles.chipImage, styles[`chipImage--${size}`])}
+            size="custom"
+            {...avatar}
+          />
           <div className={styles.chipText}>{text}</div>
           {icon && <div className={styles.chipIcon}>{icon}</div>}
         </div>

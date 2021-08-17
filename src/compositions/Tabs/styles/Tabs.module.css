@@ -179,7 +179,7 @@ button.tab {
     pointer-events: none;
 
     & > .tab__content {
-      opacity: 0.5;
+      opacity: $opacity-disabled;
     }
   }
 }

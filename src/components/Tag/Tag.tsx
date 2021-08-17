@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { AsReactType, MergeElementProps, ThemeProps } from '../../types';
+import { AsType, MergeElementPropsWithoutRef, ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Tag.module.css';
 
@@ -19,7 +19,7 @@ export interface LocalTagProps extends ThemeProps {
   variant?: TagVariant;
 }
 
-export type TagProps<T extends TagElementType = 'div'> = AsReactType<T> & MergeElementProps<T, LocalTagProps>;
+export type TagProps<T extends TagElementType = 'div'> = AsType<T> & MergeElementPropsWithoutRef<T, LocalTagProps>;
 
 export function TagBase<T extends TagElementType = 'div'>(
   {
@@ -65,7 +65,9 @@ export function TagBase<T extends TagElementType = 'div'>(
   );
 }
 
-export const Tag = React.forwardRef(TagBase) as typeof TagBase;
+export const Tag = React.forwardRef(TagBase) as <T extends TagElementType = 'div'>(
+  p: TagProps<T> & { ref?: React.Ref<HTMLElementTagNameMap[T]> },
+) => React.ReactElement<T>;
 
-TagBase.displayName = 'TagBase';
-Tag.displayName = 'Tag';
+// note that the base element cannot have a displayName because it breaks Storybook
+(Tag as React.NamedExoticComponent).displayName = 'Tag';

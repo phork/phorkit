@@ -31,7 +31,7 @@ export type CheckboxGroupProps<V extends CheckboxValue = string> = MergeElementP
 >;
 export type CheckboxGroupRef = React.ForwardedRef<HTMLFieldSetElement>;
 
-function CheckboxGroupBase<V extends CheckboxValue = string>(
+export function CheckboxGroupBase<V extends CheckboxValue = string>(
   {
     checkboxes,
     className,
@@ -83,7 +83,7 @@ function CheckboxGroupBase<V extends CheckboxValue = string>(
               themeId={themeId}
               value={checkboxValue}
               variant={variant}
-              {...checkboxProps}
+              {...(checkboxProps as Omit<CheckboxProps<V>, 'onChange'>)}
             >
               {label}
             </Checkbox>
@@ -93,7 +93,9 @@ function CheckboxGroupBase<V extends CheckboxValue = string>(
   );
 }
 
-export const CheckboxGroup = React.forwardRef(CheckboxGroupBase) as typeof CheckboxGroupBase;
+export const CheckboxGroup = React.forwardRef(CheckboxGroupBase) as <V extends CheckboxValue = string>(
+  p: CheckboxGroupProps<V> & { ref?: React.Ref<HTMLFieldSetElement> },
+) => React.ReactElement<HTMLFieldSetElement>;
 
-CheckboxGroupBase.displayName = 'CheckboxGroupBase';
-CheckboxGroup.displayName = 'CheckboxGroup';
+// note that the base element cannot have a displayName because it breaks Storybook
+(CheckboxGroup as React.NamedExoticComponent).displayName = 'CheckboxGroup';

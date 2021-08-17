@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { Orientation, SemanticColor, ThemeProps } from '../../types';
+import { Orientation, SemanticColor, ThemeProps, Volume } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Progress.module.css';
 
@@ -16,12 +16,12 @@ export interface ProgressProps extends React.HTMLAttributes<HTMLDivElement>, The
   color?: SemanticColor;
   data?: ProgressSegment[];
   floating?: boolean;
+  orientation?: Orientation;
   percent?: number;
   pill?: boolean;
-  quiet?: boolean;
   size?: 'small' | 'medium' | 'large';
   spaced?: boolean;
-  orientation?: Orientation;
+  volume?: Volume;
 }
 
 export function Progress({
@@ -35,11 +35,11 @@ export function Progress({
   orientation = 'horizontal',
   percent = 0,
   pill = false,
-  quiet = false,
   size = 'medium',
   spaced = false,
   themeId: initThemeId,
   unthemed = false,
+  volume,
   ...props
 }: ProgressProps): React.ReactElement<ProgressProps, 'div'> {
   const themeId = useThemeId(initThemeId);
@@ -73,9 +73,9 @@ export function Progress({
         contrast && styles['progress--contrast'],
         floating && styles['progress--floating'],
         pill && styles['progress--pill'],
-        quiet && styles['progress--quiet'],
         size && styles[`progress--${size}`],
         themeId && !unthemed && styles[`progress--${themeId}`],
+        volume && styles[`progress--${volume}`],
         color && !unthemed && styles[`progress--${color}`],
         className,
       )}

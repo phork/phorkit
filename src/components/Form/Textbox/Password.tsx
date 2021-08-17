@@ -42,7 +42,7 @@ export interface LocalPasswordProps {
 export type PasswordProps = MergeProps<TextboxProps, LocalPasswordProps>;
 export type PasswordRef = React.ForwardedRef<HTMLInputElement>;
 
-function PasswordBase(
+export function PasswordBase(
   {
     disabled,
     iconHide,

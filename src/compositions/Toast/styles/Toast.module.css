@@ -29,7 +29,7 @@
   }
 
   @mixin themed .toast {
-    box-shadow: $theme-box-shadow-0;
+    box-shadow: $theme-box-shadow-10;
 
     &:not(.toast--colored) {
       background-color: $theme-primary-palette-background-color;
@@ -81,7 +81,7 @@
       bottom: 0;
       content: '';
       left: 0;
-      opacity: 0.5;
+      opacity: $opacity-quiet;
       position: absolute;
       right: 0;
       top: 0;

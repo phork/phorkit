@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { AsReactType, MergeElementProps, ThemeProps } from '../../types';
+import { AsType, MergeElementProps, ThemeProps } from '../../types';
 import { useAccessibility } from '../../context/Accessibility';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/List.module.css';
@@ -8,9 +8,8 @@ import { ListItem, ListItemProps } from './ListItem';
 import { ListItemElementMap, ListElementType } from './types';
 
 export const listItemElementMap: ListItemElementMap = {
-  ul: 'li',
-  div: 'div',
-  span: 'span',
+  ul: 'li' as ListItemElementMap['ul'],
+  div: 'div' as ListItemElementMap['div'],
 };
 
 export interface LocalListProps extends ThemeProps {
@@ -34,9 +33,9 @@ export interface LocalListProps extends ThemeProps {
   variant?: 'bordered' | 'shadowed' | 'divided' | 'unboxed';
 }
 
-export type ListProps<T extends ListElementType = 'ul'> = AsReactType<T> & MergeElementProps<T, LocalListProps>;
+export type ListProps<T extends ListElementType = 'ul'> = AsType<T> & MergeElementProps<T, LocalListProps>;
 
-function ListBase<T extends ListElementType = 'ul'>(
+export function ListBase<T extends ListElementType = 'ul'>(
   {
     as,
     children,
@@ -90,13 +89,13 @@ function ListBase<T extends ListElementType = 'ul'>(
     },
     items?.map(({ id, label, ...item }) => (
       <ListItem<ListItemElementMap[T]>
-        as={listItemElement}
         inactive={inactive}
         key={id}
         mimicSelectOnFocus={mimicSelectOnFocus}
         transparent={transparent}
         unstyled={unstyled}
         {...(item as ListItemProps<ListItemElementMap[T]>)}
+        as={listItemElement}
       >
         {label}
       </ListItem>
@@ -105,7 +104,9 @@ function ListBase<T extends ListElementType = 'ul'>(
   );
 }
 
-export const List = React.forwardRef(ListBase) as typeof ListBase;
+export const List = React.forwardRef(ListBase) as <T extends ListElementType = 'ul'>(
+  p: ListProps<T> & { ref?: React.Ref<HTMLElementTagNameMap[T]> },
+) => React.ReactElement<T>;
 
-ListBase.displayName = 'ListBase';
-List.displayName = 'List';
+// note that the base element cannot have a displayName because it breaks Storybook
+(List as React.NamedExoticComponent).displayName = 'List';

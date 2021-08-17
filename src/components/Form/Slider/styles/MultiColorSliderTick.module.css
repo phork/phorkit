@@ -1,6 +1,6 @@
 .multiColorSliderTick {
   &.is-inactive {
-    opacity: 0.3;
+    opacity: $opacity-quietest;
   }
 
   &.multiColorSliderTick--divider {

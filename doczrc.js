@@ -44,6 +44,8 @@ export default {
   base: '/',
   src: './src',
   public: './public',
+  files: process.env.DOCZ_FILES || '**/docs/*.mdx',
+  ignore: ['**/stories/*', '**/storybook/*', '**/@storybook/*'],
   menu: [
     'Introduction',
     'Colors',

@@ -46,25 +46,10 @@ export default {
         category: 'Uncommon controls',
       },
     },
-
-    className: {
-      table: {
-        disable: true,
-      },
-    },
-    themeId: {
-      table: {
-        disable: true,
-      },
-    },
-    translations: {
-      table: {
-        disable: true,
-      },
-    },
   },
   parameters: {
     controls: {
+      exclude: ['className', 'themeId', 'translations'],
       sort: 'requiredFirst',
     },
     docs: {

@@ -112,7 +112,7 @@ export type TextboxProps = MergeProps<
 
 export type TextboxRef = React.ForwardedRef<HTMLInputElement>;
 
-function TextboxBase(
+export function TextboxBase(
   {
     alwaysShowFormatting,
     alwaysTriggerBlur,

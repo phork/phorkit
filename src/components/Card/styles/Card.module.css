@@ -33,24 +33,24 @@
   border-radius: 0;
 }
 
-.card--raised-0 {
-  @mixin addRaisedAndHoverable 0, 10;
-}
-
 .card--raised-10 {
   @mixin addRaisedAndHoverable 10, 20;
 }
 
 .card--raised-20 {
-  @mixin addRaised 20, 100;
+  @mixin addRaisedAndHoverable 20, 30;
+}
+
+.card--raised-30 {
+  @mixin addRaisedAndHoverable 30, 40;
+}
+
+.card--raised-40 {
+  @mixin addRaisedAndHoverable 40, 20;
 }
 
 .card--raised-100 {
-  @mixin addRaisedAndHoverable 100, 10;
-}
-
-.card--raised-200 {
-  @mixin addRaised 200, 0;
+  @mixin addRaised 100, 0;
 }
 
 .card--magnify {

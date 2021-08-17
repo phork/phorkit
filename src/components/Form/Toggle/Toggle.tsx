@@ -106,7 +106,8 @@ export function ToggleBase(
         />
       </div>
       {children && (
-        <Label
+        <Label<'div'>
+          as="div"
           className={styles.toggleLabel}
           contrast={contrast}
           disabled={disabled}

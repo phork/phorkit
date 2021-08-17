@@ -12,7 +12,7 @@ export interface ControlledDropdownProps extends Omit<DropdownProps, 'reducer'> 
   initialSelected: DropdownOption[];
 }
 
-function ControlledDropdownBase(
+export function ControlledDropdownBase(
   { initialSelected, options, ...props }: ControlledDropdownProps,
   forwardedRef: React.ForwardedRef<DropdownHandles>,
 ): React.ReactElement<ControlledDropdownProps, 'div'> {
@@ -24,7 +24,7 @@ function ControlledDropdownBase(
   return <Dropdown options={options} reducer={reducer} ref={forwardedRef} {...props} />;
 }
 
-export const ControlledDropdown = React.forwardRef(ControlledDropdownBase) as typeof ControlledDropdownBase;
+export const ControlledDropdown = React.forwardRef(ControlledDropdownBase);
 
 ControlledDropdownBase.displayName = 'ControlledDropdownBase';
 ControlledDropdown.displayName = 'ControlledDropdown';

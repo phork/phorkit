@@ -1,4 +1,4 @@
-@define-mixin addRaised $raisedLevel: 0 {
+@define-mixin addRaised $raisedLevel: 10 {
   &.card--light {
     @mixin raisedShadow light, $raisedLevel;
   }
@@ -8,7 +8,7 @@
   }
 }
 
-@define-mixin addRaisedAndHoverable $raisedLevel: 0, $hoverableLevel: 10 {
+@define-mixin addRaisedAndHoverable $raisedLevel: 10, $hoverableLevel: 20 {
   @mixin addRaised $raisedLevel;
 
   &.card--hoverable {

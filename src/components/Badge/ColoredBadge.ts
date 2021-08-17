@@ -18,7 +18,7 @@ const StyledBadge = styled(Badge, {
   --badge-text-color: ${props => themes[props.themeId][`color-${props.colorId}-contrast` as keyof ThemeColors]};
 `;
 
-export const ColoredBadge = React.memo<ColoredBadgeProps>(withTheme(StyledBadge));
+export const ColoredBadge = React.memo<ColoredBadgeProps>(withTheme<ColoredBadgeProps>(StyledBadge));
 ColoredBadge.displayName = 'ColoredBadge';
 
 StyledBadge.defaultProps = {

@@ -43,7 +43,7 @@ export type FormboxContainerProps<T extends FormboxContainerElementType> = AsTyp
  * container and accepts the form input and optional icons as its
  * children.
  */
-function FormboxContainerBase<T extends FormboxContainerElementType>(
+export function FormboxContainerBase<T extends FormboxContainerElementType>(
   {
     as,
     autoFilled = false,
@@ -136,7 +136,9 @@ function FormboxContainerBase<T extends FormboxContainerElementType>(
   );
 }
 
-export const FormboxContainer = React.memo(React.forwardRef(FormboxContainerBase)) as typeof FormboxContainerBase;
+export const FormboxContainer = React.forwardRef(FormboxContainerBase) as <T extends FormboxContainerElementType>(
+  p: FormboxContainerProps<T> & { ref?: React.Ref<HTMLElementTagNameMap[T]> },
+) => React.ReactElement<T>;
 
-FormboxContainerBase.displayName = 'FormboxContainerBase';
-FormboxContainer.displayName = 'FormboxContainer';
+// note that the base element cannot have a displayName because it breaks Storybook
+(FormboxContainer as React.NamedExoticComponent).displayName = 'FormboxContainer';

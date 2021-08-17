@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { AsReactType, MergeProps } from '../../types';
+import { AsType, MergeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import { Button, ButtonElementType, ButtonProps } from '../../components/Button';
 
@@ -11,19 +11,22 @@ export interface LocalPaginationPageProps {
   page: number;
 }
 
-export type PaginationPageProps<T extends ButtonElementType = 'button'> = AsReactType<T> &
+export type PaginationPageProps<T extends ButtonElementType = 'button'> = AsType<T> &
   MergeProps<Omit<ButtonProps<T>, 'as' | 'children'>, LocalPaginationPageProps>;
 
-export function PaginationPage<T extends ButtonElementType = 'button'>({
-  active = false,
-  as,
-  disabled = false,
-  href,
-  onChangePage,
-  page,
-  themeId: initThemeId,
-  ...props
-}: PaginationPageProps<T>): ReturnType<typeof Button> {
+export function PaginationPageBase<T extends ButtonElementType = 'button'>(
+  {
+    active = false,
+    as,
+    disabled = false,
+    href,
+    onChangePage,
+    page,
+    themeId: initThemeId,
+    ...props
+  }: PaginationPageProps<T>,
+  forwardedRef: React.ForwardedRef<HTMLElementTagNameMap[T]>,
+): ReturnType<typeof Button> {
   const themeId = useThemeId(initThemeId);
 
   const handleClick = useCallback(() => {
@@ -32,16 +35,22 @@ export function PaginationPage<T extends ButtonElementType = 'button'>({
 
   return (
     <Button<T>
-      as={as}
       disabled={disabled}
       href={href}
       onClick={handleClick}
+      ref={forwardedRef}
       themeId={themeId}
       {...((props as unknown) as ButtonProps<T>)}
+      as={as}
     >
       {page}
     </Button>
   );
 }
 
-PaginationPage.displayName = 'PaginationPage';
+export const PaginationPage = React.forwardRef(PaginationPageBase) as <T extends ButtonElementType = 'button'>(
+  p: PaginationPageProps<T> & { ref?: React.Ref<HTMLElementTagNameMap[T]> },
+) => React.ReactElement<T>;
+
+// note that the base element cannot have a displayName because it breaks Storybook
+(PaginationPageBase as React.NamedExoticComponent).displayName = 'PaginationPageBase';

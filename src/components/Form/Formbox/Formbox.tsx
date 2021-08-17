@@ -9,7 +9,7 @@ import { RenderFromPropElement } from '../../../utils/renderFromProp';
 import { PencilSlashIcon } from '../../../icons/PencilSlashIcon';
 import { FormboxContainer, FormboxContainerProps } from './FormboxContainer';
 import { FormboxIcon, FormboxIconRenderProps } from './FormboxIcon';
-import { FormboxContainerElementType, FormboxSize, FormboxVariant } from './types';
+import { FormboxSize, FormboxVariant } from './types';
 
 export type FormboxTranslations = {
   readOnlyLabel: string;
@@ -26,7 +26,7 @@ export type FormboxRenderInput = (props: {
   variant: FormboxVariant;
 }) => React.ReactElement<HTMLElement>;
 
-export interface FormboxProps extends Omit<FormboxContainerProps<'label'>, 'children' | 'id'>, ThemeProps {
+export interface FormboxProps extends Omit<FormboxContainerProps<'label'>, 'as' | 'children' | 'id'>, ThemeProps {
   /** alwaysTriggerFocus means the a focus transfer within the formbox will trigger the blur event */
   alwaysTriggerBlur?: boolean;
   /** alwaysTriggerFocus means the a focus transfer within the formbox will trigger the focus event */
@@ -53,7 +53,7 @@ export interface FormboxProps extends Omit<FormboxContainerProps<'label'>, 'chil
   visuallyFocused?: boolean;
 }
 
-function FormboxBase<T extends FormboxContainerElementType>(
+export function FormboxBase(
   {
     alwaysTriggerBlur = false,
     alwaysTriggerFocus = false,
@@ -133,7 +133,7 @@ function FormboxBase<T extends FormboxContainerElementType>(
       validity={validity}
       variant={variant}
       width={width}
-      {...props}
+      {...((props as unknown) as Omit<FormboxContainerProps<'label'>, 'as' | 'type'>)}
     >
       {iconBefore && (
         <FormboxIcon
@@ -171,7 +171,7 @@ function FormboxBase<T extends FormboxContainerElementType>(
   );
 }
 
-export const Formbox = React.forwardRef(FormboxBase) as typeof FormboxBase;
+export const Formbox = React.forwardRef(FormboxBase);
 
 FormboxBase.displayName = 'FormboxBase';
 Formbox.displayName = 'Formbox';

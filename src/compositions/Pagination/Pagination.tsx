@@ -59,7 +59,7 @@ export interface LocalPaginationProps extends ThemeProps {
   justify?: 'start' | 'center' | 'end';
   onChangePage?: (page: number) => void;
   page: number;
-  pageLabelProps?: TypographyProps;
+  pageLabelProps?: Omit<TypographyProps<'div'>, 'as'>;
   pageLinks?: number;
   pageSize: number;
   style?: FlexProps['style'];
@@ -134,7 +134,7 @@ export function Pagination({
     <ErrorBoundary>
       <Flex inflexible alignItems="center" direction="row" justifyContent={justification[justify]} wrap={false}>
         {(withPageLabel || withPageAndTotalLabel) && (
-          <Typography {...pageLabelProps}>
+          <Typography<'div'> as="div" {...pageLabelProps}>
             {substituteTranslationArgs(
               translations[withPageAndTotalLabel ? 'pageLabel' : 'pageAndTotalLabel'],
               page,

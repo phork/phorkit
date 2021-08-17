@@ -34,7 +34,15 @@
 }
 
 .progress--quiet {
-  opacity: 0.3;
+  opacity: $opacity-quiet;
+}
+
+.progress--quieter {
+  opacity: $opacity-quieter;
+}
+
+.progress--quietest {
+  opacity: $opacity-quietest;
 }
 
 .progress--small {

@@ -7,6 +7,7 @@ import styles from './styles/Divider.module.css';
 export interface DividerProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
   className?: string;
   orientation?: Orientation;
+  style?: React.CSSProperties;
   variant?: SequentialVariant;
   volume?: Volume;
 }

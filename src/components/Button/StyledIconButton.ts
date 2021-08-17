@@ -26,3 +26,7 @@ export const StyledIconButton = styled(IconButton, {
 `;
 
 StyledIconButton.displayName = 'StyledIconButton';
+
+StyledIconButton.defaultProps = {
+  unthemed: true,
+};

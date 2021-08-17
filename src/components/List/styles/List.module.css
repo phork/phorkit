@@ -91,7 +91,7 @@ ul.unlist {
       pointer-events: none;
 
       .listItem__content {
-        opacity: 0.5;
+        opacity: $opacity-disabled;
       }
     }
 

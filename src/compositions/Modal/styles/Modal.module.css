@@ -23,7 +23,7 @@
 
   &.modal--light {
     background-color: $light-primary-palette-background-color;
-    box-shadow: $light-box-shadow-0;
+    box-shadow: $light-box-shadow-10;
     color: $light-primary-palette-text-color;
 
     --modal-scrollbar-thumb-color: $light-primary-scrollbar-thumb-color;
@@ -31,7 +31,7 @@
 
   &.modal--dark {
     background-color: $dark-primary-palette-background-color;
-    box-shadow: $dark-box-shadow-0;
+    box-shadow: $dark-box-shadow-10;
     color: $dark-primary-palette-text-color;
 
     --modal-scrollbar-thumb-color: $dark-primary-scrollbar-thumb-color;

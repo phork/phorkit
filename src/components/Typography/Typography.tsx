@@ -1,5 +1,5 @@
 import { cx } from '@emotion/css';
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import { AsReactType, HorizontalPosition, MergeElementPropsWithoutRef, Theme, Volume } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Typography.module.css';
@@ -51,7 +51,7 @@ export interface LocalTypographyProps {
     | '6xlarge'
     | '7xlarge'
     | '8xlarge';
-  style?: CSSProperties;
+  style?: React.CSSProperties;
   themeId?: Theme;
   weight?: 'lighter' | 'light' | 'regular' | 'bold' | 200 | 500 | 600;
   variants?: TypographyVariants | TypographyVariants[] | { [key in TypographyVariants]: boolean };

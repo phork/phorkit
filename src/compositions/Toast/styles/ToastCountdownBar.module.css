@@ -1,10 +1,10 @@
-@keyframes countdown {        
+@keyframes countdown {
   from {
     width: 100%;
   }
   to {
     width: 0;
-  }      
+  }
 }
 
 .toastCountdownBarContainer {
@@ -13,12 +13,12 @@
   left: 0;
   position: absolute;
   right: 0;
-  opacity: .3;
+  opacity: $opacity-quietest;
 }
 
 .toastCountdownBarContainer--colored {
   height: 3px;
-  opacity: .5;
+  opacity: $opacity-quiet;
 }
 
 .toastCountdownBarContainer--hasLevel {

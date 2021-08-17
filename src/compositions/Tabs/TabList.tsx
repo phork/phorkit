@@ -39,7 +39,7 @@ export interface LocalTabListProps extends ThemeProps {
 
 export type TabListProps = MergeElementProps<'div', LocalTabListProps>;
 
-function TabListBase(
+export function TabListBase(
   {
     className,
     componentId,
@@ -141,7 +141,7 @@ function TabListBase(
   );
 }
 
-export const TabList = React.forwardRef(TabListBase) as typeof TabListBase;
+export const TabList = React.forwardRef(TabListBase);
 
-TabListBase.displayName = 'TabListBase';
+// note that the base element cannot have a displayName because it breaks Storybook
 TabList.displayName = 'TabList';

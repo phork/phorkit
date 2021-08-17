@@ -88,27 +88,27 @@ const accentColors = {
 };
 
 const shadowColors = {
-  'box-shadow-0': `
+  'box-shadow-10': `
     0px 0px 0px 1px ${color.transparency(neutralColors['color-FG0'], 90)},
     0px 2px 4px 1px rgba(0, 0, 0, 0.4)
   `,
 
-  'box-shadow-10': `
+  'box-shadow-20': `
     0px 0px 0px 1px ${color.transparency(neutralColors['color-FG0'], 80)},
     0px 2px 4px 1px rgba(0, 0, 0, 0.5)
   `,
 
-  'box-shadow-20': `
+  'box-shadow-30': `
     0px 0px 0px 1px ${color.transparency(neutralColors['color-FG0'], 70)},
     0px 2px 4px 1px rgba(0, 0, 0, 0.8)
   `,
 
-  'box-shadow-100': `
+  'box-shadow-40': `
     0px 0px 0px 1px ${color.transparency(neutralColors['color-FG0'], 90)},
     0px 2px 4px 1px rgba(0, 0, 0, 0.4)
   `,
 
-  'box-shadow-200': `
+  'box-shadow-100': `
     0px 0px 0px 1px ${color.transparency(neutralColors['color-FG0'], 95)},
     0px 8px 40px 0px rgba(0, 0, 0, 0.4)
   `,

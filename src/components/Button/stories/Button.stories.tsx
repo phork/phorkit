@@ -2,7 +2,6 @@ import { action } from '@storybook/addon-actions';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { IconScale } from '../../../types';
-import { ButtonAlignment, ButtonColor, ButtonShape, ButtonSize, ButtonWeight } from '../types';
 import { SpinnerIcon } from '../../../icons/SpinnerIcon';
 import { ButtonProps, Button } from '../Button';
 
@@ -141,20 +140,10 @@ export default {
         disable: true,
       },
     },
-
-    className: {
-      table: {
-        disable: true,
-      },
-    },
-    themeId: {
-      table: {
-        disable: true,
-      },
-    },
   },
   parameters: {
     controls: {
+      exclude: ['className', 'ref', 'themeId'],
       sort: 'requiredFirst',
     },
     docs: {
@@ -164,32 +153,38 @@ export default {
     },
     layout: 'centered',
   },
-} as ComponentMeta<typeof Button>;
+} as ComponentMeta<(args: ButtonProps) => ReturnType<typeof Button>>;
 
-const Template: ComponentStory<typeof Button> = ({ children, size, ...args }) => (
-  <Button {...args} loader={<SpinnerIcon scale={size as IconScale} />} onClick={action('clicked')} size={size}>
+const Template: ComponentStory<(args: ButtonProps) => ReturnType<typeof Button>> = ({ children, size, ...args }) => (
+  <Button<'button'>
+    {...args}
+    as="button"
+    loader={<SpinnerIcon scale={size as IconScale} />}
+    onClick={action('clicked')}
+    size={size}
+  >
     {children}
   </Button>
 );
 
 const defaultArgs = {
   active: false,
-  align: 'center' as ButtonAlignment,
+  align: 'center' as ButtonProps['align'],
   as: 'button' as ButtonProps['as'],
   children: 'Click me',
-  color: 'primary' as ButtonColor,
+  color: 'primary' as ButtonProps['color'],
   disabled: false,
   focused: false,
   fullWidth: false,
   loading: false,
   noHeight: false,
   noPadding: false,
-  shape: 'pill' as ButtonShape,
-  size: 'medium' as ButtonSize,
+  shape: 'pill' as ButtonProps['shape'],
+  size: 'medium' as ButtonProps['size'],
   type: 'button' as ButtonProps['type'],
   unstyled: false,
   unthemed: false,
-  weight: 'solid' as ButtonWeight,
+  weight: 'solid' as ButtonProps['weight'],
 };
 
 export const Default = Template.bind({});

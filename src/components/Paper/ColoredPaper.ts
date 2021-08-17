@@ -21,7 +21,7 @@ const StyledPaper = styled(Paper, {
   --paper-scrollbar-thumb-color: ${props => themes[props.themeId]['contrast-scrollbar-thumb-color']};
 `;
 
-export const ColoredPaper = React.memo<ColoredPaperProps>(withTheme(StyledPaper));
+export const ColoredPaper = React.memo<ColoredPaperProps>(withTheme<ColoredPaperProps>(StyledPaper));
 ColoredPaper.displayName = 'ColoredPaper';
 
 StyledPaper.defaultProps = {
