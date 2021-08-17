@@ -11,8 +11,9 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement>, ThemePr
   full?: boolean;
   hoverable?: boolean;
   magnify?: boolean;
-  raised?: boolean | 0 | 10 | 20 | 100 | 200;
+  raised?: boolean | 10 | 20 | 30 | 40 | 100;
   squared?: boolean;
+  style?: React.CSSProperties;
 }
 
 export const Card = React.forwardRef<HTMLDivElement, CardProps>(

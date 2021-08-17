@@ -9,7 +9,7 @@ button.unbutton {
   &:disabled,
   &.is-disabled {
     cursor: default;
-    opacity: 0.5;
+    opacity: $opacity-disabled;
     pointer-events: none;
   }
 }
@@ -57,7 +57,7 @@ button.button {
   &.is-disabled,
   &.is-loading {
     cursor: default;
-    opacity: 0.5;
+    opacity: $opacity-disabled;
     pointer-events: none;
   }
 

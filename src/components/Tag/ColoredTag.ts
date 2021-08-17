@@ -18,7 +18,7 @@ const StyledTag = styled(Tag, {
   --tag-inverse-color: ${props => themes[props.themeId][`color-${props.colorId}-contrast` as keyof ThemeColors]};
 `;
 
-export const ColoredTag = React.memo<ColoredTagProps>(withTheme(StyledTag));
+export const ColoredTag = React.memo<ColoredTagProps>(withTheme<ColoredTagProps>(StyledTag));
 ColoredTag.displayName = 'ColoredTag';
 
 StyledTag.defaultProps = {

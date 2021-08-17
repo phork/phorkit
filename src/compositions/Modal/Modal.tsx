@@ -111,8 +111,9 @@ export function Modal({
     >
       <div className={styles.modalActions}>
         {!permanent && onClose && (
-          <IconButton
+          <IconButton<'button'>
             aria-label={closeLabel}
+            as="button"
             color="neutral"
             onClick={handleClose}
             shape="square"

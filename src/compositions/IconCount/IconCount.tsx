@@ -29,7 +29,8 @@ export function IconCount({
 
   return (
     <Flex alignItems="center" direction="row" justifyContent="flex-start" reverse={reverse} {...props}>
-      <TypographyWithSvg
+      <TypographyWithSvg<'div'>
+        as="div"
         color={active ? 'accent-primary' : 'secondary'}
         themeId={themeId}
         volume={active ? undefined : 'quietest'}
@@ -37,7 +38,8 @@ export function IconCount({
         <Icon size={iconSize} title={label} />
       </TypographyWithSvg>
       <Rhythm ml={reverse ? 0 : 2} mr={reverse ? 2 : 0}>
-        <Typography
+        <Typography<'div'>
+          as="div"
           color={active ? 'accent-primary' : 'secondary'}
           size={typographySize}
           themeId={themeId}

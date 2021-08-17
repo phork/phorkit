@@ -74,8 +74,9 @@ export function ThemeWrapper({
       }
       {...props}
     >
-      <IconButton
+      <IconButton<'button'>
         aria-label="Toggle theme"
+        as="button"
         color="neutral"
         onClick={updateThemeIds}
         style={{ position: 'absolute', top: '-30px', right: '10px' }}

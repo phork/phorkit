@@ -88,25 +88,25 @@ const accentColors = {
 };
 
 const shadowColors = {
-  'box-shadow-0': `
+  'box-shadow-10': `
     0px 1px 2px 0px rgba(0, 0, 0, 0.3)
   `,
 
-  'box-shadow-10': `
+  'box-shadow-20': `
     0px 1px 6px 0px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.12),
     0px 2px 4px -1px rgba(0, 0, 0, 0.12)
   `,
 
-  'box-shadow-20': `
+  'box-shadow-30': `
     0px 1px 7px 0px rgba(0, 0, 0, 0.3)
   `,
 
-  'box-shadow-100': `
+  'box-shadow-40': `
     0px 2px 4px 1px rgba(0, 0, 0, 0.1)
   `,
 
-  'box-shadow-200': `
+  'box-shadow-100': `
     0px 8px 40px 0px rgba(0, 0, 0, 0.1)
   `,
 };

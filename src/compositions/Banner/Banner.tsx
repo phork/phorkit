@@ -85,9 +85,10 @@ export function Banner({
         {onClose && (
           <Position location="right-center" variant="outside">
             <Rhythm ml={-1} p={2}>
-              <IconButton
+              <IconButton<'button'>
                 noHeight
                 aria-label={closeLabel}
+                as="button"
                 color="neutral"
                 contrast={isColoredBanner}
                 onClick={handleClose}

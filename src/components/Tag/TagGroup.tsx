@@ -1,12 +1,13 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { ThemeProps } from '../../types';
+import { AsType, ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Tag.module.css';
 import { Tag, TagElementType, TagShape, TagSize, TagProps } from './Tag';
 
 export interface TagGroupProps<T extends TagElementType = 'div'>
   extends React.HTMLAttributes<HTMLDivElement>,
+    AsType<T>,
     ThemeProps {
   actionable?: boolean;
   children?: React.ReactNode;
@@ -18,6 +19,7 @@ export interface TagGroupProps<T extends TagElementType = 'div'>
 
 export function TagGroup<T extends TagElementType = 'div'>({
   actionable,
+  as,
   children,
   className,
   contrast = false,
@@ -42,6 +44,7 @@ export function TagGroup<T extends TagElementType = 'div'>({
             size={size}
             themeId={themeId}
             {...tag}
+            as={as}
           />
         ))}
 

@@ -23,7 +23,9 @@ const StyledIconButton = styled(IconButton, {
   --button-inverse-color: ${props => themes[props.themeId][`color-${props.colorId}-contrast` as keyof ThemeColors]};
 `;
 
-export const ColoredIconButton = React.memo<ColoredIconButtonProps>(withTheme(StyledIconButton));
+export const ColoredIconButton = React.memo<ColoredIconButtonProps>(
+  withTheme<ColoredIconButtonProps>(StyledIconButton),
+);
 ColoredIconButton.displayName = 'ColoredIconButton';
 
 StyledIconButton.defaultProps = {

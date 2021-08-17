@@ -46,7 +46,7 @@ export interface LocalCheckboxProps<V extends CheckboxValue = string> extends Th
 }
 
 export type CheckboxProps<V extends CheckboxValue = string> = MergeProps<
-  Omit<React.ComponentProps<'input'>, 'onBlur' | 'onFocus' | 'tabIndex' | 'type'>,
+  Omit<React.ComponentProps<'input'>, 'onBlur' | 'onFocus' | 'ref' | 'tabIndex' | 'type'>,
   LocalCheckboxProps<V>
 > & {
   labelProps?: Omit<
@@ -158,7 +158,8 @@ export function CheckboxBase<V extends CheckboxValue = string>(
         />
       </div>
       {children && (
-        <Label
+        <Label<'div'>
+          as="div"
           className={styles.checkboxLabel}
           contrast={contrast}
           disabled={disabled}
@@ -173,7 +174,9 @@ export function CheckboxBase<V extends CheckboxValue = string>(
   );
 }
 
-export const Checkbox = React.forwardRef(CheckboxBase) as typeof CheckboxBase;
+export const Checkbox = React.forwardRef(CheckboxBase) as <V extends CheckboxValue = string>(
+  p: CheckboxProps<V> & { ref?: React.Ref<HTMLInputElement> },
+) => React.ReactElement<HTMLLabelElement>;
 
-CheckboxBase.displayName = 'CheckboxBase';
-Checkbox.displayName = 'Checkbox';
+// note that the base element cannot have a displayName because it breaks Storybook
+(Checkbox as React.NamedExoticComponent).displayName = 'Checkbox';

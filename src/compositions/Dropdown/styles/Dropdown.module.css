@@ -251,9 +251,9 @@
     --dropdown-options-bottom-border-color: $theme-primary-palette-border-color;
     --dropdown-options-focused-border-color: $theme-primary-palette-accent-color;
     --dropdown-options-container-background-color: $theme-primary-palette-background-color;
-    --dropdown-options-container-box-shadow: $theme-box-shadow-0;
+    --dropdown-options-container-box-shadow: $theme-box-shadow-10;
     --dropdown-options-container-border-color: $theme-primary-palette-border-color;
-    --dropdown-options-raised-box-shadow: $theme-box-shadow-0;
+    --dropdown-options-raised-box-shadow: $theme-box-shadow-10;
   }
 }
 
@@ -261,9 +261,9 @@
   @mixin themed .dropdown {
     --dropdown-options-focused-border-color: $theme-contrast-palette-accent-color;
     --dropdown-options-container-background-color: var(--contrast-color, $theme-contrast-palette-background-color);
-    --dropdown-options-container-box-shadow: $theme-box-shadow-0;
+    --dropdown-options-container-box-shadow: $theme-box-shadow-10;
     --dropdown-options-container-border-color: $theme-contrast-palette-text-color;
-    --dropdown-options-raised-box-shadow: $theme-box-shadow-0;
+    --dropdown-options-raised-box-shadow: $theme-box-shadow-10;
   }
 
   &.dropdown--light {

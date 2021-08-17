@@ -69,7 +69,7 @@ export function InteractiveListItemBase({
   );
 }
 
-export const InteractiveListItem = React.memo(InteractiveListItemBase) as typeof InteractiveListItemBase;
+export const InteractiveListItem = React.memo(InteractiveListItemBase);
 
 InteractiveListItemBase.displayName = 'InteractiveListItemBase';
 InteractiveListItem.displayName = 'InteractiveListItem';

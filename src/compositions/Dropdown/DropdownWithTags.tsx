@@ -150,7 +150,7 @@ export function DropdownWithTags({
         {...props}
       />
       <Rhythm grouped mt={6}>
-        <TagGroup size={tagSize} {...tagGroupProps}>
+        <TagGroup<'div'> size={tagSize} {...tagGroupProps} as="div">
           {options
             .filter(({ id }) => state.selectedIds.includes(id))
             .map(({ id: itemId, label }, i) => (
@@ -163,7 +163,7 @@ export function DropdownWithTags({
                   <IconText
                     reverse
                     icon={
-                      <TypographyWithSvg volume="quiet">
+                      <TypographyWithSvg<'div'> as="div" volume="quiet">
                         <TimesIcon scale="xsmall" />
                       </TypographyWithSvg>
                     }

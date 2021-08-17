@@ -144,7 +144,7 @@ button.navigationItem {
 
   &:disabled,
   &.is-disabled {
-    opacity: 0.5;
+    opacity: $opacity-disabled;
     pointer-events: none;
   }
 }

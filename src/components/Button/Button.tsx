@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
-import React, { NamedExoticComponent } from 'react';
-import { ThemeProps, MergeElementProps, AsType } from '../../types';
+import React from 'react';
+import { ThemeProps, AsType, MergeElementPropsWithoutRef } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Button.module.css';
 import { ButtonAlignment, ButtonWeight, ButtonShape, ButtonSize, ButtonColor, ButtonElementType } from './types';
@@ -34,9 +34,10 @@ export interface LocalButtonProps extends ThemeProps {
   weight?: ButtonWeight;
 }
 
-export type ButtonProps<T extends ButtonElementType = 'button'> = AsType<T> & MergeElementProps<T, LocalButtonProps>;
+export type ButtonProps<T extends ButtonElementType = 'button'> = AsType<T> &
+  MergeElementPropsWithoutRef<T, LocalButtonProps>;
 
-function ButtonBase<T extends ButtonElementType = 'button'>(
+export function ButtonBase<T extends ButtonElementType = 'button'>(
   {
     active = false,
     align,
@@ -153,7 +154,9 @@ function ButtonBase<T extends ButtonElementType = 'button'>(
   );
 }
 
-export const Button = React.forwardRef(ButtonBase);
+export const Button = React.forwardRef(ButtonBase) as <T extends ButtonElementType = 'button'>(
+  p: ButtonProps<T> & { ref?: React.Ref<HTMLElementTagNameMap[T]> },
+) => React.ReactElement<T>;
 
-// note that ButtonBase cannot have a displayName because it breaks Storybook
-(Button as NamedExoticComponent).displayName = 'Button';
+// note that the base element cannot have a displayName because it breaks Storybook
+(Button as React.NamedExoticComponent).displayName = 'Button';

@@ -65,7 +65,7 @@ export type TextareaProps = MergeProps<
 
 export type TextareaRef = React.ForwardedRef<HTMLTextAreaElement>;
 
-function TextareaBase(
+export function TextareaBase(
   {
     alwaysTriggerBlur,
     alwaysTriggerFocus,

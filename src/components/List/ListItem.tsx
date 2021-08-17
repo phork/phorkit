@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { AsReactType, MergeElementProps, ThemeProps } from '../../types';
+import { AsType, MergeElementPropsWithoutRef, ThemeProps } from '../../types';
 import styles from './styles/List.module.css';
 import { ListItemElementType } from './types';
 
@@ -22,10 +22,10 @@ export interface LocalListItemProps extends ThemeProps {
   unstyled?: boolean;
 }
 
-export type ListItemProps<T extends ListItemElementType = 'li'> = AsReactType<T> &
-  MergeElementProps<T, LocalListItemProps>;
+export type ListItemProps<T extends ListItemElementType = 'li'> = AsType<T> &
+  MergeElementPropsWithoutRef<T, LocalListItemProps>;
 
-function ListItemBase<T extends ListItemElementType = 'li'>(
+export function ListItemBase<T extends ListItemElementType = 'li'>(
   {
     as,
     children,
@@ -74,7 +74,9 @@ function ListItemBase<T extends ListItemElementType = 'li'>(
   );
 }
 
-export const ListItem = React.forwardRef(ListItemBase) as typeof ListItemBase;
+export const ListItem = React.forwardRef(ListItemBase) as <T extends ListItemElementType = 'li'>(
+  p: ListItemProps<T> & { ref?: React.Ref<HTMLElementTagNameMap[T]> },
+) => React.ReactElement<T>;
 
-ListItemBase.displayName = 'ListItemBase';
-ListItem.displayName = 'ListItem';
+// note that the base element cannot have a displayName because it breaks Storybook
+(ListItem as React.NamedExoticComponent).displayName = 'ListItem';

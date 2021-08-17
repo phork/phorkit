@@ -43,7 +43,7 @@ export interface LocalRadioProps<V extends RadioValue = string> extends ThemePro
 }
 
 export type RadioProps<V extends RadioValue = string> = MergeProps<
-  Omit<React.ComponentProps<'input'>, 'onBlur' | 'onFocus' | 'tabIndex' | 'type'>,
+  Omit<React.ComponentProps<'input'>, 'onBlur' | 'onFocus' | 'ref' | 'tabIndex' | 'type'>,
   LocalRadioProps<V>
 > & {
   labelProps?: Omit<
@@ -141,7 +141,8 @@ export function RadioBase<V extends RadioValue = string>(
         />
       </div>
       {children && (
-        <Label
+        <Label<'div'>
+          as="div"
           className={styles.radioLabel}
           contrast={contrast}
           disabled={disabled}
@@ -157,7 +158,9 @@ export function RadioBase<V extends RadioValue = string>(
   );
 }
 
-export const Radio = React.forwardRef(RadioBase) as typeof RadioBase;
+export const Radio = React.forwardRef(RadioBase) as <V extends RadioValue = string>(
+  p: RadioProps<V> & { ref?: React.Ref<HTMLInputElement> },
+) => React.ReactElement<HTMLLabelElement>;
 
-RadioBase.displayName = 'RadioBase';
-Radio.displayName = 'Radio';
+// note that the base element cannot have a displayName because it breaks Storybook
+(Radio as React.NamedExoticComponent).displayName = 'Radio';

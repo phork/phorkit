@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { ThemeColorIds } from '../../../config/themes';
+import { getPrimaryColorIds } from '../../../stories/helpers/utils';
 import { ColoredAvatar, ColoredAvatarProps } from '../ColoredAvatar';
 import avatarStory from './Avatar.stories';
 
@@ -9,7 +10,9 @@ export default {
   title: 'Display/Avatar/ColoredAvatar',
   component: ColoredAvatar,
   argTypes: {
-    color: {
+    colorId: {
+      options: getPrimaryColorIds('light'),
+      control: { type: 'select' },
       table: {
         category: 'Color controls',
       },
@@ -22,8 +25,8 @@ const Template: ComponentStory<typeof ColoredAvatar> = args => <ColoredAvatar {.
 
 const defaultArgs = {
   actionable: false,
-  colorId: 'P30' as ThemeColorIds,
   color: undefined,
+  colorId: 'P60' as ThemeColorIds,
   initials: 'EC',
   size: 'medium' as ColoredAvatarProps['size'],
 };

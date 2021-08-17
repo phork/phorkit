@@ -142,6 +142,25 @@ import { Progress, StyledProgress } from '../index';
   </ThemeWrapper>
 </Playground>
 
+### Quiet progress bars
+
+<Playground>
+  <ThemeWrapper>
+    <Rhythm grouped py={2}>
+      <h3>Quiet</h3>
+      <Progress color="success" percent={60} volume="quiet" />
+    </Rhythm>
+    <Rhythm grouped py={2}>
+      <h3>Quieter</h3>
+      <Progress color="warning" percent={40} volume="quieter" />
+    </Rhythm>
+    <Rhythm grouped py={2}>
+      <h3>Quietest</h3>
+      <Progress color="danger" percent={20} volume="quietest" />
+    </Rhythm>
+  </ThemeWrapper>
+</Playground>
+
 ### Contrast progress bars
 
 <Playground>

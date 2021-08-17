@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { CornerPosition, MergeElementProps, SemanticColor, ThemeProps } from '../../types';
+import { CornerPosition, MergeElementPropsWithoutRef, SemanticColor, ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import { lowerCamelize } from '../../utils/case';
 import styles from './styles/Badge.module.css';
@@ -15,9 +15,10 @@ export interface LocalBadgeProps extends ThemeProps {
   position?: CornerPosition;
   pulsing?: boolean;
   shape?: BadgeShape;
+  style?: React.CSSProperties;
 }
 
-export type BadgeProps = MergeElementProps<'div', LocalBadgeProps>;
+export type BadgeProps = MergeElementPropsWithoutRef<'div', LocalBadgeProps>;
 
 export function Badge({
   children,

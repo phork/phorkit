@@ -62,9 +62,17 @@ const viewports = {
   'viewport-2xlarge': { min: 1401 },
 };
 
+const opacities = {
+  'opacity-disabled': 0.5,
+  'opacity-quiet': 0.5,
+  'opacity-quieter': 0.4,
+  'opacity-quietest': 0.3,
+};
+
 module.exports = {
   ...fontSizes,
   ...elementSizes,
   ...layout,
   ...viewports,
+  ...opacities,
 };

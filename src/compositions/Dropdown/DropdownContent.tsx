@@ -60,7 +60,7 @@ export interface DropdownContentHandles {
   list: HTMLUListElement;
 }
 
-function DropdownContentBase(
+export function DropdownContentBase(
   {
     allowReselect = false,
     className,
@@ -185,8 +185,8 @@ function DropdownContentBase(
           color={listColor}
           contrast={contrast}
           disabled={disabled}
-          // mimicSelectOnFocus is necessary so that keyboard navigation doesn't keep selecting items but it looks like a regular dropdown
           focused={focused === true ? true : undefined}
+          // mimicSelectOnFocus is necessary so that keyboard navigation doesn't keep selecting items but it looks like a regular dropdown
           maxSelect={maxSelect}
           minSelect={minSelect}
           onBlur={onListBlur}

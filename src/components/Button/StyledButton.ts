@@ -14,7 +14,6 @@ export type StyledButtonProps<T extends ButtonElementType = 'button'> = MergePro
   }
 >;
 
-// @ts-ignore [TODO:ts] WTF
 export const StyledButton = styled(Button, {
   shouldForwardProp: (prop: string) =>
     !['primaryColor', 'inverseColor', 'hoveredPrimaryColor', 'activePrimaryColor', 'width'].includes(prop),
@@ -27,3 +26,7 @@ export const StyledButton = styled(Button, {
 `;
 
 StyledButton.displayName = 'StyledButton';
+
+StyledButton.defaultProps = {
+  unthemed: true,
+};

@@ -1,21 +1,23 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { AsReactType, MergeElementProps } from '../../types';
+import { MergeProps } from '../../types';
 import { renderFromProp, renderFromPropWithFallback, RenderFromPropElement } from '../../utils/renderFromProp';
 import styles from './styles/Button.module.css';
-import { Button, LocalButtonProps, ButtonProps } from './Button';
+import { Button, ButtonProps } from './Button';
 import { ButtonElementType } from './types';
 
 export type IconTextButtonElementType = ButtonElementType;
 
-export interface LocalIconTextButtonProps extends Omit<LocalButtonProps, 'children'> {
+export interface LocalIconTextButtonProps {
   icon: RenderFromPropElement<{}>;
   children: RenderFromPropElement<{}> | string;
   reverse?: boolean;
 }
 
-export type IconTextButtonProps<T extends ButtonElementType = 'button'> = AsReactType<T> &
-  MergeElementProps<T, LocalIconTextButtonProps>;
+export type IconTextButtonProps<T extends ButtonElementType = 'button'> = MergeProps<
+  ButtonProps<T>,
+  LocalIconTextButtonProps
+>;
 
 export function IconTextButtonBase<T extends IconTextButtonElementType = 'button'>(
   { as, children, className, icon, reverse = false, ...props }: IconTextButtonProps<T>,
@@ -24,14 +26,16 @@ export function IconTextButtonBase<T extends IconTextButtonElementType = 'button
   const classes = cx(reverse ? styles['button--iconTextReverse'] : styles['button--iconText'], className);
 
   return (
-    <Button<T> as={as} className={classes} ref={forwardedRef} {...(props as ButtonProps<T>)}>
+    <Button<T> className={classes} ref={forwardedRef} {...(props as ButtonProps<T>)} as={as}>
       <span className={styles.button__icon}>{renderFromProp<{}>(icon)}</span>
       <span className={styles.button__text}>{renderFromPropWithFallback<{}>(children)}</span>
     </Button>
   );
 }
 
-export const IconTextButton = React.forwardRef(IconTextButtonBase) as typeof IconTextButtonBase;
+export const IconTextButton = React.forwardRef(IconTextButtonBase) as <T extends IconTextButtonElementType = 'button'>(
+  p: IconTextButtonProps<T> & { ref?: React.Ref<HTMLElementTagNameMap[T]> },
+) => React.ReactElement<T>;
 
-IconTextButtonBase.displayName = 'IconTextButtonBase';
-IconTextButton.displayName = 'IconTextButton';
+// note that the base element cannot have a displayName because it breaks Storybook
+(IconTextButton as React.NamedExoticComponent).displayName = 'IconTextButton';

@@ -26,3 +26,7 @@ export const StyledIconTextButton = styled(IconTextButton, {
 `;
 
 StyledIconTextButton.displayName = 'StyledIconTextButton';
+
+StyledIconTextButton.defaultProps = {
+  unthemed: true,
+};

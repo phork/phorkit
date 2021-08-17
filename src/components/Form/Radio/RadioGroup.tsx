@@ -32,7 +32,7 @@ export type RadioGroupProps<V extends RadioValue = string> = MergeElementPropsWi
 >;
 export type RadioGroupRef = React.ForwardedRef<HTMLFieldSetElement>;
 
-function RadioGroupBase<V extends RadioValue = string>(
+export function RadioGroupBase<V extends RadioValue = string>(
   {
     className,
     contrast = false,
@@ -86,7 +86,9 @@ function RadioGroupBase<V extends RadioValue = string>(
   );
 }
 
-export const RadioGroup = React.forwardRef(RadioGroupBase) as typeof RadioGroupBase;
+export const RadioGroup = React.forwardRef(RadioGroupBase) as <V extends RadioValue = string>(
+  p: RadioGroupProps<V> & { ref?: React.Ref<HTMLFieldSetElement> },
+) => React.ReactElement<HTMLFieldSetElement>;
 
-RadioGroupBase.displayName = 'RadioGroupBase';
-RadioGroup.displayName = 'RadioGroup';
+// note that the base element cannot have a displayName because it breaks Storybook
+(RadioGroup as React.NamedExoticComponent).displayName = 'RadioGroup';

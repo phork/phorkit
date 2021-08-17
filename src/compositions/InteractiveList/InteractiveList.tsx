@@ -13,7 +13,7 @@ export type InteractiveListProps = Omit<UncontrolledInteractiveListProps, 'reduc
   Pick<InteractiveGroupProviderProps, 'initialSelected'>;
 
 /** The interactive list is a wrapper around the uncontrolled interactive list */
-function InteractiveListBase(
+export function InteractiveListBase(
   { initialSelected, items, ...props }: InteractiveListProps,
   forwardedRef: React.ForwardedRef<HTMLUListElement>,
 ): React.ReactElement {
@@ -36,7 +36,7 @@ function InteractiveListBase(
   return <UncontrolledInteractiveList reducer={reducer} ref={forwardedRef} {...props} />;
 }
 
-export const InteractiveList = React.forwardRef(InteractiveListBase) as typeof InteractiveListBase;
+export const InteractiveList = React.forwardRef(InteractiveListBase);
 
 InteractiveListBase.displayName = 'InteractiveListBase';
 InteractiveList.displayName = 'InteractiveList';

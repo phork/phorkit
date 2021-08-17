@@ -18,7 +18,7 @@ const StyledAvatar = styled(Avatar, {
   --avatar-text-color: ${props => themes[props.themeId][`color-${props.colorId}-contrast` as keyof ThemeColors]};
 `;
 
-export const ColoredAvatar = React.memo<ColoredAvatarProps>(withTheme(StyledAvatar));
+export const ColoredAvatar = React.memo<ColoredAvatarProps>(withTheme<ColoredAvatarProps>(StyledAvatar));
 ColoredAvatar.displayName = 'ColoredAvatar';
 
 StyledAvatar.defaultProps = {

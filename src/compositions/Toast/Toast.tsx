@@ -111,12 +111,24 @@ export function Toast({
     >
       <div className={styles.toastActions}>
         {onPin && duration > 0 && (
-          <IconButton aria-label={pinNotificationLabel} color={buttonColor} onClick={handlePin} themeId={themeId}>
+          <IconButton<'button'>
+            aria-label={pinNotificationLabel}
+            as="button"
+            color={buttonColor}
+            onClick={handlePin}
+            themeId={themeId}
+          >
             <PinIcon scale="xsmall" title={pinNotificationLabel} />
           </IconButton>
         )}
         {onClose && (
-          <IconButton aria-label={closeNotificationLabel} color={buttonColor} onClick={handleClose} themeId={themeId}>
+          <IconButton<'button'>
+            aria-label={closeNotificationLabel}
+            as="button"
+            color={buttonColor}
+            onClick={handleClose}
+            themeId={themeId}
+          >
             <TimesIcon scale="xsmall" title={closeNotificationLabel} />
           </IconButton>
         )}

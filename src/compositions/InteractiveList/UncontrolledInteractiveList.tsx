@@ -42,10 +42,13 @@ export interface LocalUncontrolledInteractiveListProps extends ExplicitProviderP
   unstyled?: boolean;
 }
 
-export type UncontrolledInteractiveListProps = MergeProps<ListProps<'ul'>, LocalUncontrolledInteractiveListProps> &
+export type UncontrolledInteractiveListProps = MergeProps<
+  Omit<ListProps<'ul'>, 'as'>,
+  LocalUncontrolledInteractiveListProps
+> &
   ThemeProps;
 
-function UncontrolledInteractiveListBase(
+export function UncontrolledInteractiveListBase(
   {
     allowReselect = false,
     children,
@@ -155,9 +158,7 @@ function UncontrolledInteractiveListBase(
   );
 }
 
-export const UncontrolledInteractiveList = React.forwardRef(
-  UncontrolledInteractiveListBase,
-) as typeof UncontrolledInteractiveListBase;
+export const UncontrolledInteractiveList = React.forwardRef(UncontrolledInteractiveListBase);
 
 UncontrolledInteractiveListBase.displayName = 'UncontrolledInteractiveListBase';
 UncontrolledInteractiveList.displayName = 'UncontrolledInteractiveList';

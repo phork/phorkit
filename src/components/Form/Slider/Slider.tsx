@@ -59,7 +59,7 @@ export type SliderProps = MergeProps<
 
 export type SliderRef = React.ForwardedRef<HTMLInputElement>;
 
-function SliderBase(
+export function SliderBase(
   {
     children,
     className,
@@ -255,7 +255,7 @@ function SliderBase(
       {...labelProps}
     >
       {children && (
-        <Label className={styles.sliderValue} contrast={contrast} strength="legend" themeId={themeId}>
+        <Label<'div'> as="div" className={styles.sliderValue} contrast={contrast} strength="legend" themeId={themeId}>
           {children}
         </Label>
       )}
@@ -322,8 +322,9 @@ function SliderBase(
       />
 
       {valuePosition && (
-        <Label
+        <Label<'div'>
           noWrap
+          as="div"
           className={cx(styles.sliderValue, styles[`sliderValue--${valuePosition}`])}
           contrast={contrast}
           strength="standard"

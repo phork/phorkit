@@ -139,7 +139,7 @@ export interface DropdownHandles {
 export type DropdownRef = React.ForwardedRef<DropdownHandles>;
 
 /** The dropdown selection is managed by the reducer prop */
-function DropdownBase(
+export function DropdownBase(
   {
     allowReselect = false,
     arrowIconSize: initArrowIconSize,

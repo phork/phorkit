@@ -44,7 +44,7 @@ button.accordionLabel {
     pointer-events: none;
 
     & > .accordionLabel__content {
-      opacity: .5;
+      opacity: $opacity-quiet;
     }
   }
 }

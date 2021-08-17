@@ -1,13 +1,13 @@
 .text-volume-quiet {
-  opacity: .5;
+  opacity: $opacity-quiet;
 }
 
 .text-volume-quieter {
-  opacity: .4;
+  opacity: $opacity-quieter;
 }
 
 .text-volume-quietest {
-  opacity: .3;
+  opacity: $opacity-quietest;
 }
 
 .text-italic {

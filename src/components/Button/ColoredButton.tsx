@@ -14,7 +14,7 @@ export type ColoredButtonProps<T extends ButtonElementType = 'button'> = MergePr
   }
 >;
 
-// @ts-ignore [TODO:ts] WTF, revisit casting
+// [TODO:ts] revisit casting
 const StyledButton = styled(Button, {
   shouldForwardProp: (prop: string): boolean => !['colorId', 'themeId'].includes(prop),
 })<ColoredButtonProps>`
@@ -24,7 +24,7 @@ const StyledButton = styled(Button, {
   --button-inverse-color: ${props => themes[props.themeId][`color-${props.colorId}-contrast` as keyof ThemeColors]};
 `;
 
-export const ColoredButton = React.memo<ColoredButtonProps>(withTheme(StyledButton));
+export const ColoredButton = React.memo<ColoredButtonProps>(withTheme<ColoredButtonProps>(StyledButton));
 ColoredButton.displayName = 'ColoredButton';
 
 StyledButton.defaultProps = {
