@@ -78,18 +78,21 @@ Default.args = {
 };
 
 export const Primary = Template.bind({});
+Primary.storyName = 'Variant: Primary';
 Primary.args = {
   ...defaultArgs,
   variant: 'primary',
 };
 
 export const Secondary = Template.bind({});
+Secondary.storyName = 'Variant: Secondary';
 Secondary.args = {
   ...defaultArgs,
   variant: 'secondary',
 };
 
 export const Tertiary = Template.bind({});
+Tertiary.storyName = 'Variant: Tertiary';
 Tertiary.args = {
   ...defaultArgs,
   variant: 'tertiary',
