@@ -51,6 +51,6 @@
     "target": "ES2019",
     "typeRoots": ["node_modules/@types", "src/*.d.ts"]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.json"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.json", "src/**/*.mdx"],
   "exclude": ["node_modules", "lib", ".docz"]
 }

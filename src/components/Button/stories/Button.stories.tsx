@@ -4,6 +4,7 @@ import React from 'react';
 import { IconScale } from '../../../types';
 import { SpinnerIcon } from '../../../icons/SpinnerIcon';
 import { ButtonProps, Button } from '../Button';
+import ButtonDocumentation from './Button.docs.mdx';
 
 export default {
   title: 'Buttons/Button',
@@ -43,7 +44,7 @@ export default {
       },
     },
     weight: {
-      options: ['solid', 'shaded', 'outlined', 'ghost'],
+      options: ['solid', 'shaded', 'outlined', 'ghost', 'inline'],
       control: { type: 'radio' },
       table: {
         category: 'Appearance controls',
@@ -153,6 +154,7 @@ export default {
       sort: 'requiredFirst',
     },
     docs: {
+      page: ButtonDocumentation,
       description: {
         component: 'A simple text button or a link that looks like a button.',
       },
@@ -198,6 +200,55 @@ Default.args = {
   ...defaultArgs,
 };
 
+export const Primary = Template.bind({});
+Primary.storyName = 'Color: Primary';
+Primary.args = {
+  ...defaultArgs,
+  color: 'primary',
+};
+
+export const Success = Template.bind({});
+Success.storyName = 'Color: Success';
+Success.args = {
+  ...defaultArgs,
+  color: 'success',
+};
+
+export const Warning = Template.bind({});
+Warning.storyName = 'Color: Warning';
+Warning.args = {
+  ...defaultArgs,
+  color: 'warning',
+};
+
+export const Danger = Template.bind({});
+Danger.storyName = 'Color: Danger';
+Danger.args = {
+  ...defaultArgs,
+  color: 'danger',
+};
+
+export const Neutral = Template.bind({});
+Neutral.storyName = 'Color: Neutral';
+Neutral.args = {
+  ...defaultArgs,
+  color: 'neutral',
+};
+
+export const Black = Template.bind({});
+Black.storyName = 'Color: Black';
+Black.args = {
+  ...defaultArgs,
+  color: 'black',
+};
+
+export const White = Template.bind({});
+White.storyName = 'Color: White';
+White.args = {
+  ...defaultArgs,
+  color: 'white',
+};
+
 export const Solid = Template.bind({});
 Solid.storyName = 'Weight: Solid';
 Solid.args = {
@@ -226,11 +277,46 @@ Ghost.args = {
   weight: 'ghost',
 };
 
+export const Inline = Template.bind({});
+Inline.storyName = 'Weight: Inline';
+Inline.args = {
+  ...defaultArgs,
+  weight: 'inline',
+};
+
+export const Pill = Template.bind({});
+Pill.storyName = 'Shape: Pill';
+Pill.args = {
+  ...defaultArgs,
+  shape: 'pill',
+};
+
 export const Brick = Template.bind({});
 Brick.storyName = 'Shape: Brick';
 Brick.args = {
   ...defaultArgs,
   shape: 'brick',
+};
+
+export const Small = Template.bind({});
+Small.storyName = 'Size: Small';
+Small.args = {
+  ...defaultArgs,
+  size: 'small',
+};
+
+export const Medium = Template.bind({});
+Medium.storyName = 'Size: Medium';
+Medium.args = {
+  ...defaultArgs,
+  size: 'medium',
+};
+
+export const Large = Template.bind({});
+Large.storyName = 'Size: Large';
+Large.args = {
+  ...defaultArgs,
+  size: 'large',
 };
 
 export const Loading = Template.bind({});

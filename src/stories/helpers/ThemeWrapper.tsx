@@ -53,6 +53,9 @@ export function ThemeWrapper({
           {
             backgroundColor: contrast ? `var(--contrast-color, ${backgroundColor})` : backgroundColor,
             color,
+            margin: '-30px -20px',
+            padding: '30px 20px',
+            borderRadius: '4px',
             ...style,
           } as React.CSSProperties
         }
