@@ -1,0 +1,192 @@
+import { action } from '@storybook/addon-actions';
+import {
+  Canvas,
+  Title,
+  Subtitle,
+  Description,
+  Primary,
+  ArgsTable,
+  Stories,
+  PRIMARY_STORY,
+} from '@storybook/addon-docs';
+import { ucfirst } from 'utils';
+import { SpinnerIcon } from 'icons/SpinnerIcon';
+import { Rhythm } from 'components/Rhythm';
+import { Looper } from 'docs/helpers/Looper';
+import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
+import { Button } from '../Button';
+
+<Title />
+<Subtitle />
+<Description />
+
+#### Colors
+
+[Primary](#color--primary) | [Success](#color--success) | [Warning](#color--warning) | [Danger](#color--danger) | [Neutral](#color--neutral) | [Black](#color--black) | [White](#color--white)
+
+#### Weights
+
+[Solid](#weight--solid) | [Shaded](#weight--shaded) | [Outlined](#weight--outlined) | [Ghost](#weight--ghost) | [Inline](#weight--inline)
+
+#### Shapes
+
+[Pill](#shape--pill) | [Brick](#shape--brick)
+
+#### Sizes
+
+[Small](#size--small) | [Medium](#size--medium) | [Large](#size--large)
+
+<Primary />
+<ArgsTable story={PRIMARY_STORY} />
+<Stories />
+
+## Examples
+
+<Canvas>
+  <ThemeWrapper>
+    <Rhythm grouped m={-2}>
+      <Looper
+        list={['solid', 'shaded', 'outlined', 'ghost']}
+        render={weight => (
+          <Rhythm grouped key={weight || 'undefined'} m={2}>
+            <Looper
+              list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+              render={color => (
+                <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
+                  <Button color={color} onClick={() => action(color)} weight={weight}>
+                    {ucfirst(color)}
+                  </Button>
+                </Rhythm>
+              )}
+            />
+            <br />
+            <Looper
+              list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+              render={color => (
+                <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
+                  <Button
+                    disabled
+                    loading
+                    color={color}
+                    loader={<SpinnerIcon scale="medium" />}
+                    onClick={() => action(color)}
+                    weight={weight}
+                  >
+                    {ucfirst(color)}
+                  </Button>
+                </Rhythm>
+              )}
+            />
+          </Rhythm>
+        )}
+      />
+    </Rhythm>
+  </ThemeWrapper>
+</Canvas>
+
+<Canvas>
+  <ThemeWrapper>
+    <Rhythm grouped m={-2}>
+      <Looper
+        list={['solid', 'shaded', 'outlined', 'ghost']}
+        render={weight => (
+          <Rhythm grouped key={weight || 'undefined'} m={2}>
+            <Looper
+              list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+              render={color => (
+                <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
+                  <Button color={color} onClick={() => action(color)} shape="brick" weight={weight}>
+                    {ucfirst(color)}
+                  </Button>
+                </Rhythm>
+              )}
+            />
+            <br />
+            <Looper
+              list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+              render={color => (
+                <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
+                  <Button
+                    disabled
+                    loading
+                    color={color}
+                    loader={<SpinnerIcon scale="medium" />}
+                    onClick={() => action(color)}
+                    shape="brick"
+                    weight={weight}
+                  >
+                    {ucfirst(color)}
+                  </Button>
+                </Rhythm>
+              )}
+            />
+          </Rhythm>
+        )}
+      />
+    </Rhythm>
+  </ThemeWrapper>
+</Canvas>
+
+<Canvas>
+  <ThemeWrapper>
+    <Rhythm grouped m={-2}>
+      <Looper
+        list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+        render={color => (
+          <Rhythm key={color} m={2}>
+            <Button color={color} onClick={() => console.log(color)} shape="brick" weight="inline">
+              {ucfirst(color)}
+            </Button>
+          </Rhythm>
+        )}
+      />
+      <br />
+      <Looper
+        list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+        render={color => (
+          <Rhythm key={color} m={2}>
+            <Button
+              disabled
+              loading
+              color={color}
+              loader={<SpinnerIcon scale="medium" />}
+              onClick={() => console.log(color)}
+              shape="brick"
+              weight="inline"
+            >
+              {ucfirst(color)}
+            </Button>
+          </Rhythm>
+        )}
+      />
+    </Rhythm>
+  </ThemeWrapper>
+</Canvas>
+
+<Canvas>
+  <ThemeWrapper contrast>
+    <Rhythm grouped m={-2}>
+      <Looper
+        list={['solid', 'shaded', 'outlined', 'ghost', 'inline']}
+        render={weight => (
+          <Rhythm key={weight} m={2}>
+            <Button contrast weight={weight}>
+              {ucfirst(weight)}
+            </Button>
+          </Rhythm>
+        )}
+      />
+      <br />
+      <Looper
+        list={['solid', 'shaded', 'outlined', 'ghost', 'inline']}
+        render={weight => (
+          <Rhythm key={weight} m={2}>
+            <Button contrast loading key={weight} loader={<SpinnerIcon scale="medium" />} weight={weight}>
+              {ucfirst(weight)}
+            </Button>
+          </Rhythm>
+        )}
+      />
+    </Rhythm>
+  </ThemeWrapper>
+</Canvas>
