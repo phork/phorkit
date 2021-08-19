@@ -6,10 +6,12 @@ import { ThemeProvider } from '../src/context/Theme/ThemeProvider';
 import '../src/styles/common.css';
 import '../src/styles/fonts.css';
 import '../src/styles/normalize.css';
+import { DocsContainer } from './components/DocsContainer';
+import theme from './theme';
 
 export const decorators = [
-  Story => <ThemeProvider themeId={useDarkMode() ? 'dark' : 'light'}>{Story()}</ThemeProvider>,
-  Story => <AccessibilityProvider>{Story()}</AccessibilityProvider>,
+  storyFn => <ThemeProvider themeId={useDarkMode() ? 'dark' : 'light'}>{storyFn()}</ThemeProvider>,
+  storyFn => <AccessibilityProvider>{storyFn()}</AccessibilityProvider>,
 ];
 
 export const parameters = {
@@ -24,11 +26,19 @@ export const parameters = {
   },
   darkMode: {
     current: 'light',
-    dark: { ...themes.dark, appBg: '#17171D' },
-    light: { ...themes.normal, appBg: '#FAFAFA' },
+    dark: { ...themes.dark, ...theme('dark') },
+    light: { ...themes.normal, ...theme('light') },
     stylePreview: true,
   },
+  docs: {
+    container: DocsContainer,
+  },
   options: {
-    storySort: (a, b) => (a[1].kind === b[1].kind ? 0 : a[1].id.localeCompare(b[1].id, undefined, { numeric: true })),
+    storySort: (a, b) => {
+      if (a[1].kind === 'Introduction') return -1;
+      if (b[1].kind === 'Introduction') return 1;
+
+      return a[1].kind === b[1].kind ? 0 : a[1].id.localeCompare(b[1].id, undefined, { numeric: true });
+    },
   },
 };

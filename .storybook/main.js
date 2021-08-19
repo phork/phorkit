@@ -9,9 +9,10 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-links',
     '@storybook/addon-postcss',
+    '@storybook/addon-a11y',
     'storybook-dark-mode',
   ],
-  webpackFinal: async config => {
+  webpackFinal: async (config, { configType }) => {
     return {
       ...config,
       module: {
@@ -45,7 +46,8 @@ module.exports = {
                 loader: 'css-loader',
                 options: {
                   modules: {
-                    localIdentName: '[contenthash:base64]',
+                    localIdentName:
+                      configType === 'DEVELOPMENT' ? '[local]__[contenthash:base64:5]' : '[contenthash:base64]',
                   },
                 },
               },

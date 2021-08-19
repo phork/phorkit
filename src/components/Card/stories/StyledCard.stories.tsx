@@ -1,5 +1,7 @@
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledCard } from '../StyledCard';
 import cardStory from './Card.stories';
 
@@ -19,6 +21,22 @@ export default {
       },
     },
     ...cardStory.argTypes,
+  },
+  parameters: {
+    ...cardStory.parameters,
+    docs: {
+      ...cardStory.parameters?.docs,
+      page: () => (
+        <React.Fragment>
+          <PageTitle src="components/Card" title="StyledCard" />
+          <Subtitle />
+          <Description />
+          <Primary />
+          <ArgsTable story={PRIMARY_STORY} />
+          <Stories />
+        </React.Fragment>
+      ),
+    },
   },
 } as ComponentMeta<typeof StyledCard>;
 

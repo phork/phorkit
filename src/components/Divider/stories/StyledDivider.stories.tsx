@@ -1,5 +1,7 @@
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledDivider, StyledDividerProps } from '../StyledDivider';
 import dividerStory from './Divider.stories';
 
@@ -14,6 +16,23 @@ export default {
       },
     },
     ...dividerStory.argTypes,
+  },
+
+  parameters: {
+    ...dividerStory.parameters,
+    docs: {
+      ...dividerStory.parameters?.docs,
+      page: () => (
+        <React.Fragment>
+          <PageTitle src="components/Divider" title="StyledDivider" />
+          <Subtitle />
+          <Description />
+          <Primary />
+          <ArgsTable story={PRIMARY_STORY} />
+          <Stories />
+        </React.Fragment>
+      ),
+    },
   },
 } as ComponentMeta<typeof StyledDivider>;
 

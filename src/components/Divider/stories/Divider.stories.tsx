@@ -1,5 +1,7 @@
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { PageTitle } from 'stories/helpers/PageTitle';
 import { Divider, DividerProps } from '../Divider';
 
 export default {
@@ -57,6 +59,16 @@ export default {
       sort: 'requiredFirst',
     },
     docs: {
+      page: () => (
+        <React.Fragment>
+          <PageTitle src="components/Divider" title="Divider" />
+          <Subtitle />
+          <Description />
+          <Primary />
+          <ArgsTable story={PRIMARY_STORY} />
+          <Stories />
+        </React.Fragment>
+      ),
       description: {
         component: 'A divider is a horizontal or vertical line.',
       },
@@ -77,23 +89,23 @@ Default.args = {
   ...defaultArgs,
 };
 
-export const Primary = Template.bind({});
-Primary.storyName = 'Variant: Primary';
-Primary.args = {
+export const PrimaryVariant = Template.bind({});
+PrimaryVariant.storyName = 'Variant: Primary';
+PrimaryVariant.args = {
   ...defaultArgs,
   variant: 'primary',
 };
 
-export const Secondary = Template.bind({});
-Secondary.storyName = 'Variant: Secondary';
-Secondary.args = {
+export const SecondaryVariant = Template.bind({});
+SecondaryVariant.storyName = 'Variant: Secondary';
+SecondaryVariant.args = {
   ...defaultArgs,
   variant: 'secondary',
 };
 
-export const Tertiary = Template.bind({});
-Tertiary.storyName = 'Variant: Tertiary';
-Tertiary.args = {
+export const TertiaryVariant = Template.bind({});
+TertiaryVariant.storyName = 'Variant: Tertiary';
+TertiaryVariant.args = {
   ...defaultArgs,
   variant: 'tertiary',
 };

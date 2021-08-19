@@ -1,5 +1,7 @@
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { PageTitle } from 'stories/helpers/PageTitle';
 import { Avatar, AvatarProps } from '../Avatar';
 
 export default {
@@ -53,6 +55,16 @@ export default {
       sort: 'requiredFirst',
     },
     docs: {
+      page: () => (
+        <React.Fragment>
+          <PageTitle src="components/Avatar" title="Avatar" />
+          <Subtitle />
+          <Description />
+          <Primary />
+          <ArgsTable story={PRIMARY_STORY} />
+          <Stories />
+        </React.Fragment>
+      ),
       description: {
         component: 'An avatar represents a user as a picture or initials.',
       },

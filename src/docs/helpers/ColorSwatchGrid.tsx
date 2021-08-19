@@ -33,7 +33,7 @@ export function ColorSwatchGrid({
   const labelWidth = initLabelWidth || props.swatchWidth;
 
   return (
-    <GridContainer direction={gridDirection} joined={joined}>
+    <GridContainer direction={gridDirection} joined={joined} style={{ margin: joined ? 0 : -4 }}>
       {colorGrid.map(({ colors, label, id }) => (
         <ColorSwatchVector
           colors={colors}

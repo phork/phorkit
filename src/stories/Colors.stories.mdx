@@ -1,0 +1,170 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { BlobbrIcon } from 'icons/internal';
+import { ColorSwatches } from 'docs/helpers/ColorSwatches';
+import { ColorTheme } from 'docs/helpers/ColorTheme';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
+
+<Meta title="Colors" />
+
+<PageTitle src="postcss/vars" title="Colors" />
+
+### Primary colors
+
+<Canvas withSource="none">
+  <Story name="Primary colors">
+    <ThemeWrapper withThemeId>
+      {({ themeId }) => (
+        <ColorSwatches
+          direction="column"
+          group="primary"
+          labelHeight={20}
+          swatchHeight={40}
+          swatchWidth={60}
+          themeId={themeId}
+        >
+          <BlobbrIcon size={24} />
+        </ColorSwatches>
+      )}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Primary accent color
+
+<Canvas withSource="none">
+  <Story name="Primary accent color">
+    <ThemeWrapper withThemeId>
+      {({ themeId }) => (
+        <ColorSwatches
+          joined
+          group="state"
+          swatchHeight={60}
+          swatchWidth={80}
+          themeId={themeId}
+          variant="accent-primary"
+        >
+          <BlobbrIcon size={30} />
+        </ColorSwatches>
+      )}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Success color
+
+<Canvas withSource="none">
+  <Story name="Success color">
+    <ThemeWrapper withThemeId>
+      {({ themeId }) => (
+        <ColorSwatches joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="success">
+          <BlobbrIcon size={30} />
+        </ColorSwatches>
+      )}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Warning color
+
+<Canvas withSource="none">
+  <Story name="Warning color">
+    <ThemeWrapper withThemeId>
+      {({ themeId }) => (
+        <ColorSwatches joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="warning">
+          <BlobbrIcon size={30} />
+        </ColorSwatches>
+      )}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Danger color
+
+<Canvas withSource="none">
+  <Story name="Danger color">
+    <ThemeWrapper withThemeId>
+      {({ themeId }) => (
+        <ColorSwatches joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="danger">
+          <BlobbrIcon size={30} />
+        </ColorSwatches>
+      )}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Neutral color
+
+<Canvas withSource="none">
+  <Story name="Neutral color">
+    <ThemeWrapper withThemeId>
+      {({ themeId }) => (
+        <ColorSwatches joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="neutral">
+          <BlobbrIcon size={30} />
+        </ColorSwatches>
+      )}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Background colors
+
+<Canvas withSource="none">
+  <Story name="Background colors">
+    <ThemeWrapper withThemeId>
+      {({ themeId }) => <ColorSwatches group="background" swatchHeight={40} swatchWidth={60} themeId={themeId} />}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Foreground colors
+
+<Canvas withSource="none">
+  <Story name="Foreground colors">
+    <ThemeWrapper withThemeId>
+      {({ themeId }) => <ColorSwatches group="foreground" swatchHeight={40} swatchWidth={60} themeId={themeId} />}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Transparent colors
+
+<Canvas withSource="none">
+  <Story name="Transparent colors">
+    <ThemeWrapper withThemeId>
+      {({ themeId }) => <ColorSwatches group="transparent" swatchHeight={40} swatchWidth={60} themeId={themeId} />}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Primary theme
+
+<Canvas withSource="none">
+  <Story name="Primary theme">
+    <ThemeWrapper withThemeId>{({ themeId }) => <ColorTheme themeId={themeId} variant="primary" />}</ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Secondary theme
+
+<Canvas withSource="none">
+  <Story name="Secondary theme">
+    <ThemeWrapper withThemeId>{({ themeId }) => <ColorTheme themeId={themeId} variant="secondary" />}</ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Tertiary theme
+
+<Canvas withSource="none">
+  <Story name="Tertiary theme">
+    <ThemeWrapper withThemeId>{({ themeId }) => <ColorTheme themeId={themeId} variant="tertiary" />}</ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Contrast theme
+
+<Canvas withSource="none">
+  <Story name="Contrast theme">
+    <ThemeWrapper withThemeId>{({ themeId }) => <ColorTheme themeId={themeId} variant="contrast" />}</ThemeWrapper>
+  </Story>
+</Canvas>

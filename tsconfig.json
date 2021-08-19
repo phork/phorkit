@@ -45,12 +45,12 @@
       "utils/*": ["src/utils/*"],
     },
     "removeComments": false,
-    "resolveJsonModule": true,
+    "resolveJsonModule": false,
     "rootDir": "src",
     "strict": true,
     "target": "ES2019",
     "typeRoots": ["node_modules/@types", "src/*.d.ts"]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.json", "src/**/*.mdx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.json"],
   "exclude": ["node_modules", "lib", ".docz"]
 }
