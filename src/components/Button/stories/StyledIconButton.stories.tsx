@@ -1,6 +1,8 @@
 import { action } from '@storybook/addon-actions';
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { PageTitle } from 'stories/helpers/PageTitle';
 import { IconScale } from '../../../types';
 import { SpinnerIcon } from '../../../icons/SpinnerIcon';
 import { BlobbrIcon } from '../../../icons/internal/BlobbrIcon';
@@ -20,6 +22,22 @@ export default {
     iconScale: {
       options: ['xsmall', 'small', 'medium', 'large', 'xlarge', '2xlarge', '3xlarge'],
       control: { type: 'select' },
+    },
+  },
+  parameters: {
+    ...buttonStory.parameters,
+    docs: {
+      ...buttonStory.parameters?.docs,
+      page: () => (
+        <React.Fragment>
+          <PageTitle src="components/Button" title="StyledIconButton" />
+          <Subtitle />
+          <Description />
+          <Primary />
+          <ArgsTable story={PRIMARY_STORY} />
+          <Stories />
+        </React.Fragment>
+      ),
     },
   },
 } as ComponentMeta<typeof StyledIconButton>;

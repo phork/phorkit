@@ -52,7 +52,7 @@ export function Avatar<T extends React.ElementType = 'div'>({
 
   return (
     <Element
-      aria-label={label}
+      aria-label={`${label}: ${initials}`}
       className={cx(
         styles.avatar,
         color && styles[`avatar--${color}`],
@@ -62,6 +62,7 @@ export function Avatar<T extends React.ElementType = 'div'>({
         actionable && styles['avatar--actionable'],
         className,
       )}
+      role="img"
       style={{ backgroundImage: imgSrc && `url(${imgSrc})`, ...style }}
       tabIndex={actionable ? 0 : undefined}
       {...props}

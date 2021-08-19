@@ -15,7 +15,11 @@ export function BannerContainer({
   ...props
 }: BannerContainerProps): React.ReactElement<HTMLDivElement> {
   return (
-    <div className={cx(styles.bannerContainer, themeId && styles[`bannerContainer--${themeId}`], className)} {...props}>
+    <div
+      className={cx(styles.bannerContainer, themeId && styles[`bannerContainer--${themeId}`], className)}
+      role="banner"
+      {...props}
+    >
       {children}
     </div>
   );

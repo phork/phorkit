@@ -6,6 +6,7 @@ import { SpinnerIcon } from '../../../icons/SpinnerIcon';
 import { BlobbrIcon } from '../../../icons/internal/BlobbrIcon';
 import { IconButtonProps, IconButton } from '../IconButton';
 import buttonStory from './Button.stories';
+import IconButtonDocumentation from './IconButton.docs.mdx';
 
 export default {
   ...buttonStory,
@@ -26,6 +27,7 @@ export default {
     ...buttonStory.parameters,
     docs: {
       ...buttonStory.parameters?.docs,
+      page: IconButtonDocumentation,
       description: {
         component: 'A simple icon button or a link that looks like a button.',
       },
@@ -72,6 +74,55 @@ Default.args = {
   ...defaultArgs,
 };
 
+export const Primary = Template.bind({});
+Primary.storyName = 'Color: Primary';
+Primary.args = {
+  ...defaultArgs,
+  color: 'primary',
+};
+
+export const Success = Template.bind({});
+Success.storyName = 'Color: Success';
+Success.args = {
+  ...defaultArgs,
+  color: 'success',
+};
+
+export const Warning = Template.bind({});
+Warning.storyName = 'Color: Warning';
+Warning.args = {
+  ...defaultArgs,
+  color: 'warning',
+};
+
+export const Danger = Template.bind({});
+Danger.storyName = 'Color: Danger';
+Danger.args = {
+  ...defaultArgs,
+  color: 'danger',
+};
+
+export const Neutral = Template.bind({});
+Neutral.storyName = 'Color: Neutral';
+Neutral.args = {
+  ...defaultArgs,
+  color: 'neutral',
+};
+
+export const Black = Template.bind({});
+Black.storyName = 'Color: Black';
+Black.args = {
+  ...defaultArgs,
+  color: 'black',
+};
+
+export const White = Template.bind({});
+White.storyName = 'Color: White';
+White.args = {
+  ...defaultArgs,
+  color: 'white',
+};
+
 export const Solid = Template.bind({});
 Solid.storyName = 'Weight: Solid';
 Solid.args = {
@@ -98,6 +149,21 @@ Ghost.storyName = 'Weight: Ghost';
 Ghost.args = {
   ...defaultArgs,
   weight: 'ghost',
+};
+
+export const Inline = Template.bind({});
+Inline.storyName = 'Weight: Inline';
+Inline.args = {
+  ...defaultArgs,
+  iconScale: 'xlarge' as IconScale,
+  weight: 'inline',
+};
+
+export const Circle = Template.bind({});
+Circle.storyName = 'Shape: Circle';
+Circle.args = {
+  ...defaultArgs,
+  shape: 'circle',
 };
 
 export const Square = Template.bind({});

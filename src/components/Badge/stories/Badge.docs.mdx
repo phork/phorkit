@@ -1,0 +1,281 @@
+import { action } from '@storybook/addon-actions';
+import {
+  ArgsTable,
+  Canvas,
+  Description,
+  Primary,
+  Stories,
+  Story,
+  Subtitle,
+  Title,
+  PRIMARY_STORY,
+} from '@storybook/addon-docs';
+import { themes } from 'config/themes';
+import { Flex } from 'components/Flex';
+import { Rhythm } from 'components/Rhythm';
+import { Looper } from 'docs/helpers/Looper';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
+import { Badge } from '../Badge';
+
+<PageTitle src="components/Badge" title="Badge" />
+<Subtitle />
+<Description />
+
+#### Colors
+
+[Primary](#color--primary) | [Success](#color--success) | [Warning](#color--warning) | [Danger](#color--danger) | [Neutral](#color--neutral)
+
+#### Shapes
+
+[Point](#shape--point) | [Marker](#shape--marker) | [Count](#shape--count) | [Label](#shape--label)
+
+<Primary />
+<ArgsTable story={PRIMARY_STORY} />
+<Stories />
+
+## Examples
+
+<Canvas>
+  <ThemeWrapper>
+    <Flex alignItems="center" direction="row">
+      <div
+        style={{
+          position: 'relative',
+          width: '20px',
+          height: '20px',
+          backgroundColor: themes.light['color-BG50-O40'],
+          margin: '20px',
+        }}
+      >
+        <Badge color="primary" position="top-left" shape="point" />
+        <Badge color="success" position="top-right" shape="point" />
+        <Badge color="warning" position="bottom-left" shape="point" />
+        <Badge color="danger" position="bottom-right" shape="point" />
+      </div>
+      <Flex wrap alignItems="center" direction="row">
+        <Looper
+          list={['primary', 'success', 'warning', 'danger', 'neutral']}
+          render={color => (
+            <Rhythm m={2}>
+              <Badge color={color} key={color} shape="point" />
+            </Rhythm>
+          )}
+        />
+      </Flex>
+      <Flex wrap alignItems="center" direction="row">
+        <Looper
+          list={['primary', 'success', 'warning', 'danger', 'neutral']}
+          render={color => (
+            <Rhythm m={2}>
+              <Badge pulsing color={color} key={color} shape="point" />
+            </Rhythm>
+          )}
+        />
+      </Flex>
+    </Flex>
+  </ThemeWrapper>
+</Canvas>
+
+<Canvas>
+  <ThemeWrapper>
+    <Flex alignItems="center" direction="row">
+      <div
+        style={{
+          position: 'relative',
+          width: '20px',
+          height: '20px',
+          backgroundColor: themes.light['color-BG50-O40'],
+          margin: '20px',
+        }}
+      >
+        <Badge color="primary" position="top-left" shape="marker" />
+        <Badge color="success" position="top-right" shape="marker" />
+        <Badge color="warning" position="bottom-left" shape="marker" />
+        <Badge color="danger" position="bottom-right" shape="marker" />
+      </div>
+      <Flex wrap alignItems="center" direction="row">
+        <Looper
+          list={['primary', 'success', 'warning', 'danger', 'neutral']}
+          render={color => (
+            <Rhythm m={2}>
+              <Badge color={color} key={color} shape="marker" />
+            </Rhythm>
+          )}
+        />
+      </Flex>
+      <Flex wrap alignItems="center" direction="row">
+        <Looper
+          list={['primary', 'success', 'warning', 'danger', 'neutral']}
+          render={color => (
+            <Rhythm m={2}>
+              <Badge pulsing color={color} key={color} shape="marker" />
+            </Rhythm>
+          )}
+        />
+      </Flex>
+    </Flex>
+  </ThemeWrapper>
+</Canvas>
+
+<Canvas>
+  <ThemeWrapper>
+    <Flex alignItems="center" direction="row">
+      <div
+        style={{
+          position: 'relative',
+          width: '40px',
+          height: '40px',
+          backgroundColor: themes.light['color-BG50-O40'],
+          margin: '20px',
+          marginRight: 40,
+        }}
+      >
+        <Badge color="primary" position="top-left" shape="count">
+          0
+        </Badge>
+        <Badge color="success" position="top-right" shape="count">
+          00
+        </Badge>
+        <Badge color="warning" position="bottom-left" shape="count">
+          99
+        </Badge>
+        <Badge color="danger" position="bottom-right" shape="count">
+          99+
+        </Badge>
+      </div>
+      <Flex wrap alignItems="center" direction="row">
+        <Looper
+          list={['primary', 'success', 'warning', 'danger', 'neutral']}
+          render={color => (
+            <Rhythm m={2}>
+              <Badge color={color} key={color} shape="count">
+                99
+              </Badge>
+            </Rhythm>
+          )}
+        />
+      </Flex>
+      <Flex wrap alignItems="center" direction="row">
+        <Looper
+          list={['primary', 'success', 'warning', 'danger', 'neutral']}
+          render={color => (
+            <Rhythm m={2}>
+              <Badge pulsing color={color} key={color} shape="count">
+                99
+              </Badge>
+            </Rhythm>
+          )}
+        />
+      </Flex>
+    </Flex>
+  </ThemeWrapper>
+</Canvas>
+
+<Canvas>
+  <ThemeWrapper>
+    <Flex alignItems="center" direction="row">
+      <div
+        style={{
+          position: 'relative',
+          width: '60px',
+          height: '40px',
+          backgroundColor: themes.light['color-BG50-O40'],
+          margin: '20px',
+          marginRight: 60,
+        }}
+      >
+        <Badge color="primary" position="top-left" shape="label">
+          Alpha
+        </Badge>
+        <Badge color="success" position="top-right" shape="label">
+          Beta
+        </Badge>
+        <Badge color="warning" position="bottom-left" shape="label">
+          Gamma
+        </Badge>
+        <Badge color="danger" position="bottom-right" shape="label">
+          Delta
+        </Badge>
+      </div>
+      <Flex wrap alignItems="center" direction="row">
+        <Looper
+          list={['primary', 'success', 'warning', 'danger', 'neutral']}
+          render={color => (
+            <Rhythm m={2}>
+              <Badge color={color} key={color} shape="label">
+                Beta
+              </Badge>
+            </Rhythm>
+          )}
+        />
+      </Flex>
+      <Flex wrap alignItems="center" direction="row">
+        <Looper
+          list={['primary', 'success', 'warning', 'danger', 'neutral']}
+          render={color => (
+            <Rhythm m={2}>
+              <Badge pulsing color={color} key={color} shape="label">
+                Beta
+              </Badge>
+            </Rhythm>
+          )}
+        />
+      </Flex>
+    </Flex>
+  </ThemeWrapper>
+</Canvas>
+
+<Canvas>
+  <ThemeWrapper contrast>
+    <Flex alignItems="center" direction="row">
+      <div
+        style={{
+          position: 'relative',
+          width: '60px',
+          height: '40px',
+          backgroundColor: themes.light['contrast-palette-quietest-color'],
+          margin: '20px',
+          marginRight: 40,
+        }}
+      >
+        <Badge contrast position="top-left" shape="marker" />
+        <Badge contrast position="top-right" shape="count">
+          0
+        </Badge>
+        <Badge contrast position="bottom-left" shape="count">
+          99+
+        </Badge>
+        <Badge contrast position="bottom-right" shape="label">
+          Beta
+        </Badge>
+      </div>
+      <Flex wrap alignItems="center" direction="row">
+        <Flex alignItems="center" direction="row">
+          <Rhythm m={2}>
+            <Badge contrast shape="point" />
+            <Badge contrast shape="marker" />
+            <Badge contrast shape="count">
+              99
+            </Badge>
+            <Badge contrast shape="label">
+              Beta
+            </Badge>
+          </Rhythm>
+        </Flex>
+        <Flex alignItems="center" direction="row">
+          <Rhythm m={2}>
+            <Badge contrast pulsing shape="point" />
+            <Badge contrast pulsing shape="marker" />
+            <Badge contrast pulsing shape="count">
+              99
+            </Badge>
+            <Badge contrast pulsing shape="label">
+              Beta
+            </Badge>
+          </Rhythm>
+        </Flex>
+      </Flex>
+    </Flex>
+  </ThemeWrapper>
+</Canvas>

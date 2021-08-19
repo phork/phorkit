@@ -3,6 +3,10 @@
   "description": "Phork/it. A component library.",
   "version": "9.0.3",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phork/phorkit.git"
+  },
   "main": "cjs/index.js",
   "module": "esm/index.js",
   "types": "esm/index.d.ts",
@@ -114,6 +118,7 @@
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
     "@hot-loader/react-dom": "^17.0.1",
+    "@storybook/addon-a11y": "^6.3.7",
     "@svgr/core": "^5.3.1",
     "@svgr/plugin-jsx": "^5.3.1",
     "@svgr/plugin-prettier": "^5.3.1",

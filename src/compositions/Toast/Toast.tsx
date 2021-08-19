@@ -135,7 +135,7 @@ export function Toast({
       </div>
 
       {title && (
-        <div className={cx(styles.toastTitle)} id={noTitleIdOnContent ? generateTitleId() : undefined}>
+        <div className={cx(styles.toastTitle)} id={!noTitleIdOnContent ? generateTitleId() : undefined}>
           {title}
         </div>
       )}

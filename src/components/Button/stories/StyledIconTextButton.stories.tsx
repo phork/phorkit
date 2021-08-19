@@ -1,6 +1,8 @@
 import { action } from '@storybook/addon-actions';
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { PageTitle } from 'stories/helpers/PageTitle';
 import { IconScale } from '../../../types';
 import { SpinnerIcon } from '../../../icons/SpinnerIcon';
 import { BlobbrIcon } from '../../../icons/internal/BlobbrIcon';
@@ -11,6 +13,22 @@ export default {
   ...buttonStory,
   title: 'Buttons/IconTextButton/StyledIconTextButton',
   component: StyledIconTextButton,
+  parameters: {
+    ...buttonStory.parameters,
+    docs: {
+      ...buttonStory.parameters?.docs,
+      page: () => (
+        <React.Fragment>
+          <PageTitle src="components/Button" title="StyledIconTextButton" />
+          <Subtitle />
+          <Description />
+          <Primary />
+          <ArgsTable story={PRIMARY_STORY} />
+          <Stories />
+        </React.Fragment>
+      ),
+    },
+  },
 } as ComponentMeta<typeof StyledIconTextButton>;
 
 const Template: ComponentStory<(args: StyledIconTextButtonProps) => ReturnType<typeof StyledIconTextButton>> = ({

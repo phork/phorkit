@@ -56,6 +56,7 @@ export function ThemeWrapper({
             margin: '-30px -20px',
             padding: '30px 20px',
             borderRadius: '4px',
+            overflow: 'hidden',
             ...style,
           } as React.CSSProperties
         }

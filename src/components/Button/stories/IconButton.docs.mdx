@@ -11,14 +11,15 @@ import {
 } from '@storybook/addon-docs';
 import { ucfirst } from 'utils';
 import { SpinnerIcon } from 'icons/SpinnerIcon';
+import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { Flex } from 'components/Flex';
 import { Rhythm } from 'components/Rhythm';
 import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
-import { Button } from '../Button';
+import { IconButton } from '../IconButton';
 
-<PageTitle src="components/Button" title="Button" />
+<PageTitle src="components/Button/IconButton" title="IconButton" />
 <Subtitle />
 <Description />
 
@@ -32,7 +33,7 @@ import { Button } from '../Button';
 
 #### Shapes
 
-[Pill](#shape--pill) | [Brick](#shape--brick)
+[Circle](#shape--circle) | [Square](#shape--square)
 
 #### Sizes
 
@@ -56,9 +57,9 @@ import { Button } from '../Button';
                 list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
                 render={color => (
                   <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
-                    <Button color={color} onClick={() => action(color)} weight={weight}>
-                      {ucfirst(color)}
-                    </Button>
+                    <IconButton color={color} onClick={() => action(color)} weight={weight}>
+                      <BlobbrIcon scale="medium" />
+                    </IconButton>
                   </Rhythm>
                 )}
               />
@@ -68,7 +69,7 @@ import { Button } from '../Button';
                 list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
                 render={color => (
                   <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
-                    <Button
+                    <IconButton
                       disabled
                       loading
                       color={color}
@@ -76,8 +77,8 @@ import { Button } from '../Button';
                       onClick={() => action(color)}
                       weight={weight}
                     >
-                      {ucfirst(color)}
-                    </Button>
+                      <BlobbrIcon scale="medium" />
+                    </IconButton>
                   </Rhythm>
                 )}
               />
@@ -101,9 +102,9 @@ import { Button } from '../Button';
                 list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
                 render={color => (
                   <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
-                    <Button color={color} onClick={() => action(color)} shape="brick" weight={weight}>
-                      {ucfirst(color)}
-                    </Button>
+                    <IconButton color={color} onClick={() => action(color)} shape="square" weight={weight}>
+                      <BlobbrIcon scale="medium" />
+                    </IconButton>
                   </Rhythm>
                 )}
               />
@@ -113,17 +114,17 @@ import { Button } from '../Button';
                 list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
                 render={color => (
                   <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
-                    <Button
+                    <IconButton
                       disabled
                       loading
                       color={color}
                       loader={<SpinnerIcon scale="medium" />}
                       onClick={() => action(color)}
-                      shape="brick"
+                      shape="square"
                       weight={weight}
                     >
-                      {ucfirst(color)}
-                    </Button>
+                      <BlobbrIcon scale="medium" />
+                    </IconButton>
                   </Rhythm>
                 )}
               />
@@ -143,9 +144,9 @@ import { Button } from '../Button';
           list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
           render={color => (
             <Rhythm key={color} m={2}>
-              <Button color={color} onClick={() => action(color)} shape="brick" weight="inline">
-                {ucfirst(color)}
-              </Button>
+              <IconButton color={color} onClick={() => action(color)} shape="square" weight="inline">
+                <BlobbrIcon scale="xlarge" />
+              </IconButton>
             </Rhythm>
           )}
         />
@@ -155,17 +156,17 @@ import { Button } from '../Button';
           list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
           render={color => (
             <Rhythm key={color} m={2}>
-              <Button
+              <IconButton
                 disabled
                 loading
                 color={color}
-                loader={<SpinnerIcon scale="medium" />}
+                loader={<SpinnerIcon scale="xlarge" />}
                 onClick={() => action(color)}
-                shape="brick"
+                shape="square"
                 weight="inline"
               >
-                {ucfirst(color)}
-              </Button>
+                <BlobbrIcon scale="xlarge" />
+              </IconButton>
             </Rhythm>
           )}
         />
@@ -182,9 +183,9 @@ import { Button } from '../Button';
           list={['solid', 'shaded', 'outlined', 'ghost', 'inline']}
           render={weight => (
             <Rhythm key={weight} m={2}>
-              <Button contrast weight={weight}>
-                {ucfirst(weight)}
-              </Button>
+              <IconButton contrast weight={weight}>
+                <BlobbrIcon scale="medium" />
+              </IconButton>
             </Rhythm>
           )}
         />
@@ -194,9 +195,9 @@ import { Button } from '../Button';
           list={['solid', 'shaded', 'outlined', 'ghost', 'inline']}
           render={weight => (
             <Rhythm key={weight} m={2}>
-              <Button contrast loading key={weight} loader={<SpinnerIcon scale="medium" />} weight={weight}>
-                {ucfirst(weight)}
-              </Button>
+              <IconButton contrast loading key={weight} loader={<SpinnerIcon scale="medium" />} weight={weight}>
+                <BlobbrIcon scale="xlarge" />
+              </IconButton>
             </Rhythm>
           )}
         />

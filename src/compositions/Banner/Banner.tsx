@@ -75,7 +75,6 @@ export function Banner({
       )}
       color={level === 'info' ? 'accent-primary' : level}
       container="banner"
-      role="banner"
       style={style}
       themeId={themeId}
     >

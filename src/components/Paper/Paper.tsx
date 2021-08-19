@@ -56,6 +56,8 @@ export const Paper = React.forwardRef<HTMLDivElement, PaperProps>(
           className,
         )}
         ref={forwardedRef}
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+        tabIndex={scrollable ? 0 : undefined}
         {...props}
       >
         {children}

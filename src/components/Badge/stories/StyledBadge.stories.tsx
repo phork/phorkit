@@ -1,5 +1,7 @@
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledBadge, StyledBadgeProps } from '../StyledBadge';
 import badgeStory from './Badge.stories';
 
@@ -19,6 +21,22 @@ export default {
       },
     },
     ...badgeStory.argTypes,
+  },
+  parameters: {
+    ...badgeStory.parameters,
+    docs: {
+      ...badgeStory.parameters?.docs,
+      page: () => (
+        <React.Fragment>
+          <PageTitle src="components/Badge" title="StyledBadge" />
+          <Subtitle />
+          <Description />
+          <Primary />
+          <ArgsTable story={PRIMARY_STORY} />
+          <Stories />
+        </React.Fragment>
+      ),
+    },
   },
 } as ComponentMeta<typeof StyledBadge>;
 

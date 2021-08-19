@@ -1,5 +1,7 @@
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledAvatar, StyledAvatarProps } from '../StyledAvatar';
 import avatarStory from './Avatar.stories';
 
@@ -19,6 +21,22 @@ export default {
       },
     },
     ...avatarStory.argTypes,
+  },
+  parameters: {
+    ...avatarStory.parameters,
+    docs: {
+      ...avatarStory.parameters?.docs,
+      page: () => (
+        <React.Fragment>
+          <PageTitle src="components/Avatar" title="StyledAvatar" />
+          <Subtitle />
+          <Description />
+          <Primary />
+          <ArgsTable story={PRIMARY_STORY} />
+          <Stories />
+        </React.Fragment>
+      ),
+    },
   },
 } as ComponentMeta<typeof StyledAvatar>;
 

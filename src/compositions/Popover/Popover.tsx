@@ -24,7 +24,6 @@ export type PopoverTogglerProps = {
   onFocus: () => void;
   onKeyDown: (event: React.KeyboardEvent) => void;
   onMouseEnter: () => void;
-  role: 'button';
   tabIndex: 0;
   visible?: boolean;
 };
@@ -219,7 +218,6 @@ export function Popover({
       onFocus: handleTogglerFocus,
       onKeyDown: handleKeyDown,
       onMouseEnter: handleMouseEnter,
-      role: 'button',
       tabIndex: 0,
     };
 

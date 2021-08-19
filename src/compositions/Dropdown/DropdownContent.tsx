@@ -164,6 +164,7 @@ export function DropdownContentBase(
   return items ? (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
     <div
+      aria-hidden={!isDropdownVisible}
       className={cx(
         styles.dropdownOptionsContainer,
         layout && styles[`dropdownOptionsContainer--${layout}`],
