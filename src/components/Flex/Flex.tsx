@@ -6,17 +6,23 @@ export interface FlexProps extends React.HTMLAttributes<HTMLDivElement> {
   alignItems?: 'baseline' | 'center' | 'flex-end' | 'flex-start';
   alignContent?: 'center' | 'flex-end' | 'flex-start' | 'space-around' | 'space-between' | 'stretch';
   alignSelf?: 'baseline' | 'center' | 'flex-end' | 'flex-start' | 'space-around' | 'space-between' | 'stretch';
-  /** The children are optional so that <Typography /> can be used as a wrapper */
+  /** The children are optional so that this component can be passed as empty and then cloned */
   children?: React.ReactNode;
   className?: string;
   direction?: 'column' | 'row';
+  /** This sets the style to `flex: 1` */
   flexible?: boolean;
   full?: boolean;
+  /** This sets the style to `flex: none` */
   inflexible?: boolean;
+  /** This sets the style to `display: inline-flex` */
   inline?: boolean;
   justifyContent?: 'center' | 'flex-end' | 'flex-start' | 'space-around' | 'space-between' | 'space-evenly';
+  /** If this is true the width and height will be set to 100% */
   max?: boolean;
+  /** This reverses the flex direction */
   reverse?: boolean;
+  style?: React.CSSProperties;
   wrap?: boolean;
 }
 
@@ -26,7 +32,7 @@ export function Flex({
   alignSelf,
   children,
   className,
-  direction,
+  direction = 'row',
   flexible = false,
   full = false,
   inflexible = false,
