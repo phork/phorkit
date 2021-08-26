@@ -104,6 +104,7 @@ const scriptsConfig = ['esm', 'cjs'].map(format => ({
       tsconfig: `tsconfig.${format}.json`,
       // this plugin only includes compilerOptions from the tsconfig
       include: ['src/**/*.ts', 'src/**/*.tsx', 'src/**/*.json'],
+      exclude: ['src/stories/*', 'src/**/stories/*', 'src/**/*.stories.tsx'],
     }),
     !isDev && sizeSnapshot(),
     babel(sharedBabelConfig),
