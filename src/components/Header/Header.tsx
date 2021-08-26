@@ -31,7 +31,7 @@ export function Header({
   const classes = cx(
     styles.header,
     bordered && styles['header--bordered'],
-    bordered === 'pseudo' && styles['header-bordered-pseudo'],
+    bordered === 'pseudo' && styles['header--bordered-pseudo'],
     full && styles['header--full'],
     !unthemed && themeId && styles[`header--${themeId}`],
     !unthemed && variant && styles[`header--${variant}`],

@@ -9,6 +9,7 @@ export interface FooterProps extends React.HTMLAttributes<HTMLDivElement>, Theme
   children: React.ReactNode;
   className?: string;
   full?: boolean;
+  style?: React.CSSProperties;
   variant?: 'primary' | 'secondary' | 'transparent';
   volume?: 'quiet';
 }
@@ -31,7 +32,7 @@ export function Footer({
   const classes = cx(
     styles.footer,
     bordered && styles['footer--bordered'],
-    bordered === 'pseudo' && styles['footer-bordered-pseudo'],
+    bordered === 'pseudo' && styles['footer--bordered-pseudo'],
     full && styles['footer--full'],
     !unthemed && themeId && styles[`footer--${themeId}`],
     !unthemed && variant && styles[`footer--${variant}`],

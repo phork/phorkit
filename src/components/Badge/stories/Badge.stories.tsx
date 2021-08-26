@@ -83,66 +83,66 @@ Default.args = {
   ...defaultArgs,
 };
 
-export const Primary = Template.bind({});
-Primary.storyName = 'Color: Primary';
-Primary.args = {
+export const PrimaryColor = Template.bind({});
+PrimaryColor.storyName = 'Color: Primary';
+PrimaryColor.args = {
   ...defaultArgs,
   color: 'primary',
 };
 
-export const Success = Template.bind({});
-Success.storyName = 'Color: Success';
-Success.args = {
+export const SuccessColor = Template.bind({});
+SuccessColor.storyName = 'Color: Success';
+SuccessColor.args = {
   ...defaultArgs,
   color: 'success',
 };
 
-export const Warning = Template.bind({});
-Warning.storyName = 'Color: Warning';
-Warning.args = {
+export const WarningColor = Template.bind({});
+WarningColor.storyName = 'Color: Warning';
+WarningColor.args = {
   ...defaultArgs,
   color: 'warning',
 };
 
-export const Danger = Template.bind({});
-Danger.storyName = 'Color: Danger';
-Danger.args = {
+export const DangerColor = Template.bind({});
+DangerColor.storyName = 'Color: Danger';
+DangerColor.args = {
   ...defaultArgs,
   color: 'danger',
 };
 
-export const Neutral = Template.bind({});
-Neutral.storyName = 'Color: Neutral';
-Neutral.args = {
+export const NeutralColor = Template.bind({});
+NeutralColor.storyName = 'Color: Neutral';
+NeutralColor.args = {
   ...defaultArgs,
   color: 'neutral',
 };
 
-export const Point = Template.bind({});
-Point.storyName = 'Shape: Point';
-Point.args = {
+export const PointShape = Template.bind({});
+PointShape.storyName = 'Shape: Point';
+PointShape.args = {
   ...defaultArgs,
   shape: 'point',
 };
 
-export const Marker = Template.bind({});
-Marker.storyName = 'Shape: Marker';
-Marker.args = {
+export const MarkerShape = Template.bind({});
+MarkerShape.storyName = 'Shape: Marker';
+MarkerShape.args = {
   ...defaultArgs,
   shape: 'marker',
 };
 
-export const Count = Template.bind({});
-Count.storyName = 'Shape: Count';
-Count.args = {
+export const CountShape = Template.bind({});
+CountShape.storyName = 'Shape: Count';
+CountShape.args = {
   ...defaultArgs,
   children: 99,
   shape: 'count',
 };
 
-export const Label = Template.bind({});
-Label.storyName = 'Shape: Label';
-Label.args = {
+export const LabelShape = Template.bind({});
+LabelShape.storyName = 'Shape: Label';
+LabelShape.args = {
   ...defaultArgs,
   children: 'Beta',
   shape: 'label',

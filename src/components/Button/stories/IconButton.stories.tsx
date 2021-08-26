@@ -74,101 +74,101 @@ Default.args = {
   ...defaultArgs,
 };
 
-export const Primary = Template.bind({});
-Primary.storyName = 'Color: Primary';
-Primary.args = {
+export const PrimaryColor = Template.bind({});
+PrimaryColor.storyName = 'Color: Primary';
+PrimaryColor.args = {
   ...defaultArgs,
   color: 'primary',
 };
 
-export const Success = Template.bind({});
-Success.storyName = 'Color: Success';
-Success.args = {
+export const SuccessColor = Template.bind({});
+SuccessColor.storyName = 'Color: Success';
+SuccessColor.args = {
   ...defaultArgs,
   color: 'success',
 };
 
-export const Warning = Template.bind({});
-Warning.storyName = 'Color: Warning';
-Warning.args = {
+export const WarningColor = Template.bind({});
+WarningColor.storyName = 'Color: Warning';
+WarningColor.args = {
   ...defaultArgs,
   color: 'warning',
 };
 
-export const Danger = Template.bind({});
-Danger.storyName = 'Color: Danger';
-Danger.args = {
+export const DangerColor = Template.bind({});
+DangerColor.storyName = 'Color: Danger';
+DangerColor.args = {
   ...defaultArgs,
   color: 'danger',
 };
 
-export const Neutral = Template.bind({});
-Neutral.storyName = 'Color: Neutral';
-Neutral.args = {
+export const NeutralColor = Template.bind({});
+NeutralColor.storyName = 'Color: Neutral';
+NeutralColor.args = {
   ...defaultArgs,
   color: 'neutral',
 };
 
-export const Black = Template.bind({});
-Black.storyName = 'Color: Black';
-Black.args = {
+export const BlackColor = Template.bind({});
+BlackColor.storyName = 'Color: Black';
+BlackColor.args = {
   ...defaultArgs,
   color: 'black',
 };
 
-export const White = Template.bind({});
-White.storyName = 'Color: White';
-White.args = {
+export const WhiteColor = Template.bind({});
+WhiteColor.storyName = 'Color: White';
+WhiteColor.args = {
   ...defaultArgs,
   color: 'white',
 };
 
-export const Solid = Template.bind({});
-Solid.storyName = 'Weight: Solid';
-Solid.args = {
+export const SolidWeight = Template.bind({});
+SolidWeight.storyName = 'Weight: Solid';
+SolidWeight.args = {
   ...defaultArgs,
   weight: 'solid',
 };
 
-export const Shaded = Template.bind({});
-Shaded.storyName = 'Weight: Shaded';
-Shaded.args = {
+export const ShadedWeight = Template.bind({});
+ShadedWeight.storyName = 'Weight: Shaded';
+ShadedWeight.args = {
   ...defaultArgs,
   weight: 'shaded',
 };
 
-export const Outlined = Template.bind({});
-Outlined.storyName = 'Weight: Outlined';
-Outlined.args = {
+export const OutlinedWeight = Template.bind({});
+OutlinedWeight.storyName = 'Weight: Outlined';
+OutlinedWeight.args = {
   ...defaultArgs,
   weight: 'outlined',
 };
 
-export const Ghost = Template.bind({});
-Ghost.storyName = 'Weight: Ghost';
-Ghost.args = {
+export const GhostWeight = Template.bind({});
+GhostWeight.storyName = 'Weight: Ghost';
+GhostWeight.args = {
   ...defaultArgs,
   weight: 'ghost',
 };
 
-export const Inline = Template.bind({});
-Inline.storyName = 'Weight: Inline';
-Inline.args = {
+export const InlineWeight = Template.bind({});
+InlineWeight.storyName = 'Weight: Inline';
+InlineWeight.args = {
   ...defaultArgs,
   iconScale: 'xlarge' as IconScale,
   weight: 'inline',
 };
 
-export const Circle = Template.bind({});
-Circle.storyName = 'Shape: Circle';
-Circle.args = {
+export const CircleShape = Template.bind({});
+CircleShape.storyName = 'Shape: Circle';
+CircleShape.args = {
   ...defaultArgs,
   shape: 'circle',
 };
 
-export const Square = Template.bind({});
-Square.storyName = 'Shape: Square';
-Square.args = {
+export const SquareShape = Template.bind({});
+SquareShape.storyName = 'Shape: Square';
+SquareShape.args = {
   ...defaultArgs,
   shape: 'square',
 };
