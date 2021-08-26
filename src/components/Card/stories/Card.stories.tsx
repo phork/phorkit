@@ -54,7 +54,7 @@ export default {
   },
   parameters: {
     controls: {
-      exclude: ['className', 'contrast', 'themeId'],
+      exclude: ['className', 'themeId'],
       sort: 'requiredFirst',
     },
     docs: {

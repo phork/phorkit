@@ -4,7 +4,7 @@ import { ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Card.module.css';
 
-export interface CardProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement>, Omit<ThemeProps, 'contrast'> {
   bordered?: boolean;
   children: React.ReactNode;
   className?: string;

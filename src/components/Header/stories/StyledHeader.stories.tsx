@@ -2,28 +2,28 @@ import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } fro
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { StyledDivider, StyledDividerProps } from '../StyledDivider';
-import dividerStory from './Divider.stories';
+import { StyledHeader } from '../StyledHeader';
+import headerStory from './Header.stories';
 
 export default {
-  ...dividerStory,
-  title: 'Utilities/Divider/StyledDivider',
-  component: StyledDivider,
+  ...headerStory,
+  title: 'Surfaces/Header/StyledHeader',
+  component: StyledHeader,
   argTypes: {
-    dividerColor: {
+    headerColor: {
       table: {
         category: 'Styled controls',
       },
     },
-    ...dividerStory.argTypes,
+    ...headerStory.argTypes,
   },
   parameters: {
-    ...dividerStory.parameters,
+    ...headerStory.parameters,
     docs: {
-      ...dividerStory.parameters?.docs,
+      ...headerStory.parameters?.docs,
       page: () => (
         <React.Fragment>
-          <PageTitle src="components/Divider" title="StyledDivider" />
+          <PageTitle src="components/Header" title="StyledHeader" />
           <Subtitle />
           <Description />
           <Primary />
@@ -33,13 +33,25 @@ export default {
       ),
     },
   },
-} as ComponentMeta<typeof StyledDivider>;
+} as ComponentMeta<typeof StyledHeader>;
 
-const Template: ComponentStory<typeof StyledDivider> = args => <StyledDivider {...args} />;
+const Template: ComponentStory<typeof StyledHeader> = ({ children, ...args }) => (
+  <StyledHeader {...args}>
+    {children || (
+      <React.Fragment>
+        <div>Hello world</div>
+        <div>Hello world</div>
+      </React.Fragment>
+    )}
+  </StyledHeader>
+);
 
 const defaultArgs = {
-  dividerColor: '#393945',
-  orientation: 'horizontal' as StyledDividerProps['orientation'],
+  backgroundColor: '#556270',
+  bordered: true,
+  borderColor: '#393a61',
+  textColor: '#fff',
+  height: 50,
   variant: undefined,
 };
 
