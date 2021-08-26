@@ -2,8 +2,24 @@ const path = require('path');
 
 const src = path.resolve(__dirname, '../src');
 
-exports.onCreateWebpackConfig = ({ actions }) => {
+exports.onCreateWebpackConfig = ({ actions, loaders }) => {
   actions.setWebpackConfig({
+    module: {
+      rules: [
+        {
+          exclude: [
+            path.join(src, '**/stories/*'),
+            path.resolve(__dirname, '.storybook'),
+            path.resolve(__dirname, 'node_modules/@storybook'),
+          ],
+        },
+        {
+          // this seems like a rather heavy-handed approach but it works as a temporary fix
+          test: src => src.includes('storybook'),
+          use: loaders.null(),
+        },
+      ],
+    },
     resolve: {
       modules: [src, 'node_modules'],
       alias: {
