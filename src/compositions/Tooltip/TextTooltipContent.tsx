@@ -7,6 +7,7 @@ import { StyledPaper } from '../../components/Paper/StyledPaper';
 import { Typography } from '../../components/Typography/Typography';
 
 export interface TextTooltipContentProps extends CardProps {
+  contrast?: boolean;
   position: AnyPosition;
   scrollable?: boolean;
   width?: number | string;
