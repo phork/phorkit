@@ -30,6 +30,25 @@ describe('<List />', () => {
     expect(getByText('Seventh')).toBeTruthy();
   });
 
+  it('should render a basic list using a div component', () => {
+    const { container } = render(
+      <List<'div'>
+        as="div"
+        items={[
+          { id: 'normal0', label: 'First' },
+          { id: 'selected', label: 'Second', selected: true },
+          { id: 'normal1', label: 'Third' },
+          { id: 'normal2', label: 'Fourth' },
+          { id: 'normal3', label: 'Fifth' },
+          { id: 'disabled', label: 'Sixth', disabled: true },
+          { id: 'inactive', label: 'Seventh', inactive: true },
+        ]}
+        variant="bordered"
+      />,
+    );
+    expect(container.firstChild?.nodeName).toBe('DIV');
+  });
+
   it('should render a basic list using a functional component', () => {
     const { container } = render(
       <List<'div'>

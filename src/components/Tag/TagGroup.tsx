@@ -1,13 +1,13 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { AsType, ThemeProps } from '../../types';
+import { AsReactType, ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Tag.module.css';
 import { Tag, TagElementType, TagShape, TagSize, TagProps } from './Tag';
 
 export interface TagGroupProps<T extends TagElementType = 'div'>
   extends React.HTMLAttributes<HTMLDivElement>,
-    AsType<T>,
+    AsReactType<T>,
     ThemeProps {
   actionable?: boolean;
   children?: React.ReactNode;

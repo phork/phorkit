@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { AsType, MergeProps } from '../../types';
+import { AsReactType, MergeProps } from '../../types';
 import { Button, ButtonElementType, ButtonProps } from '../../components/Button';
 
 export interface LocalPaginationJumpProps {
@@ -10,7 +10,7 @@ export interface LocalPaginationJumpProps {
   type: 'first' | 'last' | 'next' | 'previous';
 }
 
-export type PaginationJumpProps<T extends ButtonElementType = 'button'> = AsType<T> &
+export type PaginationJumpProps<T extends ButtonElementType = 'button'> = AsReactType<T> &
   MergeProps<Omit<ButtonProps<T>, 'as' | 'children'>, LocalPaginationJumpProps>;
 
 export function PaginationJump<T extends ButtonElementType = 'button'>({
