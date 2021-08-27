@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { AsType, MergeElementProps, ThemeProps } from '../../types';
+import { AsReactType, MergeElementProps, ThemeProps } from '../../types';
 import { useAccessibility } from '../../context/Accessibility';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/List.module.css';
@@ -33,7 +33,7 @@ export interface LocalListProps extends ThemeProps {
   variant?: 'bordered' | 'shadowed' | 'divided' | 'unboxed';
 }
 
-export type ListProps<T extends ListElementType = 'ul'> = AsType<T> & MergeElementProps<T, LocalListProps>;
+export type ListProps<T extends ListElementType = 'ul'> = AsReactType<T> & MergeElementProps<T, LocalListProps>;
 
 export function ListBase<T extends ListElementType = 'ul'>(
   {

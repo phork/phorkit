@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { AsType, MergeElementPropsWithoutRef, ThemeProps } from '../../types';
+import { AsReactType, MergeElementPropsWithoutRef, ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Tag.module.css';
 
@@ -19,7 +19,7 @@ export interface LocalTagProps extends ThemeProps {
   variant?: TagVariant;
 }
 
-export type TagProps<T extends TagElementType = 'div'> = AsType<T> & MergeElementPropsWithoutRef<T, LocalTagProps>;
+export type TagProps<T extends TagElementType = 'div'> = AsReactType<T> & MergeElementPropsWithoutRef<T, LocalTagProps>;
 
 export function TagBase<T extends TagElementType = 'div'>(
   {

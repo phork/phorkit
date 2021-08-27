@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { AsType, StateColor, MergeElementProps, ThemeProps } from '../../../types';
+import { AsReactType, StateColor, MergeElementProps, ThemeProps } from '../../../types';
 import { useThemeId } from '../../../context/Theme';
 import styles from './styles/Formbox.module.css';
 import sizeStyles from './styles/FormboxSizes.module.css';
@@ -35,7 +35,7 @@ export interface LocalFormboxContainerProps extends ThemeProps {
   width?: string | number;
 }
 
-export type FormboxContainerProps<T extends FormboxContainerElementType> = AsType<T> &
+export type FormboxContainerProps<T extends FormboxContainerElementType> = AsReactType<T> &
   MergeElementProps<T, LocalFormboxContainerProps>;
 
 /**

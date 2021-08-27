@@ -15,13 +15,13 @@ describe('<InlineDropover />', () => {
   it('should be clickable', () => {
     const onOpen = jest.fn();
 
-    const { getByText, getByRole } = render(
-      <InlineDropover label={<DropoverLabel>Super fantastic label</DropoverLabel>} onOpen={onOpen}>
+    const { getByTestId, getByText } = render(
+      <InlineDropover label={<DropoverLabel data-testid="button">Super fantastic label</DropoverLabel>} onOpen={onOpen}>
         <DropoverContent>Hello world</DropoverContent>
       </InlineDropover>,
     );
 
-    const button = getByRole('button');
+    const button = getByTestId('button');
     fireEvent.click(button);
 
     expect(onOpen).toHaveBeenCalledTimes(1);
