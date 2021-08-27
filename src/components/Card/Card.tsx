@@ -41,7 +41,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
           styles.card,
           bordered && styles[`card--bordered`],
           hoverable && styles['card--hoverable'],
-          raised === true && styles['card--raised-0'],
+          raised === true && styles['card--raised-10'],
           Number.isInteger(raised) && styles[`card--raised-${raised}`],
           squared && styles[`card--squared`],
           magnify && styles['card--magnify'],
