@@ -9,7 +9,7 @@ RUN yarn build-docs
 
 FROM nginx:1.16.1-alpine
 
-COPY --from=builder /opt/app/.docz/dist /usr/share/nginx/html
-COPY --from=builder /opt/app/.docker/prod/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /opt/app/build/docz /usr/share/nginx/html
+COPY --from=builder /opt/app/.docker/docz/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80

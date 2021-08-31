@@ -3,6 +3,7 @@
 scripts/
 config/
 lib/
+build/
 src/icons/
 src/styles/fonts/**
 src/components/ErrorBoundary/ErrorBoundary.tsx

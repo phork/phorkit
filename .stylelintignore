@@ -3,4 +3,5 @@
 **/*.tsx
 src/styles/fonts/**
 lib/
+build/
 node_modules/*

@@ -1,6 +1,7 @@
 *.json
 .docz/
 lib/
+build/
 postcss.config.js
 scripts/
 src/**/*.test.js
