@@ -40,7 +40,7 @@ export function PaginationPageBase<T extends ButtonElementType = 'button'>(
       onClick={handleClick}
       ref={forwardedRef}
       themeId={themeId}
-      {...((props as unknown) as ButtonProps<T>)}
+      {...(props as unknown as ButtonProps<T>)}
       as={as}
     >
       {page}

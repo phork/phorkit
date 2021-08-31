@@ -78,7 +78,11 @@ function TextboxGroup2FAContent({
   const handleInputFocus = useCallback<React.FocusEventHandler<HTMLInputElement>>(event => event.target.select(), []);
 
   // use the onInput prop instead of the onChange prop
-  const { changeFocus, onChange: ignoreOnChange, ...inputProps } = useTextboxGroup({
+  const {
+    changeFocus,
+    onChange: ignoreOnChange,
+    ...inputProps
+  } = useTextboxGroup({
     onChange: handleChange,
     orderBy: looper,
     refs: items,

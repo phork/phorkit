@@ -25,7 +25,7 @@ const StyledIconButton = styled(IconButton, {
 `;
 
 export const ColoredIconButton = withTheme<ColoredIconButtonProps>(StyledIconButton) as <
-  T extends ButtonElementType = 'button'
+  T extends ButtonElementType = 'button',
 >(
   p: ColoredIconButtonProps<T>,
 ) => React.ReactElement<T>;

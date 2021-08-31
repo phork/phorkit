@@ -3,7 +3,15 @@ import { Flex } from 'components/Flex/Flex';
 import { Typography } from 'components/Typography/Typography';
 import pkg from '../../package.json';
 
-<Meta title="Introduction" />
+<Meta
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+  title="Introduction"
+/>
 
 <Flex wrap alignItems="flex-end" justifyContent="space-between" style={{ marginBottom: 24 }}>
   <Typography as="h1" heading="h1" style={{ fontSize: 48, margin: 0 }} weight="lighter">

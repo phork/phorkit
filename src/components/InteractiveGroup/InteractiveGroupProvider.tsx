@@ -14,7 +14,7 @@ import { InteractiveGroupItemId, InteractiveGroupItemType } from './types';
 export interface InteractiveGroupProviderProps<
   T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,
-  I extends HTMLElement = HTMLElement
+  I extends HTMLElement = HTMLElement,
 > extends Omit<UncontrolledInteractiveGroupProviderProps<T, E, I>, 'reducer'> {
   initialSelected?: T[];
   items: InteractiveGroupItemType<T>[];
@@ -24,7 +24,7 @@ export interface InteractiveGroupProviderProps<
 export function InteractiveGroupProvider<
   T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,
-  I extends HTMLElement = HTMLElement
+  I extends HTMLElement = HTMLElement,
 >({ initialSelected, items, ...props }: InteractiveGroupProviderProps<T, E, I>): React.ReactElement {
   const reducer = useReducer<Reducer<InteractiveGroupState<T>, InteractiveGroupStateAction<T>>>(
     interactiveGroupReducer,

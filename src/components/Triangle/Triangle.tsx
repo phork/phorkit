@@ -9,9 +9,7 @@ export interface TriangleProps extends React.HTMLAttributes<HTMLDivElement> {
   style?: React.CSSProperties;
 }
 
-type PositionCallback = (
-  props: Required<Pick<TriangleProps, 'size' | 'color'>>,
-) => {
+type PositionCallback = (props: Required<Pick<TriangleProps, 'size' | 'color'>>) => {
   borderBottom?: string;
   borderLeft?: string;
   borderRight?: string;

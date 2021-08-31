@@ -46,9 +46,8 @@ export function TabPanelGroup({
   const themeId = useThemeId(initThemeId);
   const variant = contrast ? 'contrast' : initVariant;
 
-  const { selectedIds } = useContext<InteractiveGroupContextValue<string, HTMLDivElement, HTMLDivElement>>(
-    InteractiveGroupContext,
-  );
+  const { selectedIds } =
+    useContext<InteractiveGroupContextValue<string, HTMLDivElement, HTMLDivElement>>(InteractiveGroupContext);
 
   // because the interactive group always uses an array for selected ids
   const selectedId = selectedIds?.[0];

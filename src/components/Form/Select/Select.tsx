@@ -205,9 +205,11 @@ export function SelectBase(
 
   // convert numbers to strings so <select> doesn't complain
   const convertToString = (input?: FormboxValue): string | undefined => (input !== undefined ? input + '' : input);
-  const formattedValue = (multiple
-    ? values?.map(value => convertToString(value)).filter(value => value !== undefined)
-    : convertToString(value)) as string[] | FormboxValue | undefined;
+  const formattedValue = (
+    multiple
+      ? values?.map(value => convertToString(value)).filter(value => value !== undefined)
+      : convertToString(value)
+  ) as string[] | FormboxValue | undefined;
 
   // an input is considered empty if there is nothing to show in the input (eg. value or placeholder)
   const hasValue = multiple ? values && values.length > 0 : value !== undefined && value !== '';

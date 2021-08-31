@@ -38,14 +38,15 @@ export function useScrollSync({ horizontal, vertical }: UseScrollSyncInterface):
   );
 
   const makeRefCallback = useCallback(
-    (id: string): React.RefCallback<HTMLElement> => (node: HTMLElement) => {
-      if (node) {
-        node.addEventListener('scroll', handleScroll);
-        refs.current[id] = node;
-      } else {
-        delete refs.current[id];
-      }
-    },
+    (id: string): React.RefCallback<HTMLElement> =>
+      (node: HTMLElement) => {
+        if (node) {
+          node.addEventListener('scroll', handleScroll);
+          refs.current[id] = node;
+        } else {
+          delete refs.current[id];
+        }
+      },
     [handleScroll],
   );
 

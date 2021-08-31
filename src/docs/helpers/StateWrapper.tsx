@@ -13,9 +13,10 @@ export function StateWrapper<T>({
 }: StateWrapperProps<T>): React.ReactElement {
   const [state, setState] = useState<T>(initialState);
 
-  const customSetState = useCallback((...args) => setState(prevState => setStateFromPrevious!(prevState, ...args)), [
-    setStateFromPrevious,
-  ]);
+  const customSetState = useCallback(
+    (...args) => setState(prevState => setStateFromPrevious!(prevState, ...args)),
+    [setStateFromPrevious],
+  );
 
   return children({
     state,

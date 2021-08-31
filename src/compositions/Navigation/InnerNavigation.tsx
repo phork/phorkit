@@ -67,9 +67,8 @@ export const InnerNavigation = React.forwardRef<HTMLElement, InnerNavigationProp
     const { componentId } = useComponentId();
     const { isInitialized } = useInitializer();
 
-    const { focusedIndex, handleItemClick, selectId } = useContext<
-      InteractiveGroupContextValue<string, HTMLElement, HTMLDivElement>
-    >(InteractiveGroupContext);
+    const { focusedIndex, handleItemClick, selectId } =
+      useContext<InteractiveGroupContextValue<string, HTMLElement, HTMLDivElement>>(InteractiveGroupContext);
 
     const combineRefs = makeCombineRefs(ref, forwardedRef);
 

@@ -44,43 +44,45 @@ export type UseAnimationLoopResponse = {
 
 const initialState = {} as State;
 
-const createReducer = () => (state: State, action: Action): State => {
-  switch (action.type) {
-    case ACTIONS.SET_START:
-      return {
-        finished: false,
-        loop: 0,
-        percent: 0,
-        runtime: 0,
-        start: action.start,
-        options: action.options,
-      };
+const createReducer =
+  () =>
+  (state: State, action: Action): State => {
+    switch (action.type) {
+      case ACTIONS.SET_START:
+        return {
+          finished: false,
+          loop: 0,
+          percent: 0,
+          runtime: 0,
+          start: action.start,
+          options: action.options,
+        };
 
-    case ACTIONS.SET_DURATION:
-      return {
-        ...state,
-        loop: action.loop,
-        percent: action.percent,
-        runtime: action.runtime,
-      };
+      case ACTIONS.SET_DURATION:
+        return {
+          ...state,
+          loop: action.loop,
+          percent: action.percent,
+          runtime: action.runtime,
+        };
 
-    case ACTIONS.SET_FINISHED:
-      return {
-        ...state,
-        finished: true,
-        percent: 100,
-      };
+      case ACTIONS.SET_FINISHED:
+        return {
+          ...state,
+          finished: true,
+          percent: 100,
+        };
 
-    case ACTIONS.SET_CUSTOM:
-      return {
-        ...state,
-        percent: action.percent,
-      };
+      case ACTIONS.SET_CUSTOM:
+        return {
+          ...state,
+          percent: action.percent,
+        };
 
-    default:
-      return state;
-  }
-};
+      default:
+        return state;
+    }
+  };
 
 export const useAnimationLoop = ({
   animate,
