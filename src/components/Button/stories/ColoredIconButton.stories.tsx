@@ -3,7 +3,6 @@ import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } fro
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { IconScale } from '../../../types';
 import { ThemeColorIds } from '../../../config/themes';
 import { SpinnerIcon } from '../../../icons/SpinnerIcon';
 import { BlobbrIcon } from '../../../icons/internal/BlobbrIcon';
@@ -16,13 +15,27 @@ export default {
   component: ColoredIconButton,
   argTypes: {
     ...buttonStory.argTypes,
+    children: {
+      defaultValue: 'Medium',
+      mapping: {
+        Small: <BlobbrIcon scale="small" />,
+        Medium: <BlobbrIcon scale="medium" />,
+        Large: <BlobbrIcon scale="large" />,
+        XLarge: <BlobbrIcon scale="xlarge" />,
+      },
+      control: {
+        type: 'select',
+        labels: {
+          Small: '<BlobbrIcon scale="small" />',
+          Medium: '<BlobbrIcon scale="medium" />',
+          Large: '<BlobbrIcon scale="large" />',
+          XLarge: '<BlobbrIcon scale="xlarge" />',
+        },
+      },
+    },
     shape: {
       ...buttonStory.argTypes?.shape,
       options: [undefined, 'circle', 'square'],
-    },
-    iconScale: {
-      options: ['xsmall', 'small', 'medium', 'large', 'xlarge', '2xlarge', '3xlarge'],
-      control: { type: 'select' },
     },
   },
   parameters: {
@@ -44,16 +57,18 @@ export default {
 } as ComponentMeta<typeof ColoredIconButton>;
 
 const Template: ComponentStory<
-  (args: ColoredIconButtonProps & { iconScale?: IconScale }) => ReturnType<typeof ColoredIconButton>
-> = ({ children, iconScale, size, ...args }) => (
+  (
+    args: Omit<ColoredIconButtonProps, 'children'> & { children: React.ReactElement },
+  ) => ReturnType<typeof ColoredIconButton>
+> = ({ children, size, ...args }) => (
   <ColoredIconButton<'button'>
     {...args}
     as="button"
-    loader={<SpinnerIcon scale={iconScale} />}
+    loader={<SpinnerIcon scale={children.props.scale || 'medium'} />}
     onClick={action('clicked')}
     size={size}
   >
-    <BlobbrIcon scale={iconScale} />
+    {children}
   </ColoredIconButton>
 );
 
@@ -66,7 +81,6 @@ const defaultArgs = {
   disabled: false,
   focused: false,
   fullWidth: false,
-  iconScale: 'medium' as IconScale,
   loading: false,
   noHeight: false,
   noPadding: false,

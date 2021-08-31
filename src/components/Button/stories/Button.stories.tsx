@@ -10,6 +10,11 @@ export default {
   title: 'Buttons/Button',
   component: Button,
   argTypes: {
+    onClick: {
+      control: {
+        disable: true,
+      },
+    },
     type: {
       options: ['button', 'submit'],
       control: { type: 'inline-radio' },
@@ -25,6 +30,14 @@ export default {
     color: {
       options: ['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white'],
       control: { type: 'radio' },
+      table: {
+        category: 'Appearance controls',
+      },
+    },
+    loader: {
+      control: {
+        disable: true,
+      },
       table: {
         category: 'Appearance controls',
       },
@@ -73,6 +86,9 @@ export default {
     },
 
     as: {
+      control: {
+        disable: true,
+      },
       table: {
         category: 'Uncommon controls',
       },
@@ -115,23 +131,6 @@ export default {
     unthemed: {
       table: {
         category: 'Uncommon controls',
-      },
-    },
-
-    loader: {
-      control: {
-        disable: true,
-      },
-      table: {
-        category: 'Remaining props',
-      },
-    },
-    onClick: {
-      control: {
-        disable: true,
-      },
-      table: {
-        category: 'Remaining props',
       },
     },
 
