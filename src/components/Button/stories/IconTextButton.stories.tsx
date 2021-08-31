@@ -1,7 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { IconScale } from '../../../types';
 import { SpinnerIcon } from '../../../icons/SpinnerIcon';
 import { BlobbrIcon } from '../../../icons/internal/BlobbrIcon';
 import { IconTextButtonProps, IconTextButton } from '../IconTextButton';
@@ -13,15 +12,26 @@ export default {
   title: 'Buttons/IconTextButton',
   component: IconTextButton,
   argTypes: {
-    reverse: {
+    icon: {
+      defaultValue: 'Medium',
+      options: ['Small', 'Medium', 'Large'],
+      mapping: {
+        Small: <BlobbrIcon scale="small" />,
+        Medium: <BlobbrIcon scale="medium" />,
+        Large: <BlobbrIcon scale="large" />,
+      },
+      control: {
+        labels: {
+          Small: '<BlobbrIcon scale="small" />',
+          Medium: '<BlobbrIcon scale="medium" />',
+          Large: '<BlobbrIcon scale="large" />',
+        },
+      },
       table: {
         category: 'Icon controls',
       },
     },
-    icon: {
-      control: {
-        disable: true,
-      },
+    reverse: {
       table: {
         category: 'Icon controls',
       },
@@ -40,16 +50,14 @@ export default {
   },
 } as ComponentMeta<typeof IconTextButton>;
 
-const Template: ComponentStory<(args: IconTextButtonProps) => ReturnType<typeof IconTextButton>> = ({
-  children,
-  size,
-  ...args
-}) => (
+const Template: ComponentStory<
+  (args: Omit<IconTextButtonProps, 'icon'> & { icon: React.ReactElement }) => ReturnType<typeof IconTextButton>
+> = ({ children, icon, size, ...args }) => (
   <IconTextButton<'button'>
     {...args}
     as="button"
-    icon={<BlobbrIcon scale={size as IconScale} />}
-    loader={<SpinnerIcon scale={size as IconScale} />}
+    icon={icon}
+    loader={<SpinnerIcon scale={icon.props.scale || 'medium'} />}
     onClick={action('clicked')}
     size={size}
   >
@@ -213,8 +221,12 @@ Loading.args = {
   loading: true,
 };
 
-export const Link = ({ size, ...args }: IconTextButtonProps<'a'>) => (
-  <IconTextButton<'a'> {...args} icon={<BlobbrIcon scale={size as IconScale} />} size={size} />
+export const Link = ({
+  icon,
+  size,
+  ...args
+}: Omit<IconTextButtonProps<'a'>, 'icon'> & { icon: React.ReactElement }) => (
+  <IconTextButton<'a'> {...args} icon={icon} size={size} />
 );
 Link.args = {
   ...defaultArgs,

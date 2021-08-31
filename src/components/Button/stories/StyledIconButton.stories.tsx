@@ -3,7 +3,6 @@ import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } fro
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { IconScale } from '../../../types';
 import { SpinnerIcon } from '../../../icons/SpinnerIcon';
 import { BlobbrIcon } from '../../../icons/internal/BlobbrIcon';
 import { StyledIconButton, StyledIconButtonProps } from '../StyledIconButton';
@@ -15,13 +14,27 @@ export default {
   component: StyledIconButton,
   argTypes: {
     ...buttonStory.argTypes,
+    children: {
+      defaultValue: 'Medium',
+      mapping: {
+        Small: <BlobbrIcon scale="small" />,
+        Medium: <BlobbrIcon scale="medium" />,
+        Large: <BlobbrIcon scale="large" />,
+        XLarge: <BlobbrIcon scale="xlarge" />,
+      },
+      control: {
+        type: 'select',
+        labels: {
+          Small: '<BlobbrIcon scale="small" />',
+          Medium: '<BlobbrIcon scale="medium" />',
+          Large: '<BlobbrIcon scale="large" />',
+          XLarge: '<BlobbrIcon scale="xlarge" />',
+        },
+      },
+    },
     shape: {
       ...buttonStory.argTypes?.shape,
       options: [undefined, 'circle', 'square'],
-    },
-    iconScale: {
-      options: ['xsmall', 'small', 'medium', 'large', 'xlarge', '2xlarge', '3xlarge'],
-      control: { type: 'select' },
     },
   },
   parameters: {
@@ -43,10 +56,17 @@ export default {
 } as ComponentMeta<typeof StyledIconButton>;
 
 const Template: ComponentStory<
-  (args: StyledIconButtonProps & { iconScale?: IconScale }) => ReturnType<typeof StyledIconButton>
-> = ({ children, iconScale, size, ...args }) => (
-  <StyledIconButton {...args} loader={<SpinnerIcon scale={iconScale} />} onClick={action('clicked')} size={size}>
-    <BlobbrIcon scale={iconScale} />
+  (
+    args: Omit<StyledIconButtonProps, 'children'> & { children: React.ReactElement },
+  ) => ReturnType<typeof StyledIconButton>
+> = ({ children, size, ...args }) => (
+  <StyledIconButton
+    {...args}
+    loader={<SpinnerIcon scale={children.props.scale || 'medium'} />}
+    onClick={action('clicked')}
+    size={size}
+  >
+    {children}
   </StyledIconButton>
 );
 
@@ -60,7 +80,6 @@ const defaultArgs = {
   focused: false,
   fullWidth: false,
   hoveredPrimaryColor: '#454f58',
-  iconScale: 'medium' as IconScale,
   inverseColor: '#fff',
   loading: false,
   noHeight: false,

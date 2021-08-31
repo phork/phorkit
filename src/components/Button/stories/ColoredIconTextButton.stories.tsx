@@ -3,7 +3,6 @@ import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } fro
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { IconScale } from '../../../types';
 import { ThemeColorIds } from '../../../config/themes';
 import { SpinnerIcon } from '../../../icons/SpinnerIcon';
 import { BlobbrIcon } from '../../../icons/internal/BlobbrIcon';
@@ -14,6 +13,33 @@ export default {
   ...buttonStory,
   title: 'Buttons/IconTextButton/ColoredIconTextButton',
   component: ColoredIconTextButton,
+  argTypes: {
+    icon: {
+      defaultValue: 'Medium',
+      options: ['Small', 'Medium', 'Large'],
+      mapping: {
+        Small: <BlobbrIcon scale="small" />,
+        Medium: <BlobbrIcon scale="medium" />,
+        Large: <BlobbrIcon scale="large" />,
+      },
+      control: {
+        labels: {
+          Small: '<BlobbrIcon scale="small" />',
+          Medium: '<BlobbrIcon scale="medium" />',
+          Large: '<BlobbrIcon scale="large" />',
+        },
+      },
+      table: {
+        category: 'Icon controls',
+      },
+    },
+    reverse: {
+      table: {
+        category: 'Icon controls',
+      },
+    },
+    ...buttonStory.argTypes,
+  },
   parameters: {
     ...buttonStory.parameters,
     docs: {
@@ -32,16 +58,16 @@ export default {
   },
 } as ComponentMeta<typeof ColoredIconTextButton>;
 
-const Template: ComponentStory<(args: ColoredIconTextButtonProps) => ReturnType<typeof ColoredIconTextButton>> = ({
-  children,
-  size,
-  ...args
-}) => (
+const Template: ComponentStory<
+  (
+    args: Omit<ColoredIconTextButtonProps, 'icon'> & { icon: React.ReactElement },
+  ) => ReturnType<typeof ColoredIconTextButton>
+> = ({ children, icon, size, ...args }) => (
   <ColoredIconTextButton<'button'>
     {...args}
     as="button"
-    icon={<BlobbrIcon scale={size as IconScale} />}
-    loader={<SpinnerIcon scale={size as IconScale} />}
+    icon={icon}
+    loader={<SpinnerIcon scale={icon.props.scale || 'medium'} />}
     onClick={action('clicked')}
     size={size}
   >

@@ -9,7 +9,7 @@ export type StyledIconTextButtonProps<T extends IconTextButtonElementType = 'but
     inverseColor?: string;
     hoveredPrimaryColor?: string;
     activePrimaryColor?: string;
-    width: number | string;
+    width?: number | string;
   }
 >;
 

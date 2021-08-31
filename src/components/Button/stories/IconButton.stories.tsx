@@ -1,7 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { IconScale } from '../../../types';
 import { SpinnerIcon } from '../../../icons/SpinnerIcon';
 import { BlobbrIcon } from '../../../icons/internal/BlobbrIcon';
 import { IconButtonProps, IconButton } from '../IconButton';
@@ -14,13 +13,26 @@ export default {
   component: IconButton,
   argTypes: {
     ...buttonStory.argTypes,
+    children: {
+      defaultValue: 'Medium',
+      mapping: {
+        Small: <BlobbrIcon scale="small" />,
+        Medium: <BlobbrIcon scale="medium" />,
+        Large: <BlobbrIcon scale="large" />,
+        XLarge: <BlobbrIcon scale="xlarge" />,
+      },
+      control: {
+        labels: {
+          Small: '<BlobbrIcon scale="small" />',
+          Medium: '<BlobbrIcon scale="medium" />',
+          Large: '<BlobbrIcon scale="large" />',
+          XLarge: '<BlobbrIcon scale="xlarge" />',
+        },
+      },
+    },
     shape: {
       ...buttonStory.argTypes?.shape,
       options: [undefined, 'circle', 'square'],
-    },
-    iconScale: {
-      options: ['xsmall', 'small', 'medium', 'large', 'xlarge', '2xlarge', '3xlarge'],
-      control: { type: 'select' },
     },
   },
   parameters: {
@@ -36,16 +48,16 @@ export default {
 } as ComponentMeta<typeof IconButton>;
 
 const Template: ComponentStory<
-  (args: IconButtonProps & { iconScale?: IconScale }) => ReturnType<typeof IconButton>
-> = ({ children, iconScale, size, ...args }) => (
+  (args: Omit<IconButtonProps, 'children'> & { children: React.ReactElement }) => ReturnType<typeof IconButton>
+> = ({ children, size, ...args }) => (
   <IconButton<'button'>
     {...args}
     as="button"
-    loader={<SpinnerIcon scale={iconScale} />}
+    loader={<SpinnerIcon scale={children?.props.scale || 'medium'} />}
     onClick={action('clicked')}
     size={size}
   >
-    <BlobbrIcon scale={iconScale} />
+    {children}
   </IconButton>
 );
 
@@ -57,7 +69,6 @@ const defaultArgs = {
   disabled: false,
   focused: false,
   fullWidth: false,
-  iconScale: 'medium' as IconScale,
   loading: false,
   noHeight: false,
   noPadding: false,
@@ -155,7 +166,7 @@ export const InlineWeight = Template.bind({});
 InlineWeight.storyName = 'Weight: Inline';
 InlineWeight.args = {
   ...defaultArgs,
-  iconScale: 'xlarge' as IconScale,
+  children: <BlobbrIcon scale="xlarge" />,
   weight: 'inline',
 };
 
@@ -179,9 +190,12 @@ Loading.args = {
   loading: true,
 };
 
-export const Link = ({ iconScale, ...args }: IconButtonProps<'a'> & { iconScale?: IconScale }) => (
+export const Link = ({
+  children,
+  ...args
+}: Omit<IconButtonProps<'a'>, 'children'> & { children: React.ReactElement }) => (
   <IconButton<'a'> {...args}>
-    <BlobbrIcon scale={iconScale} />
+    <BlobbrIcon scale={children?.props.scale || 'medium'} />
   </IconButton>
 );
 Link.args = {
