@@ -30,7 +30,7 @@ class BoundsEmitter {
         throw new Error('Observer is already running');
       }
     } catch (err) {
-      this.onerror(err);
+      this.onerror(err as Error);
     }
   }
 
@@ -50,7 +50,7 @@ class BoundsEmitter {
         throw new Error('Missing ref');
       }
     } catch (err) {
-      this.onerror(err);
+      this.onerror(err as Error);
     }
   }
 
