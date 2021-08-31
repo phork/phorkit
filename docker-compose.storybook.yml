@@ -2,15 +2,15 @@ version: '3'
 
 services:
   client:
-    container_name: phorkit-docz
+    container_name: phorkit-storybook
     build:
       context: ./
-      dockerfile: ./.docker/docz/Dockerfile
-    image: phorkit-docz
+      dockerfile: ./.docker/storybook/Dockerfile
+    image: phorkit-storybook
     env_file:
       - .env
     ports:
-      - ${PUBLIC_DOCZ_PORT}:80
+      - ${PUBLIC_STORYBOOK_PORT}:80
     networks:
       - phorknet
 

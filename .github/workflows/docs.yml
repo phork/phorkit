@@ -26,7 +26,7 @@ jobs:
       - uses: burnett01/rsync-deployments@4.1
         with:
           switches: -avz --delete
-          path: .docz/dist
+          path: build/docz
           remote_path: ./phorkit/
           remote_host: phork.org
           remote_user: phorkit

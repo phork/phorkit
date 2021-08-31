@@ -4,6 +4,7 @@ node_modules/
 # production
 /.docz
 /lib
+/build
 
 # rollup
 .rollup.cache

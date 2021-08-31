@@ -43,6 +43,7 @@ export default {
   debug: false,
   base: '/',
   src: './src',
+  dest: './build/docz',
   public: './public',
   files: process.env.DOCZ_FILES || '**/docs/*.mdx',
   ignore: ['**/stories/*', '**/*.stories.tsx', '**/*.stories.mdx', '**/*.docs.mdx'],
