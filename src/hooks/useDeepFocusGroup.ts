@@ -5,7 +5,7 @@ import { useSafeTimeout } from './useSafeTimeout';
 export type UseDeepFocusGroupRef<E extends Element = HTMLElement> = React.RefObject<E | null | undefined>;
 export type UseDeepFocusGroupRefWithHandle<
   E extends Element = HTMLElement,
-  H extends string = string
+  H extends string = string,
 > = React.RefObject<Record<H, E>>;
 
 export interface UseDeepFocusGroupEventHandlers {
@@ -65,9 +65,10 @@ export function useDeepFocusGroup(
   const refs = useRef<Record<string, UseDeepFocusGroupRef>>({});
   const refsWithHandles = useRef<Record<string, { handle: string; ref: UseDeepFocusGroupRefWithHandle }>>({});
 
-  const isIdFocused = useCallback<UseDeepFocusGroupResponse['isIdFocused']>(id => focusedIds?.includes(id) || false, [
-    focusedIds,
-  ]);
+  const isIdFocused = useCallback<UseDeepFocusGroupResponse['isIdFocused']>(
+    id => focusedIds?.includes(id) || false,
+    [focusedIds],
+  );
 
   const getFocusedIds = useCallback((activeElement: Element | null): string[] | undefined => {
     const focusedIds = [

@@ -54,22 +54,9 @@ export function Rhythm({
   ...props
 }: RhythmProps): React.ReactElement | null {
   const classes = cx(
-    ...([
-      'm',
-      'mx',
-      'my',
-      'ml',
-      'mr',
-      'mt',
-      'mb',
-      'p',
-      'px',
-      'py',
-      'pl',
-      'pr',
-      'pt',
-      'pb',
-    ] as (keyof RhythmLocation)[]).map(prefix => {
+    ...(
+      ['m', 'mx', 'my', 'ml', 'mr', 'mt', 'mb', 'p', 'px', 'py', 'pl', 'pr', 'pt', 'pb'] as (keyof RhythmLocation)[]
+    ).map(prefix => {
       if (props[prefix] !== undefined) {
         const suffix =
           typeof props[prefix] === 'number' && props[prefix]! < 0

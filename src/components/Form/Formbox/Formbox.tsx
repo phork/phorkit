@@ -133,7 +133,7 @@ export function FormboxBase(
       validity={validity}
       variant={variant}
       width={width}
-      {...((props as unknown) as Omit<FormboxContainerProps<'label'>, 'as' | 'type'>)}
+      {...(props as unknown as Omit<FormboxContainerProps<'label'>, 'as' | 'type'>)}
     >
       {iconBefore && (
         <FormboxIcon

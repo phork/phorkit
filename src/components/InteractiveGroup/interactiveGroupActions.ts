@@ -75,15 +75,14 @@ export type InteractiveGroupStateActionSetItems<T extends InteractiveGroupItemId
   type: interactiveGroupActions.SET_ITEMS;
 };
 
-export type InteractiveGroupStateActionSelectId<
-  T extends InteractiveGroupItemId = string
-> = InteractiveGroupEventTypes & {
-  allowReselect?: boolean;
-  id: T;
-  maxSelect: number;
-  timestamp: number;
-  type: interactiveGroupActions.SELECT_ID;
-};
+export type InteractiveGroupStateActionSelectId<T extends InteractiveGroupItemId = string> =
+  InteractiveGroupEventTypes & {
+    allowReselect?: boolean;
+    id: T;
+    maxSelect: number;
+    timestamp: number;
+    type: interactiveGroupActions.SELECT_ID;
+  };
 
 export type InteractiveGroupStateActionToggleSelectedFocused = InteractiveGroupEventTypes & {
   allowReselect?: boolean;
@@ -93,25 +92,23 @@ export type InteractiveGroupStateActionToggleSelectedFocused = InteractiveGroupE
   type: interactiveGroupActions.TOGGLE_SELECTED_FOCUSED;
 };
 
-export type InteractiveGroupStateActionToggleSelected<
-  T extends InteractiveGroupItemId = string
-> = InteractiveGroupEventTypes & {
-  allowReselect?: boolean;
-  id: T;
-  maxSelect: number;
-  minSelect: number;
-  timestamp: number;
-  type: interactiveGroupActions.TOGGLE_SELECTED;
-};
+export type InteractiveGroupStateActionToggleSelected<T extends InteractiveGroupItemId = string> =
+  InteractiveGroupEventTypes & {
+    allowReselect?: boolean;
+    id: T;
+    maxSelect: number;
+    minSelect: number;
+    timestamp: number;
+    type: interactiveGroupActions.TOGGLE_SELECTED;
+  };
 
-export type InteractiveGroupStateActionUnselectId<
-  T extends InteractiveGroupItemId = string
-> = InteractiveGroupEventTypes & {
-  id: T;
-  minSelect: number;
-  timestamp: number;
-  type: interactiveGroupActions.UNSELECT_ID;
-};
+export type InteractiveGroupStateActionUnselectId<T extends InteractiveGroupItemId = string> =
+  InteractiveGroupEventTypes & {
+    id: T;
+    minSelect: number;
+    timestamp: number;
+    type: interactiveGroupActions.UNSELECT_ID;
+  };
 
 export type InteractiveGroupStateAction<T extends InteractiveGroupItemId = string> =
   | InteractiveGroupStateActionClear

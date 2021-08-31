@@ -53,12 +53,16 @@ export const measureDomNode = (
   return { height, width };
 };
 
-export const enhanceVerticallyCollapsedDomNode = (props?: Record<string, string>): EnhanceMeasurableNode => node => {
-  setStyleAttribute(node, { ...props, height: 'auto' });
-  return node;
-};
+export const enhanceVerticallyCollapsedDomNode =
+  (props?: Record<string, string>): EnhanceMeasurableNode =>
+  node => {
+    setStyleAttribute(node, { ...props, height: 'auto' });
+    return node;
+  };
 
-export const enhanceHorizontallyCollapsedDomNode = (props?: Record<string, string>): EnhanceMeasurableNode => node => {
-  setStyleAttribute(node, { ...props, width: 'auto' });
-  return node;
-};
+export const enhanceHorizontallyCollapsedDomNode =
+  (props?: Record<string, string>): EnhanceMeasurableNode =>
+  node => {
+    setStyleAttribute(node, { ...props, width: 'auto' });
+    return node;
+  };

@@ -50,7 +50,7 @@ export interface UseInteractiveGroupInterface<T extends InteractiveGroupItemId =
 export type UseInteractiveGroupResponse<
   T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,
-  I extends HTMLElement = HTMLElement
+  I extends HTMLElement = HTMLElement,
 > = {
   focusedIndex?: number;
   handleItemClick: (event: React.MouseEvent<I> | React.TouchEvent<I>, id: T) => void;
@@ -76,7 +76,7 @@ export type UseInteractiveGroupResponse<
 export function useInteractiveGroup<
   T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,
-  I extends HTMLElement = HTMLElement
+  I extends HTMLElement = HTMLElement,
 >({
   allowReselect = false,
   disabled = false,
@@ -118,12 +118,10 @@ export function useInteractiveGroup<
     toggleSelected,
     toggleSelectedFocused,
     unselectId,
-  } = useMemo(() => generateInteractiveGroupActions(dispatch, minSelect, maxSelect, allowReselect), [
-    dispatch,
-    minSelect,
-    maxSelect,
-    allowReselect,
-  ]);
+  } = useMemo(
+    () => generateInteractiveGroupActions(dispatch, minSelect, maxSelect, allowReselect),
+    [dispatch, minSelect, maxSelect, allowReselect],
+  );
 
   const items = selectItems(state);
   const focusedEvent = selectFocusedEvent(state);

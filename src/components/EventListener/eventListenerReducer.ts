@@ -6,7 +6,7 @@ type OptionsFromMapKey = {
 };
 
 export const getOptionsFromMapKey = (mapKey: string): OptionsFromMapKey => {
-  const optionSum = (mapKey?.split('-')[1] as unknown) as number;
+  const optionSum = mapKey?.split('-')[1] as unknown as number;
   // eslint-disable-next-line no-bitwise
   const options = (Object.keys(OPTIONS) as (keyof typeof OPTIONS)[]).filter(
     option => (OPTIONS[option] & optionSum) > 0,

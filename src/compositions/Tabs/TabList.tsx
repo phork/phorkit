@@ -64,9 +64,8 @@ export function TabListBase(
   const themeId = useThemeId(initThemeId);
   const variant = contrast ? 'contrast' : initVariant;
 
-  const { handleItemClick, focusedIndex, selectedIds } = useContext<
-    InteractiveGroupContextValue<string, HTMLDivElement, HTMLDivElement>
-  >(InteractiveGroupContext);
+  const { handleItemClick, focusedIndex, selectedIds } =
+    useContext<InteractiveGroupContextValue<string, HTMLDivElement, HTMLDivElement>>(InteractiveGroupContext);
 
   const selectedId = selectedIds?.[0];
   const combineRefs = makeCombineRefs(ref, forwardedRef);

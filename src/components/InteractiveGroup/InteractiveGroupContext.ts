@@ -5,7 +5,7 @@ import { UseInteractiveGroupResponse } from './useInteractiveGroup';
 export type InteractiveGroupContextValue<
   T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,
-  I extends HTMLElement = HTMLElement
+  I extends HTMLElement = HTMLElement,
 > = Omit<UseInteractiveGroupResponse<T, E, I>, 'ref'>;
 
 export const InteractiveGroupContext = createContext<InteractiveGroupContextValue<any, any, any>>({

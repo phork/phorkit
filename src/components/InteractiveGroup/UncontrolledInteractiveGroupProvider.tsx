@@ -7,7 +7,7 @@ import { useInteractiveGroup, UseInteractiveGroupInterface, UseInteractiveGroupR
 export interface UncontrolledInteractiveGroupProviderProps<
   T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,
-  I extends HTMLElement = HTMLElement
+  I extends HTMLElement = HTMLElement,
 > extends Omit<React.HTMLAttributes<E>, 'onKeyDown' | 'onSelect'>,
     UseInteractiveGroupInterface<T> {
   children:
@@ -31,7 +31,7 @@ export interface UncontrolledInteractiveGroupProviderProps<
 export function UncontrolledInteractiveGroupProvider<
   T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,
-  I extends HTMLElement = HTMLElement
+  I extends HTMLElement = HTMLElement,
 >({
   allowReselect,
   children,
@@ -54,31 +54,23 @@ export function UncontrolledInteractiveGroupProvider<
     {} as UseInteractiveGroupResponse<T, E, I>,
   );
 
-  const {
-    focusedIndex,
-    handleItemClick,
-    isSelected,
-    ref,
-    selectedIds,
-    selectId,
-    setFocused,
-    unselectId,
-  } = useInteractiveGroup<T, E, I>({
-    allowReselect,
-    disabled,
-    maxSelect,
-    minSelect,
-    onItemClick,
-    onItemFocus,
-    onKeyDown,
-    onSelect,
-    onSelectionChange,
-    onUnselect,
-    parentRef,
-    reducer,
-    selectOnFocus,
-    triggerLinks,
-  });
+  const { focusedIndex, handleItemClick, isSelected, ref, selectedIds, selectId, setFocused, unselectId } =
+    useInteractiveGroup<T, E, I>({
+      allowReselect,
+      disabled,
+      maxSelect,
+      minSelect,
+      onItemClick,
+      onItemFocus,
+      onKeyDown,
+      onSelect,
+      onSelectionChange,
+      onUnselect,
+      parentRef,
+      reducer,
+      selectOnFocus,
+      triggerLinks,
+    });
 
   const value = produce<InteractiveGroupContextValue<T, E, I>, Draft<InteractiveGroupContextValue<T, E, I>>>(
     previousValue.current,

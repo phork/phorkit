@@ -114,7 +114,11 @@ export function Popover({
   const previous = useRef<{ isComponentVisible?: boolean; hasContentRef?: boolean }>({});
   const clickOutsideExclusions = useRef<HTMLElement[]>();
 
-  const { ref: parentRef, isComponentVisible, setIsComponentVisible } = useComponentVisible<HTMLDivElement>({
+  const {
+    ref: parentRef,
+    isComponentVisible,
+    setIsComponentVisible,
+  } = useComponentVisible<HTMLDivElement>({
     ignoreClickOutside,
     initialVisible,
     permanent,
@@ -123,10 +127,10 @@ export function Popover({
   });
 
   const position = usePopoverPosition(parentRef, { position: initPosition, layout });
-  const offset = useMemo(() => (position ? getPositionOffset(position, initOffset) : undefined), [
-    position,
-    initOffset,
-  ]);
+  const offset = useMemo(
+    () => (position ? getPositionOffset(position, initOffset) : undefined),
+    [position, initOffset],
+  );
   const { generatePopoverId, generateTogglerId } = usePopoverComponentIds();
 
   // update the state to force a re-render when the content ref renders; exclude the content ref from triggering a close on click

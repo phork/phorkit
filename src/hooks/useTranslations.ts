@@ -9,10 +9,10 @@ export function useTranslations<T extends Record<string, string>>({
   fallbackTranslations,
   customTranslations,
 }: UseTranslationsInterface<T>) {
-  return useMemo(() => ({ ...(fallbackTranslations || {}), ...(customTranslations || {}) }), [
-    customTranslations,
-    fallbackTranslations,
-  ]);
+  return useMemo(
+    () => ({ ...(fallbackTranslations || {}), ...(customTranslations || {}) }),
+    [customTranslations, fallbackTranslations],
+  );
 }
 
 /**

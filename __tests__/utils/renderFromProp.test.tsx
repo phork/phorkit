@@ -85,9 +85,7 @@ describe('renderFromProp', () => {
     const HelloWorld = ({ recipient }: { recipient?: string }) => <div>Hello {recipient}</div>;
 
     const { queryByText } = render(
-      <React.Fragment>
-        {renderFromProp<{ recipient: string }>(<HelloWorld />, { recipient: 'world' })}
-      </React.Fragment>,
+      <React.Fragment>{renderFromProp<{ recipient: string }>(<HelloWorld />, { recipient: 'world' })}</React.Fragment>,
     );
     expect(queryByText('Hello world')).toBeTruthy();
   });
@@ -129,9 +127,7 @@ describe('renderFromProp', () => {
     const HelloWorld = ({ recipient }: { recipient?: string }) => <div>Hello {recipient}</div>;
 
     const { queryByText } = render(
-      <React.Fragment>
-        {renderFromProp<{ recipient: string }>(HelloWorld, { recipient: 'world' })}
-      </React.Fragment>,
+      <React.Fragment>{renderFromProp<{ recipient: string }>(HelloWorld, { recipient: 'world' })}</React.Fragment>,
     );
     expect(queryByText('Hello world')).toBeTruthy();
   });
