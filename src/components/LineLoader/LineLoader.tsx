@@ -20,9 +20,10 @@ export interface LineLoaderProps extends React.HTMLAttributes<HTMLDivElement>, T
   fixed?: boolean;
   loops?: number;
   onFinish?: () => void;
-  onLoop?: () => void;
+  onLoop?: (args: { loop: number }) => void;
   percent?: number;
   position?: 'top' | 'bottom';
+  style?: React.CSSProperties;
   translations?: LineLoaderTranslations;
 }
 

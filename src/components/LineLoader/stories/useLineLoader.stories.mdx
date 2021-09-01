@@ -1,0 +1,168 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs';
+import { Button } from 'components/Button/Button';
+import { Rhythm } from 'components/Rhythm/Rhythm';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
+import { ColoredLineLoader } from '../ColoredLineLoader';
+import { StyledLineLoader } from '../StyledLineLoader';
+import { useLineLoader } from '../useLineLoader';
+
+<Meta
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+  title="Feedback/LineLoader/useLineLoader"
+/>
+
+<PageTitle src="components/LineLoader" title="useLineLoader" />
+
+### LineLoader
+
+<Preview>
+  <Story name="LineLoader">
+    {() => {
+      const { loader, onLoad, loaderFinishing } = useLineLoader({ position: 'top' });
+      return (
+        <ThemeWrapper>
+          <StateWrapper initialState={false}>
+            {({ state: loaded, setState: setLoaded }) => (
+              <Rhythm grouped pt={3} style={{ position: 'relative' }}>
+                {(!loaded || loaderFinishing) && loader}
+                {!loaded && (
+                  <Button
+                    color="primary"
+                    onClick={() => {
+                      setLoaded(true);
+                      onLoad();
+                    }}
+                    shape="brick"
+                    weight="shaded"
+                  >
+                    Trigger loaded state
+                  </Button>
+                )}
+                {loaded && 'Loaded!'}
+              </Rhythm>
+            )}
+          </StateWrapper>
+        </ThemeWrapper>
+      );
+    }}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="LineLoader contrast">
+    {() => {
+      const { loader, onLoad, loaderFinishing } = useLineLoader({ contrast: true, position: 'top' });
+      return (
+        <ThemeWrapper contrast>
+          <StateWrapper initialState={false}>
+            {({ state: loaded, setState: setLoaded }) => (
+              <Rhythm grouped pt={3} style={{ position: 'relative' }}>
+                {(!loaded || loaderFinishing) && loader}
+                {!loaded && (
+                  <Button
+                    contrast
+                    color="primary"
+                    onClick={() => {
+                      setLoaded(true);
+                      onLoad();
+                    }}
+                    shape="brick"
+                    weight="shaded"
+                  >
+                    Trigger loaded state
+                  </Button>
+                )}
+                {loaded && 'Loaded!'}
+              </Rhythm>
+            )}
+          </StateWrapper>
+        </ThemeWrapper>
+      );
+    }}
+  </Story>
+</Preview>
+
+### ColoredLineLoader
+
+<Preview>
+  <Story name="ColoredLineLoader">
+    {() => {
+      const { loader, onLoad, loaderFinishing } = useLineLoader({
+        position: 'top',
+        component: ColoredLineLoader,
+        colorId: 'P20',
+      });
+      return (
+        <ThemeWrapper>
+          <StateWrapper initialState={false}>
+            {({ state: loaded, setState: setLoaded }) => (
+              <Rhythm grouped pt={3} style={{ position: 'relative' }}>
+                {(!loaded || loaderFinishing) && loader}
+                {!loaded && (
+                  <Button
+                    color="primary"
+                    onClick={() => {
+                      setLoaded(true);
+                      onLoad();
+                    }}
+                    shape="brick"
+                    weight="shaded"
+                  >
+                    Trigger loaded state
+                  </Button>
+                )}
+                {loaded && 'Loaded!'}
+              </Rhythm>
+            )}
+          </StateWrapper>
+        </ThemeWrapper>
+      );
+    }}
+  </Story>
+</Preview>
+
+### StyledLineLoader
+
+<Preview>
+  <Story name="StyledLineLoader">
+    {() => {
+      const { loader, onLoad, loaderFinishing } = useLineLoader({
+        position: 'top',
+        component: StyledLineLoader,
+        color: '#556270',
+      });
+      return (
+        <ThemeWrapper>
+          <StateWrapper initialState={false}>
+            {({ state: loaded, setState: setLoaded }) => (
+              <Rhythm grouped pt={3} style={{ position: 'relative' }}>
+                {(!loaded || loaderFinishing) && loader}
+                {!loaded && (
+                  <Button
+                    color="primary"
+                    onClick={() => {
+                      setLoaded(true);
+                      onLoad();
+                    }}
+                    shape="brick"
+                    weight="shaded"
+                  >
+                    Trigger loaded state
+                  </Button>
+                )}
+                {loaded && 'Loaded!'}
+              </Rhythm>
+            )}
+          </StateWrapper>
+        </ThemeWrapper>
+      );
+    }}
+  </Story>
+</Preview>

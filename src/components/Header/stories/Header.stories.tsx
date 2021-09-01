@@ -128,6 +128,7 @@ SecondaryVariant.args = {
   bordered: true,
   variant: 'secondary',
 };
+
 export const TransparentVariant = Template.bind({});
 TransparentVariant.storyName = 'Variant: Transparent';
 TransparentVariant.args = {
