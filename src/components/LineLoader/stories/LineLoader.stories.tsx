@@ -1,13 +1,12 @@
 import { action } from '@storybook/addon-actions';
-import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { Rhythm } from 'src/components/Rhythm/Rhythm';
 import { Button } from 'components/Button';
 import { Looper } from 'docs/helpers/Looper';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
-import { PageTitle } from 'stories/helpers/PageTitle';
 import { LineLoader } from '../LineLoader';
+import LineLoaderDocumentation from './LineLoader.docs.mdx';
 
 export default {
   title: 'Feedback/LineLoader',
@@ -53,16 +52,7 @@ export default {
       sort: 'requiredFirst',
     },
     docs: {
-      page: () => (
-        <React.Fragment>
-          <PageTitle src="components/LineLoader" title="LineLoader" />
-          <Subtitle />
-          <Description />
-          <Primary />
-          <ArgsTable story={PRIMARY_STORY} />
-          <Stories />
-        </React.Fragment>
-      ),
+      page: LineLoaderDocumentation,
       description: {
         component: 'The line loader shows an animated bar at the top or bottom of the page to show loading state.',
       },

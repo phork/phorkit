@@ -1,0 +1,20 @@
+import { action } from '@storybook/addon-actions';
+import { ArgsTable, Canvas, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
+import { LineLoader } from '../LineLoader';
+
+<PageTitle src="components/LineLoader" title="LineLoader" />
+<Subtitle />
+<Description />
+<Primary />
+<ArgsTable story={PRIMARY_STORY} />
+<Stories />
+
+### Contrast
+
+<Canvas>
+  <ThemeWrapper contrast>
+    <LineLoader contrast />
+  </ThemeWrapper>
+</Canvas>
