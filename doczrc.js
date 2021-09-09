@@ -47,6 +47,7 @@ export default {
   public: './public',
   files: process.env.DOCZ_FILES || '**/docs/*.mdx',
   ignore: ['**/stories/*', '**/*.stories.tsx', '**/*.stories.mdx', '**/*.docs.mdx'],
+  editBranch: 'main',
   menu: [
     'Introduction',
     'Colors',
