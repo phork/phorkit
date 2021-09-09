@@ -1,8 +1,7 @@
-import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { PageTitle } from 'stories/helpers/PageTitle';
 import { Divider, DividerProps } from '../Divider';
+import DividerDocumentation from './Divider.docs.mdx';
 
 export default {
   title: 'Utilities/Divider',
@@ -57,16 +56,7 @@ export default {
       sort: 'requiredFirst',
     },
     docs: {
-      page: () => (
-        <React.Fragment>
-          <PageTitle src="components/Divider" title="Divider" />
-          <Subtitle />
-          <Description />
-          <Primary />
-          <ArgsTable story={PRIMARY_STORY} />
-          <Stories />
-        </React.Fragment>
-      ),
+      page: DividerDocumentation,
       description: {
         component: 'A divider is a horizontal or vertical line.',
       },
