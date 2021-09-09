@@ -1,6 +1,6 @@
 a.link,
 .linkContainer a {
-  color: var(--link-color, currentColor);
+  color: var(--link-text-color, currentColor);
   cursor: pointer;
   display: inline;
   text-decoration: none;
@@ -34,7 +34,7 @@ a.link:not(.link--unstyled),
 a.link,
 .linkContainer {
   @mixin themed {
-    --link-color: $theme-color-accent-primary;
+    --link-text-color: $theme-color-accent-primary;
     --link-hovered-color: $theme-color-accent-primary-L10;
     --link-active-color: $theme-color-accent-primary-D10;
   }
@@ -42,14 +42,14 @@ a.link,
 
 a.link.link--contrast.link--light,
 .linkContainer.linkContainer--contrast.linkContainer--light {
-  --link-color: $light-contrast-palette-text-color;
+  --link-text-color: $light-contrast-palette-text-color;
   --link-hovered-color: $light-contrast-palette-quiet-color;
   --link-active-color: $light-contrast-palette-text-color;
 }
 
 a.link.link--contrast.link--dark,
 .linkContainer.linkContainer--contrast.linkContainer--dark {
-  --link-color: $dark-contrast-palette-text-color;
+  --link-text-color: $dark-contrast-palette-text-color;
   --link-hovered-color: $dark-contrast-palette-quiet-color;
   --link-active-color: $dark-contrast-palette-text-color;
 }
