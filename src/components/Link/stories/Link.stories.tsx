@@ -1,9 +1,8 @@
-import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { Typography } from 'components/Typography';
-import { PageTitle } from 'stories/helpers/PageTitle';
 import { Link } from '../Link';
+import LinkDocumentation from './Link.docs.mdx';
 
 export default {
   title: 'Navigation/Link',
@@ -59,18 +58,9 @@ export default {
       sort: 'requiredFirst',
     },
     docs: {
-      page: () => (
-        <React.Fragment>
-          <PageTitle src="components/Link" title="Link" />
-          <Subtitle />
-          <Description />
-          <Primary />
-          <ArgsTable story={PRIMARY_STORY} />
-          <Stories />
-        </React.Fragment>
-      ),
+      page: LinkDocumentation,
       description: {
-        component: 'The link component can style links directly, or it can style links within a container.',
+        component: 'The link component adds styles to an anchor tag.',
       },
     },
     layout: 'centered',

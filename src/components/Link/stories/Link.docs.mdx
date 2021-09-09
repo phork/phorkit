@@ -1,0 +1,22 @@
+import { action } from '@storybook/addon-actions';
+import { ArgsTable, Canvas, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
+import { Link } from '../Link';
+
+<PageTitle src="components/Link" title="Link" />
+<Subtitle />
+<Description />
+<Primary />
+<ArgsTable story={PRIMARY_STORY} />
+<Stories />
+
+### Contrast
+
+<Canvas>
+  <ThemeWrapper contrast>
+    <Link contrast href="https://phorkit.org" target="_blank">
+      I am a link
+    </Link>
+  </ThemeWrapper>
+</Canvas>

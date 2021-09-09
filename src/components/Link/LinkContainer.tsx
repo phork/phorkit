@@ -9,6 +9,7 @@ export type LinkContainerElementType = keyof JSX.IntrinsicElements;
 export interface LocalLinkContainerProps extends ThemeProps {
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
   target?: string;
   underline?: boolean;
 }
