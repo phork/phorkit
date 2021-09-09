@@ -538,17 +538,24 @@ import {
         {({ state: value, setState: setValue }) => (
           <Textbox
             transitional
+            inputMode="numeric"
             label="Credit card number"
             maxLength={19}
-            onChange={(event, value) => {
-              const unspaced = value.replace(/\s/g, '');
+            onChange={(event, newValue) => {
+              // if the last char deleted was an appended space, then delete the real last char
+              const forceDeleteLastChar = `${newValue} ` === value;
+              const unspaced = newValue.replace(/\s/g, '');
               const formatted = unspaced
                 .split(/(\w{4})/g)
                 .filter(Boolean)
                 .join(' ');
-              setValue(!(unspaced.length % 4) && unspaced.length < 16 ? `${formatted} ` : formatted);
+              const appendSpace =
+                !(unspaced.length % 4) && unspaced.length < 16 && formatted.length > 0 && !forceDeleteLastChar;
+              setValue(
+                (appendSpace && `${formatted} `) || (forceDeleteLastChar && formatted.slice(0, -1)) || formatted,
+              );
             }}
-            type="number"
+            type="text"
             value={value}
             variant="underline"
           />
