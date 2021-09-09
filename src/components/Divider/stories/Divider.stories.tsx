@@ -48,9 +48,7 @@ export default {
   },
   decorators: [
     (Story, { args: { orientation } }) => (
-      <div style={{ [orientation === 'vertical' ? 'height' : 'width']: 300 }}>
-        <Story />
-      </div>
+      <div style={{ [orientation === 'vertical' ? 'height' : 'width']: 300 }}>{Story()}</div>
     ),
   ],
   parameters: {

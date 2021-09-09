@@ -53,13 +53,7 @@ export default {
       },
     },
   },
-  decorators: [
-    Story => (
-      <div style={{ width: 300 }}>
-        <Story />
-      </div>
-    ),
-  ],
+  decorators: [Story => <div style={{ width: 300 }}>{Story()}</div>],
   parameters: {
     controls: {
       exclude: ['className', 'themeId'],
