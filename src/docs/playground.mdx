@@ -40,7 +40,6 @@ import {
   IconText,
   InlinePopover,
   InlineTextTooltip,
-  InlineTooltip,
   InteractiveList,
   Link,
   List,
@@ -187,7 +186,7 @@ import {
   <ThemeWrapper>
     <div style={{ width: '300px', height: '200px', maxWidth: '100%' }}>
       <Card full hoverable raised style={{ overflow: 'visible' }}>
-        <Badge color="warning" position="top-right" shape="count">
+        <Badge color="primary" position="top-right" shape="count">
           7
         </Badge>
         <Paper flexible color="primary">
@@ -200,7 +199,7 @@ import {
             </Typography>
           </Rhythm>
         </Paper>
-        <ColoredPaper colorId="P25" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
+        <Paper color="accent-primary" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
           <Rhythm m={2}>
             <ButtonGroup align="right" spacing="cozy">
               <Button contrast key="cancel" weight="ghost">
@@ -211,7 +210,7 @@ import {
               </Button>
             </ButtonGroup>
           </Rhythm>
-        </ColoredPaper>
+        </Paper>
       </Card>
     </div>
   </ThemeWrapper>
@@ -277,8 +276,8 @@ import {
 
 <Playground>
   <ThemeWrapper>
-    <Toast id="demo-success-toast" level="success" style={{ maxWidth: '100%' }} title="Hello world">
-      This is a success toast
+    <Toast id="demo-info-toast" level="info" style={{ maxWidth: '100%' }} title="Hello world">
+      This is an info toast with a badge
       <Badge color="warning" position="top-right" shape="count">
         7
       </Badge>
@@ -290,11 +289,11 @@ import {
 
 <Playground>
   <ThemeWrapper>
-    <InlineTooltip
+    <PortalTooltip
       hoverable={false}
       position="top-center"
       toggler={
-        <Button color="warning" weight="outlined">
+        <Button color="primary" weight="outlined">
           Notifications
         </Button>
       }
@@ -307,7 +306,7 @@ import {
           The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog
         </Typography>
       </ColoredPaper>
-    </InlineTooltip>
+    </PortalTooltip>
   </ThemeWrapper>
 </Playground>
 
