@@ -1,4 +1,4 @@
-name: Docs
+name: Storybook
 
 on:
   release:
@@ -21,14 +21,14 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Build docs
-        run: yarn build-docs
+      - name: Build storybook
+        run: yarn build-storybook
 
-      - name: Deploy docs
+      - name: Deploy storybook
         uses: burnett01/rsync-deployments@4.1
         with:
           switches: -avz --delete
-          path: build/docz
+          path: build/storybook
           remote_path: ./phorkit/
           remote_host: phork.org
           remote_user: phorkit
