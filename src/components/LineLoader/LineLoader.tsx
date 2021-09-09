@@ -68,6 +68,7 @@ export function LineLoader({
 
   return (
     <div
+      aria-busy="true"
       aria-label={loadingLabel}
       className={cx(
         styles.lineLoader,
@@ -78,6 +79,7 @@ export function LineLoader({
         className,
       )}
       ref={ref}
+      role="status"
       {...props}
     />
   );
