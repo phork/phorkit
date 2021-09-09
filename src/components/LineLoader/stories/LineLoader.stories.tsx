@@ -46,13 +46,7 @@ export default {
       },
     },
   },
-  decorators: [
-    Story => (
-      <div style={{ position: 'relative', minHeight: 40 }}>
-        <Story />
-      </div>
-    ),
-  ],
+  decorators: [Story => <div style={{ position: 'relative', minHeight: 40 }}>{Story()}</div>],
   parameters: {
     controls: {
       exclude: ['className', 'themeId', 'translations'],
