@@ -11,7 +11,8 @@ const writeFileSyncRecursive = require('./utils/write-file');
 program
   .version(pkg.version)
   .usage('[options]')
-  .addOption(new program.Option('-t, --type <type>', 'type (component or composition)').choices(['component', 'composition']).default('component'))
+  .addOption(new program.Option('-t, --type <type>', 'component type').choices(['component', 'composition']).default('component'))
+  .addOption(new program.Option('-f, --files <files...>', 'files to scaffold').choices(['component', 'styles', 'docz', 'storybook', 'tests', 'exports']))
   .option('-p, --parent <parent>', 'parent component (optional)')
   .requiredOption('-c, --component <component>', 'component name');
 
@@ -22,11 +23,12 @@ program.on('--help', function(){
   console.log('  $ scaffold-component -c Button');
   console.log('  $ scaffold-component -c Tooltip -t composition');
   console.log('  $ scaffold-component -c ButtonGroup -p Button');
+  console.log('  $ scaffold-component -c Button -f component styles');
 });
 
 program.parse(process.argv);
 
-const { component, type = 'component', parent } = program.opts();
+const { component, type = 'component', parent, files } = program.opts();
 const src = `./src/${type}s/${parent || component}`;
 const testSrc = `./__tests__/${type}s/${parent || component}`;
 const relativeSrc = '../'.repeat(2 + (parent ? (parent.match(/\//g) || []).length : 0));
@@ -46,8 +48,10 @@ const ucfirst = input => {
   return input.charAt(0).toUpperCase() + input.slice(1);
 }
 
+const include = type => !files || files.includes(type)
+
 // generate the component boilerplate
-writeFileSyncRecursive(`${src}/${component}.tsx`, `
+include(component) && writeFileSyncRecursive(`${src}/${component}.tsx`, `
 import React from 'react';
 import { cx } from '@emotion/css';
 import { ThemeProps } from '${relativeSrc}types';
@@ -77,13 +81,13 @@ ${component}.displayName = '${component}';
 `);
 
 // generate the styles boilerplate
-writeFileSyncRecursive(`${src}/styles/${component}.module.css`, `
+include('styles') && writeFileSyncRecursive(`${src}/styles/${component}.module.css`, `
 .${lcfirst(component)} {
 }
 `);
 
 // generate the docz boilerplate
-writeFileSyncRecursive(`${src}/docs/${lcfirst(component)}.mdx`, `
+include('docz') && writeFileSyncRecursive(`${src}/docs/${lcfirst(component)}.mdx`, `
 ---
 name: ${component}
 menu: ${ucfirst(type)}s
@@ -110,8 +114,79 @@ import { ${component} } from '../index';
 <Props of={${component}} />
 `);
 
+// generate the storybook boilerplate
+include('storybook') && writeFileSyncRecursive(`${src}/stories/${component}.stories.tsx`, `
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import React from 'react';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { ${component} } from '../${component}';
+
+export default {
+  title: 'Unsorted/${component}',
+  component: ${component},
+  argTypes: {
+    children: {
+      control: { type: 'text' },
+    },
+
+    contrast: {
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
+    style: {
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
+    unstyled: {
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
+    unthemed: {
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
+  },
+  parameters: {
+    controls: {
+      exclude: ['className', 'themeId'],
+      sort: 'requiredFirst',
+    },
+    docs: {
+      page: () => (
+        <React.Fragment>
+          <PageTitle src="components/${component}" title="${component}" />
+          <Subtitle />
+          <Description />
+          <Primary />
+          <ArgsTable story={PRIMARY_STORY} />
+          <Stories />
+        </React.Fragment>
+      ),
+      description: {
+        component: 'A new component.',
+      },
+    },
+    layout: 'centered',
+  },
+} as ComponentMeta<typeof ${component}>;
+
+const Template: ComponentStory<typeof ${component}> = args => <${component} {...args} />;
+
+const defaultArgs = {};
+
+export const Default = Template.bind({});
+Default.args = {
+  ...defaultArgs,
+};
+`);
+
 // generate the tests boilerplate
-writeFileSyncRecursive(`${testSrc}/${component}.test.tsx`, `
+include('tests') && writeFileSyncRecursive(`${testSrc}/${component}.test.tsx`, `
 import { render } from '@testing-library/react'
 import React from 'react'
 import { ${component} } from 'lib'
@@ -127,20 +202,22 @@ describe('<${component} />', () => {
 `)
 
 // generate or update the component index
-if (fs.existsSync(`${src}/index.ts`)) {
-  fs.appendFileSync(
-    `${src}/index.ts`,
-    `export * from './${component}';\n`
-  );
-} else {
-  writeFileSyncRecursive(
-    `${src}/index.ts`,
-    `export * from './${component}';\n`
-  );
+if (include('exports')) {
+  if (fs.existsSync(`${src}/index.ts`)) {
+    fs.appendFileSync(
+      `${src}/index.ts`,
+      `export * from './${component}';\n`
+    );
+  } else {
+    writeFileSyncRecursive(
+      `${src}/index.ts`,
+      `export * from './${component}';\n`
+    );
+  }
 }
 
 // add the export to the index file
-if (!parent) {
+if (include('exports') && !parent) {
   const lines = [`export * from './${component}';`, ...fs.readFileSync(`src/${type}s/index.ts`).toString().split('\n')].sort()
   writeFileSyncRecursive(`src/${type}s/index.ts`, [...new Set(lines)].join('\n'))
 }
