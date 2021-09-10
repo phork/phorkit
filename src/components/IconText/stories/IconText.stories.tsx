@@ -1,26 +1,20 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { BlobbrIcon } from 'icons/internal';
 import { Rhythm } from 'components/Rhythm';
-import { BlobbrIcon } from '../../../icons/internal';
-import { IconText } from '../IconText';
+import { IconText, IconTextProps } from '../IconText';
 
 export default {
   title: 'Display/IconText',
   component: IconText,
   argTypes: {
     icon: {
-      defaultValue: 'Medium',
-      options: ['Small', 'Medium', 'Large'],
-      mapping: {
-        Small: <BlobbrIcon scale="small" />,
-        Medium: <BlobbrIcon scale="medium" />,
-        Large: <BlobbrIcon scale="large" />,
-      },
+      options: ['small', 'medium', 'large'],
       control: {
         labels: {
-          Small: '<BlobbrIcon scale="small" />',
-          Medium: '<BlobbrIcon scale="medium" />',
-          Large: '<BlobbrIcon scale="large" />',
+          small: '<BlobbrIcon scale="small" />',
+          medium: '<BlobbrIcon scale="medium" />',
+          large: '<BlobbrIcon scale="large" />',
         },
       },
       table: {
@@ -76,7 +70,9 @@ export default {
   },
 } as ComponentMeta<typeof IconText>;
 
-const Template: ComponentStory<typeof IconText> = args => <IconText {...args} />;
+const Template: ComponentStory<
+  (args: Omit<IconTextProps, 'icon'> & { icon: 'small' | 'medium' | 'large' }) => ReturnType<typeof IconText>
+> = ({ icon = 'medium', ...args }) => <IconText icon={<BlobbrIcon scale={icon} />} {...args} />;
 
 const defaultArgs = {
   inline: false,

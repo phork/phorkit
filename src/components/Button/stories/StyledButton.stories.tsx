@@ -2,9 +2,9 @@ import { action } from '@storybook/addon-actions';
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { IconScale } from 'types';
+import { SpinnerIcon } from 'icons/SpinnerIcon';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { IconScale } from '../../../types';
-import { SpinnerIcon } from '../../../icons/SpinnerIcon';
 import { StyledButton, StyledButtonProps } from '../StyledButton';
 import buttonStory from './Button.stories';
 

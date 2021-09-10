@@ -2,11 +2,11 @@ import { action } from '@storybook/addon-actions';
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { IconScale } from 'types';
+import { ThemeColorIds } from 'config/themes';
+import { SpinnerIcon } from 'icons/SpinnerIcon';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { IconScale } from '../../../types';
-import { ThemeColorIds } from '../../../config/themes';
-import { SpinnerIcon } from '../../../icons/SpinnerIcon';
-import { getPrimaryColorIds } from '../../../stories/helpers/utils';
+import { getPrimaryColorIds } from 'stories/helpers/utils';
 import { ColoredButton, ColoredButtonProps } from '../ColoredButton';
 import buttonStory from './Button.stories';
 

@@ -1,8 +1,8 @@
 import { action } from '@storybook/addon-actions';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { IconScale } from '../../../types';
-import { SpinnerIcon } from '../../../icons/SpinnerIcon';
+import { IconScale } from 'types';
+import { SpinnerIcon } from 'icons/SpinnerIcon';
 import { ButtonProps, Button } from '../Button';
 import ButtonDocumentation from './Button.docs.mdx';
 

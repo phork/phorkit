@@ -2,9 +2,9 @@ import { action } from '@storybook/addon-actions';
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { SpinnerIcon } from 'icons/SpinnerIcon';
+import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { SpinnerIcon } from '../../../icons/SpinnerIcon';
-import { BlobbrIcon } from '../../../icons/internal/BlobbrIcon';
 import { StyledIconButton, StyledIconButtonProps } from '../StyledIconButton';
 import buttonStory from './StyledButton.stories';
 
@@ -15,20 +15,13 @@ export default {
   argTypes: {
     ...buttonStory.argTypes,
     children: {
-      defaultValue: 'Medium',
-      mapping: {
-        Small: <BlobbrIcon scale="small" />,
-        Medium: <BlobbrIcon scale="medium" />,
-        Large: <BlobbrIcon scale="large" />,
-        XLarge: <BlobbrIcon scale="xlarge" />,
-      },
+      options: ['small', 'medium', 'large', 'xlarge'],
       control: {
-        type: 'select',
         labels: {
-          Small: '<BlobbrIcon scale="small" />',
-          Medium: '<BlobbrIcon scale="medium" />',
-          Large: '<BlobbrIcon scale="large" />',
-          XLarge: '<BlobbrIcon scale="xlarge" />',
+          small: '<BlobbrIcon scale="small" />',
+          medium: '<BlobbrIcon scale="medium" />',
+          large: '<BlobbrIcon scale="large" />',
+          xlarge: '<BlobbrIcon scale="xlarge" />',
         },
       },
     },
@@ -57,16 +50,11 @@ export default {
 
 const Template: ComponentStory<
   (
-    args: Omit<StyledIconButtonProps, 'children'> & { children: React.ReactElement },
+    args: Omit<StyledIconButtonProps, 'children'> & { children: 'small' | 'medium' | 'large' | 'xlarge' },
   ) => ReturnType<typeof StyledIconButton>
-> = ({ children, size, ...args }) => (
-  <StyledIconButton
-    {...args}
-    loader={<SpinnerIcon scale={children.props.scale || 'medium'} />}
-    onClick={action('clicked')}
-    size={size}
-  >
-    {children}
+> = ({ children = 'medium', size, ...args }) => (
+  <StyledIconButton {...args} loader={<SpinnerIcon scale={children} />} onClick={action('clicked')} size={size}>
+    <BlobbrIcon scale={children} />
   </StyledIconButton>
 );
 

@@ -66,20 +66,21 @@ const iconStyles: Styles = {
 };
 
 const textStyles: Styles = {
-  common: {},
+  common: {
+    fontSize: 14,
+  },
   variants: {
     default: {},
     page: {
       color: '#fff',
       flex: 'none',
-      fontWeight: 'bold',
-      textTransform: 'uppercase',
     },
   },
 };
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;
+  errorMsg?: string;
   variant?: 'page' | 'default';
 }
 
@@ -97,7 +98,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
   }
 
   render() {
-    const { children, variant = 'default' } = this.props;
+    const { children, errorMsg, variant = 'default' } = this.props;
     const { hasError } = this.state;
 
     if (hasError) {
@@ -117,7 +118,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
               />
             </svg>
 
-            <div style={{ ...textStyles.common, ...textStyles.variants[variant] }}>Ack! Something went wrong.</div>
+            <div style={{ ...textStyles.common, ...textStyles.variants[variant] }}>{errorMsg || 'An error has occurred'}</div>
           </div>
         </div>
       );

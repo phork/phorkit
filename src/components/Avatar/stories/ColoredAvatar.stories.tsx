@@ -1,9 +1,9 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { ThemeColorIds } from 'config/themes';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { ThemeColorIds } from '../../../config/themes';
-import { getPrimaryColorIds } from '../../../stories/helpers/utils';
+import { getPrimaryColorIds } from 'stories/helpers/utils';
 import { ColoredAvatar, ColoredAvatarProps } from '../ColoredAvatar';
 import avatarStory from './Avatar.stories';
 
