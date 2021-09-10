@@ -2,9 +2,9 @@ import { action } from '@storybook/addon-actions';
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { SpinnerIcon } from 'icons/SpinnerIcon';
+import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { SpinnerIcon } from '../../../icons/SpinnerIcon';
-import { BlobbrIcon } from '../../../icons/internal/BlobbrIcon';
 import { StyledIconTextButton, StyledIconTextButtonProps } from '../StyledIconTextButton';
 import buttonStory from './StyledButton.stories';
 
@@ -14,18 +14,12 @@ export default {
   component: StyledIconTextButton,
   argTypes: {
     icon: {
-      defaultValue: 'Medium',
-      options: ['Small', 'Medium', 'Large'],
-      mapping: {
-        Small: <BlobbrIcon scale="small" />,
-        Medium: <BlobbrIcon scale="medium" />,
-        Large: <BlobbrIcon scale="large" />,
-      },
+      options: ['small', 'medium', 'large'],
       control: {
         labels: {
-          Small: '<BlobbrIcon scale="small" />',
-          Medium: '<BlobbrIcon scale="medium" />',
-          Large: '<BlobbrIcon scale="large" />',
+          small: '<BlobbrIcon scale="small" />',
+          medium: '<BlobbrIcon scale="medium" />',
+          large: '<BlobbrIcon scale="large" />',
         },
       },
       table: {
@@ -59,13 +53,13 @@ export default {
 
 const Template: ComponentStory<
   (
-    args: Omit<StyledIconTextButtonProps, 'icon'> & { icon: React.ReactElement },
+    args: Omit<StyledIconTextButtonProps, 'icon'> & { icon: 'small' | 'medium' | 'large' },
   ) => ReturnType<typeof StyledIconTextButton>
-> = ({ children, icon, size, ...args }) => (
+> = ({ children, icon = 'medium', size, ...args }) => (
   <StyledIconTextButton
     {...args}
-    icon={icon}
-    loader={<SpinnerIcon scale={icon.props.scale || 'medium'} />}
+    icon={<BlobbrIcon scale={icon} />}
+    loader={<SpinnerIcon scale={icon} />}
     onClick={action('clicked')}
     size={size}
   >

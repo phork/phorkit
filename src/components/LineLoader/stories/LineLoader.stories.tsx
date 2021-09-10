@@ -1,8 +1,10 @@
 import { action } from '@storybook/addon-actions';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { Rhythm } from 'src/components/Rhythm/Rhythm';
 import { Button } from 'components/Button';
+import { Flex } from 'components/Flex';
+import { Rhythm } from 'components/Rhythm/Rhythm';
+import { Typography } from 'components/Typography';
 import { Looper } from 'docs/helpers/Looper';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { LineLoader } from '../LineLoader';
@@ -62,7 +64,9 @@ export default {
 
 const Template: ComponentStory<typeof LineLoader> = ({ children, ...args }) => <LineLoader {...args} />;
 
-const defaultArgs = {};
+const defaultArgs = {
+  onLoop: undefined,
+};
 
 export const Default = Template.bind({});
 Default.args = {
@@ -91,7 +95,23 @@ Fixed.args = {
   position: 'top',
 };
 
+Fixed.decorators = [
+  Story => (
+    <Flex full alignItems="center" justifyContent="center">
+      <Typography size="large" variants="italic" volume="quietest">
+        See the top of the page
+      </Typography>
+      <Story />
+    </Flex>
+  ),
+];
+
 export const FiniteLoops = Template.bind({});
+FiniteLoops.storyName = 'Finite loops';
+FiniteLoops.args = {
+  ...defaultArgs,
+};
+
 FiniteLoops.decorators = [
   (_Story, { args }) => (
     <StateWrapper initialState={3}>
@@ -121,12 +141,20 @@ FiniteLoops.decorators = [
   ),
 ];
 
-FiniteLoops.storyName = 'Finite loops';
-FiniteLoops.args = {
-  ...defaultArgs,
+FiniteLoops.parameters = {
+  docs: {
+    source: {
+      code: '<LineLoader loops={loops} />',
+    },
+  },
 };
 
 export const Stoppable = Template.bind({});
+Stoppable.storyName = 'Stoppable';
+Stoppable.args = {
+  ...defaultArgs,
+};
+
 Stoppable.decorators = [
   (_Story, { args }) => (
     <StateWrapper<number | undefined> initialState={0}>
@@ -144,7 +172,10 @@ Stoppable.decorators = [
   ),
 ];
 
-Stoppable.storyName = 'Stoppable';
-Stoppable.args = {
-  ...defaultArgs,
+Stoppable.parameters = {
+  docs: {
+    source: {
+      code: '<LineLoader percent={stopped ? 50 : undefined} />',
+    },
+  },
 };

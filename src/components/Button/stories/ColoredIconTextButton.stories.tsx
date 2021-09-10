@@ -2,10 +2,10 @@ import { action } from '@storybook/addon-actions';
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { ThemeColorIds } from 'config/themes';
+import { SpinnerIcon } from 'icons/SpinnerIcon';
+import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { ThemeColorIds } from '../../../config/themes';
-import { SpinnerIcon } from '../../../icons/SpinnerIcon';
-import { BlobbrIcon } from '../../../icons/internal/BlobbrIcon';
 import { ColoredIconTextButton, ColoredIconTextButtonProps } from '../ColoredIconTextButton';
 import buttonStory from './ColoredButton.stories';
 
@@ -15,18 +15,12 @@ export default {
   component: ColoredIconTextButton,
   argTypes: {
     icon: {
-      defaultValue: 'Medium',
-      options: ['Small', 'Medium', 'Large'],
-      mapping: {
-        Small: <BlobbrIcon scale="small" />,
-        Medium: <BlobbrIcon scale="medium" />,
-        Large: <BlobbrIcon scale="large" />,
-      },
+      options: ['small', 'medium', 'large'],
       control: {
         labels: {
-          Small: '<BlobbrIcon scale="small" />',
-          Medium: '<BlobbrIcon scale="medium" />',
-          Large: '<BlobbrIcon scale="large" />',
+          small: '<BlobbrIcon scale="small" />',
+          medium: '<BlobbrIcon scale="medium" />',
+          large: '<BlobbrIcon scale="large" />',
         },
       },
       table: {
@@ -60,14 +54,14 @@ export default {
 
 const Template: ComponentStory<
   (
-    args: Omit<ColoredIconTextButtonProps, 'icon'> & { icon: React.ReactElement },
+    args: Omit<ColoredIconTextButtonProps, 'icon'> & { icon: 'small' | 'medium' | 'large' },
   ) => ReturnType<typeof ColoredIconTextButton>
-> = ({ children, icon, size, ...args }) => (
+> = ({ children, icon = 'medium', size, ...args }) => (
   <ColoredIconTextButton<'button'>
     {...args}
     as="button"
-    icon={icon}
-    loader={<SpinnerIcon scale={icon.props.scale || 'medium'} />}
+    icon={<BlobbrIcon scale={icon} />}
+    loader={<SpinnerIcon scale={icon} />}
     onClick={action('clicked')}
     size={size}
   >

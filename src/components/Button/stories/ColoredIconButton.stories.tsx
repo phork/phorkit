@@ -2,10 +2,10 @@ import { action } from '@storybook/addon-actions';
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { ThemeColorIds } from 'config/themes';
+import { SpinnerIcon } from 'icons/SpinnerIcon';
+import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { ThemeColorIds } from '../../../config/themes';
-import { SpinnerIcon } from '../../../icons/SpinnerIcon';
-import { BlobbrIcon } from '../../../icons/internal/BlobbrIcon';
 import { ColoredIconButton, ColoredIconButtonProps } from '../ColoredIconButton';
 import buttonStory from './ColoredButton.stories';
 
@@ -16,20 +16,13 @@ export default {
   argTypes: {
     ...buttonStory.argTypes,
     children: {
-      defaultValue: 'Medium',
-      mapping: {
-        Small: <BlobbrIcon scale="small" />,
-        Medium: <BlobbrIcon scale="medium" />,
-        Large: <BlobbrIcon scale="large" />,
-        XLarge: <BlobbrIcon scale="xlarge" />,
-      },
+      options: ['small', 'medium', 'large', 'xlarge'],
       control: {
-        type: 'select',
         labels: {
-          Small: '<BlobbrIcon scale="small" />',
-          Medium: '<BlobbrIcon scale="medium" />',
-          Large: '<BlobbrIcon scale="large" />',
-          XLarge: '<BlobbrIcon scale="xlarge" />',
+          small: '<BlobbrIcon scale="small" />',
+          medium: '<BlobbrIcon scale="medium" />',
+          large: '<BlobbrIcon scale="large" />',
+          xlarge: '<BlobbrIcon scale="xlarge" />',
         },
       },
     },
@@ -58,17 +51,17 @@ export default {
 
 const Template: ComponentStory<
   (
-    args: Omit<ColoredIconButtonProps, 'children'> & { children: React.ReactElement },
+    args: Omit<ColoredIconButtonProps, 'children'> & { children: 'small' | 'medium' | 'large' | 'xlarge' },
   ) => ReturnType<typeof ColoredIconButton>
-> = ({ children, size, ...args }) => (
+> = ({ children = 'medium', size, ...args }) => (
   <ColoredIconButton<'button'>
     {...args}
     as="button"
-    loader={<SpinnerIcon scale={children.props.scale || 'medium'} />}
+    loader={<SpinnerIcon scale={children} />}
     onClick={action('clicked')}
     size={size}
   >
-    {children}
+    <BlobbrIcon scale={children} />
   </ColoredIconButton>
 );
 

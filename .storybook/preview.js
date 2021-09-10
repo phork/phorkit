@@ -32,6 +32,9 @@ export const parameters = {
   },
   docs: {
     container: DocsContainer,
+    source: {
+      excludeDecorators: true,
+    },
   },
   options: {
     storySort: (a, b) => {

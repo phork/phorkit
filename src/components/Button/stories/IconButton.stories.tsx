@@ -1,8 +1,8 @@
 import { action } from '@storybook/addon-actions';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { SpinnerIcon } from '../../../icons/SpinnerIcon';
-import { BlobbrIcon } from '../../../icons/internal/BlobbrIcon';
+import { SpinnerIcon } from 'icons/SpinnerIcon';
+import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { IconButtonProps, IconButton } from '../IconButton';
 import buttonStory from './Button.stories';
 import IconButtonDocumentation from './IconButton.docs.mdx';
@@ -14,20 +14,17 @@ export default {
   argTypes: {
     ...buttonStory.argTypes,
     children: {
-      defaultValue: 'Medium',
-      mapping: {
-        Small: <BlobbrIcon scale="small" />,
-        Medium: <BlobbrIcon scale="medium" />,
-        Large: <BlobbrIcon scale="large" />,
-        XLarge: <BlobbrIcon scale="xlarge" />,
-      },
+      options: ['small', 'medium', 'large', 'xlarge'],
       control: {
         labels: {
-          Small: '<BlobbrIcon scale="small" />',
-          Medium: '<BlobbrIcon scale="medium" />',
-          Large: '<BlobbrIcon scale="large" />',
-          XLarge: '<BlobbrIcon scale="xlarge" />',
+          small: '<BlobbrIcon scale="small" />',
+          medium: '<BlobbrIcon scale="medium" />',
+          large: '<BlobbrIcon scale="large" />',
+          xlarge: '<BlobbrIcon scale="xlarge" />',
         },
+      },
+      table: {
+        category: 'Icon controls',
       },
     },
     shape: {
@@ -48,16 +45,18 @@ export default {
 } as ComponentMeta<typeof IconButton>;
 
 const Template: ComponentStory<
-  (args: Omit<IconButtonProps, 'children'> & { children: React.ReactElement }) => ReturnType<typeof IconButton>
-> = ({ children, size, ...args }) => (
+  (
+    args: Omit<IconButtonProps, 'children'> & { children: 'small' | 'medium' | 'large' | 'xlarge' },
+  ) => ReturnType<typeof IconButton>
+> = ({ children = 'medium', size, ...args }) => (
   <IconButton<'button'>
     {...args}
     as="button"
-    loader={<SpinnerIcon scale={children?.props.scale || 'medium'} />}
+    loader={<SpinnerIcon scale={children} />}
     onClick={action('clicked')}
     size={size}
   >
-    {children}
+    <BlobbrIcon scale={children} />
   </IconButton>
 );
 
@@ -166,7 +165,7 @@ export const InlineWeight = Template.bind({});
 InlineWeight.storyName = 'Weight: Inline';
 InlineWeight.args = {
   ...defaultArgs,
-  children: <BlobbrIcon scale="xlarge" />,
+  children: 'xlarge',
   weight: 'inline',
 };
 

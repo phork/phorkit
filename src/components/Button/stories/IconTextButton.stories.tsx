@@ -1,8 +1,8 @@
 import { action } from '@storybook/addon-actions';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { SpinnerIcon } from '../../../icons/SpinnerIcon';
-import { BlobbrIcon } from '../../../icons/internal/BlobbrIcon';
+import { SpinnerIcon } from 'icons/SpinnerIcon';
+import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { IconTextButtonProps, IconTextButton } from '../IconTextButton';
 import buttonStory from './Button.stories';
 import IconTextButtonDocumentation from './IconTextButton.docs.mdx';
@@ -13,18 +13,12 @@ export default {
   component: IconTextButton,
   argTypes: {
     icon: {
-      defaultValue: 'Medium',
-      options: ['Small', 'Medium', 'Large'],
-      mapping: {
-        Small: <BlobbrIcon scale="small" />,
-        Medium: <BlobbrIcon scale="medium" />,
-        Large: <BlobbrIcon scale="large" />,
-      },
+      options: ['small', 'medium', 'large'],
       control: {
         labels: {
-          Small: '<BlobbrIcon scale="small" />',
-          Medium: '<BlobbrIcon scale="medium" />',
-          Large: '<BlobbrIcon scale="large" />',
+          small: '<BlobbrIcon scale="small" />',
+          medium: '<BlobbrIcon scale="medium" />',
+          large: '<BlobbrIcon scale="large" />',
         },
       },
       table: {
@@ -51,13 +45,15 @@ export default {
 } as ComponentMeta<typeof IconTextButton>;
 
 const Template: ComponentStory<
-  (args: Omit<IconTextButtonProps, 'icon'> & { icon: React.ReactElement }) => ReturnType<typeof IconTextButton>
-> = ({ children, icon, size, ...args }) => (
+  (
+    args: Omit<IconTextButtonProps, 'icon'> & { icon: 'small' | 'medium' | 'large' },
+  ) => ReturnType<typeof IconTextButton>
+> = ({ children, icon = 'medium', size, ...args }) => (
   <IconTextButton<'button'>
     {...args}
     as="button"
-    icon={icon}
-    loader={<SpinnerIcon scale={icon.props.scale || 'medium'} />}
+    icon={<BlobbrIcon scale={icon} />}
+    loader={<SpinnerIcon scale={icon} />}
     onClick={action('clicked')}
     size={size}
   >

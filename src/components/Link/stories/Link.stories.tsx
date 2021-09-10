@@ -51,7 +51,6 @@ export default {
       },
     },
   },
-  decorators: [Story => <Typography size="large">Hello world. {Story()}</Typography>],
   parameters: {
     controls: {
       exclude: ['className', 'themeId'],
@@ -81,10 +80,33 @@ Default.args = {
   ...defaultArgs,
 };
 
+export const Inline = Template.bind({});
+Inline.args = {
+  ...defaultArgs,
+};
+
+Inline.decorators = [Story => <Typography size="large">Hello world. {Story()}</Typography>];
+Inline.parameters = {
+  docs: {
+    source: {
+      excludeDecorators: false,
+    },
+  },
+};
+
 export const Block = Template.bind({});
 Block.args = {
   ...defaultArgs,
   block: true,
+};
+
+Block.decorators = [Story => <Typography size="large">Hello world. {Story()}</Typography>];
+Block.parameters = {
+  docs: {
+    source: {
+      excludeDecorators: false,
+    },
+  },
 };
 
 export const Underlined = Template.bind({});
