@@ -1,10 +1,11 @@
 import { action } from '@storybook/addon-actions';
-import { ArgsTable, Canvas, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ucfirst } from 'utils';
 import { SpinnerIcon } from 'icons/SpinnerIcon';
 import { Flex } from 'components/Flex';
 import { Rhythm } from 'components/Rhythm';
 import { Looper } from 'docs/helpers/Looper';
+import { Canvas } from 'stories/helpers/Canvas';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 import { Button } from '../Button';
@@ -165,8 +166,8 @@ import { Button } from '../Button';
   </ThemeWrapper>
 </Canvas>
 
-<Canvas>
-  <ThemeWrapper contrast>
+<Canvas contrast>
+  <ThemeWrapper>
     <Rhythm grouped m={-2}>
       <Flex alignItems="center" direction="row">
         <Looper
