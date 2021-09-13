@@ -135,6 +135,20 @@ WhiteColor.args = {
   color: 'white',
 };
 
+export const PillShape = Template.bind({});
+PillShape.storyName = 'Shape: Pill';
+PillShape.args = {
+  ...defaultArgs,
+  shape: 'pill',
+};
+
+export const BrickShape = Template.bind({});
+BrickShape.storyName = 'Shape: Brick';
+BrickShape.args = {
+  ...defaultArgs,
+  shape: 'brick',
+};
+
 export const SolidWeight = Template.bind({});
 SolidWeight.storyName = 'Weight: Solid';
 SolidWeight.args = {
@@ -168,20 +182,6 @@ InlineWeight.storyName = 'Weight: Inline';
 InlineWeight.args = {
   ...defaultArgs,
   weight: 'inline',
-};
-
-export const PillShape = Template.bind({});
-PillShape.storyName = 'Shape: Pill';
-PillShape.args = {
-  ...defaultArgs,
-  shape: 'pill',
-};
-
-export const BrickShape = Template.bind({});
-BrickShape.storyName = 'Shape: Brick';
-BrickShape.args = {
-  ...defaultArgs,
-  shape: 'brick',
 };
 
 export const SmallSize = Template.bind({});

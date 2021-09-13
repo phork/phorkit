@@ -133,6 +133,20 @@ WhiteColor.args = {
   color: 'white',
 };
 
+export const CircleShape = Template.bind({});
+CircleShape.storyName = 'Shape: Circle';
+CircleShape.args = {
+  ...defaultArgs,
+  shape: 'circle',
+};
+
+export const SquareShape = Template.bind({});
+SquareShape.storyName = 'Shape: Square';
+SquareShape.args = {
+  ...defaultArgs,
+  shape: 'square',
+};
+
 export const SolidWeight = Template.bind({});
 SolidWeight.storyName = 'Weight: Solid';
 SolidWeight.args = {
@@ -167,20 +181,6 @@ InlineWeight.args = {
   ...defaultArgs,
   children: 'xlarge',
   weight: 'inline',
-};
-
-export const CircleShape = Template.bind({});
-CircleShape.storyName = 'Shape: Circle';
-CircleShape.args = {
-  ...defaultArgs,
-  shape: 'circle',
-};
-
-export const SquareShape = Template.bind({});
-SquareShape.storyName = 'Shape: Square';
-SquareShape.args = {
-  ...defaultArgs,
-  shape: 'square',
 };
 
 export const Loading = Template.bind({});

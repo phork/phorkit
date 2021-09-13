@@ -5,7 +5,7 @@ import { useThemeId } from '../../context/Theme';
 import { renderFromProp } from '../../utils';
 import styles from './styles/ButtonGroup.module.css';
 import { Button, ButtonProps } from './Button';
-import { ButtonColor, ButtonSize, ButtonWeight } from './types';
+import { ButtonAlignment, ButtonColor, ButtonSize, ButtonWeight } from './types';
 
 export type ButtonGroupSpacing = 'divided' | 'joined' | 'cozy' | 'comfy';
 
@@ -16,8 +16,10 @@ export type ButtonGroupItem = {
   style?: React.CSSProperties;
 } & Omit<ButtonProps, 'children' | 'id' | 'key' | 'size' | 'style' | 'value'>;
 
-export interface LocalButtonGroupProps extends Pick<ButtonProps, 'color' | 'fullWidth' | 'shape'>, ThemeProps {
-  align?: 'left' | 'right';
+export interface LocalButtonGroupProps
+  extends Pick<ButtonProps, 'color' | 'fullWidth' | 'shape'>,
+    Omit<ThemeProps, 'unthemed'> {
+  align?: ButtonAlignment;
   buttons?: ButtonGroupItem[];
   /** The children are allowed to be null or false so this won't fail if children are conditional */
   children?: Array<React.ReactElement | null | false>;
@@ -36,7 +38,7 @@ export interface LocalButtonGroupProps extends Pick<ButtonProps, 'color' | 'full
 export type ButtonGroupProps = MergeElementProps<'div', LocalButtonGroupProps>;
 
 export function ButtonGroup({
-  align,
+  align = 'left',
   buttons,
   children,
   className,
@@ -99,7 +101,6 @@ export function ButtonGroup({
     <div
       className={cx(
         styles.buttonGroup,
-        align && styles[`buttonGroup--${align}`],
         fullWidth && styles['buttonGroup--fullWidth'],
         orientation && styles[`buttonGroup--${orientation}`],
         spacing && styles[`buttonGroup--${spacing}`],
@@ -113,6 +114,7 @@ export function ButtonGroup({
           ({ id, label, selected, style, ...button }: ButtonGroupItem) =>
             renderLabel(id, label, selected) || (
               <Button
+                align={align}
                 className={styles.buttonGroup__button}
                 color={selected && selectedColor ? selectedColor : color}
                 contrast={contrast}
