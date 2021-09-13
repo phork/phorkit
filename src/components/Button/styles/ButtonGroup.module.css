@@ -12,26 +12,6 @@
   }
 }
 
-.buttonGroup--left {
-  &.buttonGroup--horizontal {
-    justify-content: flex-start;
-  }
-
-  &.buttonGroup--vertical {
-    align-items: flex-start;
-  }
-}
-
-.buttonGroup--right {
-  &.buttonGroup--horizontal {
-    justify-content: flex-end;
-  }
-
-  &.buttonGroup--vertical {
-    align-items: flex-end;
-  }
-}
-
 /**
  * 1. Using width: 100% can cause problems with the
  *    negative margins, so flex is a better choice.

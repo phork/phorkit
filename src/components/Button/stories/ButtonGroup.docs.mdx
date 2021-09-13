@@ -1,0 +1,69 @@
+import { action } from '@storybook/addon-actions';
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
+import { ucfirst } from 'utils';
+import { TimesIcon } from 'icons/TimesIcon';
+import { MoonIcon } from 'icons/internal/MoonIcon';
+import { SunIcon } from 'icons/internal/SunIcon';
+import { Flex } from 'components/Flex';
+import { Rhythm } from 'components/Rhythm';
+import { Looper } from 'docs/helpers/Looper';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { Canvas } from 'stories/helpers/Canvas';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
+import { ButtonGroup } from '../ButtonGroup';
+
+<PageTitle src="components/Button" title="ButtonGroup" />
+<Subtitle />
+<Description />
+
+#### Colors
+
+[Primary](#color--primary) | [Success](#color--success) | [Warning](#color--warning) | [Danger](#color--danger) | [Neutral](#color--neutral) | [Black](#color--black) | [White](#color--white)
+
+#### Shapes
+
+[Pill](#shape--pill) | [Brick](#shape--brick)
+
+#### Spacing
+
+[Divided](#spacing--divided) | [Joined](#spacing--joined) | [Cozy](#spacing--cozy) | [Comfy](#spacing--comfy)
+
+#### Weights
+
+[Solid](#weight--solid) | [Shaded](#weight--shaded) | [Outlined](#weight--outlined) | [Ghost](#weight--ghost) | [Inline](#weight--inline)
+
+#### Sizes
+
+[Small](#size--small) | [Medium](#size--medium) | [Large](#size--large)
+
+#### Orientation
+
+[Horizontal](#orientation--horizontal) | [Vertical](#orientation--vertical)
+
+<Primary />
+<ArgsTable story={PRIMARY_STORY} />
+<Stories />
+
+### Contrast
+
+<Canvas contrast>
+  <ThemeWrapper>
+    <StateWrapper initialState="second">
+      {({ state, setState }) => (
+        <ButtonGroup
+          contrast
+          buttons={[
+            { id: 'first', label: 'First', selected: state === 'first' },
+            { id: 'second', label: 'Second', selected: state === 'second' },
+            { id: 'third', label: 'Third', selected: state === 'third' },
+            { id: 'fourth', label: 'Fourth', selected: state === 'fourth' },
+          ]}
+          onClick={(event, id) => setState(id)}
+          shape="brick"
+          spacing="joined"
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Canvas>
