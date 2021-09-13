@@ -55,40 +55,6 @@ import { useLineLoader } from '../useLineLoader';
   </Story>
 </Preview>
 
-<Preview>
-  <Story name="LineLoader contrast">
-    {() => {
-      const { loader, onLoad, loaderFinishing } = useLineLoader({ contrast: true, position: 'top' });
-      return (
-        <ThemeWrapper contrast>
-          <StateWrapper initialState={false}>
-            {({ state: loaded, setState: setLoaded }) => (
-              <Rhythm grouped pt={3} style={{ position: 'relative' }}>
-                {(!loaded || loaderFinishing) && loader}
-                {!loaded && (
-                  <Button
-                    contrast
-                    color="primary"
-                    onClick={() => {
-                      setLoaded(true);
-                      onLoad();
-                    }}
-                    shape="brick"
-                    weight="shaded"
-                  >
-                    Trigger loaded state
-                  </Button>
-                )}
-                {loaded && 'Loaded!'}
-              </Rhythm>
-            )}
-          </StateWrapper>
-        </ThemeWrapper>
-      );
-    }}
-  </Story>
-</Preview>
-
 ### ColoredLineLoader
 
 <Preview>

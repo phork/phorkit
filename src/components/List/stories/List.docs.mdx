@@ -1,4 +1,5 @@
-import { ArgsTable, Canvas, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Canvas } from 'stories/helpers/Canvas';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 import { List } from '../List';
@@ -25,8 +26,8 @@ import { List } from '../List';
 
 ### Contrast
 
-<Canvas>
-  <ThemeWrapper contrast>
+<Canvas contrast>
+  <ThemeWrapper>
     <List
       contrast
       color="primary"

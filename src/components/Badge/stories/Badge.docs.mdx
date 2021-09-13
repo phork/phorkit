@@ -1,9 +1,10 @@
 import { action } from '@storybook/addon-actions';
-import { ArgsTable, Canvas, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { themes } from 'config/themes';
 import { Flex } from 'components/Flex';
 import { Rhythm } from 'components/Rhythm';
 import { Looper } from 'docs/helpers/Looper';
+import { Canvas } from 'stories/helpers/Canvas';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 import { Badge } from '../Badge';
@@ -216,8 +217,8 @@ import { Badge } from '../Badge';
   </ThemeWrapper>
 </Canvas>
 
-<Canvas>
-  <ThemeWrapper contrast>
+<Canvas contrast>
+  <ThemeWrapper>
     <Flex alignItems="center" direction="row">
       <div
         style={{
