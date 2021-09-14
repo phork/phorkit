@@ -29,12 +29,15 @@ export function useIconSize({
   noSize = false,
   ...props
 }: UseIconSizeInterface): UseIconSizeResponse {
+  const response: UseIconSizeResponse = { ...(props as UseIconSizeResponse) };
+
   const { size: contextSize, scale: contextScale } = useContext(ScaleContext);
   const size =
-    initSize || (initScale && scaleSize[initScale]) || contextSize || (contextScale && scaleSize[contextScale]);
-  const response: UseIconSizeResponse = props as UseIconSizeResponse;
+    initSize === 0
+      ? 0
+      : initSize || (initScale && scaleSize[initScale]) || contextSize || (contextScale && scaleSize[contextScale]);
 
-  if (size && !noSize) {
+  if (size !== undefined && !noSize) {
     response.height = typeof size === 'number' ? `${size}px` : size;
     response.width = typeof size === 'number' ? `${size}px` : size;
   }

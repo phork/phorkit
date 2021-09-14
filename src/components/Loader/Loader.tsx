@@ -15,13 +15,24 @@ export const loaderTranslations: LoaderTranslations = {
   loadingLabel: 'Loading...',
 };
 
-export interface LoaderProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
+type LoaderSize = {
+  scale?: never;
+  size?: number;
+};
+
+type LoaderScale = {
+  scale?: Exclude<IconScale, 'xsmall'>;
+  size?: never;
+};
+
+export interface BaseLoaderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>, ThemeProps {
   className?: string;
   position?: 'absolute' | 'fixed';
-  size?: number;
-  scale?: IconScale;
+  style?: React.CSSProperties;
   translations?: LoaderTranslations;
 }
+
+export type LoaderProps = BaseLoaderProps & (LoaderSize | LoaderScale);
 
 export function Loader({
   className,
@@ -49,7 +60,7 @@ export function Loader({
       )}
       {...props}
     >
-      <SpinnerIcon scale={scale} size={size} title={loadingLabel} />
+      <SpinnerIcon scale={scale} size={scale ? undefined : size} title={loadingLabel} />
     </div>
   );
 
