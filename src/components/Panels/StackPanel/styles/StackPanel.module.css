@@ -3,6 +3,9 @@
   flex: 0 0 auto;
   flex-direction: column;
   position: relative;
+}
+
+.stackPanel--raised {
   z-index: $layout-z-index-stack-panel;
 }
 

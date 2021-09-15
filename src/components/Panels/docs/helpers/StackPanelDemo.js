@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { TopPanelIcon } from 'icons/internal/TopPanelIcon';
 import { IconButton } from 'components/Button';
 
-export function StackPanelDemo({ children, isOpen: initialIsOpen, style }) {
-  const [isOpen, setOpen] = useState(initialIsOpen);
+export function StackPanelDemo({ children, isOpen: initIsOpen, style }) {
+  const [isOpen, setOpen] = useState(initIsOpen);
   const [panelState, setPanelState] = useState('default');
 
   const toggleOpen = () => {

@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: column;
   position: relative;
+}
+
+.sidePanel--raised {
   z-index: $layout-z-index-side-panel;
 }
 
