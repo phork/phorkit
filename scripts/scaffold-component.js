@@ -24,6 +24,7 @@ program.on('--help', function(){
   console.log('  $ scaffold-component -c Tooltip -t composition');
   console.log('  $ scaffold-component -c ButtonGroup -p Button');
   console.log('  $ scaffold-component -c Button -f component styles');
+  console.log('  $ scaffold-component -c Checkbox -p Form/Checkbox -f storybook');
 });
 
 program.parse(process.argv);
@@ -159,7 +160,7 @@ export default {
     docs: {
       page: () => (
         <React.Fragment>
-          <PageTitle src="components/${component}" title="${component}" />
+          <PageTitle src="components/${parent || component}" title="${component}" />
           <Subtitle />
           <Description />
           <Primary />
