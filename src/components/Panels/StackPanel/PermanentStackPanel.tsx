@@ -8,23 +8,29 @@ export interface PermanentStackPanelProps extends React.HTMLAttributes<HTMLDivEl
   fixed?: boolean;
   height?: number;
   position: 'top' | 'bottom';
+  /** Raise the panel above other elements by using a high z-index */
+  raised?: boolean;
   style?: React.CSSProperties;
+  unit?: 'px' | 'percent';
 }
 
 export const PermanentStackPanel = React.forwardRef<HTMLDivElement, PermanentStackPanelProps>(
   (
-    { children, className, fixed, height, position, style: initStyle, ...props },
+    { children, className, fixed, height, position, raised, style: initStyle, unit: initUnit = 'px', ...props },
     forwardedRef,
   ): React.ReactElement<PermanentStackPanelProps, 'div'> => {
     const classes = cx(
       styles.sidePanel,
-      fixed && styles['sidePanel--fixed'],
-      styles[`sidePanel--${position}`],
+      fixed && styles['stackPanel--fixed'],
+      raised && styles['stackPanel--raised'],
+      styles[`stackPanel--${position}`],
       className,
     );
 
     const style = { ...initStyle };
-    height && (style.height = `${height}px`);
+
+    const unit = initUnit === 'percent' ? '%' : initUnit;
+    height && (style.height = `${height}${unit}`);
 
     return (
       <div className={classes} ref={forwardedRef} style={style} {...props}>

@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { RightPanelIcon } from 'icons/internal/RightPanelIcon';
 import { IconButton } from 'components/Button';
 
-export function SidePanelDemo({ children, isOpen: initialIsOpen, style }) {
-  const [isOpen, setOpen] = useState(initialIsOpen);
+export function SidePanelDemo({ children, isOpen: initIsOpen, style }) {
+  const [isOpen, setOpen] = useState(initIsOpen);
   const [panelState, setPanelState] = useState('default');
 
   const toggleOpen = () => {

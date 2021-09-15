@@ -1,4 +1,4 @@
-import { Meta, Preview, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Button } from 'components/Button/Button';
 import { Rhythm } from 'components/Rhythm/Rhythm';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
@@ -22,7 +22,7 @@ import { useLineLoader } from '../useLineLoader';
 
 ### LineLoader
 
-<Preview>
+<Canvas>
   <Story name="LineLoader">
     {() => {
       const { loader, onLoad, loaderFinishing } = useLineLoader({ position: 'top' });
@@ -57,11 +57,11 @@ import { useLineLoader } from '../useLineLoader';
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ### ColoredLineLoader
 
-<Preview>
+<Canvas>
   <Story name="ColoredLineLoader">
     {() => {
       const { loader, onLoad, loaderFinishing } = useLineLoader({
@@ -100,11 +100,11 @@ import { useLineLoader } from '../useLineLoader';
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ### StyledLineLoader
 
-<Preview>
+<Canvas>
   <Story name="StyledLineLoader">
     {() => {
       const { loader, onLoad, loaderFinishing } = useLineLoader({
@@ -143,4 +143,4 @@ import { useLineLoader } from '../useLineLoader';
       );
     }}
   </Story>
-</Preview>
+</Canvas>

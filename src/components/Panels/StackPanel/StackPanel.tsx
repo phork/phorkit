@@ -11,10 +11,13 @@ export interface StackPanelProps
     React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className?: string;
+  /** The open and close animation duration */
   duration?: number;
   fixed?: boolean;
   height: number;
   position: 'top' | 'bottom';
+  /** Raise the panel above other elements by using a high z-index */
+  raised?: boolean;
 }
 
 export const StackPanel = React.forwardRef<HTMLDivElement, StackPanelProps>(
@@ -32,6 +35,7 @@ export const StackPanel = React.forwardRef<HTMLDivElement, StackPanelProps>(
       onOpenStart,
       open = false,
       position,
+      raised,
       transition = 'shiftable',
       unit = 'px',
       ...props
@@ -58,6 +62,7 @@ export const StackPanel = React.forwardRef<HTMLDivElement, StackPanelProps>(
     const classes = cx(
       styles.stackPanel,
       fixed && styles['stackPanel--fixed'],
+      raised && styles['stackPanel--raised'],
       styles[`stackPanel--${position}`],
       className,
     );

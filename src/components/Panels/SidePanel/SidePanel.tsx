@@ -11,9 +11,12 @@ export interface SidePanelProps
     React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className?: string;
+  /** The open and close animation duration */
   duration?: number;
   fixed?: boolean;
   position: 'left' | 'right';
+  /** Raise the panel above other elements by using a high z-index */
+  raised?: boolean;
   width: number;
 }
 
@@ -31,6 +34,7 @@ export const SidePanel = React.forwardRef<HTMLDivElement, SidePanelProps>(
       onOpenStart,
       open = false,
       position,
+      raised,
       transition = 'shiftable',
       unit = 'px',
       width,
@@ -58,6 +62,7 @@ export const SidePanel = React.forwardRef<HTMLDivElement, SidePanelProps>(
     const classes = cx(
       styles.sidePanel,
       fixed && styles['sidePanel--fixed'],
+      raised && styles['sidePanel--raised'],
       styles[`sidePanel--${position}`],
       className,
     );

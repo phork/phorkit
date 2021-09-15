@@ -18,6 +18,7 @@ export interface UsePanelCollapserInterface {
   ref: React.RefObject<HTMLElement>;
   transition: CollapseTransition;
   unit: 'px' | 'percent';
+  /** Use max-[width|height] rather than [width|height] to set the size */
   useMax?: boolean;
   width?: number;
 }

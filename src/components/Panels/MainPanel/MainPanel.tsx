@@ -5,6 +5,7 @@ import styles from './styles/MainPanel.module.css';
 export interface MainPanelProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 export const MainPanel = React.forwardRef<HTMLDivElement, MainPanelProps>(
