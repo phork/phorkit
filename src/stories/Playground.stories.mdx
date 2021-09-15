@@ -1089,8 +1089,13 @@ import {
 ### Banner time
 
 <Canvas>
-  <Story name="Banners w/ panels">
-    <ThemeWrapper style={{ display: 'flex', height: 280, maxHeight: 300, overflow: 'hidden' }}>
+  <Story
+    name="Banners w/ panels"
+    parameters={{
+      layout: 'fixed',
+    }}
+  >
+    <ThemeWrapper style={{ display: 'flex', height: 280, marginRight: -20, maxHeight: 300, overflow: 'hidden' }}>
       <PanelContainer full orientation="horizontal" style={{ borderRadius: 4 }}>
         <StackPanel open position="top">
           <Card raised squared>
@@ -1137,12 +1142,18 @@ import {
 </Canvas>
 
 <Canvas>
-  <Story name="Banners w/ paper">
+  <Story
+    name="Banners w/ paper"
+    parameters={{
+      layout: 'fixed',
+    }}
+  >
     <ThemeWrapper
       style={{
         display: 'flex',
         flexDirection: 'column',
         height: 280,
+        marginRight: -20,
         maxHeight: 300,
       }}
     >
