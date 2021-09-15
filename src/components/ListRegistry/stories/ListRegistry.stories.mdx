@@ -53,7 +53,7 @@ import { ListRegistryItem, ListRegistryConsumer, ListRegistryProvider } from '..
                     render={i => (
                       <ListRegistryItem id={i} key={i}>
                         <div>
-                          <Rhythm my={1} px={2}>{`Hello world ${i}`}</Rhythm>
+                          <Rhythm my={1} px={2}>{`Line number ${i}`}</Rhythm>
                         </div>
                       </ListRegistryItem>
                     )}
@@ -116,7 +116,7 @@ import { ListRegistryItem, ListRegistryConsumer, ListRegistryProvider } from '..
                         render={i => (
                           <ListRegistryItem id={i} key={i}>
                             <div>
-                              <Rhythm my={1} px={2}>{`Hello world ${i}${count > 0 ? ` (${count})` : ''}`}</Rhythm>
+                              <Rhythm my={1} px={2}>{`Line number ${i}${count > 0 ? ` (${count})` : ''}`}</Rhythm>
                             </div>
                           </ListRegistryItem>
                         )}
