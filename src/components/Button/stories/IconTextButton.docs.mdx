@@ -67,7 +67,26 @@ import { IconTextButton } from '../IconTextButton';
                 render={color => (
                   <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
                     <IconTextButton
-                      disabled
+                      loaderReplaceIcon
+                      loading
+                      color={color}
+                      icon={<BlobbrIcon scale="medium" />}
+                      loader={<SpinnerIcon scale="medium" />}
+                      onClick={() => action(color)}
+                      weight={weight}
+                    >
+                      {ucfirst(color)}
+                    </IconTextButton>
+                  </Rhythm>
+                )}
+              />
+            </Flex>
+            <Flex direction="row">
+              <Looper
+                list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+                render={color => (
+                  <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
+                    <IconTextButton
                       loading
                       color={color}
                       icon={<BlobbrIcon scale="medium" />}
@@ -119,7 +138,27 @@ import { IconTextButton } from '../IconTextButton';
                 render={color => (
                   <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
                     <IconTextButton
-                      disabled
+                      loaderReplaceIcon
+                      loading
+                      color={color}
+                      icon={<BlobbrIcon scale="medium" />}
+                      loader={<SpinnerIcon scale="medium" />}
+                      onClick={() => action(color)}
+                      shape="brick"
+                      weight={weight}
+                    >
+                      {ucfirst(color)}
+                    </IconTextButton>
+                  </Rhythm>
+                )}
+              />
+            </Flex>
+            <Flex direction="row">
+              <Looper
+                list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+                render={color => (
+                  <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
+                    <IconTextButton
                       loading
                       color={color}
                       icon={<BlobbrIcon scale="medium" />}
@@ -168,7 +207,27 @@ import { IconTextButton } from '../IconTextButton';
           render={color => (
             <Rhythm key={color} m={2}>
               <IconTextButton
-                disabled
+                loaderReplaceIcon
+                loading
+                color={color}
+                icon={<BlobbrIcon scale="medium" />}
+                loader={<SpinnerIcon scale="medium" />}
+                onClick={() => action(color)}
+                shape="brick"
+                weight="inline"
+              >
+                {ucfirst(color)}
+              </IconTextButton>
+            </Rhythm>
+          )}
+        />
+      </Flex>
+      <Flex direction="row">
+        <Looper
+          list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+          render={color => (
+            <Rhythm key={color} m={2}>
+              <IconTextButton
                 loading
                 color={color}
                 icon={<BlobbrIcon scale="medium" />}
@@ -196,6 +255,25 @@ import { IconTextButton } from '../IconTextButton';
           render={weight => (
             <Rhythm key={weight} m={2}>
               <IconTextButton contrast icon={<BlobbrIcon scale="medium" />} weight={weight}>
+                {ucfirst(weight)}
+              </IconTextButton>
+            </Rhythm>
+          )}
+        />
+      </Flex>
+      <Flex alignItems="center" direction="row">
+        <Looper
+          list={['solid', 'shaded', 'outlined', 'ghost', 'inline']}
+          render={weight => (
+            <Rhythm key={weight} m={2}>
+              <IconTextButton
+                contrast
+                loaderReplaceIcon
+                loading
+                icon={<BlobbrIcon scale="medium" />}
+                loader={<SpinnerIcon scale="medium" />}
+                weight={weight}
+              >
                 {ucfirst(weight)}
               </IconTextButton>
             </Rhythm>
