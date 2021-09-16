@@ -21,7 +21,9 @@
 }
 
 .paper--scrollable {
-  @mixin addScrollbar var(--paper-scrollbar-thumb-color);
+  &.paper--medium-scrollbar {
+    @mixin addScrollbar var(--paper-scrollbar-thumb-color);
+  }
 
   &.paper--small-scrollbar {
     @mixin addSmallScrollbar var(--paper-scrollbar-thumb-color);
