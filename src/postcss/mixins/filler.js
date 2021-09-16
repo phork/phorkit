@@ -4,8 +4,8 @@
  *
  * Solid: An opaque background color with the same color used for the
  *  border so that it won't jump around when changing fills. This
- *  needs a separate text color. On hover a solid fill should change
- *  to an opacity of .8.
+ *  needs a separate text color. On hover only the color should
+ *  change, but that is not handled by this mixin.
  *
  * Shaded: A semi-transparent background applied with the :before
  *  pseudo-element, and a solid border. This uses a single color
@@ -113,6 +113,13 @@ const prepareAndMakeShade = (mixin, primaryColor, withBorder) => ({
   },
 });
 
+// this replaces the opacity of the shade (eg. for active, hover effects)
+const setShadeOpacity = (mixin, opacity) => ({
+  '&:before': {
+    opacity,
+  },
+});
+
 /**
  * Start the complete fill methods
  */
@@ -120,10 +127,6 @@ const prepareAndMakeShade = (mixin, primaryColor, withBorder) => ({
 const makeSolidFill = (mixin, primaryColor, inverseColor, shouldPrepareShade) => ({
   ...makeFillerColors(primaryColor, primaryColor, inverseColor),
   ...(shouldPrepareShade ? prepareShade() : {}),
-});
-
-const makeSolidFillHover = () => ({
-  opacity: 0.9,
 });
 
 // shouldPrepareShade is still needed here in case this is used in something that already has a prepared shade
@@ -146,15 +149,39 @@ const makeOutlinedFillHover = (mixin, primaryColor) => ({
   ...makeShade(mixin, primaryColor),
 });
 
+// a shade should have been prepared for this already so that it can transition
+const makeOutlinedFillActive = (mixin, primaryColor) => ({
+  ...makeShade(mixin, primaryColor),
+  ...setShadeOpacity(mixin, 0.13),
+});
+
 const makeGhostFill = (mixin, primaryColor, shouldPrepareShade) => ({
   ...makeFillerColors('transparent', 'transparent', primaryColor),
   ...(shouldPrepareShade ? prepareShade(mixin, true) : {}),
 });
 
-// a shade should have been prepared for this already sp that it can transition
+// a shade should have been prepared for this already so that it can transition
 const makeGhostFillHover = (mixin, primaryColor) => ({
   ...makeShade(mixin, primaryColor),
 });
+
+// a shade should have been prepared for this already so that it can transition
+const makeGhostFillActive = (mixin, primaryColor) => ({
+  ...makeShade(mixin, primaryColor),
+  ...setShadeOpacity(mixin, 0.13),
+});
+
+/**
+ * Generally the solid fill hover state should use
+ * lighter version of the primary color, and the
+ * solid fill active state should use a darker version
+ * of the primary color.
+ *
+ * The reason that these mixins are just references
+ * to their base mixins is that no other changes need
+ * to be made except for the color. So they can just
+ * be called with the new colors.
+ */
 
 const mixins = {
   // partial helper mixins
@@ -165,16 +192,21 @@ const mixins = {
   prepareShade,
   makeShade,
   prepareAndMakeShade,
+  setShadeOpacity,
 
   // complete fill mixins
   makeSolidFill,
-  makeSolidFillHover,
+  makeSolidFillHover: makeSolidFill,
+  makeSolidFillActive: makeSolidFill,
   makeShadedFill,
   makeShadedFillHover,
+  makeShadedFillActive: makeShadedFillHover,
   makeOutlinedFill,
   makeOutlinedFillHover,
+  makeOutlinedFillActive,
   makeGhostFill,
   makeGhostFillHover,
+  makeGhostFillActive,
 };
 
 module.exports = mixins;

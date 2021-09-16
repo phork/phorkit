@@ -15,6 +15,8 @@ const StyledTag = styled(Tag, {
   shouldForwardProp: (prop: string) => !['colorId', 'themeId'].includes(prop),
 })<ColoredTagProps>`
   --tag-primary-color: ${props => themes[props.themeId][`color-${props.colorId}` as keyof ThemeColors]};
+  --tag-hovered-primary-color: ${props => themes[props.themeId][`color-${props.colorId}-L10` as keyof ThemeColors]};
+  --tag-active-primary-color: ${props => themes[props.themeId][`color-${props.colorId}-D10` as keyof ThemeColors]};
   --tag-inverse-color: ${props => themes[props.themeId][`color-${props.colorId}-contrast` as keyof ThemeColors]};
 `;
 

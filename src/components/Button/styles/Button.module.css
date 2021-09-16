@@ -82,7 +82,7 @@ button.button {
 
     &:hover,
     &.is-hovered {
-      @mixin makeSolidFillHover;
+      @mixin makeSolidFillHover var(--button-hovered-primary-color), var(--button-inverse-color);
     }
 
     &:focus,
@@ -92,9 +92,7 @@ button.button {
 
     &:active,
     &.is-active {
-      background-color: var(--button-active-primary-color);
-      border-color: var(--button-active-primary-color);
-      opacity: 1;
+      @mixin makeSolidFillActive var(--button-active-primary-color), var(--button-inverse-color);
     }
   }
 }
@@ -114,6 +112,11 @@ button.button {
     &:focus,
     &.is-focused {
       @mixin makeFocusRing var(--button-primary-color);
+    }
+
+    &:active,
+    &.is-active {
+      @mixin makeShadedFillActive var(--button-active-primary-color), var(--button-inverse-color);
     }
   }
 }
@@ -138,7 +141,7 @@ button.button {
 
     &:active,
     &.is-active {
-      border-color: var(--button-active-primary-color);
+      @mixin makeOutlinedFillActive var(--button-active-primary-color);
     }
   }
 }
@@ -163,9 +166,7 @@ button.button {
 
     &:active,
     &.is-active {
-      &:before {
-        opacity: 0.1;
-      }
+      @mixin makeGhostFillActive var(--button-active-primary-color);
     }
   }
 }

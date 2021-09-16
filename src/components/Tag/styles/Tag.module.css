@@ -37,9 +37,22 @@ button.tag {
   @mixin makeSolidFill var(--tag-primary-color), var(--tag-inverse-color);
 
   &.tag--actionable {
+    @mixin makeFillerTransitions;
+    @mixin prepareFocusRing;
+
     &:hover,
     &.is-hovered {
-      @mixin makeSolidFillHover;
+      @mixin makeSolidFillHover var(--tag-hovered-primary-color), var(--tag-inverse-color);
+    }
+
+    &:focus,
+    &.is-focused {
+      @mixin makeFocusRing var(--tag-primary-color);
+    }
+
+    &:active,
+    &.is-active {
+      @mixin makeSolidFillActive var(--tag-active-primary-color), var(--tag-inverse-color);
     }
   }
 }
@@ -48,9 +61,22 @@ button.tag {
   @mixin makeShadedFill var(--tag-primary-color), withShade;
 
   &.tag--actionable {
+    @mixin makeFillerTransitions;
+    @mixin prepareFocusRing;
+
     &:hover,
     &.is-hovered {
       @mixin makeShadedFillHover var(--tag-primary-color), var(--tag-inverse-color);
+    }
+
+    &:focus,
+    &.is-focused {
+      @mixin makeFocusRing var(--tag-primary-color);
+    }
+
+    &:active,
+    &.is-active {
+      @mixin makeShadedFillActive var(--tag-active-primary-color), var(--tag-inverse-color);
     }
   }
 }
@@ -59,25 +85,54 @@ button.tag {
   @mixin makeOutlinedFill var(--tag-primary-color);
 
   &.tag--actionable {
+    @mixin makeFillerTransitions;
+    @mixin prepareFocusRing;
     @mixin prepareShade;
 
     &:hover,
     &.is-hovered {
       @mixin makeOutlinedFillHover var(--tag-primary-color);
     }
+
+    &:focus,
+    &.is-focused {
+      @mixin makeFocusRing var(--tag-primary-color);
+    }
+
+    &:active,
+    &.is-active {
+      @mixin makeOutlinedFillActive var(--tag-active-primary-color);
+    }
+  }
+}
+
+.tag--ghost {
+  @mixin makeGhostFill var(--tag-primary-color);
+
+  &.tag--actionable {
+    @mixin makeFillerTransitions;
+    @mixin prepareFocusRing;
+    @mixin prepareShade withBorder;
+
+    &:hover,
+    &.is-hovered {
+      @mixin makeGhostFillHover var(--tag-primary-color);
+    }
+
+    &:focus,
+    &.is-focused {
+      @mixin makeFocusRing var(--tag-primary-color);
+    }
+
+    &:active,
+    &.is-active {
+      @mixin makeGhostFillActive var(--tag-active-primary-color);
+    }
   }
 }
 
 .tag--actionable {
-  @mixin makeFillerTransitions;
-  @mixin prepareFocusRing;
-
   cursor: pointer;
-
-  &:focus,
-  &.is-focused {
-    @mixin makeFocusRing var(--tag-primary-color);
-  }
 }
 
 .tag--2xsmall {
@@ -142,12 +197,16 @@ button.tag {
   @mixin themed .tag {
     --tag-primary-color: $theme-primary-palette-quiet-color;
     --tag-inverse-color: $theme-extreme-palette-background-color;
+    --tag-active-primary-color: $theme-primary-palette-text-color;
+    --tag-hovered-primary-color: $theme-primary-palette-quieter-color;
   }
 }
 
 .tag--contrast {
   @mixin themed .tag {
-    --tag-primary-color: var(--contrast-color, $theme-contrast-palette-text-color);
-    --tag-inverse-color: $theme-contrast-palette-background-color;
+    --tag-primary-color: $theme-contrast-palette-text-color;
+    --tag-inverse-color: var(--contrast-color, $theme-contrast-palette-background-color);
+    --tag-hovered-primary-color: $theme-contrast-palette-quiet-color;
+    --tag-active-primary-color: $theme-contrast-palette-text-color;
   }
 }
