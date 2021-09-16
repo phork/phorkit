@@ -7,8 +7,11 @@ export default {
   title: 'Display/Badge',
   component: Badge,
   argTypes: {
+    children: {
+      control: { type: 'text' },
+    },
+
     color: {
-      options: ['primary', 'success', 'warning', 'danger', 'neutral'],
       control: { type: 'radio' },
       table: {
         category: 'Primary controls',
@@ -20,14 +23,12 @@ export default {
       },
     },
     position: {
-      options: [undefined, 'top-left', 'top-right', 'bottom-left', 'bottom-right'],
-      control: { type: 'select' },
+      control: { type: 'radio' },
       table: {
         category: 'Primary controls',
       },
     },
     shape: {
-      options: ['point', 'marker', 'count', 'label'],
       control: { type: 'radio' },
       table: {
         category: 'Primary controls',
@@ -55,6 +56,13 @@ export default {
       },
     },
   },
+  decorators: [
+    Story => (
+      <div style={{ position: 'relative', width: 300, height: 300, boxShadow: '0 0 0 1px currentColor' }}>
+        {Story()}
+      </div>
+    ),
+  ],
   parameters: {
     controls: {
       exclude: ['className', 'themeId'],

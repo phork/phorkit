@@ -15,14 +15,12 @@ export default {
       },
     },
     variant: {
-      options: ['primary', 'secondary', 'tertiary'],
       control: { type: 'radio' },
       table: {
         category: 'Primary controls',
       },
     },
     volume: {
-      options: [undefined, 'quiet', 'quieter', 'quietest'],
       control: { type: 'radio' },
       table: {
         category: 'Primary controls',

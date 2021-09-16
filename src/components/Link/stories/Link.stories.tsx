@@ -59,7 +59,7 @@ export default {
     docs: {
       page: LinkDocumentation,
       description: {
-        component: 'The link component adds styles to an anchor tag.',
+        component: 'An anchor tag with some standardized styles.',
       },
     },
     layout: 'centered',

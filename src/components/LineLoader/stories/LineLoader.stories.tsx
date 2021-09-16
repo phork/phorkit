@@ -14,11 +14,31 @@ export default {
   title: 'Feedback/LineLoader',
   component: LineLoader,
   argTypes: {
+    fixed: {
+      control: { type: 'boolean' },
+    },
     position: {
-      control: 'radio',
-      options: [undefined, 'top', 'bottom'],
+      control: { type: 'radio' },
     },
 
+    duration: {
+      control: { type: 'number' },
+      table: {
+        category: 'Animation controls',
+      },
+    },
+    loops: {
+      control: { type: 'number' },
+      table: {
+        category: 'Animation controls',
+      },
+    },
+    percent: {
+      control: { type: 'number' },
+      table: {
+        category: 'Animation controls',
+      },
+    },
     onFinish: {
       control: {
         disable: true,
@@ -37,6 +57,11 @@ export default {
     },
 
     contrast: {
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
+    style: {
       table: {
         category: 'Uncommon controls',
       },

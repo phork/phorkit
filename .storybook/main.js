@@ -12,6 +12,19 @@ module.exports = {
     '@storybook/addon-a11y',
     'storybook-dark-mode',
   ],
+  /*
+    shouldRemoveUndefinedFromOptional adds undefined as option for radio/select (yay)
+    but also for boolean and text (boo) which screws up their input types.
+  typescript: async config => {
+    return {
+      ...config,
+      reactDocgenTypescriptOptions: {
+        ...config.reactDocgenTypescriptOptions,
+        shouldRemoveUndefinedFromOptional: false,
+      },
+    };
+  },
+  */
   webpackFinal: async (config, { configType }) => {
     return {
       ...config,

@@ -21,14 +21,12 @@ export default {
     },
 
     align: {
-      options: ['left', 'center', 'right'],
       control: { type: 'inline-radio' },
       table: {
         category: 'Appearance controls',
       },
     },
     color: {
-      options: ['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white'],
       control: { type: 'radio' },
       table: {
         category: 'Appearance controls',
@@ -43,21 +41,18 @@ export default {
       },
     },
     shape: {
-      options: ['pill', 'brick'],
       control: { type: 'inline-radio' },
       table: {
         category: 'Appearance controls',
       },
     },
     size: {
-      options: ['small', 'medium', 'large'],
       control: { type: 'inline-radio' },
       table: {
         category: 'Appearance controls',
       },
     },
     weight: {
-      options: ['solid', 'shaded', 'outlined', 'ghost', 'inline'],
       control: { type: 'radio' },
       table: {
         category: 'Appearance controls',
