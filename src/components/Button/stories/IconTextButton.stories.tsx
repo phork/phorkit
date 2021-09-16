@@ -25,6 +25,11 @@ export default {
         category: 'Icon controls',
       },
     },
+    loaderReplaceIcon: {
+      table: {
+        category: 'Icon controls',
+      },
+    },
     reverse: {
       table: {
         category: 'Icon controls',
@@ -215,6 +220,14 @@ export const Loading = Template.bind({});
 Loading.args = {
   ...defaultArgs,
   loading: true,
+};
+
+export const LoaderReplaceIcon = Template.bind({});
+LoaderReplaceIcon.storyName = 'Loader replace icon';
+LoaderReplaceIcon.args = {
+  ...defaultArgs,
+  loading: true,
+  loaderReplaceIcon: true,
 };
 
 export const Link = ({

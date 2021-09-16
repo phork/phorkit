@@ -11,6 +11,7 @@ export type IconTextButtonElementType = ButtonElementType;
 export interface LocalIconTextButtonProps {
   icon: RenderFromPropElement<{}>;
   children: RenderFromPropElement<{}> | string;
+  loaderReplaceIcon?: boolean;
   reverse?: boolean;
 }
 
@@ -20,14 +21,35 @@ export type IconTextButtonProps<T extends ButtonElementType = 'button'> = MergeP
 >;
 
 export function IconTextButtonBase<T extends IconTextButtonElementType = 'button'>(
-  { as, children, className, icon, reverse = false, ...props }: IconTextButtonProps<T>,
+  {
+    as,
+    children,
+    className,
+    disabled,
+    icon,
+    loading,
+    loader,
+    loaderReplaceIcon,
+    reverse = false,
+    ...props
+  }: IconTextButtonProps<T>,
   forwardedRef: React.ForwardedRef<HTMLElementTagNameMap[T]>,
 ): React.ReactElement {
   const classes = cx(reverse ? styles['button--iconTextReverse'] : styles['button--iconText'], className);
 
   return (
-    <Button<T> className={classes} ref={forwardedRef} {...(props as ButtonProps<T>)} as={as}>
-      <span className={styles.button__icon}>{renderFromProp<{}>(icon)}</span>
+    <Button<T>
+      className={classes}
+      disabled={disabled || (loading && loaderReplaceIcon)}
+      loader={loader}
+      loading={loading && !loaderReplaceIcon}
+      ref={forwardedRef}
+      {...(props as ButtonProps<T>)}
+      as={as}
+    >
+      <span className={styles.button__icon}>
+        {renderFromProp<{}>(loading && loaderReplaceIcon && loader ? loader : icon)}
+      </span>
       <span className={styles.button__text}>{renderFromPropWithFallback<{}>(children)}</span>
     </Button>
   );

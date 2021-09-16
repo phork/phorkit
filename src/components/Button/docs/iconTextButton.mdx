@@ -33,18 +33,19 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
             render={shape => (
               <Rhythm grouped key={`${size}-${shape}`} py={2}>
                 <Looper
-                  list={[false, true]}
+                  list={['standard', 'loaderReplaceIcon', 'loading']}
                   render={loading => (
-                    <Flex wrap direction="row" key={`${size}-${shape}-${loading ? 'loading' : 'standard'}`}>
+                    <Flex wrap direction="row" key={`${size}-${shape}-${loading}`}>
                       <Looper
                         list={['solid', 'shaded', 'outlined', 'ghost']}
                         render={weight => (
-                          <Rhythm key={`${size}-${shape}-${loading ? 'loading' : 'standard'}-${weight}`} m={2} mb={0}>
+                          <Rhythm key={`${size}-${shape}-${loading}-${weight}`} m={2} mb={0}>
                             <IconTextButton
                               color="primary"
                               icon={<BlobbrIcon scale={size} />}
                               loader={<SpinnerIcon scale={size} />}
-                              loading={loading}
+                              loaderReplaceIcon={loading === 'loaderReplaceIcon'}
+                              loading={['loading', 'loaderReplaceIcon'].includes(loading)}
                               onClick={() => console.log('click')}
                               shape={shape}
                               size={size}
@@ -72,15 +73,16 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
 <Playground>
   <ThemeWrapper style={{ fontSize: 14 }}>
     <Looper
-      list={[false, true]}
+      list={['standard', 'loaderReplaceIcon', 'loading']}
       render={loading => (
-        <Rhythm grouped key={loading ? 'loading' : 'standard'} mb={2}>
+        <Rhythm grouped key={loading} mb={2}>
           <Rhythm m={2}>
             <IconTextButton
               color="primary"
               icon={<BlobbrIcon scale="small" />}
               loader={<SpinnerIcon scale="small" />}
-              loading={loading}
+              loaderReplaceIcon={loading === 'loaderReplaceIcon'}
+              loading={['loading', 'loaderReplaceIcon'].includes(loading)}
               onClick={() => console.log('small')}
               size="small"
               weight="inline"
@@ -102,7 +104,8 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
               color="primary"
               icon={<BlobbrIcon scale="large" />}
               loader={<SpinnerIcon scale="large" />}
-              loading={loading}
+              loaderReplaceIcon={loading === 'loaderReplaceIcon'}
+              loading={['loading', 'loaderReplaceIcon'].includes(loading)}
               onClick={() => console.log('large')}
               size="large"
               weight="inline"
@@ -113,7 +116,8 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
               color="primary"
               icon={<BlobbrIcon scale="large" />}
               loader={<SpinnerIcon scale="large" />}
-              loading={loading}
+              loaderReplaceIcon={loading === 'loaderReplaceIcon'}
+              loading={['loading', 'loaderReplaceIcon'].includes(loading)}
               onClick={() => console.log('relative')}
               size="relative"
               weight="inline"
@@ -136,19 +140,20 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
       render={shape => (
         <Rhythm grouped key={shape} py={2}>
           <Looper
-            list={[false, true]}
+            list={['standard', 'loaderReplaceIcon', 'loading']}
             render={loading => (
-              <Flex wrap direction="row" key={`${shape}-${loading ? 'loading' : 'standard'}`}>
+              <Flex wrap direction="row" key={`${shape}-${loading}`}>
                 <Looper
                   list={['solid', 'shaded', 'outlined', 'ghost']}
                   render={weight => (
-                    <Rhythm key={`${shape}-${loading ? 'loading' : 'standard'}-${weight}`} m={2} mb={0}>
+                    <Rhythm key={`${shape}-${loading}-${weight}`} m={2} mb={0}>
                       <IconTextButton
                         reverse
                         color="primary"
                         icon={<TimesIcon scale="xsmall" />}
                         loader={<SpinnerIcon scale="medium" />}
-                        loading={loading}
+                        loaderReplaceIcon={loading === 'loaderReplaceIcon'}
+                        loading={['loading', 'loaderReplaceIcon'].includes(loading)}
                         onClick={() => console.log('click')}
                         shape={shape}
                         size="medium"
@@ -173,16 +178,17 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
 <Playground>
   <ThemeWrapper style={{ fontSize: 14 }}>
     <Looper
-      list={[false, true]}
+      list={['standard', 'loaderReplaceIcon', 'loading']}
       render={loading => (
-        <Rhythm grouped key={`${loading ? 'loading' : 'standard'}`} mb={2}>
+        <Rhythm grouped key={`${loading}`} mb={2}>
           <Rhythm m={2}>
             <IconTextButton
               reverse
               color="primary"
               icon={<TimesIcon scale="xsmall" />}
               loader={<SpinnerIcon scale="small" />}
-              loading={loading}
+              loaderReplaceIcon={loading === 'loaderReplaceIcon'}
+              loading={['loading', 'loaderReplaceIcon'].includes(loading)}
               onClick={() => console.log('small')}
               size="small"
               weight="inline"
@@ -194,7 +200,8 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
               color="primary"
               icon={<TimesIcon scale="small" />}
               loader={<SpinnerIcon scale="medium" />}
-              loading={loading}
+              loaderReplaceIcon={loading === 'loaderReplaceIcon'}
+              loading={['loading', 'loaderReplaceIcon'].includes(loading)}
               onClick={() => console.log('medium')}
               size="medium"
               weight="inline"
@@ -206,7 +213,8 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
               color="primary"
               icon={<TimesIcon scale="small" />}
               loader={<SpinnerIcon scale="medium" />}
-              loading={loading}
+              loaderReplaceIcon={loading === 'loaderReplaceIcon'}
+              loading={['loading', 'loaderReplaceIcon'].includes(loading)}
               onClick={() => console.log('large')}
               size="large"
               weight="inline"
@@ -218,7 +226,8 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
               color="primary"
               icon={<TimesIcon scale="small" />}
               loader={<SpinnerIcon scale="large" />}
-              loading={loading}
+              loaderReplaceIcon={loading === 'loaderReplaceIcon'}
+              loading={['loading', 'loaderReplaceIcon'].includes(loading)}
               onClick={() => console.log('relative')}
               size="relative"
               weight="inline"
@@ -261,7 +270,6 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
             render={color => (
               <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
                 <IconTextButton
-                  disabled
                   loading
                   color={color}
                   icon={<BlobbrIcon scale="medium" />}
@@ -310,7 +318,6 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
             render={color => (
               <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
                 <IconTextButton
-                  disabled
                   loading
                   color={color}
                   icon={<BlobbrIcon scale="medium" />}
@@ -356,7 +363,6 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
       render={color => (
         <Rhythm key={color} m={2}>
           <IconTextButton
-            disabled
             loading
             color={color}
             icon={<BlobbrIcon scale="medium" />}
