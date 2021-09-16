@@ -30,7 +30,6 @@ export default {
       },
     },
     volume: {
-      options: [undefined, 'quiet'],
       control: { type: 'inline-radio' },
       table: {
         category: 'Primary controls',

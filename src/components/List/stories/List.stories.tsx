@@ -38,7 +38,6 @@ export default {
       },
     },
     variant: {
-      options: ['bordered', 'shadowed', 'divided', 'unboxed', undefined],
       control: { type: 'radio' },
       table: {
         category: 'Appearance controls',

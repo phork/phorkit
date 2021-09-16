@@ -63,7 +63,7 @@ export default {
     },
     docs: {
       description: {
-        component: 'Displays some text with an icon before or after it.',
+        component: 'A combination of some text with an icon before or after it.',
       },
     },
     layout: 'centered',

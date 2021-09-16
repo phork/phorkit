@@ -25,28 +25,24 @@ export default {
       },
     },
     alignContent: {
-      options: [undefined, 'center', 'flex-end', 'flex-start', 'space-around', 'space-between', 'stretch'],
       control: { type: 'radio' },
       table: {
         category: 'Primary controls',
       },
     },
     alignItems: {
-      options: [undefined, 'baseline', 'center', 'flex-end', 'flex-start'],
       control: { type: 'radio' },
       table: {
         category: 'Primary controls',
       },
     },
     alignSelf: {
-      options: [undefined, 'baseline', 'center', 'flex-end', 'flex-start', 'space-around', 'space-between', 'stretch'],
       control: { type: 'radio' },
       table: {
         category: 'Primary controls',
       },
     },
     justifyContent: {
-      options: [undefined, 'center', 'flex-end', 'flex-start', 'space-around', 'space-between', 'space-evenly'],
       control: { type: 'radio' },
       table: {
         category: 'Primary controls',

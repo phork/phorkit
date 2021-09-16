@@ -57,7 +57,7 @@ export default {
         </React.Fragment>
       ),
       description: {
-        component: 'The link container wraps children that contain anchor tag(s) and styles those anchors.',
+        component: 'A link container wraps children that contain anchor tag(s) and styles those anchors.',
       },
     },
     layout: 'centered',
