@@ -9,24 +9,23 @@ export interface ProgressSegment {
   color: SemanticColor;
 }
 
-export interface ProgressProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
+export interface ProgressProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>, ThemeProps {
   animated?: boolean;
-  children?: React.ReactNode;
   className?: string;
   color?: SemanticColor;
   data?: ProgressSegment[];
   floating?: boolean;
   orientation?: Orientation;
   percent?: number;
-  pill?: boolean;
+  rounded?: boolean;
   size?: 'small' | 'medium' | 'large';
   spaced?: boolean;
+  style?: React.CSSProperties;
   volume?: Volume;
 }
 
 export function Progress({
   animated = false,
-  children,
   className,
   color,
   contrast = false,
@@ -34,7 +33,7 @@ export function Progress({
   floating = false,
   orientation = 'horizontal',
   percent = 0,
-  pill = false,
+  rounded = false,
   size = 'medium',
   spaced = false,
   themeId: initThemeId,
@@ -72,7 +71,7 @@ export function Progress({
         styles[`progress--${orientation}`],
         contrast && styles['progress--contrast'],
         floating && styles['progress--floating'],
-        pill && styles['progress--pill'],
+        rounded && styles['progress--rounded'],
         size && styles[`progress--${size}`],
         themeId && !unthemed && styles[`progress--${themeId}`],
         volume && styles[`progress--${volume}`],
@@ -82,7 +81,6 @@ export function Progress({
       {...props}
     >
       {data ? data.map(renderSegment) : renderSegment({ percent, color: color || 'primary' }, 0)}
-      {children}
     </div>
   );
 }
