@@ -21,7 +21,8 @@
 .progress--primary,
 .progress--success,
 .progress--warning,
-.progress--danger {
+.progress--danger,
+.progress--neutral {
   @mixin themed .progress {
     background-color: $theme-color-BG30;
   }
@@ -57,7 +58,7 @@
   --progress-thickness: 8px;
 }
 
-.progress--pill {
+.progress--rounded {
   border-radius: var(--progress-thickness);
 
   .progressSegment:last-child {

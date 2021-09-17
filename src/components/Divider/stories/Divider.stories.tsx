@@ -99,6 +99,27 @@ TertiaryVariant.args = {
   variant: 'tertiary',
 };
 
+export const QuietVolume = Template.bind({});
+QuietVolume.storyName = 'Volume: Quiet';
+QuietVolume.args = {
+  ...defaultArgs,
+  volume: 'quiet',
+};
+
+export const QuieterVolume = Template.bind({});
+QuieterVolume.storyName = 'Volume: Quieter';
+QuieterVolume.args = {
+  ...defaultArgs,
+  volume: 'quieter',
+};
+
+export const QuietestVolume = Template.bind({});
+QuietestVolume.storyName = 'Volume: Quietest';
+QuietestVolume.args = {
+  ...defaultArgs,
+  volume: 'quietest',
+};
+
 export const Vertical = Template.bind({});
 Vertical.args = {
   ...defaultArgs,
