@@ -21,6 +21,7 @@ export default {
       },
     },
     volume: {
+      options: ['quiet', 'quieter', 'quietest', undefined],
       control: { type: 'radio' },
       table: {
         category: 'Primary controls',
@@ -66,8 +67,10 @@ export default {
 const Template: ComponentStory<typeof Divider> = args => <Divider {...args} />;
 
 const defaultArgs = {
-  variant: 'primary' as DividerProps['variant'],
+  contrast: false,
   orientation: 'horizontal' as DividerProps['orientation'],
+  unthemed: false,
+  variant: 'primary' as DividerProps['variant'],
 };
 
 export const Default = Template.bind({});

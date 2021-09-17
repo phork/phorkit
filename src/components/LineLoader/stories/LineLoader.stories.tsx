@@ -90,7 +90,10 @@ export default {
 const Template: ComponentStory<typeof LineLoader> = ({ children, ...args }) => <LineLoader {...args} />;
 
 const defaultArgs = {
+  contrast: false,
+  fixed: false,
   onLoop: undefined,
+  unthemed: false,
 };
 
 export const Default = Template.bind({});

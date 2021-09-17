@@ -27,7 +27,7 @@ type LoaderScale = {
 
 export interface BaseLoaderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>, ThemeProps {
   className?: string;
-  position?: 'absolute' | 'fixed';
+  position?: 'relative' | 'absolute' | 'fixed';
   style?: React.CSSProperties;
   translations?: LoaderTranslations;
 }
@@ -37,7 +37,7 @@ export type LoaderProps = BaseLoaderProps & (LoaderSize | LoaderScale);
 export function Loader({
   className,
   contrast = false,
-  position,
+  position = 'relative',
   scale,
   size = 60,
   themeId: initThemeId,

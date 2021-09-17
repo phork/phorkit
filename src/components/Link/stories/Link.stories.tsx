@@ -70,9 +70,12 @@ const Template: ComponentStory<typeof Link> = args => <Link {...args} />;
 
 const defaultArgs = {
   children: 'I am a link.',
+  contrast: false,
   href: 'https://phorkit.org',
   target: '_blank',
   underline: false,
+  unstyled: false,
+  unthemed: false,
 };
 
 export const Default = Template.bind({});

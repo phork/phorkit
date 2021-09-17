@@ -82,8 +82,11 @@ const Template: ComponentStory<typeof Badge> = args => <Badge {...args} />;
 
 const defaultArgs = {
   color: 'primary' as BadgeProps['color'],
+  contrast: false,
+  outline: false,
   pulsing: false,
   shape: 'marker' as BadgeProps['shape'],
+  unthemed: false,
 };
 
 export const Default = Template.bind({});

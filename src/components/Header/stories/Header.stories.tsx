@@ -91,8 +91,10 @@ const Template: ComponentStory<typeof Header> = ({ children, ...args }) => (
 const defaultArgs = {
   bordered: false,
   children: undefined,
+  contrast: false,
   full: false,
   variant: 'primary' as HeaderProps['variant'],
+  unthemed: false,
 };
 
 export const Default = Template.bind({});

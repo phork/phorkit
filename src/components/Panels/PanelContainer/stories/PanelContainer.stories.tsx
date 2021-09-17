@@ -77,8 +77,12 @@ export default {
 const Template: ComponentStory<typeof PanelContainer> = args => <PanelContainer {...args} />;
 
 const defaultArgs = {
+  absolute: false,
   children: [<MainPanel>Main panel 1</MainPanel>, <MainPanel>Main panel 2</MainPanel>],
+  full: false,
   orientation: 'horizontal' as PanelContainerProps['orientation'],
+  reverse: false,
+  viewport: false,
 };
 
 export const Default = Template.bind({});

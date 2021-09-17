@@ -1,8 +1,7 @@
-import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { PageTitle } from 'stories/helpers/PageTitle';
 import { Paper, PaperProps } from '../Paper';
+import PaperDocumentation from './Paper.docs.mdx';
 
 const lipsumChildren = [
   <p key="first">
@@ -94,16 +93,7 @@ export default {
       sort: 'requiredFirst',
     },
     docs: {
-      page: () => (
-        <React.Fragment>
-          <PageTitle src="components/Paper" title="Paper" />
-          <Subtitle />
-          <Description />
-          <Primary />
-          <ArgsTable story={PRIMARY_STORY} />
-          <Stories />
-        </React.Fragment>
-      ),
+      page: PaperDocumentation,
       description: {
         component:
           'The paper component sets the text color and adds a background color and optional border and scrollbars around its children.',
@@ -116,9 +106,15 @@ export default {
 const Template: ComponentStory<typeof Paper> = args => <Paper {...args} />;
 
 const defaultArgs = {
+  bordered: false,
+  contained: false,
   container: 'page' as PaperProps['container'],
   children: 'Hello world',
+  flexible: false,
+  full: false,
+  scrollable: false,
   scrollbar: 'medium' as PaperProps['scrollbar'],
+  unthemed: false,
 };
 
 export const Default = Template.bind({});
@@ -206,42 +202,6 @@ DangerColor.args = {
   color: 'danger',
 };
 
-export const MediumScrollbar = Template.bind({});
-MediumScrollbar.storyName = 'Scrollbar: Medium';
-MediumScrollbar.args = {
-  ...defaultArgs,
-  children: lipsumChildren,
-  color: 'primary',
-  container: undefined,
-  scrollable: true,
-  scrollbar: 'medium',
-  style: { height: '80px', maxWidth: '800px' },
-};
-
-export const SmallScrollbar = Template.bind({});
-SmallScrollbar.storyName = 'Scrollbar: Small';
-SmallScrollbar.args = {
-  ...defaultArgs,
-  children: lipsumChildren,
-  color: 'primary',
-  container: undefined,
-  scrollable: true,
-  scrollbar: 'small',
-  style: { height: '80px', maxWidth: '800px' },
-};
-
-export const XSmallScrollbar = Template.bind({});
-XSmallScrollbar.storyName = 'Scrollbar: XSmall';
-XSmallScrollbar.args = {
-  ...defaultArgs,
-  children: lipsumChildren,
-  color: 'primary',
-  container: undefined,
-  scrollable: true,
-  scrollbar: 'xsmall',
-  style: { height: '80px', maxWidth: '800px' },
-};
-
 export const BannerContainer = Template.bind({});
 BannerContainer.storyName = 'Container: Banner';
 BannerContainer.args = {
@@ -276,4 +236,40 @@ PopoverContainer.args = {
   bordered: true,
   color: 'primary',
   container: 'popover',
+};
+
+export const MediumScrollbar = Template.bind({});
+MediumScrollbar.storyName = 'Scrollbar: Medium';
+MediumScrollbar.args = {
+  ...defaultArgs,
+  children: lipsumChildren,
+  color: 'primary',
+  container: undefined,
+  scrollable: true,
+  scrollbar: 'medium',
+  style: { height: '80px', maxWidth: '800px' },
+};
+
+export const SmallScrollbar = Template.bind({});
+SmallScrollbar.storyName = 'Scrollbar: Small';
+SmallScrollbar.args = {
+  ...defaultArgs,
+  children: lipsumChildren,
+  color: 'primary',
+  container: undefined,
+  scrollable: true,
+  scrollbar: 'small',
+  style: { height: '80px', maxWidth: '800px' },
+};
+
+export const XSmallScrollbar = Template.bind({});
+XSmallScrollbar.storyName = 'Scrollbar: XSmall';
+XSmallScrollbar.args = {
+  ...defaultArgs,
+  children: lipsumChildren,
+  color: 'primary',
+  container: undefined,
+  scrollable: true,
+  scrollbar: 'xsmall',
+  style: { height: '80px', maxWidth: '800px' },
 };

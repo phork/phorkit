@@ -90,6 +90,7 @@ const defaultArgs = {
   magnify: false,
   raised: false,
   squared: false,
+  unthemed: false,
 };
 
 export const Default = Template.bind({});

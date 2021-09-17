@@ -78,7 +78,9 @@ const Template: ComponentStory<typeof Position> = args => <Position {...args} />
 
 const defaultArgs = {
   children: <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />,
+  fixed: false,
   location: 'top-left' as PositionProps['location'],
+  raised: false,
   variant: 'middle' as PositionProps['variant'],
 };
 

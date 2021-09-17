@@ -117,6 +117,7 @@ const defaultArgs = {
   height: 100,
   open: true,
   position: 'left' as StackPanelProps['position'],
+  raised: false,
   transition: 'shiftable' as StackPanelProps['transition'],
   unit: 'px' as StackPanelProps['unit'],
 };

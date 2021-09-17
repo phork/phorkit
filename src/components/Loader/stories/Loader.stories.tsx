@@ -62,7 +62,10 @@ export default {
 
 const Template: ComponentStory<typeof Loader> = args => <Loader {...args} />;
 
-const defaultArgs = {};
+const defaultArgs = {
+  contrast: false,
+  unthemed: false,
+};
 
 export const Default = Template.bind({});
 Default.args = {
@@ -109,6 +112,13 @@ XXXLargeScale.storyName = 'Scale: 3XLarge';
 XXXLargeScale.args = {
   ...defaultArgs,
   scale: '3xlarge',
+};
+
+export const RelativePosition = Template.bind({});
+RelativePosition.storyName = 'Position: Relative';
+RelativePosition.args = {
+  ...defaultArgs,
+  position: 'relative',
 };
 
 export const AbsolutePosition = Template.bind({});
