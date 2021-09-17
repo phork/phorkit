@@ -141,11 +141,6 @@ export default {
         category: 'Uncommon controls',
       },
     },
-    unstyled: {
-      table: {
-        category: 'Uncommon controls',
-      },
-    },
     unthemed: {
       table: {
         category: 'Uncommon controls',
@@ -178,7 +173,10 @@ export default {
 
 const Template: ComponentStory<typeof ${component}> = args => <${component} {...args} />;
 
-const defaultArgs = {};
+const defaultArgs = {
+  contrast: false,
+  unthemed: false,
+};
 
 export const Default = Template.bind({});
 Default.args = {

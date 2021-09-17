@@ -135,6 +135,16 @@ const defaultArgs = {
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
+  contrast: false,
+  focused: false,
+  hideFocusOutline: false,
+  inactive: false,
+  inline: false,
+  mimicSelectOnFocus: false,
+  rounded: false,
+  transparent: false,
+  unstyled: false,
+  unthemed: false,
 };
 
 export const PrimaryColor = Template.bind({});

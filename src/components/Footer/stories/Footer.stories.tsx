@@ -91,7 +91,9 @@ const Template: ComponentStory<typeof Footer> = ({ children, ...args }) => (
 const defaultArgs = {
   bordered: false,
   children: undefined,
+  contrast: false,
   full: false,
+  unthemed: false,
   variant: 'primary' as FooterProps['variant'],
 };
 

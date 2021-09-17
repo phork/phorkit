@@ -157,6 +157,13 @@ export const defaultArgs = {
     />
   ),
   direction: 'row' as FlexProps['direction'],
+  flexible: false,
+  full: false,
+  inflexible: false,
+  inline: false,
+  max: false,
+  reverse: false,
+  wrap: false,
 };
 
 export const Template: ComponentStory<typeof Flex> = (args: FlexProps) => <Flex {...args} />;

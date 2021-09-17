@@ -116,6 +116,7 @@ const defaultArgs = {
   fixed: false,
   open: true,
   position: 'left' as SidePanelProps['position'],
+  raised: false,
   transition: 'shiftable' as SidePanelProps['transition'],
   unit: 'px' as SidePanelProps['unit'],
   width: 200,

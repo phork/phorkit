@@ -78,8 +78,10 @@ const Template: ComponentStory<typeof Avatar> = args => <Avatar {...args} />;
 const defaultArgs = {
   actionable: false,
   color: 'primary' as AvatarProps['color'],
+  contrast: false,
   initials: 'EC',
   size: 'medium' as AvatarProps['size'],
+  unthemed: false,
 };
 
 export const Default = Template.bind({});
