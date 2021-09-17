@@ -8,7 +8,7 @@ export interface PositionProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className?: string;
   fixed?: boolean;
-  location: AnyPosition;
+  location: AnyPosition | 'center';
   raised?: boolean;
   style?: React.CSSProperties;
   variant?: 'inside' | 'outside' | 'middle';
