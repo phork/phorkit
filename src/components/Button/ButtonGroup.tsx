@@ -13,8 +13,7 @@ export type ButtonGroupItem = {
   id: string;
   label: React.ReactNode | ((selected: boolean) => JSX.Element);
   selected?: boolean;
-  style?: React.CSSProperties;
-} & Omit<ButtonProps, 'children' | 'id' | 'key' | 'size' | 'style' | 'value'>;
+} & Omit<ButtonProps, 'children' | 'id' | 'key' | 'size' | 'value'>;
 
 export interface LocalButtonGroupProps
   extends Pick<ButtonProps, 'color' | 'fullWidth' | 'shape'>,

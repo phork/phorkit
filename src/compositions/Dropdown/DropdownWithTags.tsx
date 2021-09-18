@@ -12,7 +12,7 @@ import {
   InteractiveGroupState,
 } from '../../components/InteractiveGroup/interactiveGroupReducer';
 import { Rhythm } from '../../components/Rhythm/Rhythm';
-import { Tag, TagGroup, TagGroupProps, TagProps, TagShape, TagSize, TagVariant } from '../../components/Tag';
+import { Tag, TagGroup, TagGroupProps, TagProps, TagShape, TagSize, TagWeight } from '../../components/Tag';
 import { TypographyWithSvg } from '../../components/Typography';
 import { Dropdown, DropdownHandles, DropdownProps } from './Dropdown';
 import { DropdownOption } from './types';
@@ -27,7 +27,7 @@ export interface DropdownWithTagsProps extends Omit<DropdownProps, 'initialSelec
   tagGroupProps?: Omit<TagGroupProps, 'size'>;
   tagShape?: TagShape;
   tagSize?: TagSize;
-  tagVariant?: TagVariant;
+  tagWeight?: TagWeight;
 }
 
 const defaultInitialSelected = [] as DropdownOption[];
@@ -45,7 +45,7 @@ export function DropdownWithTags({
   tagGroupProps,
   tagShape = 'pill',
   tagSize = 'xsmall',
-  tagVariant = 'outlined',
+  tagWeight = 'outlined',
   themeId: initThemeId,
   translations: customTranslations,
   ...props
@@ -150,7 +150,7 @@ export function DropdownWithTags({
         {...props}
       />
       <Rhythm grouped mt={6}>
-        <TagGroup<'div'> size={tagSize} {...tagGroupProps} as="div">
+        <TagGroup size={tagSize} {...tagGroupProps}>
           {options
             .filter(({ id }) => state.selectedIds.includes(id))
             .map(({ id: itemId, label }, i) => (
@@ -159,25 +159,24 @@ export function DropdownWithTags({
                 as="button"
                 contrast={contrast}
                 key={`${generateComponentId(id, itemId)}_tag`}
-                label={
-                  <IconText
-                    reverse
-                    icon={
-                      <TypographyWithSvg<'div'> as="div" volume="quiet">
-                        <TimesIcon scale="xsmall" />
-                      </TypographyWithSvg>
-                    }
-                    text={<Rhythm mr={2}>{label}</Rhythm>}
-                  />
-                }
                 onClick={() => removeItem(itemId)}
                 ref={i === 0 ? tagRef : undefined}
                 shape={tagShape}
                 size={tagSize}
                 themeId={themeId}
-                variant={tagVariant}
+                weight={tagWeight}
                 {...mappedProps[itemId]}
-              />
+              >
+                <IconText
+                  reverse
+                  icon={
+                    <TypographyWithSvg<'div'> as="div" volume="quiet">
+                      <TimesIcon scale="xsmall" />
+                    </TypographyWithSvg>
+                  }
+                  text={<Rhythm mr={2}>{label}</Rhythm>}
+                />
+              </Tag>
             ))}
         </TagGroup>
       </Rhythm>

@@ -7,16 +7,17 @@ import styles from './styles/Tag.module.css';
 export type TagElementType = Extract<keyof JSX.IntrinsicElements, 'button' | 'a' | 'div' | 'span'>;
 export type TagShape = 'pill' | 'brick';
 export type TagSize = '2xsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'custom';
-export type TagVariant = 'outlined' | 'shaded' | 'solid';
+export type TagWeight = 'outlined' | 'shaded' | 'solid';
 
 export interface LocalTagProps extends ThemeProps {
   actionable?: boolean;
+  children: React.ReactNode;
   className?: string;
   flush?: boolean;
-  label: React.ReactNode;
   shape?: TagShape;
   size?: TagSize;
-  variant?: TagVariant;
+  style?: React.CSSProperties;
+  weight?: TagWeight;
 }
 
 export type TagProps<T extends TagElementType = 'div'> = AsReactType<T> & MergeElementPropsWithoutRef<T, LocalTagProps>;
@@ -25,15 +26,15 @@ export function TagBase<T extends TagElementType = 'div'>(
   {
     actionable = false,
     as,
+    children,
     className,
     contrast = false,
     flush = false,
-    label,
     shape = 'pill',
     size = 'small',
     themeId: initThemeId,
-    variant = 'shaded',
     unthemed = false,
+    weight = 'shaded',
     ...props
   }: TagProps<T>,
   forwardedRef: React.ForwardedRef<HTMLElementTagNameMap[T]>,
@@ -53,7 +54,7 @@ export function TagBase<T extends TagElementType = 'div'>(
         actionable && styles['tag--actionable'],
         flush && styles['tag--flush'],
         themeId && !unthemed && styles[`tag--${themeId}`],
-        variant && styles[`tag--${variant}`],
+        weight && styles[`tag--${weight}`],
         className,
       ),
       ref: forwardedRef,
@@ -61,7 +62,7 @@ export function TagBase<T extends TagElementType = 'div'>(
       tabIndex: actionable ? 0 : -1,
       ...(props as TagProps<T>),
     },
-    label,
+    children,
   );
 }
 

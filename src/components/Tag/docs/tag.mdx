@@ -33,11 +33,21 @@ _Note that the links will cause the page to reload so the state will appear unch
       render={size => (
         <React.Fragment>
           <Rhythm m={2}>
-            <Tag label="Read only tag" size={size} variant="shaded" />
-            <Tag actionable label="Button tag" onClick={() => console.log('button tag')} size={size} variant="shaded" />
-            <Tag actionable as="a" href="#tag" label="Link tag" size={size} variant="shaded" />
-            <Tag actionable label="Outlined tag" size={size} variant="outlined" />
-            <Tag actionable label="Solid tag" size={size} variant="solid" />
+            <Tag size={size} weight="shaded">
+              Read only tag
+            </Tag>
+            <Tag actionable onClick={() => console.log('button tag')} size={size} weight="shaded">
+              Button tag
+            </Tag>
+            <Tag actionable as="a" href="#tag" size={size} weight="shaded">
+              Link tag
+            </Tag>
+            <Tag actionable size={size} weight="outlined">
+              Outlined tag
+            </Tag>
+            <Tag actionable size={size} weight="solid">
+              Solid tag
+            </Tag>
           </Rhythm>
           <br />
         </React.Fragment>
@@ -57,11 +67,21 @@ _Note that the links will cause the page to reload so the state will appear unch
       render={size => (
         <React.Fragment>
           <Rhythm m={2}>
-            <Tag label="Read only tag" shape="brick" size={size} />
-            <Tag actionable label="Button tag" onClick={() => console.log('button tag')} shape="brick" size={size} />
-            <Tag actionable as="a" href="#tag" label="Link tag" shape="brick" size={size} />
-            <Tag actionable label="Outlined tag" shape="brick" size={size} variant="outlined" />
-            <Tag actionable label="Solid tag" shape="brick" size={size} variant="solid" />
+            <Tag shape="brick" size={size}>
+              Read only
+            </Tag>
+            <Tag actionable onClick={() => console.log('button tag')} shape="brick" size={size}>
+              Button tag
+            </Tag>
+            <Tag actionable as="a" href="#tag" shape="brick" size={size}>
+              Link tag
+            </Tag>
+            <Tag actionable shape="brick" size={size} weight="outlined">
+              Outlined tag
+            </Tag>
+            <Tag actionable shape="brick" size={size} weight="solid">
+              Solid tag
+            </Tag>
           </Rhythm>
           <br />
         </React.Fragment>
@@ -79,11 +99,19 @@ _Note that the links will cause the page to reload so the state will appear unch
 <Playground>
   <ThemeWrapper contrast>
     <Rhythm m={2}>
-      <Tag contrast label="Read only tag" />
-      <Tag actionable contrast label="Button tag" onClick={() => console.log('button tag')} />
-      <Tag actionable contrast as="a" href="#tag" label="Link tag" />
-      <Tag actionable contrast label="Outlined tag" variant="outlined" />
-      <Tag actionable contrast label="Solid tag" variant="solid" />
+      <Tag contrast>Read only tag</Tag>
+      <Tag actionable contrast onClick={() => console.log('button tag')}>
+        Button tag
+      </Tag>
+      <Tag actionable contrast as="a" href="#tag">
+        Link tag
+      </Tag>
+      <Tag actionable contrast weight="outlined">
+        Outlined tag
+      </Tag>
+      <Tag actionable contrast weight="solid">
+        Solid tag
+      </Tag>
     </Rhythm>
   </ThemeWrapper>
 </Playground>
@@ -103,9 +131,14 @@ _Note that the links will cause the page to reload so the state will appear unch
                 render={({ id }) => (
                   <Rhythm key={`${shape || 'default'}-${id}`} mb={1} mr={4}>
                     <TagGroup>
-                      <ColoredTag actionable colorId={id} label={`Color tag ${id}`} shape={shape} variant="outlined" />
-                      <ColoredTag actionable colorId={id} label={`Color tag ${id}`} shape={shape} variant="shaded" />
-                      <ColoredTag actionable colorId={id} label={`Color tag ${id}`} shape={shape} variant="solid" />
+                      <ColoredTag
+                        actionable
+                        colorId={id}
+                        shape={shape}
+                        weight="outlined"
+                      >{`Color tag ${id}`}</ColoredTag>
+                      <ColoredTag actionable colorId={id} shape={shape} weight="shaded">{`Color tag ${id}`}</ColoredTag>
+                      <ColoredTag actionable colorId={id} shape={shape} weight="solid">{`Color tag ${id}`}</ColoredTag>
                     </TagGroup>
                   </Rhythm>
                 )}
@@ -125,45 +158,36 @@ _Note that the links will cause the page to reload so the state will appear unch
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <TagGroup>
-        <Tag
-          key="remove"
-          label={
-            <IconText
-              reverse
-              icon={
-                <IconButton
-                  aria-label="Remove tag"
-                  color="neutral"
-                  onClick={e => console.log('remove tag')}
-                  themeId={themeId}
-                >
-                  <TimesIcon scale="xsmall" />
-                </IconButton>
-              }
-              text={
-                <Rhythm mr={2}>
-                  <span>Hello world</span>
-                </Rhythm>
-              }
-            />
-          }
-        />
-        <Tag
-          actionable
-          key="hello"
-          label={
-            <IconText
-              icon={<BlobbrIcon scale="small" />}
-              text={
-                <Rhythm ml={2}>
-                  <span>Hello world</span>
-                </Rhythm>
-              }
-            />
-          }
-          onClick={() => console.log('tag')}
-          shape="brick"
-        />
+        <Tag key="remove">
+          <IconText
+            reverse
+            icon={
+              <IconButton
+                aria-label="Remove tag"
+                color="neutral"
+                onClick={e => console.log('remove tag')}
+                themeId={themeId}
+              >
+                <TimesIcon scale="xsmall" />
+              </IconButton>
+            }
+            text={
+              <Rhythm mr={2}>
+                <span>Hello world</span>
+              </Rhythm>
+            }
+          />
+        </Tag>
+        <Tag actionable key="hello" onClick={() => console.log('tag')} shape="brick">
+          <IconText
+            icon={<BlobbrIcon scale="small" />}
+            text={
+              <Rhythm ml={2}>
+                <span>Hello world</span>
+              </Rhythm>
+            }
+          />
+        </Tag>
       </TagGroup>
     )}
   </ThemeWrapper>
@@ -177,47 +201,37 @@ _This is an example of how to make a custom chip from the Tag component. There i
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <TagGroup>
-        <Tag
-          flush
-          key="close"
-          label={
-            <Flex alignItems="center" direction="row" justifyContent="space-between">
-              <Rhythm m={1} mr={2}>
-                <Avatar color="primary" initials="EC" size="xsmall" />
-              </Rhythm>
-              <Typography variants={['line-height-smash']}>Hello world</Typography>
-              <Rhythm ml={4} p={1} style={{ marginRight: 5 }}>
-                <IconButton
-                  noHeight
-                  aria-label="Remove tag"
-                  color="neutral"
-                  onClick={e => console.log('remove tag')}
-                  shape="circle"
-                  themeId={themeId}
-                >
-                  <TimesIcon scale="xsmall" />
-                </IconButton>
-              </Rhythm>
-            </Flex>
-          }
-          size="medium"
-        />
-        <Tag
-          flush
-          key="check"
-          label={
-            <Flex alignItems="center" direction="row" justifyContent="space-between">
-              <Rhythm m={1} mr={2}>
-                <Avatar color="primary" initials="EC" size="xsmall" />
-              </Rhythm>
-              <Typography variants={['line-height-smash']}>Hello world</Typography>
-              <Rhythm ml={4} mr={3}>
-                <CheckIcon scale="small" />
-              </Rhythm>
-            </Flex>
-          }
-          size="medium"
-        />
+        <Tag flush key="close" size="medium">
+          <Flex alignItems="center" direction="row" justifyContent="space-between">
+            <Rhythm m={1} mr={2}>
+              <Avatar color="primary" initials="EC" size="xsmall" />
+            </Rhythm>
+            <Typography weights={['line-height-smash']}>Hello world</Typography>
+            <Rhythm ml={4} p={1} style={{ marginRight: 5 }}>
+              <IconButton
+                noHeight
+                aria-label="Remove tag"
+                color="neutral"
+                onClick={e => console.log('remove tag')}
+                shape="circle"
+                themeId={themeId}
+              >
+                <TimesIcon scale="xsmall" />
+              </IconButton>
+            </Rhythm>
+          </Flex>
+        </Tag>
+        <Tag flush key="check" size="medium">
+          <Flex alignItems="center" direction="row" justifyContent="space-between">
+            <Rhythm m={1} mr={2}>
+              <Avatar color="primary" initials="EC" size="xsmall" />
+            </Rhythm>
+            <Typography weights={['line-height-smash']}>Hello world</Typography>
+            <Rhythm ml={4} mr={3}>
+              <CheckIcon scale="small" />
+            </Rhythm>
+          </Flex>
+        </Tag>
       </TagGroup>
     )}
   </ThemeWrapper>
@@ -226,11 +240,27 @@ _This is an example of how to make a custom chip from the Tag component. There i
 ### Styled tag
 
 <Playground>
-  <Rhythm m={2}>
-    <StyledTag actionable contrast inverseColor="#fff" label="Shaded tag" primaryColor="#556270" />
-    <StyledTag actionable contrast inverseColor="#fff" label="Outlined tag" primaryColor="#556270" variant="outlined" />
-    <StyledTag actionable contrast inverseColor="#fff" label="Solid tag" primaryColor="#556270" variant="solid" />
-  </Rhythm>
+  {() => {
+    const styles = {
+      primaryColor: '#556270',
+      inverseColor: '#fff',
+      hoveredPrimaryColor: '#454f58',
+      activePrimaryColor: '#798796',
+    };
+    return (
+      <Rhythm m={2}>
+        <StyledTag actionable {...styles}>
+          Shaded tag
+        </StyledTag>
+        <StyledTag actionable weight="outlined" {...styles}>
+          Outlined tag
+        </StyledTag>
+        <StyledTag actionable weight="solid" {...styles}>
+          Solid tag
+        </StyledTag>
+      </Rhythm>
+    );
+  }}
 </Playground>
 
 ## \[props\]

@@ -1,25 +1,27 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { AsReactType, ThemeProps } from '../../types';
+import { ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Tag.module.css';
-import { Tag, TagElementType, TagShape, TagSize, TagProps } from './Tag';
+import { Tag, TagShape, TagSize, TagWeight, TagProps } from './Tag';
 
-export interface TagGroupProps<T extends TagElementType = 'div'>
-  extends React.HTMLAttributes<HTMLDivElement>,
-    AsReactType<T>,
-    ThemeProps {
+export type TagGroupItem = {
+  id: string;
+  label: TagProps['children'];
+} & Omit<TagProps, 'as' | 'children'>;
+
+export interface TagGroupProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
   actionable?: boolean;
   children?: React.ReactNode;
   className?: string;
   shape?: TagShape;
   size?: TagSize;
-  tags?: (TagProps<T> & { id: string })[];
+  tags?: TagGroupItem[];
+  weight?: TagWeight;
 }
 
-export function TagGroup<T extends TagElementType = 'div'>({
+export function TagGroup({
   actionable,
-  as,
   children,
   className,
   contrast = false,
@@ -27,25 +29,28 @@ export function TagGroup<T extends TagElementType = 'div'>({
   size,
   tags,
   themeId: initThemeId,
+  weight,
   ...props
-}: TagGroupProps<T>): React.ReactElement<TagGroupProps, 'div'> {
+}: TagGroupProps): React.ReactElement<TagGroupProps> {
   const themeId = useThemeId(initThemeId);
   const classes = cx(styles.tagGroup, className);
 
   return (
     <div className={classes} {...props}>
       {tags &&
-        tags.map(tag => (
-          <Tag<T>
+        tags.map(({ id, label, ...tag }) => (
+          <Tag
             actionable={actionable}
             contrast={contrast}
-            key={tag.id}
+            key={id}
             shape={shape}
             size={size}
             themeId={themeId}
+            weight={weight}
             {...tag}
-            as={as}
-          />
+          >
+            {label}
+          </Tag>
         ))}
 
       {children}
