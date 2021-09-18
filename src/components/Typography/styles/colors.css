@@ -27,20 +27,44 @@
  */
 .text-color-secondary {
   @mixin themed .text {
-    color: $theme-primary-palette-text-color;
+    color: $theme-secondary-palette-text-color;
 
     &.text-quiet {
-      color: $theme-primary-palette-quiet-color;
+      color: $theme-secondary-palette-quiet-color;
       opacity: 1; /* [1] */
     }
 
     &.text-quieter {
-      color: $theme-primary-palette-quieter-color;
+      color: $theme-secondary-palette-quieter-color;
       opacity: 1; /* [1] */
     }
 
     &.text-quietest {
-      color: $theme-primary-palette-quietest-color;
+      color: $theme-secondary-palette-quietest-color;
+      opacity: 1; /* [1] */
+    }
+  }
+}
+
+/**
+ * 1. Override default quiet setting which uses opacity.
+ */
+.text-color-tertiary {
+  @mixin themed .text {
+    color: $theme-tertiary-palette-text-color;
+
+    &.text-quiet {
+      color: $theme-tertiary-palette-quiet-color;
+      opacity: 1; /* [1] */
+    }
+
+    &.text-quieter {
+      color: $theme-tertiary-palette-quieter-color;
+      opacity: 1; /* [1] */
+    }
+
+    &.text-quietest {
+      color: $theme-tertiary-palette-quietest-color;
       opacity: 1; /* [1] */
     }
   }

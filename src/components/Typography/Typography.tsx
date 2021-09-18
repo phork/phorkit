@@ -1,6 +1,15 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { AsReactType, HorizontalPosition, MergeElementPropsWithoutRef, Theme, Volume } from '../../types';
+import {
+  AccentColor,
+  AsReactType,
+  HorizontalPosition,
+  MergeElementPropsWithoutRef,
+  SequentialVariant,
+  StateColor,
+  Theme,
+  Volume,
+} from '../../types';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Typography.module.css';
 
@@ -33,7 +42,7 @@ export interface LocalTypographyProps {
   /** The children are optional so that this component can be passed as empty and then cloned */
   children?: React.ReactNode;
   className?: string;
-  color?: string;
+  color?: SequentialVariant | AccentColor | StateColor | 'contrast';
   fullWidth?: boolean;
   heading?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
   reset?: boolean;
