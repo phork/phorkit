@@ -1,0 +1,34 @@
+import { action } from '@storybook/addon-actions';
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Flex } from 'components/Flex';
+import { Canvas } from 'stories/helpers/Canvas';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { Triangle } from '../Triangle';
+
+<PageTitle src="components/Triangle" title="Triangle" />
+<Subtitle />
+<Description />
+<Primary />
+<ArgsTable story={PRIMARY_STORY} />
+<Stories />
+
+## Examples
+
+<Canvas>
+  <Flex direction="column">
+    <Flex justifyContent="space-around">
+      <Triangle color="#0060ce" position="top-left" size={30} title="top-left" />
+      <Triangle color="#0060ce" position="top" size={30} title="top" />
+      <Triangle color="#0060ce" position="top-right" size={30} title="top-right" />
+    </Flex>
+    <Flex justifyContent="space-around">
+      <Triangle color="#0060ce" position="left" size={30} title="left" />
+      <Triangle color="#0060ce" position="right" size={30} title="right" />
+    </Flex>
+    <Flex justifyContent="space-around">
+      <Triangle color="#0060ce" position="bottom-left" size={30} title="bottom-left" />
+      <Triangle color="#0060ce" position="bottom" size={30} title="bottom" />
+      <Triangle color="#0060ce" position="bottom-right" size={30} title="bottom-right" />
+    </Flex>
+  </Flex>
+</Canvas>
