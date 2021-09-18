@@ -14,6 +14,102 @@ export default {
         disable: true,
       },
     },
+    m: {
+      control: {
+        type: 'number',
+        min: -4,
+        max: 16,
+      },
+    },
+    mb: {
+      control: {
+        type: 'number',
+        min: -4,
+        max: 16,
+      },
+    },
+    ml: {
+      control: {
+        type: 'number',
+        min: -4,
+        max: 16,
+      },
+    },
+    mr: {
+      control: {
+        type: 'number',
+        min: -4,
+        max: 16,
+      },
+    },
+    mt: {
+      control: {
+        type: 'number',
+        min: -4,
+        max: 16,
+      },
+    },
+    mx: {
+      control: {
+        type: 'text',
+      },
+    },
+    my: {
+      control: {
+        type: 'number',
+        min: -4,
+        max: 16,
+      },
+    },
+    p: {
+      control: {
+        type: 'number',
+        min: 0,
+        max: 16,
+      },
+    },
+    pb: {
+      control: {
+        type: 'number',
+        min: 0,
+        max: 16,
+      },
+    },
+    pl: {
+      control: {
+        type: 'number',
+        min: 0,
+        max: 16,
+      },
+    },
+    pr: {
+      control: {
+        type: 'number',
+        min: 0,
+        max: 16,
+      },
+    },
+    pt: {
+      control: {
+        type: 'number',
+        min: 0,
+        max: 16,
+      },
+    },
+    px: {
+      control: {
+        type: 'number',
+        min: 0,
+        max: 16,
+      },
+    },
+    py: {
+      control: {
+        type: 'number',
+        min: 0,
+        max: 16,
+      },
+    },
 
     fixed: {
       table: {

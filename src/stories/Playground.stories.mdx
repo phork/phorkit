@@ -403,63 +403,65 @@ import {
 
 <Canvas>
   <Story name="Fancy list in popover">
-    <ThemeWrapper withThemeId style={{ paddingTop: 100, paddingBottom: 100 }}>
+    <ThemeWrapper withThemeId>
       {({ themeId }) => (
-        <PortalTooltip
-          initialVisible
-          permanent
-          height={200}
-          position="right-center"
-          toggler={<BlobbrIcon size={40} />}
-          triangleBorderColor={themes[themeId]['secondary-palette-border-color']}
-          triangleColor={themes[themeId]['secondary-palette-background-color']}
-          width={300}
-        >
-          <div
-            className={cx(
-              scrollbar['scrollbar--small'],
-              scrollbar['scrollbar--primary'],
-              scrollbar[`scrollbar--${themeId}`],
-            )}
-            style={{
-              height: '200px',
-              width: '300px',
-              overflowY: 'auto',
-              margin: '1px',
-              boxShadow: themes[themeId]['box-shadow-10'],
-            }}
+        <div style={{ paddingTop: 100, paddingBottom: 100 }}>
+          <PortalTooltip
+            initialVisible
+            permanent
+            height={200}
+            position="right-center"
+            toggler={<BlobbrIcon size={40} />}
+            triangleBorderColor={themes[themeId]['secondary-palette-border-color']}
+            triangleColor={themes[themeId]['secondary-palette-background-color']}
+            width={300}
           >
-            <List as="div" variant="bordered">
-              <Looper
-                end={5}
-                render={i => (
-                  <ListItem
-                    disabled={i === 4}
-                    key={i}
-                    style={{ '--list-item-text-color': themes[themeId]['primary-palette-text-color'] }}
-                  >
-                    <Flex alignItems="center" direction="row" justifyContent="flex-start">
-                      <Avatar
-                        imgSrc="/images/avatar.jpg"
-                        initials="EC"
-                        style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
-                      />
-                      <Rhythm mx={4}>
-                        <Flex flexible>
-                          <Typography weight="bold">Elenor C.</Typography>
-                        </Flex>
-                      </Rhythm>
-                      <Typography color="accent-primary" variants="line-height-smash">
-                        <CheckIcon scale="medium" />
-                      </Typography>
-                    </Flex>
-                  </ListItem>
-                )}
-                start={0}
-              />
-            </List>
-          </div>
-        </PortalTooltip>
+            <div
+              className={cx(
+                scrollbar['scrollbar--small'],
+                scrollbar['scrollbar--primary'],
+                scrollbar[`scrollbar--${themeId}`],
+              )}
+              style={{
+                height: '200px',
+                width: '300px',
+                overflowY: 'auto',
+                margin: '1px',
+                boxShadow: themes[themeId]['box-shadow-10'],
+              }}
+            >
+              <List as="div" variant="bordered">
+                <Looper
+                  end={5}
+                  render={i => (
+                    <ListItem
+                      disabled={i === 4}
+                      key={i}
+                      style={{ '--list-item-text-color': themes[themeId]['primary-palette-text-color'] }}
+                    >
+                      <Flex alignItems="center" direction="row" justifyContent="flex-start">
+                        <Avatar
+                          imgSrc="/images/avatar.jpg"
+                          initials="EC"
+                          style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
+                        />
+                        <Rhythm mx={4}>
+                          <Flex flexible>
+                            <Typography weight="bold">Elenor C.</Typography>
+                          </Flex>
+                        </Rhythm>
+                        <Typography color="accent-primary" variants="line-height-smash">
+                          <CheckIcon scale="medium" />
+                        </Typography>
+                      </Flex>
+                    </ListItem>
+                  )}
+                  start={0}
+                />
+              </List>
+            </div>
+          </PortalTooltip>
+        </div>
       )}
     </ThemeWrapper>
   </Story>
@@ -1095,48 +1097,50 @@ import {
       layout: 'fixed',
     }}
   >
-    <ThemeWrapper style={{ display: 'flex', height: 280, marginRight: -20, maxHeight: 300, overflow: 'hidden' }}>
-      <PanelContainer full orientation="horizontal" style={{ borderRadius: 4 }}>
-        <StackPanel open position="top">
-          <Card raised squared>
-            <BannerContainer>
-              <Banner immediate level="info">
-                <IconText
-                  icon={<BlobbrIcon size={18} />}
-                  text={
-                    <Rhythm ml={3} wrapper="span">
-                      This is a simple info banner because something happened. Cool.
-                    </Rhythm>
-                  }
-                />
-              </Banner>
-              <Banner immediate level="success">
-                <IconText
-                  icon={<BlobbrIcon size={18} />}
-                  text={
-                    <Rhythm ml={3} wrapper="span">
-                      This is a simple success banner because something was successful. Yay.
-                    </Rhythm>
-                  }
-                />
-              </Banner>
-            </BannerContainer>
-          </Card>
-        </StackPanel>
-        <MainPanel>
-          <Paper flexible scrollable color="primary" container="panel">
-            <Looper
-              end={10}
-              render={i => (
-                <Typography key={i} size="large" variants={['line-height-comfy']}>
-                  This banner system is using panels. The banners are raised with a Card.
-                </Typography>
-              )}
-              start={0}
-            />
-          </Paper>
-        </MainPanel>
-      </PanelContainer>
+    <ThemeWrapper>
+      <Flex style={{ height: 280, marginRight: -20, maxHeight: 300, overflow: 'hidden' }}>
+        <PanelContainer full orientation="horizontal" style={{ borderRadius: 4 }}>
+          <StackPanel open position="top">
+            <Card raised squared>
+              <BannerContainer>
+                <Banner immediate level="info">
+                  <IconText
+                    icon={<BlobbrIcon size={18} />}
+                    text={
+                      <Rhythm ml={3} wrapper="span">
+                        This is a simple info banner because something happened. Cool.
+                      </Rhythm>
+                    }
+                  />
+                </Banner>
+                <Banner immediate level="success">
+                  <IconText
+                    icon={<BlobbrIcon size={18} />}
+                    text={
+                      <Rhythm ml={3} wrapper="span">
+                        This is a simple success banner because something was successful. Yay.
+                      </Rhythm>
+                    }
+                  />
+                </Banner>
+              </BannerContainer>
+            </Card>
+          </StackPanel>
+          <MainPanel>
+            <Paper flexible scrollable color="primary" container="panel">
+              <Looper
+                end={10}
+                render={i => (
+                  <Typography key={i} size="large" variants={['line-height-comfy']}>
+                    This banner system is using panels. The banners are raised with a Card.
+                  </Typography>
+                )}
+                start={0}
+              />
+            </Paper>
+          </MainPanel>
+        </PanelContainer>
+      </Flex>
     </ThemeWrapper>
   </Story>
 </Canvas>
@@ -1148,40 +1152,34 @@ import {
       layout: 'fixed',
     }}
   >
-    <ThemeWrapper
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        height: 280,
-        marginRight: -20,
-        maxHeight: 300,
-      }}
-    >
-      <BannerContainer style={{ borderTopLeftRadius: 4, borderTopRightRadius: 4, overflow: 'hidden' }}>
-        <Banner immediate level="warning" style={{ height: 50 }}>
-          This is a simple warning banner because something concerning happened. Meh.
-        </Banner>
-        <Banner immediate level="danger" style={{ height: 50 }}>
-          This is a simple danger banner because something went wrong. Boo.
-        </Banner>
-      </BannerContainer>
-      <Paper
-        flexible
-        scrollable
-        color="primary"
-        container="panel"
-        style={{ borderBottomLeftRadius: 4, borderBottomRightRadius: 4 }}
-      >
-        <Looper
-          end={10}
-          render={i => (
-            <Typography key={i} size="large" variants={['line-height-comfy']}>
-              This banner system is using scrollable paper.
-            </Typography>
-          )}
-          start={0}
-        />
-      </Paper>
+    <ThemeWrapper>
+      <Flex direction="column" style={{ height: 280, marginRight: -20, maxHeight: 300 }}>
+        <BannerContainer style={{ borderTopLeftRadius: 4, borderTopRightRadius: 4, overflow: 'hidden' }}>
+          <Banner immediate level="warning" style={{ height: 50 }}>
+            This is a simple warning banner because something concerning happened. Meh.
+          </Banner>
+          <Banner immediate level="danger" style={{ height: 50 }}>
+            This is a simple danger banner because something went wrong. Boo.
+          </Banner>
+        </BannerContainer>
+        <Paper
+          flexible
+          scrollable
+          color="primary"
+          container="panel"
+          style={{ borderBottomLeftRadius: 4, borderBottomRightRadius: 4 }}
+        >
+          <Looper
+            end={10}
+            render={i => (
+              <Typography key={i} size="large" variants={['line-height-comfy']}>
+                This banner system is using scrollable paper.
+              </Typography>
+            )}
+            start={0}
+          />
+        </Paper>
+      </Flex>
     </ThemeWrapper>
   </Story>
 </Canvas>
