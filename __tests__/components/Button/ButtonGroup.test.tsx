@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom/extend-expect';
 import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
-import { ButtonGroup } from 'lib';
+import { Button, ButtonGroup } from 'lib';
 
 describe('<ButtonGroup />', () => {
   it('should render a basic button group', () => {
@@ -25,7 +25,7 @@ describe('<ButtonGroup />', () => {
     expect(getByText('Fourth')).toBeTruthy();
   });
 
-  it('should be clickable', () => {
+  it('should render a group of clickable buttons', () => {
     const onClick = jest.fn();
     const { getAllByRole } = render(
       <ButtonGroup
@@ -53,5 +53,40 @@ describe('<ButtonGroup />', () => {
 
     expect(onClick).toHaveBeenCalledTimes(2);
     expect(onClick.mock.calls[onClick.mock.calls.length - 1][1]).toBe('second');
+  });
+
+  it('should render a group of clickable buttons from children', () => {
+    const onClick = jest.fn();
+    const { getAllByRole } = render(
+      <ButtonGroup color="primary" spacing="joined">
+        <Button key="first" onClick={() => onClick('first')}>
+          First
+        </Button>
+        <Button key="second" onClick={() => onClick('second')}>
+          Second
+        </Button>
+        <Button key="third" onClick={() => onClick('third')}>
+          Third
+        </Button>
+      </ButtonGroup>,
+    );
+
+    expect(onClick).not.toHaveBeenCalled();
+
+    const buttons = getAllByRole('button');
+    fireEvent.click(buttons[0]);
+
+    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(onClick.mock.calls[onClick.mock.calls.length - 1][0]).toBe('first');
+
+    fireEvent.click(buttons[1]);
+
+    expect(onClick).toHaveBeenCalledTimes(2);
+    expect(onClick.mock.calls[onClick.mock.calls.length - 1][0]).toBe('second');
+
+    fireEvent.click(buttons[2]);
+
+    expect(onClick).toHaveBeenCalledTimes(3);
+    expect(onClick.mock.calls[onClick.mock.calls.length - 1][0]).toBe('third');
   });
 });
