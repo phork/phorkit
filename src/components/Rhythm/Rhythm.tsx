@@ -23,7 +23,7 @@ const createElementFromWrapper = (
 
 export interface RhythmLocation {
   m?: number;
-  mx?: number | string;
+  mx?: number | 'auto';
   my?: number;
   ml?: number;
   mr?: number;
@@ -41,8 +41,9 @@ export interface RhythmLocation {
 export interface RhythmProps extends RhythmLocation, React.HTMLAttributes<unknown> {
   children: RhythmChildren;
   className?: string;
-  /** If the rhythm is grouped it's applied to the wrapper around the children; ungrouped is applied to each child */
+  /** If the rhythm is grouped it's applied to a wrapper around the children; ungrouped is applied to each child */
   grouped?: boolean;
+  style?: React.CSSProperties;
   wrapper?: keyof JSX.IntrinsicElements | React.ReactElement;
 }
 

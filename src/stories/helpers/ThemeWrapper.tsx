@@ -24,13 +24,7 @@ type ThemeWrapperPropsWithChildren = {
 export type ThemeWrapperProps = CommonThemeWrapperProps &
   (ThemeWrapperPropsWithThemeId | ThemeWrapperPropsWithChildren);
 
-export function ThemeWrapper({
-  children,
-  style,
-  variant: initVariant,
-  withThemeId,
-  ...props
-}: ThemeWrapperProps): React.ReactElement {
+export function ThemeWrapper({ children, withThemeId }: ThemeWrapperProps): React.ReactElement {
   const themeId = useDarkMode() ? 'dark' : 'light';
 
   const content = withThemeId
@@ -39,13 +33,7 @@ export function ThemeWrapper({
       null
     : children;
 
-  return (
-    <ThemeProvider themeId={themeId}>
-      <div style={style} {...props}>
-        {content}
-      </div>
-    </ThemeProvider>
-  );
+  return <ThemeProvider themeId={themeId}>{content}</ThemeProvider>;
 }
 
 ThemeWrapper.displayName = 'ThemeWrapper';

@@ -17,12 +17,12 @@ import { ListRegistryItem, ListRegistryConsumer, ListRegistryProvider } from '..
 
 <Canvas>
   <Story name="Scroll to element" parameters={{ layout: 'fullscreen' }}>
-    <ThemeWrapper withThemeId style={{ padding: '30px 20px' }}>
+    <ThemeWrapper withThemeId>
       {({ themeId }) => (
         <ListRegistryProvider>
           <ListRegistryConsumer>
             {({ getItem, items }) => (
-              <React.Fragment>
+              <div style={{ padding: '30px 20px' }}>
                 <Looper
                   end={40}
                   render={i => (
@@ -60,7 +60,7 @@ import { ListRegistryItem, ListRegistryConsumer, ListRegistryProvider } from '..
                     start={0}
                   />
                 </div>
-              </React.Fragment>
+              </div>
             )}
           </ListRegistryConsumer>
         </ListRegistryProvider>
@@ -73,14 +73,14 @@ import { ListRegistryItem, ListRegistryConsumer, ListRegistryProvider } from '..
 
 <Canvas>
   <Story name="Scroll to element with function and re-render" parameters={{ layout: 'fullscreen' }}>
-    <ThemeWrapper withThemeId style={{ padding: '30px 20px' }}>
+    <ThemeWrapper withThemeId>
       {({ themeId }) => (
         <StateWrapper initialState={0}>
           {({ state: count, setState: setCount }) => (
             <ListRegistryProvider>
               <ListRegistryConsumer>
                 {({ getItem }) => (
-                  <React.Fragment>
+                  <div style={{ padding: '30px 20px' }}>
                     <Looper
                       end={40}
                       render={i => (
@@ -123,7 +123,7 @@ import { ListRegistryItem, ListRegistryConsumer, ListRegistryProvider } from '..
                         start={0}
                       />
                     </div>
-                  </React.Fragment>
+                  </div>
                 )}
               </ListRegistryConsumer>
             </ListRegistryProvider>
