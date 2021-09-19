@@ -1,0 +1,183 @@
+import { action } from '@storybook/addon-actions';
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Flex } from 'components/Flex';
+import { Rhythm } from 'components/Rhythm';
+import { Typography } from 'components/Typography';
+import { Looper } from 'docs/helpers/Looper';
+import { Canvas } from 'stories/helpers/Canvas';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
+import { Checkbox } from '../Checkbox';
+
+<PageTitle src="components/Checkbox" title="Checkbox" />
+<Subtitle />
+<Description />
+<Primary />
+<ArgsTable story={PRIMARY_STORY} />
+<Stories />
+
+## Examples
+
+### Basic checkbox
+
+<Canvas>
+  <ThemeWrapper>
+    <Flex wrap direction="row">
+      <Rhythm m={2}>
+        <Flex direction="column">
+          <Rhythm my={2}>
+            <Checkbox checked />
+            <Checkbox />
+            <Checkbox checked>Primary checked</Checkbox>
+            <Checkbox>Primary unchecked</Checkbox>
+            <Checkbox checked disabled>
+              Primary checked disabled
+            </Checkbox>
+            <Checkbox disabled>Primary unchecked disabled</Checkbox>
+          </Rhythm>
+        </Flex>
+        <Flex direction="column">
+          <Rhythm my={2}>
+            <Checkbox checked variant="secondary" />
+            <Checkbox variant="secondary" />
+            <Checkbox checked variant="secondary">
+              Secondary checked
+            </Checkbox>
+            <Checkbox variant="secondary">Secondary unchecked</Checkbox>
+            <Checkbox checked disabled variant="secondary">
+              Secondary checked disabled
+            </Checkbox>
+            <Checkbox disabled variant="secondary">
+              Secondary unchecked disabled
+            </Checkbox>
+          </Rhythm>
+        </Flex>
+      </Rhythm>
+    </Flex>
+  </ThemeWrapper>
+</Canvas>
+
+### Indeterminate checkbox
+
+<Canvas>
+  <ThemeWrapper>
+    <Flex direction="column">
+      <Rhythm my={2}>
+        <Checkbox indeterminate />
+        <Checkbox indeterminate variant="secondary" />
+      </Rhythm>
+    </Flex>
+  </ThemeWrapper>
+</Canvas>
+
+### Full width labeled checkbox
+
+<Canvas>
+  <ThemeWrapper>
+    <Flex direction="column" style={{ width: 240 }}>
+      <Rhythm my={2}>
+        <Checkbox checked full>
+          Super fantastic label
+        </Checkbox>
+        <Checkbox full reverse>
+          Super fantastic label
+        </Checkbox>
+      </Rhythm>
+    </Flex>
+  </ThemeWrapper>
+</Canvas>
+
+### Wrapped labeled checkbox
+
+<Canvas>
+  <ThemeWrapper>
+    <Checkbox style={{ maxWidth: 400 }}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget dui eu orci ultrices maximus eu eu ante.
+      Vestibulum ligula velit, scelerisque vitae venenatis tempor, consectetur a orci. Aenean molestie eu tortor in
+      pharetra. Nulla lobortis, sapien quis ornare venenatis, nunc libero finibus justo, non tempor nisi urna quis
+      justo. Integer sit amet venenatis leo.
+    </Checkbox>
+  </ThemeWrapper>
+</Canvas>
+
+### Danger checkbox
+
+<Canvas>
+  <ThemeWrapper>
+    <Flex wrap direction="row">
+      <Rhythm m={2}>
+        <Flex direction="column">
+          <Rhythm my={2}>
+            <Checkbox checked validity="danger">
+              Primary checked
+            </Checkbox>
+            <Checkbox validity="danger">Primary unchecked</Checkbox>
+            <Checkbox checked disabled validity="danger">
+              Primary checked disabled
+            </Checkbox>
+            <Checkbox disabled validity="danger">
+              Primary unchecked disabled
+            </Checkbox>
+          </Rhythm>
+        </Flex>
+        <Flex direction="column">
+          <Rhythm my={2}>
+            <Checkbox checked validity="danger" variant="secondary">
+              Secondary checked
+            </Checkbox>
+            <Checkbox validity="danger" variant="secondary">
+              Secondary unchecked
+            </Checkbox>
+            <Checkbox checked disabled validity="danger" variant="secondary">
+              Secondary checked disabled
+            </Checkbox>
+            <Checkbox disabled validity="danger" variant="secondary">
+              Secondary unchecked disabled
+            </Checkbox>
+          </Rhythm>
+        </Flex>
+      </Rhythm>
+    </Flex>
+  </ThemeWrapper>
+</Canvas>
+
+### Contrast checkbox
+
+<Canvas contrast>
+  <ThemeWrapper>
+    <Flex wrap direction="row">
+      <Rhythm m={2}>
+        <Flex direction="column">
+          <Rhythm my={2}>
+            <Checkbox checked contrast>
+              Primary checked
+            </Checkbox>
+            <Checkbox contrast>Primary unchecked</Checkbox>
+            <Checkbox checked contrast disabled>
+              Primary checked disabled
+            </Checkbox>
+            <Checkbox contrast disabled>
+              Primary unchecked disabled
+            </Checkbox>
+          </Rhythm>
+        </Flex>
+        <Flex direction="column">
+          <Rhythm my={2}>
+            <Checkbox checked contrast variant="secondary">
+              Secondary checked
+            </Checkbox>
+            <Checkbox contrast variant="secondary">
+              Secondary unchecked
+            </Checkbox>
+            <Checkbox checked contrast disabled variant="secondary">
+              Secondary checked disabled
+            </Checkbox>
+            <Checkbox contrast disabled variant="secondary">
+              Secondary unchecked disabled
+            </Checkbox>
+          </Rhythm>
+        </Flex>
+      </Rhythm>
+    </Flex>
+  </ThemeWrapper>
+</Canvas>

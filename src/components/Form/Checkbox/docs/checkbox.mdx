@@ -232,7 +232,7 @@ import { checkboxGroup, logChecked } from './helpers/utils';
     <CheckboxGroup
       checkboxes={checkboxGroup}
       layout="stacked"
-      legend="Super fantastic legend says what?"
+      legend="Super fantastic legend"
       name="stacked-checkbox-group"
       onChange={logChecked}
     />
@@ -246,7 +246,7 @@ import { checkboxGroup, logChecked } from './helpers/utils';
     <CheckboxGroup
       checkboxes={checkboxGroup}
       layout="inline"
-      legend="Super fantastic legend says what?"
+      legend="Super fantastic legend"
       name="inline-checkbox-group"
       onChange={logChecked}
     />
@@ -260,7 +260,7 @@ import { checkboxGroup, logChecked } from './helpers/utils';
     <CheckboxGroup
       checkboxes={checkboxGroup}
       layout="inline"
-      legend="Super fantastic legend says what?"
+      legend="Super fantastic legend"
       name="inline-secondary-checkbox-group"
       onChange={logChecked}
       variant="secondary"
@@ -277,7 +277,7 @@ import { checkboxGroup, logChecked } from './helpers/utils';
       layout="inline"
       legend={
         <Typography as="legend" style={{ marginBottom: '8px' }} variants="medium-caps">
-          Super fantastic legend says what?
+          Super fantastic legend
         </Typography>
       }
       name="custom-checkbox-group"
@@ -296,9 +296,8 @@ import { checkboxGroup, logChecked } from './helpers/utils';
         <NotifiedCheckboxGroup
           checkboxes={checkboxGroup}
           layout="inline"
-          legend="Super fantastic legend says what?"
+          legend="Super fantastic legend"
           level={level}
-          name="inline-checkbox-group"
           notification={`This is an example ${level} notification.`}
           onChange={logChecked}
         />

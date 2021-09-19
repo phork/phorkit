@@ -21,14 +21,16 @@ export interface LocalCheckboxGroupProps<V extends CheckboxValue = string> exten
   onChange: (event: React.ChangeEvent<HTMLInputElement>, values: Array<V>) => void;
   checkboxes: CheckboxGroupItem<V>[];
   size?: CheckboxSize;
+  style?: React.CSSProperties;
   values?: Array<V>;
   variant?: CheckboxProps<V>['variant'];
 }
 
-export type CheckboxGroupProps<V extends CheckboxValue = string> = MergeElementPropsWithoutRef<
-  'div',
-  LocalCheckboxGroupProps<V>
+export type CheckboxGroupProps<V extends CheckboxValue = string> = Omit<
+  MergeElementPropsWithoutRef<'div', LocalCheckboxGroupProps<V>>,
+  'children'
 >;
+
 export type CheckboxGroupRef = React.ForwardedRef<HTMLFieldSetElement>;
 
 export function CheckboxGroupBase<V extends CheckboxValue = string>(
@@ -74,8 +76,8 @@ export function CheckboxGroupBase<V extends CheckboxValue = string>(
           checkboxes.map(({ id, label, value: checkboxValue, ...checkboxProps }) => (
             <Checkbox<V>
               checked={values?.includes(checkboxValue)}
+              className={cx(styles.checkbox, styles[`checkbox--${layout}`])}
               contrast={contrast}
-              grouped={layout}
               id={generateComponentId(id)}
               key={id}
               onChange={handleChange}

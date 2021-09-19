@@ -29,13 +29,14 @@ export interface LocalRadioProps<V extends RadioValue = string> extends ThemePro
   className?: string;
   disabled?: boolean;
   full?: boolean;
-  grouped?: 'stacked' | 'inline';
   id?: string;
+  inputStyle?: React.CSSProperties;
   name?: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>, checked: boolean, value: V) => void;
   persistEvents?: boolean;
   reverse?: boolean;
   size?: RadioSize;
+  style?: React.CSSProperties;
   unthemed?: boolean;
   validity?: 'danger';
   value?: V;
@@ -60,14 +61,15 @@ export function RadioBase<V extends RadioValue = string>(
     contrast = false,
     disabled = false,
     full = false,
-    grouped,
     id,
+    inputStyle,
     labelProps,
     name,
     onChange,
     persistEvents = false,
     reverse = false,
     size = 'large',
+    style,
     themeId: initThemeId,
     unthemed = false,
     validity,
@@ -105,7 +107,6 @@ export function RadioBase<V extends RadioValue = string>(
         sizeStyles[`radio--${size}`],
         color && !unthemed && styles[`radio--${color}`],
         full && styles['radio--full'],
-        grouped && styles[`radio--grouped--${grouped}`],
         reverse && styles['radio--reverse'],
         themeId && !unthemed && styles[`radio--${themeId}`],
         variant && styles[`radio--${variant}`],
@@ -119,6 +120,7 @@ export function RadioBase<V extends RadioValue = string>(
       )}
       htmlFor={generateComponentId()}
       onFocus={forwardFocus}
+      style={style}
       tabIndex={focused || disabled ? -1 : 0}
       {...labelProps}
     >
@@ -134,6 +136,7 @@ export function RadioBase<V extends RadioValue = string>(
           onChange={handleChange}
           onFocus={handleFocus}
           ref={combineRefs}
+          style={inputStyle}
           tabIndex={-1}
           type="radio"
           value={value}

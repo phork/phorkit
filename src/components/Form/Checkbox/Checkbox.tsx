@@ -29,7 +29,6 @@ export interface LocalCheckboxProps<V extends CheckboxValue = string> extends Th
   className?: string;
   disabled?: boolean;
   full?: boolean;
-  grouped?: 'stacked' | 'inline';
   id?: string;
   indeterminate?: boolean;
   inputStyle?: React.CSSProperties;
@@ -65,7 +64,6 @@ export function CheckboxBase<V extends CheckboxValue = string>(
     contrast = false,
     disabled,
     full = false,
-    grouped,
     id,
     indeterminate = false,
     inputStyle,
@@ -118,7 +116,6 @@ export function CheckboxBase<V extends CheckboxValue = string>(
         sizeStyles[`checkbox--${size}`],
         color && !unthemed && styles[`checkbox--${color}`],
         full && styles['checkbox--full'],
-        grouped && styles[`checkbox--grouped--${grouped}`],
         reverse && styles['checkbox--reverse'],
         themeId && !unthemed && styles[`checkbox--${themeId}`],
         variant && styles[`checkbox--${variant}`],
