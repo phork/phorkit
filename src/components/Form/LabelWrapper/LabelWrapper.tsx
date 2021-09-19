@@ -12,6 +12,7 @@ export interface LocalLabelWrapperProps {
   labelWidth?: string | number;
   reverse?: boolean;
   spread?: boolean;
+  style?: React.CSSProperties;
   vertical?: boolean;
 }
 
