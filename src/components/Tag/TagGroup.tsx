@@ -10,7 +10,7 @@ export type TagGroupItem = {
   label: TagProps['children'];
 } & Omit<TagProps, 'as' | 'children'>;
 
-export interface TagGroupProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
+export interface TagGroupProps extends React.HTMLAttributes<HTMLDivElement>, Omit<ThemeProps, 'unthemed'> {
   actionable?: boolean;
   children?: React.ReactNode;
   className?: string;

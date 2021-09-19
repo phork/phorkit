@@ -97,7 +97,6 @@ const defaultArgs = {
     { id: 'third', label: 'Third' },
     { id: 'fourth', label: 'Fourth' },
   ],
-  unthemed: false,
 };
 
 export const Default = Template.bind({});
