@@ -80,7 +80,7 @@ export default {
         </React.Fragment>
       ),
       description: {
-        component: 'A new component.',
+        component: 'A component to position an input and a label relative to each other.',
       },
     },
     layout: 'padded',
@@ -132,7 +132,7 @@ Vertical.args = {
 };
 
 export const VerticalReverse = Template.bind({});
-VerticalReverse.storyName = 'Vertical, reverse'
+VerticalReverse.storyName = 'Vertical, reverse';
 VerticalReverse.args = {
   ...defaultArgs,
   reverse: true,
