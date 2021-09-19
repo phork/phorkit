@@ -5,7 +5,7 @@
 
 /**
  * 1. This should be the inverse of the margin
- *    applied to .checkbox--grouped--stacked 
+ *    applied to .checkbox--grouped--stacked
  */
 .checkboxGroup--stacked {
   flex-direction: column;
@@ -14,9 +14,25 @@
 
 /**
  * 1. This should be the inverse of the margin
- *    applied to .checkbox--grouped--inline 
+ *    applied to .checkbox--grouped--inline
  */
 .checkboxGroup--inline {
   flex-direction: row;
   margin: -4px -12px; /* [1] */
+}
+
+/**
+ * 1. This should be the inverse of the margin
+ *    applied to .checkboxGroup--inline
+ */
+.checkbox--inline {
+  margin: 4px 12px; /* [1] */
+}
+
+/**
+ * 1. This should be the inverse of the margin
+ *    applied to .checkboxGroup--stacked
+ */
+.checkbox--stacked {
+  margin: 4px 0; /* [1] */
 }

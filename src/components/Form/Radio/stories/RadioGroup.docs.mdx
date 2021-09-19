@@ -1,0 +1,65 @@
+import { action } from '@storybook/addon-actions';
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Rhythm } from 'components/Rhythm';
+import { Looper } from 'docs/helpers/Looper';
+import { Canvas } from 'stories/helpers/Canvas';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
+import { NotifiedRadioGroup } from '../NotifiedRadioGroup';
+import { RadioGroup } from '../RadioGroup';
+
+export const radioGroup = [
+  {
+    id: 'radio-group-item1',
+    name: 'radio-group-item1',
+    value: 'one',
+    label: 'Super fantastic label one',
+  },
+  {
+    id: 'radio-group-item2',
+    name: 'radio-group-item2',
+    value: 'two',
+    label: 'Super fantastic label two',
+  },
+  {
+    id: 'radio-group-item3',
+    name: 'radio-group-item3',
+    value: 'three',
+    label: 'Super fantastic label three',
+  },
+];
+
+<PageTitle src="components/RadioGroup" title="RadioGroup" />
+<Subtitle />
+<Description />
+<Primary />
+<ArgsTable story={PRIMARY_STORY} />
+<Stories />
+
+### Contrast
+
+<Canvas contrast>
+  <ThemeWrapper>
+    <RadioGroup contrast legend="Super fantastic label" radios={radioGroup} values={['one']} />
+  </ThemeWrapper>
+</Canvas>
+
+## Notifications
+
+<Canvas>
+  <Looper
+    list={['success', 'danger', 'warning', 'primary', 'neutral']}
+    render={level => (
+      <Rhythm grouped mb={4} style={{ maxWidth: 400 }}>
+        <NotifiedRadioGroup
+          layout="inline"
+          legend="Super fantastic legend"
+          level={level}
+          notification={`This is an example ${level} notification.`}
+          radios={radioGroup}
+          value="one"
+        />
+      </Rhythm>
+    )}
+  />
+</Canvas>

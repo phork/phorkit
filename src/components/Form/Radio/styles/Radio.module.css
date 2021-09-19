@@ -138,22 +138,6 @@ input.radioInput {
   }
 }
 
-/**
- * 1. This should be the inverse of the margin
- *    applied to .radioGroup--inline
- */
-.radio--grouped--inline {
-  margin: 4px 12px; /* [1] */
-}
-
-/**
- * 1. This should be the inverse of the margin
- *    applied to .radioGroup--stacked
- */
-.radio--grouped--stacked {
-  margin: 4px 0; /* [1] */
-}
-
 .radio--primary {
   @mixin themed .radio {
     --radio-checked-background-color: $theme-color-accent-primary;

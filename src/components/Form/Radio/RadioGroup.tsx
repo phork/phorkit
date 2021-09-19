@@ -22,14 +22,16 @@ export interface LocalRadioGroupProps<V extends RadioValue = string> extends The
   onChange: (event: React.ChangeEvent<HTMLInputElement>, value: V) => void;
   radios: RadioGroupItem<V>[];
   size?: RadioSize;
+  style?: React.CSSProperties;
   value?: V;
   variant?: RadioProps['variant'];
 }
 
-export type RadioGroupProps<V extends RadioValue = string> = MergeElementPropsWithoutRef<
-  'div',
-  LocalRadioGroupProps<V>
+export type RadioGroupProps<V extends RadioValue = string> = Omit<
+  MergeElementPropsWithoutRef<'div', LocalRadioGroupProps<V>>,
+  'children'
 >;
+
 export type RadioGroupRef = React.ForwardedRef<HTMLFieldSetElement>;
 
 export function RadioGroupBase<V extends RadioValue = string>(
@@ -66,8 +68,8 @@ export function RadioGroupBase<V extends RadioValue = string>(
           radios.map(({ id, label, value: radioValue, ...radioProps }) => (
             <Radio<V>
               checked={radioValue === value}
+              className={cx(styles.radio, styles[`radio--${layout}`])}
               contrast={contrast}
-              grouped={layout}
               id={generateComponentId(id)}
               key={id}
               name={name}

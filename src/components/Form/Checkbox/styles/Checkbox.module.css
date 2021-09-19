@@ -164,22 +164,6 @@ input.checkboxInput {
   }
 }
 
-/**
- * 1. This should be the inverse of the margin
- *    applied to .checkboxGroup--inline
- */
-.checkbox--grouped--inline {
-  margin: 4px 12px; /* [1] */
-}
-
-/**
- * 1. This should be the inverse of the margin
- *    applied to .checkboxGroup--stacked
- */
-.checkbox--grouped--stacked {
-  margin: 4px 0; /* [1] */
-}
-
 .checkbox--primary {
   @mixin themed .checkbox {
     --checkbox-checked-background-color: $theme-color-accent-primary;
