@@ -12,6 +12,7 @@ export interface LocalLabelProps extends ThemeProps {
   muted?: boolean;
   noWrap?: boolean;
   strength?: 'transitioned' | 'standard' | 'legend';
+  style?: React.CSSProperties;
   validity?: StateColor;
 }
 
