@@ -19,6 +19,7 @@ export default {
         disable: true,
       },
     },
+
     align: {
       options: ['left', 'center', 'right'],
       control: { type: 'inline-radio' },
@@ -115,7 +116,7 @@ export default {
   },
   parameters: {
     controls: {
-      exclude: ['className', 'ref', 'themeId'],
+      exclude: ['className', 'themeId'],
       sort: 'requiredFirst',
     },
     docs: {
