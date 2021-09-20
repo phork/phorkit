@@ -1,0 +1,357 @@
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
+import { SearchIcon } from 'icons/SearchIcon';
+import { TimesIcon } from 'icons/TimesIcon';
+import { TagIcon } from 'icons/internal/TagIcon';
+import { Rhythm } from 'components/Rhythm';
+import { Looper } from 'docs/helpers/Looper';
+import { Canvas } from 'stories/helpers/Canvas';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
+import { FormComponentDemo } from '../../stories/FormComponentDemo';
+import { NotifiedSelect } from '../NotifiedSelect';
+import { Select } from '../Select';
+import { options } from './helpers/options';
+import { variants } from './helpers/variants';
+
+<PageTitle src="components/Select" title="Select" />
+<Subtitle />
+<Description />
+<Primary />
+<ArgsTable story={PRIMARY_STORY} />
+<Stories />
+
+### Basic select
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue="yellow" property="value" type="select">
+            <Select options={options} variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Multiple select
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue={['yellow', 'blue']} property="values" type="select">
+            <Select multiple label="Super fantastic label" options={options} variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Labeled select
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue="yellow" property="value" type="select">
+            <Select label="Super fantastic label" options={options} variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Transitional labeled select
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo property="value" type="select">
+            <Select transitional label="Super fantastic label" options={options} variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Transitional labeled select with icons
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo property="value" type="select">
+            <Select
+              transitional
+              iconAfter={<TimesIcon size={8} />}
+              iconBefore={SearchIcon}
+              label="Super fantastic label"
+              options={options}
+              variant={variant}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Select with placeholder
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo property="value" type="select">
+            <Select
+              label="Super fantastic label"
+              options={options}
+              placeholder={{ label: 'Choose a color' }}
+              variant={variant}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Select with separate list and view placeholder
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo property="value" type="select">
+            <Select
+              transitional
+              label="Super fantastic label"
+              options={options}
+              placeholder={{ optionLabel: '(None)', label: 'Choose a color' }}
+              variant={variant}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Select with list placeholder only
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo property="value" type="select">
+            <Select
+              transitional
+              label="Super fantastic label"
+              options={options}
+              placeholder={{ optionLabel: '(None)', label: undefined }}
+              variant={variant}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Select with disabled placeholder
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo property="value" type="select">
+            <Select
+              transitional
+              label="Super fantastic label"
+              options={options}
+              placeholder={{ label: 'Choose a color', disabled: true }}
+              variant={variant}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Disabled select
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue="yellow" property="value" type="select">
+            <Select disabled label="Super fantastic label" options={options} variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Read only select
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue="yellow" property="value" type="select">
+            <Select readOnly label="Super fantastic label" options={options} variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Read only multiple select
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue={['yellow', 'blue']} property="values" type="select">
+            <Select multiple readOnly label="Super fantastic label" options={options} variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Danger select
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue="yellow" property="value" type="select">
+            <Select transitional label="Super fantastic label" options={options} validity="danger" variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Warning select
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue="yellow" property="value" type="select">
+            <Select transitional label="Super fantastic label" options={options} validity="warning" variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Success select
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue="yellow" property="value" type="select">
+            <Select transitional label="Super fantastic label" options={options} validity="success" variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Contrast select
+
+<Canvas contrast>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue="yellow" property="value" type="select">
+            <Select
+              contrast
+              id="demo-contrast-select"
+              label="Super fantastic label"
+              options={options}
+              variant={variant}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Notifications
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Looper
+          list={['success', 'danger', 'warning', 'primary', 'neutral']}
+          render={level => (
+            <Rhythm grouped mb={4}>
+              <FormComponentDemo initialValue="yellow" property="value" type="select">
+                <NotifiedSelect
+                  label="Super fantastic label"
+                  level={level}
+                  notification={`This is an example ${level} notification.`}
+                  options={options}
+                  variant={variant}
+                />
+              </FormComponentDemo>
+            </Rhythm>
+          )}
+        />
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
