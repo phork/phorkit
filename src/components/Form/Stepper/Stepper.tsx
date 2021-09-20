@@ -103,41 +103,37 @@ export function StepperBase(
   const isMin = min !== undefined && value !== undefined && value <= min;
   const iconSize = iconSizes[size];
 
-  const renderDecrementIcon = () => {
-    return readOnly ? undefined : (
-      <button
-        aria-label={decrementLabel}
-        className={styles.stepperButton}
-        disabled={isMin || readOnly}
-        onClick={decrement}
-        type="button"
-      >
-        <MinusIcon size={iconSize} title={decrementLabel} />
-      </button>
-    );
-  };
+  const decrementIcon = readOnly ? undefined : (
+    <button
+      aria-label={decrementLabel}
+      className={styles.stepperButton}
+      disabled={isMin || readOnly}
+      onClick={decrement}
+      type="button"
+    >
+      <MinusIcon size={iconSize} title={decrementLabel} />
+    </button>
+  );
 
-  const renderIncrementIcon = () => {
-    return readOnly ? undefined : (
-      <button
-        aria-label={incrementLabel}
-        className={styles.stepperButton}
-        disabled={isMax || readOnly}
-        onClick={increment}
-        type="button"
-      >
-        <PlusIcon size={iconSize} title={incrementLabel} />
-      </button>
-    );
-  };
+  const incrementIcon = readOnly ? undefined : (
+    <button
+      aria-label={incrementLabel}
+      className={styles.stepperButton}
+      disabled={isMax || readOnly}
+      onClick={increment}
+      type="button"
+    >
+      <PlusIcon size={iconSize} title={incrementLabel} />
+    </button>
+  );
 
   return (
     <Textbox
       centered
       disabled={disabled}
-      iconAfter={renderIncrementIcon()}
+      iconAfter={incrementIcon}
       iconAfterActionable={!disabled && !isMax}
-      iconBefore={renderDecrementIcon()}
+      iconBefore={decrementIcon}
       iconBeforeActionable={!disabled && !isMin}
       inputWidth={inputWidth}
       label={label}

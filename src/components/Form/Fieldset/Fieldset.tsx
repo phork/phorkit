@@ -19,17 +19,13 @@ export function FieldsetBase(
 ): React.ReactElement<FieldsetProps, 'fieldset'> {
   const themeId = useThemeId(initThemeId);
 
-  const renderLegend = () => {
-    return legend ? (
-      <Label as="legend" className={styles.fieldset__legend} contrast={contrast} strength="legend" themeId={themeId}>
-        {legend}
-      </Label>
-    ) : null;
-  };
-
   return (
     <fieldset className={cx(styles.fieldset, className)} ref={forwardedRef} {...props}>
-      {renderLegend()}
+      {legend && (
+        <Label as="legend" className={styles.fieldset__legend} contrast={contrast} strength="legend" themeId={themeId}>
+          {legend}
+        </Label>
+      )}
       {children}
     </fieldset>
   );
