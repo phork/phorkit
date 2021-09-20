@@ -121,7 +121,7 @@ import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } fro
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { ${component} } from '../${component}';
+import { ${component}, ${component}Props } from '../${component}';
 
 export default {
   title: 'Unsorted/${component}',

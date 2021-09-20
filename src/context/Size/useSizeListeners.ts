@@ -36,6 +36,9 @@ export function useSizeListeners<E extends HTMLElement = HTMLDivElement>({
     return undefined;
   }, [observe, update]);
 
+  // measure the size on load
+  useEffect(() => update(), [update]);
+
   return useMemo(
     () => ({
       ref,

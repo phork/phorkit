@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { FormComponentDemo } from '../../stories/FormComponentDemo';
+import { FormComponentDemo } from '../../stories/helpers/FormComponentDemo';
 import { Checkbox, CheckboxProps } from '../Checkbox';
 import CheckboxDocumentation from './Checkbox.docs.mdx';
 
@@ -112,8 +112,8 @@ export default {
     },
   },
   decorators: [
-    Story => (
-      <FormComponentDemo initialValue={true} property="checked" type="checkbox">
+    (Story, { args }) => (
+      <FormComponentDemo initialValue={args.checked} property="checked" type="checkbox">
         {Story()}
       </FormComponentDemo>
     ),

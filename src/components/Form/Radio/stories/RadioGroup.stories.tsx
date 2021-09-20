@@ -3,7 +3,7 @@ import React from 'react';
 import { Mutable } from 'types/utils';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
-import { FormComponentDemo } from '../../stories/FormComponentDemo';
+import { FormComponentDemo } from '../../stories/helpers/FormComponentDemo';
 import { RadioGroup, RadioGroupProps } from '../RadioGroup';
 import { radios } from './helpers/options';
 import RadioGroupDocumentation from './RadioGroup.docs.mdx';
@@ -33,7 +33,7 @@ export default {
         category: 'Appearance controls',
       },
     },
-    values: {
+    value: {
       table: {
         category: 'Appearance controls',
       },
@@ -78,8 +78,8 @@ export default {
     },
   },
   decorators: [
-    Story => (
-      <FormComponentDemo initialValue="one" property="value" type="radio">
+    (Story, { args }) => (
+      <FormComponentDemo initialValue={args.value} property="value" type="radio">
         {Story()}
       </FormComponentDemo>
     ),
