@@ -42,12 +42,28 @@ export default {
       },
     },
 
+    className: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
     contrast: {
       table: {
         category: 'Uncommon controls',
       },
     },
     style: {
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
+    themeId: {
+      control: {
+        disable: true,
+      },
       table: {
         category: 'Uncommon controls',
       },
@@ -61,7 +77,7 @@ export default {
   decorators: [Story => <div style={{ maxWidth: 400 }}>{Story()}</div>],
   parameters: {
     controls: {
-      exclude: ['className', 'ref', 'themeId'],
+      exclude: ['ref'],
       sort: 'requiredFirst',
     },
     docs: {
