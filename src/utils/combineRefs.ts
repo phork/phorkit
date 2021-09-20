@@ -13,6 +13,12 @@ export const makeCombineRefs =
   ) =>
   (element: T | null) => {
     refs.forEach(ref => {
-      ref && (typeof ref === 'function' ? ref(element) : (ref.current = element));
+      if (ref) {
+        if (typeof ref === 'function') {
+          ref(element);
+        } else if ('current' in ref) {
+          ref.current = element;
+        }
+      }
     });
   };

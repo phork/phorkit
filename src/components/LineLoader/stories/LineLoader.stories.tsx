@@ -56,12 +56,28 @@ export default {
       },
     },
 
+    className: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
     contrast: {
       table: {
         category: 'Uncommon controls',
       },
     },
     style: {
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
+    themeId: {
+      control: {
+        disable: true,
+      },
       table: {
         category: 'Uncommon controls',
       },
@@ -75,7 +91,7 @@ export default {
   decorators: [Story => <div style={{ position: 'relative', minHeight: 40 }}>{Story()}</div>],
   parameters: {
     controls: {
-      exclude: ['className', 'themeId', 'translations'],
+      exclude: ['translations'],
       sort: 'requiredFirst',
     },
     docs: {

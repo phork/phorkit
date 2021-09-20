@@ -38,6 +38,14 @@ export default {
       },
     },
 
+    className: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
     contrast: {
       table: {
         category: 'Uncommon controls',
@@ -48,10 +56,17 @@ export default {
         category: 'Uncommon controls',
       },
     },
+    themeId: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
   },
   parameters: {
     controls: {
-      exclude: ['className', 'themeId'],
       sort: 'requiredFirst',
     },
     docs: {

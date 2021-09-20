@@ -40,6 +40,14 @@ export default {
       },
     },
 
+    className: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
     iconClassName: {
       table: {
         category: 'Uncommon controls',
@@ -58,7 +66,6 @@ export default {
   },
   parameters: {
     controls: {
-      exclude: ['className'],
       sort: 'requiredFirst',
     },
     docs: {

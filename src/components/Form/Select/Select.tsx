@@ -45,16 +45,18 @@ export type SelectOptionPlaceholder = {
 };
 
 type SingleSelectProps = {
-  multiple?: never;
+  multiple?: never | false;
   transitional?: boolean;
+  /** The value prop is not for use with multiple selects */
   value?: FormboxValue;
   values?: never;
 };
 
 type MultipleSelectProps = {
   multiple: true;
-  transitional?: never;
+  transitional?: never | false;
   value?: never;
+  /** The values prop is only for use with multiple selects */
   values?: FormboxValue[];
 };
 
@@ -93,6 +95,7 @@ export type LocalSelectProps = Pick<
   | 'width'
 > & {
   arrowIconSize?: number;
+  /** The children can be used to manually add options rather than using the options prop */
   children?: FormboxValue | FormboxValue[];
   inputClassName?: string;
   inputStyle?: React.CSSProperties;
@@ -314,5 +317,5 @@ export function SelectBase(
 
 export const Select = React.forwardRef(SelectBase);
 
-SelectBase.displayName = 'SelectBase';
+// note that the base element cannot have a displayName because it breaks Storybook
 Select.displayName = 'Select';

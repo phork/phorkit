@@ -13,6 +13,14 @@ export default {
       control: { type: 'text' },
     },
 
+    className: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
     style: {
       table: {
         category: 'Uncommon controls',
@@ -22,7 +30,6 @@ export default {
   decorators: [Story => <PanelContainer orientation="horizontal">{Story()}</PanelContainer>],
   parameters: {
     controls: {
-      exclude: ['className'],
       sort: 'requiredFirst',
     },
     docs: {

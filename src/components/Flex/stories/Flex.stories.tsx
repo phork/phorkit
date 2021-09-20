@@ -84,6 +84,14 @@ export default {
       },
     },
 
+    className: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
     style: {
       table: {
         category: 'Uncommon controls',
@@ -92,7 +100,6 @@ export default {
   },
   parameters: {
     controls: {
-      exclude: ['className'],
       sort: 'requiredFirst',
     },
     docs: {

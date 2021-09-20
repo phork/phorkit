@@ -63,6 +63,14 @@ export default {
         category: 'Uncommon controls',
       },
     },
+    className: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
     contrast: {
       table: {
         category: 'Uncommon controls',
@@ -88,6 +96,14 @@ export default {
         category: 'Uncommon controls',
       },
     },
+    themeId: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
     unstyled: {
       table: {
         category: 'Uncommon controls',
@@ -101,7 +117,7 @@ export default {
   },
   parameters: {
     controls: {
-      exclude: ['children', 'className', 'ref', 'themeId'],
+      exclude: ['children', 'ref'],
       sort: 'requiredFirst',
     },
     docs: {
