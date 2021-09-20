@@ -61,7 +61,6 @@ const Template: ComponentStory<
 const defaultArgs = {
   active: false,
   activePrimaryColor: '#798796',
-  align: 'center' as StyledIconButtonProps['align'],
   as: 'button' as StyledIconButtonProps['as'],
   color: undefined,
   disabled: false,
