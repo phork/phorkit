@@ -1,0 +1,50 @@
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Rhythm } from 'components/Rhythm';
+import { Looper } from 'docs/helpers/Looper';
+import { Canvas } from 'stories/helpers/Canvas';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
+import { FormComponentDemo } from '../../stories/helpers/FormComponentDemo';
+import { NotifiedSlider } from '../NotifiedSlider';
+import { Slider } from '../Slider';
+
+<PageTitle src="components/Slider" title="Slider" />
+<Subtitle />
+<Description />
+<Primary />
+<ArgsTable story={PRIMARY_STORY} />
+<Stories />
+
+### Contrast
+
+<Canvas contrast>
+  <ThemeWrapper>
+    <FormComponentDemo initialValue={75} property="value" type="slider">
+      <Slider contrast valuePosition="right">
+        Super fantastic label
+      </Slider>
+    </FormComponentDemo>
+  </ThemeWrapper>
+</Canvas>
+
+## Notifications
+
+<Canvas>
+  <Looper
+    list={['success', 'danger', 'warning', 'primary', 'neutral']}
+    render={level => (
+      <Rhythm grouped mb={4}>
+        <FormComponentDemo initialValue="75" property="value" type="slider">
+          <NotifiedSlider
+            aria-label="Super fantastic label"
+            level={level}
+            notification={`This is an example ${level} notification.`}
+            onChange={(event, value) => console.log(value)}
+            valuePosition="right"
+            width="100%"
+          />
+        </FormComponentDemo>
+      </Rhythm>
+    )}
+  />
+</Canvas>

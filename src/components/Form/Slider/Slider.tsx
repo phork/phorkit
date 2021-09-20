@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useMemo, useRef, useState } from 'react';
-import { MergeProps, ThemeProps } from '../../../types';
+import { MergeProps, StateColor, ThemeProps } from '../../../types';
 import { useAccessibility } from '../../../context/Accessibility/useAccessibility';
 import { SizeContextValue, useSizeListeners } from '../../../context/Size';
 import { useThemeId } from '../../../context/Theme';
@@ -18,10 +18,12 @@ type SliderEvent =
   | React.KeyboardEvent
   | React.ChangeEvent<HTMLInputElement>;
 
-export interface LocalSliderProps extends ThemeProps {
+export interface LocalSliderProps extends Omit<ThemeProps, 'unthemed'> {
+  /** This is used to populate the label value */
   children?: React.ReactNode;
   className?: string;
   disabled?: boolean;
+  /** Applies formatting to the value before displaying it */
   formatValue?: (value?: number) => React.ReactNode;
   id?: string;
   max?: number;
@@ -35,13 +37,14 @@ export interface LocalSliderProps extends ThemeProps {
   /** Force the snap to the next step; otherwise it goes to the closest one */
   snapNext?: boolean;
   step?: number;
+  /** Display tick marks at this interval */
   tick?: number;
   tickElement?: React.ElementType;
   tickProps?: any;
   trackElement?: React.ElementType;
   trackProps?: any;
   unstyled?: boolean;
-  validity?: 'danger';
+  validity?: StateColor;
   value?: number;
   valuePosition?: 'top' | 'right';
   width?: string;
@@ -89,7 +92,7 @@ export function SliderBase(
     validity,
     value = 0,
     valuePosition,
-    width: propWidth,
+    width: propWidth = '100%',
     ...props
   }: SliderProps,
   forwardedRef: React.ForwardedRef<HTMLInputElement>,
@@ -255,7 +258,7 @@ export function SliderBase(
       {...labelProps}
     >
       {children && (
-        <Label<'div'> as="div" className={styles.sliderValue} contrast={contrast} strength="legend" themeId={themeId}>
+        <Label<'div'> as="div" className={styles.sliderLabel} contrast={contrast} strength="legend" themeId={themeId}>
           {children}
         </Label>
       )}
@@ -339,5 +342,5 @@ export function SliderBase(
 
 export const Slider = React.forwardRef(SliderBase);
 
-SliderBase.displayName = 'SliderBase';
+// note that the base element cannot have a displayName because it breaks Storybook
 Slider.displayName = 'Slider';
