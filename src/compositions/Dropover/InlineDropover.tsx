@@ -4,6 +4,7 @@ import { HorizontalPosition } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import { renderFromProp, RenderFromPropElement, renderFromPropWithFallback } from '../../utils';
 import { InlinePopover, InlinePopoverProps } from '../Popover/InlinePopover';
+import { PopoverTogglerProps } from '../Popover/Popover';
 import { PopoverRenderChildrenProps } from '../Popover/types';
 import styles from './styles/Dropover.module.css';
 
@@ -41,7 +42,8 @@ export function InlineDropover({
   const isRightAligned = align === 'right';
 
   const renderToggler = useCallback(
-    ({ visible, ...props }) => renderFromProp(label, { ...props, ref: togglerRef }, { createFromString: true }),
+    ({ visible, ...props }: PopoverTogglerProps) =>
+      renderFromProp(label, { ...props, ref: togglerRef }, { createFromString: true }),
     [label],
   );
 

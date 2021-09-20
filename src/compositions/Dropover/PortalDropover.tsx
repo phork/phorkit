@@ -3,6 +3,7 @@ import React, { useCallback, useRef } from 'react';
 import { HorizontalPosition } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import { renderFromProp, RenderFromPropElement, renderFromPropWithFallback } from '../../utils';
+import { PopoverTogglerProps } from '../Popover/Popover';
 import { PortalPopover, PortalPopoverProps } from '../Popover/PortalPopover';
 import { PopoverContentProps, PopoverRenderChildrenProps } from '../Popover/types';
 import styles from './styles/Dropover.module.css';
@@ -44,7 +45,8 @@ export function PortalDropover({
   const isRightAligned = align === 'right';
 
   const renderToggler = useCallback(
-    ({ visible, ...props }) => renderFromProp(label, { ...props, ref: togglerRef }, { createFromString: true }),
+    ({ visible, ...props }: PopoverTogglerProps) =>
+      renderFromProp(label, { ...props, ref: togglerRef }, { createFromString: true }),
     [label],
   );
 
