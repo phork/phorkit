@@ -58,7 +58,7 @@ export default {
 const Template: ComponentStory<typeof Triangle> = args => <Triangle {...args} />;
 
 const defaultArgs = {
-  color: '#0060ce',
+  color: 'currentColor',
   position: 'top' as TriangleProps['position'],
   size: 30,
 };

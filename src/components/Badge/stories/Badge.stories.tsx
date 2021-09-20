@@ -1,5 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { themes } from 'config/themes';
+import { ThemeWrapper } from '../../../stories/helpers/ThemeWrapper';
 import { Badge, BadgeProps } from '../Badge';
 import BadgeDocumentation from './Badge.docs.mdx';
 
@@ -23,6 +25,7 @@ export default {
       },
     },
     position: {
+      options: ['top-left', 'top-right', 'bottom-left', 'bottom-right', undefined],
       control: { type: 'radio' },
       table: {
         category: 'Primary controls',
@@ -74,9 +77,22 @@ export default {
   },
   decorators: [
     Story => (
-      <div style={{ position: 'relative', width: 300, height: 300, boxShadow: '0 0 0 1px currentColor' }}>
-        {Story()}
-      </div>
+      <ThemeWrapper withThemeId>
+        {({ themeId }) => (
+          <div
+            style={{
+              backgroundColor: themes[themeId]['color-BG10'],
+              borderRadius: '4px',
+              height: 100,
+              margin: 'auto',
+              position: 'relative',
+              width: 100,
+            }}
+          >
+            {Story()}
+          </div>
+        )}
+      </ThemeWrapper>
     ),
   ],
   parameters: {
@@ -96,11 +112,13 @@ export default {
 const Template: ComponentStory<typeof Badge> = args => <Badge {...args} />;
 
 const defaultArgs = {
+  children: '99',
   color: 'primary' as BadgeProps['color'],
   contrast: false,
   outline: false,
+  position: 'top-right' as BadgeProps['position'],
   pulsing: false,
-  shape: 'marker' as BadgeProps['shape'],
+  shape: 'count' as BadgeProps['shape'],
   unthemed: false,
 };
 

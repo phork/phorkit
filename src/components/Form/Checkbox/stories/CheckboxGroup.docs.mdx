@@ -5,29 +5,10 @@ import { Looper } from 'docs/helpers/Looper';
 import { Canvas } from 'stories/helpers/Canvas';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
+import { FormComponentDemo } from '../../stories/FormComponentDemo';
 import { CheckboxGroup } from '../CheckboxGroup';
 import { NotifiedCheckboxGroup } from '../NotifiedCheckboxGroup';
-
-export const checkboxGroup = [
-  {
-    id: 'checkbox-group-item1',
-    name: 'checkbox-group-item1',
-    value: 'one',
-    label: 'Super fantastic label one',
-  },
-  {
-    id: 'checkbox-group-item2',
-    name: 'checkbox-group-item2',
-    value: 'two',
-    label: 'Super fantastic label two',
-  },
-  {
-    id: 'checkbox-group-item3',
-    name: 'checkbox-group-item3',
-    value: 'three',
-    label: 'Super fantastic label three',
-  },
-];
+import { checkboxes } from './helpers/options';
 
 <PageTitle src="components/CheckboxGroup" title="CheckboxGroup" />
 <Subtitle />
@@ -40,7 +21,9 @@ export const checkboxGroup = [
 
 <Canvas contrast>
   <ThemeWrapper>
-    <CheckboxGroup contrast checkboxes={checkboxGroup} legend="Super fantastic label" values={['one']} />
+    <FormComponentDemo initialValue={['one']} property="values" type="checkbox">
+      <CheckboxGroup contrast checkboxes={checkboxes} legend="Super fantastic label" values={['one']} />
+    </FormComponentDemo>
   </ThemeWrapper>
 </Canvas>
 
@@ -50,15 +33,18 @@ export const checkboxGroup = [
   <Looper
     list={['success', 'danger', 'warning', 'primary', 'neutral']}
     render={level => (
-      <Rhythm grouped mb={4} style={{ maxWidth: 400 }}>
-        <NotifiedCheckboxGroup
-          checkboxes={checkboxGroup}
-          layout="inline"
-          legend="Super fantastic legend"
-          level={level}
-          notification={`This is an example ${level} notification.`}
-          values={['one']}
-        />
+      <Rhythm grouped mb={4}>
+        <FormComponentDemo initialValue={['one']} property="values" type="checkbox">
+          <NotifiedCheckboxGroup
+            checkboxes={checkboxes}
+            layout="inline"
+            legend="Super fantastic legend"
+            level={level}
+            notification={`This is an example ${level} notification.`}
+            onChange={action('changed')}
+            values={['one']}
+          />
+        </FormComponentDemo>
       </Rhythm>
     )}
   />

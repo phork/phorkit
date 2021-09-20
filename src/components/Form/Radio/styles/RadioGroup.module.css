@@ -5,7 +5,7 @@
 
 /**
  * 1. This should be the inverse of the margin
- *    applied to .radio--grouped--stacked
+ *    applied to .radio--stacked
  */
 .radioGroup--stacked {
   flex-direction: column;
@@ -14,7 +14,7 @@
 
 /**
  * 1. This should be the inverse of the margin
- *    applied to .radio--grouped--inline
+ *    applied to .radio--inline
  */
 .radioGroup--inline {
   flex-direction: row;

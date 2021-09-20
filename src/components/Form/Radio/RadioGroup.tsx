@@ -38,7 +38,7 @@ export function RadioGroupBase<V extends RadioValue = string>(
   {
     className,
     contrast = false,
-    layout,
+    layout = 'inline',
     legend,
     name,
     onChange,

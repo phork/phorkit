@@ -4,7 +4,7 @@ import { SequentialVariant, Theme } from 'types';
 import { isValidRenderElement, renderFromProp, RenderFromPropElement } from 'utils/renderFromProp';
 import { ThemeProvider } from '../../context/Theme/ThemeProvider';
 
-type RenderFromPropProps = { themeId?: Theme };
+type RenderFromPropProps = { themeId: Theme };
 
 interface CommonThemeWrapperProps {
   style?: React.CSSProperties;

@@ -1,5 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { FormComponentDemo } from '../../stories/FormComponentDemo';
 import { Checkbox, CheckboxProps } from '../Checkbox';
 import CheckboxDocumentation from './Checkbox.docs.mdx';
 
@@ -110,6 +111,13 @@ export default {
       },
     },
   },
+  decorators: [
+    Story => (
+      <FormComponentDemo initialValue={true} property="checked" type="checkbox">
+        {Story()}
+      </FormComponentDemo>
+    ),
+  ],
   parameters: {
     controls: {
       exclude: ['persistEvents', 'ref'],

@@ -1,8 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { Mutable } from 'types/utils';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
+import { FormComponentDemo } from '../../stories/FormComponentDemo';
 import { CheckboxGroup, CheckboxGroupProps } from '../CheckboxGroup';
+import { checkboxes } from './helpers/options';
 import CheckboxGroupDocumentation from './CheckboxGroup.docs.mdx';
 
 export default {
@@ -74,7 +77,13 @@ export default {
       },
     },
   },
-  decorators: [Story => <div style={{ maxWidth: 400 }}>{Story()}</div>],
+  decorators: [
+    Story => (
+      <FormComponentDemo initialValue={['one']} property="values" type="checkbox">
+        {Story()}
+      </FormComponentDemo>
+    ),
+  ],
   parameters: {
     controls: {
       exclude: ['ref'],
@@ -93,26 +102,7 @@ export default {
 const Template: ComponentStory<typeof CheckboxGroup> = args => <CheckboxGroup {...args} />;
 
 const defaultArgs = {
-  checkboxes: [
-    {
-      id: 'checkbox-group-item1',
-      name: 'checkbox-group-item1',
-      value: 'one',
-      label: 'Super fantastic label one',
-    },
-    {
-      id: 'checkbox-group-item2',
-      name: 'checkbox-group-item2',
-      value: 'two',
-      label: 'Super fantastic label two',
-    },
-    {
-      id: 'checkbox-group-item3',
-      name: 'checkbox-group-item3',
-      value: 'three',
-      label: 'Super fantastic label three',
-    },
-  ],
+  checkboxes: checkboxes as Mutable<typeof checkboxes>,
   contrast: false,
   layout: 'inline' as CheckboxGroupProps['layout'],
   legend: 'Super fantastic legend',

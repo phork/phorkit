@@ -34,7 +34,7 @@ export default {
   decorators: [
     Story => (
       <ThemeWrapper withThemeId>
-        {({ themeId = 'light' }) => (
+        {({ themeId }) => (
           <div
             style={{
               background: themes[themeId]['color-accent-primary-L30'],
@@ -74,7 +74,7 @@ export default {
 
 const ContentBox = ({ className }: { className?: string }) => (
   <ThemeWrapper withThemeId>
-    {({ themeId = 'light' }) => (
+    {({ themeId }) => (
       <div className={className} style={{ background: themes[themeId]['color-accent-primary'] }}>
         <TimesIcon size={20} style={{ color: themes[themeId]['contrast-palette-text-color'], float: 'left' }} />
       </div>

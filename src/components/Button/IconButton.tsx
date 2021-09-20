@@ -16,7 +16,10 @@ export interface LocalIconButtonProps {
   shape?: IconButtonShape;
 }
 
-export type IconButtonProps<T extends ButtonElementType = 'button'> = MergeProps<ButtonProps<T>, LocalIconButtonProps>;
+export type IconButtonProps<T extends ButtonElementType = 'button'> = MergeProps<
+  Omit<ButtonProps<T>, 'align'>,
+  LocalIconButtonProps
+>;
 
 const shapeMap = {
   circle: 'pill',
