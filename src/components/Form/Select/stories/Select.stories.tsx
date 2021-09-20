@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { Mutable } from 'types/utils';
-import { FormComponentDemo } from '../../stories/FormComponentDemo';
+import { FormComponentDemo } from '../../stories/helpers/FormComponentDemo';
 import { Select, SelectProps } from '../Select';
 import { options } from './helpers/options';
 import SelectDocumentation from './Select.docs.mdx';
@@ -156,25 +156,6 @@ export default {
       },
     },
 
-    alwaysTriggerBlur: {
-      table: {
-        category: 'Uncommon controls',
-      },
-    },
-    alwaysTriggerFocus: {
-      table: {
-        category: 'Uncommon controls',
-      },
-    },
-    children: {
-      control: {
-        disable: true,
-      },
-      table: {
-        category: 'Uncommon controls',
-      },
-    },
-
     onAnimationStart: {
       table: {
         category: 'Action controls',
@@ -206,6 +187,24 @@ export default {
       },
     },
 
+    alwaysTriggerBlur: {
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
+    alwaysTriggerFocus: {
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
+    children: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
     className: {
       control: {
         disable: true,

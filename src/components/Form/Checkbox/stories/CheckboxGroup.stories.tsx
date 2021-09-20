@@ -3,7 +3,7 @@ import React from 'react';
 import { Mutable } from 'types/utils';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
-import { FormComponentDemo } from '../../stories/FormComponentDemo';
+import { FormComponentDemo } from '../../stories/helpers/FormComponentDemo';
 import { CheckboxGroup, CheckboxGroupProps } from '../CheckboxGroup';
 import { checkboxes } from './helpers/options';
 import CheckboxGroupDocumentation from './CheckboxGroup.docs.mdx';
@@ -78,8 +78,8 @@ export default {
     },
   },
   decorators: [
-    Story => (
-      <FormComponentDemo initialValue={['one']} property="values" type="checkbox">
+    (Story, { args }) => (
+      <FormComponentDemo initialValue={args.values} property="values" type="checkbox">
         {Story()}
       </FormComponentDemo>
     ),
