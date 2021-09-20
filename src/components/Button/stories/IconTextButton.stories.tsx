@@ -231,21 +231,31 @@ LoaderReplaceIcon.args = {
 };
 
 export const Link = ({
-  icon,
-  size,
+  icon = 'medium',
   ...args
-}: Omit<IconTextButtonProps<'a'>, 'icon'> & { icon: React.ReactElement }) => (
-  <IconTextButton<'a'> {...args} icon={icon} size={size} />
+}: Omit<IconTextButtonProps<'a'>, 'icon'> & { icon: 'small' | 'medium' | 'large' }) => (
+  <IconTextButton<'a'> {...args} icon={<BlobbrIcon scale={icon} />} />
 );
 Link.args = {
   ...defaultArgs,
   as: 'a',
-  href: 'https://phorkit.phork.org',
+  href: 'https://phorkit.org',
   target: '_blank',
 };
 
 Link.argTypes = {
-  loading: { table: { disable: true } },
   href: { table: { disable: false } },
   target: { table: { disable: false } },
+};
+
+export const Imitation = ({
+  icon = 'medium',
+  ...args
+}: Omit<IconTextButtonProps<'div'>, 'icon'> & { icon: 'small' | 'medium' | 'large' }) => (
+  <IconTextButton<'div'> {...args} icon={<BlobbrIcon scale={icon} />} />
+);
+Imitation.args = {
+  ...defaultArgs,
+  as: 'div',
+  imitation: true,
 };

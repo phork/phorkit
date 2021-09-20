@@ -45,6 +45,7 @@ const defaultArgs = {
   children: 99,
   color: undefined,
   colorId: 'P60' as ThemeColorIds,
+  position: 'top-right' as ColoredBadgeProps['position'],
   pulsing: false,
   shape: 'count' as ColoredBadgeProps['shape'],
 };

@@ -14,7 +14,7 @@ export interface LocalBadgeProps extends ThemeProps {
   outlined?: boolean;
   position?: CornerPosition;
   pulsing?: boolean;
-  shape?: BadgeShape;
+  shape: BadgeShape;
   style?: React.CSSProperties;
 }
 
@@ -35,6 +35,7 @@ export function Badge({
 }: BadgeProps): React.ReactElement<BadgeProps, 'div'> {
   const themeId = useThemeId(initThemeId);
   const color = contrast ? 'contrast' : initColor;
+  const hasChildren = ['count', 'label'].includes(shape);
 
   return (
     <div
@@ -50,7 +51,7 @@ export function Badge({
       )}
       {...props}
     >
-      <div className={styles.badge__content}>{children}</div>
+      {hasChildren && <div className={styles.badge__content}>{children}</div>}
     </div>
   );
 }

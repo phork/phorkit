@@ -7,6 +7,7 @@ import { Looper } from 'docs/helpers/Looper';
 import { Canvas } from 'stories/helpers/Canvas';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
+import { FormComponentDemo } from '../../stories/FormComponentDemo';
 import { Checkbox } from '../Checkbox';
 
 <PageTitle src="components/Checkbox" title="Checkbox" />
@@ -91,12 +92,14 @@ import { Checkbox } from '../Checkbox';
 
 <Canvas>
   <ThemeWrapper>
-    <Checkbox style={{ maxWidth: 400 }}>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget dui eu orci ultrices maximus eu eu ante.
-      Vestibulum ligula velit, scelerisque vitae venenatis tempor, consectetur a orci. Aenean molestie eu tortor in
-      pharetra. Nulla lobortis, sapien quis ornare venenatis, nunc libero finibus justo, non tempor nisi urna quis
-      justo. Integer sit amet venenatis leo.
-    </Checkbox>
+    <FormComponentDemo initialValue={true} property="checked" type="checkbox">
+      <Checkbox style={{ maxWidth: 400 }}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget dui eu orci ultrices maximus eu eu ante.
+        Vestibulum ligula velit, scelerisque vitae venenatis tempor, consectetur a orci. Aenean molestie eu tortor in
+        pharetra. Nulla lobortis, sapien quis ornare venenatis, nunc libero finibus justo, non tempor nisi urna quis
+        justo. Integer sit amet venenatis leo.
+      </Checkbox>
+    </FormComponentDemo>
   </ThemeWrapper>
 </Canvas>
 

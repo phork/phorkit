@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { Mutable } from 'types/utils';
+import { FormComponentDemo } from '../../stories/FormComponentDemo';
 import { Select, SelectProps } from '../Select';
 import { options } from './helpers/options';
 import SelectDocumentation from './Select.docs.mdx';
@@ -255,7 +256,13 @@ export default {
       },
     },
   },
-  decorators: [Story => <div style={{ maxWidth: 400, minWidth: 200, width: 400 }}>{Story()}</div>],
+  decorators: [
+    Story => (
+      <FormComponentDemo initialValue="yellow" property="value" type="select">
+        {Story()}
+      </FormComponentDemo>
+    ),
+  ],
   parameters: {
     controls: {
       exclude: ['ref', 'translations'],
@@ -278,7 +285,7 @@ const defaultArgs = {
   alwaysTriggerFocus: false,
   contrast: false,
   disabled: false,
-  empty: true,
+  empty: false,
   label: 'Super fantastic label',
   multiple: false,
   options: options as Mutable<typeof options>,
@@ -295,4 +302,74 @@ const defaultArgs = {
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
+};
+
+export const MediumSize = Template.bind({});
+MediumSize.storyName = 'Size: Medium';
+MediumSize.args = {
+  ...defaultArgs,
+  size: 'medium',
+};
+
+export const LargeSize = Template.bind({});
+LargeSize.storyName = 'Size: Large';
+LargeSize.args = {
+  ...defaultArgs,
+  size: 'large',
+};
+
+export const XLargeSize = Template.bind({});
+XLargeSize.storyName = 'Size: XLarge';
+XLargeSize.args = {
+  ...defaultArgs,
+  size: 'xlarge',
+};
+
+export const XXLargeSize = Template.bind({});
+XXLargeSize.storyName = 'Size: 2XLarge';
+XXLargeSize.args = {
+  ...defaultArgs,
+  size: '2xlarge',
+};
+
+export const XXXLargeSize = Template.bind({});
+XXXLargeSize.storyName = 'Size: 3XLarge';
+XXXLargeSize.args = {
+  ...defaultArgs,
+  size: '3xlarge',
+};
+
+export const XXXXLargeSize = Template.bind({});
+XXXXLargeSize.storyName = 'Size: 4XLarge';
+XXXXLargeSize.args = {
+  ...defaultArgs,
+  size: '4xlarge',
+};
+
+export const XXXXXLargeSize = Template.bind({});
+XXXXXLargeSize.storyName = 'Size: 5XLarge';
+XXXXXLargeSize.args = {
+  ...defaultArgs,
+  size: '5xlarge',
+};
+
+export const XXXXXXLargeSize = Template.bind({});
+XXXXXXLargeSize.storyName = 'Size: 6XLarge';
+XXXXXXLargeSize.args = {
+  ...defaultArgs,
+  size: '6xlarge',
+};
+
+export const XXXXXXXLargeSize = Template.bind({});
+XXXXXXXLargeSize.storyName = 'Size: 7XLarge';
+XXXXXXXLargeSize.args = {
+  ...defaultArgs,
+  size: '7xlarge',
+};
+
+export const XXXXXXXXLargeSize = Template.bind({});
+XXXXXXXXLargeSize.storyName = 'Size: 8XLarge';
+XXXXXXXXLargeSize.args = {
+  ...defaultArgs,
+  size: '8xlarge',
 };

@@ -339,12 +339,18 @@ export const Link = (args: ButtonProps<'a'>) => <Button<'a'> {...args} />;
 Link.args = {
   ...defaultArgs,
   as: 'a',
-  href: 'https://phorkit.phork.org',
+  href: 'https://phorkit.org',
   target: '_blank',
 };
 
 Link.argTypes = {
-  loading: { table: { disable: true } },
   href: { table: { disable: false } },
   target: { table: { disable: false } },
+};
+
+export const Imitation = (args: ButtonProps<'div'>) => <Button<'div'> {...args} />;
+Imitation.args = {
+  ...defaultArgs,
+  as: 'div',
+  imitation: true,
 };

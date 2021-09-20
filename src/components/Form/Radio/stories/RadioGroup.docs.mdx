@@ -5,29 +5,10 @@ import { Looper } from 'docs/helpers/Looper';
 import { Canvas } from 'stories/helpers/Canvas';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
+import { FormComponentDemo } from '../../stories/FormComponentDemo';
 import { NotifiedRadioGroup } from '../NotifiedRadioGroup';
 import { RadioGroup } from '../RadioGroup';
-
-export const radioGroup = [
-  {
-    id: 'radio-group-item1',
-    name: 'radio-group-item1',
-    value: 'one',
-    label: 'Super fantastic label one',
-  },
-  {
-    id: 'radio-group-item2',
-    name: 'radio-group-item2',
-    value: 'two',
-    label: 'Super fantastic label two',
-  },
-  {
-    id: 'radio-group-item3',
-    name: 'radio-group-item3',
-    value: 'three',
-    label: 'Super fantastic label three',
-  },
-];
+import { radios } from './helpers/options';
 
 <PageTitle src="components/RadioGroup" title="RadioGroup" />
 <Subtitle />
@@ -40,7 +21,9 @@ export const radioGroup = [
 
 <Canvas contrast>
   <ThemeWrapper>
-    <RadioGroup contrast legend="Super fantastic label" radios={radioGroup} values={['one']} />
+    <FormComponentDemo initialValue="one" property="value" type="radio">
+      <RadioGroup contrast legend="Super fantastic label" radios={radios} value="one" />
+    </FormComponentDemo>
   </ThemeWrapper>
 </Canvas>
 
@@ -50,15 +33,18 @@ export const radioGroup = [
   <Looper
     list={['success', 'danger', 'warning', 'primary', 'neutral']}
     render={level => (
-      <Rhythm grouped mb={4} style={{ maxWidth: 400 }}>
-        <NotifiedRadioGroup
-          layout="inline"
-          legend="Super fantastic legend"
-          level={level}
-          notification={`This is an example ${level} notification.`}
-          radios={radioGroup}
-          value="one"
-        />
+      <Rhythm grouped mb={4}>
+        <FormComponentDemo initialValue="one" property="value" type="radio">
+          <NotifiedRadioGroup
+            layout="inline"
+            legend="Super fantastic legend"
+            level={level}
+            notification={`This is an example ${level} notification.`}
+            onChange={action('changed')}
+            radios={radios}
+            value="one"
+          />
+        </FormComponentDemo>
       </Rhythm>
     )}
   />

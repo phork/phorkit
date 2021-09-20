@@ -62,7 +62,6 @@ const Template: ComponentStory<
 
 const defaultArgs = {
   active: false,
-  align: 'center' as IconButtonProps['align'],
   as: 'button' as IconButtonProps['as'],
   color: 'primary' as IconButtonProps['color'],
   disabled: false,
@@ -200,12 +199,25 @@ export const Link = ({
 Link.args = {
   ...defaultArgs,
   as: 'a',
-  href: 'https://phorkit.phork.org',
+  href: 'https://phorkit.org',
   target: '_blank',
 };
 
 Link.argTypes = {
-  loading: { table: { disable: true } },
   href: { table: { disable: false } },
   target: { table: { disable: false } },
+};
+
+export const Imitation = ({
+  children,
+  ...args
+}: Omit<IconButtonProps<'div'>, 'children'> & { children: React.ReactElement }) => (
+  <IconButton<'div'> {...args}>
+    <BlobbrIcon scale={children?.props.scale || 'medium'} />
+  </IconButton>
+);
+Imitation.args = {
+  ...defaultArgs,
+  as: 'div',
+  imitation: true,
 };

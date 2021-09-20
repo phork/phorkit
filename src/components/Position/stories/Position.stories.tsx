@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { themes } from 'config/themes';
 import { PageTitle } from 'stories/helpers/PageTitle';
+import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 import { Position, PositionProps } from '../Position';
 
 export default {
@@ -149,9 +150,22 @@ export default {
   },
   decorators: [
     Story => (
-      <div style={{ position: 'relative', width: '40px', height: '40px', backgroundColor: themes.light['color-BG50'] }}>
-        {Story()}
-      </div>
+      <ThemeWrapper withThemeId>
+        {({ themeId }) => (
+          <div
+            style={{
+              backgroundColor: themes[themeId]['color-BG10'],
+              borderRadius: '4px',
+              height: 100,
+              margin: 'auto',
+              position: 'relative',
+              width: 100,
+            }}
+          >
+            {Story()}
+          </div>
+        )}
+      </ThemeWrapper>
     ),
   ],
   parameters: {

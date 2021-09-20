@@ -34,6 +34,12 @@ import { Button } from '../Button';
 <ArgsTable story={PRIMARY_STORY} />
 <Stories />
 
+### Contrast
+
+<Canvas contrast>
+  <Button contrast>Click me</Button>
+</Canvas>
+
 ## Examples
 
 <Canvas>
@@ -193,6 +199,26 @@ import { Button } from '../Button';
           )}
         />
       </Flex>
+    </Rhythm>
+  </ThemeWrapper>
+</Canvas>
+
+### Alignment
+
+<Canvas>
+  <ThemeWrapper>
+    <Rhythm grouped m={-2}>
+      <Rhythm m={2}>
+        <Button align="left" color="primary" style={{ width: 200 }}>
+          Align left
+        </Button>
+        <Button color="primary" style={{ width: 200 }}>
+          Align center
+        </Button>
+        <Button align="right" color="primary" style={{ width: 200 }}>
+          Align right
+        </Button>
+      </Rhythm>
     </Rhythm>
   </ThemeWrapper>
 </Canvas>

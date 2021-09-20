@@ -1,8 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { Mutable } from 'types/utils';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
+import { FormComponentDemo } from '../../stories/FormComponentDemo';
 import { RadioGroup, RadioGroupProps } from '../RadioGroup';
+import { radios } from './helpers/options';
 import RadioGroupDocumentation from './RadioGroup.docs.mdx';
 
 export default {
@@ -74,7 +77,13 @@ export default {
       },
     },
   },
-  decorators: [Story => <div style={{ maxWidth: 400 }}>{Story()}</div>],
+  decorators: [
+    Story => (
+      <FormComponentDemo initialValue="one" property="value" type="radio">
+        {Story()}
+      </FormComponentDemo>
+    ),
+  ],
   parameters: {
     controls: {
       exclude: ['ref'],
@@ -93,26 +102,7 @@ export default {
 const Template: ComponentStory<typeof RadioGroup> = args => <RadioGroup {...args} />;
 
 const defaultArgs = {
-  radios: [
-    {
-      id: 'radio-group-item1',
-      name: 'radio-group-item1',
-      value: 'one',
-      label: 'Super fantastic label one',
-    },
-    {
-      id: 'radio-group-item2',
-      name: 'radio-group-item2',
-      value: 'two',
-      label: 'Super fantastic label two',
-    },
-    {
-      id: 'radio-group-item3',
-      name: 'radio-group-item3',
-      value: 'three',
-      label: 'Super fantastic label three',
-    },
-  ],
+  radios: radios as Mutable<typeof radios>,
   contrast: false,
   layout: 'inline' as RadioGroupProps['layout'],
   legend: 'Super fantastic legend',

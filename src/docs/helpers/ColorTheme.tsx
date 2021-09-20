@@ -17,7 +17,7 @@ const ThemeElement = styled.div<{
   color: ${props => props.color};
   display: flex;
   flex-direction: column;
-  padding: 80px 40px 40px;
+  padding: 40px 40px 60px;
   line-height: 1.5;
   max-width: 670px;
   position: relative;
@@ -25,22 +25,22 @@ const ThemeElement = styled.div<{
 
   &:before {
     background-color: ${props => props.quietBorderColor};
-    top: 40px;
+    bottom: 24px;
     content: '';
     height: 1px;
-    left: 0;
+    left: 40px;
     position: absolute;
-    right: 0;
+    right: 40px;
   }
 
   &:after {
     background-color: ${props => props.borderColor};
-    top: 20px;
+    bottom: 36px;
     content: '';
     height: 1px;
-    left: 0;
+    left: 40px;
     position: absolute;
-    right: 0;
+    right: 40px;
   }
 
   > .quiet {

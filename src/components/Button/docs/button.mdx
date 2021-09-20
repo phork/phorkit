@@ -551,44 +551,40 @@ _Note that the links will cause the page to reload so the state will appear unch
 ### Sized buttons
 
 <Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <Looper
-        list={['pill', 'brick']}
-        render={shape => (
-          <div key={shape}>
-            <Rhythm m={2}>
-              <Button fullWidth color="primary" shape={shape} themeId={themeId}>
-                Full width
-              </Button>
-              <Button color="primary" shape={shape} themeId={themeId} width={200}>
-                Fixed width
-              </Button>
-            </Rhythm>
-          </div>
-        )}
-      />
-    )}
+  <ThemeWrapper>
+    <Looper
+      list={['pill', 'brick']}
+      render={shape => (
+        <div key={shape}>
+          <Rhythm m={2}>
+            <Button fullWidth color="primary" shape={shape}>
+              Full width
+            </Button>
+            <Button color="primary" shape={shape} width={200}>
+              Fixed width
+            </Button>
+          </Rhythm>
+        </div>
+      )}
+    />
   </ThemeWrapper>
 </Playground>
 
 ### Aligned buttons
 
 <Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <Rhythm m={2}>
-        <StyledButton align="left" color="primary" themeId={themeId} width={200}>
-          Align left
-        </StyledButton>
-        <StyledButton color="primary" themeId={themeId} width={200}>
-          Align center
-        </StyledButton>
-        <StyledButton align="right" color="primary" themeId={themeId} width={200}>
-          Align right
-        </StyledButton>
-      </Rhythm>
-    )}
+  <ThemeWrapper>
+    <Rhythm m={2}>
+      <Button align="left" color="primary" style={{ width: 200 }}>
+        Align left
+      </Button>
+      <Button color="primary" style={{ width: 200 }}>
+        Align center
+      </Button>
+      <Button align="right" color="primary" style={{ width: 200 }}>
+        Align right
+      </Button>
+    </Rhythm>
   </ThemeWrapper>
 </Playground>
 

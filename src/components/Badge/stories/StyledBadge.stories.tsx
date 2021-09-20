@@ -46,6 +46,7 @@ const defaultArgs = {
   backgroundColor: '#556270',
   children: 99,
   color: undefined,
+  position: 'top-right' as StyledBadgeProps['position'],
   shape: 'count' as StyledBadgeProps['shape'],
   textColor: '#fff',
 };
