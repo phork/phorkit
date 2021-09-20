@@ -114,6 +114,7 @@ textarea.formboxInput {
   margin-right: 4px; /* [1] */
   padding: 2px 0 4px 0;
 }
+
 /**
  * 1. Shift the input up to the center of the visual input
  *    field so that if any app adds a "fill password" icon

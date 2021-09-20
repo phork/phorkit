@@ -52,7 +52,6 @@ export const FormboxInputWithFormatting = <I extends FormboxInputElementType>({
   const isFormattedHidden = (!isFormattedUsedAsPlaceholder && !hasHtmlValue) || (focused && hasValue);
   const isInputHidden = hasHtmlValue && !focused;
 
-  // the formatted value always have content to force the container to be the right height
   return shouldUseFormatting ? (
     <div className={cx(styles.formboxInputWithFormatting, className)} {...props}>
       <FormboxInputFormatted
@@ -62,7 +61,8 @@ export const FormboxInputWithFormatting = <I extends FormboxInputElementType>({
         isPlaceholder={isFormattedUsedAsPlaceholder}
         themeId={themeId}
       >
-        {formattedValue || placeholder || ''}
+        {/* even if there is no actual value use a non-breaking space to force the container to the right height */}
+        {formattedValue || placeholder || <>&nbsp;</>}
       </FormboxInputFormatted>
       <FormboxInput
         className={styles.formboxInputWithFormatting__input}
