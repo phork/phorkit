@@ -1,3 +1,4 @@
+import { cx } from '@emotion/css';
 import React, { useCallback, useMemo, useState } from 'react';
 import { AccentColor, MergeProps, StateColor } from '../../../types';
 import { ThemeColors, themes } from '../../../config/themes';
@@ -9,30 +10,38 @@ import { StyledSlider, StyledSliderProps } from './StyledSlider';
 
 export interface LocalMultiColorSliderProps {
   colors: Array<StateColor | AccentColor | string>;
-  variant?: 'divider';
 }
 
 export type MultiColorSliderProps = MergeProps<
   Omit<
     StyledSliderProps,
+    | 'contrast'
     | 'handleBackgroundColor'
+    | 'max'
+    | 'min'
+    | 'snap'
+    | 'snapNext'
+    | 'step'
+    | 'tick'
     | 'tickBackgroundColor'
     | 'tickElement'
     | 'tickProps'
-    | 'trackBackground'
+    | 'trackBackgroundColor'
     | 'trackElement'
-    | 'trackFillBackground'
+    | 'trackFillBackgroundColor'
     | 'trackProps'
+    | 'unstyled'
+    | 'validity'
   >,
   LocalMultiColorSliderProps
 >;
 
 export function MultiColorSlider({
+  className,
   colors: initColors,
   onChange,
   themeId: initThemeId,
   value,
-  variant,
   ...props
 }: MultiColorSliderProps) {
   const themeId = useThemeId(initThemeId);
@@ -61,20 +70,20 @@ export function MultiColorSlider({
   return (
     <StyledSlider
       snap
-      className={variant === 'divider' ? styles['slider--noHandle'] : undefined}
+      snapNext
+      className={cx(styles['slider--noHandle'], className)}
       handleBackgroundColor={activeColor}
       max={colors.length}
       min={0}
       onChange={handleChange}
-      snapNext={variant === 'divider'}
       step={1}
       tick={1}
       tickBackgroundColor="transparent"
       tickElement={MultiColorSliderTick}
-      tickProps={{ colors, themeId, variant }}
-      trackBackground={theme['color-FG0-O10']}
+      tickProps={{ colors, themeId, variant: 'divider' }}
+      trackBackgroundColor={theme['color-FG0-O10']}
       trackElement={MultiColorSliderTrack}
-      trackFillBackground="transparent"
+      trackFillBackgroundColor="transparent"
       trackProps={{ colors }}
       value={value}
       {...props}
