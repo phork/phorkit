@@ -67,7 +67,6 @@ const Template: ComponentStory<
 
 const defaultArgs = {
   active: false,
-  align: 'center' as ColoredIconButtonProps['align'],
   as: 'button' as ColoredIconButtonProps['as'],
   color: undefined,
   colorId: 'P60' as ThemeColorIds,
