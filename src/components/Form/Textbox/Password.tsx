@@ -31,15 +31,33 @@ const passwordTranslations: PasswordTranslations = {
 };
 
 export interface LocalPasswordProps {
+  /** The icon that is clicked to change the password from visible to hidden */
   iconHide?: React.FC<SvgIconProps>;
   iconHideSize?: number;
+  /** The icon that is clicked to change the password from hidden to visible */
   iconShow?: React.FC<SvgIconProps>;
   iconShowSize?: number;
   initialType?: 'password' | 'text';
   translations?: PasswordTranslations;
 }
 
-export type PasswordProps = MergeProps<TextboxProps, LocalPasswordProps>;
+export type PasswordProps = MergeProps<
+  Omit<
+    TextboxProps,
+    | 'alwaysShowFormatting'
+    | 'alwaysUseFormatting'
+    | 'centered'
+    | 'clearable'
+    | 'formattedValue'
+    | 'iconAfter'
+    | 'iconAfterActionable'
+    | 'max'
+    | 'min'
+    | 'step'
+    | 'type'
+  >,
+  LocalPasswordProps
+>;
 export type PasswordRef = React.ForwardedRef<HTMLInputElement>;
 
 export function PasswordBase(
@@ -128,5 +146,5 @@ export function PasswordBase(
 
 export const Password = React.forwardRef(PasswordBase);
 
-PasswordBase.displayName = 'PasswordBase';
+// note that the base element cannot have a displayName because it breaks Storybook
 Password.displayName = 'Password';

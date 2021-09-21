@@ -294,8 +294,8 @@ export default {
 const Template: ComponentStory<
   (
     args: Omit<TextareaProps, 'iconAfter' | 'iconBefore'> & {
-      iconAfter: 'small' | 'medium' | 'large';
-      iconBefore: 'small' | 'medium' | 'large';
+      iconAfter?: 'small' | 'medium' | 'large';
+      iconBefore?: 'small' | 'medium' | 'large';
     },
   ) => ReturnType<typeof Textarea>
 > = ({ iconAfter, iconBefore, ...args }) => (

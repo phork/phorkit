@@ -162,7 +162,7 @@ export function TextboxBase(
     translations: customTranslations,
     transparent,
     type = 'text',
-    unthemed = false,
+    unthemed,
     validity,
     value = '',
     variant,
