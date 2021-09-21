@@ -3,14 +3,19 @@ import React from 'react';
 import { ArrowLeftIcon } from 'icons/ArrowLeftIcon';
 import { ArrowRightIcon } from 'icons/ArrowRightIcon';
 import { FormComponentDemo } from '../../stories/helpers/FormComponentDemo';
-import { Textarea, TextareaProps } from '../Textarea';
-import TextareaDocumentation from './Textarea.docs.mdx';
+import { Textbox, TextboxProps } from '../Textbox';
+import TextboxDocumentation from './Textbox.docs.mdx';
 
 export default {
-  title: 'Form/Textarea',
-  component: Textarea,
+  title: 'Form/Textbox',
+  component: Textbox,
   argTypes: {
-    cols: {
+    clearable: {
+      table: {
+        category: 'Appearance controls',
+      },
+    },
+    centered: {
       table: {
         category: 'Appearance controls',
       },
@@ -28,11 +33,6 @@ export default {
       },
     },
     placeholder: {
-      table: {
-        category: 'Appearance controls',
-      },
-    },
-    rows: {
       table: {
         category: 'Appearance controls',
       },
@@ -129,12 +129,32 @@ export default {
         category: 'State controls',
       },
     },
+    empty: {
+      table: {
+        category: 'State controls',
+      },
+    },
+    formattedValue: {
+      table: {
+        category: 'State controls',
+      },
+    },
     inputSize: {
       table: {
         category: 'State controls',
       },
     },
+    max: {
+      table: {
+        category: 'State controls',
+      },
+    },
     maxLength: {
+      table: {
+        category: 'State controls',
+      },
+    },
+    min: {
       table: {
         category: 'State controls',
       },
@@ -145,6 +165,16 @@ export default {
       },
     },
     required: {
+      table: {
+        category: 'State controls',
+      },
+    },
+    step: {
+      table: {
+        category: 'State controls',
+      },
+    },
+    type: {
       table: {
         category: 'State controls',
       },
@@ -167,6 +197,11 @@ export default {
       },
     },
     onChange: {
+      table: {
+        category: 'Action controls',
+      },
+    },
+    onClear: {
       table: {
         category: 'Action controls',
       },
@@ -197,12 +232,22 @@ export default {
       },
     },
 
+    alwaysShowFormatting: {
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
     alwaysTriggerBlur: {
       table: {
         category: 'Uncommon controls',
       },
     },
     alwaysTriggerFocus: {
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
+    alwaysUseFormatting: {
       table: {
         category: 'Uncommon controls',
       },
@@ -271,7 +316,7 @@ export default {
   },
   decorators: [
     (Story, { args }) => (
-      <FormComponentDemo initialValue={args.value} property="value" type="textarea">
+      <FormComponentDemo initialValue={args.value} property="value" type="textbox">
         {Story()}
       </FormComponentDemo>
     ),
@@ -282,24 +327,24 @@ export default {
       sort: 'requiredFirst',
     },
     docs: {
-      page: TextareaDocumentation,
+      page: TextboxDocumentation,
       description: {
-        component: 'A form input for entering multiple lines of text.',
+        component: 'A form input for entering a single line of text.',
       },
     },
     layout: 'centered',
   },
-} as ComponentMeta<typeof Textarea>;
+} as ComponentMeta<typeof Textbox>;
 
 const Template: ComponentStory<
   (
-    args: Omit<TextareaProps, 'iconAfter' | 'iconBefore'> & {
+    args: Omit<TextboxProps, 'iconAfter' | 'iconBefore'> & {
       iconAfter: 'small' | 'medium' | 'large';
       iconBefore: 'small' | 'medium' | 'large';
     },
-  ) => ReturnType<typeof Textarea>
+  ) => ReturnType<typeof Textbox>
 > = ({ iconAfter, iconBefore, ...args }) => (
-  <Textarea
+  <Textbox
     iconAfter={iconAfter && <ArrowRightIcon scale={iconAfter} />}
     iconBefore={iconBefore && <ArrowLeftIcon scale={iconBefore} />}
     {...args}
@@ -307,22 +352,28 @@ const Template: ComponentStory<
 );
 
 const defaultArgs = {
+  alwaysShowFormatting: false,
   alwaysTriggerBlur: false,
   alwaysTriggerFocus: false,
+  alwaysUseFormatting: false,
+  autoFocus: false,
+  centered: false,
+  clearable: false,
   contrast: false,
   disabled: false,
-  inputWidth: 'auto',
+  iconBeforeActionable: false,
+  iconAfterActionable: false,
   label: 'Super fantastic label',
   persistEvents: false,
   readOnly: false,
   required: false,
-  rows: 3,
-  size: 'large' as TextareaProps['size'],
+  size: 'large' as TextboxProps['size'],
   transitional: false,
   transparent: false,
+  type: 'text' as TextboxProps['type'],
   unthemed: false,
   value: 'Hello world',
-  variant: 'underline' as TextareaProps['variant'],
+  variant: 'underline' as TextboxProps['variant'],
   visuallyFocused: false,
   width: '100%',
 };
@@ -351,6 +402,13 @@ OutlineVariant.storyName = 'Variant: Outline';
 OutlineVariant.args = {
   ...defaultArgs,
   variant: 'outline',
+};
+
+export const PillVariant = Template.bind({});
+PillVariant.storyName = 'Variant: Pill';
+PillVariant.args = {
+  ...defaultArgs,
+  variant: 'pill',
 };
 
 export const MinimalVariant = Template.bind({});

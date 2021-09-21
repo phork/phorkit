@@ -47,7 +47,6 @@ export interface LocalTextboxProps
     | 'className'
     | 'contrast'
     | 'disabled'
-    | 'empty'
     | 'iconAfter'
     | 'iconAfterActionable'
     | 'iconBefore'
@@ -314,5 +313,5 @@ export function TextboxBase(
 
 export const Textbox = React.forwardRef(TextboxBase);
 
-TextboxBase.displayName = 'TextboxBase';
+// note that the base element cannot have a displayName because it breaks Storybook
 Textbox.displayName = 'Textbox';

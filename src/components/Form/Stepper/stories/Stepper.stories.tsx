@@ -97,11 +97,6 @@ export default {
         category: 'State controls',
       },
     },
-    visuallyFocused: {
-      table: {
-        category: 'State controls',
-      },
-    },
 
     onAnimationStart: {
       table: {
@@ -221,6 +216,11 @@ export default {
       },
     },
     unthemed: {
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
+    visuallyFocused: {
       table: {
         category: 'Uncommon controls',
       },

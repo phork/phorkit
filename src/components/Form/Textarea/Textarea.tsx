@@ -14,7 +14,6 @@ export interface LocalTextareaProps
     | 'className'
     | 'contrast'
     | 'disabled'
-    | 'empty'
     | 'iconAfter'
     | 'iconAfterActionable'
     | 'iconAfterClassName'
@@ -73,7 +72,6 @@ export function TextareaBase(
     cols,
     contrast = false,
     disabled = false,
-    empty,
     formboxProps,
     iconAfter,
     iconAfterActionable,

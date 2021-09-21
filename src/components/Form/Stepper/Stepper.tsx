@@ -48,7 +48,6 @@ export type StepperProps = MergeProps<
     TextboxProps,
     | 'centered'
     | 'clearable'
-    | 'empty'
     | 'iconAfter'
     | 'iconAfterActionable'
     | 'iconBefore'

@@ -67,7 +67,6 @@ export type LocalSelectProps = Pick<
   | 'className'
   | 'contrast'
   | 'disabled'
-  | 'empty'
   | 'iconAfter'
   | 'iconAfterActionable'
   | 'iconAfterClassName'
@@ -127,7 +126,6 @@ export function SelectBase(
     className,
     contrast = false,
     disabled = false,
-    empty,
     formboxProps,
     iconAfter,
     iconAfterActionable,

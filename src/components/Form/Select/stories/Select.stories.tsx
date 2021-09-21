@@ -122,11 +122,6 @@ export default {
         category: 'State controls',
       },
     },
-    empty: {
-      table: {
-        category: 'State controls',
-      },
-    },
     multiple: {
       table: {
         category: 'State controls',
@@ -149,11 +144,6 @@ export default {
       },
     },
     values: {
-      table: {
-        category: 'State controls',
-      },
-    },
-    visuallyFocused: {
       table: {
         category: 'State controls',
       },
@@ -257,6 +247,11 @@ export default {
         category: 'Uncommon controls',
       },
     },
+    visuallyFocused: {
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
   },
   decorators: [
     Story => (
@@ -287,7 +282,6 @@ const defaultArgs = {
   alwaysTriggerFocus: false,
   contrast: false,
   disabled: false,
-  empty: false,
   inputWidth: 'auto',
   label: 'Super fantastic label',
   multiple: false,
