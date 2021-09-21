@@ -14,27 +14,27 @@ export default {
 
     color: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     divided: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     hideNotification: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     notification: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     width: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
 
@@ -43,17 +43,17 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     contrast: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -61,7 +61,7 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

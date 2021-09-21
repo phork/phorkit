@@ -33,46 +33,46 @@ export default {
 
     bordered: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     color: {
       control: { type: 'select' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     contained: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     container: {
       options: [undefined, 'banner', 'page', 'panel', 'popover'],
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     flexible: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     full: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     scrollable: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     scrollbar: {
       options: ['xsmall', 'small', 'medium'],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
 
@@ -81,12 +81,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -94,12 +94,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unthemed: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

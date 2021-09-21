@@ -12,46 +12,51 @@ export default {
       options: ['primary', 'minimal'],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     inline: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     rounded: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     size: {
       options: ['xsmall', 'small', 'medium', 'large', 'xlarge'],
       control: { type: 'radio' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     transparent: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     variant: {
       control: { type: 'radio' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
 
     focused: {
       table: {
-        category: 'State controls',
+        category: 'State',
       },
     },
     inactive: {
       table: {
-        category: 'State controls',
+        category: 'State',
+      },
+    },
+    items: {
+      table: {
+        category: 'State',
       },
     },
 
@@ -60,7 +65,7 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     className: {
@@ -68,32 +73,32 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     contrast: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     hideFocusOutline: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     mimicSelectOnFocus: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     role: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -101,17 +106,17 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unstyled: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unthemed: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

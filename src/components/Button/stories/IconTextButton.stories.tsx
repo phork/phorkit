@@ -12,6 +12,12 @@ export default {
   title: 'Buttons/IconTextButton',
   component: IconTextButton,
   argTypes: {
+    reverse: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+
     icon: {
       options: ['small', 'medium', 'large'],
       control: {
@@ -22,17 +28,12 @@ export default {
         },
       },
       table: {
-        category: 'Icon controls',
+        category: 'Icons',
       },
     },
     loaderReplaceIcon: {
       table: {
-        category: 'Icon controls',
-      },
-    },
-    reverse: {
-      table: {
-        category: 'Icon controls',
+        category: 'Icons',
       },
     },
     ...buttonStory.argTypes,
@@ -75,9 +76,11 @@ const defaultArgs = {
   disabled: false,
   focused: false,
   fullWidth: false,
+  loaderReplaceIcon: false,
   loading: false,
   noHeight: false,
   noPadding: false,
+  reverse: false,
   shape: 'pill' as IconTextButtonProps['shape'],
   size: 'medium' as IconTextButtonProps['size'],
   type: 'button' as IconTextButtonProps['type'],

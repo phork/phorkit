@@ -12,62 +12,62 @@ export default {
   argTypes: {
     cols: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     inputWidth: {
       control: { type: 'text' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     label: {
       control: { type: 'text' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     placeholder: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     rows: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     size: {
       control: { type: 'radio' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     transitional: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     transparent: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     validity: {
       options: ['success', 'warning', 'danger', undefined],
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     variant: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     width: {
       control: { type: 'text' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
 
@@ -81,12 +81,12 @@ export default {
         },
       },
       table: {
-        category: 'Icon controls',
+        category: 'Icons',
       },
     },
     iconAfterActionable: {
       table: {
-        category: 'Icon controls',
+        category: 'Icons',
       },
     },
     iconAfterClassName: {
@@ -94,7 +94,7 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Icon controls',
+        category: 'Icons',
       },
     },
     iconBefore: {
@@ -107,12 +107,12 @@ export default {
         },
       },
       table: {
-        category: 'Icon controls',
+        category: 'Icons',
       },
     },
     iconBeforeActionable: {
       table: {
-        category: 'Icon controls',
+        category: 'Icons',
       },
     },
     iconBeforeClassName: {
@@ -120,96 +120,86 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Icon controls',
+        category: 'Icons',
       },
     },
 
     disabled: {
       table: {
-        category: 'State controls',
+        category: 'Input',
       },
     },
-    inputSize: {
+    id: {
       table: {
-        category: 'State controls',
+        category: 'Input',
       },
     },
     maxLength: {
       table: {
-        category: 'State controls',
+        category: 'Input',
+      },
+    },
+    name: {
+      table: {
+        category: 'Input',
       },
     },
     readOnly: {
       table: {
-        category: 'State controls',
+        category: 'Input',
       },
     },
     required: {
       table: {
-        category: 'State controls',
+        category: 'Input',
       },
     },
     value: {
       control: { type: 'text' },
       table: {
-        category: 'State controls',
+        category: 'Input',
       },
     },
 
     onAnimationStart: {
       table: {
-        category: 'Action controls',
+        category: 'Actions',
       },
     },
     onBlur: {
       table: {
-        category: 'Action controls',
+        category: 'Actions',
       },
     },
     onChange: {
       table: {
-        category: 'Action controls',
+        category: 'Actions',
       },
     },
     onFocus: {
       table: {
-        category: 'Action controls',
+        category: 'Actions',
       },
     },
     onInputBlur: {
       table: {
-        category: 'Action controls',
+        category: 'Actions',
       },
     },
     onInputFocus: {
       table: {
-        category: 'Action controls',
-      },
-    },
-    onKeyDown: {
-      table: {
-        category: 'Action controls',
-      },
-    },
-    onSubmit: {
-      table: {
-        category: 'Action controls',
+        category: 'Actions',
       },
     },
 
     alwaysTriggerBlur: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     alwaysTriggerFocus: {
       table: {
-        category: 'Uncommon controls',
-      },
-    },
-    autoFocus: {
-      table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     className: {
@@ -217,37 +207,37 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     contrast: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     formboxProps: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     inputClassName: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     inputStyle: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     persistEvents: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -255,17 +245,17 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unthemed: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     visuallyFocused: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

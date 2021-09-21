@@ -12,42 +12,42 @@ export default {
   argTypes: {
     textboxIconColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Style',
       },
     },
     textboxIconHoveredColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Style',
       },
     },
     textboxInputContainerBackgroundColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Style',
       },
     },
     textboxInputContainerBorderColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Style',
       },
     },
     textboxInputContainerFocusedBorderColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Style',
       },
     },
     textboxInputContainerHoveredBorderColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Style',
       },
     },
     textboxInputTextColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Style',
       },
     },
     textboxLabelTextColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Style',
       },
     },
     ...textboxStory.argTypes,

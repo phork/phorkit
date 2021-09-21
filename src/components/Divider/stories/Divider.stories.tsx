@@ -11,20 +11,20 @@ export default {
       options: ['horizontal', 'vertical'],
       control: { type: 'radio' },
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
     variant: {
       control: { type: 'radio' },
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
     volume: {
       options: ['quiet', 'quieter', 'quietest', undefined],
       control: { type: 'radio' },
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
 
@@ -33,17 +33,17 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     contrast: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -51,12 +51,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unthemed: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

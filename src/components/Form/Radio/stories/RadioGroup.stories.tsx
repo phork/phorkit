@@ -12,36 +12,48 @@ export default {
   title: 'Form/RadioGroup',
   component: RadioGroup,
   argTypes: {
-    radios: {
-      table: {
-        category: 'Appearance controls',
-      },
-    },
     layout: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     legend: {
       control: { type: 'text' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     size: {
       table: {
-        category: 'Appearance controls',
-      },
-    },
-    value: {
-      table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
 
     variant: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
+      },
+    },
+
+    name: {
+      table: {
+        category: 'Input',
+      },
+    },
+    radios: {
+      table: {
+        category: 'Input',
+      },
+    },
+    value: {
+      table: {
+        category: 'Input',
+      },
+    },
+
+    onChange: {
+      table: {
+        category: 'Actions',
       },
     },
 
@@ -50,17 +62,17 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     contrast: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -68,12 +80,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unthemed: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

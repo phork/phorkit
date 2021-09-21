@@ -37,6 +37,7 @@ export interface LocalSliderProps extends Omit<ThemeProps, 'unthemed'> {
   /** Force the snap to the next step; otherwise it goes to the closest one */
   snapNext?: boolean;
   step?: number;
+  style?: React.CSSProperties;
   /** Display tick marks at this interval */
   tick?: number;
   tickElement?: React.ElementType;

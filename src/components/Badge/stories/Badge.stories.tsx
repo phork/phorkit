@@ -16,25 +16,30 @@ export default {
     color: {
       control: { type: 'radio' },
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
+      },
+    },
+    outlined: {
+      table: {
+        category: 'Appearance',
       },
     },
     pulsing: {
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
     position: {
       options: ['top-left', 'top-right', 'bottom-left', 'bottom-right', undefined],
       control: { type: 'radio' },
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
     shape: {
       control: { type: 'radio' },
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
 
@@ -43,22 +48,17 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     contrast: {
       table: {
-        category: 'Uncommon controls',
-      },
-    },
-    outlined: {
-      table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -66,12 +66,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unthemed: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },
@@ -115,7 +115,7 @@ const defaultArgs = {
   children: '99',
   color: 'primary' as BadgeProps['color'],
   contrast: false,
-  outline: false,
+  outlined: false,
   position: 'top-right' as BadgeProps['position'],
   pulsing: false,
   shape: 'count' as BadgeProps['shape'],

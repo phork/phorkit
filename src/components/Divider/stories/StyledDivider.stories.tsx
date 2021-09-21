@@ -12,7 +12,7 @@ export default {
   argTypes: {
     dividerColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Styled',
       },
     },
     ...dividerStory.argTypes,

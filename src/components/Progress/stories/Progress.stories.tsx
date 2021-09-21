@@ -7,61 +7,57 @@ export default {
   title: 'Feedback/Progress',
   component: Progress,
   argTypes: {
-    children: {
-      control: { type: 'text' },
-    },
-
     animated: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     color: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     floating: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     orientation: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     rounded: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     size: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     spaced: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     volume: {
       options: ['quiet', 'quieter', 'quietest', undefined],
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
 
     data: {
       table: {
-        category: 'Fill controls',
+        category: 'State',
       },
     },
     percent: {
       control: { type: 'number' },
       table: {
-        category: 'Fill controls',
+        category: 'State',
       },
     },
 
@@ -70,17 +66,17 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     contrast: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -88,12 +84,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unthemed: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

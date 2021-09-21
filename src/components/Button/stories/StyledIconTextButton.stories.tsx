@@ -23,12 +23,17 @@ export default {
         },
       },
       table: {
-        category: 'Icon controls',
+        category: 'Icons',
+      },
+    },
+    loaderReplaceIcon: {
+      table: {
+        category: 'Icons',
       },
     },
     reverse: {
       table: {
-        category: 'Icon controls',
+        category: 'Icons',
       },
     },
     ...buttonStory.argTypes,

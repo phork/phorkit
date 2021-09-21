@@ -10,34 +10,34 @@ export default {
   argTypes: {
     bordered: {
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
     full: {
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
     hoverable: {
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
     magnify: {
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
     raised: {
       options: [false, 10, 20, 30, 40, 100],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
     squared: {
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
 
@@ -46,12 +46,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -59,12 +59,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unthemed: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

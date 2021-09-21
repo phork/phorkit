@@ -16,7 +16,7 @@ export default {
       options: getPrimaryColorIds('light'),
       control: { type: 'select' },
       table: {
-        category: 'Color controls',
+        category: 'Color',
       },
     },
     ...badgeStory.argTypes,

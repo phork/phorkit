@@ -17,37 +17,37 @@ export default {
       options: ['small', undefined],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     valuePosition: {
       options: ['top', 'right', undefined],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     width: {
       control: { type: 'text' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
 
     disabled: {
       table: {
-        category: 'State controls',
+        category: 'Input',
       },
     },
     value: {
       table: {
-        category: 'State controls',
+        category: 'Input',
       },
     },
 
     onChange: {
       table: {
-        category: 'Action controls',
+        category: 'Actions',
       },
     },
 
@@ -56,17 +56,17 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     contrast: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     formatValue: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     labelProps: {
@@ -74,17 +74,17 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     persistEvents: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -92,12 +92,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unstyled: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

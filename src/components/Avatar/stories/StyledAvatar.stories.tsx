@@ -12,12 +12,12 @@ export default {
   argTypes: {
     backgroundColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Styled',
       },
     },
     textColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Styled',
       },
     },
     ...avatarStory.argTypes,

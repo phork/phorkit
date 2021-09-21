@@ -18,17 +18,17 @@ export default {
         },
       },
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
     inline: {
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
     reverse: {
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
     text: {
@@ -36,7 +36,7 @@ export default {
         type: 'text',
       },
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
 
@@ -45,22 +45,22 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     iconClassName: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     textClassName: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

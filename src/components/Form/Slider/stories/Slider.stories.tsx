@@ -12,77 +12,87 @@ export default {
       control: { type: 'text' },
     },
 
-    max: {
-      table: {
-        category: 'State controls',
-      },
-    },
-    min: {
-      table: {
-        category: 'State controls',
-      },
-    },
     scale: {
       options: ['small', undefined],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     snap: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     snapNext: {
       table: {
-        category: 'Appearance controls',
-      },
-    },
-    step: {
-      table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     tick: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     validity: {
       options: ['success', 'warning', 'danger', undefined],
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     valuePosition: {
       options: ['top', 'right', undefined],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     width: {
       control: { type: 'text' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
 
     disabled: {
       table: {
-        category: 'State controls',
+        category: 'Input',
+      },
+    },
+    id: {
+      table: {
+        category: 'Input',
+      },
+    },
+    max: {
+      table: {
+        category: 'Input',
+      },
+    },
+    min: {
+      table: {
+        category: 'Input',
+      },
+    },
+    name: {
+      table: {
+        category: 'Input',
+      },
+    },
+    step: {
+      table: {
+        category: 'Input',
       },
     },
     value: {
       table: {
-        category: 'State controls',
+        category: 'Input',
       },
     },
 
     onChange: {
       table: {
-        category: 'Action controls',
+        category: 'Actions',
       },
     },
 
@@ -91,17 +101,17 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     contrast: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     formatValue: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     labelProps: {
@@ -109,17 +119,17 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     persistEvents: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -127,7 +137,7 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     tickElement: {
@@ -135,7 +145,7 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     trackElement: {
@@ -143,7 +153,7 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     trackProps: {
@@ -151,7 +161,7 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     tickProps: {
@@ -159,12 +169,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unstyled: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

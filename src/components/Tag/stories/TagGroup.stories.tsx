@@ -8,36 +8,36 @@ export default {
   title: 'Display/TagGroup',
   component: TagGroup,
   argTypes: {
-    onClick: {
-      control: {
-        disable: true,
-      },
-    },
-
     actionable: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     shape: {
       options: ['pill', 'brick'],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     size: {
       options: ['small', 'medium', 'large'],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     weight: {
       options: ['solid', 'shaded', 'outlined', 'ghost', 'inline'],
       control: { type: 'radio' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
+      },
+    },
+
+    tags: {
+      table: {
+        category: 'State',
       },
     },
 
@@ -46,17 +46,17 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     contrast: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -64,12 +64,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unthemed: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },
@@ -105,13 +105,14 @@ const defaultArgs = {
   contrast: false,
   shape: 'pill' as TagGroupProps['shape'],
   size: 'small' as TagGroupProps['size'],
-  weight: 'shaded' as TagGroupProps['weight'],
   tags: [
     { id: 'first', label: 'First' },
     { id: 'second', label: 'Second' },
     { id: 'third', label: 'Third' },
     { id: 'fourth', label: 'Fourth' },
   ],
+  unthemed: false,
+  weight: 'shaded' as TagGroupProps['weight'],
 };
 
 export const Default = Template.bind({});

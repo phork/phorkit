@@ -13,28 +13,23 @@ export default {
 
     actionable: {
       table: {
-        category: 'Appearance controls',
-      },
-    },
-    flush: {
-      table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     shape: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     size: {
       options: ['2xsmall', 'xsmall', 'small', 'medium', 'large'],
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     weight: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
 
@@ -43,7 +38,7 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     className: {
@@ -51,17 +46,22 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     contrast: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
+      },
+    },
+    flush: {
+      table: {
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -69,12 +69,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unthemed: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

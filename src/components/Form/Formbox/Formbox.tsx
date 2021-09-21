@@ -129,7 +129,6 @@ export function FormboxBase(
       readOnly={readOnly}
       ref={combineRefs}
       size={size}
-      style={{ ...style, ...(width !== undefined ? { width: typeof width === 'number' ? `${width}px` : width } : {}) }}
       themeId={themeId}
       transitional={transitional}
       transparent={transparent}

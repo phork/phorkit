@@ -12,19 +12,19 @@ export default {
     position: {
       control: { type: 'inline-radio' },
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
     scale: {
       control: { type: 'radio' },
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
     size: {
       control: { type: 'number' },
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
 
@@ -33,17 +33,17 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     contrast: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -51,12 +51,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unthemed: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

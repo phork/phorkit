@@ -9,14 +9,14 @@ export default {
   argTypes: {
     color: {
       control: { type: 'color' },
-      category: 'Appearance controls',
+      category: 'Appearance',
     },
     position: {
       control: 'radio',
-      category: 'Appearance controls',
+      category: 'Appearance',
     },
     size: {
-      category: 'Appearance controls',
+      category: 'Appearance',
     },
 
     className: {
@@ -24,20 +24,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
-      },
-    },
-    themeId: {
-      control: {
-        disable: true,
-      },
-      table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

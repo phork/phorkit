@@ -21,66 +21,67 @@ export default {
       options: ['row', 'column'],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Primary controls',
+        category: 'Flexbox',
       },
     },
     alignContent: {
       control: { type: 'radio' },
       table: {
-        category: 'Primary controls',
+        category: 'Flexbox',
       },
     },
     alignItems: {
       control: { type: 'radio' },
       table: {
-        category: 'Primary controls',
+        category: 'Flexbox',
       },
     },
     alignSelf: {
       control: { type: 'radio' },
       table: {
-        category: 'Primary controls',
+        category: 'Flexbox',
       },
     },
     justifyContent: {
       control: { type: 'radio' },
       table: {
-        category: 'Primary controls',
+        category: 'Flexbox',
       },
     },
     flexible: {
       table: {
-        category: 'Primary controls',
-      },
-    },
-    full: {
-      table: {
-        category: 'Primary controls',
+        category: 'Flexbox',
       },
     },
     inflexible: {
       table: {
-        category: 'Primary controls',
+        category: 'Flexbox',
       },
     },
     inline: {
       table: {
-        category: 'Primary controls',
-      },
-    },
-    max: {
-      table: {
-        category: 'Primary controls',
+        category: 'Flexbox',
       },
     },
     reverse: {
       table: {
-        category: 'Primary controls',
+        category: 'Flexbox',
       },
     },
     wrap: {
       table: {
-        category: 'Primary controls',
+        category: 'Flexbox',
+      },
+    },
+
+    full: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    max: {
+      table: {
+        category: 'Appearance',
       },
     },
 
@@ -89,12 +90,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

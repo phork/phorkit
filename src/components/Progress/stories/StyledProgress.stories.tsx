@@ -12,17 +12,17 @@ export default {
   argTypes: {
     backgroundColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Styled',
       },
     },
     segmentAnimationColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Styled',
       },
     },
     segmentColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Styled',
       },
     },
     ...dividerStory.argTypes,

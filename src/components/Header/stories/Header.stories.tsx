@@ -12,7 +12,7 @@ export default {
       options: [false, true, 'pseudo'],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
     children: {
@@ -20,19 +20,19 @@ export default {
     },
     full: {
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
     variant: {
       control: { type: 'inline-radio' },
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
     volume: {
       control: { type: 'inline-radio' },
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
 
@@ -41,17 +41,17 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     contrast: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -59,12 +59,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unthemed: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

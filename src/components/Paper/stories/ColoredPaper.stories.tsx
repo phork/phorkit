@@ -12,17 +12,17 @@ export default {
   title: 'Surfaces/Paper/ColoredPaper',
   component: ColoredPaper,
   argTypes: {
-    ...paperStory.argTypes,
-    children: {
-      table: {
-        disable: true,
-      },
-    },
     colorId: {
       options: getPrimaryColorIds('light'),
       control: { type: 'select' },
       table: {
-        category: 'Color controls',
+        category: 'Color',
+      },
+    },
+    ...paperStory.argTypes,
+    children: {
+      control: {
+        disable: true,
       },
     },
   },

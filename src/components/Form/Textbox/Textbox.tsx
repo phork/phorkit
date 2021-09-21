@@ -49,8 +49,10 @@ export interface LocalTextboxProps
     | 'disabled'
     | 'iconAfter'
     | 'iconAfterActionable'
+    | 'iconAfterClassName'
     | 'iconBefore'
     | 'iconBeforeActionable'
+    | 'iconBeforeClassName'
     | 'id'
     | 'inputWidth'
     | 'label'
@@ -82,6 +84,7 @@ export interface LocalTextboxProps
   formattedValue?: React.ReactChild;
   clearable?: boolean;
   inputClassName?: string;
+  /** The visible width, in characters, of the input */
   inputSize?: number;
   inputStyle?: React.CSSProperties;
   max?: number;

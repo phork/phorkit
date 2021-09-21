@@ -23,39 +23,39 @@ export default {
 
     fullWidth: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     inputWidth: {
       control: { type: 'text' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     labelWidth: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     reverse: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     spread: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     vertical: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
 
     as: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     className: {
@@ -63,12 +63,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

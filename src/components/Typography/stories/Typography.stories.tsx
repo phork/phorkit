@@ -7,17 +7,42 @@ export default {
   title: 'Utilities/Typography',
   component: Typography,
   argTypes: {
-    align: {
-      control: { type: 'inline-radio' },
-    },
     children: {
       control: { type: 'text' },
     },
+
+    align: {
+      control: { type: 'inline-radio' },
+      table: {
+        category: 'Appearance',
+      },
+    },
     color: {
       control: { type: 'radio' },
+      table: {
+        category: 'Appearance',
+      },
+    },
+    fullWidth: {
+      table: {
+        category: 'Appearance',
+      },
     },
     heading: {
       control: { type: 'radio' },
+      table: {
+        category: 'Appearance',
+      },
+    },
+    reset: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    size: {
+      table: {
+        category: 'Appearance',
+      },
     },
     variants: {
       options: [
@@ -45,12 +70,21 @@ export default {
         'xsmall-caps',
       ],
       control: { type: 'check' },
+      table: {
+        category: 'Appearance',
+      },
     },
     volume: {
       control: { type: 'inline-radio' },
+      table: {
+        category: 'Appearance',
+      },
     },
     weight: {
       control: { type: 'radio' },
+      table: {
+        category: 'Appearance',
+      },
     },
 
     as: {
@@ -58,7 +92,7 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     className: {
@@ -66,12 +100,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -79,7 +113,7 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

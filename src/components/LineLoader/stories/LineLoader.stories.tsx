@@ -16,27 +16,33 @@ export default {
   argTypes: {
     fixed: {
       control: { type: 'boolean' },
+      table: {
+        category: 'Appearance',
+      },
     },
     position: {
       control: { type: 'radio' },
+      table: {
+        category: 'Appearance',
+      },
     },
 
     duration: {
       control: { type: 'number' },
       table: {
-        category: 'Animation controls',
+        category: 'Animation',
       },
     },
     loops: {
       control: { type: 'number' },
       table: {
-        category: 'Animation controls',
+        category: 'Animation',
       },
     },
     percent: {
       control: { type: 'number' },
       table: {
-        category: 'Animation controls',
+        category: 'Animation',
       },
     },
     onFinish: {
@@ -44,7 +50,7 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Action controls',
+        category: 'Actions',
       },
     },
     onLoop: {
@@ -52,7 +58,7 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Action controls',
+        category: 'Actions',
       },
     },
 
@@ -61,17 +67,17 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     contrast: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -79,12 +85,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unthemed: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

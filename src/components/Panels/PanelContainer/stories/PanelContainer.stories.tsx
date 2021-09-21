@@ -17,29 +17,29 @@ export default {
 
     absolute: {
       table: {
-        category: 'Panel controls',
+        category: 'Appearance',
       },
     },
     full: {
       table: {
-        category: 'Panel controls',
+        category: 'Appearance',
       },
     },
     orientation: {
       options: ['vertical', 'horizontal'],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Panel controls',
+        category: 'Appearance',
       },
     },
     reverse: {
       table: {
-        category: 'Panel controls',
+        category: 'Appearance',
       },
     },
     viewport: {
       table: {
-        category: 'Panel controls',
+        category: 'Appearance',
       },
     },
 
@@ -48,12 +48,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

@@ -10,9 +10,24 @@ export default {
   title: 'Display/Tag/StyledTag',
   component: StyledTag,
   argTypes: {
-    tagColor: {
+    activePrimaryColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Styled',
+      },
+    },
+    hoveredPrimaryColor: {
+      table: {
+        category: 'Styled',
+      },
+    },
+    inverseColor: {
+      table: {
+        category: 'Styled',
+      },
+    },
+    primaryColor: {
+      table: {
+        category: 'Styled',
       },
     },
     ...tagStory.argTypes,

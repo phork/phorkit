@@ -9,27 +9,38 @@ export default {
   argTypes: {
     actionable: {
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
     color: {
       options: ['primary', 'neutral'],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
       },
     },
     size: {
       options: ['xsmall', 'small', 'medium', 'large', 'xlarge', '2xlarge', '3xlarge'],
       control: { type: 'radio' },
       table: {
-        category: 'Primary controls',
+        category: 'Appearance',
+      },
+    },
+
+    imgSrc: {
+      table: {
+        category: 'Content',
+      },
+    },
+    initials: {
+      table: {
+        category: 'Content',
       },
     },
 
     as: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     className: {
@@ -37,17 +48,17 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     contrast: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -55,12 +66,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unthemed: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

@@ -11,42 +11,41 @@ export default {
       control: { type: 'text' },
     },
 
+    disabled: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    focused: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    muted: {
+      table: {
+        category: 'Appearance',
+      },
+    },
     noWrap: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     strength: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     validity: {
       options: ['success', 'warning', 'danger', undefined],
       table: {
-        category: 'Appearance controls',
-      },
-    },
-
-    disabled: {
-      table: {
-        category: 'State controls',
-      },
-    },
-    focused: {
-      table: {
-        category: 'State controls',
-      },
-    },
-    muted: {
-      table: {
-        category: 'State controls',
+        category: 'Appearance',
       },
     },
 
     as: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     className: {
@@ -54,17 +53,17 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     contrast: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -72,12 +71,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unthemed: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

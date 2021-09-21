@@ -11,22 +11,27 @@ export default {
     children: {
       control: { type: 'text' },
     },
+
+    underline: {
+      table: {
+        category: 'Appearance',
+      },
+    },
     block: {
       control: { type: 'text' },
+      table: {
+        category: 'Appearance',
+      },
     },
+
     href: {
       table: {
-        category: 'Primary controls',
+        category: 'Anchor',
       },
     },
     target: {
       table: {
-        category: 'Primary controls',
-      },
-    },
-    underline: {
-      table: {
-        category: 'Primary controls',
+        category: 'Anchor',
       },
     },
 
@@ -35,17 +40,17 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     contrast: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -53,17 +58,17 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unstyled: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unthemed: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

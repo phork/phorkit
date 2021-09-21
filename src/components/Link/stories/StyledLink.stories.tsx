@@ -12,17 +12,17 @@ export default {
   argTypes: {
     activeColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Styled',
       },
     },
     hoveredColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Styled',
       },
     },
     textColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Styled',
       },
     },
     ...linkStory.argTypes,

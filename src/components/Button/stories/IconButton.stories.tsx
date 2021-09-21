@@ -13,6 +13,11 @@ export default {
   component: IconButton,
   argTypes: {
     ...buttonStory.argTypes,
+    align: {
+      table: {
+        disable: true,
+      },
+    },
     children: {
       options: ['small', 'medium', 'large', 'xlarge'],
       control: {
@@ -22,9 +27,6 @@ export default {
           large: '<BlobbrIcon scale="large" />',
           xlarge: '<BlobbrIcon scale="xlarge" />',
         },
-      },
-      table: {
-        category: 'Icon controls',
       },
     },
     shape: {
