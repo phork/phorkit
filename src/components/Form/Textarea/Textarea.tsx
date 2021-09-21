@@ -53,7 +53,7 @@ export interface LocalTextareaProps
   required?: boolean;
   rows?: number;
   value?: FormboxValue;
-  variant: Exclude<FormboxProps['variant'], 'pill'>;
+  variant?: Exclude<FormboxProps['variant'], 'pill'>;
 }
 
 export type TextareaProps = MergeProps<
