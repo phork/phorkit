@@ -5,11 +5,11 @@ import { Canvas } from 'stories/helpers/Canvas';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 import { FormComponentDemo } from '../../stories/helpers/FormComponentDemo';
-import { NotifiedStepper } from '../NotifiedStepper';
-import { Stepper } from '../Stepper';
+import { NotifiedTextarea } from '../NotifiedTextarea';
+import { Textarea } from '../Textarea';
 import { variants } from './helpers/variants';
 
-<PageTitle src="components/Stepper" title="Stepper" />
+<PageTitle src="components/Textarea" title="Textarea" />
 <Subtitle />
 <Description />
 <Primary />
@@ -18,7 +18,7 @@ import { variants } from './helpers/variants';
 
 ## Examples
 
-### Basic stepper
+### Basic textarea
 
 <Canvas>
   <ThemeWrapper>
@@ -26,8 +26,8 @@ import { variants } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue={10} property="value" type="stepper">
-            <Stepper aria-label="Super fantastic label" variant={variant} />
+          <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
+            <Textarea variant={variant} />
           </FormComponentDemo>
         </Rhythm>
       )}
@@ -35,7 +35,7 @@ import { variants } from './helpers/variants';
   </ThemeWrapper>
 </Canvas>
 
-### Ticked stepper
+### Textarea with rows and cols
 
 <Canvas>
   <ThemeWrapper>
@@ -43,8 +43,8 @@ import { variants } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue={10} property="value" type="stepper">
-            <Stepper aria-label="Super fantastic label" max={100} min={-100} step={10} variant={variant} />
+          <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
+            <Textarea cols={12} rows={2} variant={variant} />
           </FormComponentDemo>
         </Rhythm>
       )}
@@ -52,7 +52,7 @@ import { variants } from './helpers/variants';
   </ThemeWrapper>
 </Canvas>
 
-### Labeled stepper
+### Textarea with max length
 
 <Canvas>
   <ThemeWrapper>
@@ -60,8 +60,8 @@ import { variants } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue={10} property="value" type="stepper">
-            <Stepper label="Cool label" max={12} min={2} step={1} variant={variant} />
+          <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
+            <Textarea maxLength={12} variant={variant} />
           </FormComponentDemo>
         </Rhythm>
       )}
@@ -69,7 +69,7 @@ import { variants } from './helpers/variants';
   </ThemeWrapper>
 </Canvas>
 
-### Stepper with placeholder
+### Labeled textarea
 
 <Canvas>
   <ThemeWrapper>
@@ -77,8 +77,8 @@ import { variants } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm grouped py={3}>
-          <FormComponentDemo property="value" type="stepper">
-            <Stepper label="Cool label" max={12} min={2} placeholder={10} step={1} variant={variant} />
+          <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
+            <Textarea label="Super fantastic label" variant={variant} />
           </FormComponentDemo>
         </Rhythm>
       )}
@@ -86,7 +86,7 @@ import { variants } from './helpers/variants';
   </ThemeWrapper>
 </Canvas>
 
-### Read only stepper
+### Transitional labeled textarea
 
 <Canvas>
   <ThemeWrapper>
@@ -94,8 +94,8 @@ import { variants } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue={10} property="value" type="stepper">
-            <Stepper readOnly label="Cool label" max={12} min={2} step={1} variant={variant} />
+          <FormComponentDemo property="value" type="textarea">
+            <Textarea transitional label="Super fantastic label" variant={variant} />
           </FormComponentDemo>
         </Rhythm>
       )}
@@ -103,7 +103,7 @@ import { variants } from './helpers/variants';
   </ThemeWrapper>
 </Canvas>
 
-### Disabled stepper
+### Labeled textarea with placeholder
 
 <Canvas>
   <ThemeWrapper>
@@ -111,8 +111,8 @@ import { variants } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue={30} property="value" type="stepper">
-            <Stepper disabled aria-label="Super fantastic label" variant={variant} />
+          <FormComponentDemo property="value" type="textarea">
+            <Textarea label="Super fantastic label" placeholder="Hello world" variant={variant} />
           </FormComponentDemo>
         </Rhythm>
       )}
@@ -120,7 +120,7 @@ import { variants } from './helpers/variants';
   </ThemeWrapper>
 </Canvas>
 
-### Danger stepper
+### Read only textarea
 
 <Canvas>
   <ThemeWrapper>
@@ -128,8 +128,8 @@ import { variants } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue={60} property="value" type="stepper">
-            <Stepper aria-label="Super fantastic label" validity="danger" variant={variant} />
+          <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
+            <Textarea readOnly label="Super fantastic label" variant={variant} />
           </FormComponentDemo>
         </Rhythm>
       )}
@@ -137,7 +137,7 @@ import { variants } from './helpers/variants';
   </ThemeWrapper>
 </Canvas>
 
-### Warning stepper
+### Disabled textarea
 
 <Canvas>
   <ThemeWrapper>
@@ -145,8 +145,8 @@ import { variants } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue={60} property="value" type="stepper">
-            <Stepper aria-label="Super fantastic label" validity="warning" variant={variant} />
+          <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
+            <Textarea disabled label="Super fantastic label" variant={variant} />
           </FormComponentDemo>
         </Rhythm>
       )}
@@ -154,7 +154,7 @@ import { variants } from './helpers/variants';
   </ThemeWrapper>
 </Canvas>
 
-### Success stepper
+### Danger textarea
 
 <Canvas>
   <ThemeWrapper>
@@ -162,8 +162,8 @@ import { variants } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue={60} property="value" type="stepper">
-            <Stepper aria-label="Super fantastic label" validity="success" variant={variant} />
+          <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
+            <Textarea transitional label="Super fantastic label" validity="danger" variant={variant} />
           </FormComponentDemo>
         </Rhythm>
       )}
@@ -171,7 +171,41 @@ import { variants } from './helpers/variants';
   </ThemeWrapper>
 </Canvas>
 
-### Contrast stepper
+### Warning textarea
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
+            <Textarea transitional label="Super fantastic label" validity="warning" variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Success textarea
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
+            <Textarea transitional label="Super fantastic label" validity="success" variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Contrast textarea
 
 <Canvas contrast>
   <ThemeWrapper>
@@ -179,8 +213,8 @@ import { variants } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm grouped py={3}>
-          <FormComponentDemo contrast initialValue={30} property="value" type="stepper">
-            <Stepper contrast aria-label="Super fantastic label" variant={variant} />
+          <FormComponentDemo contrast initialValue="Hello world" property="value" type="textarea">
+            <Textarea contrast transitional label="Super fantastic label" variant={variant} />
           </FormComponentDemo>
         </Rhythm>
       )}
@@ -188,7 +222,7 @@ import { variants } from './helpers/variants';
   </ThemeWrapper>
 </Canvas>
 
-### Notifications
+## Notifications
 
 <Canvas>
   <ThemeWrapper>
@@ -199,9 +233,8 @@ import { variants } from './helpers/variants';
           list={['success', 'danger', 'warning', 'primary', 'neutral']}
           render={level => (
             <Rhythm grouped py={3}>
-              <FormComponentDemo initialValue={10} property="value" type="stepper">
-                <NotifiedStepper
-                  aria-label="Super fantastic label"
+              <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
+                <NotifiedTextarea
                   level={level}
                   notification={`This is an example ${level} notification.`}
                   variant={variant}

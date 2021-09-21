@@ -21,11 +21,13 @@ export default {
       },
     },
     inputWidth: {
+      control: { type: 'text' },
       table: {
         category: 'Appearance controls',
       },
     },
     label: {
+      control: { type: 'text' },
       table: {
         category: 'Appearance controls',
       },
@@ -62,6 +64,7 @@ export default {
       },
     },
     width: {
+      control: { type: 'text' },
       table: {
         category: 'Appearance controls',
       },
