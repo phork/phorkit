@@ -1,0 +1,392 @@
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
+import { SearchIcon } from 'icons/SearchIcon';
+import { SpinnerIcon } from 'icons/SpinnerIcon';
+import { EmailIcon } from 'icons/internal/EmailIcon';
+import { Button } from 'components/Button';
+import { Flex } from 'components/Flex';
+import { Rhythm } from 'components/Rhythm';
+import { Looper } from 'docs/helpers/Looper';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { Canvas } from 'stories/helpers/Canvas';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
+import { FormComponentDemo } from '../../stories/helpers/FormComponentDemo';
+import { NotifiedTextbox } from '../NotifiedTextbox';
+import { Textbox } from '../Textbox';
+import { textbox as variants } from './helpers/variants';
+
+<PageTitle src="components/Textbox" title="Textbox" />
+<Subtitle />
+<Description />
+<Primary />
+<ArgsTable story={PRIMARY_STORY} />
+<Stories />
+
+## Examples
+
+### Basic textbox
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue="Hello world" property="value" type="textbox">
+            <Textbox variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Labeled textbox
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue="Hello world" property="value" type="textbox">
+            <Textbox label="Super fantastic label" variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Transitional labeled textbox
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo property="value" type="textbox">
+            <Textbox transitional label="Super fantastic label" variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Transitional, clearable labeled textbox
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo property="value" type="textbox">
+            <Textbox clearable transitional label="Super fantastic label" variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Transitional labeled textbox with icons
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo property="value" type="textbox">
+            <Textbox
+              transitional
+              iconAfter={<SpinnerIcon size={14} />}
+              iconBefore={SearchIcon}
+              label="Super fantastic label"
+              variant={variant}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Labeled textbox with placeholder
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo property="value" type="textbox">
+            <Textbox label="Super fantastic label" placeholder="Hello world" variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Labeled textbox with HTML placeholder
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo property="value" type="textbox">
+            <Textbox label="Super fantastic label" placeholder={<i>Hello world</i>} variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Transitional labeled textbox with HTML value
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <StateWrapper key={variant}>
+          {({ state: value, setState: setValue }) => (
+            <Rhythm grouped py={3} style={{ maxWidth: 400 }}>
+              <Textbox
+                alwaysUseFormatting
+                clearable
+                transitional
+                formattedValue={value ? <i>{value}</i> : undefined}
+                label="Super fantastic label"
+                onChange={(event, value) => setValue(value)}
+                value={value}
+                variant={variant}
+              />
+            </Rhythm>
+          )}
+        </StateWrapper>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Clearable search textbox
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue="Hello world" property="value" type="textbox">
+            <Textbox
+              clearable
+              transitional
+              iconBefore={<SearchIcon />}
+              label="Super fantastic label"
+              variant={variant}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Read only textbox
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue="Hello world" property="value" type="textbox">
+            <Textbox readOnly label="Super fantastic label" variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Textbox with focus/blur callbacks
+
+<Canvas>
+  <StateWrapper initialState={false}>
+    {({ state: isFocused, setState: setFocused }) => (
+      <FormComponentDemo property="value" type="textbox">
+        <Textbox
+          label={isFocused ? 'Focused label' : 'Blurred label'}
+          onBlur={event => setFocused(false)}
+          onFocus={event => setFocused(true)}
+          placeholder="Hello world"
+        />
+      </FormComponentDemo>
+    )}
+  </StateWrapper>
+</Canvas>
+
+### Disabled textbox
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue="Hello world" property="value" type="textbox">
+            <Textbox disabled label="Super fantastic label" variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Danger textbox
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue="Hello world" property="value" type="textbox">
+            <Textbox transitional label="Super fantastic label" validity="danger" variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Warning textbox
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue="Hello world" property="value" type="textbox">
+            <Textbox transitional label="Super fantastic label" validity="warning" variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Success textbox
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue="Hello world" property="value" type="textbox">
+            <Textbox transitional label="Super fantastic label" validity="success" variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Contrast textbox
+
+<Canvas contrast>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo property="value" type="textbox">
+            <Textbox
+              clearable
+              contrast
+              transitional
+              iconBefore={<SearchIcon />}
+              label="Super fantastic label"
+              placeholder="Hello world"
+              variant={variant}
+            />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+## Auto complete
+
+<Canvas>
+  <ThemeWrapper>
+    <form autoComplete="on" name="autoComplete">
+      <Looper
+        list={variants}
+        render={variant => (
+          <Rhythm grouped py={3}>
+            <FormComponentDemo property="value" type="textbox">
+              <Textbox
+                clearable
+                transitional
+                autoComplete="email"
+                iconBefore={EmailIcon}
+                label="Email"
+                name={`email-${variant}`}
+                type="email"
+                variant={variant}
+              />
+            </FormComponentDemo>
+          </Rhythm>
+        )}
+      />
+      <Rhythm ml={3} mt={4} pr={3} style={{ maxWidth: 400 }}>
+        <Flex justifyContent="flex-end">
+          <Button color="primary" shape="brick" type="submit" weight="shaded">
+            Submit
+          </Button>
+        </Flex>
+      </Rhythm>
+    </form>
+  </ThemeWrapper>
+</Canvas>
+
+## Notifications
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Looper
+          list={['success', 'danger', 'warning', 'primary', 'neutral']}
+          render={level => (
+            <Rhythm grouped py={3}>
+              <FormComponentDemo initialValue="Hello world" property="value" type="textbox">
+                <NotifiedTextbox
+                  clearable
+                  transitional
+                  label="Super fantastic label"
+                  level={level}
+                  notification={`This is an example ${level} notification.`}
+                  variant={variant}
+                />
+              </FormComponentDemo>
+            </Rhythm>
+          )}
+        />
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
