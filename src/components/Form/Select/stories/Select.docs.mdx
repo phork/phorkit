@@ -205,23 +205,6 @@ import { variants } from './helpers/variants';
   </ThemeWrapper>
 </Canvas>
 
-### Disabled select
-
-<Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={variants}
-      render={variant => (
-        <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue="yellow" property="value" type="select">
-            <Select disabled label="Super fantastic label" options={options} variant={variant} />
-          </FormComponentDemo>
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
-</Canvas>
-
 ### Read only select
 
 <Canvas>
@@ -249,6 +232,23 @@ import { variants } from './helpers/variants';
         <Rhythm grouped py={3}>
           <FormComponentDemo initialValue={['yellow', 'blue']} property="values" type="select">
             <Select multiple readOnly label="Super fantastic label" options={options} variant={variant} />
+          </FormComponentDemo>
+        </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Canvas>
+
+### Disabled select
+
+<Canvas>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue="yellow" property="value" type="select">
+            <Select disabled label="Super fantastic label" options={options} variant={variant} />
           </FormComponentDemo>
         </Rhythm>
       )}

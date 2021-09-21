@@ -266,6 +266,7 @@ export function TextboxBase(
           <FormboxInputWithFormatting<'input'>
             alwaysShowFormatting={alwaysShowFormatting}
             alwaysUseFormatting={alwaysUseFormatting}
+            centered={centered}
             contrast={contrast}
             focused={focused}
             formattedValue={formattedValue}

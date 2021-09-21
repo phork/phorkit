@@ -8,7 +8,7 @@
   font-size: 12px;
 
   &:not(.notification--divided) {
-    margin-top: 4px;
+    margin-top: 8px;
   }
 }
 

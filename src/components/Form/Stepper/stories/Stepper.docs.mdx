@@ -1,29 +1,32 @@
----
-name: Stepper
-menu: Forms
-route: /components/FormStepper
----
-
-import { Playground, Props } from 'docz';
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { Rhythm } from 'components/Rhythm';
 import { Looper } from 'docs/helpers/Looper';
-import { PageTitle } from 'docs/helpers/PageTitle';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
-import { Stepper, NotifiedStepper } from '../index';
-import { variants, sizes } from './helpers/variants';
+import { Canvas } from 'stories/helpers/Canvas';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
+import { FormComponentDemo } from '../../stories/helpers/FormComponentDemo';
+import { NotifiedStepper } from '../NotifiedStepper';
+import { Stepper } from '../Stepper';
+import { variants } from './helpers/variants';
 
-<PageTitle src="components/Form/Stepper" title="Stepper" />
+<PageTitle src="components/Stepper" title="Stepper" />
+<Subtitle />
+<Description />
+<Primary />
+<ArgsTable story={PRIMARY_STORY} />
+<Stories />
 
-## Basic stepper
+## Examples
 
-<Playground>
+### Basic stepper
+
+<Canvas>
   <ThemeWrapper>
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo unwrapped initialValue={10} property="value" type="stepper">
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue={10} property="value" type="stepper">
             <Stepper
               aria-label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -34,17 +37,17 @@ import { variants, sizes } from './helpers/variants';
       )}
     />
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
-## Ticked stepper
+### Ticked stepper
 
-<Playground>
+<Canvas>
   <ThemeWrapper>
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo unwrapped initialValue={10} property="value" type="stepper">
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue={10} property="value" type="stepper">
             <Stepper
               aria-label="Super fantastic label"
               max={100}
@@ -58,17 +61,17 @@ import { variants, sizes } from './helpers/variants';
       )}
     />
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
-## Labeled stepper
+### Labeled stepper
 
-<Playground>
+<Canvas>
   <ThemeWrapper>
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo unwrapped initialValue={10} property="value" type="stepper">
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue={10} property="value" type="stepper">
             <Stepper
               label="Cool label"
               max={12}
@@ -82,17 +85,17 @@ import { variants, sizes } from './helpers/variants';
       )}
     />
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
-## Stepper with placeholder
+### Stepper with placeholder
 
-<Playground>
+<Canvas>
   <ThemeWrapper>
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo unwrapped property="value" type="stepper">
+        <Rhythm grouped py={3}>
+          <FormComponentDemo property="value" type="stepper">
             <Stepper
               label="Cool label"
               max={12}
@@ -107,17 +110,17 @@ import { variants, sizes } from './helpers/variants';
       )}
     />
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
-## Read only stepper
+### Read only stepper
 
-<Playground>
+<Canvas>
   <ThemeWrapper>
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo unwrapped initialValue={10} property="value" type="stepper">
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue={10} property="value" type="stepper">
             <Stepper
               readOnly
               label="Cool label"
@@ -132,17 +135,17 @@ import { variants, sizes } from './helpers/variants';
       )}
     />
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
-## Disabled stepper
+### Disabled stepper
 
-<Playground>
+<Canvas>
   <ThemeWrapper>
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo unwrapped initialValue={30} property="value" type="stepper">
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue={30} property="value" type="stepper">
             <Stepper
               disabled
               aria-label="Super fantastic label"
@@ -154,17 +157,17 @@ import { variants, sizes } from './helpers/variants';
       )}
     />
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
-## Danger stepper
+### Danger stepper
 
-<Playground>
+<Canvas>
   <ThemeWrapper>
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo unwrapped initialValue={60} property="value" type="stepper">
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue={60} property="value" type="stepper">
             <Stepper
               aria-label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -176,17 +179,17 @@ import { variants, sizes } from './helpers/variants';
       )}
     />
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
-## Warning stepper
+### Warning stepper
 
-<Playground>
+<Canvas>
   <ThemeWrapper>
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo unwrapped initialValue={60} property="value" type="stepper">
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue={60} property="value" type="stepper">
             <Stepper
               aria-label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -198,17 +201,17 @@ import { variants, sizes } from './helpers/variants';
       )}
     />
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
-## Success stepper
+### Success stepper
 
-<Playground>
+<Canvas>
   <ThemeWrapper>
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo unwrapped initialValue={60} property="value" type="stepper">
+        <Rhythm grouped py={3}>
+          <FormComponentDemo initialValue={60} property="value" type="stepper">
             <Stepper
               aria-label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
@@ -220,17 +223,17 @@ import { variants, sizes } from './helpers/variants';
       )}
     />
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
-## Contrast stepper
+### Contrast stepper
 
-<Playground>
-  <ThemeWrapper contrast>
+<Canvas contrast>
+  <ThemeWrapper>
     <Looper
       list={variants}
       render={variant => (
-        <Rhythm py={3}>
-          <FormComponentDemo contrast unwrapped initialValue={30} property="value" type="stepper">
+        <Rhythm grouped py={3}>
+          <FormComponentDemo contrast initialValue={30} property="value" type="stepper">
             <Stepper
               contrast
               aria-label="Super fantastic label"
@@ -242,11 +245,11 @@ import { variants, sizes } from './helpers/variants';
       )}
     />
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
-## Notifications
+### Notifications
 
-<Playground>
+<Canvas>
   <ThemeWrapper>
     <Looper
       list={variants}
@@ -254,8 +257,8 @@ import { variants, sizes } from './helpers/variants';
         <Looper
           list={['success', 'danger', 'warning', 'primary', 'neutral']}
           render={level => (
-            <Rhythm py={3}>
-              <FormComponentDemo unwrapped initialValue={10} property="value" type="stepper">
+            <Rhythm grouped py={3}>
+              <FormComponentDemo initialValue={10} property="value" type="stepper">
                 <NotifiedStepper
                   aria-label="Super fantastic label"
                   level={level}
@@ -270,42 +273,4 @@ import { variants, sizes } from './helpers/variants';
       )}
     />
   </ThemeWrapper>
-</Playground>
-
-## Sizes
-
-<Playground>
-  <ThemeWrapper>
-    <Looper
-      list={sizes}
-      render={size => (
-        <Rhythm grouped my={3}>
-          <Looper
-            list={variants}
-            render={variant => (
-              <Rhythm key={variant} py={3}>
-                <FormComponentDemo unwrapped property="value" type="textbox">
-                  <Stepper
-                    inputWidth="auto"
-                    label={`Size ${size}`}
-                    max={12}
-                    min={2}
-                    onChange={(event, value) => console.log(value)}
-                    placeholder={10}
-                    size={size}
-                    step={1}
-                    variant={variant}
-                  />
-                </FormComponentDemo>
-              </Rhythm>
-            )}
-          />
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
-</Playground>
-
-## \[props\]
-
-<Props of={Stepper} />
+</Canvas>
