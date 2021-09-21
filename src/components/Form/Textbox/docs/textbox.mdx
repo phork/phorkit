@@ -18,7 +18,7 @@ import { PageTitle } from 'docs/helpers/PageTitle';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
-import { Textbox, NotifiedTextbox } from '../index';
+import { Textbox, NotifiedTextbox, StyledTextbox } from '../index';
 import { textbox as variants, sizes } from './helpers/variants';
 
 <PageTitle src="components/Form/Textbox" title="Textbox" />
@@ -399,23 +399,20 @@ import { textbox as variants, sizes } from './helpers/variants';
       render={variant => (
         <Rhythm key={variant} py={3}>
           <FormComponentDemo unwrapped property="value" type="textbox">
-            <Textbox
+            <StyledTextbox
               clearable
               transitional
-              unthemed
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
-              placeholder={<i>Hello world</i>}
-              style={{
-                '--formbox-icon-color': '#9D69D5',
-                '--formbox-icon-hovered-color': '#642da0',
-                '--formbox-input-container-background-color': 'transparent',
-                '--formbox-input-container-border-color': '#9D69D5',
-                '--formbox-input-container-focused-border-color': '#57278C',
-                '--formbox-input-container-hovered-border-color': '#642da0',
-                '--formbox-input-text-color': '#642da0',
-                '--formbox-label-text-color': '#B995E1',
-              }}
+              placeholder="Hello world"
+              textboxIconColor={'#9D69D5'}
+              textboxIconHoveredColor={'#642da0'}
+              textboxInputContainerBackgroundColor={'transparent'}
+              textboxInputContainerBorderColor={'#9D69D5'}
+              textboxInputContainerFocusedBorderColor={'#57278C'}
+              textboxInputContainerHoveredBorderColor={'#642da0'}
+              textboxInputTextColor={'#642da0'}
+              textboxLabelTextColor={'#B995E1'}
               variant={variant}
             />
           </FormComponentDemo>

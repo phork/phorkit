@@ -1,25 +1,16 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { ArrowLeftIcon } from 'icons/ArrowLeftIcon';
-import { ArrowRightIcon } from 'icons/ArrowRightIcon';
+import { CheckIcon } from 'icons/internal/CheckIcon';
+import { HelpIcon } from 'icons/internal/HelpIcon';
+import { TagIcon } from 'icons/internal/TagIcon';
 import { FormComponentDemo } from '../../stories/helpers/FormComponentDemo';
-import { Textbox, TextboxProps } from '../Textbox';
-import TextboxDocumentation from './Textbox.docs.mdx';
+import { Password, PasswordProps } from '../Password';
+import PasswordDocumentation from './Password.docs.mdx';
 
 export default {
-  title: 'Form/Textbox',
-  component: Textbox,
+  title: 'Form/Password',
+  component: Password,
   argTypes: {
-    clearable: {
-      table: {
-        category: 'Appearance controls',
-      },
-    },
-    centered: {
-      table: {
-        category: 'Appearance controls',
-      },
-    },
     inputWidth: {
       control: { type: 'text' },
       table: {
@@ -71,24 +62,45 @@ export default {
       },
     },
 
-    iconAfter: {
-      options: ['small', 'medium', 'large'],
+    iconHide: {
+      options: ['check', undefined],
       control: {
         labels: {
-          small: '<ArrowLeftIcon scale="small" />',
-          medium: '<ArrowLeftIcon scale="medium" />',
-          large: '<ArrowLeftIcon scale="large" />',
+          check: '<CheckIcon />',
+          undefined: 'Default',
         },
       },
       table: {
         category: 'Icon controls',
+        subcategory: 'Visibility icons',
       },
     },
-    iconAfterActionable: {
+    iconHideSize: {
       table: {
         category: 'Icon controls',
+        subcategory: 'Visibility icons',
       },
     },
+    iconShow: {
+      options: ['help', undefined],
+      control: {
+        labels: {
+          help: '<HelpIcon />',
+          undefined: 'Default',
+        },
+      },
+      table: {
+        category: 'Icon controls',
+        subcategory: 'Visibility icons',
+      },
+    },
+    iconShowSize: {
+      table: {
+        category: 'Icon controls',
+        subcategory: 'Visibility icons',
+      },
+    },
+
     iconAfterClassName: {
       control: {
         disable: true,
@@ -101,9 +113,9 @@ export default {
       options: ['small', 'medium', 'large'],
       control: {
         labels: {
-          small: '<ArrowRightIcon scale="small" />',
-          medium: '<ArrowRightIcon scale="medium" />',
-          large: '<ArrowRightIcon scale="large" />',
+          small: '<TagIcon scale="small" />',
+          medium: '<TagIcon scale="medium" />',
+          large: '<TagIcon scale="large" />',
         },
       },
       table: {
@@ -129,7 +141,7 @@ export default {
         category: 'State controls',
       },
     },
-    formattedValue: {
+    initialType: {
       table: {
         category: 'State controls',
       },
@@ -139,17 +151,7 @@ export default {
         category: 'State controls',
       },
     },
-    max: {
-      table: {
-        category: 'State controls',
-      },
-    },
     maxLength: {
-      table: {
-        category: 'State controls',
-      },
-    },
-    min: {
       table: {
         category: 'State controls',
       },
@@ -160,16 +162,6 @@ export default {
       },
     },
     required: {
-      table: {
-        category: 'State controls',
-      },
-    },
-    step: {
-      table: {
-        category: 'State controls',
-      },
-    },
-    type: {
       table: {
         category: 'State controls',
       },
@@ -227,22 +219,12 @@ export default {
       },
     },
 
-    alwaysShowFormatting: {
-      table: {
-        category: 'Uncommon controls',
-      },
-    },
     alwaysTriggerBlur: {
       table: {
         category: 'Uncommon controls',
       },
     },
     alwaysTriggerFocus: {
-      table: {
-        category: 'Uncommon controls',
-      },
-    },
-    alwaysUseFormatting: {
       table: {
         category: 'Uncommon controls',
       },
@@ -311,7 +293,7 @@ export default {
   },
   decorators: [
     (Story, { args }) => (
-      <FormComponentDemo initialValue={args.value} property="value" type="textbox">
+      <FormComponentDemo initialValue={args.value} property="value" type="password">
         {Story()}
       </FormComponentDemo>
     ),
@@ -322,52 +304,49 @@ export default {
       sort: 'requiredFirst',
     },
     docs: {
-      page: TextboxDocumentation,
+      page: PasswordDocumentation,
       description: {
         component: 'A form input for entering a single line of text.',
       },
     },
     layout: 'centered',
   },
-} as ComponentMeta<typeof Textbox>;
+} as ComponentMeta<typeof Password>;
 
 const Template: ComponentStory<
   (
-    args: Omit<TextboxProps, 'iconAfter' | 'iconBefore'> & {
-      iconAfter?: 'small' | 'medium' | 'large';
-      iconBefore?: 'small' | 'medium' | 'large';
+    args: Omit<PasswordProps, 'iconBefore' | 'iconShow' | 'iconHide'> & {
+      iconBefore: 'small' | 'medium' | 'large';
+      iconShow?: 'help';
+      iconHide?: 'check';
     },
-  ) => ReturnType<typeof Textbox>
-> = ({ iconAfter, iconBefore, ...args }) => (
-  <Textbox
-    iconAfter={iconAfter && <ArrowRightIcon scale={iconAfter} />}
-    iconBefore={iconBefore && <ArrowLeftIcon scale={iconBefore} />}
+  ) => ReturnType<typeof Password>
+> = ({ iconHide, iconHideSize, iconShow, iconShowSize, iconBefore, ...args }) => (
+  <Password
+    iconBefore={iconBefore && <TagIcon scale={iconBefore} />}
+    iconHide={iconHide && CheckIcon}
+    iconShow={iconShow && HelpIcon}
     {...args}
   />
 );
 
 const defaultArgs = {
-  alwaysShowFormatting: false,
   alwaysTriggerBlur: false,
   alwaysTriggerFocus: false,
-  alwaysUseFormatting: false,
   autoFocus: false,
-  centered: false,
-  clearable: false,
   contrast: false,
   disabled: false,
   iconBeforeActionable: false,
-  iconAfterActionable: false,
+  initialType: 'password' as PasswordProps['initialType'],
   label: 'Super fantastic label',
   persistEvents: false,
   readOnly: false,
   required: false,
-  size: 'large' as TextboxProps['size'],
+  size: 'large' as PasswordProps['size'],
   transitional: false,
   transparent: false,
-  type: 'text' as TextboxProps['type'],
   value: 'Hello world',
-  variant: 'underline' as TextboxProps['variant'],
+  variant: 'underline' as PasswordProps['variant'],
   visuallyFocused: false,
   width: '100%',
 };

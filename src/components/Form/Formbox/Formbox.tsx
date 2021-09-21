@@ -134,6 +134,7 @@ export function FormboxBase(
       transitional={transitional}
       transparent={transparent}
       type={type}
+      unthemed={unthemed}
       validity={validity}
       variant={variant}
       width={width}
