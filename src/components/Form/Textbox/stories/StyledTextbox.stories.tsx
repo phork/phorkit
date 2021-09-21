@@ -58,7 +58,7 @@ export default {
       ...textboxStory.parameters?.docs,
       page: () => (
         <React.Fragment>
-          <PageTitle src="components/Textbox" title="StyledTextbox" />
+          <PageTitle src="components/Form/Textbox" title="StyledTextbox" />
           <Subtitle />
           <Description />
           <Primary />
