@@ -13,6 +13,7 @@ export interface FormboxInputWithFormattingProps<I extends FormboxInputElementTy
   alwaysShowFormatting?: boolean;
   /** If the value will have HTML formatting then this should be true */
   alwaysUseFormatting?: boolean;
+  centered?: boolean;
   children?: React.ReactElement<HTMLElementTagNameMap[I]>;
   className?: string;
   contrast?: boolean;
@@ -28,6 +29,7 @@ export interface FormboxInputWithFormattingProps<I extends FormboxInputElementTy
 export const FormboxInputWithFormatting = <I extends FormboxInputElementType>({
   alwaysShowFormatting = false,
   alwaysUseFormatting = false,
+  centered,
   children,
   className,
   contrast = false,
@@ -55,7 +57,10 @@ export const FormboxInputWithFormatting = <I extends FormboxInputElementType>({
   return shouldUseFormatting ? (
     <div className={cx(styles.formboxInputWithFormatting, className)} {...props}>
       <FormboxInputFormatted
-        className={styles.formboxInputWithFormatting__formatted}
+        className={cx(
+          styles.formboxInputWithFormatting__formatted,
+          centered && styles['formboxInputWithFormatting__formatted--centered'],
+        )}
         contrast={contrast}
         hidden={isFormattedHidden && !alwaysShowFormatting}
         isPlaceholder={isFormattedUsedAsPlaceholder}

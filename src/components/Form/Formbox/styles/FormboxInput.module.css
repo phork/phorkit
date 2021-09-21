@@ -78,6 +78,10 @@
 
 .formboxInputWithFormatting__formatted {
   pointer-events: none;
+
+  &--centered {
+    justify-content: center;
+  }
 }
 
 /* input-specific - these must go last */

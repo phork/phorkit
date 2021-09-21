@@ -200,6 +200,7 @@ const defaultArgs = {
   persistEvents: false,
   snap: false,
   snapNext: false,
+  step: 1,
   unstyled: false,
   value: 75,
   valuePosition: 'right' as SliderProps['valuePosition'],

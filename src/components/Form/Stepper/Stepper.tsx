@@ -33,7 +33,6 @@ export const stepperTranslations: StepperTranslations = {
 };
 
 export interface LocalStepperProps {
-  iconSize?: number;
   inputWidth?: number | string;
   onChange?: (
     event: React.ChangeEvent | React.KeyboardEvent | React.MouseEvent | React.TouchEvent,
@@ -44,7 +43,28 @@ export interface LocalStepperProps {
   value?: number;
 }
 
-export type StepperProps = MergeProps<TextboxProps, LocalStepperProps>;
+export type StepperProps = MergeProps<
+  Omit<
+    TextboxProps,
+    | 'centered'
+    | 'clearable'
+    | 'empty'
+    | 'iconAfter'
+    | 'iconAfterActionable'
+    | 'iconBefore'
+    | 'iconBeforeActionable'
+    | 'inputWidth'
+    | 'onChange'
+    | 'placeholder'
+    | 'ref'
+    | 'transitional'
+    | 'translations'
+    | 'type'
+    | 'value'
+    | 'width'
+  >,
+  LocalStepperProps
+>;
 export type StepperRef = React.ForwardedRef<HTMLInputElement>;
 
 export function StepperBase(
@@ -85,7 +105,7 @@ export function StepperBase(
     (event: React.KeyboardEvent | React.MouseEvent | React.TouchEvent) => {
       const inputValue = inputRef.current?.value;
       const value = inputValue === undefined || inputValue === '' ? placeholder : +inputValue;
-      handleChange(event, (value || 0) - step + '');
+      handleChange(event, (value || placeholder || 0) - step + '');
     },
     [handleChange, placeholder, step],
   );
@@ -94,7 +114,7 @@ export function StepperBase(
     (event: React.KeyboardEvent | React.MouseEvent | React.TouchEvent) => {
       const inputValue = inputRef.current?.value;
       const value = inputValue === undefined || inputValue === '' ? placeholder : +inputValue;
-      handleChange(event, (value || 0) + step + '');
+      handleChange(event, (value || placeholder || 0) + step + '');
     },
     [handleChange, placeholder, step],
   );
@@ -140,7 +160,7 @@ export function StepperBase(
       max={max}
       min={min}
       onChange={handleChange}
-      placeholder={placeholder}
+      placeholder={`${placeholder}`}
       readOnly={readOnly}
       ref={combineRefs}
       size={size}
@@ -156,5 +176,5 @@ export function StepperBase(
 
 export const Stepper = React.forwardRef(StepperBase);
 
-StepperBase.displayName = 'StepperBase';
+// note that the base element cannot have a displayName because it breaks Storybook
 Stepper.displayName = 'Stepper';

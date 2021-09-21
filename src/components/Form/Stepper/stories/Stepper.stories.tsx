@@ -1,25 +1,13 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { Mutable } from 'types/utils';
 import { FormComponentDemo } from '../../stories/helpers/FormComponentDemo';
-import { Select, SelectProps } from '../Select';
-import { options } from './helpers/options';
-import SelectDocumentation from './Select.docs.mdx';
+import { Stepper, StepperProps } from '../Stepper';
+import StepperDocumentation from './Stepper.docs.mdx';
 
 export default {
-  title: 'Form/Select',
-  component: Select,
+  title: 'Form/Stepper',
+  component: Stepper,
   argTypes: {
-    align: {
-      table: {
-        category: 'Appearance controls',
-      },
-    },
-    inputClassName: {
-      table: {
-        category: 'Appearance controls',
-      },
-    },
     inputWidth: {
       table: {
         category: 'Appearance controls',
@@ -30,22 +18,33 @@ export default {
         category: 'Appearance controls',
       },
     },
+    max: {
+      table: {
+        category: 'Appearance controls',
+      },
+    },
+    min: {
+      table: {
+        category: 'Appearance controls',
+      },
+    },
     placeholder: {
       table: {
         category: 'Appearance controls',
       },
     },
     size: {
+      control: { type: 'radio' },
+      table: {
+        category: 'Appearance controls',
+      },
+    },
+    step: {
       table: {
         category: 'Appearance controls',
       },
     },
     transparent: {
-      table: {
-        category: 'Appearance controls',
-      },
-    },
-    transitional: {
       table: {
         category: 'Appearance controls',
       },
@@ -61,70 +60,23 @@ export default {
         category: 'Appearance controls',
       },
     },
-    width: {
-      table: {
-        category: 'Appearance controls',
-      },
-    },
 
-    arrowIconSize: {
-      table: {
-        category: 'Icon controls',
-      },
-    },
-    iconAfter: {
-      table: {
-        category: 'Icon controls',
-      },
-    },
-    iconAfterActionable: {
-      table: {
-        category: 'Icon controls',
-      },
-    },
-    iconAfterClassName: {
-      control: {
-        disable: true,
-      },
-      table: {
-        category: 'Icon controls',
-      },
-    },
-    iconBefore: {
-      table: {
-        category: 'Icon controls',
-      },
-    },
-    iconBeforeActionable: {
-      table: {
-        category: 'Icon controls',
-      },
-    },
-    iconBeforeClassName: {
-      control: {
-        disable: true,
-      },
-      table: {
-        category: 'Icon controls',
-      },
-    },
-
-    active: {
-      table: {
-        category: 'State controls',
-      },
-    },
     disabled: {
       table: {
         category: 'State controls',
       },
     },
-    empty: {
+    formattedValue: {
       table: {
         category: 'State controls',
       },
     },
-    multiple: {
+    inputSize: {
+      table: {
+        category: 'State controls',
+      },
+    },
+    maxLength: {
       table: {
         category: 'State controls',
       },
@@ -140,12 +92,6 @@ export default {
       },
     },
     value: {
-      control: { type: 'text' },
-      table: {
-        category: 'State controls',
-      },
-    },
-    values: {
       table: {
         category: 'State controls',
       },
@@ -171,6 +117,11 @@ export default {
         category: 'Action controls',
       },
     },
+    onClear: {
+      table: {
+        category: 'Action controls',
+      },
+    },
     onFocus: {
       table: {
         category: 'Action controls',
@@ -186,7 +137,22 @@ export default {
         category: 'Action controls',
       },
     },
+    onKeyDown: {
+      table: {
+        category: 'Action controls',
+      },
+    },
+    onSubmit: {
+      table: {
+        category: 'Action controls',
+      },
+    },
 
+    alwaysShowFormatting: {
+      table: {
+        category: 'Uncommon controls',
+      },
+    },
     alwaysTriggerBlur: {
       table: {
         category: 'Uncommon controls',
@@ -197,10 +163,12 @@ export default {
         category: 'Uncommon controls',
       },
     },
-    children: {
-      control: {
-        disable: true,
+    alwaysUseFormatting: {
+      table: {
+        category: 'Uncommon controls',
       },
+    },
+    autoFocus: {
       table: {
         category: 'Uncommon controls',
       },
@@ -219,9 +187,11 @@ export default {
       },
     },
     formboxProps: {
-      control: {
-        disable: true,
+      table: {
+        category: 'Uncommon controls',
       },
+    },
+    inputClassName: {
       table: {
         category: 'Uncommon controls',
       },
@@ -256,8 +226,8 @@ export default {
     },
   },
   decorators: [
-    Story => (
-      <FormComponentDemo initialValue="yellow" property="value" type="select">
+    (Story, { args }) => (
+      <FormComponentDemo initialValue={args.value} property="value" type="stepper">
         {Story()}
       </FormComponentDemo>
     ),
@@ -268,34 +238,37 @@ export default {
       sort: 'requiredFirst',
     },
     docs: {
-      page: SelectDocumentation,
+      page: StepperDocumentation,
       description: {
-        component: 'A dropdown input for selecting zero or more items.',
+        component: 'A numeric textbox input that has increment and decrement icons.',
       },
     },
     layout: 'centered',
   },
-} as ComponentMeta<typeof Select>;
+} as ComponentMeta<typeof Stepper>;
 
-const Template: ComponentStory<typeof Select> = args => <Select {...args} />;
+const Template: ComponentStory<typeof Stepper> = args => <Stepper {...args} />;
 
 const defaultArgs = {
+  alwaysShowFormatting: false,
   alwaysTriggerBlur: false,
   alwaysTriggerFocus: false,
+  alwaysUseFormatting: false,
+  autoFocus: false,
   contrast: false,
   disabled: false,
-  empty: false,
   inputWidth: 'auto',
-  label: 'Super fantastic label',
-  multiple: false,
-  options: options as Mutable<typeof options>,
+  max: 999,
+  min: 1,
   persistEvents: false,
+  placeholder: 0,
   readOnly: false,
   required: false,
-  size: 'large' as SelectProps['size'],
+  size: 'large' as StepperProps['size'],
+  step: 1,
   transparent: false,
   unthemed: false,
-  variant: 'underline' as SelectProps['variant'],
+  variant: 'underline' as StepperProps['variant'],
   visuallyFocused: false,
 };
 
