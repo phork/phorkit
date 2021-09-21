@@ -36,9 +36,9 @@ export interface LocalStepperProps {
   inputWidth?: number | string;
   onChange?: (
     event: React.ChangeEvent | React.KeyboardEvent | React.MouseEvent | React.TouchEvent,
-    value: number,
+    value: number | '',
   ) => void;
-  placeholder?: number;
+  placeholder?: number | '';
   translations?: StepperTranslations;
   value?: number;
 }
@@ -74,7 +74,7 @@ export function StepperBase(
     max,
     min,
     onChange,
-    placeholder = 0,
+    placeholder,
     readOnly,
     size = 'large',
     step = 1,
@@ -92,10 +92,14 @@ export function StepperBase(
 
   const handleChange = useCallback(
     (event: React.ChangeEvent | React.KeyboardEvent | React.MouseEvent | React.TouchEvent, value: FormboxValue) => {
-      let clamped = +value;
-      clamped = min ? Math.max(min, clamped) : clamped;
-      clamped = max ? Math.min(max, clamped) : clamped;
-      onChange && onChange(event, clamped);
+      if (value === '') {
+        onChange && onChange(event, '');
+      } else {
+        let clamped = +value;
+        clamped = min ? Math.max(min, clamped) : clamped;
+        clamped = max ? Math.min(max, clamped) : clamped;
+        onChange && onChange(event, clamped);
+      }
     },
     [max, min, onChange],
   );
@@ -148,7 +152,7 @@ export function StepperBase(
 
   return (
     <Textbox
-      centered
+      centered={!readOnly}
       disabled={disabled}
       iconAfter={incrementIcon}
       iconAfterActionable={!disabled && !isMax}
@@ -159,7 +163,7 @@ export function StepperBase(
       max={max}
       min={min}
       onChange={handleChange}
-      placeholder={`${placeholder}`}
+      placeholder={placeholder !== undefined ? `${placeholder}` : undefined}
       readOnly={readOnly}
       ref={combineRefs}
       size={size}

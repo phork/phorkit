@@ -33,6 +33,8 @@ export interface FormboxProps extends Omit<FormboxContainerProps<'label'>, 'as' 
   alwaysTriggerFocus?: boolean;
   /** Whether the formbox input was auto-filled (see useAutoFilled hook) */
   autoFilled?: boolean;
+  /** Center the value or the placeholder when it's used as a value */
+  centered?: boolean;
   children: FormboxRenderInput;
   iconAfter?: RenderFromPropElement<FormboxIconRenderProps>;
   /** The best practice is to pass a button if the icon is actionable */
@@ -58,6 +60,7 @@ export function FormboxBase(
     alwaysTriggerBlur = false,
     alwaysTriggerFocus = false,
     autoFilled = false,
+    centered,
     children: renderInput,
     className,
     contrast = false,
@@ -110,6 +113,7 @@ export function FormboxBase(
     <FormboxContainer<'label'>
       as="label"
       autoFilled={autoFilled}
+      centered={centered}
       className={className}
       contrast={contrast}
       disabled={disabled}
@@ -133,7 +137,7 @@ export function FormboxBase(
       validity={validity}
       variant={variant}
       width={width}
-      {...(props as unknown as Omit<FormboxContainerProps<'label'>, 'as' | 'type'>)}
+      {...(props as Omit<FormboxContainerProps<'label'>, 'as' | 'type'>)}
     >
       {iconBefore && (
         <FormboxIcon

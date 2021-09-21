@@ -23,6 +23,10 @@
   }
 }
 
+.formboxInput--centered {
+  justify-content: center;
+}
+
 /**
  * This cannot use `display: none` or `visibility: hidden`
  * because that will break tab to focus.
@@ -78,10 +82,6 @@
 
 .formboxInputWithFormatting__formatted {
   pointer-events: none;
-
-  &--centered {
-    justify-content: center;
-  }
 }
 
 /* input-specific - these must go last */

@@ -6,6 +6,7 @@ import styles from './styles/FormboxInput.module.css';
 import { FormboxValue } from './types';
 
 export interface FormboxReadOnlyProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'placeholder'>, ThemeProps {
+  centered?: boolean;
   className?: string;
   formattedValue?: React.ReactChild;
   id?: string;
@@ -15,7 +16,7 @@ export interface FormboxReadOnlyProps extends Omit<React.HTMLAttributes<HTMLDivE
 
 export const FormboxReadOnly = React.forwardRef<HTMLDivElement, FormboxReadOnlyProps>(
   (
-    { className, contrast = false, formattedValue, id, placeholder, themeId: initThemeId, value, ...props },
+    { centered, className, contrast = false, formattedValue, id, placeholder, themeId: initThemeId, value, ...props },
     forwardedRef,
   ): React.ReactElement<FormboxReadOnlyProps, 'div'> => {
     const themeId = useThemeId(initThemeId);
@@ -31,6 +32,7 @@ export const FormboxReadOnly = React.forwardRef<HTMLDivElement, FormboxReadOnlyP
         className={cx(
           styles.formboxInput,
           styles['formboxInput--readOnly'],
+          centered && styles['formboxInput--centered'],
           isPlaceholder && styles['formboxInput--placeholder'],
           styles[`formboxInput--${color}`],
           themeId && styles[`formboxInput--${themeId}`],

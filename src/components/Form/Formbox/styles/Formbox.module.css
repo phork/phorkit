@@ -226,6 +226,10 @@
   z-index: 1;
 }
 
+.formboxLabel--centered {
+  text-align: center;
+}
+
 .formboxLabel--filled {
   left: 8px;
   top: 4px;
