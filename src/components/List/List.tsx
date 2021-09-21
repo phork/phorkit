@@ -30,6 +30,7 @@ export interface LocalListProps extends ThemeProps {
   role?: string;
   rounded?: boolean;
   size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
+  style?: React.CSSProperties;
   transparent?: boolean;
   unstyled?: boolean;
   variant?: 'bordered' | 'shadowed' | 'divided' | 'unboxed';

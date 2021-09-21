@@ -17,17 +17,156 @@ export default {
       },
     },
 
+    m: {
+      control: {
+        type: 'number',
+        min: -4,
+        max: 16,
+      },
+      table: {
+        category: 'Margin',
+      },
+    },
+    mb: {
+      control: {
+        type: 'number',
+        min: -4,
+        max: 16,
+      },
+      table: {
+        category: 'Margin',
+      },
+    },
+    ml: {
+      control: {
+        type: 'number',
+        min: -4,
+        max: 16,
+      },
+      table: {
+        category: 'Margin',
+      },
+    },
+    mr: {
+      control: {
+        type: 'number',
+        min: -4,
+        max: 16,
+      },
+      table: {
+        category: 'Margin',
+      },
+    },
+    mt: {
+      control: {
+        type: 'number',
+        min: -4,
+        max: 16,
+      },
+      table: {
+        category: 'Margin',
+      },
+    },
+    mx: {
+      control: {
+        type: 'text',
+      },
+      table: {
+        category: 'Margin',
+      },
+    },
+    my: {
+      control: {
+        type: 'number',
+        min: -4,
+        max: 16,
+      },
+      table: {
+        category: 'Margin',
+      },
+    },
+    p: {
+      control: {
+        type: 'number',
+        min: 0,
+        max: 16,
+      },
+      table: {
+        category: 'Padding',
+      },
+    },
+    pb: {
+      control: {
+        type: 'number',
+        min: 0,
+        max: 16,
+      },
+      table: {
+        category: 'Padding',
+      },
+    },
+    pl: {
+      control: {
+        type: 'number',
+        min: 0,
+        max: 16,
+      },
+      table: {
+        category: 'Padding',
+      },
+    },
+    pr: {
+      control: {
+        type: 'number',
+        min: 0,
+        max: 16,
+      },
+      table: {
+        category: 'Padding',
+      },
+    },
+    pt: {
+      control: {
+        type: 'number',
+        min: 0,
+        max: 16,
+      },
+      table: {
+        category: 'Padding',
+      },
+    },
+    px: {
+      control: {
+        type: 'number',
+        min: 0,
+        max: 16,
+      },
+      table: {
+        category: 'Padding',
+      },
+    },
+    py: {
+      control: {
+        type: 'number',
+        min: 0,
+        max: 16,
+      },
+      table: {
+        category: 'Padding',
+      },
+    },
+
     className: {
       control: {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

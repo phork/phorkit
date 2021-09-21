@@ -15,27 +15,27 @@ export default {
   argTypes: {
     activePrimaryColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Styled',
       },
     },
     hoveredPrimaryColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Styled',
       },
     },
     inverseColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Styled',
       },
     },
     primaryColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Styled',
       },
     },
     width: {
       table: {
-        category: 'Styled controls',
+        category: 'Styled',
       },
     },
     ...buttonStory.argTypes,

@@ -44,6 +44,7 @@ export interface RhythmProps extends RhythmLocation, React.HTMLAttributes<unknow
   /** If the rhythm is grouped it's applied to a wrapper around the children; ungrouped is applied to each child */
   grouped?: boolean;
   style?: React.CSSProperties;
+  /** If grouped wrap the children with this wrapper element, if ungrouped wrap each child */
   wrapper?: keyof JSX.IntrinsicElements | React.ReactElement;
 }
 

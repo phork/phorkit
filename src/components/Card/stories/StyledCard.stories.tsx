@@ -12,12 +12,12 @@ export default {
   argTypes: {
     borderColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Styled',
       },
     },
     hoveredBorderColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Styled',
       },
     },
     ...cardStory.argTypes,

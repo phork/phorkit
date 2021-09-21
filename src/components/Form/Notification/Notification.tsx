@@ -6,6 +6,7 @@ import styles from './styles/Notification.module.css';
 
 export interface NotificationProps extends React.HTMLAttributes<HTMLDivElement>, Omit<ThemeProps, 'unthemed'> {
   children: React.ReactNode;
+  className?: string;
   color?: SemanticColor;
   /** Add a divider above the notification */
   divided?: boolean;
@@ -17,6 +18,7 @@ export interface NotificationProps extends React.HTMLAttributes<HTMLDivElement>,
 
 export function Notification({
   children,
+  className,
   color,
   contrast = false,
   divided = false,
@@ -40,6 +42,7 @@ export function Notification({
             contrast && styles['notification--contrast'],
             divided && styles['notification--divided'],
             themeId && styles[`notification--${themeId}`],
+            className,
           )}
         >
           {notification}

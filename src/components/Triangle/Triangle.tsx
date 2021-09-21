@@ -3,6 +3,7 @@ import { CornerPosition, SimplePosition } from '../../types';
 import { lowerCamelize } from '../../utils/case';
 
 export interface TriangleProps extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
   color?: string;
   position: CornerPosition | SimplePosition;
   size?: number | string;

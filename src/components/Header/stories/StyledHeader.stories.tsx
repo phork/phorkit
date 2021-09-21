@@ -12,7 +12,7 @@ export default {
   argTypes: {
     headerColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Styled',
       },
     },
     ...headerStory.argTypes,

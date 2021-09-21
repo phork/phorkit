@@ -11,6 +11,7 @@ export type IconTextButtonElementType = ButtonElementType;
 export interface LocalIconTextButtonProps {
   icon: RenderFromPropElement<{}>;
   children: RenderFromPropElement<{}> | string;
+  /** If this is true then the loader icon will replace the icon and the text will remain */
   loaderReplaceIcon?: boolean;
   reverse?: boolean;
 }

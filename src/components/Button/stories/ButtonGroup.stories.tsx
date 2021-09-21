@@ -14,59 +14,53 @@ export default {
   title: 'Buttons/ButtonGroup',
   component: ButtonGroup,
   argTypes: {
-    onClick: {
-      control: {
-        disable: true,
-      },
-    },
-
     align: {
       options: ['left', 'center', 'right'],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     color: {
       options: ['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white'],
       control: { type: 'radio' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     orientation: {
       options: ['horizontal', 'vertical'],
       control: { type: 'radio' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     shape: {
       options: ['pill', 'brick'],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     size: {
       options: ['small', 'medium', 'large'],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     spacing: {
       options: ['divided', 'joined', 'cozy', 'comfy'],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     weight: {
       options: ['solid', 'shaded', 'outlined', 'ghost', 'inline'],
       control: { type: 'radio' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
 
@@ -74,19 +68,31 @@ export default {
       options: ['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white', undefined],
       control: { type: 'radio' },
       table: {
-        category: 'Selected controls',
+        category: 'Selected appearance',
       },
     },
     selectedStyle: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Selected appearance',
       },
     },
     selectedWeight: {
       options: ['solid', 'shaded', 'outlined', 'ghost', 'inline', undefined],
       control: { type: 'radio' },
       table: {
-        category: 'Selected controls',
+        category: 'Selected appearance',
+      },
+    },
+
+    buttons: {
+      table: {
+        category: 'State',
+      },
+    },
+
+    onClick: {
+      table: {
+        category: 'Actions',
       },
     },
 
@@ -95,7 +101,7 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     className: {
@@ -103,22 +109,22 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     contrast: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     fullWidth: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -126,12 +132,13 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },
   parameters: {
     controls: {
+      exclude: ['ref'],
       sort: 'requiredFirst',
     },
     docs: {

@@ -12,22 +12,22 @@ export default {
   argTypes: {
     handleBackgroundColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Style',
       },
     },
     tickBackgroundColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Style',
       },
     },
     trackBackgroundColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Style',
       },
     },
     trackFillBackgroundColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Style',
       },
     },
     ...sliderStory.argTypes,

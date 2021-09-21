@@ -12,42 +12,42 @@ export default {
   argTypes: {
     passwordIconColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Style',
       },
     },
     passwordIconHoveredColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Style',
       },
     },
     passwordInputContainerBackgroundColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Style',
       },
     },
     passwordInputContainerBorderColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Style',
       },
     },
     passwordInputContainerFocusedBorderColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Style',
       },
     },
     passwordInputContainerHoveredBorderColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Style',
       },
     },
     passwordInputTextColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Style',
       },
     },
     passwordLabelTextColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Style',
       },
     },
     ...passwordStory.argTypes,

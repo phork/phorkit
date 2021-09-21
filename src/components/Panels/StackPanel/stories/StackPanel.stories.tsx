@@ -16,54 +16,74 @@ export default {
 
     fixed: {
       table: {
-        category: 'Layout controls',
+        category: 'Appearance',
       },
     },
     height: {
       table: {
-        category: 'Layout controls',
+        category: 'Appearance',
       },
     },
     open: {
       table: {
-        category: 'Layout controls',
+        category: 'Appearance',
       },
     },
     position: {
       options: ['top', 'bottom'],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Layout controls',
+        category: 'Appearance',
       },
     },
     raised: {
       table: {
-        category: 'Layout controls',
+        category: 'Appearance',
       },
     },
     unit: {
       options: ['px', 'percent'],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Layout controls',
+        category: 'Appearance',
       },
     },
 
     duration: {
       table: {
-        category: 'Animation controls',
+        category: 'Animation',
       },
     },
     easing: {
       table: {
-        category: 'Animation controls',
+        category: 'Animation',
       },
     },
     transition: {
-      options: ['squashable', 'shiftable'],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Animation controls',
+        category: 'Animation',
+      },
+    },
+
+    onCloseFinish: {
+      table: {
+        category: 'Actions',
+      },
+    },
+    onCloseStart: {
+      table: {
+        category: 'Actions',
+      },
+    },
+    onOpenFinish: {
+      table: {
+        category: 'Actions',
+      },
+    },
+    onOpenStart: {
+      table: {
+        category: 'Actions',
       },
     },
 
@@ -72,12 +92,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

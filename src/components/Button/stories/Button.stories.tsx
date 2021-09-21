@@ -10,26 +10,16 @@ export default {
   title: 'Buttons/Button',
   component: Button,
   argTypes: {
-    onClick: {
-      control: {
-        disable: true,
-      },
-    },
-    type: {
-      options: ['button', 'submit'],
-      control: { type: 'inline-radio' },
-    },
-
     align: {
       control: { type: 'inline-radio' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     color: {
       control: { type: 'radio' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     loader: {
@@ -37,46 +27,58 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     shape: {
       control: { type: 'inline-radio' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     size: {
       control: { type: 'inline-radio' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     weight: {
       control: { type: 'radio' },
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
 
     active: {
       table: {
-        category: 'State controls',
+        category: 'State',
       },
     },
     disabled: {
       table: {
-        category: 'State controls',
+        category: 'State',
       },
     },
     focused: {
       table: {
-        category: 'State controls',
+        category: 'State',
       },
     },
     loading: {
       table: {
-        category: 'State controls',
+        category: 'State',
+      },
+    },
+    type: {
+      control: { type: 'inline-radio' },
+      table: {
+        category: 'State',
+      },
+    },
+
+    onClick: {
+      table: {
+        category: 'Actions',
       },
     },
 
@@ -85,7 +87,7 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     className: {
@@ -93,37 +95,37 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     contrast: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     fullWidth: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     imitation: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     noHeight: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     noPadding: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -131,29 +133,29 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unstyled: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unthemed: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
 
     href: {
       table: {
-        category: 'Link controls',
+        category: 'Link',
         disable: true,
       },
     },
     target: {
       table: {
-        category: 'Link controls',
+        category: 'Link',
         disable: true,
       },
     },

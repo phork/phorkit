@@ -20,6 +20,7 @@ export interface LocalToggleProps extends ThemeProps {
   persistEvents?: boolean;
   reverse?: boolean;
   size?: 'small';
+  style?: React.CSSProperties;
   value?: string;
 }
 
@@ -125,5 +126,5 @@ export function ToggleBase(
 
 export const Toggle = React.forwardRef(ToggleBase);
 
-ToggleBase.displayName = 'ToggleBase';
+// note that the base element cannot have a displayName because it breaks Storybook
 Toggle.displayName = 'Toggle';

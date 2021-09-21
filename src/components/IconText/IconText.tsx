@@ -8,6 +8,7 @@ export interface IconTextProps extends React.HTMLAttributes<HTMLDivElement> {
   iconClassName?: string;
   inline?: boolean;
   reverse?: boolean;
+  style?: React.CSSProperties;
   text: React.ReactNode;
   textClassName?: string;
 }

@@ -16,31 +16,31 @@ export default {
 
     fixed: {
       table: {
-        category: 'Layout controls',
+        category: 'Appearance',
       },
     },
     position: {
       options: ['left', 'right'],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Layout controls',
+        category: 'Appearance',
       },
     },
     raised: {
       table: {
-        category: 'Layout controls',
+        category: 'Appearance',
       },
     },
     unit: {
       options: ['px', 'percent'],
       control: { type: 'inline-radio' },
       table: {
-        category: 'Layout controls',
+        category: 'Appearance',
       },
     },
     width: {
       table: {
-        category: 'Layout controls',
+        category: 'Appearance',
       },
     },
 
@@ -49,12 +49,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

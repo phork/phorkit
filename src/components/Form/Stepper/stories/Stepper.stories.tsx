@@ -8,165 +8,164 @@ export default {
   title: 'Form/Stepper',
   component: Stepper,
   argTypes: {
-    inputWidth: {
-      control: { type: 'text' },
-      table: {
-        category: 'Appearance controls',
-      },
-    },
     label: {
       table: {
-        category: 'Appearance controls',
-      },
-    },
-    max: {
-      table: {
-        category: 'Appearance controls',
-      },
-    },
-    min: {
-      table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     placeholder: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     size: {
       control: { type: 'radio' },
       table: {
-        category: 'Appearance controls',
-      },
-    },
-    step: {
-      table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     transparent: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     validity: {
       options: ['success', 'warning', 'danger', undefined],
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     variant: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
 
     disabled: {
       table: {
-        category: 'State controls',
+        category: 'Input',
       },
     },
     formattedValue: {
       table: {
-        category: 'State controls',
+        category: 'Input',
       },
     },
-    inputSize: {
+    id: {
       table: {
-        category: 'State controls',
+        category: 'Input',
+      },
+    },
+    max: {
+      table: {
+        category: 'Input',
       },
     },
     maxLength: {
       table: {
-        category: 'State controls',
+        category: 'Input',
+      },
+    },
+    min: {
+      table: {
+        category: 'Input',
+      },
+    },
+    name: {
+      table: {
+        category: 'Input',
       },
     },
     readOnly: {
       table: {
-        category: 'State controls',
+        category: 'Input',
       },
     },
     required: {
       table: {
-        category: 'State controls',
+        category: 'Input',
+      },
+    },
+    step: {
+      table: {
+        category: 'Input',
       },
     },
     value: {
       table: {
-        category: 'State controls',
+        category: 'Input',
       },
     },
 
     onAnimationStart: {
       table: {
-        category: 'Action controls',
+        category: 'Actions',
       },
     },
     onBlur: {
       table: {
-        category: 'Action controls',
+        category: 'Actions',
       },
     },
     onChange: {
       table: {
-        category: 'Action controls',
+        category: 'Actions',
       },
     },
     onClear: {
       table: {
-        category: 'Action controls',
+        category: 'Actions',
       },
     },
     onFocus: {
       table: {
-        category: 'Action controls',
+        category: 'Actions',
       },
     },
     onInputBlur: {
       table: {
-        category: 'Action controls',
+        category: 'Actions',
       },
     },
     onInputFocus: {
       table: {
-        category: 'Action controls',
+        category: 'Actions',
       },
     },
     onKeyDown: {
       table: {
-        category: 'Action controls',
+        category: 'Actions',
       },
     },
     onSubmit: {
       table: {
-        category: 'Action controls',
+        category: 'Actions',
       },
     },
 
     alwaysShowFormatting: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     alwaysTriggerBlur: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     alwaysTriggerFocus: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     alwaysUseFormatting: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     autoFocus: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     className: {
@@ -174,37 +173,48 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     contrast: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     formboxProps: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     inputClassName: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
+      },
+    },
+    inputWidth: {
+      control: { type: 'text' },
+      table: {
+        category: 'Uncommon',
+      },
+    },
+    inputSize: {
+      table: {
+        category: 'Uncommon',
       },
     },
     inputStyle: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     persistEvents: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -212,17 +222,17 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unthemed: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     visuallyFocused: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

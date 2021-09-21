@@ -9,6 +9,7 @@ export interface HeaderProps extends React.HTMLAttributes<HTMLDivElement>, Theme
   children: React.ReactNode;
   className?: string;
   full?: boolean;
+  style?: React.CSSProperties;
   variant?: 'primary' | 'secondary' | 'transparent';
   volume?: 'quiet';
 }

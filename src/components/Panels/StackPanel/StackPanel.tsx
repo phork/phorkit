@@ -18,6 +18,7 @@ export interface StackPanelProps
   position: 'top' | 'bottom';
   /** Raise the panel above other elements by using a high z-index */
   raised?: boolean;
+  style?: React.CSSProperties;
 }
 
 export const StackPanel = React.forwardRef<HTMLDivElement, StackPanelProps>(

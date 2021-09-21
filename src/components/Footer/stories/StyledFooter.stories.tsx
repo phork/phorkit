@@ -12,7 +12,7 @@ export default {
   argTypes: {
     footerColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Styled',
       },
     },
     ...footerStory.argTypes,

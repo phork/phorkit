@@ -13,53 +13,59 @@ export default {
 
     full: {
       table: {
-        category: 'Appearance controls',
-      },
-    },
-    grouped: {
-      table: {
-        category: 'Appearance controls',
-      },
-    },
-    name: {
-      table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     reverse: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     size: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     validity: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
     variant: {
       table: {
-        category: 'Appearance controls',
+        category: 'Appearance',
       },
     },
 
     checked: {
       table: {
-        category: 'State controls',
+        category: 'Input',
       },
     },
     disabled: {
       table: {
-        category: 'State controls',
+        category: 'Input',
+      },
+    },
+    id: {
+      table: {
+        category: 'Input',
+      },
+    },
+    name: {
+      table: {
+        category: 'Input',
       },
     },
     value: {
       table: {
-        category: 'State controls',
+        category: 'Input',
+      },
+    },
+
+    onChange: {
+      table: {
+        category: 'Actions',
       },
     },
 
@@ -68,27 +74,27 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     contrast: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     inputStyle: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     labelProps: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -96,12 +102,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unthemed: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },

@@ -15,7 +15,7 @@ export default {
         type: 'color',
       },
       table: {
-        category: 'Styled controls',
+        category: 'Styled',
       },
     },
     ...loaderStory.argTypes,

@@ -12,27 +12,27 @@ export default {
   argTypes: {
     backgroundColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Styled',
       },
     },
     borderColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Styled',
       },
     },
     textColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Styled',
       },
     },
     scrollbarColor: {
       table: {
-        category: 'Styled controls',
+        category: 'Styled',
       },
     },
     ...paperStory.argTypes,
     children: {
-      table: {
+      control: {
         disable: true,
       },
     },

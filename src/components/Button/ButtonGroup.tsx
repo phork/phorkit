@@ -31,6 +31,7 @@ export interface LocalButtonGroupProps
   selectedWeight?: ButtonWeight;
   size?: ButtonSize;
   spacing?: ButtonGroupSpacing;
+  style?: React.CSSProperties;
   weight?: ButtonWeight;
 }
 

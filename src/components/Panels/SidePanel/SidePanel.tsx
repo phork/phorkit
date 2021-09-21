@@ -17,6 +17,7 @@ export interface SidePanelProps
   position: 'left' | 'right';
   /** Raise the panel above other elements by using a high z-index */
   raised?: boolean;
+  style?: React.CSSProperties;
   width: number;
 }
 
