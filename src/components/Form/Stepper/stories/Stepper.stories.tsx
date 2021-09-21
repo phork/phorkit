@@ -259,6 +259,7 @@ const defaultArgs = {
   contrast: false,
   disabled: false,
   inputWidth: 'auto',
+  label: 'Cool label',
   max: 999,
   min: 1,
   persistEvents: false,
@@ -269,6 +270,7 @@ const defaultArgs = {
   step: 1,
   transparent: false,
   unthemed: false,
+  value: 99,
   variant: 'underline' as StepperProps['variant'],
   visuallyFocused: false,
 };

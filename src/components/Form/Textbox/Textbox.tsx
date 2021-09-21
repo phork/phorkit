@@ -228,6 +228,7 @@ export function TextboxBase(
       alwaysTriggerBlur={alwaysTriggerBlur}
       alwaysTriggerFocus={alwaysTriggerFocus}
       autoFilled={autoFilled}
+      centered={centered}
       className={className}
       contrast={contrast}
       disabled={disabled}
@@ -260,7 +261,7 @@ export function TextboxBase(
     >
       {({ id, focused, required, variant }) =>
         readOnly ? (
-          <FormboxReadOnly formattedValue={formattedValue} id={id} value={value} />
+          <FormboxReadOnly centered={centered} formattedValue={formattedValue} id={id} value={value} />
         ) : (
           <FormboxInputWithFormatting<'input'>
             alwaysShowFormatting={alwaysShowFormatting}

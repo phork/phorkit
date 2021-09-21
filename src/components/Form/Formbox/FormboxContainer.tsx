@@ -10,6 +10,7 @@ export interface LocalFormboxContainerProps extends ThemeProps {
   /** Whether the formbox input was auto-filled (see useAutoFilled hook) */
   autoFilled?: boolean;
   children: React.ReactNode;
+  centered?: boolean;
   className?: string;
   disabled?: boolean;
   /** This should be true if there's no input value, read only value, or placeholder */
@@ -47,6 +48,7 @@ export function FormboxContainerBase<T extends FormboxContainerElementType>(
   {
     as,
     autoFilled = false,
+    centered,
     children,
     className,
     contrast = false,
@@ -113,6 +115,7 @@ export function FormboxContainerBase<T extends FormboxContainerElementType>(
           styles.formboxLabel,
           variant && styles[`formboxLabel--${variant}`],
           isLabelPlaceholder && styles['formboxLabel--placeholder'],
+          isLabelPlaceholder && centered && styles['formboxLabel--centered'],
           hasIconBefore && styles['formboxLabel--hasIconBefore'],
           hasIconAfter && styles['formboxLabel--hasIconAfter'],
           autoFilled && styles['is-autoFilled'],

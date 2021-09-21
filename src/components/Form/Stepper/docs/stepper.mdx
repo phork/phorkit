@@ -8,6 +8,7 @@ import { Playground, Props } from 'docz';
 import { Rhythm } from 'components/Rhythm';
 import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'docs/helpers/PageTitle';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { FormComponentDemo } from '../../docs/helpers/FormComponentDemo';
 import { Stepper, NotifiedStepper } from '../index';
@@ -24,11 +25,7 @@ import { variants, sizes } from './helpers/variants';
       render={variant => (
         <Rhythm py={3}>
           <FormComponentDemo unwrapped initialValue={10} property="value" type="stepper">
-            <Stepper
-              aria-label="Super fantastic label"
-              onChange={(event, value) => console.log(value)}
-              variant={variant}
-            />
+            <Stepper aria-label="Cool label" onChange={(event, value) => console.log(value)} variant={variant} />
           </FormComponentDemo>
         </Rhythm>
       )}
@@ -46,7 +43,7 @@ import { variants, sizes } from './helpers/variants';
         <Rhythm py={3}>
           <FormComponentDemo unwrapped initialValue={10} property="value" type="stepper">
             <Stepper
-              aria-label="Super fantastic label"
+              label="Cool label"
               max={100}
               min={-100}
               onChange={(event, value) => console.log(value)}
@@ -84,7 +81,7 @@ import { variants, sizes } from './helpers/variants';
   </ThemeWrapper>
 </Playground>
 
-## Stepper with placeholder
+## Labeled stepper with placeholder
 
 <Playground>
   <ThemeWrapper>
@@ -104,6 +101,32 @@ import { variants, sizes } from './helpers/variants';
             />
           </FormComponentDemo>
         </Rhythm>
+      )}
+    />
+  </ThemeWrapper>
+</Playground>
+
+### Labeled stepper with HTML value
+
+<Playground>
+  <ThemeWrapper>
+    <Looper
+      list={variants}
+      render={variant => (
+        <StateWrapper initialState={10} key={variant}>
+          {({ state: value, setState: setValue }) => (
+            <Rhythm grouped py={3} style={{ maxWidth: 400 }}>
+              <Stepper
+                alwaysUseFormatting
+                formattedValue={value || value === 0 ? <i>{value}</i> : undefined}
+                label="Cool label"
+                onChange={(event, value) => setValue(value)}
+                value={value}
+                variant={variant}
+              />
+            </Rhythm>
+          )}
+        </StateWrapper>
       )}
     />
   </ThemeWrapper>
@@ -142,13 +165,8 @@ import { variants, sizes } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo unwrapped initialValue={30} property="value" type="stepper">
-            <Stepper
-              disabled
-              aria-label="Super fantastic label"
-              onChange={(event, value) => console.log(value)}
-              variant={variant}
-            />
+          <FormComponentDemo unwrapped initialValue={10} property="value" type="stepper">
+            <Stepper disabled label="Cool label" onChange={(event, value) => console.log(value)} variant={variant} />
           </FormComponentDemo>
         </Rhythm>
       )}
@@ -164,9 +182,9 @@ import { variants, sizes } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo unwrapped initialValue={60} property="value" type="stepper">
+          <FormComponentDemo unwrapped initialValue={10} property="value" type="stepper">
             <Stepper
-              aria-label="Super fantastic label"
+              label="Cool label"
               onChange={(event, value) => console.log(value)}
               validity="danger"
               variant={variant}
@@ -186,9 +204,9 @@ import { variants, sizes } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo unwrapped initialValue={60} property="value" type="stepper">
+          <FormComponentDemo unwrapped initialValue={10} property="value" type="stepper">
             <Stepper
-              aria-label="Super fantastic label"
+              label="Cool label"
               onChange={(event, value) => console.log(value)}
               validity="warning"
               variant={variant}
@@ -208,9 +226,9 @@ import { variants, sizes } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo unwrapped initialValue={60} property="value" type="stepper">
+          <FormComponentDemo unwrapped initialValue={10} property="value" type="stepper">
             <Stepper
-              aria-label="Super fantastic label"
+              label="Cool label"
               onChange={(event, value) => console.log(value)}
               validity="success"
               variant={variant}
@@ -230,13 +248,8 @@ import { variants, sizes } from './helpers/variants';
       list={variants}
       render={variant => (
         <Rhythm py={3}>
-          <FormComponentDemo contrast unwrapped initialValue={30} property="value" type="stepper">
-            <Stepper
-              contrast
-              aria-label="Super fantastic label"
-              onChange={(event, value) => console.log(value)}
-              variant={variant}
-            />
+          <FormComponentDemo contrast unwrapped initialValue={10} property="value" type="stepper">
+            <Stepper contrast label="Cool label" onChange={(event, value) => console.log(value)} variant={variant} />
           </FormComponentDemo>
         </Rhythm>
       )}
@@ -257,7 +270,7 @@ import { variants, sizes } from './helpers/variants';
             <Rhythm py={3}>
               <FormComponentDemo unwrapped initialValue={10} property="value" type="stepper">
                 <NotifiedStepper
-                  aria-label="Super fantastic label"
+                  label="Cool label"
                   level={level}
                   notification={`This is an example ${level} notification.`}
                   onChange={(event, value) => console.log(value)}

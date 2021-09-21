@@ -57,10 +57,8 @@ export const FormboxInputWithFormatting = <I extends FormboxInputElementType>({
   return shouldUseFormatting ? (
     <div className={cx(styles.formboxInputWithFormatting, className)} {...props}>
       <FormboxInputFormatted
-        className={cx(
-          styles.formboxInputWithFormatting__formatted,
-          centered && styles['formboxInputWithFormatting__formatted--centered'],
-        )}
+        centered={centered}
+        className={styles.formboxInputWithFormatting__formatted}
         contrast={contrast}
         hidden={isFormattedHidden && !alwaysShowFormatting}
         isPlaceholder={isFormattedUsedAsPlaceholder}

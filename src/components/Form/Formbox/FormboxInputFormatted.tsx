@@ -5,6 +5,7 @@ import { useThemeId } from '../../../context/Theme';
 import styles from './styles/FormboxInput.module.css';
 
 export interface FormboxInputFormattedProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
+  centered?: boolean;
   children?: React.ReactChild;
   className?: string;
   hidden?: boolean;
@@ -16,7 +17,7 @@ export interface FormboxInputFormattedProps extends React.HTMLAttributes<HTMLDiv
 /** The is for form inputs that have HTML values or placeholders (as opposed to plain text) */
 export const FormboxInputFormatted = React.forwardRef<HTMLDivElement, FormboxInputFormattedProps>(
   (
-    { children, className, contrast = false, hidden = false, isPlaceholder, themeId: initThemeId, ...props },
+    { centered, children, className, contrast = false, hidden = false, isPlaceholder, themeId: initThemeId, ...props },
     forwardedRef,
   ): React.ReactElement<FormboxInputFormattedProps, 'div'> => {
     const themeId = useThemeId(initThemeId);
@@ -27,6 +28,7 @@ export const FormboxInputFormatted = React.forwardRef<HTMLDivElement, FormboxInp
         className={cx(
           styles.formboxInput,
           isPlaceholder && styles['formboxInput--placeholder'],
+          centered && styles['formboxInput--centered'],
           hidden && styles['formboxInput--hidden'],
           styles[`formboxInput--${color}`],
           themeId && styles[`formboxInput--${themeId}`],
