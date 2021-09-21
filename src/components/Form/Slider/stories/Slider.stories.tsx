@@ -63,6 +63,7 @@ export default {
       },
     },
     width: {
+      control: { type: 'text' },
       table: {
         category: 'Appearance controls',
       },

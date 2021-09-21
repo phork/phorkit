@@ -37,7 +37,6 @@ export interface LocalTextareaProps
     | 'transparent'
     | 'unthemed'
     | 'validity'
-    | 'variant'
     | 'visuallyFocused'
     | 'width'
   > {
@@ -54,6 +53,7 @@ export interface LocalTextareaProps
   required?: boolean;
   rows?: number;
   value?: FormboxValue;
+  variant: Exclude<FormboxProps['variant'], 'pill'>;
 }
 
 export type TextareaProps = MergeProps<
@@ -203,5 +203,5 @@ export function TextareaBase(
 
 export const Textarea = React.forwardRef(TextareaBase);
 
-TextareaBase.displayName = 'TextareaBase';
+// note that the base element cannot have a displayName because it breaks Storybook
 Textarea.displayName = 'Textarea';

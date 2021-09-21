@@ -27,6 +27,7 @@ export default {
       },
     },
     inputWidth: {
+      control: { type: 'text' },
       table: {
         category: 'Appearance controls',
       },

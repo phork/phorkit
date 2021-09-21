@@ -1,13 +1,18 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { FormComponentDemo } from '../../stories/helpers/FormComponentDemo';
-import { Stepper, StepperProps } from '../Stepper';
-import StepperDocumentation from './Stepper.docs.mdx';
+import { Textarea, TextareaProps } from '../Textarea';
+import TextareaDocumentation from './Textarea.docs.mdx';
 
 export default {
-  title: 'Form/Stepper',
-  component: Stepper,
+  title: 'Form/Textarea',
+  component: Textarea,
   argTypes: {
+    cols: {
+      table: {
+        category: 'Appearance controls',
+      },
+    },
     inputWidth: {
       control: { type: 'text' },
       table: {
@@ -15,21 +20,17 @@ export default {
       },
     },
     label: {
-      table: {
-        category: 'Appearance controls',
-      },
-    },
-    max: {
-      table: {
-        category: 'Appearance controls',
-      },
-    },
-    min: {
+      control: { type: 'text' },
       table: {
         category: 'Appearance controls',
       },
     },
     placeholder: {
+      table: {
+        category: 'Appearance controls',
+      },
+    },
+    rows: {
       table: {
         category: 'Appearance controls',
       },
@@ -40,7 +41,7 @@ export default {
         category: 'Appearance controls',
       },
     },
-    step: {
+    transitional: {
       table: {
         category: 'Appearance controls',
       },
@@ -61,13 +62,56 @@ export default {
         category: 'Appearance controls',
       },
     },
+    width: {
+      control: { type: 'text' },
+      table: {
+        category: 'Appearance controls',
+      },
+    },
+
+    iconAfter: {
+      table: {
+        category: 'Icon controls',
+      },
+    },
+    iconAfterActionable: {
+      table: {
+        category: 'Icon controls',
+      },
+    },
+    iconAfterClassName: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: 'Icon controls',
+      },
+    },
+    iconBefore: {
+      table: {
+        category: 'Icon controls',
+      },
+    },
+    iconBeforeActionable: {
+      table: {
+        category: 'Icon controls',
+      },
+    },
+    iconBeforeClassName: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: 'Icon controls',
+      },
+    },
 
     disabled: {
       table: {
         category: 'State controls',
       },
     },
-    formattedValue: {
+    empty: {
       table: {
         category: 'State controls',
       },
@@ -93,6 +137,7 @@ export default {
       },
     },
     value: {
+      control: { type: 'text' },
       table: {
         category: 'State controls',
       },
@@ -114,11 +159,6 @@ export default {
       },
     },
     onChange: {
-      table: {
-        category: 'Action controls',
-      },
-    },
-    onClear: {
       table: {
         category: 'Action controls',
       },
@@ -149,22 +189,12 @@ export default {
       },
     },
 
-    alwaysShowFormatting: {
-      table: {
-        category: 'Uncommon controls',
-      },
-    },
     alwaysTriggerBlur: {
       table: {
         category: 'Uncommon controls',
       },
     },
     alwaysTriggerFocus: {
-      table: {
-        category: 'Uncommon controls',
-      },
-    },
-    alwaysUseFormatting: {
       table: {
         category: 'Uncommon controls',
       },
@@ -228,49 +258,48 @@ export default {
   },
   decorators: [
     (Story, { args }) => (
-      <FormComponentDemo initialValue={args.value} property="value" type="stepper">
+      <FormComponentDemo initialValue={args.value} property="value" type="textarea">
         {Story()}
       </FormComponentDemo>
     ),
   ],
   parameters: {
     controls: {
-      exclude: ['ref', 'translations'],
+      exclude: ['translations'],
       sort: 'requiredFirst',
     },
     docs: {
-      page: StepperDocumentation,
+      page: TextareaDocumentation,
       description: {
-        component: 'A numeric textbox input that has increment and decrement icons.',
+        component: 'A form input for entering multiple lines of text.',
       },
     },
     layout: 'centered',
   },
-} as ComponentMeta<typeof Stepper>;
+} as ComponentMeta<typeof Textarea>;
 
-const Template: ComponentStory<typeof Stepper> = args => <Stepper {...args} />;
+const Template: ComponentStory<typeof Textarea> = args => <Textarea {...args} />;
 
 const defaultArgs = {
-  alwaysShowFormatting: false,
   alwaysTriggerBlur: false,
   alwaysTriggerFocus: false,
-  alwaysUseFormatting: false,
-  autoFocus: false,
   contrast: false,
   disabled: false,
+  empty: false,
   inputWidth: 'auto',
-  max: 999,
-  min: 1,
+  label: 'Super fantastic label',
   persistEvents: false,
-  placeholder: 0,
   readOnly: false,
   required: false,
-  size: 'large' as StepperProps['size'],
-  step: 1,
+  rows: 3,
+  size: 'large' as TextareaProps['size'],
+  transitional: false,
   transparent: false,
   unthemed: false,
-  variant: 'underline' as StepperProps['variant'],
+  value: 'Hello world',
+  variant: 'underline' as TextareaProps['variant'],
   visuallyFocused: false,
+  width: '100%',
 };
 
 export const Default = Template.bind({});
@@ -297,13 +326,6 @@ OutlineVariant.storyName = 'Variant: Outline';
 OutlineVariant.args = {
   ...defaultArgs,
   variant: 'outline',
-};
-
-export const PillVariant = Template.bind({});
-PillVariant.storyName = 'Variant: Pill';
-PillVariant.args = {
-  ...defaultArgs,
-  variant: 'pill',
 };
 
 export const MinimalVariant = Template.bind({});
