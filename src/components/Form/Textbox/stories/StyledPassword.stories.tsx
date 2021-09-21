@@ -58,7 +58,7 @@ export default {
       ...passwordStory.parameters?.docs,
       page: () => (
         <React.Fragment>
-          <PageTitle src="components/Password" title="StyledPassword" />
+          <PageTitle src="components/Form/Textbox" title="StyledPassword" />
           <Subtitle />
           <Description />
           <Primary />
