@@ -15,7 +15,7 @@ export const listItemElementMap: ListItemElementMap = {
 export interface LocalListProps extends ThemeProps {
   children?: React.ReactNode;
   className?: string;
-  color?: 'primary' | 'minimal';
+  color?: 'primary' | 'neutral';
   /** The focused flag adds an outline to a focused list in accessibility mode */
   focused?: boolean;
   /** The focus outline should only be hidden when something else containing the list has a focus style (eg. a dropdown) */

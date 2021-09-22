@@ -69,5 +69,5 @@ CustomSize.storyName = 'Custom size';
 CustomSize.args = {
   ...defaultArgs,
   size: 'custom',
-  style: { '--avatar-size': '72px', '--avatar-font-size': '24px' },
+  style: { '--avatar-size': '72px', '--avatar-font-size': '24px' } as React.CSSProperties,
 };

@@ -16,7 +16,7 @@ export type DropdownInputVariant = 'underline' | 'filled' | 'outline' | 'minimal
 export type DropdownLayout = 'raised' | 'contained';
 export type DropdownListVariant = 'bordered' | 'shadowed' | 'divided' | 'unboxed';
 export type DropdownListSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
-export type DropdownListColor = 'primary' | 'minimal';
+export type DropdownListColor = 'primary' | 'neutral';
 
 export type DropdownTranslations = {
   numSelectedSingular: string;

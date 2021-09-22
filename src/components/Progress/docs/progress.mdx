@@ -40,29 +40,29 @@ import { Progress, StyledProgress } from '../index';
   </ThemeWrapper>
 </Playground>
 
-## Pill progress bars
+## Rounded progress bars
 
 <Playground>
   <ThemeWrapper>
     <Rhythm grouped py={2}>
       <h3>Small bar</h3>
-      <Progress pill color="primary" percent={80} size="small" />
+      <Progress rounded color="primary" percent={80} size="small" />
     </Rhythm>
     <Rhythm grouped py={2}>
       <h3>Medium bar</h3>
-      <Progress pill color="primary" percent={80} size="medium" />
+      <Progress rounded color="primary" percent={80} size="medium" />
     </Rhythm>
     <Rhythm grouped py={2}>
       <h3>Large bar</h3>
-      <Progress pill color="primary" percent={80} size="large" />
+      <Progress rounded color="primary" percent={80} size="large" />
     </Rhythm>
     <Rhythm grouped py={2}>
       <h3>Floating bar</h3>
-      <Progress floating pill color="primary" percent={80} size="medium" />
+      <Progress floating rounded color="primary" percent={80} size="medium" />
     </Rhythm>
     <Rhythm grouped py={2}>
       <h3>Animated bar</h3>
-      <Progress animated pill color="primary" percent={80} size="large" />
+      <Progress animated rounded color="primary" percent={80} size="large" />
     </Rhythm>
   </ThemeWrapper>
 </Playground>
@@ -73,10 +73,10 @@ import { Progress, StyledProgress } from '../index';
   <ThemeWrapper>
     <Flex direction="row">
       <Rhythm mx={2} style={{ height: 120 }}>
-        <Progress pill color="primary" orientation="vertical" percent={80} size="small" />
-        <Progress pill color="primary" orientation="vertical" percent={80} size="medium" />
-        <Progress pill color="primary" orientation="vertical" percent={80} size="large" />
-        <Progress floating pill color="primary" orientation="vertical" percent={80} size="medium" />
+        <Progress rounded color="primary" orientation="vertical" percent={80} size="small" />
+        <Progress rounded color="primary" orientation="vertical" percent={80} size="medium" />
+        <Progress rounded color="primary" orientation="vertical" percent={80} size="large" />
+        <Progress floating rounded color="primary" orientation="vertical" percent={80} size="medium" />
       </Rhythm>
     </Flex>
   </ThemeWrapper>
@@ -103,7 +103,7 @@ import { Progress, StyledProgress } from '../index';
     <Rhythm grouped py={2}>
       <h3>Large segmented bar</h3>
       <Progress
-        pill
+        rounded
         spaced
         color="primary"
         data={[
@@ -167,23 +167,23 @@ import { Progress, StyledProgress } from '../index';
   <ThemeWrapper contrast>
     <Rhythm grouped py={2}>
       <h3>Small bar</h3>
-      <Progress contrast pill color="primary" percent={80} size="small" />
+      <Progress contrast rounded color="primary" percent={80} size="small" />
     </Rhythm>
     <Rhythm grouped py={2}>
       <h3>Medium bar</h3>
-      <Progress contrast pill color="primary" percent={80} size="medium" />
+      <Progress contrast rounded color="primary" percent={80} size="medium" />
     </Rhythm>
     <Rhythm grouped py={2}>
       <h3>Large bar</h3>
-      <Progress contrast pill color="primary" percent={80} size="large" />
+      <Progress contrast rounded color="primary" percent={80} size="large" />
     </Rhythm>
     <Rhythm grouped py={2}>
       <h3>Floating bar</h3>
-      <Progress contrast floating pill color="primary" percent={80} size="medium" />
+      <Progress contrast floating rounded color="primary" percent={80} size="medium" />
     </Rhythm>
     <Rhythm grouped py={2}>
       <h3>Animated bar</h3>
-      <Progress animated contrast pill color="primary" percent={80} size="large" />
+      <Progress animated contrast rounded color="primary" percent={80} size="large" />
     </Rhythm>
   </ThemeWrapper>
 </Playground>
@@ -203,7 +203,7 @@ import { Progress, StyledProgress } from '../index';
 <Playground>
   <StyledProgress
     animated
-    pill
+    rounded
     backgroundColor="rgba(0, 0, 0, .1)"
     percent={80}
     segmentAnimationColor="rgba(0, 0, 0, .1)"
