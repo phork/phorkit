@@ -76,3 +76,20 @@ import { Avatar } from '../Avatar';
     </Flex>
   </ThemeWrapper>
 </Canvas>
+
+<Canvas contrast>
+  <ThemeWrapper>
+    <Flex wrap alignItems="center" direction="row">
+      <Rhythm m={2}>
+        <Looper
+          list={['xsmall', 'small', 'medium', 'large', 'xlarge', '2xlarge', '3xlarge']}
+          render={size => (
+            <Rhythm key={size} m={2}>
+              <Avatar actionable contrast initials="EC" size={size} />
+            </Rhythm>
+          )}
+        />
+      </Rhythm>
+    </Flex>
+  </ThemeWrapper>
+</Canvas>

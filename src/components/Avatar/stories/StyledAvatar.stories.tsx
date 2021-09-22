@@ -63,3 +63,11 @@ Default.argTypes = {
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
 };
+
+export const CustomSize = Template.bind({});
+CustomSize.storyName = 'Custom size';
+CustomSize.args = {
+  ...defaultArgs,
+  size: 'custom',
+  style: { '--avatar-size': '72px', '--avatar-font-size': '24px' },
+};
