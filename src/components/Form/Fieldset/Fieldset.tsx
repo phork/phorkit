@@ -5,10 +5,11 @@ import { useThemeId } from '../../../context/Theme';
 import { Label } from '../Label';
 import styles from './styles/Fieldset.module.css';
 
-export interface LocalFieldsetProps extends ThemeProps {
+export interface LocalFieldsetProps extends Omit<ThemeProps, 'unthemed'> {
   children: React.ReactElement | string;
   className?: string;
   legend?: React.ReactNode;
+  style?: React.CSSProperties;
 }
 
 export type FieldsetProps = MergeElementProps<'fieldset', LocalFieldsetProps>;
@@ -33,5 +34,5 @@ export function FieldsetBase(
 
 export const Fieldset = React.forwardRef(FieldsetBase);
 
-FieldsetBase.displayName = 'FieldsetBase';
+// note that the base element cannot have a displayName because it breaks Storybook
 Fieldset.displayName = 'Fieldset';
