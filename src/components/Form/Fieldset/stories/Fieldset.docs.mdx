@@ -1,0 +1,26 @@
+import { action } from '@storybook/addon-actions';
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Typography } from 'components/Typography';
+import { Canvas } from 'stories/helpers/Canvas';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
+import { Fieldset } from '../Fieldset';
+
+<PageTitle src="components/Form/Fieldset" title="Fieldset" />
+<Subtitle />
+<Description />
+<Primary />
+<ArgsTable story={PRIMARY_STORY} />
+<Stories />
+
+### Contrast
+
+<Canvas contrast>
+  <ThemeWrapper>
+    <Fieldset contrast legend="Super awesome legend">
+      <Typography color="contrast" size="large" variants="italic" volume="quietest">
+        Form elements will go here
+      </Typography>
+    </Fieldset>
+  </ThemeWrapper>
+</Canvas>
