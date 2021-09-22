@@ -354,14 +354,14 @@ ul.unlist {
   }
 }
 
-.list--minimal {
+.list--neutral {
   @mixin themed .list {
     --list-focused-border-color: $theme-primary-palette-border-color;
-    --list-item-selected-background-color: $theme-color-BG50-O50;
-    --list-item-selected-text-color: $theme-primary-palette-text-color;
+    --list-item-selected-background-color: $theme-color-neutral;
+    --list-item-selected-text-color: $theme-color-neutral-contrast;
     --list-item-background-color: $theme-color-BG0;
     --list-item-border-color: $theme-primary-palette-border-color;
-    --list-item-focused-border-color: $theme-primary-palette-border-color;
+    --list-item-focused-border-color: $theme-color-neutral;
     --list-item-focused-text-color: $theme-primary-palette-text-color;
     --list-item-text-color: $theme-primary-palette-quiet-color;
   }

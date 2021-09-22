@@ -9,7 +9,7 @@ export default {
   component: List,
   argTypes: {
     color: {
-      options: ['primary', 'minimal'],
+      options: ['primary', 'neutral'],
       control: { type: 'inline-radio' },
       table: {
         category: 'Appearance',
@@ -139,7 +139,12 @@ export default {
 const Template: ComponentStory<typeof List> = args => <List {...args} />;
 
 const defaultArgs = {
+  contrast: false,
   color: 'primary' as ListProps['color'],
+  focused: false,
+  hideFocusOutline: false,
+  inactive: false,
+  inline: false,
   items: [
     { id: 'normal0', label: 'Normal' },
     { id: 'selected', label: 'Selected', selected: true },
@@ -150,22 +155,18 @@ const defaultArgs = {
     { id: 'disabled', label: 'Disabled', disabled: true },
     { id: 'inactive', label: 'Inactive', inactive: true },
   ],
+  mimicSelectOnFocus: false,
+  rounded: false,
   size: 'medium' as ListProps['size'],
+  style: { width: 300 },
+  transparent: false,
+  unstyled: false,
+  unthemed: false,
 };
 
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
-  contrast: false,
-  focused: false,
-  hideFocusOutline: false,
-  inactive: false,
-  inline: false,
-  mimicSelectOnFocus: false,
-  rounded: false,
-  transparent: false,
-  unstyled: false,
-  unthemed: false,
 };
 
 export const PrimaryColor = Template.bind({});
@@ -176,11 +177,11 @@ PrimaryColor.args = {
   variant: 'bordered',
 };
 
-export const MinimalColor = Template.bind({});
-MinimalColor.storyName = 'Color: Minimal';
-MinimalColor.args = {
+export const NeutralColor = Template.bind({});
+NeutralColor.storyName = 'Color: Neutral';
+NeutralColor.args = {
   ...defaultArgs,
-  color: 'minimal',
+  color: 'neutral',
   variant: 'bordered',
 };
 
@@ -258,6 +259,7 @@ export const Inline = Template.bind({});
 Inline.args = {
   ...defaultArgs,
   inline: true,
+  style: undefined,
   variant: 'bordered',
 };
 
