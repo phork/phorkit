@@ -35,8 +35,8 @@ export interface LocalToastProps extends ThemeProps {
   /** The immediate flag remove the entry animation */
   immediate?: boolean;
   level?: ToastNotificationLevel;
-  onClose?: (event: React.MouseEvent | React.KeyboardEvent, id?: string) => void;
-  onPin?: (event: React.MouseEvent | React.KeyboardEvent, id?: string) => void;
+  onClose?: (event?: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, id?: string) => void;
+  onPin?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, id?: string) => void;
   translations?: ToastTranslations;
   variant?: 'colored';
 }
@@ -74,7 +74,7 @@ export function Toast({
   }
 
   const handleClose = useCallback(
-    event => {
+    (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent): void => {
       onClose && onClose(event, contextId);
     },
     [contextId, onClose],

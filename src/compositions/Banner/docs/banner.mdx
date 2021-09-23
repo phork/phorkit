@@ -19,28 +19,63 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <BannerContainer themeId={themeId}>
-        <Banner immediate level="primary" onClose={() => console.log('close banner')}>
+        <Banner immediate contextId="demo-banner-primary1" level="primary" onClose={() => console.log('closed banner')}>
           This is a primary banner.
         </Banner>
-        <Banner immediate level="primary" onClose={() => console.log('close banner')}>
+        <Banner
+          immediate
+          contextId="demo-banner-primary2"
+          level="primary"
+          onClose={(event, id) => console.log(`closed ${id}`)}
+        >
           This is another primary banner. It has a border to distinguish it from the one above.
         </Banner>
-        <Banner immediate level="secondary" onClose={() => console.log('close banner')}>
+        <Banner
+          immediate
+          contextId="demo-banner-secondary1"
+          level="secondary"
+          onClose={(event, id) => console.log(`closed ${id}`)}
+        >
           This is a secondary banner.
         </Banner>
-        <Banner immediate level="secondary" onClose={() => console.log('close banner')}>
+        <Banner
+          immediate
+          contextId="demo-banner-secondary2"
+          level="secondary"
+          onClose={(event, id) => console.log(`closed ${id}`)}
+        >
           This is another secondary banner. It has a border to distinguish it from the one above.
         </Banner>
-        <Banner immediate level="tertiary" onClose={() => console.log('close banner')}>
+        <Banner
+          immediate
+          contextId="demo-banner-tertiary1"
+          level="tertiary"
+          onClose={(event, id) => console.log(`closed ${id}`)}
+        >
           This is a tertiary banner.
         </Banner>
-        <Banner immediate level="tertiary" onClose={() => console.log('close banner')}>
+        <Banner
+          immediate
+          contextId="demo-banner-tertiary2"
+          level="tertiary"
+          onClose={(event, id) => console.log(`closed ${id}`)}
+        >
           This is another tertiary banner. It has a border to distinguish it from the one above.
         </Banner>
-        <Banner immediate level="transparent" onClose={() => console.log('close banner')}>
+        <Banner
+          immediate
+          contextId="demo-banner-transparent1"
+          level="transparent"
+          onClose={(event, id) => console.log(`closed ${id}`)}
+        >
           This is a transparent banner.
         </Banner>
-        <Banner immediate level="transparent" onClose={() => console.log('close banner')}>
+        <Banner
+          immediate
+          contextId="demo-banner-transparent2"
+          level="transparent"
+          onClose={(event, id) => console.log(`closed ${id}`)}
+        >
           This is another transparent banner. It has a border to distinguish it from the one above.
         </Banner>
         <Banner immediate level="transparent">
@@ -57,34 +92,34 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <BannerContainer themeId={themeId}>
-        <Banner immediate level="info" onClose={() => console.log('close banner')}>
+        <Banner immediate level="info" onClose={() => console.log('closed banner')}>
           This is an info banner because something interesting happened. Exciting!
         </Banner>
-        <Banner immediate level="info" onClose={() => console.log('close banner')}>
+        <Banner immediate level="info" onClose={() => console.log('closed banner')}>
           This is another info banner. It has a border to distinguish it from the one above.
         </Banner>
-        <Banner immediate level="danger" onClose={() => console.log('close banner')}>
+        <Banner immediate level="danger" onClose={() => console.log('closed banner')}>
           This is a danger banner because something bad happened. Uh oh!
         </Banner>
-        <Banner immediate level="danger" onClose={() => console.log('close banner')}>
+        <Banner immediate level="danger" onClose={() => console.log('closed banner')}>
           This is another danger banner. It has a border to distinguish it from the one above.
         </Banner>
-        <Banner immediate level="warning" onClose={() => console.log('close banner')}>
+        <Banner immediate level="warning" onClose={() => console.log('closed banner')}>
           This is a warning banner because something not so great happened. Meh.
         </Banner>
-        <Banner immediate level="warning" onClose={() => console.log('close banner')}>
+        <Banner immediate level="warning" onClose={() => console.log('closed banner')}>
           This is another warning banner. It has a border to distinguish it from the one above.
         </Banner>
-        <Banner immediate level="success" onClose={() => console.log('close banner')}>
+        <Banner immediate level="success" onClose={() => console.log('closed banner')}>
           This is a success banner because something excellent happened. Yay!
         </Banner>
-        <Banner immediate level="success" onClose={() => console.log('close banner')}>
+        <Banner immediate level="success" onClose={() => console.log('closed banner')}>
           This is another success banner. It has a border to distinguish it from the one above.
         </Banner>
-        <Banner immediate level="contrast" onClose={() => console.log('close banner')}>
+        <Banner immediate level="contrast" onClose={() => console.log('closed banner')}>
           This is a contrast banner.
         </Banner>
-        <Banner immediate level="contrast" onClose={() => console.log('close banner')}>
+        <Banner immediate level="contrast" onClose={() => console.log('closed banner')}>
           This is another contrast banner. It has a border to distinguish it from the one above.
         </Banner>
       </BannerContainer>
@@ -104,7 +139,7 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
               color="primary"
               onClick={() =>
                 createNotification(
-                  <Banner level="info">
+                  <Banner level="info" onClose={() => console.log('closed banner')}>
                     This is an info banner because something interesting happened. Exciting!
                   </Banner>,
                 )
@@ -116,7 +151,9 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
               color="danger"
               onClick={() =>
                 createNotification(
-                  <Banner level="danger">This is a danger banner because something bad happened. Uh oh!</Banner>,
+                  <Banner level="danger" onClose={() => console.log('closed banner')}>
+                    This is a danger banner because something bad happened. Uh oh!
+                  </Banner>,
                 )
               }
             >
@@ -126,7 +163,7 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
               color="warning"
               onClick={() =>
                 createNotification(
-                  <Banner permanent level="warning">
+                  <Banner permanent level="warning" onClose={() => console.log('closed banner')}>
                     This is a permanent warning banner because something not so great happened. Meh.
                   </Banner>,
                 )
@@ -138,7 +175,11 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
               color="success"
               onClick={() =>
                 createNotification(
-                  <Banner contextId="overwritable-success" level="success">
+                  <Banner
+                    contextId="demo-banner-success"
+                    level="success"
+                    onClose={(event, id) => console.log(`closed ${id}`)}
+                  >
                     This is an overwriting success banner because it's got a contextId. Yay!
                     <div style={{ position: 'absolute', right: '8px', fontSize: '10px', opacity: 0.4 }}>
                       {Date.now()}

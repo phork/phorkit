@@ -1198,7 +1198,7 @@ import {
                 onClick={event =>
                   event.persist() ||
                   createModal(
-                    <Modal focusable id="demo-login-modal" size="medium">
+                    <Modal focusable id="demo-login-modal" onClose={() => console.log('closed modal')} size="medium">
                       {({ id, focusRef }) => (
                         <React.Fragment>
                           <ModalHeader modalId={id} title="Login" />
@@ -1268,7 +1268,6 @@ import {
                         </React.Fragment>
                       )}
                     </Modal>,
-                    { onClose: () => console.log('closed modal') },
                   )
                 }
               >

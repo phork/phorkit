@@ -54,7 +54,7 @@ import {
 
 <Playground>
   <ThemeWrapper style={{ width: 600, maxWidth: '100%' }}>
-    <Modal immediate contextId="demo-modal-close" onClose={Function.prototype}>
+    <Modal immediate contextId="demo-modal-close" onClose={(event, id) => console.log(`closed ${id}`)}>
       <ModalHeader modalId="demo-modal-close" title="Hello world" />
       <ModalBody scrollable>This is a modal with a header and close button.</ModalBody>
     </Modal>
@@ -181,9 +181,14 @@ import {
             <Button
               color="primary"
               onClick={event =>
-                event.persist() ||
                 createModal(
-                  <Modal focusable contextId="demo-large-modal" size="large" style={{ height: '400px' }}>
+                  <Modal
+                    focusable
+                    contextId="demo-large-modal"
+                    onClose={(event, id) => console.log(`closed ${id}`)}
+                    size="large"
+                    style={{ height: '400px' }}
+                  >
                     {({ id, focusRef }) => (
                       <React.Fragment>
                         <ModalHeader modalId={id} title="A large modal" />
@@ -233,7 +238,12 @@ import {
                               color="primary"
                               onClick={() =>
                                 createModal(
-                                  <Modal focusable contextId="demo-medium-modal" size="medium">
+                                  <Modal
+                                    focusable
+                                    contextId="demo-medium-modal"
+                                    onClose={(event, id) => console.log(`closed ${id}`)}
+                                    size="medium"
+                                  >
                                     {({ id, focusRef }) => (
                                       <React.Fragment>
                                         <ModalHeader modalId={id} title="A medium modal" />
@@ -293,6 +303,7 @@ import {
                                                     focusable
                                                     ariaLabel="Hello world"
                                                     contextId="demo-small-modal"
+                                                    onClose={(event, id) => console.log(`closed ${id}`)}
                                                     size="small"
                                                   >
                                                     {({ id, focusRef }) => (
@@ -356,7 +367,6 @@ import {
                                                       </React.Fragment>
                                                     )}
                                                   </Modal>,
-                                                  { onClose: () => console.log('closed 3') },
                                                 )
                                               }
                                               ref={focusRef}
@@ -368,7 +378,6 @@ import {
                                       </React.Fragment>
                                     )}
                                   </Modal>,
-                                  { onClose: () => console.log('closed 2') },
                                 )
                               }
                               ref={focusRef}
@@ -380,7 +389,6 @@ import {
                       </React.Fragment>
                     )}
                   </Modal>,
-                  { onClose: () => console.log('closed 1') },
                 )
               }
             >
@@ -389,9 +397,14 @@ import {
             <Button
               color="danger"
               onClick={event =>
-                event.persist() ||
                 createModal(
-                  <Modal focusable permanent contextId="demo-permanent-modal" size="small">
+                  <Modal
+                    focusable
+                    permanent
+                    contextId="demo-permanent-modal"
+                    onClose={() => console.log('closed permanent')}
+                    size="small"
+                  >
                     {({ id, focusRef }) => (
                       <React.Fragment>
                         <ModalHeader align="left" modalId={id} title="A permanent modal" />
@@ -413,7 +426,6 @@ import {
                       </React.Fragment>
                     )}
                   </Modal>,
-                  { onClose: () => console.log('closed') },
                 )
               }
             >

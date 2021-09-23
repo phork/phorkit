@@ -27,17 +27,14 @@ export function ModalProvider({ children }: ModalProviderProps): React.ReactElem
     });
   }, []);
 
-  const createModal = useCallback<ModalContextValue['createModal']>((modal, options, noJump) => {
+  const createModal = useCallback<ModalContextValue['createModal']>((modal, noJump) => {
     const { contextId = uuid() } = modal.props;
     dispatch({
       id: contextId,
       type: noJump ? ACTIONS.SET : ACTIONS.JUMPSET,
-      value: {
-        modal: React.cloneElement(modal, {
-          contextId,
-        }),
-        options,
-      },
+      value: React.cloneElement(modal, {
+        contextId,
+      }),
     });
     return contextId;
   }, []);
@@ -63,7 +60,7 @@ export function ModalProvider({ children }: ModalProviderProps): React.ReactElem
   );
 
   // only ever show the latest modal in the stack
-  const { modal } = (state.size && Array.from(state.values()).pop()) || {};
+  const modal = state.size ? Array.from(state.values()).pop() : undefined;
 
   const value = produce(previousValue.current, draftState => {
     draftState.modal = modal;

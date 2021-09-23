@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import { ToastProps } from './Toast';
+import { ToastContext } from './ToastContext';
 
-/* a toast in context is used with the toast system and requires a context id */
+/* a toast with context is used with the toast system and requires a context id */
 export type ToastWithContextItemType = React.ReactElement<
   Omit<ToastProps, 'contextId'> & {
     contextId: string;
@@ -12,26 +13,23 @@ export type ToastWithContextItemType = React.ReactElement<
 >;
 
 export interface ToastFromContextProps extends ThemeProps {
-  element: ToastWithContextItemType;
-  pinNotification: (id: string) => void;
-  removeNotification: (id: string) => void;
+  toast: ToastWithContextItemType;
   variant?: 'colored';
 }
 
 export function ToastFromContext({
-  element,
-  pinNotification,
-  removeNotification,
+  toast,
   themeId: initThemeId,
   variant,
-}: ToastFromContextProps) {
+}: ToastFromContextProps): React.ReactElement<ToastProps> {
   const themeId = useThemeId(initThemeId);
-  const { duration, contextId, permanent } = element.props;
+  const { pinNotification, removeNotification } = useContext(ToastContext);
+  const { duration, contextId, permanent } = toast.props;
 
-  return React.cloneElement(element, {
+  return React.cloneElement(toast, {
     duration: permanent ? 0 : duration,
     onClose: permanent ? undefined : () => removeNotification(contextId),
-    onPin: () => (permanent ? undefined : pinNotification(contextId)),
+    onPin: permanent ? undefined : () => pinNotification(contextId),
     // this effectively removes the permanent prop which is invalid on <Toast>
     permanent: undefined,
     themeId,

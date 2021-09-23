@@ -28,7 +28,7 @@ export interface BannerProps extends Omit<PaperProps, 'children' | 'color'>, The
   /** The immediate flag remove the entry animation */
   immediate?: boolean;
   level: StateColor | SequentialVariant | 'info' | 'contrast' | 'transparent';
-  onClose?: (event: React.MouseEvent | React.KeyboardEvent, contextId?: string) => void;
+  onClose?: (event?: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, contextId?: string) => void;
   style?: React.CSSProperties;
   translations?: BannerTranslations;
 }
@@ -55,7 +55,7 @@ export function Banner({
   const { closeLabel } = translations;
 
   const handleClose = useCallback(
-    event => {
+    (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent): void => {
       onClose && onClose(event, contextId);
     },
     [contextId, onClose],

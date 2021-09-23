@@ -20,18 +20,16 @@ export function ToastsFromContext({
 
   return (
     <ToastConsumer>
-      {({ pinNotification, removeNotification, notifications }) => (
+      {({ notifications }) => (
         <React.Fragment>
           {notifications.size ? (
             <ToastContainer {...props}>
-              {[...notifications.values()].map(element => (
+              {[...notifications.values()].map(toast => (
                 <ToastFromContext
-                  element={element}
-                  key={element.props.contextId}
-                  pinNotification={pinNotification}
-                  removeNotification={removeNotification}
+                  key={toast.props.contextId}
                   themeId={themeId}
-                  variant={element.props.variant || variant}
+                  toast={toast}
+                  variant={toast.props.variant || variant}
                 />
               ))}
             </ToastContainer>

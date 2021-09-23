@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import { BannerProps } from './Banner';
+import { BannerContext } from './BannerContext';
 
-/* a banner in context is used with the banner system and requires a context id */
+/* a banner from context is used with the banner system and requires a context id */
 export type BannerWithContextItemType = React.ReactElement<
   Omit<BannerProps, 'contextId'> & {
     contextId: string;
@@ -12,21 +13,20 @@ export type BannerWithContextItemType = React.ReactElement<
 >;
 
 export interface BannerFromContextProps extends ThemeProps {
-  element: BannerWithContextItemType;
-  removeNotification: (id: string) => void;
+  banner: BannerWithContextItemType;
   style?: React.CSSProperties;
 }
 
 export const BannerFromContext = React.memo(function BannerFromContext({
-  element,
-  removeNotification,
+  banner,
   style: customStyle,
   themeId: initThemeId,
-}: BannerFromContextProps): React.ReactElement {
+}: BannerFromContextProps): React.ReactElement<BannerProps> {
   const themeId = useThemeId(initThemeId);
-  const { contextId, permanent, style } = element.props;
+  const { removeNotification } = useContext(BannerContext);
+  const { contextId, permanent, style } = banner.props;
 
-  return React.cloneElement(element, {
+  return React.cloneElement(banner, {
     themeId,
     onClose: permanent ? undefined : () => removeNotification(contextId),
     // this effectively removes the permanent prop which is invalid on <Banner>
