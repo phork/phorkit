@@ -1,4 +1,4 @@
-import produce from 'immer';
+import produce, { castDraft } from 'immer';
 import React, { useCallback, useRef, useReducer } from 'react';
 import { v4 as uuid } from 'uuid';
 import { BannerContext, BannerContextValue } from './BannerContext';
@@ -24,17 +24,17 @@ export function BannerProvider({ children }: BannerProviderProps): React.ReactEl
 
   // if a banner already exists it will be overwritten
   const createNotification = useCallback<BannerContextValue['createNotification']>(banner => {
-    const { id = uuid() } = banner.props;
+    const { contextId = uuid() } = banner.props;
     const mutableBanner = React.cloneElement(banner, {
-      id,
+      contextId,
     });
 
     dispatch({
-      id,
+      id: contextId,
       type: ACTIONS.SET,
       value: mutableBanner,
     });
-    return id;
+    return contextId;
   }, []);
 
   const clearNotifications = useCallback<BannerContextValue['clearNotifications']>(
@@ -43,7 +43,7 @@ export function BannerProvider({ children }: BannerProviderProps): React.ReactEl
   );
 
   const value = produce(previousValue.current, draftState => {
-    draftState.notifications = state;
+    draftState.notifications = castDraft(state);
     draftState.clearNotifications = clearNotifications;
     draftState.createNotification = createNotification;
     draftState.removeNotification = removeNotification;

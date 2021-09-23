@@ -32,7 +32,7 @@ export const MultiColorSliderTrack = React.forwardRef(
   (
     { children, className, colors, sliderWidth = 0, ...props }: MultiColorSliderTrackProps,
     forwardedRef: React.ForwardedRef<HTMLDivElement>,
-  ): React.ReactElement<MultiColorSliderTrackProps, 'div'> => {
+  ): React.ReactElement<MultiColorSliderTrackProps> => {
     const backgroundSvgWidth = 72;
 
     const trackBackground = useMemo(() => {

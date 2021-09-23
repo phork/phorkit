@@ -21,7 +21,7 @@ export function ModalHeader({
   modalId,
   title,
   ...props
-}: ModalHeaderProps): React.ReactElement<ModalHeaderProps, 'div'> {
+}: ModalHeaderProps): React.ReactElement<ModalHeaderProps> {
   const { generateTitleId } = useModalComponentIds(modalId);
 
   return (
@@ -31,7 +31,7 @@ export function ModalHeader({
           align={align}
           as="div"
           color="secondary"
-          id={generateTitleId()}
+          id={modalId ? generateTitleId() : undefined}
           size="3xlarge"
           weight="light"
         >

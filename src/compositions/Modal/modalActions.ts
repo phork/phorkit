@@ -1,4 +1,4 @@
-import { ModalItemType } from './types';
+import { ModalWithContextState } from './ModalFromContext';
 
 export enum modalActions {
   SET = 'SET',
@@ -12,7 +12,7 @@ export enum modalActions {
 export type ModalStateActionSet = {
   type: modalActions.SET;
   id: string;
-  value: ModalItemType;
+  value: ModalWithContextState;
 };
 
 export type ModalStateActionJump = {
@@ -23,7 +23,7 @@ export type ModalStateActionJump = {
 export type ModalStateActionJumpSet = {
   type: modalActions.JUMPSET;
   id: string;
-  value: ModalItemType;
+  value: ModalWithContextState;
 };
 
 export type ModalStateActionDelete = {

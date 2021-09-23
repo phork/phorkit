@@ -26,7 +26,7 @@ export function BannersFromContext({
               {[...notifications.values()].map(element => (
                 <BannerFromContext
                   element={element}
-                  key={element.props.id}
+                  key={element.props.contextId}
                   removeNotification={removeNotification}
                   style={bannerStyle}
                   themeId={themeId}

@@ -1,4 +1,4 @@
-import produce from 'immer';
+import produce, { castDraft } from 'immer';
 import React, { useCallback, useRef, useReducer } from 'react';
 import { v4 as uuid } from 'uuid';
 import { ModalContext, ModalContextValue } from './ModalContext';
@@ -28,18 +28,18 @@ export function ModalProvider({ children }: ModalProviderProps): React.ReactElem
   }, []);
 
   const createModal = useCallback<ModalContextValue['createModal']>((modal, options, noJump) => {
-    const { id = uuid() } = modal.props;
+    const { contextId = uuid() } = modal.props;
     dispatch({
-      id,
+      id: contextId,
       type: noJump ? ACTIONS.SET : ACTIONS.JUMPSET,
       value: {
         modal: React.cloneElement(modal, {
-          id,
+          contextId,
         }),
         options,
       },
     });
-    return id;
+    return contextId;
   }, []);
 
   const jumpModal = useCallback<ModalContextValue['jumpModal']>(id => {
@@ -67,7 +67,7 @@ export function ModalProvider({ children }: ModalProviderProps): React.ReactElem
 
   const value = produce(previousValue.current, draftState => {
     draftState.modal = modal;
-    draftState.modals = state;
+    draftState.modals = castDraft(state);
     draftState.clearModals = clearModals;
     draftState.createModal = createModal;
     draftState.jumpModal = jumpModal;

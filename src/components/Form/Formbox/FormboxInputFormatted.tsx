@@ -19,7 +19,7 @@ export const FormboxInputFormatted = React.forwardRef<HTMLDivElement, FormboxInp
   (
     { centered, children, className, contrast = false, hidden = false, isPlaceholder, themeId: initThemeId, ...props },
     forwardedRef,
-  ): React.ReactElement<FormboxInputFormattedProps, 'div'> => {
+  ): React.ReactElement<FormboxInputFormattedProps> => {
     const themeId = useThemeId(initThemeId);
     const color = contrast ? 'contrast' : 'primary';
 

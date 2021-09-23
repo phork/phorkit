@@ -42,7 +42,7 @@ export function NavigationItem({
   variant = 'primary',
   vertical = false,
   ...props
-}: NavigationItemProps): React.ReactElement<NavigationItemProps, 'div'> {
+}: NavigationItemProps): React.ReactElement<NavigationItemProps> {
   const ref = useRef<HTMLDivElement>(null!);
   useInteractiveGroupItem({ focused, ref });
   useListRegistryItem({ id, ref });

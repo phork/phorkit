@@ -42,7 +42,7 @@ export const StackPanel = React.forwardRef<HTMLDivElement, StackPanelProps>(
       ...props
     },
     forwardedRef,
-  ): React.ReactElement<StackPanelProps, 'div'> => {
+  ): React.ReactElement<StackPanelProps> => {
     const ref = useRef<HTMLDivElement>(null!);
 
     usePanelCollapser({

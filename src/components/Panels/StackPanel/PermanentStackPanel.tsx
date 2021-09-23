@@ -18,7 +18,7 @@ export const PermanentStackPanel = React.forwardRef<HTMLDivElement, PermanentSta
   (
     { children, className, fixed, height, position, raised, style: initStyle, unit: initUnit = 'px', ...props },
     forwardedRef,
-  ): React.ReactElement<PermanentStackPanelProps, 'div'> => {
+  ): React.ReactElement<PermanentStackPanelProps> => {
     const classes = cx(
       styles.sidePanel,
       fixed && styles['stackPanel--fixed'],

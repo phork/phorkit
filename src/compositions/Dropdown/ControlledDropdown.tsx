@@ -15,7 +15,7 @@ export interface ControlledDropdownProps extends Omit<DropdownProps, 'reducer'> 
 export function ControlledDropdownBase(
   { initialSelected, options, ...props }: ControlledDropdownProps,
   forwardedRef: React.ForwardedRef<DropdownHandles>,
-): React.ReactElement<ControlledDropdownProps, 'div'> {
+): React.ReactElement<ControlledDropdownProps> {
   const reducer = useReducer<Reducer<InteractiveGroupState<string>, InteractiveGroupStateAction<string>>>(
     interactiveGroupReducer,
     getInteractiveGroupInitialState({ items: [], selectedIds: initialSelected?.map(({ id }) => id) }),

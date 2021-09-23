@@ -40,7 +40,7 @@ export function TabPanelGroup({
   variant: initVariant = 'primary',
   vertical = false,
   ...props
-}: TabPanelGroupProps): React.ReactElement<TabPanelGroupProps, 'div'> {
+}: TabPanelGroupProps): React.ReactElement<TabPanelGroupProps> {
   const accessible = useAccessibility();
   const { generateComponentId } = useComponentId(componentId);
   const themeId = useThemeId(initThemeId);

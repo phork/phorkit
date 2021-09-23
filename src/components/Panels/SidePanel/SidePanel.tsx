@@ -42,7 +42,7 @@ export const SidePanel = React.forwardRef<HTMLDivElement, SidePanelProps>(
       ...props
     },
     forwardedRef,
-  ): React.ReactElement<SidePanelProps, 'div'> => {
+  ): React.ReactElement<SidePanelProps> => {
     const ref = useRef<HTMLDivElement>(null!);
 
     usePanelCollapser({

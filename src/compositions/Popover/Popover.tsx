@@ -102,7 +102,7 @@ export function Popover({
   withoutTogglerFocusStyle = false,
   withPopoverTogglerProps = false,
   ...props
-}: PopoverProps): React.ReactElement<PopoverProps, 'div'> {
+}: PopoverProps): React.ReactElement<PopoverProps> {
   const accessible = useAccessibility();
   const themeId = useThemeId(initThemeId);
   const { setSafeTimeout, clearSafeTimeout } = useSafeTimeout();

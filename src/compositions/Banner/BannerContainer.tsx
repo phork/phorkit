@@ -13,7 +13,7 @@ export function BannerContainer({
   className,
   themeId,
   ...props
-}: BannerContainerProps): React.ReactElement<HTMLDivElement> {
+}: BannerContainerProps): React.ReactElement<BannerContainerProps> {
   return (
     <div
       className={cx(styles.bannerContainer, themeId && styles[`bannerContainer--${themeId}`], className)}

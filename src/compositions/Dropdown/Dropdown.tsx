@@ -184,7 +184,7 @@ export function DropdownBase(
     ...props
   }: DropdownProps,
   forwardedRef: React.ForwardedRef<DropdownHandles>,
-): React.ReactElement<DropdownProps, 'div'> {
+): React.ReactElement<DropdownProps> {
   const [selectedState] = reducer;
   const [filteredOptions, setFilteredOptions] = useState<DropdownOption[] | undefined>();
   const themeId = useThemeId(initThemeId);

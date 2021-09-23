@@ -27,16 +27,16 @@ export const toastTranslations: ToastTranslations = {
 export interface LocalToastProps extends ThemeProps {
   children: React.ReactNode;
   className?: string;
+  /** The context ID is used by both the modal system and the aria-label system */
+  contextId?: string;
+  /** The created time is used with the duration to render the countdown bar */
   created?: number;
   duration?: number;
-  id?: string;
+  /** The immediate flag remove the entry animation */
   immediate?: boolean;
   level?: ToastNotificationLevel;
-  /** If another toast (eg. the IconToast) has already set the title Id then don't set it again */
-  noTitleIdOnContent?: boolean;
-  onClose?: (event: React.MouseEvent | React.KeyboardEvent, id: string) => void;
-  onPin?: (event: React.MouseEvent | React.KeyboardEvent, id: string) => void;
-  title?: React.ReactNode;
+  onClose?: (event: React.MouseEvent | React.KeyboardEvent, id?: string) => void;
+  onPin?: (event: React.MouseEvent | React.KeyboardEvent, id?: string) => void;
   translations?: ToastTranslations;
   variant?: 'colored';
 }
@@ -48,22 +48,20 @@ export function Toast({
   className,
   created,
   duration = 0,
-  id: initId,
+  contextId,
   immediate = false,
   level = 'info',
-  noTitleIdOnContent = false,
   onClose,
   onPin,
   themeId: initThemeId,
-  title,
   translations: customTranslations,
   variant,
   ...props
-}: ToastProps): React.ReactElement<ToastProps, 'div'> {
+}: ToastProps): React.ReactElement<ToastProps> {
   const themeId = useThemeId(initThemeId);
   const { setSafeTimeout } = useSafeTimeout();
   const [hasTransitioned, setHasTransitioned] = useState(immediate);
-  const { componentId: id, generateTitleId } = useToastComponentIds(initId);
+  const { generateTitleId } = useToastComponentIds(contextId);
   const translations = useTranslations<ToastTranslations>({
     customTranslations,
     fallbackTranslations: toastTranslations,
@@ -77,16 +75,16 @@ export function Toast({
 
   const handleClose = useCallback(
     event => {
-      onClose && onClose(event, id);
+      onClose && onClose(event, contextId);
     },
-    [id, onClose],
+    [contextId, onClose],
   );
 
   const handlePin = useCallback(
     event => {
-      onPin && onPin(event, id);
+      onPin && onPin(event, contextId);
     },
-    [id, onPin],
+    [contextId, onPin],
   );
 
   useLayoutEffect(() => {
@@ -134,12 +132,7 @@ export function Toast({
         )}
       </div>
 
-      {title && (
-        <div className={cx(styles.toastTitle)} id={!noTitleIdOnContent ? generateTitleId() : undefined}>
-          {title}
-        </div>
-      )}
-      {children && <div id={!title && !noTitleIdOnContent ? generateTitleId() : undefined}>{children}</div>}
+      {children}
       {duration > 0 && created && (
         <ToastCountdownBar created={created} duration={duration} level={level} themeId={themeId} variant={variant} />
       )}

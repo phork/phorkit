@@ -1,8 +1,8 @@
 import React from 'react';
+import { ToastWithContextItemType } from './ToastFromContext';
 import { toastActions as ACTIONS, ToastStateAction } from './toastActions';
-import { ToastItemType } from './types';
 
-export type ToastState = Map<string, ToastItemType>;
+export type ToastState = Map<string, ToastWithContextItemType>;
 
 export function toastReducer(state: ToastState, action: ToastStateAction): ToastState {
   const mutable = new Map(state);
@@ -28,7 +28,7 @@ export function toastReducer(state: ToastState, action: ToastStateAction): Toast
 
     case ACTIONS.PIN:
       if (mutable.has(action.id)) {
-        mutable.set(action.id, React.cloneElement(mutable.get(action.id) as ToastItemType, { duration: 0 }));
+        mutable.set(action.id, React.cloneElement(mutable.get(action.id) as ToastWithContextItemType, { duration: 0 }));
         return mutable;
       }
       return state;

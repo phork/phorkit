@@ -25,7 +25,7 @@ export function Header({
   variant: initVariant = 'primary',
   volume,
   ...props
-}: HeaderProps): React.ReactElement<HeaderProps, 'div'> {
+}: HeaderProps): React.ReactElement<HeaderProps> {
   const themeId = useThemeId(initThemeId);
   const variant = contrast ? 'contrast' : initVariant;
 

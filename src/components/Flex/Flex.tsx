@@ -42,7 +42,7 @@ export function Flex({
   reverse = false,
   wrap = false,
   ...props
-}: FlexProps): React.ReactElement<FlexProps, 'div'> {
+}: FlexProps): React.ReactElement<FlexProps> {
   return (
     <div
       className={cx(

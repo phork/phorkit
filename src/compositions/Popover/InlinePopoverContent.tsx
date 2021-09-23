@@ -29,7 +29,7 @@ const InlinePopoverContentBase = React.forwardRef<HTMLDivElement, InlinePopoverC
       ...props
     },
     forwardedRef,
-  ): React.ReactElement<InlinePopoverContentProps, 'div'> | null => {
+  ): React.ReactElement<InlinePopoverContentProps> | null => {
     return position && (visible || alwaysRender) ? (
       <div
         className={cx(

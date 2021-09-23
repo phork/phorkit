@@ -138,8 +138,8 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
               color="success"
               onClick={() =>
                 createNotification(
-                  <Banner id="demo-success" level="success">
-                    This is an overwriting success banner because something excellent happened. Yay!
+                  <Banner contextId="overwritable-success" level="success">
+                    This is an overwriting success banner because it's got a contextId. Yay!
                     <div style={{ position: 'absolute', right: '8px', fontSize: '10px', opacity: 0.4 }}>
                       {Date.now()}
                     </div>
@@ -205,8 +205,8 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
               color="success"
               onClick={() =>
                 createNotification(
-                  <Banner id="demo-success" level="success">
-                    This is an overwriting success banner because something excellent happened. Yay!
+                  <Banner contextId="overwritable-success" level="success">
+                    This is an overwriting success banner because it's got a contextId. Yay!
                     <div style={{ position: 'absolute', right: '8px', fontSize: '10px', opacity: 0.4 }}>
                       {Date.now()}
                     </div>

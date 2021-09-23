@@ -40,7 +40,7 @@ export const Paper = React.forwardRef<HTMLDivElement, PaperProps>(
       ...props
     },
     forwardedRef,
-  ): React.ReactElement<PaperProps, 'div'> => {
+  ): React.ReactElement<PaperProps> => {
     const themeId = useThemeId(initThemeId);
 
     return (

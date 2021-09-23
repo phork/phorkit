@@ -1,9 +1,9 @@
 import { createContext } from 'react';
-import { BannerItemType } from './types';
+import { BannerWithContextItemType } from './BannerFromContext';
 
 export interface BannerContextValue {
-  notifications: Map<string, BannerItemType>;
-  createNotification: (banner: BannerItemType) => string | undefined;
+  notifications: Map<string, BannerWithContextItemType>;
+  createNotification: (banner: BannerWithContextItemType) => string | undefined;
   removeNotification: (id: string) => void;
   clearNotifications: () => void;
 }

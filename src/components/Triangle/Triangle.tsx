@@ -72,7 +72,7 @@ export const Triangle = ({
   size = 'var(--triangle-size',
   style,
   ...props
-}: TriangleProps): React.ReactElement<TriangleProps, 'div'> => (
+}: TriangleProps): React.ReactElement<TriangleProps> => (
   <div
     style={{
       width: 0,

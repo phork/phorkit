@@ -1,7 +1,7 @@
+import { BannerWithContextItemType } from './BannerFromContext';
 import { bannerActions as ACTIONS, BannerStateAction } from './bannerActions';
-import { BannerItemType } from './types';
 
-export type BannerState = Map<string, BannerItemType>;
+export type BannerState = Map<string, BannerWithContextItemType>;
 
 export function bannerReducer(state: BannerState, action: BannerStateAction): BannerState {
   const mutable = new Map(state);

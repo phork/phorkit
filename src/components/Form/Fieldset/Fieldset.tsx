@@ -17,7 +17,7 @@ export type FieldsetProps = MergeElementProps<'fieldset', LocalFieldsetProps>;
 export function FieldsetBase(
   { children, className, contrast = false, legend, themeId: initThemeId, ...props }: FieldsetProps,
   forwardedRef: React.ForwardedRef<HTMLFieldSetElement>,
-): React.ReactElement<FieldsetProps, 'fieldset'> {
+): React.ReactElement<FieldsetProps> {
   const themeId = useThemeId(initThemeId);
 
   return (

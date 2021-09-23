@@ -5,7 +5,7 @@ import { Banner } from 'lib';
 describe('<Banner />', () => {
   it('should render a basic banner', () => {
     const { getByText } = render(
-      <Banner id="banner" level="info">
+      <Banner contextId="banner" level="info">
         Hello world
       </Banner>,
     );

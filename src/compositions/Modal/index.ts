@@ -12,4 +12,3 @@ export * from './modalReducer';
 export * from './ModalsFromContext';
 export * from './Modals';
 export * from './useModalComponentIds';
-export * from './types';

@@ -56,7 +56,7 @@ export function ButtonGroup({
   themeId: initThemeId,
   weight = 'outlined',
   ...props
-}: ButtonGroupProps): React.ReactElement<ButtonGroupProps, 'div'> {
+}: ButtonGroupProps): React.ReactElement<ButtonGroupProps> {
   const themeId = useThemeId(initThemeId);
 
   const handleClick = useCallback(

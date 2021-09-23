@@ -27,10 +27,14 @@ export interface ModalProps extends ThemeProps {
   ariaLabel?: string;
   children: ((props: RenderProps) => React.ReactElement) | React.ReactElement | React.ReactElement[];
   className?: string;
+  /** The context ID is used by both the modal system and the aria-label system */
+  contextId?: string;
+  /** When a modal is focusable the active element changes to the modal */
   focusable?: boolean;
-  id?: string;
+  /** The immediate flag remove the entry animation */
   immediate?: boolean;
-  onClose?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, id?: string) => void;
+  onClose?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, contextId?: string) => void;
+  /** A permanent modal doesn't have a close button */
   permanent?: boolean;
   size?: 'small' | 'medium' | 'large' | 'xlarge';
   translations?: ModalTranslations;
@@ -41,8 +45,8 @@ export function Modal({
   ariaLabel,
   children,
   className,
+  contextId,
   focusable = false,
-  id,
   immediate = false,
   onClose,
   permanent = false,
@@ -50,22 +54,22 @@ export function Modal({
   themeId: initThemeId,
   translations: customTranslations,
   ...props
-}: ModalProps): React.ReactElement<ModalProps, 'div'> {
+}: ModalProps): React.ReactElement<ModalProps> {
   const ref = useRef<HTMLDivElement>(null!);
   const focusRef = useRef<HTMLElement>(null!);
   const themeId = useThemeId(initThemeId);
   const { setSafeTimeout } = useSafeTimeout();
   const [hasTransitioned, setHasTransitioned] = useState<boolean>(immediate || false);
   const { changeFocus, returnFocus } = useFocusReturn();
-  const { componentId, generateTitleId } = useModalComponentIds(id);
+  const { componentId, generateTitleId } = useModalComponentIds(contextId);
   const translations = useTranslations({ customTranslations, fallbackTranslations: modalTranslations });
   const { closeLabel } = translations;
 
   const handleClose = useCallback(
     event => {
-      onClose && onClose(event, id);
+      onClose && onClose(event, contextId);
     },
-    [id, onClose],
+    [contextId, onClose],
   );
 
   useLayoutEffect(() => {

@@ -49,7 +49,7 @@ export function DropdownWithTags({
   themeId: initThemeId,
   translations: customTranslations,
   ...props
-}: DropdownWithTagsProps): React.ReactElement<DropdownWithTagsProps, 'div'> | null {
+}: DropdownWithTagsProps): React.ReactElement<DropdownWithTagsProps> | null {
   const reducer = useReducer<Reducer<InteractiveGroupState<string>, InteractiveGroupStateAction<string>>>(
     interactiveGroupReducer,
     getInteractiveGroupInitialState({ items: [], selectedIds: initialSelected?.map(({ id }) => id) }),

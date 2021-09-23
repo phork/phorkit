@@ -32,7 +32,7 @@ export function Badge({
   themeId: initThemeId,
   unthemed = false,
   ...props
-}: BadgeProps): React.ReactElement<BadgeProps, 'div'> {
+}: BadgeProps): React.ReactElement<BadgeProps> {
   const themeId = useThemeId(initThemeId);
   const color = contrast ? 'contrast' : initColor;
   const hasChildren = ['count', 'label'].includes(shape);
