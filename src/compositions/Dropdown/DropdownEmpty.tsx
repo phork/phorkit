@@ -21,7 +21,7 @@ export function DropdownEmpty({
   filter,
   themeId: initThemeId,
   ...props
-}: DropdownEmptyProps): React.ReactElement<DropdownEmptyProps, 'div'> | null {
+}: DropdownEmptyProps): React.ReactElement<DropdownEmptyProps> | null {
   const themeId = useThemeId(initThemeId);
   const content = useMemo(
     () => (children ? renderFromPropWithFallback<RenderFromPropProps>(children, { filter }) : undefined),

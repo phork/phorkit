@@ -15,7 +15,9 @@ import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import {
   IconToast,
   StyledIconToast,
+  StyledTitledToast,
   StyledToast,
+  TitledToast,
   Toast,
   ToastConsumer,
   ToastContainer,
@@ -30,37 +32,35 @@ import {
 
 <Playground>
   <ThemeWrapper>
-    <Toast immediate id="demo-basic-toast">
+    <Toast immediate>This is an example toast.</Toast>
+    <br />
+    <Toast immediate variant="colored">
       This is an example toast.
     </Toast>
     <br />
-    <Toast immediate id="demo-basic-colored-toast" variant="colored">
-      This is an example toast.
-    </Toast>
-    <br />
-    <Toast immediate id="demo-basic-colored-toast-long" variant="colored">
+    <Toast immediate variant="colored">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat congue risus vitae consequat. Aenean
       ultricies eu enim et accumsan. Suspendisse potenti.
     </Toast>
   </ThemeWrapper>
 </Playground>
 
-## Toast with a title
+## Titled toast
 
 <Playground>
   <ThemeWrapper>
-    <Toast immediate id="demo-title-toast" title="Hello world">
+    <TitledToast immediate title="Hello world">
       This is an example toast.
-    </Toast>
+    </TitledToast>
     <br />
-    <Toast immediate id="demo-title-colored-toast" title="Hello world" variant="colored">
+    <TitledToast immediate title="Hello world" variant="colored">
       This is an example toast.
-    </Toast>
+    </TitledToast>
     <br />
-    <Toast immediate id="demo-title-colored-toast-long" title="Hello world" variant="colored">
+    <TitledToast immediate title="Hello world" variant="colored">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat congue risus vitae consequat. Aenean
       ultricies eu enim et accumsan. Suspendisse potenti.{' '}
-    </Toast>
+    </TitledToast>
   </ThemeWrapper>
 </Playground>
 
@@ -68,15 +68,15 @@ import {
 
 <Playground>
   <ThemeWrapper>
-    <IconToast immediate icon={CheckIcon} id="demo-icon-toast">
+    <IconToast immediate icon={CheckIcon}>
       This is an example toast.
     </IconToast>
     <br />
-    <IconToast immediate icon={CheckIcon} id="demo-icon-colored-toast" variant="colored">
+    <IconToast immediate icon={CheckIcon} variant="colored">
       This is an example toast.
     </IconToast>
     <br />
-    <IconToast immediate icon={CheckIcon} id="demo-icon-colored-toast-long" variant="colored">
+    <IconToast immediate icon={CheckIcon} variant="colored">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat congue risus vitae consequat. Aenean
       ultricies eu enim et accumsan. Suspendisse potenti.{' '}
     </IconToast>
@@ -87,29 +87,15 @@ import {
 
 <Playground>
   <ThemeWrapper>
-    <IconToast immediate icon={CheckIcon} id="demo-icon-info-toast" level="info" title="Hello world">
+    <IconToast immediate icon={CheckIcon} level="info" title="Hello world">
       This is an info toast.
     </IconToast>
     <br />
-    <IconToast
-      immediate
-      icon={CheckIcon}
-      id="demo-icon-colored-info-toast"
-      level="info"
-      title="Hello world"
-      variant="colored"
-    >
+    <IconToast immediate icon={CheckIcon} level="info" title="Hello world" variant="colored">
       This is an info toast.
     </IconToast>
     <br />
-    <IconToast
-      immediate
-      icon={CheckIcon}
-      id="demo-icon-colored-info-toast-long"
-      level="info"
-      title="Hello world"
-      variant="colored"
-    >
+    <IconToast immediate icon={CheckIcon} level="info" title="Hello world" variant="colored">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat congue risus vitae consequat. Aenean
       ultricies eu enim et accumsan. Suspendisse potenti.{' '}
     </IconToast>
@@ -120,18 +106,11 @@ import {
 
 <Playground>
   <ThemeWrapper>
-    <IconToast immediate icon={CheckIcon} id="demo-icon-success-toast" level="success" title="Hello world">
+    <IconToast immediate icon={CheckIcon} level="success" title="Hello world">
       This is a success toast.
     </IconToast>
     <br />
-    <IconToast
-      immediate
-      icon={CheckIcon}
-      id="demo-icon-colored-success-toast"
-      level="success"
-      title="Hello world"
-      variant="colored"
-    >
+    <IconToast immediate icon={CheckIcon} level="success" title="Hello world" variant="colored">
       This is a success toast.
     </IconToast>
   </ThemeWrapper>
@@ -141,18 +120,11 @@ import {
 
 <Playground>
   <ThemeWrapper>
-    <IconToast immediate icon={CheckIcon} id="demo-icon-success-toast" level="warning" title="Hello world">
+    <IconToast immediate icon={CheckIcon} level="warning" title="Hello world">
       This is a warning toast.
     </IconToast>
     <br />
-    <IconToast
-      immediate
-      icon={CheckIcon}
-      id="demo-icon-colored-warning-toast"
-      level="warning"
-      title="Hello world"
-      variant="colored"
-    >
+    <IconToast immediate icon={CheckIcon} level="warning" title="Hello world" variant="colored">
       This is a warning toast.
     </IconToast>
   </ThemeWrapper>
@@ -162,18 +134,11 @@ import {
 
 <Playground>
   <ThemeWrapper>
-    <IconToast immediate icon={TimesIcon} id="demo-icon-danger-toast" level="danger" title="Hello world">
+    <IconToast immediate icon={TimesIcon} level="danger" title="Hello world">
       This is a danger toast.
     </IconToast>
     <br />
-    <IconToast
-      immediate
-      icon={TimesIcon}
-      id="demo-icon-colored-danger-toast"
-      level="danger"
-      title="Hello world"
-      variant="colored"
-    >
+    <IconToast immediate icon={TimesIcon} level="danger" title="Hello world" variant="colored">
       This is a danger toast.
     </IconToast>
   </ThemeWrapper>
@@ -183,20 +148,13 @@ import {
 
 <Playground>
   <ThemeWrapper>
-    <StyledToast immediate id="demo-styled-toast" levelColor="#556270" levelInverseColor="#fff" title="Hello world">
+    <StyledToast immediate levelColor="#556270" levelInverseColor="#fff">
       This is a styled toast.
     </StyledToast>
     <br />
-    <StyledToast
-      immediate
-      id="demo-custom-styled-toast"
-      levelColor="#556270"
-      levelInverseColor="#fff"
-      title="Hello world"
-      variant="colored"
-    >
-      This is a styled toast.
-    </StyledToast>
+    <StyledTitledToast immediate levelColor="#556270" levelInverseColor="#fff" title="Hello world" variant="colored">
+      This is a styled titled toast.
+    </StyledTitledToast>
   </ThemeWrapper>
 </Playground>
 
@@ -204,21 +162,13 @@ import {
 
 <Playground>
   <ThemeWrapper>
-    <StyledIconToast
-      immediate
-      icon={CheckIcon}
-      id="demo-styled-icon-toast"
-      levelColor="#556270"
-      levelInverseColor="#fff"
-      title="Hello world"
-    >
+    <StyledIconToast immediate icon={CheckIcon} levelColor="#556270" levelInverseColor="#fff" title="Hello world">
       This is a styled icon toast.
     </StyledIconToast>
     <br />
     <StyledIconToast
       immediate
       icon={CheckIcon}
-      id="demo-custom-styled-icon-toast"
       levelColor="#556270"
       levelInverseColor="#fff"
       title="Hello world"
@@ -243,9 +193,9 @@ import {
                   color="primary"
                   onClick={() =>
                     createNotification(
-                      <Toast level="info" title="Hello world">
+                      <TitledToast level="info" title="Hello world">
                         This is an info toast.
-                      </Toast>,
+                      </TitledToast>,
                     )
                   }
                 >
@@ -255,14 +205,14 @@ import {
                   color="success"
                   onClick={() =>
                     createNotification(
-                      <Toast id="demo-success" level="success" title="Hello world">
+                      <TitledToast contextId="demo-success" level="success" title="Hello world">
                         This is an overwriting success toast.
                         <div
                           style={{ position: 'absolute', bottom: '4px', right: '8px', fontSize: '10px', opacity: 0.4 }}
                         >
                           {Date.now()}
                         </div>
-                      </Toast>,
+                      </TitledToast>,
                     )
                   }
                 >
@@ -272,9 +222,9 @@ import {
                   color="warning"
                   onClick={() =>
                     createNotification(
-                      <Toast permanent level="warning" title="Hello world">
+                      <TitledToast permanent level="warning" title="Hello world">
                         This is a permanent warning toast.
-                      </Toast>,
+                      </TitledToast>,
                     )
                   }
                 >
@@ -284,9 +234,9 @@ import {
                   color="danger"
                   onClick={() =>
                     createNotification(
-                      <Toast level="danger" title="Hello world">
+                      <TitledToast level="danger" title="Hello world">
                         This is a danger toast.
-                      </Toast>,
+                      </TitledToast>,
                     )
                   }
                 >

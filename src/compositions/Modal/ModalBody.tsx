@@ -14,7 +14,7 @@ export const ModalBody = React.forwardRef<HTMLDivElement, ModalBodyProps>(
   (
     { children, className, flush = false, scrollable = false, style, ...props },
     forwardedRef,
-  ): React.ReactElement<ModalBodyProps, 'div'> => {
+  ): React.ReactElement<ModalBodyProps> => {
     return (
       <div
         className={cx(

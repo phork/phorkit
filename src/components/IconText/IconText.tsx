@@ -17,7 +17,7 @@ export const IconText = React.forwardRef<HTMLDivElement, IconTextProps>(
   (
     { className: initClassName, icon, iconClassName, inline = false, reverse = false, text, textClassName, ...props },
     forwardedRef,
-  ): React.ReactElement<IconTextProps, 'div'> => {
+  ): React.ReactElement<IconTextProps> => {
     return (
       <div
         className={cx(

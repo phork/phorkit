@@ -1,12 +1,12 @@
-import produce from 'immer';
+import produce, { castDraft } from 'immer';
 import React, { useCallback, useReducer, useRef } from 'react';
 import { v4 as uuid } from 'uuid';
 import { useSafeTimeout } from '../../hooks/useSafeTimeout';
-import { ToastProps } from './Toast';
 import { ToastContext, ToastContextValue } from './ToastContext';
+import { ToastWithContextItemType } from './ToastFromContext';
 import { toastActions as ACTIONS } from './toastActions';
 import { toastReducer as reducer, ToastState } from './toastReducer';
-import { ToastItemType, ToastNotificationLevel } from './types';
+import { ToastNotificationLevel } from './types';
 
 const durations: Record<ToastNotificationLevel, number> = {
   custom: 8000,
@@ -54,12 +54,12 @@ export function ToastProvider({ children }: ToastProviderProps): React.ReactElem
 
   // a toast with a duration of 0 is never auto-removed
   const scheduleRemoveNotification = useCallback(
-    (toast: ToastItemType) => {
-      const { id, duration, permanent } = toast.props;
-      cancelScheduledRemoval(id);
+    (toast: ToastWithContextItemType) => {
+      const { contextId, duration, permanent } = toast.props;
+      cancelScheduledRemoval(contextId);
 
       if (toast && duration && !permanent) {
-        setSafeTimeout(() => removeNotification(id), duration, id);
+        setSafeTimeout(() => removeNotification(contextId), duration, contextId);
       }
     },
     [cancelScheduledRemoval, removeNotification, setSafeTimeout],
@@ -68,21 +68,21 @@ export function ToastProvider({ children }: ToastProviderProps): React.ReactElem
   // if a toast already exists it will be overwritten and its removal time reset
   const createNotification = useCallback<ToastContextValue['createNotification']>(
     toast => {
-      const { id = uuid(), duration, level } = toast.props as ToastProps;
+      const { contextId = uuid(), duration, level } = toast.props;
       const mutableToast = React.cloneElement(toast, {
-        id,
+        contextId,
         created: Date.now(),
         duration: typeof duration === 'number' ? duration : durations[level || 'default'],
       });
 
       dispatch({
-        id,
+        id: contextId,
         type: ACTIONS.SET,
         value: mutableToast,
       });
 
       scheduleRemoveNotification(mutableToast);
-      return id;
+      return contextId;
     },
     [scheduleRemoveNotification],
   );
@@ -93,7 +93,7 @@ export function ToastProvider({ children }: ToastProviderProps): React.ReactElem
   }, [clearRemovals]);
 
   const value = produce(previousValue.current, draftState => {
-    draftState.notifications = state;
+    draftState.notifications = castDraft(state);
     draftState.clearNotifications = clearNotifications;
     draftState.createNotification = createNotification;
     draftState.pinNotification = pinNotification;

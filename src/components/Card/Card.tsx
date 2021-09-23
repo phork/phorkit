@@ -32,7 +32,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
       ...props
     },
     forwardedRef,
-  ): React.ReactElement<CardProps, 'div'> => {
+  ): React.ReactElement<CardProps> => {
     const themeId = useThemeId(initThemeId);
 
     return (

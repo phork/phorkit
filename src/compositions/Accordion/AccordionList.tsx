@@ -48,7 +48,7 @@ export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps
       ...props
     },
     forwardedRef,
-  ): React.ReactElement<AccordionListProps, 'div'> => {
+  ): React.ReactElement<AccordionListProps> => {
     const ref = useRef<HTMLDivElement>(null!);
     const accessible = useAccessibility();
     const { focused, handleBlur, handleFocus } = useDeepFocus<HTMLDivElement>(ref);

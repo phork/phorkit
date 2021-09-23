@@ -34,7 +34,7 @@ export const DropoverLabel = React.forwardRef<HTMLDivElement, DropoverLabelProps
       ...props
     },
     forwardedRef,
-  ): React.ReactElement<DropoverLabelProps, 'div'> => {
+  ): React.ReactElement<DropoverLabelProps> => {
     const themeId = useThemeId(initThemeId);
     const triangleColor =
       initTriangleColor ||

@@ -14,7 +14,7 @@ export function ModalFooter({
   children,
   className,
   ...props
-}: ModalFooterProps): React.ReactElement<ModalProviderProps, 'div'> {
+}: ModalFooterProps): React.ReactElement<ModalProviderProps> {
   return (
     <div className={cx(styles.modalFooter, bordered && styles['modalFooter--bordered'], className)} {...props}>
       {children}

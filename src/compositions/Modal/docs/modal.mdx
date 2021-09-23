@@ -33,7 +33,7 @@ import {
 
 <Playground>
   <ThemeWrapper style={{ width: 600, maxWidth: '100%' }}>
-    <Modal immediate ariaLabel="Example modal" id="demo-basic-modal">
+    <Modal immediate ariaLabel="Example modal">
       <ModalBody>This is an example modal.</ModalBody>
     </Modal>
   </ThemeWrapper>
@@ -43,8 +43,8 @@ import {
 
 <Playground>
   <ThemeWrapper style={{ width: 600, maxWidth: '100%' }}>
-    <Modal immediate id="demo-modal-header">
-      <ModalHeader modalId="demo-header" title="Hello world" />
+    <Modal immediate contextId="demo-modal-header">
+      <ModalHeader modalId="demo-modal-header" title="Hello world" />
       <ModalBody scrollable>This is a modal with a header.</ModalBody>
     </Modal>
   </ThemeWrapper>
@@ -54,8 +54,8 @@ import {
 
 <Playground>
   <ThemeWrapper style={{ width: 600, maxWidth: '100%' }}>
-    <Modal immediate id="demo-modal-close" onClose={Function.prototype}>
-      <ModalHeader modalId="demo-header-close" title="Hello world" />
+    <Modal immediate contextId="demo-modal-close" onClose={Function.prototype}>
+      <ModalHeader modalId="demo-modal-close" title="Hello world" />
       <ModalBody scrollable>This is a modal with a header and close button.</ModalBody>
     </Modal>
   </ThemeWrapper>
@@ -65,7 +65,7 @@ import {
 
 <Playground>
   <ThemeWrapper style={{ width: 600, maxWidth: '100%' }}>
-    <Modal immediate id="demo-modal-header-footer">
+    <Modal immediate contextId="demo-modal-header-footer">
       <ModalHeader modalId="demo-modal-header-footer" title="Hello world" />
       <ModalBody scrollable>This is a modal with a header and footer.</ModalBody>
       <ModalFooter>
@@ -81,7 +81,7 @@ import {
 
 <Playground>
   <ThemeWrapper style={{ width: 600, maxWidth: '100%' }}>
-    <Modal immediate id="demo-modal-header-footer" onClose={Function.prototype} style={{ height: 400 }}>
+    <Modal immediate contextId="demo-modal-header-footer" onClose={Function.prototype} style={{ height: 400 }}>
       <ModalHeader bordered align="left" modalId="demo-modal-header-footer" title="Hello world" />
       <ModalBody scrollable>
         <Typography variants={['line-height-comfy']}>
@@ -119,13 +119,7 @@ import {
 
 <Playground>
   <ThemeWrapper style={{ width: 600, maxWidth: '100%', height: 380 }}>
-    <Modal
-      allowOverflow
-      immediate
-      id="demo-modal-overflow"
-      size="medium"
-      style={{ borderRadius: '12px', maxWidth: 'calc(100% - 20px)' }}
-    >
+    <Modal allowOverflow immediate size="medium" style={{ borderRadius: '12px', maxWidth: 'calc(100% - 20px)' }}>
       <ModalBody flush style={{ height: '300px' }}>
         <div
           style={{
@@ -189,7 +183,7 @@ import {
               onClick={event =>
                 event.persist() ||
                 createModal(
-                  <Modal focusable id="demo-large-modal" size="large" style={{ height: '400px' }}>
+                  <Modal focusable contextId="demo-large-modal" size="large" style={{ height: '400px' }}>
                     {({ id, focusRef }) => (
                       <React.Fragment>
                         <ModalHeader modalId={id} title="A large modal" />
@@ -239,7 +233,7 @@ import {
                               color="primary"
                               onClick={() =>
                                 createModal(
-                                  <Modal focusable id="demo-medium-modal" size="medium">
+                                  <Modal focusable contextId="demo-medium-modal" size="medium">
                                     {({ id, focusRef }) => (
                                       <React.Fragment>
                                         <ModalHeader modalId={id} title="A medium modal" />
@@ -298,12 +292,12 @@ import {
                                                   <Modal
                                                     focusable
                                                     ariaLabel="Hello world"
-                                                    id="demo-small-modal"
+                                                    contextId="demo-small-modal"
                                                     size="small"
                                                   >
                                                     {({ id, focusRef }) => (
                                                       <React.Fragment>
-                                                        <ModalHeader modalId="demo-small-modal">
+                                                        <ModalHeader modalId={id}>
                                                           <IconText
                                                             inline
                                                             icon={<BlobbrIcon scale="medium" />}
@@ -397,7 +391,7 @@ import {
               onClick={event =>
                 event.persist() ||
                 createModal(
-                  <Modal focusable permanent id="permanent-modal" size="small">
+                  <Modal focusable permanent contextId="demo-permanent-modal" size="small">
                     {({ id, focusRef }) => (
                       <React.Fragment>
                         <ModalHeader align="left" modalId={id} title="A permanent modal" />
@@ -428,6 +422,9 @@ import {
             <p>{hasModal('demo-large-modal') ? 'The large modal is open.' : 'The large modal is closed.'}</p>
             <p>{hasModal('demo-medium-modal') ? 'The medium modal is open.' : 'The medium modal is closed.'}</p>
             <p>{hasModal('demo-small-modal') ? 'The small modal is open.' : 'The small modal is closed.'}</p>
+            <p>
+              {hasModal('demo-permanent-modal') ? 'The permanent modal is open.' : 'The permanent modal is closed.'}
+            </p>
           </Rhythm>
         )}
       </ModalConsumer>

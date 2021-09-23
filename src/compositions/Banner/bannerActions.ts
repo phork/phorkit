@@ -1,4 +1,4 @@
-import { BannerItemType } from './types';
+import { BannerWithContextItemType } from './BannerFromContext';
 
 export enum bannerActions {
   SET = 'SET',
@@ -9,7 +9,7 @@ export enum bannerActions {
 export type BannerStateActionSet = {
   type: bannerActions.SET;
   id: string;
-  value: BannerItemType;
+  value: BannerWithContextItemType;
 };
 
 export type BannerStateActionDelete = {

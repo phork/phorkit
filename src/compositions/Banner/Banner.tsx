@@ -20,13 +20,15 @@ export const bannerTranslations: BannerTranslations = {
   closeLabel: 'Close banner',
 };
 
-export interface BannerProps extends Omit<React.HTMLAttributes<PaperProps>, 'id'>, ThemeProps {
+export interface BannerProps extends Omit<PaperProps, 'children' | 'color'>, ThemeProps {
   children: React.ReactNode;
   className?: string;
-  id?: string;
+  /** The context ID is used by the banner system */
+  contextId?: string;
+  /** The immediate flag remove the entry animation */
   immediate?: boolean;
   level: StateColor | SequentialVariant | 'info' | 'contrast' | 'transparent';
-  onClose?: (event: React.MouseEvent | React.KeyboardEvent, id?: string) => void;
+  onClose?: (event: React.MouseEvent | React.KeyboardEvent, contextId?: string) => void;
   style?: React.CSSProperties;
   translations?: BannerTranslations;
 }
@@ -34,14 +36,15 @@ export interface BannerProps extends Omit<React.HTMLAttributes<PaperProps>, 'id'
 export function Banner({
   children,
   className,
-  id,
+  contextId,
   immediate = false,
-  level,
+  level = 'info',
   onClose,
   style,
   themeId: initThemeId,
   translations: customTranslations,
-}: BannerProps): React.ReactElement {
+  ...props
+}: BannerProps): React.ReactElement<BannerProps> {
   const themeId = useThemeId(initThemeId);
   const { setSafeTimeout } = useSafeTimeout();
   const [hasTransitioned, setHasTransitioned] = useState(immediate);
@@ -53,9 +56,9 @@ export function Banner({
 
   const handleClose = useCallback(
     event => {
-      onClose && onClose(event, id);
+      onClose && onClose(event, contextId);
     },
-    [id, onClose],
+    [contextId, onClose],
   );
 
   useLayoutEffect(() => {
@@ -77,6 +80,7 @@ export function Banner({
       container="banner"
       style={style}
       themeId={themeId}
+      {...props}
     >
       <Flex flexible alignItems="center" style={{ position: 'relative' }}>
         {children}

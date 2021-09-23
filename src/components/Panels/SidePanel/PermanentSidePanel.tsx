@@ -18,7 +18,7 @@ export const PermanentSidePanel = React.forwardRef<HTMLDivElement, PermanentSide
   (
     { children, className, fixed = false, position, raised, style: initStyle, unit: initUnit = 'px', width, ...props },
     forwardedRef,
-  ): React.ReactElement<PermanentSidePanelProps, 'div'> => {
+  ): React.ReactElement<PermanentSidePanelProps> => {
     const classes = cx(
       styles.sidePanel,
       fixed && styles['sidePanel--fixed'],

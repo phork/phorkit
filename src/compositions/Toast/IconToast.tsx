@@ -13,19 +13,20 @@ export interface IconToastProps extends ToastProps {
   variant?: 'colored';
 }
 
+/** An icon toast has an icon, an optional title and a body */
 export function IconToast({
   children,
   className,
+  contextId,
   icon: Icon,
   iconSize = 20,
-  id: initId,
   title,
   ...props
 }: IconToastProps): React.ReactElement<IconToastProps, 'div'> {
-  const { componentId: id, generateTitleId } = useToastComponentIds(initId);
+  const { componentId, generateTitleId } = useToastComponentIds(contextId);
 
   return (
-    <Toast noTitleIdOnContent className={cx(styles['toast--withIcon'], className)} id={id} {...props}>
+    <Toast className={cx(styles['toast--withIcon'], className)} id={componentId} {...props}>
       <div className={styles.toastIconContainer}>
         <div className={styles.toastIcon}>
           <Icon size={iconSize} />
@@ -37,7 +38,7 @@ export function IconToast({
               {title}
             </div>
           )}
-          {children && <div id={!title ? generateTitleId() : undefined}>{children}</div>}
+          <div id={!title ? generateTitleId() : undefined}>{children}</div>
         </div>
       </div>
     </Toast>

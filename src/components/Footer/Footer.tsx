@@ -25,7 +25,7 @@ export function Footer({
   variant: initVariant = 'primary',
   volume,
   ...props
-}: FooterProps): React.ReactElement<FooterProps, 'div'> {
+}: FooterProps): React.ReactElement<FooterProps> {
   const themeId = useThemeId(initThemeId);
   const variant = contrast ? 'contrast' : initVariant;
 

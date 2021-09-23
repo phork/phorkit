@@ -9,7 +9,7 @@ export interface MainPanelProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const MainPanel = React.forwardRef<HTMLDivElement, MainPanelProps>(
-  ({ children, className, ...props }: MainPanelProps, forwardedRef): React.ReactElement<MainPanelProps, 'div'> => {
+  ({ children, className, ...props }: MainPanelProps, forwardedRef): React.ReactElement<MainPanelProps> => {
     const classes = cx(styles.mainPanel, className);
 
     return (

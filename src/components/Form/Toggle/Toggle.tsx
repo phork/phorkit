@@ -47,7 +47,7 @@ export function ToggleBase(
     ...props
   }: ToggleProps,
   forwardedRef: React.ForwardedRef<HTMLInputElement>,
-): React.ReactElement<ToggleProps, 'label'> {
+): React.ReactElement<ToggleProps> {
   const accessible = useAccessibility();
   const inputRef = useRef<HTMLInputElement>(null!);
   const themeId = useThemeId(initThemeId);

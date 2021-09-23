@@ -21,7 +21,7 @@ export function Divider({
   variant: initVariant = 'primary',
   volume,
   ...props
-}: DividerProps): React.ReactElement<DividerProps, 'div'> {
+}: DividerProps): React.ReactElement<DividerProps> {
   const themeId = useThemeId(initThemeId);
   const variant = contrast ? 'contrast' : initVariant;
 

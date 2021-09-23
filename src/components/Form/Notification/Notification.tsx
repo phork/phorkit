@@ -27,7 +27,7 @@ export function Notification({
   themeId: initThemeId,
   width,
   ...props
-}: NotificationProps): React.ReactElement<NotificationProps, 'div'> {
+}: NotificationProps): React.ReactElement<NotificationProps> {
   const themeId = useThemeId(initThemeId);
 
   return (

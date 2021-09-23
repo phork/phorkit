@@ -18,7 +18,7 @@ export const FormboxReadOnly = React.forwardRef<HTMLDivElement, FormboxReadOnlyP
   (
     { centered, className, contrast = false, formattedValue, id, placeholder, themeId: initThemeId, value, ...props },
     forwardedRef,
-  ): React.ReactElement<FormboxReadOnlyProps, 'div'> => {
+  ): React.ReactElement<FormboxReadOnlyProps> => {
     const themeId = useThemeId(initThemeId);
     const color = contrast ? 'contrast' : 'primary';
 

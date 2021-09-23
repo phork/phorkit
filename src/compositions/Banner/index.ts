@@ -8,4 +8,3 @@ export * from './BannersFromContext';
 export * from './BannerProvider';
 export * from './bannerReducer';
 export * from './Banners';
-export * from './types';

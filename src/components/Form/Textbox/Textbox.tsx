@@ -174,7 +174,7 @@ export function TextboxBase(
     ...props
   }: TextboxProps,
   forwardedRef: React.ForwardedRef<HTMLInputElement>,
-): React.ReactElement<TextboxProps, 'label'> {
+): React.ReactElement<TextboxProps> {
   const themeId = useThemeId(initThemeId);
   const translations = useTranslations({ customTranslations, fallbackTranslations: textboxTranslations });
   const { clearLabel } = translations;

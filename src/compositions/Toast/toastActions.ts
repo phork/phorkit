@@ -1,4 +1,4 @@
-import { ToastItemType } from './types';
+import { ToastWithContextItemType } from './ToastFromContext';
 
 export enum toastActions {
   SET = 'SET',
@@ -10,7 +10,7 @@ export enum toastActions {
 export type ToastStateActionSet = {
   type: toastActions.SET;
   id: string;
-  value: ToastItemType;
+  value: ToastWithContextItemType;
 };
 
 export type ToastStateActionDelete = {

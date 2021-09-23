@@ -17,7 +17,7 @@ export function TabPanel({
   selected = false,
   vertical = false,
   ...props
-}: TabPanelProps): React.ReactElement<TabPanelProps, 'div'> {
+}: TabPanelProps): React.ReactElement<TabPanelProps> {
   return (
     <div
       className={cx(

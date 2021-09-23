@@ -1,9 +1,9 @@
 import { createContext } from 'react';
-import { ToastItemType } from './types';
+import { ToastWithContextItemType } from './ToastFromContext';
 
 export interface ToastContextValue {
-  notifications: Map<string, ToastItemType>;
-  createNotification: (toast: ToastItemType) => string | undefined;
+  notifications: Map<string, ToastWithContextItemType>;
+  createNotification: (toast: ToastWithContextItemType) => string | undefined;
   removeNotification: (id: string) => void;
   pinNotification: (id: string) => void;
   clearNotifications: () => void;

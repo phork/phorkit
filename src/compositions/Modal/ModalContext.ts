@@ -1,13 +1,13 @@
 import { createContext } from 'react';
-import { ModalItemType } from './types';
+import { ModalWithContextItemType, ModalWithContextState } from './ModalFromContext';
 
 export interface ModalContextValue {
-  modal?: ModalItemType['modal'];
-  modals: Map<string, ModalItemType>;
+  modal?: ModalWithContextItemType;
+  modals: Map<string, ModalWithContextState>;
   clearModals: () => void;
   createModal: (
-    modal: ModalItemType['modal'],
-    options?: ModalItemType['options'],
+    modal: ModalWithContextItemType,
+    options?: ModalWithContextState['options'],
     noJump?: boolean,
   ) => string | undefined;
   popModal: (force?: boolean) => void;

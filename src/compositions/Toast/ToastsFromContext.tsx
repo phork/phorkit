@@ -27,7 +27,7 @@ export function ToastsFromContext({
               {[...notifications.values()].map(element => (
                 <ToastFromContext
                   element={element}
-                  key={element.props.id}
+                  key={element.props.contextId}
                   pinNotification={pinNotification}
                   removeNotification={removeNotification}
                   themeId={themeId}

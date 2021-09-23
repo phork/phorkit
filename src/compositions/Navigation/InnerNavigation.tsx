@@ -57,7 +57,7 @@ export const InnerNavigation = React.forwardRef<HTMLElement, InnerNavigationProp
       ...props
     },
     forwardedRef,
-  ): React.ReactElement<InnerNavigationProps, 'nav'> => {
+  ): React.ReactElement<InnerNavigationProps> => {
     const ref = useRef<HTMLElement>(null!);
     const accessible = useAccessibility();
     const { getItem } = useListRegistry<HTMLDivElement>();
