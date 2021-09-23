@@ -19,18 +19,12 @@ export function BannersFromContext({
 
   return (
     <BannerConsumer>
-      {({ removeNotification, notifications }) => (
+      {({ notifications }) => (
         <React.Fragment>
           {notifications.size ? (
             <BannerContainer themeId={themeId} {...props}>
-              {[...notifications.values()].map(element => (
-                <BannerFromContext
-                  element={element}
-                  key={element.props.contextId}
-                  removeNotification={removeNotification}
-                  style={bannerStyle}
-                  themeId={themeId}
-                />
+              {[...notifications.values()].map(banner => (
+                <BannerFromContext banner={banner} key={banner.props.contextId} style={bannerStyle} themeId={themeId} />
               ))}
             </BannerContainer>
           ) : null}

@@ -1,10 +1,10 @@
-import { ModalWithContextState } from './ModalFromContext';
+import { ModalWithContextItemType } from './ModalFromContext';
 import { modalActions as ACTIONS, ModalStateAction } from './modalActions';
 
-export type ModalState = Map<string, ModalWithContextState>;
+export type ModalState = Map<string, ModalWithContextItemType>;
 
-const handleDelete = (modal: ModalWithContextState | undefined) => {
-  modal?.options?.onClose?.();
+const handleDelete = (modal: ModalWithContextItemType | undefined) => {
+  modal && modal.props.onClose?.(undefined, modal.props.contextId);
 };
 
 export function modalReducer(state: ModalState, action: ModalStateAction) {
@@ -61,7 +61,7 @@ export function modalReducer(state: ModalState, action: ModalStateAction) {
       return state;
 
     case ACTIONS.POP: {
-      const { modal } = Array.from(mutable.values()).pop() || {};
+      const modal = Array.from(mutable.values()).pop();
       if (modal && (action.force || !modal.props.permanent)) {
         handleDelete(mutable.get(modal.props.contextId));
         mutable.delete(modal.props.contextId);

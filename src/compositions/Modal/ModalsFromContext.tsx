@@ -16,12 +16,7 @@ export function ModalsFromContext({ themeId: initThemeId, ...props }: ModalsFrom
         <React.Fragment>
           {modal ? (
             <ModalContainer onEscape={popModal} {...props}>
-              <ModalFromContext
-                contextId={modal.props.contextId}
-                key={modal.props.contextId}
-                modal={modal}
-                themeId={themeId}
-              />
+              <ModalFromContext key={modal.props.contextId} modal={modal} themeId={themeId} />
             </ModalContainer>
           ) : null}
         </React.Fragment>

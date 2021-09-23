@@ -3,6 +3,10 @@ import { bannerActions as ACTIONS, BannerStateAction } from './bannerActions';
 
 export type BannerState = Map<string, BannerWithContextItemType>;
 
+const handleDelete = (banner: BannerWithContextItemType | undefined) => {
+  banner && banner.props.onClose?.(undefined, banner.props.contextId);
+};
+
 export function bannerReducer(state: BannerState, action: BannerStateAction): BannerState {
   const mutable = new Map(state);
 
@@ -12,7 +16,9 @@ export function bannerReducer(state: BannerState, action: BannerStateAction): Ba
       return mutable;
 
     case ACTIONS.DELETE:
-      if (mutable.has(action.id)) {
+      const banner = mutable.get(action.id);
+      if (banner) {
+        handleDelete(banner);
         mutable.delete(action.id);
         return mutable;
       }
@@ -20,6 +26,9 @@ export function bannerReducer(state: BannerState, action: BannerStateAction): Ba
 
     case ACTIONS.CLEAR:
       if (mutable.size) {
+        Array.from(mutable.values())
+          .reverse()
+          .forEach(banner => handleDelete(banner));
         mutable.clear();
         return mutable;
       }

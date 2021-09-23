@@ -4,6 +4,10 @@ import { toastActions as ACTIONS, ToastStateAction } from './toastActions';
 
 export type ToastState = Map<string, ToastWithContextItemType>;
 
+const handleDelete = (toast: ToastWithContextItemType | undefined) => {
+  toast && toast.props.onClose?.(undefined, toast.props.contextId);
+};
+
 export function toastReducer(state: ToastState, action: ToastStateAction): ToastState {
   const mutable = new Map(state);
 
@@ -13,7 +17,9 @@ export function toastReducer(state: ToastState, action: ToastStateAction): Toast
       return mutable;
 
     case ACTIONS.DELETE:
-      if (mutable.has(action.id)) {
+      const toast = mutable.get(action.id);
+      if (toast) {
+        handleDelete(toast);
         mutable.delete(action.id);
         return mutable;
       }
@@ -21,6 +27,9 @@ export function toastReducer(state: ToastState, action: ToastStateAction): Toast
 
     case ACTIONS.CLEAR:
       if (mutable.size) {
+        Array.from(mutable.values())
+          .reverse()
+          .forEach(toast => handleDelete(toast));
         mutable.clear();
         return mutable;
       }

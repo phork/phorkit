@@ -5,9 +5,10 @@ route: /compositions/Toasts
 ---
 
 import { Playground, Props } from 'docz';
+import { EyeIcon } from 'icons/EyeIcon';
 import { TimesIcon } from 'icons/TimesIcon';
 import { CheckIcon } from 'icons/internal/CheckIcon';
-import { Button, StyledButton } from 'components/Button';
+import { Button, StyledButton, IconTextButton, StyledIconTextButton } from 'components/Button';
 import { Rhythm } from 'components/Rhythm';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
@@ -193,7 +194,7 @@ import {
                   color="primary"
                   onClick={() =>
                     createNotification(
-                      <TitledToast level="info" title="Hello world">
+                      <TitledToast level="info" onClose={() => console.log('closed toast')} title="Hello world">
                         This is an info toast.
                       </TitledToast>,
                     )
@@ -205,7 +206,12 @@ import {
                   color="success"
                   onClick={() =>
                     createNotification(
-                      <TitledToast contextId="demo-success" level="success" title="Hello world">
+                      <TitledToast
+                        contextId="demo-success"
+                        level="success"
+                        onClose={(event, id) => console.log(`closed ${id}`)}
+                        title="Hello world"
+                      >
                         This is an overwriting success toast.
                         <div
                           style={{ position: 'absolute', bottom: '4px', right: '8px', fontSize: '10px', opacity: 0.4 }}
@@ -234,7 +240,7 @@ import {
                   color="danger"
                   onClick={() =>
                     createNotification(
-                      <TitledToast level="danger" title="Hello world">
+                      <TitledToast level="danger" onClose={() => console.log('closed toast')} title="Hello world">
                         This is a danger toast.
                       </TitledToast>,
                     )
@@ -248,7 +254,12 @@ import {
                   inverseColor="#fff"
                   onClick={() =>
                     createNotification(
-                      <StyledToast levelColor="#556270" levelInverseColor="#fff" title="Hello world">
+                      <StyledToast
+                        levelColor="#556270"
+                        levelInverseColor="#fff"
+                        onClose={() => console.log('closed toast')}
+                        title="Hello world"
+                      >
                         This is a styled toast.
                       </StyledToast>,
                     )
@@ -263,6 +274,133 @@ import {
                 <Button color="neutral" onClick={() => setVariant(variant === 'colored' ? undefined : 'colored')}>
                   Toggle variant
                 </Button>
+              </Rhythm>
+            )}
+          </ToastConsumer>
+        </Toasts>
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper>
+      {({ state: variant, setState: setVariant }) => (
+        <Toasts position="top-right" variant={variant}>
+          <ToastConsumer>
+            {({ createNotification, clearNotifications }) => (
+              <Rhythm m={2}>
+                <IconTextButton
+                  color="primary"
+                  icon={<CheckIcon scale="medium" />}
+                  onClick={() =>
+                    createNotification(
+                      <IconToast
+                        icon={CheckIcon}
+                        level="info"
+                        onClose={() => console.log('closed toast')}
+                        title="Hello world"
+                      >
+                        This is an info toast.
+                      </IconToast>,
+                    )
+                  }
+                >
+                  Info toast
+                </IconTextButton>
+                <IconTextButton
+                  color="success"
+                  icon={<CheckIcon scale="medium" />}
+                  onClick={() =>
+                    createNotification(
+                      <IconToast
+                        contextId="demo-success"
+                        icon={CheckIcon}
+                        level="success"
+                        onClose={(event, id) => console.log(`closed ${id}`)}
+                        title="Hello world"
+                      >
+                        This is an overwriting success toast.
+                        <div
+                          style={{ position: 'absolute', bottom: '4px', right: '8px', fontSize: '10px', opacity: 0.4 }}
+                        >
+                          {Date.now()}
+                        </div>
+                      </IconToast>,
+                    )
+                  }
+                >
+                  Success toast
+                </IconTextButton>
+                <IconTextButton
+                  color="warning"
+                  icon={<CheckIcon scale="medium" />}
+                  onClick={() =>
+                    createNotification(
+                      <IconToast permanent icon={CheckIcon} level="warning" title="Hello world">
+                        This is a permanent warning toast.
+                      </IconToast>,
+                    )
+                  }
+                >
+                  Warning toast
+                </IconTextButton>
+                <IconTextButton
+                  color="danger"
+                  icon={<TimesIcon scale="medium" />}
+                  onClick={() =>
+                    createNotification(
+                      <IconToast
+                        icon={TimesIcon}
+                        level="danger"
+                        onClose={() => console.log('closed toast')}
+                        title="Hello world"
+                      >
+                        This is a danger toast.
+                      </IconToast>,
+                    )
+                  }
+                >
+                  Danger toast
+                </IconTextButton>
+                <StyledIconTextButton
+                  activePrimaryColor="#708194"
+                  hoveredPrimaryColor="#393945"
+                  icon={<CheckIcon scale="medium" />}
+                  inverseColor="#fff"
+                  onClick={() =>
+                    createNotification(
+                      <StyledIconToast
+                        icon={CheckIcon}
+                        levelColor="#556270"
+                        levelInverseColor="#fff"
+                        onClose={() => console.log('closed toast')}
+                        title="Hello world"
+                      >
+                        This is a styled toast.
+                      </StyledIconToast>,
+                    )
+                  }
+                  primaryColor="#556270"
+                >
+                  Styled toast
+                </StyledIconTextButton>
+                <IconTextButton
+                  color="neutral"
+                  icon={<TimesIcon scale="medium" />}
+                  onClick={() => clearNotifications()}
+                  weight="outlined"
+                >
+                  Clear all
+                </IconTextButton>
+                <IconTextButton
+                  color="neutral"
+                  icon={<EyeIcon scale="medium" />}
+                  onClick={() => setVariant(variant === 'colored' ? undefined : 'colored')}
+                >
+                  Toggle variant
+                </IconTextButton>
               </Rhythm>
             )}
           </ToastConsumer>

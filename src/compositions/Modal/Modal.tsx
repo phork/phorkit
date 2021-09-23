@@ -33,7 +33,7 @@ export interface ModalProps extends ThemeProps {
   focusable?: boolean;
   /** The immediate flag remove the entry animation */
   immediate?: boolean;
-  onClose?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, contextId?: string) => void;
+  onClose?: (event?: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, contextId?: string) => void;
   /** A permanent modal doesn't have a close button */
   permanent?: boolean;
   size?: 'small' | 'medium' | 'large' | 'xlarge';
@@ -66,7 +66,7 @@ export function Modal({
   const { closeLabel } = translations;
 
   const handleClose = useCallback(
-    event => {
+    (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent): void => {
       onClose && onClose(event, contextId);
     },
     [contextId, onClose],
