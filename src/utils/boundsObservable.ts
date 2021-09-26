@@ -2,9 +2,9 @@ import { Observer, Observable } from '../types/observer';
 
 class BoundsEmitter {
   request?: number | false;
-  previous?: ClientRect;
+  previous?: DOMRect;
   ref: React.RefObject<HTMLElement>;
-  ondata: (bounds: ClientRect, previous?: ClientRect) => void;
+  ondata: (bounds: DOMRect, previous?: DOMRect) => void;
   onerror: (err: Error) => void;
   oncomplete: () => void;
 
@@ -65,7 +65,12 @@ class BoundsEmitter {
   }
 }
 
-export function boundsObservable(observer: Observer<ClientRect>, ref: React.RefObject<HTMLElement>): Observable {
+/**
+ * Accepts an observer and an element ref and returns
+ * functions to start and stop watching the element's
+ * bounding rectangle for changes.
+ */
+export function boundsObservable(observer: Observer<DOMRect>, ref: React.RefObject<HTMLElement>): Observable {
   const src = new BoundsEmitter({
     ref,
     ondata: (bounds, previous) => observer.next(bounds, previous),

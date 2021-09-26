@@ -1,13 +1,17 @@
 import { useCallback, useMemo, useState, useRef } from 'react';
-import { useElementEventListener } from './useElementEventListener';
+import { useHandleClickOutside } from './useHandleClickOutside';
+import { useHandleEscape } from './useHandleEscape';
 
 export interface UseComponentVisibleInterface {
   ignoreClickOutside?: boolean;
+  ignoreEscape?: boolean;
   initialVisible?: boolean;
   onHide?: () => void;
   onShow?: () => void;
   permanent?: boolean;
+  /** clickOutsideExclusions are areas that can be clicked without triggering close (required for portals) */
   clickOutsideExclusions?: HTMLElement[];
+  /** Stop the event propagation if the escape key is pressed */
   stopPropagation?: boolean;
 }
 
@@ -17,9 +21,14 @@ export type UseComponentVisibleResponse<C> = {
   setIsComponentVisible: (isComponentVisible: boolean) => void;
 };
 
-// clickOutsideExclusions are areas that can be clicked without triggering close (required for portals)
+/**
+ * Tracks whether a component is visible, and attaches
+ * event handlers to hide the component on escape or when
+ * a click happens outside the component.
+ */
 export function useComponentVisible<C extends HTMLElement>({
   ignoreClickOutside = false,
+  ignoreEscape = false,
   initialVisible = false,
   onHide,
   onShow,
@@ -30,49 +39,35 @@ export function useComponentVisible<C extends HTMLElement>({
   const [isComponentVisible, setIsComponentVisible] = useState<boolean>(initialVisible || permanent ? true : false);
   const ref = useRef<C>(null!);
 
-  const handleHideComponent = useCallback(
-    (event: KeyboardEvent): void => {
-      if (isComponentVisible && !permanent && event.key === 'Escape') {
-        stopPropagation && event.stopPropagation();
-        onHide && onHide();
+  useHandleClickOutside<C>({
+    clickOutsideExclusions,
+    onHide: useCallback(() => {
+      if (isComponentVisible && !permanent && !ignoreClickOutside) {
+        onHide?.();
         setIsComponentVisible(false);
       }
-    },
-    [isComponentVisible, onHide, permanent, stopPropagation],
-  );
+    }, [ignoreClickOutside, isComponentVisible, onHide, permanent]),
+    ref,
+  });
 
-  const handleClickOutside = useCallback(
-    (event: MouseEvent | TouchEvent): void => {
-      const isExcluded =
-        ignoreClickOutside ||
-        (clickOutsideExclusions &&
-          clickOutsideExclusions.some(node => node && event.target instanceof Node && node.contains(event.target)));
-
-      if (
-        !permanent &&
-        ref.current &&
-        event.target instanceof Node &&
-        !ref.current.contains(event.target) &&
-        !isExcluded
-      ) {
-        onHide && onHide();
+  useHandleEscape<C>({
+    onEscape: useCallback(() => {
+      if (isComponentVisible && !permanent && !ignoreEscape) {
+        onHide?.();
         setIsComponentVisible(false);
       }
-    },
-    [ignoreClickOutside, clickOutsideExclusions, permanent, onHide],
-  );
-
-  useElementEventListener({ eventType: 'click', callback: handleClickOutside as EventListener, options: true });
-  useElementEventListener({ eventType: 'keydown', callback: handleHideComponent as EventListener, options: true });
+    }, [ignoreEscape, isComponentVisible, onHide, permanent]),
+    stopPropagation,
+  });
 
   const setIsComponentVisibleWithCallbacks = useCallback(
     (visible: boolean): void => {
       if (visible && !isComponentVisible) {
-        onShow && onShow();
+        onShow?.();
         return setIsComponentVisible(true);
       }
       if (!visible && isComponentVisible) {
-        onHide && onHide();
+        onHide?.();
         return setIsComponentVisible(false);
       }
       return;
@@ -84,7 +79,7 @@ export function useComponentVisible<C extends HTMLElement>({
     () => ({
       ref,
       isComponentVisible,
-      setIsComponentVisible: onHide || onShow ? setIsComponentVisibleWithCallbacks : setIsComponentVisible,
+      setIsComponentVisible: onHide || onShow || true ? setIsComponentVisibleWithCallbacks : setIsComponentVisible,
     }),
     [onHide, onShow, isComponentVisible, setIsComponentVisibleWithCallbacks],
   );

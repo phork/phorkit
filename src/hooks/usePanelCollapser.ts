@@ -166,6 +166,7 @@ export const usePanelCollapser = ({
     [easing, height, position, ref, transition, unit, useMax, width],
   );
 
+  // no duration for the first run so the panel doesn't animate in or out on load
   const { start, stop } = useAnimationLoop({
     animate,
     duration: firstRun ? 0 : duration,

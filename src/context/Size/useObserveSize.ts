@@ -44,7 +44,7 @@ export function useObserveSize<E extends HTMLElement = HTMLDivElement>({
 
   // if this function changes it will start a new observer
   const processBounds = useCallback(
-    (initBounds: ClientRect): void => {
+    (initBounds: DOMRect): void => {
       setSize(size => {
         const bounds = {
           bottom: Number(initBounds.bottom.toFixed(decimalPlaces)),

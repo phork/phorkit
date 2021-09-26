@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from 'react';
-import { getAbsoluteCoords } from '../utils/getAbsoluteCoords';
+import { AbsoluteCoords, getAbsoluteCoords } from '../utils/getAbsoluteCoords';
 import { useBoundsObservable } from './useBoundsObservable';
 
 export interface UseAbsoluteCoordsInterface
@@ -9,6 +9,21 @@ export interface UseAbsoluteCoordsInterface
   ref: React.RefObject<HTMLElement>;
 }
 
+export type UseAbsoluteCoordsResponse = {
+  coords?: AbsoluteCoords;
+  /** A function to manually retrieve the coords and update the state */
+  update: () => void;
+  /** A function to start observing the coords changes */
+  subscribe: () => void;
+  /** A function to stop observing the coords changes */
+  unsubscribe: () => void;
+};
+
+/**
+ * Accepts a ref prop and returns an object containing the
+ * element's coords and a subscription service to watch for
+ * changes.
+ */
 export const useAbsoluteCoords = ({
   centered = false,
   fixed = false,
@@ -17,13 +32,18 @@ export const useAbsoluteCoords = ({
   offset,
   position,
   ref,
-}: UseAbsoluteCoordsInterface) => {
+}: UseAbsoluteCoordsInterface): UseAbsoluteCoordsResponse => {
   const [coords, setCoords] = useState<UseAbsoluteCoordsInterface['initialCoords']>(initialCoords);
 
   const processBounds = useCallback(
-    (bounds: ClientRect): void => {
+    (bounds: DOMRect): void => {
       const newCoords = getAbsoluteCoords({ bounds, centered, fixed, offset, position });
-      setCoords(newCoords);
+      setCoords(prevCoords => {
+        const haveCoordsChanged = (
+          ['position', 'top', 'bottom', 'left', 'right', 'transform'] as Array<keyof AbsoluteCoords>
+        ).some(prop => prevCoords?.[prop] !== newCoords[prop]);
+        return haveCoordsChanged ? newCoords : prevCoords;
+      });
     },
     [centered, fixed, offset, position],
   );
