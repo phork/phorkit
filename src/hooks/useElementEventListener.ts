@@ -14,7 +14,7 @@ export const useElementEventListener = ({
   options,
 }: UseElementEventListenerInterface) => {
   useEffect((): (() => void) | undefined => {
-    const element = initElement || document;
+    const element = initElement || (typeof document !== undefined && document) || undefined;
     if (!element || !element.addEventListener) return undefined;
 
     // necessary because the callback may have changed by the time it needs to be removed

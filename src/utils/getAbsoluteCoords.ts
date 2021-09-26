@@ -15,7 +15,7 @@ export interface AbsoluteCoordsTranslations {
 }
 
 export interface GetAbsoluteCoordsInterface {
-  bounds: ClientRect;
+  bounds: DOMRect;
   centered?: boolean;
   fixed?: boolean;
   offset?: { top?: number; bottom?: number; left?: number; right?: number };

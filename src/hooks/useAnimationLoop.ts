@@ -24,6 +24,7 @@ type Action =
   | { type: ACTIONS.SET_FINISHED };
 
 export interface UseAnimationLoopInterface {
+  /** The callback that receives the updated animation percentage */
   animate: (percent: number, options: State['options']) => void;
   /** The duration of the animation before it's considered complete, or falsy for infinite */
   duration?: number;
@@ -33,7 +34,7 @@ export interface UseAnimationLoopInterface {
   manual?: boolean;
   onFinish?: () => void;
   onLoop?: (args: { loop: number }) => void;
-  /** A custom percentage of how complete the animation is */
+  /** If this changes then the percent state is manually updated here */
   percent?: number;
 }
 
@@ -84,6 +85,13 @@ const createReducer =
     }
   };
 
+/**
+ * Runs for a certain number of loops and calls the animate
+ * function with each tick. The duration is used to determine
+ * the loop number. If no loops are passed then this will run
+ * infinitely or can be controlled with the start and stop
+ * callbacks that are returned.
+ */
 export const useAnimationLoop = ({
   animate,
   duration,
@@ -104,6 +112,7 @@ export const useAnimationLoop = ({
 
   previousState.current = state;
 
+  // updates the loop number, completion percentage and runtime with each tick
   const tick = useCallback(
     (timestamp: number, restart?: boolean, options?: State['options']): void => {
       if (!state.start || restart) {
@@ -134,78 +143,7 @@ export const useAnimationLoop = ({
     [duration, loops, state.start],
   );
 
-  // don't run if only the animation function has changed
-  useEffect((): void => {
-    if (hasStateFinishedChanged || hasStatePercentChanged) {
-      if (state.percent === 100 || percent || !state.finished) {
-        animate(percent || state.percent, state.options);
-      }
-    }
-  }, [animate, hasStateFinishedChanged, hasStatePercentChanged, percent, state.finished, state.options, state.percent]);
-
-  // don't run if only the loop callback has changed
-  useEffect((): void => {
-    if (hasStateLoopChanged) {
-      if (!state.finished) {
-        if (state.loop || state.loop === 0) {
-          onLoop && onLoop({ loop: state.loop });
-        }
-      }
-    }
-  }, [hasStateLoopChanged, onLoop, state.finished, state.loop]);
-
-  useEffect((): void => {
-    if (loops && state.loop >= loops) {
-      dispatch({
-        type: ACTIONS.SET_FINISHED,
-      });
-    }
-  }, [loops, state.loop]);
-
-  useEffect((): void => {
-    if (percent && percent !== 100) {
-      dispatch({
-        type: ACTIONS.SET_CUSTOM,
-        percent,
-      });
-    }
-  }, [percent]);
-
-  // don't run if only the animation function has changed
-  useEffect((): void => {
-    if (hasStateFinishedChanged && typeof window !== 'undefined') {
-      if (state.finished && !percent && requestId.current !== undefined) {
-        window.cancelAnimationFrame(requestId.current);
-        animate(100, state.options);
-      }
-    }
-  }, [animate, hasStateFinishedChanged, percent, state.finished, state.options]);
-
-  // don't run if only the finish callback has changed
-  useEffect((): void => {
-    if (hasStateFinishedChanged) {
-      if (state.finished) {
-        onFinish && onFinish();
-      }
-    }
-  }, [hasStateFinishedChanged, onFinish, state.finished]);
-
-  // watch for the runtime to have changed and re-request animation frame
-  useEffect((): void => {
-    if (!state.finished && (state.start || !manual) && !percent) {
-      requestId.current =
-        typeof window !== 'undefined' ? window.requestAnimationFrame(timestamp => tick(timestamp)) : undefined;
-    }
-  }, [manual, percent, tick, state.runtime, state.finished, state.start]);
-
-  useEffect((): (() => void) => {
-    return () => {
-      if (typeof window !== 'undefined' && requestId.current !== undefined) {
-        window.cancelAnimationFrame(requestId.current);
-      }
-    };
-  }, []);
-
+  // part of the return value used to manually start the animation
   const start = useCallback(
     (options: Pick<State, 'options'>): void => {
       if (duration === 0) {
@@ -221,11 +159,81 @@ export const useAnimationLoop = ({
     [animate, duration, onFinish, tick],
   );
 
+  // part of the return value used to manually stop the animation
   const stop = useCallback((): void => {
     if (typeof window !== 'undefined' && requestId.current !== undefined) {
       window.cancelAnimationFrame(requestId.current);
     }
   }, []);
+
+  // call animate() with the new percentage if the percentage or finished flag have changed
+  useEffect((): void => {
+    if (hasStateFinishedChanged || hasStatePercentChanged) {
+      if (state.percent === 100 || percent || !state.finished) {
+        animate(percent || state.percent, state.options);
+      }
+    }
+  }, [animate, hasStateFinishedChanged, hasStatePercentChanged, percent, state.finished, state.options, state.percent]);
+
+  // call the onLoop callback if the number of loops have changed
+  useEffect((): void => {
+    if (hasStateLoopChanged) {
+      if (!state.finished) {
+        if (state.loop || state.loop === 0) {
+          onLoop && onLoop({ loop: state.loop });
+        }
+      }
+    }
+  }, [hasStateLoopChanged, onLoop, state.finished, state.loop]);
+
+  // flags the state as finished if the number of loops exceeds the maximum loops
+  useEffect((): void => {
+    if (loops && state.loop >= loops) {
+      dispatch({
+        type: ACTIONS.SET_FINISHED,
+      });
+    }
+  }, [loops, state.loop]);
+
+  // if a percent value was passed then update the percentage state
+  useEffect((): void => {
+    if (percent && percent !== 100) {
+      dispatch({
+        type: ACTIONS.SET_CUSTOM,
+        percent,
+      });
+    }
+  }, [percent]);
+
+  // if the finished flag was set then stop running and call animate()
+  useEffect((): void => {
+    if (hasStateFinishedChanged && typeof window !== 'undefined') {
+      if (state.finished && !percent && requestId.current !== undefined) {
+        window.cancelAnimationFrame(requestId.current);
+        animate(100, state.options);
+      }
+    }
+  }, [animate, hasStateFinishedChanged, percent, state.finished, state.options]);
+
+  // if the finished flag changes then call onFinish callback
+  useEffect((): void => {
+    if (hasStateFinishedChanged) {
+      if (state.finished) {
+        onFinish && onFinish();
+      }
+    }
+  }, [hasStateFinishedChanged, onFinish, state.finished]);
+
+  // watch for the runtime to have changed and re-request the animation frame
+  useEffect((): void => {
+    if (!state.finished && (state.start || !manual) && !percent) {
+      requestId.current =
+        typeof window !== 'undefined' ? window.requestAnimationFrame(timestamp => tick(timestamp)) : undefined;
+    }
+  }, [manual, percent, tick, state.runtime, state.finished, state.start]);
+
+  // cancel the animation on clean up
+  useEffect((): (() => void) => stop, [stop]);
 
   previousUseAnimationLoopResponse.current = produce(previousUseAnimationLoopResponse.current, draftState => {
     draftState.start = start;

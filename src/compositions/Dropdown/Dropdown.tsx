@@ -4,8 +4,8 @@ import React, { useCallback, useEffect, useImperativeHandle, useMemo, useReducer
 import { v4 as uuid } from 'uuid';
 import { StateColor, ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
-import { useClickAndEscape } from '../../hooks/useClickAndEscape';
 import { useDeepFocusGroup } from '../../hooks/useDeepFocusGroup';
+import { useHandleEscape } from '../../hooks/useHandleEscape';
 import { useTranslations } from '../../hooks/useTranslations';
 import { useTriggerFocus } from '../../hooks/useTriggerFocus';
 import { makeCancelable } from '../../utils/makeCancelable';
@@ -495,14 +495,14 @@ export function DropdownBase(
     [focus, onClear],
   );
 
-  const handleClickAndEscape = useCallback(() => {
+  const handleEscape = useCallback(() => {
     cancel();
     dropdownDispatch({ type: ACTIONS.HIDE_DROPDOWN });
   }, [cancel]);
 
-  useClickAndEscape({
+  useHandleEscape({
     ref: containerRef,
-    onBlur: handleClickAndEscape,
+    onEscape: handleEscape,
     stopPropagation: isDropdownVisible,
   });
 

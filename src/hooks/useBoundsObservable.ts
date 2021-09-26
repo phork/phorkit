@@ -4,7 +4,7 @@ import { boundsObservable } from '../utils/boundsObservable';
 
 export interface UseBoundsObservableInterface {
   observe?: boolean;
-  processBounds: (bounds: ClientRect) => void;
+  processBounds: (bounds: DOMRect) => void;
   ref: React.RefObject<HTMLElement>;
 }
 
@@ -14,6 +14,11 @@ export type UseBoundsObservableResponse = {
   unsubscribe: () => void;
 };
 
+/**
+ * Accepts an element ref and a function to be called when
+ * that element's bounding rectangle changes, as well as
+ * functions to start and stop watching for the changes.
+ */
 export const useBoundsObservable = ({
   observe = false,
   processBounds,
