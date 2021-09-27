@@ -16,7 +16,7 @@ import {
 } from './interactiveGroupSelector';
 import { InteractiveGroupItemId } from './types';
 
-export interface UseInteractiveGroupInterface<T extends InteractiveGroupItemId = string> {
+export interface UseInteractiveGroupProps<T extends InteractiveGroupItemId = string> {
   /** This will allow an already selected item to be re-triggered */
   allowReselect?: boolean;
   /** This disables interaction across the whole group */
@@ -92,7 +92,7 @@ export function useInteractiveGroup<
   reducer,
   selectOnFocus = false,
   triggerLinks = false,
-}: UseInteractiveGroupInterface<T>): UseInteractiveGroupResponse<T, E, I> {
+}: UseInteractiveGroupProps<T>): UseInteractiveGroupResponse<T, E, I> {
   const previousState = useRef<{
     focusedIndex?: InteractiveGroupState<T>['focusedIndex'];
     selectedIds?: InteractiveGroupState<T>['selectedIds'];
@@ -335,7 +335,7 @@ export function useInteractiveGroup<
     ],
   );
 
-  useElementEventListener({ eventType: 'keydown', callback: handleKeyDown as EventListener, options: true });
+  useElementEventListener({ eventType: 'keydown', callback: handleKeyDown as EventListener, capture: true });
 
   return {
     focusedIndex,

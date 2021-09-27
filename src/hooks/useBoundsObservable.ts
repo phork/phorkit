@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { Observable } from '../types/observer';
 import { boundsObservable } from '../utils/boundsObservable';
 
-export interface UseBoundsObservableInterface {
+export interface UseBoundsObservableProps {
   observe?: boolean;
   processBounds: (bounds: DOMRect) => void;
   ref: React.RefObject<HTMLElement>;
@@ -23,7 +23,7 @@ export const useBoundsObservable = ({
   observe = false,
   processBounds,
   ref,
-}: UseBoundsObservableInterface): UseBoundsObservableResponse => {
+}: UseBoundsObservableProps): UseBoundsObservableResponse => {
   const observer = useRef<Observable | null>();
 
   const subscribe = useCallback(() => {

@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useElementEventListener } from './useElementEventListener';
 
-export interface UseHandleEscapeInterface<C extends HTMLElement> {
+export interface UseHandleEscapeProps<C extends HTMLElement> {
   onEscape: (event: KeyboardEvent) => void;
   ref?: React.RefObject<C>;
   stopPropagation?: boolean;
@@ -17,7 +17,7 @@ export function useHandleEscape<C extends HTMLElement>({
   onEscape,
   ref,
   stopPropagation = false,
-}: UseHandleEscapeInterface<C>): void {
+}: UseHandleEscapeProps<C>): void {
   const handleKeyDown = useCallback(
     (event: KeyboardEvent): void => {
       if (event.key === 'Escape') {
@@ -30,5 +30,5 @@ export function useHandleEscape<C extends HTMLElement>({
     [onEscape, ref, stopPropagation],
   );
 
-  useElementEventListener({ eventType: 'keydown', callback: handleKeyDown as EventListener, options: true });
+  useElementEventListener({ eventType: 'keydown', callback: handleKeyDown as EventListener, capture: true });
 }

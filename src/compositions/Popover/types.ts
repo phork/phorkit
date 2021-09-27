@@ -1,4 +1,4 @@
-import { UseAbsoluteCoordsInterface } from '../../hooks/useAbsoluteCoords';
+import { UseAbsoluteCoordsProps } from '../../hooks/useAbsoluteCoords';
 import { RenderFromPropElement } from '../../utils/renderFromProp';
 import { PositionOffset } from './../../utils/getPositionOffset';
 
@@ -10,7 +10,7 @@ export type PopoverRenderChildrenProps = Pick<
 };
 
 export interface PopoverContentProps
-  extends Pick<UseAbsoluteCoordsInterface, 'centered' | 'offset' | 'position'>,
+  extends Pick<UseAbsoluteCoordsProps, 'centered' | 'offset' | 'position'>,
     React.HTMLAttributes<HTMLDivElement> {
   alwaysRender?: boolean;
   className?: string;

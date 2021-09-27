@@ -2,14 +2,14 @@ import produce, { Draft } from 'immer';
 import React, { useRef } from 'react';
 import { InteractiveGroupContext, InteractiveGroupContextValue } from './InteractiveGroupContext';
 import { InteractiveGroupItemId } from './types';
-import { useInteractiveGroup, UseInteractiveGroupInterface, UseInteractiveGroupResponse } from './useInteractiveGroup';
+import { useInteractiveGroup, UseInteractiveGroupProps, UseInteractiveGroupResponse } from './useInteractiveGroup';
 
 export interface UncontrolledInteractiveGroupProviderProps<
   T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,
   I extends HTMLElement = HTMLElement,
 > extends Omit<React.HTMLAttributes<E>, 'onKeyDown' | 'onSelect'>,
-    UseInteractiveGroupInterface<T> {
+    UseInteractiveGroupProps<T> {
   children:
     | React.ReactElement
     | ((ref: UseInteractiveGroupResponse<T, E, I>['ref'], props: unknown) => React.ReactElement<E>)

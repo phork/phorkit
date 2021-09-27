@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useScrollIntoView } from '../../hooks/useScrollIntoView';
 
-interface UseInteractiveGroupItemInterface<E extends HTMLElement> {
+interface UseInteractiveGroupItemProps<E extends HTMLElement> {
   focused?: boolean;
   ref: React.MutableRefObject<E | null>;
 }
@@ -9,8 +9,8 @@ interface UseInteractiveGroupItemInterface<E extends HTMLElement> {
 export function useInteractiveGroupItem<E extends HTMLElement>({
   focused = false,
   ref,
-}: UseInteractiveGroupItemInterface<E>) {
-  const previous = useRef<{ focused?: UseInteractiveGroupItemInterface<E>['focused'] }>({});
+}: UseInteractiveGroupItemProps<E>) {
+  const previous = useRef<{ focused?: UseInteractiveGroupItemProps<E>['focused'] }>({});
   useScrollIntoView({ ref, focused });
 
   /**

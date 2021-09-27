@@ -4,7 +4,7 @@ import { useAnimationLoop } from './useAnimationLoop';
 
 export type CollapseTransition = 'squashable' | 'shiftable';
 
-export interface UsePanelCollapserInterface {
+export interface UsePanelCollapserProps {
   disableHiding?: boolean;
   duration: number;
   easing?: (percent: number) => number;
@@ -129,7 +129,7 @@ export const usePanelCollapser = ({
   unit: initUnit,
   useMax = false,
   width,
-}: UsePanelCollapserInterface): void => {
+}: UsePanelCollapserProps): void => {
   const originalPanelDisplayProp = useRef<CSSStyleDeclaration['display']>();
   const wasOpen = useRef<boolean>();
   const firstRun = wasOpen.current === undefined;

@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useEffect, useRef, useState } from 'react';
-import { usePanelCollapser, UsePanelCollapserInterface } from '../../hooks/usePanelCollapser';
+import { usePanelCollapser, UsePanelCollapserProps } from '../../hooks/usePanelCollapser';
 import { makeCombineRefs } from '../../utils/combineRefs';
 import {
   measureDomNode,
@@ -11,8 +11,8 @@ import styles from './styles/AccordionContent.module.css';
 
 export interface AccordionContentProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    Pick<UsePanelCollapserInterface, 'onCloseFinish' | 'onCloseStart' | 'onOpenFinish' | 'onOpenStart'>,
-    Partial<Pick<UsePanelCollapserInterface, 'duration' | 'easing'>> {
+    Pick<UsePanelCollapserProps, 'onCloseFinish' | 'onCloseStart' | 'onOpenFinish' | 'onOpenStart'>,
+    Partial<Pick<UsePanelCollapserProps, 'duration' | 'easing'>> {
   children: React.ReactNode;
   className?: string;
   disabled?: boolean;

@@ -12,13 +12,13 @@ const scaleSize = {
   '3xlarge': 40,
 };
 
-export interface UseIconSizeInterface {
+export interface UseIconSizeProps {
   size?: number;
   scale?: IconScale;
   noSize?: boolean;
 }
 
-export type UseIconSizeResponse = UseIconSizeInterface & {
+export type UseIconSizeResponse = UseIconSizeProps & {
   width: string;
   height: string;
 };
@@ -28,7 +28,7 @@ export function useIconSize({
   scale: initScale,
   noSize = false,
   ...props
-}: UseIconSizeInterface): UseIconSizeResponse {
+}: UseIconSizeProps): UseIconSizeResponse {
   const response: UseIconSizeResponse = { ...(props as UseIconSizeResponse) };
 
   const { size: contextSize, scale: contextScale } = useContext(ScaleContext);

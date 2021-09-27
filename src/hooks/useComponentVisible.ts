@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState, useRef } from 'react';
 import { useHandleClickOutside } from './useHandleClickOutside';
 import { useHandleEscape } from './useHandleEscape';
 
-export interface UseComponentVisibleInterface {
+export interface UseComponentVisibleProps {
   ignoreClickOutside?: boolean;
   ignoreEscape?: boolean;
   initialVisible?: boolean;
@@ -35,7 +35,7 @@ export function useComponentVisible<C extends HTMLElement>({
   permanent = false,
   clickOutsideExclusions,
   stopPropagation = false,
-}: UseComponentVisibleInterface): UseComponentVisibleResponse<C> {
+}: UseComponentVisibleProps): UseComponentVisibleResponse<C> {
   const [isComponentVisible, setIsComponentVisible] = useState<boolean>(initialVisible || permanent ? true : false);
   const ref = useRef<C>(null!);
 

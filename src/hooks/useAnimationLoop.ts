@@ -23,7 +23,7 @@ type Action =
   | ({ type: ACTIONS.SET_DURATION } & Pick<State, 'loop' | 'percent' | 'runtime'>)
   | { type: ACTIONS.SET_FINISHED };
 
-export interface UseAnimationLoopInterface {
+export interface UseAnimationLoopProps {
   /** The callback that receives the updated animation percentage */
   animate: (percent: number, options: State['options']) => void;
   /** The duration of the animation before it's considered complete, or falsy for infinite */
@@ -100,7 +100,7 @@ export const useAnimationLoop = ({
   onFinish,
   onLoop,
   percent,
-}: UseAnimationLoopInterface): UseAnimationLoopResponse => {
+}: UseAnimationLoopProps): UseAnimationLoopResponse => {
   const requestId = useRef<number>();
   const previousState = useRef<State>({} as State);
   const previousUseAnimationLoopResponse = useRef<UseAnimationLoopResponse>({} as UseAnimationLoopResponse);
