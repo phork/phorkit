@@ -7,7 +7,12 @@ route: /compositions/DropdownWithTags
 import { Playground, Props } from 'docz';
 import { themes } from 'config/themes';
 import { SearchIcon } from 'icons/SearchIcon';
+import { TimesIcon } from 'icons/TimesIcon';
 import { TagIcon } from 'icons/internal/TagIcon';
+import { Avatar } from 'components/Avatar';
+import { Flex } from 'components/Flex';
+import { Rhythm } from 'components/Rhythm';
+import { Typography, TypographyWithSvg } from 'components/Typography';
 import { ListProps } from 'docs/helpers/ListProps';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
@@ -134,6 +139,46 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         }
         options={options}
         style={{ width: 300 }}
+      />
+    </div>
+  </ThemeWrapper>
+</Playground>
+
+## Dropdown with custom tags
+
+<Playground>
+  <ThemeWrapper style={{ height: '300px' }}>
+    <div style={{ maxWidth: '100%', marginLeft: 20, marginRight: 20 }}>
+      <DropdownWithTags
+        transitional
+        initialSelected={[options[3]]}
+        inputVariant="outline"
+        label="Super awesome dropdown"
+        layout="raised"
+        onClear={value => console.log('clear')}
+        onSelectionChange={value => console.log('selection', value)}
+        options={options}
+        style={{ width: 300 }}
+        tag={({ label, themeId }) => (
+          <Flex flexible alignItems="center" direction="row" justifyContent="flex-start">
+            <Rhythm m={1} mr={2}>
+              <Avatar
+                imgSrc="/public/images/avatar.jpg"
+                initials="EC"
+                size="xsmall"
+                style={{ border: `1px solid ${themes[themeId]['secondary-palette-border-color']}` }}
+              />
+            </Rhythm>
+            <Typography weights={['line-height-smash']}>{label}</Typography>
+            <Rhythm ml={4} p={1} style={{ marginRight: 5 }}>
+              <TypographyWithSvg as="div" volume="quiet">
+                <TimesIcon scale="xsmall" />
+              </TypographyWithSvg>
+            </Rhythm>
+          </Flex>
+        )}
+        tagProps={{ flush: true }}
+        tagSize="medium"
       />
     </div>
   </ThemeWrapper>
