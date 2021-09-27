@@ -93,18 +93,21 @@ const getProperties = ({ position, transition, width, height, useMax }: GetPrope
         invert: transition === 'shiftable',
         size: height!,
       };
+
     case 'left':
       return {
         prop: transition === 'squashable' ? `${useMax ? 'max-' : ''}width` : 'margin-left',
         invert: transition === 'shiftable',
         size: width!,
       };
+
     case 'right':
       return {
         prop: transition === 'squashable' ? `${useMax ? 'max-' : ''}width` : 'margin-right',
         invert: transition === 'shiftable',
         size: width!,
       };
+
     default:
       throw Error('Invalid panel collapser position');
   }
