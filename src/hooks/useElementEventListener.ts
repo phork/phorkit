@@ -1,19 +1,19 @@
 import { useEffect } from 'react';
 
 type UseElementEventListenerWithOptions = {
-  options?: AddEventListenerOptions;
   capture?: never;
+  options?: AddEventListenerOptions;
 };
 
 type UseElementEventListenerWithCapture = {
-  options?: never;
   capture?: boolean;
+  options?: never;
 };
 
 export type UseElementEventListenerProps = {
+  callback: EventListener;
   element?: HTMLElement;
   eventType: keyof HTMLElementEventMap;
-  callback: EventListener;
 } & (UseElementEventListenerWithOptions | UseElementEventListenerWithCapture);
 
 /**
@@ -22,10 +22,10 @@ export type UseElementEventListenerProps = {
  * in a clean up function.
  */
 export const useElementEventListener = ({
-  element: initElement,
-  eventType,
   callback,
   capture,
+  element: initElement,
+  eventType,
   options,
 }: UseElementEventListenerProps) => {
   useEffect((): (() => void) | undefined => {

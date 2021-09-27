@@ -1,17 +1,26 @@
 import { useEffect } from 'react';
 
-interface UseRefEventListenerProps {
-  ref?: React.RefObject<HTMLElement>;
-  eventType: keyof HTMLElementEventMap;
+type UseRefEventListenerWithOptions = {
+  capture?: never;
+  options?: AddEventListenerOptions;
+};
+
+type UseRefEventListenerWithCapture = {
+  capture?: boolean;
+  options?: never;
+};
+
+export type UseRefEventListenerProps = {
   callback: EventListener;
-  options?: boolean | AddEventListenerOptions;
-}
+  eventType: keyof HTMLElementEventMap;
+  ref?: React.RefObject<HTMLElement>;
+} & (UseRefEventListenerWithOptions | UseRefEventListenerWithCapture);
 
 /**
  * Adds an event listener to the element set in the ref,
  * and removes the listener in a clean up function.
  */
-export const useRefEventListener = ({ ref, eventType, callback, options }: UseRefEventListenerProps): void => {
+export const useRefEventListener = ({ callback, capture, eventType, options, ref }: UseRefEventListenerProps): void => {
   useEffect((): (() => void) | undefined => {
     if (!ref?.current || !ref.current.addEventListener) return undefined;
 
@@ -19,7 +28,7 @@ export const useRefEventListener = ({ ref, eventType, callback, options }: UseRe
     const element = ref.current;
     const listener = (event: Event) => callback(event);
 
-    element.addEventListener(eventType, listener, options);
-    return () => element.removeEventListener(eventType, listener, options);
-  }, [callback, eventType, options, ref]);
+    element.addEventListener(eventType, listener, options || capture);
+    return () => element.removeEventListener(eventType, listener, options || capture);
+  }, [callback, capture, eventType, options, ref]);
 };
