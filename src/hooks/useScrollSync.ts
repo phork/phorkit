@@ -7,6 +7,12 @@ export interface UseScrollSyncProps {
 
 export type UseScrollSyncResponse = (id: string) => React.RefCallback<HTMLElement>;
 
+/**
+ * This is used to sync scrolling of multiple scrollable elements
+ * so that when one element is scrolled all others are also scrolled.
+ * This returns a function whose result should be set as the ref on
+ * all the scrollable elements.
+ */
 export function useScrollSync({ horizontal, vertical }: UseScrollSyncProps): UseScrollSyncResponse {
   const refs = useRef<Record<string, HTMLElement>>({});
 
