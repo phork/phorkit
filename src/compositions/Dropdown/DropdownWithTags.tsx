@@ -1,6 +1,7 @@
 import React, { Reducer, useCallback, useEffect, useMemo, useReducer, useRef } from 'react';
 import { useThemeId } from '../../context/Theme';
 import { useComponentId } from '../../hooks/useComponentId';
+import { renderFromProp, RenderFromPropElement } from '../../utils/renderFromProp';
 import { TimesIcon } from '../../icons/TimesIcon';
 import { Flex } from '../../components/Flex';
 import { IconText } from '../../components/IconText';
@@ -24,7 +25,9 @@ export type DropdownWithTagsOption = DropdownOption & {
 export interface DropdownWithTagsProps extends Omit<DropdownProps, 'initialSelected' | 'options' | 'reducer'> {
   initialSelected?: DropdownOption[];
   options: DropdownWithTagsOption[];
+  tag?: RenderFromPropElement<DropdownWithTagsOption>;
   tagGroupProps?: Omit<TagGroupProps, 'size'>;
+  tagProps?: Omit<TagProps<'button'>, 'actionable' | 'as' | 'onClick' | 'ref'>;
   tagShape?: TagShape;
   tagSize?: TagSize;
   tagWeight?: TagWeight;
@@ -42,7 +45,9 @@ export function DropdownWithTags({
   onSelectionChange,
   onUnselect,
   options,
+  tag,
   tagGroupProps,
+  tagProps,
   tagShape = 'pill',
   tagSize = 'xsmall',
   tagWeight = 'outlined',
@@ -153,7 +158,7 @@ export function DropdownWithTags({
         <TagGroup size={tagSize} {...tagGroupProps}>
           {options
             .filter(({ id }) => state.selectedIds.includes(id))
-            .map(({ id: itemId, label }, i) => (
+            .map(({ id: itemId, label, ...tagItemProps }, i) => (
               <Tag<'button'>
                 actionable
                 as="button"
@@ -165,17 +170,27 @@ export function DropdownWithTags({
                 size={tagSize}
                 themeId={themeId}
                 weight={tagWeight}
+                {...tagProps}
                 {...mappedProps[itemId]}
               >
-                <IconText
-                  reverse
-                  icon={
-                    <TypographyWithSvg<'div'> as="div" volume="quiet">
-                      <TimesIcon scale="xsmall" />
-                    </TypographyWithSvg>
-                  }
-                  text={<Rhythm mr={2}>{label}</Rhythm>}
-                />
+                {tag ? (
+                  renderFromProp<DropdownWithTagsOption>(tag, {
+                    id: itemId,
+                    label,
+                    themeId,
+                    ...tagItemProps,
+                  })
+                ) : (
+                  <IconText
+                    reverse
+                    icon={
+                      <TypographyWithSvg<'div'> as="div" volume="quiet">
+                        <TimesIcon scale="xsmall" />
+                      </TypographyWithSvg>
+                    }
+                    text={<Rhythm mr={2}>{label}</Rhythm>}
+                  />
+                )}
               </Tag>
             ))}
         </TagGroup>
