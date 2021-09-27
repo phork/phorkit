@@ -14,7 +14,7 @@ export interface UseDeepFocusEventHandlers<E> {
 export type UseDeepFocusOptions = {
   alwaysTriggerBlur?: boolean;
   alwaysTriggerFocus?: boolean;
-  /** This allow access to the event object’s properties after the event handler has run */
+  /** This allows access to the event object’s properties after the event handler has run */
   persistEvents?: boolean;
   /** This will delay the blur so that another focus can cancel it */
   blurDelay?: number;
@@ -26,7 +26,24 @@ export type UseDeepFocusResponse<E> = {
   handleFocus: React.FocusEventHandler<E>;
 };
 
-/** useDeepFocus calls onBlur when neither the element nor its children have focus */
+/**
+ * Calls onBlur when neither the element nor its children
+ * have focus, and onFocus when the element or one of its
+ * children have focus.
+ *
+ * The blur handler can be called set to have a delay so
+ * a focus can cancel it.
+ *
+ * If alwaysTriggerFocus or alwaysTriggerBlur are true
+ * then the respective handler functions are called even
+ * if the focus changes from one [focused|blurred] child
+ * to another. If they are false then the handlers are
+ * only called on each initial focus and blur.
+ *
+ * Additional handlers are available when the ref element
+ * itself gets focus or blurs, and when different children
+ * focus or blur.
+ */
 export function useDeepFocus<E extends HTMLElement>(
   ref: React.RefObject<E | null> | null,
   { onBlur, onBlurChild, onBlurSelf, onFocus, onFocusChild, onFocusSelf }: UseDeepFocusEventHandlers<E> = {},

@@ -7,7 +7,10 @@ export type UseComponentIdResponse = {
   generateComponentId: (id?: string | number, suffix?: string) => string;
 };
 
-// append a component ID to an element ID to prevent any ID collision
+/**
+ * Append a component ID to an element ID to prevent
+ * any ID collision
+ */
 export function useComponentId(initialId?: string): UseComponentIdResponse {
   const previousUseComponentIdResponse = useRef<UseComponentIdResponse>({} as UseComponentIdResponse);
   const componentId = useRef<string>(initialId || uuid());
