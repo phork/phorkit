@@ -9,7 +9,7 @@ export interface UseHandleEscapeProps<C extends HTMLElement> {
 
 /**
  * Accepts a function to be called when the Escape key
- * is used. If a ref element is passed the function
+ * is used. If a ref element is passed then the function
  * is only called if the event happened within that
  * element.
  */

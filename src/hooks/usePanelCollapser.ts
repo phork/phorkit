@@ -6,17 +6,22 @@ export type CollapseTransition = 'squashable' | 'shiftable';
 
 export interface UsePanelCollapserProps {
   disableHiding?: boolean;
+  /** The duration of the animation (no duration results in an immediate change) */
   duration: number;
+  /** An easing function can be used to specify the rate of change */
   easing?: (percent: number) => number;
   height?: number;
   onCloseFinish?: () => void;
   onCloseStart?: () => void;
   onOpenFinish?: () => void;
   onOpenStart?: () => void;
+  /** Changing the opening value is what triggers the opening and closing */
   open?: boolean;
+  /** The position of the panel so the animation direction can be determined */
   position: SimplePosition;
   ref: React.RefObject<HTMLElement>;
   transition: CollapseTransition;
+  /** The unit of size for the width or height of the open panel */
   unit: 'px' | 'percent';
   /** Use max-[width|height] rather than [width|height] to set the size */
   useMax?: boolean;
@@ -29,6 +34,8 @@ interface DistanceInput {
   percent: number;
 }
 
+const distance = ({ from, to, percent }: DistanceInput): number => from + (to - from) * (percent / 100);
+
 interface GetFromToInput {
   invert?: boolean;
   size: number;
@@ -36,8 +43,6 @@ interface GetFromToInput {
 }
 
 type GetFromToResponse = { from: number; to: number };
-
-const distance = ({ from, to, percent }: DistanceInput): number => from + (to - from) * (percent / 100);
 
 const getFromTo = ({ invert, size, open }: GetFromToInput): GetFromToResponse => {
   if (invert) {
@@ -113,6 +118,19 @@ const getProperties = ({ position, transition, width, height, useMax }: GetPrope
   }
 };
 
+/**
+ * Animates the open and closing of a vertical or horizontal
+ * panel with callbacks for when the opening starts and finishes
+ * and when the closing starts and finishes.
+ *
+ * The animation happens by updating the style on the element
+ * of the ref passed.
+ *
+ * The panel can be closed with a squashable transition which
+ * means its width/height collapses to 0, or a shiftable
+ * transition which means its margin is set to a negative
+ * value so that it shifts out out of the visible area.
+ */
 export const usePanelCollapser = ({
   disableHiding = false,
   duration,
@@ -131,7 +149,7 @@ export const usePanelCollapser = ({
   width,
 }: UsePanelCollapserProps): void => {
   const originalPanelDisplayProp = useRef<CSSStyleDeclaration['display']>();
-  const wasOpen = useRef<boolean>();
+  const wasOpen = useRef<boolean | undefined>(undefined);
   const firstRun = wasOpen.current === undefined;
   const unit = initUnit === 'percent' ? '%' : 'px';
 
@@ -195,6 +213,7 @@ export const usePanelCollapser = ({
     },
   });
 
+  // start the animation if the open prop changes
   useEffect(() => {
     if (wasOpen.current !== open) {
       wasOpen.current = !!open;
@@ -203,15 +222,19 @@ export const usePanelCollapser = ({
     }
   }, [open, start, stop]);
 
+  // update the panel size (and max-size when squashable) if the width or height change
   useEffect(() => {
     if (ref.current) {
-      width && ref.current.style.setProperty('max-width', `${width}${unit}`);
-      height && ref.current.style.setProperty('max-height', `${height}${unit}`);
+      const setWidth = width !== undefined && ['left', 'right'].includes(position);
+      const setHeight = height !== undefined && ['top', 'bottom'].includes(position);
+
+      setWidth && ref.current.style.setProperty('max-width', `${width}${unit}`);
+      setHeight && ref.current.style.setProperty('max-height', `${height}${unit}`);
 
       if (transition !== 'squashable') {
-        width && (ref.current.style.width = `${width}${unit}`);
-        height && (ref.current.style.height = `${height}${unit}`);
+        setWidth && (ref.current.style.width = `${width}${unit}`);
+        setHeight && (ref.current.style.height = `${height}${unit}`);
       }
     }
-  }, [width, height, ref, transition, unit]);
+  }, [width, height, position, ref, transition, unit]);
 };

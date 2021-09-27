@@ -10,9 +10,9 @@ export interface useHandleClickOutside<C extends HTMLElement> {
 }
 
 /**
- * Accepts a ref element and a function to be
- * called if a mouse or touch event happens outside
- * that element.
+ * Accepts a ref element and a function to be called
+ * if a mouse or touch event happens outside that
+ * element.
  */
 export function useHandleClickOutside<C extends HTMLElement>({
   clickOutsideExclusions,

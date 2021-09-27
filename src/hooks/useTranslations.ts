@@ -5,6 +5,11 @@ export interface UseTranslationsProps<T> {
   customTranslations?: Partial<T>;
 }
 
+/**
+ * Accepts an object of fallback translations and custom
+ * translations that override the fallback translations
+ * and returns a merged object of translations.
+ */
 export function useTranslations<T extends Record<string, string>>({
   fallbackTranslations,
   customTranslations,

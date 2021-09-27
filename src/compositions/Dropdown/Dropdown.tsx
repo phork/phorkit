@@ -307,7 +307,7 @@ export function DropdownBase(
       dropdownDispatch({ type: ACTIONS.HIDE_DROPDOWN });
     } else if (isFocused && !previous.current.isFocused) {
       if (isFilterable) {
-        focus<HTMLInputElement>(inputRef);
+        focus<HTMLInputElement>({ ref: inputRef });
       }
     }
     previous.current.isFocused = isFocused;
@@ -325,7 +325,7 @@ export function DropdownBase(
   useEffect(() => {
     if (isDropdownVisible !== previous.current.isDropdownVisible) {
       if (isDropdownVisible) {
-        !isFilterable && focus<HTMLUListElement, 'list'>(listRef, 'list');
+        !isFilterable && focus<HTMLUListElement, 'list'>({ ref: listRef, handle: 'list' });
         onOpen && onOpen();
       } else {
         onClose && onClose();
@@ -358,7 +358,7 @@ export function DropdownBase(
         (event.type === 'click' || (event.type === 'keydown' && 'key' in event && event.key === 'Enter'))
       ) {
         dropdownDispatch({ type: ACTIONS.HIDE_DROPDOWN });
-        focus<HTMLDivElement>(toggleRef);
+        focus<HTMLDivElement>({ ref: toggleRef });
       }
 
       onSelect && onSelect(id, selectedIds);
@@ -375,7 +375,7 @@ export function DropdownBase(
           (event.type === 'click' || (event.type === 'keydown' && 'key' in event && event.key === 'Enter'))
         ) {
           dropdownDispatch({ type: ACTIONS.HIDE_DROPDOWN });
-          focus<HTMLDivElement>(toggleRef);
+          focus<HTMLDivElement>({ ref: toggleRef });
         }
       }
 
@@ -405,10 +405,10 @@ export function DropdownBase(
   const handleClick = useCallback(() => {
     if (!mouseDownRef.current.isListClicked) {
       if (mouseDownRef.current.isDropdownVisible) {
-        isFilterable ? focus<HTMLInputElement>(inputRef) : focus<HTMLDivElement>(toggleRef);
+        isFilterable ? focus<HTMLInputElement>({ ref: inputRef }) : focus<HTMLDivElement>({ ref: toggleRef });
         dropdownDispatch({ type: ACTIONS.HIDE_DROPDOWN });
       } else {
-        isFilterable && focus<HTMLInputElement>(inputRef);
+        isFilterable && focus<HTMLInputElement>({ ref: inputRef });
         dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
       }
     }
@@ -424,7 +424,7 @@ export function DropdownBase(
       ) {
         event.preventDefault();
         dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
-        focus<HTMLUListElement, 'list'>(listRef, 'list');
+        focus<HTMLUListElement, 'list'>({ ref: listRef, handle: 'list' });
       }
     },
     [focus, isClearFocused, isListFocused],
@@ -472,7 +472,7 @@ export function DropdownBase(
       }
       if (event.key === 'ArrowDown') {
         dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
-        focus<HTMLUListElement, 'list'>(listRef, 'list');
+        focus<HTMLUListElement, 'list'>({ ref: listRef, handle: 'list' });
       }
     },
     [focus],
@@ -488,7 +488,7 @@ export function DropdownBase(
       event.stopPropagation();
       dropdownDispatch({ type: ACTIONS.CLEAR_FILTER });
       setFilteredOptions(undefined);
-      focus<HTMLInputElement>(inputRef);
+      focus<HTMLInputElement>({ ref: inputRef });
 
       onClear && onClear();
     },

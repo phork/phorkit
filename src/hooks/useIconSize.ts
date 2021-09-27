@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { IconScale } from '../types';
 import { ScaleContext } from '../context/Scale/ScaleContext';
 
-const scaleSize = {
+const scaleSize: Record<IconScale, number> = {
   xsmall: 8,
   small: 12,
   medium: 16,
@@ -13,8 +13,11 @@ const scaleSize = {
 };
 
 export interface UseIconSizeProps {
-  size?: number;
+  /** An exact icon size using either a number for pixels or a string */
+  size?: number | string;
+  /** A scale (eg. xsmall, small, medium, etc.) */
   scale?: IconScale;
+  /** Don't return any size props */
   noSize?: boolean;
 }
 
@@ -23,6 +26,13 @@ export type UseIconSizeResponse = UseIconSizeProps & {
   height: string;
 };
 
+/**
+ * Returns width and height props (as well as any other
+ * props passed) to add to an icon. The size is determined
+ * first by checking if a size prop has been passed, then
+ * if a scale prop has been passed, then by the context
+ * size and finally the context scale.
+ */
 export function useIconSize({
   size: initSize,
   scale: initScale,

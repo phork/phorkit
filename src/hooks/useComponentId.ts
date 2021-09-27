@@ -9,7 +9,7 @@ export type UseComponentIdResponse = {
 
 /**
  * Append a component ID to an element ID to prevent
- * any ID collision
+ * any ID collision.
  */
 export function useComponentId(initialId?: string): UseComponentIdResponse {
   const previousUseComponentIdResponse = useRef<UseComponentIdResponse>({} as UseComponentIdResponse);
