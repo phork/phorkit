@@ -1,20 +1,29 @@
 import { useEffect, useState } from 'react';
 
-type UseMousePositionResponse = {
-  x: number;
-  y: number;
-};
+type UseMousePositionResponse =
+  | {
+      x: number;
+      y: number;
+    }
+  | {
+      x: undefined;
+      y: undefined;
+    };
 
+/**
+ * Adds an window event listener to update the mouse
+ * position in state when the mouse moves.
+ */
 export const useMousePosition = (): UseMousePositionResponse => {
-  const [position, setPosition] = useState<UseMousePositionResponse>({ x: 0, y: 0 });
+  const [position, setPosition] = useState<UseMousePositionResponse>({ x: undefined, y: undefined });
 
   useEffect((): (() => void) => {
-    const setFromEvent = (event: MouseEvent) => setPosition({ x: event.clientX, y: event.clientY });
-    typeof window !== 'undefined' && window.addEventListener('mousemove', setFromEvent);
+    const handleMouseMove = (event: MouseEvent) => setPosition({ x: event.clientX, y: event.clientY });
+    typeof window !== 'undefined' && window.addEventListener('mousemove', handleMouseMove);
 
     return () => {
       if (typeof window !== 'undefined') {
-        window.removeEventListener('mousemove', setFromEvent);
+        window.removeEventListener('mousemove', handleMouseMove);
       }
     };
   }, []);

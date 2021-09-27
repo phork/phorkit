@@ -8,6 +8,14 @@ export type UseSafeTimeoutResponse = {
   hasSafeTimeout: (id: string) => boolean;
 };
 
+/**
+ * Returns a component-safe alternative to setTimeout and
+ * clearTimeout, as well as a function to check if a
+ * timeout has been set by ID.
+ *
+ * This uses a cleanup function to clear all timeouts
+ * when the component unmounts.
+ */
 export const useSafeTimeout = (): UseSafeTimeoutResponse => {
   const timeouts = useRef<Record<string, ReturnType<typeof setTimeout>>>({});
 

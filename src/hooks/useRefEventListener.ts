@@ -7,6 +7,10 @@ interface UseRefEventListenerProps {
   options?: boolean | AddEventListenerOptions;
 }
 
+/**
+ * Adds an event listener to the element set in the ref,
+ * and removes the listener in a clean up function.
+ */
 export const useRefEventListener = ({ ref, eventType, callback, options }: UseRefEventListenerProps): void => {
   useEffect((): (() => void) | undefined => {
     if (!ref?.current || !ref.current.addEventListener) return undefined;

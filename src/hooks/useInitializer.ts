@@ -1,14 +1,21 @@
 import { useCallback, useMemo, useRef } from 'react';
 
+type InitializerValueType = unknown;
+
 export type UseInitializerResponse = {
-  initialize: (prop: string, value?: boolean) => void;
+  initialize: (prop: string, value?: InitializerValueType) => void;
   clearInitialized: (prop: string) => void;
-  getInitialized: (prop: string) => unknown;
-  isInitialized: (prop: string, value?: boolean) => boolean;
+  getInitialized: (prop: string) => InitializerValueType;
+  isInitialized: (prop: string, value?: InitializerValueType) => InitializerValueType;
 };
 
-export function useInitializer(states: Record<string, unknown> = {}): UseInitializerResponse {
-  const ref = useRef<Record<string, unknown>>(states);
+/**
+ * Returns functions to initialize a value, to check
+ * if a value has been initialized, to get the value,
+ * and to clear the value.
+ */
+export function useInitializer(states: Record<string, InitializerValueType> = {}): UseInitializerResponse {
+  const ref = useRef<Record<string, InitializerValueType>>(states);
 
   const initialize = useCallback<UseInitializerResponse['initialize']>(
     (prop, value = true) => {

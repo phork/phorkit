@@ -5,16 +5,19 @@ export interface UseScrollIntoViewProps {
   ref: React.MutableRefObject<HTMLElement | null>;
 }
 
+/**
+ * Accepts a ref and a focused flag and when that focused
+ * flag changes to true this scrolls the ref element into
+ * view.
+ */
 export function useScrollIntoView({ focused = false, ref }: UseScrollIntoViewProps): void {
-  const previous = useRef<{ focused?: boolean }>({});
+  const previous = useRef<boolean | undefined>(undefined);
 
   // make sure focused has previously been set so this doesn't scroll the whole page to this element on load
   useLayoutEffect((): void => {
-    if (Object.prototype.hasOwnProperty.call(previous.current, 'focused')) {
-      if (focused && ref.current) {
-        ref.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-      }
+    if (focused && previous.current !== undefined) {
+      ref.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
     }
-    previous.current.focused = focused;
+    previous.current = !!focused;
   }, [focused, ref]);
 }

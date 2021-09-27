@@ -48,10 +48,10 @@ const isRefObject = (ref: UseDeepFocusGroupRef | UseDeepFocusGroupRefWithHandle)
 };
 
 /**
- * useDeepFocusGroup calls onBlur when none of the refs or their
- * children have focus. Refs should not be nested within each other
- * with the exception of the container ref, which can include all
- * the other refs.
+ * useDeepFocusGroup calls onBlur when none of the refs
+ * or their children have focus. Refs should not be
+ * nested within each other with the exception of the
+ * container ref, which can include all the other refs.
  */
 export function useDeepFocusGroup(
   { onBlur, onFocus }: UseDeepFocusGroupEventHandlers = {},

@@ -13,12 +13,12 @@ export type UseTriggerFocusOptions = {
 };
 
 export type UseTriggerFocusResponse = {
-  focus: <E extends HTMLElement, H extends string | undefined = undefined>(
-    ref: H extends string ? UseTriggerFocusRefWithHandle<E, H> : UseTriggerFocusRef<E>,
-    handle?: string,
+  focus: <E extends HTMLElement, H extends string | undefined = undefined>(props: {
+    ref: H extends string ? UseTriggerFocusRefWithHandle<E, H> : UseTriggerFocusRef<E>;
+    handle?: H;
     /** The default focus delay can be be overridden or cancelled with 0 */
-    focusDelay?: number,
-  ) => void;
+    delay?: number;
+  }) => void;
   cancel: () => void;
 };
 
@@ -34,7 +34,12 @@ const isRefObject = (ref: UseTriggerFocusRef | UseTriggerFocusRefWithHandle): re
   return (ref as UseTriggerFocusRef).current !== undefined;
 };
 
-/** useTriggerFocus can focus a ref with an optional delay */
+/**
+ * Returns a focus function that can be used to focus an element
+ * after an optional delay, as well as a cancel function that can
+ * be used to cancel the call to focus the element if a focus
+ * delay has been used and it is called within that delay time.
+ */
 export function useTriggerFocus({
   focusDelay: defaultFocusDelay,
 }: UseTriggerFocusOptions = {}): UseTriggerFocusResponse {
@@ -43,12 +48,12 @@ export function useTriggerFocus({
   const clearBlurTimeoutId = useRef<string>();
 
   const focus = useCallback<UseTriggerFocusResponse['focus']>(
-    (ref, handle, customFocusDelay) => {
-      const focusDelay = customFocusDelay ?? defaultFocusDelay;
+    ({ ref, handle, delay }) => {
+      const focusDelay = delay ?? defaultFocusDelay;
       clearBlurTimeoutId.current && clearSafeTimeout(clearBlurTimeoutId.current);
 
-      const focusCallback: UseTriggerFocusResponse['focus'] = (ref, handle) => {
-        if (isRefWithImperativeHandle(ref) && handle) {
+      const focusCallback: UseTriggerFocusResponse['focus'] = ({ ref, handle }) => {
+        if (isRefWithImperativeHandle(ref) && typeof handle === 'string') {
           ref.current?.[handle]?.focus();
         } else if (isRefObject(ref)) {
           ref.current?.focus();
@@ -58,9 +63,9 @@ export function useTriggerFocus({
       };
 
       if (focusDelay) {
-        clearBlurTimeoutId.current = setSafeTimeout(() => focusCallback(ref, handle), focusDelay);
+        clearBlurTimeoutId.current = setSafeTimeout(() => focusCallback({ ref, handle }), focusDelay);
       } else {
-        focusCallback(ref, handle);
+        focusCallback({ ref, handle });
       }
     },
     [clearSafeTimeout, defaultFocusDelay, setSafeTimeout],
