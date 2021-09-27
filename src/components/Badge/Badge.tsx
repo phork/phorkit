@@ -11,8 +11,11 @@ export interface LocalBadgeProps extends ThemeProps {
   children?: React.ReactNode;
   className?: string;
   color?: SemanticColor;
+  /** Adds a 1px outline to the badge to make it stand out */
   outlined?: boolean;
+  /** The badge's position relative to its parent */
   position?: CornerPosition;
+  /** Shows the badge with a pulsing animation radiating from it */
   pulsing?: boolean;
   shape: BadgeShape;
   style?: React.CSSProperties;
@@ -20,6 +23,15 @@ export interface LocalBadgeProps extends ThemeProps {
 
 export type BadgeProps = MergeElementPropsWithoutRef<'div', LocalBadgeProps>;
 
+/**
+ * A badge can either take the shape of a point (a small
+ * dot), a marker (a larger dot), a count (a small circle
+ * with a number in it), or a label (a small rectangle
+ * with text in it).
+ *
+ * It can be positioned relative to one of the corners
+ * of its containing element.
+ */
 export function Badge({
   children,
   className,
