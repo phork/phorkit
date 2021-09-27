@@ -40,6 +40,10 @@
       --footer-border-color: $theme-primary-palette-quiet-border-color;
     }
 
+    &.footer--transparent {
+      background-color: transparent;
+    }
+
     background-color: $theme-primary-palette-background-color;
     color: $theme-primary-palette-text-color;
   }
@@ -47,27 +51,35 @@
 
 .footer--secondary {
   @mixin themed .footer {
-    --footer-border-color: $theme-primary-palette-border-color;
+    --footer-border-color: $theme-secondary-palette-border-color;
 
     &.footer--quiet {
-      --footer-border-color: $theme-primary-palette-quiet-border-color;
+      --footer-border-color: $theme-secondary-palette-quiet-border-color;
     }
 
-    background-color: $theme-primary-palette-background-color;
-    color: $theme-primary-palette-text-color;
+    &.footer--transparent {
+      background-color: transparent;
+    }
+
+    background-color: $theme-secondary-palette-background-color;
+    color: $theme-secondary-palette-text-color;
   }
 }
 
-.footer--transparent {
+.footer--tertiary {
   @mixin themed .footer {
-    --footer-border-color: $theme-primary-palette-border-color;
+    --footer-border-color: $theme-tertiary-palette-border-color;
 
     &.footer--quiet {
-      --footer-border-color: $theme-primary-palette-quiet-border-color;
+      --footer-border-color: $theme-tertiary-palette-quiet-border-color;
     }
 
-    background-color: transparent;
-    color: $theme-primary-palette-text-color;
+    &.footer--transparent {
+      background-color: transparent;
+    }
+
+    background-color: $theme-tertiary-palette-background-color;
+    color: $theme-tertiary-palette-text-color;
   }
 }
 
@@ -77,6 +89,10 @@
 
     &.footer--quiet {
       --footer-border-color: $theme-contrast-palette-quiet-border-color;
+    }
+
+    &.footer--transparent {
+      background-color: transparent;
     }
 
     background-color: var(--contrast-color, $theme-contrast-palette-background-color);

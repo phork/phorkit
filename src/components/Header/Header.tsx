@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { ThemeProps } from '../../types';
+import { SequentialVariant, ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Header.module.css';
 
@@ -10,10 +10,17 @@ export interface HeaderProps extends React.HTMLAttributes<HTMLDivElement>, Theme
   className?: string;
   full?: boolean;
   style?: React.CSSProperties;
-  variant?: 'primary' | 'secondary' | 'transparent';
+  transparent?: boolean;
+  variant?: SequentialVariant;
   volume?: 'quiet';
 }
 
+/**
+ * The header is a simple container using flexbox
+ * space-between with an optional bottom border and
+ * background color using one of the sequential
+ * variants.
+ */
 export function Header({
   bordered = false,
   children,
@@ -21,6 +28,7 @@ export function Header({
   contrast = false,
   full = false,
   themeId: initThemeId,
+  transparent,
   unthemed = false,
   variant: initVariant = 'primary',
   volume,
@@ -36,6 +44,7 @@ export function Header({
     full && styles['header--full'],
     !unthemed && themeId && styles[`header--${themeId}`],
     !unthemed && variant && styles[`header--${variant}`],
+    transparent && styles['header--transparent'],
     volume && styles[`header--${volume}`],
     className,
   );
