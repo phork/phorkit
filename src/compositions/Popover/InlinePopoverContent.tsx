@@ -1,11 +1,11 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { UseAbsoluteCoordsInterface } from '../../hooks/useAbsoluteCoords';
+import { UseAbsoluteCoordsProps } from '../../hooks/useAbsoluteCoords';
 import { lowerCamelize } from '../../utils/case';
 import styles from './styles/Popover.module.css';
 import { PopoverContentProps } from './types';
 
-export type InlinePopoverContentProps = Pick<UseAbsoluteCoordsInterface, 'centered' | 'offset' | 'position'> &
+export type InlinePopoverContentProps = Pick<UseAbsoluteCoordsProps, 'centered' | 'offset' | 'position'> &
   Omit<PopoverContentProps, 'close' | 'isTogglerFocused'> &
   React.HTMLAttributes<HTMLDivElement>;
 

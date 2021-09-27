@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef } from 'react';
 import { EventListenerContext } from './EventListenerContext';
 import { EventListenerItemType } from './types';
 
-export interface UseEventListenerInterface extends Pick<EventListenerItemType, 'eventType' | 'listener' | 'options'> {
+export interface UseEventListenerProps extends Pick<EventListenerItemType, 'eventType' | 'listener' | 'options'> {
   precedeOtherEvents?: boolean;
 }
 
@@ -16,7 +16,7 @@ export const useEventListener = ({
   listener,
   options,
   precedeOtherEvents = false,
-}: UseEventListenerInterface): UseEventListenerResponse => {
+}: UseEventListenerProps): UseEventListenerResponse => {
   const { unshiftEventListener, pushEventListener, removeEventListener } = useContext(EventListenerContext);
   const ref = useRef<UseEventListenerResponse['removeListener']>();
 

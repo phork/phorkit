@@ -1,13 +1,13 @@
 import { useRef, useCallback } from 'react';
 
-export interface UseScrollSyncInterface {
+export interface UseScrollSyncProps {
   horizontal?: boolean;
   vertical?: boolean;
 }
 
 export type UseScrollSyncResponse = (id: string) => React.RefCallback<HTMLElement>;
 
-export function useScrollSync({ horizontal, vertical }: UseScrollSyncInterface): UseScrollSyncResponse {
+export function useScrollSync({ horizontal, vertical }: UseScrollSyncProps): UseScrollSyncResponse {
   const refs = useRef<Record<string, HTMLElement>>({});
 
   // remove the scroll listener so its change doesn't trigger another scroll event

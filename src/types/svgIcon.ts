@@ -1,6 +1,6 @@
-import { UseIconSizeInterface } from '../hooks/useIconSize';
+import { UseIconSizeProps } from '../hooks/useIconSize';
 
-export interface SvgIconProps extends Omit<React.SVGProps<SVGSVGElement>, 'size' | 'scale'>, UseIconSizeInterface {
+export interface SvgIconProps extends Omit<React.SVGProps<SVGSVGElement>, 'size' | 'scale'>, UseIconSizeProps {
   title?: string;
   titleId?: string;
 }

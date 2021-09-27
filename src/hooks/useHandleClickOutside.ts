@@ -34,6 +34,6 @@ export function useHandleClickOutside<C extends HTMLElement>({
     [clickOutsideExclusions, ref, stopPropagation, onHide],
   );
 
-  useElementEventListener({ eventType: 'click', callback: handleClickOutside as EventListener, options: true });
-  useElementEventListener({ eventType: 'touchend', callback: handleClickOutside as EventListener, options: true });
+  useElementEventListener({ eventType: 'click', callback: handleClickOutside as EventListener, capture: true });
+  useElementEventListener({ eventType: 'touchend', callback: handleClickOutside as EventListener, capture: true });
 }

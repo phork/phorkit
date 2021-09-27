@@ -7,7 +7,7 @@ const getPageLinks = (start: number, count: number, increment: number, max: numb
     .map((_, i) => start + (i + 1) * increment)
     .filter(i => i >= min && i <= max);
 
-export interface UsePaginationInterface {
+export interface UsePaginationProps {
   page: number;
   pageLinks: number;
   pageSize: number;
@@ -28,7 +28,7 @@ export const usePagination = ({
   pageSize,
   totalItems,
   withEllipsis = false,
-}: UsePaginationInterface): UsePaginationResponse => {
+}: UsePaginationProps): UsePaginationResponse => {
   const previousResponse = useRef<UsePaginationResponse>({} as UsePaginationResponse);
   const pages = Math.ceil(totalItems / pageSize);
 

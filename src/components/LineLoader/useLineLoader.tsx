@@ -6,7 +6,7 @@ import { LineLoader, LineLoaderProps } from './LineLoader';
 const fadeOutDuration = 300;
 const fadeOutDelay = 100;
 
-export interface UseLineLoaderInterface extends LineLoaderProps {
+export interface UseLineLoaderProps extends LineLoaderProps {
   duration?: number;
   component?: React.FC<LineLoaderProps>;
   position?: 'top' | 'bottom';
@@ -44,7 +44,7 @@ export function useLineLoader({
   fixed = false,
   style,
   ...props
-}: UseLineLoaderInterface): UseLineLoaderResponse {
+}: UseLineLoaderProps): UseLineLoaderResponse {
   const previousResponse = useRef<UseLineLoaderResponse>({} as UseLineLoaderResponse);
   const [loaderFinishing, setLoaderFinishing] = useState<boolean>();
   const { setSafeTimeout } = useSafeTimeout();

@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-export interface UseTranslationsInterface<T> {
+export interface UseTranslationsProps<T> {
   fallbackTranslations: T;
   customTranslations?: Partial<T>;
 }
@@ -8,7 +8,7 @@ export interface UseTranslationsInterface<T> {
 export function useTranslations<T extends Record<string, string>>({
   fallbackTranslations,
   customTranslations,
-}: UseTranslationsInterface<T>) {
+}: UseTranslationsProps<T>) {
   return useMemo(
     () => ({ ...(fallbackTranslations || {}), ...(customTranslations || {}) }),
     [customTranslations, fallbackTranslations],

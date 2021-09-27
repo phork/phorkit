@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { ListRegistryItemType } from './types';
 import { useListRegistry } from './useListRegistry';
 
-export interface UseListRegistryItemInterface<E extends HTMLElement = HTMLElement> {
+export interface UseListRegistryItemProps<E extends HTMLElement = HTMLElement> {
   id: string;
   ref: ListRegistryItemType<E>;
 }
@@ -10,7 +10,7 @@ export interface UseListRegistryItemInterface<E extends HTMLElement = HTMLElemen
 export function useListRegistryItem<E extends HTMLElement = HTMLElement>({
   id,
   ref,
-}: UseListRegistryItemInterface<E>): React.MutableRefObject<E | null> {
+}: UseListRegistryItemProps<E>): React.MutableRefObject<E | null> {
   const { registerItem, unregisterItem } = useListRegistry<E>();
 
   useEffect((): (() => void) => {

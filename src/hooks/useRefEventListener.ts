@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 
-interface UseRefEventListenerInterface {
+interface UseRefEventListenerProps {
   ref?: React.RefObject<HTMLElement>;
   eventType: keyof HTMLElementEventMap;
   callback: EventListener;
   options?: boolean | AddEventListenerOptions;
 }
 
-export const useRefEventListener = ({ ref, eventType, callback, options }: UseRefEventListenerInterface): void => {
+export const useRefEventListener = ({ ref, eventType, callback, options }: UseRefEventListenerProps): void => {
   useEffect((): (() => void) | undefined => {
     if (!ref?.current || !ref.current.addEventListener) return undefined;
 

@@ -1,13 +1,13 @@
 import { cx } from '@emotion/css';
 import React, { useRef } from 'react';
-import { usePanelCollapser, UsePanelCollapserInterface } from '../../../hooks/usePanelCollapser';
+import { usePanelCollapser, UsePanelCollapserProps } from '../../../hooks/usePanelCollapser';
 import { makeCombineRefs } from '../../../utils/combineRefs';
 import { easeInOutCubic } from '../../../utils/easings';
 import styles from './styles/StackPanel.module.css';
 
 export interface StackPanelProps
-  extends Pick<UsePanelCollapserInterface, 'onCloseFinish' | 'onCloseStart' | 'onOpenFinish' | 'onOpenStart' | 'open'>,
-    Partial<Pick<UsePanelCollapserInterface, 'easing' | 'unit' | 'transition'>>,
+  extends Pick<UsePanelCollapserProps, 'onCloseFinish' | 'onCloseStart' | 'onOpenFinish' | 'onOpenStart' | 'open'>,
+    Partial<Pick<UsePanelCollapserProps, 'easing' | 'unit' | 'transition'>>,
     React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className?: string;

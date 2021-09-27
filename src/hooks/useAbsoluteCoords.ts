@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState } from 'react';
 import { AbsoluteCoords, getAbsoluteCoords } from '../utils/getAbsoluteCoords';
 import { useBoundsObservable } from './useBoundsObservable';
 
-export interface UseAbsoluteCoordsInterface
+export interface UseAbsoluteCoordsProps
   extends Pick<Parameters<typeof getAbsoluteCoords>[0], 'centered' | 'fixed' | 'offset' | 'position'> {
   initialCoords?: ReturnType<typeof getAbsoluteCoords>;
   observe?: boolean;
@@ -32,8 +32,8 @@ export const useAbsoluteCoords = ({
   offset,
   position,
   ref,
-}: UseAbsoluteCoordsInterface): UseAbsoluteCoordsResponse => {
-  const [coords, setCoords] = useState<UseAbsoluteCoordsInterface['initialCoords']>(initialCoords);
+}: UseAbsoluteCoordsProps): UseAbsoluteCoordsResponse => {
+  const [coords, setCoords] = useState<UseAbsoluteCoordsProps['initialCoords']>(initialCoords);
 
   const processBounds = useCallback(
     (bounds: DOMRect): void => {

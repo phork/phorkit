@@ -1,11 +1,11 @@
 import { cx } from '@emotion/css';
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { useAbsoluteCoords, UseAbsoluteCoordsInterface } from '../../hooks/useAbsoluteCoords';
+import { useAbsoluteCoords, UseAbsoluteCoordsProps } from '../../hooks/useAbsoluteCoords';
 import styles from './styles/Portal.module.css';
 
 export interface PortalProps
-  extends Pick<UseAbsoluteCoordsInterface, 'centered' | 'offset' | 'position'>,
+  extends Pick<UseAbsoluteCoordsProps, 'centered' | 'offset' | 'position'>,
     React.HTMLAttributes<HTMLDivElement> {
   alwaysRender?: boolean;
   children: React.ReactNode;
@@ -14,7 +14,7 @@ export interface PortalProps
   focusable?: boolean;
   focusRef?: React.Ref<HTMLElement>;
   height?: number;
-  initialCoords?: UseAbsoluteCoordsInterface['initialCoords'];
+  initialCoords?: UseAbsoluteCoordsProps['initialCoords'];
   observe?: boolean;
   parentRef: React.MutableRefObject<HTMLDivElement>;
   portal?: 'fixed' | 'absolute';
