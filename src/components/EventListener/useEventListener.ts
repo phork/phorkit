@@ -1,6 +1,6 @@
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useRef } from 'react';
 import { EventListenerContext } from './EventListenerContext';
-import { EventListenerItemType } from './types';
+import { AddEventListenerCallback, EventListenerItemType } from './types';
 
 export interface UseEventListenerProps extends Pick<EventListenerItemType, 'eventType' | 'listener' | 'options'> {
   precedeOtherEvents?: boolean;
@@ -18,20 +18,17 @@ export const useEventListener = ({
   precedeOtherEvents = false,
 }: UseEventListenerProps): UseEventListenerResponse => {
   const { unshiftEventListener, pushEventListener, removeEventListener } = useContext(EventListenerContext);
-  const ref = useRef<UseEventListenerResponse['removeListener']>();
+  const ref = useRef<ReturnType<AddEventListenerCallback>>();
 
   const addListener = () => {
-    const id = precedeOtherEvents
+    ref.current = precedeOtherEvents
       ? unshiftEventListener(eventType, listener, options)
       : pushEventListener(eventType, listener, options);
-
-    ref.current = () => {
-      id !== undefined && removeEventListener(id, eventType, options);
-    };
   };
 
-  // remove the event listener on unmount by returning the function to remove it
-  useEffect((): UseEventListenerResponse['removeListener'] => ref.current, []);
+  const removeListener = () => {
+    ref.current && removeEventListener(ref.current, eventType, options);
+  };
 
-  return { addListener, removeListener: ref.current };
+  return { addListener, removeListener };
 };

@@ -13,17 +13,27 @@ import { eventListenerOptions as OPTIONS, EventListenerItemType } from './types'
 
 export interface EventListenerProviderProps {
   children: React.ReactNode;
+  ref?: React.RefObject<HTMLElement>;
 }
 
 const generateEventListener = (items: EventListenerItemType[]) => (event: Event) => {
   items.forEach(({ listener }) => listener(event));
 };
 
-export function EventListenerProvider({ children }: EventListenerProviderProps) {
+/**
+ * The event listener provider is used to track a
+ * stack of events. Events can be added to the start
+ * or end of the stack. It returns functions to add
+ * and remove listeners and to clear all the listeners,
+ * as well as the stack of events. If no ref element
+ * is provided then the events are added to the
+ * document element.
+ */
+export function EventListenerProvider({ children, ref }: EventListenerProviderProps) {
   const previousValue = useRef<EventListenerContextValue>({} as EventListenerContextValue);
   const [state, dispatch] = useReducer(reducer, new Map() as EventListenerState);
-  const previousState = useRef<EventListenerState>();
   const listeners = useRef<Record<string, ReturnType<typeof generateEventListener>>>({});
+  const removers = useRef<Array<() => void>>([]);
 
   const unshiftEventListener = useCallback<EventListenerContextValue['unshiftEventListener']>(
     (eventType, listener, options) => {
@@ -82,40 +92,32 @@ export function EventListenerProvider({ children }: EventListenerProviderProps) 
     [],
   );
 
-  useEffect(() => {
-    if (state !== previousState.current) {
-      previousState.current &&
-        previousState.current.forEach((values, key) => {
-          if (!state.get(key) || values !== state.get(key)) {
-            const eventType = getEventTypeFromMapKey(key);
-            const options = getOptionsFromMapKey(key);
+  useEffect((): (() => void) | undefined => {
+    const element = ref?.current || (typeof document !== undefined && document) || undefined;
 
-            if (listeners.current[key] && typeof document !== 'undefined') {
-              document.removeEventListener(
-                eventType,
-                listeners.current[key],
-                options && options.capture ? { capture: true } : undefined,
-              );
-            }
-          }
-        });
+    const removeEventListeners = () => {
+      removers.current.forEach(remover => remover());
+    };
 
-      state &&
+    const addEventListeners = () => {
+      element &&
+        state &&
         state.forEach((values, key) => {
-          if (!previousState.current || values !== previousState.current.get(key)) {
-            const eventType = getEventTypeFromMapKey(key);
-            const options = getOptionsFromMapKey(key);
+          const eventType = getEventTypeFromMapKey(key);
+          const options = getOptionsFromMapKey(key);
 
-            if (values.length > 0 && typeof document !== 'undefined') {
-              listeners.current[key] = generateEventListener(values);
-              document.addEventListener(eventType, listeners.current[key], options);
-            }
+          if (values.length > 0) {
+            listeners.current[key] = generateEventListener(values);
+            element.addEventListener(eventType, listeners.current[key], options);
+
+            removers.current.push(() => element.removeEventListener(eventType, listeners.current[key], options));
           }
         });
-    }
+    };
 
-    previousState.current = state;
-  }, [state]);
+    addEventListeners();
+    return removeEventListeners;
+  }, [ref, state]);
 
   const value = produce(previousValue.current, draftState => {
     draftState.events = state;
