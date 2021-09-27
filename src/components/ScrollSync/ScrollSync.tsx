@@ -1,5 +1,5 @@
 import React from 'react';
-import { useScrollSync, UseScrollSyncProps, UseScrollSyncResponse } from '../../useScrollSync';
+import { useScrollSync, UseScrollSyncProps, UseScrollSyncResponse } from '../../hooks/useScrollSync';
 
 export interface ScrollSyncProps extends UseScrollSyncProps {
   children: (props: UseScrollSyncResponse) => React.ReactElement;
