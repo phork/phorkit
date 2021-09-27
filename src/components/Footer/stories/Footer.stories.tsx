@@ -23,6 +23,11 @@ export default {
         category: 'Appearance',
       },
     },
+    transparent: {
+      table: {
+        category: 'Appearance',
+      },
+    },
     variant: {
       control: { type: 'inline-radio' },
       table: {
@@ -139,10 +144,10 @@ SecondaryVariant.args = {
   variant: 'secondary',
 };
 
-export const TransparentVariant = Template.bind({});
-TransparentVariant.storyName = 'Variant: Transparent';
-TransparentVariant.args = {
+export const TertiaryVariant = Template.bind({});
+TertiaryVariant.storyName = 'Variant: Tertiary';
+TertiaryVariant.args = {
   ...defaultArgs,
   bordered: true,
-  variant: 'transparent',
+  variant: 'tertiary',
 };

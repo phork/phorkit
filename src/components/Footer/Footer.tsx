@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { ThemeProps } from '../../types';
+import { SequentialVariant, ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Footer.module.css';
 
@@ -10,10 +10,17 @@ export interface FooterProps extends React.HTMLAttributes<HTMLDivElement>, Theme
   className?: string;
   full?: boolean;
   style?: React.CSSProperties;
-  variant?: 'primary' | 'secondary' | 'transparent';
+  transparent?: boolean;
+  variant?: SequentialVariant;
   volume?: 'quiet';
 }
 
+/**
+ * The footer is a simple container using flexbox
+ * space-between with an optional top border and
+ * background color using one of the sequential
+ * variants.
+ */
 export function Footer({
   bordered = false,
   children,
@@ -21,6 +28,7 @@ export function Footer({
   contrast = false,
   full = false,
   themeId: initThemeId,
+  transparent = false,
   unthemed = false,
   variant: initVariant = 'primary',
   volume,
@@ -36,7 +44,7 @@ export function Footer({
     full && styles['footer--full'],
     !unthemed && themeId && styles[`footer--${themeId}`],
     !unthemed && variant && styles[`footer--${variant}`],
-    full && styles['footer--full'],
+    transparent && styles['footer--transparent'],
     volume && styles[`footer--${volume}`],
     className,
   );

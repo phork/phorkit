@@ -40,6 +40,10 @@
       --header-border-color: $theme-primary-palette-quiet-border-color;
     }
 
+    &.header--transparent {
+      background-color: transparent;
+    }
+
     background-color: $theme-primary-palette-background-color;
     color: $theme-primary-palette-text-color;
   }
@@ -47,27 +51,35 @@
 
 .header--secondary {
   @mixin themed .header {
-    --header-border-color: $theme-primary-palette-border-color;
+    --header-border-color: $theme-secondary-palette-border-color;
 
     &.header--quiet {
-      --header-border-color: $theme-primary-palette-quiet-border-color;
+      --header-border-color: $theme-secondary-palette-quiet-border-color;
     }
 
-    background-color: $theme-primary-palette-background-color;
-    color: $theme-primary-palette-text-color;
+    &.header--transparent {
+      background-color: transparent;
+    }
+
+    background-color: $theme-secondary-palette-background-color;
+    color: $theme-secondary-palette-text-color;
   }
 }
 
-.header--transparent {
+.header--tertiary {
   @mixin themed .header {
-    --header-border-color: $theme-primary-palette-border-color;
+    --header-border-color: $theme-tertiary-palette-border-color;
 
     &.header--quiet {
-      --header-border-color: $theme-primary-palette-quiet-border-color;
+      --header-border-color: $theme-tertiary-palette-quiet-border-color;
     }
 
-    background-color: transparent;
-    color: $theme-primary-palette-text-color;
+    &.header--transparent {
+      background-color: transparent;
+    }
+
+    background-color: $theme-tertiary-palette-background-color;
+    color: $theme-tertiary-palette-text-color;
   }
 }
 
@@ -77,6 +89,10 @@
 
     &.header--quiet {
       --header-border-color: $theme-contrast-palette-quiet-border-color;
+    }
+
+    &.header--transparent {
+      background-color: transparent;
     }
 
     background-color: var(--contrast-color, $theme-contrast-palette-background-color);
