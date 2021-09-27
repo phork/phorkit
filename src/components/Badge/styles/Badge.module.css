@@ -34,7 +34,7 @@
 }
 
 .badge--outlined {
-  border: 1px solid currentColor;
+  box-shadow: 0 0 0 1px currentColor;
 }
 
 .badge--marker {

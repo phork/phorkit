@@ -18,6 +18,11 @@ const StyledBadge = styled(Badge, {
   --badge-text-color: ${props => themes[props.themeId][`color-${props.colorId}-contrast` as keyof ThemeColors]};
 `;
 
+/**
+ * A colored badge is an extension of the Badge
+ * component which will have a background of one
+ * of the theme's primary colors.
+ */
 export const ColoredBadge = React.memo<ColoredBadgeProps>(withTheme<ColoredBadgeProps>(StyledBadge));
 ColoredBadge.displayName = 'ColoredBadge';
 
