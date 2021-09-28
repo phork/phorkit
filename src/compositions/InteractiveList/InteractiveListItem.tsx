@@ -71,7 +71,11 @@ export function InteractiveListItemBase({
 
 /**
  * An interactive list item is used in the InteractiveList.
- * It adds the styles for all the different item states.
+ * It registers the list item and adds the styles for all
+ * the different item states.
+ *
+ * This uses the ListItem and InteractiveGroupItem
+ * components.
  */
 export const InteractiveListItem = React.memo(InteractiveListItemBase);
 
