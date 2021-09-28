@@ -6,6 +6,11 @@ export interface StyledCardProps extends CardProps {
   hoveredBorderColor: string;
 }
 
+/**
+ * A styled card is an extension of the Card
+ * component which will have a custom border
+ * and hovered border color.
+ */
 export const StyledCard = styled(Card, {
   shouldForwardProp: (prop: string) => !['borderColor', 'hoveredBorderColor', 'themeId'].includes(prop),
 })<StyledCardProps>`

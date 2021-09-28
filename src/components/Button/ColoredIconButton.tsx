@@ -24,6 +24,11 @@ const StyledIconButton = styled(IconButton, {
   --button-inverse-color: ${props => themes[props.themeId][`color-${props.colorId}-contrast` as keyof ThemeColors]};
 `;
 
+/**
+ * A colored icon button is an extension of the
+ * IconButton component which will have a background
+ * of one of the theme's primary colors.
+ */
 export const ColoredIconButton = withTheme<ColoredIconButtonProps>(StyledIconButton) as <
   T extends ButtonElementType = 'button',
 >(

@@ -8,6 +8,11 @@ export interface StyledFlexProps extends FlexProps {
   flexShrink?: number;
 }
 
+/**
+ * The styled flex component is an extension of the
+ * Flex component with the ability to set custom flex
+ * grow, shrink and flex basis properties.
+ */
 export const StyledFlex = styled(Flex, {
   shouldForwardProp: (prop: string) => !['flex', 'flexBasis', 'flexGrow', 'flexShrink'].includes(prop),
 })<StyledFlexProps>`

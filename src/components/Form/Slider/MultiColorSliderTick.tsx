@@ -10,40 +10,29 @@ export interface LocalMultiColorSliderTickProps extends ThemeProps {
   colors: string[];
   number: number;
   style: React.CSSProperties;
-  variant?: 'divider';
 }
 
 export type MultiColorSliderTickProps = MergeElementPropsWithoutRef<'div', LocalMultiColorSliderTickProps>;
 
+/**
+ * The multi color slider tick is used by the Slider
+ * component to render each tick of the MultiColorSlider
+ * component. A tick in this case is actually just the
+ * space between each segment.
+ */
 export function MultiColorSliderTick({
   active = false,
   number,
   className,
   colors,
-  style,
   themeId: initThemeId,
-  variant,
   ...props
 }: MultiColorSliderTickProps): React.ReactElement<MultiColorSliderTickProps> {
   const themeId = useThemeId(initThemeId);
 
   return (
     <div
-      className={cx(
-        styles.multiColorSliderTick,
-        themeId && styles[`multiColorSliderTick--${themeId}`],
-        variant && styles[`multiColorSliderTick--${variant}`],
-        !active && variant !== 'divider' && styles['is-inactive'],
-        className,
-      )}
-      style={
-        variant !== 'divider'
-          ? {
-              backgroundColor: colors[Math.max(0, number - 1)],
-              ...(style || {}),
-            }
-          : style
-      }
+      className={cx(styles.multiColorSliderTick, themeId && styles[`multiColorSliderTick--${themeId}`], className)}
       {...props}
     />
   );

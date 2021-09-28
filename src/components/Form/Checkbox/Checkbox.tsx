@@ -28,6 +28,7 @@ export interface LocalCheckboxProps<V extends CheckboxValue = string> extends Th
   children: React.ReactNode;
   className?: string;
   disabled?: boolean;
+  /** Sets the width to 100% */
   full?: boolean;
   id?: string;
   indeterminate?: boolean;
@@ -41,6 +42,7 @@ export interface LocalCheckboxProps<V extends CheckboxValue = string> extends Th
   unthemed?: boolean;
   validity?: 'danger';
   value?: V;
+  /** The primary variant uses a solid background fill for a checked item */
   variant?: 'primary' | 'secondary';
 }
 
@@ -171,6 +173,11 @@ export function CheckboxBase<V extends CheckboxValue = string>(
   );
 }
 
+/**
+ * The checkbox component contains both a form checkbox
+ * and a label. It requires an onChange handler and accepts
+ * several styling props.
+ */
 export const Checkbox = React.forwardRef(CheckboxBase) as <V extends CheckboxValue = string>(
   p: CheckboxProps<V> & { ref?: React.Ref<HTMLInputElement> },
 ) => React.ReactElement<HTMLLabelElement>;

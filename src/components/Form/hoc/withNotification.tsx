@@ -16,6 +16,11 @@ export type NotifiedComponentProps<WrappedComponentProps extends {}> = MergeProp
   LocalNotifiedComponentProps
 >;
 
+/**
+ * The withNotification HOC wraps a form input with the
+ * Notification component to display a notification under
+ * the input.
+ */
 export function withNotification<WrappedComponentProps, E>(
   WrappedComponent: React.FC<WrappedComponentProps>,
   { withDivider = false }: WithNotificationOptions = {},

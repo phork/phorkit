@@ -2,7 +2,7 @@ import { cx } from '@emotion/css';
 import React, { useCallback } from 'react';
 import { MergeElementProps, Orientation, ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
-import { renderFromProp } from '../../utils';
+import { renderFromProp } from '../../utils/renderFromProp';
 import styles from './styles/ButtonGroup.module.css';
 import { Button, ButtonProps } from './Button';
 import { ButtonAlignment, ButtonColor, ButtonSize, ButtonWeight } from './types';
@@ -37,6 +37,12 @@ export interface LocalButtonGroupProps
 
 export type ButtonGroupProps = MergeElementProps<'div', LocalButtonGroupProps>;
 
+/**
+ * A button group is a collection of buttons with
+ * a uniform amount of spacing between them (or no
+ * spacing at all). Button groups can be oriented
+ * horizontally or vertically.
+ */
 export function ButtonGroup({
   align = 'left',
   buttons,

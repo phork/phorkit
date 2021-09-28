@@ -199,6 +199,12 @@ export function TextareaBase(
   );
 }
 
+/**
+ * The textarea component extends the Formbox component and
+ * contains both a textarea form input and a label. It accepts
+ * custom icons, a placeholder value, a read only state (in
+ * addition to a disabled state) and several custom style options.
+ */
 export const Textarea = React.forwardRef(TextareaBase);
 
 // note that the base element cannot have a displayName because it breaks Storybook

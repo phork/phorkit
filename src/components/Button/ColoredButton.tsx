@@ -24,6 +24,11 @@ const StyledButton = styled(Button, {
   --button-inverse-color: ${props => themes[props.themeId][`color-${props.colorId}-contrast` as keyof ThemeColors]};
 `;
 
+/**
+ * A colored button is an extension of the Button
+ * component which will have a background of one
+ * of the theme's primary colors.
+ */
 export const ColoredButton = withTheme<ColoredButtonProps>(StyledButton) as <T extends ButtonElementType = 'button'>(
   p: ColoredButtonProps<T>,
 ) => React.ReactElement<T>;

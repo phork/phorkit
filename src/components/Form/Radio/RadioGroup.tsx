@@ -88,6 +88,10 @@ export function RadioGroupBase<V extends RadioValue = string>(
   );
 }
 
+/**
+ * A radio group is a collection of radio buttons
+ * in an inline or a stacked layout with a legend.
+ */
 export const RadioGroup = React.forwardRef(RadioGroupBase) as <V extends RadioValue = string>(
   p: RadioGroupProps<V> & { ref?: React.Ref<HTMLFieldSetElement> },
 ) => React.ReactElement<HTMLFieldSetElement>;

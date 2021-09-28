@@ -26,6 +26,11 @@ export interface LocalAvatarProps extends ThemeProps {
 
 export type AvatarProps<T extends React.ElementType = 'div'> = AsReactType<T> & MergeElementProps<T, LocalAvatarProps>;
 
+/**
+ * An avatar can be rendered as a standard read-only div,
+ * an actionable button, or a custom element. The view
+ * will either be an image or plain-text initials.
+ */
 export function Avatar<T extends React.ElementType = 'div'>({
   actionable = false,
   as,

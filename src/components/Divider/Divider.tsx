@@ -12,6 +12,10 @@ export interface DividerProps extends React.HTMLAttributes<HTMLDivElement>, Them
   volume?: Volume;
 }
 
+/**
+ * A divider is a vertical or horizontal rule
+ * which can be one of several colors or volumes.
+ */
 export function Divider({
   className,
   contrast = false,

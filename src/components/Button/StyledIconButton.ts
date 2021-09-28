@@ -13,6 +13,11 @@ export type StyledIconButtonProps<T extends IconButtonElementType = 'button'> = 
   }
 >;
 
+/**
+ * A styled icon button is an extension of the
+ * IconButton  component which will have a custom
+ * text and background color.
+ */
 export const StyledIconButton = styled(IconButton, {
   shouldForwardProp: (prop: string) =>
     !['primaryColor', 'inverseColor', 'hoveredPrimaryColor', 'activePrimaryColor', 'width'].includes(prop),

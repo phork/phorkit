@@ -17,6 +17,7 @@ export interface FormboxInputWithFormattingProps<I extends FormboxInputElementTy
   children?: React.ReactElement<HTMLElementTagNameMap[I]>;
   className?: string;
   contrast?: boolean;
+  /** Manually apply the focus styles; this does not affect focus */
   focused?: boolean;
   formattedValue?: React.ReactChild;
   /** This is whether there's an input value (excluding the formatted value) */
@@ -25,7 +26,13 @@ export interface FormboxInputWithFormattingProps<I extends FormboxInputElementTy
   variant: FormboxVariant;
 }
 
-/** This is a wrapper for formbox inputs that can have HTML values and/or placeholders */
+/**
+ * This is a wrapper for formbox inputs that can have
+ * HTML values and/or placeholders. It's used to hide
+ * and show the input value or placeholder as necessary
+ * and to make sure that the size doesn't change when
+ * changing between placeholder and value views.
+ */
 export const FormboxInputWithFormatting = <I extends FormboxInputElementType>({
   alwaysShowFormatting = false,
   alwaysUseFormatting = false,

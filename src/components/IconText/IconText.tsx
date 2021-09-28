@@ -13,6 +13,11 @@ export interface IconTextProps extends React.HTMLAttributes<HTMLDivElement> {
   textClassName?: string;
 }
 
+/**
+ * The icon text component is used to line up an icon
+ * and a line of text. The icon can be before or after
+ * the text.
+ */
 export const IconText = React.forwardRef<HTMLDivElement, IconTextProps>(
   (
     { className: initClassName, icon, iconClassName, inline = false, reverse = false, text, textClassName, ...props },

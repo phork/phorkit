@@ -8,6 +8,12 @@ export interface StyledHeaderProps extends HeaderProps {
   height?: number | string;
 }
 
+/**
+ * A styled header is an extension of the Header
+ * component which can have custom text, border,
+ * and background colors, and an optional custom
+ * height.
+ */
 export const StyledHeader = styled(Header, {
   shouldForwardProp: (prop: string) =>
     !['borderColor', 'backgroundColor', 'textColor', 'height', 'themeId'].includes(prop),

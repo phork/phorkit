@@ -12,6 +12,12 @@ export interface StyledTextboxProps extends TextboxProps {
   textboxLabelTextColor: string;
 }
 
+/**
+ * A styled textbox is an extension of the Textbox
+ * component which will have custom text, border and
+ * background colors for both focused, unfocused and
+ * hovered states.
+ */
 export const StyledTextbox = styled(Textbox, {
   shouldForwardProp: (prop: string) =>
     ![

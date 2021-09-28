@@ -16,6 +16,13 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement>, Omit<Th
   style?: React.CSSProperties;
 }
 
+/**
+ * A card is a container around some content that
+ * can be bordered, raised, hoverable and hoverable
+ * and magnified. A raised card has a shadow with
+ * a certain size and blur amount depending on the
+ * level it's raised to.
+ */
 export const Card = React.forwardRef<HTMLDivElement, CardProps>(
   (
     {

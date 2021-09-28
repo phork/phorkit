@@ -24,6 +24,11 @@ const StyledDivider = styled(Divider, {
   ${({ volume }) => volume && `opacity: ${opacities[volume] || 1};`}
 `;
 
+/**
+ * A colored divider is an extension of the Divider
+ * component which will be the color of one of the
+ * theme's primary colors.
+ */
 export const ColoredDivider = React.memo<ColoredDividerProps>(withTheme<ColoredDividerProps>(StyledDivider));
 ColoredDivider.displayName = 'ColoredDivider';
 

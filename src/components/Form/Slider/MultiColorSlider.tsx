@@ -36,6 +36,13 @@ export type MultiColorSliderProps = MergeProps<
   LocalMultiColorSliderProps
 >;
 
+/**
+ * The multi color slider accepts a set of colors that
+ * are used for individual segments of the slider. A
+ * color segment can either be on or off. The onChange
+ * value is 0 if no colors are active, 1 if the first
+ * color is active, 2 for the second, etc.
+ */
 export function MultiColorSlider({
   className,
   colors: initColors,
@@ -80,7 +87,7 @@ export function MultiColorSlider({
       tick={1}
       tickBackgroundColor="transparent"
       tickElement={MultiColorSliderTick}
-      tickProps={{ colors, themeId, variant: 'divider' }}
+      tickProps={{ colors, themeId }}
       trackBackgroundColor={theme['color-FG0-O10']}
       trackElement={MultiColorSliderTrack}
       trackFillBackgroundColor="transparent"
