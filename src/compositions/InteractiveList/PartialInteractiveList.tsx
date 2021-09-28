@@ -156,7 +156,17 @@ export function PartialInteractiveListBase(
   );
 }
 
+/**
+ * The interactive list component renders a list that
+ * has mouse and keyboard event handlers used to track
+ * the selected and focused items(s). It accepts
+ * callbacks for when items are selected, unselected,
+ * focused, and clicked.
+ *
+ * This uses the List and the InteractiveGroup
+ * components.
+ */
 export const PartialInteractiveList = React.forwardRef(PartialInteractiveListBase);
 
-PartialInteractiveListBase.displayName = 'PartialInteractiveListBase';
+// note that the base element cannot have a displayName because it breaks Storybook
 PartialInteractiveList.displayName = 'PartialInteractiveList';
