@@ -22,6 +22,14 @@ export interface PaperProps extends React.HTMLAttributes<HTMLDivElement>, Omit<T
   style?: React.CSSProperties;
 }
 
+/**
+ * The paper component sets the background color and the
+ * text color of its children and can add an optional border
+ * as well. Paper can have a container which determines
+ * the amount of padding based on the type of container
+ * and the viewport size. And it can expand, overflow or
+ * be scrollable with a customized scrollbar size.
+ */
 export const Paper = React.forwardRef<HTMLDivElement, PaperProps>(
   (
     {

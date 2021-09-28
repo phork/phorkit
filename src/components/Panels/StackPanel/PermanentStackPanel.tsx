@@ -14,6 +14,16 @@ export interface PermanentStackPanelProps extends React.HTMLAttributes<HTMLDivEl
   unit?: 'px' | 'percent';
 }
 
+/**
+ * A permanent stack panel is similar to a StackPanel
+ * but it can never be closed. It lives alongside a
+ * MainPanel (and optionally other stack panels) in
+ * a PanelContainer.
+ *
+ * If a stack panel is fixed it sits on top of the main
+ * panel. If it's not fixed it forces the main panel
+ * to shrink.
+ */
 export const PermanentStackPanel = React.forwardRef<HTMLDivElement, PermanentStackPanelProps>(
   (
     { children, className, fixed, height, position, raised, style: initStyle, unit: initUnit = 'px', ...props },

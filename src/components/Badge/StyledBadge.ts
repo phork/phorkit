@@ -8,8 +8,8 @@ export interface StyledBadgeProps extends BadgeProps {
 
 /**
  * A styled badge is an extension of the Badge
- * component which will have a custom text and
- * background color.
+ * component and it will have a custom background
+ * and text color.
  */
 export const StyledBadge = styled(Badge, {
   shouldForwardProp: (prop: string) => !['backgroundColor', 'textColor', 'themeId'].includes(prop),

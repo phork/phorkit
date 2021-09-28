@@ -8,6 +8,11 @@ export interface StyledPaperProps extends Omit<PaperProps, 'color'> {
   scrollbarColor: string;
 }
 
+/**
+ * The styled paper is an extension of the Paper
+ * component and it will have a custom background,
+ * border, text and scrollbar color.
+ */
 export const StyledPaper = styled(Paper, {
   shouldForwardProp: (prop: string) =>
     !['backgroundColor', 'borderColor', 'textColor', 'scrollbarColor', 'themeId'].includes(prop),

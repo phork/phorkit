@@ -20,7 +20,7 @@ const StyledBadge = styled(Badge, {
 
 /**
  * A colored badge is an extension of the Badge
- * component which will have a background of one
+ * component and it will have a background of one
  * of the theme's primary colors.
  */
 export const ColoredBadge = React.memo<ColoredBadgeProps>(withTheme<ColoredBadgeProps>(StyledBadge));

@@ -21,6 +21,15 @@ export interface StackPanelProps
   style?: React.CSSProperties;
 }
 
+/**
+ * A stack panel lives alongside a MainPanel (and optionally
+ * other stack panels) in a PanelContainer. It can be opened
+ * or closed immediately or with an animation.
+ *
+ * If a stack panel is fixed it sits on top of the main
+ * panel. If it's not fixed it forces the main panel
+ * to shrink.
+ */
 export const StackPanel = React.forwardRef<HTMLDivElement, StackPanelProps>(
   (
     {

@@ -12,6 +12,10 @@ export interface ListRegistryItemProps<E extends HTMLElement = HTMLElement>
   id: string;
 }
 
+/**
+ * The list registry item wraps a child element or
+ * function and passes a registered ref to it.
+ */
 export function ListRegistryItem<E extends HTMLElement = HTMLElement>({
   children,
   id,

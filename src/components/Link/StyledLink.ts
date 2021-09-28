@@ -7,6 +7,11 @@ export interface StyledLinkProps extends LinkProps {
   textColor: string;
 }
 
+/**
+ * A styled link is an extension of the Link
+ * component which will have custom inactive,
+ * active and hover colors.
+ */
 export const StyledLink = styled(Link, {
   shouldForwardProp: (prop: string) => !['activeColor', 'hoveredColor', 'textColor', 'themeId'].includes(prop),
 })<StyledLinkProps>`

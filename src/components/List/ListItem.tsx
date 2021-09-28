@@ -74,6 +74,12 @@ export function ListItemBase<T extends ListItemElementType = 'li'>(
   );
 }
 
+/**
+ * A list item is used in the List component to
+ * add the necessary styles to show the different
+ * item states (disabled, highlighted, inactive,
+ * focused, selected).
+ */
 export const ListItem = React.forwardRef(ListItemBase) as <T extends ListItemElementType = 'li'>(
   p: ListItemProps<T> & { ref?: React.Ref<HTMLElementTagNameMap[T]> },
 ) => React.ReactElement<T>;

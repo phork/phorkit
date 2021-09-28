@@ -8,6 +8,12 @@ export interface ListRegistryProviderProps {
   children: React.ReactNode;
 }
 
+/**
+ * The list registry stores a collection of list
+ * items and provides functions to register and
+ * unregister items, to get an item, and to clear
+ * all items. It also provides the item map itself.
+ */
 export function ListRegistryProvider<E extends HTMLElement = HTMLElement>({
   children,
 }: ListRegistryProviderProps): React.ReactElement {
