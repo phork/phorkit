@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useSafeTimeout } from '../../../../hooks/useSafeTimeout';
-import { ControlledDropdown } from '../../ControlledDropdown';
+import { Dropdown } from '../../Dropdown';
 
 const CLOSE_TIMEOUT_ID = 'close';
 
@@ -19,7 +19,7 @@ export function MultiVariantDropdown({ style, ...props }) {
   };
 
   return (
-    <ControlledDropdown
+    <Dropdown
       contrast={contrast}
       onClose={handleClose}
       onOpen={handleOpen}

@@ -15,14 +15,14 @@ import {
 import { Rhythm } from '../../components/Rhythm/Rhythm';
 import { Tag, TagGroup, TagGroupProps, TagProps, TagShape, TagSize, TagWeight } from '../../components/Tag';
 import { TypographyWithSvg } from '../../components/Typography';
-import { Dropdown, DropdownHandles, DropdownProps } from './Dropdown';
+import { PartialDropdown, PartialDropdownHandles, PartialDropdownProps } from './PartialDropdown';
 import { DropdownOption } from './types';
 
 export type DropdownWithTagsOption = DropdownOption & {
   tagProps?: TagProps<'button'>;
 };
 
-export interface DropdownWithTagsProps extends Omit<DropdownProps, 'initialSelected' | 'options' | 'reducer'> {
+export interface DropdownWithTagsProps extends Omit<PartialDropdownProps, 'initialSelected' | 'options' | 'reducer'> {
   initialSelected?: DropdownOption[];
   options: DropdownWithTagsOption[];
   tag?: RenderFromPropElement<DropdownWithTagsOption>;
@@ -67,7 +67,7 @@ export function DropdownWithTags({
     [dispatch, minSelect, maxSelect],
   );
 
-  const dropdownRef = useRef<DropdownHandles>(null!);
+  const dropdownRef = useRef<PartialDropdownHandles>(null!);
   const tagRef = useRef<HTMLButtonElement>(null!);
   const isDropdownOpen = useRef<boolean>(false);
   const previousSelectedIds = useRef<string[]>(state.selectedIds);
@@ -115,7 +115,7 @@ export function DropdownWithTags({
     isDropdownOpen.current = false;
   }, []);
 
-  const handleSelect = useCallback<NonNullable<DropdownProps['onSelect']>>(
+  const handleSelect = useCallback<NonNullable<PartialDropdownProps['onSelect']>>(
     (id, selectedIds) => {
       selectId(id);
       onSelect && onSelect(id, selectedIds);
@@ -123,7 +123,7 @@ export function DropdownWithTags({
     [onSelect, selectId],
   );
 
-  const handleUnselect = useCallback<NonNullable<DropdownProps['onUnselect']>>(
+  const handleUnselect = useCallback<NonNullable<PartialDropdownProps['onUnselect']>>(
     (id, selectedIds) => {
       unselectId(id);
       onUnselect && onUnselect(id, selectedIds);
@@ -139,7 +139,7 @@ export function DropdownWithTags({
 
   return (
     <Flex direction="column">
-      <Dropdown
+      <PartialDropdown
         contrast={contrast}
         id={id}
         maxSelect={maxSelect}
