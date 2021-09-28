@@ -23,6 +23,13 @@ export interface AccordionContentProps
   unstyled?: boolean;
 }
 
+/**
+ * The accordion content is part of an accordion item.
+ * It's paired with an AccordionLabel and it expands
+ * if it's selected and collapses if it's not.
+ *
+ * This uses the usePanelCollapser hook.
+ */
 export const AccordionContent = React.forwardRef<HTMLDivElement, AccordionContentProps>(
   (
     {

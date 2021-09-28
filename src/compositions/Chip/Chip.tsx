@@ -10,6 +10,14 @@ export interface ChipProps extends Omit<TagProps, 'children' | 'flush'> {
   text: React.ReactNode;
 }
 
+/**
+ * A chip is a small group of data that includes an
+ * avatar, a label and optionally an icon. The icon
+ * can be a button, a simple SVG element, or any
+ * type of element.
+ *
+ * This uses the Avatar and Tag components.
+ */
 export function Chip({ avatar, icon, size = 'medium', text, ...props }: ChipProps): React.ReactElement {
   return (
     <Tag flush size={size} {...props}>

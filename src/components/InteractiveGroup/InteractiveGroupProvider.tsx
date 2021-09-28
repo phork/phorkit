@@ -20,7 +20,17 @@ export interface InteractiveGroupProviderProps<
   items: InteractiveGroupItemType<T>[];
 }
 
-/** The interactive group provider is a wrapper around the partial interactive group provider */
+/**
+ * The interactive group provider is a wrapper around
+ * the partial interactive group provider. It creates
+ * the reducer and passes it to the partial interactive
+ * group provider. It also updates the items in the
+ * state if they change.
+ *
+ * The partial interactive group provider should be
+ * used if a parent also needs access to the state and
+ * reducer.
+ */
 export function InteractiveGroupProvider<
   T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,

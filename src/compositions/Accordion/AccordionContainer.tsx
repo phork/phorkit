@@ -14,6 +14,11 @@ export interface AccordionContainerProps extends React.HTMLAttributes<HTMLDivEle
   variant?: 'primary' | 'colored' | 'transparent';
 }
 
+/**
+ * The accordion container wraps all the accordion items
+ * and sets the direction of the items and the focused
+ * state.
+ */
 export function AccordionContainer({
   children,
   className,

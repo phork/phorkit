@@ -24,6 +24,11 @@ export interface PartialInteractiveGroupProviderProps<
  * the focus, and provides a handleItemClick function
  * which should be called when an item is clicked.
  *
+ * Generally the InteractiveGroupProvider component
+ * should be used. The partial interactive group
+ * provider is only necessary in cases when the
+ * parent needs access to the reducer and the state.
+ *
  * - T is the type of IDs allowed
  * - E is the type of the element that the returned ref gets attached to
  * - I is the type of item element

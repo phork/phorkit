@@ -29,6 +29,13 @@ export interface AccordionListProps
   variant?: 'primary' | 'colored';
 }
 
+/**
+ * The accordion list renders a collection of accordion
+ * items and sets up the AccordionLabel so that when it's
+ * clicked it will open the AccordionContent. This uses
+ * the InteractiveGroup to handle the selecting and
+ * focusing of accordion items.
+ */
 export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps>(
   (
     {
