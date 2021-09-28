@@ -4,9 +4,9 @@ import { useThemeId } from '../../context/Theme';
 import { BannerProps } from './Banner';
 import { BannerContext } from './BannerContext';
 
-/* a banner from context is used with the banner system and requires a context id */
 export type BannerWithContextItemType = React.ReactElement<
   Omit<BannerProps, 'contextId'> & {
+    /* A banner from context is used with the banner system and requires a context id */
     contextId: string;
     permanent?: boolean;
   }
@@ -17,6 +17,11 @@ export interface BannerFromContextProps extends ThemeProps {
   style?: React.CSSProperties;
 }
 
+/**
+ * This accepts a Banner element and its ID and it
+ * clones the banner and passes it an onClose prop
+ * that can be used to the banner from the state.
+ */
 export const BannerFromContext = React.memo(function BannerFromContext({
   banner,
   style: customStyle,

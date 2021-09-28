@@ -19,6 +19,16 @@ export interface LocalAccordionLabelProps {
 
 export type AccordionLabelProps = MergeElementPropsWithoutRef<'div', LocalAccordionLabelProps>;
 
+/**
+ * The accordion label is part of an accordion item.
+ * It's paired with an AccordionContent component.
+ * The AccordionList component passes an onClick
+ * prop to this that will trigger the expansion and
+ * collapse of the accordion content.
+ *
+ * This uses the useInteractiveGroupItem and the
+ * useListRegistryItem hooks.
+ */
 export function AccordionLabel({
   children,
   className,

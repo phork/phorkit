@@ -33,6 +33,15 @@ export interface BannerProps extends Omit<PaperProps, 'children' | 'color'>, The
   translations?: BannerTranslations;
 }
 
+/**
+ * A banner is a simple horizontal bar that spans the
+ * full width of its container. It has a background
+ * color based on the level prop and a close button
+ * if an onClose prop is passed.
+ *
+ * This uses the IconButton, Flex, Paper, Position
+ * and Rhythm components.
+ */
 export function Banner({
   children,
   className,

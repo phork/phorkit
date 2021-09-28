@@ -9,6 +9,12 @@ export interface BannerProviderProps {
   children: React.ReactNode;
 }
 
+/**
+ * The banner provider tracks a collection of banners
+ * and provides functions to create a banner, remove a
+ * banner and clear all banners. It also provides a
+ * map containing all the banners.
+ */
 export function BannerProvider({ children }: BannerProviderProps): React.ReactElement {
   const previousValue = useRef<BannerContextValue>({} as BannerContextValue);
   const [state, dispatch] = useReducer(reducer, new Map() as BannerState);

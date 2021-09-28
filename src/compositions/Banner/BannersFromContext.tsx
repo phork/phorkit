@@ -10,6 +10,10 @@ export type BannersFromContextProps = React.HTMLAttributes<HTMLDivElement> &
     bannerStyle?: React.CSSProperties;
   };
 
+/**
+ * This consumes the banners from the BannerProvider
+ * and displays them all.
+ */
 export function BannersFromContext({
   bannerStyle,
   themeId: initThemeId,
