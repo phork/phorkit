@@ -15,7 +15,7 @@ import { Looper } from 'docs/helpers/Looper';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { Dropdown, DropdownContent, DropdownEmpty, ControlledDropdown, NotifiedControlledDropdown } from '../index';
+import { Dropdown, DropdownContent, DropdownEmpty, PartialDropdown, NotifiedDropdown } from '../index';
 import { MultiVariantDropdown } from './helpers/MultiVariantDropdown';
 import { options, handleFilter, handleEmptyFilter } from './helpers/options';
 import { variants, sizes } from './helpers/variants';
@@ -33,7 +33,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
-            <ControlledDropdown
+            <Dropdown
               transitional
               inputVariant={variant}
               label="Super awesome dropdown"
@@ -61,7 +61,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
-            <ControlledDropdown
+            <Dropdown
               transitional
               initialSelected={[options[3]]}
               inputVariant={variant}
@@ -89,7 +89,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
-            <ControlledDropdown
+            <Dropdown
               transitional
               inputVariant={variant}
               label="Super awesome dropdown"
@@ -117,7 +117,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
-            <ControlledDropdown
+            <Dropdown
               transitional
               initialSelected={[options[3]]}
               inputVariant={variant}
@@ -146,7 +146,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
-            <ControlledDropdown
+            <Dropdown
               transitional
               initialSelected={[options[3], options[4], options[5]]}
               inputVariant={variant}
@@ -175,7 +175,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
-            <ControlledDropdown
+            <Dropdown
               transitional
               getFilteredOptions={handleFilter}
               initialSelected={[options[3]]}
@@ -205,7 +205,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
     <StateWrapper initialState={''}>
       {({ state: filter, setState: setFilter }) => (
         <div style={{ height: 300, maxWidth: 300 }}>
-          <ControlledDropdown
+          <Dropdown
             searchable
             transitional
             emptyNotification={filter ? `No options were found for "${filter}".` : ''}
@@ -229,7 +229,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
     <div style={{ maxWidth: 300 }}>
-      <ControlledDropdown
+      <Dropdown
         transitional
         label="Super awesome dropdown"
         onSelect={value => console.log('select', value)}
@@ -244,7 +244,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
     <div style={{ maxWidth: 300 }}>
-      <ControlledDropdown
+      <Dropdown
         transitional
         getFilteredOptions={handleEmptyFilter}
         iconBefore={<SearchIcon size={14} />}
@@ -268,7 +268,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
-            <ControlledDropdown
+            <Dropdown
               id="demo-danger-dropdown"
               initialSelected={[options[3]]}
               inputVariant={variant}
@@ -293,7 +293,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
-            <ControlledDropdown
+            <Dropdown
               transitional
               initialSelected={[options[3]]}
               inputVariant={variant}
@@ -319,7 +319,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
-            <ControlledDropdown
+            <Dropdown
               transitional
               initialSelected={[options[3]]}
               inputVariant={variant}
@@ -344,7 +344,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
-            <ControlledDropdown
+            <Dropdown
               contrast
               transitional
               initialSelected={[options[3]]}
@@ -364,7 +364,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 
 <Playground>
   <div style={{ height: 300, maxWidth: 300, marginLeft: 20, marginRight: 20 }}>
-    <ControlledDropdown
+    <Dropdown
       unthemed
       id="demo-contrast-dropdown"
       initialSelected={[options[3]]}
@@ -441,7 +441,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
                 <div
                   style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}
                 >
-                  <NotifiedControlledDropdown
+                  <NotifiedDropdown
                     transitional
                     initialSelected={[options[3]]}
                     inputVariant={variant}
@@ -470,7 +470,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
     <div style={{ maxWidth: 300 }}>
-      <NotifiedControlledDropdown
+      <NotifiedDropdown
         transitional
         label="Super awesome dropdown"
         level="primary"
@@ -494,7 +494,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
             list={variants}
             render={variant => (
               <Rhythm grouped py={3} style={{ maxWidth: 300 }}>
-                <ControlledDropdown
+                <Dropdown
                   transitional
                   inputVariant={variant}
                   label={`Size ${size}`}
@@ -540,9 +540,9 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 
 <Props of={Dropdown} />
 
-### ControlledDropdown
+### PartialDropdown
 
-<Props of={ControlledDropdown} />
+<Props of={PartialDropdown} />
 
 ### DropdownEmpty
 

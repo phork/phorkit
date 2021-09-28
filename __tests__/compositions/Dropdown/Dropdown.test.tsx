@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import React from 'react';
-import { ControlledDropdown } from 'lib';
+import { Dropdown } from 'lib';
 
 export const options = [
   { id: 'red', value: 'fancy-red', label: 'Red' },
@@ -19,12 +19,12 @@ export const options = [
   { id: 'violet-red', label: 'Violet red' },
 ];
 
-describe('<ControlledDropdown />', () => {
+describe('<Dropdown />', () => {
   it('should render a dropdown with 1 item selected', () => {
     const onSelect = jest.fn();
 
     const { getByText, getAllByText } = render(
-      <ControlledDropdown
+      <Dropdown
         transitional
         initialSelected={[options[3]]}
         label="Super fantastic label"
@@ -42,7 +42,7 @@ describe('<ControlledDropdown />', () => {
     const onSelect = jest.fn();
 
     const { getByText, getAllByText } = render(
-      <ControlledDropdown
+      <Dropdown
         transitional
         initialSelected={[]}
         label="Super fantastic label"
@@ -61,13 +61,7 @@ describe('<ControlledDropdown />', () => {
     const onSelect = jest.fn();
 
     const { getByText } = render(
-      <ControlledDropdown
-        transitional
-        initialSelected={[]}
-        label="Super fantastic label"
-        onSelect={onSelect}
-        options={[]}
-      />,
+      <Dropdown transitional initialSelected={[]} label="Super fantastic label" onSelect={onSelect} options={[]} />,
     );
     expect(getByText('Super fantastic label')).toBeTruthy();
     expect(getByText('No options are available.')).toBeTruthy();
@@ -77,7 +71,7 @@ describe('<ControlledDropdown />', () => {
     const onSelect = jest.fn();
 
     const { getByText } = render(
-      <ControlledDropdown
+      <Dropdown
         transitional
         initialSelected={[options[3], options[5]]}
         label="Super fantastic label"

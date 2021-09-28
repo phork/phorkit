@@ -30,6 +30,7 @@ import {
   ColoredPaper,
   ColoredTabs,
   Divider,
+  Dropdown,
   DropoverContent,
   DropoverInputLabel,
   Flex,
@@ -45,7 +46,6 @@ import {
   List,
   ListItem,
   MainPanel,
-  ControlledDropdown,
   Modal,
   ModalConsumer,
   ModalBody,
@@ -613,7 +613,7 @@ import {
       }));
       return (
         <div style={{ width: '400px', maxWidth: '100%', height: '224px' }}>
-          <ControlledDropdown
+          <Dropdown
             transitional
             arrowIconSize={12}
             initialSelected={[options[0]]}
@@ -699,7 +699,7 @@ import {
       }));
       return (
         <div style={{ width: '300px', maxWidth: '100%', height: '224px' }}>
-          <ControlledDropdown
+          <Dropdown
             arrowIconSize={12}
             initialSelected={[options[0]]}
             inputVariant="outline"

@@ -1,4 +1,4 @@
-import { ControlledDropdownProps } from '../../ControlledDropdown';
+import { DropdownProps } from '../../Dropdown';
 
 export const options = [
   { id: 'red', value: 'fancy-red', label: 'Red' },
@@ -17,7 +17,7 @@ export const options = [
   { id: 'violet-red', label: 'Violet red' },
 ] as const;
 
-export const handleFilter: ControlledDropdownProps['getFilteredOptions'] = value =>
+export const handleFilter: DropdownProps['getFilteredOptions'] = value =>
   new Promise(resolve => {
     // eslint-disable-next-line no-console
     console.log('filter', value);
@@ -28,5 +28,4 @@ export const handleFilter: ControlledDropdownProps['getFilteredOptions'] = value
     }, 1000);
   });
 
-export const handleEmptyFilter: ControlledDropdownProps['getFilteredOptions'] = () =>
-  new Promise(resolve => resolve([]));
+export const handleEmptyFilter: DropdownProps['getFilteredOptions'] = () => new Promise(resolve => resolve([]));
