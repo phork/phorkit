@@ -1,8 +1,8 @@
 import { cx } from '@emotion/css';
 import React, { useEffect, useImperativeHandle, useMemo, useRef } from 'react';
 import { MergeElementProps, ThemeProps } from '../../types';
-import { useAccessibility } from '../../context';
-import { InteractiveGroupItemType } from '../../components';
+import { useAccessibility } from '../../context/Accessibility/useAccessibility';
+import { InteractiveGroupItemType } from '../../components/InteractiveGroup';
 import { generateInteractiveGroupActions } from '../../components/InteractiveGroup/generateInteractiveGroupActions';
 import { PartialInteractiveList, PartialInteractiveListProps } from '../InteractiveList/PartialInteractiveList';
 import styles from './styles/Dropdown.module.css';
@@ -214,6 +214,14 @@ export function DropdownContentBase(
   ) : null;
 }
 
+/**
+ * This renders an interactive list of items for the
+ * dropdown, or if no items are available it renders
+ * the empty dropdown notification.
+ *
+ * This uses the InteractiveGroup and InteractiveList
+ * components.
+ */
 export const DropdownContent = React.forwardRef(DropdownContentBase);
 
 DropdownContentBase.displayName = 'DropdownContentBase';

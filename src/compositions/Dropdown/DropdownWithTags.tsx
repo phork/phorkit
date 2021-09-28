@@ -35,6 +35,14 @@ export interface DropdownWithTagsProps extends Omit<PartialDropdownProps, 'initi
 
 const defaultInitialSelected = [] as DropdownOption[];
 
+/**
+ * This renders a Dropdown component and underneath it
+ * for every selected item it renders a tag. Tags can
+ * be clicked to be removed/unselected.
+ *
+ * This uses the Dropdown, Rhythm, Tag, TagGroup and
+ * Typography components.
+ */
 export function DropdownWithTags({
   contrast = false,
   id,
@@ -137,6 +145,7 @@ export function DropdownWithTags({
     }
   };
 
+  // this uses the partial dropdown because it needs to access the reducer to remove tags
   return (
     <Flex direction="column">
       <PartialDropdown

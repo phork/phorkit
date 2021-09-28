@@ -9,6 +9,14 @@ export interface DropoverContentProps extends CardProps, ThemeProps {
   color?: SequentialVariant | StateColor;
 }
 
+/**
+ * This renders a raised Card with the dropover
+ * content in it. The content leaves a small margin
+ * at the top to leave room for the trigger. If more
+ * space is needed it can be added to the children.
+ *
+ * This uses the Card, Paper and Rhythm components.
+ */
 export function DropoverContent({
   children,
   className,

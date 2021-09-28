@@ -138,7 +138,6 @@ export interface PartialDropdownHandles {
 
 export type PartialDropdownRef = React.ForwardedRef<PartialDropdownHandles>;
 
-/** The dropdown selection is managed by the reducer prop */
 export function PartialDropdownBase(
   {
     allowReselect = false,
@@ -683,6 +682,23 @@ export function PartialDropdownBase(
   );
 }
 
+/**
+ * The dropdown is similar to a select component in
+ * that it provides a list of selectable items. The
+ * items can be filtered or searched. A searchable
+ * dropdown is similar to a filterable dropdown except
+ * it starts with no initial values.
+ *
+ * The partial dropdown accepts a reducer from the
+ * InteractiveGroup component which maintains a record
+ * of all the items in the dropdown and which items are
+ * focused and which are selected.
+ *
+ * Generally the Dropdown component should be used.
+ * The partial dropdown component is only necessary
+ * in cases when the parent needs access to the
+ * reducer and the state.
+ */
 export const PartialDropdown = React.forwardRef(PartialDropdownBase);
 
 // note that the base element cannot have a displayName because it breaks Storybook

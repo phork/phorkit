@@ -9,6 +9,12 @@ export interface IconGroupProps {
   size?: ScaleProviderProps['size'];
 }
 
+/**
+ * An icon group renders a row of icons and wraps them
+ * with a ScaleProvider which will be used to set every
+ * child icon to the same size unless the individual
+ * icons override it.
+ */
 export function IconGroup({ children, className, scale, size }: IconGroupProps): React.ReactElement {
   return (
     <ScaleProvider scale={scale} size={size}>

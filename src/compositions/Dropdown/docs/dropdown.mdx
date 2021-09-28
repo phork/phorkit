@@ -107,6 +107,35 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   </ThemeWrapper>
 </Playground>
 
+## Dropdown with icons
+
+<Playground>
+  <ThemeWrapper>
+    <br />
+    <Flex full wrap direction="row" justifyContent="space-between">
+      <Looper
+        list={variants}
+        render={variant => (
+          <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
+            <Dropdown
+              transitional
+              iconBefore={TagIcon}
+              inputVariant={variant}
+              label="Super awesome dropdown"
+              layout="contained"
+              onSelect={value => console.log('select', value)}
+              onSelectionChange={value => console.log('selection change', value)}
+              onUnselect={value => console.log('unselect', value)}
+              options={options}
+              placeholder="Select one"
+            />
+          </div>
+        )}
+      />
+    </Flex>
+  </ThemeWrapper>
+</Playground>
+
 ## Multi-select dropdown
 
 <Playground>
@@ -531,6 +560,14 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
     <DropdownEmpty filter="Barfoo">
       {({ filter }) => `This is a functional notification passed "${filter}"`}
     </DropdownEmpty>
+    <h3>Translations</h3>
+    <DropdownEmpty
+      filter="Super filter"
+      translations={{
+        noOptions: 'Oops! There are no options available right now.',
+        noFilteredOptions: 'Oops! There are no options available right now for "{0}".',
+      }}
+    />
   </ThemeWrapper>
 </Playground>
 

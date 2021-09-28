@@ -9,6 +9,10 @@ export interface DropoverInputLabelProps {
   focused?: boolean;
 }
 
+/**
+ * This accepts a form input as a child and uses
+ * it as the trigger to open and close the dropover.
+ */
 export const DropoverInputLabel = React.forwardRef<HTMLDivElement, DropoverInputLabelProps>(
   (
     { children, className, cloned = false, focused = false, ...props },

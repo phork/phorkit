@@ -24,6 +24,11 @@ export function DropdownBase(
   return <PartialDropdown options={options} reducer={reducer} ref={forwardedRef} {...props} />;
 }
 
+/**
+ * The dropdown is a wrapper around the partial dropdown
+ * for which it provides the reducer used to track the
+ * selected and focused item(s) state.
+ */
 export const Dropdown = React.forwardRef(DropdownBase);
 
 // note that the base element cannot have a displayName because it breaks Storybook
