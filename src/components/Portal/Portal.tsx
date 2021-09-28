@@ -35,8 +35,8 @@ export interface PortalProps
  *
  * A portal can be fixed, or it can be absolutely
  * positioned. An fixed positioned portal can observe
- * the changes of the relativeRef position and will
- * reposition itself accordingly.
+ * the changes of the relativeRef's element position
+ * and will reposition itself accordingly.
  */
 export const Portal = React.forwardRef<HTMLDivElement, PortalProps>(
   (

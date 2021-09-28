@@ -10,7 +10,6 @@ export interface ColoredTagProps extends TagProps {
   themeId: Theme;
 }
 
-// @ts-ignore [TODO:ts] WTF, and revisit casting
 const StyledTag = styled(Tag, {
   shouldForwardProp: (prop: string) => !['colorId', 'themeId'].includes(prop),
 })<ColoredTagProps>`
@@ -20,6 +19,11 @@ const StyledTag = styled(Tag, {
   --tag-inverse-color: ${props => themes[props.themeId][`color-${props.colorId}-contrast` as keyof ThemeColors]};
 `;
 
+/**
+ * A colored tag is an extension of the Tag component
+ * and it will have a background of one of the theme's
+ * primary colors.
+ */
 export const ColoredTag = React.memo<ColoredTagProps>(withTheme<ColoredTagProps>(StyledTag));
 ColoredTag.displayName = 'ColoredTag';
 

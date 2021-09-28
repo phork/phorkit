@@ -8,7 +8,10 @@ export interface StyledTagProps extends TagProps {
   activePrimaryColor?: string;
 }
 
-// @ts-ignore [TODO:ts] WTF
+/**
+ * A styled tag is an extension of the Tag component
+ * and it will have a custom background and text color.
+ */
 export const StyledTag = styled(Tag, {
   shouldForwardProp: (prop: string) =>
     !['primaryColor', 'inverseColor', 'hoveredPrimaryColor', 'activePrimaryColor', 'themeId'].includes(prop),
