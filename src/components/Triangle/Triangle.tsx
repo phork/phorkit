@@ -66,10 +66,17 @@ const styles: Record<string, PositionCallback> = {
   }),
 };
 
+/**
+ * A triangle is used as a tail for things like
+ * popovers and tooltips. It points to the element
+ * that the popover relates to. Triangles can be
+ * rendered like a corner (eg. top-left) or can be
+ * rendered along an edge (eg. top).
+ */
 export const Triangle = ({
   color = 'var(--triangle-color)',
   position,
-  size = 'var(--triangle-size',
+  size = 'var(--triangle-size)',
   style,
   ...props
 }: TriangleProps): React.ReactElement<TriangleProps> => (
