@@ -8,7 +8,7 @@ import { PopoverContentPropsChildren, PopoverContentPropsRenderChildren, Popover
 export type CommonInlinePopoverProps = MergeProps<
   Omit<
     InlinePopoverContentProps,
-    'close' | 'focusRef' | 'isTogglerFocused' | 'offset' | 'parentRef' | 'position' | 'visible'
+    'close' | 'focusRef' | 'isTogglerFocused' | 'offset' | 'position' | 'relativeRef' | 'visible'
   >,
   Omit<PopoverProps, 'renderContent'>
 > & {

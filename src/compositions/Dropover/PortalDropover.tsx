@@ -13,6 +13,7 @@ export interface PortalDropoverProps extends Omit<PortalPopoverProps, 'position'
   width?: number;
   height?: number;
   label: RenderFromPropElement<any>;
+  /** A passive label doesn't allow re-clicking to close the dropover */
   passiveLabel?: boolean;
   triangleSize?: number;
 }
@@ -22,7 +23,10 @@ const defaultOffset = {
   vertical: -12,
 };
 
-/** A dropover is a popover that looks like it contains the toggle */
+/**
+ * A dropover is a popover that renders behind its toggle
+ * so it looks like the toggle lives inside the dropover.
+ */
 export function PortalDropover({
   align,
   children,
@@ -31,7 +35,6 @@ export function PortalDropover({
   label,
   layout,
   offset = defaultOffset,
-  /** A passive label doesn't allow re-clicking to close the dropover */
   passiveLabel = false,
   renderChildren,
   themeId: initThemeId,

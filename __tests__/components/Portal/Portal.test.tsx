@@ -5,13 +5,13 @@ import { Portal } from 'lib';
 
 describe('<Portal />', () => {
   it('should render a basic portal', () => {
-    const parentRef: React.MutableRefObject<HTMLDivElement> = {
+    const relativeRef: React.MutableRefObject<HTMLDivElement> = {
       current: null!,
     };
 
     render(
       <React.Fragment>
-        <div ref={parentRef}>Parent</div>
+        <div ref={relativeRef}>Relative</div>
         <Portal
           alwaysRender
           container={document.body}
@@ -20,8 +20,8 @@ describe('<Portal />', () => {
             top: 0,
             left: 0,
           }}
-          parentRef={parentRef}
           position="stacked"
+          relativeRef={relativeRef}
         >
           <React.Fragment>Hello world</React.Fragment>
         </Portal>
