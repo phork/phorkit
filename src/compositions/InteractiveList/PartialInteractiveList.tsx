@@ -4,14 +4,14 @@ import { useThemeId } from '../../context/Theme';
 import { makeCombineRefs } from '../../utils/combineRefs';
 import { InteractiveGroupConsumer } from '../../components/InteractiveGroup/InteractiveGroupConsumer';
 import {
-  UncontrolledInteractiveGroupProvider,
-  UncontrolledInteractiveGroupProviderProps,
-} from '../../components/InteractiveGroup/UncontrolledInteractiveGroupProvider';
+  PartialInteractiveGroupProvider,
+  PartialInteractiveGroupProviderProps,
+} from '../../components/InteractiveGroup/PartialInteractiveGroupProvider';
 import { List, ListProps } from '../../components/List';
 import { InteractiveListItem, InteractiveListItemProps } from './InteractiveListItem';
 
 type ExplicitProviderProps = Pick<
-  UncontrolledInteractiveGroupProviderProps<string, HTMLUListElement, HTMLLIElement>,
+  PartialInteractiveGroupProviderProps<string, HTMLUListElement, HTMLLIElement>,
   | 'allowReselect'
   | 'disabled'
   | 'maxSelect'
@@ -30,25 +30,22 @@ type ExplicitProviderProps = Pick<
   | 'triggerLinks'
 >;
 
-export interface LocalUncontrolledInteractiveListProps extends ExplicitProviderProps {
+export interface LocalPartialInteractiveListProps extends ExplicitProviderProps {
   children: React.ReactNode;
   /** A superficial focus state can be set outside of this component so that focus styles can be applied when, for example, a parent is focused */
   focused?: true;
   listComponent?: typeof List;
   providerProps?: Omit<
-    UncontrolledInteractiveGroupProviderProps<string, HTMLUListElement, HTMLLIElement>,
+    PartialInteractiveGroupProviderProps<string, HTMLUListElement, HTMLLIElement>,
     keyof ExplicitProviderProps | 'children'
   >;
   unstyled?: boolean;
 }
 
-export type UncontrolledInteractiveListProps = MergeProps<
-  Omit<ListProps<'ul'>, 'as'>,
-  LocalUncontrolledInteractiveListProps
-> &
+export type PartialInteractiveListProps = MergeProps<Omit<ListProps<'ul'>, 'as'>, LocalPartialInteractiveListProps> &
   ThemeProps;
 
-export function UncontrolledInteractiveListBase(
+export function PartialInteractiveListBase(
   {
     allowReselect = false,
     children,
@@ -77,7 +74,7 @@ export function UncontrolledInteractiveListBase(
     unstyled = false,
     unthemed = false,
     ...props
-  }: UncontrolledInteractiveListProps,
+  }: PartialInteractiveListProps,
   forwardedRef: React.ForwardedRef<HTMLUListElement>,
 ): React.ReactElement {
   const ref = useRef<HTMLUListElement>(null!);
@@ -92,7 +89,7 @@ export function UncontrolledInteractiveListBase(
   const ListComponent = listComponent || List;
 
   return (
-    <UncontrolledInteractiveGroupProvider<string, HTMLUListElement, HTMLLIElement>
+    <PartialInteractiveGroupProvider<string, HTMLUListElement, HTMLLIElement>
       allowReselect={allowReselect}
       disabled={disabled}
       maxSelect={maxSelect}
@@ -154,11 +151,11 @@ export function UncontrolledInteractiveListBase(
           )
         }
       </InteractiveGroupConsumer>
-    </UncontrolledInteractiveGroupProvider>
+    </PartialInteractiveGroupProvider>
   );
 }
 
-export const UncontrolledInteractiveList = React.forwardRef(UncontrolledInteractiveListBase);
+export const PartialInteractiveList = React.forwardRef(PartialInteractiveListBase);
 
-UncontrolledInteractiveListBase.displayName = 'UncontrolledInteractiveListBase';
-UncontrolledInteractiveList.displayName = 'UncontrolledInteractiveList';
+PartialInteractiveListBase.displayName = 'PartialInteractiveListBase';
+PartialInteractiveList.displayName = 'PartialInteractiveList';

@@ -1,8 +1,8 @@
 import React, { Reducer, useEffect, useReducer } from 'react';
 import {
-  UncontrolledInteractiveGroupProvider,
-  UncontrolledInteractiveGroupProviderProps,
-} from './UncontrolledInteractiveGroupProvider';
+  PartialInteractiveGroupProvider,
+  PartialInteractiveGroupProviderProps,
+} from './PartialInteractiveGroupProvider';
 import { InteractiveGroupStateAction, interactiveGroupActions as ACTIONS } from './interactiveGroupActions';
 import {
   interactiveGroupReducer,
@@ -15,12 +15,12 @@ export interface InteractiveGroupProviderProps<
   T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,
   I extends HTMLElement = HTMLElement,
-> extends Omit<UncontrolledInteractiveGroupProviderProps<T, E, I>, 'reducer'> {
+> extends Omit<PartialInteractiveGroupProviderProps<T, E, I>, 'reducer'> {
   initialSelected?: T[];
   items: InteractiveGroupItemType<T>[];
 }
 
-/** The interactive group provider is a wrapper around the uncontrolled interactive group provider */
+/** The interactive group provider is a wrapper around the partial interactive group provider */
 export function InteractiveGroupProvider<
   T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,
@@ -42,7 +42,7 @@ export function InteractiveGroupProvider<
     });
   }, [dispatch, items]);
 
-  return <UncontrolledInteractiveGroupProvider<T, E, I> reducer={reducer} {...props} />;
+  return <PartialInteractiveGroupProvider<T, E, I> reducer={reducer} {...props} />;
 }
 
 InteractiveGroupProvider.displayName = 'InteractiveGroupProvider';

@@ -7,12 +7,12 @@ import {
   InteractiveGroupProviderProps,
   interactiveGroupActions as ACTIONS,
 } from '../../components/InteractiveGroup';
-import { UncontrolledInteractiveList, UncontrolledInteractiveListProps } from './UncontrolledInteractiveList';
+import { PartialInteractiveList, PartialInteractiveListProps } from './PartialInteractiveList';
 
-export type InteractiveListProps = Omit<UncontrolledInteractiveListProps, 'reducer'> &
+export type InteractiveListProps = Omit<PartialInteractiveListProps, 'reducer'> &
   Pick<InteractiveGroupProviderProps, 'initialSelected'>;
 
-/** The interactive list is a wrapper around the uncontrolled interactive list */
+/** The interactive list is a wrapper around the partial interactive list */
 export function InteractiveListBase(
   { initialSelected, items, ...props }: InteractiveListProps,
   forwardedRef: React.ForwardedRef<HTMLUListElement>,
@@ -33,7 +33,7 @@ export function InteractiveListBase(
     });
   }, [dispatch, items]);
 
-  return <UncontrolledInteractiveList reducer={reducer} ref={forwardedRef} {...props} />;
+  return <PartialInteractiveList reducer={reducer} ref={forwardedRef} {...props} />;
 }
 
 export const InteractiveList = React.forwardRef(InteractiveListBase);

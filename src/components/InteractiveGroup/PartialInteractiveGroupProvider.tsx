@@ -4,7 +4,7 @@ import { InteractiveGroupContext, InteractiveGroupContextValue } from './Interac
 import { InteractiveGroupItemId } from './types';
 import { useInteractiveGroup, UseInteractiveGroupProps, UseInteractiveGroupResponse } from './useInteractiveGroup';
 
-export interface UncontrolledInteractiveGroupProviderProps<
+export interface PartialInteractiveGroupProviderProps<
   T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,
   I extends HTMLElement = HTMLElement,
@@ -28,7 +28,7 @@ export interface UncontrolledInteractiveGroupProviderProps<
  * - E is the type of the element that the returned ref gets attached to
  * - I is the type of item element
  */
-export function UncontrolledInteractiveGroupProvider<
+export function PartialInteractiveGroupProvider<
   T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,
   I extends HTMLElement = HTMLElement,
@@ -49,7 +49,7 @@ export function UncontrolledInteractiveGroupProvider<
   selectOnFocus,
   triggerLinks,
   ...props
-}: UncontrolledInteractiveGroupProviderProps<T, E, I>): React.ReactElement {
+}: PartialInteractiveGroupProviderProps<T, E, I>): React.ReactElement {
   const previousValue = useRef<Omit<UseInteractiveGroupResponse<T, E, I>, 'ref'>>(
     {} as UseInteractiveGroupResponse<T, E, I>,
   );
@@ -100,4 +100,4 @@ export function UncontrolledInteractiveGroupProvider<
   );
 }
 
-UncontrolledInteractiveGroupProvider.displayName = 'UncontrolledInteractiveGroupProvider';
+PartialInteractiveGroupProvider.displayName = 'PartialInteractiveGroupProvider';

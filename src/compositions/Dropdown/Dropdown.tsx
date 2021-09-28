@@ -21,7 +21,7 @@ import {
   FormboxReadOnly,
   FormboxValue,
 } from '../../components/Form/Formbox';
-import { UncontrolledInteractiveListProps } from '../InteractiveList';
+import { PartialInteractiveListProps } from '../InteractiveList';
 import { getDropdownSelectedView } from './utils';
 import styles from './styles/Dropdown.module.css';
 import sizeStyles from './styles/DropdownSizes.module.css';
@@ -118,7 +118,7 @@ export interface DropdownProps
   placeholder?: FormboxValue | React.ReactChild;
   readOnly?: boolean;
   /** The reducer comes from `useReducer(interactiveGroupReducer)` and is used to track selection */
-  reducer: UncontrolledInteractiveListProps['reducer'];
+  reducer: PartialInteractiveListProps['reducer'];
   /** A searchable dropdown has no options unless a search term has been entered */
   searchable?: boolean;
   size?: DropdownSize;

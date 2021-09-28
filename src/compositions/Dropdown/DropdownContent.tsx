@@ -4,10 +4,7 @@ import { MergeElementProps, ThemeProps } from '../../types';
 import { useAccessibility } from '../../context';
 import { InteractiveGroupItemType } from '../../components';
 import { generateInteractiveGroupActions } from '../../components/InteractiveGroup/generateInteractiveGroupActions';
-import {
-  UncontrolledInteractiveList,
-  UncontrolledInteractiveListProps,
-} from '../InteractiveList/UncontrolledInteractiveList';
+import { PartialInteractiveList, PartialInteractiveListProps } from '../InteractiveList/PartialInteractiveList';
 import styles from './styles/Dropdown.module.css';
 import { DropdownEmpty, DropdownEmptyProps } from './DropdownEmpty';
 import {
@@ -41,15 +38,15 @@ export interface LocalDropdownContentProps extends ThemeProps {
   listVariant?: DropdownListVariant;
   maxSelect?: number;
   minSelect?: number;
-  onItemFocus: UncontrolledInteractiveListProps['onItemFocus'];
+  onItemFocus: PartialInteractiveListProps['onItemFocus'];
   onListBlur: React.FocusEventHandler<HTMLUListElement>;
   onListFocus: React.FocusEventHandler<HTMLUListElement>;
-  onListKeyDown: UncontrolledInteractiveListProps['onKeyDown'];
-  onSelect: UncontrolledInteractiveListProps['onSelect'];
-  onSelectionChange: UncontrolledInteractiveListProps['onSelectionChange'];
-  onUnselect: UncontrolledInteractiveListProps['onUnselect'];
+  onListKeyDown: PartialInteractiveListProps['onKeyDown'];
+  onSelect: PartialInteractiveListProps['onSelect'];
+  onSelectionChange: PartialInteractiveListProps['onSelectionChange'];
+  onUnselect: PartialInteractiveListProps['onUnselect'];
   options?: DropdownOption[];
-  reducer: UncontrolledInteractiveListProps['reducer'];
+  reducer: PartialInteractiveListProps['reducer'];
   size: DropdownSize;
 }
 
@@ -179,7 +176,7 @@ export function DropdownContentBase(
       {...props}
     >
       <div className={cx(styles.dropdownOptions, isEmpty && styles['is-empty'])}>
-        <UncontrolledInteractiveList
+        <PartialInteractiveList
           hideFocusOutline
           mimicSelectOnFocus
           allowReselect={allowReselect}
@@ -211,7 +208,7 @@ export function DropdownContentBase(
               {emptyNotification}
             </DropdownEmpty>
           )}
-        </UncontrolledInteractiveList>
+        </PartialInteractiveList>
       </div>
     </div>
   ) : null;
