@@ -6,6 +6,11 @@ export interface InteractiveGroupItemProps<E extends HTMLElement> {
   focused?: boolean;
 }
 
+/**
+ * The interactive group item component accepts a child
+ * as a render function and passes a ref and the focused
+ * flag to it.
+ */
 export function InteractiveGroupItem<E extends HTMLElement>({
   children: render,
   focused = false,

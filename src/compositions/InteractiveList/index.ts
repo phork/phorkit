@@ -1,3 +1,3 @@
 export * from './InteractiveList';
 export * from './InteractiveListItem';
-export * from './UncontrolledInteractiveList';
+export * from './PartialInteractiveList';

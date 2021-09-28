@@ -63,6 +63,15 @@ export type UseInteractiveGroupResponse<
 };
 
 /**
+ * Adds a keydown listener to the document and returns
+ * an item click listener that listen for actions that
+ * will change the focused and selected items. Also
+ * returns functions to select and unselect and focus
+ * items.
+ *
+ * When the selected and focused item(s) change this
+ * fires a series of callbacks.
+ *
  * When the selectedIds change, first the onUnselect
  * callback is fired for every ID that was removed,
  * then an onSelect callback is fired for every ID
