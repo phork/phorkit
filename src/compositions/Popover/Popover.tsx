@@ -36,8 +36,8 @@ export type PopoverRenderContentProps = Pick<
   | 'isTogglerFocused'
   | 'offset'
   | 'onMouseEnter'
-  | 'parentRef'
   | 'position'
+  | 'relativeRef'
   | 'visible'
 > &
   Required<Pick<PopoverContentProps, 'offset'>> & {
@@ -115,7 +115,7 @@ export function Popover({
   const clickOutsideExclusions = useRef<HTMLElement[]>();
 
   const {
-    ref: parentRef,
+    ref: relativeRef,
     isComponentVisible,
     setIsComponentVisible,
   } = useComponentVisible<HTMLDivElement>({
@@ -126,7 +126,7 @@ export function Popover({
     stopPropagation: true,
   });
 
-  const position = usePopoverPosition(parentRef, { position: initPosition, layout });
+  const position = usePopoverPosition(relativeRef, { position: initPosition, layout });
   const offset = useMemo(
     () => (position ? getPositionOffset(position, initOffset) : undefined),
     [position, initOffset],
@@ -263,7 +263,7 @@ export function Popover({
       aria-describedby={isTooltip ? generatePopoverId() : undefined}
       className={cx(styles.popoverContainer, className)}
       onMouseLeave={() => hoverable && closePopover(closeDelay)}
-      ref={parentRef}
+      ref={relativeRef}
       style={style}
       {...props}
     >
@@ -279,9 +279,9 @@ export function Popover({
           isTogglerFocused,
           offset,
           onMouseEnter: cancelClose,
-          parentRef,
           position,
           ref: setContentRef,
+          relativeRef,
           role: isTooltip ? 'tooltip' : 'dialog',
           visible: isComponentVisible,
         })}

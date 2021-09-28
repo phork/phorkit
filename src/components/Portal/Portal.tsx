@@ -7,21 +7,37 @@ import styles from './styles/Portal.module.css';
 export interface PortalProps
   extends Pick<UseAbsoluteCoordsProps, 'centered' | 'offset' | 'position'>,
     React.HTMLAttributes<HTMLDivElement> {
+  /** This will render a hidden portal; otherwise hidden portals are not rendered */
   alwaysRender?: boolean;
   children: React.ReactNode;
   className?: string;
+  /** This is the element that the portal will be rendered inside */
   container?: HTMLElement;
+  /** If a portal is focusable it steals the focus away from its launcher and returns it on close */
   focusable?: boolean;
+  /** The focus ref is applied to the element that should get the focus when the portal opens */
   focusRef?: React.Ref<HTMLElement>;
   height?: number;
   initialCoords?: UseAbsoluteCoordsProps['initialCoords'];
   observe?: boolean;
-  parentRef: React.MutableRefObject<HTMLDivElement>;
   portal?: 'fixed' | 'absolute';
+  /** The relative ref is the element that the portal will be positioned relative to */
+  relativeRef: React.MutableRefObject<HTMLDivElement>;
   visible?: boolean;
   width?: number | string;
 }
 
+/**
+ * A portal is a container for some content that needs
+ * to render outside of its parent element. It will be
+ * a direct descendent of the document body (or the
+ * container prop, if passed).
+ *
+ * A portal can be fixed, or it can be absolutely
+ * positioned. An fixed positioned portal can observe
+ * the changes of the relativeRef position and will
+ * reposition itself accordingly.
+ */
 export const Portal = React.forwardRef<HTMLDivElement, PortalProps>(
   (
     {
@@ -36,8 +52,8 @@ export const Portal = React.forwardRef<HTMLDivElement, PortalProps>(
       initialCoords,
       observe = false,
       offset,
-      parentRef,
       portal = 'absolute',
+      relativeRef,
       position,
       style,
       visible = false,
@@ -55,7 +71,7 @@ export const Portal = React.forwardRef<HTMLDivElement, PortalProps>(
       observe,
       offset,
       position,
-      ref: parentRef,
+      ref: relativeRef,
     });
 
     useEffect(() => {

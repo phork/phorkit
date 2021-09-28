@@ -38,6 +38,7 @@ export interface UseInteractiveGroupProps<T extends InteractiveGroupItemId = str
     props: { id?: T; index?: number },
     selectedIds?: T[],
   ) => void;
+  /** Only events that happen within the parent ref will affect the component */
   parentRef?: React.RefObject<HTMLElement>;
   /** The reducer comes directly from useReducer() and is managed separately so that other components can manage the state */
   reducer: [InteractiveGroupState<T>, Dispatch<InteractiveGroupStateAction<T>>];

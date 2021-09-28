@@ -1,9 +1,13 @@
+/**
+ * 1. This may be overridden by the component if
+ *    the portal should be fixed.
+ */
 .portal {
   display: none;
-  position: absolute;
+  position: absolute; /* [1] */
   z-index: $layout-z-index-popover;
 
   &.is-visible {
-    display: block; 
+    display: block;
   }
 }

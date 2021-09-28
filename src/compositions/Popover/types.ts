@@ -20,8 +20,8 @@ export interface PopoverContentProps
   height?: number;
   isTogglerFocused?: boolean;
   observe?: boolean;
-  /** A parentRef is really only needed for portal popovers */
-  parentRef: React.MutableRefObject<HTMLDivElement>;
+  /** A relativeRef is used by portal popovers to position the popover relative to */
+  relativeRef: React.MutableRefObject<HTMLDivElement>;
   visible?: boolean;
   width?: number | string;
 }
