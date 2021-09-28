@@ -14,6 +14,11 @@ export interface LocalFieldsetProps extends Omit<ThemeProps, 'unthemed'> {
 
 export type FieldsetProps = MergeElementProps<'fieldset', LocalFieldsetProps>;
 
+/**
+ * The fieldset component combines a standard form
+ * fieldset, removes the border, and adds an optional
+ * legend.
+ */
 export function FieldsetBase(
   { children, className, contrast = false, legend, themeId: initThemeId, ...props }: FieldsetProps,
   forwardedRef: React.ForwardedRef<HTMLFieldSetElement>,

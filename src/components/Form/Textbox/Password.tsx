@@ -144,6 +144,11 @@ export function PasswordBase(
   );
 }
 
+/**
+ * The password component extends the Textbox component
+ * and adds a toggle icon button to change the password
+ * from plain-text to obfuscated and back.
+ */
 export const Password = React.forwardRef(PasswordBase);
 
 // note that the base element cannot have a displayName because it breaks Storybook

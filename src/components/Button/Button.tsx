@@ -154,6 +154,14 @@ export function ButtonBase<T extends ButtonElementType = 'button'>(
   );
 }
 
+/**
+ * A button can be a standard HTML button will all
+ * the usual button actions, a link that looks like
+ * a button, or a read-only imitation of a button.
+ *
+ * A button can have one of several fill styles and
+ * colors, and can show an optional loading spinner.
+ */
 export const Button = React.forwardRef(ButtonBase) as <T extends ButtonElementType = 'button'>(
   p: ButtonProps<T> & { ref?: React.Ref<HTMLElementTagNameMap[T]> },
 ) => React.ReactElement<T>;

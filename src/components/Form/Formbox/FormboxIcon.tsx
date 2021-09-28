@@ -22,6 +22,10 @@ export interface FormboxIconProps {
   variant: FormboxVariant;
 }
 
+/**
+ * The formbox icon adds all the necessary styles around
+ * an SVG icon, as well as blur and focus event handlers.
+ */
 export const FormboxIcon = ({
   actionable = false,
   className,

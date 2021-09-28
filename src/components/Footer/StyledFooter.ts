@@ -8,6 +8,12 @@ export interface StyledFooterProps extends FooterProps {
   height?: number | string;
 }
 
+/**
+ * A styled footer is an extension of the Footer
+ * component which can have custom text, border,
+ * and background colors, and an optional custom
+ * height.
+ */
 export const StyledFooter = styled(Footer, {
   shouldForwardProp: (prop: string) =>
     !['borderColor', 'backgroundColor', 'textColor', 'height', 'themeId'].includes(prop),

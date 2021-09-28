@@ -26,6 +26,10 @@ export interface FlexProps extends React.HTMLAttributes<HTMLDivElement> {
   wrap?: boolean;
 }
 
+/**
+ * The flex component is a convenience wrapper to add
+ * flex box properties to a div.
+ */
 export function Flex({
   alignContent,
   alignItems,

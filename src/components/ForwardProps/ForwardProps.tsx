@@ -11,8 +11,8 @@ type ForwardPropsProps<P extends Record<string, unknown>> = {
 } & P;
 
 /**
- * A simple wrapper to forward properties to a children function
- * or functions.
+ * A simple wrapper to forward properties to a children
+ * function or functions.
  */
 export const ForwardProps = <P extends Record<string, unknown>>({
   children,

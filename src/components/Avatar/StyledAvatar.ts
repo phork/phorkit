@@ -6,6 +6,11 @@ export interface StyledAvatarProps extends AvatarProps {
   textColor: string;
 }
 
+/**
+ * A styled avatar is an extension of the Avatar
+ * component which, when viewed as initials, will
+ * have a custom text and background color.
+ */
 export const StyledAvatar = styled(Avatar, {
   shouldForwardProp: (prop: string) => !['backgroundColor', 'textColor', 'themeId'].includes(prop),
 })<StyledAvatarProps>`

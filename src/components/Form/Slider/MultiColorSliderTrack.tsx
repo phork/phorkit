@@ -28,6 +28,11 @@ const StyledTrack = styled('div', {
   `}
 `;
 
+/**
+ * The multi color slider track is the background track
+ * and renders an SVG with all the inactive segments
+ * and their colors.
+ */
 export const MultiColorSliderTrack = React.forwardRef(
   (
     { children, className, colors, sliderWidth = 0, ...props }: MultiColorSliderTrackProps,

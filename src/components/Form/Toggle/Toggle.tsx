@@ -124,6 +124,11 @@ export function ToggleBase(
   );
 }
 
+/**
+ * The toggle component acts like a checkbox and looks
+ * like an on/off switch. The children can be used as
+ * an optional label.
+ */
 export const Toggle = React.forwardRef(ToggleBase);
 
 // note that the base element cannot have a displayName because it breaks Storybook

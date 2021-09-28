@@ -14,6 +14,11 @@ export interface FormboxReadOnlyProps extends Omit<React.HTMLAttributes<HTMLDivE
   value?: FormboxValue | FormboxValue[];
 }
 
+/**
+ * This adds the formbox input styles to a plain text
+ * element so that a read only value can look like an
+ * input but without the form input itself.
+ */
 export const FormboxReadOnly = React.forwardRef<HTMLDivElement, FormboxReadOnlyProps>(
   (
     { centered, className, contrast = false, formattedValue, id, placeholder, themeId: initThemeId, value, ...props },

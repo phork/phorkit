@@ -28,6 +28,7 @@ export interface LocalRadioProps<V extends RadioValue = string> extends ThemePro
   children: React.ReactNode;
   className?: string;
   disabled?: boolean;
+  /** Sets the width to 100% */
   full?: boolean;
   id?: string;
   inputStyle?: React.CSSProperties;
@@ -40,6 +41,7 @@ export interface LocalRadioProps<V extends RadioValue = string> extends ThemePro
   unthemed?: boolean;
   validity?: 'danger';
   value?: V;
+  /** The primary variant uses a solid background fill for a checked item */
   variant?: 'primary' | 'secondary';
 }
 
@@ -161,6 +163,11 @@ export function RadioBase<V extends RadioValue = string>(
   );
 }
 
+/**
+ * The radio component contains both a form radio button
+ * and a label. It requires an onChange handler and accepts
+ * several styling props.
+ */
 export const Radio = React.forwardRef(RadioBase) as <V extends RadioValue = string>(
   p: RadioProps<V> & { ref?: React.Ref<HTMLInputElement> },
 ) => React.ReactElement<HTMLLabelElement>;

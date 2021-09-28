@@ -5,6 +5,10 @@ export interface StyledDividerProps extends DividerProps {
   dividerColor: string;
 }
 
+/**
+ * A styled divider is an extension of the Divider
+ * component which will be a custom color.
+ */
 export const StyledDivider = styled(Divider, {
   shouldForwardProp: (prop: string) => !['dividerColor', 'themeId'].includes(prop),
 })<StyledDividerProps>`

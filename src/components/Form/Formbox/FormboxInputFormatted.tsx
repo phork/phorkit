@@ -14,7 +14,13 @@ export interface FormboxInputFormattedProps extends React.HTMLAttributes<HTMLDiv
   ref?: React.Ref<HTMLDivElement>;
 }
 
-/** The is for form inputs that have HTML values or placeholders (as opposed to plain text) */
+/**
+ * This is used to display the form input value or the
+ * placeholder for form inputs or placeholders that have
+ * HTML values (as opposed to plain text). It applies
+ * the necessary styles for hidden and placeholder
+ * inputs.
+ */
 export const FormboxInputFormatted = React.forwardRef<HTMLDivElement, FormboxInputFormattedProps>(
   (
     { centered, children, className, contrast = false, hidden = false, isPlaceholder, themeId: initThemeId, ...props },

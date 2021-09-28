@@ -1,12 +1,10 @@
 .multiColorSliderTick {
+  border-radius: 4px;
+  width: 2px;
+  height: 8px;
+
   &.is-inactive {
     opacity: $opacity-quietest;
-  }
-
-  &.multiColorSliderTick--divider {
-    border-radius: 0;
-    width: 2px;
-    height: 8px;
   }
 
   @mixin themed .multiColorSliderTick {

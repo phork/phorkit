@@ -51,7 +51,7 @@ export interface FormboxProps extends Omit<FormboxContainerProps<'label'>, 'as' 
   required?: boolean;
   size?: FormboxSize;
   translations?: FormboxTranslations;
-  /** Show the form input as focused even though it isn't */
+  /** Manually apply the focus styles; this does not affect focus */
   visuallyFocused?: boolean;
 }
 
@@ -175,6 +175,13 @@ export function FormboxBase(
   );
 }
 
+/**
+ * The formbox component is the base component used
+ * by text inputs, password inputs, select inputs and
+ * textareas for all their custom styling. It accepts
+ * a child function to render the input itself and adds
+ * optional icons before and after the form input.
+ */
 export const Formbox = React.forwardRef(FormboxBase);
 
 FormboxBase.displayName = 'FormboxBase';

@@ -18,6 +18,12 @@ const StyledAvatar = styled(Avatar, {
   --avatar-text-color: ${props => themes[props.themeId][`color-${props.colorId}-contrast` as keyof ThemeColors]};
 `;
 
+/**
+ * A colored avatar is an extension of the Avatar
+ * component which, when viewed as initials, will
+ * have a background of one of the theme's primary
+ * colors.
+ */
 export const ColoredAvatar = React.memo<ColoredAvatarProps>(withTheme<ColoredAvatarProps>(StyledAvatar));
 ColoredAvatar.displayName = 'ColoredAvatar';
 

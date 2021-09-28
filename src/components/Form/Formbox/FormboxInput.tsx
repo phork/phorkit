@@ -15,7 +15,10 @@ export interface FormboxInputProps<I extends FormboxInputElementType> extends Th
   variant: FormboxVariant;
 }
 
-/** This clones its input/select/textarea child and adds the styles and placeholder to it */
+/**
+ * The formbox input component clones its input/select/textarea
+ * child and adds the styles and placeholder to it.
+ */
 export const FormboxInput = <I extends FormboxInputElementType>({
   children,
   className,

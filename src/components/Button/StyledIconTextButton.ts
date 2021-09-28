@@ -13,6 +13,11 @@ export type StyledIconTextButtonProps<T extends IconTextButtonElementType = 'but
   }
 >;
 
+/**
+ * A styled icon text button is an extension of
+ * the IconTextButton  component which will have a
+ * custom text and background color.
+ */
 export const StyledIconTextButton = styled(IconTextButton, {
   shouldForwardProp: (prop: string) =>
     !['primaryColor', 'inverseColor', 'hoveredPrimaryColor', 'activePrimaryColor', 'width'].includes(prop),

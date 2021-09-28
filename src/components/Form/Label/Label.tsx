@@ -8,6 +8,7 @@ export interface LocalLabelProps extends ThemeProps {
   children: React.ReactNode;
   className?: string;
   disabled?: boolean;
+  /** Manually apply the focus styles; this does not affect focus */
   focused?: boolean;
   muted?: boolean;
   noWrap?: boolean;
@@ -19,6 +20,11 @@ export interface LocalLabelProps extends ThemeProps {
 export type LabelProps<T extends React.ElementType = 'div'> = AsReactType<T> &
   MergeElementPropsWithoutRef<T, LocalLabelProps>;
 
+/**
+ * The label component creates and element with standardized
+ * color and size styling. The component can be a label, a div
+ * or a custom element.
+ */
 export function Label<T extends React.ElementType = 'div'>({
   as,
   children,

@@ -313,6 +313,12 @@ export function SelectBase(
   );
 }
 
+/**
+ * The select component extends the Formbox component and
+ * contains both a select form input and a label. It accepts
+ * custom icons, a placeholder value, a read only state (in
+ * addition to a disabled state) and several custom style options.
+ */
 export const Select = React.forwardRef(SelectBase);
 
 // note that the base element cannot have a displayName because it breaks Storybook

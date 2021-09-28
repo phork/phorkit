@@ -314,7 +314,17 @@ export function TextboxBase(
     </Formbox>
   );
 }
-
+/**
+ * The textbox component extends the Formbox component and
+ * contains both a text form input and a label. It accepts
+ * custom icons, a placeholder value, a read only state (in
+ * addition to a disabled state) and several custom style options.
+ * The input also accepts a clearable flag which will add a
+ * clear button.
+ *
+ * The value and placeholder value can be displayed in HTML
+ * or the standard plain-text format.
+ */
 export const Textbox = React.forwardRef(TextboxBase);
 
 // note that the base element cannot have a displayName because it breaks Storybook

@@ -41,9 +41,9 @@ export interface LocalSliderProps extends Omit<ThemeProps, 'unthemed'> {
   /** Display tick marks at this interval */
   tick?: number;
   tickElement?: React.ElementType;
-  tickProps?: any;
+  tickProps?: Record<string, unknown>;
   trackElement?: React.ElementType;
-  trackProps?: any;
+  trackProps?: Record<string, unknown>;
   unstyled?: boolean;
   validity?: StateColor;
   value?: number;
@@ -341,6 +341,11 @@ export function SliderBase(
   );
 }
 
+/**
+ * The slider component contains both a slider form input
+ * and a label. It can snap to the nearest valid value and
+ * optionally show tick marks at a custom interval.
+ */
 export const Slider = React.forwardRef(SliderBase);
 
 // note that the base element cannot have a displayName because it breaks Storybook

@@ -15,7 +15,7 @@ export interface LocalFormboxContainerProps extends ThemeProps {
   disabled?: boolean;
   /** This should be true if there's no input value, read only value, or placeholder */
   empty?: boolean;
-  /** This just adds focus styles */
+  /** Manually apply the focus styles; this does not affect focus */
   focused?: boolean;
   hasIconAfter?: boolean;
   hasIconBefore?: boolean;
@@ -42,9 +42,9 @@ export type FormboxContainerProps<T extends FormboxContainerElementType> = AsRea
   MergeElementProps<T, LocalFormboxContainerProps>;
 
 /**
- * This applies all the container and label styles for a form input
- * container and accepts the form input and optional icons as its
- * children.
+ * This applies all the container and label styles for
+ * a form input container and accepts the form input and
+ * optional icons as its children, as well as a label.
  */
 export function FormboxContainerBase<T extends FormboxContainerElementType>(
   {

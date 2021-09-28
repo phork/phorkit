@@ -6,7 +6,9 @@ type Position = {
 };
 
 export interface DraggableProps {
+  /** If blocking is true then stop propagation and prevent default are used on the event */
   blocking?: boolean;
+  /** An optional boundary for how far the element can be dragged */
   boundary?: {
     x?: { min: number; max: number };
     y?: { min: number; max: number };
@@ -23,6 +25,12 @@ export interface DraggableProps {
   touchOnly?: boolean;
 }
 
+/**
+ * A draggable component can be dragged by a mouse or
+ * touch event with callback functions for when the
+ * drag starts, moves and ends. It can also have an
+ * optional boundary which it cannot be dragged past.
+ */
 export function Draggable({
   blocking: initBlocking = false,
   boundary,

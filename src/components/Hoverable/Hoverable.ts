@@ -9,6 +9,12 @@ export interface HoverableProps {
   hoverableProps: React.Attributes;
 }
 
+/**
+ * The hoverable component accepts a child element
+ * and applies either the defaultProps or the
+ * hoverableProps to it depending on the mouseover
+ * state.
+ */
 export function Hoverable({ children, defaultProps, hoverableProps }: HoverableProps): React.ReactElement {
   const { setSafeTimeout, clearSafeTimeout } = useSafeTimeout();
   const [hovered, setHovered] = useState<boolean>(false);

@@ -12,6 +12,12 @@ export interface StyledPasswordProps extends PasswordProps {
   passwordLabelTextColor: string;
 }
 
+/**
+ * A styled password is an extension of the Password
+ * component which will have custom text, border and
+ * background colors for both focused, unfocused and
+ * hovered states.
+ */
 export const StyledPassword = styled(Password, {
   shouldForwardProp: (prop: string) =>
     ![
