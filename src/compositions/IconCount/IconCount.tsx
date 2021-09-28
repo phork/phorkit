@@ -14,6 +14,16 @@ export interface IconCountProps extends Omit<FlexProps, 'children'>, ThemeProps 
   typographySize?: TypographyProps['size'];
 }
 
+/**
+ * The icon count renders an SVG icon and some
+ * text next to each other. The icon can be first
+ * or last (reversed) and has an optional active
+ * state. Both the icon size and the text size
+ * can be customized.
+ *
+ * This uses the Flex, Rhythm and Typography
+ * components.
+ */
 export function IconCount({
   active = false,
   count,

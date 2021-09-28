@@ -21,7 +21,12 @@ const defaultOffset = {
   vertical: -12,
 };
 
-/** A dropover is a popover that looks like it contains the toggle */
+/**
+ * A dropover is a popover that renders behind its toggle
+ * so it looks like the toggle lives inside the dropover.
+ *
+ * This uses the Popover component.
+ */
 export function InlineDropover({
   align,
   children,
