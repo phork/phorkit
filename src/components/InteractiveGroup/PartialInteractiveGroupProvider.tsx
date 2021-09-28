@@ -1,4 +1,4 @@
-import produce, { Draft } from 'immer';
+import produce, { castDraft, Draft } from 'immer';
 import React, { useRef } from 'react';
 import { InteractiveGroupContext, InteractiveGroupContextValue } from './InteractiveGroupContext';
 import { InteractiveGroupItemId } from './types';
@@ -78,8 +78,7 @@ export function PartialInteractiveGroupProvider<
       draftState.focusedIndex = focusedIndex;
       draftState.handleItemClick = handleItemClick;
       draftState.isSelected = isSelected;
-      // @ts-ignore [TODO:ts] WTF
-      draftState.selectedIds = selectedIds;
+      draftState.selectedIds = castDraft(selectedIds);
       draftState.selectId = selectId;
       draftState.setFocused = setFocused;
       draftState.unselectId = unselectId;

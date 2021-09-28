@@ -14,6 +14,12 @@ export interface PositionProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: 'inside' | 'outside' | 'middle';
 }
 
+/**
+ * A simple container that sets its position relative to
+ * its parent. The position can be at one of the corners,
+ * in the direct center, or centered along one of the
+ * edges.
+ */
 export function Position({
   children,
   className,

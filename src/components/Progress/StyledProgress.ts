@@ -7,6 +7,11 @@ export interface StyledProgressProps extends Omit<ProgressProps, 'color'> {
   segmentColor: string;
 }
 
+/**
+ * A styled progress bar is an extension of the
+ * ProgressBar component and it will have a custom
+ * background and segment color.
+ */
 export const StyledProgress = styled(Progress, {
   shouldForwardProp: (prop: string) =>
     !['backgroundColor', 'segmentColor', 'segmentAnimationColor', 'themeId'].includes(prop),

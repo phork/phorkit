@@ -5,6 +5,11 @@ export interface ScrollSyncProps extends UseScrollSyncProps {
   children: (props: UseScrollSyncResponse) => React.ReactElement;
 }
 
+/**
+ * A simple wrapper around the useScrollSync hook
+ * that passes on the props of the hook to a children
+ * function.
+ */
 export function ScrollSync({ children, horizontal, vertical }: ScrollSyncProps): React.ReactElement {
   const props = useScrollSync({ horizontal, vertical });
   return children(props);

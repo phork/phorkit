@@ -10,9 +10,11 @@ export type TagSize = '2xsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'cus
 export type TagWeight = 'outlined' | 'shaded' | 'solid';
 
 export interface LocalTagProps extends ThemeProps {
+  /** An actionable tag renders a button */
   actionable?: boolean;
   children: React.ReactNode;
   className?: string;
+  /** This will remove all padding from the tag */
   flush?: boolean;
   shape?: TagShape;
   size?: TagSize;
@@ -66,6 +68,11 @@ export function TagBase<T extends TagElementType = 'div'>(
   );
 }
 
+/**
+ * A tag represents a small segment of data and can be
+ * static or actionable. Similar to buttons, tags can
+ * have one of several fill styles and colors.
+ */
 export const Tag = React.forwardRef(TagBase) as <T extends TagElementType = 'div'>(
   p: TagProps<T> & { ref?: React.Ref<HTMLElementTagNameMap[T]> },
 ) => React.ReactElement<T>;

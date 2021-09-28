@@ -252,5 +252,6 @@ Segmented.args = {
     { color: 'warning', percent: 20 },
     { color: 'success', percent: 40 },
   ],
+  percent: undefined,
   spaced: true,
 };

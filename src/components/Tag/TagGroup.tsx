@@ -21,6 +21,10 @@ export interface TagGroupProps extends React.HTMLAttributes<HTMLDivElement>, The
   weight?: TagWeight;
 }
 
+/**
+ * A tag group is a collection of tags with a uniform
+ * amount of spacing between them.
+ */
 export function TagGroup({
   actionable,
   children,

@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { Orientation, SemanticColor, ThemeProps, Volume } from '../../types';
+import { MergeProps, Orientation, SemanticColor, ThemeProps, Volume } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Progress.module.css';
 
@@ -9,21 +9,39 @@ export interface ProgressSegment {
   color: SemanticColor;
 }
 
-export interface ProgressProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>, ThemeProps {
-  animated?: boolean;
-  className?: string;
-  color?: SemanticColor;
+type ProgressSegmentProps = {
+  percent?: never;
   data?: ProgressSegment[];
-  floating?: boolean;
-  orientation?: Orientation;
-  percent?: number;
-  rounded?: boolean;
-  size?: 'small' | 'medium' | 'large';
-  spaced?: boolean;
-  style?: React.CSSProperties;
-  volume?: Volume;
-}
+};
 
+type ProgressPercentProps = {
+  percent?: number;
+  data?: never;
+};
+
+export type ProgressProps = MergeProps<
+  Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> & ThemeProps,
+  {
+    animated?: boolean;
+    className?: string;
+    color?: SemanticColor;
+    /** A floating progress bar doesn't show the empty segment */
+    floating?: boolean;
+    orientation?: Orientation;
+    /** Whether the edges of the bar and the segments should be rounded */
+    rounded?: boolean;
+    size?: 'small' | 'medium' | 'large';
+    spaced?: boolean;
+    style?: React.CSSProperties;
+    volume?: Volume;
+  } & (ProgressPercentProps | ProgressSegmentProps)
+>;
+
+/**
+ * A progress bar has one or more segments that fill
+ * up a percentage of the bar to indicate the progress
+ * of an event.
+ */
 export function Progress({
   animated = false,
   className,
