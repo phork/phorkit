@@ -14,6 +14,16 @@ export interface PermanentSidePanelProps extends React.HTMLAttributes<HTMLDivEle
   unit?: 'px' | 'percent';
 }
 
+/**
+ * A permanent side panel is similar to a SidePanel
+ * but it can never be closed. It lives alongside a
+ * MainPanel (and optionally other side panels) in
+ * a PanelContainer.
+ *
+ * If a side panel is fixed it sits on top of the main
+ * panel. If it's not fixed it forces the main panel
+ * to shrink.
+ */
 export const PermanentSidePanel = React.forwardRef<HTMLDivElement, PermanentSidePanelProps>(
   (
     { children, className, fixed = false, position, raised, style: initStyle, unit: initUnit = 'px', width, ...props },

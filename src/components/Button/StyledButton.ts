@@ -16,8 +16,8 @@ export type StyledButtonProps<T extends ButtonElementType = 'button'> = MergePro
 
 /**
  * A styled button is an extension of the Button
- * component which will have a custom text and
- * background color.
+ * component and it will have a custom background
+ * and text color.
  */
 export const StyledButton = styled(Button, {
   shouldForwardProp: (prop: string) =>

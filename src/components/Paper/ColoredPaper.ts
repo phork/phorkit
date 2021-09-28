@@ -21,6 +21,11 @@ const StyledPaper = styled(Paper, {
   --paper-scrollbar-thumb-color: ${props => themes[props.themeId]['contrast-scrollbar-thumb-color']};
 `;
 
+/**
+ * The colored paper is an extension of the Paper
+ * component and it will have a background of one
+ * of the theme's primary colors.
+ */
 export const ColoredPaper = React.memo<ColoredPaperProps>(withTheme<ColoredPaperProps>(StyledPaper));
 ColoredPaper.displayName = 'ColoredPaper';
 

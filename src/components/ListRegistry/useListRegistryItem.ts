@@ -7,10 +7,14 @@ export interface UseListRegistryItemProps<E extends HTMLElement = HTMLElement> {
   ref: ListRegistryItemType<E>;
 }
 
+/**
+ * Receives an ID and an element ref to register and
+ * unregisters them on clean up.
+ */
 export function useListRegistryItem<E extends HTMLElement = HTMLElement>({
   id,
   ref,
-}: UseListRegistryItemProps<E>): React.MutableRefObject<E | null> {
+}: UseListRegistryItemProps<E>): void {
   const { registerItem, unregisterItem } = useListRegistry<E>();
 
   useEffect((): (() => void) => {
@@ -20,6 +24,4 @@ export function useListRegistryItem<E extends HTMLElement = HTMLElement>({
       unregisterItem(id);
     };
   }, [id, ref, registerItem, unregisterItem]);
-
-  return ref;
 }

@@ -8,6 +8,11 @@ export interface MainPanelProps extends React.HTMLAttributes<HTMLDivElement> {
   style?: React.CSSProperties;
 }
 
+/**
+ * The main panel is part of the panels system and
+ * uses flexbox to expand to fill any remaining space
+ * in the PanelContainer.
+ */
 export const MainPanel = React.forwardRef<HTMLDivElement, MainPanelProps>(
   ({ children, className, ...props }: MainPanelProps, forwardedRef): React.ReactElement<MainPanelProps> => {
     const classes = cx(styles.mainPanel, className);

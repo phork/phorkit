@@ -12,7 +12,6 @@ import { PartialInteractiveList, PartialInteractiveListProps } from './PartialIn
 export type InteractiveListProps = Omit<PartialInteractiveListProps, 'reducer'> &
   Pick<InteractiveGroupProviderProps, 'initialSelected'>;
 
-/** The interactive list is a wrapper around the partial interactive list */
 export function InteractiveListBase(
   { initialSelected, items, ...props }: InteractiveListProps,
   forwardedRef: React.ForwardedRef<HTMLUListElement>,
@@ -36,6 +35,11 @@ export function InteractiveListBase(
   return <PartialInteractiveList reducer={reducer} ref={forwardedRef} {...props} />;
 }
 
+/**
+ * The interactive list is a wrapper around the partial
+ * interactive list for which it provides the reducer
+ * used to track the selected and focused item(s) state.
+ */
 export const InteractiveList = React.forwardRef(InteractiveListBase);
 
 InteractiveListBase.displayName = 'InteractiveListBase';

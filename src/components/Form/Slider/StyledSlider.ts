@@ -10,7 +10,7 @@ export interface StyledSliderProps extends SliderProps {
 
 /**
  * A styled slider is an extension of the Slider
- * component which will have a custom track, track
+ * component and it will have a custom track, track
  * fill, tick and drag handle colors.
  */
 export const StyledSlider = styled(Slider, {

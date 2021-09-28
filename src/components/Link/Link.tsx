@@ -16,6 +16,10 @@ export interface LinkProps extends React.HTMLAttributes<HTMLAnchorElement>, Them
   unstyled?: boolean;
 }
 
+/**
+ * A link is a styled anchor tag. It can be an inline or
+ * a block element.
+ */
 export function Link({
   block = false,
   children,

@@ -17,6 +17,10 @@ export interface LocalLinkContainerProps extends ThemeProps {
 export type LinkContainerProps<T extends LinkContainerElementType = 'div'> = AsReactType<T> &
   MergeElementPropsWithoutRef<T, LocalLinkContainerProps>;
 
+/**
+ * A link container adds custom link styles to any
+ * anchor tags within it.
+ */
 export function LinkContainer<T extends LinkContainerElementType = 'div'>({
   as,
   children,

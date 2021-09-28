@@ -5,6 +5,11 @@ export interface StyledLineLoaderProps extends Omit<LineLoaderProps, 'color'> {
   color: string;
 }
 
+/**
+ * A styled line load is an extension of the
+ * LineLoader component and it will have a
+ * custom color.
+ */
 export const StyledLineLoader = ({ color, style, ...props }: StyledLineLoaderProps) => {
   return (
     <LineLoader

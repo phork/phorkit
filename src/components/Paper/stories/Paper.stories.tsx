@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentStory, ComponentMeta, DecoratorFn } from '@storybook/react';
 import React from 'react';
 import { Paper, PaperProps } from '../Paper';
 import PaperDocumentation from './Paper.docs.mdx';
@@ -287,4 +287,39 @@ XSmallScrollbar.args = {
   scrollable: true,
   scrollbar: 'xsmall',
   style: { height: '80px', maxWidth: '800px' },
+};
+
+const layoutDecorator: DecoratorFn = Story => <div style={{ position: 'relative', height: '100px' }}>{Story()}</div>;
+
+export const FlexibleLayout = Template.bind({});
+FlexibleLayout.decorators = [layoutDecorator];
+FlexibleLayout.storyName = 'Flexible';
+FlexibleLayout.args = {
+  ...defaultArgs,
+  bordered: true,
+  color: 'primary',
+  container: 'panel',
+  flexible: true,
+};
+
+export const FullLayout = Template.bind({});
+FullLayout.decorators = [layoutDecorator];
+FullLayout.storyName = 'Full';
+FullLayout.args = {
+  ...defaultArgs,
+  bordered: true,
+  color: 'primary',
+  container: 'panel',
+  full: true,
+};
+
+export const ContainedLayout = Template.bind({});
+ContainedLayout.decorators = [layoutDecorator];
+ContainedLayout.storyName = 'Contained';
+ContainedLayout.args = {
+  ...defaultArgs,
+  bordered: true,
+  color: 'primary',
+  container: 'panel',
+  contained: true,
 };
