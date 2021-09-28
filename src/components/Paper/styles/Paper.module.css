@@ -39,6 +39,7 @@
 .paper--flexible {
   display: flex;
   flex: 1;
+  flex-direction: column;
 }
 
 .paper--bordered {
