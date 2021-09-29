@@ -4,9 +4,9 @@ import { useThemeId } from '../../context/Theme';
 import { ToastProps } from './Toast';
 import { ToastContext } from './ToastContext';
 
-/* a toast with context is used with the toast system and requires a context id */
 export type ToastWithContextItemType = React.ReactElement<
   Omit<ToastProps, 'contextId'> & {
+    /* A toast with context is used with the toast system and requires a context id */
     contextId: string;
     permanent?: boolean;
   }

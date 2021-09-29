@@ -1,5 +1,13 @@
 @import '../../../styles/common/mixins/addScrollbar.css';
 
+$horizontal-padding: 36px;
+$horizontal-padding-xsmall-down: 24px;
+$vertical-padding: 20px;
+
+/**
+ * 1. Set the maximum modal size so that it fills the
+ *    viewport with 20px of padding on each side.
+ */
 .modal {
   @mixin addScrollbar var(--modal-scrollbar-thumb-color);
 
@@ -11,8 +19,8 @@
   flex-direction: column;
   font-size: $font-size-medium;
   margin: 8px;
-  max-height: calc(100vh - 20px);
-  max-width: calc(100vw - 20px);
+  max-height: calc(100vh - 20px); /* [1] */
+  max-width: calc(100vw - 20px); /* [1] */
   pointer-events: all;
   position: relative;
 
@@ -21,20 +29,13 @@
     overflow: overlay;
   }
 
-  &.modal--light {
-    background-color: $light-primary-palette-background-color;
-    box-shadow: $light-box-shadow-10;
-    color: $light-primary-palette-text-color;
+  @mixin themed {
+    background-color: $theme-primary-palette-background-color;
+    box-shadow: $theme-box-shadow-10;
+    color: $theme-primary-palette-text-color;
 
+    --modal-content-border-color: $theme-primary-palette-border-color;
     --modal-scrollbar-thumb-color: $light-primary-scrollbar-thumb-color;
-  }
-
-  &.modal--dark {
-    background-color: $dark-primary-palette-background-color;
-    box-shadow: $dark-box-shadow-10;
-    color: $dark-primary-palette-text-color;
-
-    --modal-scrollbar-thumb-color: $dark-primary-scrollbar-thumb-color;
   }
 }
 
@@ -79,40 +80,17 @@
   }
 }
 
-.modalHeader {
-  flex: none;
-  margin-bottom: 4px;
-  padding: 20px 36px 8px;
-
-  @media (--viewport-xsmall-down) {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-}
-
-.modalHeader--bordered {
-  padding-bottom: 20px;
-
-  .modal--light & {
-    border-bottom: 1px solid $light-primary-palette-border-color;
-  }
-
-  .modal--dark & {
-    border-bottom: 1px solid $dark-primary-palette-border-color;
-  }
-}
-
 .modalBody {
   display: flex;
   flex-direction: column;
   padding: 0;
 
   &:not(.modalBody--flush) {
-    padding: 20px 36px 20px;
+    padding: $vertical-padding $horizontal-padding;
 
     @media (--viewport-xsmall-down) {
-      padding-left: 24px;
-      padding-right: 24px;
+      padding-left: $horizontal-padding-xsmall-down;
+      padding-right: $horizontal-padding-xsmall-down;
     }
   }
 }
@@ -134,22 +112,32 @@
   overflow: overlay;
 }
 
-.modalFooter {
+.modalHeader {
   flex: none;
-  padding: 20px 36px;
+  margin-bottom: 4px;
+  padding: $vertical-padding $horizontal-padding 8px;
 
   @media (--viewport-xsmall-down) {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: $horizontal-padding-xsmall-down;
+    padding-right: $horizontal-padding-xsmall-down;
+  }
+}
+
+.modalHeader--bordered {
+  border-bottom: 1px solid var(--modal-content-border-color);
+  padding-bottom: $vertical-padding;
+}
+
+.modalFooter {
+  flex: none;
+  padding: $vertical-padding $horizontal-padding;
+
+  @media (--viewport-xsmall-down) {
+    padding-left: $horizontal-padding-xsmall-down;
+    padding-right: $horizontal-padding-xsmall-down;
   }
 }
 
 .modalFooter--bordered {
-  .modal--light & {
-    border-top: 1px solid $light-primary-palette-border-color;
-  }
-
-  .modal--dark & {
-    border-top: 1px solid $dark-primary-palette-border-color;
-  }
+  border-top: 1px solid var(--modal-content-border-color);
 }

@@ -7,6 +7,12 @@ export type UseToastComponentIdsResponse = {
   generateTitleId: () => string;
 };
 
+/**
+ * Returns an ID to use as the element ID for the
+ * toast, and a function to generate an ID to use
+ * for the toast title. This is so the aria values
+ * reference each other properly.
+ */
 export function useToastComponentIds(id?: string): UseToastComponentIdsResponse {
   const previousResponse = useRef<UseToastComponentIdsResponse>({} as UseToastComponentIdsResponse);
   const { componentId, generateComponentId } = useComponentId(id);

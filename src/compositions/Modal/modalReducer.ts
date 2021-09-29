@@ -18,7 +18,7 @@ export function modalReducer(state: ModalState, action: ModalStateAction) {
       }
       return state;
 
-    // jumps a modal to the front of the screen
+    // adds a modal to the top of the queue, effectively showing it
     case ACTIONS.JUMP: {
       const modal = mutable.get(action.id);
       if (modal) {
@@ -29,7 +29,7 @@ export function modalReducer(state: ModalState, action: ModalStateAction) {
       return state;
     }
 
-    // create a modal if it doesn't exist or jump it to the front if it does
+    // creates a modal if it doesn't exist or jumps it to the top of the stack if it does
     case ACTIONS.JUMPSET: {
       const modal = mutable.get(action.id);
       if (!modal) {
@@ -60,6 +60,7 @@ export function modalReducer(state: ModalState, action: ModalStateAction) {
       }
       return state;
 
+    // removes the top modal from the stack, effectively showing the next one, or none
     case ACTIONS.POP: {
       const modal = Array.from(mutable.values()).pop();
       if (modal && (action.force || !modal.props.permanent)) {

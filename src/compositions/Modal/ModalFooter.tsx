@@ -9,6 +9,13 @@ export interface ModalFooterProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
 }
 
+/**
+ * The modal footer is generally used for submit
+ * buttons and other navigation elements. When
+ * rendered inside a Modal and as a sibling of a
+ * ModalBody with the scrollable prop it sticks
+ * to the bottom of the modal.
+ */
 export function ModalFooter({
   bordered = false,
   children,

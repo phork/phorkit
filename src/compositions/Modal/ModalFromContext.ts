@@ -4,9 +4,9 @@ import { useThemeId } from '../../context/Theme';
 import { ModalProps } from './Modal';
 import { ModalContext } from './ModalContext';
 
-/* a modal with context is used with the modal system and requires a context id */
 export type ModalWithContextItemType = React.ReactElement<
   Omit<ModalProps, 'contextId'> & {
+    /* A modal with context is used with the modal system and requires a context id */
     contextId: string;
   }
 >;
@@ -15,6 +15,12 @@ export interface ModalFromContextProps extends ThemeProps {
   modal: ModalWithContextItemType;
 }
 
+/**
+ * This accepts a Modal element and its ID and it
+ * clones the modal and passes it an onClose prop
+ * that can be used to the remove modal from the
+ * state.
+ */
 export function ModalFromContext({
   modal,
   themeId: initThemeId,

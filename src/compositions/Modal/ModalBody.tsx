@@ -10,6 +10,10 @@ export interface ModalBodyProps extends React.HTMLAttributes<HTMLDivElement> {
   style?: React.CSSProperties;
 }
 
+/**
+ * The modal body wraps the content with a scrollable
+ * container and adds the appropriate padding.
+ */
 export const ModalBody = React.forwardRef<HTMLDivElement, ModalBodyProps>(
   (
     { children, className, flush = false, scrollable = false, style, ...props },

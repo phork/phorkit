@@ -43,9 +43,13 @@ import {
 
 <Playground>
   <ThemeWrapper style={{ width: 600, maxWidth: '100%' }}>
-    <Modal immediate contextId="demo-modal-header">
-      <ModalHeader modalId="demo-modal-header" title="Hello world" />
-      <ModalBody scrollable>This is a modal with a header.</ModalBody>
+    <Modal immediate>
+      {({ id }) => (
+        <React.Fragment>
+          <ModalHeader modalId={id} title="Hello world" />
+          <ModalBody scrollable>This is a modal with a header.</ModalBody>
+        </React.Fragment>
+      )}
     </Modal>
   </ThemeWrapper>
 </Playground>
@@ -54,9 +58,13 @@ import {
 
 <Playground>
   <ThemeWrapper style={{ width: 600, maxWidth: '100%' }}>
-    <Modal immediate contextId="demo-modal-close" onClose={(event, id) => console.log(`closed ${id}`)}>
-      <ModalHeader modalId="demo-modal-close" title="Hello world" />
-      <ModalBody scrollable>This is a modal with a header and close button.</ModalBody>
+    <Modal immediate contextId="demo-modal-close" onClose={(event, contextId) => console.log(`closed ${contextId}`)}>
+      {({ id }) => (
+        <React.Fragment>
+          <ModalHeader modalId={id} title="Hello world" />
+          <ModalBody scrollable>This is a modal with a header and close button.</ModalBody>
+        </React.Fragment>
+      )}
     </Modal>
   </ThemeWrapper>
 </Playground>
@@ -65,14 +73,18 @@ import {
 
 <Playground>
   <ThemeWrapper style={{ width: 600, maxWidth: '100%' }}>
-    <Modal immediate contextId="demo-modal-header-footer">
-      <ModalHeader modalId="demo-modal-header-footer" title="Hello world" />
-      <ModalBody scrollable>This is a modal with a header and footer.</ModalBody>
-      <ModalFooter>
-        <Typography align="right" as="div" size="xsmall" variants={['italic']} volume="quiet">
-          To be continued ...
-        </Typography>
-      </ModalFooter>
+    <Modal immediate>
+      {({ id }) => (
+        <React.Fragment>
+          <ModalHeader modalId={id} title="Hello world" />
+          <ModalBody scrollable>This is a modal with a header and footer.</ModalBody>
+          <ModalFooter>
+            <Typography align="right" as="div" size="xsmall" variants={['italic']} volume="quiet">
+              To be continued ...
+            </Typography>
+          </ModalFooter>
+        </React.Fragment>
+      )}
     </Modal>
   </ThemeWrapper>
 </Playground>
@@ -185,7 +197,7 @@ import {
                   <Modal
                     focusable
                     contextId="demo-large-modal"
-                    onClose={(event, id) => console.log(`closed ${id}`)}
+                    onClose={(event, contextId) => console.log(`closed ${contextId}`)}
                     size="large"
                     style={{ height: '400px' }}
                   >
@@ -241,7 +253,7 @@ import {
                                   <Modal
                                     focusable
                                     contextId="demo-medium-modal"
-                                    onClose={(event, id) => console.log(`closed ${id}`)}
+                                    onClose={(event, contextId) => console.log(`closed ${contextId}`)}
                                     size="medium"
                                   >
                                     {({ id, focusRef }) => (
@@ -303,7 +315,7 @@ import {
                                                     focusable
                                                     ariaLabel="Hello world"
                                                     contextId="demo-small-modal"
-                                                    onClose={(event, id) => console.log(`closed ${id}`)}
+                                                    onClose={(event, contextId) => console.log(`closed ${contextId}`)}
                                                     size="small"
                                                   >
                                                     {({ id, focusRef }) => (
@@ -342,8 +354,9 @@ import {
                                                           <Rhythm my={3}>
                                                             <ButtonGroup
                                                               align="left"
+                                                              display="block"
                                                               orientation="vertical"
-                                                              spacing="cozy"
+                                                              spacing="comfy"
                                                             >
                                                               <Button
                                                                 color="primary"

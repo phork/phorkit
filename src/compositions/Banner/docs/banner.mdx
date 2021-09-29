@@ -19,14 +19,19 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <BannerContainer themeId={themeId}>
-        <Banner immediate contextId="demo-banner-primary1" level="primary" onClose={() => console.log('closed banner')}>
+        <Banner
+          immediate
+          contextId="demo-banner-primary1"
+          level="primary"
+          onClose={(event, contextid) => console.log(`closed ${contextid}`)}
+        >
           This is a primary banner.
         </Banner>
         <Banner
           immediate
           contextId="demo-banner-primary2"
           level="primary"
-          onClose={(event, id) => console.log(`closed ${id}`)}
+          onClose={(event, contextid) => console.log(`closed ${contextid}`)}
         >
           This is another primary banner. It has a border to distinguish it from the one above.
         </Banner>
@@ -34,7 +39,7 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
           immediate
           contextId="demo-banner-secondary1"
           level="secondary"
-          onClose={(event, id) => console.log(`closed ${id}`)}
+          onClose={(event, contextid) => console.log(`closed ${contextid}`)}
         >
           This is a secondary banner.
         </Banner>
@@ -42,7 +47,7 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
           immediate
           contextId="demo-banner-secondary2"
           level="secondary"
-          onClose={(event, id) => console.log(`closed ${id}`)}
+          onClose={(event, contextid) => console.log(`closed ${contextid}`)}
         >
           This is another secondary banner. It has a border to distinguish it from the one above.
         </Banner>
@@ -50,7 +55,7 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
           immediate
           contextId="demo-banner-tertiary1"
           level="tertiary"
-          onClose={(event, id) => console.log(`closed ${id}`)}
+          onClose={(event, contextid) => console.log(`closed ${contextid}`)}
         >
           This is a tertiary banner.
         </Banner>
@@ -58,7 +63,7 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
           immediate
           contextId="demo-banner-tertiary2"
           level="tertiary"
-          onClose={(event, id) => console.log(`closed ${id}`)}
+          onClose={(event, contextid) => console.log(`closed ${contextid}`)}
         >
           This is another tertiary banner. It has a border to distinguish it from the one above.
         </Banner>
@@ -66,7 +71,7 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
           immediate
           contextId="demo-banner-transparent1"
           level="transparent"
-          onClose={(event, id) => console.log(`closed ${id}`)}
+          onClose={(event, contextid) => console.log(`closed ${contextid}`)}
         >
           This is a transparent banner.
         </Banner>
@@ -74,7 +79,7 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
           immediate
           contextId="demo-banner-transparent2"
           level="transparent"
-          onClose={(event, id) => console.log(`closed ${id}`)}
+          onClose={(event, contextid) => console.log(`closed ${contextid}`)}
         >
           This is another transparent banner. It has a border to distinguish it from the one above.
         </Banner>
@@ -178,7 +183,7 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
                   <Banner
                     contextId="demo-banner-success"
                     level="success"
-                    onClose={(event, id) => console.log(`closed ${id}`)}
+                    onClose={(event, contextid) => console.log(`closed ${contextid}`)}
                   >
                     This is an overwriting success banner because it's got a contextId. Yay!
                     <div style={{ position: 'absolute', right: '8px', fontSize: '10px', opacity: 0.4 }}>

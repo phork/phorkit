@@ -9,21 +9,23 @@ export interface ModalProviderProps {
   children: React.ReactNode;
 }
 
+/**
+ * The modal provider tracks a collection of modals
+ * and provides functions to create a modal, remove a
+ * modal, move a modal to the top of the stack and
+ * clear all modals. It also provides a map containing
+ * all the modals as well as the currently active modal.
+ *
+ * Because only one modal can be rendered at a time
+ * the top modal in the stack is the one shown.
+ */
 export function ModalProvider({ children }: ModalProviderProps): React.ReactElement {
   const previousValue = useRef<ModalContextValue>({} as ModalContextValue);
   const [state, dispatch] = useReducer(reducer, new Map() as ModalState);
 
-  const removeModal = useCallback<ModalContextValue['removeModal']>(id => {
+  const clearModals = useCallback<ModalContextValue['clearModals']>(() => {
     dispatch({
-      id,
-      type: ACTIONS.DELETE,
-    });
-  }, []);
-
-  const popModal = useCallback<ModalContextValue['popModal']>(force => {
-    dispatch({
-      type: ACTIONS.POP,
-      force,
+      type: ACTIONS.CLEAR,
     });
   }, []);
 
@@ -39,6 +41,13 @@ export function ModalProvider({ children }: ModalProviderProps): React.ReactElem
     return contextId;
   }, []);
 
+  const hasModal = useCallback<ModalContextValue['hasModal']>(
+    id => {
+      return state.has(id);
+    },
+    [state],
+  );
+
   const jumpModal = useCallback<ModalContextValue['jumpModal']>(id => {
     dispatch({
       id,
@@ -46,18 +55,19 @@ export function ModalProvider({ children }: ModalProviderProps): React.ReactElem
     });
   }, []);
 
-  const clearModals = useCallback<ModalContextValue['clearModals']>(() => {
+  const popModal = useCallback<ModalContextValue['popModal']>(force => {
     dispatch({
-      type: ACTIONS.CLEAR,
+      type: ACTIONS.POP,
+      force,
     });
   }, []);
 
-  const hasModal = useCallback<ModalContextValue['hasModal']>(
-    id => {
-      return state.has(id);
-    },
-    [state],
-  );
+  const removeModal = useCallback<ModalContextValue['removeModal']>(id => {
+    dispatch({
+      id,
+      type: ACTIONS.DELETE,
+    });
+  }, []);
 
   // only ever show the latest modal in the stack
   const modal = state.size ? Array.from(state.values()).pop() : undefined;
@@ -67,10 +77,10 @@ export function ModalProvider({ children }: ModalProviderProps): React.ReactElem
     draftState.modals = castDraft(state);
     draftState.clearModals = clearModals;
     draftState.createModal = createModal;
+    draftState.hasModal = hasModal;
     draftState.jumpModal = jumpModal;
     draftState.popModal = popModal;
     draftState.removeModal = removeModal;
-    draftState.hasModal = hasModal;
   });
   previousValue.current = value;
 
