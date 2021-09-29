@@ -4,27 +4,22 @@ import { useComponentId } from '../../hooks/useComponentId';
 
 export type UsePopoverComponentIdsResponse = {
   componentId: string;
-  generatePopoverId: () => string;
   generateTogglerId: () => string;
 };
 
+/**
+ * Returns an ID to use as the element ID for the
+ * popover, and a function to generate an ID to use
+ * for the popover's toggle. This is so the aria values
+ * reference each other properly.
+ */
 export function usePopoverComponentIds(id?: string): UsePopoverComponentIdsResponse {
   const previousResponse = useRef<UsePopoverComponentIdsResponse>({} as UsePopoverComponentIdsResponse);
   const { componentId, generateComponentId } = useComponentId(id);
-
-  const generatePopoverId = useCallback<UsePopoverComponentIdsResponse['generatePopoverId']>(
-    () => generateComponentId('popover'),
-    [generateComponentId],
-  );
-
-  const generateTogglerId = useCallback<UsePopoverComponentIdsResponse['generateTogglerId']>(
-    () => generateComponentId('toggle'),
-    [generateComponentId],
-  );
+  const generateTogglerId = useCallback(() => generateComponentId('toggle'), [generateComponentId]);
 
   previousResponse.current = produce(previousResponse.current, draftState => {
     draftState.componentId = componentId;
-    draftState.generatePopoverId = generatePopoverId;
     draftState.generateTogglerId = generateTogglerId;
   });
   return previousResponse.current;
