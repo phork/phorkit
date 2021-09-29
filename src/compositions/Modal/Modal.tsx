@@ -31,7 +31,7 @@ export interface ModalProps extends ThemeProps {
   contextId?: string;
   /** When a modal is focusable the active element changes to the modal */
   focusable?: boolean;
-  /** The immediate flag remove the entry animation */
+  /** The immediate flag removes the entry animation */
   immediate?: boolean;
   onClose?: (event?: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, contextId?: string) => void;
   /** A permanent modal doesn't have a close button */
@@ -40,6 +40,17 @@ export interface ModalProps extends ThemeProps {
   translations?: ModalTranslations;
 }
 
+/**
+ * The modal is a container with a close button that
+ * has a small open animation and wraps a ModalHeader,
+ * ModalBody and ModalFooter. If the modal is focusable
+ * it provides a focusRef prop to the children which can
+ * be attached to the element that should get the focus
+ * when the modal opens.
+ *
+ * The modal should be a child of a ModalContainer which
+ * creates a portal and handles the escape functionality.
+ */
 export function Modal({
   allowOverflow = false,
   ariaLabel,

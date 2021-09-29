@@ -2,9 +2,13 @@ import { createContext } from 'react';
 import { BannerWithContextItemType } from './BannerFromContext';
 
 export interface BannerContextValue {
+  /** A map of all the banners */
   notifications: Map<string, BannerWithContextItemType>;
+  /** Creates a new banner or replaces an existing banner if one exists with the same contextId */
   createNotification: (banner: BannerWithContextItemType) => string | undefined;
+  /** Removes a banner by contextId */
   removeNotification: (id: string) => void;
+  /** Removes all the banners */
   clearNotifications: () => void;
 }
 

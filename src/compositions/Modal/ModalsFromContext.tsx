@@ -7,6 +7,14 @@ import { ModalFromContext } from './ModalFromContext';
 
 export type ModalsFromContextProps = Omit<ModalContainerProps, 'onEscape'> & ThemeProps;
 
+/**
+ * This consumes the modals from the ModalProvider
+ * and displays the modal at the top of the stack
+ * (eg. the last one added). When the escape key
+ * is pressed this removes the top modal from the
+ * stack which will then either show the next modal
+ * down or no modal at all.
+ */
 export function ModalsFromContext({ themeId: initThemeId, ...props }: ModalsFromContextProps): React.ReactElement {
   const themeId = useThemeId(initThemeId);
 

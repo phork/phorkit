@@ -53,13 +53,21 @@ export type UseInteractiveGroupResponse<
   E extends HTMLElement = HTMLDivElement,
   I extends HTMLElement = HTMLElement,
 > = {
+  /** The index of the focused item */
   focusedIndex?: number;
+  /** A function to call from each item's onClick handler */
   handleItemClick: (event: React.MouseEvent<I> | React.TouchEvent<I>, id: T) => void;
+  /** A ref to be set on the container element */
   ref: React.Ref<E>;
+  /** Checks if an item is selected by its ID */
   isSelected: (id: T) => boolean;
+  /** Returns a list of selected IDs */
   selectedIds?: T[];
+  /** Sets an item to focused by its ID */
   setFocused: (id: T, props: Parameters<GeneratedInteractiveGroupActions<T>['setFocusedByIndex']>[1]) => void;
+  /** Sets an item as selected by its ID */
   selectId: GeneratedInteractiveGroupActions<T>['selectId'];
+  /** Sets an item as unselected by its ID */
   unselectId: GeneratedInteractiveGroupActions<T>['unselectId'];
 };
 
