@@ -131,7 +131,7 @@ export function Popover({
     () => (position ? getPositionOffset(position, initOffset) : undefined),
     [position, initOffset],
   );
-  const { generatePopoverId, generateTogglerId } = usePopoverComponentIds();
+  const { componentId, generateTogglerId } = usePopoverComponentIds();
 
   // update the state to force a re-render when the content ref renders; exclude the content ref from triggering a close on click
   const setContentRef = (node: HTMLElement | null) => {
@@ -260,7 +260,7 @@ export function Popover({
 
   return (
     <div
-      aria-describedby={isTooltip ? generatePopoverId() : undefined}
+      aria-describedby={isTooltip ? componentId : undefined}
       className={cx(styles.popoverContainer, className)}
       onMouseLeave={() => hoverable && closePopover(closeDelay)}
       ref={relativeRef}
@@ -275,7 +275,7 @@ export function Popover({
           close: closePopover,
           focusable,
           focusRef,
-          id: generatePopoverId(),
+          id: componentId,
           isTogglerFocused,
           offset,
           onMouseEnter: cancelClose,

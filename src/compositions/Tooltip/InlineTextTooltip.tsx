@@ -42,6 +42,7 @@ export function InlineTextTooltip({
   return (
     <InlinePopover
       centered
+      isTooltip
       withChildrenProps
       offset={offset}
       position={position}

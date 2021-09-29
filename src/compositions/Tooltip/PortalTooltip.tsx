@@ -35,6 +35,7 @@ export function PortalTooltip({
   return (
     <PortalPopover
       centered
+      isTooltip
       withChildrenProps
       offset={offset}
       position={position}
