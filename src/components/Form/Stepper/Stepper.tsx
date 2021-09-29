@@ -181,6 +181,9 @@ export function StepperBase(
  * The stepper component extends the Textbox component
  * with plus and minus icon buttons to increment and
  * decrement the count. The input value must be a number.
+ *
+ * The value state should be stored outside of this component
+ * and is updated by the onChange callback.
  */
 export const Stepper = React.forwardRef(StepperBase);
 

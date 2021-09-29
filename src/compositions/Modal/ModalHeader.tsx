@@ -18,6 +18,8 @@ export interface ModalHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
  * and other children content. When rendered inside
  * a Modal and as a sibling of a ModalBody with the
  * scrollable prop it sticks to the top of the modal.
+ *
+ * This uses the Typography component.
  */
 export function ModalHeader({
   align = 'center',

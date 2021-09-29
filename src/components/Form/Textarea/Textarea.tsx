@@ -204,6 +204,9 @@ export function TextareaBase(
  * contains both a textarea form input and a label. It accepts
  * custom icons, a placeholder value, a read only state (in
  * addition to a disabled state) and several custom style options.
+ *
+ * The value state should be stored outside of this component
+ * and is updated by the onChange callback.
  */
 export const Textarea = React.forwardRef(TextareaBase);
 

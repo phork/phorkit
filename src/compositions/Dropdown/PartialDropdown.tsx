@@ -698,6 +698,8 @@ export function PartialDropdownBase(
  * The partial dropdown component is only necessary
  * in cases when the parent needs access to the
  * reducer and the state.
+ *
+ * This uses the Formbox and InteractiveList components.
  */
 export const PartialDropdown = React.forwardRef(PartialDropdownBase);
 

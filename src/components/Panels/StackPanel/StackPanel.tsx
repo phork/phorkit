@@ -26,9 +26,12 @@ export interface StackPanelProps
  * other stack panels) in a PanelContainer. It can be opened
  * or closed immediately or with an animation.
  *
- * If a stack panel is fixed it sits on top of the main
- * panel. If it's not fixed it forces the main panel
- * to shrink.
+ * If a stack panel is fixed it sits on top of the main panel.
+ * If it's not fixed it forces the main panel to shrink.
+ *
+ * The open state should be stored outside of this component
+ * and is updated by the onOpenStart, onOpenFinish, onCloseStart,
+ * and onCloseFinish callbacks.
  */
 export const StackPanel = React.forwardRef<HTMLDivElement, StackPanelProps>(
   (

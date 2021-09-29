@@ -7,7 +7,9 @@ const fadeOutDuration = 300;
 const fadeOutDelay = 100;
 
 export interface UseLineLoaderProps extends LineLoaderProps {
+  /** The animation duration in milliseconds */
   duration?: number;
+  /** The component to style (LineLoader, StyledLineLoader or ColoredLineLoader) */
   component?: React.FC<LineLoaderProps>;
   position?: 'top' | 'bottom';
   fixed?: boolean;
@@ -15,27 +17,19 @@ export interface UseLineLoaderProps extends LineLoaderProps {
 }
 
 type UseLineLoaderResponse = {
+  /** A callback to run when the loader finishes */
   onLoad?: () => void;
+  /** The line loader component */
   loader: React.ReactElement;
+  /** Whether the loader is finishing its animation */
   loaderFinishing: boolean;
 };
 
 /**
- * @typedef {Object} ReturnProps
- * @property {function} onLoad A callback to call when the page has loaded
- * @property {loader} ReactNode The line loader component
- * @property {loaderFinishing} boolean Whether the loader is finishing its animation
- *
  * Returns the line loader component and a callback to call
  * when the loading has finished. The callback will set the line
  * loader to 50% of the animation (where the line spans the
  * full width) and then fade out.
- *
- * @param {number} duration The animation duration in milliseconds
- * @param {object} component The component to style (LineLoader, StyledLineLoader or ColoredLineLoader)
- * @param {string} position The position of the line loader (top or bottom)
- * @param {boolean} fixed Whether to use position fixed instead of absolute
- * @return {ReturnProps}
  */
 export function useLineLoader({
   duration,

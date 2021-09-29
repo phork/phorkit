@@ -37,6 +37,7 @@ export interface LocalPasswordProps {
   /** The icon that is clicked to change the password from hidden to visible */
   iconShow?: React.FC<SvgIconProps>;
   iconShowSize?: number;
+  /** The initial type is only used when the component renders and is then taken over by the state */
   initialType?: 'password' | 'text';
   translations?: PasswordTranslations;
 }
@@ -148,6 +149,9 @@ export function PasswordBase(
  * The password component extends the Textbox component
  * and adds a toggle icon button to change the password
  * from plain-text to obfuscated and back.
+ *
+ * The value state should be stored outside of this component
+ * and is updated by the onChange callback.
  */
 export const Password = React.forwardRef(PasswordBase);
 

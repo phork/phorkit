@@ -29,6 +29,11 @@ export interface PartialInteractiveGroupProviderProps<
  * provider is only necessary in cases when the
  * parent needs access to the reducer and the state.
  *
+ * The initialSelected prop can be used to set up which
+ * items are selected on load, but after that the state is
+ * stored internally. The onSelectionChange, onSelect or
+ * onUnselect callbacks can be used by the parent.
+ *
  * - T is the type of IDs allowed
  * - E is the type of the element that the returned ref gets attached to
  * - I is the type of item element

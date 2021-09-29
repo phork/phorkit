@@ -37,7 +37,22 @@ export interface InnerNavigationProps extends React.HTMLAttributes<HTMLElement>,
   vertical?: boolean;
 }
 
-// this has to use HTMLElement because there is no HTMLNavElement
+/**
+ * The inner navigation is responsible for the look
+ * and feel of the navigation. Navigation can be
+ * either horizontal or vertical and can be animated
+ * so the selected item background box slides to the
+ * next item on change.
+ *
+ * This renders a collection of NavigationItem components
+ * and should be a child of the Navigation component.
+ *
+ * The selectedId state should be managed outside of
+ * this component. The focused state is managed inside.
+ *
+ * This uses the InteractiveGroup and ListRegistry
+ * components.
+ */
 export const InnerNavigation = React.forwardRef<HTMLElement, InnerNavigationProps>(
   (
     {
