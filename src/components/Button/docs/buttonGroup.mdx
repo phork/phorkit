@@ -200,6 +200,29 @@ import { Button, ButtonGroup, StyledButton } from '../index';
   </ThemeWrapper>
 </Playground>
 
+### Full width group
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState="first">
+      {({ state, setState }) => (
+        <ButtonGroup
+          fullWidth
+          buttons={[
+            { id: 'first', label: 'First', selected: state === 'first' },
+            { id: 'second', label: 'Second', selected: state === 'second' },
+            { id: 'third', label: 'Third', selected: state === 'third' },
+            { id: 'fourth', label: 'Fourth', selected: state === 'fourth' },
+          ]}
+          color="primary"
+          onClick={(event, id) => setState(id)}
+          spacing="joined"
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
 ## Vertical groups
 
 ### Joined groups
@@ -321,14 +344,14 @@ import { Button, ButtonGroup, StyledButton } from '../index';
   </ThemeWrapper>
 </Playground>
 
-## Full width group
+### Display default
 
 <Playground>
   <ThemeWrapper>
     <StateWrapper initialState="first">
       {({ state, setState }) => (
         <ButtonGroup
-          fullWidth
+          align="center"
           buttons={[
             { id: 'first', label: 'First', selected: state === 'first' },
             { id: 'second', label: 'Second', selected: state === 'second' },
@@ -337,7 +360,62 @@ import { Button, ButtonGroup, StyledButton } from '../index';
           ]}
           color="primary"
           onClick={(event, id) => setState(id)}
+          orientation="vertical"
+          shape="brick"
           spacing="joined"
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+### Display inline
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState="first">
+      {({ state, setState }) => (
+        <ButtonGroup
+          align="center"
+          buttons={[
+            { id: 'first', label: 'First', selected: state === 'first' },
+            { id: 'second', label: 'Second', selected: state === 'second' },
+            { id: 'third', label: 'Third', selected: state === 'third' },
+            { id: 'fourth', label: 'Fourth', selected: state === 'fourth' },
+          ]}
+          color="primary"
+          display="inline"
+          onClick={(event, id) => setState(id)}
+          orientation="vertical"
+          shape="brick"
+          spacing="joined"
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+### Display block
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState="first">
+      {({ state, setState }) => (
+        <ButtonGroup
+          buttons={[
+            { id: 'first', label: 'First', selected: state === 'first' },
+            { id: 'second', label: 'Second', selected: state === 'second' },
+            { id: 'third', label: 'Third', selected: state === 'third' },
+            { id: 'fourth', label: 'Fourth', selected: state === 'fourth' },
+          ]}
+          color="neutral"
+          display="block"
+          onClick={(event, id) => setState(id)}
+          orientation="vertical"
+          selectedColor="primary"
+          selectedWeight="inline"
+          spacing="comfy"
+          weight="inline"
         />
       )}
     </StateWrapper>
@@ -411,6 +489,7 @@ import { Button, ButtonGroup, StyledButton } from '../index';
                     },
                   ]}
                   color="primary"
+                  display="inline"
                   onClick={(event, id) => setState(id)}
                   orientation={orientation}
                   size="small"
