@@ -324,6 +324,9 @@ export function TextboxBase(
  *
  * The value and placeholder value can be displayed in HTML
  * or the standard plain-text format.
+ *
+ * The value state should be stored outside of this component
+ * and is updated by the onChange callback.
  */
 export const Textbox = React.forwardRef(TextboxBase);
 

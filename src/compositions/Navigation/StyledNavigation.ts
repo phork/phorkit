@@ -16,6 +16,10 @@ export interface StyledNavigationProps extends NavigationProps {
   itemTextColor: string;
 }
 
+/**
+ * The styled navigation is an extension of the Navigation
+ * component and it will have all its colors customized.
+ */
 export const StyledNavigation = styled(Navigation, {
   shouldForwardProp: (prop: string) =>
     ![

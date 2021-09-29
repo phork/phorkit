@@ -50,6 +50,8 @@ export interface ModalProps extends ThemeProps {
  *
  * The modal should be a child of a ModalContainer which
  * creates a portal and handles the escape functionality.
+ *
+ * This uses the IconButton component.
  */
 export function Modal({
   allowOverflow = false,

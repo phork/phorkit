@@ -27,6 +27,13 @@ export interface NavigationProps
   triggerLinks?: boolean;
 }
 
+/**
+ * The navigation component sets up the state management
+ * and then renders the InnerNavigation.
+ *
+ * This uses the InteractiveGroup and ListRegistry
+ * components.
+ */
 export function Navigation({
   allowRightClickLinks = false,
   animated = false,

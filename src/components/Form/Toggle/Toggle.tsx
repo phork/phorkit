@@ -128,6 +128,9 @@ export function ToggleBase(
  * The toggle component acts like a checkbox and looks
  * like an on/off switch. The children can be used as
  * an optional label.
+ *
+ * The checked state should be stored outside of this
+ * component and is updated by the onChange callback.
  */
 export const Toggle = React.forwardRef(ToggleBase);
 

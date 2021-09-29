@@ -345,6 +345,9 @@ export function SliderBase(
  * The slider component contains both a slider form input
  * and a label. It can snap to the nearest valid value and
  * optionally show tick marks at a custom interval.
+ *
+ * The value state should be stored outside of this component
+ * and is updated by the onChange callback.
  */
 export const Slider = React.forwardRef(SliderBase);
 

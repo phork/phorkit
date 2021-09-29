@@ -16,6 +16,7 @@ export interface InteractiveGroupProviderProps<
   E extends HTMLElement = HTMLDivElement,
   I extends HTMLElement = HTMLElement,
 > extends Omit<PartialInteractiveGroupProviderProps<T, E, I>, 'reducer'> {
+  /** The initially selected items are only used when the component renders and is then taken over by the state */
   initialSelected?: T[];
   items: InteractiveGroupItemType<T>[];
 }
@@ -30,6 +31,11 @@ export interface InteractiveGroupProviderProps<
  * The partial interactive group provider should be
  * used if a parent also needs access to the state and
  * reducer.
+ *
+ * The initialSelected prop can be used to set up which
+ * items are selected on load, but after that the state is
+ * stored internally. The onSelectionChange, onSelect or
+ * onUnselect callbacks can be used by the parent.
  */
 export function InteractiveGroupProvider<
   T extends InteractiveGroupItemId = string,

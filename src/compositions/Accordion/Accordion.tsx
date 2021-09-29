@@ -45,14 +45,19 @@ export interface AccordionProps
 }
 
 /**
- * An accordion is a collection of items that each
- * have a title and some content. The content can
- * be expanded or collapsed. When multiple items
- * aren't allowed to be open, expanding one item
- * will collapse the previously expanded one.
+ * An accordion is a collection of items that each have
+ * a title and some content. The content can be expanded
+ * or collapsed. When multiple items aren't allowed to be
+ * open, expanding one item will collapse the previously
+ * expanded one.
  *
- * The accordion uses the ListRegistry and the
- * InteractiveGroup components.
+ * The initialSelected prop can be used to set up which
+ * content is shown on load, but after that the state is
+ * stored internally. The onSelect callback can be used
+ * by the parent, if necessary.
+ *
+ * The accordion uses the ListRegistry and InteractiveGroup
+ * components.
  */
 export function Accordion({
   children,

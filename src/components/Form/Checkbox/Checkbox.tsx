@@ -175,8 +175,10 @@ export function CheckboxBase<V extends CheckboxValue = string>(
 
 /**
  * The checkbox component contains both a form checkbox
- * and a label. It requires an onChange handler and accepts
- * several styling props.
+ * and a label.
+ *
+ * The checked state should be stored outside of this
+ * component and is updated by the onChange callback.
  */
 export const Checkbox = React.forwardRef(CheckboxBase) as <V extends CheckboxValue = string>(
   p: CheckboxProps<V> & { ref?: React.Ref<HTMLInputElement> },
