@@ -23,6 +23,8 @@ export interface LocalButtonGroupProps
   /** The children are allowed to be null or false so this won't fail if children are conditional */
   children?: Array<React.ReactElement | null | false>;
   className?: string;
+  /** Uses inline-flex or block so the buttons aren't stretched by flexbox */
+  display?: 'inline' | 'block';
   /** If onClick is undefined then each button must have its own onClick prop */
   onClick?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, value: string) => void;
   orientation?: Orientation;
@@ -50,6 +52,7 @@ export function ButtonGroup({
   className,
   color,
   contrast = false,
+  display,
   fullWidth = false,
   onClick,
   orientation = 'horizontal',
@@ -108,6 +111,7 @@ export function ButtonGroup({
       className={cx(
         styles.buttonGroup,
         fullWidth && styles['buttonGroup--fullWidth'],
+        display && styles[`buttonGroup--${display}`],
         orientation && styles[`buttonGroup--${orientation}`],
         spacing && styles[`buttonGroup--${spacing}`],
         themeId && styles[`buttonGroup--${themeId}`],

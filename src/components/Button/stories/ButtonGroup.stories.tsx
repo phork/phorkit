@@ -28,6 +28,13 @@ export default {
         category: 'Appearance',
       },
     },
+    display: {
+      options: ['inline', 'block', undefined],
+      control: { type: 'inline-radio' },
+      table: {
+        category: 'Appearance',
+      },
+    },
     orientation: {
       options: ['horizontal', 'vertical'],
       control: { type: 'radio' },
@@ -149,9 +156,9 @@ export default {
     },
     layout: 'centered',
   },
-} as ComponentMeta<(args: ButtonGroupProps) => ReturnType<typeof ButtonGroup>>;
+} as ComponentMeta<(args: ButtonGroupProps & { selected?: boolean }) => ReturnType<typeof ButtonGroup>>;
 
-const Template: ComponentStory<(args: ButtonGroupProps) => ReturnType<typeof ButtonGroup>> = ({
+const Template: ComponentStory<(args: ButtonGroupProps & { selected?: boolean }) => ReturnType<typeof ButtonGroup>> = ({
   children,
   ...args
 }) => (
@@ -362,6 +369,38 @@ VerticalOrientation.args = {
   shape: 'brick',
 };
 
+export const InlineDisplay = Template.bind({});
+InlineDisplay.storyName = 'Display: Inline';
+InlineDisplay.args = {
+  ...defaultArgs,
+  align: 'center',
+  display: 'inline',
+  orientation: 'vertical',
+  shape: 'brick',
+};
+
+export const BlockDisplay = Template.bind({});
+BlockDisplay.storyName = 'Display: Block';
+BlockDisplay.args = {
+  ...defaultArgs,
+  align: 'center',
+  color: 'neutral',
+  display: 'block',
+  orientation: 'vertical',
+  selectedColor: 'primary',
+  selectedWeight: 'inline',
+  spacing: 'comfy',
+  weight: 'inline',
+};
+
+export const FullWidth = Template.bind({});
+FullWidth.storyName = 'Full width';
+FullWidth.args = {
+  ...defaultArgs,
+  fullWidth: true,
+  orientation: 'horizontal',
+};
+
 export const Children = Template.bind({});
 Children.storyName = 'Using Button children';
 Children.args = {
@@ -413,6 +452,7 @@ IconChildren.args = {
       <MoonIcon size={14} />
     </IconButton>,
   ],
+  display: 'inline',
   spacing: 'joined',
 };
 
@@ -441,6 +481,7 @@ Icons.args = {
       noPadding: true,
     },
   ],
+  display: 'inline',
   size: 'small',
   shape: 'brick',
   spacing: 'joined',
