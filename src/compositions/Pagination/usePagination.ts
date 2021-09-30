@@ -8,6 +8,7 @@ const getPageLinks = (start: number, count: number, increment: number, max: numb
     .filter(i => i >= min && i <= max);
 
 export interface UsePaginationProps {
+  /** The current page */
   page: number;
   pageLinks: number;
   pageSize: number;
@@ -17,8 +18,11 @@ export interface UsePaginationProps {
 }
 
 export type UsePaginationResponse = {
+  /** The page numbers to render before the current page */
   pageLinksBefore: number[];
+  /** The page numbers to render after the current page */
   pageLinksAfter: number[];
+  /** The total number of pages */
   pages: number;
 };
 

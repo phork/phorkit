@@ -14,6 +14,85 @@ import { Pagination } from '../index';
 
 The pagination is a wrapper for the [ButtonGroup](../components/ButtonGroup). It can use either `ButtonGroup` styles or custom styles on top of an unstyled `ButtonGroup`.
 
+## Pagination as buttons
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={8}>
+      {({ state: currentPage, setState: setCurrentPage }) => (
+        <Pagination
+          withIcons
+          withPageLinks
+          withPreviousAndNext
+          activePageProps={{ weight: 'solid', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          jumpProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
+          page={currentPage}
+          pageLinks={6}
+          pageProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          pageSize={10}
+          spacing="joined"
+          totalItems={300}
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+## Pagination as links
+
+_Note that the links will cause the page to reload so the state will appear unchanged._
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={8}>
+      {({ state: currentPage, setState: setCurrentPage }) => (
+        <Pagination
+          withIcons
+          withPageLinks
+          withPreviousAndNext
+          activePageProps={{ weight: 'solid', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          getHref={page => `#page${page}`}
+          jumpProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          page={currentPage}
+          pageLinks={6}
+          pageProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          pageSize={10}
+          spacing="joined"
+          totalItems={300}
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+## Pagination as links and onClick
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={8}>
+      {({ state: currentPage, setState: setCurrentPage }) => (
+        <Pagination
+          allowRightClickLinks
+          withIcons
+          withPageLinks
+          withPreviousAndNext
+          activePageProps={{ weight: 'solid', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          getHref={page => `#page${page}`}
+          jumpProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
+          page={currentPage}
+          pageLinks={6}
+          pageProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          pageSize={10}
+          spacing="joined"
+          totalItems={300}
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
 ## Pagination with custom styles
 
 ### Page links with icons
@@ -26,12 +105,12 @@ The pagination is a wrapper for the [ButtonGroup](../components/ButtonGroup). It
           withIcons
           withPageLinks
           withPreviousAndNext
-          activeProps={{ weight: 'solid', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
-          inactiveProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          activePageProps={{ weight: 'solid', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
           jumpProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
-          onChangePage={pageTo => setCurrentPage(pageTo)}
+          onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
           page={currentPage}
           pageLinks={6}
+          pageProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
           pageSize={10}
           spacing="joined"
           totalItems={300}
@@ -50,12 +129,12 @@ The pagination is a wrapper for the [ButtonGroup](../components/ButtonGroup). It
         <Pagination
           withPageLinks
           withPreviousAndNext
-          activeProps={{ weight: 'solid', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
-          inactiveProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          activePageProps={{ weight: 'solid', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
           jumpProps={{ weight: 'shaded', color: 'primary', shape: 'brick' }}
-          onChangePage={pageTo => setCurrentPage(pageTo)}
+          onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
           page={currentPage}
           pageLinks={6}
+          pageProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
           pageSize={10}
           spacing="joined"
           totalItems={300}
@@ -78,7 +157,7 @@ The pagination is a wrapper for the [ButtonGroup](../components/ButtonGroup). It
           withPageLabel
           withPageLinks
           withPreviousAndNext
-          activeProps={{
+          activePageProps={{
             weight: 'shaded',
             color: 'primary',
             shape: 'brick',
@@ -93,12 +172,12 @@ The pagination is a wrapper for the [ButtonGroup](../components/ButtonGroup). It
             noPadding: true,
             style: { width: 32 },
           }}
-          inactiveProps={{ weight: 'ghost', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
           jumpProps={{ weight: 'ghost', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
-          onChangePage={pageTo => setCurrentPage(pageTo)}
+          onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
           page={currentPage}
           pageLabelProps={{ size: 'medium', style: { marginRight: 30 }, variants: ['no-wrap'] }}
           pageLinks={6}
+          pageProps={{ weight: 'ghost', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
           pageSize={10}
           totalItems={300}
         />
@@ -119,7 +198,7 @@ The pagination is a wrapper for the [ButtonGroup](../components/ButtonGroup). It
           withPageLabel
           withPageLinks
           withPreviousAndNext
-          activeProps={{ weight: 'solid', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          activePageProps={{ weight: 'solid', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
           ellipsisProps={{
             disabled: true,
             weight: 'ghost',
@@ -128,12 +207,12 @@ The pagination is a wrapper for the [ButtonGroup](../components/ButtonGroup). It
             noPadding: true,
             style: { marginLeft: 8, marginRight: 8, width: 32 },
           }}
-          inactiveProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
           jumpProps={{ weight: 'shaded', color: 'primary', shape: 'brick' }}
-          onChangePage={pageTo => setCurrentPage(pageTo)}
+          onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
           page={currentPage}
           pageLabelProps={{ size: 'medium', style: { marginRight: 30 }, variants: ['no-wrap'] }}
           pageLinks={6}
+          pageProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
           pageSize={10}
           spacing="joined"
           totalItems={300}
@@ -154,7 +233,7 @@ The pagination is a wrapper for the [ButtonGroup](../components/ButtonGroup). It
           withPreviousAndNext
           jumpProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
           justify="end"
-          onChangePage={pageTo => setCurrentPage(pageTo)}
+          onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
           page={currentPage}
           pageSize={10}
           spacing="joined"
@@ -181,7 +260,7 @@ The pagination is a wrapper for the [ButtonGroup](../components/ButtonGroup). It
             style: { paddingLeft: 8, paddingRight: 8, marginLeft: 8, marginRight: 8 },
           }}
           justify="end"
-          onChangePage={pageTo => setCurrentPage(pageTo)}
+          onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
           page={currentPage}
           pageSize={10}
           totalItems={128}
@@ -203,7 +282,7 @@ The pagination is a wrapper for the [ButtonGroup](../components/ButtonGroup). It
           withIcons
           withPageLinks
           withPreviousAndNext
-          onChangePage={pageTo => setCurrentPage(pageTo)}
+          onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
           page={currentPage}
           pageLinks={6}
           pageSize={10}
@@ -223,7 +302,7 @@ The pagination is a wrapper for the [ButtonGroup](../components/ButtonGroup). It
         <Pagination
           withPageLinks
           withPreviousAndNext
-          onChangePage={pageTo => setCurrentPage(pageTo)}
+          onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
           page={currentPage}
           pageLinks={6}
           pageSize={10}
@@ -247,7 +326,7 @@ The pagination is a wrapper for the [ButtonGroup](../components/ButtonGroup). It
           withPageLabel
           withPageLinks
           withPreviousAndNext
-          onChangePage={pageTo => setCurrentPage(pageTo)}
+          onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
           page={currentPage}
           pageLinks={6}
           pageSize={10}
@@ -270,7 +349,7 @@ The pagination is a wrapper for the [ButtonGroup](../components/ButtonGroup). It
           withPageLabel
           withPageLinks
           withPreviousAndNext
-          onChangePage={pageTo => setCurrentPage(pageTo)}
+          onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
           page={currentPage}
           pageLinks={6}
           pageSize={10}
@@ -291,7 +370,7 @@ The pagination is a wrapper for the [ButtonGroup](../components/ButtonGroup). It
           withIcons
           withPreviousAndNext
           justify="end"
-          onChangePage={pageTo => setCurrentPage(pageTo)}
+          onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
           page={currentPage}
           pageSize={10}
           totalItems={128}
@@ -310,7 +389,7 @@ The pagination is a wrapper for the [ButtonGroup](../components/ButtonGroup). It
         <Pagination
           withPreviousAndNext
           justify="end"
-          onChangePage={pageTo => setCurrentPage(pageTo)}
+          onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
           page={currentPage}
           pageSize={10}
           totalItems={128}

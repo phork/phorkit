@@ -22,7 +22,7 @@ export type PaginationTranslations = {
   pageAndTotalLabel: string;
 };
 
-export const paginationsTranslations: PaginationTranslations = {
+export const paginationTranslations: PaginationTranslations = {
   firstPageLabel: 'First page',
   lastPageLabel: 'Last page',
   nextPageLabel: 'Next page',
@@ -46,33 +46,57 @@ type PaginationButtonProps = Pick<
   | 'weight'
 >;
 
-export interface LocalPaginationProps extends ThemeProps {
-  activeProps: PaginationButtonProps;
-  buttonGroupClassName?: ButtonGroupProps['className'];
-  buttonGroupStyle?: ButtonGroupProps['style'];
-  className?: FlexProps['className'];
-  ellipsisProps?: PaginationButtonProps;
-  getHref?: (page: number) => string;
-  id?: string;
-  inactiveProps: PaginationButtonProps;
-  jumpProps?: PaginationButtonProps;
-  justify?: 'start' | 'center' | 'end';
-  onChangePage?: (page: number) => void;
-  page: number;
-  pageLabelProps?: Omit<TypographyProps<'div'>, 'as'>;
-  pageLinks?: number;
-  pageSize: number;
-  style?: FlexProps['style'];
-  totalItems: number;
-  translations?: PaginationTranslations;
-  withEllipsis?: boolean;
-  withFirstAndLast?: boolean;
-  withIcons?: boolean;
-  withPageAndTotalLabel?: boolean;
-  withPageLabel?: boolean;
-  withPageLinks?: boolean;
-  withPreviousAndNext?: boolean;
-}
+export type PaginationLimitedProps = {};
+
+export type LocalPaginationProps = MergeProps<
+  ThemeProps,
+  {
+    /** The props for the active page button */
+    activePageProps: PaginationButtonProps;
+    /** This will make each page a link only for the purpose of right clicking; it still uses an onClick event */
+    allowRightClickLinks?: boolean;
+    buttonGroupClassName?: ButtonGroupProps['className'];
+    buttonGroupStyle?: ButtonGroupProps['style'];
+    className?: FlexProps['className'];
+    /** The props for the ellipsis div elements */
+    ellipsisProps?: PaginationButtonProps;
+    /** An optional function to return a link to the page */
+    getHref?: (page: number) => string;
+    id?: string;
+    /** The props for the jump (arrow) buttons */
+    jumpProps?: PaginationButtonProps;
+    justify?: 'start' | 'center' | 'end';
+    onChangePage?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, page: number) => void;
+    /** The current page */
+    page: number;
+    /** The props for the "Page X of Y" label */
+    pageLabelProps?: Omit<TypographyProps<'div'>, 'as'>;
+    /** The total number of page links to display excluding the current page, the jump buttons and the ellipsis pages */
+    pageLinks?: number;
+    /** The props for the page link buttons */
+    pageProps: PaginationButtonProps;
+    /** The number of items per page (use to calculate number of pages) */
+    pageSize: number;
+    style?: FlexProps['style'];
+    /** The total number of items (used to calculate number of pages) */
+    totalItems: number;
+    translations?: PaginationTranslations;
+    /** Show "[1] ..." and "... [n]" buttons */
+    withEllipsis?: boolean;
+    /** Show "First page" and "Last page" buttons */
+    withFirstAndLast?: boolean;
+    /** Use icon buttons instead of text buttons for all jump buttons */
+    withIcons?: boolean;
+    /** Show a "Page X of Y" label */
+    withPageAndTotalLabel?: boolean;
+    /** Show a "Page X" label */
+    withPageLabel?: boolean;
+    /** Show page number buttons before and after the current page */
+    withPageLinks?: boolean;
+    /** Show "Previous page" and "Next page" buttons */
+    withPreviousAndNext?: boolean;
+  }
+>;
 
 export type PaginationProps = MergeProps<ButtonGroupProps, LocalPaginationProps>;
 
@@ -81,20 +105,30 @@ const defaultPageLabelProps = {
   variants: 'no-wrap' as TypographyProps['variants'],
 };
 
+/**
+ * The pagination component receives pageSize and
+ * totalItems props and uses those values to calculate
+ * and display buttons or links to change pages.
+ *
+ * The current page state should be stored outside of
+ * this component and is updated by the onChangePage
+ * callback.
+ */
 export function Pagination({
-  activeProps,
+  activePageProps,
+  allowRightClickLinks,
   buttonGroupClassName,
   buttonGroupStyle,
   ellipsisProps,
   getHref,
   id,
-  inactiveProps,
   jumpProps,
   justify = 'start',
   onChangePage,
   page,
   pageLabelProps = defaultPageLabelProps,
   pageLinks = 0,
+  pageProps,
   pageSize,
   style,
   themeId: initThemeId,
@@ -111,7 +145,7 @@ export function Pagination({
 }: PaginationProps) {
   const { generateComponentId } = useComponentId(id);
   const themeId = useThemeId(initThemeId);
-  const translations = useTranslations({ customTranslations, fallbackTranslations: paginationsTranslations });
+  const translations = useTranslations({ customTranslations, fallbackTranslations: paginationTranslations });
   const { pageLinksBefore, pageLinksAfter, pages } = usePagination({
     page,
     pageLinks,
@@ -151,6 +185,7 @@ export function Pagination({
                   id: generateComponentId('firstPage'),
                   label: () => (
                     <JumpButton
+                      allowRightClickLinks={allowRightClickLinks}
                       disabled={page <= 1}
                       href={getHref ? getHref(1) : undefined}
                       onChangePage={onChangePage}
@@ -167,6 +202,7 @@ export function Pagination({
                   id: generateComponentId('previousPage'),
                   label: () => (
                     <JumpButton
+                      allowRightClickLinks={allowRightClickLinks}
                       disabled={page <= 1}
                       href={getHref ? getHref(page - 1) : undefined}
                       onChangePage={onChangePage}
@@ -184,7 +220,13 @@ export function Pagination({
                     {
                       id: generateComponentId('page1'),
                       label: () => (
-                        <PaginationPage href={getHref?.(1)} onChangePage={onChangePage} page={1} {...jumpProps} />
+                        <PaginationPage
+                          allowRightClickLinks={allowRightClickLinks}
+                          href={getHref?.(1)}
+                          onChangePage={onChangePage}
+                          page={1}
+                          {...jumpProps}
+                        />
                       ),
                     } as ButtonGroupItem,
                     pageLinksBefore[0] > 2 &&
@@ -200,7 +242,15 @@ export function Pagination({
                     i =>
                       ({
                         id: generateComponentId(`page${i}`),
-                        label: () => <PaginationPage onChangePage={onChangePage} page={i} {...inactiveProps} />,
+                        label: () => (
+                          <PaginationPage
+                            allowRightClickLinks={allowRightClickLinks}
+                            href={getHref?.(i)}
+                            onChangePage={onChangePage}
+                            page={i}
+                            {...pageProps}
+                          />
+                        ),
                       } as ButtonGroupItem),
                   )
                 : []),
@@ -208,7 +258,7 @@ export function Pagination({
               withPageLinks &&
                 ({
                   id: generateComponentId('activePage'),
-                  label: () => <PaginationPage<'div'> active imitation as="div" page={page} {...activeProps} />,
+                  label: () => <PaginationPage<'div'> active imitation as="div" page={page} {...activePageProps} />,
                   selected: true,
                 } as ButtonGroupItem),
 
@@ -217,7 +267,15 @@ export function Pagination({
                     i =>
                       ({
                         id: generateComponentId(`page${i}`),
-                        label: () => <PaginationPage onChangePage={onChangePage} page={i} {...inactiveProps} />,
+                        label: () => (
+                          <PaginationPage
+                            allowRightClickLinks={allowRightClickLinks}
+                            href={getHref?.(i)}
+                            onChangePage={onChangePage}
+                            page={i}
+                            {...pageProps}
+                          />
+                        ),
                       } as ButtonGroupItem),
                   )
                 : []),
@@ -231,7 +289,14 @@ export function Pagination({
                       } as ButtonGroupItem),
                     {
                       id: generateComponentId(`page${pages}`),
-                      label: () => <PaginationPage onChangePage={onChangePage} page={pages} {...inactiveProps} />,
+                      label: () => (
+                        <PaginationPage
+                          allowRightClickLinks={allowRightClickLinks}
+                          onChangePage={onChangePage}
+                          page={pages}
+                          {...pageProps}
+                        />
+                      ),
                     } as ButtonGroupItem,
                   ]
                 : []),
@@ -241,6 +306,7 @@ export function Pagination({
                   id: generateComponentId('nextPage'),
                   label: () => (
                     <JumpButton
+                      allowRightClickLinks={allowRightClickLinks}
                       disabled={page >= pages}
                       href={getHref ? getHref(page + 1) : undefined}
                       onChangePage={onChangePage}
@@ -257,6 +323,7 @@ export function Pagination({
                   id: generateComponentId('lastPage'),
                   label: () => (
                     <JumpButton
+                      allowRightClickLinks={allowRightClickLinks}
                       disabled={page >= pages}
                       href={getHref ? getHref(pages) : undefined}
                       onChangePage={onChangePage}

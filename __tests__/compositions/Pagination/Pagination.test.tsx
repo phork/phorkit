@@ -8,10 +8,10 @@ describe('<Pagination />', () => {
       <Pagination
         withPageLinks
         withPreviousAndNext
-        activeProps={{ color: 'primary' }}
-        inactiveProps={{ color: 'neutral' }}
+        activePageProps={{ color: 'primary' }}
         page={8}
         pageLinks={6}
+        pageProps={{ color: 'neutral' }}
         pageSize={10}
         totalItems={300}
       />,
@@ -28,10 +28,10 @@ describe('<Pagination />', () => {
         withIcons
         withPageLinks
         withPreviousAndNext
-        activeProps={{ color: 'primary' }}
-        inactiveProps={{ color: 'neutral' }}
+        activePageProps={{ color: 'primary' }}
         page={8}
         pageLinks={6}
+        pageProps={{ color: 'neutral' }}
         pageSize={10}
         totalItems={300}
       />,
@@ -45,10 +45,10 @@ describe('<Pagination />', () => {
       <Pagination
         withFirstAndLast
         withPageLinks
-        activeProps={{ color: 'primary' }}
-        inactiveProps={{ color: 'neutral' }}
+        activePageProps={{ color: 'primary' }}
         page={8}
         pageLinks={6}
+        pageProps={{ color: 'neutral' }}
         pageSize={10}
         totalItems={300}
       />,

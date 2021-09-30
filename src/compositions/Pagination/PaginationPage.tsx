@@ -5,9 +5,10 @@ import { Button, ButtonElementType, ButtonProps } from '../../components/Button'
 
 export interface LocalPaginationPageProps {
   active?: boolean;
+  allowRightClickLinks?: boolean;
   disabled?: boolean;
   href?: string;
-  onChangePage?: (page: number) => void;
+  onChangePage?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, page: number) => void;
   page: number;
 }
 
@@ -17,6 +18,7 @@ export type PaginationPageProps<T extends ButtonElementType = 'button'> = AsReac
 export function PaginationPageBase<T extends ButtonElementType = 'button'>(
   {
     active = false,
+    allowRightClickLinks,
     as,
     disabled = false,
     href,
@@ -29,9 +31,13 @@ export function PaginationPageBase<T extends ButtonElementType = 'button'>(
 ): ReturnType<typeof Button> {
   const themeId = useThemeId(initThemeId);
 
-  const handleClick = useCallback(() => {
-    onChangePage && onChangePage(page);
-  }, [onChangePage, page]);
+  const handleClick = useCallback(
+    (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent): void => {
+      allowRightClickLinks && event.preventDefault();
+      onChangePage && onChangePage(event, page);
+    },
+    [allowRightClickLinks, onChangePage, page],
+  );
 
   return (
     <Button<T>
