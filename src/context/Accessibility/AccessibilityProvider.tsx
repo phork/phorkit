@@ -1,6 +1,6 @@
 import produce from 'immer';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { AccessibilityContext, AccessibilityContextValue, FocusType } from './AccessibilityContext';
+import { AccessibilityContext, AccessibilityContextValue, EventType } from './AccessibilityContext';
 
 export interface AccessibilityProviderProps {
   children: React.ReactNode;
@@ -14,9 +14,20 @@ function isNavigationKey(keycode: string) {
   return ['Tab', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(keycode);
 }
 
+/**
+ * The accessibility provider is a top level component
+ * that adds window event listeners for key down, mouse
+ * down and touch start events to determine which input
+ * method is used for interaction.
+ *
+ * This provides an eventType value which stores the type
+ * of input event, a function to update the event type
+ * manually, and an accessible flag which is set to true
+ * if the event type is the keyboard.
+ */
 export function AccessibilityProvider({ children }: AccessibilityProviderProps): React.ReactElement {
   const previousValue = useRef<AccessibilityContextValue>({} as AccessibilityContextValue);
-  const [focusType, setFocusType] = useState<FocusType | undefined>();
+  const [eventType, setEventType] = useState<EventType | undefined>();
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
@@ -27,18 +38,18 @@ export function AccessibilityProvider({ children }: AccessibilityProviderProps):
         (!['input', 'select', 'textarea'].includes(element.tagName.toLowerCase()) &&
           !element.getAttribute('contentEditable'))
       ) {
-        setFocusType('keyboard');
+        setEventType('keyboard');
       }
     },
-    [setFocusType],
+    [setEventType],
   );
 
   const handleMouseDown = useCallback(
-    (event: MouseEvent): void => setFocusType(isFakeMousedownFromScreenReader(event) ? 'keyboard' : 'mouse'),
-    [setFocusType],
+    (event: MouseEvent): void => setEventType(isFakeMousedownFromScreenReader(event) ? 'keyboard' : 'mouse'),
+    [setEventType],
   );
 
-  const handleTouchStart = useCallback((): void => setFocusType('mouse'), [setFocusType]);
+  const handleTouchStart = useCallback((): void => setEventType('mouse'), [setEventType]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -57,9 +68,9 @@ export function AccessibilityProvider({ children }: AccessibilityProviderProps):
   }, [handleMouseDown, handleKeyDown, handleTouchStart]);
 
   const value = produce(previousValue.current, draftState => {
-    draftState.accessible = focusType === 'keyboard';
-    draftState.focusType = focusType;
-    draftState.setFocusType = setFocusType;
+    draftState.accessible = eventType === 'keyboard';
+    draftState.eventType = eventType;
+    draftState.setEventType = setEventType;
   });
   previousValue.current = value;
 
