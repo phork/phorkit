@@ -8,7 +8,10 @@ export interface TitledToastProps extends Omit<ToastProps, 'title'> {
   title: React.ReactNode;
 }
 
-/** A titled toast just has a title and a body */
+/**
+ * A titled toast extends the a standard Toast by
+ * adding a title above it.
+ */
 export function TitledToast({
   children,
   contextId,

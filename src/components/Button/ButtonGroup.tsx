@@ -40,10 +40,10 @@ export interface LocalButtonGroupProps
 export type ButtonGroupProps = MergeElementProps<'div', LocalButtonGroupProps>;
 
 /**
- * A button group is a collection of buttons with
- * a uniform amount of spacing between them (or no
- * spacing at all). Button groups can be oriented
- * horizontally or vertically.
+ * The button group renders a collection of buttons with
+ * a uniform amount of spacing between them (or no spacing
+ * at all). Button groups can be oriented horizontally or
+ * vertically.
  */
 export function ButtonGroup({
   align = 'left',

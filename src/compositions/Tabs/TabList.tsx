@@ -25,6 +25,7 @@ export type TabListItemProps = Pick<TabProps, 'disabled' | 'iconOnly'> & {
 
 export interface LocalTabListProps extends ThemeProps {
   className?: string;
+  /** This is used to match the aria labels up with the tab panels */
   componentId: string;
   contrast?: boolean;
   fullWidth?: boolean;
@@ -140,6 +141,14 @@ export function TabListBase(
   );
 }
 
+/**
+ * The tab list component renders a collection of Tab
+ * components (this does not include the tab panels) and
+ * manages the onClick state for each tab so that clicking
+ * a tab will set its state to selected.
+ *
+ * This uses the InteractiveGroup component.
+ */
 export const TabList = React.forwardRef(TabListBase);
 
 // note that the base element cannot have a displayName because it breaks Storybook

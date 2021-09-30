@@ -4,12 +4,18 @@ import styles from './styles/TabPanel.module.css';
 
 export interface TabPanelProps {
   children: React.ReactNode;
+  /** Remove the padding from the tab panel */
   flush?: boolean;
   id: string;
   selected?: boolean;
   vertical?: boolean;
 }
 
+/**
+ * The tab panel is the content associated with a
+ * Tab component. When a tab is selected the tab
+ * panel group content is shown.
+ */
 export function TabPanel({
   children,
   flush = false,

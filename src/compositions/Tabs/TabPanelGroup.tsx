@@ -14,6 +14,7 @@ import { TabsVariant } from './types';
 
 export interface TabPanelGroupProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
   className?: string;
+  /** This is used to match the aria labels up with the tabs */
   componentId?: string;
   focused?: boolean;
   items: Array<{
@@ -27,6 +28,13 @@ export interface TabPanelGroupProps extends React.HTMLAttributes<HTMLDivElement>
   vertical?: boolean;
 }
 
+/**
+ * The tab panel group renders a collection of TabPanel
+ * components. The tab panels contain the content that
+ * is shown when a tab is selected.
+ *
+ * This uses the InteractiveGroup component.
+ */
 export function TabPanelGroup({
   className,
   componentId,

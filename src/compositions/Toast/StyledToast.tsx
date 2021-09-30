@@ -6,6 +6,11 @@ export interface StyledToastProps extends Omit<ToastProps, 'level'> {
   levelInverseColor: string;
 }
 
+/**
+ * A styled toast is an extension of the Toast
+ * component and it will have a custom background
+ * and text color.
+ */
 export const StyledToast = ({ levelColor, levelInverseColor, style, ...props }: StyledToastProps) => {
   return (
     <Toast

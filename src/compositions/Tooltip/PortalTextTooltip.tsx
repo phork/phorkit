@@ -17,7 +17,15 @@ export interface PortalTextTooltipProps
   triangleSize?: number;
 }
 
-/** A tooltip is just a popover with an arrow pointing towards the toggler */
+/**
+ * A portal text tooltip is similar to a PortalTooltip
+ * in that it's an extension of the PortalPopover, but
+ * is also provides a standardized look and feel by
+ * wrapping the children with the TextTooltipContent
+ * component to define the colors, sizing and spacing.
+ *
+ * This uses the Popover and PortalPopover components.
+ */
 export function PortalTextTooltip({
   children,
   contrast = false,

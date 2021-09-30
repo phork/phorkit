@@ -6,6 +6,11 @@ export interface StyledTitledToastProps extends Omit<TitledToastProps, 'level'> 
   levelInverseColor: string;
 }
 
+/**
+ * A styled titled toast is an extension of the
+ * TitledToast component and it will have a custom
+ * background and text color.
+ */
 export const StyledTitledToast = ({ levelColor, levelInverseColor, style, ...props }: StyledTitledToastProps) => {
   return (
     <TitledToast

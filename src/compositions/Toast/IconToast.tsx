@@ -13,7 +13,11 @@ export interface IconToastProps extends ToastProps {
   variant?: 'colored';
 }
 
-/** An icon toast has an icon, an optional title and a body */
+/**
+ * An icon toast extends the a standard Toast by
+ * adding a large icon to the left of the content
+ * as well as an optional title above it.
+ */
 export function IconToast({
   children,
   className,
@@ -38,7 +42,7 @@ export function IconToast({
               {title}
             </div>
           )}
-          <div id={!title ? generateTitleId() : undefined}>{children}</div>
+          <div aria-labelledby={!title ? generateTitleId() : undefined}>{children}</div>
         </div>
       </div>
     </Toast>

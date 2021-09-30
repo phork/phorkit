@@ -27,7 +27,20 @@ export interface LocalPaginationJumpIconProps {
 export type PaginationJumpIconProps<T extends ButtonElementType = 'button'> = AsReactType<T> &
   MergeProps<Omit<ButtonProps<T>, 'as' | 'children'>, LocalPaginationJumpIconProps>;
 
-/** This uses a regular Button instead of an IconButton because it's easier to standardize props */
+/**
+ * The pagination jump component renders an SVG icon
+ * button or link to either the first page, last page,
+ * previous page or next page.
+ *
+ * If an href property is passed it renders a link,
+ * otherwise it renders a button. If allowRightClickLinks
+ * is set then the page change should be handled by the
+ * onChangePage handler while the link is reserved only
+ * for right clicking.
+ *
+ * This uses a regular Button instead of an IconButton
+ * because it makes it easier to standardize props.
+ */
 export function PaginationJumpIcon<T extends ButtonElementType = 'button'>({
   allowRightClickLinks,
   as,

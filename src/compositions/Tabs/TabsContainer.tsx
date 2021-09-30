@@ -16,6 +16,11 @@ export interface TabsContainerProps extends React.HTMLAttributes<HTMLDivElement>
   vertical?: boolean;
 }
 
+/**
+ * The tabs container wraps the TabList and TabPanelGroup
+ * components and sets the orientation and accessibility
+ * styles.
+ */
 export function TabsContainer({
   children,
   className,

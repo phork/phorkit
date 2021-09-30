@@ -21,6 +21,12 @@ export interface ToastProviderProps {
   children: React.ReactNode;
 }
 
+/**
+ * The toast provider tracks a collection of toasts and
+ * provides functions to create a toast, remove a toast,
+ * pin a toast (prevent automatic removal), and clear all
+ * toasts. It also provides a map containing all the toasts.
+ */
 export function ToastProvider({ children }: ToastProviderProps): React.ReactElement {
   const previousValue = useRef<ToastContextValue>({} as ToastContextValue);
   const {
@@ -53,7 +59,7 @@ export function ToastProvider({ children }: ToastProviderProps): React.ReactElem
   );
 
   // a toast with a duration of 0 is never auto-removed
-  const scheduleRemoveNotification = useCallback(
+  const scheduleRemoval = useCallback(
     (toast: ToastWithContextItemType) => {
       const { contextId, duration, permanent } = toast.props;
       cancelScheduledRemoval(contextId);
@@ -81,10 +87,10 @@ export function ToastProvider({ children }: ToastProviderProps): React.ReactElem
         value: mutableToast,
       });
 
-      scheduleRemoveNotification(mutableToast);
+      scheduleRemoval(mutableToast);
       return contextId;
     },
-    [scheduleRemoveNotification],
+    [scheduleRemoval],
   );
 
   const clearNotifications = useCallback<ToastContextValue['clearNotifications']>(() => {

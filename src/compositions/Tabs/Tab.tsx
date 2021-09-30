@@ -9,9 +9,11 @@ import styles from './styles/Tabs.module.css';
 export interface LocalTabProps {
   children: React.ReactNode;
   className?: string;
+  /** This is used to match the aria labels up with the tabs */
   componentId?: string;
   disabled?: boolean;
   focused?: boolean;
+  /** Icon tabs have slightly different padding */
   iconOnly?: boolean;
   id: string;
   onClick: (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>, id: string) => void;
@@ -22,6 +24,18 @@ export interface LocalTabProps {
 
 export type TabProps = MergeElementPropsWithoutRef<'div', LocalTabProps>;
 
+/**
+ * A tab is a simple element with a label that is grouped
+ * together with other Tab elements and used by the TabList
+ * component.
+ *
+ * Each tab is responsible for registering itself with
+ * the ListRegistry. It should receive an onClick handler
+ * from the TabList that will set its selected state.
+ *
+ * This uses the InteractiveGroup and ListRegistry
+ * components.
+ */
 export function Tab({
   children,
   className,

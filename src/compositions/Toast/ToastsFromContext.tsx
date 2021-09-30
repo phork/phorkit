@@ -11,6 +11,10 @@ export interface ToastsFromContextProps extends ThemeProps {
   variant?: 'colored';
 }
 
+/**
+ * This consumes the toasts from the ToastProvider
+ * and displays them all.
+ */
 export function ToastsFromContext({
   themeId: initThemeId,
   variant,

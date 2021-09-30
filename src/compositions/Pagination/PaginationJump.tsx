@@ -14,6 +14,17 @@ export interface LocalPaginationJumpProps {
 export type PaginationJumpProps<T extends ButtonElementType = 'button'> = AsReactType<T> &
   MergeProps<Omit<ButtonProps<T>, 'as' | 'children'>, LocalPaginationJumpProps>;
 
+/**
+ * The pagination jump component renders a plain text
+ * button or link to either the first page, last page,
+ * previous page or next page.
+ *
+ * If an href property is passed it renders a link,
+ * otherwise it renders a button. If allowRightClickLinks
+ * is set then the page change should be handled by the
+ * onChangePage handler while the link is reserved only
+ * for right clicking.
+ */
 export function PaginationJump<T extends ButtonElementType = 'button'>({
   allowRightClickLinks,
   as,

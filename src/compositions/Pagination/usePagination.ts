@@ -26,6 +26,13 @@ export type UsePaginationResponse = {
   pages: number;
 };
 
+/**
+ * The usePagination hook receives the page number,
+ * the page size, the total number of items and the
+ * number of links to display and returns the page
+ * number that should be turned into links, as well
+ * as the total number of pages.
+ */
 export const usePagination = ({
   page,
   pageLinks,

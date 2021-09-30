@@ -40,6 +40,19 @@ export interface TabsProps
   vertical?: boolean;
 }
 
+/**
+ * The tabs component sets up the state management and
+ * and then renders the TabsContainer, TabList, and
+ * TabPanelGroup components.
+ *
+ * The initialSelected prop can be used to set up which
+ * content is shown on load, but after that the state is
+ * stored internally. The onSelect callback can be used
+ * by the parent, if necessary.
+ *
+ * The tabs use the ListRegistry and InteractiveGroup
+ * components.
+ */
 export function Tabs({
   children,
   className,

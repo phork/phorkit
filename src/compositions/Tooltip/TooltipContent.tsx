@@ -106,6 +106,12 @@ const getTriangleStyle = ({
   return triangleStyle;
 };
 
+/**
+ * The tooltip content is used to wrap the children of a
+ * tooltip with an arrow pointing towards the toggler.
+ *
+ * This uses the Triangle component.
+ */
 export function TooltipContent({
   children,
   className,

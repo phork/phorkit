@@ -19,6 +19,15 @@ export type CommonInlinePopoverProps = MergeProps<
 export type InlinePopoverProps = CommonInlinePopoverProps &
   (PopoverContentPropsChildren | PopoverContentPropsRenderChildren);
 
+/**
+ * An inline popover extends the Popover component and
+ * sets the renderContent prop so the popover content is
+ * rendered inline (as opposed to a portal).
+ *
+ * This accepts onClose and onOpen callbacks, however the
+ * popover visibility state is controlled internally by the
+ * Popover component.
+ */
 export function InlinePopover({
   children,
   className,

@@ -4,12 +4,19 @@ import { ThemeProps } from '../../types';
 import styles from './styles/ToastCountdownBar.module.css';
 
 export interface ToastCountdownBarProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
+  /** The value of Date.now() when the countdown started */
   created: number;
   duration: number;
   level?: string;
   variant?: 'colored';
 }
 
+/**
+ * The toast countdown bar renders an animated bar
+ * that counts down for the duration specified. If
+ * the created prop updates then the countdown starts
+ * again. The animation is pure CSS.
+ */
 export function ToastCountdownBar({ created, duration, level, themeId, variant }: ToastCountdownBarProps) {
   const [reset, setReset] = useState(created);
   const ref = useRef<HTMLDivElement>(null!);

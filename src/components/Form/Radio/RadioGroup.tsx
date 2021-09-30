@@ -89,12 +89,11 @@ export function RadioGroupBase<V extends RadioValue = string>(
 }
 
 /**
- * A radio group is a collection of radio buttons
+ * The radio group renders a collection of radio buttons
  * in an inline or a stacked layout with a legend.
  *
- * The checked state should be stored outside of
- * this component and is updated by the onChange
- * callback.
+ * The checked state should be stored outside of this
+ * component and is updated by the onChange callback.
  */
 export const RadioGroup = React.forwardRef(RadioGroupBase) as <V extends RadioValue = string>(
   p: RadioGroupProps<V> & { ref?: React.Ref<HTMLFieldSetElement> },
