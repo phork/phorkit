@@ -16,8 +16,9 @@ const icons: Record<string, React.FC<SvgIconProps>> = {
 };
 
 export interface LocalPaginationJumpIconProps {
+  allowRightClickLinks?: boolean;
   href?: string;
-  onChangePage?: (page: number) => void;
+  onChangePage?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, page: number) => void;
   page: number;
   title: string;
   type: 'first' | 'last' | 'next' | 'previous';
@@ -28,6 +29,7 @@ export type PaginationJumpIconProps<T extends ButtonElementType = 'button'> = As
 
 /** This uses a regular Button instead of an IconButton because it's easier to standardize props */
 export function PaginationJumpIcon<T extends ButtonElementType = 'button'>({
+  allowRightClickLinks,
   as,
   href,
   onChangePage,
@@ -38,9 +40,13 @@ export function PaginationJumpIcon<T extends ButtonElementType = 'button'>({
 }: PaginationJumpIconProps<T>): ReturnType<typeof Button> | null {
   const Icon = type ? icons[type] : undefined;
 
-  const handleClick = useCallback(() => {
-    onChangePage && onChangePage(page);
-  }, [onChangePage, page]);
+  const handleClick = useCallback(
+    (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent): void => {
+      allowRightClickLinks && event.preventDefault();
+      onChangePage && onChangePage(event, page);
+    },
+    [allowRightClickLinks, onChangePage, page],
+  );
 
   return Icon ? (
     <Button<T> noPadding aria-label={title} href={href} onClick={handleClick} {...(props as ButtonProps<T>)} as={as}>
