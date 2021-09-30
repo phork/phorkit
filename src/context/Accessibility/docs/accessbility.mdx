@@ -11,12 +11,12 @@ import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { AccessibilityProvider, useAccessibility, useInputFocusType } from '../index';
+import { AccessibilityProvider, useAccessibility, useInputEventType } from '../index';
 import styles from './AccessibilityDemo.module.css';
 
 <PageTitle src="context/Accessibility" title="Accessibility" />
 
-## AccessibilityProvider, useAccessibility and useInputFocusType
+## AccessibilityProvider, useAccessibility and useInputEventType
 
 <Playground>
   <ThemeWrapper withThemeId>
@@ -25,7 +25,7 @@ import styles from './AccessibilityDemo.module.css';
         <React.Fragment>
           {React.createElement(() => {
             const accessible = useAccessibility();
-            const focusType = useInputFocusType();
+            const eventType = useInputEventType();
             const buttonClassName = [styles.button, styles[`button--${themeId}`], accessible && styles['is-accessible']]
               .filter(Boolean)
               .join(' ');
@@ -37,7 +37,7 @@ import styles from './AccessibilityDemo.module.css';
                       <Typography volume="quiet">Is accessible</Typography> {accessible ? 'yes' : 'no'}
                     </Typography>
                     <Typography as="div" style={{ width: '140px' }} variants={['xsmall-caps']}>
-                      <Typography volume="quiet">Focus type</Typography> {focusType || '-'}
+                      <Typography volume="quiet">Event type</Typography> {eventType || '-'}
                     </Typography>
                   </Rhythm>
                 </Flex>
