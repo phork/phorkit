@@ -33,6 +33,15 @@ const stripUnmeasuredProps = (
 
 const defaultPropsToMeasure = ['width', 'height'] as (keyof SizeContextValue)[];
 
+/**
+ * The observe size hook accepts an array of size and/or
+ * position props to measure and an observe flag that's
+ * used to determine if the size should be constantly
+ * monitored and returns a ref to attach to the element
+ * that should be measured, the element's size values,
+ * and a function that can be called manually to get the
+ * new size and update the state.
+ */
 export function useObserveSize<E extends HTMLElement = HTMLDivElement>({
   decimalPlaces = 2,
   observe,

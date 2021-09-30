@@ -10,6 +10,11 @@ export interface ThemeProviderProps {
   unthemed?: boolean;
 }
 
+/**
+ * The theme provider manages the theme ID in state,
+ * and provides that theme ID along with functions to
+ * toggle the theme and to clear the theme ID.
+ */
 export function ThemeProvider({
   children,
   onChange,
