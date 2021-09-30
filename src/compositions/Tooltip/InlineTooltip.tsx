@@ -15,7 +15,12 @@ export interface InlineTooltipProps extends Omit<InlinePopoverProps, 'position'>
   triangleSize?: number;
 }
 
-/** A tooltip is just a popover with an arrow pointing towards the toggler */
+/**
+ * An inline tooltip is an extension of the InlinePopover
+ * with an arrow pointing towards the toggler.
+ *
+ * This uses the Popover and InlinePopover components.
+ */
 export function InlineTooltip({
   children,
   layout,

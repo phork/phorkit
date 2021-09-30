@@ -8,6 +8,11 @@ export interface BannerContainerProps extends React.HTMLAttributes<HTMLDivElemen
   className?: string;
 }
 
+/**
+ * The banner container wraps a collection of Banner
+ * components and adds a border between banners of
+ * the same color.
+ */
 export function BannerContainer({
   children,
   className,

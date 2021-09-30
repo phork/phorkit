@@ -6,6 +6,10 @@ export interface TextboxGroupContainerProps extends ThemeProps {
   children: React.ReactNode;
 }
 
+/**
+ * This wraps a textbox group with the ListRegistryProvider
+ * to facilitate changing focus between inputs.
+ */
 export function TextboxGroupContainer({ children }: TextboxGroupContainerProps): React.ReactElement {
   return <ListRegistryProvider<HTMLInputElement>>{children}</ListRegistryProvider>;
 }

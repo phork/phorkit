@@ -16,16 +16,19 @@ const InlinePopoverContentBase = React.forwardRef<HTMLDivElement, InlinePopoverC
       centered,
       children,
       className,
-      focusable,
-      focusRef,
       height,
-      observe,
       offset,
       position,
-      relativeRef,
       style,
       visible,
       width,
+
+      // remove the following props from the rest props
+      focusable,
+      focusRef,
+      observe,
+      relativeRef,
+
       ...props
     },
     forwardedRef,
@@ -57,6 +60,12 @@ const InlinePopoverContentBase = React.forwardRef<HTMLDivElement, InlinePopoverC
   },
 );
 
+/**
+ * The inline popover content positions the popover
+ * and renders it when it's visible.
+ *
+ * This uses the useAbsoluteCoords hook.
+ */
 export const InlinePopoverContent = React.memo<InlinePopoverContentProps>(InlinePopoverContentBase);
 
 InlinePopoverContentBase.displayName = 'InlinePopoverContentBase';

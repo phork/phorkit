@@ -29,8 +29,9 @@ export interface LocalToastProps extends ThemeProps {
   className?: string;
   /** The context ID is used by both the modal system and the aria-label system */
   contextId?: string;
-  /** The created time is used with the duration to render the countdown bar */
+  /** The value of Date.now() when the toast was created used to render the countdown bar */
   created?: number;
+  /** The number of milliseconds before the toast is removed */
   duration?: number;
   /** The immediate flag remove the entry animation */
   immediate?: boolean;
@@ -43,6 +44,16 @@ export interface LocalToastProps extends ThemeProps {
 
 export type ToastProps = MergeElementPropsWithoutRef<'div', LocalToastProps>;
 
+/**
+ * A toast is a small rectangular notification. It has a
+ * background color based on the level prop, a close button,
+ * and an optional duration after which the toast will be
+ * removed. If it has a duration and an onPin callback it
+ * will also have a pin button that can be used to stop the
+ * the removal countdown.
+ *
+ * This uses the Button and IconButton components.
+ */
 export function Toast({
   children,
   className,

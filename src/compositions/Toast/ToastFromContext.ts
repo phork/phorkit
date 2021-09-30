@@ -17,6 +17,13 @@ export interface ToastFromContextProps extends ThemeProps {
   variant?: 'colored';
 }
 
+/**
+ * This accepts a Toast element with a contextId prop
+ * and it clones the toast and passes it an onPin prop
+ * that can be used to stop the timed removal, and an
+ * onClose prop that can be used to the remove the toast
+ * from the state.
+ */
 export function ToastFromContext({
   toast,
   themeId: initThemeId,

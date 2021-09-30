@@ -17,7 +17,15 @@ export interface InlineTextTooltipProps
   triangleSize?: number;
 }
 
-/** A tooltip is just a popover with an arrow pointing towards the toggler */
+/**
+ * An inline text tooltip is similar to an InlineTooltip
+ * in that it's an extension of the InlinePopover, but
+ * is also provides a standardized look and feel by
+ * wrapping the children with the TextTooltipContent
+ * component to define the colors, sizing and spacing.
+ *
+ * This uses the Popover and InlinePopover components.
+ */
 export function InlineTextTooltip({
   children,
   contrast = false,

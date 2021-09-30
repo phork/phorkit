@@ -18,9 +18,9 @@ export interface BannerFromContextProps extends ThemeProps {
 }
 
 /**
- * This accepts a Banner element and its ID and it
- * clones the banner and passes it an onClose prop
- * that can be used to the remove banner from the
+ * This accepts a Banner element with a contextId prop
+ * and it clones the banner and passes it an onClose prop
+ * that can be used to the remove the banner from the
  * state.
  */
 export const BannerFromContext = React.memo(function BannerFromContext({

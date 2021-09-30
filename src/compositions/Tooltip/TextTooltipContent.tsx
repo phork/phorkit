@@ -23,6 +23,14 @@ export const getTextTooltipColors = (themeId: Theme, contrast?: boolean) => {
   return { textColor, backgroundColor, borderColor, scrollbarColor };
 };
 
+/**
+ * The text tooltip content component wraps the children
+ * of a tooltip with a standard background, border, border
+ * radius and font style.
+ *
+ * This uses the Card, StyledPaper and Typography
+ * components.
+ */
 export function TextTooltipContent({
   children,
   contrast = false,

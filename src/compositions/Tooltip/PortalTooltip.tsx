@@ -15,7 +15,12 @@ export interface PortalTooltipProps extends Omit<PortalPopoverProps, 'position'>
   triangleSize?: number;
 }
 
-/** A tooltip is just a popover with an arrow pointing towards the toggler */
+/**
+ * A portal tooltip is an extension of the PortalPopover
+ * with an arrow pointing towards the toggler.
+ *
+ * This uses the Popover and PortalPopover components.
+ */
 export function PortalTooltip({
   children,
   layout,

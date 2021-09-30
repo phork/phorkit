@@ -6,6 +6,11 @@ export interface StyledIconToastProps extends Omit<IconToastProps, 'level'> {
   levelInverseColor: string;
 }
 
+/**
+ * A styled icon toast is an extension of the
+ * IconToast component and it will have a custom
+ * background and text color.
+ */
 export const StyledIconToast = ({ levelColor, levelInverseColor, style, ...props }: StyledIconToastProps) => {
   return (
     <IconToast

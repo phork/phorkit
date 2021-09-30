@@ -26,9 +26,13 @@ export type UseTextboxGroupOptions = {
 };
 
 export type UseTextboxGroupResponse = {
+  /** A function to move the focus a certain number of places */
   changeFocus: (startId: string, numPlaces?: number) => void;
+  /** Changes focus to the next input if the current input is valid */
   onChange: NonNullable<TextboxProps['onChange']>;
+  /** The same as onChange, but can be applied if the form input replaces the same value without changing it */
   onInput: NonNullable<TextboxProps['onInput']>;
+  /** Changes focus to the previous input and remove its last char when backspacing from an empty input */
   onKeyDown: NonNullable<TextboxProps['onKeyDown']>;
 };
 
@@ -39,7 +43,14 @@ const isRefWithValidator = (
   return (ref as TextboxGroupRefWithValidator).validator !== undefined;
 };
 
-/** When an input is considered valid the focus automatically moves to the next input */
+/**
+ * This returns several helper function that are
+ * used to navigate between inputs in an input
+ * groups.
+ *
+ * When an input is considered valid the focus
+ * automatically moves to the next input.
+ */
 export const useTextboxGroup = ({
   refs,
   onChange: forwardChange,
@@ -84,13 +95,10 @@ export const useTextboxGroup = ({
     [changeFocus, forwardChange, refs, validator, values],
   );
 
-  // change focus to the next input if the current input is valid
   const onChange = useCallback<UseTextboxGroupResponse['onChange']>(event => handleInput(event), [handleInput]);
 
-  // the same as onChange, but can be applied if the form input replaces the same value
   const onInput = useCallback<UseTextboxGroupResponse['onInput']>(event => handleInput(event), [handleInput]);
 
-  // change focus to the previous input and remove its last char when backspacing from an empty input
   const onKeyDown = useCallback<UseTextboxGroupResponse['onKeyDown']>(
     event => {
       const target = event.target as HTMLInputElement;

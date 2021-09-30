@@ -7,6 +7,13 @@ export interface TextboxGroupInputProps extends TextboxProps {
   inputId: string;
 }
 
+/**
+ * The textbox group input should be a descendent
+ * of the TextboxGroupContainer component. It's used
+ * to render a textbox and register it with the group.
+ *
+ * This uses the Textbox and ListRegistry components.
+ */
 export function TextboxGroupInput({ inputId, ...props }: TextboxGroupInputProps): ReturnType<typeof Textbox> {
   const ref = useRef<HTMLInputElement>(null!);
   useListRegistryItem<HTMLInputElement>({ id: inputId, ref });

@@ -144,6 +144,14 @@ function TextboxGroup2FAContent({
   ) : null;
 }
 
+/**
+ * This renders a group of numeric inputs that can
+ * be used for a two factor authentication code input.
+ * When a character is entered it automatically moves
+ * the focus to the next input.
+ *
+ * The uses the Formbox and ListRegistry components.
+ */
 export function TextboxGroup2FA(props: TextboxGroup2FAProps): React.ReactElement | null {
   return (
     <TextboxGroupContainer>

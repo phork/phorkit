@@ -34,7 +34,7 @@ export interface PortalProps
  * container prop, if passed).
  *
  * A portal can be fixed, or it can be absolutely
- * positioned. An fixed positioned portal can observe
+ * positioned. A fixed positioned portal can observe
  * the changes of the relativeRef's element position
  * and will reposition itself accordingly.
  */

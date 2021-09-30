@@ -47,18 +47,29 @@ export type PopoverRenderContentProps = Pick<
     role: 'tooltip' | 'dialog';
   };
 
+/**
+ * The popover component renders an element that is
+ * used to toggle the popover from visible to hidden
+ * as well as the popover content itself positioned
+ * relative to the toggle.
+ *
+ * A popover can be toggled via click (default) or
+ * by hovering over the toggle if the hoverable prop
+ * it set.
+ */
 export interface PopoverProps extends ThemeProps {
   className?: string;
   closeDelay?: number;
   focusable?: boolean;
   /** Popovers are show own click by default unless hoverable is true */
   hoverable?: boolean;
+  /** Normally clicking outside the popover will close it unless this is set */
   ignoreClickOutside?: boolean;
   /** The popover should be shown immediately and doesn't need an initial click/hover action */
   initialVisible?: boolean;
   /** If the popover is a tooltip it will have different aria props */
   isTooltip?: boolean;
-  /** An orientation can be used to position the popup if a position isn't set */
+  /** An layout orientation can be used to position the popup if a position isn't set */
   layout?: Orientation;
   offset?: {
     horizontal: number;
@@ -69,8 +80,10 @@ export interface PopoverProps extends ThemeProps {
   /** Permanent popovers can't be closed */
   permanent?: boolean;
   position?: AnyPosition | StackedPosition;
+  /** A function to render the actual popover and set its positioning */
   renderContent: (props: PopoverRenderContentProps) => React.ReactNode;
   style?: React.CSSProperties;
+  /** The element that's clicked or hovered to open and close the popover */
   toggler: RenderFromPropElement<PopoverTogglerProps>;
   /** If the toggler handles the focus styles this can be used to hide the standard focus outline */
   withoutTogglerFocusStyle?: boolean;

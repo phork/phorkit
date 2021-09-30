@@ -21,7 +21,7 @@ export type LabelProps<T extends React.ElementType = 'div'> = AsReactType<T> &
   MergeElementPropsWithoutRef<T, LocalLabelProps>;
 
 /**
- * The label component creates and element with standardized
+ * The label component creates an element with standardized
  * color and size styling. The component can be a label, a div
  * or a custom element.
  */
