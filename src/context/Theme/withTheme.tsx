@@ -6,6 +6,9 @@ export interface WithThemeProps {
   themeId: Theme;
 }
 
+/**
+ * A higher order component to provide the theme ID.
+ */
 export function withTheme<WrappedComponentProps extends {} = {}>(
   WrappedComponent: React.FC<{ themeId: Theme } & WrappedComponentProps>,
 ): (props: WithThemeProps) => React.ReactElement {

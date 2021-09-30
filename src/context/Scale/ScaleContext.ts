@@ -2,7 +2,9 @@ import { createContext } from 'react';
 import { IconScale } from '../../types';
 
 export interface ScaleContextValue {
+  /** The icon scale (eg. small, medium, large) */
   scale?: IconScale;
+  /** The exact numeric size */
   size?: number;
 }
 

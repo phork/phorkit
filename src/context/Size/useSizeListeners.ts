@@ -10,7 +10,8 @@ const allMeasurableProps = ['width', 'height', 'top', 'left', 'right', 'bottom']
  * This is a simple hook to measure some or all of the
  * dimensions and placement of an element. Measurement
  * only happens on resize or on scroll. For a real time
- * measurement system useObserveSize is a better choice.
+ * measurement system the useObserveSize hook is a better
+ * choice.
  */
 export function useSizeListeners<E extends HTMLElement = HTMLDivElement>({
   observe = true,
