@@ -1,13 +1,13 @@
 import { useCallback } from 'react';
 import { useElementEventListener } from './useElementEventListener';
 
-export interface useHandleClickOutside<C extends HTMLElement> {
+export type useHandleClickOutside<C extends HTMLElement> = {
   /** clickOutsideExclusions are areas that can be clicked without triggering close (required for portals) */
   clickOutsideExclusions?: HTMLElement[];
   onHide?: (event: MouseEvent | TouchEvent) => void;
   ref: React.RefObject<C>;
   stopPropagation?: boolean;
-}
+};
 
 /**
  * Accepts a ref element and a function to be called

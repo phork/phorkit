@@ -1,26 +1,26 @@
 import { AnyPosition, StackedPosition } from '../types';
 
-export interface AbsoluteCoords {
+export type AbsoluteCoords = {
   position: 'fixed' | 'absolute';
   top?: number;
   bottom?: number;
   left?: number;
   right?: number;
   transform?: string;
-}
+};
 
-export interface AbsoluteCoordsTranslations {
+export type AbsoluteCoordsTranslations = {
   x?: string;
   y?: string;
-}
+};
 
-export interface GetAbsoluteCoordsInterface {
+export type GetAbsoluteCoordsProps = {
   bounds: DOMRect;
   centered?: boolean;
   fixed?: boolean;
   offset?: { top?: number; bottom?: number; left?: number; right?: number };
   position: AnyPosition | StackedPosition;
-}
+};
 
 export function getAbsoluteCoords({
   bounds,
@@ -28,7 +28,7 @@ export function getAbsoluteCoords({
   fixed,
   offset,
   position,
-}: GetAbsoluteCoordsInterface): AbsoluteCoords {
+}: GetAbsoluteCoordsProps): AbsoluteCoords {
   const { top, left, width, height } = bounds;
   const coords = {} as AbsoluteCoords;
   const translations = {} as AbsoluteCoordsTranslations;

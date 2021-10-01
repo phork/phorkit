@@ -2,11 +2,11 @@ import { cx } from '@emotion/css';
 import React from 'react';
 import styles from './styles/MainPanel.module.css';
 
-export interface MainPanelProps extends React.HTMLAttributes<HTMLDivElement> {
+export type MainPanelProps = React.HTMLAttributes<HTMLDivElement> & {
   children: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
-}
+};
 
 /**
  * The main panel is part of the panels system and

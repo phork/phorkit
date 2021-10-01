@@ -5,9 +5,9 @@ import { ModalContext, ModalContextValue } from './ModalContext';
 import { modalActions as ACTIONS } from './modalActions';
 import { modalReducer as reducer, ModalState } from './modalReducer';
 
-export interface ModalProviderProps {
+export type ModalProviderProps = {
   children: React.ReactNode;
-}
+};
 
 /**
  * The modal provider tracks a collection of modals

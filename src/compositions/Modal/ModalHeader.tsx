@@ -4,14 +4,14 @@ import { Typography } from '../../components/Typography/Typography';
 import styles from './styles/Modal.module.css';
 import { useModalComponentIds } from './useModalComponentIds';
 
-export interface ModalHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+export type ModalHeaderProps = React.HTMLAttributes<HTMLDivElement> & {
   align?: 'left' | 'center' | 'right';
   bordered?: boolean;
   children?: React.ReactNode;
   className?: string;
   modalId?: string;
   title?: string;
-}
+};
 
 /**
  * The modal header renders a title, if passed, and

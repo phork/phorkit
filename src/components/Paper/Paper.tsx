@@ -4,23 +4,24 @@ import { AccentColor, SequentialVariant, StateColor, ThemeProps } from '../../ty
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Paper.module.css';
 
-export interface PaperProps extends React.HTMLAttributes<HTMLDivElement>, Omit<ThemeProps, 'contrast'> {
-  bordered?: boolean;
-  children: React.ReactChild | React.ReactChild[];
-  className?: string;
-  color?: StateColor | SequentialVariant | AccentColor | 'contrast' | 'transparent' | 'extreme';
-  /** This is used when the paper is contained within a relative element and should fill it */
-  contained?: boolean;
-  /** The container is used to apply predefined padding to the paper */
-  container?: 'banner' | 'page' | 'panel' | 'popover';
-  /** The flexible flag sets the paper's display type to flex */
-  flexible?: boolean;
-  /** The full flag sets the paper's width and height to 100% */
-  full?: boolean;
-  scrollable?: boolean;
-  scrollbar?: 'xsmall' | 'small' | 'medium';
-  style?: React.CSSProperties;
-}
+export type PaperProps = React.HTMLAttributes<HTMLDivElement> &
+  Omit<ThemeProps, 'contrast'> & {
+    bordered?: boolean;
+    children: React.ReactChild | React.ReactChild[];
+    className?: string;
+    color?: StateColor | SequentialVariant | AccentColor | 'contrast' | 'transparent' | 'extreme';
+    /** This is used when the paper is contained within a relative element and should fill it */
+    contained?: boolean;
+    /** The container is used to apply predefined padding to the paper */
+    container?: 'banner' | 'page' | 'panel' | 'popover';
+    /** The flexible flag sets the paper's display type to flex */
+    flexible?: boolean;
+    /** The full flag sets the paper's width and height to 100% */
+    full?: boolean;
+    scrollable?: boolean;
+    scrollbar?: 'xsmall' | 'small' | 'medium';
+    style?: React.CSSProperties;
+  };
 
 /**
  * The paper component sets the background color and the

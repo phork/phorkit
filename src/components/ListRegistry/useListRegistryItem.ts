@@ -2,10 +2,10 @@ import { useEffect } from 'react';
 import { ListRegistryItemType } from './types';
 import { useListRegistry } from './useListRegistry';
 
-export interface UseListRegistryItemProps<E extends HTMLElement = HTMLElement> {
+export type UseListRegistryItemProps<E extends HTMLElement = HTMLElement> = {
   id: string;
   ref: ListRegistryItemType<E>;
-}
+};
 
 /**
  * Receives an ID and an element ref to register and

@@ -4,17 +4,17 @@ import { InteractiveGroupContext, InteractiveGroupContextValue } from './Interac
 import { InteractiveGroupItemId } from './types';
 import { useInteractiveGroup, UseInteractiveGroupProps, UseInteractiveGroupResponse } from './useInteractiveGroup';
 
-export interface PartialInteractiveGroupProviderProps<
+export type PartialInteractiveGroupProviderProps<
   T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,
   I extends HTMLElement = HTMLElement,
-> extends Omit<React.HTMLAttributes<E>, 'onKeyDown' | 'onSelect'>,
-    UseInteractiveGroupProps<T> {
-  children:
-    | React.ReactElement
-    | ((ref: UseInteractiveGroupResponse<T, E, I>['ref'], props: unknown) => React.ReactElement<E>)
-    | null;
-}
+> = Omit<React.HTMLAttributes<E>, 'onKeyDown' | 'onSelect'> &
+  UseInteractiveGroupProps<T> & {
+    children:
+      | React.ReactElement
+      | ((ref: UseInteractiveGroupResponse<T, E, I>['ref'], props: unknown) => React.ReactElement<E>)
+      | null;
+  };
 
 /**
  * The interactive group provider accepts a reducer

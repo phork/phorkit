@@ -2,14 +2,14 @@ import React, { useCallback } from 'react';
 import { AsReactType, MergeProps } from '../../types';
 import { Button, ButtonElementType, ButtonProps } from '../../components/Button';
 
-export interface LocalPaginationJumpProps {
+export type LocalPaginationJumpProps = {
   allowRightClickLinks?: boolean;
   href?: string;
   onChangePage?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, page: number) => void;
   page: number;
   title: string;
   type: 'first' | 'last' | 'next' | 'previous';
-}
+};
 
 export type PaginationJumpProps<T extends ButtonElementType = 'button'> = AsReactType<T> &
   MergeProps<Omit<ButtonProps<T>, 'as' | 'children'>, LocalPaginationJumpProps>;

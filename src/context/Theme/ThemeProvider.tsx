@@ -3,12 +3,12 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Theme } from '../../types';
 import { ThemeContext, ThemeContextValue } from './ThemeContext';
 
-export interface ThemeProviderProps {
+export type ThemeProviderProps = {
   children: React.ReactNode;
   onChange?: (themeId: Theme) => void;
   themeId: Theme;
   unthemed?: boolean;
-}
+};
 
 /**
  * The theme provider manages the theme ID in state,

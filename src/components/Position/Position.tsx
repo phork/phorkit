@@ -4,7 +4,7 @@ import { AnyPosition } from '../../types';
 import { lowerCamelize } from '../../utils/case';
 import styles from './styles/Position.module.css';
 
-export interface PositionProps extends React.HTMLAttributes<HTMLDivElement> {
+export type PositionProps = React.HTMLAttributes<HTMLDivElement> & {
   children: React.ReactNode;
   className?: string;
   fixed?: boolean;
@@ -12,7 +12,7 @@ export interface PositionProps extends React.HTMLAttributes<HTMLDivElement> {
   raised?: boolean;
   style?: React.CSSProperties;
   variant?: 'inside' | 'outside' | 'middle';
-}
+};
 
 /**
  * A simple container that sets its position relative to

@@ -3,14 +3,14 @@ import { AsReactType, MergeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import { Button, ButtonElementType, ButtonProps } from '../../components/Button';
 
-export interface LocalPaginationPageProps {
+export type LocalPaginationPageProps = {
   active?: boolean;
   allowRightClickLinks?: boolean;
   disabled?: boolean;
   href?: string;
   onChangePage?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, page: number) => void;
   page: number;
-}
+};
 
 export type PaginationPageProps<T extends ButtonElementType = 'button'> = AsReactType<T> &
   MergeProps<Omit<ButtonProps<T>, 'as' | 'children'>, LocalPaginationPageProps>;

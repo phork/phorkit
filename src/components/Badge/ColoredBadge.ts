@@ -5,10 +5,10 @@ import { themes, ThemeColors, ThemeColorIds } from '../../config';
 import { withTheme } from '../../context/Theme';
 import { Badge, BadgeProps } from './Badge';
 
-export interface ColoredBadgeProps extends Omit<BadgeProps, 'themeId'> {
+export type ColoredBadgeProps = Omit<BadgeProps, 'themeId'> & {
   colorId: ThemeColorIds;
   themeId: Theme;
-}
+};
 
 // [TODO:ts] revisit casting
 const StyledBadge = styled(Badge, {

@@ -5,14 +5,15 @@ import { Flex, FlexProps } from '../../components/Flex';
 import { Rhythm } from '../../components/Rhythm';
 import { Typography, TypographyProps, TypographyWithSvg } from '../../components/Typography';
 
-export interface IconCountProps extends Omit<FlexProps, 'children'>, ThemeProps {
-  active?: boolean;
-  count: string | number;
-  icon: React.FC<SvgIconProps>;
-  iconSize?: number;
-  label: string;
-  typographySize?: TypographyProps['size'];
-}
+export type IconCountProps = Omit<FlexProps, 'children'> &
+  ThemeProps & {
+    active?: boolean;
+    count: string | number;
+    icon: React.FC<SvgIconProps>;
+    iconSize?: number;
+    label: string;
+    typographySize?: TypographyProps['size'];
+  };
 
 /**
  * The icon count renders an SVG icon and some text

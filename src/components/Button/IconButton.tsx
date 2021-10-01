@@ -11,14 +11,12 @@ export type IconButtonElementType = ButtonElementType;
 
 type RenderFromPropProps = {};
 
-export interface LocalIconButtonProps {
-  children: RenderFromPropElement<RenderFromPropProps>;
-  shape?: IconButtonShape;
-}
-
 export type IconButtonProps<T extends ButtonElementType = 'button'> = MergeProps<
   Omit<ButtonProps<T>, 'align'>,
-  LocalIconButtonProps
+  {
+    children: RenderFromPropElement<RenderFromPropProps>;
+    shape?: IconButtonShape;
+  }
 >;
 
 const shapeMap = {

@@ -6,10 +6,10 @@ import { ToastContainer } from './ToastContainer';
 import { ToastFromContext } from './ToastFromContext';
 import { ToastContainerPosition } from './types';
 
-export interface ToastsFromContextProps extends ThemeProps {
+export type ToastsFromContextProps = ThemeProps & {
   position: ToastContainerPosition;
   variant?: 'colored';
-}
+};
 
 /**
  * This consumes the toasts from the ToastProvider

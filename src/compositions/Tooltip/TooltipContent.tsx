@@ -6,7 +6,7 @@ import { PositionOffset } from '../../utils/getPositionOffset';
 import { Triangle } from '../../components/Triangle/Triangle';
 import styles from './styles/Tooltip.module.css';
 
-export interface TooltipContentProps extends React.HTMLAttributes<HTMLDivElement> {
+export type TooltipContentProps = React.HTMLAttributes<HTMLDivElement> & {
   children: React.ReactNode;
   layout?: Orientation;
   offset: PositionOffset;
@@ -15,7 +15,7 @@ export interface TooltipContentProps extends React.HTMLAttributes<HTMLDivElement
   triangleBorderWidth?: number;
   triangleColor: string;
   triangleSize?: number;
-}
+};
 
 const getTrianglePosition = (position: AnyPosition): SimplePosition | CornerPosition => {
   switch (position) {

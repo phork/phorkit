@@ -3,11 +3,11 @@ import React from 'react';
 import styles from './styles/Modal.module.css';
 import { ModalProviderProps } from './ModalProvider';
 
-export interface ModalFooterProps extends React.HTMLAttributes<HTMLDivElement> {
+export type ModalFooterProps = React.HTMLAttributes<HTMLDivElement> & {
   bordered?: boolean;
   children?: React.ReactNode;
   className?: string;
-}
+};
 
 /**
  * The modal footer is generally used for submit

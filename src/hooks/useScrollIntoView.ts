@@ -1,9 +1,9 @@
 import { useLayoutEffect, useRef } from 'react';
 
-export interface UseScrollIntoViewProps {
+export type UseScrollIntoViewProps = {
   focused?: boolean;
   ref: React.MutableRefObject<HTMLElement | null>;
-}
+};
 
 /**
  * Accepts a ref and a focused flag and when that focused

@@ -16,7 +16,7 @@ import {
 } from './interactiveGroupSelector';
 import { InteractiveGroupItemId } from './types';
 
-export interface UseInteractiveGroupProps<T extends InteractiveGroupItemId = string> {
+export type UseInteractiveGroupProps<T extends InteractiveGroupItemId = string> = {
   /** This will allow an already selected item to be re-triggered */
   allowReselect?: boolean;
   /** This disables interaction across the whole group */
@@ -46,7 +46,7 @@ export interface UseInteractiveGroupProps<T extends InteractiveGroupItemId = str
   selectOnFocus?: boolean;
   /** If this is set and an item contains a link, when the item is selected that link will be triggered */
   triggerLinks?: boolean;
-}
+};
 
 export type UseInteractiveGroupResponse<
   T extends InteractiveGroupItemId = string,

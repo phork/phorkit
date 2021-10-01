@@ -13,7 +13,7 @@ export const avatarTranslations: AvatarTranslations = {
   label: 'Avatar',
 };
 
-export interface LocalAvatarProps extends ThemeProps {
+export type LocalAvatarProps = ThemeProps & {
   actionable?: boolean;
   className?: string;
   color?: 'neutral' | 'primary';
@@ -22,7 +22,7 @@ export interface LocalAvatarProps extends ThemeProps {
   size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge' | '3xlarge' | 'custom';
   style?: React.CSSProperties;
   translations?: AvatarTranslations;
-}
+};
 
 export type AvatarProps<T extends React.ElementType = 'div'> = AsReactType<T> & MergeElementProps<T, LocalAvatarProps>;
 

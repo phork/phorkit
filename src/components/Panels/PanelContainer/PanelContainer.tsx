@@ -3,7 +3,7 @@ import React from 'react';
 import { Orientation } from '../../../types';
 import styles from './styles/PanelContainer.module.css';
 
-export interface PanelContainerProps extends React.HTMLAttributes<HTMLDivElement> {
+export type PanelContainerProps = React.HTMLAttributes<HTMLDivElement> & {
   /** Use absolute positioning and top,right,bottom,left of 0 to fill the parent */
   absolute?: boolean;
   children: React.ReactNode;
@@ -17,7 +17,7 @@ export interface PanelContainerProps extends React.HTMLAttributes<HTMLDivElement
   style?: React.CSSProperties;
   /** Set the max size to 100% of the viewport width and height */
   viewport?: boolean;
-}
+};
 
 /**
  * The panel container wraps a MainPanel and either

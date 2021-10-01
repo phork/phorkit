@@ -7,7 +7,7 @@ const getPageLinks = (start: number, count: number, increment: number, max: numb
     .map((_, i) => start + (i + 1) * increment)
     .filter(i => i >= min && i <= max);
 
-export interface UsePaginationProps {
+export type UsePaginationProps = {
   /** The current page */
   page: number;
   pageLinks: number;
@@ -15,7 +15,7 @@ export interface UsePaginationProps {
   totalItems: number;
   /** This will show "1 ..." before the page links and then "... [last page]" after them */
   withEllipsis?: boolean;
-}
+};
 
 export type UsePaginationResponse = {
   /** The page numbers to render before the current page */

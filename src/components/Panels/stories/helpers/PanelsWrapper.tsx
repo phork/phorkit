@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 
-export interface PanelsWrapperProps {
+export type PanelsWrapperProps = {
   children: (args: {
     isOpen: boolean;
     panelState: string;
@@ -8,7 +8,7 @@ export interface PanelsWrapperProps {
     toggleOpen: () => void;
   }) => React.ReactChild;
   isOpen?: boolean;
-}
+};
 
 export function PanelsWrapper({ children, isOpen: initIsOpen = false }: PanelsWrapperProps) {
   const [isOpen, setOpen] = useState<boolean>(initIsOpen);

@@ -17,7 +17,7 @@ import {
   DropdownSize,
 } from './types';
 
-export interface LocalDropdownContentProps extends ThemeProps {
+export type LocalDropdownContentProps = ThemeProps & {
   /** This is used by DropdownWithTags so an item can be added, removed and re-added */
   allowReselect?: boolean;
   className?: string;
@@ -48,14 +48,14 @@ export interface LocalDropdownContentProps extends ThemeProps {
   options?: DropdownOption[];
   reducer: PartialInteractiveListProps['reducer'];
   size: DropdownSize;
-}
+};
 
 export type DropdownContentProps = MergeElementProps<'div', LocalDropdownContentProps>;
 
-export interface DropdownContentHandles {
+export type DropdownContentHandles = {
   container: HTMLDivElement;
   list: HTMLUListElement;
-}
+};
 
 export function DropdownContentBase(
   {

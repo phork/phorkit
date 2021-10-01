@@ -5,12 +5,12 @@ import { useThemeId } from '../../../context/Theme';
 import { Label } from '../Label';
 import styles from './styles/Fieldset.module.css';
 
-export interface LocalFieldsetProps extends Omit<ThemeProps, 'unthemed'> {
+export type LocalFieldsetProps = Omit<ThemeProps, 'unthemed'> & {
   children: React.ReactElement | string;
   className?: string;
   legend?: React.ReactNode;
   style?: React.CSSProperties;
-}
+};
 
 export type FieldsetProps = MergeElementProps<'fieldset', LocalFieldsetProps>;
 

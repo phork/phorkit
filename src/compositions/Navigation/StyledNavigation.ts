@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Navigation, NavigationProps } from './Navigation';
 
-export interface StyledNavigationProps extends NavigationProps {
+export type StyledNavigationProps = NavigationProps & {
   focusedBorderColor: string;
   itemBackgroundColor: string;
   itemFocusedBackgroundColor: string;
@@ -14,7 +14,7 @@ export interface StyledNavigationProps extends NavigationProps {
   itemSelectedBorderColor: string;
   itemSelectedTextColor: string;
   itemTextColor: string;
-}
+};
 
 /**
  * The styled navigation is an extension of the Navigation

@@ -5,9 +5,10 @@ import { Card, CardProps } from '../../components/Card/Card';
 import { Paper } from '../../components/Paper/Paper';
 import { Rhythm } from '../../components/Rhythm/Rhythm';
 
-export interface DropoverContentProps extends CardProps, ThemeProps {
-  color?: SequentialVariant | StateColor;
-}
+export type DropoverContentProps = CardProps &
+  ThemeProps & {
+    color?: SequentialVariant | StateColor;
+  };
 
 /**
  * This renders a raised Card with the dropover

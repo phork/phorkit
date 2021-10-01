@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 import { Divider, DividerProps } from './Divider';
 
-export interface StyledDividerProps extends DividerProps {
+export type StyledDividerProps = DividerProps & {
   dividerColor: string;
-}
+};
 
 /**
  * A styled divider is an extension of the Divider

@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 import { ListRegistryItemType, ListRegistryState } from './types';
 
-export interface ListRegistryContextValue<E extends HTMLElement = HTMLElement> {
+export type ListRegistryContextValue<E extends HTMLElement = HTMLElement> = {
   /** A map of all the registered items */
   items: ListRegistryState<E>;
   /** Adds an item to the registry */
@@ -10,7 +10,7 @@ export interface ListRegistryContextValue<E extends HTMLElement = HTMLElement> {
   unregisterItem: (id: string) => void;
   /** Returns an item from the registry by its ID */
   getItem: (id: string) => ListRegistryItemType<E> | undefined;
-}
+};
 
 export const ListRegistryContext = createContext<ListRegistryContextValue<any>>({
   items: new Map<string, ListRegistryItemType>(),

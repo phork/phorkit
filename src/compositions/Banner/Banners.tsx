@@ -2,9 +2,9 @@ import React from 'react';
 import { BannerProvider } from './BannerProvider';
 import { BannersFromContext, BannersFromContextProps } from './BannersFromContext';
 
-export interface BannersProps extends BannersFromContextProps {
+export type BannersProps = BannersFromContextProps & {
   children?: React.ReactNode;
-}
+};
 
 /**
  * The banners component is a simple wrapper around

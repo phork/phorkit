@@ -2,14 +2,14 @@ import produce from 'immer';
 import { useCallback, useRef, useState } from 'react';
 import { useSafeTimeout } from './useSafeTimeout';
 
-export interface UseDeepFocusEventHandlers<E> {
+export type UseDeepFocusEventHandlers<E> = {
   onBlur?: React.FocusEventHandler<E>;
   onBlurChild?: React.FocusEventHandler;
   onBlurSelf?: React.FocusEventHandler<E>;
   onFocus?: React.FocusEventHandler<E>;
   onFocusChild?: React.FocusEventHandler;
   onFocusSelf?: React.FocusEventHandler<E>;
-}
+};
 
 export type UseDeepFocusOptions = {
   alwaysTriggerBlur?: boolean;

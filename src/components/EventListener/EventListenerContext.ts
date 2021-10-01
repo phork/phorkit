@@ -2,7 +2,7 @@ import { createContext } from 'react';
 import { EventListenerState } from './eventListenerReducer';
 import { AddEventListenerCallback, RemoveEventListenerCallback } from './types';
 
-export interface EventListenerContextValue {
+export type EventListenerContextValue = {
   /** A map of all the events by listener type (eg. click, keydown) */
   events: EventListenerState;
   /** Adds an event listener to the front of the queue */
@@ -13,7 +13,7 @@ export interface EventListenerContextValue {
   removeEventListener: RemoveEventListenerCallback;
   /** Removes all event listeners */
   clearListeners: () => void;
-}
+};
 
 export const EventListenerContext = createContext<EventListenerContextValue>({
   events: new Map() as EventListenerState,

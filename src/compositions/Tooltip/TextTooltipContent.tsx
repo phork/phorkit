@@ -6,12 +6,12 @@ import { Card, CardProps } from '../../components/Card/Card';
 import { StyledPaper } from '../../components/Paper/StyledPaper';
 import { Typography } from '../../components/Typography/Typography';
 
-export interface TextTooltipContentProps extends CardProps {
+export type TextTooltipContentProps = CardProps & {
   contrast?: boolean;
   position: AnyPosition;
   scrollable?: boolean;
   width?: number | string;
-}
+};
 
 export const getTextTooltipColors = (themeId: Theme, contrast?: boolean) => {
   const color = contrast ? 'contrast' : 'primary';

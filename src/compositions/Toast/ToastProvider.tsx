@@ -17,9 +17,9 @@ const durations: Record<ToastNotificationLevel, number> = {
   warning: 8000,
 };
 
-export interface ToastProviderProps {
+export type ToastProviderProps = {
   children: React.ReactNode;
-}
+};
 
 /**
  * The toast provider tracks a collection of toasts and

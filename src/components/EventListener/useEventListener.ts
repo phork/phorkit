@@ -2,9 +2,9 @@ import { useContext, useRef } from 'react';
 import { EventListenerContext } from './EventListenerContext';
 import { AddEventListenerCallback, EventListenerItemType } from './types';
 
-export interface UseEventListenerProps extends Pick<EventListenerItemType, 'eventType' | 'listener' | 'options'> {
+export type UseEventListenerProps = Pick<EventListenerItemType, 'eventType' | 'listener' | 'options'> & {
   precedeOtherEvents?: boolean;
-}
+};
 
 export type UseEventListenerResponse = {
   addListener: () => void;

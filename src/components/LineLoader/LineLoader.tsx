@@ -14,18 +14,19 @@ export const lineLoaderTranslations: LineLoaderTranslations = {
   loadingLabel: 'Loading...',
 };
 
-export interface LineLoaderProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
-  className?: string;
-  duration?: number;
-  fixed?: boolean;
-  loops?: number;
-  onFinish?: () => void;
-  onLoop?: (args: { loop: number }) => void;
-  percent?: number;
-  position?: 'top' | 'bottom';
-  style?: React.CSSProperties;
-  translations?: LineLoaderTranslations;
-}
+export type LineLoaderProps = React.HTMLAttributes<HTMLDivElement> &
+  ThemeProps & {
+    className?: string;
+    duration?: number;
+    fixed?: boolean;
+    loops?: number;
+    onFinish?: () => void;
+    onLoop?: (args: { loop: number }) => void;
+    percent?: number;
+    position?: 'top' | 'bottom';
+    style?: React.CSSProperties;
+    translations?: LineLoaderTranslations;
+  };
 
 /**
  * The line loader uses the useAnimationLoop hook

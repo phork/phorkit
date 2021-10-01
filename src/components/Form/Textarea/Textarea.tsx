@@ -6,39 +6,38 @@ import { makeCombineRefs } from '../../../utils/combineRefs';
 import { FormboxInput, FormboxReadOnly, Formbox, FormboxProps, FormboxValue, useAutoFilled } from '../Formbox';
 import styles from './styles/Textarea.module.css';
 
-export interface LocalTextareaProps
-  extends Pick<
-    FormboxProps,
-    | 'alwaysTriggerBlur'
-    | 'alwaysTriggerFocus'
-    | 'className'
-    | 'contrast'
-    | 'disabled'
-    | 'iconAfter'
-    | 'iconAfterActionable'
-    | 'iconAfterClassName'
-    | 'iconBefore'
-    | 'iconBeforeActionable'
-    | 'iconBeforeClassName'
-    | 'id'
-    | 'inputWidth'
-    | 'label'
-    | 'onBlur'
-    | 'onFocus'
-    | 'persistEvents'
-    | 'readOnly'
-    | 'required'
-    | 'size'
-    | 'style'
-    | 'themeId'
-    | 'transitional'
-    | 'translations'
-    | 'transparent'
-    | 'unthemed'
-    | 'validity'
-    | 'visuallyFocused'
-    | 'width'
-  > {
+export type LocalTextareaProps = Pick<
+  FormboxProps,
+  | 'alwaysTriggerBlur'
+  | 'alwaysTriggerFocus'
+  | 'className'
+  | 'contrast'
+  | 'disabled'
+  | 'iconAfter'
+  | 'iconAfterActionable'
+  | 'iconAfterClassName'
+  | 'iconBefore'
+  | 'iconBeforeActionable'
+  | 'iconBeforeClassName'
+  | 'id'
+  | 'inputWidth'
+  | 'label'
+  | 'onBlur'
+  | 'onFocus'
+  | 'persistEvents'
+  | 'readOnly'
+  | 'required'
+  | 'size'
+  | 'style'
+  | 'themeId'
+  | 'transitional'
+  | 'translations'
+  | 'transparent'
+  | 'unthemed'
+  | 'validity'
+  | 'visuallyFocused'
+  | 'width'
+> & {
   cols?: number;
   inputClassName?: string;
   inputStyle?: React.CSSProperties;
@@ -53,7 +52,7 @@ export interface LocalTextareaProps
   rows?: number;
   value?: FormboxValue;
   variant?: Exclude<FormboxProps['variant'], 'pill'>;
-}
+};
 
 export type TextareaProps = MergeProps<
   Omit<React.ComponentPropsWithoutRef<'textarea'>, 'className' | 'size' | 'style' | 'width'>,

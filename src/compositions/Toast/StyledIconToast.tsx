@@ -1,10 +1,10 @@
 import React from 'react';
 import { IconToast, IconToastProps } from './IconToast';
 
-export interface StyledIconToastProps extends Omit<IconToastProps, 'level'> {
+export type StyledIconToastProps = Omit<IconToastProps, 'level'> & {
   levelColor: string;
   levelInverseColor: string;
-}
+};
 
 /**
  * A styled icon toast is an extension of the
@@ -31,7 +31,7 @@ export const StyledIconToast = ({ levelColor, levelInverseColor, style, ...props
 import styled from '@emotion/styled';
 import { IconToast, IconToastProps } from './IconToast';
 
-export interface StyledIconToastProps extends IconToastProps {
+export type StyledIconToastProps = IconToastProps & {
   levelColor: string;
   levelInverseColor: string;
 }

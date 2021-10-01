@@ -7,14 +7,16 @@ import { Fieldset } from '../Fieldset/Fieldset';
 import styles from './styles/CheckboxGroup.module.css';
 import { Checkbox, CheckboxProps, CheckboxSize, CheckboxValue } from './Checkbox';
 
-export interface CheckboxGroupItem<V extends CheckboxValue = string>
-  extends Omit<CheckboxProps<V>, 'children' | 'grouped' | 'id' | 'onChange' | 'value'> {
+export type CheckboxGroupItem<V extends CheckboxValue = string> = Omit<
+  CheckboxProps<V>,
+  'children' | 'grouped' | 'id' | 'onChange' | 'value'
+> & {
   id: string;
   label: CheckboxProps<V>['children'];
   value: V;
-}
+};
 
-export interface LocalCheckboxGroupProps<V extends CheckboxValue = string> extends ThemeProps {
+export type LocalCheckboxGroupProps<V extends CheckboxValue = string> = ThemeProps & {
   className?: string;
   legend: React.ReactNode;
   layout: 'stacked' | 'inline';
@@ -24,7 +26,7 @@ export interface LocalCheckboxGroupProps<V extends CheckboxValue = string> exten
   style?: React.CSSProperties;
   values?: Array<V>;
   variant?: CheckboxProps<V>['variant'];
-}
+};
 
 export type CheckboxGroupProps<V extends CheckboxValue = string> = Omit<
   MergeElementPropsWithoutRef<'div', LocalCheckboxGroupProps<V>>,

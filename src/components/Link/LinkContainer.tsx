@@ -6,13 +6,13 @@ import styles from './styles/Link.module.css';
 
 export type LinkContainerElementType = keyof JSX.IntrinsicElements;
 
-export interface LocalLinkContainerProps extends ThemeProps {
+export type LocalLinkContainerProps = ThemeProps & {
   children: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
   target?: string;
   underline?: boolean;
-}
+};
 
 export type LinkContainerProps<T extends LinkContainerElementType = 'div'> = AsReactType<T> &
   MergeElementPropsWithoutRef<T, LocalLinkContainerProps>;

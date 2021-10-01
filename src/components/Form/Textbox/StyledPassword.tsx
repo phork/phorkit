@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Password, PasswordProps } from './Password';
 
-export interface StyledPasswordProps extends PasswordProps {
+export type StyledPasswordProps = PasswordProps & {
   passwordIconColor: string;
   passwordIconHoveredColor: string;
   passwordInputContainerBackgroundColor: string;
@@ -10,7 +10,7 @@ export interface StyledPasswordProps extends PasswordProps {
   passwordInputContainerHoveredBorderColor: string;
   passwordInputTextColor: string;
   passwordLabelTextColor: string;
-}
+};
 
 /**
  * A styled password is an extension of the Password

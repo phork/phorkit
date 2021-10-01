@@ -4,16 +4,17 @@ import { SequentialVariant, ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Header.module.css';
 
-export interface HeaderProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
-  bordered?: boolean | 'pseudo';
-  children: React.ReactNode;
-  className?: string;
-  full?: boolean;
-  style?: React.CSSProperties;
-  transparent?: boolean;
-  variant?: SequentialVariant;
-  volume?: 'quiet';
-}
+export type HeaderProps = React.HTMLAttributes<HTMLDivElement> &
+  ThemeProps & {
+    bordered?: boolean | 'pseudo';
+    children: React.ReactNode;
+    className?: string;
+    full?: boolean;
+    style?: React.CSSProperties;
+    transparent?: boolean;
+    variant?: SequentialVariant;
+    volume?: 'quiet';
+  };
 
 /**
  * The header is a simple container using flexbox

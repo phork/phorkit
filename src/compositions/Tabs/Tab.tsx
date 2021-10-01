@@ -6,7 +6,7 @@ import { useInteractiveGroupItem } from '../../components/InteractiveGroup/useIn
 import { useListRegistryItem } from '../../components/ListRegistry/useListRegistryItem';
 import styles from './styles/Tabs.module.css';
 
-export interface LocalTabProps {
+export type LocalTabProps = {
   children: React.ReactNode;
   className?: string;
   /** This is used to match the aria labels up with the tabs */
@@ -20,7 +20,7 @@ export interface LocalTabProps {
   selected?: boolean;
   unstyled?: boolean;
   vertical?: boolean;
-}
+};
 
 export type TabProps = MergeElementPropsWithoutRef<'div', LocalTabProps>;
 

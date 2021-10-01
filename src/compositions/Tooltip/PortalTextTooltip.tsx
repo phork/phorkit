@@ -8,14 +8,13 @@ import { getTooltipOffset } from './utils';
 import { getTextTooltipColors, TextTooltipContent, TextTooltipContentProps } from './TextTooltipContent';
 import { TooltipContent } from './TooltipContent';
 
-export interface PortalTextTooltipProps
-  extends Omit<PortalPopoverProps, 'position' | 'width'>,
-    Pick<TextTooltipContentProps, 'scrollable' | 'width'> {
-  position?: AnyPosition;
-  tooltipClassName?: string;
-  triangleBorderWidth?: number;
-  triangleSize?: number;
-}
+export type PortalTextTooltipProps = Omit<PortalPopoverProps, 'position' | 'width'> &
+  Pick<TextTooltipContentProps, 'scrollable' | 'width'> & {
+    position?: AnyPosition;
+    tooltipClassName?: string;
+    triangleBorderWidth?: number;
+    triangleSize?: number;
+  };
 
 /**
  * A portal text tooltip is similar to a PortalTooltip

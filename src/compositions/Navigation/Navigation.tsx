@@ -7,25 +7,24 @@ import {
 import { ListRegistryProvider } from '../../components/ListRegistry/ListRegistryProvider';
 import { InnerNavigation, InnerNavigationProps } from './InnerNavigation';
 
-export interface NavigationProps
-  extends Pick<
-      InnerNavigationProps,
-      | 'allowRightClickLinks'
-      | 'animated'
-      | 'className'
-      | 'fullHeight'
-      | 'fullWidth'
-      | 'highlightRadius'
-      | 'items'
-      | 'selectedId'
-      | 'style'
-      | 'variant'
-      | 'vertical'
-    >,
-    ThemeProps {
-  onSelect?: InteractiveGroupProviderProps['onSelect'];
-  triggerLinks?: boolean;
-}
+export type NavigationProps = Pick<
+  InnerNavigationProps,
+  | 'allowRightClickLinks'
+  | 'animated'
+  | 'className'
+  | 'fullHeight'
+  | 'fullWidth'
+  | 'highlightRadius'
+  | 'items'
+  | 'selectedId'
+  | 'style'
+  | 'variant'
+  | 'vertical'
+> &
+  ThemeProps & {
+    onSelect?: InteractiveGroupProviderProps['onSelect'];
+    triggerLinks?: boolean;
+  };
 
 /**
  * The navigation component sets up the state management

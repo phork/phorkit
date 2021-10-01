@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
 import { Flex, FlexProps } from './Flex';
 
-export interface StyledFlexProps extends FlexProps {
+export type StyledFlexProps = FlexProps & {
   flex?: string;
   flexBasis?: number;
   flexGrow?: number;
   flexShrink?: number;
-}
+};
 
 /**
  * The styled flex component is an extension of the

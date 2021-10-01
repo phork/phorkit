@@ -8,13 +8,13 @@ import { PopoverTogglerProps } from '../Popover/Popover';
 import { PopoverRenderChildrenProps } from '../Popover/types';
 import styles from './styles/Dropover.module.css';
 
-export interface InlineDropoverProps extends Omit<InlinePopoverProps, 'position' | 'toggler'> {
+export type InlineDropoverProps = Omit<InlinePopoverProps, 'position' | 'toggler'> & {
   align?: HorizontalPosition;
   width?: number;
   height?: number;
   label: RenderFromPropElement<any>;
   triangleSize?: number;
-}
+};
 
 const defaultOffset = {
   horizontal: -20,

@@ -10,7 +10,7 @@ import { TextboxGroupContainer } from './TextboxGroupContainer';
 import { TextboxGroupInput } from './TextboxGroupInput';
 import { useTextboxGroup, UseTextboxGroupOptions } from './useTextboxGroup';
 
-export interface LocalTextboxGroup2FAProps extends ThemeProps {
+export type LocalTextboxGroup2FAProps = ThemeProps & {
   inputClassName?: string;
   inputStyle?: React.CSSProperties;
   inputWidth?: number | string;
@@ -19,7 +19,7 @@ export interface LocalTextboxGroup2FAProps extends ThemeProps {
   size?: FormboxSize;
   value: string;
   variant?: FormboxVariant;
-}
+};
 
 export type TextboxGroup2FAProps = MergeElementProps<'div', LocalTextboxGroup2FAProps>;
 

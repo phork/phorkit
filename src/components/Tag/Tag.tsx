@@ -9,7 +9,7 @@ export type TagShape = 'pill' | 'brick';
 export type TagSize = '2xsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'custom';
 export type TagWeight = 'outlined' | 'shaded' | 'solid';
 
-export interface LocalTagProps extends ThemeProps {
+export type LocalTagProps = ThemeProps & {
   /** An actionable tag renders a button */
   actionable?: boolean;
   children: React.ReactNode;
@@ -20,7 +20,7 @@ export interface LocalTagProps extends ThemeProps {
   size?: TagSize;
   style?: React.CSSProperties;
   weight?: TagWeight;
-}
+};
 
 export type TagProps<T extends TagElementType = 'div'> = AsReactType<T> & MergeElementPropsWithoutRef<T, LocalTagProps>;
 

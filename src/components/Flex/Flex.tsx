@@ -2,7 +2,7 @@ import { cx } from '@emotion/css';
 import React from 'react';
 import styles from './styles/Flex.module.css';
 
-export interface FlexProps extends React.HTMLAttributes<HTMLDivElement> {
+export type FlexProps = React.HTMLAttributes<HTMLDivElement> & {
   alignItems?: 'baseline' | 'center' | 'flex-end' | 'flex-start';
   alignContent?: 'center' | 'flex-end' | 'flex-start' | 'space-around' | 'space-between' | 'stretch';
   alignSelf?: 'baseline' | 'center' | 'flex-end' | 'flex-start' | 'space-around' | 'space-between' | 'stretch';
@@ -24,7 +24,7 @@ export interface FlexProps extends React.HTMLAttributes<HTMLDivElement> {
   reverse?: boolean;
   style?: React.CSSProperties;
   wrap?: boolean;
-}
+};
 
 /**
  * The flex component is a convenience wrapper to add

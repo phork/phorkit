@@ -2,7 +2,7 @@ import { cx } from '@emotion/css';
 import React from 'react';
 import styles from './styles/StackPanel.module.css';
 
-export interface PermanentStackPanelProps extends React.HTMLAttributes<HTMLDivElement> {
+export type PermanentStackPanelProps = React.HTMLAttributes<HTMLDivElement> & {
   children: React.ReactNode;
   className?: string;
   fixed?: boolean;
@@ -12,7 +12,7 @@ export interface PermanentStackPanelProps extends React.HTMLAttributes<HTMLDivEl
   raised?: boolean;
   style?: React.CSSProperties;
   unit?: 'px' | 'percent';
-}
+};
 
 /**
  * A permanent stack panel is similar to a StackPanel

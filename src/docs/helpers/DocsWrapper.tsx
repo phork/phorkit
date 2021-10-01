@@ -8,9 +8,9 @@ import { Toasts } from 'compositions/Toast';
 import '../../styles/common.css';
 import '../../styles/normalize.css';
 
-export interface DocsWrapperProps {
+export type DocsWrapperProps = {
   children: React.ReactNode;
-}
+};
 
 // importing CSS files doesn't work in production so this duplicates the common styles here
 export default function DocsWrapper({ children }: DocsWrapperProps): React.ReactElement {

@@ -1,9 +1,9 @@
 import React from 'react';
 import { LineLoader, LineLoaderProps } from './LineLoader';
 
-export interface StyledLineLoaderProps extends Omit<LineLoaderProps, 'color'> {
+export type StyledLineLoaderProps = Omit<LineLoaderProps, 'color'> & {
   color: string;
-}
+};
 
 /**
  * A styled line load is an extension of the
@@ -29,7 +29,7 @@ export const StyledLineLoader = ({ color, style, ...props }: StyledLineLoaderPro
 import styled from '@emotion/styled';
 import { LineLoader, LineLoaderProps } from './LineLoader';
 
-export interface StyledLineLoaderProps extends Omit<LineLoaderProps, 'color'> {
+export type StyledLineLoaderProps = Omit<LineLoaderProps, 'color'> & {
   color: string;
 }
 

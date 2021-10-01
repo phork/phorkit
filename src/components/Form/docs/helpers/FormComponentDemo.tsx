@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ThemeWrapper, ThemeWrapperProps } from 'docs/helpers/ThemeWrapper';
 
-export interface FormComponentDemoProps {
+export type FormComponentDemoProps = {
   contrast?: boolean;
   children: React.ReactElement;
   initialValue?: string | number | boolean | string[];
@@ -9,7 +9,7 @@ export interface FormComponentDemoProps {
   unwrapped?: boolean;
   type: 'checkbox' | 'password' | 'radio' | 'select' | 'slider' | 'stepper' | 'textarea' | 'textbox' | 'toggle';
   variant?: ThemeWrapperProps['variant'];
-}
+};
 
 export function FormComponentDemo({
   contrast = false,

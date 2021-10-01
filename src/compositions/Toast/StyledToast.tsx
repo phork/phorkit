@@ -1,10 +1,10 @@
 import React from 'react';
 import { Toast, ToastProps } from './Toast';
 
-export interface StyledToastProps extends Omit<ToastProps, 'level'> {
+export type StyledToastProps = Omit<ToastProps, 'level'> & {
   levelColor: string;
   levelInverseColor: string;
-}
+};
 
 /**
  * A styled toast is an extension of the Toast
@@ -31,7 +31,7 @@ export const StyledToast = ({ levelColor, levelInverseColor, style, ...props }: 
 import styled from '@emotion/styled';
 import { Toast, ToastProps } from './Toast';
 
-export interface StyledToastProps extends Omit<ToastProps, 'level'> {
+export type StyledToastProps = Omit<ToastProps, 'level'> & {
   levelColor: string;
   levelInverseColor: string;
 }

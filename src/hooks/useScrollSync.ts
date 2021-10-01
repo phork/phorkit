@@ -1,9 +1,9 @@
 import { useRef, useCallback } from 'react';
 
-export interface UseScrollSyncProps {
+export type UseScrollSyncProps = {
   horizontal?: boolean;
   vertical?: boolean;
-}
+};
 
 export type UseScrollSyncResponse = (id: string) => React.RefCallback<HTMLElement>;
 

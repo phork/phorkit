@@ -21,7 +21,7 @@ const createElementFromWrapper = (
   return React.createElement(wrapper || 'div', props, children);
 };
 
-export interface RhythmLocation {
+export type RhythmLocation = {
   m?: number;
   mx?: number | 'auto';
   my?: number;
@@ -36,17 +36,18 @@ export interface RhythmLocation {
   pr?: number;
   pt?: number;
   pb?: number;
-}
+};
 
-export interface RhythmProps extends RhythmLocation, React.HTMLAttributes<unknown> {
-  children: RhythmChildren;
-  className?: string;
-  /** If the rhythm is grouped it's applied to a wrapper around the children; ungrouped is applied to each child */
-  grouped?: boolean;
-  style?: React.CSSProperties;
-  /** If grouped wrap the children with this wrapper element, if ungrouped wrap each child */
-  wrapper?: keyof JSX.IntrinsicElements | React.ReactElement;
-}
+export type RhythmProps = RhythmLocation &
+  React.HTMLAttributes<unknown> & {
+    children: RhythmChildren;
+    className?: string;
+    /** If the rhythm is grouped it's applied to a wrapper around the children; ungrouped is applied to each child */
+    grouped?: boolean;
+    style?: React.CSSProperties;
+    /** If grouped wrap the children with this wrapper element, if ungrouped wrap each child */
+    wrapper?: keyof JSX.IntrinsicElements | React.ReactElement;
+  };
 
 /**
  * Adds margin and/or padding to each child if

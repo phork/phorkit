@@ -11,15 +11,15 @@ import {
 } from './interactiveGroupReducer';
 import { InteractiveGroupItemId, InteractiveGroupItemType } from './types';
 
-export interface InteractiveGroupProviderProps<
+export type InteractiveGroupProviderProps<
   T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,
   I extends HTMLElement = HTMLElement,
-> extends Omit<PartialInteractiveGroupProviderProps<T, E, I>, 'reducer'> {
+> = Omit<PartialInteractiveGroupProviderProps<T, E, I>, 'reducer'> & {
   /** The initially selected items are only used when the component renders and is then taken over by the state */
   initialSelected?: T[];
   items: InteractiveGroupItemType<T>[];
-}
+};
 
 /**
  * The interactive group provider is a wrapper around

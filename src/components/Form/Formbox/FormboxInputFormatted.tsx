@@ -4,15 +4,16 @@ import { ThemeProps } from '../../../types';
 import { useThemeId } from '../../../context/Theme';
 import styles from './styles/FormboxInput.module.css';
 
-export interface FormboxInputFormattedProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
-  centered?: boolean;
-  children?: React.ReactChild;
-  className?: string;
-  hidden?: boolean;
-  /** When used as a placeholder there will be some transparency */
-  isPlaceholder?: boolean;
-  ref?: React.Ref<HTMLDivElement>;
-}
+export type FormboxInputFormattedProps = React.HTMLAttributes<HTMLDivElement> &
+  ThemeProps & {
+    centered?: boolean;
+    children?: React.ReactChild;
+    className?: string;
+    hidden?: boolean;
+    /** When used as a placeholder there will be some transparency */
+    isPlaceholder?: boolean;
+    ref?: React.Ref<HTMLDivElement>;
+  };
 
 /**
  * This is used to display the form input value or the

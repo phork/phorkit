@@ -3,9 +3,9 @@ import { Icon } from 'types';
 import { isKeyof } from 'utils';
 import * as icons from 'icons';
 
-export interface IconLooperProps {
+export type IconLooperProps = {
   children: (name: string, icon: Icon) => React.ReactElement;
-}
+};
 
 export function IconLooper({ children }: IconLooperProps) {
   const items = Object.keys(icons).map(icon => {

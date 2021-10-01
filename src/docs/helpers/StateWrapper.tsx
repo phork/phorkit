@@ -1,10 +1,10 @@
 import { useCallback, useState } from 'react';
 
-export interface StateWrapperProps<T> {
+export type StateWrapperProps<T> = {
   children: (props: { state: T; setState: React.Dispatch<React.SetStateAction<T>> }) => React.ReactElement;
   setStateFromPrevious?: (prev: T, ...args: any[]) => T;
   initialState: T;
-}
+};
 
 export function StateWrapper<T>({
   children,

@@ -7,14 +7,16 @@ import { Fieldset } from '../Fieldset/Fieldset';
 import styles from './styles/RadioGroup.module.css';
 import { Radio, RadioProps, RadioSize, RadioValue } from './Radio';
 
-export interface RadioGroupItem<V extends RadioValue = string>
-  extends Omit<RadioProps<V>, 'children' | 'grouped' | 'id' | 'onChange' | 'value'> {
+export type RadioGroupItem<V extends RadioValue = string> = Omit<
+  RadioProps<V>,
+  'children' | 'grouped' | 'id' | 'onChange' | 'value'
+> & {
   id: string;
   label: RadioProps<V>['children'];
   value: V;
-}
+};
 
-export interface LocalRadioGroupProps<V extends RadioValue = string> extends ThemeProps {
+export type LocalRadioGroupProps<V extends RadioValue = string> = ThemeProps & {
   className?: string;
   legend: React.ReactNode;
   layout: 'stacked' | 'inline';
@@ -25,7 +27,7 @@ export interface LocalRadioGroupProps<V extends RadioValue = string> extends The
   style?: React.CSSProperties;
   value?: V;
   variant?: RadioProps['variant'];
-}
+};
 
 export type RadioGroupProps<V extends RadioValue = string> = Omit<
   MergeElementPropsWithoutRef<'div', LocalRadioGroupProps<V>>,

@@ -5,7 +5,7 @@ import { useInteractiveGroupItem } from '../../components/InteractiveGroup/useIn
 import { useListRegistryItem } from '../../components/ListRegistry/useListRegistryItem';
 import styles from './styles/AccordionLabel.module.css';
 
-export interface LocalAccordionLabelProps {
+export type LocalAccordionLabelProps = {
   children: React.ReactNode;
   className?: string;
   disabled?: boolean;
@@ -15,7 +15,7 @@ export interface LocalAccordionLabelProps {
   id: string;
   selected?: boolean;
   unstyled?: boolean;
-}
+};
 
 export type AccordionLabelProps = MergeElementPropsWithoutRef<'div', LocalAccordionLabelProps>;
 

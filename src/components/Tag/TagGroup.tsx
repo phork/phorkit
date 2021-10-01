@@ -10,16 +10,17 @@ export type TagGroupItem = {
   label: TagProps['children'];
 } & Omit<TagProps, 'as' | 'children'>;
 
-export interface TagGroupProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
-  actionable?: boolean;
-  children?: React.ReactNode;
-  className?: string;
-  shape?: TagShape;
-  size?: TagSize;
-  style?: React.CSSProperties;
-  tags?: TagGroupItem[];
-  weight?: TagWeight;
-}
+export type TagGroupProps = React.HTMLAttributes<HTMLDivElement> &
+  ThemeProps & {
+    actionable?: boolean;
+    children?: React.ReactNode;
+    className?: string;
+    shape?: TagShape;
+    size?: TagSize;
+    style?: React.CSSProperties;
+    tags?: TagGroupItem[];
+    weight?: TagWeight;
+  };
 
 /**
  * The tag group renders a collection of tags with a

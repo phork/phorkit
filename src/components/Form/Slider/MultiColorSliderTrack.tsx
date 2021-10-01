@@ -2,12 +2,12 @@ import styled from '@emotion/styled';
 import React, { useMemo } from 'react';
 import { MergeElementPropsWithoutRef } from '../../../types';
 
-export interface LocalMultiColorSliderTrackProps {
+export type LocalMultiColorSliderTrackProps = {
   children: React.ReactNode;
   className: string;
   colors: string[];
   sliderWidth?: number;
-}
+};
 
 export type MultiColorSliderTrackProps = MergeElementPropsWithoutRef<'div', LocalMultiColorSliderTrackProps>;
 

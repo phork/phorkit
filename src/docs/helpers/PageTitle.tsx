@@ -6,11 +6,11 @@ import { Flex } from 'components/Flex';
 import { Rhythm, RhythmProps } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 
-export interface PageTitleProps extends Omit<RhythmProps, 'children'> {
+export type PageTitleProps = Omit<RhythmProps, 'children'> & {
   src?: string;
   title: string;
   url?: string;
-}
+};
 
 export function PageTitle({ title, src, url: initUrl, ...props }: PageTitleProps): React.ReactElement {
   const { repository } = useConfig();

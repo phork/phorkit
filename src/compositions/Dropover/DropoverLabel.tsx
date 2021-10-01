@@ -7,16 +7,17 @@ import { Rhythm } from '../../components/Rhythm/Rhythm';
 import { Triangle } from '../../components/Triangle/Triangle';
 import styles from './styles/Dropover.module.css';
 
-export interface DropoverLabelProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
-  children: React.ReactNode;
-  className?: string;
-  cloned?: boolean;
-  focused?: boolean;
-  noTriangle?: boolean;
-  triangleColor?: string;
-  triangleFocusedColor?: string;
-  triangleSize?: number;
-}
+export type DropoverLabelProps = React.HTMLAttributes<HTMLDivElement> &
+  ThemeProps & {
+    children: React.ReactNode;
+    className?: string;
+    cloned?: boolean;
+    focused?: boolean;
+    noTriangle?: boolean;
+    triangleColor?: string;
+    triangleFocusedColor?: string;
+    triangleSize?: number;
+  };
 
 /**
  * The dropdover label is always visible and is what's

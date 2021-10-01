@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 import { Badge, BadgeProps } from './Badge';
 
-export interface StyledBadgeProps extends BadgeProps {
+export type StyledBadgeProps = BadgeProps & {
   backgroundColor: string;
   textColor: string;
-}
+};
 
 /**
  * A styled badge is an extension of the Badge

@@ -21,7 +21,7 @@ export const modalTranslations: ModalTranslations = {
 
 type RenderProps = { focusRef?: React.MutableRefObject<HTMLElement | null>; id?: string };
 
-export interface ModalProps extends ThemeProps {
+export type ModalProps = ThemeProps & {
   allowOverflow?: boolean;
   /** If a header isn't included with a title this should be used to label the modal */
   ariaLabel?: string;
@@ -38,7 +38,7 @@ export interface ModalProps extends ThemeProps {
   permanent?: boolean;
   size?: 'small' | 'medium' | 'large' | 'xlarge';
   translations?: ModalTranslations;
-}
+};
 
 /**
  * The modal is a container with a close button that

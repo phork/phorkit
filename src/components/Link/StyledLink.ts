@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
 import { Link, LinkProps } from './Link';
 
-export interface StyledLinkProps extends LinkProps {
+export type StyledLinkProps = LinkProps & {
   activeColor: string;
   hoveredColor: string;
   textColor: string;
-}
+};
 
 /**
  * A styled link is an extension of the Link

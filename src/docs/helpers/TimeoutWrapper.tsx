@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 
-export interface TimeoutWrapperProps {
+export type TimeoutWrapperProps = {
   callback: TimerHandler;
   children: React.ReactElement;
   infinite?: boolean;
   milliseconds: number;
-}
+};
 
 export function TimeoutWrapper({
   callback,

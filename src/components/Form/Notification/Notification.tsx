@@ -4,17 +4,18 @@ import { SemanticColor, ThemeProps } from '../../../types';
 import { useThemeId } from '../../../context/Theme';
 import styles from './styles/Notification.module.css';
 
-export interface NotificationProps extends React.HTMLAttributes<HTMLDivElement>, Omit<ThemeProps, 'unthemed'> {
-  children: React.ReactNode;
-  className?: string;
-  color?: SemanticColor;
-  /** Add a divider above the notification */
-  divided?: boolean;
-  hideNotification?: boolean;
-  notification?: string;
-  style?: React.CSSProperties;
-  width?: number | string;
-}
+export type NotificationProps = React.HTMLAttributes<HTMLDivElement> &
+  Omit<ThemeProps, 'unthemed'> & {
+    children: React.ReactNode;
+    className?: string;
+    color?: SemanticColor;
+    /** Add a divider above the notification */
+    divided?: boolean;
+    hideNotification?: boolean;
+    notification?: string;
+    style?: React.CSSProperties;
+    width?: number | string;
+  };
 
 export function Notification({
   children,

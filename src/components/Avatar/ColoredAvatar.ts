@@ -5,10 +5,10 @@ import { themes, ThemeColors, ThemeColorIds } from '../../config';
 import { withTheme } from '../../context/Theme';
 import { Avatar, AvatarProps } from './Avatar';
 
-export interface ColoredAvatarProps extends Omit<AvatarProps, 'themeId'> {
+export type ColoredAvatarProps = Omit<AvatarProps, 'themeId'> & {
   colorId: ThemeColorIds;
   themeId: Theme;
-}
+};
 
 // [TODO:ts] revisit casting
 const StyledAvatar = styled(Avatar, {

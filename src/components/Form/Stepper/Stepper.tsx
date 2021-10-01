@@ -32,7 +32,7 @@ export const stepperTranslations: StepperTranslations = {
   incrementLabel: 'Increment',
 };
 
-export interface LocalStepperProps {
+export type LocalStepperProps = {
   inputWidth?: number | string;
   onChange?: (
     event: React.ChangeEvent | React.KeyboardEvent | React.MouseEvent | React.TouchEvent,
@@ -41,7 +41,7 @@ export interface LocalStepperProps {
   placeholder?: number | '';
   translations?: StepperTranslations;
   value?: number;
-}
+};
 
 export type StepperProps = MergeProps<
   Omit<

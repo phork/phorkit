@@ -39,40 +39,39 @@ export const textboxTranslations: TextboxTranslations = {
   clearLabel: 'Clear',
 };
 
-export interface LocalTextboxProps
-  extends Pick<
-    FormboxProps,
-    | 'alwaysTriggerBlur'
-    | 'alwaysTriggerFocus'
-    | 'className'
-    | 'contrast'
-    | 'disabled'
-    | 'iconAfter'
-    | 'iconAfterActionable'
-    | 'iconAfterClassName'
-    | 'iconBefore'
-    | 'iconBeforeActionable'
-    | 'iconBeforeClassName'
-    | 'id'
-    | 'inputWidth'
-    | 'label'
-    | 'onBlur'
-    | 'onFocus'
-    | 'persistEvents'
-    | 'readOnly'
-    | 'required'
-    | 'size'
-    | 'style'
-    | 'themeId'
-    | 'transitional'
-    | 'translations'
-    | 'transparent'
-    | 'unthemed'
-    | 'validity'
-    | 'variant'
-    | 'visuallyFocused'
-    | 'width'
-  > {
+export type LocalTextboxProps = Pick<
+  FormboxProps,
+  | 'alwaysTriggerBlur'
+  | 'alwaysTriggerFocus'
+  | 'className'
+  | 'contrast'
+  | 'disabled'
+  | 'iconAfter'
+  | 'iconAfterActionable'
+  | 'iconAfterClassName'
+  | 'iconBefore'
+  | 'iconBeforeActionable'
+  | 'iconBeforeClassName'
+  | 'id'
+  | 'inputWidth'
+  | 'label'
+  | 'onBlur'
+  | 'onFocus'
+  | 'persistEvents'
+  | 'readOnly'
+  | 'required'
+  | 'size'
+  | 'style'
+  | 'themeId'
+  | 'transitional'
+  | 'translations'
+  | 'transparent'
+  | 'unthemed'
+  | 'validity'
+  | 'variant'
+  | 'visuallyFocused'
+  | 'width'
+> & {
   /** The formatted value will be hidden while the input is focused unless this is true */
   alwaysShowFormatting?: boolean;
   /** If the value will have HTML formatting then this should be true */
@@ -103,7 +102,7 @@ export interface LocalTextboxProps
   step?: number;
   type?: 'color' | 'date' | 'email' | 'number' | 'password' | 'text' | 'time';
   value?: FormboxValue;
-}
+};
 
 export type TextboxProps = MergeProps<
   Omit<React.ComponentPropsWithoutRef<'input'>, 'className' | 'onAnimationStart' | 'size' | 'style' | 'width'>,

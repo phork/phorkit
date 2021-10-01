@@ -59,7 +59,7 @@ import { ThemeProps } from '${relativeSrc}types';
 import { useThemeId } from '${relativeSrc}hooks/useThemeId';
 import styles from './styles/${component}.module.css';
 
-export interface ${component}Props extends ThemeProps {
+export type ${component}Props = ThemeProps & {
   children: React.ReactNode
 }
 

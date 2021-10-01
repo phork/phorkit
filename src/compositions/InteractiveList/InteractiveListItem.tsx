@@ -9,12 +9,12 @@ type StateProps = {
   selected?: boolean;
 };
 
-export interface LocalInteractiveListItemProps {
+export type LocalInteractiveListItemProps = {
   id: string;
   label: React.ReactNode | ((state: StateProps) => React.ReactNode);
   mimicSelectOnFocus?: boolean;
   onClick: (event: React.MouseEvent | React.TouchEvent, id: LocalInteractiveListItemProps['id']) => void;
-}
+};
 
 export type InteractiveListItemProps = Omit<
   MergeProps<ListItemProps<'li'>, LocalInteractiveListItemProps>,

@@ -30,7 +30,7 @@ type ExplicitProviderProps = Pick<
   | 'triggerLinks'
 >;
 
-export interface LocalPartialInteractiveListProps extends ExplicitProviderProps {
+export type LocalPartialInteractiveListProps = ExplicitProviderProps & {
   /** The children element is shown when there are no list elements */
   children: React.ReactNode;
   /** A superficial focus state can be set outside of this component so that focus styles can be applied when, for example, a parent is focused */
@@ -41,7 +41,7 @@ export interface LocalPartialInteractiveListProps extends ExplicitProviderProps 
     keyof ExplicitProviderProps | 'children'
   >;
   unstyled?: boolean;
-}
+};
 
 export type PartialInteractiveListProps = MergeProps<Omit<ListProps<'ul'>, 'as'>, LocalPartialInteractiveListProps> &
   ThemeProps;

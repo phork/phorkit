@@ -12,14 +12,14 @@ const scaleSize: Record<IconScale, number> = {
   '3xlarge': 40,
 };
 
-export interface UseIconSizeProps {
+export type UseIconSizeProps = {
   /** An exact icon size using either a number for pixels or a string */
   size?: number | string;
   /** A scale (eg. xsmall, small, medium, etc.) */
   scale?: IconScale;
   /** Don't return any size props */
   noSize?: boolean;
-}
+};
 
 export type UseIconSizeResponse = UseIconSizeProps & {
   width: string;

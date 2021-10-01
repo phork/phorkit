@@ -5,10 +5,10 @@ import { themes, ThemeColors, ThemeColorIds } from '../../config';
 import { withTheme } from '../../context/Theme';
 import { Divider, DividerProps } from './Divider';
 
-export interface ColoredDividerProps extends DividerProps {
+export type ColoredDividerProps = DividerProps & {
   colorId: ThemeColorIds;
   themeId: Theme;
-}
+};
 
 const opacities = {
   quiet: 0.5,

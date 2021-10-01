@@ -7,7 +7,7 @@ import styles from './styles/Badge.module.css';
 
 export type BadgeShape = 'marker' | 'point' | 'count' | 'label';
 
-export interface LocalBadgeProps extends ThemeProps {
+export type LocalBadgeProps = ThemeProps & {
   children?: React.ReactNode;
   className?: string;
   color?: SemanticColor;
@@ -19,7 +19,7 @@ export interface LocalBadgeProps extends ThemeProps {
   pulsing?: boolean;
   shape: BadgeShape;
   style?: React.CSSProperties;
-}
+};
 
 export type BadgeProps = MergeElementPropsWithoutRef<'div', LocalBadgeProps>;
 

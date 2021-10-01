@@ -2,13 +2,13 @@ import React from 'react';
 import { CornerPosition, SimplePosition } from '../../types';
 import { lowerCamelize } from '../../utils/case';
 
-export interface TriangleProps extends React.HTMLAttributes<HTMLDivElement> {
+export type TriangleProps = React.HTMLAttributes<HTMLDivElement> & {
   className?: string;
   color?: string;
   position: CornerPosition | SimplePosition;
   size?: number | string;
   style?: React.CSSProperties;
-}
+};
 
 type PositionCallback = (props: Required<Pick<TriangleProps, 'size' | 'color'>>) => {
   borderBottom?: string;

@@ -2,9 +2,9 @@ import React from 'react';
 import { ThemeProps } from '../../types';
 import { ListRegistryProvider } from '../../components/ListRegistry/ListRegistryProvider';
 
-export interface TextboxGroupContainerProps extends ThemeProps {
+export type TextboxGroupContainerProps = ThemeProps & {
   children: React.ReactNode;
-}
+};
 
 /**
  * This wraps a textbox group with the ListRegistryProvider

@@ -18,7 +18,7 @@ type SliderEvent =
   | React.KeyboardEvent
   | React.ChangeEvent<HTMLInputElement>;
 
-export interface LocalSliderProps extends Omit<ThemeProps, 'unthemed'> {
+export type LocalSliderProps = Omit<ThemeProps, 'unthemed'> & {
   /** This is used to populate the label value */
   children?: React.ReactNode;
   className?: string;
@@ -49,7 +49,7 @@ export interface LocalSliderProps extends Omit<ThemeProps, 'unthemed'> {
   value?: number;
   valuePosition?: 'top' | 'right';
   width?: string;
-}
+};
 
 export type SliderProps = MergeProps<
   Omit<React.ComponentPropsWithoutRef<'input'>, 'tabIndex' | 'type'>,

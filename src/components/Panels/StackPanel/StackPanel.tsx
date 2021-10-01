@@ -5,21 +5,23 @@ import { makeCombineRefs } from '../../../utils/combineRefs';
 import { easeInOutCubic } from '../../../utils/easings';
 import styles from './styles/StackPanel.module.css';
 
-export interface StackPanelProps
-  extends Pick<UsePanelCollapserProps, 'onCloseFinish' | 'onCloseStart' | 'onOpenFinish' | 'onOpenStart' | 'open'>,
-    Partial<Pick<UsePanelCollapserProps, 'easing' | 'unit' | 'transition'>>,
-    React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
-  className?: string;
-  /** The open and close animation duration */
-  duration?: number;
-  fixed?: boolean;
-  height: number;
-  position: 'top' | 'bottom';
-  /** Raise the panel above other elements by using a high z-index */
-  raised?: boolean;
-  style?: React.CSSProperties;
-}
+export type StackPanelProps = Pick<
+  UsePanelCollapserProps,
+  'onCloseFinish' | 'onCloseStart' | 'onOpenFinish' | 'onOpenStart' | 'open'
+> &
+  Partial<Pick<UsePanelCollapserProps, 'easing' | 'unit' | 'transition'>> &
+  React.HTMLAttributes<HTMLDivElement> & {
+    children: React.ReactNode;
+    className?: string;
+    /** The open and close animation duration */
+    duration?: number;
+    fixed?: boolean;
+    height: number;
+    position: 'top' | 'bottom';
+    /** Raise the panel above other elements by using a high z-index */
+    raised?: boolean;
+    style?: React.CSSProperties;
+  };
 
 /**
  * A stack panel lives alongside a MainPanel (and optionally

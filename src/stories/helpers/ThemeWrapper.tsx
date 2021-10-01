@@ -6,10 +6,10 @@ import { ThemeProvider } from '../../context/Theme/ThemeProvider';
 
 type RenderFromPropProps = { themeId: Theme };
 
-interface CommonThemeWrapperProps {
+type CommonThemeWrapperProps = {
   style?: React.CSSProperties;
   variant?: SequentialVariant;
-}
+};
 
 type ThemeWrapperPropsWithThemeId = {
   children: RenderFromPropElement<RenderFromPropProps>;

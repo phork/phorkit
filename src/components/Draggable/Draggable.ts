@@ -5,7 +5,7 @@ type Position = {
   y: number;
 };
 
-export interface DraggableProps {
+export type DraggableProps = {
   /** If blocking is true then stop propagation and prevent default are used on the event */
   blocking?: boolean;
   /** An optional boundary for how far the element can be dragged */
@@ -23,7 +23,7 @@ export interface DraggableProps {
   ) => void;
   paused?: boolean;
   touchOnly?: boolean;
-}
+};
 
 /**
  * A draggable component can be dragged by a mouse or

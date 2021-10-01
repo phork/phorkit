@@ -23,7 +23,7 @@ export type CheckboxSize =
   | '7xlarge'
   | '8xlarge';
 
-export interface LocalCheckboxProps<V extends CheckboxValue = string> extends ThemeProps {
+export type LocalCheckboxProps<V extends CheckboxValue = string> = ThemeProps & {
   checked?: boolean;
   children: React.ReactNode;
   className?: string;
@@ -44,7 +44,7 @@ export interface LocalCheckboxProps<V extends CheckboxValue = string> extends Th
   value?: V;
   /** The primary variant uses a solid background fill for a checked item */
   variant?: 'primary' | 'secondary';
-}
+};
 
 export type CheckboxProps<V extends CheckboxValue = string> = MergeProps<
   Omit<React.ComponentProps<'input'>, 'onBlur' | 'onFocus' | 'ref' | 'tabIndex' | 'type'>,

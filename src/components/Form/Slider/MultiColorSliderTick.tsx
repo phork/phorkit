@@ -4,13 +4,13 @@ import { MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
 import { useThemeId } from '../../../context/Theme';
 import styles from './styles/MultiColorSliderTick.module.css';
 
-export interface LocalMultiColorSliderTickProps extends ThemeProps {
+export type LocalMultiColorSliderTickProps = ThemeProps & {
   active?: boolean;
   className: string;
   colors: string[];
   number: number;
   style: React.CSSProperties;
-}
+};
 
 export type MultiColorSliderTickProps = MergeElementPropsWithoutRef<'div', LocalMultiColorSliderTickProps>;
 

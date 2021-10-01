@@ -5,14 +5,15 @@ import { useThemeId } from '../../../context/Theme';
 import styles from './styles/FormboxInput.module.css';
 import { FormboxValue } from './types';
 
-export interface FormboxReadOnlyProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'placeholder'>, ThemeProps {
-  centered?: boolean;
-  className?: string;
-  formattedValue?: React.ReactChild;
-  id?: string;
-  placeholder?: FormboxValue | React.ReactChild;
-  value?: FormboxValue | FormboxValue[];
-}
+export type FormboxReadOnlyProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'placeholder'> &
+  ThemeProps & {
+    centered?: boolean;
+    className?: string;
+    formattedValue?: React.ReactChild;
+    id?: string;
+    placeholder?: FormboxValue | React.ReactChild;
+    value?: FormboxValue | FormboxValue[];
+  };
 
 /**
  * This adds the formbox input styles to a plain text

@@ -12,10 +12,10 @@ export type BannerWithContextItemType = React.ReactElement<
   }
 >;
 
-export interface BannerFromContextProps extends ThemeProps {
+export type BannerFromContextProps = ThemeProps & {
   banner: BannerWithContextItemType;
   style?: React.CSSProperties;
-}
+};
 
 /**
  * This accepts a Banner element with a contextId prop

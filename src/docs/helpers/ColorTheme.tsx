@@ -60,10 +60,10 @@ const ThemeElement = styled.div<{
   }
 `;
 
-export interface ColorThemeProps {
+export type ColorThemeProps = {
   themeId: Theme;
   variant: 'primary' | 'secondary' | 'tertiary' | 'contrast';
-}
+};
 
 export function ColorTheme({ themeId, variant }: ColorThemeProps): React.ReactElement {
   const themeProps = themes[themeId];
