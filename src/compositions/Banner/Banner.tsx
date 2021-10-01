@@ -20,22 +20,21 @@ export const bannerTranslations: BannerTranslations = {
   closeLabel: 'Close banner',
 };
 
-export type BannerProps = Omit<
-  PaperProps,
-  'bordered' | 'children' | 'color' | 'contained' | 'container' | 'flexible' | 'full'
-> &
-  ThemeProps & {
-    children: React.ReactNode;
-    className?: string;
-    /** The context ID is used by the banner system */
-    contextId?: string;
-    /** The immediate flag remove the entry animation */
-    immediate?: boolean;
-    level: StateColor | SequentialVariant | 'info' | 'contrast' | 'transparent';
-    onClose?: (event?: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, contextId?: string) => void;
-    style?: React.CSSProperties;
-    translations?: BannerTranslations;
-  };
+export interface BannerProps
+  extends Omit<PaperProps, 'bordered' | 'children' | 'color' | 'contained' | 'container' | 'flexible' | 'full'>,
+    Omit<ThemeProps, 'contrast' | 'unthemed'> {
+  children: React.ReactNode;
+  className?: string;
+  /** The context ID is used by the banner system */
+  contextId?: string;
+  /** The immediate flag remove the entry animation */
+  immediate?: boolean;
+  level: StateColor | SequentialVariant | 'info' | 'contrast' | 'transparent';
+  onClose?: (event?: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, contextId?: string) => void;
+  permanent?: boolean;
+  style?: React.CSSProperties;
+  translations?: BannerTranslations;
+}
 
 /**
  * A banner is a simple horizontal bar that spans the
@@ -53,6 +52,7 @@ export function Banner({
   immediate = false,
   level = 'info',
   onClose,
+  permanent,
   style,
   themeId: initThemeId,
   translations: customTranslations,
@@ -98,7 +98,7 @@ export function Banner({
       <Flex flexible alignItems="center" style={{ position: 'relative' }}>
         {children}
 
-        {onClose && (
+        {onClose && !permanent && (
           <Position location="right-center" variant="outside">
             <Rhythm ml={-1} p={2}>
               <IconButton<'button'>

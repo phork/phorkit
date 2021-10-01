@@ -1,12 +1,14 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import { ThemeProps } from '../../types';
+import { useThemeId } from '../../context/Theme/useThemeId';
 import styles from './styles/Banner.module.css';
 
 export type BannerContainerProps = React.HTMLAttributes<HTMLDivElement> &
-  ThemeProps & {
+  Omit<ThemeProps, 'contrast' | 'unthemed'> & {
     children: React.ReactNode;
     className?: string;
+    style?: React.CSSProperties;
   };
 
 /**
@@ -17,9 +19,11 @@ export type BannerContainerProps = React.HTMLAttributes<HTMLDivElement> &
 export function BannerContainer({
   children,
   className,
-  themeId,
+  themeId: initThemeId,
   ...props
 }: BannerContainerProps): React.ReactElement<BannerContainerProps> {
+  const themeId = useThemeId(initThemeId);
+
   return (
     <div
       className={cx(styles.bannerContainer, themeId && styles[`bannerContainer--${themeId}`], className)}

@@ -35,8 +35,6 @@ export const BannerFromContext = React.memo(function BannerFromContext({
   return React.cloneElement(banner, {
     themeId,
     onClose: permanent ? undefined : () => removeNotification(contextId),
-    // this effectively removes the permanent prop which is invalid on <Banner>
-    permanent: undefined,
     style: { ...style, ...customStyle },
   });
 });

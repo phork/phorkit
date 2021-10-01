@@ -1,14 +1,13 @@
 import React from 'react';
-import { ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import { BannerConsumer } from './BannerConsumer';
-import { BannerContainer } from './BannerContainer';
+import { BannerContainer, BannerContainerProps } from './BannerContainer';
 import { BannerFromContext } from './BannerFromContext';
 
-export type BannersFromContextProps = React.HTMLAttributes<HTMLDivElement> &
-  ThemeProps & {
-    bannerStyle?: React.CSSProperties;
-  };
+export type BannersFromContextProps = Omit<BannerContainerProps, 'children'> & {
+  /** Additional styles to apply to every banner */
+  bannerStyle?: React.CSSProperties;
+};
 
 /**
  * This consumes the banners from the BannerProvider
