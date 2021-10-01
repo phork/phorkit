@@ -20,7 +20,10 @@ export const bannerTranslations: BannerTranslations = {
   closeLabel: 'Close banner',
 };
 
-export type BannerProps = Omit<PaperProps, 'children' | 'color'> &
+export type BannerProps = Omit<
+  PaperProps,
+  'bordered' | 'children' | 'color' | 'contained' | 'container' | 'flexible' | 'full'
+> &
   ThemeProps & {
     children: React.ReactNode;
     className?: string;

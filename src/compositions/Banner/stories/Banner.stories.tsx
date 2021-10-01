@@ -5,7 +5,7 @@ import { PageTitle } from 'stories/helpers/PageTitle';
 import { Banner, BannerProps } from '../Banner';
 
 export default {
-  title: 'Unsorted/Banner',
+  title: 'Display/Banner',
   component: Banner,
   argTypes: {
     children: {
@@ -20,12 +20,12 @@ export default {
         category: 'Uncommon controls',
       },
     },
-    contrast: {
+    contextId: {
       table: {
         category: 'Uncommon controls',
       },
     },
-    id: {
+    contrast: {
       table: {
         category: 'Uncommon controls',
       },
@@ -56,7 +56,7 @@ export default {
     docs: {
       page: () => (
         <React.Fragment>
-          <PageTitle src="components/Banner" title="Banner" />
+          <PageTitle src="compositions/Banner" title="Banner" />
           <Subtitle />
           <Description />
           <Primary />
@@ -65,10 +65,9 @@ export default {
         </React.Fragment>
       ),
       description: {
-        component: 'A new component.',
+        component: 'A banner spans the full width of the page with a text notification.',
       },
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Banner>;
 
@@ -77,8 +76,9 @@ const Template: ComponentStory<typeof Banner> = args => <Banner {...args} />;
 const defaultArgs = {
   children: 'This is a wonderfully fun banner.',
   contrast: false,
-  immediate: false,
+  immediate: true,
   level: 'info' as BannerProps['level'],
+  scrollbar: 'medium' as BannerProps['scrollbar'],
   unthemed: false,
 };
 
