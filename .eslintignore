@@ -12,3 +12,4 @@ jest.config.js
 jest.config.ci.js
 __mocks__
 CHANGELOG.md
+CONTRIBUTING.md
