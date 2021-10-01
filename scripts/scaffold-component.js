@@ -136,17 +136,17 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     contrast: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon ',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -154,12 +154,12 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     unthemed: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },
@@ -170,7 +170,7 @@ export default {
     docs: {
       page: () => (
         <React.Fragment>
-          <PageTitle src="components/${parent || component}" title="${component}" />
+          <PageTitle src="${type}s/${parent || component}" title="${component}" />
           <Subtitle />
           <Description />
           <Primary />

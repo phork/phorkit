@@ -168,7 +168,7 @@ export default {
     docs: {
       page: ButtonDocumentation,
       description: {
-        component: 'A simple text button or a link that looks like a button.',
+        component: 'A simple text button, or a link that looks like a button.',
       },
     },
     layout: 'centered',

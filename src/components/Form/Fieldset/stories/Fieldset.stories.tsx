@@ -20,17 +20,17 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     contrast: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     style: {
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
     themeId: {
@@ -38,7 +38,7 @@ export default {
         disable: true,
       },
       table: {
-        category: 'Uncommon controls',
+        category: 'Uncommon',
       },
     },
   },
