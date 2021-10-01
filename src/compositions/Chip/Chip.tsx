@@ -4,11 +4,11 @@ import { Avatar, AvatarProps } from '../../components/Avatar';
 import { Tag, TagProps } from '../../components/Tag';
 import styles from './styles/Chip.module.css';
 
-export interface ChipProps extends Omit<TagProps, 'children' | 'flush'> {
+export type ChipProps = Omit<TagProps, 'children' | 'flush'> & {
   avatar: Pick<AvatarProps, 'color' | 'imgSrc' | 'initials' | 'style' | 'translations' | 'themeId' | 'unthemed'>;
   icon?: React.ReactNode;
   text: React.ReactNode;
-}
+};
 
 /**
  * A chip is a small group of data that includes an

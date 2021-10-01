@@ -2,11 +2,11 @@ import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { Observable } from '../types/observer';
 import { boundsObservable } from '../utils/boundsObservable';
 
-export interface UseBoundsObservableProps {
+export type UseBoundsObservableProps = {
   observe?: boolean;
   processBounds: (bounds: DOMRect) => void;
   ref: React.RefObject<HTMLElement>;
-}
+};
 
 export type UseBoundsObservableResponse = {
   update: () => void;

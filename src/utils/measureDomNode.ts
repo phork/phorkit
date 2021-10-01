@@ -2,15 +2,15 @@ import { setStyleAttribute } from './setStyle';
 
 export type EnhanceMeasurableNode = (node: HTMLElement) => HTMLElement;
 
-export interface ContainerSize {
+export type ContainerSize = {
   containerHeight?: string;
   containerWidth?: string;
-}
+};
 
-export interface Measurements {
+export type Measurements = {
   width: number;
   height: number;
-}
+};
 
 /**
  * It's best if appendTo is set to the parent of the element

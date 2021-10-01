@@ -8,17 +8,15 @@ import { ButtonElementType } from './types';
 
 export type IconTextButtonElementType = ButtonElementType;
 
-export interface LocalIconTextButtonProps {
-  icon: RenderFromPropElement<{}>;
-  children: RenderFromPropElement<{}> | string;
-  /** If this is true then the loader icon will replace the icon and the text will remain */
-  loaderReplaceIcon?: boolean;
-  reverse?: boolean;
-}
-
 export type IconTextButtonProps<T extends ButtonElementType = 'button'> = MergeProps<
   ButtonProps<T>,
-  LocalIconTextButtonProps
+  {
+    icon: RenderFromPropElement<{}>;
+    children: RenderFromPropElement<{}> | string;
+    /** If this is true then the loader icon will replace the icon and the text will remain */
+    loaderReplaceIcon?: boolean;
+    reverse?: boolean;
+  }
 >;
 
 export function IconTextButtonBase<T extends IconTextButtonElementType = 'button'>(

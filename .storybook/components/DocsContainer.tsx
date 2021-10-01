@@ -5,10 +5,10 @@ import { useDarkMode } from 'storybook-dark-mode';
 import { ErrorBoundary } from '../../src/components/ErrorBoundary';
 import { Toasts } from '../../src/compositions/Toast';
 
-interface DocsContainerProps {
+type DocsContainerProps = {
   children: React.ReactNode;
   context: BaseContainerProps['context'];
-}
+};
 
 export const DocsContainer = ({ children, context }: DocsContainerProps) => {
   const dark = useDarkMode();

@@ -8,9 +8,9 @@ import { MultiColorSliderTick } from './MultiColorSliderTick';
 import { MultiColorSliderTrack } from './MultiColorSliderTrack';
 import { StyledSlider, StyledSliderProps } from './StyledSlider';
 
-export interface LocalMultiColorSliderProps {
+export type LocalMultiColorSliderProps = {
   colors: Array<StateColor | AccentColor | string>;
-}
+};
 
 export type MultiColorSliderProps = MergeProps<
   Omit<

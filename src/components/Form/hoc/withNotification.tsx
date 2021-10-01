@@ -6,10 +6,12 @@ export type WithNotificationOptions = {
   withDivider?: boolean;
 };
 
-export interface LocalNotifiedComponentProps
-  extends Pick<NotificationProps, 'contrast' | 'hideNotification' | 'notification' | 'width'> {
+export type LocalNotifiedComponentProps = Pick<
+  NotificationProps,
+  'contrast' | 'hideNotification' | 'notification' | 'width'
+> & {
   level: SemanticColor;
-}
+};
 
 export type NotifiedComponentProps<WrappedComponentProps extends {}> = MergeProps<
   WrappedComponentProps,

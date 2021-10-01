@@ -4,17 +4,18 @@ import { ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Link.module.css';
 
-export interface LinkProps extends React.HTMLAttributes<HTMLAnchorElement>, ThemeProps {
-  /** Display as a block level element rather than inline */
-  block?: boolean;
-  children: React.ReactNode;
-  className?: string;
-  href?: string;
-  style?: React.CSSProperties;
-  target?: string;
-  underline?: boolean;
-  unstyled?: boolean;
-}
+export type LinkProps = React.HTMLAttributes<HTMLAnchorElement> &
+  ThemeProps & {
+    /** Display as a block level element rather than inline */
+    block?: boolean;
+    children: React.ReactNode;
+    className?: string;
+    href?: string;
+    style?: React.CSSProperties;
+    target?: string;
+    underline?: boolean;
+    unstyled?: boolean;
+  };
 
 /**
  * A link is a styled anchor tag. It can be an inline or

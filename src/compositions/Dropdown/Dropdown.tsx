@@ -8,9 +8,9 @@ import {
 import { PartialDropdown, PartialDropdownHandles, PartialDropdownProps } from './PartialDropdown';
 import { DropdownOption } from './types';
 
-export interface DropdownProps extends Omit<PartialDropdownProps, 'reducer'> {
+export type DropdownProps = Omit<PartialDropdownProps, 'reducer'> & {
   initialSelected: DropdownOption[];
-}
+};
 
 export function DropdownBase(
   { initialSelected, options, ...props }: DropdownProps,

@@ -4,9 +4,9 @@ import { listRegistryActions as ACTIONS, ListRegistryStateAction } from './listR
 import { listRegistryReducer as reducer } from './listRegistryReducer';
 import { ListRegistryItemType, ListRegistryState } from './types';
 
-export interface ListRegistryProviderProps {
+export type ListRegistryProviderProps = {
   children: React.ReactNode;
-}
+};
 
 /**
  * The list registry stores a collection of list

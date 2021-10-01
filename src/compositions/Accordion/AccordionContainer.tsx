@@ -5,14 +5,15 @@ import { useAccessibility } from '../../context/Accessibility';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Accordion.module.css';
 
-export interface AccordionContainerProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
-  children: React.ReactNode;
-  className?: string;
-  focused?: boolean;
-  horizontal?: boolean;
-  style?: React.CSSProperties;
-  variant?: 'primary' | 'colored' | 'transparent';
-}
+export type AccordionContainerProps = React.HTMLAttributes<HTMLDivElement> &
+  ThemeProps & {
+    children: React.ReactNode;
+    className?: string;
+    focused?: boolean;
+    horizontal?: boolean;
+    style?: React.CSSProperties;
+    variant?: 'primary' | 'colored' | 'transparent';
+  };
 
 /**
  * The accordion container wraps all the accordion items

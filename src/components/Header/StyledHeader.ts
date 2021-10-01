@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
 import { Header, HeaderProps } from './Header';
 
-export interface StyledHeaderProps extends HeaderProps {
+export type StyledHeaderProps = HeaderProps & {
   backgroundColor?: string;
   borderColor?: string;
   textColor?: string;
   height?: number | string;
-}
+};
 
 /**
  * A styled header is an extension of the Header

@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
 import { Slider, SliderProps } from './Slider';
 
-export interface StyledSliderProps extends SliderProps {
+export type StyledSliderProps = SliderProps & {
   trackBackgroundColor: string;
   trackFillBackgroundColor: string;
   handleBackgroundColor: string;
   tickBackgroundColor: string;
-}
+};
 
 /**
  * A styled slider is an extension of the Slider

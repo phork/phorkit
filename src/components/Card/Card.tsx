@@ -4,17 +4,18 @@ import { ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Card.module.css';
 
-export interface CardProps extends React.HTMLAttributes<HTMLDivElement>, Omit<ThemeProps, 'contrast'> {
-  bordered?: boolean;
-  children: React.ReactNode;
-  className?: string;
-  full?: boolean;
-  hoverable?: boolean;
-  magnify?: boolean;
-  raised?: boolean | 10 | 20 | 30 | 40 | 100;
-  squared?: boolean;
-  style?: React.CSSProperties;
-}
+export type CardProps = React.HTMLAttributes<HTMLDivElement> &
+  Omit<ThemeProps, 'contrast'> & {
+    bordered?: boolean;
+    children: React.ReactNode;
+    className?: string;
+    full?: boolean;
+    hoverable?: boolean;
+    magnify?: boolean;
+    raised?: boolean | 10 | 20 | 30 | 40 | 100;
+    squared?: boolean;
+    style?: React.CSSProperties;
+  };
 
 /**
  * A card is a container around some content that

@@ -30,7 +30,7 @@ const passwordTranslations: PasswordTranslations = {
   showPasswordLabel: 'Show password',
 };
 
-export interface LocalPasswordProps {
+export type LocalPasswordProps = {
   /** The icon that is clicked to change the password from visible to hidden */
   iconHide?: React.FC<SvgIconProps>;
   iconHideSize?: number;
@@ -40,7 +40,7 @@ export interface LocalPasswordProps {
   /** The initial type is only used when the component renders and is then taken over by the state */
   initialType?: 'password' | 'text';
   translations?: PasswordTranslations;
-}
+};
 
 export type PasswordProps = MergeProps<
   Omit<

@@ -6,25 +6,27 @@ import { FormboxInput } from './FormboxInput';
 import { FormboxInputFormatted, FormboxInputFormattedProps } from './FormboxInputFormatted';
 import { FormboxInputElementType, FormboxValue, FormboxVariant } from './types';
 
-export interface FormboxInputWithFormattingProps<I extends FormboxInputElementType>
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'placeholder'>,
-    ThemeProps {
-  /** The formatted value will be hidden while the input is focused unless this is true */
-  alwaysShowFormatting?: boolean;
-  /** If the value will have HTML formatting then this should be true */
-  alwaysUseFormatting?: boolean;
-  centered?: boolean;
-  children?: React.ReactElement<HTMLElementTagNameMap[I]>;
-  className?: string;
-  contrast?: boolean;
-  /** Manually apply the focus styles; this does not affect focus */
-  focused?: boolean;
-  formattedValue?: React.ReactChild;
-  /** This is whether there's an input value (excluding the formatted value) */
-  hasValue?: boolean;
-  placeholder?: FormboxValue | FormboxInputFormattedProps['children'];
-  variant: FormboxVariant;
-}
+export type FormboxInputWithFormattingProps<I extends FormboxInputElementType> = Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  'placeholder'
+> &
+  ThemeProps & {
+    /** The formatted value will be hidden while the input is focused unless this is true */
+    alwaysShowFormatting?: boolean;
+    /** If the value will have HTML formatting then this should be true */
+    alwaysUseFormatting?: boolean;
+    centered?: boolean;
+    children?: React.ReactElement<HTMLElementTagNameMap[I]>;
+    className?: string;
+    contrast?: boolean;
+    /** Manually apply the focus styles; this does not affect focus */
+    focused?: boolean;
+    formattedValue?: React.ReactChild;
+    /** This is whether there's an input value (excluding the formatted value) */
+    hasValue?: boolean;
+    placeholder?: FormboxValue | FormboxInputFormattedProps['children'];
+    variant: FormboxVariant;
+  };
 
 /**
  * This is a wrapper for formbox inputs that can have

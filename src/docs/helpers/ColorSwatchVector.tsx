@@ -104,7 +104,7 @@ export type Color = {
   children?: React.ReactNode;
 };
 
-export interface ColorSwatchVectorProps {
+export type ColorSwatchVectorProps = {
   children?: React.ReactNode;
   colors: Color[];
   direction?: FlexProps['direction'];
@@ -115,7 +115,7 @@ export interface ColorSwatchVectorProps {
   swatchHeight?: string | number;
   swatchWidth?: string | number;
   withIcon?: boolean;
-}
+};
 
 export const ColorSwatchVector = React.memo(function ColorSwatchVector({
   children,

@@ -6,15 +6,16 @@ import { useThemeId } from '../../context/Theme';
 import styles from './styles/TabsContainer.module.css';
 import { TabsVariant } from './types';
 
-export interface TabsContainerProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
-  children: React.ReactNode;
-  className?: string;
-  focused?: boolean;
-  style?: React.CSSProperties;
-  unstyled?: boolean;
-  variant?: TabsVariant;
-  vertical?: boolean;
-}
+export type TabsContainerProps = React.HTMLAttributes<HTMLDivElement> &
+  ThemeProps & {
+    children: React.ReactNode;
+    className?: string;
+    focused?: boolean;
+    style?: React.CSSProperties;
+    unstyled?: boolean;
+    variant?: TabsVariant;
+    vertical?: boolean;
+  };
 
 /**
  * The tabs container wraps the TabList and TabPanelGroup

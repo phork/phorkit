@@ -2,14 +2,14 @@ import { cx } from '@emotion/css';
 import React from 'react';
 import styles from './styles/TabPanel.module.css';
 
-export interface TabPanelProps {
+export type TabPanelProps = {
   children: React.ReactNode;
   /** Remove the padding from the tab panel */
   flush?: boolean;
   id: string;
   selected?: boolean;
   vertical?: boolean;
-}
+};
 
 /**
  * The tab panel is the content associated with a

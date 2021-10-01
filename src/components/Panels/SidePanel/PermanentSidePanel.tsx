@@ -2,7 +2,7 @@ import { cx } from '@emotion/css';
 import React from 'react';
 import styles from './styles/SidePanel.module.css';
 
-export interface PermanentSidePanelProps extends React.HTMLAttributes<HTMLDivElement> {
+export type PermanentSidePanelProps = React.HTMLAttributes<HTMLDivElement> & {
   children: React.ReactNode;
   className?: string;
   fixed?: boolean;
@@ -12,7 +12,7 @@ export interface PermanentSidePanelProps extends React.HTMLAttributes<HTMLDivEle
   style?: React.CSSProperties;
   width?: number;
   unit?: 'px' | 'percent';
-}
+};
 
 /**
  * A permanent side panel is similar to a SidePanel

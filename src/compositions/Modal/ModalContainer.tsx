@@ -4,11 +4,11 @@ import ReactDOM from 'react-dom';
 import { useHandleEscape } from '../../hooks/useHandleEscape';
 import styles from './styles/ModalContainer.module.css';
 
-export interface ModalContainerProps {
+export type ModalContainerProps = {
   children?: React.ReactNode;
   className?: string;
   onEscape: () => void;
-}
+};
 
 /**
  * The modal container creates a portal attached to the

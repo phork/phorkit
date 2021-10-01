@@ -1,10 +1,10 @@
 import { useRef } from 'react';
 import { useInteractiveGroupItem } from './useInteractiveGroupItem';
 
-export interface InteractiveGroupItemProps<E extends HTMLElement> {
+export type InteractiveGroupItemProps<E extends HTMLElement> = {
   children: (ref: React.MutableRefObject<E | null>) => React.ReactElement;
   focused?: boolean;
-}
+};
 
 /**
  * The interactive group item component accepts a child

@@ -2,10 +2,10 @@ import React, { useRef } from 'react';
 import { Textbox, TextboxProps } from '../../components/Form/Textbox/Textbox';
 import { useListRegistryItem } from '../../components/ListRegistry/useListRegistryItem';
 
-export interface TextboxGroupInputProps extends TextboxProps {
+export type TextboxGroupInputProps = TextboxProps & {
   /** The inputId is used to map the input to its ref */
   inputId: string;
-}
+};
 
 /**
  * The textbox group input should be a descendent

@@ -16,9 +16,9 @@ type ColorGridVector = {
   id: string;
 };
 
-export interface ColorSwatchGridProps extends Omit<ColorSwatchVectorProps, 'colors' | 'label'> {
+export type ColorSwatchGridProps = Omit<ColorSwatchVectorProps, 'colors' | 'label'> & {
   colorGrid: ColorGridVector[];
-}
+};
 
 export function ColorSwatchGrid({
   colorGrid,

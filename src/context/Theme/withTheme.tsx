@@ -2,9 +2,9 @@ import React from 'react';
 import { Theme } from '../../types';
 import { ThemeContext } from './ThemeContext';
 
-export interface WithThemeProps {
+export type WithThemeProps = {
   themeId: Theme;
-}
+};
 
 /**
  * A higher order component to provide the theme ID.

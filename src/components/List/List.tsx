@@ -12,7 +12,7 @@ export const listItemElementMap: ListItemElementMap = {
   div: 'div' as ListItemElementMap['div'],
 };
 
-export interface LocalListProps extends ThemeProps {
+export type LocalListProps = ThemeProps & {
   children?: React.ReactNode;
   className?: string;
   color?: 'primary' | 'neutral';
@@ -34,7 +34,7 @@ export interface LocalListProps extends ThemeProps {
   transparent?: boolean;
   unstyled?: boolean;
   variant?: 'bordered' | 'shadowed' | 'divided' | 'unboxed';
-}
+};
 
 export type ListProps<T extends ListElementType = 'ul'> = AsReactType<T> & MergeElementProps<T, LocalListProps>;
 

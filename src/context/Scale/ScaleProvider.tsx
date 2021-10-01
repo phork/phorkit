@@ -2,9 +2,9 @@ import produce from 'immer';
 import React, { useRef } from 'react';
 import { ScaleContext, ScaleContextValue } from './ScaleContext';
 
-export interface ScaleProviderProps extends ScaleContextValue {
+export type ScaleProviderProps = ScaleContextValue & {
   children: React.ReactNode;
-}
+};
 
 /**
  * The scale provider accepts and stores an icon scale

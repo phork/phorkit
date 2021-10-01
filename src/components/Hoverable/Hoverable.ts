@@ -3,11 +3,11 @@ import { useSafeTimeout } from '../../hooks/useSafeTimeout';
 
 const MOUSE_OUT_TIMEOUT_ID = 'mouseout';
 
-export interface HoverableProps {
+export type HoverableProps = {
   children: React.ReactElement;
   defaultProps: React.Attributes;
   hoverableProps: React.Attributes;
-}
+};
 
 /**
  * The hoverable component accepts a child element

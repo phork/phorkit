@@ -22,7 +22,7 @@ export type DropdownWithTagsOption = DropdownOption & {
   tagProps?: TagProps<'button'>;
 };
 
-export interface DropdownWithTagsProps extends Omit<PartialDropdownProps, 'initialSelected' | 'options' | 'reducer'> {
+export type DropdownWithTagsProps = Omit<PartialDropdownProps, 'initialSelected' | 'options' | 'reducer'> & {
   initialSelected?: DropdownOption[];
   options: DropdownWithTagsOption[];
   tag?: RenderFromPropElement<DropdownWithTagsOption>;
@@ -31,7 +31,7 @@ export interface DropdownWithTagsProps extends Omit<PartialDropdownProps, 'initi
   tagShape?: TagShape;
   tagSize?: TagSize;
   tagWeight?: TagWeight;
-}
+};
 
 const defaultInitialSelected = [] as DropdownOption[];
 

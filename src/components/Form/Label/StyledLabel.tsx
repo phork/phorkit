@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
 import { Label, LabelProps } from './Label';
 
-export interface StyledLabelProps extends LabelProps {
+export type StyledLabelProps = LabelProps & {
   fontSize?: number | string;
   lineHeight?: number | string;
   mutedTextColor?: string;
   textColor?: string;
-}
+};
 
 export const StyledLabel = styled(Label, {
   shouldForwardProp: (prop: string) =>

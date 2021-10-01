@@ -4,7 +4,7 @@ import { AsReactType, StateColor, MergeElementPropsWithoutRef, ThemeProps } from
 import { useThemeId } from '../../../context/Theme';
 import styles from './styles/Label.module.css';
 
-export interface LocalLabelProps extends ThemeProps {
+export type LocalLabelProps = ThemeProps & {
   children: React.ReactNode;
   className?: string;
   disabled?: boolean;
@@ -15,7 +15,7 @@ export interface LocalLabelProps extends ThemeProps {
   strength?: 'transitioned' | 'standard' | 'legend';
   style?: React.CSSProperties;
   validity?: StateColor;
-}
+};
 
 export type LabelProps<T extends React.ElementType = 'div'> = AsReactType<T> &
   MergeElementPropsWithoutRef<T, LocalLabelProps>;

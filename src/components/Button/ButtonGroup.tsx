@@ -15,27 +15,26 @@ export type ButtonGroupItem = {
   selected?: boolean;
 } & Omit<ButtonProps, 'children' | 'id' | 'key' | 'size' | 'value'>;
 
-export interface LocalButtonGroupProps
-  extends Pick<ButtonProps, 'color' | 'fullWidth' | 'shape'>,
-    Omit<ThemeProps, 'unthemed'> {
-  align?: ButtonAlignment;
-  buttons?: ButtonGroupItem[];
-  /** The children are allowed to be null or false so this won't fail if children are conditional */
-  children?: Array<React.ReactElement | null | false>;
-  className?: string;
-  /** Uses inline-flex or block so the buttons aren't stretched by flexbox */
-  display?: 'inline' | 'block';
-  /** If onClick is undefined then each button must have its own onClick prop */
-  onClick?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, value: string) => void;
-  orientation?: Orientation;
-  selectedColor?: ButtonColor;
-  selectedStyle?: React.CSSProperties;
-  selectedWeight?: ButtonWeight;
-  size?: ButtonSize;
-  spacing?: ButtonGroupSpacing;
-  style?: React.CSSProperties;
-  weight?: ButtonWeight;
-}
+export type LocalButtonGroupProps = Pick<ButtonProps, 'color' | 'fullWidth' | 'shape'> &
+  Omit<ThemeProps, 'unthemed'> & {
+    align?: ButtonAlignment;
+    buttons?: ButtonGroupItem[];
+    /** The children are allowed to be null or false so this won't fail if children are conditional */
+    children?: Array<React.ReactElement | null | false>;
+    className?: string;
+    /** Uses inline-flex or block so the buttons aren't stretched by flexbox */
+    display?: 'inline' | 'block';
+    /** If onClick is undefined then each button must have its own onClick prop */
+    onClick?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, value: string) => void;
+    orientation?: Orientation;
+    selectedColor?: ButtonColor;
+    selectedStyle?: React.CSSProperties;
+    selectedWeight?: ButtonWeight;
+    size?: ButtonSize;
+    spacing?: ButtonGroupSpacing;
+    style?: React.CSSProperties;
+    weight?: ButtonWeight;
+  };
 
 export type ButtonGroupProps = MergeElementProps<'div', LocalButtonGroupProps>;
 

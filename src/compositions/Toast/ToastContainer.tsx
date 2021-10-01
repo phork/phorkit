@@ -5,11 +5,11 @@ import { lowerCamelize } from '../../utils/case';
 import styles from './styles/ToastContainer.module.css';
 import { ToastContainerPosition } from './types';
 
-export interface ToastContainerProps {
+export type ToastContainerProps = {
   children: React.ReactNode;
   className?: string;
   position: ToastContainerPosition;
-}
+};
 
 /**
  * The toast container renders a portal that wraps a

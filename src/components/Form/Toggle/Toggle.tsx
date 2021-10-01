@@ -8,7 +8,7 @@ import { makeCombineRefs } from '../../../utils';
 import { Label } from '../Label/Label';
 import styles from './styles/Toggle.module.css';
 
-export interface LocalToggleProps extends ThemeProps {
+export type LocalToggleProps = ThemeProps & {
   checked?: boolean;
   children: React.ReactNode;
   className?: string;
@@ -22,7 +22,7 @@ export interface LocalToggleProps extends ThemeProps {
   size?: 'small';
   style?: React.CSSProperties;
   value?: string;
-}
+};
 
 export type ToggleProps = MergeElementPropsWithoutRef<'label', LocalToggleProps>;
 export type ToggleRef = React.ForwardedRef<HTMLInputElement>;

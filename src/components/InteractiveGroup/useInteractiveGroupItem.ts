@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react';
 import { useScrollIntoView } from '../../hooks/useScrollIntoView';
 
-interface UseInteractiveGroupItemProps<E extends HTMLElement> {
+type UseInteractiveGroupItemProps<E extends HTMLElement> = {
   focused?: boolean;
   ref: React.MutableRefObject<E | null>;
-}
+};
 
 /**
  * Accepts a ref and a focused flag and when that focused

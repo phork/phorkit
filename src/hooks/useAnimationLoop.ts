@@ -8,14 +8,14 @@ enum ACTIONS {
   SET_FINISHED = 'SET_FINISHED',
 }
 
-interface State {
+type State = {
   finished?: boolean;
   loop: number;
   percent: number;
   runtime: number;
   start: ReturnType<typeof window.requestAnimationFrame>;
   options: any;
-}
+};
 
 type Action =
   | ({ type: ACTIONS.SET_CUSTOM } & Pick<State, 'percent'>)
@@ -23,7 +23,7 @@ type Action =
   | ({ type: ACTIONS.SET_DURATION } & Pick<State, 'loop' | 'percent' | 'runtime'>)
   | { type: ACTIONS.SET_FINISHED };
 
-export interface UseAnimationLoopProps {
+export type UseAnimationLoopProps = {
   /** The callback that receives the updated animation percentage */
   animate: (percent: number, options: State['options']) => void;
   /** The duration of the animation before it's considered complete, or falsy for infinite */
@@ -36,7 +36,7 @@ export interface UseAnimationLoopProps {
   onLoop?: (args: { loop: number }) => void;
   /** If this changes then the percent state is manually updated here */
   percent?: number;
-}
+};
 
 export type UseAnimationLoopResponse = {
   start: (options: State['options']) => void;

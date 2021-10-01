@@ -3,10 +3,11 @@ import React from 'react';
 import { ThemeProps } from '../../types';
 import styles from './styles/Banner.module.css';
 
-export interface BannerContainerProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
-  children: React.ReactNode;
-  className?: string;
-}
+export type BannerContainerProps = React.HTMLAttributes<HTMLDivElement> &
+  ThemeProps & {
+    children: React.ReactNode;
+    className?: string;
+  };
 
 /**
  * The banner container wraps a collection of Banner

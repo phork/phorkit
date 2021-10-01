@@ -5,11 +5,11 @@ import { getBackgroundColors, getForegroundColors, getPrimaryColors, getTranspar
 import { ColorSwatchGrid } from './ColorSwatchGrid';
 import { Color, ColorSwatchVector, ColorSwatchVectorProps } from './ColorSwatchVector';
 
-export interface ColorSwatchesProps extends Omit<ColorSwatchVectorProps, 'colors'> {
+export type ColorSwatchesProps = Omit<ColorSwatchVectorProps, 'colors'> & {
   group: 'primary' | 'state' | 'background' | 'foreground' | 'transparent';
   variant?: string;
   themeId: Theme;
-}
+};
 
 /** This renders either a color vector (row or column) or a color grid */
 export function ColorSwatches({

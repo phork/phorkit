@@ -16,26 +16,27 @@ import { useListRegistry } from '../../components/ListRegistry/useListRegistry';
 import styles from './styles/Navigation.module.css';
 import { NavigationItem, NavigationItemProps } from './NavigationItem';
 
-export interface InnerNavigationProps extends React.HTMLAttributes<HTMLElement>, ThemeProps {
-  /** This will make each nav item a link only for the purpose of right clicking; it still uses an onClick event */
-  allowRightClickLinks?: boolean;
-  animated?: boolean;
-  className?: string;
-  fullHeight?: boolean;
-  fullWidth?: boolean;
-  highlightRadius?: number;
-  /** The triggerOnly prop can be ignored as it is handled by the interactive group system */
-  items: Array<
-    Omit<NavigationItemProps, 'children' | 'componentId' | 'key' | 'onClick' | 'variant' | 'vertical'> & {
-      label: React.ReactNode;
-      triggerOnly?: InteractiveGroupItemType<string>['triggerOnly'];
-    }
-  >;
-  selectedId: string;
-  style?: React.CSSProperties;
-  variant?: SequentialVariant;
-  vertical?: boolean;
-}
+export type InnerNavigationProps = React.HTMLAttributes<HTMLElement> &
+  ThemeProps & {
+    /** This will make each nav item a link only for the purpose of right clicking; it still uses an onClick event */
+    allowRightClickLinks?: boolean;
+    animated?: boolean;
+    className?: string;
+    fullHeight?: boolean;
+    fullWidth?: boolean;
+    highlightRadius?: number;
+    /** The triggerOnly prop can be ignored as it is handled by the interactive group system */
+    items: Array<
+      Omit<NavigationItemProps, 'children' | 'componentId' | 'key' | 'onClick' | 'variant' | 'vertical'> & {
+        label: React.ReactNode;
+        triggerOnly?: InteractiveGroupItemType<string>['triggerOnly'];
+      }
+    >;
+    selectedId: string;
+    style?: React.CSSProperties;
+    variant?: SequentialVariant;
+    vertical?: boolean;
+  };
 
 /**
  * The inner navigation is responsible for the look

@@ -2,9 +2,9 @@ import produce from 'immer';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { AccessibilityContext, AccessibilityContextValue, EventType } from './AccessibilityContext';
 
-export interface AccessibilityProviderProps {
+export type AccessibilityProviderProps = {
   children: React.ReactNode;
-}
+};
 
 function isFakeMousedownFromScreenReader(event: MouseEvent) {
   return event.buttons === 0;

@@ -26,34 +26,35 @@ export type FormboxRenderInput = (props: {
   variant: FormboxVariant;
 }) => React.ReactElement<HTMLElement>;
 
-export interface FormboxProps extends Omit<FormboxContainerProps<'label'>, 'as' | 'children' | 'id'>, ThemeProps {
-  /** alwaysTriggerFocus means the a focus transfer within the formbox will trigger the blur event */
-  alwaysTriggerBlur?: boolean;
-  /** alwaysTriggerFocus means the a focus transfer within the formbox will trigger the focus event */
-  alwaysTriggerFocus?: boolean;
-  /** Whether the formbox input was auto-filled (see useAutoFilled hook) */
-  autoFilled?: boolean;
-  /** Center the value or the placeholder when it's used as a value */
-  centered?: boolean;
-  children: FormboxRenderInput;
-  iconAfter?: RenderFromPropElement<FormboxIconRenderProps>;
-  /** The best practice is to pass a button if the icon is actionable */
-  iconAfterActionable?: boolean;
-  iconAfterClassName?: string;
-  iconBefore?: RenderFromPropElement<FormboxIconRenderProps>;
-  /** The best practice is to pass a button if the icon is actionable */
-  iconBeforeActionable?: boolean;
-  iconBeforeClassName?: string;
-  id?: string;
-  onBlur?: (event: React.FocusEvent<Element>) => void;
-  onFocus?: (event: React.FocusEvent<Element>) => void;
-  persistEvents?: boolean;
-  required?: boolean;
-  size?: FormboxSize;
-  translations?: FormboxTranslations;
-  /** Manually apply the focus styles; this does not affect focus */
-  visuallyFocused?: boolean;
-}
+export type FormboxProps = Omit<FormboxContainerProps<'label'>, 'as' | 'children' | 'id'> &
+  ThemeProps & {
+    /** alwaysTriggerFocus means the a focus transfer within the formbox will trigger the blur event */
+    alwaysTriggerBlur?: boolean;
+    /** alwaysTriggerFocus means the a focus transfer within the formbox will trigger the focus event */
+    alwaysTriggerFocus?: boolean;
+    /** Whether the formbox input was auto-filled (see useAutoFilled hook) */
+    autoFilled?: boolean;
+    /** Center the value or the placeholder when it's used as a value */
+    centered?: boolean;
+    children: FormboxRenderInput;
+    iconAfter?: RenderFromPropElement<FormboxIconRenderProps>;
+    /** The best practice is to pass a button if the icon is actionable */
+    iconAfterActionable?: boolean;
+    iconAfterClassName?: string;
+    iconBefore?: RenderFromPropElement<FormboxIconRenderProps>;
+    /** The best practice is to pass a button if the icon is actionable */
+    iconBeforeActionable?: boolean;
+    iconBeforeClassName?: string;
+    id?: string;
+    onBlur?: (event: React.FocusEvent<Element>) => void;
+    onFocus?: (event: React.FocusEvent<Element>) => void;
+    persistEvents?: boolean;
+    required?: boolean;
+    size?: FormboxSize;
+    translations?: FormboxTranslations;
+    /** Manually apply the focus styles; this does not affect focus */
+    visuallyFocused?: boolean;
+  };
 
 export function FormboxBase(
   {

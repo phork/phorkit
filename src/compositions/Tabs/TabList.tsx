@@ -23,7 +23,7 @@ export type TabListItemProps = Pick<TabProps, 'disabled' | 'iconOnly'> & {
   >;
 };
 
-export interface LocalTabListProps extends ThemeProps {
+export type LocalTabListProps = ThemeProps & {
   className?: string;
   /** This is used to match the aria labels up with the tab panels */
   componentId: string;
@@ -36,7 +36,7 @@ export interface LocalTabListProps extends ThemeProps {
   unstyled?: boolean;
   variant?: TabsVariant;
   vertical?: boolean;
-}
+};
 
 export type TabListProps = MergeElementProps<'div', LocalTabListProps>;
 

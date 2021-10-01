@@ -5,10 +5,10 @@ import { themes, ThemeColors, ThemeColorIds } from '../../config';
 import { withTheme } from '../../context/Theme';
 import { LineLoader, LineLoaderProps } from './LineLoader';
 
-export interface ColoredLineLoaderProps extends LineLoaderProps {
+export type ColoredLineLoaderProps = LineLoaderProps & {
   colorId: ThemeColorIds;
   themeId: Theme;
-}
+};
 
 // [TODO:ts] revisit casting
 const StyledLineLoader = styled(LineLoader, {

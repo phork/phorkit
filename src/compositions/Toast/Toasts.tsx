@@ -2,9 +2,9 @@ import React from 'react';
 import { ToastProvider } from './ToastProvider';
 import { ToastsFromContext, ToastsFromContextProps } from './ToastsFromContext';
 
-export interface ToastsProps extends ToastsFromContextProps {
+export type ToastsProps = ToastsFromContextProps & {
   children: React.ReactNode;
-}
+};
 
 /**
  * The toasts component is a simple wrapper around

@@ -2,13 +2,13 @@ import { cx } from '@emotion/css';
 import React from 'react';
 import styles from './styles/Modal.module.css';
 
-export interface ModalBodyProps extends React.HTMLAttributes<HTMLDivElement> {
+export type ModalBodyProps = React.HTMLAttributes<HTMLDivElement> & {
   children: React.ReactNode;
   className?: string;
   flush?: boolean;
   scrollable?: boolean;
   style?: React.CSSProperties;
-}
+};
 
 /**
  * The modal body wraps the content with a scrollable

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-export interface FormComponentDemoProps {
+export type FormComponentDemoProps = {
   children: React.ReactElement;
   initialValue?: string | number | boolean | string[];
   property: string;
   type: 'checkbox' | 'password' | 'radio' | 'select' | 'slider' | 'stepper' | 'textarea' | 'textbox' | 'toggle';
-}
+};
 
 export function FormComponentDemo({ children, initialValue, property, type }: FormComponentDemoProps) {
   const [value, setValue] = useState<FormComponentDemoProps['initialValue']>(initialValue);

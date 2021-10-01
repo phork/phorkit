@@ -78,63 +78,65 @@ export const dropdownTranslations: DropdownTranslations = {
   clearLabel: 'Clear',
 };
 
-export interface PartialDropdownProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onInputChange' | 'onSelect' | 'onSubmit' | 'placeholder'>,
-    Partial<
-      Pick<
-        DropdownContentProps,
-        | 'allowReselect'
-        | 'emptyNotification'
-        | 'listVariant'
-        | 'listSize'
-        | 'listColor'
-        | 'maxSelect'
-        | 'minSelect'
-        | 'onItemFocus'
-      >
-    >,
-    ThemeProps {
-  arrowIconSize?: number;
-  className?: string;
-  disabled?: boolean;
-  disabledIds?: Array<DropdownOption['id']>;
-  formattedValue?: React.ReactChild;
-  getFilteredOptions?: (filter: string) => Promise<DropdownOption[]>;
-  iconBefore?: RenderFromPropElement<FormboxIconRenderProps>;
-  id?: string;
-  inputVariant?: DropdownInputVariant;
-  label?: string;
-  layout?: DropdownLayout;
-  onClear?: () => void;
-  onClose?: () => void;
-  onInputChange?: (input?: string) => void;
-  onOpen?: () => void;
-  onSelect?: (id: string, selectedIds: string[]) => void;
-  /** This fires when items are selected or unselected */
-  onSelectionChange?: (selectedIds: string[] | undefined) => void;
-  onSubmit?: (event: React.KeyboardEvent<HTMLInputElement>, value: string) => void;
-  onUnselect?: (id: string, selectedIds: string[] | undefined) => void;
-  options: DropdownOption[];
-  placeholder?: FormboxValue | React.ReactChild;
-  readOnly?: boolean;
-  /** The reducer comes from `useReducer(interactiveGroupReducer)` and is used to track selection */
-  reducer: PartialInteractiveListProps['reducer'];
-  /** A searchable dropdown has no options unless a search term has been entered */
-  searchable?: boolean;
-  size?: DropdownSize;
-  transitional?: boolean;
-  translations?: DropdownTranslations;
-  /** When using the withNotification HOC the empty content notice must be inline if there's a notification */
-  usingNotification?: boolean;
-  validity?: StateColor;
-}
+export type PartialDropdownProps = Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  'onInputChange' | 'onSelect' | 'onSubmit' | 'placeholder'
+> &
+  Partial<
+    Pick<
+      DropdownContentProps,
+      | 'allowReselect'
+      | 'emptyNotification'
+      | 'listVariant'
+      | 'listSize'
+      | 'listColor'
+      | 'maxSelect'
+      | 'minSelect'
+      | 'onItemFocus'
+    >
+  > &
+  ThemeProps & {
+    arrowIconSize?: number;
+    className?: string;
+    disabled?: boolean;
+    disabledIds?: Array<DropdownOption['id']>;
+    formattedValue?: React.ReactChild;
+    getFilteredOptions?: (filter: string) => Promise<DropdownOption[]>;
+    iconBefore?: RenderFromPropElement<FormboxIconRenderProps>;
+    id?: string;
+    inputVariant?: DropdownInputVariant;
+    label?: string;
+    layout?: DropdownLayout;
+    onClear?: () => void;
+    onClose?: () => void;
+    onInputChange?: (input?: string) => void;
+    onOpen?: () => void;
+    onSelect?: (id: string, selectedIds: string[]) => void;
+    /** This fires when items are selected or unselected */
+    onSelectionChange?: (selectedIds: string[] | undefined) => void;
+    onSubmit?: (event: React.KeyboardEvent<HTMLInputElement>, value: string) => void;
+    onUnselect?: (id: string, selectedIds: string[] | undefined) => void;
+    options: DropdownOption[];
+    placeholder?: FormboxValue | React.ReactChild;
+    readOnly?: boolean;
+    /** The reducer comes from `useReducer(interactiveGroupReducer)` and is used to track selection */
+    reducer: PartialInteractiveListProps['reducer'];
+    /** A searchable dropdown has no options unless a search term has been entered */
+    searchable?: boolean;
+    size?: DropdownSize;
+    transitional?: boolean;
+    translations?: DropdownTranslations;
+    /** When using the withNotification HOC the empty content notice must be inline if there's a notification */
+    usingNotification?: boolean;
+    validity?: StateColor;
+  };
 
-export interface PartialDropdownHandles {
+export type PartialDropdownHandles = {
   container: HTMLDivElement;
   list: DropdownContentHandles;
   input: HTMLInputElement;
   toggle: HTMLDivElement;
-}
+};
 
 export type PartialDropdownRef = React.ForwardedRef<PartialDropdownHandles>;
 

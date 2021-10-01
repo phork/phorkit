@@ -3,13 +3,14 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ThemeProps } from '../../types';
 import styles from './styles/ToastCountdownBar.module.css';
 
-export interface ToastCountdownBarProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
-  /** The value of Date.now() when the countdown started */
-  created: number;
-  duration: number;
-  level?: string;
-  variant?: 'colored';
-}
+export type ToastCountdownBarProps = React.HTMLAttributes<HTMLDivElement> &
+  ThemeProps & {
+    /** The value of Date.now() when the countdown started */
+    created: number;
+    duration: number;
+    level?: string;
+    variant?: 'colored';
+  };
 
 /**
  * The toast countdown bar renders an animated bar

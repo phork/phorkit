@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Textbox, TextboxProps } from './Textbox';
 
-export interface StyledTextboxProps extends TextboxProps {
+export type StyledTextboxProps = TextboxProps & {
   textboxIconColor: string;
   textboxIconHoveredColor: string;
   textboxInputContainerBackgroundColor: string;
@@ -10,7 +10,7 @@ export interface StyledTextboxProps extends TextboxProps {
   textboxInputContainerHoveredBorderColor: string;
   textboxInputTextColor: string;
   textboxLabelTextColor: string;
-}
+};
 
 /**
  * A styled textbox is an extension of the Textbox

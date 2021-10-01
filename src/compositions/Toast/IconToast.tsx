@@ -6,12 +6,12 @@ import { Toast, ToastProps } from './Toast';
 import { ToastNotificationLevel } from './types';
 import { useToastComponentIds } from './useToastComponentIds';
 
-export interface IconToastProps extends ToastProps {
+export type IconToastProps = ToastProps & {
   icon: React.FC<SvgIconProps>;
   iconSize?: number;
   level?: ToastNotificationLevel;
   variant?: 'colored';
-}
+};
 
 /**
  * An icon toast extends the a standard Toast by

@@ -21,24 +21,23 @@ export type TabsRenderChildren = (
   },
 ) => React.ReactElement<HTMLDivElement>;
 
-export interface TabsProps
-  extends Omit<
-      InteractiveGroupProviderProps<string, HTMLDivElement, HTMLDivElement>,
-      'children' | 'items' | 'maxSelect'
-    >,
-    ThemeProps {
-  children?: TabsRenderChildren;
-  className?: string;
-  contrast?: boolean;
-  fullWidth?: boolean;
-  items: Array<TabListProps['items'][0] & TabPanelGroupProps['items'][0]>;
-  listProps?: React.HTMLAttributes<HTMLDivElement>;
-  panelGroupProps?: React.HTMLAttributes<HTMLDivElement>;
-  style?: React.CSSProperties;
-  unstyled?: boolean;
-  variant?: TabsVariant;
-  vertical?: boolean;
-}
+export type TabsProps = Omit<
+  InteractiveGroupProviderProps<string, HTMLDivElement, HTMLDivElement>,
+  'children' | 'items' | 'maxSelect'
+> &
+  ThemeProps & {
+    children?: TabsRenderChildren;
+    className?: string;
+    contrast?: boolean;
+    fullWidth?: boolean;
+    items: Array<TabListProps['items'][0] & TabPanelGroupProps['items'][0]>;
+    listProps?: React.HTMLAttributes<HTMLDivElement>;
+    panelGroupProps?: React.HTMLAttributes<HTMLDivElement>;
+    style?: React.CSSProperties;
+    unstyled?: boolean;
+    variant?: TabsVariant;
+    vertical?: boolean;
+  };
 
 /**
  * The tabs component sets up the state management and

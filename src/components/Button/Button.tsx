@@ -5,7 +5,7 @@ import { useThemeId } from '../../context/Theme';
 import styles from './styles/Button.module.css';
 import { ButtonAlignment, ButtonWeight, ButtonShape, ButtonSize, ButtonColor, ButtonElementType } from './types';
 
-export interface LocalButtonProps extends ThemeProps {
+export type LocalButtonProps = ThemeProps & {
   /** Manually apply the active styles; this does not actually make it active */
   active?: boolean;
   align?: ButtonAlignment;
@@ -32,7 +32,7 @@ export interface LocalButtonProps extends ThemeProps {
   unstyled?: boolean;
   unthemed?: boolean;
   weight?: ButtonWeight;
-}
+};
 
 export type ButtonProps<T extends ButtonElementType = 'button'> = AsReactType<T> &
   MergeElementPropsWithoutRef<T, LocalButtonProps>;

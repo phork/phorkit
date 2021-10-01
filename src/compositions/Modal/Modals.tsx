@@ -2,9 +2,9 @@ import React from 'react';
 import { ModalProvider } from './ModalProvider';
 import { ModalsFromContext, ModalsFromContextProps } from './ModalsFromContext';
 
-export interface ModalsProps extends ModalsFromContextProps {
+export type ModalsProps = ModalsFromContextProps & {
   children?: React.ReactNode;
-}
+};
 
 /**
  * The modals component is a simple wrapper around

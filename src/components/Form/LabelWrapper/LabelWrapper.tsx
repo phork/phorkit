@@ -3,7 +3,7 @@ import React from 'react';
 import { AsReactType, MergeElementPropsWithoutRef } from '../../../types';
 import styles from './styles/LabelWrapper.module.css';
 
-export interface LocalLabelWrapperProps {
+export type LocalLabelWrapperProps = {
   className?: string;
   fullWidth?: boolean;
   input: React.ReactElement;
@@ -14,7 +14,7 @@ export interface LocalLabelWrapperProps {
   spread?: boolean;
   style?: React.CSSProperties;
   vertical?: boolean;
-}
+};
 
 export type LabelWrapperProps<T extends React.ElementType = 'div'> = AsReactType<T> &
   MergeElementPropsWithoutRef<T, LocalLabelWrapperProps>;
@@ -31,7 +31,7 @@ export function LabelWrapper<T extends React.ElementType = 'div'>({
   spread = false,
   vertical = false,
   ...props
-}: LabelWrapperProps<T>): React.ReactElement<LocalLabelWrapperProps, T> {
+}: LabelWrapperProps<T>): React.ReactElement<LabelWrapperProps, T> {
   const Element = as || 'div';
   const inputStyle: React.CSSProperties = {};
   (inputWidth || inputWidth === 0) &&

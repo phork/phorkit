@@ -19,30 +19,32 @@ export type AccordionRenderChildren = (
   },
 ) => React.ReactElement<HTMLDivElement>;
 
-export interface AccordionProps
-  extends Pick<InteractiveGroupProviderProps, 'maxSelect' | 'minSelect' | 'initialSelected' | 'onSelect'>,
-    Pick<AccordionListProps, 'duration' | 'easing' | 'horizontal' | 'items' | 'variant'>,
-    ThemeProps {
-  children?: AccordionRenderChildren;
-  className?: string;
-  listProps?: Omit<
-    AccordionListProps,
-    | 'componentId'
-    | 'contrast'
-    | 'duration'
-    | 'easting'
-    | 'horizontal'
-    | 'items'
-    | 'onBlur'
-    | 'onFocus'
-    | 'ref'
-    | 'themeId'
-    | 'unstyled'
-    | 'variant'
-  >;
-  style?: React.CSSProperties;
-  unstyled?: boolean;
-}
+export type AccordionProps = Pick<
+  InteractiveGroupProviderProps,
+  'maxSelect' | 'minSelect' | 'initialSelected' | 'onSelect'
+> &
+  Pick<AccordionListProps, 'duration' | 'easing' | 'horizontal' | 'items' | 'variant'> &
+  ThemeProps & {
+    children?: AccordionRenderChildren;
+    className?: string;
+    listProps?: Omit<
+      AccordionListProps,
+      | 'componentId'
+      | 'contrast'
+      | 'duration'
+      | 'easting'
+      | 'horizontal'
+      | 'items'
+      | 'onBlur'
+      | 'onFocus'
+      | 'ref'
+      | 'themeId'
+      | 'unstyled'
+      | 'variant'
+    >;
+    style?: React.CSSProperties;
+    unstyled?: boolean;
+  };
 
 /**
  * An accordion is a collection of items that each have

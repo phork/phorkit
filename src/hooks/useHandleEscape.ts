@@ -1,11 +1,11 @@
 import { useCallback } from 'react';
 import { useElementEventListener } from './useElementEventListener';
 
-export interface UseHandleEscapeProps<C extends HTMLElement> {
+export type UseHandleEscapeProps<C extends HTMLElement> = {
   onEscape: (event: KeyboardEvent) => void;
   ref?: React.RefObject<C>;
   stopPropagation?: boolean;
-}
+};
 
 /**
  * Accepts a function to be called when the Escape key

@@ -4,10 +4,10 @@ import { MergeProps, Orientation, SemanticColor, ThemeProps, Volume } from '../.
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Progress.module.css';
 
-export interface ProgressSegment {
+export type ProgressSegment = {
   percent: number;
   color: SemanticColor;
-}
+};
 
 type ProgressSegmentProps = {
   percent?: never;

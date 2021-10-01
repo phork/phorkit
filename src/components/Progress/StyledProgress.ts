@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
 import { Progress, ProgressProps } from './Progress';
 
-export interface StyledProgressProps extends Omit<ProgressProps, 'color'> {
+export type StyledProgressProps = Omit<ProgressProps, 'color'> & {
   backgroundColor?: string;
   segmentAnimationColor?: string;
   segmentColor: string;
-}
+};
 
 /**
  * A styled progress bar is an extension of the

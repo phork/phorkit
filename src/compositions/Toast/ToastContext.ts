@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 import { ToastWithContextItemType } from './ToastFromContext';
 
-export interface ToastContextValue {
+export type ToastContextValue = {
   /** A map of all the toasts */
   notifications: Map<string, ToastWithContextItemType>;
   /** Creates a new toast or replaces an existing toast if one exists with the same contextId */
@@ -12,7 +12,7 @@ export interface ToastContextValue {
   pinNotification: (id: string) => void;
   /** Removes all the toasts */
   clearNotifications: () => void;
-}
+};
 
 export const ToastContext = createContext<ToastContextValue>({
   notifications: new Map(),

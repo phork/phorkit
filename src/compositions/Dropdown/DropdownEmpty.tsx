@@ -19,12 +19,13 @@ export const dropdownEmptyTranslations: DropdownEmptyTranslations = {
   noOptions: 'No options are available.',
 };
 
-export interface DropdownEmptyProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
-  children?: RenderFromPropElement<RenderFromPropProps>;
-  filter?: string;
-  layout?: DropdownLayout;
-  translations?: DropdownEmptyTranslations;
-}
+export type DropdownEmptyProps = React.HTMLAttributes<HTMLDivElement> &
+  ThemeProps & {
+    children?: RenderFromPropElement<RenderFromPropProps>;
+    filter?: string;
+    layout?: DropdownLayout;
+    translations?: DropdownEmptyTranslations;
+  };
 
 /**
  * The empty dropdown notification is shown by the

@@ -57,7 +57,7 @@ export type PopoverRenderContentProps = Pick<
  * by hovering over the toggle if the hoverable prop
  * it set.
  */
-export interface PopoverProps extends ThemeProps {
+export type PopoverProps = ThemeProps & {
   className?: string;
   closeDelay?: number;
   focusable?: boolean;
@@ -89,7 +89,7 @@ export interface PopoverProps extends ThemeProps {
   withoutTogglerFocusStyle?: boolean;
   /** Pass extra props to the toggler (to be used with ForwardProps) */
   withPopoverTogglerProps?: boolean;
-}
+};
 
 export function Popover({
   className,

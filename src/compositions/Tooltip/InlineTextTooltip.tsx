@@ -8,14 +8,13 @@ import { getTooltipOffset } from './utils';
 import { getTextTooltipColors, TextTooltipContent, TextTooltipContentProps } from './TextTooltipContent';
 import { TooltipContent } from './TooltipContent';
 
-export interface InlineTextTooltipProps
-  extends Omit<InlinePopoverProps, 'position' | 'width'>,
-    Pick<TextTooltipContentProps, 'scrollable' | 'width'> {
-  position?: AnyPosition;
-  tooltipClassName?: string;
-  triangleBorderWidth?: number;
-  triangleSize?: number;
-}
+export type InlineTextTooltipProps = Omit<InlinePopoverProps, 'position' | 'width'> &
+  Pick<TextTooltipContentProps, 'scrollable' | 'width'> & {
+    position?: AnyPosition;
+    tooltipClassName?: string;
+    triangleBorderWidth?: number;
+    triangleSize?: number;
+  };
 
 /**
  * An inline text tooltip is similar to an InlineTooltip

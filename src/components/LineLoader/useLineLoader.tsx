@@ -6,7 +6,7 @@ import { LineLoader, LineLoaderProps } from './LineLoader';
 const fadeOutDuration = 300;
 const fadeOutDelay = 100;
 
-export interface UseLineLoaderProps extends LineLoaderProps {
+export type UseLineLoaderProps = LineLoaderProps & {
   /** The animation duration in milliseconds */
   duration?: number;
   /** The component to style (LineLoader, StyledLineLoader or ColoredLineLoader) */
@@ -14,7 +14,7 @@ export interface UseLineLoaderProps extends LineLoaderProps {
   position?: 'top' | 'bottom';
   fixed?: boolean;
   style?: React.CSSProperties;
-}
+};
 
 type UseLineLoaderResponse = {
   /** A callback to run when the loader finishes */

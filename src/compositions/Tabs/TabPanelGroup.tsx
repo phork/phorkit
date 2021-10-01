@@ -12,21 +12,22 @@ import styles from './styles/TabPanelGroup.module.css';
 import { TabPanel, TabPanelProps } from './TabPanel';
 import { TabsVariant } from './types';
 
-export interface TabPanelGroupProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
-  className?: string;
-  /** This is used to match the aria labels up with the tabs */
-  componentId?: string;
-  focused?: boolean;
-  items: Array<{
-    id: string;
-    content: React.ReactNode;
-    contentProps?: Omit<TabPanelProps, 'children' | 'id' | 'selected'>;
-  }>;
-  style?: React.CSSProperties;
-  unstyled?: boolean;
-  variant?: TabsVariant;
-  vertical?: boolean;
-}
+export type TabPanelGroupProps = React.HTMLAttributes<HTMLDivElement> &
+  ThemeProps & {
+    className?: string;
+    /** This is used to match the aria labels up with the tabs */
+    componentId?: string;
+    focused?: boolean;
+    items: Array<{
+      id: string;
+      content: React.ReactNode;
+      contentProps?: Omit<TabPanelProps, 'children' | 'id' | 'selected'>;
+    }>;
+    style?: React.CSSProperties;
+    unstyled?: boolean;
+    variant?: TabsVariant;
+    vertical?: boolean;
+  };
 
 /**
  * The tab panel group renders a collection of TabPanel

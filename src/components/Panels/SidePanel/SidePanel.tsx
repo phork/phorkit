@@ -5,21 +5,23 @@ import { makeCombineRefs } from '../../../utils/combineRefs';
 import { easeInOutCubic } from '../../../utils/easings';
 import styles from './styles/SidePanel.module.css';
 
-export interface SidePanelProps
-  extends Pick<UsePanelCollapserProps, 'onCloseFinish' | 'onCloseStart' | 'onOpenFinish' | 'onOpenStart' | 'open'>,
-    Partial<Pick<UsePanelCollapserProps, 'easing' | 'unit' | 'transition'>>,
-    React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
-  className?: string;
-  /** The open and close animation duration */
-  duration?: number;
-  fixed?: boolean;
-  position: 'left' | 'right';
-  /** Raise the panel above other elements by using a high z-index */
-  raised?: boolean;
-  style?: React.CSSProperties;
-  width: number;
-}
+export type SidePanelProps = Pick<
+  UsePanelCollapserProps,
+  'onCloseFinish' | 'onCloseStart' | 'onOpenFinish' | 'onOpenStart' | 'open'
+> &
+  Partial<Pick<UsePanelCollapserProps, 'easing' | 'unit' | 'transition'>> &
+  React.HTMLAttributes<HTMLDivElement> & {
+    children: React.ReactNode;
+    className?: string;
+    /** The open and close animation duration */
+    duration?: number;
+    fixed?: boolean;
+    position: 'left' | 'right';
+    /** Raise the panel above other elements by using a high z-index */
+    raised?: boolean;
+    style?: React.CSSProperties;
+    width: number;
+  };
 
 /**
  * A side panel lives alongside a MainPanel (and optionally

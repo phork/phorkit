@@ -20,18 +20,19 @@ export const bannerTranslations: BannerTranslations = {
   closeLabel: 'Close banner',
 };
 
-export interface BannerProps extends Omit<PaperProps, 'children' | 'color'>, ThemeProps {
-  children: React.ReactNode;
-  className?: string;
-  /** The context ID is used by the banner system */
-  contextId?: string;
-  /** The immediate flag remove the entry animation */
-  immediate?: boolean;
-  level: StateColor | SequentialVariant | 'info' | 'contrast' | 'transparent';
-  onClose?: (event?: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, contextId?: string) => void;
-  style?: React.CSSProperties;
-  translations?: BannerTranslations;
-}
+export type BannerProps = Omit<PaperProps, 'children' | 'color'> &
+  ThemeProps & {
+    children: React.ReactNode;
+    className?: string;
+    /** The context ID is used by the banner system */
+    contextId?: string;
+    /** The immediate flag remove the entry animation */
+    immediate?: boolean;
+    level: StateColor | SequentialVariant | 'info' | 'contrast' | 'transparent';
+    onClose?: (event?: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, contextId?: string) => void;
+    style?: React.CSSProperties;
+    translations?: BannerTranslations;
+  };
 
 /**
  * A banner is a simple horizontal bar that spans the

@@ -5,10 +5,10 @@ import { themes, ThemeColors, ThemeColorIds } from '../../config';
 import { withTheme } from '../../context/Theme';
 import { Tabs, TabsProps } from './Tabs';
 
-export interface ColoredTabsProps extends TabsProps {
+export type ColoredTabsProps = TabsProps & {
   colorId: ThemeColorIds;
   themeId: Theme;
-}
+};
 
 // [TODO:ts] revisit casting
 const StyledTabs = styled(Tabs, {

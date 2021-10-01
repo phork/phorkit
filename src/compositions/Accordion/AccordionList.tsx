@@ -15,19 +15,18 @@ import { AccordionContent, AccordionContentProps } from './AccordionContent';
 import { AccordionLabel } from './AccordionLabel';
 import { AccordionItemType } from './types';
 
-export interface AccordionListProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    Pick<AccordionContentProps, 'duration' | 'easing' | 'horizontal'>,
-    ThemeProps {
-  className?: string;
-  componentId: string;
-  items: AccordionItemType[];
-  onBlur?: (e: React.FocusEvent<HTMLDivElement>) => void;
-  onFocus?: (e: React.FocusEvent<HTMLDivElement>) => void;
-  style?: React.CSSProperties;
-  unstyled?: boolean;
-  variant?: 'primary' | 'colored';
-}
+export type AccordionListProps = React.HTMLAttributes<HTMLDivElement> &
+  Pick<AccordionContentProps, 'duration' | 'easing' | 'horizontal'> &
+  ThemeProps & {
+    className?: string;
+    componentId: string;
+    items: AccordionItemType[];
+    onBlur?: (e: React.FocusEvent<HTMLDivElement>) => void;
+    onFocus?: (e: React.FocusEvent<HTMLDivElement>) => void;
+    style?: React.CSSProperties;
+    unstyled?: boolean;
+    variant?: 'primary' | 'colored';
+  };
 
 /**
  * The accordion list renders a collection of accordion

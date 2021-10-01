@@ -78,13 +78,13 @@ const textStyles: Styles = {
   },
 };
 
-interface ErrorBoundaryProps {
+type ErrorBoundaryProps  = {
   children: React.ReactNode;
   errorMsg?: string;
   variant?: 'page' | 'default';
 }
 
-interface ErrorBoundaryState {
+type ErrorBoundaryState = {
   hasError: boolean;
 }
 

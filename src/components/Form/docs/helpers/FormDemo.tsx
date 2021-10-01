@@ -90,11 +90,11 @@ type FormDemoChildrenProps = Omit<UseFormResponse<FormDemoValues>, 'handleSubmit
   refs: React.RefObject<FormDemoRefs>;
 };
 
-interface FormDemoProps {
+type FormDemoProps = {
   children: (props: FormDemoChildrenProps) => React.ReactNode;
   contrast?: boolean;
   style?: React.CSSProperties;
-}
+};
 
 export function FormDemo({ children, contrast = false, style }: FormDemoProps): React.ReactElement {
   const refs = useRef<FormDemoRefs>({});

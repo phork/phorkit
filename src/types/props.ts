@@ -1,7 +1,7 @@
 import { Theme } from './ui';
 
-export interface ThemeProps {
+export type ThemeProps = {
   contrast?: boolean;
   themeId?: Theme;
   unthemed?: boolean;
-}
+};

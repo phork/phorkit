@@ -11,10 +11,10 @@ import {
 } from './eventListenerReducer';
 import { eventListenerOptions as OPTIONS, EventListenerItemType } from './types';
 
-export interface EventListenerProviderProps {
+export type EventListenerProviderProps = {
   children: React.ReactNode;
   ref?: React.RefObject<HTMLElement>;
-}
+};
 
 const generateEventListener = (items: EventListenerItemType[]) => (event: Event) => {
   items.forEach(({ listener }) => listener(event));

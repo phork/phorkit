@@ -5,10 +5,10 @@ import { themes, ThemeColors, ThemeColorIds } from '../../config';
 import { withTheme } from '../../context/Theme';
 import { Paper, PaperProps } from './Paper';
 
-export interface ColoredPaperProps extends PaperProps {
+export type ColoredPaperProps = PaperProps & {
   colorId: ThemeColorIds;
   themeId: Theme;
-}
+};
 
 // [TODO:ts] revisit casting
 const StyledPaper = styled(Paper, {

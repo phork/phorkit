@@ -2,12 +2,12 @@ import React from 'react';
 import { ScaleProvider, ScaleProviderProps } from '../../context/Scale/ScaleProvider';
 import { Flex, FlexProps } from '../../components/Flex/Flex';
 
-export interface IconGroupProps {
+export type IconGroupProps = {
   children: React.ReactNode;
   className?: FlexProps['className'];
   scale?: ScaleProviderProps['scale'];
   size?: ScaleProviderProps['size'];
-}
+};
 
 /**
  * An icon group renders a row of icons and wraps them

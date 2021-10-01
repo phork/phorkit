@@ -24,7 +24,7 @@ export const toastTranslations: ToastTranslations = {
   pinNotificationLabel: 'Pin notification',
 };
 
-export interface LocalToastProps extends ThemeProps {
+export type LocalToastProps = ThemeProps & {
   children: React.ReactNode;
   className?: string;
   /** The context ID is used by both the modal system and the aria-label system */
@@ -40,7 +40,7 @@ export interface LocalToastProps extends ThemeProps {
   onPin?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, id?: string) => void;
   translations?: ToastTranslations;
   variant?: 'colored';
-}
+};
 
 export type ToastProps = MergeElementPropsWithoutRef<'div', LocalToastProps>;
 

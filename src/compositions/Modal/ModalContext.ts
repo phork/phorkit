@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 import { ModalWithContextItemType } from './ModalFromContext';
 
-export interface ModalContextValue {
+export type ModalContextValue = {
   /** The top modal on the stack (ie. the one that should be visible) */
   modal?: ModalWithContextItemType;
   /** A map of all the modals */
@@ -18,7 +18,7 @@ export interface ModalContextValue {
   removeModal: (id: string) => void;
   /** Check if a modal exists by its contextId */
   hasModal: (id: string) => boolean;
-}
+};
 
 export const ModalContext = createContext<ModalContextValue>({
   modal: undefined,

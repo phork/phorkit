@@ -1,10 +1,10 @@
 import React from 'react';
 import { TitledToast, TitledToastProps } from './TitledToast';
 
-export interface StyledTitledToastProps extends Omit<TitledToastProps, 'level'> {
+export type StyledTitledToastProps = Omit<TitledToastProps, 'level'> & {
   levelColor: string;
   levelInverseColor: string;
-}
+};
 
 /**
  * A styled titled toast is an extension of the
@@ -31,7 +31,7 @@ export const StyledTitledToast = ({ levelColor, levelInverseColor, style, ...pro
 import styled from '@emotion/styled';
 import { TitledToast, TitledToastProps } from './TitledToast';
 
-export interface StyledTitledToastProps extends TitledToastProps {
+export type StyledTitledToastProps = TitledToastProps & {
   levelColor: string;
   levelInverseColor: string;
 }

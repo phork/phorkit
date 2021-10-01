@@ -4,13 +4,14 @@ import { ThemeProps, Orientation, SequentialVariant, Volume } from '../../types'
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Divider.module.css';
 
-export interface DividerProps extends React.HTMLAttributes<HTMLDivElement>, ThemeProps {
-  className?: string;
-  orientation?: Orientation;
-  style?: React.CSSProperties;
-  variant?: SequentialVariant;
-  volume?: Volume;
-}
+export type DividerProps = React.HTMLAttributes<HTMLDivElement> &
+  ThemeProps & {
+    className?: string;
+    orientation?: Orientation;
+    style?: React.CSSProperties;
+    variant?: SequentialVariant;
+    volume?: Volume;
+  };
 
 /**
  * A divider is a vertical or horizontal rule

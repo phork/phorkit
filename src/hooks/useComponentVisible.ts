@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState, useRef } from 'react';
 import { useHandleClickOutside } from './useHandleClickOutside';
 import { useHandleEscape } from './useHandleEscape';
 
-export interface UseComponentVisibleProps {
+export type UseComponentVisibleProps = {
   ignoreClickOutside?: boolean;
   ignoreEscape?: boolean;
   initialVisible?: boolean;
@@ -13,7 +13,7 @@ export interface UseComponentVisibleProps {
   clickOutsideExclusions?: HTMLElement[];
   /** Stop the event propagation if the escape key is pressed */
   stopPropagation?: boolean;
-}
+};
 
 export type UseComponentVisibleResponse<C> = {
   ref: React.MutableRefObject<C>;

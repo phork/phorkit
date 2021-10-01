@@ -6,14 +6,14 @@ import { PopoverRenderChildrenProps } from '../Popover/types';
 import { getTooltipOffset } from './utils';
 import { TooltipContent } from './TooltipContent';
 
-export interface InlineTooltipProps extends Omit<InlinePopoverProps, 'position'> {
+export type InlineTooltipProps = Omit<InlinePopoverProps, 'position'> & {
   position?: AnyPosition;
   tooltipClassName?: string;
   triangleBorderColor?: string;
   triangleBorderWidth?: number;
   triangleColor: string;
   triangleSize?: number;
-}
+};
 
 /**
  * An inline tooltip is an extension of the InlinePopover

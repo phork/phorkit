@@ -12,10 +12,10 @@ export type ToastWithContextItemType = React.ReactElement<
   }
 >;
 
-export interface ToastFromContextProps extends ThemeProps {
+export type ToastFromContextProps = ThemeProps & {
   toast: ToastWithContextItemType;
   variant?: 'colored';
-}
+};
 
 /**
  * This accepts a Toast element with a contextId prop

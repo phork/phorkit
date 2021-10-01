@@ -15,14 +15,14 @@ const icons: Record<string, React.FC<SvgIconProps>> = {
   previous: ArrowLeftIcon,
 };
 
-export interface LocalPaginationJumpIconProps {
+export type LocalPaginationJumpIconProps = {
   allowRightClickLinks?: boolean;
   href?: string;
   onChangePage?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, page: number) => void;
   page: number;
   title: string;
   type: 'first' | 'last' | 'next' | 'previous';
-}
+};
 
 export type PaginationJumpIconProps<T extends ButtonElementType = 'button'> = AsReactType<T> &
   MergeProps<Omit<ButtonProps<T>, 'as' | 'children'>, LocalPaginationJumpIconProps>;

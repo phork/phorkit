@@ -23,7 +23,7 @@ export type RadioSize =
   | '7xlarge'
   | '8xlarge';
 
-export interface LocalRadioProps<V extends RadioValue = string> extends ThemeProps {
+export type LocalRadioProps<V extends RadioValue = string> = ThemeProps & {
   checked?: boolean;
   children: React.ReactNode;
   className?: string;
@@ -43,7 +43,7 @@ export interface LocalRadioProps<V extends RadioValue = string> extends ThemePro
   value?: V;
   /** The primary variant uses a solid background fill for a checked item */
   variant?: 'primary' | 'secondary';
-}
+};
 
 export type RadioProps<V extends RadioValue = string> = MergeProps<
   Omit<React.ComponentProps<'input'>, 'onBlur' | 'onFocus' | 'ref' | 'tabIndex' | 'type'>,

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useScrollSync, UseScrollSyncProps, UseScrollSyncResponse } from '../../hooks/useScrollSync';
 
-export interface ScrollSyncProps extends UseScrollSyncProps {
+export type ScrollSyncProps = UseScrollSyncProps & {
   children: (props: UseScrollSyncResponse) => React.ReactElement;
-}
+};
 
 /**
  * A simple wrapper around the useScrollSync hook

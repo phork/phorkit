@@ -6,7 +6,7 @@ import styles from './styles/Formbox.module.css';
 import sizeStyles from './styles/FormboxSizes.module.css';
 import { FormboxContainerElementType, FormboxInputElementType, FormboxSize, FormboxVariant } from './types';
 
-export interface LocalFormboxContainerProps extends ThemeProps {
+export type LocalFormboxContainerProps = ThemeProps & {
   /** Whether the formbox input was auto-filled (see useAutoFilled hook) */
   autoFilled?: boolean;
   children: React.ReactNode;
@@ -36,7 +36,7 @@ export interface LocalFormboxContainerProps extends ThemeProps {
   variant?: FormboxVariant;
   /** The width of the entire component */
   width?: string | number;
-}
+};
 
 export type FormboxContainerProps<T extends FormboxContainerElementType> = AsReactType<T> &
   MergeElementProps<T, LocalFormboxContainerProps>;

@@ -25,12 +25,13 @@ type LoaderScale = {
   size?: never;
 };
 
-export interface BaseLoaderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>, ThemeProps {
-  className?: string;
-  position?: 'relative' | 'absolute' | 'fixed';
-  style?: React.CSSProperties;
-  translations?: LoaderTranslations;
-}
+export type BaseLoaderProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> &
+  ThemeProps & {
+    className?: string;
+    position?: 'relative' | 'absolute' | 'fixed';
+    style?: React.CSSProperties;
+    translations?: LoaderTranslations;
+  };
 
 export type LoaderProps = BaseLoaderProps & (LoaderSize | LoaderScale);
 

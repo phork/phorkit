@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
 import { Tag, TagProps } from './Tag';
 
-export interface StyledTagProps extends TagProps {
+export type StyledTagProps = TagProps & {
   primaryColor: string;
   inverseColor: string;
   hoveredPrimaryColor?: string;
   activePrimaryColor?: string;
-}
+};
 
 /**
  * A styled tag is an extension of the Tag component

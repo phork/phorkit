@@ -6,13 +6,13 @@ import { useInteractiveGroupItem } from '../../components/InteractiveGroup/useIn
 import { useListRegistryItem } from '../../components/ListRegistry/useListRegistryItem';
 import styles from './styles/Navigation.module.css';
 
-interface NavigationItemStateProps {
+type NavigationItemStateProps = {
   disabled?: boolean;
   focused?: boolean;
   selected?: boolean;
-}
+};
 
-export interface LocalNavigationItemProps extends NavigationItemStateProps {
+export type LocalNavigationItemProps = NavigationItemStateProps & {
   allowRightClickLinks?: boolean;
   children: React.ReactNode | ((props: NavigationItemStateProps) => React.ReactNode);
   className?: string;
@@ -23,7 +23,7 @@ export interface LocalNavigationItemProps extends NavigationItemStateProps {
   onClick?: (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>, id: string) => void;
   variant: SequentialVariant;
   vertical?: boolean;
-}
+};
 
 export type NavigationItemProps = MergeElementPropsWithoutRef<'div', LocalNavigationItemProps>;
 

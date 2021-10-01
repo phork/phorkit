@@ -6,14 +6,14 @@ import autoFilledStyles from './styles/FormboxAutoFilled.module.css';
 import styles from './styles/FormboxInput.module.css';
 import { FormboxInputElementType, FormboxVariant } from './types';
 
-export interface FormboxInputProps<I extends FormboxInputElementType> extends ThemeProps {
+export type FormboxInputProps<I extends FormboxInputElementType> = ThemeProps & {
   children?: React.ReactElement<HTMLElementTagNameMap[I]>;
   className?: string;
   hidden?: boolean;
   placeholder?: string | number;
   tabIndex?: number;
   variant: FormboxVariant;
-}
+};
 
 /**
  * The formbox input component clones its input/select/textarea

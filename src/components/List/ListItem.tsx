@@ -4,7 +4,7 @@ import { AsType, MergeElementPropsWithoutRef, ThemeProps } from '../../types';
 import styles from './styles/List.module.css';
 import { ListItemElementType } from './types';
 
-export interface LocalListItemProps extends ThemeProps {
+export type LocalListItemProps = ThemeProps & {
   children: React.ReactNode;
   className?: string;
   disabled?: boolean;
@@ -20,7 +20,7 @@ export interface LocalListItemProps extends ThemeProps {
   selected?: boolean;
   transparent?: boolean;
   unstyled?: boolean;
-}
+};
 
 export type ListItemProps<T extends ListItemElementType = 'li'> = AsType<T> &
   MergeElementPropsWithoutRef<T, LocalListItemProps>;

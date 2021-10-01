@@ -6,14 +6,14 @@ import { PopoverRenderChildrenProps } from '../Popover/types';
 import { getTooltipOffset } from './utils';
 import { TooltipContent } from './TooltipContent';
 
-export interface PortalTooltipProps extends Omit<PortalPopoverProps, 'position'> {
+export type PortalTooltipProps = Omit<PortalPopoverProps, 'position'> & {
   position?: AnyPosition;
   tooltipClassName?: string;
   triangleBorderColor?: string;
   triangleBorderWidth?: number;
   triangleColor: string;
   triangleSize?: number;
-}
+};
 
 /**
  * A portal tooltip is an extension of the PortalPopover

@@ -8,7 +8,7 @@ import { PortalPopover, PortalPopoverProps } from '../Popover/PortalPopover';
 import { PopoverContentProps, PopoverRenderChildrenProps } from '../Popover/types';
 import styles from './styles/Dropover.module.css';
 
-export interface PortalDropoverProps extends Omit<PortalPopoverProps, 'position' | 'toggler'> {
+export type PortalDropoverProps = Omit<PortalPopoverProps, 'position' | 'toggler'> & {
   align?: HorizontalPosition;
   width?: number;
   height?: number;
@@ -16,7 +16,7 @@ export interface PortalDropoverProps extends Omit<PortalPopoverProps, 'position'
   /** A passive label doesn't allow re-clicking to close the dropover */
   passiveLabel?: boolean;
   triangleSize?: number;
-}
+};
 
 const defaultOffset = {
   horizontal: -20,

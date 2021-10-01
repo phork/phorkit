@@ -6,11 +6,10 @@ export type ListRegistryItemRenderChildrenProps<E extends HTMLElement = HTMLElem
   ref: React.MutableRefObject<E>;
 };
 
-export interface ListRegistryItemProps<E extends HTMLElement = HTMLElement>
-  extends Omit<React.HTMLAttributes<E>, 'id'> {
+export type ListRegistryItemProps<E extends HTMLElement = HTMLElement> = Omit<React.HTMLAttributes<E>, 'id'> & {
   children: RenderFromPropElement<ListRegistryItemRenderChildrenProps<E>>;
   id: string;
-}
+};
 
 /**
  * The list registry item wraps a child element or

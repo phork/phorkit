@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 import { Avatar, AvatarProps } from './Avatar';
 
-export interface StyledAvatarProps extends AvatarProps {
+export type StyledAvatarProps = AvatarProps & {
   backgroundColor: string;
   textColor: string;
-}
+};
 
 /**
  * A styled avatar is an extension of the Avatar

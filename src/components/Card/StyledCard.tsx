@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 import { Card, CardProps } from './Card';
 
-export interface StyledCardProps extends CardProps {
+export type StyledCardProps = CardProps & {
   borderColor: string;
   hoveredBorderColor: string;
-}
+};
 
 /**
  * A styled card is an extension of the Card

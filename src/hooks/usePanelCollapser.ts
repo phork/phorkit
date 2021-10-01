@@ -4,7 +4,7 @@ import { useAnimationLoop } from './useAnimationLoop';
 
 export type CollapseTransition = 'squashable' | 'shiftable';
 
-export interface UsePanelCollapserProps {
+export type UsePanelCollapserProps = {
   disableHiding?: boolean;
   /** The duration of the animation (no duration results in an immediate change) */
   duration: number;
@@ -26,21 +26,21 @@ export interface UsePanelCollapserProps {
   /** Use max-[width|height] rather than [width|height] to set the size */
   useMax?: boolean;
   width?: number;
-}
+};
 
-interface DistanceInput {
+type DistanceInput = {
   from: number;
   to: number;
   percent: number;
-}
+};
 
 const distance = ({ from, to, percent }: DistanceInput): number => from + (to - from) * (percent / 100);
 
-interface GetFromToInput {
+type GetFromToInput = {
   invert?: boolean;
   size: number;
   open?: boolean;
-}
+};
 
 type GetFromToResponse = { from: number; to: number };
 
@@ -69,13 +69,13 @@ const getFromTo = ({ invert, size, open }: GetFromToInput): GetFromToResponse =>
   };
 };
 
-interface GetPropertiesInput {
+type GetPropertiesInput = {
   position: SimplePosition;
   transition: CollapseTransition;
   width?: number;
   height?: number;
   useMax?: boolean;
-}
+};
 
 type GetPropertiesResponse = {
   prop: string;

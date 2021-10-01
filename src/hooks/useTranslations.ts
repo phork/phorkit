@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 
-export interface UseTranslationsProps<T> {
+export type UseTranslationsProps<T> = {
   fallbackTranslations: T;
   customTranslations?: Partial<T>;
-}
+};
 
 /**
  * Accepts an object of fallback translations and custom

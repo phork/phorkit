@@ -9,19 +9,18 @@ import {
 } from '../../utils/measureDomNode';
 import styles from './styles/AccordionContent.module.css';
 
-export interface AccordionContentProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    Pick<UsePanelCollapserProps, 'onCloseFinish' | 'onCloseStart' | 'onOpenFinish' | 'onOpenStart'>,
-    Partial<Pick<UsePanelCollapserProps, 'duration' | 'easing'>> {
-  children: React.ReactNode;
-  className?: string;
-  disabled?: boolean;
-  focused?: boolean;
-  horizontal?: boolean;
-  parentRef: React.Ref<HTMLDivElement>;
-  selected?: boolean;
-  unstyled?: boolean;
-}
+export type AccordionContentProps = React.HTMLAttributes<HTMLDivElement> &
+  Pick<UsePanelCollapserProps, 'onCloseFinish' | 'onCloseStart' | 'onOpenFinish' | 'onOpenStart'> &
+  Partial<Pick<UsePanelCollapserProps, 'duration' | 'easing'>> & {
+    children: React.ReactNode;
+    className?: string;
+    disabled?: boolean;
+    focused?: boolean;
+    horizontal?: boolean;
+    parentRef: React.Ref<HTMLDivElement>;
+    selected?: boolean;
+    unstyled?: boolean;
+  };
 
 /**
  * The accordion content is part of an accordion item.

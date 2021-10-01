@@ -9,33 +9,32 @@ export type PopoverRenderChildrenProps = Pick<
   offset: PositionOffset;
 };
 
-export interface PopoverContentProps
-  extends Pick<UseAbsoluteCoordsProps, 'centered' | 'offset' | 'position'>,
-    React.HTMLAttributes<HTMLDivElement> {
-  alwaysRender?: boolean;
-  className?: string;
-  close: (timeout?: number) => void;
-  focusable?: boolean;
-  focusRef?: React.MutableRefObject<HTMLElement>;
-  height?: number;
-  isTogglerFocused?: boolean;
-  observe?: boolean;
-  /** A relativeRef is used by portal popovers to position the popover relative to */
-  relativeRef: React.MutableRefObject<HTMLDivElement>;
-  visible?: boolean;
-  width?: number | string;
-}
+export type PopoverContentProps = Pick<UseAbsoluteCoordsProps, 'centered' | 'offset' | 'position'> &
+  React.HTMLAttributes<HTMLDivElement> & {
+    alwaysRender?: boolean;
+    className?: string;
+    close: (timeout?: number) => void;
+    focusable?: boolean;
+    focusRef?: React.MutableRefObject<HTMLElement>;
+    height?: number;
+    isTogglerFocused?: boolean;
+    observe?: boolean;
+    /** A relativeRef is used by portal popovers to position the popover relative to */
+    relativeRef: React.MutableRefObject<HTMLDivElement>;
+    visible?: boolean;
+    width?: number | string;
+  };
 
 /** If withChildrenProps is true then it we need a renderChildren function */
-export interface PopoverContentPropsRenderChildren {
+export type PopoverContentPropsRenderChildren = {
   children?: never;
   renderChildren: RenderFromPropElement<PopoverRenderChildrenProps>;
   withChildrenProps: true;
-}
+};
 
 /** If withChildrenProps is not true then children should be a regular React node */
-export interface PopoverContentPropsChildren {
+export type PopoverContentPropsChildren = {
   children: React.ReactNode;
   renderChildren?: never;
   withChildrenProps?: false;
-}
+};

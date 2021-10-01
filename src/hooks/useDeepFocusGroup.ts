@@ -8,10 +8,10 @@ export type UseDeepFocusGroupRefWithHandle<
   H extends string = string,
 > = React.RefObject<Record<H, E>>;
 
-export interface UseDeepFocusGroupEventHandlers {
+export type UseDeepFocusGroupEventHandlers = {
   onBlur?: (id: string, event?: React.FocusEvent<HTMLElement>) => void;
   onFocus?: (id: string, event?: React.FocusEvent<HTMLElement>) => void;
-}
+};
 
 export type UseDeepFocusGroupOptions = {
   /** This allows access to the event object’s properties after the event handler has run */

@@ -11,9 +11,9 @@ export type ModalWithContextItemType = React.ReactElement<
   }
 >;
 
-export interface ModalFromContextProps extends ThemeProps {
+export type ModalFromContextProps = ThemeProps & {
   modal: ModalWithContextItemType;
-}
+};
 
 /**
  * This accepts a Modal element and its ID and it

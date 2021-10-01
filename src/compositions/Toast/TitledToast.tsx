@@ -4,9 +4,9 @@ import styles from './styles/Toast.module.css';
 import { Toast, ToastProps } from './Toast';
 import { useToastComponentIds } from './useToastComponentIds';
 
-export interface TitledToastProps extends Omit<ToastProps, 'title'> {
+export type TitledToastProps = Omit<ToastProps, 'title'> & {
   title: React.ReactNode;
-}
+};
 
 /**
  * A titled toast extends the a standard Toast by

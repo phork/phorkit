@@ -4,28 +4,27 @@ import ReactDOM from 'react-dom';
 import { useAbsoluteCoords, UseAbsoluteCoordsProps } from '../../hooks/useAbsoluteCoords';
 import styles from './styles/Portal.module.css';
 
-export interface PortalProps
-  extends Pick<UseAbsoluteCoordsProps, 'centered' | 'offset' | 'position'>,
-    React.HTMLAttributes<HTMLDivElement> {
-  /** This will render a hidden portal; otherwise hidden portals are not rendered */
-  alwaysRender?: boolean;
-  children: React.ReactNode;
-  className?: string;
-  /** This is the element that the portal will be rendered inside */
-  container?: HTMLElement;
-  /** If a portal is focusable it steals the focus away from its launcher and returns it on close */
-  focusable?: boolean;
-  /** The focus ref is applied to the element that should get the focus when the portal opens */
-  focusRef?: React.Ref<HTMLElement>;
-  height?: number;
-  initialCoords?: UseAbsoluteCoordsProps['initialCoords'];
-  observe?: boolean;
-  portal?: 'fixed' | 'absolute';
-  /** The relative ref is the element that the portal will be positioned relative to */
-  relativeRef: React.MutableRefObject<HTMLDivElement>;
-  visible?: boolean;
-  width?: number | string;
-}
+export type PortalProps = Pick<UseAbsoluteCoordsProps, 'centered' | 'offset' | 'position'> &
+  React.HTMLAttributes<HTMLDivElement> & {
+    /** This will render a hidden portal; otherwise hidden portals are not rendered */
+    alwaysRender?: boolean;
+    children: React.ReactNode;
+    className?: string;
+    /** This is the element that the portal will be rendered inside */
+    container?: HTMLElement;
+    /** If a portal is focusable it steals the focus away from its launcher and returns it on close */
+    focusable?: boolean;
+    /** The focus ref is applied to the element that should get the focus when the portal opens */
+    focusRef?: React.Ref<HTMLElement>;
+    height?: number;
+    initialCoords?: UseAbsoluteCoordsProps['initialCoords'];
+    observe?: boolean;
+    portal?: 'fixed' | 'absolute';
+    /** The relative ref is the element that the portal will be positioned relative to */
+    relativeRef: React.MutableRefObject<HTMLDivElement>;
+    visible?: boolean;
+    width?: number | string;
+  };
 
 /**
  * A portal is a container for some content that needs

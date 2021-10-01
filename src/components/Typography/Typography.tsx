@@ -37,7 +37,7 @@ export type TypographyVariants =
   | 'small-caps'
   | 'xsmall-caps';
 
-export interface LocalTypographyProps {
+export type LocalTypographyProps = {
   align?: HorizontalPosition | 'center';
   /** The children are optional so that this component can be passed as empty and then cloned */
   children?: React.ReactNode;
@@ -66,7 +66,7 @@ export interface LocalTypographyProps {
   weight?: 'lighter' | 'light' | 'regular' | 'bold' | 200 | 500 | 600;
   variants?: TypographyVariants | TypographyVariants[] | { [key in TypographyVariants]: boolean };
   volume?: Volume;
-}
+};
 
 export type TypographyProps<T extends keyof JSX.IntrinsicElements = 'span'> = AsReactType<T> &
   MergeElementPropsWithoutRef<T, LocalTypographyProps>;

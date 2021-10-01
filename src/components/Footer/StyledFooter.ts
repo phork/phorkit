@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
 import { Footer, FooterProps } from './Footer';
 
-export interface StyledFooterProps extends FooterProps {
+export type StyledFooterProps = FooterProps & {
   backgroundColor?: string;
   borderColor?: string;
   textColor?: string;
   height?: number | string;
-}
+};
 
 /**
  * A styled footer is an extension of the Footer

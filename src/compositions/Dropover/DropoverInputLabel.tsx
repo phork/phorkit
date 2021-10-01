@@ -2,12 +2,12 @@ import { cx } from '@emotion/css';
 import React from 'react';
 import styles from './styles/Dropover.module.css';
 
-export interface DropoverInputLabelProps {
+export type DropoverInputLabelProps = {
   children: React.ReactNode;
   className?: string;
   cloned?: boolean;
   focused?: boolean;
-}
+};
 
 /**
  * This accepts a form input as a child and uses

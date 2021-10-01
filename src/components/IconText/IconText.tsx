@@ -2,7 +2,7 @@ import { cx } from '@emotion/css';
 import React from 'react';
 import styles from './styles/IconText.module.css';
 
-export interface IconTextProps extends React.HTMLAttributes<HTMLDivElement> {
+export type IconTextProps = React.HTMLAttributes<HTMLDivElement> & {
   className?: string;
   icon: React.ReactElement;
   iconClassName?: string;
@@ -11,7 +11,7 @@ export interface IconTextProps extends React.HTMLAttributes<HTMLDivElement> {
   style?: React.CSSProperties;
   text: React.ReactNode;
   textClassName?: string;
-}
+};
 
 /**
  * The icon text component is used to line up an icon

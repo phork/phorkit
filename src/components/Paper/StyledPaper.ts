@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
 import { Paper, PaperProps } from './Paper';
 
-export interface StyledPaperProps extends Omit<PaperProps, 'color'> {
+export type StyledPaperProps = Omit<PaperProps, 'color'> & {
   backgroundColor: string;
   borderColor: string;
   textColor: string;
   scrollbarColor: string;
-}
+};
 
 /**
  * The styled paper is an extension of the Paper

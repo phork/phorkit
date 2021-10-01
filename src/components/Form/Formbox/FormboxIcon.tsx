@@ -12,7 +12,7 @@ export type FormboxIconRenderProps = {
   tabIndex?: number;
 };
 
-export interface FormboxIconProps {
+export type FormboxIconProps = {
   actionable?: boolean;
   className?: string;
   icon: RenderFromPropElement<FormboxIconRenderProps & { size?: number; scale?: IconScale }>;
@@ -20,7 +20,7 @@ export interface FormboxIconProps {
   onFocus?: (event: React.FocusEvent<HTMLElement>, position: FormboxIconPosition) => void;
   position: FormboxIconPosition;
   variant: FormboxVariant;
-}
+};
 
 /**
  * The formbox icon adds all the necessary styles around

@@ -11,11 +11,11 @@ const variables = require('../../postcss/vars/index');
 
 type RenderFromPropProps = { themeId?: Theme };
 
-interface CommonThemeWrapperProps {
+type CommonThemeWrapperProps = {
   contrast?: boolean;
   style?: React.CSSProperties;
   variant?: SequentialVariant;
-}
+};
 
 type ThemeWrapperPropsWithThemeId = {
   children: RenderFromPropElement<RenderFromPropProps>;

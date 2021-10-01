@@ -5,10 +5,10 @@ import { themes, ThemeColors, ThemeColorIds } from '../../config';
 import { withTheme } from '../../context/Theme';
 import { Tag, TagProps } from './Tag';
 
-export interface ColoredTagProps extends TagProps {
+export type ColoredTagProps = TagProps & {
   colorId: ThemeColorIds;
   themeId: Theme;
-}
+};
 
 const StyledTag = styled(Tag, {
   shouldForwardProp: (prop: string) => !['colorId', 'themeId'].includes(prop),

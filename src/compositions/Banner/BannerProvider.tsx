@@ -5,9 +5,9 @@ import { BannerContext, BannerContextValue } from './BannerContext';
 import { bannerActions as ACTIONS } from './bannerActions';
 import { bannerReducer as reducer, BannerState } from './bannerReducer';
 
-export interface BannerProviderProps {
+export type BannerProviderProps = {
   children: React.ReactNode;
-}
+};
 
 /**
  * The banner provider tracks a collection of banners
