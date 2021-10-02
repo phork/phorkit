@@ -15,7 +15,7 @@ export const StyledTitledToast = ({ levelColor, levelInverseColor, style, ...pro
   return (
     <TitledToast
       {...props}
-      level="custom"
+      unthemed
       style={
         {
           '--toast-level-color': levelColor,
@@ -44,7 +44,7 @@ export const StyledTitledToast = styled(TitledToast, {
 `;
 
 StyledTitledToast.defaultProps = {
-  level: 'custom',
+  unthemed: true,
 };
 */
 
