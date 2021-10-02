@@ -15,7 +15,7 @@ export const StyledIconToast = ({ levelColor, levelInverseColor, style, ...props
   return (
     <IconToast
       {...props}
-      level="custom"
+      unthemed
       style={
         {
           '--toast-level-color': levelColor,
@@ -44,7 +44,7 @@ export const StyledIconToast = styled(IconToast, {
 `;
 
 StyledIconToast.defaultProps = {
-  level: 'custom',
+  unthemed: true,
 };
 */
 

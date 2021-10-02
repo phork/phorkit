@@ -5,10 +5,11 @@ import { lowerCamelize } from '../../utils/case';
 import styles from './styles/ToastContainer.module.css';
 import { ToastContainerPosition } from './types';
 
-export type ToastContainerProps = {
+export type ToastContainerProps = React.HTMLAttributes<HTMLDivElement> & {
   children: React.ReactNode;
   className?: string;
   position: ToastContainerPosition;
+  style?: React.CSSProperties;
 };
 
 /**
@@ -21,6 +22,7 @@ export function ToastContainer({
   children,
   className,
   position = 'bottom-right',
+  ...props
 }: ToastContainerProps): React.ReactPortal | null {
   return typeof document !== 'undefined'
     ? ReactDOM.createPortal(
@@ -30,6 +32,7 @@ export function ToastContainer({
             position && styles[`toastContainer--${lowerCamelize(position)}`],
             className,
           )}
+          {...props}
         >
           {children}
         </div>,

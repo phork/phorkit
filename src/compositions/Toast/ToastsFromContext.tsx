@@ -2,14 +2,16 @@ import React from 'react';
 import { ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import { ToastConsumer } from './ToastConsumer';
-import { ToastContainer } from './ToastContainer';
+import { ToastContainer, ToastContainerProps } from './ToastContainer';
 import { ToastFromContext } from './ToastFromContext';
 import { ToastContainerPosition } from './types';
 
-export type ToastsFromContextProps = ThemeProps & {
-  position: ToastContainerPosition;
-  variant?: 'colored';
-};
+export type ToastsFromContextProps = Omit<ToastContainerProps, 'children'> &
+  Omit<ThemeProps, 'contrast' | 'unstyled'> & {
+    position: ToastContainerPosition;
+    style?: React.CSSProperties;
+    variant?: 'colored';
+  };
 
 /**
  * This consumes the toasts from the ToastProvider
