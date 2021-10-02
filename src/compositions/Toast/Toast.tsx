@@ -24,10 +24,10 @@ export const toastTranslations: ToastTranslations = {
   pinNotificationLabel: 'Pin notification',
 };
 
-export type LocalToastProps = ThemeProps & {
+export type LocalToastProps = Omit<ThemeProps, 'contrast'> & {
   children: React.ReactNode;
   className?: string;
-  /** The context ID is used by both the modal system and the aria-label system */
+  /** The context ID is used by both the toast system and the aria-label system */
   contextId?: string;
   /** The value of Date.now() when the toast was created used to render the countdown bar */
   created?: number;
@@ -38,6 +38,8 @@ export type LocalToastProps = ThemeProps & {
   level?: ToastNotificationLevel;
   onClose?: (event?: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, id?: string) => void;
   onPin?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, id?: string) => void;
+  permanent?: boolean;
+  style?: React.CSSProperties;
   translations?: ToastTranslations;
   variant?: 'colored';
 };
@@ -45,7 +47,7 @@ export type LocalToastProps = ThemeProps & {
 export type ToastProps = MergeElementPropsWithoutRef<'div', LocalToastProps>;
 
 /**
- * A toast is a small rectangular notification. It has a
+ * A toast is a small notification that pops up. It has a
  * background color based on the level prop, a close button,
  * and an optional duration after which the toast will be
  * removed. If it has a duration and an onPin callback it
@@ -64,8 +66,10 @@ export function Toast({
   level = 'info',
   onClose,
   onPin,
+  permanent,
   themeId: initThemeId,
   translations: customTranslations,
+  unthemed,
   variant,
   ...props
 }: ToastProps): React.ReactElement<ToastProps> {
@@ -108,7 +112,7 @@ export function Toast({
       aria-label={`${ucfirst(level)} notification`}
       className={cx(
         styles.toast,
-        level && level !== 'custom' && styles[`toast--${level}`],
+        level && !unthemed && styles[`toast--${level}`],
         themeId && styles[`toast--${themeId}`],
         variant && styles[`toast--${variant}`],
         !immediate && styles['toast--transitional'],
@@ -130,7 +134,7 @@ export function Toast({
             <PinIcon scale="xsmall" title={pinNotificationLabel} />
           </IconButton>
         )}
-        {onClose && (
+        {onClose && !permanent && (
           <IconButton<'button'>
             aria-label={closeNotificationLabel}
             as="button"

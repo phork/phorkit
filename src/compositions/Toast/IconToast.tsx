@@ -10,6 +10,7 @@ export type IconToastProps = ToastProps & {
   icon: React.FC<SvgIconProps>;
   iconSize?: number;
   level?: ToastNotificationLevel;
+  title?: string;
   variant?: 'colored';
 };
 
