@@ -7,7 +7,7 @@ import { ToastFromContext } from './ToastFromContext';
 import { ToastContainerPosition } from './types';
 
 export type ToastsFromContextProps = Omit<ToastContainerProps, 'children'> &
-  Omit<ThemeProps, 'contrast' | 'unstyled'> & {
+  Omit<ThemeProps, 'contrast' | 'unthemed'> & {
     position: ToastContainerPosition;
     style?: React.CSSProperties;
     variant?: 'colored';

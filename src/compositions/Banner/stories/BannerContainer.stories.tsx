@@ -29,6 +29,14 @@ export default {
         category: 'Uncommon',
       },
     },
+    themeId: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: 'Uncommon',
+      },
+    },
   },
   parameters: {
     controls: {
@@ -58,30 +66,27 @@ const Template: ComponentStory<typeof BannerContainer> = args => <BannerContaine
 const defaultArgs = {
   children: (
     <React.Fragment>
-      <Banner immediate level="primary" onClose={action('closed banner')}>
-        This is a primary banner.
+      <Banner immediate level="info" onClose={action('closed banner')}>
+        This is an info banner because something interesting happened. Exciting!
       </Banner>
-      <Banner immediate level="primary" onClose={action('closed banner')}>
-        This is another primary banner. It has a border to distinguish it from the one above.
+      <Banner immediate level="info" onClose={action('closed banner')}>
+        This is another info banner. It has a border to distinguish it from the one above.
       </Banner>
-      <Banner immediate level="secondary" onClose={action('closed banner')}>
-        This is a secondary banner.
-      </Banner>
-      <Banner immediate level="secondary" onClose={action('closed banner')}>
-        This is another secondary banner. It has a border to distinguish it from the one above.
-      </Banner>
-      <Banner immediate level="tertiary" onClose={action('closed banner')}>
-        This is a tertiary banner.
-      </Banner>
-      <Banner immediate level="tertiary" onClose={action('closed banner')}>
-        This is another tertiary banner. It has a border to distinguish it from the one above.
-      </Banner>
-      <Banner immediate level="transparent" onClose={action('closed banner')}>
-        This is a transparent banner.
-      </Banner>
-      <Banner immediate level="transparent" onClose={action('closed banner')}>
-        This is another transparent banner. It has a border to distinguish it from the one above.
-      </Banner>
+    </React.Fragment>
+  ),
+};
+
+export const Default = Template.bind({});
+Default.args = {
+  ...defaultArgs,
+};
+
+export const State = Template.bind({});
+State.storyName = 'State banners';
+State.args = {
+  ...defaultArgs,
+  children: (
+    <React.Fragment>
       <Banner immediate level="info" onClose={action('closed banner')}>
         This is an info banner because something interesting happened. Exciting!
       </Banner>
@@ -116,7 +121,36 @@ const defaultArgs = {
   ),
 };
 
-export const Default = Template.bind({});
-Default.args = {
+export const Page = Template.bind({});
+Page.storyName = 'Page banners';
+Page.args = {
   ...defaultArgs,
+  children: (
+    <React.Fragment>
+      <Banner immediate level="primary" onClose={action('closed banner')}>
+        This is a primary banner.
+      </Banner>
+      <Banner immediate level="primary" onClose={action('closed banner')}>
+        This is another primary banner. It has a border to distinguish it from the one above.
+      </Banner>
+      <Banner immediate level="secondary" onClose={action('closed banner')}>
+        This is a secondary banner.
+      </Banner>
+      <Banner immediate level="secondary" onClose={action('closed banner')}>
+        This is another secondary banner. It has a border to distinguish it from the one above.
+      </Banner>
+      <Banner immediate level="tertiary" onClose={action('closed banner')}>
+        This is a tertiary banner.
+      </Banner>
+      <Banner immediate level="tertiary" onClose={action('closed banner')}>
+        This is another tertiary banner. It has a border to distinguish it from the one above.
+      </Banner>
+      <Banner immediate level="transparent" onClose={action('closed banner')}>
+        This is a transparent banner.
+      </Banner>
+      <Banner immediate level="transparent" onClose={action('closed banner')}>
+        This is another transparent banner. It has a border to distinguish it from the one above.
+      </Banner>
+    </React.Fragment>
+  ),
 };

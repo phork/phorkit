@@ -23,7 +23,7 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
           immediate
           contextId="demo-banner-primary1"
           level="primary"
-          onClose={(event, contextid) => console.log(`closed ${contextid}`)}
+          onClose={(event, contextId) => console.log(`closed ${contextId}`)}
         >
           This is a primary banner.
         </Banner>
@@ -31,7 +31,7 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
           immediate
           contextId="demo-banner-primary2"
           level="primary"
-          onClose={(event, contextid) => console.log(`closed ${contextid}`)}
+          onClose={(event, contextId) => console.log(`closed ${contextId}`)}
         >
           This is another primary banner. It has a border to distinguish it from the one above.
         </Banner>
@@ -39,7 +39,7 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
           immediate
           contextId="demo-banner-secondary1"
           level="secondary"
-          onClose={(event, contextid) => console.log(`closed ${contextid}`)}
+          onClose={(event, contextId) => console.log(`closed ${contextId}`)}
         >
           This is a secondary banner.
         </Banner>
@@ -47,7 +47,7 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
           immediate
           contextId="demo-banner-secondary2"
           level="secondary"
-          onClose={(event, contextid) => console.log(`closed ${contextid}`)}
+          onClose={(event, contextId) => console.log(`closed ${contextId}`)}
         >
           This is another secondary banner. It has a border to distinguish it from the one above.
         </Banner>
@@ -55,7 +55,7 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
           immediate
           contextId="demo-banner-tertiary1"
           level="tertiary"
-          onClose={(event, contextid) => console.log(`closed ${contextid}`)}
+          onClose={(event, contextId) => console.log(`closed ${contextId}`)}
         >
           This is a tertiary banner.
         </Banner>
@@ -63,7 +63,7 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
           immediate
           contextId="demo-banner-tertiary2"
           level="tertiary"
-          onClose={(event, contextid) => console.log(`closed ${contextid}`)}
+          onClose={(event, contextId) => console.log(`closed ${contextId}`)}
         >
           This is another tertiary banner. It has a border to distinguish it from the one above.
         </Banner>
@@ -71,7 +71,7 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
           immediate
           contextId="demo-banner-transparent1"
           level="transparent"
-          onClose={(event, contextid) => console.log(`closed ${contextid}`)}
+          onClose={(event, contextId) => console.log(`closed ${contextId}`)}
         >
           This is a transparent banner.
         </Banner>
@@ -79,7 +79,7 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
           immediate
           contextId="demo-banner-transparent2"
           level="transparent"
-          onClose={(event, contextid) => console.log(`closed ${contextid}`)}
+          onClose={(event, contextId) => console.log(`closed ${contextId}`)}
         >
           This is another transparent banner. It has a border to distinguish it from the one above.
         </Banner>
@@ -183,7 +183,7 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
                   <Banner
                     contextId="demo-banner-success"
                     level="success"
-                    onClose={(event, contextid) => console.log(`closed ${contextid}`)}
+                    onClose={(event, contextId) => console.log(`closed ${contextId}`)}
                   >
                     This is an overwriting success banner because it's got a contextId. Yay!
                     <div style={{ position: 'absolute', right: '8px', fontSize: '10px', opacity: 0.4 }}>

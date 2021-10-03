@@ -57,7 +57,6 @@ export default {
         component: 'A complete system for creating and removing banners.',
       },
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Banners>;
 
@@ -116,7 +115,7 @@ const Template: ComponentStory<typeof Banners> = ({ style, ...args }) => (
                 <Banner
                   contextId="demo-banner-success"
                   level="success"
-                  onClose={(_event, contextid) => action(`closed ${contextid}`)}
+                  onClose={(_event, contextId) => action(`closed ${contextId}`)}
                 >
                   This is an overwriting success banner because it's got a contextId. Yay!
                   <div style={{ position: 'absolute', right: '8px', fontSize: '10px', opacity: 0.4 }}>{Date.now()}</div>

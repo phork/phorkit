@@ -5,6 +5,7 @@ import React from 'react';
 import { Button } from 'components/Button/Button';
 import { ButtonGroup } from 'components/Button/ButtonGroup';
 import { PageTitle } from 'stories/helpers/PageTitle';
+import { ToastsProps } from '../..';
 import { Toast } from '../Toast';
 import { ToastConsumer } from '../ToastConsumer';
 import { Toasts } from '../Toasts';
@@ -70,7 +71,6 @@ export default {
         component: 'A complete system for creating and removing toasts.',
       },
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Toasts>;
 
@@ -130,7 +130,7 @@ const Template: ComponentStory<typeof Toasts> = args => (
                   contextId="demo-toast-success"
                   key="success"
                   level="success"
-                  onClose={(_event, contextid) => action(`closed ${contextid}`)}
+                  onClose={(_event, contextId) => action(`closed ${contextId}`)}
                 >
                   This is an overwriting success toast because it's got a contextId. Yay!
                   <div style={{ position: 'absolute', right: '8px', fontSize: '10px', opacity: 0.4 }}>{Date.now()}</div>
@@ -150,7 +150,9 @@ const Template: ComponentStory<typeof Toasts> = args => (
   </Toasts>
 );
 
-const defaultArgs = {};
+const defaultArgs = {
+  position: 'bottom-right' as ToastsProps['position'],
+};
 
 export const Default = Template.bind({});
 Default.args = {
