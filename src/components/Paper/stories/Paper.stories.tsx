@@ -114,7 +114,6 @@ export default {
           'The paper component sets the text color and adds a background color and optional border and scrollbars around its children.',
       },
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Paper>;
 

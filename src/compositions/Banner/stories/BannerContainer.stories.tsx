@@ -57,7 +57,6 @@ export default {
         component: 'A banner container wraps one or more banners and adds a border between banners of the same level.',
       },
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof BannerContainer>;
 
