@@ -19,7 +19,9 @@ export default {
       },
     },
     size: {
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Appearance',
       },
@@ -192,7 +194,9 @@ export default {
       },
     },
     inputWidth: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
       table: {
         category: 'Uncommon',
       },

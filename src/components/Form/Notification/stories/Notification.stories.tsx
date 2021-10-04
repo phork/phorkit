@@ -9,7 +9,9 @@ export default {
   component: Notification,
   argTypes: {
     children: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
     },
 
     color: {

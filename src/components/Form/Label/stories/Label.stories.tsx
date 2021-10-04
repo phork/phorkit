@@ -8,7 +8,9 @@ export default {
   component: Label,
   argTypes: {
     children: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
     },
 
     disabled: {

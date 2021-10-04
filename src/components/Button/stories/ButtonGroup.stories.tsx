@@ -16,56 +16,72 @@ export default {
   argTypes: {
     align: {
       options: ['left', 'center', 'right'],
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Appearance',
       },
     },
     color: {
       options: ['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white'],
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Appearance',
       },
     },
     display: {
       options: ['inline', 'block', undefined],
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Appearance',
       },
     },
     orientation: {
       options: ['horizontal', 'vertical'],
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Appearance',
       },
     },
     shape: {
       options: ['pill', 'brick'],
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Appearance',
       },
     },
     size: {
       options: ['small', 'medium', 'large'],
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Appearance',
       },
     },
     spacing: {
       options: ['divided', 'joined', 'cozy', 'comfy'],
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Appearance',
       },
     },
     weight: {
       options: ['solid', 'shaded', 'outlined', 'ghost', 'inline'],
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Appearance',
       },
@@ -73,7 +89,9 @@ export default {
 
     selectedColor: {
       options: ['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white', undefined],
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Selected appearance',
       },
@@ -85,7 +103,9 @@ export default {
     },
     selectedWeight: {
       options: ['solid', 'shaded', 'outlined', 'ghost', 'inline', undefined],
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Selected appearance',
       },

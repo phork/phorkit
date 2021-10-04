@@ -9,7 +9,9 @@ export default {
   component: Link,
   argTypes: {
     children: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
     },
 
     underline: {
@@ -18,7 +20,9 @@ export default {
       },
     },
     block: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
       table: {
         category: 'Appearance',
       },

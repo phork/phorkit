@@ -15,21 +15,27 @@ export default {
     },
     shape: {
       options: ['pill', 'brick'],
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Appearance',
       },
     },
     size: {
       options: ['small', 'medium', 'large'],
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Appearance',
       },
     },
     weight: {
       options: ['solid', 'shaded', 'outlined', 'ghost', 'inline'],
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Appearance',
       },

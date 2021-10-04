@@ -10,35 +10,41 @@ export default {
   component: IconToast,
   argTypes: {
     children: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
     },
 
     icon: {
-      control: { disabled: true },
+      control: {
+        disable: true,
+      },
       table: {
-        category: 'Primary',
+        category: 'Appearance',
       },
     },
     iconSize: {
       table: {
-        category: 'Primary',
+        category: 'Appearance',
       },
     },
     level: {
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
-        category: 'Primary',
+        category: 'Appearance',
       },
     },
     title: {
       table: {
-        category: 'Primary',
+        category: 'Appearance',
       },
     },
     variant: {
       options: ['colored', undefined],
       table: {
-        category: 'Primary',
+        category: 'Appearance',
       },
     },
 

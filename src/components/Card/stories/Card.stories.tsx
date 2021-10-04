@@ -30,7 +30,9 @@ export default {
     },
     raised: {
       options: [false, 10, 20, 30, 40, 100],
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Appearance',
       },

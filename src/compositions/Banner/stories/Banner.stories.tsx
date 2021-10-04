@@ -9,7 +9,9 @@ export default {
   component: Banner,
   argTypes: {
     children: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
     },
 
     className: {

@@ -9,7 +9,9 @@ export default {
   component: Checkbox,
   argTypes: {
     children: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
     },
 
     full: {

@@ -55,7 +55,9 @@ export default {
       },
     },
     percent: {
-      control: { type: 'number' },
+      control: {
+        type: 'number',
+      },
       table: {
         category: 'State',
       },

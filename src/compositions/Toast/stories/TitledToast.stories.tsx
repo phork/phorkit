@@ -9,24 +9,28 @@ export default {
   component: TitledToast,
   argTypes: {
     children: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
     },
 
     level: {
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
-        category: 'Primary',
+        category: 'Appearance',
       },
     },
     title: {
       table: {
-        category: 'Primary',
+        category: 'Appearance',
       },
     },
     variant: {
       options: ['colored', undefined],
       table: {
-        category: 'Primary',
+        category: 'Appearance',
       },
     },
 

@@ -10,13 +10,17 @@ export default {
   argTypes: {
     bordered: {
       options: [false, true, 'pseudo'],
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Appearance',
       },
     },
     children: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
     },
     full: {
       table: {
@@ -29,13 +33,17 @@ export default {
       },
     },
     variant: {
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Appearance',
       },
     },
     volume: {
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Appearance',
       },

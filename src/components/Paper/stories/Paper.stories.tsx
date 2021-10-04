@@ -28,7 +28,9 @@ export default {
   component: Paper,
   argTypes: {
     children: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
     },
 
     bordered: {
@@ -37,7 +39,9 @@ export default {
       },
     },
     color: {
-      control: { type: 'select' },
+      control: {
+        type: 'select',
+      },
       table: {
         category: 'Appearance',
       },
@@ -70,7 +74,9 @@ export default {
     },
     scrollbar: {
       options: ['xsmall', 'small', 'medium'],
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Appearance',
       },

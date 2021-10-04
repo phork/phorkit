@@ -19,13 +19,13 @@ export const modalTranslations: ModalTranslations = {
   closeLabel: 'Close modal',
 };
 
-type RenderProps = { focusRef?: React.MutableRefObject<HTMLElement | null>; id?: string };
+type RenderProps<E extends HTMLElement = HTMLElement> = { focusRef?: React.MutableRefObject<E | null>; id?: string };
 
-export type ModalProps = ThemeProps & {
+export type ModalProps<E extends HTMLElement = HTMLElement> = Omit<ThemeProps, 'contrast' | 'unthemed'> & {
   allowOverflow?: boolean;
   /** If a header isn't included with a title this should be used to label the modal */
   ariaLabel?: string;
-  children: ((props: RenderProps) => React.ReactElement) | React.ReactElement | React.ReactElement[];
+  children: ((props: RenderProps<E>) => React.ReactElement) | React.ReactElement | React.ReactElement[];
   className?: string;
   /** The context ID is used by both the modal system and the aria-label system */
   contextId?: string;
@@ -37,6 +37,7 @@ export type ModalProps = ThemeProps & {
   /** A permanent modal doesn't have a close button */
   permanent?: boolean;
   size?: 'small' | 'medium' | 'large' | 'xlarge';
+  style?: React.CSSProperties;
   translations?: ModalTranslations;
 };
 
@@ -53,7 +54,7 @@ export type ModalProps = ThemeProps & {
  *
  * This uses the IconButton component.
  */
-export function Modal({
+export function Modal<E extends HTMLElement = HTMLElement>({
   allowOverflow = false,
   ariaLabel,
   children,
@@ -67,9 +68,9 @@ export function Modal({
   themeId: initThemeId,
   translations: customTranslations,
   ...props
-}: ModalProps): React.ReactElement<ModalProps> {
+}: ModalProps<E>): React.ReactElement<ModalProps> {
   const ref = useRef<HTMLDivElement>(null!);
-  const focusRef = useRef<HTMLElement>(null!);
+  const focusRef = useRef<E>(null!);
   const themeId = useThemeId(initThemeId);
   const { setSafeTimeout } = useSafeTimeout();
   const [hasTransitioned, setHasTransitioned] = useState<boolean>(immediate || false);

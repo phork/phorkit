@@ -10,7 +10,9 @@ export default {
   argTypes: {
     color: {
       options: ['primary', 'neutral'],
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Appearance',
       },
@@ -27,7 +29,9 @@ export default {
     },
     size: {
       options: ['xsmall', 'small', 'medium', 'large', 'xlarge'],
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Appearance',
       },
@@ -38,7 +42,9 @@ export default {
       },
     },
     variant: {
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Appearance',
       },

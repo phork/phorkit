@@ -9,20 +9,26 @@ export default {
   argTypes: {
     orientation: {
       options: ['horizontal', 'vertical'],
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Appearance',
       },
     },
     variant: {
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Appearance',
       },
     },
     volume: {
       options: ['quiet', 'quieter', 'quietest', undefined],
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Appearance',
       },

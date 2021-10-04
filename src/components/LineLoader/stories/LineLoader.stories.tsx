@@ -15,32 +15,42 @@ export default {
   component: LineLoader,
   argTypes: {
     fixed: {
-      control: { type: 'boolean' },
+      control: {
+        type: 'boolean',
+      },
       table: {
         category: 'Appearance',
       },
     },
     position: {
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Appearance',
       },
     },
 
     duration: {
-      control: { type: 'number' },
+      control: {
+        type: 'number',
+      },
       table: {
         category: 'Animation',
       },
     },
     loops: {
-      control: { type: 'number' },
+      control: {
+        type: 'number',
+      },
       table: {
         category: 'Animation',
       },
     },
     percent: {
-      control: { type: 'number' },
+      control: {
+        type: 'number',
+      },
       table: {
         category: 'Animation',
       },
