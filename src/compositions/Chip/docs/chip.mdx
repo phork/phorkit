@@ -12,7 +12,7 @@ import { IconButton } from 'components/Button';
 import { Rhythm } from 'components/Rhythm';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { Chip } from '../index';
+import { Chip, StyledChip } from '../index';
 
 <PageTitle src="compositions/Chip" title="Chip" />
 
@@ -49,25 +49,23 @@ import { Chip } from '../index';
         size="small"
         text="Hello world"
       />
-      <Chip
+      <StyledChip
         actionable
-        unthemed
         avatar={{
           initials: 'EC',
         }}
+        avatarBackgroundColor="#f41150"
+        avatarTextColor="#fff"
         icon={
           <Rhythm mr={2}>
             <CheckIcon scale="medium" />
           </Rhythm>
         }
         size="small"
-        style={{
-          '--avatar-background-color': '#f41150',
-          '--avatar-text-color': '#fff',
-          '--tag-primary-color': '#f41150',
-          '--tag-inverse-color': '#fff',
-        }}
-        text="Hello world"
+        tagActivePrimaryColor="#da0a44"
+        tagHoveredPrimaryColor="#d64072"
+        tagInverseColor="#fff"
+        tagPrimaryColor="#f41150"
         text="Hello world"
       />
     </Rhythm>
@@ -107,24 +105,23 @@ import { Chip } from '../index';
         size="medium"
         text="Hello world"
       />
-      <Chip
+      <StyledChip
         actionable
-        unthemed
         avatar={{
           initials: 'EC',
         }}
+        avatarBackgroundColor="#f41150"
+        avatarTextColor="#fff"
         icon={
           <Rhythm mr={2}>
             <CheckIcon scale="medium" />
           </Rhythm>
         }
         size="medium"
-        style={{
-          '--avatar-background-color': '#f41150',
-          '--avatar-text-color': '#fff',
-          '--tag-primary-color': '#f41150',
-          '--tag-inverse-color': '#fff',
-        }}
+        tagActivePrimaryColor="#da0a44"
+        tagHoveredPrimaryColor="#d64072"
+        tagInverseColor="#fff"
+        tagPrimaryColor="#f41150"
         text="Hello world"
       />
     </Rhythm>
@@ -164,24 +161,23 @@ import { Chip } from '../index';
         size="large"
         text="Hello world"
       />
-      <Chip
+      <StyledChip
         actionable
-        unthemed
         avatar={{
           initials: 'EC',
         }}
+        avatarBackgroundColor="#f41150"
+        avatarTextColor="#fff"
         icon={
           <Rhythm mr={2}>
             <CheckIcon size={18} />
           </Rhythm>
         }
         size="large"
-        style={{
-          '--avatar-background-color': '#f41150',
-          '--avatar-text-color': '#fff',
-          '--tag-primary-color': '#f41150',
-          '--tag-inverse-color': '#fff',
-        }}
+        tagActivePrimaryColor="#da0a44"
+        tagHoveredPrimaryColor="#d64072"
+        tagInverseColor="#fff"
+        tagPrimaryColor="#f41150"
         text="Hello world"
       />
     </Rhythm>
@@ -190,4 +186,10 @@ import { Chip } from '../index';
 
 ## \[props\]
 
+### Chip
+
 <Props of={Chip} />
+
+### StyledChip
+
+<Props of={StyledChip} />
