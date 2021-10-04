@@ -8,17 +8,23 @@ export default {
   component: Typography,
   argTypes: {
     children: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
     },
 
     align: {
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Appearance',
       },
     },
     color: {
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Appearance',
       },
@@ -29,7 +35,9 @@ export default {
       },
     },
     heading: {
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Appearance',
       },
@@ -69,19 +77,25 @@ export default {
         'small-caps',
         'xsmall-caps',
       ],
-      control: { type: 'check' },
+      control: {
+        type: 'check',
+      },
       table: {
         category: 'Appearance',
       },
     },
     volume: {
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Appearance',
       },
     },
     weight: {
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Appearance',
       },

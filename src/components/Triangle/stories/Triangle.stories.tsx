@@ -8,7 +8,9 @@ export default {
   component: Triangle,
   argTypes: {
     color: {
-      control: { type: 'color' },
+      control: {
+        type: 'color',
+      },
       category: 'Appearance',
     },
     position: {

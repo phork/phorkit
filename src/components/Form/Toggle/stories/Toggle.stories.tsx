@@ -9,7 +9,9 @@ export default {
   component: Toggle,
   argTypes: {
     children: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
     },
 
     full: {

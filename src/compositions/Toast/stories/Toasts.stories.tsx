@@ -21,15 +21,17 @@ export default {
     },
 
     position: {
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
-        category: 'Primary',
+        category: 'Appearance',
       },
     },
     variant: {
       options: ['colored', undefined],
       table: {
-        category: 'Primary',
+        category: 'Appearance',
       },
     },
 

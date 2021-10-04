@@ -19,31 +19,41 @@ export default {
 
     direction: {
       options: ['row', 'column'],
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Flexbox',
       },
     },
     alignContent: {
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Flexbox',
       },
     },
     alignItems: {
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Flexbox',
       },
     },
     alignSelf: {
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Flexbox',
       },
     },
     justifyContent: {
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Flexbox',
       },

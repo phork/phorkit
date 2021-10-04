@@ -18,7 +18,9 @@ export default {
       },
     },
     legend: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
       table: {
         category: 'Appearance',
       },

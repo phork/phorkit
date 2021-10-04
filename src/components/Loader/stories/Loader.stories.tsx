@@ -10,19 +10,25 @@ export default {
   component: Loader,
   argTypes: {
     position: {
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Appearance',
       },
     },
     scale: {
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Appearance',
       },
     },
     size: {
-      control: { type: 'number' },
+      control: {
+        type: 'number',
+      },
       table: {
         category: 'Appearance',
       },

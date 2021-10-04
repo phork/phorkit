@@ -12,7 +12,9 @@ export default {
       control: { disable: true },
     },
     legend: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
     },
 
     className: {

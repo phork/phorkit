@@ -14,7 +14,9 @@ export default {
   argTypes: {
     colorId: {
       options: getPrimaryColorIds('light'),
-      control: { type: 'select' },
+      control: {
+        type: 'select',
+      },
       table: {
         category: 'Color',
       },

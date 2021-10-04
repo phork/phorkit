@@ -5,7 +5,7 @@ import { ModalConsumer } from './ModalConsumer';
 import { ModalContainer, ModalContainerProps } from './ModalContainer';
 import { ModalFromContext } from './ModalFromContext';
 
-export type ModalsFromContextProps = Omit<ModalContainerProps, 'onEscape'> & ThemeProps;
+export type ModalsFromContextProps = Omit<ModalContainerProps, 'onEscape'> & Omit<ThemeProps, 'contrast' | 'unthemed'>;
 
 /**
  * This consumes the modals from the ModalProvider

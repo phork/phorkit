@@ -8,7 +8,9 @@ export default {
   component: Tag,
   argTypes: {
     children: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
     },
 
     actionable: {

@@ -14,14 +14,18 @@ export default {
     },
     color: {
       options: ['primary', 'neutral'],
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Appearance',
       },
     },
     size: {
       options: ['xsmall', 'small', 'medium', 'large', 'xlarge', '2xlarge', '3xlarge'],
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Appearance',
       },

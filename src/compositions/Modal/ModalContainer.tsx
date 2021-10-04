@@ -8,6 +8,7 @@ export type ModalContainerProps = {
   children?: React.ReactNode;
   className?: string;
   onEscape: () => void;
+  style?: React.CSSProperties;
 };
 
 /**

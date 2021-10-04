@@ -8,7 +8,9 @@ export default {
   component: Radio,
   argTypes: {
     children: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
     },
 
     full: {

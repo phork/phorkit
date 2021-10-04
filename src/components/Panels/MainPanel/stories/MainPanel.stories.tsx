@@ -10,7 +10,9 @@ export default {
   component: MainPanel,
   argTypes: {
     children: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
     },
 
     className: {

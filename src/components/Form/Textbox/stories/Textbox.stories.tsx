@@ -21,7 +21,9 @@ export default {
       },
     },
     label: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
       table: {
         category: 'Appearance',
       },
@@ -32,7 +34,9 @@ export default {
       },
     },
     size: {
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Appearance',
       },
@@ -59,7 +63,9 @@ export default {
       },
     },
     width: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
       table: {
         category: 'Appearance',
       },
@@ -179,7 +185,9 @@ export default {
       },
     },
     value: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
       table: {
         category: 'Input',
       },
@@ -285,7 +293,9 @@ export default {
       },
     },
     inputWidth: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
       table: {
         category: 'Uncommon',
       },

@@ -10,11 +10,15 @@ export default {
   component: Badge,
   argTypes: {
     children: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
     },
 
     color: {
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Appearance',
       },
@@ -31,13 +35,17 @@ export default {
     },
     position: {
       options: ['top-left', 'top-right', 'bottom-left', 'bottom-right', undefined],
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Appearance',
       },
     },
     shape: {
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Appearance',
       },

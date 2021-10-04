@@ -11,7 +11,9 @@ export default {
   component: StackPanel,
   argTypes: {
     children: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
     },
 
     fixed: {
@@ -31,7 +33,9 @@ export default {
     },
     position: {
       options: ['top', 'bottom'],
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Appearance',
       },
@@ -43,7 +47,9 @@ export default {
     },
     unit: {
       options: ['px', 'percent'],
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Appearance',
       },
@@ -60,7 +66,9 @@ export default {
       },
     },
     transition: {
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Animation',
       },

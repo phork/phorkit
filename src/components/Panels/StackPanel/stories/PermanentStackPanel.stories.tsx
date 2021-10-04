@@ -11,7 +11,9 @@ export default {
   component: PermanentStackPanel,
   argTypes: {
     children: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
     },
 
     fixed: {
@@ -26,7 +28,9 @@ export default {
     },
     position: {
       options: ['left', 'right'],
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Appearance',
       },
@@ -38,7 +42,9 @@ export default {
     },
     unit: {
       options: ['px', 'percent'],
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Appearance',
       },

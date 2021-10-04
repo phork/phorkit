@@ -27,7 +27,9 @@ export default {
     },
     orientation: {
       options: ['vertical', 'horizontal'],
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Appearance',
       },

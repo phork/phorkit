@@ -128,7 +128,9 @@ export default {
   component: ${component},
   argTypes: {
     children: {
-      control: { type: 'text' },
+      control: { 
+        type: 'text',
+      },
     },
 
     className: {

@@ -10,25 +10,33 @@ export default {
   component: MultiColorSlider,
   argTypes: {
     children: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
     },
 
     scale: {
       options: ['small', undefined],
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Appearance',
       },
     },
     valuePosition: {
       options: ['top', 'right', undefined],
-      control: { type: 'inline-radio' },
+      control: {
+        type: 'inline-radio',
+      },
       table: {
         category: 'Appearance',
       },
     },
     width: {
-      control: { type: 'text' },
+      control: {
+        type: 'text',
+      },
       table: {
         category: 'Appearance',
       },
