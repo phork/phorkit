@@ -143,7 +143,7 @@ export default {
     },
     contrast: {
       table: {
-        category: 'Uncommon ',
+        category: 'Uncommon',
       },
     },
     style: {
