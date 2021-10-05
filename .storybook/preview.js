@@ -20,7 +20,7 @@ export const parameters = {
   controls: {
     expanded: true,
     matchers: {
-      color: /(.+)Color$/i,
+      color: /^([a-zA-Z]+)Color$/,
       date: /Date$/,
     },
   },
