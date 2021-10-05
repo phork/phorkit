@@ -8,7 +8,7 @@ export type ChipProps = Omit<TagProps, 'children' | 'flush' | 'size'> & {
   avatar: Pick<AvatarProps, 'color' | 'imgSrc' | 'initials' | 'style' | 'translations' | 'themeId' | 'unthemed'>;
   icon?: React.ReactNode;
   text: React.ReactNode;
-  size: Extract<TagProps['size'], 'small' | 'medium' | 'large'>;
+  size?: Extract<TagProps['size'], 'small' | 'medium' | 'large'>;
 };
 
 /**
