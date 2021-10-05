@@ -3,7 +3,7 @@ import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { useBoundsObservable, UseBoundsObservableResponse } from '../../hooks/useBoundsObservable';
 import { SizeContextValue } from './SizeContext';
 
-export type UseObserveSizeOptions = {
+export type UseObserveSizeProps = {
   decimalPlaces?: number;
   /** Determines if the observer should be actively observing */
   observe?: boolean;
@@ -21,7 +21,7 @@ export type UseObserveSizeResponse<E extends HTMLElement = HTMLDivElement> = {
 
 const stripUnmeasuredProps = (
   size: SizeContextValue,
-  propsToMeasure: NonNullable<UseObserveSizeOptions['propsToMeasure']>,
+  propsToMeasure: NonNullable<UseObserveSizeProps['propsToMeasure']>,
 ): SizeContextValue => {
   return Object.keys(size).reduce((acc, key) => {
     if (propsToMeasure.includes(key as keyof SizeContextValue)) {
@@ -46,7 +46,7 @@ export function useObserveSize<E extends HTMLElement = HTMLDivElement>({
   decimalPlaces = 2,
   observe,
   propsToMeasure = defaultPropsToMeasure,
-}: UseObserveSizeOptions): UseObserveSizeResponse<E> {
+}: UseObserveSizeProps): UseObserveSizeResponse<E> {
   const previousValue = useRef<SizeContextValue>({} as SizeContextValue);
   const [size, setSize] = useState<SizeContextValue>({});
   const ref = useRef<E>(null!);
