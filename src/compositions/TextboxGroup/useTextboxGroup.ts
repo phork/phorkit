@@ -13,7 +13,7 @@ export type TextboxGroupRefWithValidator = {
   validator: TextboxGroupValidator;
 };
 
-export type UseTextboxGroupOptions = {
+export type UseTextboxGroupProps = {
   /** A map of the input refs (and optional validator function) keyed by their ID */
   refs: Map<string, TextboxGroupRef | TextboxGroupRefWithValidator>;
   onChange: (event: React.SyntheticEvent<HTMLInputElement>, values: Record<string, string>) => void;
@@ -57,7 +57,7 @@ export const useTextboxGroup = ({
   orderBy,
   validator = () => ({ isValid: true, focusNext: true }),
   values,
-}: UseTextboxGroupOptions): UseTextboxGroupResponse => {
+}: UseTextboxGroupProps): UseTextboxGroupResponse => {
   const changeFocus = useCallback(
     (startId: string, numPlaces: number = 0): HTMLInputElement | undefined => {
       const orderByIndex = orderBy?.findIndex(id => id === startId);

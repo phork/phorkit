@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react';
-import { useObserveSize, UseObserveSizeOptions, UseObserveSizeResponse } from './useObserveSize';
+import { useObserveSize, UseObserveSizeProps, UseObserveSizeResponse } from './useObserveSize';
 
-export type UseSizeListenersProps = UseObserveSizeOptions;
+export type UseSizeListenersProps = UseObserveSizeProps;
 export type UseSizeListenersResponse<E extends HTMLElement> = Pick<UseObserveSizeResponse<E>, 'ref' | 'value'>;
 
 const allMeasurableProps = ['width', 'height', 'top', 'left', 'right', 'bottom'] as const;

@@ -1,8 +1,8 @@
 import React from 'react';
 import { SizeContext } from './SizeContext';
-import { useObserveSize, UseObserveSizeOptions } from './useObserveSize';
+import { useObserveSize, UseObserveSizeProps } from './useObserveSize';
 
-export type SizeProviderProps<E extends HTMLElement = HTMLDivElement> = UseObserveSizeOptions & {
+export type SizeProviderProps<E extends HTMLElement = HTMLDivElement> = UseObserveSizeProps & {
   children: (ref: React.MutableRefObject<E | null>) => React.ReactElement;
 };
 

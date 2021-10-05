@@ -8,7 +8,7 @@ import { useListRegistry } from '../../components/ListRegistry';
 import styles from './styles/TextboxGroup.module.css';
 import { TextboxGroupContainer } from './TextboxGroupContainer';
 import { TextboxGroupInput } from './TextboxGroupInput';
-import { useTextboxGroup, UseTextboxGroupOptions } from './useTextboxGroup';
+import { useTextboxGroup, UseTextboxGroupProps } from './useTextboxGroup';
 
 export type LocalTextboxGroup2FAProps = Omit<ThemeProps, 'contrast' | 'unthemed'> & {
   inputClassName?: string;
@@ -63,7 +63,7 @@ function TextboxGroup2FAContent({
   }, []);
 
   // fill any empty values with spaces so the values populate in the right box
-  const handleChange = useCallback<NonNullable<UseTextboxGroupOptions['onChange']>>(
+  const handleChange = useCallback<NonNullable<UseTextboxGroupProps['onChange']>>(
     (event, values) => {
       const value = looper.map(inputId => {
         const isEmpty = !values[inputId] || values[inputId] === '';
