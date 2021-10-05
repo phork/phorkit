@@ -14,7 +14,9 @@ import { Pagination } from '../index';
 
 The pagination is a wrapper for the [ButtonGroup](../components/ButtonGroup). It can use either `ButtonGroup` styles or custom styles on top of an unstyled `ButtonGroup`.
 
-## Pagination as buttons
+## Pagination navigation
+
+### Pagination as buttons
 
 <Playground>
   <ThemeWrapper>
@@ -24,14 +26,11 @@ The pagination is a wrapper for the [ButtonGroup](../components/ButtonGroup). It
           withIcons
           withPageLinks
           withPreviousAndNext
-          activePageProps={{ weight: 'solid', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
-          jumpProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          color="primary"
           onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
           page={currentPage}
           pageLinks={6}
-          pageProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
           pageSize={10}
-          spacing="joined"
           totalItems={300}
         />
       )}
@@ -39,7 +38,7 @@ The pagination is a wrapper for the [ButtonGroup](../components/ButtonGroup). It
   </ThemeWrapper>
 </Playground>
 
-## Pagination as links
+### Pagination as links
 
 _Note that the links will cause the page to reload so the state will appear unchanged._
 
@@ -51,14 +50,11 @@ _Note that the links will cause the page to reload so the state will appear unch
           withIcons
           withPageLinks
           withPreviousAndNext
-          activePageProps={{ weight: 'solid', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          color="primary"
           getHref={page => `#page${page}`}
-          jumpProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
           page={currentPage}
           pageLinks={6}
-          pageProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
           pageSize={10}
-          spacing="joined"
           totalItems={300}
         />
       )}
@@ -66,7 +62,7 @@ _Note that the links will cause the page to reload so the state will appear unch
   </ThemeWrapper>
 </Playground>
 
-## Pagination as links and onClick
+### Pagination as links and onClick
 
 <Playground>
   <ThemeWrapper>
@@ -77,15 +73,12 @@ _Note that the links will cause the page to reload so the state will appear unch
           withIcons
           withPageLinks
           withPreviousAndNext
-          activePageProps={{ weight: 'solid', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          color="primary"
           getHref={page => `#page${page}`}
-          jumpProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
           onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
           page={currentPage}
           pageLinks={6}
-          pageProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
           pageSize={10}
-          spacing="joined"
           totalItems={300}
         />
       )}
@@ -95,7 +88,7 @@ _Note that the links will cause the page to reload so the state will appear unch
 
 ## Pagination with custom styles
 
-### Page links with icons
+### Pill shaped pagination
 
 <Playground>
   <ThemeWrapper>
@@ -105,14 +98,12 @@ _Note that the links will cause the page to reload so the state will appear unch
           withIcons
           withPageLinks
           withPreviousAndNext
-          activePageProps={{ weight: 'solid', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
-          jumpProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          color="primary"
           onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
           page={currentPage}
           pageLinks={6}
-          pageProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
           pageSize={10}
-          spacing="joined"
+          shape="pill"
           totalItems={300}
         />
       )}
@@ -120,7 +111,76 @@ _Note that the links will cause the page to reload so the state will appear unch
   </ThemeWrapper>
 </Playground>
 
-### Page links with text
+### Pill shaped pagination with spacing
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={8}>
+      {({ state: currentPage, setState: setCurrentPage }) => (
+        <Pagination
+          withIcons
+          withPageLinks
+          withPreviousAndNext
+          color="primary"
+          onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
+          page={currentPage}
+          pageLinks={6}
+          pageSize={10}
+          shape="pill"
+          spacing="cozy"
+          totalItems={300}
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+### Brick shaped pagination
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={8}>
+      {({ state: currentPage, setState: setCurrentPage }) => (
+        <Pagination
+          withIcons
+          withPageLinks
+          withPreviousAndNext
+          color="primary"
+          onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
+          page={currentPage}
+          pageLinks={6}
+          pageSize={10}
+          totalItems={300}
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+### Brick shaped pagination with spacing
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={8}>
+      {({ state: currentPage, setState: setCurrentPage }) => (
+        <Pagination
+          withIcons
+          withPageLinks
+          withPreviousAndNext
+          color="primary"
+          onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
+          page={currentPage}
+          pageLinks={6}
+          pageSize={10}
+          spacing="cozy"
+          totalItems={300}
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+### Pagination with text links
 
 <Playground>
   <ThemeWrapper>
@@ -129,14 +189,11 @@ _Note that the links will cause the page to reload so the state will appear unch
         <Pagination
           withPageLinks
           withPreviousAndNext
-          activePageProps={{ weight: 'solid', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
-          jumpProps={{ weight: 'shaded', color: 'primary', shape: 'brick' }}
+          color="primary"
           onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
           page={currentPage}
           pageLinks={6}
-          pageProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
           pageSize={10}
-          spacing="joined"
           totalItems={300}
         />
       )}
@@ -160,26 +217,18 @@ _Note that the links will cause the page to reload so the state will appear unch
           activePageProps={{
             weight: 'shaded',
             color: 'primary',
-            shape: 'brick',
-            noPadding: true,
-            style: { marginLeft: 4, marginRight: 4, width: 32 },
+            style: { marginLeft: 4, marginRight: 4 },
           }}
-          ellipsisProps={{
-            disabled: true,
-            weight: 'ghost',
-            color: 'neutral',
-            shape: 'brick',
-            noPadding: true,
-            style: { width: 32 },
-          }}
-          jumpProps={{ weight: 'ghost', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          color="primary"
+          ellipsisProps={{ color: 'neutral' }}
           onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
           page={currentPage}
           pageLabelProps={{ size: 'medium', style: { marginRight: 30 }, variants: ['no-wrap'] }}
           pageLinks={6}
-          pageProps={{ weight: 'ghost', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
           pageSize={10}
+          spacing={null}
           totalItems={300}
+          weight="ghost"
         />
       )}
     </StateWrapper>
@@ -198,23 +247,19 @@ _Note that the links will cause the page to reload so the state will appear unch
           withPageLabel
           withPageLinks
           withPreviousAndNext
-          activePageProps={{ weight: 'solid', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          color="primary"
           ellipsisProps={{
-            disabled: true,
             weight: 'ghost',
             color: 'neutral',
-            shape: 'brick',
-            noPadding: true,
-            style: { marginLeft: 8, marginRight: 8, width: 32 },
+            style: { marginLeft: 8, marginRight: 8 },
           }}
-          jumpProps={{ weight: 'shaded', color: 'primary', shape: 'brick' }}
+          jumpProps={{ weight: 'shaded' }}
           onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
           page={currentPage}
           pageLabelProps={{ size: 'medium', style: { marginRight: 30 }, variants: ['no-wrap'] }}
           pageLinks={6}
-          pageProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          pageProps={{ weight: 'shaded' }}
           pageSize={10}
-          spacing="joined"
           totalItems={300}
         />
       )}
@@ -231,12 +276,11 @@ _Note that the links will cause the page to reload so the state will appear unch
         <Pagination
           withIcons
           withPreviousAndNext
-          jumpProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          color="primary"
           justify="end"
           onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
           page={currentPage}
           pageSize={10}
-          spacing="joined"
           totalItems={128}
         />
       )}
@@ -252,11 +296,8 @@ _Note that the links will cause the page to reload so the state will appear unch
       {({ state: currentPage, setState: setCurrentPage }) => (
         <Pagination
           withPreviousAndNext
+          color="primary"
           jumpProps={{
-            weight: 'ghost',
-            color: 'primary',
-            shape: 'brick',
-            noPadding: true,
             style: { paddingLeft: 8, paddingRight: 8, marginLeft: 8, marginRight: 8 },
           }}
           justify="end"
@@ -264,6 +305,7 @@ _Note that the links will cause the page to reload so the state will appear unch
           page={currentPage}
           pageSize={10}
           totalItems={128}
+          weight="ghost"
         />
       )}
     </StateWrapper>
@@ -330,6 +372,7 @@ _Note that the links will cause the page to reload so the state will appear unch
           page={currentPage}
           pageLinks={6}
           pageSize={10}
+          spacing={null}
           totalItems={300}
         />
       )}
@@ -428,26 +471,17 @@ _Note that the links will cause the page to reload so the state will appear unch
           activePageProps={{
             weight: 'shaded',
             color: 'primary',
-            shape: 'brick',
-            noPadding: true,
-            style: { marginLeft: 4, marginRight: 4, width: 32 },
+            style: { marginLeft: 4, marginRight: 4 },
           }}
-          ellipsisProps={{
-            disabled: true,
-            weight: 'ghost',
-            color: 'neutral',
-            shape: 'brick',
-            noPadding: true,
-            style: { width: 32 },
-          }}
-          jumpProps={{ weight: 'ghost', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          ellipsisProps={{ color: 'neutral' }}
           onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
           page={currentPage}
           pageLabelProps={{ size: 'medium', style: { marginRight: 30 }, variants: ['no-wrap'] }}
           pageLinks={6}
-          pageProps={{ weight: 'ghost', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
           pageSize={10}
+          spacing={null}
           totalItems={300}
+          weight="ghost"
         />
       )}
     </StateWrapper>
@@ -467,24 +501,18 @@ _Note that the links will cause the page to reload so the state will appear unch
           withPageLabel
           withPageLinks
           withPreviousAndNext
-          activePageProps={{ weight: 'solid', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
           ellipsisProps={{
-            disabled: true,
             weight: 'ghost',
             color: 'neutral',
-            shape: 'brick',
-            noPadding: true,
-            style: { marginLeft: 8, marginRight: 8, width: 32 },
+            style: { marginLeft: 8, marginRight: 8 },
           }}
-          jumpProps={{ weight: 'shaded', color: 'primary', shape: 'brick' }}
           onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
           page={currentPage}
           pageLabelProps={{ size: 'medium', style: { marginRight: 30 }, variants: ['no-wrap'] }}
           pageLinks={6}
-          pageProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
           pageSize={10}
-          spacing="joined"
           totalItems={300}
+          weight="shaded"
         />
       )}
     </StateWrapper>

@@ -1,7 +1,8 @@
+import { cx } from '@emotion/css';
 import React from 'react';
 import { EllipsisIcon } from '../../icons';
 import { Button, ButtonProps } from '../../components/Button';
-import { Rhythm } from '../../components/Rhythm/Rhythm';
+import styles from './styles/Pagination.module.css';
 
 export type PaginationEllipsisProps = Omit<ButtonProps<'div'>, 'as' | 'children'>;
 
@@ -10,12 +11,17 @@ export type PaginationEllipsisProps = Omit<ButtonProps<'div'>, 'as' | 'children'
  * This uses an unclickable div Button to make it easier to
  * share styles with the rest of the pagination.
  */
-export function PaginationEllipsis(props: PaginationEllipsisProps): ReturnType<typeof Button> | null {
+export function PaginationEllipsis({ className, ...props }: PaginationEllipsisProps): ReturnType<typeof Button> | null {
   return (
-    <Button<'div'> imitation noPadding {...(props as ButtonProps<'div'>)} as="div">
-      <Rhythm mx={2}>
-        <EllipsisIcon scale="medium" />
-      </Rhythm>
+    <Button<'div'>
+      disabled
+      imitation
+      noPadding
+      className={cx(styles.paginationButton, styles['paginationButton--ellipsis'], className)}
+      {...(props as ButtonProps<'div'>)}
+      as="div"
+    >
+      <EllipsisIcon scale="small" />
     </Button>
   );
 }

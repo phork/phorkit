@@ -1,7 +1,9 @@
+import { cx } from '@emotion/css';
 import React, { useCallback } from 'react';
 import { AsReactType, MergeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import { Button, ButtonElementType, ButtonProps } from '../../components/Button';
+import styles from './styles/Pagination.module.css';
 
 export type LocalPaginationPageProps = {
   active?: boolean;
@@ -20,6 +22,7 @@ export function PaginationPageBase<T extends ButtonElementType = 'button'>(
     active = false,
     allowRightClickLinks,
     as,
+    className,
     disabled = false,
     href,
     onChangePage,
@@ -41,6 +44,8 @@ export function PaginationPageBase<T extends ButtonElementType = 'button'>(
 
   return (
     <Button<T>
+      noPadding
+      className={cx(styles.paginationButton, styles['paginationButton--page'], className)}
       disabled={disabled}
       href={href}
       onClick={handleClick}

@@ -1,3 +1,4 @@
+import { cx } from '@emotion/css';
 import React, { useCallback } from 'react';
 import { AsReactType, MergeProps } from '../../types';
 import { SvgIconProps } from '../../types/svgIcon';
@@ -7,6 +8,7 @@ import { ArrowLeftIcon } from '../../icons/ArrowLeftIcon';
 import { ArrowRightIcon } from '../../icons/ArrowRightIcon';
 import { Button, ButtonElementType, ButtonProps } from '../../components/Button';
 import { Rhythm } from '../../components/Rhythm/Rhythm';
+import styles from './styles/Pagination.module.css';
 
 const icons: Record<string, React.FC<SvgIconProps>> = {
   first: ArrowDoubleLeftIcon,
@@ -44,6 +46,7 @@ export type PaginationJumpIconProps<T extends ButtonElementType = 'button'> = As
 export function PaginationJumpIcon<T extends ButtonElementType = 'button'>({
   allowRightClickLinks,
   as,
+  className,
   href,
   onChangePage,
   page,
@@ -62,7 +65,15 @@ export function PaginationJumpIcon<T extends ButtonElementType = 'button'>({
   );
 
   return Icon ? (
-    <Button<T> noPadding aria-label={title} href={href} onClick={handleClick} {...(props as ButtonProps<T>)} as={as}>
+    <Button<T>
+      noPadding
+      aria-label={title}
+      className={cx(styles.paginationButton, styles['paginationButton--jumpIcon'], className)}
+      href={href}
+      onClick={handleClick}
+      {...(props as ButtonProps<T>)}
+      as={as}
+    >
       <Rhythm mx={2}>
         <Icon scale="small" title={title} />
       </Rhythm>
