@@ -119,6 +119,7 @@ export function Pagination({
   allowRightClickLinks,
   buttonGroupClassName,
   buttonGroupStyle,
+  contrast,
   ellipsisProps,
   getHref,
   id,
@@ -168,7 +169,7 @@ export function Pagination({
     <ErrorBoundary>
       <Flex inflexible alignItems="center" direction="row" justifyContent={justification[justify]} wrap={false}>
         {(withPageLabel || withPageAndTotalLabel) && (
-          <Typography<'div'> as="div" {...pageLabelProps}>
+          <Typography<'div'> as="div" color={contrast ? 'contrast' : undefined} {...pageLabelProps}>
             {substituteTranslationArgs(
               translations[withPageAndTotalLabel ? 'pageLabel' : 'pageAndTotalLabel'],
               page,
@@ -186,6 +187,7 @@ export function Pagination({
                   label: () => (
                     <JumpButton
                       allowRightClickLinks={allowRightClickLinks}
+                      contrast={contrast}
                       disabled={page <= 1}
                       href={getHref ? getHref(1) : undefined}
                       onChangePage={onChangePage}
@@ -203,6 +205,7 @@ export function Pagination({
                   label: () => (
                     <JumpButton
                       allowRightClickLinks={allowRightClickLinks}
+                      contrast={contrast}
                       disabled={page <= 1}
                       href={getHref ? getHref(page - 1) : undefined}
                       onChangePage={onChangePage}
@@ -222,6 +225,7 @@ export function Pagination({
                       label: () => (
                         <PaginationPage
                           allowRightClickLinks={allowRightClickLinks}
+                          contrast={contrast}
                           href={getHref?.(1)}
                           onChangePage={onChangePage}
                           page={1}
@@ -232,7 +236,7 @@ export function Pagination({
                     pageLinksBefore[0] > 2 &&
                       ({
                         id: generateComponentId('ellipsisBefore'),
-                        label: () => <PaginationEllipsis {...ellipsisProps} />,
+                        label: () => <PaginationEllipsis contrast={contrast} {...ellipsisProps} />,
                       } as ButtonGroupItem),
                   ]
                 : []),
@@ -245,6 +249,7 @@ export function Pagination({
                         label: () => (
                           <PaginationPage
                             allowRightClickLinks={allowRightClickLinks}
+                            contrast={contrast}
                             href={getHref?.(i)}
                             onChangePage={onChangePage}
                             page={i}
@@ -258,7 +263,16 @@ export function Pagination({
               withPageLinks &&
                 ({
                   id: generateComponentId('activePage'),
-                  label: () => <PaginationPage<'div'> active imitation as="div" page={page} {...activePageProps} />,
+                  label: () => (
+                    <PaginationPage<'div'>
+                      active
+                      imitation
+                      as="div"
+                      contrast={contrast}
+                      page={page}
+                      {...activePageProps}
+                    />
+                  ),
                   selected: true,
                 } as ButtonGroupItem),
 
@@ -270,6 +284,7 @@ export function Pagination({
                         label: () => (
                           <PaginationPage
                             allowRightClickLinks={allowRightClickLinks}
+                            contrast={contrast}
                             href={getHref?.(i)}
                             onChangePage={onChangePage}
                             page={i}
@@ -285,13 +300,14 @@ export function Pagination({
                     pageLinksAfter.slice(-1)[0] < pages - 1 &&
                       ({
                         id: generateComponentId('ellipsisAfter'),
-                        label: () => <PaginationEllipsis {...ellipsisProps} />,
+                        label: () => <PaginationEllipsis contrast={contrast} {...ellipsisProps} />,
                       } as ButtonGroupItem),
                     {
                       id: generateComponentId(`page${pages}`),
                       label: () => (
                         <PaginationPage
                           allowRightClickLinks={allowRightClickLinks}
+                          contrast={contrast}
                           onChangePage={onChangePage}
                           page={pages}
                           {...pageProps}
@@ -307,6 +323,7 @@ export function Pagination({
                   label: () => (
                     <JumpButton
                       allowRightClickLinks={allowRightClickLinks}
+                      contrast={contrast}
                       disabled={page >= pages}
                       href={getHref ? getHref(page + 1) : undefined}
                       onChangePage={onChangePage}
@@ -324,6 +341,7 @@ export function Pagination({
                   label: () => (
                     <JumpButton
                       allowRightClickLinks={allowRightClickLinks}
+                      contrast={contrast}
                       disabled={page >= pages}
                       href={getHref ? getHref(pages) : undefined}
                       onChangePage={onChangePage}
@@ -337,6 +355,7 @@ export function Pagination({
                 } as ButtonGroupItem),
             ].filter((x): x is ButtonGroupItem => !!x)}
             className={buttonGroupClassName}
+            contrast={contrast}
             style={buttonGroupStyle}
             {...props}
           />

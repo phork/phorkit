@@ -409,6 +409,88 @@ _Note that the links will cause the page to reload so the state will appear unch
   </ThemeWrapper>
 </Playground>
 
+## Contrast pagination
+
+### Everything with icons
+
+<Playground>
+  <ThemeWrapper contrast>
+    <StateWrapper initialState={8}>
+      {({ state: currentPage, setState: setCurrentPage }) => (
+        <Pagination
+          contrast
+          withEllipsis
+          withFirstAndLast
+          withIcons
+          withPageLabel
+          withPageLinks
+          withPreviousAndNext
+          activePageProps={{
+            weight: 'shaded',
+            color: 'primary',
+            shape: 'brick',
+            noPadding: true,
+            style: { marginLeft: 4, marginRight: 4, width: 32 },
+          }}
+          ellipsisProps={{
+            disabled: true,
+            weight: 'ghost',
+            color: 'neutral',
+            shape: 'brick',
+            noPadding: true,
+            style: { width: 32 },
+          }}
+          jumpProps={{ weight: 'ghost', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
+          page={currentPage}
+          pageLabelProps={{ size: 'medium', style: { marginRight: 30 }, variants: ['no-wrap'] }}
+          pageLinks={6}
+          pageProps={{ weight: 'ghost', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          pageSize={10}
+          totalItems={300}
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+### Everything with text
+
+<Playground>
+  <ThemeWrapper contrast>
+    <StateWrapper initialState={8}>
+      {({ state: currentPage, setState: setCurrentPage }) => (
+        <Pagination
+          contrast
+          withEllipsis
+          withFirstAndLast
+          withPageLabel
+          withPageLinks
+          withPreviousAndNext
+          activePageProps={{ weight: 'solid', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          ellipsisProps={{
+            disabled: true,
+            weight: 'ghost',
+            color: 'neutral',
+            shape: 'brick',
+            noPadding: true,
+            style: { marginLeft: 8, marginRight: 8, width: 32 },
+          }}
+          jumpProps={{ weight: 'shaded', color: 'primary', shape: 'brick' }}
+          onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
+          page={currentPage}
+          pageLabelProps={{ size: 'medium', style: { marginRight: 30 }, variants: ['no-wrap'] }}
+          pageLinks={6}
+          pageProps={{ weight: 'shaded', color: 'primary', shape: 'brick', noPadding: true, style: { width: 32 } }}
+          pageSize={10}
+          spacing="joined"
+          totalItems={300}
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
 ## \[props\]
 
 <Props of={Pagination} />
