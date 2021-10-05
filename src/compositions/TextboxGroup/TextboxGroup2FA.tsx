@@ -10,13 +10,14 @@ import { TextboxGroupContainer } from './TextboxGroupContainer';
 import { TextboxGroupInput } from './TextboxGroupInput';
 import { useTextboxGroup, UseTextboxGroupOptions } from './useTextboxGroup';
 
-export type LocalTextboxGroup2FAProps = ThemeProps & {
+export type LocalTextboxGroup2FAProps = Omit<ThemeProps, 'contrast' | 'unthemed'> & {
   inputClassName?: string;
   inputStyle?: React.CSSProperties;
   inputWidth?: number | string;
   length?: number;
   onChange: (event: React.SyntheticEvent<HTMLElement>, value: string) => void;
   size?: FormboxSize;
+  style?: React.CSSProperties;
   value: string;
   variant?: FormboxVariant;
 };
@@ -160,5 +161,5 @@ export function TextboxGroup2FA(props: TextboxGroup2FAProps): React.ReactElement
   );
 }
 
-TextboxGroup2FAContent.displayName = 'TextboxGroup2FAContent';
+// note that the base element cannot have a displayName because it breaks Storybook
 TextboxGroup2FA.displayName = 'TextboxGroup2FA';
