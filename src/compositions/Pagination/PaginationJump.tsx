@@ -1,6 +1,8 @@
+import { cx } from '@emotion/css';
 import React, { useCallback } from 'react';
 import { AsReactType, MergeProps } from '../../types';
 import { Button, ButtonElementType, ButtonProps } from '../../components/Button';
+import styles from './styles/Pagination.module.css';
 
 export type LocalPaginationJumpProps = {
   allowRightClickLinks?: boolean;
@@ -28,6 +30,7 @@ export type PaginationJumpProps<T extends ButtonElementType = 'button'> = AsReac
 export function PaginationJump<T extends ButtonElementType = 'button'>({
   allowRightClickLinks,
   as,
+  className,
   href,
   onChangePage,
   page,
@@ -44,7 +47,14 @@ export function PaginationJump<T extends ButtonElementType = 'button'>({
   );
 
   return title ? (
-    <Button<T> aria-label={title} href={href} onClick={handleClick} {...(props as ButtonProps<T>)} as={as}>
+    <Button<T>
+      aria-label={title}
+      className={cx(styles.paginationButton, styles['paginationButton--jump'], className)}
+      href={href}
+      onClick={handleClick}
+      {...(props as ButtonProps<T>)}
+      as={as}
+    >
       {title}
     </Button>
   ) : null;

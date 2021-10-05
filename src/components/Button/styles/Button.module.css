@@ -239,6 +239,20 @@ button.button {
 
 /* Button sizes */
 
+/**
+ * It's important set the button padding using this:
+ *
+ *  :not(.button--noPadding) { 
+ *    padding: ... 
+ *  }
+ *
+ * rather than .button--noPadding { padding: 0 } 
+ * because this allows another component to use their 
+ * own className on the button to set custom padding. 
+ * Otherwise a class like `.button--noPadding` could 
+ * overwrite the component's custom paddng.
+ */
+
 .button--small {
   font-size: $font-size-small;
 
