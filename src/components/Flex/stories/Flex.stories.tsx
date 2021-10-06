@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { themes } from 'config/themes';
 import { useThemeId } from 'context/Theme/useThemeId';
-import { Looper } from 'docs/helpers/Looper';
+import { Looper } from 'components/Looper';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { Flex, FlexProps } from '../Flex';
 

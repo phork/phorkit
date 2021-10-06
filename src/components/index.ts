@@ -19,6 +19,7 @@ export * from './Link';
 export * from './List';
 export * from './ListRegistry';
 export * from './Loader';
+export * from './Looper';
 export * from './Panels';
 export * from './Paper';
 export * from './Portal';
