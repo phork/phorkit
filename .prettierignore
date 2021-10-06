@@ -1,7 +1,6 @@
 *.json
 .docz/
 scripts/
-config/
 lib/
 build/
 src/icons/
