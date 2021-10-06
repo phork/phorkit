@@ -1,4 +1,4 @@
-import React, { cloneElement, Fragment } from 'react';
+import React from 'react';
 
 type NumericLooperProps = {
   end: number;
@@ -17,10 +17,17 @@ const isListLooper = (list: undefined | ListLooperProps['list']): list is ListLo
   return list !== undefined && Array.isArray(list);
 };
 
+/** @example <Looper start={0} end={9} render={i => <div>{i}</div>} */
 export function Looper(props: NumericLooperProps): React.ReactElement;
 
+/** @example <Looper list={['small', 'medium', 'large']} render={size => <div>{size}</div>} */
 export function Looper(props: ListLooperProps): React.ReactElement;
 
+/**
+ * A simply utility to loop through an array
+ * of strings or to loop through a start and
+ * end value.
+ */
 export function Looper({ end: initEnd, list, render, start = 0, step = 1 }: any): React.ReactElement {
   const items = [];
   const end = list ? list.length - 1 : initEnd;
@@ -29,14 +36,13 @@ export function Looper({ end: initEnd, list, render, start = 0, step = 1 }: any)
     const element = isListLooper(list) ? render(list[i], i) : render(i);
 
     items.push(
-      cloneElement(element, {
+      React.cloneElement(element, {
         key: element.key ?? (list ? list[i] : i),
       }),
     );
   }
 
-  // eslint-disable-next-line react/jsx-fragments
-  return <Fragment>{items}</Fragment>;
+  return <React.Fragment>{items}</React.Fragment>;
 }
 
 Looper.displayName = 'Looper';

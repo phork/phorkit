@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import { Looper } from 'docs/helpers/Looper';
+import { Looper } from 'components/Looper';
 import { Flex, FlexProps } from '../Flex';
 import flexStory, { FlexBox, defaultArgs as initDefaultArgs } from './Flex.stories';
 
