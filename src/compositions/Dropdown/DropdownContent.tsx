@@ -45,7 +45,7 @@ export type LocalDropdownContentProps = ThemeProps & {
   onSelect: PartialInteractiveListProps['onSelect'];
   onSelectionChange: PartialInteractiveListProps['onSelectionChange'];
   onUnselect: PartialInteractiveListProps['onUnselect'];
-  options?: DropdownOption[];
+  options?: Readonly<DropdownOption[]>;
   reducer: PartialInteractiveListProps['reducer'];
   size: DropdownSize;
 };

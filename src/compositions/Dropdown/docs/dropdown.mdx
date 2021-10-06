@@ -28,7 +28,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 
 <Playground>
   <ThemeWrapper>
-    <Flex full wrap direction="row" justifyContent="space-between">
+    <Flex full wrap direction="row" justifyContent="space-between" style={{ marginTop: 20 }}>
       <Looper
         list={variants}
         render={variant => (
@@ -55,8 +55,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 
 <Playground>
   <ThemeWrapper>
-    <br />
-    <Flex full wrap direction="row" justifyContent="space-between">
+    <Flex full wrap direction="row" justifyContent="space-between" style={{ margintop: 20 }}>
       <Looper
         list={variants}
         render={variant => (
@@ -83,8 +82,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 
 <Playground>
   <ThemeWrapper>
-    <br />
-    <Flex full wrap direction="row" justifyContent="space-between">
+    <Flex full wrap direction="row" justifyContent="space-between" style={{ margintop: 20 }}>
       <Looper
         list={variants}
         render={variant => (
@@ -111,15 +109,14 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 
 <Playground>
   <ThemeWrapper>
-    <br />
-    <Flex full wrap direction="row" justifyContent="space-between">
+    <Flex full wrap direction="row" justifyContent="space-between" style={{ margintop: 20 }}>
       <Looper
         list={variants}
         render={variant => (
           <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
             <Dropdown
               transitional
-              iconBefore={TagIcon}
+              iconBefore={<TagIcon />}
               inputVariant={variant}
               label="Super awesome dropdown"
               layout="contained"
@@ -140,8 +137,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 
 <Playground>
   <ThemeWrapper>
-    <br />
-    <Flex full wrap direction="row" justifyContent="space-between">
+    <Flex full wrap direction="row" justifyContent="space-between" style={{ margintop: 20 }}>
       <Looper
         list={variants}
         render={variant => (
@@ -169,8 +165,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 
 <Playground>
   <ThemeWrapper>
-    <br />
-    <Flex full wrap direction="row" justifyContent="space-between">
+    <Flex full wrap direction="row" justifyContent="space-between" style={{ margintop: 20 }}>
       <Looper
         list={variants}
         render={variant => (
@@ -199,7 +194,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 
 <Playground>
   <ThemeWrapper>
-    <Flex full wrap direction="row" justifyContent="space-between">
+    <Flex full wrap direction="row" justifyContent="space-between" style={{ margintop: 20 }}>
       <Looper
         list={variants}
         render={variant => (
@@ -231,7 +226,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 
 <Playground>
   <ThemeWrapper>
-    <StateWrapper initialState={''}>
+    <StateWrapper initialState="">
       {({ state: filter, setState: setFilter }) => (
         <div style={{ height: 300, maxWidth: 300 }}>
           <Dropdown
@@ -243,9 +238,6 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
             onClear={value => console.log('clear')}
             onInputChange={setFilter}
             onSelect={value => console.log('select', value)}
-            onSubmit={(event, value) =>
-              !options.some(option => option.id === value) && options.push({ id: value, label: value })
-            }
           />
         </div>
       )}
@@ -256,8 +248,8 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 ## Dropdown without options
 
 <Playground>
-  <ThemeWrapper style={{ height: '300px' }}>
-    <div style={{ maxWidth: 300 }}>
+  <ThemeWrapper>
+    <div style={{ marginBottom: 20, maxWidth: 300 }}>
       <Dropdown
         transitional
         label="Super awesome dropdown"
@@ -271,8 +263,8 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 ### Filterable dropdown without options
 
 <Playground>
-  <ThemeWrapper style={{ height: '300px' }}>
-    <div style={{ maxWidth: 300 }}>
+  <ThemeWrapper>
+    <div style={{ marginBottom: 20, maxWidth: 300 }}>
       <Dropdown
         transitional
         getFilteredOptions={handleEmptyFilter}
@@ -292,7 +284,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 
 <Playground>
   <ThemeWrapper>
-    <Flex full wrap direction="row" justifyContent="space-between">
+    <Flex full wrap direction="row" justifyContent="space-between" style={{ margintop: 20 }}>
       <Looper
         list={variants}
         render={variant => (
@@ -317,7 +309,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 
 <Playground>
   <ThemeWrapper>
-    <Flex full wrap direction="row" justifyContent="space-between">
+    <Flex full wrap direction="row" justifyContent="space-between" style={{ margintop: 20 }}>
       <Looper
         list={variants}
         render={variant => (
@@ -343,7 +335,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 
 <Playground>
   <ThemeWrapper>
-    <Flex full wrap direction="row" justifyContent="space-between">
+    <Flex full wrap direction="row" justifyContent="space-between" style={{ margintop: 20 }}>
       <Looper
         list={variants}
         render={variant => (
@@ -368,7 +360,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 
 <Playground>
   <ThemeWrapper contrast>
-    <Flex full wrap direction="row" justifyContent="space-between">
+    <Flex full wrap direction="row" justifyContent="space-between" style={{ margintop: 20 }}>
       <Looper
         list={variants}
         render={variant => (
@@ -376,6 +368,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
             <Dropdown
               contrast
               transitional
+              iconBefore={<TagIcon />}
               initialSelected={[options[3]]}
               inputVariant={variant}
               label="Super awesome dropdown"
@@ -392,43 +385,49 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 ### Styled dropdown
 
 <Playground>
-  <div style={{ height: 300, maxWidth: 300, marginLeft: 20, marginRight: 20 }}>
-    <Dropdown
-      unthemed
-      id="demo-contrast-dropdown"
-      initialSelected={[options[3]]}
-      label="Super awesome dropdown"
-      layout="contained"
-      onSelect={value => console.log('select', value)}
-      options={options}
-      style={{
-        '--dropdown-options-bottom-border-color': '#9D69D5',
-        '--dropdown-options-focused-border-color': '#57278C',
-        '--dropdown-options-container-background-color': '#fff',
-        '--dropdown-options-container-box-shadow': '0px 1px 2px 0px rgba(0, 0, 0, 0.3)',
-        '--dropdown-options-container-border-color': '#B995E1',
-        '--dropdown-options-raised-box-shadow': '0px 1px 2px 0px rgba(0, 0, 0, 0.3)',
-        '--dropdown-options-scrollbar-thumb-color': '#DDDDE0',
-        '--list-focused-border-color': '#642da0',
-        '--list-item-selected-background-color': '#642da0',
-        '--list-item-selected-text-color': '#ffffff',
-        '--list-item-background-color': 'transparent',
-        '--list-item-border-color': '#642da0',
-        '--list-item-focused-border-color': '#57278C',
-        '--list-item-focused-text-color': '#642da0',
-        '--list-item-text-color': '#B995E1',
-        '--formbox-icon-color': '#9D69D5',
-        '--formbox-icon-hovered-color': '#642da0',
-        '--formbox-input-container-background-color': 'transparent',
-        '--formbox-input-container-border-color': '#9D69D5',
-        '--formbox-input-container-focused-border-color': '#57278C',
-        '--formbox-input-container-hovered-border-color': '#642da0',
-        '--formbox-input-text-color': '#642da0',
-        '--formbox-label-text-color': '#B995E1',
-      }}
-      variant="underline"
+  <Flex full wrap direction="row" justifyContent="space-between" style={{ marginTop: 20 }}>
+    <Looper
+      list={variants}
+      render={variant => (
+        <div style={{ height: 300, width: '30%', maxWidth: 300, minWidth: 200, marginLeft: 20, marginRight: 20 }}>
+          <Dropdown
+            unthemed
+            iconBefore={<TagIcon />}
+            initialSelected={[options[3]]}
+            inputVariant={variant}
+            label="Super awesome dropdown"
+            layout="contained"
+            options={options}
+            style={{
+              '--dropdown-options-bottom-border-color': '#9D69D5',
+              '--dropdown-options-focused-border-color': '#57278C',
+              '--dropdown-options-container-background-color': '#fff',
+              '--dropdown-options-container-box-shadow': '0px 1px 2px 0px rgba(0, 0, 0, 0.3)',
+              '--dropdown-options-container-border-color': '#B995E1',
+              '--dropdown-options-raised-box-shadow': '0px 1px 2px 0px rgba(0, 0, 0, 0.3)',
+              '--dropdown-options-scrollbar-thumb-color': '#DDDDE0',
+              '--list-focused-border-color': '#642da0',
+              '--list-item-selected-background-color': '#642da0',
+              '--list-item-selected-text-color': '#ffffff',
+              '--list-item-background-color': 'transparent',
+              '--list-item-border-color': '#642da0',
+              '--list-item-focused-border-color': '#57278C',
+              '--list-item-focused-text-color': '#642da0',
+              '--list-item-text-color': '#B995E1',
+              '--formbox-icon-color': '#9D69D5',
+              '--formbox-icon-hovered-color': '#642da0',
+              '--formbox-input-container-background-color': 'transparent',
+              '--formbox-input-container-border-color': '#9D69D5',
+              '--formbox-input-container-focused-border-color': '#57278C',
+              '--formbox-input-container-hovered-border-color': '#642da0',
+              '--formbox-input-text-color': '#642da0',
+              '--formbox-label-text-color': '#B995E1',
+            }}
+          />
+        </div>
+      )}
     />
-  </div>
+  </Flex>
 </Playground>
 
 ### Multi-variant dropdown
@@ -498,16 +497,15 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
 
 <Playground>
   <ThemeWrapper style={{ height: '300px' }}>
-    <div style={{ maxWidth: 300 }}>
-      <NotifiedDropdown
-        transitional
-        label="Super awesome dropdown"
-        level="primary"
-        notification={`This dropdown has no options.`}
-        onSelect={value => console.log('select', value)}
-        options={[]}
-      />
-    </div>
+    <NotifiedDropdown
+      transitional
+      label="Super awesome dropdown"
+      level="primary"
+      notification="This notification shifts down when the dropdown is focused."
+      onSelect={value => console.log('select', value)}
+      options={[]}
+      style={{ maxWidth: 300 }}
+    />
   </ThemeWrapper>
 </Playground>
 

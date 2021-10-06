@@ -172,7 +172,7 @@ export function TextareaBase(
     >
       {({ id, variant }) =>
         readOnly ? (
-          <FormboxReadOnly id={id} value={value} />
+          <FormboxReadOnly contrast={contrast} id={id} value={value} />
         ) : (
           <FormboxInput<'textarea'> contrast={contrast} placeholder={placeholder} themeId={themeId} variant={variant}>
             <textarea

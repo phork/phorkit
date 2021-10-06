@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Icon } from 'types';
 import { isKeyof } from 'utils';
 import * as icons from 'icons';
@@ -15,8 +15,7 @@ export function IconLooper({ children }: IconLooperProps) {
     }
     return null;
   });
-  // eslint-disable-next-line react/jsx-fragments
-  return <Fragment>{items}</Fragment>;
+  return <React.Fragment>{items}</React.Fragment>;
 }
 
 IconLooper.displayName = 'IconLooper';
