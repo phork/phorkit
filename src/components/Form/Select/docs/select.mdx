@@ -395,11 +395,11 @@ import { variants, sizes } from './helpers/variants';
 <Playground>
   <ThemeWrapper>
     <Looper
-      list={variants}
-      render={variant => (
+      list={['danger', 'warning', 'success', 'primary', 'neutral']}
+      render={level => (
         <Looper
-          list={['success', 'danger', 'warning', 'primary', 'neutral']}
-          render={level => (
+          list={variants}
+          render={variant => (
             <Rhythm py={3}>
               <FormComponentDemo unwrapped initialValue="yellow" property="value" type="select">
                 <NotifiedSelect
