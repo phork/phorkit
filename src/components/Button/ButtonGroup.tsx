@@ -5,9 +5,10 @@ import { useThemeId } from '../../context/Theme';
 import { renderFromProp } from '../../utils/renderFromProp';
 import styles from './styles/ButtonGroup.module.css';
 import { Button, ButtonProps } from './Button';
-import { ButtonAlignment, ButtonColor, ButtonSize, ButtonWeight } from './types';
+import { ButtonColor, ButtonSize, ButtonWeight } from './types';
 
 export type ButtonGroupSpacing = 'divided' | 'joined' | 'cozy' | 'comfy';
+export type ButtonGroupAlignment = 'left' | 'center' | 'right';
 
 export type ButtonGroupItem = {
   id: string;
@@ -17,7 +18,8 @@ export type ButtonGroupItem = {
 
 export type LocalButtonGroupProps = Pick<ButtonProps, 'color' | 'fullWidth' | 'shape'> &
   Omit<ThemeProps, 'unthemed'> & {
-    align?: ButtonAlignment;
+    /** This is button group alignment (not button alignment) */
+    align?: ButtonGroupAlignment;
     buttons?: ButtonGroupItem[];
     /** The children are allowed to be null or false so this won't fail if children are conditional */
     children?: Array<React.ReactElement | null | false>;
@@ -45,7 +47,7 @@ export type ButtonGroupProps = MergeElementProps<'div', LocalButtonGroupProps>;
  * vertically.
  */
 export function ButtonGroup({
-  align = 'left',
+  align,
   buttons,
   children,
   className,
@@ -110,6 +112,7 @@ export function ButtonGroup({
       className={cx(
         styles.buttonGroup,
         fullWidth && styles['buttonGroup--fullWidth'],
+        align && styles[`buttonGroup--${align}`],
         display && styles[`buttonGroup--${display}`],
         orientation && styles[`buttonGroup--${orientation}`],
         spacing && styles[`buttonGroup--${spacing}`],
@@ -123,7 +126,7 @@ export function ButtonGroup({
           ({ id, label, selected, style, ...button }: ButtonGroupItem) =>
             renderLabel(id, label, selected) || (
               <Button
-                align={align}
+                align={orientation === 'vertical' ? 'left' : 'center'}
                 className={styles.buttonGroup__button}
                 color={selected && selectedColor ? selectedColor : color}
                 contrast={contrast}

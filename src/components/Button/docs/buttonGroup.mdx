@@ -324,7 +324,6 @@ import { Button, ButtonGroup, StyledButton } from '../index';
         {({ state, setState }) => (
           <Rhythm mb={2} mr={2}>
             <ButtonGroup
-              align="left"
               buttons={[
                 { id: 'first', label: 'First', selected: state === 'first', weight: 'text' },
                 { id: 'second', label: 'Second', selected: state === 'second', weight: 'text' },
@@ -351,7 +350,6 @@ import { Button, ButtonGroup, StyledButton } from '../index';
     <StateWrapper initialState="first">
       {({ state, setState }) => (
         <ButtonGroup
-          align="center"
           buttons={[
             { id: 'first', label: 'First', selected: state === 'first' },
             { id: 'second', label: 'Second', selected: state === 'second' },
@@ -376,7 +374,6 @@ import { Button, ButtonGroup, StyledButton } from '../index';
     <StateWrapper initialState="first">
       {({ state, setState }) => (
         <ButtonGroup
-          align="center"
           buttons={[
             { id: 'first', label: 'First', selected: state === 'first' },
             { id: 'second', label: 'Second', selected: state === 'second' },
@@ -419,6 +416,36 @@ import { Button, ButtonGroup, StyledButton } from '../index';
         />
       )}
     </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
+### Alignment
+
+<Playground>
+  <ThemeWrapper>
+    <Looper
+      list={['left', 'center', 'right']}
+      render={align => (
+        <StateWrapper initialState="first">
+          {({ state, setState }) => (
+            <Rhythm key={align} my={2}>
+              <ButtonGroup
+                align={align}
+                buttons={[
+                  { id: 'first', label: 'First', selected: state === 'first' },
+                  { id: 'second', label: 'Second', selected: state === 'second' },
+                  { id: 'third', label: 'Third', selected: state === 'third' },
+                  { id: 'fourth', label: 'Fourth', selected: state === 'fourth' },
+                ]}
+                color="primary"
+                onClick={(event, id) => setState(id)}
+                spacing="joined"
+              />
+            </Rhythm>
+          )}
+        </StateWrapper>
+      )}
+    />
   </ThemeWrapper>
 </Playground>
 
