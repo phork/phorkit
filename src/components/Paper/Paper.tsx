@@ -1,6 +1,7 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import { AccentColor, SequentialVariant, StateColor, ThemeProps } from '../../types';
+import { useAccessibility } from '../../context/Accessibility/useAccessibility';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Paper.module.css';
 
@@ -30,6 +31,9 @@ export type PaperProps = React.HTMLAttributes<HTMLDivElement> &
  * the amount of padding based on the type of container
  * and the viewport size. And it can expand, overflow or
  * be scrollable with a customized scrollbar size.
+ *
+ * Scrollable paper has a tabIndex on it because scrollable
+ * regions should be focusable.
  */
 export const Paper = React.forwardRef<HTMLDivElement, PaperProps>(
   (
@@ -51,6 +55,7 @@ export const Paper = React.forwardRef<HTMLDivElement, PaperProps>(
     forwardedRef,
   ): React.ReactElement<PaperProps> => {
     const themeId = useThemeId(initThemeId);
+    const accessible = useAccessibility();
 
     return (
       <div
@@ -65,6 +70,7 @@ export const Paper = React.forwardRef<HTMLDivElement, PaperProps>(
           scrollable && styles['paper--scrollable'],
           scrollbar && styles[`paper--${scrollbar}-scrollbar`],
           themeId && !unthemed && styles[`paper--${themeId}`],
+          accessible && styles['is-accessible'],
           className,
         )}
         ref={forwardedRef}

@@ -33,6 +33,15 @@
     @mixin addXSmallScrollbar var(--paper-scrollbar-thumb-color);
   }
 
+  &:focus {
+    outline: none;
+  }
+
+  &.is-accessible:focus {
+    outline: 1px solid var(--paper-focused-outline-color);
+    outline-offset: -1px;
+  }
+
   overflow: auto;
 }
 
@@ -85,128 +94,132 @@
 
 .paper--extreme {
   @mixin themed .paper {
-    background-color: $theme-extreme-palette-background-color;
-    border-color: $theme-extreme-palette-border-color;
-    color: $theme-extreme-palette-text-color;
-
+    --paper-background-color: $theme-extreme-palette-background-color;
+    --paper-border-color: $theme-extreme-palette-border-color;
+    --paper-focused-outline-color: $theme-extreme-palette-text-color;
     --paper-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
+    --paper-text-color: $theme-extreme-palette-text-color;
   }
 }
 
 .paper--primary {
   @mixin themed .paper {
-    background-color: $theme-primary-palette-background-color;
-    border-color: $theme-primary-palette-border-color;
-    color: $theme-primary-palette-text-color;
-
+    --paper-background-color: $theme-primary-palette-background-color;
+    --paper-border-color: $theme-primary-palette-border-color;
+    --paper-focused-outline-color: $theme-primary-palette-text-color;
     --paper-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
+    --paper-text-color: $theme-primary-palette-text-color;
   }
 }
 
 .paper--secondary {
   @mixin themed .paper {
-    background-color: $theme-secondary-palette-background-color;
-    border-color: $theme-secondary-palette-border-color;
-    color: $theme-secondary-palette-text-color;
-
+    --paper-background-color: $theme-secondary-palette-background-color;
+    --paper-border-color: $theme-secondary-palette-border-color;
+    --paper-focused-outline-color: $theme-secondary-palette-text-color;
     --paper-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
+    --paper-text-color: $theme-secondary-palette-text-color;
   }
 }
 
 .paper--tertiary {
   @mixin themed .paper {
-    background-color: $theme-tertiary-palette-background-color;
-    border-color: $theme-tertiary-palette-border-color;
-    color: $theme-tertiary-palette-text-color;
-
+    --paper-background-color: $theme-tertiary-palette-background-color;
+    --paper-border-color: $theme-tertiary-palette-border-color;
+    --paper-focused-outline-color: $theme-tertiary-palette-text-color;
     --paper-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
+    --paper-text-color: $theme-tertiary-palette-text-color;
   }
 }
 
 .paper--transparent {
   @mixin themed .paper {
-    background-color: transparent;
-    border-color: $theme-primary-palette-border-color;
-    color: currentColor;
-
+    --paper-background-color: transparent;
+    --paper-border-color: $theme-primary-palette-border-color;
+    --paper-focused-outline-color: currentColor;
     --paper-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
+    --paper-text-color: currentColor;
   }
 }
 
 .paper--contrast {
   @mixin themed .paper {
-    background-color: var(--contrast-color, $theme-contrast-palette-background-color);
-    border-color: $theme-contrast-palette-border-color;
-    color: $theme-contrast-palette-text-color;
-
+    --paper-background-color: var(--contrast-color, $theme-contrast-palette-background-color);
+    --paper-border-color: $theme-contrast-palette-border-color;
+    --paper-focused-outline-color: $theme-contrast-palette-text-color;
     --paper-scrollbar-thumb-color: $theme-contrast-scrollbar-thumb-color;
+    --paper-text-color: $theme-contrast-palette-text-color;
   }
 }
 
 .paper--success {
   @mixin themed .paper {
-    background-color: $theme-color-success;
-    color: $theme-color-success-contrast;
-
+    --paper-background-color: $theme-color-success;
     --paper-scrollbar-thumb-color: $theme-contrast-scrollbar-thumb-color;
+    --paper-text-color: $theme-color-success-contrast;
   }
 
   &.paper--light {
-    border-color: $light-color-success-D10;
+    --paper-border-color: $light-color-success-D10;
+    --paper-focused-outline-color: $light-color-success-D30;
   }
 
   &.paper--dark {
-    border-color: $dark-color-success-L10;
+    --paper-border-color: $dark-color-success-L10;
+    --paper-focused-outline-color: $dark-color-success-L30;
   }
 }
 
 .paper--warning {
   @mixin themed .paper {
-    background-color: $theme-color-warning;
-    color: $theme-color-warning-contrast;
-
+    --paper-background-color: $theme-color-warning;
     --paper-scrollbar-thumb-color: $theme-contrast-scrollbar-thumb-color;
+    --paper-text-color: $theme-color-warning-contrast;
   }
 
   &.paper--light {
-    border-color: $light-color-warning-D10;
+    --paper-border-color: $light-color-warning-D10;
+    --paper-focused-outline-color: $light-color-warning-D30;
   }
 
   &.paper--dark {
-    border-color: $dark-color-warning-L10;
+    --paper-border-color: $dark-color-warning-L10;
+    --paper-focused-outline-color: $dark-color-warning-L30;
   }
 }
 
 .paper--danger {
   @mixin themed .paper {
-    background-color: $theme-color-danger;
-    color: $theme-color-danger-contrast;
-
+    --paper-background-color: $theme-color-danger;
     --paper-scrollbar-thumb-color: $theme-contrast-scrollbar-thumb-color;
+    --paper-text-color: $theme-color-danger-contrast;
   }
 
   &.paper--light {
-    border-color: $light-color-danger-D10;
+    --paper-border-color: $light-color-danger-D10;
+    --paper-focused-outline-color: $light-color-danger-D30;
   }
 
   &.paper--dark {
-    border-color: $dark-color-danger-L10;
+    --paper-border-color: $dark-color-danger-L10;
+    --paper-focused-outline-color: $dark-color-danger-L30;
   }
 }
 
 .paper--accent-primary {
   @mixin themed .paper {
-    background-color: $theme-color-accent-primary;
-    color: $theme-color-accent-primary-contrast;
-
+    --paper-background-color: $theme-color-accent-primary;
     --paper-scrollbar-thumb-color: $theme-contrast-scrollbar-thumb-color;
+    --paper-text-color: $theme-color-accent-primary-contrast;
 
     &.paper--light {
-      border-color: $theme-color-accent-primary-D10;
+      --paper-border-color: $theme-color-accent-primary-D10;
+      --paper-focused-outline-color: $theme-color-accent-primary-D30;
     }
 
     &.paper--dark {
-      border-color: $theme-color-accent-primary-L10;
+      --paper-border-color: $theme-color-accent-primary-L10;
+      --paper-focused-outline-color: $theme-color-accent-primary-L30;
     }
   }
 }

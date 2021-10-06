@@ -54,6 +54,7 @@ const defaultArgs = {
   colorId: 'P60' as ThemeColorIds,
   container: 'panel' as ColoredPaperProps['container'],
   scrollable: true,
+  scrollbar: 'medium' as ColoredPaperProps['scrollbar'],
   style: { height: '40px' },
 };
 
