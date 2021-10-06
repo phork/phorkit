@@ -116,7 +116,7 @@ export type PartialDropdownProps = Omit<
     onSelectionChange?: (selectedIds: string[] | undefined) => void;
     onSubmit?: (event: React.KeyboardEvent<HTMLInputElement>, value: string) => void;
     onUnselect?: (id: string, selectedIds: string[] | undefined) => void;
-    options: DropdownOption[];
+    options: Readonly<DropdownOption[]>;
     placeholder?: FormboxValue | React.ReactChild;
     readOnly?: boolean;
     /** The reducer comes from `useReducer(interactiveGroupReducer)` and is used to track selection */
@@ -124,6 +124,7 @@ export type PartialDropdownProps = Omit<
     /** A searchable dropdown has no options unless a search term has been entered */
     searchable?: boolean;
     size?: DropdownSize;
+    style?: React.CSSProperties;
     transitional?: boolean;
     translations?: DropdownTranslations;
     /** When using the withNotification HOC the empty content notice must be inline if there's a notification */
@@ -156,8 +157,8 @@ export function PartialDropdownBase(
     inputVariant = 'underline',
     label,
     layout = 'raised',
-    listColor,
-    listSize: initListSize,
+    listColor = 'primary',
+    listSize: initListSize = 'medium',
     listVariant,
     maxSelect = 1,
     minSelect = 0,
@@ -599,7 +600,7 @@ export function PartialDropdownBase(
             />
           </FormboxInputWithFormatting>
         ) : (
-          <FormboxReadOnly formattedValue={formattedValue} placeholder={placeholder} />
+          <FormboxReadOnly contrast={contrast} formattedValue={formattedValue} placeholder={placeholder} />
         )}
 
         {showReadOnlyIcon && (

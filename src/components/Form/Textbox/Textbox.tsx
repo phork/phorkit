@@ -263,7 +263,13 @@ export function TextboxBase(
     >
       {({ id, focused, required, variant }) =>
         readOnly ? (
-          <FormboxReadOnly centered={centered} formattedValue={formattedValue} id={id} value={value} />
+          <FormboxReadOnly
+            centered={centered}
+            contrast={contrast}
+            formattedValue={formattedValue}
+            id={id}
+            value={value}
+          />
         ) : (
           <FormboxInputWithFormatting<'input'>
             alwaysShowFormatting={alwaysShowFormatting}

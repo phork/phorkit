@@ -20,17 +20,19 @@ export const dropdownEmptyTranslations: DropdownEmptyTranslations = {
 };
 
 export type DropdownEmptyProps = React.HTMLAttributes<HTMLDivElement> &
-  ThemeProps & {
-    children?: RenderFromPropElement<RenderFromPropProps>;
+  Omit<ThemeProps, 'unthemed'> & {
+    children?: RenderFromPropElement<RenderFromPropProps> | string;
     filter?: string;
+    /** The contained layout adds extra padding */
     layout?: DropdownLayout;
+    style?: React.CSSProperties;
     translations?: DropdownEmptyTranslations;
   };
 
 /**
  * The empty dropdown notification is shown by the
  * DropdownContent component when there are no items
- * to show. It no children are provided it renders a
+ * to show. If no children are provided it renders a
  * simple text message.
  */
 export function DropdownEmpty({

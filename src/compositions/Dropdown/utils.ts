@@ -8,7 +8,7 @@ export const getDropdownSelectedView = ({
   selectedState,
   translations,
 }: {
-  options: DropdownOption[];
+  options: Readonly<DropdownOption[]>;
   maxSelect: number;
   selectedState: InteractiveGroupState<string>;
   translations: DropdownTranslations;

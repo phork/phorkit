@@ -1,0 +1,112 @@
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import React from 'react';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { ListProps } from '../../../docs/helpers/ListProps';
+import { DropdownEmpty } from '../DropdownEmpty';
+
+export default {
+  title: 'Form/Dropdown/DropdownEmpty',
+  component: DropdownEmpty,
+  argTypes: {
+    children: {
+      control: {
+        type: 'text',
+      },
+    },
+
+    className: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: 'Uncommon',
+      },
+    },
+    contrast: {
+      table: {
+        category: 'Uncommon',
+      },
+    },
+    style: {
+      table: {
+        category: 'Uncommon',
+      },
+    },
+    themeId: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: 'Uncommon',
+      },
+    },
+  },
+  parameters: {
+    controls: {
+      exclude: ['translations'],
+      sort: 'requiredFirst',
+    },
+    docs: {
+      page: () => (
+        <React.Fragment>
+          <PageTitle src="compositions/Dropdown" title="DropdownEmpty" />
+          <Subtitle />
+          <Description />
+          <Primary />
+          <ArgsTable story={PRIMARY_STORY} />
+          <Stories />
+        </React.Fragment>
+      ),
+      description: {
+        component: 'A new component.',
+      },
+    },
+    layout: 'centered',
+  },
+} as ComponentMeta<typeof DropdownEmpty>;
+
+const Template: ComponentStory<typeof DropdownEmpty> = args => <DropdownEmpty {...args} />;
+
+const defaultArgs = {
+  contrast: false,
+};
+
+export const Default = Template.bind({});
+Default.args = {
+  ...defaultArgs,
+};
+
+export const StringNotification = Template.bind({});
+StringNotification.storyName = 'String children';
+StringNotification.args = {
+  ...defaultArgs,
+  children: 'This is a string notification',
+};
+
+export const ComponentNotification = Template.bind({});
+ComponentNotification.storyName = 'Component children';
+ComponentNotification.args = {
+  ...defaultArgs,
+  children: <ListProps />,
+  filter: 'Yellow',
+};
+
+export const FunctionNotification = Template.bind({});
+FunctionNotification.storyName = 'Function children';
+FunctionNotification.args = {
+  ...defaultArgs,
+  children: ({ filter }) => <React.Fragment>{`This is a functional notification passed "${filter}"`}</React.Fragment>,
+  filter: 'Yellow',
+};
+
+export const CustomTranslations = Template.bind({});
+CustomTranslations.storyName = 'Custom translations';
+CustomTranslations.args = {
+  ...defaultArgs,
+  filter: 'Yellow',
+  translations: {
+    noOptions: 'Oops! There are no options available right now.',
+    noFilteredOptions: 'Oops! There are no options available right now for "{0}".',
+  },
+};

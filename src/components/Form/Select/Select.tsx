@@ -259,6 +259,7 @@ export function SelectBase(
       {({ id, focused, required, variant }) =>
         readOnly ? (
           <FormboxReadOnly
+            contrast={contrast}
             id={id}
             placeholder={placeholder?.label}
             value={multiple ? getSelectedOptionLabelsByValues(values) : getSelectedOptionLabelByValue(value)}

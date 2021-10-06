@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * Renders a list of all the props passed to it.
+ */
 export function ListProps(props: Record<string, string>): React.ReactElement {
   const items = [] as React.ReactElement[];
 
