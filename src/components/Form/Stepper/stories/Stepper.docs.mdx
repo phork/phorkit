@@ -215,16 +215,16 @@ import { variants } from './helpers/variants';
   </ThemeWrapper>
 </Canvas>
 
-### Notifications
+## Notifications
 
 <Canvas>
   <ThemeWrapper>
     <Looper
-      list={variants}
-      render={variant => (
+      list={['danger', 'warning', 'success', 'primary', 'neutral']}
+      render={level => (
         <Looper
-          list={['success', 'danger', 'warning', 'primary', 'neutral']}
-          render={level => (
+          list={variants}
+          render={variant => (
             <Rhythm grouped py={3}>
               <FormComponentDemo initialValue={10} property="value" type="stepper">
                 <NotifiedStepper

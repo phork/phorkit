@@ -334,11 +334,11 @@ import { variants } from './helpers/variants';
 <Canvas>
   <ThemeWrapper>
     <Looper
-      list={variants}
-      render={variant => (
+      list={['danger', 'warning', 'success', 'primary', 'neutral']}
+      render={level => (
         <Looper
-          list={['success', 'danger', 'warning', 'primary', 'neutral']}
-          render={level => (
+          list={variants}
+          render={variant => (
             <Rhythm grouped mb={4}>
               <FormComponentDemo initialValue="yellow" property="value" type="select">
                 <NotifiedSelect

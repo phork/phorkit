@@ -463,11 +463,11 @@ import { textbox as variants, sizes } from './helpers/variants';
 <Playground>
   <ThemeWrapper>
     <Looper
-      list={variants}
-      render={variant => (
+      list={['danger', 'warning', 'success', 'primary', 'neutral']}
+      render={level => (
         <Looper
-          list={['success', 'danger', 'warning', 'primary', 'neutral']}
-          render={level => (
+          list={variants}
+          render={variant => (
             <Rhythm key={`${variant}-${level}`} py={3}>
               <FormComponentDemo unwrapped initialValue="Hello world" property="value" type="textbox">
                 <NotifiedTextbox
