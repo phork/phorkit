@@ -17,6 +17,8 @@ const StyledPaper = styled(Paper, {
   --paper-background-color: ${props => themes[props.themeId][`color-${props.colorId}` as keyof ThemeColors]};
   --paper-border-color: ${props =>
     themes[props.themeId][`color-${props.colorId}-${props.themeId === 'dark' ? 'L10' : 'D10'}` as keyof ThemeColors]};
+  --paper-focused-outline-color: ${props =>
+    themes[props.themeId][`color-${props.colorId}-${props.themeId === 'dark' ? 'L30' : 'D30'}` as keyof ThemeColors]};
   --paper-text-color: ${props => themes[props.themeId][`color-${props.colorId}-contrast` as keyof ThemeColors]};
   --paper-scrollbar-thumb-color: ${props => themes[props.themeId]['contrast-scrollbar-thumb-color']};
 `;

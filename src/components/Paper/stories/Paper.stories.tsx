@@ -39,6 +39,19 @@ export default {
       },
     },
     color: {
+      options: [
+        'success',
+        'warning',
+        'danger',
+        'primary',
+        'secondary',
+        'tertiary',
+        'accent-primary',
+        'contrast',
+        'transparent',
+        'extreme',
+        undefined,
+      ],
       control: {
         type: 'select',
       },
