@@ -17,10 +17,11 @@ export const getTextTooltipColors = (themeId: Theme, contrast?: boolean) => {
   const color = contrast ? 'contrast' : 'primary';
   const textColor = themes[themeId][`${color}-palette-text-color` as keyof ThemeColors] as string;
   const backgroundColor = themes[themeId][`${color}-palette-background-color` as keyof ThemeColors] as string;
+  const focusedOutlineColor = themes[themeId][`${color}-palette-text-color` as keyof ThemeColors] as string;
   const borderColor = themes[themeId][`${color}-palette-border-color` as keyof ThemeColors] as string;
   const scrollbarColor = themes[themeId][`${color}-scrollbar-thumb-color` as keyof ThemeColors] as string;
 
-  return { textColor, backgroundColor, borderColor, scrollbarColor };
+  return { textColor, backgroundColor, borderColor, focusedOutlineColor, scrollbarColor };
 };
 
 /**
@@ -41,7 +42,10 @@ export function TextTooltipContent({
   ...props
 }: TextTooltipContentProps): React.ReactElement {
   const themeId = useThemeId(initThemeId);
-  const { textColor, backgroundColor, borderColor, scrollbarColor } = getTextTooltipColors(themeId, contrast);
+  const { textColor, backgroundColor, borderColor, focusedOutlineColor, scrollbarColor } = getTextTooltipColors(
+    themeId,
+    contrast,
+  );
 
   const paperStyle: React.CSSProperties = {};
   if (position && ['left-top', 'left-bottom', 'right-top', 'right-bottom'].includes(position)) {
@@ -71,6 +75,7 @@ export function TextTooltipContent({
         backgroundColor={contrast ? `var(--contrast-color, ${backgroundColor})` : backgroundColor}
         borderColor={borderColor}
         container="popover"
+        focusedOutlineColor={focusedOutlineColor}
         scrollable={scrollable}
         scrollbarColor={scrollbarColor}
         style={{ borderRadius: '2px', width: typeof width === 'number' ? `${width}px` : width, ...paperStyle }}
