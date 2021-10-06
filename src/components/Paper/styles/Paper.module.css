@@ -39,6 +39,7 @@
 
   &.is-accessible:focus {
     outline: 1px solid var(--paper-focused-outline-color);
+    outline-offset: -1px;
   }
 
   overflow: auto;
