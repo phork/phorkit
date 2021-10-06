@@ -12,6 +12,24 @@
   }
 }
 
+.buttonGroup--left {
+  &.buttonGroup--horizontal {
+    justify-content: flex-start;
+  }
+}
+
+.buttonGroup--center {
+  &.buttonGroup--horizontal {
+    justify-content: center;
+  }
+}
+
+.buttonGroup--right {
+  &.buttonGroup--horizontal {
+    justify-content: flex-end;
+  }
+}
+
 .buttonGroup--inline {
   display: inline-flex;
 }

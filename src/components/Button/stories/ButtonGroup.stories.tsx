@@ -188,7 +188,7 @@ const Template: ComponentStory<(args: ButtonGroupProps & { selected?: boolean })
 );
 
 const defaultArgs = {
-  align: 'center' as ButtonGroupProps['align'],
+  align: 'left' as ButtonGroupProps['align'],
   buttons: [
     { id: 'first', label: 'First' },
     { id: 'second', label: 'Second', selected: true },
@@ -384,16 +384,35 @@ export const VerticalOrientation = Template.bind({});
 VerticalOrientation.storyName = 'Orientation: Vertical';
 VerticalOrientation.args = {
   ...defaultArgs,
-  align: 'left',
   orientation: 'vertical',
   shape: 'brick',
+};
+
+export const LeftAlign = Template.bind({});
+LeftAlign.storyName = 'Align: Left';
+LeftAlign.args = {
+  ...defaultArgs,
+  align: 'left',
+};
+
+export const CenterAlign = Template.bind({});
+CenterAlign.storyName = 'Align: Center';
+CenterAlign.args = {
+  ...defaultArgs,
+  align: 'center',
+};
+
+export const RightAlign = Template.bind({});
+RightAlign.storyName = 'Align: Right';
+RightAlign.args = {
+  ...defaultArgs,
+  align: 'right',
 };
 
 export const InlineDisplay = Template.bind({});
 InlineDisplay.storyName = 'Display: Inline';
 InlineDisplay.args = {
   ...defaultArgs,
-  align: 'center',
   display: 'inline',
   orientation: 'vertical',
   shape: 'brick',
@@ -403,7 +422,6 @@ export const BlockDisplay = Template.bind({});
 BlockDisplay.storyName = 'Display: Block';
 BlockDisplay.args = {
   ...defaultArgs,
-  align: 'center',
   color: 'neutral',
   display: 'block',
   orientation: 'vertical',
