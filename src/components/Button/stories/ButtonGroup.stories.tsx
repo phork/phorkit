@@ -165,14 +165,10 @@ export default {
   },
   parameters: {
     controls: {
-      exclude: ['ref'],
       sort: 'requiredFirst',
     },
     docs: {
       page: ButtonGroupDocumentation,
-      description: {
-        component: 'A simple text button or a link that looks like a button.',
-      },
     },
     layout: 'centered',
   },

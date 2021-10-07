@@ -338,14 +338,10 @@ export default {
   ],
   parameters: {
     controls: {
-      exclude: ['translations'],
       sort: 'requiredFirst',
     },
     docs: {
       page: TextboxDocumentation,
-      description: {
-        component: 'A form input for entering a single line of text.',
-      },
     },
     layout: 'centered',
   },

@@ -1,7 +1,9 @@
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { BlobbrIcon } from 'icons/internal';
 import { Rhythm } from 'components/Rhythm';
+import { PageTitle } from 'stories/helpers/PageTitle';
 import { IconText, IconTextProps } from '../IconText';
 
 export default {
@@ -69,9 +71,16 @@ export default {
       sort: 'requiredFirst',
     },
     docs: {
-      description: {
-        component: 'A combination of some text with an icon before or after it.',
-      },
+      page: () => (
+        <React.Fragment>
+          <PageTitle src="components/IconText" title="IconText" />
+          <Subtitle />
+          <Description />
+          <Primary />
+          <ArgsTable story={PRIMARY_STORY} />
+          <Stories />
+        </React.Fragment>
+      ),
     },
     layout: 'centered',
   },

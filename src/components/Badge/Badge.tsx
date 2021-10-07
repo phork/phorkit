@@ -29,8 +29,8 @@ export type BadgeProps = MergeElementPropsWithoutRef<'div', LocalBadgeProps>;
  * with a number in it), or a label (a small rectangle
  * with text in it).
  *
- * It can be positioned relative to one of the corners
- * of its containing element.
+ * It has the option to be positioned relative to one of
+ * the corners of its containing element.
  */
 export function Badge({
   children,

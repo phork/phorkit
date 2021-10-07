@@ -31,7 +31,8 @@ export type LineLoaderProps = React.HTMLAttributes<HTMLDivElement> &
 /**
  * The line loader uses the useAnimationLoop hook
  * to render a thin line that animates across the
- * full width of its parent.
+ * full width of its parent. It can be positioned
+ * at the top or the bottom of its parent.
  */
 export function LineLoader({
   className,

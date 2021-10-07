@@ -124,9 +124,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'A component to add flexbox styling to a container div.',
-      },
     },
   },
   includeStories: ['Default'],

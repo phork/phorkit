@@ -39,9 +39,6 @@ export default {
     docs: {
       ...buttonStory.parameters?.docs,
       page: IconButtonDocumentation,
-      description: {
-        component: 'A simple icon button or a link that looks like a button.',
-      },
     },
   },
 } as ComponentMeta<typeof IconButton>;

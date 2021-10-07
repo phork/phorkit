@@ -8,7 +8,7 @@ export type StyledCardProps = CardProps & {
 
 /**
  * A styled card is an extension of the Card
- * component and it will have a custom border
+ * component that will have a custom border
  * and hovered border color.
  */
 export const StyledCard = styled(Card, {

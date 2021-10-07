@@ -231,14 +231,11 @@ export default {
   ],
   parameters: {
     controls: {
-      exclude: ['translations', 'usingNotification'],
+      exclude: ['usingNotification'],
       sort: 'requiredFirst',
     },
     docs: {
       page: DropdownDocumentation,
-      description: {
-        component: 'An enhanced select component with the ability to search filter options.',
-      },
     },
     layout: 'centered',
   },

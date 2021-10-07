@@ -114,7 +114,6 @@ export default {
   },
   parameters: {
     controls: {
-      exclude: ['translations'],
       sort: 'requiredFirst',
     },
     docs: {
@@ -128,9 +127,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'An icon toast is a small notification that pops up with an icon, an optional title and a body.',
-      },
     },
   },
 } as ComponentMeta<typeof IconToast>;

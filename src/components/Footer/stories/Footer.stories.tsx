@@ -97,9 +97,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'A footer is a flexible container with a colored background and an optional border at the top.',
-      },
     },
     layout: 'centered',
   },

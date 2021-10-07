@@ -8,7 +8,7 @@ export type StyledIconToastProps = Omit<IconToastProps, 'level'> & {
 
 /**
  * A styled icon toast is an extension of the
- * IconToast component and it will have a custom
+ * IconToast component that will have a custom
  * background and text color.
  */
 export const StyledIconToast = ({ levelColor, levelInverseColor, style, ...props }: StyledIconToastProps) => {

@@ -87,9 +87,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'The permanent side panel is a stripped down version of the SidePanel component without animation.',
-      },
       source: {
         excludeDecorators: false,
       },

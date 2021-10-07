@@ -17,6 +17,10 @@ export type NotificationProps = React.HTMLAttributes<HTMLDivElement> &
     width?: number | string;
   };
 
+/**
+ * The notification component accepts a form input
+ * as a child and display a notification below it.
+ */
 export function Notification({
   children,
   className,

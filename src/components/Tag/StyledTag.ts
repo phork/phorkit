@@ -10,7 +10,7 @@ export type StyledTagProps = TagProps & {
 
 /**
  * A styled tag is an extension of the Tag component
- * and it will have a custom background and text color.
+ * that will have a custom background and text color.
  */
 export const StyledTag = styled(Tag, {
   shouldForwardProp: (prop: string) =>

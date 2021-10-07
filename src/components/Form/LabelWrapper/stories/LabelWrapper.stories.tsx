@@ -89,9 +89,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'A component to position an input and a label relative to each other.',
-      },
     },
     layout: 'padded',
   },

@@ -107,14 +107,10 @@ export default {
   decorators: [Story => <div style={{ position: 'relative', minHeight: 40 }}>{Story()}</div>],
   parameters: {
     controls: {
-      exclude: ['translations'],
       sort: 'requiredFirst',
     },
     docs: {
       page: LineLoaderDocumentation,
-      description: {
-        component: 'The line loader shows an animated bar at the top or bottom of the page to show loading state.',
-      },
     },
   },
 } as ComponentMeta<typeof LineLoader>;

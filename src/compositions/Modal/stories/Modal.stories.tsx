@@ -83,7 +83,6 @@ export default {
   },
   parameters: {
     controls: {
-      exclude: ['translations'],
       sort: 'requiredFirst',
     },
     docs: {
@@ -97,9 +96,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'A modal displays a window in the center of the screen with a semi-transparent mask behind it.',
-      },
     },
   },
 } as ComponentMeta<typeof Modal>;

@@ -50,15 +50,16 @@ export type RhythmProps = RhythmLocation &
   };
 
 /**
- * Adds margin and/or padding to each child if
- * not grouped, or adds it to a container element
- * if grouped is true.
+ * The rhythm component adds margin and/or padding
+ * to each child if the grouped flag is false, or
+ * adds it to a container element if the grouped
+ * flag is true.
  *
  * It's also possible to set negative margins, or
  * use auto for the horizontal margins.
  *
  * The amount of space added is multiplied by the
- * layout-grid-base variable.
+ * $layout-grid-base variable.
  */
 export function Rhythm({
   children,

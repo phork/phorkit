@@ -47,12 +47,18 @@ export type LocalToastProps = Omit<ThemeProps, 'contrast'> & {
 export type ToastProps = MergeElementPropsWithoutRef<'div', LocalToastProps>;
 
 /**
- * A toast is a small notification that pops up. It has a
- * background color based on the level prop, a close button,
- * and an optional duration after which the toast will be
- * removed. If it has a duration and an onPin callback it
- * will also have a pin button that can be used to stop the
- * the removal countdown.
+ * A toast is a small notification that pops up. It has
+ * a background color based on the level prop and a close
+ * button if it's not permanent and an onClose prop is
+ * passed.
+ *
+ * If a duration is passed a countdown bar will be shown
+ * and the toast will be removed after that time. If it
+ * has an onPin callback it will have a pin button that
+ * can be used to stop the the removal countdown.
+ *
+ * Toasts have a small animation on the initial render
+ * unless the immediate flag it set.
  *
  * This uses the Button and IconButton components.
  */

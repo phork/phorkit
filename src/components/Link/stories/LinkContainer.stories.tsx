@@ -72,9 +72,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'A link container wraps children that contain anchor tag(s) and styles those anchors.',
-      },
     },
     layout: 'centered',
   },

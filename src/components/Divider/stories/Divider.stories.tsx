@@ -77,9 +77,6 @@ export default {
     },
     docs: {
       page: DividerDocumentation,
-      description: {
-        component: 'A divider is a horizontal or vertical line.',
-      },
     },
     layout: 'centered',
   },

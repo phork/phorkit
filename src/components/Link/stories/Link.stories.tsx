@@ -82,9 +82,6 @@ export default {
     },
     docs: {
       page: LinkDocumentation,
-      description: {
-        component: 'An anchor tag with some standardized styles.',
-      },
     },
     layout: 'centered',
   },

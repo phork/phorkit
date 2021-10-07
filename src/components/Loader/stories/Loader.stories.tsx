@@ -69,14 +69,10 @@ export default {
   decorators: [Story => <div style={{ position: 'relative', minHeight: 64 }}>{Story()}</div>],
   parameters: {
     controls: {
-      exclude: ['translations'],
       sort: 'requiredFirst',
     },
     docs: {
       page: LoaderDocumentation,
-      description: {
-        component: 'An infinitely spinner loader.',
-      },
     },
     layout: 'centered',
   },

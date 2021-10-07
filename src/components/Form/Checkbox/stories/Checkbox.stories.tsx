@@ -128,14 +128,11 @@ export default {
   ],
   parameters: {
     controls: {
-      exclude: ['persistEvents', 'ref'],
+      exclude: ['persistEvents'],
       sort: 'requiredFirst',
     },
     docs: {
       page: CheckboxDocumentation,
-      description: {
-        component: 'A form component to turn an option on or off, or indeterminate.',
-      },
     },
     layout: 'centered',
   },

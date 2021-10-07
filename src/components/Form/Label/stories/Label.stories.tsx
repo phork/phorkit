@@ -88,9 +88,6 @@ export default {
     },
     docs: {
       page: LabelDocumentation,
-      description: {
-        component: 'A form label that can be various colors and sizes.',
-      },
     },
     layout: 'centered',
   },

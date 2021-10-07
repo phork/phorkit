@@ -95,14 +95,10 @@ export default {
   ],
   parameters: {
     controls: {
-      exclude: ['ref'],
       sort: 'requiredFirst',
     },
     docs: {
       page: CheckboxGroupDocumentation,
-      description: {
-        component: 'A group of checkboxes in a fieldset with a legend.',
-      },
     },
     layout: 'centered',
   },

@@ -10,6 +10,7 @@ export type LocalLabelWrapperProps = {
   inputWidth?: string | number;
   label: React.ReactElement;
   labelWidth?: string | number;
+  /** Reverse the order of components using the flexbox direction */
   reverse?: boolean;
   spread?: boolean;
   style?: React.CSSProperties;
@@ -19,6 +20,11 @@ export type LocalLabelWrapperProps = {
 export type LabelWrapperProps<T extends React.ElementType = 'div'> = AsReactType<T> &
   MergeElementPropsWithoutRef<T, LocalLabelWrapperProps>;
 
+/**
+ * A label wrapper positions a form input and a label
+ * relative to each other. They can be side by side,
+ * or one can be on top of the other.
+ */
 export function LabelWrapper<T extends React.ElementType = 'div'>({
   as,
   className,

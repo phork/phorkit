@@ -200,9 +200,6 @@ export default {
     },
     docs: {
       page: SliderDocumentation,
-      description: {
-        component: 'A slider can be used to select a value from a range.',
-      },
     },
     layout: 'centered',
   },

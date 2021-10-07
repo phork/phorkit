@@ -131,9 +131,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'A modified slider where colored segments are activated when in range.',
-      },
     },
     layout: 'centered',
   },

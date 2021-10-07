@@ -25,7 +25,7 @@ const StyledPaper = styled(Paper, {
 
 /**
  * The colored paper is an extension of the Paper
- * component and it will have a background of one
+ * component that will have a background of one
  * of the theme's primary colors.
  */
 export const ColoredPaper = React.memo<ColoredPaperProps>(withTheme<ColoredPaperProps>(StyledPaper));

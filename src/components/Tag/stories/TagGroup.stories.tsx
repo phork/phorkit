@@ -94,9 +94,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'A simple text tag or a link that looks like a tag.',
-      },
     },
     layout: 'centered',
   },

@@ -9,7 +9,7 @@ export type StyledProgressProps = Omit<ProgressProps, 'color'> & {
 
 /**
  * A styled progress bar is an extension of the
- * ProgressBar component and it will have a custom
+ * ProgressBar component that will have a custom
  * background and segment color.
  */
 export const StyledProgress = styled(Progress, {

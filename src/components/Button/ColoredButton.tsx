@@ -26,7 +26,7 @@ const StyledButton = styled(Button, {
 
 /**
  * A colored button is an extension of the Button
- * component and it will have a background of one
+ * component that will have a background of one
  * of the theme's primary colors.
  */
 export const ColoredButton = withTheme<ColoredButtonProps>(StyledButton) as <T extends ButtonElementType = 'button'>(

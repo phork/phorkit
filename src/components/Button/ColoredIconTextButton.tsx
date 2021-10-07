@@ -26,7 +26,7 @@ const StyledIconTextButton = styled(IconTextButton, {
 
 /**
  * A colored icon text button is an extension of the
- * IconTextButton component and it will have a background
+ * IconTextButton component that will have a background
  * of one of the theme's primary colors.
  */
 export const ColoredIconTextButton = withTheme<ColoredIconTextButtonProps>(StyledIconTextButton) as <

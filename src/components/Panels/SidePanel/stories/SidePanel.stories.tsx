@@ -132,9 +132,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'The side panel sits alongside a MainPanel sibling in a vertical PanelContainer.',
-      },
       source: {
         excludeDecorators: false,
       },

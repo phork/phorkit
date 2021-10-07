@@ -95,7 +95,6 @@ export default {
   },
   parameters: {
     controls: {
-      exclude: ['translations'],
       sort: 'requiredFirst',
     },
     docs: {
@@ -109,9 +108,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'A toast is a small notification that pops up.',
-      },
     },
   },
 } as ComponentMeta<typeof Toast>;

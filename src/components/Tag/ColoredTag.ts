@@ -21,7 +21,7 @@ const StyledTag = styled(Tag, {
 
 /**
  * A colored tag is an extension of the Tag component
- * and it will have a background of one of the theme's
+ * that will have a background of one of the theme's
  * primary colors.
  */
 export const ColoredTag = React.memo<ColoredTagProps>(withTheme<ColoredTagProps>(StyledTag));

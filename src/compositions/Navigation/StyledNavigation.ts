@@ -18,7 +18,7 @@ export type StyledNavigationProps = NavigationProps & {
 
 /**
  * The styled navigation is an extension of the Navigation
- * component and it will have all its colors customized.
+ * component that will have all its colors customized.
  */
 export const StyledNavigation = styled(Navigation, {
   shouldForwardProp: (prop: string) =>
