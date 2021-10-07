@@ -58,7 +58,7 @@ export type AccordionProps = Pick<
  * stored internally. The onSelect callback can be used
  * by the parent, if necessary.
  *
- * The accordion uses the ListRegistry and InteractiveGroup
+ * This uses the InteractiveGroup and the ListRegistry
  * components.
  */
 export function Accordion({

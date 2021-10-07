@@ -34,6 +34,8 @@ export function DropdownBase(
  * This is a wrapper around the PartialDropdown
  * component for which it provides the reducer used
  * to track the selected and focused item(s) state.
+ *
+ * This uses the InteractiveGroup component.
  */
 export const Dropdown = React.forwardRef(DropdownBase);
 

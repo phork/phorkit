@@ -26,8 +26,8 @@ export type AccordionLabelProps = MergeElementPropsWithoutRef<'div', LocalAccord
  * prop to this that will trigger the expansion and
  * collapse of the accordion content.
  *
- * This uses the useInteractiveGroupItem and the
- * useListRegistryItem hooks.
+ * This uses the InteractiveGroup and the ListRegistry
+ * components.
  */
 export function AccordionLabel({
   children,

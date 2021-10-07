@@ -26,6 +26,8 @@ export type PaginationJumpProps<T extends ButtonElementType = 'button'> = AsReac
  * is set then the page change should be handled by the
  * onChangePage handler while the link is reserved only
  * for right clicking.
+ *
+ * This uses the Button component.
  */
 export function PaginationJump<T extends ButtonElementType = 'button'>({
   allowRightClickLinks,

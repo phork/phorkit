@@ -68,6 +68,8 @@ export function PaginationPageBase<T extends ButtonElementType = 'button'>(
  * is set then the page change should be handled by the
  * onChangePage handler while the link is reserved only
  * for right clicking.
+ *
+ * This uses the Button component.
  */
 export const PaginationPage = React.forwardRef(PaginationPageBase) as <T extends ButtonElementType = 'button'>(
   p: PaginationPageProps<T> & { ref?: React.Ref<HTMLElementTagNameMap[T]> },

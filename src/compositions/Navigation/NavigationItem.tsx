@@ -32,8 +32,8 @@ export type NavigationItemProps = MergeElementPropsWithoutRef<'div', LocalNaviga
  * component to add the necessary styles to show the
  * different item states (disabled, focused, selected).
  *
- * This uses the useInteractiveGroupItem and the
- * useListRegistryItem item hooks.
+ * This uses the InteractiveGroup and the ListRegistry
+ * components.
  */
 export function NavigationItem({
   allowRightClickLinks = false,

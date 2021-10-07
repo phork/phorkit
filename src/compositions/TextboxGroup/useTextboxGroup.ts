@@ -44,12 +44,13 @@ const isRefWithValidator = (
 };
 
 /**
- * This returns several helper function that are
- * used to navigate between inputs in an input
- * groups.
+ * This returns several helper function that are used
+ * to navigate between inputs in an input groups.
  *
- * When an input is considered valid the focus
- * automatically moves to the next input.
+ * When an input is considered valid the focus automatically
+ * moves to the next input.
+ *
+ * This uses the Formbox and Textbox components.
  */
 export const useTextboxGroup = ({
   refs,

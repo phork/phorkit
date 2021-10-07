@@ -136,8 +136,8 @@ export const defaultPageLabelProps = {
  * this component and is updated by the onChangePage
  * callback.
  *
- * This uses the Button, ButtonGroup, Flex, and
- * Typography components.
+ * This uses the Button, ButtonGroup, ErrorBoundary,
+ * Flex, and Typography components.
  */
 export function Pagination({
   activePageProps = defaultActivePageProps,

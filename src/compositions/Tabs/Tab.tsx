@@ -33,7 +33,7 @@ export type TabProps = MergeElementPropsWithoutRef<'div', LocalTabProps>;
  * the ListRegistry. It should receive an onClick handler
  * from the TabList that will set its selected state.
  *
- * This uses the InteractiveGroup and ListRegistry
+ * This uses the InteractiveGroup and the ListRegistry
  * components.
  */
 export function Tab({

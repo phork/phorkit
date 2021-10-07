@@ -30,7 +30,7 @@ export type NavigationProps = Pick<
  * The navigation component sets up the state management
  * and then renders the InnerNavigation.
  *
- * This uses the InteractiveGroup and ListRegistry
+ * This uses the InteractiveGroup and the ListRegistry
  * components.
  */
 export function Navigation({

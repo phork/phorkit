@@ -42,6 +42,8 @@ export type PaginationJumpIconProps<T extends ButtonElementType = 'button'> = As
  *
  * This uses a regular Button instead of an IconButton
  * because it makes it easier to standardize props.
+ *
+ * This uses the Button and Rhythm components.
  */
 export function PaginationJumpIcon<T extends ButtonElementType = 'button'>({
   allowRightClickLinks,

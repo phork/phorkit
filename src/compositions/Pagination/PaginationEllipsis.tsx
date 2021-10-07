@@ -10,6 +10,8 @@ export type PaginationEllipsisProps = Omit<ButtonProps<'div'>, 'as' | 'children'
  * The pagination ellipsis component renders an ellipsis icon.
  * This uses an unclickable div Button to make it easier to
  * share styles with the rest of the pagination.
+ *
+ * This uses the Button component.
  */
 export function PaginationEllipsis({ className, ...props }: PaginationEllipsisProps): ReturnType<typeof Button> | null {
   return (

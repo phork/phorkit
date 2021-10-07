@@ -51,7 +51,7 @@ export type InnerNavigationProps = React.HTMLAttributes<HTMLElement> &
  * The selectedId state should be managed outside of
  * this component. The focused state is managed inside.
  *
- * This uses the InteractiveGroup and ListRegistry
+ * This uses the InteractiveGroup and the ListRegistry
  * components.
  */
 export const InnerNavigation = React.forwardRef<HTMLElement, InnerNavigationProps>(

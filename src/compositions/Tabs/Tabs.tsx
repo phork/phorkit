@@ -49,7 +49,7 @@ export type TabsProps = Omit<
  * stored internally. The onSelect callback can be used
  * by the parent, if necessary.
  *
- * The tabs use the ListRegistry and InteractiveGroup
+ * This uses the InteractiveGroup and the ListRegistry
  * components.
  */
 export function Tabs({
