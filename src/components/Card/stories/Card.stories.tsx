@@ -85,9 +85,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'A card is a container for a set of information.',
-      },
     },
     layout: 'centered',
   },

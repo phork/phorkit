@@ -278,14 +278,10 @@ export default {
   ],
   parameters: {
     controls: {
-      exclude: ['translations'],
       sort: 'requiredFirst',
     },
     docs: {
       page: TextareaDocumentation,
-      description: {
-        component: 'A form input for entering multiple lines of text.',
-      },
     },
     layout: 'centered',
   },

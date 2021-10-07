@@ -65,9 +65,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'A complete system for creating and removing modals.',
-      },
     },
   },
 } as ComponentMeta<typeof Modals>;

@@ -43,9 +43,6 @@ export default {
     docs: {
       ...buttonStory.parameters?.docs,
       page: IconTextButtonDocumentation,
-      description: {
-        component: 'A button with text and an icon before or after the text.',
-      },
     },
   },
 } as ComponentMeta<typeof IconTextButton>;

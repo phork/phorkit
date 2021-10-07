@@ -15,7 +15,7 @@ export type DividerProps = React.HTMLAttributes<HTMLDivElement> &
 
 /**
  * A divider is a vertical or horizontal rule
- * which can be one of several colors or volumes.
+ * that can be one of several colors.
  */
 export function Divider({
   className,

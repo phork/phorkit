@@ -82,7 +82,6 @@ export default {
     },
   },
   parameters: {
-    exclude: ['ref'],
     controls: {
       sort: 'requiredFirst',
     },
@@ -97,9 +96,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'A group of textboxes used for numeric two-factor authentication input.',
-      },
       source: {
         code: '<TextboxGroup2FA {...args} />',
       },
@@ -167,7 +163,7 @@ Labeled.parameters = {
       code: `
 <FormboxContainer focused as="label" label="Two-factor code" size={size} type="input" variant="minimal">
   <TextboxGroup2FA {...args} />
-</FormboxContainer>     
+</FormboxContainer>
       `,
     },
   },

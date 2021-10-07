@@ -106,9 +106,6 @@ export default {
     },
     docs: {
       page: ProgressDocumentation,
-      description: {
-        component: 'A progress bar or segmented progress bar.',
-      },
     },
     layout: 'centered',
   },

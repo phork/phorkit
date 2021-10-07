@@ -44,7 +44,6 @@ export default {
   },
   parameters: {
     controls: {
-      exclude: ['translations'],
       sort: 'requiredFirst',
     },
     docs: {
@@ -58,9 +57,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'A new component.',
-      },
     },
     layout: 'centered',
   },

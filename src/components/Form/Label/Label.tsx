@@ -10,6 +10,7 @@ export type LocalLabelProps = ThemeProps & {
   disabled?: boolean;
   /** Manually apply the focus styles; this does not affect focus */
   focused?: boolean;
+  /** A muted label looks like a disabled label but has a hover state of a regular label */
   muted?: boolean;
   noWrap?: boolean;
   strength?: 'transitioned' | 'standard' | 'legend';
@@ -21,9 +22,9 @@ export type LabelProps<T extends React.ElementType = 'div'> = AsReactType<T> &
   MergeElementPropsWithoutRef<T, LocalLabelProps>;
 
 /**
- * The label component creates an element with standardized
- * color and size styling. The component can be a label, a div
- * or a custom element.
+ * A form label can have one of several strengths and
+ * colors. It can be a standard HTML label, a div or a
+ * custom element.
  */
 export function Label<T extends React.ElementType = 'div'>({
   as,

@@ -87,9 +87,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'A utility to absolutely position an element relative to its container.',
-      },
     },
     layout: 'centered',
   },

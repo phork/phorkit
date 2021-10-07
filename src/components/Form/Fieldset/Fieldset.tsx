@@ -15,9 +15,9 @@ export type LocalFieldsetProps = Omit<ThemeProps, 'unthemed'> & {
 export type FieldsetProps = MergeElementProps<'fieldset', LocalFieldsetProps>;
 
 /**
- * The fieldset component combines a standard form
- * fieldset, removes the border, and adds an optional
- * legend.
+ * The fieldset component groups together several
+ * related form elements. It combines a standard
+ * form fieldset with an optional legend.
  */
 export function FieldsetBase(
   { children, className, contrast = false, legend, themeId: initThemeId, ...props }: FieldsetProps,

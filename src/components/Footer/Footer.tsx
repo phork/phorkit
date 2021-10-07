@@ -17,10 +17,9 @@ export type FooterProps = React.HTMLAttributes<HTMLDivElement> &
   };
 
 /**
- * The footer is a simple container using flexbox
- * space-between with an optional top border and
- * background color using one of the sequential
- * variants.
+ * A footer is a flexible container with a colored
+ * background and an optional border at the top. It
+ * uses space-between to stretch the content.
  */
 export function Footer({
   bordered = false,

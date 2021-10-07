@@ -11,7 +11,7 @@ export type StyledPaperProps = Omit<PaperProps, 'color'> & {
 
 /**
  * The styled paper is an extension of the Paper
- * component and it will have a custom background,
+ * component that will have a custom background,
  * border, text and scrollbar color.
  */
 export const StyledPaper = styled(Paper, {

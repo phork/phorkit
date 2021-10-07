@@ -146,10 +146,9 @@ function TextboxGroup2FAContent({
 }
 
 /**
- * This renders a group of numeric inputs that can
- * be used for a two factor authentication code input.
- * When a character is entered it automatically moves
- * the focus to the next input.
+ * A group of inputs that can be used for a two factor
+ * authentication number. The focus is automatically moved
+ * to the next input when a valid character is entered.
  *
  * The uses the Formbox and ListRegistry components.
  */

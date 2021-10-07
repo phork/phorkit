@@ -17,10 +17,9 @@ export type HeaderProps = React.HTMLAttributes<HTMLDivElement> &
   };
 
 /**
- * The header is a simple container using flexbox
- * space-between with an optional bottom border and
- * background color using one of the sequential
- * variants.
+ * A header is a flexible container with a colored
+ * background and an optional border at the bottom.
+ * It uses space-between to stretch the content.
  */
 export function Header({
   bordered = false,

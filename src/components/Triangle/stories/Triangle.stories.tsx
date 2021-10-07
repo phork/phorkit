@@ -41,9 +41,6 @@ export default {
     },
     docs: {
       page: TriangleDocumentation,
-      description: {
-        component: 'A simple utility for building triangles that can be used for arrows.',
-      },
     },
     layout: 'centered',
   },

@@ -82,14 +82,10 @@ export default {
   },
   parameters: {
     controls: {
-      exclude: ['ref'],
       sort: 'requiredFirst',
     },
     docs: {
       page: TagDocumentation,
-      description: {
-        component: 'A tag represents a small segment of data and can be either static or actionable.',
-      },
     },
     layout: 'centered',
   },

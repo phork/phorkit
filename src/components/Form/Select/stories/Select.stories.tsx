@@ -275,14 +275,10 @@ export default {
   ],
   parameters: {
     controls: {
-      exclude: ['ref', 'translations'],
       sort: 'requiredFirst',
     },
     docs: {
       page: SelectDocumentation,
-      description: {
-        component: 'A dropdown input for selecting zero or more items.',
-      },
     },
     layout: 'centered',
   },

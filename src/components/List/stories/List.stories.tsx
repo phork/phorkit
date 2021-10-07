@@ -128,15 +128,11 @@ export default {
   },
   parameters: {
     controls: {
-      exclude: ['children', 'ref'],
+      exclude: ['children'],
       sort: 'requiredFirst',
     },
     docs: {
       page: ListDocumentation,
-      description: {
-        component:
-          'A simple read-only list. For an interactive list see the [InteractiveList](?path=/story/input-interactivelist--default) component.',
-      },
     },
     layout: 'centered',
   },

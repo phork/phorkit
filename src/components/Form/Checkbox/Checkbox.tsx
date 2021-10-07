@@ -175,7 +175,8 @@ export function CheckboxBase<V extends CheckboxValue = string>(
 
 /**
  * The checkbox component contains both a form checkbox
- * and a label.
+ * and a label. A checkbox can be checked, unchecked or
+ * indeterminate.
  *
  * The checked state should be stored outside of this
  * component and is updated by the onChange callback.

@@ -82,9 +82,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'To supplement form inputs with notifications, warnings and errors.',
-      },
     },
     layout: 'centered',
   },

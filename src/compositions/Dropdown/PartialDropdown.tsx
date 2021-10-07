@@ -686,7 +686,7 @@ export function PartialDropdownBase(
 }
 
 /**
- * The dropdown is similar to a select component in
+ * A dropdown is similar to a select component in
  * that it provides a list of selectable items. The
  * items can be filtered or searched. A searchable
  * dropdown is similar to a filterable dropdown except

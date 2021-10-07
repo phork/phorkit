@@ -203,9 +203,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'To add margins and padding around an element or a group of elements.',
-      },
     },
     layout: 'centered',
   },

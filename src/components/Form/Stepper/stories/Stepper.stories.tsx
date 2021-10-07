@@ -249,14 +249,10 @@ export default {
   ],
   parameters: {
     controls: {
-      exclude: ['ref', 'translations'],
       sort: 'requiredFirst',
     },
     docs: {
       page: StepperDocumentation,
-      description: {
-        component: 'A numeric textbox input that has increment and decrement icons.',
-      },
     },
     layout: 'centered',
   },

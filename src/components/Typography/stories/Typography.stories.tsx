@@ -137,9 +137,6 @@ export default {
     },
     docs: {
       page: TypographyDocumentation,
-      description: {
-        component: 'A utility to add one or more styles to a text element.',
-      },
     },
     layout: 'padded',
   },

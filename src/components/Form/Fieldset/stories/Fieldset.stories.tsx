@@ -50,9 +50,6 @@ export default {
     },
     docs: {
       page: FieldsetDocumentation,
-      description: {
-        component: 'The fieldset is used to group together several form elements.',
-      },
     },
     layout: 'centered',
   },

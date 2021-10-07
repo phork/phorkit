@@ -187,14 +187,10 @@ export default {
   },
   parameters: {
     controls: {
-      exclude: ['ref', 'translations'],
       sort: 'requiredFirst',
     },
     docs: {
       page: PaginationDocumentation,
-      description: {
-        component: 'A collection of buttons and/or links used to navigate page changes.',
-      },
     },
     layout: 'centered',
   },

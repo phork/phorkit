@@ -109,9 +109,6 @@ export default {
     },
     docs: {
       page: BadgeDocumentation,
-      description: {
-        component: 'A badge can display a count, a label or a simple marker.',
-      },
     },
     layout: 'centered',
   },

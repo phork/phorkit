@@ -100,14 +100,10 @@ export default {
   ],
   parameters: {
     controls: {
-      exclude: ['ref'],
       sort: 'requiredFirst',
     },
     docs: {
       page: RadioGroupDocumentation,
-      description: {
-        component: 'A group of radios in a fieldset with a legend.',
-      },
     },
     layout: 'centered',
   },

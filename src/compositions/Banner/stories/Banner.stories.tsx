@@ -61,9 +61,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'A banner spans the full width of the page with a text notification.',
-      },
     },
   },
 } as ComponentMeta<typeof Banner>;

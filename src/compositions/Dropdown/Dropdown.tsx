@@ -25,9 +25,15 @@ export function DropdownBase(
 }
 
 /**
- * The dropdown is a wrapper around the partial dropdown
- * for which it provides the reducer used to track the
- * selected and focused item(s) state.
+ * A dropdown is similar to a select component in
+ * that it provides a list of selectable items. The
+ * items can be filtered or searched. A searchable
+ * dropdown is similar to a filterable dropdown except
+ * it starts with no initial values.
+ *
+ * This is a wrapper around the PartialDropdown
+ * component for which it provides the reducer used
+ * to track the selected and focused item(s) state.
  */
 export const Dropdown = React.forwardRef(DropdownBase);
 

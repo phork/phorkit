@@ -73,13 +73,13 @@ export type TypographyProps<T extends keyof JSX.IntrinsicElements = 'span'> = As
 
 /**
  * The typography component adds type styles to a
- * container element. It can change size, color,
- * weight, line height, etc. It doesn't have any
- * default styles, so it won't override existing
- * styles unless specifically told to do so.
+ * container element. It can change size, line height,
+ * color, weight, case, etc. It doesn't have any
+ * default styles, so it won't override an existing
+ * style when that prop is left undefined.
  *
- * There is also a reset flag that will override
- * any styles and set them back to their defaults.
+ * There's also a reset flag that will override
+ * most styles and set them back to their defaults.
  */
 export function Typography<T extends keyof JSX.IntrinsicElements = 'span'>({
   align,

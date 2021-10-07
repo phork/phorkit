@@ -8,7 +8,7 @@ export type StyledBadgeProps = BadgeProps & {
 
 /**
  * A styled badge is an extension of the Badge
- * component and it will have a custom background
+ * component that will have a custom background
  * and text color.
  */
 export const StyledBadge = styled(Badge, {

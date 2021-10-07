@@ -69,9 +69,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'A complete system for creating and removing toasts.',
-      },
     },
   },
 } as ComponentMeta<typeof Toasts>;

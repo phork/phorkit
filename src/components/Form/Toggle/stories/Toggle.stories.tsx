@@ -114,9 +114,6 @@ export default {
     },
     docs: {
       page: ToggleDocumentation,
-      description: {
-        component: 'A simple on and off switch.',
-      },
     },
     layout: 'centered',
   },

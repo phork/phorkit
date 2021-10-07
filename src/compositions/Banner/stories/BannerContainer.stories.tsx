@@ -53,9 +53,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'A banner container wraps one or more banners and adds a border between banners of the same level.',
-      },
     },
   },
 } as ComponentMeta<typeof BannerContainer>;

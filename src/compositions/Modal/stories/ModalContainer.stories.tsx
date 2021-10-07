@@ -61,9 +61,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'A modal container wraps one or more modals and adds a border between modals of the same level.',
-      },
     },
   },
 } as ComponentMeta<typeof ModalContainer>;

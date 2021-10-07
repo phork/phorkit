@@ -132,9 +132,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'The stack panel sits alongside a MainPanel sibling in a horizontal PanelContainer.',
-      },
       source: {
         excludeDecorators: false,
       },

@@ -99,7 +99,6 @@ export default {
   },
   parameters: {
     controls: {
-      exclude: ['ref'],
       sort: 'requiredFirst',
     },
     docs: {
@@ -113,9 +112,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'A chip is a special kind of tag with an avatar and an icon.',
-      },
     },
     layout: 'centered',
   },

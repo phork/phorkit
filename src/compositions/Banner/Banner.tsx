@@ -40,7 +40,10 @@ export interface BannerProps
  * A banner is a simple horizontal bar that spans the
  * full width of its container. It has a background
  * color based on the level prop and a close button
- * if an onClose prop is passed.
+ * if it's not permanent and an onClose prop is passed.
+ *
+ * Banners have a small animation on the initial render
+ * unless the immediate flag it set.
  *
  * This uses the IconButton, Flex, Paper, Position
  * and Rhythm components.

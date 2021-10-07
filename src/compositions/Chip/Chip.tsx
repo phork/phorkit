@@ -15,7 +15,7 @@ export type ChipProps = Omit<TagProps, 'children' | 'flush' | 'size'> & {
  * A chip is a small group of data that includes an
  * avatar, a label and optionally an icon. The icon
  * can be a button, a simple SVG element, or any
- * type of element.
+ * other type of element.
  *
  * This uses the Avatar and Tag components.
  */

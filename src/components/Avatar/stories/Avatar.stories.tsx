@@ -81,14 +81,10 @@ export default {
   },
   parameters: {
     controls: {
-      exclude: ['translations'],
       sort: 'requiredFirst',
     },
     docs: {
       page: AvatarDocumentation,
-      description: {
-        component: 'An avatar represents a user as a picture or initials.',
-      },
     },
     layout: 'centered',
   },

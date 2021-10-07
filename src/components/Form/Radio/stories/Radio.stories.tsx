@@ -115,14 +115,11 @@ export default {
   },
   parameters: {
     controls: {
-      exclude: ['persistEvents', 'ref'],
+      exclude: ['persistEvents'],
       sort: 'requiredFirst',
     },
     docs: {
       page: RadioDocumentation,
-      description: {
-        component: 'A form component to turn an option on or off.',
-      },
     },
     layout: 'centered',
   },

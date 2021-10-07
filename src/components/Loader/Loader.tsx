@@ -36,10 +36,10 @@ export type BaseLoaderProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'childr
 export type LoaderProps = BaseLoaderProps & (LoaderSize | LoaderScale);
 
 /**
- * Renders an SVG spinner icon at a custom size or scale.
- * The spinner can be positioned relatively, absolutely
- * or fixed. When positioned absolutely or fixed it will
- * be centered in its container.
+ * An SVG spinner icon with a custom size or scale. It
+ * can be positioned relatively, absolutely or fixed.
+ * When positioned absolutely or fixed it will be
+ * centered in its container.
  */
 export function Loader({
   className,
