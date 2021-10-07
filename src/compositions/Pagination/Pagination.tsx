@@ -51,7 +51,7 @@ type PaginationButtonProps = Pick<
 export type PaginationLimitedProps = {};
 
 export type LocalPaginationProps = MergeProps<
-  ThemeProps,
+  Omit<ThemeProps, 'unthemed'>,
   {
     /** The props for the active page button */
     activePageProps: PaginationButtonProps;
