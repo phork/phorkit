@@ -121,7 +121,7 @@ export type PartialDropdownProps = Omit<
     readOnly?: boolean;
     /** The reducer comes from `useReducer(interactiveGroupReducer)` and is used to track selection */
     reducer: PartialInteractiveListProps['reducer'];
-    /** A searchable dropdown has no options unless a search term has been entered */
+    /** A searchable dropdown should have no options unless a search term has been entered */
     searchable?: boolean;
     size?: DropdownSize;
     style?: React.CSSProperties;
@@ -218,6 +218,7 @@ export function PartialDropdownBase(
     },
   }));
 
+  // to track the state when the mousedown event happened
   const mouseDownRef = useRef<{
     isDropdownVisible?: boolean;
     isListClicked?: boolean;
@@ -237,7 +238,7 @@ export function PartialDropdownBase(
     listVisible: false,
   });
 
-  const { addRef, handleFocus, handleBlur, isIdFocused } = useDeepFocusGroup({}, { blurDelay: 150 });
+  const { addRef, clearRefs, handleFocus, handleBlur, isIdFocused } = useDeepFocusGroup({}, { blurDelay: 150 });
   const { focus, cancel } = useTriggerFocus({ focusDelay: 150 });
 
   const isClearFocused = isIdFocused(FOCUS_REFS.CLEAR);
@@ -293,15 +294,15 @@ export function PartialDropdownBase(
     };
   }, [getFilteredOptions]);
 
-  // only initialize the deep focus handlers once
   useEffect(() => {
+    clearRefs();
+
     addRef<HTMLButtonElement>({ id: FOCUS_REFS.CLEAR, ref: clearRef, passive: true });
     addRef<HTMLInputElement>({ id: FOCUS_REFS.INPUT, ref: inputRef, passive: true });
     addRef<HTMLDivElement>({ id: FOCUS_REFS.TOGGLE, ref: toggleRef, passive: true });
     addRef<HTMLDivElement, 'container'>({ id: FOCUS_REFS.LIST, ref: listRef, passive: true, handle: 'container' });
     addRef<HTMLDivElement>({ id: FOCUS_REFS.CONTAINER, ref: containerRef, passive: true });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [addRef, clearRefs]);
 
   // when the overall component focus state changes ...
   useEffect(() => {

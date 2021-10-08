@@ -1,0 +1,130 @@
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
+import { TimesIcon } from 'icons/TimesIcon';
+import { TagIcon } from 'icons/internal/TagIcon';
+import { Rhythm } from 'components/Rhythm/Rhythm';
+import { ChipContent } from 'compositions/Chip/ChipContent';
+import { Canvas } from 'stories/helpers/Canvas';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
+import { DropdownWithTags } from '../DropdownWithTags';
+import { options } from './helpers/options';
+
+export const dropdownContainerStyle = {
+  height: 240,
+  minWidth: 200,
+  marginLeft: 20,
+  marginRight: 20,
+};
+
+<PageTitle src="components/Dropdown" title="DropdownWithTags" />
+<Subtitle />
+<Description />
+<Primary />
+<ArgsTable story={PRIMARY_STORY} />
+<Stories />
+
+### Custom tags
+
+<Canvas>
+  <ThemeWrapper style={{ height: '300px' }}>
+    <div style={dropdownContainerStyle}>
+      <DropdownWithTags
+        transitional
+        initialSelected={[options[3], options[5], options[7]]}
+        inputVariant="filled"
+        label="Super awesome dropdown"
+        layout="contained"
+        options={options}
+        style={{ width: 300 }}
+        tag={({ label }) => (
+          <ChipContent
+            avatar={{ initials: 'EC', color: 'primary', imgSrc: '/images/avatar.jpg' }}
+            icon={
+              <Rhythm mr={2}>
+                <TimesIcon scale="xsmall" />
+              </Rhythm>
+            }
+            size="medium"
+            text={label}
+          />
+        )}
+        tagProps={{ flush: true }}
+        tagSize="medium"
+      />
+    </div>
+  </ThemeWrapper>
+</Canvas>
+
+### Custom styles
+
+<Canvas>
+  <div style={dropdownContainerStyle}>
+    <DropdownWithTags
+      transitional
+      unthemed
+      iconBefore={<TagIcon />}
+      initialSelected={[options[3], options[5], options[7]]}
+      inputVariant="filled"
+      label="Super awesome dropdown"
+      layout="contained"
+      options={options.map(option => ({
+        ...option,
+        tagProps: {
+          unthemed: true,
+          style: {
+            '--tag-primary-color': '#57278C',
+          },
+        },
+      }))}
+      style={{
+        '--dropdown-options-bottom-border-color': '#9D69D5',
+        '--dropdown-options-focused-border-color': '#57278C',
+        '--dropdown-options-container-background-color': '#fff',
+        '--dropdown-options-container-box-shadow': '0px 1px 2px 0px rgba(0, 0, 0, 0.3)',
+        '--dropdown-options-container-border-color': '#B995E1',
+        '--dropdown-options-raised-box-shadow': '0px 1px 2px 0px rgba(0, 0, 0, 0.3)',
+        '--dropdown-options-scrollbar-thumb-color': '#DDDDE0',
+        '--list-focused-border-color': '#642da0',
+        '--list-item-selected-background-color': '#642da0',
+        '--list-item-selected-text-color': '#ffffff',
+        '--list-item-background-color': 'transparent',
+        '--list-item-border-color': '#642da0',
+        '--list-item-focused-border-color': '#57278C',
+        '--list-item-focused-text-color': '#642da0',
+        '--list-item-text-color': '#B995E1',
+        '--formbox-icon-color': '#9D69D5',
+        '--formbox-icon-hovered-color': '#642da0',
+        '--formbox-input-container-background-color': 'transparent',
+        '--formbox-input-container-border-color': '#9D69D5',
+        '--formbox-input-container-focused-border-color': '#57278C',
+        '--formbox-input-container-hovered-border-color': '#642da0',
+        '--formbox-input-text-color': '#642da0',
+        '--formbox-label-text-color': '#B995E1',
+        width: 300,
+      }}
+      tagGroupProps={{ style: { maxWidth: 500 } }}
+      tagShape="brick"
+      tagSize="small"
+    />
+  </div>
+</Canvas>
+
+### Contrast
+
+<Canvas contrast>
+  <ThemeWrapper>
+    <div style={dropdownContainerStyle}>
+      <DropdownWithTags
+        contrast
+        transitional
+        iconBefore={<TagIcon />}
+        initialSelected={[options[3], options[5], options[7]]}
+        inputVariant="filled"
+        label="Super awesome dropdown"
+        layout="contained"
+        options={options}
+        style={{ width: 300 }}
+      />
+    </div>
+  </ThemeWrapper>
+</Canvas>
