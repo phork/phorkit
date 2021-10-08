@@ -1,0 +1,145 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ucfirst } from 'utils/case';
+import { Flex } from 'components/Flex';
+import { Toggle } from 'components/Form/Toggle';
+import { Rhythm } from 'components/Rhythm';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { TimeoutWrapper } from 'docs/helpers/TimeoutWrapper';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
+import { SizeConsumer, SizeProvider, useGetSize, useObserveSize, useSizeListeners } from '../index';
+
+<Meta
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+  title="Utilities/Size"
+/>
+
+<PageTitle src="context/Size" title="Size" />
+
+### SizeProvider: unobserved
+
+<Canvas>
+  <StateWrapper initialState={false}>
+    {({ state: observe, setState: setObserve }) => (
+      <React.Fragment>
+        <Rhythm grouped mb={5}>
+          <Toggle checked={observe} onChange={(event, checked) => setObserve(!!checked)}>
+            Watch for changes
+          </Toggle>
+        </Rhythm>
+        <SizeProvider decimalPlaces={0} observe={observe}>
+          {ref => (
+            <SizeConsumer>
+              {({ width, height }) => (
+                <div ref={ref} style={{ background: '#556270', color: '#fff', padding: 16, width: '100%' }}>
+                  <Rhythm my={2}>
+                    <div>
+                      {`The ${observe ? 'current' : 'last observed'} width of this element is ${
+                        width === undefined ? 'undefined' : `${width}px`
+                      }`}
+                    </div>
+                    <div>
+                      {`The ${observe ? 'current' : 'last observed'} height of this element is ${
+                        height === undefined ? 'undefined' : `${height}px`
+                      }`}
+                    </div>
+                  </Rhythm>
+                </div>
+              )}
+            </SizeConsumer>
+          )}
+        </SizeProvider>
+      </React.Fragment>
+    )}
+  </StateWrapper>
+</Canvas>
+
+### SizeProvider: all props observed
+
+<Canvas>
+  <StateWrapper initialState={['width', 'height', 'top', 'bottom', 'left', 'right']}>
+    {({ state: props, setState: setProps }) => {
+      return (
+        <React.Fragment>
+          <Rhythm grouped mb={5} mx={-2}>
+            <Flex full wrap justifyContent="flex-start">
+              <Rhythm m={2}>
+                {['width', 'height', 'top', 'bottom', 'left', 'right'].map(prop => (
+                  <Toggle
+                    checked={props.includes(prop)}
+                    key={prop}
+                    onChange={(event, checked) => {
+                      if (checked) {
+                        setProps([...props, prop]);
+                      } else {
+                        setProps(props.filter(p => p !== prop));
+                      }
+                    }}
+                  >
+                    {`Watch ${prop}`}
+                  </Toggle>
+                ))}
+              </Rhythm>
+            </Flex>
+          </Rhythm>
+          <SizeProvider observe decimalPlaces={0} propsToMeasure={props}>
+            {ref => (
+              <SizeConsumer>
+                {({ width, height, top, bottom, left, right }) => (
+                  <div ref={ref} style={{ background: '#556270', color: '#fff', padding: 16, width: '100%' }}>
+                    <Rhythm my={2}>
+                      {props.includes('width') && <div>{`The width of this element is ${width}px`}</div>}
+                      {props.includes('height') && <div>{`The height of this element is ${height}px`}</div>}
+                      {props.includes('top') && <div>{`The top of this element is ${top}px`}</div>}
+                      {props.includes('bottom') && <div>{`The bottom of this element is ${bottom}px`}</div>}
+                      {props.includes('left') && <div>{`The left of this element is ${left}px`}</div>}
+                      {props.includes('right') && <div>{`The right of this element is ${right}px`}</div>}
+                    </Rhythm>
+                  </div>
+                )}
+              </SizeConsumer>
+            )}
+          </SizeProvider>
+        </React.Fragment>
+      );
+    }}
+  </StateWrapper>
+</Canvas>
+
+### SizeProvider: observed
+
+<Canvas>
+  <SizeProvider observe>
+    {ref => (
+      <StateWrapper initialState={0} setStateFromPrevious={previous => previous + 1}>
+        {({ state: count, setState: setCount }) => {
+          const sizes = ['20px', '100px'];
+          return (
+            <TimeoutWrapper infinite callback={setCount} milliseconds={1000}>
+              <SizeConsumer>
+                {({ width, height }) => (
+                  <div style={{ width: '100%', height: '210px' }}>
+                    <div ref={ref} style={{ background: '#556270', color: '#fff', padding: 16, width: '100%' }}>
+                      <Rhythm my={2}>
+                        <div>{`The width of this element is ${width}px`}</div>
+                        <div>{`The height of this element is ${height}px`}</div>
+                      </Rhythm>
+                      <Rhythm mt={3} style={{ height: sizes[count % sizes.length], transition: 'all 1s linear' }}>
+                        This div resizes on a timer.
+                      </Rhythm>
+                    </div>
+                  </div>
+                )}
+              </SizeConsumer>
+            </TimeoutWrapper>
+          );
+        }}
+      </StateWrapper>
+    )}
+  </SizeProvider>
+</Canvas>
