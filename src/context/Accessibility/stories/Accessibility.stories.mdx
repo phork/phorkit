@@ -1,23 +1,27 @@
----
-name: Accessibility
-menu: Utilities
-route: /context/Accessibility
----
-
-import { Playground, Props } from 'docz';
+import { Canvas, Meta } from '@storybook/addon-docs';
 import { Flex } from 'components/Flex';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
-import { PageTitle } from 'docs/helpers/PageTitle';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 import { AccessibilityProvider, useAccessibility, useInputEventType } from '../index';
 import styles from './AccessibilityDemo.module.css';
 
+<Meta
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+  title="Utilities/Accessibility"
+/>
+
 <PageTitle src="context/Accessibility" title="Accessibility" />
 
-## AccessibilityProvider, useAccessibility and useInputEventType
+### AccessibilityProvider, useAccessibility and useInputEventType
 
-<Playground>
+<Canvas>
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <AccessibilityProvider>
@@ -61,4 +65,4 @@ import styles from './AccessibilityDemo.module.css';
       </AccessibilityProvider>
     )}
   </ThemeWrapper>
-</Playground>
+</Canvas>
