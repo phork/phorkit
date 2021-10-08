@@ -4,7 +4,7 @@ import { ThemeWrapper, ThemeWrapperProps } from 'docs/helpers/ThemeWrapper';
 export type FormComponentDemoProps = {
   contrast?: boolean;
   children: React.ReactElement;
-  initialValue?: string | number | boolean | string[];
+  initialValue?: string | number | boolean | Array<string | number | undefined>;
   property: string;
   unwrapped?: boolean;
   type: 'checkbox' | 'password' | 'radio' | 'select' | 'slider' | 'stepper' | 'textarea' | 'textbox' | 'toggle';

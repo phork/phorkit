@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta, DecoratorFn } from '@storybook/react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { Typography } from 'components/Typography';
 import { Link } from '../Link';
@@ -104,10 +104,12 @@ Default.args = {
   ...defaultArgs,
 };
 
-const displayDecorators: DecoratorFn = Story => <Typography size="large">Hello world. {Story()}</Typography>;
+const displayDecorators: typeof Default.decorators = [
+  Story => <Typography size="large">Hello world. {Story()}</Typography>,
+];
 
 export const Inline = Template.bind({});
-Inline.decorators = [displayDecorators];
+Inline.decorators = displayDecorators;
 Inline.args = {
   ...defaultArgs,
 };
@@ -121,7 +123,7 @@ Inline.parameters = {
 };
 
 export const Block = Template.bind({});
-Block.decorators = [displayDecorators];
+Block.decorators = displayDecorators;
 Block.args = {
   ...defaultArgs,
   block: true,
