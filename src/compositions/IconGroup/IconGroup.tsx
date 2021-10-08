@@ -7,6 +7,7 @@ export type IconGroupProps = {
   className?: FlexProps['className'];
   scale?: ScaleProviderProps['scale'];
   size?: ScaleProviderProps['size'];
+  style?: React.CSSProperties;
 };
 
 /**
