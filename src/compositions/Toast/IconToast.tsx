@@ -15,7 +15,7 @@ export type IconToastProps = ToastProps & {
 };
 
 /**
- * An icon toast extends the a standard Toast by
+ * An icon toast extends the a standard `Toast` by
  * adding a large icon to the left of the content
  * as well as an optional title above it.
  */

@@ -28,11 +28,11 @@ export type LocalNavigationItemProps = NavigationItemStateProps & {
 export type NavigationItemProps = MergeElementPropsWithoutRef<'div', LocalNavigationItemProps>;
 
 /**
- * A navigation item is used in the InnerNavigation
+ * A navigation item is used in the `InnerNavigation`
  * component to add the necessary styles to show the
  * different item states (disabled, focused, selected).
  *
- * This uses the InteractiveGroup and the ListRegistry
+ * This uses the `InteractiveGroup` and `ListRegistry`
  * components.
  */
 export function NavigationItem({

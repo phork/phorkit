@@ -8,7 +8,7 @@ export type BannersProps = BannersFromContextProps & {
 
 /**
  * The banners component is a simple wrapper around
- * the BannerProvider and the BannersFromContext
+ * the `BannerProvider` and the `BannersFromContext`
  * which is used to display the current banners.
  */
 export function Banners({ children, ...props }: BannersProps): React.ReactElement {

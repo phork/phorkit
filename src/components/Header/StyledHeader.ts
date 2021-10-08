@@ -9,7 +9,7 @@ export type StyledHeaderProps = HeaderProps & {
 };
 
 /**
- * A styled header is an extension of the Header
+ * A styled header is an extension of the `Header`
  * component which can have custom text, border,
  * and background colors, and an optional custom
  * height.

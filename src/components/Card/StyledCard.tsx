@@ -7,7 +7,7 @@ export type StyledCardProps = CardProps & {
 };
 
 /**
- * A styled card is an extension of the Card
+ * A styled card is an extension of the `Card`
  * component that will have a custom border
  * and hovered border color.
  */

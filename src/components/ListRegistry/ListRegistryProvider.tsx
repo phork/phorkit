@@ -9,10 +9,10 @@ export type ListRegistryProviderProps = {
 };
 
 /**
- * The list registry stores a collection of list
- * items and provides functions to register and
- * unregister items, to get an item, and to clear
- * all items. It also provides the item map itself.
+ * The list registry stores a collection of `ListItem`
+ * components and provides functions to register and
+ * unregister items, to get an item, and to clear all
+ * items. It also provides the item map itself.
  */
 export function ListRegistryProvider<E extends HTMLElement = HTMLElement>({
   children,

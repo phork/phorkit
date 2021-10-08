@@ -24,9 +24,9 @@ export type LocalBadgeProps = ThemeProps & {
 export type BadgeProps = MergeElementPropsWithoutRef<'div', LocalBadgeProps>;
 
 /**
- * A badge can either take the shape of a point (a small
- * dot), a marker (a larger dot), a count (a small circle
- * with a number in it), or a label (a small rectangle
+ * A badge can either take the shape of a `point` (a small
+ * dot), a `marker` (a larger dot), a `count` (a small circle
+ * with a number in it), or a `label` (a small rectangle
  * with text in it).
  *
  * It has the option to be positioned relative to one of

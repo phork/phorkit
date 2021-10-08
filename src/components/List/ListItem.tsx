@@ -75,7 +75,7 @@ export function ListItemBase<T extends ListItemElementType = 'li'>(
 }
 
 /**
- * A list item is used in the List component to
+ * A list item is used in the `List` component to
  * add the necessary styles to show the different
  * item states (disabled, highlighted, inactive,
  * focused, selected).

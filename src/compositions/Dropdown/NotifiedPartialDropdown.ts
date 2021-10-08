@@ -3,7 +3,7 @@ import { PartialDropdown, PartialDropdownHandles, PartialDropdownProps } from '.
 
 /**
  * The notified partial dropdown is an extension
- * of the PartialDropdown component with a status
+ * of the `PartialDropdown` component with a status
  * notification message underneath it.
  */
 export const NotifiedPartialDropdown = withNotification<PartialDropdownProps, PartialDropdownHandles>(

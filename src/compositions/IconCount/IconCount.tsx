@@ -22,7 +22,8 @@ export type IconCountProps = Pick<FlexProps, 'className' | 'inline' | 'reverse' 
  * Both the icon size and the text size can be
  * customized.
  *
- * This uses the Flex, Rhythm and Typography components.
+ * This uses the `Flex`, `Rhythm` and `Typography`
+ * components.
  */
 export function IconCount({
   active = false,

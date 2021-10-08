@@ -27,10 +27,10 @@ export type UseIconSizeResponse = UseIconSizeProps & {
 };
 
 /**
- * Returns width and height props (as well as any other
+ * Returns `width` and `height` props (as well as any other
  * props passed) to add to an icon. The size is determined
- * first by checking if a size prop has been passed, then
- * if a scale prop has been passed, then by the context
+ * first by checking if a `size` prop has been passed, then
+ * if a `scale` prop has been passed, then by the context
  * size and finally the context scale.
  */
 export function useIconSize({

@@ -8,7 +8,7 @@ export type UseListRegistryItemProps<E extends HTMLElement = HTMLElement> = {
 };
 
 /**
- * Receives an ID and an element ref to register and
+ * Receives an ID and an element ref to register and then
  * unregisters them on clean up.
  */
 export function useListRegistryItem<E extends HTMLElement = HTMLElement>({

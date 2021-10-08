@@ -15,10 +15,10 @@ export type PermanentSidePanelProps = React.HTMLAttributes<HTMLDivElement> & {
 };
 
 /**
- * A permanent side panel is similar to a SidePanel
+ * A permanent side panel is similar to a `SidePanel`
  * but it can never be closed. It lives alongside a
- * MainPanel (and optionally other side panels) in
- * a PanelContainer.
+ * `MainPanel` (and optionally other side panels) in
+ * a `PanelContainer`.
  *
  * If a side panel is fixed it sits on top of the main
  * panel. If it's not fixed it forces the main panel

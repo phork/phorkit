@@ -13,7 +13,7 @@ export type StyledPasswordProps = PasswordProps & {
 };
 
 /**
- * A styled password is an extension of the Password
+ * A styled password is an extension of the `Password`
  * component which will have custom text, border and
  * background colors for both focused, unfocused and
  * hovered states.

@@ -7,7 +7,7 @@ export type StyledAvatarProps = AvatarProps & {
 };
 
 /**
- * A styled avatar is an extension of the Avatar
+ * A styled avatar is an extension of the `Avatar`
  * component which, when viewed as initials, will
  * have a custom text and background color.
  */

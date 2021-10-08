@@ -48,6 +48,11 @@ export type UseInteractiveGroupProps<T extends InteractiveGroupItemId = string> 
   triggerLinks?: boolean;
 };
 
+/**
+ * - T is the type of IDs allowed
+ * - E is the type of the element that the returned ref gets attached to
+ * - I is the type of item element
+ */
 export type UseInteractiveGroupResponse<
   T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,
@@ -72,24 +77,23 @@ export type UseInteractiveGroupResponse<
 };
 
 /**
- * Adds a keydown listener to the document and returns
- * an item click listener that listen for actions that
- * will change the focused and selected items. Also
- * returns functions to select and unselect and focus
- * items.
+ * Adds a `keydown` listener to the `document` and
+ * returns a `handleItemClick` listener to attach to
+ * each item. Together these listeners will wait for
+ * actions that change the focused and selected items
+ * and will update the reducer state accordingly. Also
+ * returns functions to trigger the select, unselect and
+ * focus of items. It's up to the consumer of this hook
+ * to use this triggered data to update the UI.
  *
  * When the selected and focused item(s) change this
  * fires a series of callbacks.
  *
- * When the selectedIds change, first the onUnselect
+ * When the `selectedIds` change, first the `onUnselect`
  * callback is fired for every ID that was removed,
- * then an onSelect callback is fired for every ID
- * that was added, and finally the onSelectionChange
+ * then an `onSelect` callback is fired for every ID
+ * that was added, and finally the `onSelectionChange`
  * callback is fired once.
- *
- * - T is the type of IDs allowed
- * - E is the type of the element that the returned ref gets attached to
- * - I is the type of item element
  */
 export function useInteractiveGroup<
   T extends InteractiveGroupItemId = string,

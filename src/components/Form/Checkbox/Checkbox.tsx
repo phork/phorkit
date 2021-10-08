@@ -179,7 +179,7 @@ export function CheckboxBase<V extends CheckboxValue = string>(
  * indeterminate.
  *
  * The checked state should be stored outside of this
- * component and is updated by the onChange callback.
+ * component and is updated by the `onChange` callback.
  */
 export const Checkbox = React.forwardRef(CheckboxBase) as <V extends CheckboxValue = string>(
   p: CheckboxProps<V> & { ref?: React.Ref<HTMLInputElement> },

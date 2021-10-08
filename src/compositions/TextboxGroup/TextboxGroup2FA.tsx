@@ -150,7 +150,7 @@ function TextboxGroup2FAContent({
  * authentication number. The focus is automatically moved
  * to the next input when a valid character is entered.
  *
- * The uses the Formbox and ListRegistry components.
+ * The uses the `Formbox` and `ListRegistry` components.
  */
 export function TextboxGroup2FA(props: TextboxGroup2FAProps): React.ReactElement | null {
   return (

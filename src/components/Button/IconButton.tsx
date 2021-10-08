@@ -48,7 +48,7 @@ export function IconButtonBase<T extends IconButtonElementType = 'button'>(
 }
 
 /**
- * An icon button is an extension of the Button
+ * An icon button is an extension of the `Button`
  * component where, instead of a text label, there
  * is an icon.
  */

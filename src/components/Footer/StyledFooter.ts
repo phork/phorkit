@@ -9,7 +9,7 @@ export type StyledFooterProps = FooterProps & {
 };
 
 /**
- * A styled footer is an extension of the Footer
+ * A styled footer is an extension of the `Footer`
  * component which can have custom text, border,
  * and background colors, and an optional custom
  * height.

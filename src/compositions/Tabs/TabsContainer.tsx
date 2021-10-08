@@ -18,7 +18,7 @@ export type TabsContainerProps = React.HTMLAttributes<HTMLDivElement> &
   };
 
 /**
- * The tabs container wraps the TabList and TabPanelGroup
+ * The tabs container wraps the `TabList` and `TabPanelGroup`
  * components and sets the orientation and accessibility
  * styles.
  */

@@ -128,16 +128,16 @@ export const defaultPageLabelProps = {
 };
 
 /**
- * The pagination component receives pageSize and
- * totalItems props and uses those values to calculate
+ * The pagination component receives `pageSize` and
+ * `totalItems` props and uses those values to calculate
  * and display buttons or links to change pages.
  *
  * The current page state should be stored outside of
- * this component and is updated by the onChangePage
+ * this component and is updated by the `onChangePage`
  * callback.
  *
- * This uses the Button, ButtonGroup, ErrorBoundary,
- * Flex, and Typography components.
+ * This uses the `Button`, `ButtonGroup`, `ErrorBoundary`,
+ * `Flex`, and `Typography` components.
  */
 export function Pagination({
   activePageProps = defaultActivePageProps,

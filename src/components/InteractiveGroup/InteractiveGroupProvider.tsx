@@ -23,19 +23,19 @@ export type InteractiveGroupProviderProps<
 
 /**
  * The interactive group provider is a wrapper around
- * the partial interactive group provider. It creates
+ * the `PartialInteractiveGroupProvider`. It creates
  * the reducer and passes it to the partial interactive
  * group provider. It also updates the items in the
  * state if they change.
  *
- * The partial interactive group provider should be
+ * The `PartialInteractiveGroupProvider` should be
  * used if a parent also needs access to the state and
  * reducer.
  *
- * The initialSelected prop can be used to set up which
+ * The `initialSelected` prop can be used to set up which
  * items are selected on load, but after that the state is
- * stored internally. The onSelectionChange, onSelect or
- * onUnselect callbacks can be used by the parent.
+ * stored internally. The `onSelectionChange`, `onSelect` or
+ * `onUnselect` callbacks can be used by the parent.
  */
 export function InteractiveGroupProvider<
   T extends InteractiveGroupItemId = string,

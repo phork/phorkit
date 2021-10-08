@@ -53,12 +53,12 @@ export type AccordionProps = Pick<
  * open, expanding one item will collapse the previously
  * expanded one.
  *
- * The initialSelected prop can be used to set up which
+ * The `initialSelected` prop can be used to set up which
  * content is shown on load, but after that the state is
- * stored internally. The onSelect callback can be used
+ * stored internally. The `onSelect` callback can be used
  * by the parent, if necessary.
  *
- * This uses the InteractiveGroup and the ListRegistry
+ * This uses the `InteractiveGroup` and the `ListRegistry`
  * components.
  */
 export function Accordion({

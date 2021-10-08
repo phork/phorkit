@@ -9,9 +9,9 @@ export type UseSafeTimeoutResponse = {
 };
 
 /**
- * Returns a component-safe alternative to setTimeout and
- * clearTimeout, as well as a function to check if a
- * timeout has been set by ID.
+ * Returns a component-safe alternative to `setTimeout`
+ * and `clearTimeout`, as well as a function to check if
+ * a timeout has been set by ID.
  *
  * This uses a cleanup function to clear all timeouts
  * when the component unmounts.

@@ -23,14 +23,15 @@ export type NavigationProps = Pick<
 > &
   ThemeProps & {
     onSelect?: InteractiveGroupProviderProps['onSelect'];
+    /** If this is set and an item contains a link, when the item is selected that link will be triggered */
     triggerLinks?: boolean;
   };
 
 /**
  * The navigation component sets up the state management
- * and then renders the InnerNavigation.
+ * and then renders the `InnerNavigation`.
  *
- * This uses the InteractiveGroup and the ListRegistry
+ * This uses the `InteractiveGroup` and `ListRegistry`
  * components.
  */
 export function Navigation({

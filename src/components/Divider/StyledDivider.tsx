@@ -6,7 +6,7 @@ export type StyledDividerProps = DividerProps & {
 };
 
 /**
- * A styled divider is an extension of the Divider
+ * A styled divider is an extension of the `Divider`
  * component which will be a custom color.
  */
 export const StyledDivider = styled(Divider, {

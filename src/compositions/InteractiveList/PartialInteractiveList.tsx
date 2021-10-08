@@ -163,8 +163,7 @@ export function PartialInteractiveListBase(
  * callbacks for when items are selected, unselected,
  * focused, and clicked.
  *
- * This uses the List and the InteractiveGroup
- * components.
+ * This uses the `List` and `InteractiveGroup` components.
  */
 export const PartialInteractiveList = React.forwardRef(PartialInteractiveListBase);
 

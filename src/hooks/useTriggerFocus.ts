@@ -35,10 +35,11 @@ const isRefObject = (ref: UseTriggerFocusRef | UseTriggerFocusRefWithHandle): re
 };
 
 /**
- * Returns a focus function that can be used to focus an element
- * after an optional delay, as well as a cancel function that can
- * be used to cancel the call to focus the element if a focus
- * delay has been used and it is called within that delay time.
+ * Returns a `focus` function that can be used to focus
+ * an element after an optional delay, as well as a `cancel`
+ * function that can be used to cancel the focus if a focus
+ * delay has been used and cancel is called within that
+ * delay time.
  */
 export function useTriggerFocus({
   focusDelay: defaultFocusDelay,

@@ -8,7 +8,7 @@ export type StyledLinkProps = LinkProps & {
 };
 
 /**
- * A styled link is an extension of the Link
+ * A styled link is an extension of the `Link`
  * component which will have custom inactive,
  * active and hover colors.
  */

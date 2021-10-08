@@ -24,7 +24,7 @@ const StyledPaper = styled(Paper, {
 `;
 
 /**
- * The colored paper is an extension of the Paper
+ * The colored paper is an extension of the `Paper`
  * component that will have a background of one
  * of the theme's primary colors.
  */

@@ -19,7 +19,7 @@ const StyledAvatar = styled(Avatar, {
 `;
 
 /**
- * A colored avatar is an extension of the Avatar
+ * A colored avatar is an extension of the `Avatar`
  * component which, when viewed as initials, will
  * have a background of one of the theme's primary
  * colors.

@@ -37,12 +37,12 @@ export type DropdownWithTagsProps = Omit<PartialDropdownProps, 'initialSelected'
 const defaultInitialSelected = [] as DropdownOption[];
 
 /**
- * This renders a Dropdown component and underneath it
- * for every selected item it renders a tag. Tags can
+ * This renders a `Dropdown` component and underneath it
+ * for every selected item it renders a `Tag`. Tags can
  * be clicked to be removed/unselected.
  *
- * This uses the Dropdown, Flex, IconText, Rhythm, Tag,
- * TagGroup and Typography components.
+ * This uses the `Dropdown`, `Flex`, `IconText`, `Rhythm`,
+ * `Tag`, `TagGroup` and `Typography` components.
  */
 export function DropdownWithTags({
   contrast = false,

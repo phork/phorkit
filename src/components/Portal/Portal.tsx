@@ -34,7 +34,7 @@ export type PortalProps = Pick<UseAbsoluteCoordsProps, 'centered' | 'offset' | '
  *
  * A portal can be fixed, or it can be absolutely
  * positioned. A fixed positioned portal can observe
- * the changes of the relativeRef's element position
+ * the changes of the `relativeRef` element position
  * and will reposition itself accordingly.
  */
 export const Portal = React.forwardRef<HTMLDivElement, PortalProps>(

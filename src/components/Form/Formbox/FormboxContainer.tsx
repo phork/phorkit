@@ -43,7 +43,7 @@ export type FormboxContainerProps<T extends FormboxContainerElementType> = AsRea
 
 /**
  * This applies all the container and label styles for
- * a form input container and accepts the form input and
+ * a form input container, and accepts the form input and
  * optional icons as its children, as well as a label.
  */
 export function FormboxContainerBase<T extends FormboxContainerElementType>(

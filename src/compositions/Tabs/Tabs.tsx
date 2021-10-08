@@ -41,15 +41,15 @@ export type TabsProps = Omit<
 
 /**
  * The tabs component sets up the state management and
- * and then renders the TabsContainer, TabList, and
- * TabPanelGroup components.
+ * and then renders the `TabsContainer`, `TabList`, and
+ * `TabPanelGroup` components.
  *
- * The initialSelected prop can be used to set up which
+ * The `initialSelected` prop can be used to set up which
  * content is shown on load, but after that the state is
- * stored internally. The onSelect callback can be used
+ * stored internally. The `onSelect` callback can be used
  * by the parent, if necessary.
  *
- * This uses the InteractiveGroup and the ListRegistry
+ * This uses the `InteractiveGroup` and `ListRegistry`
  * components.
  */
 export function Tabs({

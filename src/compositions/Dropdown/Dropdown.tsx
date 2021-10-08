@@ -31,11 +31,11 @@ export function DropdownBase(
  * dropdown is similar to a filterable dropdown except
  * it starts with no initial values.
  *
- * This is a wrapper around the PartialDropdown
+ * This is a wrapper around the `PartialDropdown`
  * component for which it provides the reducer used
  * to track the selected and focused item(s) state.
  *
- * This uses the InteractiveGroup component.
+ * This uses the `InteractiveGroup` component.
  */
 export const Dropdown = React.forwardRef(DropdownBase);
 

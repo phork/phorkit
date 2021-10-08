@@ -10,7 +10,7 @@ export type StyledFlexProps = FlexProps & {
 
 /**
  * The styled flex component is an extension of the
- * Flex component with the ability to set custom flex
+ * `Flex` component with the ability to set custom flex
  * grow, shrink and flex basis properties.
  */
 export const StyledFlex = styled(Flex, {

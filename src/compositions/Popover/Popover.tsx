@@ -50,8 +50,8 @@ export type PopoverRenderContentProps = Pick<
 /**
  * The popover component renders an element that is
  * used to toggle the popover from visible to hidden
- * as well as the popover content itself positioned
- * relative to the toggle.
+ * as well as the `PopoverContent` itself which is
+ * positioned relative to the toggle.
  *
  * A popover can be toggled via click (default) or
  * by hovering over the toggle if the hoverable prop

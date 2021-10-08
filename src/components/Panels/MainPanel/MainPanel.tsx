@@ -11,7 +11,7 @@ export type MainPanelProps = React.HTMLAttributes<HTMLDivElement> & {
 /**
  * The main panel is part of the panels system and
  * uses flexbox to expand to fill any remaining space
- * in the PanelContainer.
+ * in the `PanelContainer`.
  */
 export const MainPanel = React.forwardRef<HTMLDivElement, MainPanelProps>(
   ({ children, className, ...props }: MainPanelProps, forwardedRef): React.ReactElement<MainPanelProps> => {

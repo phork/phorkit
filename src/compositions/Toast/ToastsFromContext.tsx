@@ -14,7 +14,7 @@ export type ToastsFromContextProps = Omit<ToastContainerProps, 'children'> &
   };
 
 /**
- * This consumes the toasts from the ToastProvider
+ * This consumes the toasts from the `ToastProvider`
  * and displays them all.
  */
 export function ToastsFromContext({

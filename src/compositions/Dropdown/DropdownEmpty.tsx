@@ -31,7 +31,7 @@ export type DropdownEmptyProps = React.HTMLAttributes<HTMLDivElement> &
 
 /**
  * The empty dropdown notification is shown by the
- * DropdownContent component when there are no items
+ * `DropdownContent` component when there are no items
  * to show. If no children are provided it renders a
  * simple text message.
  */

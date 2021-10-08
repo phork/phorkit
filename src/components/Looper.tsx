@@ -24,9 +24,8 @@ export function Looper(props: NumericLooperProps): React.ReactElement;
 export function Looper(props: ListLooperProps): React.ReactElement;
 
 /**
- * A simply utility to loop through an array
- * of strings or to loop through a start and
- * end value.
+ * A simple utility to loop through an array of
+ * strings or to loop through a start and end value.
  */
 export function Looper({ end: initEnd, list, render, start = 0, step = 1 }: any): React.ReactElement {
   const items = [];

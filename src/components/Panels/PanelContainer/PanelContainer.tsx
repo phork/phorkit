@@ -20,12 +20,12 @@ export type PanelContainerProps = React.HTMLAttributes<HTMLDivElement> & {
 };
 
 /**
- * The panel container wraps a MainPanel and either
- * some SidePanels when the orientation is vertical, or
- * some StackPanels when the orientation is horizontal.
- * It can be positioned relatively, or absolutely to
- * fill its parent container, or it can be set to the
- * size of the viewport.
+ * The panel container wraps a `MainPanel` component and
+ * one or more `SidePanel` components when the orientation
+ * is vertical, or one or more `StackPanel` components
+ * when the orientation is horizontal. It can be positioned
+ * relatively, or absolutely to fill its parent container,
+ * or it can be set to the size of the viewport.
  */
 export function PanelContainer({
   absolute = false,

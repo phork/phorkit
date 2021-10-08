@@ -20,7 +20,7 @@ const StyledTag = styled(Tag, {
 `;
 
 /**
- * A colored tag is an extension of the Tag component
+ * A colored tag is an extension of the `Tag` component
  * that will have a background of one of the theme's
  * primary colors.
  */

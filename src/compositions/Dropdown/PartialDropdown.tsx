@@ -694,16 +694,16 @@ export function PartialDropdownBase(
  * it starts with no initial values.
  *
  * The partial dropdown accepts a reducer from the
- * InteractiveGroup component which maintains a record
+ * `InteractiveGroup` component which maintains a record
  * of all the items in the dropdown and which items are
  * focused and which are selected.
  *
- * Generally the Dropdown component should be used.
+ * Generally the `Dropdown` component should be used.
  * The partial dropdown component is only necessary
  * in cases when the parent needs access to the
  * reducer and the state.
  *
- * This uses the Formbox and InteractiveList components.
+ * This uses the `Formbox` and `InteractiveList` components.
  */
 export const PartialDropdown = React.forwardRef(PartialDropdownBase);
 

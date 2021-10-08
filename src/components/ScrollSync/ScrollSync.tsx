@@ -6,7 +6,7 @@ export type ScrollSyncProps = UseScrollSyncProps & {
 };
 
 /**
- * A simple wrapper around the useScrollSync hook
+ * A simple wrapper around the `useScrollSync` hook
  * that passes on the props of the hook to a children
  * function.
  */

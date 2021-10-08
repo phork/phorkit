@@ -20,10 +20,10 @@ function isNavigationKey(keycode: string) {
  * down and touch start events to determine which input
  * method is used for interaction.
  *
- * This provides an eventType value which stores the type
- * of input event, a function to update the event type
- * manually, and an accessible flag which is set to true
- * if the event type is the keyboard.
+ * This provides an `eventType` value which stores the type
+ * of input event, a `setEventType` function to update the
+ * event type manually, and an `accessible` flag which is
+ * set to true if the event type is the keyboard.
  */
 export function AccessibilityProvider({ children }: AccessibilityProviderProps): React.ReactElement {
   const previousValue = useRef<AccessibilityContextValue>({} as AccessibilityContextValue);

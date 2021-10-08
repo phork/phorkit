@@ -6,6 +6,12 @@ export type SizeProviderProps<E extends HTMLElement = HTMLDivElement> = UseObser
   children: (ref: React.MutableRefObject<E | null>) => React.ReactElement;
 };
 
+/**
+ * The size provider accepts an array of size and/or
+ * position props to measure and an observe flag that's
+ * used to determine if the size should be constantly
+ * monitored. It provides the size of the element.
+ */
 export function SizeProvider<E extends HTMLElement = HTMLDivElement>({
   children,
   decimalPlaces,

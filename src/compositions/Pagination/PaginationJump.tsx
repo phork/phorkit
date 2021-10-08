@@ -21,13 +21,13 @@ export type PaginationJumpProps<T extends ButtonElementType = 'button'> = AsReac
  * button or link to either the first page, last page,
  * previous page or next page.
  *
- * If an href property is passed it renders a link,
- * otherwise it renders a button. If allowRightClickLinks
+ * If an `href` property is passed it renders a link,
+ * otherwise it renders a button. If `allowRightClickLinks`
  * is set then the page change should be handled by the
- * onChangePage handler while the link is reserved only
+ * `onChangePage` handler while the link is reserved only
  * for right clicking.
  *
- * This uses the Button component.
+ * This uses the `Button` component.
  */
 export function PaginationJump<T extends ButtonElementType = 'button'>({
   allowRightClickLinks,

@@ -50,7 +50,7 @@ const isRefWithValidator = (
  * When an input is considered valid the focus automatically
  * moves to the next input.
  *
- * This uses the Formbox and Textbox components.
+ * This uses the `Formbox` and `Textbox` components.
  */
 export const useTextboxGroup = ({
   refs,

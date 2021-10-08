@@ -6,7 +6,7 @@ export type StyledLoaderProps = Omit<LoaderProps, 'color'> & {
 };
 
 /**
- * A styled loader is an extension of the Loader
+ * A styled loader is an extension of the `Loader`
  * component that will have a custom color.
  */
 export const StyledLoader = styled(Loader, {

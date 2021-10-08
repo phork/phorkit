@@ -13,7 +13,7 @@ export type StyledTextboxProps = TextboxProps & {
 };
 
 /**
- * A styled textbox is an extension of the Textbox
+ * A styled textbox is an extension of the `Textbox`
  * component which will have custom text, border and
  * background colors for both focused, unfocused and
  * hovered states.

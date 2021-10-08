@@ -29,7 +29,7 @@ export type FormboxInputWithFormattingProps<I extends FormboxInputElementType> =
   };
 
 /**
- * This is a wrapper for formbox inputs that can have
+ * This is a wrapper for a `FormboxInput` that can have
  * HTML values and/or placeholders. It's used to hide
  * and show the input value or placeholder as necessary
  * and to make sure that the size doesn't change when

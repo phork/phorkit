@@ -19,7 +19,7 @@ const StyledBadge = styled(Badge, {
 `;
 
 /**
- * A colored badge is an extension of the Badge
+ * A colored badge is an extension of the `Badge`
  * component that will have a background of one
  * of the theme's primary colors.
  */

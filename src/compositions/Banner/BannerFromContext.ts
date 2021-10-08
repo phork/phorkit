@@ -18,8 +18,8 @@ export type BannerFromContextProps = ThemeProps & {
 };
 
 /**
- * This accepts a Banner element with a contextId prop
- * and it clones the banner and passes it an onClose prop
+ * This accepts a `Banner` element with a `contextId` prop
+ * and it clones the banner and passes it an `onClose` prop
  * that can be used to the remove the banner from the
  * state.
  */

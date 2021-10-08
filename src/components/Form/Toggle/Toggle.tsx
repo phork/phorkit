@@ -130,7 +130,7 @@ export function ToggleBase(
  * an optional label.
  *
  * The checked state should be stored outside of this
- * component and is updated by the onChange callback.
+ * component and is updated by the `onChange` callback.
  */
 export const Toggle = React.forwardRef(ToggleBase);
 

@@ -25,8 +25,8 @@ const StyledDivider = styled(Divider, {
 `;
 
 /**
- * A colored divider is an extension of the Divider
- * component which will be the color of one of the
+ * A colored divider is an extension of the `Divider`
+ * component which will have the color of one of the
  * theme's primary colors.
  */
 export const ColoredDivider = React.memo<ColoredDividerProps>(withTheme<ColoredDividerProps>(StyledDivider));

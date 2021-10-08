@@ -7,10 +7,10 @@ export type TextboxGroupContainerProps = ThemeProps & {
 };
 
 /**
- * This wraps a textbox group with the ListRegistryProvider
+ * This wraps a textbox group with the `ListRegistryProvider`
  * to facilitate changing focus between inputs.
  *
- * This uses the ListRegistry component.
+ * This uses the `ListRegistry` component.
  */
 export function TextboxGroupContainer({ children }: TextboxGroupContainerProps): React.ReactElement {
   return <ListRegistryProvider<HTMLInputElement>>{children}</ListRegistryProvider>;

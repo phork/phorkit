@@ -11,7 +11,7 @@ export type StyledChipProps = ChipProps & {
 };
 
 /**
- * A styled chip is an extension of the Chip component
+ * A styled chip is an extension of the `Chip` component
  * that will have a custom avatar, background and text
  * color.
  */

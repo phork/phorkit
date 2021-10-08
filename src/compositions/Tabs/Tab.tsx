@@ -26,14 +26,14 @@ export type TabProps = MergeElementPropsWithoutRef<'div', LocalTabProps>;
 
 /**
  * A tab is a simple element with a label that is grouped
- * together with other Tab elements and used by the TabList
+ * together with other Tab elements and used by the `TabList`
  * component.
  *
  * Each tab is responsible for registering itself with
- * the ListRegistry. It should receive an onClick handler
- * from the TabList that will set its selected state.
+ * the `ListRegistry`. It should receive an `onClick` handler
+ * from the `TabList` that will set its selected state.
  *
- * This uses the InteractiveGroup and the ListRegistry
+ * This uses the `InteractiveGroup` and `ListRegistry`
  * components.
  */
 export function Tab({

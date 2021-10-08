@@ -14,7 +14,7 @@ export type ToastContainerProps = React.HTMLAttributes<HTMLDivElement> & {
 
 /**
  * The toast container renders a portal that wraps a
- * collection of Toast components and positions itself
+ * collection of `Toast` components and positions itself
  * at one of the corners of the viewport or along the
  * top or bottom edge.
  */
