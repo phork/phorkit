@@ -56,8 +56,6 @@ Default.args = {
 };
 
 Default.argTypes = {
-  contrast: { table: { disable: true } },
-  level: { table: { disable: true } },
   style: { table: { disable: true } },
   themeId: { table: { disable: true } },
   unthemed: { table: { disable: true } },
