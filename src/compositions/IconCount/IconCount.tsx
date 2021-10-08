@@ -5,8 +5,8 @@ import { Flex, FlexProps } from '../../components/Flex';
 import { Rhythm } from '../../components/Rhythm';
 import { Typography, TypographyProps, TypographyWithSvg } from '../../components/Typography';
 
-export type IconCountProps = Omit<FlexProps, 'children'> &
-  ThemeProps & {
+export type IconCountProps = Pick<FlexProps, 'className' | 'inline' | 'reverse' | 'style'> &
+  Omit<ThemeProps, 'contrast' | 'unthemed'> & {
     active?: boolean;
     count: string | number;
     icon: React.FC<SvgIconProps>;

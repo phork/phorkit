@@ -210,8 +210,8 @@ LargeSize.args = {
   size: 'large',
 };
 
-export const Reversed = Template.bind({});
-Reversed.args = {
+export const Reverse = Template.bind({});
+Reverse.args = {
   ...defaultArgs,
   reverse: true,
 };
