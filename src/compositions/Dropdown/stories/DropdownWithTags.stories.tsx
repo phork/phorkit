@@ -1,12 +1,12 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { Dropdown, DropdownProps } from '../Dropdown';
+import { DropdownWithTags, DropdownWithTagsProps } from '../DropdownWithTags';
 import { options, handleFilter } from './helpers/options';
-import DropdownDocumentation from './Dropdown.docs.mdx';
+import DropdownWithTagsDocumentation from './DropdownWithTags.docs.mdx';
 
 export default {
-  title: 'Form/Dropdown',
-  component: Dropdown,
+  title: 'Form/DropdownWithTags',
+  component: DropdownWithTags,
   argTypes: {
     emptyNotification: {
       control: {
@@ -79,6 +79,37 @@ export default {
       },
     },
 
+    tag: {
+      table: {
+        category: 'Tags',
+      },
+    },
+    tagGroupProps: {
+      table: {
+        category: 'Tags',
+      },
+    },
+    tagProps: {
+      table: {
+        category: 'Tags',
+      },
+    },
+    tagShape: {
+      table: {
+        category: 'Tags',
+      },
+    },
+    tagSize: {
+      table: {
+        category: 'Tags',
+      },
+    },
+    tagWeight: {
+      table: {
+        category: 'Tags',
+      },
+    },
+
     allowReselect: {
       table: {
         category: 'Input',
@@ -105,6 +136,9 @@ export default {
       },
     },
     initialSelected: {
+      control: {
+        disable: true,
+      },
       table: {
         category: 'Input',
       },
@@ -221,43 +255,42 @@ export default {
       },
     },
   },
-  decorators: [
-    Story => (
-      <div style={{ height: 240, maxWidth: 400, marginLeft: 30, marginRight: 30, minWidth: 200, width: 300 }}>
-        {Story()}
-      </div>
-    ),
-  ],
+  decorators: [Story => <div style={{ height: 240, marginLeft: 30, marginRight: 30, minWidth: 200 }}>{Story()}</div>],
   parameters: {
     controls: {
       exclude: ['usingNotification'],
       sort: 'requiredFirst',
     },
     docs: {
-      page: DropdownDocumentation,
+      page: DropdownWithTagsDocumentation,
     },
     layout: 'centered',
   },
-} as ComponentMeta<typeof Dropdown>;
+} as ComponentMeta<typeof DropdownWithTags>;
 
-const Template: ComponentStory<typeof Dropdown> = args => <Dropdown {...args} />;
+const Template: ComponentStory<typeof DropdownWithTags> = args => <DropdownWithTags {...args} />;
 
 const defaultArgs = {
   allowReselect: false,
   contrast: false,
   disabled: false,
-  inputVariant: 'underline' as DropdownProps['inputVariant'],
+  initialSelected: [options[3], options[5], options[7]],
+  inputVariant: 'underline' as DropdownWithTagsProps['inputVariant'],
   label: 'Super fantastic label',
-  layout: 'raised' as DropdownProps['layout'],
-  listColor: 'primary' as DropdownProps['listColor'],
-  listSize: 'medium' as DropdownProps['listSize'],
-  listVariant: 'unboxed' as DropdownProps['listVariant'],
-  maxSelect: 1,
+  layout: 'raised' as DropdownWithTagsProps['layout'],
+  listColor: 'primary' as DropdownWithTagsProps['listColor'],
+  listSize: 'medium' as DropdownWithTagsProps['listSize'],
+  listVariant: 'unboxed' as DropdownWithTagsProps['listVariant'],
+  maxSelect: -1,
   minSelect: 0,
   options,
   readOnly: false,
   searchable: false,
-  size: 'large' as DropdownProps['size'],
+  size: 'large' as DropdownWithTagsProps['size'],
+  style: { width: 300 },
+  tagShape: 'pill' as DropdownWithTagsProps['tagShape'],
+  tagSize: 'xsmall' as DropdownWithTagsProps['tagSize'],
+  tagWeight: 'outlined' as DropdownWithTagsProps['tagWeight'],
   transitional: true,
   unthemed: false,
   usingNotification: false,
@@ -303,91 +336,15 @@ InputVariantOutline.args = {
   inputVariant: 'outline',
 };
 
-export const NoOptions = Template.bind({});
-NoOptions.storyName = 'No options';
-NoOptions.args = {
+export const Placeholder = Template.bind({});
+Placeholder.args = {
+  ...defaultArgs,
+  initialSelected: undefined,
+  placeholder: 'Choose some colors',
+};
+
+export const Filterable = Template.bind({});
+Filterable.args = {
   ...defaultArgs,
   getFilteredOptions: handleFilter,
-  options: undefined,
-};
-
-export const MediumSize = Template.bind({});
-MediumSize.storyName = 'Size: Medium';
-MediumSize.args = {
-  ...defaultArgs,
-  listSize: 'medium',
-  size: 'medium',
-};
-
-export const LargeSize = Template.bind({});
-LargeSize.storyName = 'Size: Large';
-LargeSize.args = {
-  ...defaultArgs,
-  size: 'large',
-};
-
-export const XLargeSize = Template.bind({});
-XLargeSize.storyName = 'Size: XLarge';
-XLargeSize.args = {
-  ...defaultArgs,
-  listSize: 'large',
-  size: 'xlarge',
-};
-
-export const XXLargeSize = Template.bind({});
-XXLargeSize.storyName = 'Size: 2XLarge';
-XXLargeSize.args = {
-  ...defaultArgs,
-  listSize: 'large',
-  size: '2xlarge',
-};
-
-export const XXXLargeSize = Template.bind({});
-XXXLargeSize.storyName = 'Size: 3XLarge';
-XXXLargeSize.args = {
-  ...defaultArgs,
-  listSize: 'large',
-  size: '3xlarge',
-};
-
-export const XXXXLargeSize = Template.bind({});
-XXXXLargeSize.storyName = 'Size: 4XLarge';
-XXXXLargeSize.args = {
-  ...defaultArgs,
-  listSize: 'xlarge',
-  size: '4xlarge',
-};
-
-export const XXXXXLargeSize = Template.bind({});
-XXXXXLargeSize.storyName = 'Size: 5XLarge';
-XXXXXLargeSize.args = {
-  ...defaultArgs,
-  listSize: 'xlarge',
-  size: '5xlarge',
-};
-
-export const XXXXXXLargeSize = Template.bind({});
-XXXXXXLargeSize.storyName = 'Size: 6XLarge';
-XXXXXXLargeSize.args = {
-  ...defaultArgs,
-  listSize: 'xlarge',
-  size: '6xlarge',
-};
-
-export const XXXXXXXLargeSize = Template.bind({});
-XXXXXXXLargeSize.storyName = 'Size: 7XLarge';
-XXXXXXXLargeSize.args = {
-  ...defaultArgs,
-  listSize: 'xlarge',
-  size: '7xlarge',
-  style: { width: 340 },
-};
-
-export const XXXXXXXXLargeSize = Template.bind({});
-XXXXXXXXLargeSize.storyName = 'Size: 8XLarge';
-XXXXXXXXLargeSize.args = {
-  ...defaultArgs,
-  listSize: 'xlarge',
-  size: '8xlarge',
-  style: { width: 380 },
 };

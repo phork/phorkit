@@ -9,7 +9,9 @@ export type UseDeepFocusGroupRefWithHandle<
 > = React.RefObject<Record<H, E>>;
 
 export type UseDeepFocusGroupEventHandlers = {
+  /** A memoized function to call for each ref when it loses focus */
   onBlur?: (id: string, event?: React.FocusEvent<HTMLElement>) => void;
+  /** A memoized function to call for each ref when it gains focus */
   onFocus?: (id: string, event?: React.FocusEvent<HTMLElement>) => void;
 };
 
@@ -29,7 +31,10 @@ export type UseDeepFocusGroupResponse = {
     /** To be used with the imperative handle hook */
     handle?: string;
   }) => void;
+  clearRefs: () => void;
+  /** handleBlur should be set as the onBlur handler for every element that's tracked */
   handleBlur: React.FocusEventHandler<HTMLElement>;
+  /** handleFocus should be set as the onFocus handler for every element that's tracked */
   handleFocus: React.FocusEventHandler<HTMLElement>;
   isIdFocused: (id: string) => boolean;
   removeRef: (props: { id: string; passive?: boolean }) => void;
@@ -48,10 +53,55 @@ const isRefObject = (ref: UseDeepFocusGroupRef | UseDeepFocusGroupRefWithHandle)
 };
 
 /**
- * useDeepFocusGroup calls onBlur when none of the refs
- * or their children have focus. Refs should not be
- * nested within each other with the exception of the
- * container ref, which can include all the other refs.
+ * useDeepFocusGroup is used to store a collection of
+ * refs (elements) by ID and to return a function that
+ * can be used to check if a specific element or its
+ * children have focus. It also accepts onBlur and
+ * onFocus callbacks which are called for each element
+ * whose focus state changes.
+ *
+ * This returns addRef, removeRef and clearRefs
+ * functions that are used to register and unregister
+ * the elements to track, and handleBlur and handleFocus
+ * callbacks that should be attached to each element
+ * that should be tracked.
+ *
+ * @example
+ * const FOCUS_REFS = {
+ *   INPUT: 'input',
+ *   BUTTON: 'button',
+ * };
+ *
+ * const onFocus = useCallback(() => console.log('focus'), []);
+ * const onBlur = useCallback(() => console.log('blur'), []);
+ *
+ * const {
+ *   addRef,
+ *   clearRefs,
+ *   handleFocus,
+ *   handleBlur,
+ *   isIdFocused
+ * } = useDeepFocusGroup({ onBlur, onFocus }, { blurDelay: 150 });
+ *
+ * const inputRef = useRef<HTMLInputElement>(null!);
+ * const buttonRef = useRef<HTMLButtonElement>(null!);
+ *
+ * useEffect(() => {
+ *   clearRefs();
+ *
+ *   addRef<HTMLInputElement>({ id: FOCUS_REFS.INPUT, ref: inputRef, passive: true });
+ *   addRef<HTMLButtonElement>({ id: FOCUS_REFS.BUTTON, ref: buttonRef, passive: true });
+ *  }, [addRef, clearRefs]);
+ *
+ * const isInputFocused = isIdFocused(FOCUS_REFS.INPUT);
+ * const isButtonFocused = isIdFocused(FOCUS_REFS.BUTTON);
+ *
+ * return (
+ *   <div>
+ *     <input onBlur={handleBlur} onFocus={handleFocus} type="text" />
+ *     <button onBlur={handleBlur} onFocus={handleFocus}>Submit</button>
+ *   </div>
+ * )
  */
 export function useDeepFocusGroup(
   { onBlur, onFocus }: UseDeepFocusGroupEventHandlers = {},
@@ -129,6 +179,11 @@ export function useDeepFocusGroup(
     [getFocusedIds, updateFocusedIds],
   );
 
+  const clearRefs = useCallback(() => {
+    refs.current = {};
+    refsWithHandles.current = {};
+  }, []);
+
   const handleFocus = useCallback<UseDeepFocusGroupResponse['handleFocus']>(
     event => {
       clearBlurTimeoutId.current && clearSafeTimeout(clearBlurTimeoutId.current);
@@ -164,6 +219,7 @@ export function useDeepFocusGroup(
 
   previousResponse.current = produce(previousResponse.current, draftState => {
     draftState.addRef = addRef;
+    draftState.clearRefs = clearRefs;
     draftState.handleBlur = handleBlur;
     draftState.handleFocus = handleFocus;
     draftState.isIdFocused = isIdFocused;

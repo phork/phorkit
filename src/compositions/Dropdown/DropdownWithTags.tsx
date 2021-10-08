@@ -23,11 +23,12 @@ export type DropdownWithTagsOption = DropdownOption & {
 };
 
 export type DropdownWithTagsProps = Omit<PartialDropdownProps, 'initialSelected' | 'options' | 'reducer'> & {
-  initialSelected?: DropdownOption[];
-  options: DropdownWithTagsOption[];
+  initialSelected?: DropdownWithTagsOption[];
+  options: Readonly<DropdownWithTagsOption[]>;
+  /** A custom renderer for the tags */
   tag?: RenderFromPropElement<DropdownWithTagsOption>;
   tagGroupProps?: Omit<TagGroupProps, 'size'>;
-  tagProps?: Omit<TagProps<'button'>, 'actionable' | 'as' | 'onClick' | 'ref'>;
+  tagProps?: Omit<TagProps<'button'>, 'actionable' | 'as' | 'children' | 'onClick' | 'ref'>;
   tagShape?: TagShape;
   tagSize?: TagSize;
   tagWeight?: TagWeight;
