@@ -13,9 +13,9 @@ export type ModalContainerProps = {
 
 /**
  * The modal container creates a portal attached to the
- * document body and renders the Modal child and a partially
+ * document body and renders the `Modal` child and a partially
  * transparent background mask in it. It also intercepts
- * any Escape keypress events and calls the onEscape callback.
+ * any Escape `keydown` events and calls the `onEscape` callback.
  */
 export function ModalContainer({ children, className, onEscape }: ModalContainerProps): React.ReactPortal | null {
   useHandleEscape({

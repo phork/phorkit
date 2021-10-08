@@ -59,7 +59,7 @@ export type RhythmProps = RhythmLocation &
  * use auto for the horizontal margins.
  *
  * The amount of space added is multiplied by the
- * $layout-grid-base variable.
+ * `layout-grid-base` variable.
  */
 export function Rhythm({
   children,

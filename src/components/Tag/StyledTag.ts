@@ -9,7 +9,7 @@ export type StyledTagProps = TagProps & {
 };
 
 /**
- * A styled tag is an extension of the Tag component
+ * A styled tag is an extension of the `Tag` component
  * that will have a custom background and text color.
  */
 export const StyledTag = styled(Tag, {

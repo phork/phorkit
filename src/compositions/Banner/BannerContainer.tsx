@@ -12,7 +12,7 @@ export type BannerContainerProps = React.HTMLAttributes<HTMLDivElement> &
   };
 
 /**
- * The banner container wraps a collection of Banner
+ * The banner container wraps a collection of `Banner`
  * components and adds a border between banners of
  * the same color.
  */

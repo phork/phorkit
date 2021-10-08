@@ -10,7 +10,7 @@ export type BannersFromContextProps = Omit<BannerContainerProps, 'children'> & {
 };
 
 /**
- * This consumes the banners from the BannerProvider
+ * This consumes the banners from the `BannerProvider`
  * and displays them all.
  */
 export function BannersFromContext({

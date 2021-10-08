@@ -30,11 +30,11 @@ export type TabPanelGroupProps = React.HTMLAttributes<HTMLDivElement> &
   };
 
 /**
- * The tab panel group renders a collection of TabPanel
+ * The tab panel group renders a collection of `TabPanel`
  * components. The tab panels contain the content that
  * is shown when a tab is selected.
  *
- * This uses the InteractiveGroup component.
+ * This uses the `InteractiveGroup` component.
  */
 export function TabPanelGroup({
   className,

@@ -8,7 +8,7 @@ export type StyledTitledToastProps = Omit<TitledToastProps, 'level'> & {
 
 /**
  * A styled titled toast is an extension of the
- * TitledToast component that will have a custom
+ * `TitledToast` component that will have a custom
  * background and text color.
  */
 export const StyledTitledToast = ({ levelColor, levelInverseColor, style, ...props }: StyledTitledToastProps) => {

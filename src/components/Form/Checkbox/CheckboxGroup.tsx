@@ -98,11 +98,12 @@ export function CheckboxGroupBase<V extends CheckboxValue = string>(
 }
 
 /**
- * The checkbox group renders a collection of checkboxes
- * in an inline or a stacked layout with a legend.
+ * The checkbox group renders a collection of `Checkbox`
+ * components with a legend in an inline or a stacked
+ * layout.
  *
  * The checked states should be stored outside of this
- * component and are updated by the onChange callback.
+ * component and are updated by the `onChange` callback.
  */
 export const CheckboxGroup = React.forwardRef(CheckboxGroupBase) as <V extends CheckboxValue = string>(
   p: CheckboxGroupProps<V> & { ref?: React.Ref<HTMLFieldSetElement> },

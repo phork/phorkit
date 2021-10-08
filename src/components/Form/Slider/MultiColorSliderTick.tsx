@@ -15,8 +15,8 @@ export type LocalMultiColorSliderTickProps = ThemeProps & {
 export type MultiColorSliderTickProps = MergeElementPropsWithoutRef<'div', LocalMultiColorSliderTickProps>;
 
 /**
- * The multi color slider tick is used by the Slider
- * component to render each tick of the MultiColorSlider
+ * The multi color slider tick is used by the `Slider`
+ * component to render each tick of the `MultiColorSlider`
  * component. A tick in this case is actually just the
  * space between each segment.
  */

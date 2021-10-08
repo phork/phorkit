@@ -45,13 +45,13 @@ export type InnerNavigationProps = React.HTMLAttributes<HTMLElement> &
  * so the selected item background box slides to the
  * next item on change.
  *
- * This renders a collection of NavigationItem components
- * and should be a child of the Navigation component.
+ * This renders a collection of `NavigationItem` components
+ * and should be a child of the `Navigation` component.
  *
- * The selectedId state should be managed outside of
+ * The `selectedId` state should be managed outside of
  * this component. The focused state is managed inside.
  *
- * This uses the InteractiveGroup and the ListRegistry
+ * This uses the `InteractiveGroup` and `ListRegistry`
  * components.
  */
 export const InnerNavigation = React.forwardRef<HTMLElement, InnerNavigationProps>(

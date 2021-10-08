@@ -30,10 +30,10 @@ export type AccordionListProps = React.HTMLAttributes<HTMLDivElement> &
 
 /**
  * The accordion list renders a collection of accordion
- * items and sets up the AccordionLabel so that when it's
- * clicked it will open the AccordionContent. This uses
- * the InteractiveGroup to handle the selecting and
- * focusing of accordion items.
+ * items and sets up the `AccordionLabel` so that when it's
+ * clicked it will open the `AccordionContent`.
+ *
+ * This uses the `InteractiveGroup` component.
  */
 export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps>(
   (

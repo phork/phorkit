@@ -11,12 +11,12 @@ export type DropoverContentProps = CardProps &
   };
 
 /**
- * This renders a raised Card with the dropover
+ * This renders a raised `Card` with the dropover
  * content in it. The content leaves a small margin
  * at the top to leave room for the trigger. If more
  * space is needed it can be added to the children.
  *
- * This uses the Card, Paper and Rhythm components.
+ * This uses the `Card`, `Paper` and `Rhythm` components.
  */
 export function DropoverContent({
   children,

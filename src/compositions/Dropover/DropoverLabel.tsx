@@ -20,12 +20,12 @@ export type DropoverLabelProps = React.HTMLAttributes<HTMLDivElement> &
   };
 
 /**
- * The dropdover label is always visible and is what's
+ * The dropover label is always visible and is what's
  * clicked in order to show and hide the dropover. It
  * can have an optional triangle rendered next to it
  * to signify the dropover.
  *
- * This uses the Rhythm and Triangle components.
+ * This uses the `Rhythm` and `Triangle` components.
  */
 export const DropoverLabel = React.forwardRef<HTMLDivElement, DropoverLabelProps>(
   (

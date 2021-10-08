@@ -4,6 +4,11 @@ import { InteractiveGroupContext, InteractiveGroupContextValue } from './Interac
 import { InteractiveGroupItemId } from './types';
 import { useInteractiveGroup, UseInteractiveGroupProps, UseInteractiveGroupResponse } from './useInteractiveGroup';
 
+/**
+ * - T is the type of IDs allowed
+ * - E is the type of the element that the returned ref gets attached to
+ * - I is the type of item element
+ */
 export type PartialInteractiveGroupProviderProps<
   T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,
@@ -20,23 +25,19 @@ export type PartialInteractiveGroupProviderProps<
  * The interactive group provider accepts a reducer
  * that contains an array of items and, through that
  * reducer, manages which items are focused and
- * selected. It listens for keyDown events to track
- * the focus, and provides a handleItemClick function
+ * selected. It listens for `keydown` events to track
+ * the focus, and provides a `handleItemClick` function
  * which should be called when an item is clicked.
  *
- * Generally the InteractiveGroupProvider component
+ * Generally the `InteractiveGroupProvider` component
  * should be used. The partial interactive group
  * provider is only necessary in cases when the
  * parent needs access to the reducer and the state.
  *
- * The initialSelected prop can be used to set up which
+ * The `initialSelected` prop can be used to set up which
  * items are selected on load, but after that the state is
- * stored internally. The onSelectionChange, onSelect or
- * onUnselect callbacks can be used by the parent.
- *
- * - T is the type of IDs allowed
- * - E is the type of the element that the returned ref gets attached to
- * - I is the type of item element
+ * stored internally. The `onSelectionChange`, `onSelect` or
+ * `onUnselect` callbacks can be used by the parent.
  */
 export function PartialInteractiveGroupProvider<
   T extends InteractiveGroupItemId = string,

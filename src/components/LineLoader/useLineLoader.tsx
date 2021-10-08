@@ -26,10 +26,11 @@ type UseLineLoaderResponse = {
 };
 
 /**
- * Returns the line loader component and a callback to call
- * when the loading has finished. The callback will set the line
- * loader to 50% of the animation (where the line spans the
- * full width) and then fade out.
+ * Returns the line loader component and an `onLoad`
+ * callback to call when the loading has finished. The
+ * callback will set the line loader to 50% of the
+ * animation (where the line spans the full width) and
+ * then fade out.
  */
 export function useLineLoader({
   duration,

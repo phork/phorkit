@@ -24,16 +24,16 @@ export type SidePanelProps = Pick<
   };
 
 /**
- * A side panel lives alongside a MainPanel (and optionally
- * other side panels) in a PanelContainer. It can be opened
+ * A side panel lives alongside a `MainPanel` (and optionally
+ * other side panels) in a `PanelContainer`. It can be opened
  * or closed immediately or with an animation.
  *
  * If a side panel is fixed it sits on top of the main panel.
  * If it's not fixed it forces the main panel to shrink.
  *
  * The open state should be stored outside of this component
- * and is updated by the onOpenStart, onOpenFinish, onCloseStart,
- * and onCloseFinish callbacks.
+ * and is updated by the `onOpenStart`, `onOpenFinish`,
+ * `onCloseStart` and `onCloseFinish` callbacks.
  */
 export const SidePanel = React.forwardRef<HTMLDivElement, SidePanelProps>(
   (

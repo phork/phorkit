@@ -25,7 +25,7 @@ const StyledButton = styled(Button, {
 `;
 
 /**
- * A colored button is an extension of the Button
+ * A colored button is an extension of the `Button`
  * component that will have a background of one
  * of the theme's primary colors.
  */

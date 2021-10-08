@@ -9,8 +9,8 @@ export type TitledToastProps = Omit<ToastProps, 'title'> & {
 };
 
 /**
- * A titled toast extends the a standard Toast by
- * adding a title above it.
+ * A titled toast extends the a standard `Toast` by
+ * adding a title above the content.
  */
 export function TitledToast({
   children,

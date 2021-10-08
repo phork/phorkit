@@ -18,8 +18,8 @@ const StyledLineLoader = styled(LineLoader, {
 `;
 
 /**
- * A colored line load is an extension of the LineLoader
- * component which will be the color of one of the
+ * A colored line load is an extension of the `LineLoader`
+ * component which will have the color of one of the
  * theme's primary colors.
  */
 export const ColoredLineLoader = React.memo<ColoredLineLoaderProps>(

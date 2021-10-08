@@ -36,11 +36,12 @@ export function InteractiveListBase(
 }
 
 /**
- * The interactive list is a wrapper around the partial
- * interactive list for which it provides the reducer
- * used to track the selected and focused item(s).
+ * The interactive list is a wrapper around the
+ * `PartialInteractiveList` component for which
+ * it provides the reducer used to track the
+ * selected and focused item(s).
  *
- * This uses the InteractiveGroup component.
+ * This uses the `InteractiveGroup` component.
  */
 export const InteractiveList = React.forwardRef(InteractiveListBase);
 

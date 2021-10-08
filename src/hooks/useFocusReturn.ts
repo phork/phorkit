@@ -6,9 +6,9 @@ export type UseFocusReturnResponse<T> = {
 };
 
 /**
- * Returns a changeFocus function to change the active
- * element, and a returnFocus function to return the
- * focus to the element that was active when changeFocus
+ * Returns a `changeFocus` function to change the active
+ * element, and a `returnFocus` function to return the
+ * focus to the element that was active when `changeFocus`
  * was called.
  */
 export function useFocusReturn<T extends HTMLElement = HTMLElement>(): UseFocusReturnResponse<T> {

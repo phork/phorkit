@@ -16,8 +16,9 @@ export type FormboxInputProps<I extends FormboxInputElementType> = ThemeProps & 
 };
 
 /**
- * The formbox input component clones its input/select/textarea
- * child and adds the styles and placeholder to it.
+ * The formbox input component clones its input, select
+ * or textarea child and adds the styles and placeholder
+ * to it.
  */
 export const FormboxInput = <I extends FormboxInputElementType>({
   children,

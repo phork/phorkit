@@ -43,10 +43,10 @@ export interface BannerProps
  * if it's not permanent and an onClose prop is passed.
  *
  * Banners have a small animation on the initial render
- * unless the immediate flag it set.
+ * unless the `immediate` flag is set.
  *
- * This uses the IconButton, Flex, Paper, Position
- * and Rhythm components.
+ * This uses the `IconButton`, `Flex`, `Paper`, `Position`
+ * and `Rhythm` components.
  */
 export function Banner({
   children,

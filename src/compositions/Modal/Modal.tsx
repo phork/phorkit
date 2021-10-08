@@ -42,21 +42,21 @@ export type ModalProps<E extends HTMLElement = HTMLElement> = Omit<ThemeProps, '
 };
 
 /**
- * A modal is a container that wraps ModalHeader, ModalBody
- * and ModalFooter components. If it's not permanent and
- * has an onClose prop then a close button is added.
+ * A modal is a container that wraps `ModalHeader`, `ModalBody`
+ * and `ModalFooter` components. If it's not permanent and
+ * has an `onClose` prop then a close button is added.
  *
- * The modal should be a child of a ModalContainer which
+ * The modal should be a child of a `ModalContainer` which
  * creates a portal and handles the escape functionality.
  *
- * If the modal is focusable it provides a focusRef prop
+ * If the modal is focusable it provides a `focusRef` prop
  * to the children which can be attached to the element
  * that should get the focus when the modal opens.
  *
  * Modals have a small animation on the initial render
- * unless the immediate flag it set.
+ * unless the `immediate` flag is set.
  *
- * This uses the IconButton component.
+ * This uses the `IconButton` component.
  */
 export function Modal<E extends HTMLElement = HTMLElement>({
   allowOverflow = false,

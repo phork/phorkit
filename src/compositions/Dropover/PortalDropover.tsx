@@ -28,7 +28,7 @@ const defaultOffset = {
  * so it looks like the toggle lives inside the dropover.
  * The portal dropover renders the popover in a portal.
  *
- * This uses the Popover component.
+ * This uses the `Popover` component.
  */
 export function PortalDropover({
   align,

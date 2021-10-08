@@ -12,15 +12,15 @@ export type PortalPopoverProps = Omit<PopoverProps, 'renderContent'> &
   } & (PopoverContentPropsChildren | PopoverContentPropsRenderChildren);
 
 /**
- * The portal popover extends the Popover component and
- * sets the renderContent prop so the popover content is
+ * The portal popover extends the `Popover` component and
+ * sets the `renderContent` prop so the popover content is
  * rendered in a portal (as opposed to inline).
  *
- * This accepts onClose and onOpen callbacks, however the
- * popover visibility state is controlled internally by the
- * Popover component.
+ * This accepts `onClose` and `onOpen` callbacks, however
+ * the popover visibility state is controlled internally by
+ * the `Popover` component.
  *
- * The uses the Portal component.
+ * The uses the `Portal` component.
  */
 export function PortalPopover({
   children,

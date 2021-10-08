@@ -32,7 +32,7 @@ export type PaperProps = React.HTMLAttributes<HTMLDivElement> &
  * and the viewport size. And it can expand, overflow or
  * be scrollable with a customized scrollbar size.
  *
- * Scrollable paper has a tabIndex on it because scrollable
+ * Scrollable paper has a `tabIndex` on it because scrollable
  * regions should be focusable.
  */
 export const Paper = React.forwardRef<HTMLDivElement, PaperProps>(

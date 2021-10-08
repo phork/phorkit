@@ -63,13 +63,13 @@ export function PaginationPageBase<T extends ButtonElementType = 'button'>(
  * The pagination page component renders a page number
  * button or link.
  *
- * If an href property is passed it renders a link,
- * otherwise it renders a button. If allowRightClickLinks
+ * If an `href` property is passed it renders a link,
+ * otherwise it renders a button. If `allowRightClickLinks`
  * is set then the page change should be handled by the
- * onChangePage handler while the link is reserved only
+ * `onChangePage` handler while the link is reserved only
  * for right clicking.
  *
- * This uses the Button component.
+ * This uses the `Button` component.
  */
 export const PaginationPage = React.forwardRef(PaginationPageBase) as <T extends ButtonElementType = 'button'>(
   p: PaginationPageProps<T> & { ref?: React.Ref<HTMLElementTagNameMap[T]> },

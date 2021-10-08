@@ -128,7 +128,7 @@ export default {
   component: ${component},
   argTypes: {
     children: {
-      control: { 
+      control: {
         type: 'text',
       },
     },
@@ -180,9 +180,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'A new component.',
-      },
     },
     layout: 'centered',
   },

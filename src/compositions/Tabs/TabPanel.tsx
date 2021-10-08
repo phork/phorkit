@@ -12,9 +12,9 @@ export type TabPanelProps = {
 };
 
 /**
- * The tab panel is the content associated with a
- * Tab component. When a tab is selected the tab
- * panel group content is shown.
+ * A tab panel contains the content associated with a
+ * `Tab` component. When a tab is selected the tab panel
+ * content is shown.
  */
 export function TabPanel({
   children,

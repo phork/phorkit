@@ -146,12 +146,12 @@ export function PasswordBase(
 }
 
 /**
- * The password component extends the Textbox component
+ * The password component extends the `Textbox` component
  * and adds a toggle icon button to change the password
  * from plain-text to obfuscated and back.
  *
  * The value state should be stored outside of this component
- * and is updated by the onChange callback.
+ * and is updated by the `onChange` callback.
  */
 export const Password = React.forwardRef(PasswordBase);
 

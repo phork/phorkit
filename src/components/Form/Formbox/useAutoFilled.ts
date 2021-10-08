@@ -12,8 +12,10 @@ export type UseAutoFilledResponse<E> = {
 };
 
 /**
- * Used in conjunction with FormboxAutoFilled.module.css styles
- * to track input autofill state. Based on a technique from here
+ * Used in conjunction with `FormboxAutoFilled.module.css`
+ * to track input autofill state.
+ *
+ * This is based on a technique from here
  * https://codedaily.io/tutorials/Animated-Input-Label-with-Chrome-Autofill-Detection-in-React
  */
 export function useAutoFilled<E = HTMLInputElement>({

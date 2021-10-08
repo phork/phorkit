@@ -16,6 +16,8 @@ export type ChipProps = Omit<TagProps, 'children' | 'flush' | 'size'> & {
  * avatar, a label and optionally an icon. The icon
  * can be a button, a simple SVG element, or any
  * other type of element.
+ *
+ * This uses the `Tag` component.
  */
 export function Chip({ avatar, icon, size = 'medium', text, ...props }: ChipProps): React.ReactElement {
   return (

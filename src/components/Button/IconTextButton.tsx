@@ -55,7 +55,7 @@ export function IconTextButtonBase<T extends IconTextButtonElementType = 'button
 }
 
 /**
- * An icon text button is an extension of the Button
+ * An icon text button is an extension of the `Button`
  * component where, in addition to a text label, there
  * is an icon to the left or right of it. The loader
  * can either replace the entire button content or

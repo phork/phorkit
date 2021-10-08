@@ -7,7 +7,7 @@ export type StyledToastProps = Omit<ToastProps, 'level'> & {
 };
 
 /**
- * A styled toast is an extension of the Toast
+ * A styled toast is an extension of the `Toast`
  * component that will have a custom background
  * and text color.
  */

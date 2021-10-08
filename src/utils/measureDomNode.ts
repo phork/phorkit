@@ -13,9 +13,9 @@ export type Measurements = {
 };
 
 /**
- * It's best if appendTo is set to the parent of the element
- * to be measured so that the font sizes and other CSS attributes
- * can be inherited.
+ * It's best if `appendTo` is set to the parent of
+ * the element to be measured so that the font sizes
+ * and other CSS attributes can be inherited.
  */
 export const measureDomNode = (
   node: HTMLElement,

@@ -9,7 +9,7 @@ export type StyledSliderProps = SliderProps & {
 };
 
 /**
- * A styled slider is an extension of the Slider
+ * A styled slider is an extension of the `Slider`
  * component that will have a custom track, track
  * fill, tick and drag handle colors.
  */

@@ -16,8 +16,8 @@ export type ModalFromContextProps = ThemeProps & {
 };
 
 /**
- * This accepts a Modal element and its ID and it
- * clones the modal and passes it an onClose prop
+ * This accepts a `Modal` element and its ID and it
+ * clones the modal and passes it an `onClose` prop
  * that can be used to the remove modal from the
  * state.
  */

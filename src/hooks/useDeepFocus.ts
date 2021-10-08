@@ -27,14 +27,14 @@ export type UseDeepFocusResponse<E> = {
 };
 
 /**
- * Calls onBlur when neither the element nor its children
- * have focus, and onFocus when the element or one of its
+ * Calls `onBlur` when neither the element nor its children
+ * have focus, and `onFocus` when the element or one of its
  * children have focus.
  *
  * The blur handler can be called set to have a delay so
  * a focus can cancel it.
  *
- * If alwaysTriggerFocus or alwaysTriggerBlur are true
+ * If `alwaysTriggerFocus` or `alwaysTriggerBlur` are true
  * then the respective handler functions are called even
  * if the focus changes from one [focused|blurred] child
  * to another. If they are false then the handlers are

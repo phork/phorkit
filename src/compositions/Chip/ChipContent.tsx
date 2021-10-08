@@ -18,7 +18,7 @@ export type ChipContentProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'child
  * can be a button, a simple SVG element, or any
  * other type of element.
  *
- * This uses the Avatar and Tag components.
+ * This uses the `Avatar` component.
  */
 export function ChipContent({
   avatar,

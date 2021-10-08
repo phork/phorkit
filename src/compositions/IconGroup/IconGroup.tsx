@@ -12,11 +12,11 @@ export type IconGroupProps = {
 
 /**
  * An icon group renders a row of icons and wraps them
- * with a ScaleProvider which will be used to set every
+ * with a `ScaleProvider` which will be used to set every
  * child icon to the same size unless the individual
  * icons override it.
  *
- * This uses the Flex component and the Scale context.
+ * This uses the `Flex` component and the `Scale` context.
  */
 export function IconGroup({ children, className, scale, size }: IconGroupProps): React.ReactElement {
   return (

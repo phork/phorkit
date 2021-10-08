@@ -41,10 +41,10 @@ export type LocalButtonGroupProps = Pick<ButtonProps, 'color' | 'fullWidth' | 's
 export type ButtonGroupProps = MergeElementProps<'div', LocalButtonGroupProps>;
 
 /**
- * The button group renders a collection of buttons with
- * a uniform amount of spacing between them (or no spacing
- * at all). Button groups can be oriented horizontally or
- * vertically.
+ * The button group renders a collection of `Button`
+ * components with a uniform amount of spacing between
+ * them (or no spacing at all). Button groups can be
+ * oriented horizontally or vertically.
  */
 export function ButtonGroup({
   align,

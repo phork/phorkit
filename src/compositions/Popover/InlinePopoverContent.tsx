@@ -64,7 +64,7 @@ const InlinePopoverContentBase = React.forwardRef<HTMLDivElement, InlinePopoverC
  * The inline popover content positions the popover
  * and renders it when it's visible.
  *
- * This uses the useAbsoluteCoords hook.
+ * This uses the `useAbsoluteCoords` hook.
  */
 export const InlinePopoverContent = React.memo<InlinePopoverContentProps>(InlinePopoverContentBase);
 

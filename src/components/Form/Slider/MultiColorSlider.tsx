@@ -38,10 +38,10 @@ export type MultiColorSliderProps = MergeProps<
 
 /**
  * The multi color slider accepts a set of colors that
- * are used for individual segments of the slider. A
- * color segment can either be on or off. The onChange
- * value is 0 if no colors are active, 1 if the first
- * color is active, 2 for the second, etc.
+ * are used for individual segments of a `StyledSlider`.
+ * The first 0 to n color segments will be on, and the rest
+ * will be off. The value is 0 if no colors are active, 1
+ * if the first color is active, 2 for the second, etc.
  */
 export function MultiColorSlider({
   className,

@@ -78,7 +78,7 @@ export type TypographyProps<T extends keyof JSX.IntrinsicElements = 'span'> = As
  * default styles, so it won't override an existing
  * style when that prop is left undefined.
  *
- * There's also a reset flag that will override
+ * There's also a `reset` flag that will override
  * most styles and set them back to their defaults.
  */
 export function Typography<T extends keyof JSX.IntrinsicElements = 'span'>({

@@ -347,7 +347,7 @@ export function SliderBase(
  * optionally show tick marks at a custom interval.
  *
  * The value state should be stored outside of this component
- * and is updated by the onChange callback.
+ * and is updated by the `onChange` callback.
  */
 export const Slider = React.forwardRef(SliderBase);
 

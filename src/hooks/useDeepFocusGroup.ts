@@ -53,16 +53,15 @@ const isRefObject = (ref: UseDeepFocusGroupRef | UseDeepFocusGroupRefWithHandle)
 };
 
 /**
- * useDeepFocusGroup is used to store a collection of
- * refs (elements) by ID and to return a function that
- * can be used to check if a specific element or its
- * children have focus. It also accepts onBlur and
- * onFocus callbacks which are called for each element
- * whose focus state changes.
+ * Stores a collection of refs (elements) by ID and
+ * returns a function that can be used to check if a
+ * specific element or its children have focus. It
+ * also accepts `onBlur` and `onFocus` callbacks which
+ * are called for each element whose focus state changes.
  *
- * This returns addRef, removeRef and clearRefs
+ * This returns `addRef`, `removeRef` and `clearRefs`
  * functions that are used to register and unregister
- * the elements to track, and handleBlur and handleFocus
+ * the elements to track, and `handleBlur` and `handleFocus`
  * callbacks that should be attached to each element
  * that should be tracked.
  *

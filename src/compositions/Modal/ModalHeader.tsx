@@ -16,10 +16,10 @@ export type ModalHeaderProps = React.HTMLAttributes<HTMLDivElement> & {
 /**
  * The modal header renders a title, if passed, and
  * and other children content. When rendered inside
- * a Modal and as a sibling of a ModalBody with the
+ * a `Modal` and as a sibling of a `ModalBody` with the
  * scrollable prop it sticks to the top of the modal.
  *
- * This uses the Typography component.
+ * This uses the `Typography` component.
  */
 export function ModalHeader({
   align = 'center',

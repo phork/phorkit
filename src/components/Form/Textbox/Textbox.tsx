@@ -320,7 +320,7 @@ export function TextboxBase(
   );
 }
 /**
- * The textbox component extends the Formbox component and
+ * The textbox component extends the `Formbox` component and
  * contains both a text form input and a label. It accepts
  * custom icons, a placeholder value, a read only state (in
  * addition to a disabled state) and several custom style
@@ -331,7 +331,7 @@ export function TextboxBase(
  * or the standard plain-text format.
  *
  * The value state should be stored outside of this component
- * and is updated by the onChange callback.
+ * and is updated by the `onChange` callback.
  */
 export const Textbox = React.forwardRef(TextboxBase);
 

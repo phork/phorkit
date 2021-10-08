@@ -218,7 +218,7 @@ export function DropdownContentBase(
  * dropdown, or if no items are available it renders
  * the empty dropdown notification.
  *
- * This uses the InteractiveGroup and the InteractiveList
+ * This uses the `InteractiveGroup` and `InteractiveList`
  * components.
  */
 export const DropdownContent = React.forwardRef(DropdownContentBase);

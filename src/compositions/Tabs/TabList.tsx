@@ -142,12 +142,12 @@ export function TabListBase(
 }
 
 /**
- * The tab list component renders a collection of Tab
+ * The tab list component renders a collection of `Tab`
  * components (this does not include the tab panels) and
- * manages the onClick state for each tab so that clicking
+ * manages the `onClick` state for each tab so that clicking
  * a tab will set its state to selected.
  *
- * This uses the InteractiveGroup component.
+ * This uses the `InteractiveGroup` component.
  */
 export const TabList = React.forwardRef(TabListBase);
 

@@ -24,7 +24,8 @@ export type FormboxIconProps = {
 
 /**
  * The formbox icon adds all the necessary styles around
- * an SVG icon, as well as blur and focus event handlers.
+ * an SVG icon, as well as `onBlur` and `onFocus` event
+ * handlers.
  */
 export const FormboxIcon = ({
   actionable = false,

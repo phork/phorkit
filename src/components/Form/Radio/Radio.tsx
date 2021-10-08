@@ -168,7 +168,7 @@ export function RadioBase<V extends RadioValue = string>(
  * and a label.
  *
  * The checked state should be stored outside of this
- * component and is updated by the onChange callback.
+ * component and is updated by the `onChange` callback.
  */
 export const Radio = React.forwardRef(RadioBase) as <V extends RadioValue = string>(
   p: RadioProps<V> & { ref?: React.Ref<HTMLInputElement> },

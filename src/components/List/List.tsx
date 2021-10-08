@@ -108,10 +108,10 @@ export function ListBase<T extends ListElementType = 'ul'>(
 }
 
 /**
- * The list renders a collection of ListItem components
+ * The list renders a collection of `ListItem` components
  * that can be displayed either horizontally or vertically.
  * The list does not have any interactivity but is used as
- * a base for the InteractiveList component.
+ * a base for the `InteractiveList` component.
  */
 export const List = React.forwardRef(ListBase) as <T extends ListElementType = 'ul'>(
   p: ListProps<T> & { ref?: React.Ref<HTMLElementTagNameMap[T]> },
