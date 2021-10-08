@@ -8,6 +8,11 @@ export type StyledLabelProps = LabelProps & {
   textColor?: string;
 };
 
+/**
+ * A styled label is an extension of the `Label`
+ * component that will have a custom text color
+ * and font size.
+ */
 export const StyledLabel = styled(Label, {
   shouldForwardProp: (prop: string) =>
     !['fontSize', 'lineHeight', 'mutedTextColor', 'textColor', 'themeId'].includes(prop),
