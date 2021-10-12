@@ -1,0 +1,65 @@
+import { action } from '@storybook/addon-actions';
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
+import { themes } from 'config/themes';
+import { Canvas } from 'stories/helpers/Canvas';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
+import { Navigation } from '../Navigation';
+
+<PageTitle src="compositions/Navigation" title="Navigation" />
+<Subtitle />
+<Description />
+<Primary />
+<ArgsTable story={PRIMARY_STORY} />
+<Stories />
+
+### Example with `react-router-dom`
+
+```js
+import { Navigation } from '@phork/phorkit';
+import React, { useCallback, useMemo } from 'react';
+import { withRouter } from 'react-router-dom';
+
+export function GlobalNavigation({ history, location }) {
+  const items = useMemo(
+    () => [
+      {
+        id: 'dashboard',
+        selected: location => location.pathname === '/',
+        url: '/',
+        label: 'Dashboard',
+      },
+      {
+        id: 'awesome',
+        selected: location => location.pathname.startsWith('/awesome'),
+        url: '/awesome',
+        label: 'Awesome',
+      },
+      {
+        id: 'example',
+        selected: location => location.pathname.startsWith('/example'),
+        url: '/example',
+        label: 'Example',
+      },
+      {
+        id: 'things',
+        selected: location => location.pathname.startsWith('/things'),
+        url: '/things',
+        label: 'Things',
+      },
+    ],
+    [],
+  );
+  const handleSelect = useCallback((event, { url }) => history.push(url), [history]);
+  return (
+    <Navigation
+      animated
+      fullWidth
+      onSelect={handleSelect}
+      selectedId={items.find(({ selected }) => selected(location)).id}
+      items={items}
+    />
+  );
+}
+export const EnhancedGlobalNavigation = withRouter(GlobalNavigation);
+```
