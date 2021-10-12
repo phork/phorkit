@@ -9,7 +9,7 @@ import {
   InteractiveGroupContextValue,
 } from '../../components/InteractiveGroup/InteractiveGroupContext';
 import styles from './styles/TabPanelGroup.module.css';
-import { TabPanel, TabPanelProps } from './TabPanel';
+import { TabPanel, TabPanelProps, TabPanelStateProps } from './TabPanel';
 import { TabsVariant } from './types';
 
 export type TabPanelGroupProps = React.HTMLAttributes<HTMLDivElement> &
@@ -20,7 +20,7 @@ export type TabPanelGroupProps = React.HTMLAttributes<HTMLDivElement> &
     focused?: boolean;
     items: Array<{
       id: string;
-      content: React.ReactNode;
+      content: React.ReactNode | ((props: TabPanelStateProps) => React.ReactNode);
       contentProps?: Omit<TabPanelProps, 'children' | 'id' | 'selected'>;
     }>;
     orientation?: Orientation;

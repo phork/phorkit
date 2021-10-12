@@ -6,7 +6,7 @@ import { useInteractiveGroupItem } from '../../components/InteractiveGroup/useIn
 import { useListRegistryItem } from '../../components/ListRegistry/useListRegistryItem';
 import styles from './styles/Navigation.module.css';
 
-type NavigationItemStateProps = {
+export type NavigationItemStateProps = {
   disabled?: boolean;
   focused?: boolean;
   selected?: boolean;

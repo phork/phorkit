@@ -48,7 +48,7 @@ export type UseInteractiveGroupProps<T extends InteractiveGroupItemId = string> 
   reducer: [InteractiveGroupState<T>, Dispatch<InteractiveGroupStateAction<T>>];
   /** If this is set then an item will be selected automatically when it's focused */
   selectOnFocus?: boolean;
-  /** If this is set and an item contains a link, when the item is selected that link will be triggered */
+  /** If an item contains a link that link will be triggered when the item is selected */
   triggerLinks?: boolean;
 };
 

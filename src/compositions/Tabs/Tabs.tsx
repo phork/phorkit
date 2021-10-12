@@ -23,15 +23,16 @@ export type TabsRenderChildren = (
 
 export type TabsProps = Omit<
   InteractiveGroupProviderProps<string, HTMLDivElement, HTMLDivElement>,
-  'children' | 'items' | 'maxSelect'
+  'children' | 'items' | 'maxSelect' | 'minSelect'
 > &
-  ThemeProps & {
+  Omit<ThemeProps, 'unthemed'> & {
     children?: TabsRenderChildren;
     className?: string;
     contrast?: boolean;
     fullWidth?: boolean;
     items: Array<TabListProps['items'][0] & TabPanelGroupProps['items'][0]>;
     listProps?: React.HTMLAttributes<HTMLDivElement>;
+    minSelect?: 0 | 1;
     orientation?: Orientation;
     panelGroupProps?: React.HTMLAttributes<HTMLDivElement>;
     style?: React.CSSProperties;
