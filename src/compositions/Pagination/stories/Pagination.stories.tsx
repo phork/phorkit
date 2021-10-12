@@ -251,9 +251,17 @@ AsLinks.args = {
   getHref: page => `#page${page}`,
 };
 
-export const AsLinksWithOnClick = Template.bind({});
-AsLinksWithOnClick.storyName = 'As links and onClick';
-AsLinksWithOnClick.args = {
+AsLinks.parameters = {
+  docs: {
+    description: {
+      story: 'Note that the links will cause the page to reload so the state will appear unchanged.',
+    },
+  },
+};
+
+export const RightClickLinks = Template.bind({});
+RightClickLinks.storyName = 'Right click links';
+RightClickLinks.args = {
   ...defaultArgs,
   getHref: page => `#page${page}`,
   onChangePage: action('change page'),

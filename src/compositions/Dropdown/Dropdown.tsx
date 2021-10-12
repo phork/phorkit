@@ -35,6 +35,10 @@ export function DropdownBase(
  * component for which it provides the reducer used
  * to track the selected and focused item(s) state.
  *
+ * Keyboard navigation is available for this component.
+ * Navigate with `Up`, `Down`, `Left`, `Right`, `Home`
+ * or `End`. Toggle with `Space`. Select with `Enter`.
+ *
  * This uses the `InteractiveGroup` component.
  */
 export const Dropdown = React.forwardRef(DropdownBase);

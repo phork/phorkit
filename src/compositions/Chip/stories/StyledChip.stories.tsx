@@ -50,7 +50,7 @@ export default {
       ...badgeStory.parameters?.docs,
       page: () => (
         <React.Fragment>
-          <PageTitle src="components/Chip" title="StyledChip" />
+          <PageTitle src="compositions/Chip" title="StyledChip" />
           <Subtitle />
           <Description />
           <Primary />

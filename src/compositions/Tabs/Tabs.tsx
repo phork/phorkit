@@ -49,6 +49,10 @@ export type TabsProps = Omit<
  * stored internally. The `onSelect` callback can be used
  * by the parent, if necessary.
  *
+ * Keyboard navigation is available for this component.
+ * Navigate with `Up`, `Down`, `Left`, `Right`, `Home`
+ * or `End`. Toggle with `Space`. Select with `Enter`.
+ *
  * This uses the `InteractiveGroup` and `ListRegistry`
  * components.
  */

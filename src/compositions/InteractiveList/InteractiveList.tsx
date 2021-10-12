@@ -37,9 +37,13 @@ export function InteractiveListBase(
 
 /**
  * The interactive list is a wrapper around the
- * `PartialInteractiveList` component for which
- * it provides the reducer used to track the
- * selected and focused item(s).
+ * `PartialInteractiveList` component for which it
+ * provides the reducer used to track the selected
+ * and focused item(s).
+ *
+ * Keyboard navigation is available for this component.
+ * Navigate with `Up`, `Down`, `Left`, `Right`, `Home`
+ * or `End`. Toggle with `Space`. Select with `Enter`.
  *
  * This uses the `InteractiveGroup` component.
  */

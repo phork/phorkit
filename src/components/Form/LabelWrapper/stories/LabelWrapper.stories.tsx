@@ -4,8 +4,7 @@ import React from 'react';
 import { Label } from 'components/Form/Label';
 import { Textbox } from 'components/Form/Textbox';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { LabelWrapperProps } from '..';
-import { LabelWrapper } from '../LabelWrapper';
+import { LabelWrapper, LabelWrapperProps } from '../LabelWrapper';
 
 export default {
   title: 'Form/LabelWrapper',

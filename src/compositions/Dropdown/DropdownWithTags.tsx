@@ -41,6 +41,10 @@ const defaultInitialSelected = [] as DropdownOption[];
  * for every selected item it renders a `Tag`. Tags can
  * be clicked to be removed/unselected.
  *
+ * Keyboard navigation is available for this component.
+ * Navigate with `Up`, `Down`, `Left`, `Right`, `Home`
+ * or `End`. Toggle with `Space`. Select with `Enter`.
+ *
  * This uses the `Dropdown`, `Flex`, `IconText`, `Rhythm`,
  * `Tag`, `TagGroup` and `Typography` components.
  */
