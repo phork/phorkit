@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { StoryComponentDemo } from 'stories/helpers/StoryComponentDemo';
 import { Pagination, PaginationProps, defaultPageLabelProps } from '../Pagination';
 import PaginationDocumentation from './Pagination.docs.mdx';
 
@@ -186,27 +186,29 @@ export default {
       },
     },
   },
+  decorators: [
+    (Story, { initialArgs: { page } }) => (
+      <StoryComponentDemo<number, NonNullable<PaginationProps['onChangePage']>>
+        eventHandlerName="onChangePage"
+        initialValue={page}
+        valuePropName="page"
+      >
+        {Story()}
+      </StoryComponentDemo>
+    ),
+  ],
   parameters: {
     controls: {
       sort: 'requiredFirst',
     },
     docs: {
       page: PaginationDocumentation,
-      source: {
-        code: '<Pagination {...args} />',
-      },
     },
     layout: 'centered',
   },
 } as ComponentMeta<typeof Pagination>;
 
-const Template: ComponentStory<typeof Pagination> = ({ onChangePage, page, ...args }) => (
-  <StateWrapper initialState={page}>
-    {({ state: currentPage, setState: setCurrentPage }) => (
-      <Pagination onChangePage={(_event, pageTo) => setCurrentPage(pageTo)} page={currentPage} {...args} />
-    )}
-  </StateWrapper>
-);
+const Template: ComponentStory<typeof Pagination> = args => <Pagination {...args} />;
 
 const defaultArgs = {
   color: 'primary' as PaginationProps['color'],

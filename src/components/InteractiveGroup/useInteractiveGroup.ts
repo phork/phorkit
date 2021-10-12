@@ -14,7 +14,7 @@ import {
   selectTriggeredId,
   selectSelectedIds,
 } from './interactiveGroupSelector';
-import { InteractiveGroupItemId } from './types';
+import { InteractiveGroupItemId, InteractiveGroupSelectEventHandlerProps } from './types';
 
 export type UseInteractiveGroupProps<T extends InteractiveGroupItemId = string> = {
   /** This will allow an already selected item to be re-triggered */
@@ -29,13 +29,17 @@ export type UseInteractiveGroupProps<T extends InteractiveGroupItemId = string> 
   onItemFocus?: (event: InteractiveGroupEventTypes['event'] | undefined, props: { id: T; index: number }) => void;
   onKeyDown?: (event: KeyboardEvent, props?: { used?: boolean }) => void;
   /** This fires for every item that has been selected */
-  onSelect?: (event: InteractiveGroupEventTypes['event'], props: { id?: T; index?: number }, selectedIds: T[]) => void;
+  onSelect?: (
+    event: InteractiveGroupEventTypes['event'],
+    props: InteractiveGroupSelectEventHandlerProps<T>,
+    selectedIds: T[],
+  ) => void;
   /** This fires whenever a selection changes, and groups together select and unselect changes */
   onSelectionChange?: (selectedIds: T[]) => void;
   /** This fires for every item that is unselected, including when the item is unselected because another item has been selected */
   onUnselect?: (
     event: InteractiveGroupEventTypes['event'],
-    props: { id?: T; index?: number },
+    props: InteractiveGroupSelectEventHandlerProps<T>,
     selectedIds?: T[],
   ) => void;
   /** Only events that happen within the parent ref will affect the component */
