@@ -6,19 +6,22 @@ import { useInteractiveGroupItem } from '../../components/InteractiveGroup/useIn
 import { useListRegistryItem } from '../../components/ListRegistry/useListRegistryItem';
 import styles from './styles/Tabs.module.css';
 
-export type LocalTabProps = {
+export type TabStateProps = {
+  disabled?: boolean;
+  focused?: boolean;
+  selected?: boolean;
+};
+
+export type LocalTabProps = TabStateProps & {
   children: React.ReactNode;
   className?: string;
   /** This is used to match the aria labels up with the tabs */
   componentId?: string;
-  disabled?: boolean;
-  focused?: boolean;
   /** Icon tabs have slightly different padding */
   iconOnly?: boolean;
   id: string;
   onClick: (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>, id: string) => void;
   orientation?: Orientation;
-  selected?: boolean;
   unstyled?: boolean;
 };
 

@@ -11,12 +11,12 @@ import {
   InteractiveGroupContextValue,
 } from '../../components/InteractiveGroup/InteractiveGroupContext';
 import styles from './styles/Tabs.module.css';
-import { Tab, TabProps } from './Tab';
+import { Tab, TabProps, TabStateProps } from './Tab';
 import { TabsVariant } from './types';
 
 export type TabListItemProps = Pick<TabProps, 'disabled' | 'iconOnly'> & {
   id: string;
-  label: React.ReactNode;
+  label: React.ReactNode | ((props: TabStateProps) => React.ReactNode);
   labelProps?: Omit<
     TabProps,
     'children' | 'disabled' | 'focused' | 'iconOnly' | 'id' | 'onClick' | 'orientation' | 'selected' | 'unstyled'

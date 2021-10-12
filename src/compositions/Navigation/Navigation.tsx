@@ -23,7 +23,7 @@ export type NavigationProps = Pick<
 > &
   Omit<ThemeProps, 'contrast'> & {
     onSelect?: InteractiveGroupProviderProps['onSelect'];
-    /** If this is set and an item contains a link, when the item is selected that link will be triggered */
+    /** If an item contains a link that link will be triggered when the item is selected */
     triggerLinks?: boolean;
   };
 

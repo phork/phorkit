@@ -3,13 +3,16 @@ import React from 'react';
 import { Orientation } from '../../types';
 import styles from './styles/TabPanel.module.css';
 
-export type TabPanelProps = {
+export type TabPanelStateProps = {
+  selected?: boolean;
+};
+
+export type TabPanelProps = TabPanelStateProps & {
   children: React.ReactNode;
   /** Remove the padding from the tab panel */
   flush?: boolean;
   id: string;
   orientation?: Orientation;
-  selected?: boolean;
 };
 
 /**
