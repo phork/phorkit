@@ -6,7 +6,6 @@ route: /compositions/Navigation
 
 import { Playground, Props } from 'docz';
 import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
-import { Button } from 'components/Button';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 import { PageTitle } from 'docs/helpers/PageTitle';
@@ -363,7 +362,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         {
           id: 'first',
           label: (
-            <a href="#first" tabIndex="-1">
+            <a href="#first" tabIndex={-1}>
               First
             </a>
           ),
@@ -371,7 +370,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         {
           id: 'second',
           label: (
-            <a href="#second" tabIndex="-1">
+            <a href="#second" tabIndex={-1}>
               Second
             </a>
           ),
@@ -379,7 +378,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         {
           id: 'third',
           label: (
-            <a href="#third" tabIndex="-1">
+            <a href="#third" tabIndex={-1}>
               Third
             </a>
           ),
@@ -388,7 +387,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         {
           id: 'fourth',
           label: (
-            <a href="#fourth" tabIndex="-1">
+            <a href="#fourth" tabIndex={-1}>
               Fourth
             </a>
           ),

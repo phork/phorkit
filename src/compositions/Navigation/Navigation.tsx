@@ -31,6 +31,10 @@ export type NavigationProps = Pick<
  * The navigation component sets up the state management
  * and then renders the `InnerNavigation`.
  *
+ * Keyboard navigation is available for this component.
+ * Navigate with `Up`, `Down`, `Left`, `Right`, `Home`
+ * or `End`. Toggle with `Space`. Select with `Enter`.
+ *
  * This uses the `InteractiveGroup` and `ListRegistry`
  * components.
  */

@@ -47,7 +47,7 @@
 }
 
 .navigation--primary {
-  --navigation-item-selected-border-width: 3px;
+  --navigation-item-highlight-border-width: 3px;
 
   display: flex;
   font-size: $font-size-medium;
@@ -60,7 +60,7 @@
 }
 
 .navigation--secondary {
-  --navigation-item-selected-border-width: 3px;
+  --navigation-item-highlight-border-width: 3px;
 
   display: inline-flex;
   font-size: $font-size-medium;
@@ -74,7 +74,7 @@
 }
 
 .navigation--tertiary {
-  --navigation-item-selected-border-width: 0;
+  --navigation-item-highlight-border-width: 0;
 
   display: inline-flex;
   font-size: $font-size-medium;
@@ -82,10 +82,10 @@
 
   @mixin themed .navigation {
     --navigation-item-focused-background-color: $theme-color-BG50-O30;
+    --navigation-item-focused-selected-background-color: $theme-color-accent-primary-L10;
+    --navigation-item-focused-selected-text-color: $theme-contrast-palette-accent-color;
     --navigation-item-selected-background-color: $theme-color-accent-primary;
     --navigation-item-selected-text-color: $theme-contrast-palette-accent-color;
-    --navigation-item-focused-selected-background-color: $theme-color-BG50-O10;
-    --navigation-item-focused-selected-text-color: $theme-contrast-palette-accent-color;
   }
 }
 
@@ -112,7 +112,8 @@ button.navigationItem {
   z-index: 2; /* [1] */
 
   &.is-selected {
-    @mixin addBorderHighlight var(--navigation-item-selected-border-color), var(--navigation-item-selected-border-width);
+    @mixin addBorderHighlight var(--navigation-item-selected-border-color),
+      var(--navigation-item-highlight-border-width);
 
     background-color: var(--navigation-item-selected-background-color);
     color: var(--navigation-item-selected-text-color);
@@ -132,7 +133,7 @@ button.navigationItem {
    */
   .navigation.is-accessible:focus &,
   .navigation.is-accessible.is-focused & {
-    &.is-focused { /* [1] */
+    &.is-focused /* [1] */ {
       background: var(--navigation-item-focused-background-color);
       color: var(--navigation-item-focused-text-color);
     }
@@ -173,14 +174,20 @@ button.navigationItem {
   .navigation:not(.is-accessible) & {
     &:hover,
     &.is-hovered {
-      @mixin addBorderHighlight var(--navigation-item-hovered-border-color), var(--navigation-item-selected-border-width);
+      &:not(.is-selected) {
+        @mixin addBorderHighlight var(--navigation-item-hovered-border-color),
+          var(--navigation-item-highlight-border-width);
+      }
     }
   }
 
   .navigation.is-accessible:focus &,
   .navigation.is-accessible.is-focused & {
     &.is-focused {
-      @mixin addBorderHighlight var(--navigation-item-focused-border-color), var(--navigation-item-selected-border-width);
+      &:not(.is-selected) {
+        @mixin addBorderHighlight var(--navigation-item-focused-border-color),
+          var(--navigation-item-highlight-border-width);
+      }
     }
   }
 
@@ -241,7 +248,7 @@ button.navigationItem {
  *    animation.
  */
 .navigation--animated {
-  @mixin addBorderHighlight var(--navigation-item-selected-border-color), var(--navigation-item-selected-border-width),
+  @mixin addBorderHighlight var(--navigation-item-selected-border-color), var(--navigation-item-highlight-border-width),
     var(--navigation-pseudo-item-position-top, 0), var(--navigation-pseudo-item-position-left, 0),
     var(--navigation-pseudo-item-position-width, 0), var(--navigation-pseudo-item-position-height, 0);
 
@@ -251,7 +258,6 @@ button.navigationItem {
     transition: all 300ms ease-out;
     z-index: 1;
   }
-
 
   &.navigation--secondary {
     &:before {
