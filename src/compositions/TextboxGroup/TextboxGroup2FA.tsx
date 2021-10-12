@@ -78,7 +78,6 @@ function TextboxGroup2FAContent({
   // select the input on focus so that typing a new value will replace it
   const handleInputFocus = useCallback<React.FocusEventHandler<HTMLInputElement>>(event => event.target.select(), []);
 
-  // use the onInput prop instead of the onChange prop
   const {
     changeFocus,
     onChange: ignoreOnChange,
@@ -150,7 +149,7 @@ function TextboxGroup2FAContent({
  * authentication number. The focus is automatically moved
  * to the next input when a valid character is entered.
  *
- * The uses the `Formbox` and `ListRegistry` components.
+ * This uses the `Formbox` and `ListRegistry` components.
  */
 export function TextboxGroup2FA(props: TextboxGroup2FAProps): React.ReactElement | null {
   return (

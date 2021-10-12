@@ -20,7 +20,7 @@ export type PortalPopoverProps = Omit<PopoverProps, 'renderContent'> &
  * the popover visibility state is controlled internally by
  * the `Popover` component.
  *
- * The uses the `Portal` component.
+ * This uses the `Portal` component.
  */
 export function PortalPopover({
   children,
