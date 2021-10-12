@@ -1,5 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
+import { Orientation } from '../../types';
 import styles from './styles/TabPanel.module.css';
 
 export type TabPanelProps = {
@@ -7,8 +8,8 @@ export type TabPanelProps = {
   /** Remove the padding from the tab panel */
   flush?: boolean;
   id: string;
+  orientation?: Orientation;
   selected?: boolean;
-  vertical?: boolean;
 };
 
 /**
@@ -20,8 +21,8 @@ export function TabPanel({
   children,
   flush = false,
   id,
+  orientation = 'horizontal',
   selected = false,
-  vertical = false,
   ...props
 }: TabPanelProps): React.ReactElement<TabPanelProps> {
   return (
@@ -29,7 +30,7 @@ export function TabPanel({
       className={cx(
         styles.tabPanel,
         flush && styles['tabPanel--flush'],
-        styles[`tabPanel--${vertical ? 'vertical' : 'horizontal'}`],
+        styles[`tabPanel--${orientation}`],
         selected && styles['is-selected'],
       )}
       id={id}

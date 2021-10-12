@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useRef } from 'react';
-import { MergeElementPropsWithoutRef } from '../../types';
+import { MergeElementPropsWithoutRef, Orientation } from '../../types';
 import { useComponentId } from '../../hooks/useComponentId';
 import { useInteractiveGroupItem } from '../../components/InteractiveGroup/useInteractiveGroupItem';
 import { useListRegistryItem } from '../../components/ListRegistry/useListRegistryItem';
@@ -17,9 +17,9 @@ export type LocalTabProps = {
   iconOnly?: boolean;
   id: string;
   onClick: (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>, id: string) => void;
+  orientation?: Orientation;
   selected?: boolean;
   unstyled?: boolean;
-  vertical?: boolean;
 };
 
 export type TabProps = MergeElementPropsWithoutRef<'div', LocalTabProps>;
@@ -45,9 +45,9 @@ export function Tab({
   iconOnly = false,
   id,
   onClick,
+  orientation = 'horizontal',
   selected = false,
   unstyled = false,
-  vertical = false,
   ...props
 }: TabProps): React.ReactElement {
   const ref = useRef<HTMLDivElement>(null!);
@@ -71,7 +71,7 @@ export function Tab({
           ? className
           : cx(
               styles.tab,
-              styles[`tab--${vertical ? 'vertical' : 'horizontal'}`],
+              styles[`tab--${orientation}`],
               iconOnly && styles['tab--icon'],
               selected && styles['is-selected'],
               disabled && styles['is-disabled'],

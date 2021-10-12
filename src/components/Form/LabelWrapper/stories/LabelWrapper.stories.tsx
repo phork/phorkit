@@ -4,6 +4,7 @@ import React from 'react';
 import { Label } from 'components/Form/Label';
 import { Textbox } from 'components/Form/Textbox';
 import { PageTitle } from 'stories/helpers/PageTitle';
+import { LabelWrapperProps } from '..';
 import { LabelWrapper } from '../LabelWrapper';
 
 export default {
@@ -39,17 +40,21 @@ export default {
         category: 'Appearance',
       },
     },
+    orientation: {
+      options: ['horizontal', 'vertical'],
+      control: {
+        type: 'radio',
+      },
+      table: {
+        category: 'Appearance',
+      },
+    },
     reverse: {
       table: {
         category: 'Appearance',
       },
     },
     spread: {
-      table: {
-        category: 'Appearance',
-      },
-    },
-    vertical: {
       table: {
         category: 'Appearance',
       },
@@ -100,20 +105,14 @@ const defaultArgs = {
   fullWidth: false,
   input: <Textbox value="Hello world" variant="filled" />,
   label: <Label strength="standard">Super awesome label</Label>,
+  orientation: 'horizontal' as LabelWrapperProps['orientation'],
   reverse: false,
   spread: false,
-  vertical: false,
 };
 
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
-};
-
-export const Reverse = Template.bind({});
-Reverse.args = {
-  ...defaultArgs,
-  reverse: true,
 };
 
 export const FullWidth = Template.bind({});
@@ -132,16 +131,32 @@ Spread.args = {
   spread: true,
 };
 
-export const Vertical = Template.bind({});
-Vertical.args = {
+export const HorizontalOrientation = Template.bind({});
+(HorizontalOrientation.storyName = 'Orientation: Horizontal'),
+  (HorizontalOrientation.args = {
+    ...defaultArgs,
+    orientation: 'horizontal',
+  });
+
+export const HorizontalOrientationReverse = Template.bind({});
+HorizontalOrientationReverse.storyName = 'Orientation: Horizontal, reverse';
+HorizontalOrientationReverse.args = {
   ...defaultArgs,
-  vertical: true,
+  orientation: 'horizontal',
+  reverse: true,
 };
 
-export const VerticalReverse = Template.bind({});
-VerticalReverse.storyName = 'Vertical, reverse';
-VerticalReverse.args = {
+export const VerticalOrientation = Template.bind({});
+(VerticalOrientation.storyName = 'Orientation: Vertical'),
+  (VerticalOrientation.args = {
+    ...defaultArgs,
+    orientation: 'vertical',
+  });
+
+export const VerticalOrientationReverse = Template.bind({});
+VerticalOrientationReverse.storyName = 'Orientation: Vertical, reverse';
+VerticalOrientationReverse.args = {
   ...defaultArgs,
+  orientation: 'vertical',
   reverse: true,
-  vertical: true,
 };

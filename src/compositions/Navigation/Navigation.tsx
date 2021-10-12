@@ -16,12 +16,12 @@ export type NavigationProps = Pick<
   | 'fullWidth'
   | 'highlightRadius'
   | 'items'
+  | 'orientation'
   | 'selectedId'
   | 'style'
   | 'variant'
-  | 'vertical'
 > &
-  ThemeProps & {
+  Omit<ThemeProps, 'contrast'> & {
     onSelect?: InteractiveGroupProviderProps['onSelect'];
     /** If this is set and an item contains a link, when the item is selected that link will be triggered */
     triggerLinks?: boolean;
@@ -43,12 +43,12 @@ export function Navigation({
   highlightRadius,
   items,
   onSelect,
+  orientation = 'horizontal',
   selectedId,
   style,
   triggerLinks = false,
   unthemed = false,
   variant = 'primary',
-  vertical = false,
   ...props
 }: NavigationProps): React.ReactElement {
   return (
@@ -70,12 +70,12 @@ export function Navigation({
             fullWidth={fullWidth}
             highlightRadius={highlightRadius}
             items={items}
+            orientation={orientation}
             ref={ref}
             selectedId={selectedId}
             style={style}
             unthemed={unthemed}
             variant={variant}
-            vertical={vertical}
             {...props}
           />
         )}

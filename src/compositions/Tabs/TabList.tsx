@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useContext, useRef } from 'react';
-import { MergeElementProps, ThemeProps } from '../../types';
+import { MergeElementProps, Orientation, ThemeProps } from '../../types';
 import { useAccessibility } from '../../context/Accessibility';
 import { useThemeId } from '../../context/Theme';
 import { useComponentId } from '../../hooks/useComponentId';
@@ -19,7 +19,7 @@ export type TabListItemProps = Pick<TabProps, 'disabled' | 'iconOnly'> & {
   label: React.ReactNode;
   labelProps?: Omit<
     TabProps,
-    'children' | 'disabled' | 'focused' | 'iconOnly' | 'id' | 'onClick' | 'selected' | 'unstyled' | 'vertical'
+    'children' | 'disabled' | 'focused' | 'iconOnly' | 'id' | 'onClick' | 'orientation' | 'selected' | 'unstyled'
   >;
 };
 
@@ -32,10 +32,10 @@ export type LocalTabListProps = ThemeProps & {
   items: TabListItemProps[];
   onBlur?: React.FocusEventHandler<HTMLDivElement>;
   onFocus?: React.FocusEventHandler<HTMLDivElement>;
+  orientation?: Orientation;
   style?: React.CSSProperties;
   unstyled?: boolean;
   variant?: TabsVariant;
-  vertical?: boolean;
 };
 
 export type TabListProps = MergeElementProps<'div', LocalTabListProps>;
@@ -49,11 +49,11 @@ export function TabListBase(
     items,
     onBlur,
     onFocus,
+    orientation = 'horizontal',
     style,
     themeId: initThemeId,
     unstyled = false,
     variant: initVariant,
-    vertical = false,
     ...props
   }: TabListProps,
   forwardedRef: React.ForwardedRef<HTMLDivElement>,
@@ -89,7 +89,7 @@ export function TabListBase(
 
   return (
     <div
-      aria-orientation={vertical ? 'vertical' : 'horizontal'}
+      aria-orientation={orientation}
       className={
         unstyled
           ? className
@@ -98,7 +98,7 @@ export function TabListBase(
               fullWidth && styles['tabList--fullWidth'],
               themeId && styles[`tabList--${themeId}`],
               variant && styles[`tabList--${variant}`],
-              styles[`tabList--${vertical ? 'vertical' : 'horizontal'}`],
+              styles[`tabList--${orientation}`],
               accessible && styles['is-accessible'],
               focused && styles['is-focused'],
               className,
@@ -128,8 +128,8 @@ export function TabListBase(
               id={id}
               key={id}
               onClick={handleItemClick}
+              orientation={orientation}
               unstyled={unstyled}
-              vertical={vertical}
               {...labelProps}
               {...stateProps}
             >

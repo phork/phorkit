@@ -230,7 +230,6 @@ import {
     <ThemeWrapper>
       <Navigation
         animated
-        vertical
         items={[
           {
             id: 'first',
@@ -274,6 +273,7 @@ import {
             ),
           },
         ]}
+        orientation="vertical"
         selectedId="first"
         style={{ maxWidth: '200px' }}
       />
@@ -918,7 +918,6 @@ import {
         <ScaleProvider scale="small">
           <Card full hoverable raised style={{ maxWidth: '300px' }}>
             <ColoredTabs
-              vertical
               colorId="P50"
               initialSelected={['check']}
               items={[
@@ -1027,6 +1026,7 @@ import {
                 },
               ]}
               onSelect={(event, id) => console.log(id)}
+              orientation="vertical"
             />
           </Card>
         </ScaleProvider>

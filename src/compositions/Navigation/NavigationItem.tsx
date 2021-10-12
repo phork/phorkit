@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useRef } from 'react';
-import { MergeElementPropsWithoutRef, SequentialVariant } from '../../types';
+import { MergeElementPropsWithoutRef, Orientation, SequentialVariant } from '../../types';
 import { useComponentId } from '../../hooks/useComponentId';
 import { useInteractiveGroupItem } from '../../components/InteractiveGroup/useInteractiveGroupItem';
 import { useListRegistryItem } from '../../components/ListRegistry/useListRegistryItem';
@@ -21,8 +21,8 @@ export type LocalNavigationItemProps = NavigationItemStateProps & {
   href?: string;
   id: string;
   onClick?: (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>, id: string) => void;
+  orientation?: Orientation;
   variant: SequentialVariant;
-  vertical?: boolean;
 };
 
 export type NavigationItemProps = MergeElementPropsWithoutRef<'div', LocalNavigationItemProps>;
@@ -46,9 +46,9 @@ export function NavigationItem({
   href,
   id,
   onClick,
+  orientation = 'horizontal',
   selected = false,
   variant = 'primary',
-  vertical = false,
   ...props
 }: NavigationItemProps): React.ReactElement<NavigationItemProps> {
   const ref = useRef<HTMLDivElement>(null!);
@@ -88,7 +88,7 @@ export function NavigationItem({
     <div
       className={cx(
         styles.navigationItem,
-        styles[`navigationItem--${vertical ? 'vertical' : 'horizontal'}`],
+        styles[`navigationItem--${orientation}`],
         variant && styles[`navigationItem--${variant}`],
         flush && styles['navigationItem--flush'],
         selected && styles['is-selected'],

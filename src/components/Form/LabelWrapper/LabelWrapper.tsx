@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { AsReactType, MergeElementPropsWithoutRef } from '../../../types';
+import { AsReactType, MergeElementPropsWithoutRef, Orientation } from '../../../types';
 import styles from './styles/LabelWrapper.module.css';
 
 export type LocalLabelWrapperProps = {
@@ -10,11 +10,11 @@ export type LocalLabelWrapperProps = {
   inputWidth?: string | number;
   label: React.ReactElement;
   labelWidth?: string | number;
+  orientation?: Orientation;
   /** Reverse the order of components using the flexbox direction */
   reverse?: boolean;
   spread?: boolean;
   style?: React.CSSProperties;
-  vertical?: boolean;
 };
 
 export type LabelWrapperProps<T extends React.ElementType = 'div'> = AsReactType<T> &
@@ -33,9 +33,9 @@ export function LabelWrapper<T extends React.ElementType = 'div'>({
   inputWidth,
   label,
   labelWidth,
+  orientation = 'horizontal',
   reverse = false,
   spread = false,
-  vertical = false,
   ...props
 }: LabelWrapperProps<T>): React.ReactElement<LabelWrapperProps, T> {
   const Element = as || 'div';
@@ -54,7 +54,7 @@ export function LabelWrapper<T extends React.ElementType = 'div'>({
         reverse && styles['labelWrapper--reverse'],
         spread && styles['labelWrapper--spread'],
         fullWidth && styles['labelWrapper--fullWidth'],
-        styles[`labelWrapper--${vertical ? 'vertical' : 'horizontal'}`],
+        styles[`labelWrapper--${orientation}`],
         className,
       )}
       {...props}

@@ -23,6 +23,10 @@ export default {
       },
     },
     orientation: {
+      options: ['horizontal', 'vertical'],
+      control: {
+        type: 'radio',
+      },
       table: {
         category: 'Appearance',
       },
