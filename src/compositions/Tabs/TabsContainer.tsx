@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { ThemeProps } from '../../types';
+import { Orientation, ThemeProps } from '../../types';
 import { useAccessibility } from '../../context/Accessibility';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/TabsContainer.module.css';
@@ -11,10 +11,10 @@ export type TabsContainerProps = React.HTMLAttributes<HTMLDivElement> &
     children: React.ReactNode;
     className?: string;
     focused?: boolean;
+    orientation?: Orientation;
     style?: React.CSSProperties;
     unstyled?: boolean;
     variant?: TabsVariant;
-    vertical?: boolean;
   };
 
 /**
@@ -27,12 +27,12 @@ export function TabsContainer({
   className,
   contrast = false,
   focused = false,
+  orientation = 'horizontal',
   style,
   themeId: initThemeId,
   unstyled = false,
   unthemed = false,
   variant: initVariant = 'primary',
-  vertical = false,
 }: TabsContainerProps): React.ReactElement<HTMLDivElement> {
   const accessible = useAccessibility();
   const themeId = useThemeId(initThemeId);
@@ -49,7 +49,7 @@ export function TabsContainer({
               variant && styles[`tabs--${variant}`],
               accessible && styles['is-accessible'],
               focused && styles['is-focused'],
-              styles[`tabs--${vertical ? 'vertical' : 'horizontal'}`],
+              styles[`tabs--${orientation}`],
               className,
             )
       }

@@ -81,7 +81,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 <Playground>
   <ThemeWrapper>
     <Tabs
-      vertical
       items={[
         { id: 'first', label: '1', content: 'First panel' },
         { id: 'second', label: '2', content: 'Second panel' },
@@ -89,6 +88,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         { id: 'fourth', label: '4', content: 'Fourth panel '.repeat(150).trim() },
       ]}
       onSelect={(event, id) => console.log(id)}
+      orientation="vertical"
     />
   </ThemeWrapper>
 </Playground>
@@ -190,7 +190,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         render={({ id }) => (
           <Rhythm key={id} my={1}>
             <ColoredTabs
-              vertical
               colorId={id}
               initialSelected={['third']}
               items={[
@@ -200,6 +199,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
                 { id: 'fourth', label: '4', content: 'Fourth panel' },
               ]}
               onSelect={(event, id) => console.log(id)}
+              orientation="vertical"
             />
           </Rhythm>
         )}
@@ -302,23 +302,23 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
       onSelect={(event, id) => console.log(id)}
       style={{ outline: 'none' }}
     >
-      {({ componentId, items, ref, themeId, vertical }) => (
-        <TabsContainer style={{ border: 'none' }} vertical={vertical}>
+      {({ componentId, items, orientation, ref, themeId }) => (
+        <TabsContainer orientation={orientation} style={{ border: 'none' }}>
           <TabList
             unstyled
             componentId={componentId}
             items={items}
+            orientation={orientation}
             ref={ref}
             style={{
               alignItems: 'center',
               display: 'flex',
-              flexDirection: vertical ? 'column' : 'row',
+              flexDirection: orientation === 'vertical' ? 'column' : 'row',
               outline: 'none',
             }}
             themeId={themeId}
-            vertical={vertical}
           />
-          <TabPanelGroup unstyled componentId={componentId} items={items} themeId={themeId} vertical={vertical} />
+          <TabPanelGroup unstyled componentId={componentId} items={items} orientation={orientation} themeId={themeId} />
         </TabsContainer>
       )}
     </Tabs>

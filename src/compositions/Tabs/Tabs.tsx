@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ThemeProps } from '../../types';
+import { Orientation, ThemeProps } from '../../types';
 import { useComponentId } from '../../hooks/useComponentId';
 import {
   InteractiveGroupProvider,
@@ -14,7 +14,7 @@ import { TabsVariant } from './types';
 export type TabsRenderChildren = (
   props: Pick<
     TabsProps,
-    'className' | 'contrast' | 'items' | 'style' | 'themeId' | 'variant' | 'vertical' | 'unstyled'
+    'className' | 'contrast' | 'items' | 'orientation' | 'style' | 'themeId' | 'variant' | 'unstyled'
   > & {
     componentId: string;
     ref: React.Ref<HTMLElement>;
@@ -32,11 +32,11 @@ export type TabsProps = Omit<
     fullWidth?: boolean;
     items: Array<TabListProps['items'][0] & TabPanelGroupProps['items'][0]>;
     listProps?: React.HTMLAttributes<HTMLDivElement>;
+    orientation?: Orientation;
     panelGroupProps?: React.HTMLAttributes<HTMLDivElement>;
     style?: React.CSSProperties;
     unstyled?: boolean;
     variant?: TabsVariant;
-    vertical?: boolean;
   };
 
 /**
@@ -62,12 +62,12 @@ export function Tabs({
   listProps,
   minSelect = 1,
   onSelect,
+  orientation = 'horizontal',
   panelGroupProps,
   style,
   themeId,
   unstyled = false,
   variant: initVariant = 'primary',
-  vertical = false,
   ...props
 }: TabsProps): React.ReactElement {
   const { componentId } = useComponentId();
@@ -96,11 +96,11 @@ export function Tabs({
                 componentId,
                 contrast,
                 items,
+                orientation,
                 ref,
                 style,
                 themeId,
                 variant,
-                vertical,
                 unstyled,
                 ...props,
               })
@@ -109,10 +109,10 @@ export function Tabs({
                 className={className}
                 contrast={contrast}
                 focused={focused}
+                orientation={orientation}
                 style={style}
                 unstyled={unstyled}
                 variant={variant}
-                vertical={vertical}
               >
                 <TabList
                   componentId={componentId}
@@ -121,11 +121,11 @@ export function Tabs({
                   items={items}
                   onBlur={handleBlur}
                   onFocus={handleFocus}
+                  orientation={orientation}
                   ref={ref}
                   themeId={themeId}
                   unstyled={unstyled}
                   variant={variant}
-                  vertical={vertical}
                   {...(listProps || {})}
                 />
                 <TabPanelGroup
@@ -133,10 +133,10 @@ export function Tabs({
                   contrast={contrast}
                   focused={focused}
                   items={items}
+                  orientation={orientation}
                   themeId={themeId}
                   unstyled={unstyled}
                   variant={variant}
-                  vertical={vertical}
                   {...(panelGroupProps || {})}
                 />
               </TabsContainer>

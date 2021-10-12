@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useContext } from 'react';
-import { ThemeProps } from '../../types';
+import { Orientation, ThemeProps } from '../../types';
 import { useAccessibility } from '../../context/Accessibility';
 import { useThemeId } from '../../context/Theme';
 import { useComponentId } from '../../hooks/useComponentId';
@@ -23,10 +23,10 @@ export type TabPanelGroupProps = React.HTMLAttributes<HTMLDivElement> &
       content: React.ReactNode;
       contentProps?: Omit<TabPanelProps, 'children' | 'id' | 'selected'>;
     }>;
+    orientation?: Orientation;
     style?: React.CSSProperties;
     unstyled?: boolean;
     variant?: TabsVariant;
-    vertical?: boolean;
   };
 
 /**
@@ -42,12 +42,12 @@ export function TabPanelGroup({
   contrast = false,
   focused = false,
   items,
+  orientation = 'horizontal',
   style,
   themeId: initThemeId,
   unstyled = false,
   unthemed = false,
   variant: initVariant = 'primary',
-  vertical = false,
   ...props
 }: TabPanelGroupProps): React.ReactElement<TabPanelGroupProps> {
   const accessible = useAccessibility();
@@ -70,7 +70,7 @@ export function TabPanelGroup({
               styles.tabPanelGroup,
               themeId && !unthemed && styles[`tabPanelGroup--${themeId}`],
               variant && styles[`tabPanelGroup--${variant}`],
-              styles[`tabPanelGroup--${vertical ? 'vertical' : 'horizontal'}`],
+              styles[`tabPanelGroup--${orientation}`],
               focused && styles['is-focused'],
               accessible && styles['is-accessible'],
               className,

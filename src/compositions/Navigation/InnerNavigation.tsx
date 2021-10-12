@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
-import { SequentialVariant, ThemeProps } from '../../types';
+import { Orientation, SequentialVariant, ThemeProps } from '../../types';
 import { useAccessibility } from '../../context/Accessibility';
 import { useThemeId } from '../../context/Theme';
 import { useComponentId } from '../../hooks/useComponentId';
@@ -20,22 +20,24 @@ export type InnerNavigationProps = React.HTMLAttributes<HTMLElement> &
   ThemeProps & {
     /** This will make each nav item a link only for the purpose of right clicking; it still uses an onClick event */
     allowRightClickLinks?: boolean;
+    /** Animate the selected item transition between elements */
     animated?: boolean;
     className?: string;
     fullHeight?: boolean;
     fullWidth?: boolean;
+    /** The border radius to set on each element */
     highlightRadius?: number;
     /** The triggerOnly prop can be ignored as it is handled by the interactive group system */
     items: Array<
-      Omit<NavigationItemProps, 'children' | 'componentId' | 'key' | 'onClick' | 'variant' | 'vertical'> & {
+      Omit<NavigationItemProps, 'children' | 'componentId' | 'key' | 'onClick' | 'orientation' | 'variant'> & {
         label: React.ReactNode;
         triggerOnly?: InteractiveGroupItemType<string>['triggerOnly'];
       }
     >;
+    orientation?: Orientation;
     selectedId: string;
     style?: React.CSSProperties;
     variant?: SequentialVariant;
-    vertical?: boolean;
   };
 
 /**
@@ -64,12 +66,12 @@ export const InnerNavigation = React.forwardRef<HTMLElement, InnerNavigationProp
       fullWidth = false,
       highlightRadius,
       items,
+      orientation = 'horizontal',
       selectedId,
       style,
       themeId: initThemeId,
       unthemed = false,
       variant = 'primary',
-      vertical = false,
       ...props
     },
     forwardedRef,
@@ -136,7 +138,7 @@ export const InnerNavigation = React.forwardRef<HTMLElement, InnerNavigationProp
           fullWidth && styles['navigation--fullWidth'],
           themeId && !unthemed && styles[`navigation--${themeId}`],
           variant && styles[`navigation--${variant}`],
-          styles[`navigation--${vertical ? 'vertical' : 'horizontal'}`],
+          styles[`navigation--${orientation}`],
           accessible && styles['is-accessible'],
           focused && styles['is-focused'],
           className,
@@ -174,8 +176,8 @@ export const InnerNavigation = React.forwardRef<HTMLElement, InnerNavigationProp
                 id={id}
                 key={id}
                 onClick={handleItemClick}
+                orientation={orientation}
                 variant={variant}
-                vertical={vertical}
                 {...itemProps}
                 {...stateProps}
               >
