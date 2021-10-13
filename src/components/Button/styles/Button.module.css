@@ -79,7 +79,7 @@ button.button {
   &:not(:disabled):not(.is-disabled) {
     @mixin makeFillerTransitions;
     @mixin prepareFocusRing;
-    @mixin setFocusRingOpacity var(--button-focus-ring-opacity, .2);
+    @mixin setFocusRingOpacity 0.3;
 
     &:hover,
     &.is-hovered {
@@ -104,7 +104,7 @@ button.button {
   &:not(:disabled):not(.is-disabled) {
     @mixin makeFillerTransitions;
     @mixin prepareFocusRing;
-    @mixin setFocusRingOpacity var(--button-focus-ring-opacity, .2);
+    @mixin setFocusRingOpacity 0.3;
 
     &:hover,
     &.is-hovered {
@@ -129,7 +129,7 @@ button.button {
   &:not(:disabled):not(.is-disabled) {
     @mixin makeFillerTransitions;
     @mixin prepareFocusRing;
-    @mixin setFocusRingOpacity var(--button-focus-ring-opacity, .2);
+    @mixin setFocusRingOpacity 0.3;
     @mixin prepareShade;
 
     &:hover,
@@ -155,7 +155,7 @@ button.button {
   &:not(:disabled):not(.is-disabled) {
     @mixin makeFillerTransitions;
     @mixin prepareFocusRing;
-    @mixin setFocusRingOpacity var(--button-focus-ring-opacity, .2);
+    @mixin setFocusRingOpacity 0.3;
     @mixin prepareShade withBorder;
 
     &:hover,
@@ -421,10 +421,6 @@ button.button {
     --button-hovered-primary-color: $theme-color-success-L10;
     --button-active-primary-color: $theme-color-success-D10;
   }
-
-  &.button--dark {
-    --button-focus-ring-opacity: 0.3;
-  }
 }
 
 .button--warning {
@@ -433,10 +429,6 @@ button.button {
     --button-inverse-color: $theme-color-warning-contrast;
     --button-hovered-primary-color: $theme-color-warning-L10;
     --button-active-primary-color: $theme-color-warning-D10;
-  }
-
-  &.button--dark {
-    --button-focus-ring-opacity: 0.3;
   }
 }
 
@@ -447,10 +439,6 @@ button.button {
     --button-hovered-primary-color: $theme-color-danger-L10;
     --button-active-primary-color: $theme-color-danger-D10;
   }
-
-  &.button--dark {
-    --button-focus-ring-opacity: 0.3;
-  }
 }
 
 .button--primary {
@@ -459,10 +447,6 @@ button.button {
     --button-inverse-color: $theme-color-accent-primary-contrast;
     --button-hovered-primary-color: $theme-color-accent-primary-L10;
     --button-active-primary-color: $theme-color-accent-primary-D10;
-  }
-
-  &.button--dark {
-    --button-focus-ring-opacity: 0.3;
   }
 }
 
@@ -483,10 +467,6 @@ button.button {
     --button-hovered-primary-color: $theme-color-neutral-L10;
     --button-active-primary-color: $theme-color-neutral-D10;
   }
-
-  &.button--dark {
-    --button-focus-ring-opacity: 0.3;
-  }
 }
 
 .button--neutralAndPrimary {
@@ -498,10 +478,6 @@ button.button {
         --button-inverse-color: $theme-color-accent-primary-contrast;
       }
     }
-  }
-
-  &.button--dark {
-    --button-focus-ring-opacity: 0.3;
   }
 }
 
