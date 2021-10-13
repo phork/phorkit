@@ -2,6 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { List, ListProps } from '../List';
 import { ListItem } from '../ListItem';
+import { items } from './helpers/items';
 import ListDocumentation from './List.docs.mdx';
 
 export default {
@@ -9,7 +10,7 @@ export default {
   component: List,
   argTypes: {
     color: {
-      options: ['primary', 'neutral'],
+      items: ['primary', 'neutral'],
       control: {
         type: 'inline-radio',
       },
@@ -27,8 +28,13 @@ export default {
         category: 'Appearance',
       },
     },
+    scrollable: {
+      table: {
+        category: 'Appearance',
+      },
+    },
     size: {
-      options: ['xsmall', 'small', 'medium', 'large', 'xlarge'],
+      items: ['xsmall', 'small', 'medium', 'large', 'xlarge'],
       control: {
         type: 'radio',
       },
@@ -147,18 +153,10 @@ const defaultArgs = {
   hideFocusOutline: false,
   inactive: false,
   inline: false,
-  items: [
-    { id: 'normal0', label: 'Normal' },
-    { id: 'selected', label: 'Selected', selected: true },
-    { id: 'normal1', label: 'Normal' },
-    { id: 'normal2', label: 'Normal' },
-    { id: 'normal3', label: 'Normal' },
-    { id: 'highlighted', label: 'Highlighted', highlighted: true },
-    { id: 'disabled', label: 'Disabled', disabled: true },
-    { id: 'inactive', label: 'Inactive', inactive: true },
-  ],
+  items,
   mimicSelectOnFocus: false,
   rounded: false,
+  scrollable: false,
   size: 'medium' as ListProps['size'],
   style: { width: 300 },
   transparent: false,
@@ -262,6 +260,14 @@ Inline.args = {
   ...defaultArgs,
   inline: true,
   style: undefined,
+  variant: 'bordered',
+};
+
+export const Scrollable = Template.bind({});
+Scrollable.args = {
+  ...defaultArgs,
+  scrollable: true,
+  style: { height: 140 },
   variant: 'bordered',
 };
 

@@ -7,7 +7,7 @@ import styles from './styles/MultiColorSliderTick.module.css';
 export type LocalMultiColorSliderTickProps = ThemeProps & {
   active?: boolean;
   className: string;
-  colors: string[];
+  colors: readonly string[];
   number: number;
   style: React.CSSProperties;
 };

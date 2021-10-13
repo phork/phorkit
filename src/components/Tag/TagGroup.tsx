@@ -18,7 +18,7 @@ export type TagGroupProps = React.HTMLAttributes<HTMLDivElement> &
     shape?: TagShape;
     size?: TagSize;
     style?: React.CSSProperties;
-    tags?: TagGroupItem[];
+    tags?: readonly TagGroupItem[];
     weight?: TagWeight;
   };
 

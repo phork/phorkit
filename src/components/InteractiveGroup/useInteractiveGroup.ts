@@ -32,15 +32,15 @@ export type UseInteractiveGroupProps<T extends InteractiveGroupItemId = string> 
   onSelect?: (
     event: InteractiveGroupEventTypes['event'],
     props: InteractiveGroupSelectEventHandlerProps<T>,
-    selectedIds: T[],
+    selectedIds: readonly T[],
   ) => void;
   /** This fires whenever a selection changes, and groups together select and unselect changes */
-  onSelectionChange?: (selectedIds: T[]) => void;
+  onSelectionChange?: (selectedIds: readonly T[]) => void;
   /** This fires for every item that is unselected, including when the item is unselected because another item has been selected */
   onUnselect?: (
     event: InteractiveGroupEventTypes['event'],
     props: InteractiveGroupSelectEventHandlerProps<T>,
-    selectedIds?: T[],
+    selectedIds?: readonly T[],
   ) => void;
   /** Only events that happen within the parent ref will affect the component */
   parentRef?: React.RefObject<HTMLElement>;
@@ -71,7 +71,7 @@ export type UseInteractiveGroupResponse<
   /** Checks if an item is selected by its ID */
   isSelected: (id: T) => boolean;
   /** Returns a list of selected IDs */
-  selectedIds?: T[];
+  selectedIds?: readonly T[];
   /** Sets an item to focused by its ID */
   setFocused: (id: T, props: Parameters<GeneratedInteractiveGroupActions<T>['setFocusedByIndex']>[1]) => void;
   /** Sets an item as selected by its ID */

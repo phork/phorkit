@@ -16,7 +16,7 @@ export type EventListenerProviderProps = {
   ref?: React.RefObject<HTMLElement>;
 };
 
-const generateEventListener = (items: EventListenerItemType[]) => (event: Event) => {
+const generateEventListener = (items: readonly EventListenerItemType[]) => (event: Event) => {
   items.forEach(({ listener }) => listener(event));
 };
 

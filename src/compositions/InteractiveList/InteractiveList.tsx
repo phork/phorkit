@@ -7,10 +7,16 @@ import {
   InteractiveGroupProviderProps,
   interactiveGroupActions as ACTIONS,
 } from '../../components/InteractiveGroup';
+import { InteractiveListItemProps } from './InteractiveListItem';
 import { PartialInteractiveList, PartialInteractiveListProps } from './PartialInteractiveList';
 
 export type InteractiveListProps = Omit<PartialInteractiveListProps, 'reducer'> &
-  Pick<InteractiveGroupProviderProps, 'initialSelected'>;
+  Pick<InteractiveGroupProviderProps, 'initialSelected'> & {
+    items: readonly Omit<
+      InteractiveListItemProps,
+      'focused' | 'mimicSelectOnFocus' | 'onClick' | 'selected' | 'transparent' | 'unstyled'
+    >[];
+  };
 
 export function InteractiveListBase(
   { initialSelected, items, ...props }: InteractiveListProps,
@@ -49,5 +55,5 @@ export function InteractiveListBase(
  */
 export const InteractiveList = React.forwardRef(InteractiveListBase);
 
-InteractiveListBase.displayName = 'InteractiveListBase';
+// note that the base element cannot have a displayName because it breaks Storybook
 InteractiveList.displayName = 'InteractiveList';

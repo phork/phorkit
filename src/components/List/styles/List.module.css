@@ -1,3 +1,5 @@
+@import '../../../styles/common/mixins/addScrollbar.css';
+
 ol.unlist,
 ul.unlist {
   @mixin unlist;
@@ -30,13 +32,13 @@ ul.unlist {
 }
 
 /**
- * Don't raise the divided and unboxed list items
- * on hover or focus.
+ * 1. Don't raise the divided and unboxed list items
+ *    on hover or focus.
  */
 .list--bordered,
 .list--shadowed {
-  --list-item-focused-z-index: 2;
-  --list-item-hovered-z-index: 2;
+  --list-item-focused-z-index: 2; /* [1] */
+  --list-item-hovered-z-index: 2; /* [1] */
 }
 
 .list--divided,
@@ -341,6 +343,12 @@ ul.unlist {
   }
 }
 
+.list--scrollable {
+  @mixin addSmallScrollbar var(--list-scrollbar-thumb-color);
+
+  overflow: auto;
+}
+
 .list--primary {
   @mixin themed .list {
     --list-focused-border-color: $theme-primary-palette-accent-color;
@@ -351,6 +359,7 @@ ul.unlist {
     --list-item-focused-border-color: $theme-primary-palette-accent-color;
     --list-item-focused-text-color: $theme-primary-palette-accent-color;
     --list-item-text-color: $theme-primary-palette-quiet-color;
+    --list-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
   }
 }
 
@@ -364,6 +373,7 @@ ul.unlist {
     --list-item-focused-border-color: $theme-color-neutral;
     --list-item-focused-text-color: $theme-primary-palette-text-color;
     --list-item-text-color: $theme-primary-palette-quiet-color;
+    --list-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
   }
 }
 
@@ -377,5 +387,6 @@ ul.unlist {
     --list-item-focused-border-color: $theme-contrast-palette-accent-color;
     --list-item-focused-text-color: $theme-contrast-palette-quiet-color;
     --list-item-text-color: $theme-contrast-palette-text-color;
+    --list-scrollbar-thumb-color: $theme-contrast-scrollbar-thumb-color;
   }
 }

@@ -30,7 +30,7 @@ export type TabsProps = Omit<
     className?: string;
     contrast?: boolean;
     fullWidth?: boolean;
-    items: Array<TabListProps['items'][0] & TabPanelGroupProps['items'][0]>;
+    items: ReadonlyArray<TabListProps['items'][0] & TabPanelGroupProps['items'][0]>;
     listProps?: React.HTMLAttributes<HTMLDivElement>;
     minSelect?: 0 | 1;
     orientation?: Orientation;

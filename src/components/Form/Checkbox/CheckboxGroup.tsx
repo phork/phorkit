@@ -20,11 +20,11 @@ export type LocalCheckboxGroupProps<V extends CheckboxValue = string> = ThemePro
   className?: string;
   legend: React.ReactNode;
   layout: 'stacked' | 'inline';
-  onChange: (event: React.ChangeEvent<HTMLInputElement>, values: Array<V>) => void;
-  checkboxes: CheckboxGroupItem<V>[];
+  onChange: (event: React.ChangeEvent<HTMLInputElement>, values: readonly V[]) => void;
+  checkboxes: readonly CheckboxGroupItem<V>[];
   size?: CheckboxSize;
   style?: React.CSSProperties;
-  values?: Array<V>;
+  values?: readonly V[];
   variant?: CheckboxProps<V>['variant'];
 };
 

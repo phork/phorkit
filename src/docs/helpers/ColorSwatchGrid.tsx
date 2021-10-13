@@ -11,13 +11,13 @@ const GridContainer = styled('div', {
 `;
 
 type ColorGridVector = {
-  colors: Color[];
+  colors: readonly Color[];
   label?: string;
   id: string;
 };
 
 export type ColorSwatchGridProps = Omit<ColorSwatchVectorProps, 'colors' | 'label'> & {
-  colorGrid: ColorGridVector[];
+  colorGrid: readonly ColorGridVector[];
 };
 
 export function ColorSwatchGrid({

@@ -19,7 +19,7 @@ export type InteractiveGroupState<T extends InteractiveGroupItemId> = {
   };
   focusedIndex?: number;
   items: InteractiveGroupItems<T>;
-  selectedIds: T[];
+  selectedIds: readonly T[];
   triggeredId?: T;
   times: {
     cleared?: number;
@@ -34,8 +34,8 @@ export const getInteractiveGroupInitialState = <T extends InteractiveGroupItemId
   items: initialItems = [],
   selectedIds: initialSelectedIds = [],
 }: {
-  items?: InteractiveGroupItemType<T>[];
-  selectedIds?: T[];
+  items?: readonly InteractiveGroupItemType<T>[];
+  selectedIds?: readonly T[];
 } = {}): InteractiveGroupState<T> => {
   const items = interactiveGroupItemsFactory(initialItems);
   const selectedIndex = items.getIndexByIds(initialSelectedIds);
@@ -52,14 +52,20 @@ export const getInteractiveGroupInitialState = <T extends InteractiveGroupItemId
 const isIdSelected = <T extends InteractiveGroupItemId>(state: InteractiveGroupState<T>, id: T): boolean =>
   (id !== undefined && state.selectedIds?.includes(id)) || false;
 
-const getSelectedIdsIncludingId = <T extends InteractiveGroupItemId>(state: InteractiveGroupState<T>, id: T): T[] => {
+const getSelectedIdsIncludingId = <T extends InteractiveGroupItemId>(
+  state: InteractiveGroupState<T>,
+  id: T,
+): readonly T[] => {
   if (!state.selectedIds.includes(id)) {
     return [...state.selectedIds, id];
   }
   return state.selectedIds;
 };
 
-const getSelectedIdsExcludingId = <T extends InteractiveGroupItemId>(state: InteractiveGroupState<T>, id: T): T[] => {
+const getSelectedIdsExcludingId = <T extends InteractiveGroupItemId>(
+  state: InteractiveGroupState<T>,
+  id: T,
+): readonly T[] => {
   if (state.selectedIds.includes(id)) {
     return state.selectedIds.filter((i: InteractiveGroupItemId) => i !== id);
   }

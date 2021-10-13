@@ -34,7 +34,7 @@ export type LocalPartialInteractiveListProps = ExplicitProviderProps & {
   /** The children element is shown when there are no list elements */
   children: React.ReactNode;
   /** A superficial focus state can be set outside of this component so that focus styles can be applied when, for example, a parent is focused */
-  focused?: true;
+  focused?: boolean;
   listComponent?: typeof List;
   providerProps?: Omit<
     PartialInteractiveGroupProviderProps<string, HTMLUListElement, HTMLLIElement>,
@@ -43,7 +43,10 @@ export type LocalPartialInteractiveListProps = ExplicitProviderProps & {
   unstyled?: boolean;
 };
 
-export type PartialInteractiveListProps = MergeProps<Omit<ListProps<'ul'>, 'as'>, LocalPartialInteractiveListProps> &
+export type PartialInteractiveListProps = MergeProps<
+  Omit<ListProps<'ul'>, 'as' | 'items'>,
+  LocalPartialInteractiveListProps
+> &
   ThemeProps;
 
 export function PartialInteractiveListBase(
@@ -74,6 +77,7 @@ export function PartialInteractiveListBase(
     triggerLinks = false,
     unstyled = false,
     unthemed = false,
+    variant = 'bordered',
     ...props
   }: PartialInteractiveListProps,
   forwardedRef: React.ForwardedRef<HTMLUListElement>,
@@ -124,6 +128,7 @@ export function PartialInteractiveListBase(
               transparent={transparent}
               unstyled={unstyled}
               unthemed={unthemed}
+              variant={variant}
               {...(props as Omit<
                 ListProps<'ul'>,
                 'as' | 'children' | 'focused' | 'inactive' | 'items' | 'ref' | 'tabIndex' | 'themeId' | 'unstyled'

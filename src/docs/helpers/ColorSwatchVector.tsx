@@ -106,7 +106,7 @@ export type Color = {
 
 export type ColorSwatchVectorProps = {
   children?: React.ReactNode;
-  colors: Color[];
+  colors: readonly Color[];
   direction?: FlexProps['direction'];
   joined?: boolean;
   label?: string;

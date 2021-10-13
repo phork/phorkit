@@ -99,9 +99,9 @@ export type PartialDropdownProps = Omit<
     arrowIconSize?: number;
     className?: string;
     disabled?: boolean;
-    disabledIds?: Array<DropdownOption['id']>;
+    disabledIds?: readonly string[];
     formattedValue?: React.ReactChild;
-    getFilteredOptions?: (filter: string) => Promise<DropdownOption[]>;
+    getFilteredOptions?: (filter: string) => Promise<readonly DropdownOption[]>;
     iconBefore?: RenderFromPropElement<FormboxIconRenderProps>;
     id?: string;
     inputVariant?: DropdownInputVariant;
@@ -111,12 +111,12 @@ export type PartialDropdownProps = Omit<
     onClose?: () => void;
     onInputChange?: (input?: string) => void;
     onOpen?: () => void;
-    onSelect?: (id: string, selectedIds: string[]) => void;
+    onSelect?: (id: string, selectedIds: readonly string[]) => void;
     /** This fires when items are selected or unselected */
-    onSelectionChange?: (selectedIds: string[] | undefined) => void;
+    onSelectionChange?: (selectedIds: readonly string[] | undefined) => void;
     onSubmit?: (event: React.KeyboardEvent<HTMLInputElement>, value: string) => void;
-    onUnselect?: (id: string, selectedIds: string[] | undefined) => void;
-    options: Readonly<DropdownOption[]>;
+    onUnselect?: (id: string, selectedIds: readonly string[] | undefined) => void;
+    options: readonly DropdownOption[];
     placeholder?: FormboxValue | React.ReactChild;
     readOnly?: boolean;
     /** The reducer comes from `useReducer(interactiveGroupReducer)` and is used to track selection */
@@ -188,7 +188,7 @@ export function PartialDropdownBase(
   forwardedRef: React.ForwardedRef<PartialDropdownHandles>,
 ): React.ReactElement<PartialDropdownProps> {
   const [selectedState] = reducer;
-  const [filteredOptions, setFilteredOptions] = useState<DropdownOption[] | undefined>();
+  const [filteredOptions, setFilteredOptions] = useState<readonly DropdownOption[] | undefined>();
   const themeId = useThemeId(initThemeId);
 
   const translations = useTranslations<DropdownTranslations>({
@@ -274,7 +274,7 @@ export function PartialDropdownBase(
   useEffect(() => {
     debouncedFilter.current = debounce((input: string) => {
       if (getFilteredOptions) {
-        const { promise, cancel } = makeCancelable<DropdownOption[] | undefined>(getFilteredOptions?.(input));
+        const { promise, cancel } = makeCancelable<readonly DropdownOption[] | undefined>(getFilteredOptions?.(input));
         cancelFilterPromise.current = cancel;
 
         promise

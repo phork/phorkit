@@ -2,7 +2,7 @@ import React from 'react';
 import { InteractiveGroupItemType } from 'components/InteractiveGroup';
 import { Link } from 'components/Link';
 
-export const options = [
+export const items = [
   { id: 'red', label: 'Red' },
   { id: 'red-orange', label: 'Red orange' },
   { id: 'orange', label: 'Orange' },
@@ -19,7 +19,7 @@ export const options = [
   { id: 'violet-red', label: 'Violet red' },
 ] as const;
 
-export const navigationOptions = options.map(({ id, label, ...option }: InteractiveGroupItemType<string>) => ({
+export const navigationItems = items.map(({ id, label, ...option }: InteractiveGroupItemType<string>) => ({
   id,
   flush: true,
   label: (

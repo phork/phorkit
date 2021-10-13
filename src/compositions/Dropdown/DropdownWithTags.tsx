@@ -23,8 +23,8 @@ export type DropdownWithTagsOption = DropdownOption & {
 };
 
 export type DropdownWithTagsProps = Omit<PartialDropdownProps, 'initialSelected' | 'options' | 'reducer'> & {
-  initialSelected?: DropdownWithTagsOption[];
-  options: Readonly<DropdownWithTagsOption[]>;
+  initialSelected?: readonly DropdownWithTagsOption[];
+  options: readonly DropdownWithTagsOption[];
   /** A custom renderer for the tags */
   tag?: RenderFromPropElement<DropdownWithTagsOption>;
   tagGroupProps?: Omit<TagGroupProps, 'size'>;
@@ -33,8 +33,6 @@ export type DropdownWithTagsProps = Omit<PartialDropdownProps, 'initialSelected'
   tagSize?: TagSize;
   tagWeight?: TagWeight;
 };
-
-const defaultInitialSelected = [] as DropdownOption[];
 
 /**
  * This renders a `Dropdown` component and underneath it
@@ -51,7 +49,7 @@ const defaultInitialSelected = [] as DropdownOption[];
 export function DropdownWithTags({
   contrast = false,
   id,
-  initialSelected = defaultInitialSelected,
+  initialSelected = [],
   minSelect = 0,
   maxSelect = -1,
   onSelect,
@@ -83,7 +81,7 @@ export function DropdownWithTags({
   const dropdownRef = useRef<PartialDropdownHandles>(null!);
   const tagRef = useRef<HTMLButtonElement>(null!);
   const isDropdownOpen = useRef<boolean>(false);
-  const previousSelectedIds = useRef<string[]>(state.selectedIds);
+  const previousSelectedIds = useRef<readonly string[]>(state.selectedIds);
   const { generateComponentId } = useComponentId();
   const themeId = useThemeId(initThemeId);
 

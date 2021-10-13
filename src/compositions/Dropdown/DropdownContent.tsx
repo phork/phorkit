@@ -21,7 +21,7 @@ export type LocalDropdownContentProps = ThemeProps & {
   allowReselect?: boolean;
   className?: string;
   disabled?: boolean;
-  disabledIds?: Array<DropdownOption['id']>;
+  disabledIds?: readonly string[];
   emptyNotification?: DropdownEmptyProps['children'];
   filter?: string;
   focused?: boolean;
@@ -44,7 +44,7 @@ export type LocalDropdownContentProps = ThemeProps & {
   onSelect: PartialInteractiveListProps['onSelect'];
   onSelectionChange: PartialInteractiveListProps['onSelectionChange'];
   onUnselect: PartialInteractiveListProps['onUnselect'];
-  options?: Readonly<DropdownOption[]>;
+  options?: readonly DropdownOption[];
   reducer: PartialInteractiveListProps['reducer'];
   size: DropdownSize;
 };
@@ -106,7 +106,7 @@ export function DropdownContentBase(
 
   const previous = useRef<{
     isDropdownVisible?: boolean;
-    items?: InteractiveGroupItemType<string>[];
+    items?: readonly InteractiveGroupItemType<string>[];
   }>({});
 
   // the parent component can call forwardedRef.current.container and forwardedRef.current.list

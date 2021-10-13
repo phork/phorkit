@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 export type FormComponentDemoProps = {
   children: React.ReactElement;
-  initialValue?: string | number | boolean | Array<string | number | undefined>;
+  initialValue?: string | number | boolean | ReadonlyArray<string | number | undefined>;
   property: string;
   type: 'checkbox' | 'password' | 'radio' | 'select' | 'slider' | 'stepper' | 'textarea' | 'textbox' | 'toggle';
 };

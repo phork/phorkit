@@ -17,8 +17,8 @@ export type InteractiveGroupProviderProps<
   I extends HTMLElement = HTMLElement,
 > = Omit<PartialInteractiveGroupProviderProps<T, E, I>, 'reducer'> & {
   /** The initially selected items are only used when the component renders and is then taken over by the state */
-  initialSelected?: T[];
-  items: InteractiveGroupItemType<T>[];
+  initialSelected?: readonly T[];
+  items: readonly InteractiveGroupItemType<T>[];
 };
 
 /**

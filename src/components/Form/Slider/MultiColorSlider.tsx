@@ -9,7 +9,7 @@ import { MultiColorSliderTrack } from './MultiColorSliderTrack';
 import { StyledSlider, StyledSliderProps } from './StyledSlider';
 
 export type LocalMultiColorSliderProps = {
-  colors: Array<StateColor | AccentColor | string>;
+  colors: ReadonlyArray<StateColor | AccentColor | string>;
 };
 
 export type MultiColorSliderProps = MergeProps<
