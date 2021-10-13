@@ -106,34 +106,20 @@ input.radioInput {
   right: 0;
   top: 0;
 
-  &:before {
-    border-radius: inherit;
-    bottom: 0;
-    box-shadow: 0 0 0 0 transparent;
-    content: '';
-    left: 0;
-    opacity: 0.2;
-    position: absolute;
-    right: 0;
-    top: 0;
-    transition: box-shadow 200ms ease;
-  }
+  @mixin prepareFocusRing;
 }
 
 .radio:hover,
 .radio.is-focused {
   .radioInputContainerFocusRing {
-    &:before {
-      box-shadow: var(--radio-unchecked-hovered-box-shadow);
-    }
+    @mixin makeFocusRing var(--radio-unchecked-hovered-focus-ring-color);
   }
 
-  &.is-checked {
+  &.is-checked,
+  &.is-indeterminate {
     .radioInputContainerFocusRing {
-      &:before {
-        box-shadow: var(--radio-checked-hovered-box-shadow);
-        opacity: var(--radio-checked-hovered-opacity, 0.2);
-      }
+      @mixin makeFocusRing var(--radio-checked-hovered-focus-ring-color);
+      @mixin setFocusRingOpacity var(--radio-checked-hovered-focus-ring-opacity, 0.2);
     }
   }
 }
@@ -142,13 +128,10 @@ input.radioInput {
   @mixin themed .radio {
     --radio-checked-background-color: $theme-color-accent-primary;
     --radio-checked-border-color: $theme-color-accent-primary;
-    --radio-checked-hovered-box-shadow: 0 0 0 4px $theme-color-accent-primary;
-    --radio-checked-focused-box-shadow: 0 0 0 1px $theme-color-accent-primary;
+    --radio-checked-hovered-focus-ring-color: $theme-color-accent-primary;
     --radio-checked-icon-color: $theme-color-accent-primary-contrast;
     --radio-unchecked-border-color: $theme-color-FG0-O20;
-    --radio-unchecked-hovered-box-shadow: 0 0 0 4px $theme-color-FG0-O40;
-    --radio-unchecked-focused-box-shadow: 0 0 0 1px $theme-color-FG0-O40;
-    --radio-focused-box-shadow: 0 0 0 1px $theme-color-accent-primary;
+    --radio-unchecked-hovered-focus-ring-color: $theme-color-FG0-O40;
 
     &.radio--secondary {
       --radio-checked-background-color: transparent;
@@ -158,7 +141,7 @@ input.radioInput {
   }
 
   &.radio--dark {
-    --radio-checked-hovered-opacity: 0.3;
+    --radio-checked-hovered-focus-ring-opacity: 0.3;
   }
 }
 
@@ -166,13 +149,10 @@ input.radioInput {
   @mixin themed .radio {
     --radio-checked-background-color: $theme-contrast-palette-accent-color;
     --radio-checked-border-color: $theme-contrast-palette-accent-color;
-    --radio-checked-hovered-box-shadow: 0 0 0 4px $theme-contrast-palette-accent-color;
-    --radio-checked-focused-box-shadow: 0 0 0 1px $theme-contrast-palette-accent-color;
+    --radio-checked-hovered-focus-ring-color: $theme-contrast-palette-accent-color;
     --radio-checked-icon-color: var(--contrast-color, $theme-contrast-palette-background-color);
     --radio-unchecked-border-color: $theme-contrast-palette-quieter-color;
-    --radio-unchecked-hovered-box-shadow: 0 0 0 4px $theme-contrast-palette-quietest-color;
-    --radio-unchecked-focused-box-shadow: 0 0 0 1px $theme-contrast-palette-quietest-color;
-    --radio-focused-box-shadow: 0 0 0 1px $theme-contrast-palette-accent-color;
+    --radio-unchecked-hovered-focus-ring-color: $theme-contrast-palette-quietest-color;
 
     &.radio--secondary {
       --radio-checked-background-color: transparent;
@@ -186,13 +166,10 @@ input.radioInput {
   @mixin themed .radio {
     --radio-checked-background-color: $theme-color-danger;
     --radio-checked-border-color: $theme-color-danger;
-    --radio-checked-hovered-box-shadow: 0 0 0 4px $theme-color-danger;
-    --radio-checked-focused-box-shadow: 0 0 0 1px $theme-color-danger;
+    --radio-checked-hovered-focus-ring-color: $theme-color-danger;
     --radio-checked-icon-color: $theme-color-danger-contrast;
     --radio-unchecked-border-color: $theme-color-danger;
-    --radio-unchecked-hovered-box-shadow: 0 0 0 4px $theme-color-FG0-O40;
-    --radio-unchecked-focused-box-shadow: 0 0 0 1px $theme-color-FG0-O40;
-    --radio-focused-box-shadow: 0 0 0 1px $theme-color-danger-D10;
+    --radio-unchecked-hovered-focus-ring-color: $theme-color-FG0-O40;
 
     &.radio--secondary {
       --radio-checked-background-color: transparent;
@@ -202,6 +179,6 @@ input.radioInput {
   }
 
   &.radio--dark {
-    --radio-checked-hovered-opacity: 0.3;
+    --radio-checked-hovered-focus-ring-opacity: 0.3;
   }
 }

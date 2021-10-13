@@ -29,34 +29,17 @@ button.avatar {
 .avatar--actionable {
   border: none;
 
-  &:before {
-    border-radius: inherit;
-    bottom: 0;
-    box-shadow: 0 0 0 0 transparent;
-    content: '';
-    height: 100%;
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    transition: box-shadow 150ms ease, opacity 150ms ease;
+  @mixin prepareFocusRing;
+
+  &:focus,
+  &:hover {
+    @mixin makeFocusRing var(--avatar-actionable-background-color, var(--avatar-background-color)),
+      var(--avatar-actionable-border-width, 4px);
+    @mixin setFocusRingOpacity var(--avatar-focus-ring-opacity, 0.2);
   }
 
-  &:focus:before {
-    box-shadow: 0 0 0 var(--avatar-actionable-border-width, 4px)
-      var(--avatar-actionable-background-color, var(--avatar-background-color));
-    opacity: 0.2;
-  }
-
-  &:hover:before {
-    box-shadow: 0 0 0 var(--avatar-actionable-border-width, 4px)
-      var(--avatar-actionable-background-color, var(--avatar-background-color));
-    opacity: 0.2;
-  }
-
-  &:active:before {
-    opacity: 0.4;
+  &:active {
+    @mixin setFocusRingOpacity 0.4;
   }
 }
 
@@ -121,6 +104,10 @@ button.avatar {
     --avatar-background-color: $theme-color-accent-primary;
     --avatar-text-color: $theme-color-accent-primary-contrast;
   }
+
+  &.avatar--dark {
+    --avatar-focus-ring-opacity: 0.3;
+  }
 }
 
 .avatar--neutral {
@@ -128,6 +115,10 @@ button.avatar {
     --avatar-actionable-background-color: $theme-color-neutral-D10;
     --avatar-background-color: $theme-color-neutral;
     --avatar-text-color: $theme-color-neutral-contrast;
+  }
+
+  &.avatar--dark {
+    --avatar-focus-ring-opacity: 0.3;
   }
 }
 

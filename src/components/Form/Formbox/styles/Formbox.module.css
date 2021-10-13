@@ -159,14 +159,8 @@
   min-height: $element-height-medium;
 
   &:not(.formboxInputContainer--readOnly) {
-    @mixin prepareFocusRing;
-    &:after {
-      opacity: 0.1;
-      bottom: -1px; /* [1] */
-      top: -1px; /* [1] */
-      left: -1px; /* [1] */
-      right: -1px; /* [1] */
-    }
+    @mixin prepareFocusRing -1px; /* [1] */
+    @mixin setFocusRingOpacity var(--formbox-input-container-focus-ring-opacity, .1);
 
     &:hover,
     &.is-hovered {
@@ -176,6 +170,7 @@
     &:focus,
     &.is-focused {
       @mixin makeFocusRing var(--formbox-input-container-focused-border-color);
+
       border-color: var(--formbox-input-container-focused-border-color);
     }
   }
@@ -313,6 +308,10 @@
     --formbox-input-container-hovered-border-color: $theme-primary-palette-quieter-color;
     --formbox-label-text-color: $theme-primary-palette-quiet-color;
   }
+
+  &.formbox--dark {
+    --formbox-input-container-focus-ring-opacity: 0.3;
+  }
 }
 
 .formbox--contrast {
@@ -334,6 +333,10 @@
     --formbox-input-container-focused-border-color: $theme-color-success-D10;
     --formbox-input-container-hovered-border-color: $theme-color-success-D10;
   }
+
+  &.formbox--dark {
+    --formbox-input-container-focus-ring-opacity: 0.3;
+  }
 }
 
 .formbox.is-warning {
@@ -342,6 +345,10 @@
     --formbox-input-container-focused-border-color: $theme-color-warning;
     --formbox-input-container-hovered-border-color: $theme-color-warning-D10;
   }
+
+  &.formbox--dark {
+    --formbox-input-container-focus-ring-opacity: 0.3;
+  }
 }
 
 .formbox.is-danger {
@@ -349,6 +356,10 @@
     --formbox-input-container-border-color: $theme-color-danger;
     --formbox-input-container-focused-border-color: $theme-color-danger-D10;
     --formbox-input-container-hovered-border-color: $theme-color-danger-D10;
+  }
+
+  &.formbox--dark {
+    --formbox-input-container-focus-ring-opacity: 0.3;
   }
 }
 

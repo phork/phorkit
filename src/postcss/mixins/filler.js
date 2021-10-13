@@ -47,28 +47,35 @@ const makeFillerTransitions = () => ({
  * This sets up the :after content for the focus ring
  * but doesn't actually show the ring. This is just
  * to prepare a focus ring that can be transitioned to.
- * To show the focus ring use the `makeFocusRing` Filler
+ * To show the focus ring use the `makeFocusRing` mixin
  * below.
  */
-const prepareFocusRing = () => ({
+const prepareFocusRing = (mixin, offset = 0) => ({
   '&:after': {
     borderRadius: 'inherit',
-    bottom: 0,
+    bottom: offset,
     boxShadow: '0 0 0 0 transparent',
     content: '""',
-    left: 0,
-    opacity: 0.3,
+    left: offset,
+    opacity: 0.2,
     pointerEvents: 'none',
     position: 'absolute',
-    right: 0,
-    top: 0,
+    right: offset,
+    top: offset,
     transition: 'box-shadow 150ms ease',
   },
 });
 
-const makeFocusRing = (mixin, primaryColor) => ({
+const makeFocusRing = (mixin, primaryColor, size = '4px') => ({
   '&:after': {
-    boxShadow: `0 0 0 4px ${primaryColor}`,
+    boxShadow: `0 0 0 ${size} ${primaryColor}`,
+  },
+});
+
+// this replaces the opacity of the focus ring (eg. for active, hover effects)
+const setFocusRingOpacity = (mixin, opacity) => ({
+  '&:after': {
+    opacity,
   },
 });
 
@@ -76,7 +83,7 @@ const makeFocusRing = (mixin, primaryColor) => ({
  * This sets up the :before content for the shade
  * but doesn't actually show the shade. This is just
  * to prepare a shade that be transitioned to. To
- * show the shade use the `makeShade` function below.
+ * show the shade use the `makeShade` mixin below.
  *
  * If the shade should replicate a border as well
  * then it should be positioned at -1px in each
@@ -189,6 +196,7 @@ const mixins = {
   makeFillerTransitions,
   prepareFocusRing,
   makeFocusRing,
+  setFocusRingOpacity,
   prepareShade,
   makeShade,
   prepareAndMakeShade,

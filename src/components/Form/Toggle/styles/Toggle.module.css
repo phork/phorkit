@@ -112,34 +112,19 @@ input.toggleInput {
   right: 0;
   top: 0;
 
-  &:before {
-    border-radius: inherit;
-    bottom: -1px;
-    box-shadow: 0 0 0 0 transparent;
-    content: '';
-    left: -1px;
-    opacity: 0.2;
-    position: absolute;
-    right: -1px;
-    top: -1px;
-    transition: box-shadow 200ms ease;
-  }
+  @mixin prepareFocusRing -1px;
 }
 
 .toggle:hover,
 .toggle.is-focused {
   .toggleInputContainerFocusRing {
-    &:before {
-      box-shadow: var(--toggle-unchecked-hovered-box-shadow);
-    }
+    @mixin makeFocusRing var(--toggle-unchecked-hovered-focus-ring-color);
   }
 
   &.is-checked {
     .toggleInputContainerFocusRing {
-      &:before {
-        box-shadow: var(--toggle-checked-hovered-box-shadow);
-        opacity: var(--toggle-checked-hovered-opacity, 0.2);
-      }
+      @mixin makeFocusRing var(--toggle-checked-hovered-focus-ring-color);
+      @mixin setFocusRingOpacity var(--toggle-checked-hovered-focus-ring-opacity, 0.2);
     }
   }
 }
@@ -160,10 +145,8 @@ input.toggleInput {
     --toggle-button-background-color: $light-color-BG05;
     --toggle-checked-background-color: $light-primary-palette-accent-color;
     --toggle-checked-button-background-color: $light-color-BG05;
-    --toggle-checked-hovered-box-shadow: 0 0 0 4px $light-color-accent-primary;
-    --toggle-checked-focused-box-shadow: 0 0 0 1px $light-color-accent-primary;
-    --toggle-unchecked-hovered-box-shadow: 0 0 0 4px $light-color-FG0-O40;
-    --toggle-unchecked-focused-box-shadow: 0 0 0 1px $light-color-FG0-O40;
+    --toggle-checked-hovered-focus-ring-color: $light-color-accent-primary;
+    --toggle-unchecked-hovered-focus-ring-color: $light-color-FG0-O40;
   }
 
   &.toggle--dark {
@@ -171,12 +154,10 @@ input.toggleInput {
     --toggle-button-background-color: $dark-color-FG30;
     --toggle-checked-background-color: $dark-primary-palette-accent-color;
     --toggle-checked-button-background-color: $dark-color-BG05;
-    --toggle-checked-hovered-box-shadow: 0 0 0 4px $dark-color-accent-primary;
-    --toggle-checked-focused-box-shadow: 0 0 0 1px $dark-color-accent-primary;
-    --toggle-unchecked-hovered-box-shadow: 0 0 0 4px $dark-color-FG0-O40;
-    --toggle-unchecked-focused-box-shadow: 0 0 0 1px $dark-color-FG0-O40;
+    --toggle-checked-hovered-focus-ring-color: $dark-color-accent-primary;
+    --toggle-unchecked-hovered-focus-ring-color: $dark-color-FG0-O40;
 
-    --toggle-checked-hovered-opacity: 0.3;
+    --toggle-checked-hovered-focus-ring-opacity: 0.3;
   }
 }
 
@@ -186,9 +167,7 @@ input.toggleInput {
     --toggle-button-background-color: $theme-contrast-palette-quieter-color;
     --toggle-checked-background-color: $theme-contrast-palette-quietest-color;
     --toggle-checked-button-background-color: $theme-contrast-palette-accent-color;
-    --toggle-checked-hovered-box-shadow: 0 0 0 4px $theme-contrast-palette-accent-color;
-    --toggle-checked-focused-box-shadow: 0 0 0 1px $theme-contrast-palette-accent-color;
-    --toggle-unchecked-hovered-box-shadow: 0 0 0 4px $theme-contrast-palette-quietest-color;
-    --toggle-unchecked-focused-box-shadow: 0 0 0 1px $theme-contrast-palette-quietest-color;
+    --toggle-checked-hovered-focus-ring-color: $theme-contrast-palette-accent-color;
+    --toggle-unchecked-hovered-focus-ring-color: $theme-contrast-palette-quietest-color;
   }
 }
