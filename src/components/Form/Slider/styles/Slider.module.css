@@ -108,30 +108,8 @@ $animation-timing: 200ms;
   width: 12px;
   z-index: 2;
 
-  &:before {
-    border-radius: 100%;
-    bottom: -2px;
-    box-shadow: 0 0 0 0 transparent;
-    content: '';
-    left: -2px;
-    position: absolute;
-    right: -2px;
-    top: -2px;
-    transition: box-shadow 200ms ease;
-  }
-
-  &:after {
-    border-radius: 100%;
-    bottom: 0;
-    box-shadow: 0 0 0 0 transparent;
-    content: '';
-    left: 0;
-    opacity: var(--slider-handle-focused-opacity, 0.2);
-    position: absolute;
-    right: 0;
-    top: 0;
-    transition: box-shadow 200ms ease;
-  }
+  @mixin prepareFocusRing;
+  @mixin setFocusRingOpacity var(--slider-handle-focus-ring-opacity, 0.2);
 
   .slider.is-dragging & {
     transition: none;
@@ -139,9 +117,7 @@ $animation-timing: 200ms;
 
   .slider.is-focused &,
   .slider:hover & {
-    &:after {
-      box-shadow: 0 0 0 4px var(--slider-handle-background-color);
-    }
+    @mixin makeFocusRing var(--slider-handle-background-color);
   }
 }
 
@@ -184,7 +160,7 @@ input.sliderInput {
   }
 
   &.slider--dark {
-    --slider-handle-focused-opacity: 0.4;
+    --slider-handle-focus-ring-opacity: 0.3;
   }
 }
 
@@ -205,7 +181,7 @@ input.sliderInput {
   }
 
   &.slider--dark {
-    --slider-handle-focused-opacity: 0.4;
+    --slider-handle-focus-ring-opacity: 0.3;
   }
 }
 
@@ -217,7 +193,7 @@ input.sliderInput {
   }
 
   &.slider--dark {
-    --slider-handle-focused-opacity: 0.4;
+    --slider-handle-focus-ring-opacity: 0.3;
   }
 }
 
@@ -229,6 +205,6 @@ input.sliderInput {
   }
 
   &.slider--dark {
-    --slider-handle-focused-opacity: 0.4;
+    --slider-handle-focus-ring-opacity: 0.3;
   }
 }
