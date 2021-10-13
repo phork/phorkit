@@ -51,6 +51,8 @@ import { ScrollSync } from '../ScrollSync';
                         key={id}
                         ref={makeRefCallback(id)}
                         style={{ width: 300, overflow: 'auto', paddingBottom: 6 }}
+                        /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
+                        tabIndex={0}
                       >
                         <div style={{ width: 600 }}>
                           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed ipsum eget mi lobortis
@@ -94,6 +96,8 @@ import { ScrollSync } from '../ScrollSync';
                   key={id}
                   ref={makeRefCallback(id)}
                   style={{ width: 300, height: 100, overflow: 'auto', paddingRight: 6 }}
+                  /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
+                  tabIndex={0}
                 >
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed ipsum eget mi lobortis efficitur ut
                   eu ex. Suspendisse at dui lacus. In in velit et augue venenatis efficitur vel non sem. Aliquam
@@ -131,6 +135,8 @@ import { ScrollSync } from '../ScrollSync';
                   key={id}
                   ref={makeRefCallback(id)}
                   style={{ height: 80, width: 300, overflow: 'auto', paddingBottom: 6, paddingRight: 6 }}
+                  /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
+                  tabIndex={0}
                 >
                   <div style={{ width: 600 }}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed ipsum eget mi lobortis efficitur

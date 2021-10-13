@@ -19,11 +19,6 @@ export default {
         category: 'Appearance',
       },
     },
-    minSelect: {
-      table: {
-        category: 'Appearance',
-      },
-    },
     orientation: {
       options: ['horizontal', 'vertical'],
       control: {
@@ -41,17 +36,22 @@ export default {
 
     disabled: {
       table: {
-        category: 'State',
+        category: 'Input',
       },
     },
     items: {
       table: {
-        category: 'State',
+        category: 'Input',
       },
     },
     initialSelected: {
       table: {
-        category: 'State',
+        category: 'Input',
+      },
+    },
+    minSelect: {
+      table: {
+        category: 'Input',
       },
     },
 
@@ -114,6 +114,14 @@ export default {
         category: 'Uncommon',
       },
     },
+    parentRef: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: 'Uncommon',
+      },
+    },
     selectOnFocus: {
       table: {
         category: 'Uncommon',
@@ -148,7 +156,6 @@ export default {
   },
   parameters: {
     controls: {
-      exclude: ['parentRef'],
       sort: 'requiredFirst',
     },
     docs: {
