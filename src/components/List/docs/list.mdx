@@ -367,6 +367,28 @@ See also the [InteractiveList](../compositions/InteractiveList) composition whic
   </ThemeWrapper>
 </Playground>
 
+### Scrollable list
+
+<Playground>
+  <ThemeWrapper>
+    <List
+      scrollable
+      items={[
+        { id: 'normal0', label: 'Normal' },
+        { id: 'selected', label: 'Selected', selected: true },
+        { id: 'normal1', label: 'Normal' },
+        { id: 'normal2', label: 'Normal' },
+        { id: 'normal3', label: 'Normal' },
+        { id: 'normal4', label: 'Normal' },
+        { id: 'disabled', label: 'Disabled', disabled: true },
+        { id: 'inactive', label: 'Inactive', inactive: true },
+      ]}
+      style={{ height: 160 }}
+      variant="bordered"
+    />
+  </ThemeWrapper>
+</Playground>
+
 ### Inactive list
 
 <Playground>

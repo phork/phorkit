@@ -11,7 +11,7 @@ export type ProgressSegment = {
 
 type ProgressSegmentProps = {
   percent?: never;
-  data?: ProgressSegment[];
+  data?: readonly ProgressSegment[];
 };
 
 type ProgressPercentProps = {

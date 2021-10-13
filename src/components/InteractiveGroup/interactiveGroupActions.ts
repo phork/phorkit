@@ -70,7 +70,7 @@ export type InteractiveGroupStateActionSetFocused = InteractiveGroupEventTypes &
 };
 
 export type InteractiveGroupStateActionSetItems<T extends InteractiveGroupItemId = string> = {
-  items: InteractiveGroupItemType<T>[];
+  items: readonly InteractiveGroupItemType<T>[];
   timestamp: number;
   type: interactiveGroupActions.SET_ITEMS;
 };

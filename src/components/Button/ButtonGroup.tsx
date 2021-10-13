@@ -20,7 +20,7 @@ export type LocalButtonGroupProps = Pick<ButtonProps, 'color' | 'fullWidth' | 's
   Omit<ThemeProps, 'unthemed'> & {
     /** This is button group alignment (not button alignment) */
     align?: ButtonGroupAlignment;
-    buttons?: ButtonGroupItem[];
+    buttons?: readonly ButtonGroupItem[];
     /** The children are allowed to be null or false so this won't fail if children are conditional */
     children?: Array<React.ReactElement | null | false>;
     className?: string;

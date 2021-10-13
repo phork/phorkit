@@ -103,7 +103,7 @@ export type LocalSelectProps = Pick<
   onChange: (event: React.ChangeEvent<HTMLSelectElement>, value?: FormboxValue | FormboxValue[]) => void;
   onInputBlur?: React.FocusEventHandler<HTMLSelectElement>;
   onInputFocus?: React.FocusEventHandler<HTMLSelectElement>;
-  options: SelectOption[];
+  options: readonly SelectOption[];
   /** If an option cannot be unselected then a placeholder with `disabled: true` should be used */
   placeholder?: SelectOptionPlaceholder;
 } & (SingleSelectProps | MultipleSelectProps);
@@ -191,7 +191,7 @@ export function SelectBase(
     return (options.find(option => option?.value === value) || ({} as SelectOption)).label;
   };
 
-  const getSelectedOptionLabelsByValues = (values: FormboxValue[] | undefined): FormboxValue[] | undefined => {
+  const getSelectedOptionLabelsByValues = (values: readonly FormboxValue[] | undefined): FormboxValue[] | undefined => {
     if (Array.isArray(values)) {
       return values.reduce((acc, value: FormboxValue | undefined) => {
         const label = getSelectedOptionLabelByValue(value);

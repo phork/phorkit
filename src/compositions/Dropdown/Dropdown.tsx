@@ -9,7 +9,7 @@ import { PartialDropdown, PartialDropdownHandles, PartialDropdownProps } from '.
 import { DropdownOption } from './types';
 
 export type DropdownProps = Omit<PartialDropdownProps, 'reducer'> & {
-  initialSelected: DropdownOption[];
+  initialSelected: readonly DropdownOption[];
 };
 
 export function DropdownBase(

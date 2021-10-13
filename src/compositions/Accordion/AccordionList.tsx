@@ -20,7 +20,7 @@ export type AccordionListProps = React.HTMLAttributes<HTMLDivElement> &
   ThemeProps & {
     className?: string;
     componentId: string;
-    items: AccordionItemType[];
+    items: readonly AccordionItemType[];
     onBlur?: (e: React.FocusEvent<HTMLDivElement>) => void;
     onFocus?: (e: React.FocusEvent<HTMLDivElement>) => void;
     style?: React.CSSProperties;

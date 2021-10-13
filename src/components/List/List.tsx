@@ -23,12 +23,13 @@ export type LocalListProps = ThemeProps & {
   /** The inactive flag removes all hover styles */
   inactive?: boolean;
   inline?: boolean;
-  items?: (Omit<ListItemProps, 'children'> & { id: string; label: string })[];
+  items?: readonly (Omit<ListItemProps, 'children'> & { id: string; label: ListItemProps['children'] })[];
   /** This will set put selected item styles on a focused item but doesn't actually select the item (useful for dropdowns) */
   mimicSelectOnFocus?: boolean;
   /** The default role is list or listbox but it can be overridden or set to undefined */
   role?: string;
   rounded?: boolean;
+  scrollable?: boolean;
   size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
   style?: React.CSSProperties;
   transparent?: boolean;
@@ -52,6 +53,7 @@ export function ListBase<T extends ListElementType = 'ul'>(
     items,
     mimicSelectOnFocus = false,
     rounded = false,
+    scrollable = false,
     size = 'medium',
     themeId: initThemeId,
     transparent = false,
@@ -75,6 +77,7 @@ export function ListBase<T extends ListElementType = 'ul'>(
         : cx(
             styles.list,
             color && !unthemed && styles[`list--${color}`],
+            scrollable && styles['list--scrollable'],
             hideFocusOutline && styles['list--hideFocusOutline'],
             inline && styles['list--inline'],
             rounded && styles['list--rounded'],

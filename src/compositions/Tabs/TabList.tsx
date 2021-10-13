@@ -29,7 +29,7 @@ export type LocalTabListProps = ThemeProps & {
   componentId: string;
   contrast?: boolean;
   fullWidth?: boolean;
-  items: TabListItemProps[];
+  items: readonly TabListItemProps[];
   onBlur?: React.FocusEventHandler<HTMLDivElement>;
   onFocus?: React.FocusEventHandler<HTMLDivElement>;
   orientation?: Orientation;

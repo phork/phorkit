@@ -18,7 +18,7 @@ export type TabPanelGroupProps = React.HTMLAttributes<HTMLDivElement> &
     /** This is used to match the aria labels up with the tabs */
     componentId?: string;
     focused?: boolean;
-    items: Array<{
+    items: ReadonlyArray<{
       id: string;
       content: React.ReactNode | ((props: TabPanelStateProps) => React.ReactNode);
       contentProps?: Omit<TabPanelProps, 'children' | 'id' | 'selected'>;

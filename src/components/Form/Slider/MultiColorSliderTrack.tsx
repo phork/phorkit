@@ -5,7 +5,7 @@ import { MergeElementPropsWithoutRef } from '../../../types';
 export type LocalMultiColorSliderTrackProps = {
   children: React.ReactNode;
   className: string;
-  colors: string[];
+  colors: readonly string[];
   sliderWidth?: number;
 };
 

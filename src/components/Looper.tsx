@@ -9,7 +9,7 @@ type NumericLooperProps = {
 
 type ListLooperProps = {
   render: (item: string, i?: number) => React.ReactElement;
-  list: Array<string>;
+  list: readonly string[];
 };
 
 // to be used as a type guard

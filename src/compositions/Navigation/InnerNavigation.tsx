@@ -28,7 +28,7 @@ export type InnerNavigationProps = React.HTMLAttributes<HTMLElement> &
     /** The border radius to set on each element */
     highlightRadius?: number;
     /** The triggerOnly prop can be ignored as it is handled by the interactive group system */
-    items: Array<
+    items: ReadonlyArray<
       Omit<NavigationItemProps, 'children' | 'componentId' | 'key' | 'onClick' | 'orientation' | 'variant'> & {
         label: React.ReactNode | ((props: NavigationItemStateProps) => React.ReactNode);
         triggerOnly?: InteractiveGroupItemType<string>['triggerOnly'];

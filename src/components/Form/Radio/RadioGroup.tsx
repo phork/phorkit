@@ -22,7 +22,7 @@ export type LocalRadioGroupProps<V extends RadioValue = string> = ThemeProps & {
   layout: 'stacked' | 'inline';
   name: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>, value: V) => void;
-  radios: RadioGroupItem<V>[];
+  radios: readonly RadioGroupItem<V>[];
   size?: RadioSize;
   style?: React.CSSProperties;
   value?: V;
