@@ -5,18 +5,21 @@ import { useThemeId } from '../../context/Theme';
 import { renderFromProp, RenderFromPropElement, renderFromPropWithFallback } from '../../utils';
 import { InlinePopover, InlinePopoverProps } from '../Popover/InlinePopover';
 import { PopoverTogglerProps } from '../Popover/Popover';
-import { PopoverRenderChildrenProps } from '../Popover/types';
+import { InlinePopoverContentHTMLElement, PopoverRenderChildrenProps } from '../Popover/types';
 import styles from './styles/Dropover.module.css';
+import { DropoverLabelProps } from './DropoverLabel';
 
-export type InlineDropoverProps = Omit<InlinePopoverProps, 'position' | 'toggler'> & {
+export type InlineDropoverProps<F extends HTMLElement> = Omit<
+  InlinePopoverProps<F>,
+  'centered' | 'layout' | 'position' | 'toggler' | 'withPopoverTogglerProps'
+> & {
   align?: HorizontalPosition;
   width?: number;
   height?: number;
   label: RenderFromPropElement<any>;
-  triangleSize?: number;
 };
 
-const defaultOffset = {
+export const defaultInlineOffset = {
   horizontal: -20,
   vertical: -12,
 };
@@ -26,41 +29,48 @@ const defaultOffset = {
  * so it looks like the toggle lives inside the dropover.
  *
  * This uses the `Popover` component.
+ *
+ * @template T,F
+ * @param {T} - The HTML element type of the toggleRef
+ * @param {F} - The HTML element type of the focusRef
  */
-export function InlineDropover({
-  align,
+export function InlineDropover<T extends HTMLElement, F extends HTMLElement>({
+  align = 'left',
   children,
   className,
   height,
   label,
-  layout,
-  offset = defaultOffset,
+  offset = defaultInlineOffset,
   renderChildren,
   themeId: initThemeId,
-  triangleSize = 4,
   width = 240,
-  withChildrenProps,
+  withChildrenProps = false,
   ...props
-}: InlineDropoverProps): React.ReactElement {
+}: InlineDropoverProps<F>): React.ReactElement {
   const themeId = useThemeId(initThemeId);
-  const togglerRef = useRef();
+  const toggleRef = useRef<T>(null);
   const isRightAligned = align === 'right';
 
   const renderToggler = useCallback(
     ({ visible, ...props }: PopoverTogglerProps) =>
-      renderFromProp(label, { ...props, ref: togglerRef }, { createFromString: true }),
+      renderFromProp<Partial<DropoverLabelProps & { ref: React.RefObject<T> }>>(
+        label,
+        { ...props, ref: toggleRef },
+        { createFromString: true },
+      ),
     [label],
   );
 
   return (
-    <InlinePopover
+    <InlinePopover<F>
       centered
       withChildrenProps
+      withPopoverTogglerProps
       className={cx(styles.dropover, themeId && styles[`dropover--${themeId}`], className)}
       height={height}
       offset={offset}
       position={isRightAligned ? 'stacked-right' : 'stacked'}
-      renderChildren={({ close, focusable, focusRef, isTogglerFocused, offset, position, visible }) => {
+      renderChildren={({ close, focusRef, isTogglerFocused, offset, position, visible }) => {
         if (position !== 'stacked' && position !== 'stacked-right') {
           throw new Error('Invalid dropover position');
         }
@@ -68,14 +78,17 @@ export function InlineDropover({
         return (
           <React.Fragment>
             {withChildrenProps
-              ? renderFromPropWithFallback<PopoverRenderChildrenProps>(renderChildren!, {
-                  close,
-                  focusRef: focusable ? focusRef : undefined,
-                  isTogglerFocused,
-                  offset,
-                  position,
-                  visible,
-                })
+              ? renderFromPropWithFallback<PopoverRenderChildrenProps<InlinePopoverContentHTMLElement, F>>(
+                  renderChildren!,
+                  {
+                    close,
+                    focusRef,
+                    isTogglerFocused,
+                    offset,
+                    position,
+                    visible,
+                  },
+                )
               : children}
           </React.Fragment>
         );

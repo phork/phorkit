@@ -31,7 +31,7 @@ export type DraggableProps = {
  * drag starts, moves and ends. It can also have an
  * optional boundary which it cannot be dragged past.
  */
-export function Draggable({
+export function Draggable<E extends HTMLElement = HTMLDivElement>({
   blocking: initBlocking = false,
   boundary,
   children,
@@ -45,7 +45,7 @@ export function Draggable({
   const [dragging, setDragging] = useState<boolean>(false);
   const [relative, setRelative] = useState<Partial<Position> | undefined>();
   const lastPosition = useRef<Position>();
-  const ref = useRef<HTMLElement>(null!);
+  const ref = useRef<E>(null!);
 
   const clampPosition = useCallback(
     (position: Position): Position => {

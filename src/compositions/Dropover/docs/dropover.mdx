@@ -19,6 +19,7 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
 <Playground>
   <ThemeWrapper>
     <InlineDropover
+      focusable
       label={
         <DropoverLabel>
           <Typography color="primary" size="large" variants="line-height-normal" weight="bold">
@@ -42,6 +43,7 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
 <Playground>
   <ThemeWrapper>
     <InlineDropover
+      focusable
       align="right"
       label={
         <DropoverLabel>
@@ -67,6 +69,7 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
 <Playground>
   <ThemeWrapper>
     <InlineDropover
+      focusable
       label={
         <DropoverLabel noTriangle>
           <Typography color="primary" size="large" variants="line-height-normal" weight="bold">
@@ -102,7 +105,7 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
       <DropoverContent>
         <Typography size="medium" variants="line-height-comfy">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eros neque, ullamcorper at erat quis,
-          eleifend gravida <Link href="#">dolor</Link>.
+          eleifend gravida dolor.
         </Typography>
       </DropoverContent>
     </PortalDropover>
@@ -128,7 +131,7 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
       <DropoverContent>
         <Typography size="medium" variants="line-height-comfy">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eros neque, ullamcorper at erat quis,
-          eleifend gravida <Link href="#">dolor</Link>.
+          eleifend gravida dolor.
         </Typography>
       </DropoverContent>
     </PortalDropover>
@@ -152,7 +155,7 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
       <DropoverContent>
         <Typography size="medium" variants="line-height-comfy">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eros neque, ullamcorper at erat quis,
-          eleifend gravida <Link href="#">dolor</Link>.
+          eleifend gravida dolor.
         </Typography>
       </DropoverContent>
     </PortalDropover>
@@ -164,6 +167,7 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
 <Playground>
   <ThemeWrapper>
     <PortalDropover
+      focusable
       withChildrenProps
       label={
         <DropoverLabel>
@@ -173,22 +177,16 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
         </DropoverLabel>
       }
       portal="absolute"
-      renderChildren={({ close }) => (
+      renderChildren={({ close, focusRef }) => (
         <DropoverContent>
           <Typography size="medium" variants="line-height-comfy">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eros neque, ullamcorper at erat quis,
-            eleifend gravida{' '}
-            <Button
-              color="primary"
-              onClick={() => {
-                console.log('closing');
-                close();
-              }}
-              weight="inline"
-            >
-              close
-            </Button>
-            .
+            eleifend gravida
+            <Typography variants="space-before">
+              <Button color="primary" onClick={() => close()} ref={focusRef} weight="inline">
+                close
+              </Button>
+            </Typography>.
           </Typography>
         </DropoverContent>
       )}
@@ -202,6 +200,7 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
   <ThemeWrapper>
     <PortalDropover
       passiveLabel
+      withChildrenProps
       align="right"
       label={
         <DropoverInputLabel>
@@ -209,15 +208,21 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
         </DropoverInputLabel>
       }
       portal="absolute"
+      renderChildren={({ close }) => (
+        <DropoverContent>
+          <Typography size="medium" variants="line-height-comfy">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eros neque, ullamcorper at erat quis,
+            eleifend gravida
+            <Typography variants="space-before">
+              <Button color="primary" onClick={() => close()} weight="inline">
+                close
+              </Button>
+            </Typography>.
+          </Typography>
+        </DropoverContent>
+      )}
       width={400}
-    >
-      <DropoverContent>
-        <Typography size="medium" variants="line-height-comfy">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eros neque, ullamcorper at erat quis,
-          eleifend gravida <Link href="#">dolor</Link>.
-        </Typography>
-      </DropoverContent>
-    </PortalDropover>
+    />
   </ThemeWrapper>
 </Playground>
 
@@ -226,7 +231,6 @@ import { DropoverContent, DropoverLabel, DropoverInputLabel, InlineDropover, Por
 <Playground>
   <ThemeWrapper contrast>
     <InlineDropover
-      contrast
       label={
         <DropoverLabel contrast>
           <Typography color="contrast" size="medium" variants="line-height-comfy" weight="bold">

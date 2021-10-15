@@ -5,20 +5,23 @@ import { useThemeId } from '../../context/Theme';
 import { renderFromProp, RenderFromPropElement, renderFromPropWithFallback } from '../../utils';
 import { PopoverTogglerProps } from '../Popover/Popover';
 import { PortalPopover, PortalPopoverProps } from '../Popover/PortalPopover';
-import { PopoverContentProps, PopoverRenderChildrenProps } from '../Popover/types';
+import { PopoverContentProps, PopoverRenderChildrenProps, PortalPopoverContentHTMLElement } from '../Popover/types';
 import styles from './styles/Dropover.module.css';
+import { DropoverLabelProps } from './DropoverLabel';
 
-export type PortalDropoverProps = Omit<PortalPopoverProps, 'position' | 'toggler'> & {
+export type PortalDropoverProps<F extends HTMLElement> = Omit<
+  PortalPopoverProps<F>,
+  'centered' | 'layout' | 'portal' | 'position' | 'toggler' | 'withPopoverTogglerProps'
+> & {
   align?: HorizontalPosition;
   width?: number;
   height?: number;
   label: RenderFromPropElement<any>;
   /** A passive label doesn't allow re-clicking to close the dropover */
   passiveLabel?: boolean;
-  triangleSize?: number;
 };
 
-const defaultOffset = {
+export const defaultPortalOffset = {
   horizontal: -20,
   vertical: -12,
 };
@@ -29,40 +32,53 @@ const defaultOffset = {
  * The portal dropover renders the popover in a portal.
  *
  * This uses the `Popover` component.
+ *
+ * @template T,F
+ * @param {T} - The HTML element type of the toggleRef
+ * @param {F} - The HTML element type of the focusRef
  */
-export function PortalDropover({
-  align,
+export function PortalDropover<T extends HTMLElement, F extends HTMLElement>({
+  align = 'left',
   children,
   className,
   height,
   label,
-  layout,
-  offset = defaultOffset,
+  offset = defaultPortalOffset,
   passiveLabel = false,
   renderChildren,
   themeId: initThemeId,
-  triangleSize = 4,
   width = 240,
-  withChildrenProps,
+  withChildrenProps = false,
   ...props
-}: PortalDropoverProps): React.ReactElement {
+}: PortalDropoverProps<F>): React.ReactElement {
   const themeId = useThemeId(initThemeId);
-  const togglerRef = useRef();
+  const toggleRef = useRef<T>(null);
   const isRightAligned = align === 'right';
 
   const renderToggler = useCallback(
-    ({ visible, ...props }: PopoverTogglerProps) =>
-      renderFromProp(label, { ...props, ref: togglerRef }, { createFromString: true }),
+    ({ className, visible, ...props }: PopoverTogglerProps) =>
+      renderFromProp<Partial<DropoverLabelProps & { ref: React.RefObject<T> }>>(
+        label,
+        { ...props, className: cx(className, visible && styles['dropoverLabel--hidden']), ref: toggleRef },
+        { createFromString: true },
+      ),
     [label],
   );
 
   // portal dropovers must re-draw the label on top of the dropover content
-  const renderPortalToggler = (focused?: boolean) =>
-    renderFromProp(label, { cloned: true, focused }, { createFromString: true });
+  const renderClonedToggler = useCallback(
+    (focused?: boolean) =>
+      renderFromProp<{ cloned: boolean; focused?: boolean }>(
+        label,
+        { cloned: true, focused },
+        { createFromString: true },
+      ),
+    [label],
+  );
 
   // the re-drawn portal label can close the portal again if it's not a passive label
   const getPortalTogglerInteractiveProps = (
-    close: PopoverContentProps['close'],
+    close: PopoverContentProps<PortalPopoverContentHTMLElement, F>['close'],
   ):
     | {}
     | {
@@ -82,14 +98,16 @@ export function PortalDropover({
   };
 
   return (
-    <PortalPopover
+    <PortalPopover<F>
       centered
       withChildrenProps
+      withPopoverTogglerProps
       className={cx(styles.dropover, themeId && styles[`dropover--${themeId}`], className)}
       height={height}
       offset={offset}
+      portal="absolute"
       position={isRightAligned ? 'stacked-right' : 'stacked'}
-      renderChildren={({ close, focusable, focusRef, isTogglerFocused, offset: childrenOffset, position, visible }) => {
+      renderChildren={({ close, focusRef, isTogglerFocused, offset: childrenOffset, position, visible }) => {
         if (position !== 'stacked' && position !== 'stacked-right') {
           throw new Error('Invalid dropover position');
         }
@@ -105,18 +123,21 @@ export function PortalDropover({
               style={{ top: -offset.vertical, [isRightAligned ? 'right' : 'left']: -offset.horizontal }}
               {...getPortalTogglerInteractiveProps(close)}
             >
-              {renderPortalToggler(isTogglerFocused)}
+              {renderClonedToggler(isTogglerFocused)}
             </div>
 
             {withChildrenProps
-              ? renderFromPropWithFallback<PopoverRenderChildrenProps>(renderChildren!, {
-                  close,
-                  focusRef: focusable ? focusRef : undefined,
-                  isTogglerFocused,
-                  offset: childrenOffset,
-                  position,
-                  visible,
-                })
+              ? renderFromPropWithFallback<PopoverRenderChildrenProps<PortalPopoverContentHTMLElement, F>>(
+                  renderChildren!,
+                  {
+                    close,
+                    focusRef,
+                    isTogglerFocused,
+                    offset: childrenOffset,
+                    position,
+                    visible,
+                  },
+                )
               : children}
           </React.Fragment>
         );

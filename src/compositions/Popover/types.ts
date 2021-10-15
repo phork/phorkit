@@ -2,20 +2,20 @@ import { UseAbsoluteCoordsProps } from '../../hooks/useAbsoluteCoords';
 import { RenderFromPropElement } from '../../utils/renderFromProp';
 import { PositionOffset } from './../../utils/getPositionOffset';
 
-export type PopoverRenderChildrenProps = Pick<
-  PopoverContentProps,
-  'close' | 'focusRef' | 'focusable' | 'isTogglerFocused' | 'position' | 'visible'
-> & {
-  offset: PositionOffset;
-};
-
-export type PopoverContentProps = Pick<UseAbsoluteCoordsProps, 'centered' | 'offset' | 'position'> &
-  React.HTMLAttributes<HTMLDivElement> & {
+/**
+ * @template C,F
+ * @param {C} - The HTML element type of the contentRef
+ * @param {F} - The HTML element type of the focusRef
+ */
+export type PopoverContentProps<C extends HTMLElement, F extends HTMLElement> = Pick<
+  UseAbsoluteCoordsProps,
+  'centered' | 'offset' | 'position'
+> &
+  React.HTMLAttributes<C> & {
     alwaysRender?: boolean;
     className?: string;
     close: (timeout?: number) => void;
-    focusable?: boolean;
-    focusRef?: React.MutableRefObject<HTMLElement>;
+    focusRef?: React.MutableRefObject<F>;
     height?: number;
     isTogglerFocused?: boolean;
     observe?: boolean;
@@ -25,10 +25,20 @@ export type PopoverContentProps = Pick<UseAbsoluteCoordsProps, 'centered' | 'off
     width?: number | string;
   };
 
+export type PopoverRenderChildrenProps<C extends HTMLElement, F extends HTMLElement> = Pick<
+  PopoverContentProps<C, F>,
+  'close' | 'focusRef' | 'isTogglerFocused' | 'position' | 'visible'
+> & {
+  focusable?: boolean;
+  offset: PositionOffset;
+};
+
 /** If withChildrenProps is true then it we need a renderChildren function */
-export type PopoverContentPropsRenderChildren = {
+export type PopoverContentPropsRenderChildren<C extends HTMLElement, F extends HTMLElement> = {
   children?: never;
-  renderChildren: RenderFromPropElement<PopoverRenderChildrenProps>;
+  /** The render function to use instead of the `children` prop */
+  renderChildren: RenderFromPropElement<PopoverRenderChildrenProps<C, F>>;
+  /** If this is true then the renderChildren function will be used instead of the `children` prop */
   withChildrenProps: true;
 };
 
@@ -38,3 +48,6 @@ export type PopoverContentPropsChildren = {
   renderChildren?: never;
   withChildrenProps?: false;
 };
+
+export type InlinePopoverContentHTMLElement = HTMLDivElement;
+export type PortalPopoverContentHTMLElement = HTMLDivElement;

@@ -2,14 +2,22 @@ import React from 'react';
 import { renderFromPropWithFallback } from '../../utils';
 import { Portal, PortalProps } from '../../components/Portal';
 import { Popover, PopoverProps } from './Popover';
-import { PopoverContentPropsChildren, PopoverContentPropsRenderChildren, PopoverRenderChildrenProps } from './types';
+import {
+  PopoverContentPropsChildren,
+  PopoverContentPropsRenderChildren,
+  PopoverRenderChildrenProps,
+  PortalPopoverContentHTMLElement,
+} from './types';
 
-export type PortalPopoverProps = Omit<PopoverProps, 'renderContent'> &
-  Omit<PortalProps, 'children' | 'position' | 'visible'> & {
+export type PortalPopoverProps<F extends HTMLElement> = Omit<
+  PopoverProps<PortalPopoverContentHTMLElement, F>,
+  'renderContent'
+> &
+  Omit<PortalProps, 'children' | 'focusRef' | 'initialCoords' | 'position' | 'visible'> & {
     contentClassName?: string;
     contentStyle?: React.CSSProperties;
     position?: PortalProps['position'];
-  } & (PopoverContentPropsChildren | PopoverContentPropsRenderChildren);
+  } & (PopoverContentPropsChildren | PopoverContentPropsRenderChildren<PortalPopoverContentHTMLElement, F>);
 
 /**
  * The portal popover extends the `Popover` component and
@@ -21,8 +29,11 @@ export type PortalPopoverProps = Omit<PopoverProps, 'renderContent'> &
  * the `Popover` component.
  *
  * This uses the `Portal` component.
+ *
+ * @template F
+ * @param {F} - The HTML element type of the focusRef
  */
-export function PortalPopover({
+export function PortalPopover<F extends HTMLElement>({
   children,
   className,
   closeDelay,
@@ -47,9 +58,9 @@ export function PortalPopover({
   withPopoverTogglerProps,
   withChildrenProps,
   ...props
-}: PortalPopoverProps) {
+}: PortalPopoverProps<F>) {
   return (
-    <Popover
+    <Popover<PortalPopoverContentHTMLElement, F>
       className={className}
       closeDelay={closeDelay}
       focusable={focusable}
@@ -67,8 +78,6 @@ export function PortalPopover({
         return (
           <Portal
             className={contentClassName}
-            focusRef={focusRef}
-            focusable={focusable}
             offset={offset}
             portal={portal}
             position={position}
@@ -78,14 +87,17 @@ export function PortalPopover({
             {...props}
           >
             {withChildrenProps
-              ? renderFromPropWithFallback<PopoverRenderChildrenProps>(renderChildren!, {
-                  close,
-                  focusRef: focusable ? focusRef : undefined,
-                  offset,
-                  position,
-                  isTogglerFocused,
-                  visible,
-                })
+              ? renderFromPropWithFallback<PopoverRenderChildrenProps<PortalPopoverContentHTMLElement, F>>(
+                  renderChildren!,
+                  {
+                    close,
+                    focusRef,
+                    offset,
+                    position,
+                    isTogglerFocused,
+                    visible,
+                  },
+                )
               : children}
           </Portal>
         );

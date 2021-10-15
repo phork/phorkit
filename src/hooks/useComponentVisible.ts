@@ -79,7 +79,7 @@ export function useComponentVisible<C extends HTMLElement>({
     () => ({
       ref,
       isComponentVisible,
-      setIsComponentVisible: onHide || onShow || true ? setIsComponentVisibleWithCallbacks : setIsComponentVisible,
+      setIsComponentVisible: onHide || onShow ? setIsComponentVisibleWithCallbacks : setIsComponentVisible,
     }),
     [onHide, onShow, isComponentVisible, setIsComponentVisibleWithCallbacks],
   );

@@ -7,7 +7,10 @@ import { AnyPosition, StackedPosition } from '../types';
  */
 export const usePopoverPosition = (
   ref: React.RefObject<HTMLElement>,
-  { position: initPosition, layout }: { position?: AnyPosition | StackedPosition; layout?: 'horizontal' | 'vertical' },
+  {
+    position: initPosition,
+    layout = 'vertical',
+  }: { position?: AnyPosition | StackedPosition; layout?: 'horizontal' | 'vertical' },
 ): AnyPosition | StackedPosition | undefined => {
   const [position, setPosition] = useState<AnyPosition | StackedPosition | undefined>(initPosition);
 
