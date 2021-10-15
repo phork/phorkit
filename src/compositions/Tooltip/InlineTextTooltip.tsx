@@ -8,7 +8,10 @@ import { getTooltipOffset } from './utils';
 import { getTextTooltipColors, TextTooltipContent, TextTooltipContentProps } from './TextTooltipContent';
 import { TooltipContent } from './TooltipContent';
 
-export type InlineTextTooltipProps<F extends HTMLElement> = Omit<InlinePopoverProps<F>, 'position' | 'width'> &
+export type InlineTextTooltipProps<F extends HTMLElement | undefined = undefined> = Omit<
+  InlinePopoverProps<F>,
+  'position' | 'width'
+> &
   Pick<ThemeProps, 'contrast'> &
   Pick<TextTooltipContentProps, 'scrollable' | 'width'> & {
     position?: AnyPosition;
@@ -29,7 +32,7 @@ export type InlineTextTooltipProps<F extends HTMLElement> = Omit<InlinePopoverPr
  * @template F
  * @param F The HTML element type of the focusRef
  */
-export function InlineTextTooltip<F extends HTMLElement>({
+export function InlineTextTooltip<F extends HTMLElement | undefined = undefined>({
   children,
   contrast = false,
   layout,
@@ -42,7 +45,6 @@ export function InlineTextTooltip<F extends HTMLElement>({
   triangleBorderWidth,
   triangleSize,
   width,
-  withChildrenProps,
   ...props
 }: InlineTextTooltipProps<F>): React.ReactElement {
   const themeId = useThemeId(initThemeId);
@@ -54,7 +56,6 @@ export function InlineTextTooltip<F extends HTMLElement>({
     <InlinePopover<F>
       centered
       isTooltip
-      withChildrenProps
       offset={offset}
       position={position}
       renderChildren={({ close, focusRef, isTogglerFocused, offset, position, visible }) => {
@@ -80,7 +81,7 @@ export function InlineTextTooltip<F extends HTMLElement>({
               themeId={themeId}
               width={width}
             >
-              {withChildrenProps
+              {renderChildren
                 ? renderFromPropWithFallback<PopoverRenderChildrenProps<InlinePopoverContentHTMLElement, F>>(
                     renderChildren!,
                     {

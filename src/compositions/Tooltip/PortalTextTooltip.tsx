@@ -8,7 +8,10 @@ import { getTooltipOffset } from './utils';
 import { getTextTooltipColors, TextTooltipContent, TextTooltipContentProps } from './TextTooltipContent';
 import { TooltipContent } from './TooltipContent';
 
-export type PortalTextTooltipProps<F extends HTMLElement> = Omit<PortalPopoverProps<F>, 'position' | 'width'> &
+export type PortalTextTooltipProps<F extends HTMLElement | undefined = undefined> = Omit<
+  PortalPopoverProps<F>,
+  'position' | 'width'
+> &
   Pick<ThemeProps, 'contrast'> &
   Pick<TextTooltipContentProps, 'scrollable' | 'width'> & {
     position?: AnyPosition;
@@ -29,7 +32,7 @@ export type PortalTextTooltipProps<F extends HTMLElement> = Omit<PortalPopoverPr
  * @template F
  * @param {F} - The HTML element type of the focusRef
  */
-export function PortalTextTooltip<F extends HTMLElement>({
+export function PortalTextTooltip<F extends HTMLElement | undefined = undefined>({
   children,
   contrast = false,
   layout,
@@ -42,7 +45,6 @@ export function PortalTextTooltip<F extends HTMLElement>({
   triangleBorderWidth,
   triangleSize,
   width,
-  withChildrenProps,
   ...props
 }: PortalTextTooltipProps<F>): React.ReactElement {
   const themeId = useThemeId(initThemeId);
@@ -54,7 +56,6 @@ export function PortalTextTooltip<F extends HTMLElement>({
     <PortalPopover<F>
       centered
       isTooltip
-      withChildrenProps
       offset={offset}
       position={position}
       renderChildren={({ close, focusRef, isTogglerFocused, offset, position, visible }) => {
@@ -80,7 +81,7 @@ export function PortalTextTooltip<F extends HTMLElement>({
               themeId={themeId}
               width={width}
             >
-              {withChildrenProps
+              {renderChildren
                 ? renderFromPropWithFallback<PopoverRenderChildrenProps<HTMLDivElement, F>>(renderChildren!, {
                     close,
                     focusRef,

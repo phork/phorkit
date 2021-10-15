@@ -30,7 +30,6 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
         <PortalTooltip
           initialVisible
           permanent
-          withChildrenProps
           height={80}
           layout="vertical"
           portal="fixed"
@@ -972,7 +971,6 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
   <ThemeWrapper withThemeId>
     {({ themeId }) => (
       <PortalTooltip
-        withChildrenProps
         offset={{ horizontal: 20 }}
         position="right-center"
         renderChildren={({ close }) => (
@@ -1044,7 +1042,6 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
           <InlineTextTooltip
             focusable
             hoverable
-            withChildrenProps
             position="bottom-center"
             renderChildren={({ focusRef }) => (
               <React.Fragment>

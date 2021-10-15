@@ -6,7 +6,10 @@ import { InlinePopoverContentHTMLElement, PopoverRenderChildrenProps } from '../
 import { getTooltipOffset } from './utils';
 import { TooltipContent } from './TooltipContent';
 
-export type InlineTooltipProps<F extends HTMLElement> = Omit<InlinePopoverProps<F>, 'position'> & {
+export type InlineTooltipProps<F extends HTMLElement | undefined = undefined> = Omit<
+  InlinePopoverProps<F>,
+  'position'
+> & {
   position?: AnyPosition;
   tooltipClassName?: string;
   triangleBorderColor?: string;
@@ -24,7 +27,7 @@ export type InlineTooltipProps<F extends HTMLElement> = Omit<InlinePopoverProps<
  * @template F
  * @param F The HTML element type of the focusRef
  */
-export function InlineTooltip<F extends HTMLElement>({
+export function InlineTooltip<F extends HTMLElement | undefined = undefined>({
   children,
   layout,
   offset: initOffset,
@@ -35,7 +38,6 @@ export function InlineTooltip<F extends HTMLElement>({
   triangleBorderWidth,
   triangleColor,
   triangleSize,
-  withChildrenProps,
   ...props
 }: InlineTooltipProps<F>): React.ReactElement {
   const offset = initOffset || getTooltipOffset({ position, layout });
@@ -44,7 +46,6 @@ export function InlineTooltip<F extends HTMLElement>({
     <InlinePopover<F>
       centered
       isTooltip
-      withChildrenProps
       offset={offset}
       position={position}
       renderChildren={({ close, focusRef, isTogglerFocused, offset, position, visible }) => {
@@ -63,7 +64,7 @@ export function InlineTooltip<F extends HTMLElement>({
             triangleColor={triangleColor}
             triangleSize={triangleSize}
           >
-            {withChildrenProps
+            {renderChildren
               ? renderFromPropWithFallback<PopoverRenderChildrenProps<InlinePopoverContentHTMLElement, F>>(
                   renderChildren!,
                   {

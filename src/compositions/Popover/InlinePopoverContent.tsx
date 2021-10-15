@@ -5,14 +5,14 @@ import { lowerCamelize } from '../../utils/case';
 import styles from './styles/Popover.module.css';
 import { PopoverContentProps, InlinePopoverContentHTMLElement } from './types';
 
-export type InlinePopoverContentProps<F extends HTMLElement> = Pick<
+export type InlinePopoverContentProps<F extends HTMLElement | undefined = undefined> = Pick<
   UseAbsoluteCoordsProps,
   'centered' | 'offset' | 'position'
 > &
   Omit<PopoverContentProps<InlinePopoverContentHTMLElement, F>, 'close' | 'isTogglerFocused'> &
   React.HTMLAttributes<HTMLDivElement>;
 
-export function InlinePopoverContentBase<F extends HTMLElement>(
+export function InlinePopoverContentBase<F extends HTMLElement | undefined = undefined>(
   {
     alwaysRender,
     centered,
@@ -66,7 +66,9 @@ export function InlinePopoverContentBase<F extends HTMLElement>(
  *
  * This uses the `useAbsoluteCoords` hook.
  */
-export const InlinePopoverContent = React.forwardRef(InlinePopoverContentBase) as <F extends HTMLElement>(
+export const InlinePopoverContent = React.forwardRef(InlinePopoverContentBase) as <
+  F extends HTMLElement | undefined = undefined,
+>(
   p: InlinePopoverContentProps<F> & { ref?: React.Ref<InlinePopoverContentHTMLElement> },
 ) => React.ReactElement<InlinePopoverContentHTMLElement>;
 

@@ -9,7 +9,7 @@ import { InlinePopoverContentHTMLElement, PopoverRenderChildrenProps } from '../
 import styles from './styles/Dropover.module.css';
 import { DropoverLabelProps } from './DropoverLabel';
 
-export type InlineDropoverProps<F extends HTMLElement> = Omit<
+export type InlineDropoverProps<F extends HTMLElement | undefined = undefined> = Omit<
   InlinePopoverProps<F>,
   'centered' | 'layout' | 'position' | 'toggler' | 'withPopoverTogglerProps'
 > & {
@@ -34,7 +34,7 @@ export const defaultInlineOffset = {
  * @param {T} - The HTML element type of the toggleRef
  * @param {F} - The HTML element type of the focusRef
  */
-export function InlineDropover<T extends HTMLElement, F extends HTMLElement>({
+export function InlineDropover<T extends HTMLElement, F extends HTMLElement | undefined = undefined>({
   align = 'left',
   children,
   className,
@@ -44,7 +44,6 @@ export function InlineDropover<T extends HTMLElement, F extends HTMLElement>({
   renderChildren,
   themeId: initThemeId,
   width = 240,
-  withChildrenProps = false,
   ...props
 }: InlineDropoverProps<F>): React.ReactElement {
   const themeId = useThemeId(initThemeId);
@@ -64,7 +63,6 @@ export function InlineDropover<T extends HTMLElement, F extends HTMLElement>({
   return (
     <InlinePopover<F>
       centered
-      withChildrenProps
       withPopoverTogglerProps
       className={cx(styles.dropover, themeId && styles[`dropover--${themeId}`], className)}
       height={height}
@@ -77,7 +75,7 @@ export function InlineDropover<T extends HTMLElement, F extends HTMLElement>({
 
         return (
           <React.Fragment>
-            {withChildrenProps
+            {renderChildren
               ? renderFromPropWithFallback<PopoverRenderChildrenProps<InlinePopoverContentHTMLElement, F>>(
                   renderChildren!,
                   {
