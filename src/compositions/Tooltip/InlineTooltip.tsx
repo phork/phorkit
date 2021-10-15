@@ -2,11 +2,11 @@ import React from 'react';
 import { AnyPosition } from '../../types';
 import { renderFromPropWithFallback } from '../../utils';
 import { InlinePopover, InlinePopoverProps } from '../Popover/InlinePopover';
-import { PopoverRenderChildrenProps } from '../Popover/types';
+import { InlinePopoverContentHTMLElement, PopoverRenderChildrenProps } from '../Popover/types';
 import { getTooltipOffset } from './utils';
 import { TooltipContent } from './TooltipContent';
 
-export type InlineTooltipProps = Omit<InlinePopoverProps, 'position'> & {
+export type InlineTooltipProps<F extends HTMLElement> = Omit<InlinePopoverProps<F>, 'position'> & {
   position?: AnyPosition;
   tooltipClassName?: string;
   triangleBorderColor?: string;
@@ -20,8 +20,11 @@ export type InlineTooltipProps = Omit<InlinePopoverProps, 'position'> & {
  * with an arrow pointing towards the toggler.
  *
  * This uses the Popover and InlinePopover components.
+ *
+ * @template F
+ * @param F The HTML element type of the focusRef
  */
-export function InlineTooltip({
+export function InlineTooltip<F extends HTMLElement>({
   children,
   layout,
   offset: initOffset,
@@ -34,17 +37,17 @@ export function InlineTooltip({
   triangleSize,
   withChildrenProps,
   ...props
-}: InlineTooltipProps): React.ReactElement {
+}: InlineTooltipProps<F>): React.ReactElement {
   const offset = initOffset || getTooltipOffset({ position, layout });
 
   return (
-    <InlinePopover
+    <InlinePopover<F>
       centered
       isTooltip
       withChildrenProps
       offset={offset}
       position={position}
-      renderChildren={({ close, focusable, focusRef, isTogglerFocused, offset, position, visible }) => {
+      renderChildren={({ close, focusRef, isTogglerFocused, offset, position, visible }) => {
         if (position === 'stacked' || position === 'stacked-right') {
           throw new Error('Invalid tooltip position');
         }
@@ -61,14 +64,17 @@ export function InlineTooltip({
             triangleSize={triangleSize}
           >
             {withChildrenProps
-              ? renderFromPropWithFallback<PopoverRenderChildrenProps>(renderChildren!, {
-                  close,
-                  focusRef: focusable ? focusRef : undefined,
-                  isTogglerFocused,
-                  offset,
-                  position,
-                  visible,
-                })
+              ? renderFromPropWithFallback<PopoverRenderChildrenProps<InlinePopoverContentHTMLElement, F>>(
+                  renderChildren!,
+                  {
+                    close,
+                    focusRef,
+                    isTogglerFocused,
+                    offset,
+                    position,
+                    visible,
+                  },
+                )
               : children}
           </TooltipContent>
         );

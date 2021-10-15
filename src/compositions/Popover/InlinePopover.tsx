@@ -3,21 +3,26 @@ import { MergeProps } from '../../types/utils';
 import { renderFromPropWithFallback } from '../../utils';
 import { InlinePopoverContent, InlinePopoverContentProps } from './InlinePopoverContent';
 import { Popover, PopoverProps } from './Popover';
-import { PopoverContentPropsChildren, PopoverContentPropsRenderChildren, PopoverRenderChildrenProps } from './types';
+import {
+  PopoverContentPropsChildren,
+  PopoverContentPropsRenderChildren,
+  PopoverRenderChildrenProps,
+  InlinePopoverContentHTMLElement,
+} from './types';
 
-export type CommonInlinePopoverProps = MergeProps<
+export type CommonInlinePopoverProps<F extends HTMLElement> = MergeProps<
   Omit<
-    InlinePopoverContentProps,
+    InlinePopoverContentProps<F>,
     'close' | 'focusRef' | 'isTogglerFocused' | 'offset' | 'position' | 'relativeRef' | 'visible'
   >,
-  Omit<PopoverProps, 'renderContent'>
+  Omit<PopoverProps<InlinePopoverContentHTMLElement, F>, 'renderContent'>
 > & {
   contentClassName?: string;
   contentStyle?: React.CSSProperties;
 };
 
-export type InlinePopoverProps = CommonInlinePopoverProps &
-  (PopoverContentPropsChildren | PopoverContentPropsRenderChildren);
+export type InlinePopoverProps<F extends HTMLElement> = CommonInlinePopoverProps<F> &
+  (PopoverContentPropsChildren | PopoverContentPropsRenderChildren<InlinePopoverContentHTMLElement, F>);
 
 /**
  * An inline popover extends the `Popover` component and
@@ -28,7 +33,7 @@ export type InlinePopoverProps = CommonInlinePopoverProps &
  * the popover visibility state is controlled internally
  * by the `Popover` component.
  */
-export function InlinePopover({
+export function InlinePopover<F extends HTMLElement>({
   children,
   className,
   closeDelay,
@@ -52,9 +57,9 @@ export function InlinePopover({
   withoutTogglerFocusStyle,
   withPopoverTogglerProps,
   ...props
-}: InlinePopoverProps) {
+}: InlinePopoverProps<F>) {
   return (
-    <Popover
+    <Popover<InlinePopoverContentHTMLElement, F>
       className={className}
       closeDelay={closeDelay}
       focusable={focusable}
@@ -68,12 +73,11 @@ export function InlinePopover({
       onOpen={onOpen}
       permanent={permanent}
       position={position}
-      renderContent={({ close, focusable, focusRef, isTogglerFocused, offset, position, visible, ...contentProps }) => {
+      renderContent={({ close, focusRef, isTogglerFocused, offset, position, visible, ...contentProps }) => {
         return (
-          <InlinePopoverContent
+          <InlinePopoverContent<F>
             className={contentClassName}
             focusRef={focusRef}
-            focusable={focusable}
             offset={offset}
             position={position}
             style={contentStyle}
@@ -82,15 +86,17 @@ export function InlinePopover({
             {...props}
           >
             {withChildrenProps
-              ? renderFromPropWithFallback<PopoverRenderChildrenProps>(renderChildren!, {
-                  close,
-                  focusable,
-                  focusRef: focusable ? focusRef : undefined,
-                  isTogglerFocused,
-                  offset,
-                  position,
-                  visible,
-                })
+              ? renderFromPropWithFallback<PopoverRenderChildrenProps<InlinePopoverContentHTMLElement, F>>(
+                  renderChildren!,
+                  {
+                    close,
+                    focusRef,
+                    isTogglerFocused,
+                    offset,
+                    position,
+                    visible,
+                  },
+                )
               : children}
           </InlinePopoverContent>
         );

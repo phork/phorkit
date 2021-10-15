@@ -52,11 +52,6 @@ export type UseInteractiveGroupProps<T extends InteractiveGroupItemId = string> 
   triggerLinks?: boolean;
 };
 
-/**
- * - T is the type of IDs allowed
- * - E is the type of the element that the returned ref gets attached to
- * - I is the type of item element
- */
 export type UseInteractiveGroupResponse<
   T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,
@@ -98,6 +93,11 @@ export type UseInteractiveGroupResponse<
  * then an `onSelect` callback is fired for every ID
  * that was added, and finally the `onSelectionChange`
  * callback is fired once.
+ *
+ * @template T,E,I
+ * @param {T} - The type of item IDs allowed
+ * @param {E} - The HTML element type that the returned ref gets attached to
+ * @param {I} - The HTML element type of the items
  */
 export function useInteractiveGroup<
   T extends InteractiveGroupItemId = string,

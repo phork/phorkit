@@ -5,9 +5,7 @@ import { InteractiveGroupItemId } from './types';
 import { useInteractiveGroup, UseInteractiveGroupProps, UseInteractiveGroupResponse } from './useInteractiveGroup';
 
 /**
- * - T is the type of IDs allowed
- * - E is the type of the element that the returned ref gets attached to
- * - I is the type of item element
+
  */
 export type PartialInteractiveGroupProviderProps<
   T extends InteractiveGroupItemId = string,
@@ -38,6 +36,11 @@ export type PartialInteractiveGroupProviderProps<
  * items are selected on load, but after that the state is
  * stored internally. The `onSelectionChange`, `onSelect` or
  * `onUnselect` callbacks can be used by the parent.
+ *
+ * @template T,E,I
+ * @param {T} - The type of item IDs allowed
+ * @param {E} - The HTML element type that the returned ref gets attached to
+ * @param {I} - The HTML element type of the items
  */
 export function PartialInteractiveGroupProvider<
   T extends InteractiveGroupItemId = string,

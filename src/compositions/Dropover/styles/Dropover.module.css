@@ -16,6 +16,10 @@
   }
 }
 
+.dropoverLabel--hidden {
+  opacity: 0;
+}
+
 /**
  * 1. Recreate the label on top of the dropover
  *    in portal mode because it gets covered up.
@@ -25,7 +29,7 @@
   top: 0;
   z-index: 100;
 }
- 
+
 .dropoverContentLabel--alignLeft {
   left: 0;
 }

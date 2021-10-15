@@ -15,13 +15,23 @@ export type AbsoluteCoordsTranslations = {
 };
 
 export type GetAbsoluteCoordsProps = {
+  /** The bounds rectangle of the source element */
   bounds: DOMRect;
+  /** This will add translateX and translateY so the destination position will be centered */
   centered?: boolean;
   fixed?: boolean;
+  /** The number of pixels to offset the destination position by */
   offset?: { top?: number; bottom?: number; left?: number; right?: number };
+  /** The position of the result relative to the source element */
   position: AnyPosition | StackedPosition;
 };
 
+/**
+ * This accept a bounds rectangle of a source element and
+ * returns a CSS object that can be used to absolutely
+ * position a destination element so that it appears to
+ * be relative to the source element.
+ */
 export function getAbsoluteCoords({
   bounds,
   centered,

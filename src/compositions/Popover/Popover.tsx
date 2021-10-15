@@ -28,38 +28,23 @@ export type PopoverTogglerProps = {
   visible?: boolean;
 };
 
-export type PopoverRenderContentProps = Pick<
-  PopoverContentProps,
-  | 'close'
-  | 'focusable'
-  | 'focusRef'
-  | 'isTogglerFocused'
-  | 'offset'
-  | 'onMouseEnter'
-  | 'position'
-  | 'relativeRef'
-  | 'visible'
+export type PopoverRenderContentProps<C extends HTMLElement, F extends HTMLElement> = Pick<
+  PopoverContentProps<C, F>,
+  'close' | 'focusRef' | 'isTogglerFocused' | 'offset' | 'onMouseEnter' | 'position' | 'relativeRef' | 'visible'
 > &
-  Required<Pick<PopoverContentProps, 'offset'>> & {
+  Required<Pick<PopoverContentProps<C, F>, 'offset'>> & {
     'aria-hidden': boolean;
+    focusable?: boolean;
     id: string;
-    ref: (node: HTMLElement | null) => void;
+    ref: (node: C | null) => void;
     role: 'tooltip' | 'dialog';
   };
 
-/**
- * The popover component renders an element that is
- * used to toggle the popover from visible to hidden
- * as well as the `PopoverContent` itself which is
- * positioned relative to the toggle.
- *
- * A popover can be toggled via click (default) or
- * by hovering over the toggle if the hoverable prop
- * it set.
- */
-export type PopoverProps = ThemeProps & {
+export type PopoverProps<C extends HTMLElement, F extends HTMLElement> = Omit<ThemeProps, 'contrast' | 'unthemed'> & {
   className?: string;
+  /** The number of milliseconds to delay before closing the popover */
   closeDelay?: number;
+  /** If a popover is focusable it steals the focus away from its launcher and returns it on close */
   focusable?: boolean;
   /** Popovers are show own click by default unless hoverable is true */
   hoverable?: boolean;
@@ -69,7 +54,7 @@ export type PopoverProps = ThemeProps & {
   initialVisible?: boolean;
   /** If the popover is a tooltip it will have different aria props */
   isTooltip?: boolean;
-  /** An layout orientation can be used to position the popup if a position isn't set */
+  /** A layout orientation can be used to position the popup if a position isn't set */
   layout?: Orientation;
   offset?: {
     horizontal: number;
@@ -81,17 +66,31 @@ export type PopoverProps = ThemeProps & {
   permanent?: boolean;
   position?: AnyPosition | StackedPosition;
   /** A function to render the actual popover and set its positioning */
-  renderContent: (props: PopoverRenderContentProps) => React.ReactNode;
+  renderContent: (props: PopoverRenderContentProps<C, F>) => React.ReactNode;
   style?: React.CSSProperties;
   /** The element that's clicked or hovered to open and close the popover */
   toggler: RenderFromPropElement<PopoverTogglerProps>;
   /** If the toggler handles the focus styles this can be used to hide the standard focus outline */
   withoutTogglerFocusStyle?: boolean;
-  /** Pass extra props to the toggler (to be used with ForwardProps) */
+  /** Pass extra props to the toggler (can be used with ForwardProps) */
   withPopoverTogglerProps?: boolean;
 };
 
-export function Popover({
+/**
+ * The popover component renders an element that is
+ * used to toggle the popover from visible to hidden
+ * as well as the `PopoverContent` itself which is
+ * positioned relative to the toggle.
+ *
+ * A popover can be toggled via click (default) or
+ * by hovering over the toggle if the hoverable prop
+ * it set.
+ *
+ * @template C,F
+ * @param {C} - The HTML element type of the contentRef
+ * @param {F} - The HTML element type of the focusRef
+ */
+export function Popover<C extends HTMLElement, F extends HTMLElement>({
   className,
   closeDelay = 500,
   focusable = false,
@@ -99,7 +98,7 @@ export function Popover({
   ignoreClickOutside = false,
   initialVisible,
   isTooltip = false,
-  layout,
+  layout = 'vertical',
   offset: initOffset = {
     horizontal: 0,
     vertical: 0,
@@ -115,17 +114,23 @@ export function Popover({
   withoutTogglerFocusStyle = false,
   withPopoverTogglerProps = false,
   ...props
-}: PopoverProps): React.ReactElement<PopoverProps> {
+}: PopoverProps<C, F>): React.ReactElement<PopoverProps<C, F>> {
   const accessible = useAccessibility();
   const themeId = useThemeId(initThemeId);
   const { setSafeTimeout, clearSafeTimeout } = useSafeTimeout();
   const { changeFocus, returnFocus } = useFocusReturn();
   const [isTogglerFocused, setIsTogglerFocused] = useState<boolean>(false);
   const [hasContentRef, setHasContentRef] = useState<boolean>();
-  const contentRef = useRef<HTMLElement>(null!);
-  const focusRef = useRef<HTMLElement>(null!);
+  const contentRef = useRef<C>(null!);
+  const focusRef = useRef<F>(null!);
   const previous = useRef<{ isComponentVisible?: boolean; hasContentRef?: boolean }>({});
   const clickOutsideExclusions = useRef<HTMLElement[]>();
+
+  // use the onHide callback rather than a useEffect listener so isFocusWithin runs before the popover is hidden
+  const handleHide = useCallback(() => {
+    focusable && isFocusWithin(contentRef.current) && returnFocus();
+    onClose && onClose();
+  }, [focusable, onClose, returnFocus]);
 
   const {
     ref: relativeRef,
@@ -134,6 +139,7 @@ export function Popover({
   } = useComponentVisible<HTMLDivElement>({
     ignoreClickOutside,
     initialVisible,
+    onHide: handleHide,
     permanent,
     clickOutsideExclusions: clickOutsideExclusions.current,
     stopPropagation: true,
@@ -147,7 +153,7 @@ export function Popover({
   const { componentId, generateTogglerId } = usePopoverComponentIds();
 
   // update the state to force a re-render when the content ref renders; exclude the content ref from triggering a close on click
-  const setContentRef = (node: HTMLElement | null) => {
+  const setContentRef = useCallback((node: C | null) => {
     if (node !== null) {
       contentRef.current = node;
 
@@ -159,7 +165,7 @@ export function Popover({
     } else {
       setHasContentRef(false);
     }
-  };
+  }, []);
 
   const cancelClose = () => {
     clearSafeTimeout(CLOSE_TIMEOUT_ID);
@@ -245,26 +251,21 @@ export function Popover({
     return renderFromProp<PopoverTogglerProps>(toggler, togglerProps, { createFromString: true });
   };
 
-  // reset the focus if the visibility changes or when the contentRef value is set on initial render (needed for portals)
+  // change the focus if the visibility changes or when the contentRef value is set on initial render (needed for portals)
   useEffect(() => {
     if (
       previous.current.isComponentVisible !== isComponentVisible ||
       (!previous.current.hasContentRef && hasContentRef && isComponentVisible)
     ) {
-      if (isComponentVisible) {
-        if (hasContentRef) {
-          if (focusable) {
-            if (focusRef.current) {
-              changeFocus(focusRef.current);
-            } else if (contentRef.current) {
-              changeFocus(getFirstFocusableElement(contentRef.current));
-            }
+      if (isComponentVisible && hasContentRef) {
+        if (focusable) {
+          if (focusRef.current) {
+            changeFocus(focusRef.current);
+          } else if (contentRef.current) {
+            changeFocus(getFirstFocusableElement(contentRef.current));
           }
-          onOpen && onOpen();
         }
-      } else {
-        focusable && isFocusWithin(contentRef.current) && returnFocus();
-        onClose && onClose();
+        onOpen && onOpen();
       }
     }
     previous.current.isComponentVisible = isComponentVisible;
@@ -286,8 +287,7 @@ export function Popover({
         renderContent({
           'aria-hidden': !isComponentVisible,
           close: closePopover,
-          focusable,
-          focusRef,
+          focusRef: focusable ? focusRef : undefined,
           id: componentId,
           isTogglerFocused,
           offset,

@@ -1,14 +1,15 @@
 import React from 'react';
-import { AnyPosition } from '../../types';
+import { AnyPosition, ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import { renderFromPropWithFallback } from '../../utils';
 import { InlinePopover, InlinePopoverProps } from '../Popover/InlinePopover';
-import { PopoverRenderChildrenProps } from '../Popover/types';
+import { InlinePopoverContentHTMLElement, PopoverRenderChildrenProps } from '../Popover/types';
 import { getTooltipOffset } from './utils';
 import { getTextTooltipColors, TextTooltipContent, TextTooltipContentProps } from './TextTooltipContent';
 import { TooltipContent } from './TooltipContent';
 
-export type InlineTextTooltipProps = Omit<InlinePopoverProps, 'position' | 'width'> &
+export type InlineTextTooltipProps<F extends HTMLElement> = Omit<InlinePopoverProps<F>, 'position' | 'width'> &
+  Pick<ThemeProps, 'contrast'> &
   Pick<TextTooltipContentProps, 'scrollable' | 'width'> & {
     position?: AnyPosition;
     tooltipClassName?: string;
@@ -24,8 +25,11 @@ export type InlineTextTooltipProps = Omit<InlinePopoverProps, 'position' | 'widt
  * component to define the colors, sizing and spacing.
  *
  * This uses the Popover and InlinePopover components.
+ *
+ * @template F
+ * @param F The HTML element type of the focusRef
  */
-export function InlineTextTooltip({
+export function InlineTextTooltip<F extends HTMLElement>({
   children,
   contrast = false,
   layout,
@@ -40,20 +44,20 @@ export function InlineTextTooltip({
   width,
   withChildrenProps,
   ...props
-}: InlineTextTooltipProps): React.ReactElement {
+}: InlineTextTooltipProps<F>): React.ReactElement {
   const themeId = useThemeId(initThemeId);
   const { backgroundColor, borderColor } = getTextTooltipColors(themeId, contrast);
 
   const offset = initOffset || getTooltipOffset({ position, layout });
 
   return (
-    <InlinePopover
+    <InlinePopover<F>
       centered
       isTooltip
       withChildrenProps
       offset={offset}
       position={position}
-      renderChildren={({ close, focusable, focusRef, isTogglerFocused, offset, position, visible }) => {
+      renderChildren={({ close, focusRef, isTogglerFocused, offset, position, visible }) => {
         if (position === 'stacked' || position === 'stacked-right') {
           throw new Error('Invalid tooltip position');
         }
@@ -77,14 +81,17 @@ export function InlineTextTooltip({
               width={width}
             >
               {withChildrenProps
-                ? renderFromPropWithFallback<PopoverRenderChildrenProps>(renderChildren!, {
-                    close,
-                    focusRef: focusable ? focusRef : undefined,
-                    isTogglerFocused,
-                    offset,
-                    position,
-                    visible,
-                  })
+                ? renderFromPropWithFallback<PopoverRenderChildrenProps<InlinePopoverContentHTMLElement, F>>(
+                    renderChildren!,
+                    {
+                      close,
+                      focusRef,
+                      isTogglerFocused,
+                      offset,
+                      position,
+                      visible,
+                    },
+                  )
                 : children}
             </TextTooltipContent>
           </TooltipContent>

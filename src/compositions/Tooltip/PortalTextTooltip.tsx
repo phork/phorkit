@@ -1,5 +1,5 @@
 import React from 'react';
-import { AnyPosition } from '../../types';
+import { AnyPosition, ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import { renderFromPropWithFallback } from '../../utils';
 import { PortalPopover, PortalPopoverProps } from '../Popover/PortalPopover';
@@ -8,7 +8,8 @@ import { getTooltipOffset } from './utils';
 import { getTextTooltipColors, TextTooltipContent, TextTooltipContentProps } from './TextTooltipContent';
 import { TooltipContent } from './TooltipContent';
 
-export type PortalTextTooltipProps = Omit<PortalPopoverProps, 'position' | 'width'> &
+export type PortalTextTooltipProps<F extends HTMLElement> = Omit<PortalPopoverProps<F>, 'position' | 'width'> &
+  Pick<ThemeProps, 'contrast'> &
   Pick<TextTooltipContentProps, 'scrollable' | 'width'> & {
     position?: AnyPosition;
     tooltipClassName?: string;
@@ -24,8 +25,11 @@ export type PortalTextTooltipProps = Omit<PortalPopoverProps, 'position' | 'widt
  * component to define the colors, sizing and spacing.
  *
  * This uses the Popover and PortalPopover components.
+ *
+ * @template F
+ * @param {F} - The HTML element type of the focusRef
  */
-export function PortalTextTooltip({
+export function PortalTextTooltip<F extends HTMLElement>({
   children,
   contrast = false,
   layout,
@@ -40,20 +44,20 @@ export function PortalTextTooltip({
   width,
   withChildrenProps,
   ...props
-}: PortalTextTooltipProps): React.ReactElement {
+}: PortalTextTooltipProps<F>): React.ReactElement {
   const themeId = useThemeId(initThemeId);
   const { backgroundColor, borderColor } = getTextTooltipColors(themeId, contrast);
 
   const offset = initOffset || getTooltipOffset({ position, layout });
 
   return (
-    <PortalPopover
+    <PortalPopover<F>
       centered
       isTooltip
       withChildrenProps
       offset={offset}
       position={position}
-      renderChildren={({ close, focusable, focusRef, isTogglerFocused, offset, position, visible }) => {
+      renderChildren={({ close, focusRef, isTogglerFocused, offset, position, visible }) => {
         if (position === 'stacked' || position === 'stacked-right') {
           throw new Error('Invalid tooltip position');
         }
@@ -77,9 +81,9 @@ export function PortalTextTooltip({
               width={width}
             >
               {withChildrenProps
-                ? renderFromPropWithFallback<PopoverRenderChildrenProps>(renderChildren!, {
+                ? renderFromPropWithFallback<PopoverRenderChildrenProps<HTMLDivElement, F>>(renderChildren!, {
                     close,
-                    focusRef: focusable ? focusRef : undefined,
+                    focusRef,
                     isTogglerFocused,
                     offset,
                     position,

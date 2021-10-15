@@ -12,12 +12,9 @@ export type PortalProps = Pick<UseAbsoluteCoordsProps, 'centered' | 'offset' | '
     className?: string;
     /** This is the element that the portal will be rendered inside */
     container?: HTMLElement;
-    /** If a portal is focusable it steals the focus away from its launcher and returns it on close */
-    focusable?: boolean;
-    /** The focus ref is applied to the element that should get the focus when the portal opens */
-    focusRef?: React.Ref<HTMLElement>;
     height?: number;
     initialCoords?: UseAbsoluteCoordsProps['initialCoords'];
+    /** Observe the the changes of the relativeRef and reposition the portal accordingly */
     observe?: boolean;
     portal?: 'fixed' | 'absolute';
     /** The relative ref is the element that the portal will be positioned relative to */
@@ -25,6 +22,69 @@ export type PortalProps = Pick<UseAbsoluteCoordsProps, 'centered' | 'offset' | '
     visible?: boolean;
     width?: number | string;
   };
+
+export function PortalBase(
+  {
+    alwaysRender = false,
+    centered = false,
+    children,
+    className,
+    container: initContainer,
+    height,
+    initialCoords,
+    observe = false,
+    offset,
+    portal = 'absolute',
+    relativeRef,
+    position,
+    style,
+    visible = false,
+    width,
+    ...props
+  }: PortalProps,
+  forwardedRef: React.ForwardedRef<HTMLDivElement>,
+): React.ReactPortal | null {
+  const container = initContainer || (typeof document !== 'undefined' ? document.body : undefined);
+  const fixed = portal === 'fixed';
+  const { coords, update, subscribe, unsubscribe } = useAbsoluteCoords({
+    centered,
+    fixed,
+    initialCoords,
+    observe,
+    offset,
+    position,
+    ref: relativeRef,
+  });
+
+  useEffect(() => {
+    if (visible) {
+      fixed && observe ? subscribe() : update();
+    } else {
+      unsubscribe();
+    }
+  }, [fixed, observe, visible, subscribe, unsubscribe, update]);
+
+  return position && (visible || alwaysRender) && coords && container
+    ? ReactDOM.createPortal(
+        /* eslint-disable react/jsx-indent */
+        <div
+          className={cx(styles.portal, visible && styles['is-visible'], className)}
+          ref={forwardedRef}
+          style={{
+            height: height && `${height}px`,
+            width: width && `${width}px`,
+            ...style,
+            ...coords,
+          }}
+          {...props}
+        >
+          {children}
+        </div>,
+        /* eslint-enable react/jsx-indent */
+        container,
+      )
+    : null;
+}
 
 /**
  * A portal is a container for some content that needs
@@ -37,71 +97,7 @@ export type PortalProps = Pick<UseAbsoluteCoordsProps, 'centered' | 'offset' | '
  * the changes of the `relativeRef` element position
  * and will reposition itself accordingly.
  */
-export const Portal = React.forwardRef<HTMLDivElement, PortalProps>(
-  (
-    {
-      alwaysRender = false,
-      centered = false,
-      children,
-      className,
-      container: initContainer,
-      focusable = false,
-      focusRef,
-      height,
-      initialCoords,
-      observe = false,
-      offset,
-      portal = 'absolute',
-      relativeRef,
-      position,
-      style,
-      visible = false,
-      width,
-      ...props
-    },
-    forwardedRef,
-  ): React.ReactPortal | null => {
-    const container = initContainer || (typeof document !== 'undefined' ? document.body : undefined);
-    const fixed = portal === 'fixed';
-    const { coords, update, subscribe, unsubscribe } = useAbsoluteCoords({
-      centered,
-      fixed,
-      initialCoords,
-      observe,
-      offset,
-      position,
-      ref: relativeRef,
-    });
+export const Portal = React.forwardRef(PortalBase);
 
-    useEffect(() => {
-      if (visible) {
-        fixed && observe ? subscribe() : update();
-      } else {
-        unsubscribe();
-      }
-    }, [fixed, observe, visible, subscribe, unsubscribe, update]);
-
-    return position && (visible || alwaysRender) && coords && container
-      ? ReactDOM.createPortal(
-          /* eslint-disable react/jsx-indent */
-          <div
-            className={cx(styles.portal, visible && styles['is-visible'], className)}
-            ref={forwardedRef}
-            style={{
-              height: height && `${height}px`,
-              width: width && `${width}px`,
-              ...style,
-              ...coords,
-            }}
-            {...props}
-          >
-            {children}
-          </div>,
-          /* eslint-enable react/jsx-indent */
-          container,
-        )
-      : null;
-  },
-);
-
+// note that the base element cannot have a displayName because it breaks Storybook
 Portal.displayName = 'Portal';

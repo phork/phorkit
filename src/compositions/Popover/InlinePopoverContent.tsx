@@ -3,62 +3,62 @@ import React from 'react';
 import { UseAbsoluteCoordsProps } from '../../hooks/useAbsoluteCoords';
 import { lowerCamelize } from '../../utils/case';
 import styles from './styles/Popover.module.css';
-import { PopoverContentProps } from './types';
+import { PopoverContentProps, InlinePopoverContentHTMLElement } from './types';
 
-export type InlinePopoverContentProps = Pick<UseAbsoluteCoordsProps, 'centered' | 'offset' | 'position'> &
-  Omit<PopoverContentProps, 'close' | 'isTogglerFocused'> &
+export type InlinePopoverContentProps<F extends HTMLElement> = Pick<
+  UseAbsoluteCoordsProps,
+  'centered' | 'offset' | 'position'
+> &
+  Omit<PopoverContentProps<InlinePopoverContentHTMLElement, F>, 'close' | 'isTogglerFocused'> &
   React.HTMLAttributes<HTMLDivElement>;
 
-const InlinePopoverContentBase = React.forwardRef<HTMLDivElement, InlinePopoverContentProps>(
-  (
-    {
-      alwaysRender,
-      centered,
-      children,
-      className,
-      height,
-      offset,
-      position,
-      style,
-      visible,
-      width,
+export function InlinePopoverContentBase<F extends HTMLElement>(
+  {
+    alwaysRender,
+    centered,
+    children,
+    className,
+    height,
+    offset,
+    position,
+    style,
+    visible,
+    width,
 
-      // remove the following props from the rest props
-      focusable,
-      focusRef,
-      observe,
-      relativeRef,
+    // remove the following props from the rest props
+    focusRef,
+    observe,
+    relativeRef,
 
-      ...props
-    },
-    forwardedRef,
-  ): React.ReactElement<InlinePopoverContentProps> | null => {
-    return position && (visible || alwaysRender) ? (
-      <div
-        className={cx(
-          styles.popover,
-          styles[`popover--${lowerCamelize(position)}`],
-          centered && styles['popover--centered'],
-          visible && styles['is-visible'],
-          className,
-        )}
-        ref={forwardedRef}
-        style={{
-          height: height && `${height}px`,
-          width: width && `${width}px`,
-          ...(offset && offset.left && { marginLeft: `${offset.left}px` }),
-          ...(offset && offset.right && { marginRight: `${offset.right}px` }),
-          ...(offset && offset.top && { marginTop: `${offset.top}px` }),
-          ...(offset && offset.bottom && { marginBottom: `${offset.bottom}px` }),
-          ...style,
-        }}
-        {...props}
-      >
-        {children}
-      </div>
-    ) : null;
-  },
-);
+    ...props
+  }: InlinePopoverContentProps<F>,
+  forwardedRef: React.ForwardedRef<InlinePopoverContentHTMLElement>,
+): React.ReactElement<InlinePopoverContentProps<F>> | null {
+  return position && (visible || alwaysRender) ? (
+    <div
+      className={cx(
+        styles.popover,
+        styles[`popover--${lowerCamelize(position)}`],
+        centered && styles['popover--centered'],
+        visible && styles['is-visible'],
+        className,
+      )}
+      ref={forwardedRef}
+      style={{
+        height: height && `${height}px`,
+        width: width && `${width}px`,
+        ...(offset && offset.left && { marginLeft: `${offset.left}px` }),
+        ...(offset && offset.right && { marginRight: `${offset.right}px` }),
+        ...(offset && offset.top && { marginTop: `${offset.top}px` }),
+        ...(offset && offset.bottom && { marginBottom: `${offset.bottom}px` }),
+        ...style,
+      }}
+      {...props}
+    >
+      {children}
+    </div>
+  ) : null;
+}
 
 /**
  * The inline popover content positions the popover
@@ -66,7 +66,9 @@ const InlinePopoverContentBase = React.forwardRef<HTMLDivElement, InlinePopoverC
  *
  * This uses the `useAbsoluteCoords` hook.
  */
-export const InlinePopoverContent = React.memo<InlinePopoverContentProps>(InlinePopoverContentBase);
+export const InlinePopoverContent = React.forwardRef(InlinePopoverContentBase) as <F extends HTMLElement>(
+  p: InlinePopoverContentProps<F> & { ref?: React.Ref<InlinePopoverContentHTMLElement> },
+) => React.ReactElement<InlinePopoverContentHTMLElement>;
 
-InlinePopoverContentBase.displayName = 'InlinePopoverContentBase';
-InlinePopoverContent.displayName = 'InlinePopoverContent';
+// note that the base element cannot have a displayName because it breaks Storybook
+(InlinePopoverContent as React.NamedExoticComponent).displayName = 'InlinePopoverContent';
