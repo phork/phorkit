@@ -10,7 +10,7 @@ import {
   InlinePopoverContentHTMLElement,
 } from './types';
 
-export type CommonInlinePopoverProps<F extends HTMLElement> = MergeProps<
+export type CommonInlinePopoverProps<F extends HTMLElement | undefined = undefined> = MergeProps<
   Omit<
     InlinePopoverContentProps<F>,
     'close' | 'focusRef' | 'isTogglerFocused' | 'offset' | 'position' | 'relativeRef' | 'visible'
@@ -21,7 +21,7 @@ export type CommonInlinePopoverProps<F extends HTMLElement> = MergeProps<
   contentStyle?: React.CSSProperties;
 };
 
-export type InlinePopoverProps<F extends HTMLElement> = CommonInlinePopoverProps<F> &
+export type InlinePopoverProps<F extends HTMLElement | undefined = undefined> = CommonInlinePopoverProps<F> &
   (PopoverContentPropsChildren | PopoverContentPropsRenderChildren<InlinePopoverContentHTMLElement, F>);
 
 /**
@@ -32,8 +32,11 @@ export type InlinePopoverProps<F extends HTMLElement> = CommonInlinePopoverProps
  * This accepts `onClose` and `onOpen` callbacks, however
  * the popover visibility state is controlled internally
  * by the `Popover` component.
+ *
+ * @template F
+ * @param {F} - The HTML element type of the focusRef
  */
-export function InlinePopover<F extends HTMLElement>({
+export function InlinePopover<F extends HTMLElement | undefined = undefined>({
   children,
   className,
   closeDelay,
@@ -53,7 +56,6 @@ export function InlinePopover<F extends HTMLElement>({
   renderChildren,
   style,
   toggler,
-  withChildrenProps,
   withoutTogglerFocusStyle,
   withPopoverTogglerProps,
   ...props
@@ -85,7 +87,7 @@ export function InlinePopover<F extends HTMLElement>({
             {...contentProps}
             {...props}
           >
-            {withChildrenProps
+            {renderChildren
               ? renderFromPropWithFallback<PopoverRenderChildrenProps<InlinePopoverContentHTMLElement, F>>(
                   renderChildren!,
                   {

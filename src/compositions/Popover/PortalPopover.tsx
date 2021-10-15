@@ -9,7 +9,7 @@ import {
   PortalPopoverContentHTMLElement,
 } from './types';
 
-export type PortalPopoverProps<F extends HTMLElement> = Omit<
+export type PortalPopoverProps<F extends HTMLElement | undefined = undefined> = Omit<
   PopoverProps<PortalPopoverContentHTMLElement, F>,
   'renderContent'
 > &
@@ -33,7 +33,7 @@ export type PortalPopoverProps<F extends HTMLElement> = Omit<
  * @template F
  * @param {F} - The HTML element type of the focusRef
  */
-export function PortalPopover<F extends HTMLElement>({
+export function PortalPopover<F extends HTMLElement | undefined = undefined>({
   children,
   className,
   closeDelay,
@@ -56,7 +56,6 @@ export function PortalPopover<F extends HTMLElement>({
   toggler,
   withoutTogglerFocusStyle,
   withPopoverTogglerProps,
-  withChildrenProps,
   ...props
 }: PortalPopoverProps<F>) {
   return (
@@ -86,7 +85,7 @@ export function PortalPopover<F extends HTMLElement>({
             {...contentProps}
             {...props}
           >
-            {withChildrenProps
+            {renderChildren
               ? renderFromPropWithFallback<PopoverRenderChildrenProps<PortalPopoverContentHTMLElement, F>>(
                   renderChildren!,
                   {

@@ -7,7 +7,7 @@ import { PositionOffset } from './../../utils/getPositionOffset';
  * @param {C} - The HTML element type of the contentRef
  * @param {F} - The HTML element type of the focusRef
  */
-export type PopoverContentProps<C extends HTMLElement, F extends HTMLElement> = Pick<
+export type PopoverContentProps<C extends HTMLElement, F extends HTMLElement | undefined = undefined> = Pick<
   UseAbsoluteCoordsProps,
   'centered' | 'offset' | 'position'
 > &
@@ -25,7 +25,7 @@ export type PopoverContentProps<C extends HTMLElement, F extends HTMLElement> = 
     width?: number | string;
   };
 
-export type PopoverRenderChildrenProps<C extends HTMLElement, F extends HTMLElement> = Pick<
+export type PopoverRenderChildrenProps<C extends HTMLElement, F extends HTMLElement | undefined = undefined> = Pick<
   PopoverContentProps<C, F>,
   'close' | 'focusRef' | 'isTogglerFocused' | 'position' | 'visible'
 > & {
@@ -33,20 +33,16 @@ export type PopoverRenderChildrenProps<C extends HTMLElement, F extends HTMLElem
   offset: PositionOffset;
 };
 
-/** If withChildrenProps is true then it we need a renderChildren function */
-export type PopoverContentPropsRenderChildren<C extends HTMLElement, F extends HTMLElement> = {
+export type PopoverContentPropsRenderChildren<C extends HTMLElement, F extends HTMLElement | undefined = undefined> = {
   children?: never;
-  /** The render function to use instead of the `children` prop */
+  /** This can be used in place of the children in order to pass children props */
   renderChildren: RenderFromPropElement<PopoverRenderChildrenProps<C, F>>;
-  /** If this is true then the renderChildren function will be used instead of the `children` prop */
-  withChildrenProps: true;
 };
 
-/** If withChildrenProps is not true then children should be a regular React node */
 export type PopoverContentPropsChildren = {
+  /** If there are children then `renderChildren` is ignored */
   children: React.ReactNode;
   renderChildren?: never;
-  withChildrenProps?: false;
 };
 
 export type InlinePopoverContentHTMLElement = HTMLDivElement;

@@ -24,7 +24,6 @@ describe('<InlineTooltip />', () => {
       <InlineTooltip
         focusable
         permanent
-        withChildrenProps
         height={80}
         position="bottom-right"
         renderChildren={({ position }) => (

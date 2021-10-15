@@ -6,7 +6,10 @@ import { PopoverRenderChildrenProps, PortalPopoverContentHTMLElement } from '../
 import { getTooltipOffset } from './utils';
 import { TooltipContent } from './TooltipContent';
 
-export type PortalTooltipProps<F extends HTMLElement> = Omit<PortalPopoverProps<F>, 'position'> & {
+export type PortalTooltipProps<F extends HTMLElement | undefined = undefined> = Omit<
+  PortalPopoverProps<F>,
+  'position'
+> & {
   position?: AnyPosition;
   tooltipClassName?: string;
   triangleBorderColor?: string;
@@ -24,7 +27,7 @@ export type PortalTooltipProps<F extends HTMLElement> = Omit<PortalPopoverProps<
  * @template F
  * @param {F} - The HTML element type of the focusRef
  */
-export function PortalTooltip<F extends HTMLElement>({
+export function PortalTooltip<F extends HTMLElement | undefined = undefined>({
   children,
   layout,
   offset: initOffset,
@@ -35,7 +38,6 @@ export function PortalTooltip<F extends HTMLElement>({
   triangleBorderWidth,
   triangleColor,
   triangleSize,
-  withChildrenProps,
   ...props
 }: PortalTooltipProps<F>): React.ReactElement {
   const offset = initOffset || getTooltipOffset({ position, layout });
@@ -44,7 +46,6 @@ export function PortalTooltip<F extends HTMLElement>({
     <PortalPopover<F>
       centered
       isTooltip
-      withChildrenProps
       offset={offset}
       position={position}
       renderChildren={({ close, focusRef, isTogglerFocused, offset, position, visible }) => {
@@ -63,7 +64,7 @@ export function PortalTooltip<F extends HTMLElement>({
             triangleColor={triangleColor}
             triangleSize={triangleSize}
           >
-            {withChildrenProps
+            {renderChildren
               ? renderFromPropWithFallback<PopoverRenderChildrenProps<PortalPopoverContentHTMLElement, F>>(
                   renderChildren!,
                   {

@@ -28,7 +28,7 @@ export type PopoverTogglerProps = {
   visible?: boolean;
 };
 
-export type PopoverRenderContentProps<C extends HTMLElement, F extends HTMLElement> = Pick<
+export type PopoverRenderContentProps<C extends HTMLElement, F extends HTMLElement | undefined = undefined> = Pick<
   PopoverContentProps<C, F>,
   'close' | 'focusRef' | 'isTogglerFocused' | 'offset' | 'onMouseEnter' | 'position' | 'relativeRef' | 'visible'
 > &
@@ -40,7 +40,10 @@ export type PopoverRenderContentProps<C extends HTMLElement, F extends HTMLEleme
     role: 'tooltip' | 'dialog';
   };
 
-export type PopoverProps<C extends HTMLElement, F extends HTMLElement> = Omit<ThemeProps, 'contrast' | 'unthemed'> & {
+export type PopoverProps<C extends HTMLElement, F extends HTMLElement | undefined = undefined> = Omit<
+  ThemeProps,
+  'contrast' | 'unthemed'
+> & {
   className?: string;
   /** The number of milliseconds to delay before closing the popover */
   closeDelay?: number;
@@ -57,8 +60,8 @@ export type PopoverProps<C extends HTMLElement, F extends HTMLElement> = Omit<Th
   /** A layout orientation can be used to position the popup if a position isn't set */
   layout?: Orientation;
   offset?: {
-    horizontal: number;
-    vertical: number;
+    horizontal?: number;
+    vertical?: number;
   };
   onClose?: () => void;
   onOpen?: () => void;
@@ -70,10 +73,15 @@ export type PopoverProps<C extends HTMLElement, F extends HTMLElement> = Omit<Th
   style?: React.CSSProperties;
   /** The element that's clicked or hovered to open and close the popover */
   toggler: RenderFromPropElement<PopoverTogglerProps>;
-  /** If the toggler handles the focus styles this can be used to hide the standard focus outline */
+  /** If the toggler content handles the focus styles this can be used to hide the standard focus outline */
   withoutTogglerFocusStyle?: boolean;
   /** Pass extra props to the toggler (can be used with ForwardProps) */
   withPopoverTogglerProps?: boolean;
+};
+
+export const defaultOffset = {
+  horizontal: 0,
+  vertical: 0,
 };
 
 /**
@@ -90,7 +98,7 @@ export type PopoverProps<C extends HTMLElement, F extends HTMLElement> = Omit<Th
  * @param {C} - The HTML element type of the contentRef
  * @param {F} - The HTML element type of the focusRef
  */
-export function Popover<C extends HTMLElement, F extends HTMLElement>({
+export function Popover<C extends HTMLElement, F extends HTMLElement | undefined = undefined>({
   className,
   closeDelay = 500,
   focusable = false,
@@ -99,10 +107,7 @@ export function Popover<C extends HTMLElement, F extends HTMLElement>({
   initialVisible,
   isTooltip = false,
   layout = 'vertical',
-  offset: initOffset = {
-    horizontal: 0,
-    vertical: 0,
-  },
+  offset: initOffset = defaultOffset,
   onClose,
   onOpen,
   permanent = false,

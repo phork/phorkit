@@ -9,7 +9,7 @@ import { PopoverContentProps, PopoverRenderChildrenProps, PortalPopoverContentHT
 import styles from './styles/Dropover.module.css';
 import { DropoverLabelProps } from './DropoverLabel';
 
-export type PortalDropoverProps<F extends HTMLElement> = Omit<
+export type PortalDropoverProps<F extends HTMLElement | undefined = undefined> = Omit<
   PortalPopoverProps<F>,
   'centered' | 'layout' | 'portal' | 'position' | 'toggler' | 'withPopoverTogglerProps'
 > & {
@@ -37,7 +37,7 @@ export const defaultPortalOffset = {
  * @param {T} - The HTML element type of the toggleRef
  * @param {F} - The HTML element type of the focusRef
  */
-export function PortalDropover<T extends HTMLElement, F extends HTMLElement>({
+export function PortalDropover<T extends HTMLElement, F extends HTMLElement | undefined = undefined>({
   align = 'left',
   children,
   className,
@@ -48,7 +48,6 @@ export function PortalDropover<T extends HTMLElement, F extends HTMLElement>({
   renderChildren,
   themeId: initThemeId,
   width = 240,
-  withChildrenProps = false,
   ...props
 }: PortalDropoverProps<F>): React.ReactElement {
   const themeId = useThemeId(initThemeId);
@@ -100,7 +99,6 @@ export function PortalDropover<T extends HTMLElement, F extends HTMLElement>({
   return (
     <PortalPopover<F>
       centered
-      withChildrenProps
       withPopoverTogglerProps
       className={cx(styles.dropover, themeId && styles[`dropover--${themeId}`], className)}
       height={height}
@@ -120,13 +118,16 @@ export function PortalDropover<T extends HTMLElement, F extends HTMLElement>({
                 themeId && styles[`dropoverContentLabel--${themeId}`],
                 styles[`dropoverContentLabel--${isRightAligned ? 'right' : 'left'}`],
               )}
-              style={{ top: -offset.vertical, [isRightAligned ? 'right' : 'left']: -offset.horizontal }}
+              style={{
+                top: (offset?.vertical || 0) * -1,
+                [isRightAligned ? 'right' : 'left']: (offset?.horizontal || 0) * -1,
+              }}
               {...getPortalTogglerInteractiveProps(close)}
             >
               {renderClonedToggler(isTogglerFocused)}
             </div>
 
-            {withChildrenProps
+            {renderChildren
               ? renderFromPropWithFallback<PopoverRenderChildrenProps<PortalPopoverContentHTMLElement, F>>(
                   renderChildren!,
                   {
