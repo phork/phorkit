@@ -8,7 +8,7 @@ import { TooltipContent } from './TooltipContent';
 
 export type InlineTooltipProps<F extends HTMLElement | undefined = undefined> = Omit<
   InlinePopoverProps<F>,
-  'position'
+  'centered' | 'isTooltip' | 'position'
 > & {
   position?: AnyPosition;
   tooltipClassName?: string;
@@ -19,10 +19,10 @@ export type InlineTooltipProps<F extends HTMLElement | undefined = undefined> = 
 };
 
 /**
- * An inline tooltip is an extension of the InlinePopover
+ * An inline tooltip is an extension of the `InlinePopover`
  * with an arrow pointing towards the toggler.
  *
- * This uses the Popover and InlinePopover components.
+ * This uses the `Popover` and `InlinePopover` components.
  *
  * @template F
  * @param F The HTML element type of the focusRef
