@@ -10,7 +10,7 @@ import { TooltipContent } from './TooltipContent';
 
 export type PortalTextTooltipProps<F extends HTMLElement | undefined = undefined> = Omit<
   PortalPopoverProps<F>,
-  'position' | 'width'
+  'centered' | 'isTooltip' | 'position' | 'width'
 > &
   Pick<ThemeProps, 'contrast'> &
   Pick<TextTooltipContentProps, 'scrollable' | 'width'> & {
@@ -21,13 +21,13 @@ export type PortalTextTooltipProps<F extends HTMLElement | undefined = undefined
   };
 
 /**
- * A portal text tooltip is similar to a PortalTooltip
- * in that it's an extension of the PortalPopover, but
+ * A portal text tooltip is similar to a `PortalTooltip`
+ * in that it's an extension of the `PortalPopover`, but
  * is also provides a standardized look and feel by
- * wrapping the children with the TextTooltipContent
+ * wrapping the children with the `TextTooltipContent`
  * component to define the colors, sizing and spacing.
  *
- * This uses the Popover and PortalPopover components.
+ * This uses the `Popover` and `PortalPopover` components.
  *
  * @template F
  * @param {F} - The HTML element type of the focusRef

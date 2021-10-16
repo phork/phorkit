@@ -10,7 +10,7 @@ import { TooltipContent } from './TooltipContent';
 
 export type InlineTextTooltipProps<F extends HTMLElement | undefined = undefined> = Omit<
   InlinePopoverProps<F>,
-  'position' | 'width'
+  'centered' | 'isTooltip' | 'position' | 'width'
 > &
   Pick<ThemeProps, 'contrast'> &
   Pick<TextTooltipContentProps, 'scrollable' | 'width'> & {
@@ -21,13 +21,13 @@ export type InlineTextTooltipProps<F extends HTMLElement | undefined = undefined
   };
 
 /**
- * An inline text tooltip is similar to an InlineTooltip
- * in that it's an extension of the InlinePopover, but
+ * An inline text tooltip is similar to an `InlineTooltip`
+ * in that it's an extension of `InlinePopover`, but
  * is also provides a standardized look and feel by
- * wrapping the children with the TextTooltipContent
+ * wrapping the children with the `TextTooltipContent`
  * component to define the colors, sizing and spacing.
  *
- * This uses the Popover and InlinePopover components.
+ * This uses the `Popover` and `InlinePopover` components.
  *
  * @template F
  * @param F The HTML element type of the focusRef

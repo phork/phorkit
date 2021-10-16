@@ -8,7 +8,7 @@ import { TooltipContent } from './TooltipContent';
 
 export type PortalTooltipProps<F extends HTMLElement | undefined = undefined> = Omit<
   PortalPopoverProps<F>,
-  'position'
+  'centered' | 'isTooltip' | 'position'
 > & {
   position?: AnyPosition;
   tooltipClassName?: string;
@@ -19,10 +19,10 @@ export type PortalTooltipProps<F extends HTMLElement | undefined = undefined> = 
 };
 
 /**
- * A portal tooltip is an extension of the PortalPopover
+ * A portal tooltip is an extension of the `PortalPopover`
  * with an arrow pointing towards the toggler.
  *
- * This uses the Popover and PortalPopover components.
+ * This uses the `Popover` and `PortalPopover` components.
  *
  * @template F
  * @param {F} - The HTML element type of the focusRef
