@@ -5,7 +5,7 @@ import { themes, ThemeColors, ThemeColorIds } from '../../config';
 import { withTheme } from '../../context/Theme';
 import { LineLoader, LineLoaderProps } from './LineLoader';
 
-export type ColoredLineLoaderProps = LineLoaderProps & {
+export type ColoredLineLoaderProps = Omit<LineLoaderProps, 'contrast' | 'themeId'> & {
   colorId: ThemeColorIds;
   themeId: Theme;
 };

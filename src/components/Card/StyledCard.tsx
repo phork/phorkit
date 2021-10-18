@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Card, CardProps } from './Card';
 
-export type StyledCardProps = CardProps & {
+export type StyledCardProps = Omit<CardProps, 'themeId'> & {
   borderColor: string;
   hoveredBorderColor: string;
 };
@@ -12,7 +12,7 @@ export type StyledCardProps = CardProps & {
  * and hovered border color.
  */
 export const StyledCard = styled(Card, {
-  shouldForwardProp: (prop: string) => !['borderColor', 'hoveredBorderColor', 'themeId'].includes(prop),
+  shouldForwardProp: (prop: string) => !['borderColor', 'hoveredBorderColor'].includes(prop),
 })<StyledCardProps>`
   ${({ borderColor }) => borderColor && `--card-border-color: ${borderColor};`}
   ${({ hoveredBorderColor }) => hoveredBorderColor && `--card-hovered-border-color: ${hoveredBorderColor};`}

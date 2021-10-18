@@ -5,6 +5,10 @@ import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledPaper, StyledPaperProps } from '../StyledPaper';
 import paperStory from './Paper.stories';
 
+const argTypes = { ...paperStory.argTypes };
+delete argTypes.color;
+delete argTypes.themeId;
+
 export default {
   ...paperStory,
   title: 'Surfaces/Paper/StyledPaper',
@@ -30,7 +34,7 @@ export default {
         category: 'Styled',
       },
     },
-    ...paperStory.argTypes,
+    ...argTypes,
     children: {
       control: {
         disable: true,
@@ -77,7 +81,6 @@ Default.args = {
 };
 
 Default.argTypes = {
-  color: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
 };

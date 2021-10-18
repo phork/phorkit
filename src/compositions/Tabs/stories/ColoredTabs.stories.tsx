@@ -8,6 +8,9 @@ import { ColoredTabs, ColoredTabsProps } from '../ColoredTabs';
 import { items } from './helpers/items';
 import tabsStory from './Tabs.stories';
 
+const argTypes = { ...tabsStory.argTypes };
+delete argTypes.contrast;
+
 export default {
   ...tabsStory,
   title: 'Surfaces/Tabs/ColoredTabs',
@@ -22,7 +25,7 @@ export default {
         category: 'Color',
       },
     },
-    ...tabsStory.argTypes,
+    ...argTypes,
   },
   parameters: {
     ...tabsStory.parameters,
@@ -45,7 +48,6 @@ export default {
 const Template: ComponentStory<typeof ColoredTabs> = args => <ColoredTabs {...args} />;
 
 const defaultArgs = {
-  contrast: false,
   fullWidth: false,
   initialSelected: [items[1].id],
   items,
@@ -59,8 +61,6 @@ Default.args = {
 };
 
 Default.argTypes = {
-  color: { table: { disable: true } },
-  contrast: { table: { disable: true } },
   style: { table: { disable: true } },
 };
 

@@ -5,6 +5,10 @@ import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledLoader } from '../StyledLoader';
 import loaderStory from './Loader.stories';
 
+const argTypes = { ...loaderStory.argTypes };
+delete argTypes.contrast;
+delete argTypes.themeId;
+
 export default {
   ...loaderStory,
   title: 'Feedback/Loader/StyledLoader',
@@ -18,7 +22,7 @@ export default {
         category: 'Styled',
       },
     },
-    ...loaderStory.argTypes,
+    ...argTypes,
   },
   parameters: {
     ...loaderStory.parameters,
@@ -50,7 +54,6 @@ Default.args = {
 };
 
 Default.argTypes = {
-  contrast: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
 };

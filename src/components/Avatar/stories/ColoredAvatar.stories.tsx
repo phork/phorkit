@@ -7,6 +7,10 @@ import { getPrimaryColorIds } from 'stories/helpers/utils';
 import { ColoredAvatar, ColoredAvatarProps } from '../ColoredAvatar';
 import avatarStory from './Avatar.stories';
 
+const argTypes = { ...avatarStory.argTypes };
+delete argTypes.color;
+delete argTypes.contrast;
+
 export default {
   ...avatarStory,
   title: 'Display/Avatar/ColoredAvatar',
@@ -21,7 +25,7 @@ export default {
         category: 'Color',
       },
     },
-    ...avatarStory.argTypes,
+    ...argTypes,
   },
   parameters: {
     ...avatarStory.parameters,
@@ -45,7 +49,6 @@ const Template: ComponentStory<typeof ColoredAvatar> = args => <ColoredAvatar {.
 
 const defaultArgs = {
   actionable: false,
-  color: undefined,
   colorId: 'P60' as ThemeColorIds,
   initials: 'EC',
   size: 'medium' as ColoredAvatarProps['size'],
@@ -58,8 +61,6 @@ Default.args = {
 
 Default.argTypes = {
   as: { table: { disable: true } },
-  color: { table: { disable: true } },
-  contrast: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
 };

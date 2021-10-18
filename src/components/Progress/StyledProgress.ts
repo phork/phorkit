@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Progress, ProgressProps } from './Progress';
 
-export type StyledProgressProps = Omit<ProgressProps, 'color'> & {
+export type StyledProgressProps = Omit<ProgressProps, 'color' | 'contrast' | 'themeId'> & {
   backgroundColor?: string;
   segmentAnimationColor?: string;
   segmentColor: string;
@@ -13,8 +13,7 @@ export type StyledProgressProps = Omit<ProgressProps, 'color'> & {
  * background and segment color.
  */
 export const StyledProgress = styled(Progress, {
-  shouldForwardProp: (prop: string) =>
-    !['backgroundColor', 'segmentColor', 'segmentAnimationColor', 'themeId'].includes(prop),
+  shouldForwardProp: (prop: string) => !['backgroundColor', 'segmentColor', 'segmentAnimationColor'].includes(prop),
 })<StyledProgressProps>`
   --progress-background-color: ${props => props.backgroundColor};
   --progress-segment-color: ${props => props.segmentColor};

@@ -7,7 +7,7 @@ import { Button, ButtonProps } from './Button';
 import { ButtonElementType } from './types';
 
 export type ColoredButtonProps<T extends ButtonElementType = 'button'> = MergeProps<
-  ButtonProps<T>,
+  Omit<ButtonProps<T>, 'color' | 'contrast' | 'themeId'>,
   {
     colorId: ThemeColorIds;
     themeId: Theme;
@@ -16,7 +16,7 @@ export type ColoredButtonProps<T extends ButtonElementType = 'button'> = MergePr
 
 // [TODO:ts] revisit casting
 const StyledButton = styled(Button, {
-  shouldForwardProp: (prop: string): boolean => !['colorId', 'themeId'].includes(prop),
+  shouldForwardProp: (prop: string): boolean => prop !== 'colorId',
 })<ColoredButtonProps>`
   --button-primary-color: ${props => themes[props.themeId][`color-${props.colorId}` as keyof ThemeColors]};
   --button-hovered-primary-color: ${props => themes[props.themeId][`color-${props.colorId}-L10` as keyof ThemeColors]};

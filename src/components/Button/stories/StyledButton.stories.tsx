@@ -8,6 +8,11 @@ import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledButton, StyledButtonProps } from '../StyledButton';
 import buttonStory from './Button.stories';
 
+const argTypes = { ...buttonStory.argTypes };
+delete argTypes.color;
+delete argTypes.contrast;
+delete argTypes.themeId;
+
 export default {
   ...buttonStory,
   title: 'Buttons/Button/StyledButton',
@@ -38,7 +43,7 @@ export default {
         category: 'Styled',
       },
     },
-    ...buttonStory.argTypes,
+    ...argTypes,
   },
   parameters: {
     ...buttonStory.parameters,
@@ -74,7 +79,6 @@ const defaultArgs = {
   align: 'center' as StyledButtonProps['align'],
   as: 'button' as StyledButtonProps['as'],
   children: 'Click me',
-  color: undefined,
   disabled: false,
   focused: false,
   fullWidth: false,
@@ -99,8 +103,6 @@ Default.args = {
 };
 
 Default.argTypes = {
-  color: { table: { disable: true } },
-  contrast: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
   unstyled: { table: { disable: true } },

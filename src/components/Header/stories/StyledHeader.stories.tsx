@@ -5,6 +5,10 @@ import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledHeader } from '../StyledHeader';
 import headerStory from './Header.stories';
 
+const argTypes = { ...headerStory.argTypes };
+delete argTypes.contrast;
+delete argTypes.themeId;
+
 export default {
   ...headerStory,
   title: 'Surfaces/Header/StyledHeader',
@@ -15,7 +19,7 @@ export default {
         category: 'Styled',
       },
     },
-    ...headerStory.argTypes,
+    ...argTypes,
   },
   parameters: {
     ...headerStory.parameters,

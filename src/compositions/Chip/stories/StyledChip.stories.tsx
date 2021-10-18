@@ -5,10 +5,14 @@ import { CheckIcon } from 'icons/internal/CheckIcon';
 import { Rhythm } from 'components/Rhythm/Rhythm';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledChip, StyledChipProps } from '../StyledChip';
-import badgeStory from './Chip.stories';
+import chipStory from './Chip.stories';
+
+const argTypes = { ...chipStory.argTypes };
+delete argTypes.contrast;
+delete argTypes.themeId;
 
 export default {
-  ...badgeStory,
+  ...chipStory,
   title: 'Display/Chip/StyledChip',
   component: StyledChip,
   argTypes: {
@@ -42,12 +46,12 @@ export default {
         category: 'Styled',
       },
     },
-    ...badgeStory.argTypes,
+    ...argTypes,
   },
   parameters: {
-    ...badgeStory.parameters,
+    ...chipStory.parameters,
     docs: {
-      ...badgeStory.parameters?.docs,
+      ...chipStory.parameters?.docs,
       page: () => (
         <React.Fragment>
           <PageTitle src="compositions/Chip" title="StyledChip" />
@@ -69,7 +73,6 @@ const defaultArgs = {
   avatarTextColor: '#fff',
   actionable: true,
   avatar: { initials: 'EC' },
-  contrast: false,
   icon: (
     <Rhythm mr={2}>
       <CheckIcon scale="medium" />
@@ -91,7 +94,6 @@ Default.args = {
 };
 
 Default.argTypes = {
-  contrast: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
 };

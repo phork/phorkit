@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Link, LinkProps } from './Link';
 
-export type StyledLinkProps = LinkProps & {
+export type StyledLinkProps = Omit<LinkProps, 'contrast' | 'themeId'> & {
   activeColor: string;
   hoveredColor: string;
   textColor: string;
@@ -13,7 +13,7 @@ export type StyledLinkProps = LinkProps & {
  * active and hover colors.
  */
 export const StyledLink = styled(Link, {
-  shouldForwardProp: (prop: string) => !['activeColor', 'hoveredColor', 'textColor', 'themeId'].includes(prop),
+  shouldForwardProp: (prop: string) => !['activeColor', 'hoveredColor', 'textColor'].includes(prop),
 })<StyledLinkProps>`
   ${({ activeColor }) => activeColor && `--link-active-color: ${activeColor};`}
   ${({ hoveredColor }) => hoveredColor && `--link-hovered-color: ${hoveredColor};`}

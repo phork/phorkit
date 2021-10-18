@@ -7,6 +7,9 @@ import { getPrimaryColorIds } from 'stories/helpers/utils';
 import { ColoredPaper, ColoredPaperProps } from '../ColoredPaper';
 import paperStory from './Paper.stories';
 
+const argTypes = { ...paperStory.argTypes };
+delete argTypes.color;
+
 export default {
   ...paperStory,
   title: 'Surfaces/Paper/ColoredPaper',
@@ -21,7 +24,7 @@ export default {
         category: 'Color',
       },
     },
-    ...paperStory.argTypes,
+    ...argTypes,
     children: {
       control: {
         disable: true,
@@ -64,7 +67,6 @@ Default.args = {
 };
 
 Default.argTypes = {
-  color: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
 };

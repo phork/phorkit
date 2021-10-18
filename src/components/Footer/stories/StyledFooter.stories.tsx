@@ -5,6 +5,10 @@ import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledFooter } from '../StyledFooter';
 import footerStory from './Footer.stories';
 
+const argTypes = { ...footerStory.argTypes };
+delete argTypes.contrast;
+delete argTypes.themeId;
+
 export default {
   ...footerStory,
   title: 'Surfaces/Footer/StyledFooter',
@@ -15,7 +19,7 @@ export default {
         category: 'Styled',
       },
     },
-    ...footerStory.argTypes,
+    ...argTypes,
   },
   parameters: {
     ...footerStory.parameters,
@@ -61,7 +65,6 @@ Default.args = {
 };
 
 Default.argTypes = {
-  contrast: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
   variant: { table: { disable: true } },

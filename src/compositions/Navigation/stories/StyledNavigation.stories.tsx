@@ -6,6 +6,9 @@ import { StyledNavigation, StyledNavigationProps } from '../StyledNavigation';
 import { items } from './helpers/items';
 import navigationStory from './Navigation.stories';
 
+const argTypes = { ...navigationStory.argTypes };
+delete argTypes.themeId;
+
 export default {
   ...navigationStory,
   title: 'Navigation/Navigation/StyledNavigation',
@@ -66,7 +69,7 @@ export default {
         category: 'Styled',
       },
     },
-    ...navigationStory.argTypes,
+    ...argTypes,
   },
   parameters: {
     ...navigationStory.parameters,

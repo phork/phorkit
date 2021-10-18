@@ -1,10 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { Button } from 'components/Button';
 import { Rhythm } from 'components/Rhythm/Rhythm';
-import { Typography } from 'components/Typography';
 import { Accordion, AccordionProps } from '../Accordion';
-import { AccordionContainer, AccordionList } from '../index';
 import { items } from './helpers/items';
 import AccordionDocumentation from './Accordion.docs.mdx';
 

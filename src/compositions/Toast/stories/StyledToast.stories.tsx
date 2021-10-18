@@ -3,10 +3,14 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledToast } from '../StyledToast';
-import badgeStory from './Toast.stories';
+import toastStory from './Toast.stories';
+
+const argTypes = { ...toastStory.argTypes };
+delete argTypes.level;
+delete argTypes.themeId;
 
 export default {
-  ...badgeStory,
+  ...toastStory,
   title: 'Feedback/Toasts/StyledToast',
   component: StyledToast,
   argTypes: {
@@ -20,12 +24,12 @@ export default {
         category: 'Styled',
       },
     },
-    ...badgeStory.argTypes,
+    ...argTypes,
   },
   parameters: {
-    ...badgeStory.parameters,
+    ...toastStory.parameters,
     docs: {
-      ...badgeStory.parameters?.docs,
+      ...toastStory.parameters?.docs,
       page: () => (
         <React.Fragment>
           <PageTitle src="compositions/Toast" title="StyledToast" />
@@ -47,6 +51,7 @@ const defaultArgs = {
   immediate: true,
   levelColor: '#556270',
   levelInverseColor: '#fff',
+  permanent: false,
 };
 
 export const Default = Template.bind({});
@@ -56,6 +61,5 @@ Default.args = {
 
 Default.argTypes = {
   style: { table: { disable: true } },
-  themeId: { table: { disable: true } },
   unthemed: { table: { disable: true } },
 };

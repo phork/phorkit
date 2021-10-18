@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Label, LabelProps } from './Label';
 
-export type StyledLabelProps = LabelProps & {
+export type StyledLabelProps = Omit<LabelProps, 'contrast' | 'themeId'> & {
   fontSize?: number | string;
   lineHeight?: number | string;
   mutedTextColor?: string;
@@ -14,8 +14,7 @@ export type StyledLabelProps = LabelProps & {
  * and font size.
  */
 export const StyledLabel = styled(Label, {
-  shouldForwardProp: (prop: string) =>
-    !['fontSize', 'lineHeight', 'mutedTextColor', 'textColor', 'themeId'].includes(prop),
+  shouldForwardProp: (prop: string) => !['fontSize', 'lineHeight', 'mutedTextColor', 'textColor'].includes(prop),
 })<StyledLabelProps>`
   ${({ fontSize }) =>
     fontSize !== undefined && `--label-font-size: ${Number.isNaN(Number(fontSize)) ? fontSize : `${fontSize}px`};`}

@@ -5,13 +5,13 @@ import { themes, ThemeColors, ThemeColorIds } from '../../config';
 import { withTheme } from '../../context/Theme';
 import { Tag, TagProps } from './Tag';
 
-export type ColoredTagProps = TagProps & {
+export type ColoredTagProps = Omit<TagProps, 'contrast' | 'themeId'> & {
   colorId: ThemeColorIds;
   themeId: Theme;
 };
 
 const StyledTag = styled(Tag, {
-  shouldForwardProp: (prop: string) => !['colorId', 'themeId'].includes(prop),
+  shouldForwardProp: (prop: string) => prop !== 'colorId',
 })<ColoredTagProps>`
   --tag-primary-color: ${props => themes[props.themeId][`color-${props.colorId}` as keyof ThemeColors]};
   --tag-hovered-primary-color: ${props => themes[props.themeId][`color-${props.colorId}-L10` as keyof ThemeColors]};

@@ -39,6 +39,11 @@ export default {
         category: 'Countdown',
       },
     },
+    permanent: {
+      table: {
+        category: 'Countdown',
+      },
+    },
 
     onClose: {
       table: {
@@ -60,11 +65,6 @@ export default {
       },
     },
     contextId: {
-      table: {
-        category: 'Uncommon',
-      },
-    },
-    contrast: {
       table: {
         category: 'Uncommon',
       },
@@ -118,6 +118,7 @@ const defaultArgs = {
   children: 'This is a wonderfully fun toast.',
   immediate: true,
   level: 'info' as ToastProps['level'],
+  permanent: false,
   unthemed: false,
 };
 

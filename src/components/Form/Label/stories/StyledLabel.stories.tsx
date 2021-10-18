@@ -5,6 +5,10 @@ import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledLabel } from '../StyledLabel';
 import labelStory from './Label.stories';
 
+const argTypes = { ...labelStory.argTypes };
+delete argTypes.contrast;
+delete argTypes.themeId;
+
 export default {
   ...labelStory,
   title: 'Form/Label/StyledLabel',
@@ -30,7 +34,7 @@ export default {
         category: 'Styled',
       },
     },
-    ...labelStory.argTypes,
+    ...argTypes,
   },
   parameters: {
     ...labelStory.parameters,
@@ -70,7 +74,6 @@ Default.args = {
 };
 
 Default.argTypes = {
-  contrast: { table: { disable: true } },
   strength: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },

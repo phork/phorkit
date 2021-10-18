@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Header, HeaderProps } from './Header';
 
-export type StyledHeaderProps = HeaderProps & {
+export type StyledHeaderProps = Omit<HeaderProps, 'contrast' | 'themeId'> & {
   backgroundColor?: string;
   borderColor?: string;
   textColor?: string;
@@ -15,8 +15,7 @@ export type StyledHeaderProps = HeaderProps & {
  * height.
  */
 export const StyledHeader = styled(Header, {
-  shouldForwardProp: (prop: string) =>
-    !['borderColor', 'backgroundColor', 'textColor', 'height', 'themeId'].includes(prop),
+  shouldForwardProp: (prop: string) => !['borderColor', 'backgroundColor', 'textColor', 'height'].includes(prop),
 })<StyledHeaderProps>`
   ${({ backgroundColor }) => backgroundColor && `--header-background-color: ${backgroundColor};`}
   ${({ borderColor }) => borderColor && `--header-border-color: ${borderColor};`}

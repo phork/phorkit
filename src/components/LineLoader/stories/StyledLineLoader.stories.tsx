@@ -5,6 +5,10 @@ import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledLineLoader, StyledLineLoaderProps } from '../StyledLineLoader';
 import lineLoaderStory from './LineLoader.stories';
 
+const argTypes = { ...lineLoaderStory.argTypes };
+delete argTypes.contrast;
+delete argTypes.themeId;
+
 export default {
   ...lineLoaderStory,
   title: 'Feedback/LineLoader/StyledLineLoader',
@@ -18,7 +22,7 @@ export default {
         category: 'Styled',
       },
     },
-    ...lineLoaderStory.argTypes,
+    ...argTypes,
   },
   parameters: {
     ...lineLoaderStory.parameters,
@@ -51,7 +55,6 @@ Default.args = {
 };
 
 Default.argTypes = {
-  contrast: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
 };

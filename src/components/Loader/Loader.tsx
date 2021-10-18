@@ -15,25 +15,15 @@ export const loaderTranslations: LoaderTranslations = {
   loadingLabel: 'Loading...',
 };
 
-type LoaderSize = {
-  scale?: never;
-  size?: number;
-};
-
-type LoaderScale = {
-  scale?: Exclude<IconScale, 'xsmall'>;
-  size?: never;
-};
-
-export type BaseLoaderProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> &
+export type LoaderProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> &
   ThemeProps & {
     className?: string;
     position?: 'relative' | 'absolute' | 'fixed';
+    scale?: Exclude<IconScale, 'xsmall'>;
+    size?: number;
     style?: React.CSSProperties;
     translations?: LoaderTranslations;
   };
-
-export type LoaderProps = BaseLoaderProps & (LoaderSize | LoaderScale);
 
 /**
  * An SVG spinner icon with a custom size or scale. It

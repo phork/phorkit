@@ -93,34 +93,6 @@ const Template: ComponentStory<typeof Toasts> = args => (
             Info toast
           </Button>
           <Button
-            color="danger"
-            key="danger"
-            onClick={() =>
-              createNotification(
-                <Toast level="danger" onClose={() => action('closed toast')}>
-                  This is a danger toast because something bad happened. Uh oh!
-                </Toast>,
-              )
-            }
-            shape="brick"
-          >
-            Danger toast
-          </Button>
-          <Button
-            color="warning"
-            key="warning"
-            onClick={() =>
-              createNotification(
-                <Toast permanent level="warning" onClose={() => action('closed toast')}>
-                  This is a permanent warning toast because something not so great happened. Meh.
-                </Toast>,
-              )
-            }
-            shape="brick"
-          >
-            Warning toast
-          </Button>
-          <Button
             color="success"
             key="success"
             onClick={() =>
@@ -139,6 +111,34 @@ const Template: ComponentStory<typeof Toasts> = args => (
             shape="brick"
           >
             Success toast
+          </Button>
+          <Button
+            color="warning"
+            key="warning"
+            onClick={() =>
+              createNotification(
+                <Toast permanent level="warning" onClose={() => action('closed toast')}>
+                  This is a permanent warning toast because something not so great happened. Meh.
+                </Toast>,
+              )
+            }
+            shape="brick"
+          >
+            Warning toast
+          </Button>
+          <Button
+            color="danger"
+            key="danger"
+            onClick={() =>
+              createNotification(
+                <Toast level="danger" onClose={() => action('closed toast')}>
+                  This is a danger toast because something bad happened. Uh oh!
+                </Toast>,
+              )
+            }
+            shape="brick"
+          >
+            Danger toast
           </Button>
           <Button color="neutral" key="neutral" onClick={() => clearNotifications()} shape="brick">
             Clear all

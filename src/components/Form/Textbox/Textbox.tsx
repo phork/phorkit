@@ -104,11 +104,8 @@ export type LocalTextboxProps = Pick<
   value?: FormboxValue;
 };
 
-export type TextboxProps = MergeProps<
-  Omit<React.ComponentPropsWithoutRef<'input'>, 'className' | 'onAnimationStart' | 'size' | 'style' | 'width'>,
-  LocalTextboxProps
-> & {
-  formboxProps?: Omit<Omit<FormboxProps, 'autoFilled'>, keyof LocalTextboxProps>;
+export type TextboxProps = MergeProps<React.ComponentPropsWithoutRef<'input'>, LocalTextboxProps> & {
+  formboxProps?: Omit<FormboxProps, keyof LocalTextboxProps | 'autoFilled'>;
 };
 
 export type TextboxRef = React.ForwardedRef<HTMLInputElement>;

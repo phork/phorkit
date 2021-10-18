@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Textbox, TextboxProps } from './Textbox';
 
-export type StyledTextboxProps = TextboxProps & {
+export type StyledTextboxProps = Omit<TextboxProps, 'contrast' | 'themeId' | 'validity'> & {
   textboxIconColor: string;
   textboxIconHoveredColor: string;
   textboxInputContainerBackgroundColor: string;
@@ -15,7 +15,7 @@ export type StyledTextboxProps = TextboxProps & {
 /**
  * A styled textbox is an extension of the `Textbox`
  * component which will have custom text, border and
- * background colors for both focused, unfocused and
+ * background colors for the focused, unfocused and
  * hovered states.
  */
 export const StyledTextbox = styled(Textbox, {
@@ -29,7 +29,6 @@ export const StyledTextbox = styled(Textbox, {
       'textboxInputContainerHoveredBorderColor',
       'textboxInputTextColor',
       'textboxLabelTextColor',
-      'themeId',
     ].includes(prop),
 })<StyledTextboxProps>`
   ${({ textboxIconColor }) => textboxIconColor && `--formbox-icon-color: ${textboxIconColor};`}

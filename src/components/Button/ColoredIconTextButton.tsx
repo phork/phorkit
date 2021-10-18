@@ -7,7 +7,7 @@ import { IconTextButton, IconTextButtonElementType, IconTextButtonProps } from '
 import { ButtonElementType } from './types';
 
 export type ColoredIconTextButtonProps<T extends IconTextButtonElementType = 'button'> = MergeProps<
-  IconTextButtonProps<T>,
+  Omit<IconTextButtonProps<T>, 'color' | 'contrast' | 'themeId'>,
   {
     colorId: ThemeColorIds;
     themeId: Theme;
@@ -16,7 +16,7 @@ export type ColoredIconTextButtonProps<T extends IconTextButtonElementType = 'bu
 
 // [TODO:ts] revisit casting
 const StyledIconTextButton = styled(IconTextButton, {
-  shouldForwardProp: (prop: string): boolean => !['colorId', 'themeId'].includes(prop),
+  shouldForwardProp: (prop: string): boolean => prop !== 'colorId',
 })<ColoredIconTextButtonProps>`
   --button-primary-color: ${props => themes[props.themeId][`color-${props.colorId}` as keyof ThemeColors]};
   --button-hovered-primary-color: ${props => themes[props.themeId][`color-${props.colorId}-L10` as keyof ThemeColors]};

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Paper, PaperProps } from './Paper';
 
-export type StyledPaperProps = Omit<PaperProps, 'color'> & {
+export type StyledPaperProps = Omit<PaperProps, 'color' | 'themeId'> & {
   backgroundColor: string;
   borderColor: string;
   focusedOutlineColor: string;

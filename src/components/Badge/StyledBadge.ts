@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Badge, BadgeProps } from './Badge';
 
-export type StyledBadgeProps = BadgeProps & {
+export type StyledBadgeProps = Omit<BadgeProps, 'color' | 'contrast' | 'themeId'> & {
   backgroundColor: string;
   textColor: string;
 };
@@ -12,7 +12,7 @@ export type StyledBadgeProps = BadgeProps & {
  * and text color.
  */
 export const StyledBadge = styled(Badge, {
-  shouldForwardProp: (prop: string) => !['backgroundColor', 'textColor', 'themeId'].includes(prop),
+  shouldForwardProp: (prop: string) => !['backgroundColor', 'textColor'].includes(prop),
 })<StyledBadgeProps>`
   ${({ backgroundColor }) => backgroundColor && `--badge-background-color: ${backgroundColor};`}
   ${({ textColor }) => textColor && `--badge-text-color: ${textColor};`}

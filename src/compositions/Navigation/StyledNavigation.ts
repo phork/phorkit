@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Navigation, NavigationProps } from './Navigation';
 
-export type StyledNavigationProps = NavigationProps & {
+export type StyledNavigationProps = Omit<NavigationProps, 'themeId'> & {
   focusedBorderColor: string;
   itemBackgroundColor: string;
   itemFocusedBackgroundColor: string;

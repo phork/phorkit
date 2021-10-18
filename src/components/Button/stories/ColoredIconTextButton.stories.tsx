@@ -79,7 +79,6 @@ const defaultArgs = {
   align: 'center' as ColoredIconTextButtonProps['align'],
   as: 'button' as ColoredIconTextButtonProps['as'],
   children: 'Click me',
-  color: undefined,
   colorId: 'P60' as ThemeColorIds,
   disabled: false,
   focused: false,
@@ -101,8 +100,6 @@ Default.args = {
 };
 
 Default.argTypes = {
-  color: { table: { disable: true } },
-  contrast: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
   unstyled: { table: { disable: true } },

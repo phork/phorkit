@@ -5,6 +5,11 @@ import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledTextbox, StyledTextboxProps } from '../StyledTextbox';
 import textboxStory from './Textbox.stories';
 
+const argTypes = { ...textboxStory.argTypes };
+delete argTypes.contrast;
+delete argTypes.themeId;
+delete argTypes.validity;
+
 export default {
   ...textboxStory,
   title: 'Form/Textbox/StyledTextbox',
@@ -50,7 +55,7 @@ export default {
         category: 'Style',
       },
     },
-    ...textboxStory.argTypes,
+    ...argTypes,
   },
   parameters: {
     ...textboxStory.parameters,
@@ -80,7 +85,6 @@ const defaultArgs = {
   autoFocus: false,
   centered: false,
   clearable: false,
-  contrast: false,
   disabled: false,
   iconAfterActionable: false,
   iconBeforeActionable: false,
@@ -112,7 +116,6 @@ Default.args = {
 };
 
 Default.argTypes = {
-  contrast: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
 };

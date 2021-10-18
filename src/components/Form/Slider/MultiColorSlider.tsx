@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useCallback, useMemo, useState } from 'react';
-import { AccentColor, MergeProps, StateColor } from '../../../types';
+import { AccentColor, MergeProps, StateColor, Theme } from '../../../types';
 import { ThemeColors, themes } from '../../../config/themes';
 import { useThemeId } from '../../../context/Theme';
 import styles from './styles/Slider.module.css';
@@ -34,7 +34,9 @@ export type MultiColorSliderProps = MergeProps<
     | 'validity'
   >,
   LocalMultiColorSliderProps
->;
+> & {
+  themeId: Theme;
+};
 
 /**
  * The multi color slider accepts a set of colors that

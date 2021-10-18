@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconToast, IconToastProps } from './IconToast';
 
-export type StyledIconToastProps = Omit<IconToastProps, 'level'> & {
+export type StyledIconToastProps = Omit<IconToastProps, 'level' | 'themeId'> & {
   levelColor: string;
   levelInverseColor: string;
 };
@@ -31,7 +31,7 @@ export const StyledIconToast = ({ levelColor, levelInverseColor, style, ...props
 import styled from '@emotion/styled';
 import { IconToast, IconToastProps } from './IconToast';
 
-export type StyledIconToastProps = IconToastProps & {
+export type StyledIconToastProps = Omit<IconToastProps, 'level' | 'themeId'> & {
   levelColor: string;
   levelInverseColor: string;
 }

@@ -106,13 +106,29 @@ Default.args = {
   ...defaultArgs,
 };
 
+export const Image = Template.bind({});
+Image.storyName = 'With image';
+Image.args = {
+  ...defaultArgs,
+  imgSrc: '/images/avatar.jpg',
+};
+
 export const Initials = Template.bind({});
+Initials.storyName = 'With initials';
 Initials.args = {
   ...defaultArgs,
 };
 
-export const Image = Template.bind({});
-Image.args = {
+export const Actionable = Template.bind({});
+Actionable.args = {
   ...defaultArgs,
-  imgSrc: '/images/avatar.jpg',
+  actionable: true,
+};
+
+export const CustomSize = Template.bind({});
+CustomSize.storyName = 'Custom size';
+CustomSize.args = {
+  ...defaultArgs,
+  size: 'custom',
+  style: { '--avatar-size': '72px', '--avatar-font-size': '24px' } as React.CSSProperties,
 };
