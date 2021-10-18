@@ -33,6 +33,7 @@ export type TabsProps = Omit<
     items: ReadonlyArray<TabListProps['items'][0] & TabPanelGroupProps['items'][0]>;
     listProps?: React.HTMLAttributes<HTMLDivElement>;
     minSelect?: 0 | 1;
+    /** The orientation refers to the tabs, so horizontal will be tabs next to each other */
     orientation?: Orientation;
     panelGroupProps?: React.HTMLAttributes<HTMLDivElement>;
     style?: React.CSSProperties;
@@ -41,9 +42,13 @@ export type TabsProps = Omit<
   };
 
 /**
- * The tabs component sets up the state management and
- * and then renders the `TabsContainer`, `TabList`, and
- * `TabPanelGroup` components.
+ * The tabs are a collection of items that each have a
+ * title and some content displayed in a panel. One tab
+ * can be selected at a time.
+ *
+ * This sets up the state management and and then renders
+ * the `TabsContainer`, `TabList`, and `TabPanelGroup`
+ * components.
  *
  * The `initialSelected` prop can be used to set up which
  * content is shown on load, but after that the state is

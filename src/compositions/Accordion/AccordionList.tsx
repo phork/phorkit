@@ -109,9 +109,9 @@ export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps
       >
         {items &&
           items.map(({ id, label, content, disabled, iconOnly, labelProps, contentProps }, index) => {
-            const focused = focusedIndex === index;
-            const selected = isSelected(id);
-            const stateProps = { disabled, focused, selected };
+            const itemFocused = focusedIndex === index;
+            const itemSelected = isSelected(id);
+            const stateProps = { disabled, focused: focused && itemFocused, selected: itemSelected };
 
             return (
               <div
@@ -119,8 +119,8 @@ export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps
                   styles.accordionItem,
                   styles[`accordionItem--${horizontal ? 'horizontal' : 'vertical'}`],
                   accessible && styles['is-accessible'],
-                  focused && styles['is-focused'],
-                  selected && styles['is-selected'],
+                  itemFocused && styles['is-focused'],
+                  itemSelected && styles['is-selected'],
                 )}
                 key={id}
               >

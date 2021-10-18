@@ -115,11 +115,9 @@ export function TabListBase(
     >
       {items &&
         items.map(({ disabled, id, iconOnly, label, labelProps = {} }, index) => {
-          const stateProps = {
-            disabled,
-            focused: focused && focusedIndex === index,
-            selected: selectedId === id,
-          };
+          const itemFocused = focusedIndex === index;
+          const itemSelected = selectedId === id;
+          const stateProps = { disabled, focused: focused && itemFocused, selected: itemSelected };
 
           return (
             <Tab

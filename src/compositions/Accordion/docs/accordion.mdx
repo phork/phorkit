@@ -8,10 +8,10 @@ import { Playground, Props } from 'docz';
 import { Button } from 'components/Button';
 import { Looper } from 'components/Looper';
 import { Rhythm } from 'components/Rhythm';
+import { Typography } from 'components/Typography';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { AccordionList } from '../AccordionList';
-import { Accordion, AccordionContent, AccordionLabel, AccordionContainer } from '../index';
+import { Accordion, AccordionContent, AccordionLabel, AccordionContainer, AccordionList } from '../index';
 
 <PageTitle src="compositions/Accordion" title="Accordion" />
 
@@ -164,41 +164,57 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   </ThemeWrapper>
 </Playground>
 
-## Variations
-
-### Accordion with label and content functions
+### Select none
 
 <Playground>
   <ThemeWrapper>
     <Accordion
-      initialSelected={['second']}
       items={[
         {
           id: 'first',
-          label: ({ selected }) => `First${selected ? ' is selected' : ''}`,
-          content: ({ selected }) => <Rhythm px={5} py={2}>{`First panel${selected ? ' is selected' : ''}`}</Rhythm>,
+          label: 'First',
+          content: (
+            <Rhythm px={5} py={2}>
+              First panel
+            </Rhythm>
+          ),
         },
         {
           id: 'second',
-          label: ({ selected }) => `Second${selected ? ' is selected' : ''}`,
-          content: ({ selected }) => <Rhythm px={5} py={2}>{`Second panel${selected ? ' is selected' : ''}`}</Rhythm>,
+          label: 'Second',
+          content: (
+            <Rhythm px={5} py={2}>
+              Second panel
+            </Rhythm>
+          ),
         },
         {
           id: 'third',
-          label: ({ selected }) => `Third${selected ? ' is selected' : ''}`,
-          content: ({ selected }) => <Rhythm px={5} py={2}>{`Third panel${selected ? ' is selected' : ''}`}</Rhythm>,
+          label: 'Third',
+          content: (
+            <Rhythm px={5} py={2}>
+              Third panel
+            </Rhythm>
+          ),
           disabled: true,
         },
         {
           id: 'fourth',
-          label: ({ selected }) => `Fourth${selected ? ' is selected' : ''}`,
-          content: ({ selected }) => <Rhythm px={5} py={2}>{`Fourth panel${selected ? ' is selected' : ''}`}</Rhythm>,
+          label: 'Fourth',
+          content: (
+            <Rhythm px={5} py={2}>
+              Fourth panel
+            </Rhythm>
+          ),
         },
       ]}
+      minSelect={0}
       onSelect={(event, id) => console.log(id)}
     />
   </ThemeWrapper>
 </Playground>
+
+## Variations
 
 ### Contrast accordion
 
@@ -250,53 +266,175 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   </ThemeWrapper>
 </Playground>
 
-### Select none
+### Accordion with label and content functions
 
 <Playground>
   <ThemeWrapper>
     <Accordion
+      initialSelected={['second']}
       items={[
         {
           id: 'first',
-          label: 'First',
-          content: (
-            <Rhythm px={5} py={2}>
-              First panel
-            </Rhythm>
-          ),
+          label: ({ focused }) => `First${focused ? ' is focused' : ''}`,
+          content: ({ selected }) => <Rhythm px={5} py={2}>{`First panel${selected ? ' is selected' : ''}`}</Rhythm>,
         },
         {
           id: 'second',
-          label: 'Second',
-          content: (
-            <Rhythm px={5} py={2}>
-              Second panel
-            </Rhythm>
-          ),
+          label: ({ focused }) => `Second${focused ? ' is focused' : ''}`,
+          content: ({ selected }) => <Rhythm px={5} py={2}>{`Second panel${selected ? ' is selected' : ''}`}</Rhythm>,
         },
         {
           id: 'third',
-          label: 'Third',
-          content: (
-            <Rhythm px={5} py={2}>
-              Third panel
-            </Rhythm>
-          ),
+          label: ({ focused }) => `Third${focused ? ' is focused' : ''}`,
+          content: ({ selected }) => <Rhythm px={5} py={2}>{`Third panel${selected ? ' is selected' : ''}`}</Rhythm>,
           disabled: true,
         },
         {
           id: 'fourth',
-          label: 'Fourth',
-          content: (
-            <Rhythm px={5} py={2}>
-              Fourth panel
-            </Rhythm>
-          ),
+          label: ({ focused }) => `Fourth${focused ? ' is focused' : ''}`,
+          content: ({ selected }) => <Rhythm px={5} py={2}>{`Fourth panel${selected ? ' is selected' : ''}`}</Rhythm>,
         },
       ]}
-      minSelect={0}
       onSelect={(event, id) => console.log(id)}
     />
+  </ThemeWrapper>
+</Playground>
+
+### With `children` prop
+
+<Playground>
+  <ThemeWrapper>
+    <Accordion
+      unstyled
+      initialSelected={['second']}
+      items={[
+        {
+          id: 'first',
+          label: ({ disabled, focused, selected }) => (
+            <Rhythm my={2}>
+              <Button
+                fullWidth
+                align="left"
+                as="div"
+                color="neutral"
+                disabled={disabled}
+                focused={focused}
+                shape="brick"
+                tabIndex={-1}
+                weight={selected ? 'shaded' : 'outlined'}
+              >
+                First
+              </Button>
+            </Rhythm>
+          ),
+          content: ({ selected }) => (
+            <Typography as="h4" heading="h4">
+              First panel{selected ? ' is selected' : ''}
+            </Typography>
+          ),
+          labelProps: { style: { outline: 'none' } },
+        },
+        {
+          id: 'second',
+          label: ({ disabled, focused, selected }) => (
+            <Rhythm my={2}>
+              <Button
+                fullWidth
+                align="left"
+                as="div"
+                color="neutral"
+                disabled={disabled}
+                focused={focused}
+                shape="brick"
+                tabIndex={-1}
+                weight={selected ? 'shaded' : 'outlined'}
+              >
+                Second
+              </Button>
+            </Rhythm>
+          ),
+          content: ({ selected }) => (
+            <Typography as="h4" heading="h4">
+              Second panel{selected ? ' is selected' : ''}
+            </Typography>
+          ),
+          labelProps: { style: { outline: 'none' } },
+        },
+        {
+          id: 'third',
+          label: ({ disabled, focused, selected }) => (
+            <Rhythm my={2}>
+              <Button
+                fullWidth
+                align="left"
+                as="div"
+                color="neutral"
+                disabled={disabled}
+                focused={focused}
+                shape="brick"
+                tabIndex={-1}
+                weight={selected ? 'shaded' : 'outlined'}
+              >
+                Third
+              </Button>
+            </Rhythm>
+          ),
+          content: ({ selected }) => (
+            <Typography as="h4" heading="h4">
+              Third panel{selected ? ' is selected' : ''}
+            </Typography>
+          ),
+          labelProps: { style: { outline: 'none', pointerEvents: 'none' } },
+          disabled: true,
+        },
+        {
+          id: 'fourth',
+          label: ({ disabled, focused, selected }) => (
+            <Rhythm my={2}>
+              <Button
+                fullWidth
+                align="left"
+                as="div"
+                color="neutral"
+                disabled={disabled}
+                focused={focused}
+                shape="brick"
+                tabIndex={-1}
+                weight={selected ? 'shaded' : 'outlined'}
+              >
+                Fourth
+              </Button>
+            </Rhythm>
+          ),
+          content: ({ selected }) => (
+            <Typography as="h4" heading="h4">
+              Fourth panel{selected ? ' is selected' : ''}
+            </Typography>
+          ),
+          labelProps: { style: { outline: 'none' } },
+        },
+      ]}
+      style={{ outline: 'none' }}
+    >
+      {({ componentId, items, orientation, ref, themeId }) => (
+        <AccordionContainer orientation={orientation} style={{ border: 'none' }}>
+          <AccordionList
+            unstyled
+            componentId={componentId}
+            items={items}
+            orientation={orientation}
+            ref={ref}
+            style={{
+              alignItems: 'center',
+              display: 'flex',
+              flexDirection: orientation === 'vertical' ? 'row' : 'column',
+              outline: 'none',
+            }}
+            themeId={themeId}
+          />
+        </AccordionContainer>
+      )}
+    </Accordion>
   </ThemeWrapper>
 </Playground>
 

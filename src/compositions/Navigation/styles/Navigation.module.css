@@ -131,8 +131,7 @@ button.navigationItem {
    * 1. Purposefully exclude :focus here because the browser
    *    focus is no longer relevant in accessible mode.
    */
-  .navigation.is-accessible:focus &,
-  .navigation.is-accessible.is-focused & {
+  .navigation.is-accessible & {
     &.is-focused /* [1] */ {
       background: var(--navigation-item-focused-background-color);
       color: var(--navigation-item-focused-text-color);
@@ -181,8 +180,7 @@ button.navigationItem {
     }
   }
 
-  .navigation.is-accessible:focus &,
-  .navigation.is-accessible.is-focused & {
+  .navigation.is-accessible & {
     &.is-focused {
       &:not(.is-selected) {
         @mixin addBorderHighlight var(--navigation-item-focused-border-color),
@@ -222,8 +220,7 @@ button.navigationItem {
     }
   }
 
-  .navigation.is-accessible:focus &,
-  .navigation.is-accessible.is-focused & {
+  .navigation.is-accessible & {
     &.is-focused {
       &.is-selected {
         background-color: var(--navigation-item-focused-selected-background-color);

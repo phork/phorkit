@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { MergeProps, ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
+import { useDeepFocus } from '../../hooks/useDeepFocus';
 import { makeCombineRefs } from '../../utils/combineRefs';
 import { InteractiveGroupConsumer } from '../../components/InteractiveGroup/InteractiveGroupConsumer';
 import {
@@ -54,7 +55,7 @@ export function PartialInteractiveListBase(
     allowReselect = false,
     children,
     disabled = false,
-    focused,
+    focused: superficialFocused,
     listComponent,
     maxSelect,
     mimicSelectOnFocus,
@@ -89,6 +90,7 @@ export function PartialInteractiveListBase(
   const items = state.items.getAll();
 
   const themeId = useThemeId(initThemeId);
+  const { focused, handleBlur, handleFocus } = useDeepFocus<HTMLUListElement>(ref);
 
   // this allows the consumer to passed a styled list which can react to accessible, focused, etc.
   const ListComponent = listComponent || List;
@@ -99,6 +101,8 @@ export function PartialInteractiveListBase(
       disabled={disabled}
       maxSelect={maxSelect}
       minSelect={minSelect}
+      onBlur={handleBlur}
+      onFocus={handleFocus}
       onItemClick={onItemClick}
       onItemFocus={onItemFocus}
       onKeyDown={onKeyDown}
@@ -116,7 +120,7 @@ export function PartialInteractiveListBase(
           items && items.length ? (
             <ListComponent<'ul'>
               as="ul"
-              focused={focused}
+              focused={focused || superficialFocused}
               inactive={disabled}
               mimicSelectOnFocus={mimicSelectOnFocus}
               onBlur={onBlur}
@@ -135,18 +139,24 @@ export function PartialInteractiveListBase(
               >)}
             >
               {items.map(({ id, label, disabled, ...itemProps }, index) => {
+                const itemFocused = focusedIndex === index;
+                const itemSelected = isSelected(id);
+                const stateProps = {
+                  disabled,
+                  focused: (focused || mimicSelectOnFocus) && itemFocused,
+                  selected: itemSelected,
+                };
+
                 return (
                   <InteractiveListItem
-                    disabled={disabled}
-                    focused={focusedIndex === index}
                     id={id}
                     key={id}
                     label={label}
                     mimicSelectOnFocus={mimicSelectOnFocus}
                     onClick={handleItemClick}
-                    selected={isSelected(id)}
                     transparent={transparent}
                     unstyled={unstyled}
+                    {...stateProps}
                     {...(itemProps as Omit<InteractiveListItemProps, 'id' | 'label' | 'onClick'>)}
                   />
                 );

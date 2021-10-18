@@ -259,23 +259,23 @@ ItemFunctions.args = {
   items: [
     {
       id: 'first',
-      label: ({ selected }) => `First${selected ? ' is selected' : ''}`,
+      label: ({ focused }) => `First${focused ? ' is focused' : ''}`,
       content: ({ selected }) => `First panel${selected ? ' is selected' : ''}`,
     },
     {
       id: 'second',
-      label: ({ selected }) => `Second${selected ? ' is selected' : ''}`,
+      label: ({ focused }) => `Second${focused ? ' is focused' : ''}`,
       content: ({ selected }) => `Second panel${selected ? ' is selected' : ''}`,
     },
     {
       id: 'third',
-      label: ({ selected }) => `Third${selected ? ' is selected' : ''}`,
+      label: ({ focused }) => `Third${focused ? ' is focused' : ''}`,
       content: ({ selected }) => `Third panel${selected ? ' is selected' : ''}`,
       disabled: true,
     },
     {
       id: 'fourth',
-      label: ({ selected }) => `Fourth${selected ? ' is selected' : ''}`,
+      label: ({ focused }) => `Fourth${focused ? ' is focused' : ''}`,
       content: ({ selected }) => `Fourth panel${selected ? ' is selected' : ''}`,
     },
   ],
