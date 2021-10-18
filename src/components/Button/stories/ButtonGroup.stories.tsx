@@ -192,6 +192,8 @@ const defaultArgs = {
     { id: 'fourth', label: 'Fourth' },
   ],
   color: 'primary' as ButtonGroupProps['color'],
+  contrast: false,
+  fullWidth: false,
   orientation: 'horizontal' as ButtonGroupProps['orientation'],
   selectedWeight: 'solid' as ButtonGroupProps['weight'],
   shape: 'pill' as ButtonGroupProps['shape'],

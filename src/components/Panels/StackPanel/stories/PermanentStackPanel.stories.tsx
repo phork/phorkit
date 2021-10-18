@@ -106,6 +106,7 @@ const defaultArgs = {
   fixed: false,
   height: 100,
   position: 'left' as PermanentStackPanelProps['position'],
+  raised: false,
   unit: 'px' as PermanentStackPanelProps['unit'],
 };
 

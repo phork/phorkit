@@ -118,6 +118,7 @@ const defaultArgs = {
   children: undefined,
   contrast: false,
   full: false,
+  transparent: false,
   unthemed: false,
   variant: 'primary' as FooterProps['variant'],
 };

@@ -126,7 +126,9 @@ const defaultArgs = {
   contrast: false,
   items,
   orientation: 'vertical' as AccordionProps['orientation'],
+  unstyled: false,
   unthemed: false,
+  variant: 'primary' as AccordionProps['variant'],
 };
 
 export const Default = Template.bind({});

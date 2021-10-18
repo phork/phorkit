@@ -83,6 +83,7 @@ const defaultArgs = {
   focused: false,
   fullWidth: false,
   hoveredPrimaryColor: '#454f58',
+  imitation: false,
   inverseColor: '#fff',
   loading: false,
   noHeight: false,

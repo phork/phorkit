@@ -382,6 +382,7 @@ const defaultArgs = {
   transitional: false,
   transparent: false,
   type: 'text' as TextboxProps['type'],
+  unthemed: false,
   value: 'Hello world',
   variant: 'underline' as TextboxProps['variant'],
   visuallyFocused: false,

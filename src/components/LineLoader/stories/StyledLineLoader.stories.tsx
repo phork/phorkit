@@ -46,6 +46,7 @@ const Template: ComponentStory<typeof StyledLineLoader> = args => <StyledLineLoa
 
 const defaultArgs = {
   color: '#556270',
+  fixed: false,
   position: 'top' as StyledLineLoaderProps['position'],
 };
 

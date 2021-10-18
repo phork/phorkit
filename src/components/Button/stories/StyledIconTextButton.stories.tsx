@@ -13,6 +13,12 @@ export default {
   title: 'Buttons/IconTextButton/StyledIconTextButton',
   component: StyledIconTextButton,
   argTypes: {
+    reverse: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+
     icon: {
       options: ['small', 'medium', 'large'],
       control: {
@@ -27,11 +33,6 @@ export default {
       },
     },
     loaderReplaceIcon: {
-      table: {
-        category: 'Icons',
-      },
-    },
-    reverse: {
       table: {
         category: 'Icons',
       },
@@ -82,11 +83,14 @@ const defaultArgs = {
   focused: false,
   fullWidth: false,
   hoveredPrimaryColor: '#454f58',
+  imitation: false,
   inverseColor: '#fff',
+  loaderReplaceIcon: false,
   loading: false,
   noHeight: false,
   noPadding: false,
   primaryColor: '#556270',
+  reverse: false,
   shape: 'pill' as StyledIconTextButtonProps['shape'],
   size: 'medium' as StyledIconTextButtonProps['size'],
   type: 'button' as StyledIconTextButtonProps['type'],

@@ -101,6 +101,7 @@ const defaultArgs = {
   children: 'Side panel',
   fixed: false,
   position: 'left' as PermanentSidePanelProps['position'],
+  raised: false,
   unit: 'px' as PermanentSidePanelProps['unit'],
   width: 200,
 };

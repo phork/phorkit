@@ -206,6 +206,7 @@ const Template: ComponentStory<(args: PortalDropoverProps<HTMLButtonElement>) =>
 
 const defaultArgs = {
   align: 'left' as PortalDropoverProps<HTMLButtonElement>['align'],
+  alwaysRender: false,
   children: (
     <DropoverContent>
       <Typography size="medium" variants="line-height-comfy">
@@ -228,6 +229,7 @@ const defaultArgs = {
   ),
   observe: false,
   offset: defaultPortalOffset,
+  passiveLabel: false,
   permanent: false,
   width: 240,
   withoutTogglerFocusStyle: false,

@@ -48,6 +48,7 @@ const Template: ComponentStory<typeof ColoredLineLoader> = args => <ColoredLineL
 
 const defaultArgs = {
   colorId: 'P60' as ThemeColorIds,
+  fixed: false,
   position: 'top' as ColoredLineLoaderProps['position'],
 };
 

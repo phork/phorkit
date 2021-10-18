@@ -265,6 +265,7 @@ const defaultArgs = {
   items,
   mimicSelectOnFocus: false,
   rounded: false,
+  scrollable: false,
   selectOnFocus: false,
   size: 'medium' as InteractiveListProps['size'],
   style: { width: 300 },

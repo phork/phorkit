@@ -85,11 +85,6 @@ export default {
         category: 'Uncommon',
       },
     },
-    unthemed: {
-      table: {
-        category: 'Uncommon',
-      },
-    },
   },
   decorators: [
     (Story, { args }) => (

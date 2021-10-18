@@ -14,6 +14,12 @@ export default {
   title: 'Buttons/IconTextButton/ColoredIconTextButton',
   component: ColoredIconTextButton,
   argTypes: {
+    reverse: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+
     icon: {
       options: ['small', 'medium', 'large'],
       control: {
@@ -28,11 +34,6 @@ export default {
       },
     },
     loaderReplaceIcon: {
-      table: {
-        category: 'Icons',
-      },
-    },
-    reverse: {
       table: {
         category: 'Icons',
       },
@@ -83,9 +84,12 @@ const defaultArgs = {
   disabled: false,
   focused: false,
   fullWidth: false,
+  imitation: false,
+  loaderReplaceIcon: false,
   loading: false,
   noHeight: false,
   noPadding: false,
+  reverse: false,
   shape: 'pill' as ColoredIconTextButtonProps['shape'],
   size: 'medium' as ColoredIconTextButtonProps['size'],
   type: 'button' as ColoredIconTextButtonProps['type'],

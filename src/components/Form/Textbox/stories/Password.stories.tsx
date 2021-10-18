@@ -357,6 +357,7 @@ const defaultArgs = {
   size: 'large' as PasswordProps['size'],
   transitional: false,
   transparent: false,
+  unthemed: false,
   value: 'Hello world',
   variant: 'underline' as PasswordProps['variant'],
   visuallyFocused: false,

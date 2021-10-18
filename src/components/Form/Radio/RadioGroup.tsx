@@ -16,7 +16,7 @@ export type RadioGroupItem<V extends RadioValue = string> = Omit<
   value: V;
 };
 
-export type LocalRadioGroupProps<V extends RadioValue = string> = ThemeProps & {
+export type LocalRadioGroupProps<V extends RadioValue = string> = Omit<ThemeProps, 'unthemed'> & {
   className?: string;
   legend: React.ReactNode;
   layout: 'stacked' | 'inline';

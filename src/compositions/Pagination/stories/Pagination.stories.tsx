@@ -211,6 +211,7 @@ export default {
 const Template: ComponentStory<typeof Pagination> = args => <Pagination {...args} />;
 
 const defaultArgs = {
+  allowRightClickLinks: false,
   color: 'primary' as PaginationProps['color'],
   contrast: false,
   justify: 'start' as PaginationProps['justify'],

@@ -16,7 +16,7 @@ export type CheckboxGroupItem<V extends CheckboxValue = string> = Omit<
   value: V;
 };
 
-export type LocalCheckboxGroupProps<V extends CheckboxValue = string> = ThemeProps & {
+export type LocalCheckboxGroupProps<V extends CheckboxValue = string> = Omit<ThemeProps, 'unthemed'> & {
   className?: string;
   legend: React.ReactNode;
   layout: 'stacked' | 'inline';

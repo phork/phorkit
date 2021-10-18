@@ -87,7 +87,7 @@ const Template: ComponentStory<typeof PanelContainer> = args => <PanelContainer 
 
 const defaultArgs = {
   absolute: false,
-  children: [<MainPanel>Main panel 1</MainPanel>, <MainPanel>Main panel 2</MainPanel>],
+  children: [<MainPanel key="panel1">Main panel 1</MainPanel>, <MainPanel key="panel2">Main panel 2</MainPanel>],
   full: false,
   orientation: 'horizontal' as PanelContainerProps['orientation'],
   reverse: false,

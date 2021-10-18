@@ -71,6 +71,8 @@ const defaultArgs = {
   children: 'This is a wonderfully fun banner.',
   immediate: true,
   level: 'info' as BannerProps['level'],
+  permanent: false,
+  scrollable: false,
   scrollbar: 'medium' as BannerProps['scrollbar'],
   unthemed: false,
 };

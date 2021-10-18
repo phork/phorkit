@@ -118,6 +118,7 @@ const defaultArgs = {
   children: undefined,
   contrast: false,
   full: false,
+  transparent: false,
   variant: 'primary' as HeaderProps['variant'],
   unthemed: false,
 };

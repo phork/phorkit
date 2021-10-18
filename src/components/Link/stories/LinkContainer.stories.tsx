@@ -85,7 +85,9 @@ const defaultArgs = {
       I am a link within a LinkContainer.
     </a>
   ),
+  contrast: false,
   underline: false,
+  unthemed: false,
 };
 
 export const Default = Template.bind({});

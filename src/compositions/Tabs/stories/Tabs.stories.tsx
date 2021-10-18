@@ -168,12 +168,15 @@ export default {
 const Template: ComponentStory<typeof Tabs> = args => <Tabs {...args} />;
 
 const defaultArgs = {
+  allowReselect: false,
   contrast: false,
+  disabled: false,
   fullWidth: false,
   initialSelected: [items[1].id],
   items,
   minSelect: 1 as TabsProps['minSelect'],
   orientation: 'horizontal' as TabsProps['orientation'],
+  selectOnFocus: false,
   unstyled: false,
 };
 

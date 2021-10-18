@@ -291,6 +291,8 @@ const defaultArgs = {
   alwaysTriggerFocus: false,
   contrast: false,
   disabled: false,
+  iconAfterActionable: false,
+  iconBeforeActionable: false,
   inputWidth: 'auto',
   label: 'Super fantastic label',
   multiple: false,
