@@ -7,6 +7,7 @@ route: /compositions/Tabs
 import { Playground, Props } from 'docz';
 import { Button } from 'components/Button';
 import { Rhythm } from 'components/Rhythm';
+import { Typography } from 'components/Typography';
 import { ColorLooper } from 'docs/helpers/ColorLooper';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
@@ -93,41 +94,24 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   </ThemeWrapper>
 </Playground>
 
-## Variations
-
-### Tabs with label and content functions
+### Select none
 
 <Playground>
   <ThemeWrapper>
     <Tabs
-      initialSelected={['second']}
       items={[
-        {
-          id: 'first',
-          label: ({ selected }) => `First${selected ? ' is selected' : ''}`,
-          content: ({ selected }) => `First panel${selected ? ' is selected' : ''}`,
-        },
-        {
-          id: 'second',
-          label: ({ selected }) => `Second${selected ? ' is selected' : ''}`,
-          content: ({ selected }) => `Second panel${selected ? ' is selected' : ''}`,
-        },
-        {
-          id: 'third',
-          label: ({ selected }) => `Third${selected ? ' is selected' : ''}`,
-          content: ({ selected }) => `Third panel${selected ? ' is selected' : ''}`,
-          disabled: true,
-        },
-        {
-          id: 'fourth',
-          label: ({ selected }) => `Fourth${selected ? ' is selected' : ''}`,
-          content: ({ selected }) => `Fourth panel${selected ? ' is selected' : ''}`,
-        },
+        { id: 'first', label: 'First', content: 'First panel' },
+        { id: 'second', label: 'Second', content: 'Second panel' },
+        { id: 'third', label: 'Third', content: 'Third panel', disabled: true },
+        { id: 'fourth', label: 'Fourth', content: 'Fourth panel' },
       ]}
+      minSelect={0}
       onSelect={(event, id) => console.log(id)}
     />
   </ThemeWrapper>
 </Playground>
+
+## Variations
 
 ### Transparent tabs
 
@@ -191,7 +175,41 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
   </ThemeWrapper>
 </Playground>
 
-### Custom tab styles, flush content
+### Tabs with label and content functions
+
+<Playground>
+  <ThemeWrapper>
+    <Tabs
+      initialSelected={['second']}
+      items={[
+        {
+          id: 'first',
+          label: ({ focused }) => `First${focused ? ' is focused' : ''}`,
+          content: ({ selected }) => `First panel${selected ? ' is selected' : ''}`,
+        },
+        {
+          id: 'second',
+          label: ({ focused }) => `Second${focused ? ' is focused' : ''}`,
+          content: ({ selected }) => `Second panel${selected ? ' is selected' : ''}`,
+        },
+        {
+          id: 'third',
+          label: ({ focused }) => `Third${focused ? ' is focused' : ''}`,
+          content: ({ selected }) => `Third panel${selected ? ' is selected' : ''}`,
+          disabled: true,
+        },
+        {
+          id: 'fourth',
+          label: ({ focused }) => `Fourth${focused ? ' is focused' : ''}`,
+          content: ({ selected }) => `Fourth panel${selected ? ' is selected' : ''}`,
+        },
+      ]}
+      onSelect={(event, id) => console.log(id)}
+    />
+  </ThemeWrapper>
+</Playground>
+
+### Custom styles
 
 <Playground>
   <ThemeWrapper>
@@ -209,13 +227,18 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
                 disabled={disabled}
                 focused={focused}
                 shape="brick"
+                tabIndex={-1}
                 weight={selected ? 'shaded' : 'outlined'}
               >
                 First
               </Button>
             </Rhythm>
           ),
-          content: ({ selected }) => <h4>First panel{selected ? ' is selected' : ''}</h4>,
+          content: ({ selected }) => (
+            <Typography as="h4" heading="h4">
+              First panel{selected ? ' is selected' : ''}
+            </Typography>
+          ),
           labelProps: { style: { outline: 'none' } },
           contentProps: { flush: true },
         },
@@ -229,13 +252,18 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
                 disabled={disabled}
                 focused={focused}
                 shape="brick"
+                tabIndex={-1}
                 weight={selected ? 'shaded' : 'outlined'}
               >
                 Second
               </Button>
             </Rhythm>
           ),
-          content: ({ selected }) => <h4>Second panel{selected ? ' is selected' : ''}</h4>,
+          content: ({ selected }) => (
+            <Typography as="h4" heading="h4">
+              Second panel{selected ? ' is selected' : ''}
+            </Typography>
+          ),
           labelProps: { style: { outline: 'none' } },
           contentProps: { flush: true },
         },
@@ -249,13 +277,18 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
                 disabled={disabled}
                 focused={focused}
                 shape="brick"
+                tabIndex={-1}
                 weight={selected ? 'shaded' : 'outlined'}
               >
                 Third
               </Button>
             </Rhythm>
           ),
-          content: ({ selected }) => <h4>Third panel{selected ? ' is selected' : ''}</h4>,
+          content: ({ selected }) => (
+            <Typography as="h4" heading="h4">
+              Third panel{selected ? ' is selected' : ''}
+            </Typography>
+          ),
           labelProps: { style: { outline: 'none', pointerEvents: 'none' } },
           contentProps: { flush: true },
           disabled: true,
@@ -270,13 +303,145 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
                 disabled={disabled}
                 focused={focused}
                 shape="brick"
+                tabIndex={-1}
                 weight={selected ? 'shaded' : 'outlined'}
               >
                 Fourth
               </Button>
             </Rhythm>
           ),
-          content: ({ selected }) => <h4>Fourth panel{selected ? ' is selected' : ''}</h4>,
+          content: ({ selected }) => (
+            <Typography as="h4" heading="h4">
+              Fourth panel{selected ? ' is selected' : ''}
+            </Typography>
+          ),
+          labelProps: { style: { outline: 'none' } },
+          contentProps: { flush: true },
+        },
+      ]}
+      listProps={{
+        unstyled: true,
+        style: {
+          alignItems: 'center',
+          display: 'flex',
+          flexDirection: 'row',
+          outline: 'none',
+        },
+      }}
+      panelGroupProps={{
+        unstyled: true,
+      }}
+      style={{ border: 'none', outline: 'none' }}
+    />
+  </ThemeWrapper>
+</Playground>
+
+### With `children` prop
+
+<Playground>
+  <ThemeWrapper>
+    <Tabs
+      unstyled
+      initialSelected={['second']}
+      items={[
+        {
+          id: 'first',
+          label: ({ disabled, focused, selected }) => (
+            <Rhythm mr={2}>
+              <Button
+                as="div"
+                color="neutral"
+                disabled={disabled}
+                focused={focused}
+                shape="brick"
+                tabIndex={-1}
+                weight={selected ? 'shaded' : 'outlined'}
+              >
+                First
+              </Button>
+            </Rhythm>
+          ),
+          content: ({ selected }) => (
+            <Typography as="h4" heading="h4">
+              First panel{selected ? ' is selected' : ''}
+            </Typography>
+          ),
+          labelProps: { style: { outline: 'none' } },
+          contentProps: { flush: true },
+        },
+        {
+          id: 'second',
+          label: ({ disabled, focused, selected }) => (
+            <Rhythm mx={2}>
+              <Button
+                as="div"
+                color="neutral"
+                disabled={disabled}
+                focused={focused}
+                shape="brick"
+                tabIndex={-1}
+                weight={selected ? 'shaded' : 'outlined'}
+              >
+                Second
+              </Button>
+            </Rhythm>
+          ),
+          content: ({ selected }) => (
+            <Typography as="h4" heading="h4">
+              Second panel{selected ? ' is selected' : ''}
+            </Typography>
+          ),
+          labelProps: { style: { outline: 'none' } },
+          contentProps: { flush: true },
+        },
+        {
+          id: 'third',
+          label: ({ disabled, focused, selected }) => (
+            <Rhythm mx={2}>
+              <Button
+                as="div"
+                color="neutral"
+                disabled={disabled}
+                focused={focused}
+                shape="brick"
+                tabIndex={-1}
+                weight={selected ? 'shaded' : 'outlined'}
+              >
+                Third
+              </Button>
+            </Rhythm>
+          ),
+          content: ({ selected }) => (
+            <Typography as="h4" heading="h4">
+              Third panel{selected ? ' is selected' : ''}
+            </Typography>
+          ),
+          labelProps: { style: { outline: 'none', pointerEvents: 'none' } },
+          contentProps: { flush: true },
+          disabled: true,
+        },
+        {
+          id: 'fourth',
+          label: ({ disabled, focused, selected }) => (
+            <Rhythm ml={2}>
+              <Button
+                as="div"
+                color="neutral"
+                disabled={disabled}
+                focused={focused}
+                shape="brick"
+                tabIndex={-1}
+                weight={selected ? 'shaded' : 'outlined'}
+              >
+                Fourth
+              </Button>
+            </Rhythm>
+          ),
+          content: ({ selected }) => (
+            <Typography as="h4" heading="h4">
+              Fourth panel{selected ? ' is selected' : ''}
+            </Typography>
+          ),
           labelProps: { style: { outline: 'none' } },
           contentProps: { flush: true },
         },
@@ -303,23 +468,6 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         </TabsContainer>
       )}
     </Tabs>
-  </ThemeWrapper>
-</Playground>
-
-### Select none
-
-<Playground>
-  <ThemeWrapper>
-    <Tabs
-      items={[
-        { id: 'first', label: 'First', content: 'First panel' },
-        { id: 'second', label: 'Second', content: 'Second panel' },
-        { id: 'third', label: 'Third', content: 'Third panel', disabled: true },
-        { id: 'fourth', label: 'Fourth', content: 'Fourth panel' },
-      ]}
-      minSelect={0}
-      onSelect={(event, id) => console.log(id)}
-    />
   </ThemeWrapper>
 </Playground>
 

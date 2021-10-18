@@ -160,33 +160,33 @@ _Note that the links will cause the page to reload so the state will appear unch
         items={[
           {
             id: 'first',
-            label: ({ focused }) => (
+            label: ({ focused, selected }) => (
               <a href="#linked" style={{ color: 'currentColor', display: 'block', height: '60px' }}>
-                First {focused ? 'is focused!' : ''}
+                First {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
               </a>
             ),
           },
           {
             id: 'second',
-            label: ({ focused }) => (
+            label: ({ focused, selected }) => (
               <a href="#linked" style={{ color: 'currentColor', display: 'block', height: '60px' }}>
-                Second {focused ? 'is focused!' : ''}
+                Second {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
               </a>
             ),
           },
           {
             id: 'third',
-            label: ({ focused }) => (
+            label: ({ focused, selected }) => (
               <a href="#linked" style={{ color: 'currentColor', display: 'block', height: '60px' }}>
-                Third {focused ? 'is focused!' : ''}
+                Third {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
               </a>
             ),
           },
           {
             id: 'fourth',
-            label: ({ focused }) => (
+            label: ({ focused, selected }) => (
               <a href="#linked" style={{ color: 'currentColor', display: 'block', height: '60px' }}>
-                Fourth {focused ? 'is focused!' : ''}
+                Fourth {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
               </a>
             ),
           },
@@ -194,60 +194,6 @@ _Note that the links will cause the page to reload so the state will appear unch
         style={{ height: '200px' }}
         variant="bordered"
       />
-    )}
-  </ThemeWrapper>
-</Playground>
-
-## Unstyled
-
-<Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <InteractiveList
-        scrollable
-        unstyled
-        initialSelected={['red']}
-        items={[
-          {
-            id: 'first',
-            label: ({ focused, selected }) => (
-              <div style={{ color: 'currentColor', display: 'block', height: '20px' }}>
-                First {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
-              </div>
-            ),
-          },
-          {
-            id: 'second',
-            label: ({ focused, selected }) => (
-              <div style={{ color: 'currentColor', display: 'block', height: '20px' }}>
-                Second {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
-              </div>
-            ),
-          },
-          {
-            id: 'third',
-            label: ({ focused, selected }) => (
-              <div style={{ color: 'currentColor', display: 'block', height: '20px' }}>
-                Third {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
-              </div>
-            ),
-          },
-          {
-            id: 'fourth',
-            label: ({ focused, selected }) => (
-              <div style={{ color: 'currentColor', display: 'block', height: '20px' }}>
-                Fourth {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
-              </div>
-            ),
-          },
-        ]}
-        onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
-        onSelect={(event, { id, index }) => console.log('select', { id, index })}
-        onUnselect={(event, { id }) => console.log('unselect', id)}
-        style={{ height: '200px' }}
-      >
-        An empty notification
-      </InteractiveList>
     )}
   </ThemeWrapper>
 </Playground>

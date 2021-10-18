@@ -164,11 +164,9 @@ export const InnerNavigation = React.forwardRef<HTMLElement, InnerNavigationProp
       >
         {items &&
           items.map(({ id, label, disabled, triggerOnly, ...itemProps }, index) => {
-            const stateProps = {
-              disabled,
-              focused: focusedIndex === index,
-              selected: selectedId === id,
-            };
+            const itemFocused = focusedIndex === index;
+            const itemSelected = selectedId === id;
+            const stateProps = { disabled, focused: focused && itemFocused, selected: itemSelected };
 
             return (
               <NavigationItem

@@ -369,9 +369,9 @@ LabelFunctions.args = {
   ...defaultArgs,
   animated: true,
   items: [
-    { id: 'first', label: ({ selected }) => `First${selected ? ' is selected' : ''}` },
-    { id: 'second', label: ({ selected }) => `Second${selected ? ' is selected' : ''}` },
-    { id: 'third', label: ({ selected }) => `Third${selected ? ' is selected' : ''}`, disabled: true },
-    { id: 'fourth', label: ({ selected }) => `Fourth${selected ? ' is selected' : ''}` },
+    { id: 'first', label: ({ focused }) => `First${focused ? ' is focused' : ''}` },
+    { id: 'second', label: ({ focused }) => `Second${focused ? ' is focused' : ''}` },
+    { id: 'third', label: ({ focused }) => `Third${focused ? ' is focused' : ''}`, disabled: true },
+    { id: 'fourth', label: ({ focused }) => `Fourth${focused ? ' is focused' : ''}` },
   ],
 };
