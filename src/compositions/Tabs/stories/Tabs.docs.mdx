@@ -1,6 +1,5 @@
 import { action } from '@storybook/addon-actions';
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
-import { themes } from 'config/themes';
 import { Button } from 'components/Button';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
@@ -257,10 +256,9 @@ import { items } from './helpers/items';
       ]}
       style={{ outline: 'none' }}
     >
-      {({ componentId, items, orientation, ref, themeId }) => (
+      {({ componentId, items, orientation, ref, themeId, unstyled }) => (
         <TabsContainer orientation={orientation} style={{ border: 'none' }}>
           <TabList
-            unstyled
             componentId={componentId}
             items={items}
             orientation={orientation}
@@ -272,6 +270,7 @@ import { items } from './helpers/items';
               outline: 'none',
             }}
             themeId={themeId}
+            unstyled={unstyled}
           />
           <TabPanelGroup unstyled componentId={componentId} items={items} orientation={orientation} themeId={themeId} />
         </TabsContainer>

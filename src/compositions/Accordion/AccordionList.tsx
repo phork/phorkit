@@ -16,7 +16,7 @@ import { AccordionLabel } from './AccordionLabel';
 import { AccordionItemType } from './types';
 
 export type AccordionListProps = React.HTMLAttributes<HTMLDivElement> &
-  Pick<AccordionContentProps, 'duration' | 'easing' | 'horizontal'> &
+  Pick<AccordionContentProps, 'duration' | 'easing' | 'orientation'> &
   ThemeProps & {
     className?: string;
     componentId: string;
@@ -43,10 +43,10 @@ export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps
       contrast = false,
       duration,
       easing,
-      horizontal = false,
       items,
       onBlur,
       onFocus,
+      orientation = 'vertical',
       style,
       themeId: initThemeId,
       unstyled = false,
@@ -85,7 +85,7 @@ export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps
 
     return (
       <div
-        aria-orientation={horizontal ? 'horizontal' : 'vertical'}
+        aria-orientation={orientation}
         className={
           unstyled
             ? className
@@ -93,7 +93,7 @@ export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps
                 styles.accordionList,
                 themeId && styles[`accordionList--${themeId}`],
                 variant && styles[`accordionList--${variant}`],
-                styles[`accordionList--${horizontal ? 'horizontal' : 'vertical'}`],
+                styles[`accordionList--${orientation}`],
                 accessible && styles['is-accessible'],
                 focused && styles['is-focused'],
                 className,
@@ -117,7 +117,7 @@ export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps
               <div
                 className={cx(
                   styles.accordionItem,
-                  styles[`accordionItem--${horizontal ? 'horizontal' : 'vertical'}`],
+                  styles[`accordionItem--${orientation}`],
                   accessible && styles['is-accessible'],
                   itemFocused && styles['is-focused'],
                   itemSelected && styles['is-selected'],
@@ -127,12 +127,12 @@ export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps
                 <AccordionLabel
                   aria-controls={generateComponentId(id, 'panel')}
                   aria-expanded={!!stateProps.selected}
-                  horizontal={horizontal}
                   iconOnly={iconOnly}
                   id={generateComponentId(id)}
                   onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent> | React.TouchEvent<HTMLDivElement>) =>
                     handleItemClick(event, id)
                   }
+                  orientation={orientation}
                   unstyled={unstyled}
                   {...labelProps}
                   {...stateProps}
@@ -142,8 +142,8 @@ export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps
                 <AccordionContent
                   duration={duration}
                   easing={easing}
-                  horizontal={horizontal}
                   id={generateComponentId(id, 'panel')}
+                  orientation={orientation}
                   parentRef={forwardedRef}
                   role="region"
                   {...contentProps}

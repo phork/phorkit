@@ -245,9 +245,9 @@ Overflow.args = {
   ],
 };
 
-export const SelectNone = Template.bind({});
-SelectNone.storyName = 'Select none';
-SelectNone.args = {
+export const AllowUnselect = Template.bind({});
+AllowUnselect.storyName = 'Allow unselect';
+AllowUnselect.args = {
   ...defaultArgs,
   minSelect: 0,
 };

@@ -17,7 +17,7 @@ export type TabsRenderChildren = (
     'className' | 'contrast' | 'items' | 'orientation' | 'style' | 'themeId' | 'variant' | 'unstyled'
   > & {
     componentId: string;
-    ref: React.Ref<HTMLElement>;
+    ref: React.Ref<HTMLDivElement>;
   },
 ) => React.ReactElement<HTMLDivElement>;
 
