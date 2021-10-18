@@ -1,32 +1,38 @@
----
-name: Icons
-route: /icons
----
-
-import { Playground, Props } from 'docz';
+import { Canvas, Meta } from '@storybook/addon-docs';
 import * as icons from 'icons';
 import * as internal from 'icons/internal';
 import { Flex } from 'components/Flex';
 import { Paper } from 'components/Paper';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
-import { IconLooper } from './helpers/IconLooper';
-import { ThemeWrapper } from './helpers/ThemeWrapper';
+import { IconLooper } from 'docs/helpers/IconLooper';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 
-# Icons
+<Meta
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+  title="Icons"
+/>
 
-<Playground>
+<PageTitle src="public/icons" title="Icons" />
+
+<Canvas>
   <ThemeWrapper>
     <Flex wrap>
       <IconLooper icons={icons}>
         {(name, Icon) => (
           <Rhythm key={name} m={2} px={4} py={2}>
-            <Paper bordered color="secondary">
+            <Paper bordered color="primary" style={{ borderRadius: 3 }}>
               <Typography size="large" variants={['letter-spacing-comfy']} volume="quiet" weight="light">
                 {name}
               </Typography>
               <Flex alignItems="center">
-                <Rhythm m={1}>
+                <Rhythm m={2}>
                   <Icon scale="xsmall" />
                   <Icon scale="small" />
                   <Icon scale="medium" />
@@ -42,24 +48,22 @@ import { ThemeWrapper } from './helpers/ThemeWrapper';
       </IconLooper>
     </Flex>
   </ThemeWrapper>
-</Playground>
+</Canvas>
 
-<div style={{ height: '50px' }} />
+### Internal icons
 
-## Internal icons
-
-<Playground>
+<Canvas>
   <ThemeWrapper>
     <Flex wrap>
       <IconLooper icons={internal}>
         {(name, Icon) => (
           <Rhythm key={name} m={2} px={4} py={2}>
-            <Paper bordered color="secondary">
+            <Paper bordered color="primary" style={{ borderRadius: 3 }}>
               <Typography size="large" variants={['letter-spacing-comfy']} volume="quiet" weight="light">
                 {name}
               </Typography>
               <Flex alignItems="center">
-                <Rhythm m={1}>
+                <Rhythm m={2}>
                   <Icon scale="xsmall" />
                   <Icon scale="small" />
                   <Icon scale="medium" />
@@ -75,4 +79,4 @@ import { ThemeWrapper } from './helpers/ThemeWrapper';
       </IconLooper>
     </Flex>
   </ThemeWrapper>
-</Playground>
+</Canvas>
