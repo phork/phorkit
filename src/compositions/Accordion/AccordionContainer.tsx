@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { ThemeProps } from '../../types';
+import { Orientation, ThemeProps } from '../../types';
 import { useAccessibility } from '../../context/Accessibility';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Accordion.module.css';
@@ -10,7 +10,7 @@ export type AccordionContainerProps = React.HTMLAttributes<HTMLDivElement> &
     children: React.ReactNode;
     className?: string;
     focused?: boolean;
-    horizontal?: boolean;
+    orientation?: Orientation;
     style?: React.CSSProperties;
     variant?: 'primary' | 'colored' | 'transparent';
   };
@@ -25,7 +25,7 @@ export function AccordionContainer({
   className,
   contrast = false,
   focused = false,
-  horizontal = false,
+  orientation = 'vertical',
   style,
   themeId: initThemeId,
   variant: initVariant,
@@ -42,7 +42,7 @@ export function AccordionContainer({
         variant && styles[`accordion--${variant}`],
         accessible && styles['is-accessible'],
         focused && styles['is-focused'],
-        styles[`accordion--${horizontal ? 'horizontal' : 'vertical'}`],
+        styles[`accordion--${orientation}`],
         className,
       )}
       style={style}

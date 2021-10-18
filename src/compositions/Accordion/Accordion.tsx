@@ -12,10 +12,10 @@ import { AccordionList, AccordionListProps } from './AccordionList';
 export type AccordionRenderChildren = (
   props: Pick<
     AccordionProps,
-    'className' | 'contrast' | 'horizontal' | 'items' | 'style' | 'themeId' | 'variant' | 'unstyled'
+    'className' | 'contrast' | 'items' | 'orientation' | 'style' | 'themeId' | 'variant' | 'unstyled'
   > & {
     componentId: string;
-    ref: React.Ref<HTMLElement>;
+    ref: React.Ref<HTMLDivElement>;
   },
 ) => React.ReactElement<HTMLDivElement>;
 
@@ -23,7 +23,7 @@ export type AccordionProps = Pick<
   InteractiveGroupProviderProps,
   'maxSelect' | 'minSelect' | 'initialSelected' | 'onSelect'
 > &
-  Pick<AccordionListProps, 'duration' | 'easing' | 'horizontal' | 'items' | 'variant'> &
+  Pick<AccordionListProps, 'duration' | 'easing' | 'items' | 'orientation' | 'unstyled' | 'variant'> &
   ThemeProps & {
     children?: AccordionRenderChildren;
     className?: string;
@@ -33,17 +33,16 @@ export type AccordionProps = Pick<
       | 'contrast'
       | 'duration'
       | 'easting'
-      | 'horizontal'
       | 'items'
       | 'onBlur'
       | 'onFocus'
+      | 'orientation'
       | 'ref'
       | 'themeId'
       | 'unstyled'
       | 'variant'
     >;
     style?: React.CSSProperties;
-    unstyled?: boolean;
   };
 
 /**
@@ -74,13 +73,13 @@ export function Accordion({
   contrast = false,
   duration,
   easing,
-  horizontal = false,
   initialSelected,
   items,
   listProps,
   maxSelect,
   minSelect,
   onSelect,
+  orientation = 'vertical',
   style,
   themeId,
   unstyled = false,
@@ -112,8 +111,8 @@ export function Accordion({
                 className,
                 componentId,
                 contrast,
-                horizontal,
                 items,
+                orientation,
                 ref,
                 style,
                 themeId,
@@ -125,7 +124,7 @@ export function Accordion({
                 className={className}
                 contrast={contrast}
                 focused={focused}
-                horizontal={horizontal}
+                orientation={orientation}
                 style={style}
                 variant={variant}
               >
@@ -134,10 +133,10 @@ export function Accordion({
                   contrast={contrast}
                   duration={duration}
                   easing={easing}
-                  horizontal={horizontal}
                   items={items}
                   onBlur={handleBlur}
                   onFocus={handleFocus}
+                  orientation={orientation}
                   ref={ref}
                   themeId={themeId}
                   unstyled={unstyled}

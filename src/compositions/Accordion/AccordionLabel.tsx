@@ -1,19 +1,17 @@
 import { cx } from '@emotion/css';
 import React, { useRef } from 'react';
-import { MergeElementPropsWithoutRef } from '../../types';
+import { MergeElementPropsWithoutRef, Orientation } from '../../types';
 import { useInteractiveGroupItem } from '../../components/InteractiveGroup/useInteractiveGroupItem';
 import { useListRegistryItem } from '../../components/ListRegistry/useListRegistryItem';
 import styles from './styles/AccordionLabel.module.css';
+import { AccordionItemStateProps } from './types';
 
-export type LocalAccordionLabelProps = {
+export type LocalAccordionLabelProps = AccordionItemStateProps & {
   children: React.ReactNode;
   className?: string;
-  disabled?: boolean;
-  focused?: boolean;
-  horizontal?: boolean;
   iconOnly?: boolean;
   id: string;
-  selected?: boolean;
+  orientation?: Orientation;
   unstyled?: boolean;
 };
 
@@ -34,9 +32,9 @@ export function AccordionLabel({
   className,
   disabled = false,
   focused = false,
-  horizontal = false,
   iconOnly = false,
   id,
+  orientation = 'vertical',
   selected = false,
   unstyled = false,
   ...props
@@ -53,7 +51,7 @@ export function AccordionLabel({
           ? className
           : cx(
               styles.accordionLabel,
-              styles[`accordionLabel--${horizontal ? 'horizontal' : 'vertical'}`],
+              styles[`accordionLabel--${orientation}`],
               iconOnly && styles['accordionLabel--icon'],
               selected && styles['is-selected'],
               disabled && styles['is-disabled'],

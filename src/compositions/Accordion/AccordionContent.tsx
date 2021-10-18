@@ -1,5 +1,6 @@
 import { cx } from '@emotion/css';
 import React, { useEffect, useRef, useState } from 'react';
+import { Orientation } from '../../types';
 import { usePanelCollapser, UsePanelCollapserProps } from '../../hooks/usePanelCollapser';
 import { makeCombineRefs } from '../../utils/combineRefs';
 import {
@@ -8,17 +9,16 @@ import {
   enhanceHorizontallyCollapsedDomNode,
 } from '../../utils/measureDomNode';
 import styles from './styles/AccordionContent.module.css';
+import { AccordionItemStateProps } from './types';
 
 export type AccordionContentProps = React.HTMLAttributes<HTMLDivElement> &
   Pick<UsePanelCollapserProps, 'onCloseFinish' | 'onCloseStart' | 'onOpenFinish' | 'onOpenStart'> &
-  Partial<Pick<UsePanelCollapserProps, 'duration' | 'easing'>> & {
+  Partial<Pick<UsePanelCollapserProps, 'duration' | 'easing'>> &
+  AccordionItemStateProps & {
     children: React.ReactNode;
     className?: string;
-    disabled?: boolean;
-    focused?: boolean;
-    horizontal?: boolean;
+    orientation?: Orientation;
     parentRef: React.Ref<HTMLDivElement>;
-    selected?: boolean;
     unstyled?: boolean;
   };
 
@@ -38,11 +38,11 @@ export const AccordionContent = React.forwardRef<HTMLDivElement, AccordionConten
       duration = 150,
       easing,
       focused = false,
-      horizontal = false,
       onCloseFinish,
       onCloseStart,
       onOpenFinish,
       onOpenStart,
+      orientation = 'vertical',
       parentRef,
       selected = false,
       unstyled = false,
@@ -51,7 +51,7 @@ export const AccordionContent = React.forwardRef<HTMLDivElement, AccordionConten
     forwardedRef,
   ): React.ReactElement<AccordionContentProps> => {
     const ref = useRef<HTMLDivElement>(null!);
-    const position = horizontal ? 'right' : 'bottom';
+    const position = orientation === 'horizontal' ? 'right' : 'bottom';
     const [dimension, setDimension] = useState<number | undefined>();
 
     useEffect(() => {
@@ -62,21 +62,21 @@ export const AccordionContent = React.forwardRef<HTMLDivElement, AccordionConten
         setDimension(
           measureDomNode(
             ref.current,
-            horizontal ? enhanceHorizontallyCollapsedDomNode() : enhanceVerticallyCollapsedDomNode(),
+            orientation === 'horizontal' ? enhanceHorizontallyCollapsedDomNode() : enhanceVerticallyCollapsedDomNode(),
             ref.current?.parentElement,
             {
-              containerHeight: horizontal && containerHeight ? `${containerHeight}px` : undefined,
-              containerWidth: !horizontal && containerWidth ? `${containerWidth}px` : undefined,
+              containerHeight: orientation === 'horizontal' && containerHeight ? `${containerHeight}px` : undefined,
+              containerWidth: orientation === 'vertical' && containerWidth ? `${containerWidth}px` : undefined,
             },
-          )?.[horizontal ? 'width' : 'height'],
+          )?.[orientation === 'horizontal' ? 'width' : 'height'],
         );
       }
-    }, [parentRef, ref, horizontal]);
+    }, [orientation, parentRef, ref]);
 
     usePanelCollapser({
       duration,
       easing,
-      height: (!horizontal && dimension) || undefined,
+      height: (orientation === 'vertical' && dimension) || undefined,
       onCloseFinish,
       onCloseStart,
       onOpenFinish,
@@ -87,14 +87,14 @@ export const AccordionContent = React.forwardRef<HTMLDivElement, AccordionConten
       transition: 'squashable',
       unit: 'px',
       useMax: true,
-      width: (horizontal && dimension) || undefined,
+      width: (orientation === 'horizontal' && dimension) || undefined,
     });
 
     const classes = unstyled
       ? className
       : cx(
           styles.accordionContent,
-          styles[`accordionContent--${horizontal ? 'horizontal' : 'vertical'}`],
+          styles[`accordionContent--${orientation}`],
           selected && styles['is-selected'],
           disabled && styles['is-disabled'],
           focused && styles['is-focused'],
