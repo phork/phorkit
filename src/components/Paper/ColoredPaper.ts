@@ -5,14 +5,14 @@ import { themes, ThemeColors, ThemeColorIds } from '../../config';
 import { withTheme } from '../../context/Theme';
 import { Paper, PaperProps } from './Paper';
 
-export type ColoredPaperProps = PaperProps & {
+export type ColoredPaperProps = Omit<PaperProps, 'color' | 'themeId'> & {
   colorId: ThemeColorIds;
   themeId: Theme;
 };
 
 // [TODO:ts] revisit casting
 const StyledPaper = styled(Paper, {
-  shouldForwardProp: (prop: string): boolean => !['colorId', 'themeId'].includes(prop),
+  shouldForwardProp: (prop: string): boolean => prop !== 'colorId',
 })<ColoredPaperProps>`
   --paper-background-color: ${props => themes[props.themeId][`color-${props.colorId}` as keyof ThemeColors]};
   --paper-border-color: ${props =>

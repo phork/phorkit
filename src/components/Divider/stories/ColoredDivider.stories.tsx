@@ -7,6 +7,10 @@ import { getPrimaryColorIds } from 'stories/helpers/utils';
 import { ColoredDivider, ColoredDividerProps } from '../ColoredDivider';
 import dividerStory from './Divider.stories';
 
+const argTypes = { ...dividerStory.argTypes };
+delete argTypes.contrast;
+delete argTypes.variant;
+
 export default {
   ...dividerStory,
   title: 'Utilities/Divider/ColoredDivider',
@@ -21,7 +25,7 @@ export default {
         category: 'Color',
       },
     },
-    ...dividerStory.argTypes,
+    ...argTypes,
   },
   parameters: {
     ...dividerStory.parameters,
@@ -55,10 +59,8 @@ Default.args = {
 };
 
 Default.argTypes = {
-  contrast: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
-  variant: { table: { disable: true } },
 };
 
 export const ColorP05 = Template.bind({});

@@ -5,6 +5,10 @@ import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledLink } from '../StyledLink';
 import linkStory from './Link.stories';
 
+const argTypes = { ...linkStory.argTypes };
+delete argTypes.contrast;
+delete argTypes.themeId;
+
 export default {
   ...linkStory,
   title: 'Navigation/Link/StyledLink',
@@ -25,7 +29,7 @@ export default {
         category: 'Styled',
       },
     },
-    ...linkStory.argTypes,
+    ...argTypes,
   },
   parameters: {
     ...linkStory.parameters,
@@ -64,6 +68,5 @@ Default.args = {
 
 Default.argTypes = {
   style: { table: { disable: true } },
-  theme: { table: { disable: true } },
   unthemed: { table: { disable: true } },
 };

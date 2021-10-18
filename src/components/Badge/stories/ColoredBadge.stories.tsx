@@ -7,6 +7,10 @@ import { getPrimaryColorIds } from 'stories/helpers/utils';
 import { ColoredBadge, ColoredBadgeProps } from '../ColoredBadge';
 import badgeStory from './Badge.stories';
 
+const argTypes = { ...badgeStory.argTypes };
+delete argTypes.color;
+delete argTypes.contrast;
+
 export default {
   ...badgeStory,
   title: 'Display/Badge/ColoredBadge',
@@ -21,7 +25,7 @@ export default {
         category: 'Color',
       },
     },
-    ...badgeStory.argTypes,
+    ...argTypes,
   },
   parameters: {
     ...badgeStory.parameters,
@@ -44,8 +48,7 @@ export default {
 const Template: ComponentStory<typeof ColoredBadge> = args => <ColoredBadge {...args} />;
 
 const defaultArgs = {
-  children: 99,
-  color: undefined,
+  children: '99',
   colorId: 'P60' as ThemeColorIds,
   position: 'top-right' as ColoredBadgeProps['position'],
   pulsing: false,
@@ -58,8 +61,6 @@ Default.args = {
 };
 
 Default.argTypes = {
-  color: { table: { disable: true } },
-  contrast: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
 };

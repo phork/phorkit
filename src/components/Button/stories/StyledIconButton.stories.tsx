@@ -62,7 +62,6 @@ const defaultArgs = {
   active: false,
   activePrimaryColor: '#798796',
   as: 'button' as StyledIconButtonProps['as'],
-  color: undefined,
   disabled: false,
   focused: false,
   fullWidth: false,
@@ -86,8 +85,6 @@ Default.args = {
 };
 
 Default.argTypes = {
-  color: { table: { disable: true } },
-  contrast: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
   unstyled: { table: { disable: true } },

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Slider, SliderProps } from './Slider';
 
-export type StyledSliderProps = SliderProps & {
+export type StyledSliderProps = Omit<SliderProps, 'contrast' | 'themeId' | 'validity'> & {
   trackBackgroundColor: string;
   trackFillBackgroundColor: string;
   handleBackgroundColor: string;

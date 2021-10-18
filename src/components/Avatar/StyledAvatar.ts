@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Avatar, AvatarProps } from './Avatar';
 
-export type StyledAvatarProps = AvatarProps & {
+export type StyledAvatarProps = Omit<AvatarProps, 'color' | 'contrast' | 'themeId'> & {
   backgroundColor: string;
   textColor: string;
 };
@@ -12,7 +12,7 @@ export type StyledAvatarProps = AvatarProps & {
  * have a custom text and background color.
  */
 export const StyledAvatar = styled(Avatar, {
-  shouldForwardProp: (prop: string) => !['backgroundColor', 'textColor', 'themeId'].includes(prop),
+  shouldForwardProp: (prop: string) => !['backgroundColor', 'textColor'].includes(prop),
 })<StyledAvatarProps>`
   ${({ backgroundColor }) => backgroundColor && `--avatar-background-color: ${backgroundColor};`}
   ${({ textColor }) => textColor && `--avatar-text-color: ${textColor};`}

@@ -78,7 +78,6 @@ const defaultArgs = {
   align: 'center' as StyledIconTextButtonProps['align'],
   as: 'button' as StyledIconTextButtonProps['as'],
   children: 'Click me',
-  color: undefined,
   disabled: false,
   focused: false,
   fullWidth: false,
@@ -102,8 +101,6 @@ Default.args = {
 };
 
 Default.argTypes = {
-  color: { table: { disable: true } },
-  contrast: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
   unstyled: { table: { disable: true } },

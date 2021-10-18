@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Loader, LoaderProps } from './Loader';
 
-export type StyledLoaderProps = Omit<LoaderProps, 'color'> & {
+export type StyledLoaderProps = Omit<LoaderProps, 'contrast' | 'themeId'> & {
   color: string;
 };
 

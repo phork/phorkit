@@ -44,6 +44,11 @@ export default {
         category: 'Countdown',
       },
     },
+    permanent: {
+      table: {
+        category: 'Countdown',
+      },
+    },
 
     onClose: {
       table: {
@@ -65,11 +70,6 @@ export default {
       },
     },
     contextId: {
-      table: {
-        category: 'Uncommon',
-      },
-    },
-    contrast: {
       table: {
         category: 'Uncommon',
       },
@@ -121,9 +121,9 @@ const Template: ComponentStory<typeof TitledToast> = args => <TitledToast {...ar
 
 const defaultArgs = {
   children: 'This is a wonderfully fun toast.',
-  contrast: false,
   immediate: true,
   level: 'info' as TitledToastProps['level'],
+  permanent: false,
   title: 'Hello world',
   unthemed: false,
 };

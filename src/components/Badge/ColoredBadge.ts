@@ -5,14 +5,14 @@ import { themes, ThemeColors, ThemeColorIds } from '../../config';
 import { withTheme } from '../../context/Theme';
 import { Badge, BadgeProps } from './Badge';
 
-export type ColoredBadgeProps = Omit<BadgeProps, 'themeId'> & {
+export type ColoredBadgeProps = Omit<BadgeProps, 'color' | 'contrast' | 'themeId'> & {
   colorId: ThemeColorIds;
   themeId: Theme;
 };
 
 // [TODO:ts] revisit casting
 const StyledBadge = styled(Badge, {
-  shouldForwardProp: (prop: string): boolean => !['colorId', 'themeId', 'variant'].includes(prop),
+  shouldForwardProp: (prop: string): boolean => prop !== 'colorId',
 })<ColoredBadgeProps>`
   --badge-background-color: ${props => themes[props.themeId][`color-${props.colorId}` as keyof ThemeColors]};
   --badge-text-color: ${props => themes[props.themeId][`color-${props.colorId}-contrast` as keyof ThemeColors]};

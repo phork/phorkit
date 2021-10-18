@@ -3,10 +3,15 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledProgress, StyledProgressProps } from '../StyledProgress';
-import dividerStory from './Progress.stories';
+import progressStory from './Progress.stories';
+
+const argTypes = { ...progressStory.argTypes };
+delete argTypes.color;
+delete argTypes.contrast;
+delete argTypes.themeId;
 
 export default {
-  ...dividerStory,
+  ...progressStory,
   title: 'Feedback/Progress/StyledProgress',
   component: StyledProgress,
   argTypes: {
@@ -25,12 +30,12 @@ export default {
         category: 'Styled',
       },
     },
-    ...dividerStory.argTypes,
+    ...argTypes,
   },
   parameters: {
-    ...dividerStory.parameters,
+    ...progressStory.parameters,
     docs: {
-      ...dividerStory.parameters?.docs,
+      ...progressStory.parameters?.docs,
       page: () => (
         <React.Fragment>
           <PageTitle src="components/Progress" title="StyledProgress" />
@@ -61,8 +66,6 @@ Default.args = {
 };
 
 Default.argTypes = {
-  contrast: { table: { disable: true } },
-  color: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
 };

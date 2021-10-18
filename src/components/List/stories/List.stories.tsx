@@ -219,40 +219,50 @@ export const XSmallSize = Template.bind({});
 XSmallSize.storyName = 'Size: XSmall';
 XSmallSize.args = {
   ...defaultArgs,
+  rounded: true,
   size: 'xsmall',
-  variant: 'bordered',
+  transparent: true,
+  variant: 'unboxed',
 };
 
 export const SmallSize = Template.bind({});
 SmallSize.storyName = 'Size: Small';
 SmallSize.args = {
   ...defaultArgs,
+  rounded: true,
   size: 'small',
-  variant: 'bordered',
+  transparent: true,
+  variant: 'unboxed',
 };
 
 export const MediumSize = Template.bind({});
 MediumSize.storyName = 'Size: Medium';
 MediumSize.args = {
   ...defaultArgs,
+  rounded: true,
   size: 'medium',
-  variant: 'bordered',
+  transparent: true,
+  variant: 'unboxed',
 };
 
 export const LargeSize = Template.bind({});
 LargeSize.storyName = 'Size: Large';
 LargeSize.args = {
   ...defaultArgs,
+  rounded: true,
   size: 'large',
-  variant: 'bordered',
+  transparent: true,
+  variant: 'unboxed',
 };
 
 export const XLargeSize = Template.bind({});
 XLargeSize.storyName = 'Size: XLarge';
 XLargeSize.args = {
   ...defaultArgs,
+  rounded: true,
   size: 'xlarge',
-  variant: 'bordered',
+  transparent: true,
+  variant: 'unboxed',
 };
 
 export const Inline = Template.bind({});
@@ -291,6 +301,7 @@ export const Manual = (args: ListProps<'div'>) => (
     </ListItem>
   </List>
 );
+Manual.storyName = 'With children';
 Manual.args = {
   ...defaultArgs,
   as: 'div',

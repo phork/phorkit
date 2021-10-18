@@ -5,6 +5,11 @@ import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledSlider } from '../StyledSlider';
 import sliderStory from './Slider.stories';
 
+const argTypes = { ...sliderStory.argTypes };
+delete argTypes.contrast;
+delete argTypes.themeId;
+delete argTypes.validity;
+
 export default {
   ...sliderStory,
   title: 'Form/Slider/StyledSlider',
@@ -30,7 +35,7 @@ export default {
         category: 'Style',
       },
     },
-    ...sliderStory.argTypes,
+    ...argTypes,
   },
   parameters: {
     ...sliderStory.parameters,
@@ -67,7 +72,6 @@ Default.args = {
 };
 
 Default.argTypes = {
-  contrast: { table: { disable: true } },
   style: { table: { disable: true } },
   unstyled: { table: { disable: true } },
 };

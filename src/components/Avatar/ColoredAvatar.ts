@@ -5,14 +5,14 @@ import { themes, ThemeColors, ThemeColorIds } from '../../config';
 import { withTheme } from '../../context/Theme';
 import { Avatar, AvatarProps } from './Avatar';
 
-export type ColoredAvatarProps = Omit<AvatarProps, 'themeId'> & {
+export type ColoredAvatarProps = Omit<AvatarProps, 'color' | 'contrast' | 'themeId'> & {
   colorId: ThemeColorIds;
   themeId: Theme;
 };
 
 // [TODO:ts] revisit casting
 const StyledAvatar = styled(Avatar, {
-  shouldForwardProp: (prop: string): boolean => !['colorId', 'themeId', 'variant'].includes(prop),
+  shouldForwardProp: (prop: string): boolean => prop !== 'colorId',
 })<ColoredAvatarProps>`
   --avatar-background-color: ${props => themes[props.themeId][`color-${props.colorId}` as keyof ThemeColors]};
   --avatar-text-color: ${props => themes[props.themeId][`color-${props.colorId}-contrast` as keyof ThemeColors]};

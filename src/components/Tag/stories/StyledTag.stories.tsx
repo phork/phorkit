@@ -5,6 +5,10 @@ import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledTag, StyledTagProps } from '../StyledTag';
 import tagStory from './Tag.stories';
 
+const argTypes = { ...tagStory.argTypes };
+delete argTypes.contrast;
+delete argTypes.themeId;
+
 export default {
   ...tagStory,
   title: 'Display/Tag/StyledTag',
@@ -30,7 +34,7 @@ export default {
         category: 'Styled',
       },
     },
-    ...tagStory.argTypes,
+    ...argTypes,
   },
   parameters: {
     ...tagStory.parameters,
@@ -71,7 +75,6 @@ Default.args = {
 };
 
 Default.argTypes = {
-  contrast: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
 };

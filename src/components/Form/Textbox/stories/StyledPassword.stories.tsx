@@ -5,6 +5,11 @@ import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledPassword, StyledPasswordProps } from '../StyledPassword';
 import passwordStory from './Password.stories';
 
+const argTypes = { ...passwordStory.argTypes };
+delete argTypes.contrast;
+delete argTypes.themeId;
+delete argTypes.validity;
+
 export default {
   ...passwordStory,
   title: 'Form/Password/StyledPassword',
@@ -50,7 +55,7 @@ export default {
         category: 'Style',
       },
     },
-    ...passwordStory.argTypes,
+    ...argTypes,
   },
   parameters: {
     ...passwordStory.parameters,
@@ -76,7 +81,6 @@ const defaultArgs = {
   alwaysTriggerBlur: false,
   alwaysTriggerFocus: false,
   autoFocus: false,
-  contrast: false,
   disabled: false,
   iconBeforeActionable: false,
   initialType: 'password' as StyledPasswordProps['initialType'],
@@ -107,7 +111,6 @@ Default.args = {
 };
 
 Default.argTypes = {
-  contrast: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
 };

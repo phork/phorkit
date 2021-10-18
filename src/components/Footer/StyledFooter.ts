@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Footer, FooterProps } from './Footer';
 
-export type StyledFooterProps = FooterProps & {
+export type StyledFooterProps = Omit<FooterProps, 'contrast' | 'themeId'> & {
   backgroundColor?: string;
   borderColor?: string;
   textColor?: string;
@@ -15,8 +15,7 @@ export type StyledFooterProps = FooterProps & {
  * height.
  */
 export const StyledFooter = styled(Footer, {
-  shouldForwardProp: (prop: string) =>
-    !['borderColor', 'backgroundColor', 'textColor', 'height', 'themeId'].includes(prop),
+  shouldForwardProp: (prop: string) => !['borderColor', 'backgroundColor', 'textColor', 'height'].includes(prop),
 })<StyledFooterProps>`
   ${({ backgroundColor }) => backgroundColor && `--footer-background-color: ${backgroundColor};`}
   ${({ borderColor }) => borderColor && `--footer-border-color: ${borderColor};`}

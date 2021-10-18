@@ -58,6 +58,11 @@ export default {
         category: 'Countdown',
       },
     },
+    permanent: {
+      table: {
+        category: 'Countdown',
+      },
+    },
 
     onClose: {
       table: {
@@ -79,11 +84,6 @@ export default {
       },
     },
     contextId: {
-      table: {
-        category: 'Uncommon',
-      },
-    },
-    contrast: {
       table: {
         category: 'Uncommon',
       },
@@ -135,10 +135,10 @@ const Template: ComponentStory<typeof IconToast> = args => <IconToast {...args} 
 
 const defaultArgs = {
   children: 'This is a wonderfully fun toast.',
-  contrast: false,
   icon: CheckIcon,
   iconSize: 20,
   immediate: true,
+  permanent: false,
   level: 'info' as IconToastProps['level'],
   title: 'Hello world',
   unthemed: false,

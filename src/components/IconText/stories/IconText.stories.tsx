@@ -102,6 +102,7 @@ Default.args = {
 };
 
 export const InlineReverse = Template.bind({});
+InlineReverse.storyName = 'Inline reverse';
 InlineReverse.args = {
   ...defaultArgs,
   inline: true,

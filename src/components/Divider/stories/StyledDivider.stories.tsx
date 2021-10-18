@@ -5,6 +5,11 @@ import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledDivider, StyledDividerProps } from '../StyledDivider';
 import dividerStory from './Divider.stories';
 
+const argTypes = { ...dividerStory.argTypes };
+delete argTypes.contrast;
+delete argTypes.themeId;
+delete argTypes.variant;
+
 export default {
   ...dividerStory,
   title: 'Utilities/Divider/StyledDivider',
@@ -15,7 +20,7 @@ export default {
         category: 'Styled',
       },
     },
-    ...dividerStory.argTypes,
+    ...argTypes,
   },
   parameters: {
     ...dividerStory.parameters,
@@ -49,8 +54,6 @@ Default.args = {
 };
 
 Default.argTypes = {
-  contrast: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
-  variant: { table: { disable: true } },
 };

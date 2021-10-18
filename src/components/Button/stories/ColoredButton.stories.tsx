@@ -10,6 +10,10 @@ import { getPrimaryColorIds } from 'stories/helpers/utils';
 import { ColoredButton, ColoredButtonProps } from '../ColoredButton';
 import buttonStory from './Button.stories';
 
+const argTypes = { ...buttonStory.argTypes };
+delete argTypes.color;
+delete argTypes.contrast;
+
 export default {
   ...buttonStory,
   title: 'Buttons/Button/ColoredButton',
@@ -24,7 +28,7 @@ export default {
         category: 'Color',
       },
     },
-    ...buttonStory.argTypes,
+    ...argTypes,
   },
   parameters: {
     ...buttonStory.parameters,
@@ -65,7 +69,6 @@ const defaultArgs = {
   align: 'center' as ColoredButtonProps['align'],
   as: 'button' as ColoredButtonProps['as'],
   children: 'Click me',
-  color: undefined,
   colorId: 'P60' as ThemeColorIds,
   disabled: false,
   focused: false,
@@ -87,8 +90,6 @@ Default.args = {
 };
 
 Default.argTypes = {
-  color: { table: { disable: true } },
-  contrast: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
   unstyled: { table: { disable: true } },

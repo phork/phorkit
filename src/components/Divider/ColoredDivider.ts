@@ -5,7 +5,7 @@ import { themes, ThemeColors, ThemeColorIds } from '../../config';
 import { withTheme } from '../../context/Theme';
 import { Divider, DividerProps } from './Divider';
 
-export type ColoredDividerProps = DividerProps & {
+export type ColoredDividerProps = Omit<DividerProps, 'contrast' | 'themeId' | 'variant'> & {
   colorId: ThemeColorIds;
   themeId: Theme;
 };
@@ -18,7 +18,7 @@ const opacities = {
 
 // [TODO:ts] revisit casting
 const StyledDivider = styled(Divider, {
-  shouldForwardProp: (prop: string): boolean => !['colorId', 'themeId', 'volume'].includes(prop),
+  shouldForwardProp: (prop: string): boolean => !['colorId', 'volume'].includes(prop),
 })<ColoredDividerProps>`
   --divider-color: ${props => themes[props.themeId][`color-${props.colorId}` as keyof ThemeColors]};
   ${({ volume }) => volume && `opacity: ${opacities[volume] || 1};`}

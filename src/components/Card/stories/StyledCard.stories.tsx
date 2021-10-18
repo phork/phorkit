@@ -5,6 +5,9 @@ import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledCard } from '../StyledCard';
 import cardStory from './Card.stories';
 
+const argTypes = { ...cardStory.argTypes };
+delete argTypes.themeId;
+
 export default {
   ...cardStory,
   title: 'Surfaces/Card/StyledCard',
@@ -20,7 +23,7 @@ export default {
         category: 'Styled',
       },
     },
-    ...cardStory.argTypes,
+    ...argTypes,
   },
   parameters: {
     ...cardStory.parameters,
@@ -66,6 +69,5 @@ Default.args = {
 Default.argTypes = {
   raised: { table: { disable: true } },
   style: { table: { disable: true } },
-  theme: { table: { disable: true } },
   unthemed: { table: { disable: true } },
 };

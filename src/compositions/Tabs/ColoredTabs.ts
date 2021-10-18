@@ -5,7 +5,7 @@ import { themes, ThemeColors, ThemeColorIds } from '../../config';
 import { withTheme } from '../../context/Theme';
 import { Tabs, TabsProps } from './Tabs';
 
-export type ColoredTabsProps = TabsProps & {
+export type ColoredTabsProps = Omit<TabsProps, 'contrast' | 'themeId'> & {
   colorId: ThemeColorIds;
   themeId: Theme;
 };

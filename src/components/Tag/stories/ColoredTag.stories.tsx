@@ -7,6 +7,9 @@ import { getPrimaryColorIds } from 'stories/helpers/utils';
 import { ColoredTag, ColoredTagProps } from '../ColoredTag';
 import tagStory from './Tag.stories';
 
+const argTypes = { ...tagStory.argTypes };
+delete argTypes.contrast;
+
 export default {
   ...tagStory,
   title: 'Display/Tag/ColoredTag',
@@ -21,7 +24,7 @@ export default {
         category: 'Color',
       },
     },
-    ...tagStory.argTypes,
+    ...argTypes,
   },
   parameters: {
     ...tagStory.parameters,
@@ -59,7 +62,6 @@ Default.args = {
 };
 
 Default.argTypes = {
-  contrast: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
 };

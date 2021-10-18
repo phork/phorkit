@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Tag, TagProps } from './Tag';
 
-export type StyledTagProps = TagProps & {
+export type StyledTagProps = Omit<TagProps, 'contrast' | 'themeId'> & {
   primaryColor: string;
   inverseColor: string;
   hoveredPrimaryColor?: string;
@@ -14,7 +14,7 @@ export type StyledTagProps = TagProps & {
  */
 export const StyledTag = styled(Tag, {
   shouldForwardProp: (prop: string) =>
-    !['primaryColor', 'inverseColor', 'hoveredPrimaryColor', 'activePrimaryColor', 'themeId'].includes(prop),
+    !['primaryColor', 'inverseColor', 'hoveredPrimaryColor', 'activePrimaryColor'].includes(prop),
 })<StyledTagProps>`
   ${({ primaryColor }) => primaryColor && `--tag-primary-color: ${primaryColor};`}
   ${({ inverseColor }) => inverseColor && `--tag-inverse-color: ${inverseColor};`}

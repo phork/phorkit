@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Chip, ChipProps } from './Chip';
 
-export type StyledChipProps = ChipProps & {
+export type StyledChipProps = Omit<ChipProps, 'contrast' | 'themeId'> & {
   avatarBackgroundColor: string;
   avatarTextColor: string;
   tagActivePrimaryColor?: string;
@@ -24,7 +24,6 @@ export const StyledChip = styled(Chip, {
       'tagHoveredPrimaryColor',
       'tagInverseColor',
       'tagPrimaryColor',
-      'themeId',
     ].includes(prop),
 })<StyledChipProps>`
   ${({ avatarBackgroundColor }) => avatarBackgroundColor && `--avatar-background-color: ${avatarBackgroundColor};`}

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Password, PasswordProps } from './Password';
 
-export type StyledPasswordProps = PasswordProps & {
+export type StyledPasswordProps = Omit<PasswordProps, 'contrast' | 'themeId' | 'validity'> & {
   passwordIconColor: string;
   passwordIconHoveredColor: string;
   passwordInputContainerBackgroundColor: string;
@@ -15,7 +15,7 @@ export type StyledPasswordProps = PasswordProps & {
 /**
  * A styled password is an extension of the `Password`
  * component which will have custom text, border and
- * background colors for both focused, unfocused and
+ * background colors for the focused, unfocused and
  * hovered states.
  */
 export const StyledPassword = styled(Password, {
@@ -29,7 +29,6 @@ export const StyledPassword = styled(Password, {
       'passwordInputContainerHoveredBorderColor',
       'passwordInputTextColor',
       'passwordLabelTextColor',
-      'themeId',
     ].includes(prop),
 })<StyledPasswordProps>`
   ${({ passwordIconColor }) => passwordIconColor && `--formbox-icon-color: ${passwordIconColor};`}

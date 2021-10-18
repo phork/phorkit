@@ -12,7 +12,7 @@ export default {
   argTypes: {
     children: {
       control: {
-        type: 'text',
+        disable: true,
       },
     },
 
@@ -56,9 +56,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component: 'A new component.',
-      },
     },
     layout: 'centered',
   },

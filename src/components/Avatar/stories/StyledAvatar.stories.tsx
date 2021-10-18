@@ -5,6 +5,11 @@ import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledAvatar, StyledAvatarProps } from '../StyledAvatar';
 import avatarStory from './Avatar.stories';
 
+const argTypes = { ...avatarStory.argTypes };
+delete argTypes.color;
+delete argTypes.contrast;
+delete argTypes.themeId;
+
 export default {
   ...avatarStory,
   title: 'Display/Avatar/StyledAvatar',
@@ -20,7 +25,7 @@ export default {
         category: 'Styled',
       },
     },
-    ...avatarStory.argTypes,
+    ...argTypes,
   },
   parameters: {
     ...avatarStory.parameters,
@@ -45,7 +50,6 @@ const Template: ComponentStory<typeof StyledAvatar> = args => <StyledAvatar {...
 const defaultArgs = {
   actionable: false,
   backgroundColor: '#556270',
-  color: undefined,
   initials: 'EC',
   size: 'medium' as StyledAvatarProps['size'],
   textColor: '#fff',
@@ -58,8 +62,6 @@ Default.args = {
 
 Default.argTypes = {
   as: { table: { disable: true } },
-  color: { table: { disable: true } },
-  contrast: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
 };

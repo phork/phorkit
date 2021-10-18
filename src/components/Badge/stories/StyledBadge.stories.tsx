@@ -5,6 +5,11 @@ import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledBadge, StyledBadgeProps } from '../StyledBadge';
 import badgeStory from './Badge.stories';
 
+const argTypes = { ...badgeStory.argTypes };
+delete argTypes.color;
+delete argTypes.contrast;
+delete argTypes.themeId;
+
 export default {
   ...badgeStory,
   title: 'Display/Badge/StyledBadge',
@@ -20,7 +25,7 @@ export default {
         category: 'Styled',
       },
     },
-    ...badgeStory.argTypes,
+    ...argTypes,
   },
   parameters: {
     ...badgeStory.parameters,
@@ -44,8 +49,7 @@ const Template: ComponentStory<typeof StyledBadge> = args => <StyledBadge {...ar
 
 const defaultArgs = {
   backgroundColor: '#556270',
-  children: 99,
-  color: undefined,
+  children: '99',
   position: 'top-right' as StyledBadgeProps['position'],
   shape: 'count' as StyledBadgeProps['shape'],
   textColor: '#fff',
@@ -57,8 +61,6 @@ Default.args = {
 };
 
 Default.argTypes = {
-  color: { table: { disable: true } },
-  contrast: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
 };

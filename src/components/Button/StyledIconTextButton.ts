@@ -3,7 +3,7 @@ import { MergeProps } from '../../types';
 import { IconTextButton, IconTextButtonElementType, IconTextButtonProps } from './IconTextButton';
 
 export type StyledIconTextButtonProps<T extends IconTextButtonElementType = 'button'> = MergeProps<
-  IconTextButtonProps<T>,
+  Omit<IconTextButtonProps<T>, 'color' | 'contrast' | 'themeId'>,
   {
     primaryColor?: string;
     inverseColor?: string;

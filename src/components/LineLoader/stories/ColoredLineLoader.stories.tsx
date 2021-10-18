@@ -7,6 +7,9 @@ import { getPrimaryColorIds } from 'stories/helpers/utils';
 import { ColoredLineLoader, ColoredLineLoaderProps } from '../ColoredLineLoader';
 import lineLoaderStory from './LineLoader.stories';
 
+const argTypes = { ...lineLoaderStory.argTypes };
+delete argTypes.contrast;
+
 export default {
   ...lineLoaderStory,
   title: 'Feedback/LineLoader/ColoredLineLoader',
@@ -21,7 +24,7 @@ export default {
         category: 'Color',
       },
     },
-    ...lineLoaderStory.argTypes,
+    ...argTypes,
   },
   parameters: {
     ...lineLoaderStory.parameters,
@@ -54,7 +57,6 @@ Default.args = {
 };
 
 Default.argTypes = {
-  contrast: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
 };
