@@ -1,6 +1,6 @@
-import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
 import { Stepper, NotifiedStepper } from 'lib';
+import { fireEvent, render } from '../../../utils';
 
 describe('<Stepper />', () => {
   it('should render a labeled stepper', () => {

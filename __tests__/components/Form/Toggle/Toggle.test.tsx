@@ -1,6 +1,6 @@
-import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
 import { Toggle, NotifiedToggle } from 'lib';
+import { fireEvent, render } from '../../../utils';
 
 describe('<Toggle />', () => {
   it('should render a labeled toggle', () => {

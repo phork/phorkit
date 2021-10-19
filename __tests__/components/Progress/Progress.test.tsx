@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { Progress } from 'lib';
+import { render } from '../../utils';
 
 describe('<Progress />', () => {
   it('should render a basic progress indicator', () => {

@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { Fieldset } from 'lib';
+import { render } from '../../../utils';
 
 describe('<Fieldset />', () => {
   it('should render a basic fieldset', () => {

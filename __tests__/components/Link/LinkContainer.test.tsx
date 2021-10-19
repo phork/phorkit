@@ -1,7 +1,7 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { LinkContainer } from 'lib';
 import { AsTypeP } from '__mocks__/AsType.mock';
+import { render } from '../../utils';
 
 describe('<LinkContainer />', () => {
   it('should render a basic link container', () => {

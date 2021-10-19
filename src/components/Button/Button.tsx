@@ -97,7 +97,7 @@ export function ButtonBase<T extends ButtonElementType = 'button'>(
   };
 
   // if an href is passed we should ignore the `as` and force to an anchor
-  const element = (href ? 'a' : as || 'button') as string;
+  const element = (href && 'a') || (imitation && 'div') || as || 'button';
 
   const elementProps = (() => {
     if (imitation) return {};

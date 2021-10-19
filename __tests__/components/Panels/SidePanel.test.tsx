@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { SidePanel } from 'lib';
+import { render } from '../../utils';
 
 describe('<SidePanel />', () => {
   it('should render a side panel', () => {

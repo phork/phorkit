@@ -2,12 +2,12 @@ const { defaults } = require('jest-config');
 
 module.exports = {
   verbose: false,
+  testEnvironment: 'jest-environment-jsdom',
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
     '^.+\\.jsx?$': 'babel-jest',
   },
   transformIgnorePatterns: ['/node_modules/(?!lodash-es).+\\.js$'],
-  setupFiles: ['<rootDir>/jest-setup.js'],
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/__tests__/tsconfig.json',

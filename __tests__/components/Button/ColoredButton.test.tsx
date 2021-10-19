@@ -1,29 +1,29 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
-import { Button } from 'lib';
+import { ColoredButton } from 'lib';
 import { AsTypeA } from '__mocks__/AsType.mock';
 import { fireEvent, render } from '../../utils';
 
-describe('<Button />', () => {
+describe('<ColoredButton colorId="P10" />', () => {
   it('should render a basic button', () => {
-    const { getByText } = render(<Button>Click me!</Button>);
+    const { getByText } = render(<ColoredButton colorId="P10">Click me!</ColoredButton>);
     expect(getByText('Click me!')).toBeTruthy();
   });
 
   it('should render a disabled button', () => {
     const { getByTestId } = render(
-      <Button disabled data-testid="button">
+      <ColoredButton disabled colorId="P10" data-testid="button">
         Click me!
-      </Button>,
+      </ColoredButton>,
     );
     expect(getByTestId('button')).toHaveAttribute('disabled');
   });
 
   it('should render a loading button', () => {
     const { getByText, getByTestId } = render(
-      <Button loading data-testid="button" loader={<span>Loading</span>}>
+      <ColoredButton loading colorId="P10" data-testid="button" loader={<span>Loading</span>}>
         Click me!
-      </Button>,
+      </ColoredButton>,
     );
     expect(getByTestId('button')).toHaveAttribute('disabled');
     expect(getByText('Loading')).toBeTruthy();
@@ -31,16 +31,20 @@ describe('<Button />', () => {
 
   it('should render a submit button', () => {
     const { getByTestId } = render(
-      <Button data-testid="button" type="submit">
+      <ColoredButton colorId="P10" data-testid="button" type="submit">
         Click me!
-      </Button>,
+      </ColoredButton>,
     );
     expect(getByTestId('button')).toHaveAttribute('type', 'submit');
   });
 
   it('should be clickable', () => {
     const onClick = jest.fn();
-    const { getByRole } = render(<Button onClick={onClick}>Click me!</Button>);
+    const { getByRole } = render(
+      <ColoredButton colorId="P10" onClick={onClick}>
+        Click me!
+      </ColoredButton>,
+    );
 
     expect(onClick).not.toHaveBeenCalled();
 
@@ -51,30 +55,34 @@ describe('<Button />', () => {
   });
 
   it('should render as a button', () => {
-    const { container } = render(<Button>Click me!</Button>);
+    const { container } = render(<ColoredButton colorId="P10">Click me!</ColoredButton>);
     expect(container.firstChild?.nodeName).toBe('BUTTON');
   });
 
   it('should render as an anchor', () => {
     const { container } = render(
-      <Button<'a'> as="a" href="#button">
+      <ColoredButton<'a'> as="a" colorId="P10" href="#button">
         Click me!
-      </Button>,
+      </ColoredButton>,
     );
     expect(container.firstChild?.nodeName).toBe('A');
     expect(container.firstChild).toHaveAttribute('href', '#button');
   });
 
   it('should render as a div', () => {
-    const { container } = render(<Button imitation>Click me!</Button>);
+    const { container } = render(
+      <ColoredButton imitation colorId="P10">
+        Click me!
+      </ColoredButton>,
+    );
     expect(container.firstChild?.nodeName).toBe('DIV');
   });
 
   it('should render using a functional component', () => {
     const { container, getByText } = render(
-      <Button<'a'> as={AsTypeA} href="#button">
+      <ColoredButton<'a'> as={AsTypeA} colorId="P10" href="#button">
         Click me!
-      </Button>,
+      </ColoredButton>,
     );
     expect(container.firstChild?.nodeName).toBe('A');
     expect(container.firstChild).toHaveAttribute('href', '#button');

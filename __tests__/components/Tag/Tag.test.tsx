@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom/extend-expect';
-import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
 import { Tag } from 'lib';
 import { AsTypeA } from '__mocks__/AsType.mock';
+import { fireEvent, render } from '../../utils';
 
 describe('<Tag />', () => {
   it('should render a basic tag', () => {

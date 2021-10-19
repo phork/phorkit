@@ -1,53 +1,57 @@
 import '@testing-library/jest-dom/extend-expect';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
-import { Avatar } from 'lib';
+import { ColoredAvatar } from 'lib';
 import { AsTypeA } from '__mocks__/AsType.mock';
 import { render } from '../../utils';
 
-describe('<Avatar />', () => {
+describe('<ColoredAvatar />', () => {
   it('should render with initials', () => {
-    const { getByText } = render(<Avatar initials="EC" />);
+    const { getByText } = render(<ColoredAvatar colorId="P10" initials="EC" />);
     expect(getByText('EC')).toBeTruthy();
   });
 
   it('should render with an image', () => {
-    const { getByTestId } = render(<Avatar data-testid="avatar" imgSrc="/avatar.png" initials="EC" />);
+    const { getByTestId } = render(
+      <ColoredAvatar colorId="P10" data-testid="avatar" imgSrc="/avatar.png" initials="EC" />,
+    );
     const avatar = getByTestId('avatar');
     expect(avatar?.style.getPropertyValue('background-image')).toBe('url(/avatar.png)');
   });
 
   it('should render an actionable avatar', () => {
-    const { getByTestId } = render(<Avatar actionable data-testid="avatar" initials="EC" />);
+    const { getByTestId } = render(<ColoredAvatar actionable colorId="P10" data-testid="avatar" initials="EC" />);
     expect(document.body).toHaveFocus();
     userEvent.tab();
     expect(getByTestId('avatar')).toHaveFocus();
   });
 
   it('should render a non-actionable avatar', () => {
-    const { getByTestId } = render(<Avatar data-testid="avatar" initials="EC" />);
+    const { getByTestId } = render(<ColoredAvatar colorId="P10" data-testid="avatar" initials="EC" />);
     expect(document.body).toHaveFocus();
     userEvent.tab();
     expect(getByTestId('avatar')).not.toHaveFocus();
   });
 
   it('should render as a div', () => {
-    const { container } = render(<Avatar initials="EC" />);
+    const { container } = render(<ColoredAvatar colorId="P10" initials="EC" />);
     expect(container.firstChild?.nodeName).toBe('DIV');
   });
 
   it('should render as a button', () => {
-    const { container } = render(<Avatar actionable initials="EC" />);
+    const { container } = render(<ColoredAvatar actionable colorId="P10" initials="EC" />);
     expect(container.firstChild?.nodeName).toBe('BUTTON');
   });
 
   it('should render as a link', () => {
-    const { container } = render(<Avatar<'a'> as="a" href="#avatar" initials="EC" />);
+    const { container } = render(<ColoredAvatar<'a'> as="a" colorId="P10" href="#avatar" initials="EC" />);
     expect(container.firstChild?.nodeName).toBe('A');
   });
 
   it('should render using a functional component', () => {
-    const { container, getByText } = render(<Avatar<'a'> as={AsTypeA} href="#avatar" initials="EC" />);
+    const { container, getByText } = render(
+      <ColoredAvatar<'a'> as={AsTypeA} colorId="P10" href="#avatar" initials="EC" />,
+    );
     expect(container.firstChild?.nodeName).toBe('A');
     expect(getByText('EC')).toBeTruthy();
   });

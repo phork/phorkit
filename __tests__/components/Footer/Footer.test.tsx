@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { Footer } from 'lib';
+import { render } from '../../utils';
 
 describe('<Footer />', () => {
   it('should render a basic footer', () => {

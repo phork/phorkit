@@ -1,7 +1,7 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { List } from 'lib';
 import { AsTypeDiv } from '__mocks__/AsType.mock';
+import { render } from '../../utils';
 
 describe('<List />', () => {
   it('should render a basic list', () => {

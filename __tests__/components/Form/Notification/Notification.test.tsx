@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { Notification } from 'lib';
+import { render } from '../../../utils';
 
 describe('<Notification />', () => {
   it('should render a basic notification', () => {

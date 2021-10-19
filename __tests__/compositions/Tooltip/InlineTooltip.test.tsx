@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { InlineTooltip, TimesIcon } from 'lib';
+import { render } from '../../utils';
 
 describe('<InlineTooltip />', () => {
   it('should render a basic popover', () => {

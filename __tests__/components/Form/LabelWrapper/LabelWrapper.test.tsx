@@ -1,7 +1,7 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { LabelWrapper } from 'lib';
 import { AsTypeA } from '__mocks__/AsType.mock';
+import { render } from '../../../utils';
 
 describe('<LabelWrapper />', () => {
   it('should render a basic label wrapper', () => {

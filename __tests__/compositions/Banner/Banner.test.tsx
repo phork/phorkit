@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { Banner } from 'lib';
+import { render } from '../../utils';
 
 describe('<Banner />', () => {
   it('should render a basic banner', () => {

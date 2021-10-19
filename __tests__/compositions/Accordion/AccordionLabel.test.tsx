@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom/extend-expect';
-import { render } from '@testing-library/react';
 import React from 'react';
 import { AccordionLabel } from 'lib';
+import { render } from '../../utils';
 
 describe('<AccordionLabel />', () => {
   it('should render a basic accordion label', () => {

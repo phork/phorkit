@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom/extend-expect';
-import { render } from '@testing-library/react';
 import React from 'react';
 import { IconGroup, TimesIcon } from 'lib';
+import { render } from '../../utils';
 
 describe('<IconGroup />', () => {
   it('should render a basic icon group by scale', () => {

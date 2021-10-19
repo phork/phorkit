@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { TitledToast } from 'lib';
+import { render } from '../../utils';
 
 describe('<TitledToast />', () => {
   it('should render a basic toast with a title', () => {
