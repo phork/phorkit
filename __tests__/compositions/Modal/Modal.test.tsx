@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { Modal, ModalBody, ModalHeader, ModalFooter } from 'lib';
+import { render } from '../../utils';
 
 describe('<Modal />', () => {
   it('should render a basic modal', () => {

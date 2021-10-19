@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { Triangle } from 'lib';
+import { render } from '../../utils';
 
 describe('<Triangle />', () => {
   it('should render a basic triangle', () => {

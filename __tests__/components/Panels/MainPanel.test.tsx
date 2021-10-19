@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { MainPanel } from 'lib';
+import { render } from '../../utils';
 
 describe('<MainPanel />', () => {
   it('should render a main panel', () => {

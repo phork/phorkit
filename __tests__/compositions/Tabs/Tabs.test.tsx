@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { Tabs } from 'lib';
+import { render } from '../../utils';
 
 const items = [
   { id: 'first', label: 'First', content: 'First panel' },

@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { renderFromProp, renderFromPropWithFallback } from 'lib';
+import { render } from '../utils';
 
 describe('renderFromProp', () => {
   it('should return an array of children without modification', () => {

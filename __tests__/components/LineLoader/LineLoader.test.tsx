@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { LineLoader } from 'lib';
+import { render } from '../../utils';
 
 describe('<LineLoader />', () => {
   it('should render a basic line loader', () => {

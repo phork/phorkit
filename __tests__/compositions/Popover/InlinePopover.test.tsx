@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { InlinePopover, TimesIcon } from 'lib';
+import { render } from '../../utils';
 
 describe('<InlinePopover />', () => {
   it('should render a basic popover', () => {

@@ -1,30 +1,34 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
-import { IconTextButton, TimesIcon } from 'lib';
+import { ColoredIconTextButton, TimesIcon } from 'lib';
 import { AsTypeA } from '__mocks__/AsType.mock';
 import { fireEvent, render } from '../../utils';
 
-describe('<IconTextButton />', () => {
+describe('<ColoredIconTextButton colorId="P10" />', () => {
   it('should render a basic button', () => {
-    const { container, getByText } = render(<IconTextButton icon={TimesIcon}>Click me!</IconTextButton>);
+    const { container, getByText } = render(
+      <ColoredIconTextButton colorId="P10" icon={TimesIcon}>
+        Click me!
+      </ColoredIconTextButton>,
+    );
     expect(container.querySelector('svg')).toBeTruthy();
     expect(getByText('Click me!')).toBeTruthy();
   });
 
   it('should render a disabled button', () => {
     const { getByTestId } = render(
-      <IconTextButton disabled data-testid="button" icon={TimesIcon}>
+      <ColoredIconTextButton disabled colorId="P10" data-testid="button" icon={TimesIcon}>
         Click me!
-      </IconTextButton>,
+      </ColoredIconTextButton>,
     );
     expect(getByTestId('button')).toHaveAttribute('disabled');
   });
 
   it('should render a loading button', () => {
     const { getByText, getByTestId } = render(
-      <IconTextButton loading data-testid="button" icon={TimesIcon} loader={<span>Loading</span>}>
+      <ColoredIconTextButton loading colorId="P10" data-testid="button" icon={TimesIcon} loader={<span>Loading</span>}>
         Click me!
-      </IconTextButton>,
+      </ColoredIconTextButton>,
     );
     expect(getByTestId('button')).toHaveAttribute('disabled');
     expect(getByText('Loading')).toBeTruthy();
@@ -32,9 +36,16 @@ describe('<IconTextButton />', () => {
 
   it('should render a loading button with the loader replacing the icon', () => {
     const { getByText, getByTestId } = render(
-      <IconTextButton loaderReplaceIcon loading data-testid="button" icon={TimesIcon} loader={<span>Loading</span>}>
+      <ColoredIconTextButton
+        loaderReplaceIcon
+        loading
+        colorId="P10"
+        data-testid="button"
+        icon={TimesIcon}
+        loader={<span>Loading</span>}
+      >
         Click me!
-      </IconTextButton>,
+      </ColoredIconTextButton>,
     );
     expect(getByTestId('button')).toHaveAttribute('disabled');
     expect(getByText('Click me!')).toBeTruthy();
@@ -43,9 +54,9 @@ describe('<IconTextButton />', () => {
 
   it('should render a submit button', () => {
     const { getByTestId } = render(
-      <IconTextButton data-testid="button" icon={TimesIcon} type="submit">
+      <ColoredIconTextButton colorId="P10" data-testid="button" icon={TimesIcon} type="submit">
         Click me!
-      </IconTextButton>,
+      </ColoredIconTextButton>,
     );
     expect(getByTestId('button')).toHaveAttribute('type', 'submit');
   });
@@ -53,9 +64,9 @@ describe('<IconTextButton />', () => {
   it('should be clickable', () => {
     const onClick = jest.fn();
     const { getByRole } = render(
-      <IconTextButton icon={TimesIcon} onClick={onClick}>
+      <ColoredIconTextButton colorId="P10" icon={TimesIcon} onClick={onClick}>
         Click me!
-      </IconTextButton>,
+      </ColoredIconTextButton>,
     );
 
     expect(onClick).not.toHaveBeenCalled();
@@ -67,15 +78,19 @@ describe('<IconTextButton />', () => {
   });
 
   it('should render as a button', () => {
-    const { container } = render(<IconTextButton icon={TimesIcon}>Click me!</IconTextButton>);
+    const { container } = render(
+      <ColoredIconTextButton colorId="P10" icon={TimesIcon}>
+        Click me!
+      </ColoredIconTextButton>,
+    );
     expect(container.firstChild?.nodeName).toBe('BUTTON');
   });
 
   it('should render as an anchor', () => {
     const { container } = render(
-      <IconTextButton<'a'> as="a" href="#button" icon={TimesIcon}>
+      <ColoredIconTextButton<'a'> as="a" colorId="P10" href="#button" icon={TimesIcon}>
         Click me!
-      </IconTextButton>,
+      </ColoredIconTextButton>,
     );
     expect(container.firstChild?.nodeName).toBe('A');
     expect(container.firstChild).toHaveAttribute('href', '#button');
@@ -83,18 +98,18 @@ describe('<IconTextButton />', () => {
 
   it('should render as a div', () => {
     const { container } = render(
-      <IconTextButton imitation icon={TimesIcon}>
+      <ColoredIconTextButton imitation colorId="P10" icon={TimesIcon}>
         Click me!
-      </IconTextButton>,
+      </ColoredIconTextButton>,
     );
     expect(container.firstChild?.nodeName).toBe('DIV');
   });
 
   it('should render using a functional component', () => {
     const { container, getByText } = render(
-      <IconTextButton<'a'> as={AsTypeA} href="#button" icon={TimesIcon}>
+      <ColoredIconTextButton<'a'> as={AsTypeA} colorId="P10" href="#button" icon={TimesIcon}>
         Click me!
-      </IconTextButton>,
+      </ColoredIconTextButton>,
     );
     expect(container.firstChild?.nodeName).toBe('A');
     expect(container.querySelector('svg')).toBeTruthy();

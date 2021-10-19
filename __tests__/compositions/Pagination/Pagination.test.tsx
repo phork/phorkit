@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { Pagination } from 'lib';
+import { render } from '../../utils';
 
 describe('<Pagination />', () => {
   it('should render a basic pagination with previous and next buttons', () => {

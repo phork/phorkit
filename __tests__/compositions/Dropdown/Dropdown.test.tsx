@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { Dropdown } from 'lib';
+import { render } from '../../utils';
 
 export const options = [
   { id: 'red', value: 'fancy-red', label: 'Red' },

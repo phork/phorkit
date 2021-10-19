@@ -1,6 +1,6 @@
-import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
 import { Password, NotifiedPassword } from 'lib';
+import { fireEvent, render } from '../../../utils';
 
 describe('<Password />', () => {
   it('should render a labeled password with the password visible', () => {

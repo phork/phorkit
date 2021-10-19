@@ -1,7 +1,7 @@
-import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { TextboxGroup2FA } from 'lib';
+import { render } from '../../utils';
 
 describe('<TextboxGroup2FA />', () => {
   it('should render a textbox group', () => {

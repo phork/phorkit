@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
 import * as React from 'react';
 import { Chip } from 'lib';
+import { render } from '../../utils';
 
 describe('<Chip />', () => {
   it('should render a basic chip', () => {

@@ -1,7 +1,7 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { PaginationJump } from 'lib';
 import { AsTypeDiv } from '__mocks__/AsType.mock';
+import { render } from '../../utils';
 
 describe('<PaginationJump />', () => {
   it('should render a basic pagination jump button', () => {

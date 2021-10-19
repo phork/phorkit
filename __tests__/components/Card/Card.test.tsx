@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { Card } from 'lib';
+import { render } from '../../utils';
 
 describe('<Card />', () => {
   it('should render a basic card', () => {
