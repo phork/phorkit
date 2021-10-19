@@ -30,7 +30,9 @@ const StyledTabs = styled(Tabs, {
  * component and they will have a background of one
  * of the theme's primary colors.
  */
-export const ColoredTabs = React.memo<ColoredTabsProps>(withTheme<ColoredTabsProps>(StyledTabs));
+export const ColoredTabs = React.memo<Omit<ColoredTabsProps, 'themeId'> & { themeId?: Theme }>(
+  withTheme<ColoredTabsProps>(StyledTabs),
+);
 ColoredTabs.displayName = 'ColoredTabs';
 
 StyledTabs.defaultProps = {

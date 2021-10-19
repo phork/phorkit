@@ -45,7 +45,9 @@ export default {
   },
 } as ComponentMeta<typeof ColoredAvatar>;
 
-const Template: ComponentStory<typeof ColoredAvatar> = args => <ColoredAvatar {...args} />;
+const Template: ComponentStory<(args: ColoredAvatarProps) => ReturnType<typeof ColoredAvatar>> = args => (
+  <ColoredAvatar {...args} />
+);
 
 const defaultArgs = {
   actionable: false,
