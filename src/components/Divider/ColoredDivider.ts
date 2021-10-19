@@ -29,7 +29,9 @@ const StyledDivider = styled(Divider, {
  * component which will have the color of one of the
  * theme's primary colors.
  */
-export const ColoredDivider = React.memo<ColoredDividerProps>(withTheme<ColoredDividerProps>(StyledDivider));
+export const ColoredDivider = React.memo<Omit<ColoredDividerProps, 'themeId'> & { themeId?: Theme }>(
+  withTheme<ColoredDividerProps>(StyledDivider),
+);
 ColoredDivider.displayName = 'ColoredDivider';
 
 StyledDivider.defaultProps = {

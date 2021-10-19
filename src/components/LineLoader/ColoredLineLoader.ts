@@ -22,7 +22,7 @@ const StyledLineLoader = styled(LineLoader, {
  * component which will have the color of one of the
  * theme's primary colors.
  */
-export const ColoredLineLoader = React.memo<ColoredLineLoaderProps>(
+export const ColoredLineLoader = React.memo<Omit<ColoredLineLoaderProps, 'themeId'> & { themeId?: Theme }>(
   withTheme<ColoredLineLoaderProps>(StyledLineLoader),
 );
 ColoredLineLoader.displayName = 'ColoredLineLoader';

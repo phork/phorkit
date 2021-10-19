@@ -5,7 +5,10 @@ import { themes, ThemeColors, ThemeColorIds } from '../../config';
 import { withTheme } from '../../context/Theme';
 import { Avatar, AvatarProps } from './Avatar';
 
-export type ColoredAvatarProps = Omit<AvatarProps, 'color' | 'contrast' | 'themeId'> & {
+export type ColoredAvatarProps<T extends React.ElementType = 'div'> = Omit<
+  AvatarProps<T>,
+  'color' | 'contrast' | 'themeId'
+> & {
   colorId: ThemeColorIds;
   themeId: Theme;
 };
@@ -24,8 +27,11 @@ const StyledAvatar = styled(Avatar, {
  * have a background of one of the theme's primary
  * colors.
  */
-export const ColoredAvatar = React.memo<ColoredAvatarProps>(withTheme<ColoredAvatarProps>(StyledAvatar));
-ColoredAvatar.displayName = 'ColoredAvatar';
+export const ColoredAvatar = withTheme<ColoredAvatarProps>(StyledAvatar) as <T extends React.ElementType = 'div'>(
+  p: Omit<ColoredAvatarProps<T>, 'themeId'> & { themeId?: Theme },
+) => React.ReactElement<T>;
+
+(ColoredAvatar as React.NamedExoticComponent).displayName = 'ColoredAvatar';
 
 StyledAvatar.defaultProps = {
   unthemed: true,
