@@ -1,0 +1,67 @@
+---
+name: Shade
+menu: Surfaces
+route: /components/Shade
+---
+
+import { Playground, Props } from 'docz';
+import { Rhythm } from 'components/Rhythm';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { Shade } from '../index';
+
+<PageTitle src="components/Shade" title="Shade" />
+
+## Primary shade
+
+<Playground>
+  <ThemeWrapper>
+    <Shade color="primary">
+      <Rhythm p={4}>Hello world</Rhythm>
+    </Shade>
+  </ThemeWrapper>
+</Playground>
+
+## Success shade
+
+<Playground>
+  <ThemeWrapper>
+    <Shade color="success">
+      <Rhythm p={4}>Hello world</Rhythm>
+    </Shade>
+  </ThemeWrapper>
+</Playground>
+
+## Warning shade
+
+<Playground>
+  <ThemeWrapper>
+    <Shade color="warning">
+      <Rhythm p={4}>Hello world</Rhythm>
+    </Shade>
+  </ThemeWrapper>
+</Playground>
+
+## Danger shade
+
+<Playground>
+  <ThemeWrapper>
+    <Shade color="danger">
+      <Rhythm p={4}>Hello world</Rhythm>
+    </Shade>
+  </ThemeWrapper>
+</Playground>
+
+## Neutral shade
+
+<Playground>
+  <ThemeWrapper>
+    <Shade color="neutral">
+      <Rhythm p={4}>Hello world</Rhythm>
+    </Shade>
+  </ThemeWrapper>
+</Playground>
+
+## \[props\]
+
+<Props of={Shade} />

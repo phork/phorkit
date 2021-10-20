@@ -63,6 +63,7 @@ import {
   Position,
   Rhythm,
   ScaleProvider,
+  Shade,
   StackPanel,
   StyledAvatar,
   StyledHeader,
@@ -74,6 +75,7 @@ import {
   Toast,
   Toggle,
   Tooltip,
+  TooltipContent,
   Triangle,
   Typography,
   themes,
@@ -347,6 +349,52 @@ import {
     >
       <Typography variants="no-wrap">You must agree</Typography>
     </PortalTextTooltip>
+  </ThemeWrapper>
+</Playground>
+
+## Tooltip content
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <Flex alignItems="center" direction="row">
+        <Shade color="success" style={{ borderRadius: 4, width: 60, height: 60 }}>
+          <Flex full alignItems="center" justifyContent="center">
+            <BlobbrIcon scale="2xlarge" />
+          </Flex>
+        </Shade>
+        <Rhythm ml={6}>
+          <TooltipContent
+            position="right-center"
+            style={{ width: 300 }}
+            triangleBorderColor={themes[themeId]['primary-palette-border-color']}
+            triangleColor={themes[themeId]['secondary-palette-background-color']}
+            triangleSize={8}
+          >
+            <Rhythm px={4} py={5}>
+              <Paper bordered color="secondary" style={{ borderRadius: 4 }}>
+                <Flex alignItems="center" direction="row">
+                  <Rhythm mr={2}>
+                    <Badge color="success" shape="marker" />
+                  </Rhythm>
+                  <Flex flexible wrap>
+                    <Typography size="medium">
+                      <Typography variants="space-after" weight="bold">
+                        A status
+                      </Typography>
+                      &ndash; Something happened here
+                    </Typography>
+                  </Flex>
+                  <Typography volume="quietest">
+                    <CheckIcon scale="medium" />
+                  </Typography>
+                </Flex>
+              </Paper>
+            </Rhythm>
+          </TooltipContent>
+        </Rhythm>
+      </Flex>
+    )}
   </ThemeWrapper>
 </Playground>
 
