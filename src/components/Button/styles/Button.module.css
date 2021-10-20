@@ -118,6 +118,7 @@ button.button {
 
     &:active,
     &.is-active {
+      @mixin makeFocusRing var(--button-primary-color);
       @mixin makeShadedFillActive var(--button-active-primary-color), var(--button-inverse-color);
     }
   }

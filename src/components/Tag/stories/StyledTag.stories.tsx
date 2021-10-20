@@ -58,9 +58,12 @@ const Template: ComponentStory<typeof StyledTag> = args => <StyledTag {...args} 
 
 const defaultArgs = {
   actionable: true,
+  active: false,
   activePrimaryColor: '#798796',
   children: 'Hello world',
   flush: false,
+  focused: false,
+  hovered: false,
   hoveredPrimaryColor: '#454f58',
   inverseColor: '#fff',
   primaryColor: '#556270',

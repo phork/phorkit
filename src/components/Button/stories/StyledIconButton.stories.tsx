@@ -65,6 +65,7 @@ const defaultArgs = {
   disabled: false,
   focused: false,
   fullWidth: false,
+  hovered: false,
   hoveredPrimaryColor: '#454f58',
   imitation: false,
   inverseColor: '#fff',

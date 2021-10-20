@@ -76,6 +76,7 @@ button.tag {
 
     &:active,
     &.is-active {
+      @mixin makeFocusRing var(--tag-primary-color);
       @mixin makeShadedFillActive var(--tag-active-primary-color), var(--tag-inverse-color);
     }
   }
