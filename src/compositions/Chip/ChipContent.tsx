@@ -5,7 +5,7 @@ import styles from './styles/Chip.module.css';
 import { ChipSize } from './types';
 
 export type ChipContentProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> & {
-  avatar: Pick<AvatarProps, 'color' | 'imgSrc' | 'initials' | 'style' | 'translations' | 'themeId' | 'unthemed'>;
+  avatar: Omit<AvatarProps, 'actionable' | 'className'>;
   icon?: React.ReactNode;
   text: React.ReactNode;
   size?: ChipSize;
