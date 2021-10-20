@@ -6,12 +6,16 @@ import { fireEvent, render } from '../../utils';
 
 describe('<Tag />', () => {
   it('should render a basic tag', () => {
-    const { container, getByText } = render(<Tag>Click me!</Tag>);
-    expect(container.firstChild?.nodeName).toBe('DIV');
+    const { getByText } = render(<Tag>Click me!</Tag>);
     expect(getByText('Click me!')).toBeTruthy();
   });
 
-  it('should render a tag as an anchor', () => {
+  it('should render as a div', () => {
+    const { container } = render(<Tag>Click me!</Tag>);
+    expect(container.firstChild?.nodeName).toBe('DIV');
+  });
+
+  it('should render as an anchor', () => {
     const { container, getByText } = render(
       <Tag<'a'> actionable as="a" href="#tag">
         Click me!
@@ -22,7 +26,7 @@ describe('<Tag />', () => {
     expect(getByText('Click me!')).toBeTruthy();
   });
 
-  it('should render a tag as a clickable button', () => {
+  it('should render as a button', () => {
     const onClick = jest.fn();
     const { container, getByText } = render(
       <Tag<'button'> actionable as="button" onClick={onClick}>
@@ -40,7 +44,7 @@ describe('<Tag />', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  it('should render a tag using a functional component', () => {
+  it('should render using a functional component', () => {
     const { container, getByText } = render(
       <Tag<'a'> actionable as={AsTypeA} href="#tag">
         Click me!

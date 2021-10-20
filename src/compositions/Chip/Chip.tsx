@@ -1,15 +1,9 @@
 import React from 'react';
-import { AvatarProps } from '../../components/Avatar';
 import { Tag, TagProps } from '../../components/Tag';
-import { ChipContent } from './ChipContent';
-import { ChipSize } from './types';
+import { ChipContent, ChipContentProps } from './ChipContent';
 
-export type ChipProps = Omit<TagProps, 'children' | 'flush' | 'size'> & {
-  avatar: Pick<AvatarProps, 'color' | 'imgSrc' | 'initials' | 'style' | 'translations' | 'themeId' | 'unthemed'>;
-  icon?: React.ReactNode;
-  text: React.ReactNode;
-  size?: ChipSize;
-};
+export type ChipProps = Omit<TagProps, 'children' | 'flush' | 'size'> &
+  Pick<ChipContentProps, 'avatar' | 'icon' | 'size' | 'style' | 'text'>;
 
 /**
  * A chip is a small group of data that includes an
