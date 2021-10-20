@@ -35,6 +35,22 @@ export default {
       },
     },
 
+    active: {
+      table: {
+        category: 'State',
+      },
+    },
+    focused: {
+      table: {
+        category: 'State',
+      },
+    },
+    hovered: {
+      table: {
+        category: 'State',
+      },
+    },
+
     as: {
       control: {
         disable: true,
@@ -95,9 +111,12 @@ const Template: ComponentStory<typeof Tag> = args => <Tag {...args} />;
 
 const defaultArgs = {
   actionable: false,
+  active: false,
   children: 'Hello world',
   contrast: false,
   flush: false,
+  focused: false,
+  hovered: false,
   shape: 'pill' as TagProps['shape'],
   size: 'small' as TagProps['size'],
   unthemed: false,
@@ -177,4 +196,28 @@ LargeSize.storyName = 'Size: Large';
 LargeSize.args = {
   ...defaultArgs,
   size: 'large',
+};
+
+export const ActiveState = Template.bind({});
+ActiveState.storyName = 'State: Active';
+ActiveState.args = {
+  ...defaultArgs,
+  actionable: true,
+  active: true,
+};
+
+export const FocusedState = Template.bind({});
+FocusedState.storyName = 'State: Focused';
+FocusedState.args = {
+  ...defaultArgs,
+  actionable: true,
+  focused: true,
+};
+
+export const HoveredState = Template.bind({});
+HoveredState.storyName = 'State: Hovered';
+HoveredState.args = {
+  ...defaultArgs,
+  actionable: true,
+  hovered: true,
 };

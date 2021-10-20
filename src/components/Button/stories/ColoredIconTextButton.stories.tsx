@@ -84,6 +84,7 @@ const defaultArgs = {
   disabled: false,
   focused: false,
   fullWidth: false,
+  hovered: false,
   imitation: false,
   loaderReplaceIcon: false,
   loading: false,

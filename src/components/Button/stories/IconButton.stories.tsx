@@ -67,6 +67,7 @@ const defaultArgs = {
   disabled: false,
   focused: false,
   fullWidth: false,
+  hovered: false,
   imitation: false,
   loading: false,
   noHeight: false,
@@ -183,8 +184,30 @@ InlineWeight.args = {
   weight: 'inline',
 };
 
-export const Loading = Template.bind({});
-Loading.args = {
+export const ActiveState = Template.bind({});
+ActiveState.storyName = 'State: Active';
+ActiveState.args = {
+  ...defaultArgs,
+  active: true,
+};
+
+export const FocusedState = Template.bind({});
+FocusedState.storyName = 'State: Focused';
+FocusedState.args = {
+  ...defaultArgs,
+  focused: true,
+};
+
+export const HoveredState = Template.bind({});
+HoveredState.storyName = 'State: Hovered';
+HoveredState.args = {
+  ...defaultArgs,
+  hovered: true,
+};
+
+export const LoadingState = Template.bind({});
+LoadingState.storyName = 'State: Loading';
+LoadingState.args = {
   ...defaultArgs,
   loading: true,
 };

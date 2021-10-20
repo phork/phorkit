@@ -73,6 +73,7 @@ const defaultArgs = {
   disabled: false,
   focused: false,
   fullWidth: false,
+  hovered: false,
   imitation: false,
   loading: false,
   noHeight: false,

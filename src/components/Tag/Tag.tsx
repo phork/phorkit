@@ -12,10 +12,16 @@ export type TagWeight = 'outlined' | 'shaded' | 'solid';
 export type LocalTagProps = ThemeProps & {
   /** An actionable tag renders a button */
   actionable?: boolean;
+  /** Manually apply the active styles; this does not affect :active */
+  active?: boolean;
   children: React.ReactNode;
   className?: string;
   /** This will remove all padding from the tag */
   flush?: boolean;
+  /** Manually apply the focus styles; this does not affect :focus */
+  focused?: boolean;
+  /** Manually apply the hover styles; this does not affect :hover */
+  hovered?: boolean;
   shape?: TagShape;
   size?: TagSize;
   style?: React.CSSProperties;
@@ -27,11 +33,14 @@ export type TagProps<T extends TagElementType = 'div'> = AsReactType<T> & MergeE
 export function TagBase<T extends TagElementType = 'div'>(
   {
     actionable = false,
+    active = false,
     as,
     children,
     className,
     contrast = false,
+    focused = false,
     flush = false,
+    hovered = false,
     shape = 'pill',
     size = 'small',
     themeId: initThemeId,
@@ -50,6 +59,9 @@ export function TagBase<T extends TagElementType = 'div'>(
     {
       className: cx(
         styles.tag,
+        active && styles['is-active'],
+        focused && styles['is-focused'],
+        hovered && styles['is-hovered'],
         color && !unthemed && styles[`tag--${color}`],
         shape && styles[`tag--${shape}`],
         size && styles[`tag--${size}`],

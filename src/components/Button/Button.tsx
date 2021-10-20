@@ -6,16 +6,18 @@ import styles from './styles/Button.module.css';
 import { ButtonAlignment, ButtonWeight, ButtonShape, ButtonSize, ButtonColor, ButtonElementType } from './types';
 
 export type LocalButtonProps = ThemeProps & {
-  /** Manually apply the active styles; this does not actually make it active */
+  /** Manually apply the active styles; this does not affect :active */
   active?: boolean;
   align?: ButtonAlignment;
   children: React.ReactNode;
   className?: string;
   color?: ButtonColor;
   disabled?: boolean;
-  /** Manually apply the focus styles; this does not affect focus */
+  /** Manually apply the focus styles; this does not affect :focus */
   focused?: boolean;
   fullWidth?: boolean;
+  /** Manually apply the hover styles; this does not affect :hover */
+  hovered?: boolean;
   href?: string;
   /** An imitation button looks like a button but doesn't have any functionality */
   imitation?: boolean;
@@ -49,6 +51,7 @@ export function ButtonBase<T extends ButtonElementType = 'button'>(
     disabled: initDisabled = false,
     focused = false,
     fullWidth = false,
+    hovered = false,
     href,
     imitation = false,
     loader,
@@ -78,6 +81,7 @@ export function ButtonBase<T extends ButtonElementType = 'button'>(
         active && styles['is-active'],
         disabled && styles['is-disabled'],
         focused && styles['is-focused'],
+        hovered && styles['is-hovered'],
         loading && styles['is-loading'],
         align && styles[`button--${align}`],
         color && !unthemed && styles[`button--${color}`],

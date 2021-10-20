@@ -48,9 +48,12 @@ const Template: ComponentStory<typeof ColoredTag> = args => <ColoredTag {...args
 
 const defaultArgs = {
   actionable: true,
+  active: false,
   children: 'Hello world',
   colorId: 'P60' as ThemeColorIds,
   flush: false,
+  focused: false,
+  hovered: false,
   shape: 'pill' as ColoredTagProps['shape'],
   size: 'small' as ColoredTagProps['size'],
   weight: 'shaded' as ColoredTagProps['weight'],
