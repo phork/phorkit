@@ -27,6 +27,7 @@ export * from './Position';
 export * from './Progress';
 export * from './Rhythm';
 export * from './ScrollSync';
+export * from './Shade';
 export * from './Tag';
 export * from './Triangle';
 export * from './Typography';

@@ -1,0 +1,67 @@
+.shade {
+  position: relative;
+
+  @mixin makeShadedFill var(--shade-primary-color), withShade;
+}
+
+.shade--actionable {
+  @mixin makeFillerTransitions;
+  @mixin prepareFocusRing;
+  @mixin setFocusRingOpacity 0.3;
+
+  &:hover,
+  &.is-hovered {
+    @mixin makeShadedFillHover var(--shade-primary-color), var(--shade-inverse-color);
+  }
+
+  &:focus,
+  &.is-focused {
+    @mixin makeFocusRing var(--shade-primary-color);
+  }
+
+  &:active,
+  &.is-active {
+    @mixin makeFocusRing var(--shade-primary-color);
+    @mixin makeShadedFillActive var(--shade-active-primary-color), var(--shade-inverse-color);
+  }
+}
+
+.shade--success {
+  @mixin themed .shade {
+    --shade-primary-color: $theme-color-success;
+    --shade-inverse-color: $theme-color-success-contrast;
+    --shade-active-primary-color: $theme-color-success-D10;
+  }
+}
+
+.shade--warning {
+  @mixin themed .shade {
+    --shade-primary-color: $theme-color-warning;
+    --shade-inverse-color: $theme-color-warning-contrast;
+    --shade-active-primary-color: $theme-color-warning-D10;
+  }
+}
+
+.shade--danger {
+  @mixin themed .shade {
+    --shade-primary-color: $theme-color-danger;
+    --shade-inverse-color: $theme-color-danger-contrast;
+    --shade-active-primary-color: $theme-color-danger-D10;
+  }
+}
+
+.shade--primary {
+  @mixin themed .shade {
+    --shade-primary-color: $theme-color-accent-primary;
+    --shade-inverse-color: $theme-color-accent-primary-contrast;
+    --shade-active-primary-color: $theme-color-accent-primary-D10;
+  }
+}
+
+.shade--neutral {
+  @mixin themed .shade {
+    --shade-primary-color: $theme-color-neutral;
+    --shade-inverse-color: $theme-color-neutral-contrast;
+    --shade-active-primary-color: $theme-color-neutral-D10;
+  }
+}
