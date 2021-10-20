@@ -11,7 +11,7 @@ describe('<Looper />', () => {
     expect(getByText('large')).toBeTruthy();
   });
 
-  it('should loop through a start and end value', () => {
+  it('should loop using start and end values', () => {
     const { getByText } = render(<Looper end={4} render={i => <div>{`number ${i}`}</div>} />);
     expect(getByText('number 0')).toBeTruthy();
     expect(getByText('number 1')).toBeTruthy();
@@ -21,7 +21,7 @@ describe('<Looper />', () => {
     expect(() => getByText('number 5')).toThrow();
   });
 
-  it('should loop through a start and end value with a custom step', () => {
+  it('should loop using start and end values with a custom step', () => {
     const { getByText } = render(<Looper end={30} render={i => <div>{`number ${i}`}</div>} start={5} step={5} />);
     expect(getByText('number 5')).toBeTruthy();
     expect(getByText('number 10')).toBeTruthy();

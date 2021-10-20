@@ -1,10 +1,10 @@
 import React from 'react';
-import { Paper } from 'lib';
+import { ColoredPaper } from 'lib';
 import { render } from '../../utils';
 
-describe('<Paper />', () => {
+describe('<ColoredPaper />', () => {
   it('should render a paper', () => {
-    const { getByText } = render(<Paper>Hello world</Paper>);
+    const { getByText } = render(<ColoredPaper colorId="P10">Hello world</ColoredPaper>);
     expect(getByText('Hello world')).toBeTruthy();
   });
 });

@@ -3,7 +3,7 @@ import { Pagination } from 'lib';
 import { render } from '../../utils';
 
 describe('<Pagination />', () => {
-  it('should render a basic pagination with previous and next buttons', () => {
+  it('should render pagination with previous and next buttons', () => {
     const { container, queryByText } = render(
       <Pagination
         withPageLinks
@@ -22,7 +22,7 @@ describe('<Pagination />', () => {
     expect(container.querySelectorAll('button').length).toBe(8);
   });
 
-  it('should render a basic pagination with previous and next icons', () => {
+  it('should render pagination with previous and next icons', () => {
     const { container } = render(
       <Pagination
         withIcons
@@ -40,7 +40,7 @@ describe('<Pagination />', () => {
     expect(container.querySelectorAll('button').length).toBe(8);
   });
 
-  it('should render a basic pagination with first and last buttons', () => {
+  it('should render pagination with first and last buttons', () => {
     const { container, queryByText } = render(
       <Pagination
         withFirstAndLast

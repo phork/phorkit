@@ -5,7 +5,7 @@ import { AsTypeA } from '__mocks__/AsType.mock';
 import { fireEvent, render } from '../../utils';
 
 describe('<IconTextButton />', () => {
-  it('should render a basic button', () => {
+  it('should render a button', () => {
     const { container, getByText } = render(<IconTextButton icon={TimesIcon}>Click me!</IconTextButton>);
     expect(container.querySelector('svg')).toBeTruthy();
     expect(getByText('Click me!')).toBeTruthy();

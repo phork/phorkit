@@ -4,7 +4,7 @@ import { AsTypeDiv } from '__mocks__/AsType.mock';
 import { render } from '../../utils';
 
 describe('<List />', () => {
-  it('should render a basic list', () => {
+  it('should render a list', () => {
     const { container, getByText } = render(
       <List
         items={[
@@ -30,7 +30,7 @@ describe('<List />', () => {
     expect(getByText('Seventh')).toBeTruthy();
   });
 
-  it('should render a basic list using a div component', () => {
+  it('should render as a div', () => {
     const { container } = render(
       <List<'div'>
         as="div"
@@ -49,7 +49,7 @@ describe('<List />', () => {
     expect(container.firstChild?.nodeName).toBe('DIV');
   });
 
-  it('should render a basic list using a functional component', () => {
+  it('should render using a functional component', () => {
     const { container } = render(
       <List<'div'>
         as={AsTypeDiv}

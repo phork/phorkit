@@ -1,25 +1,25 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
-import { Tag } from 'lib';
+import { ColoredTag } from 'lib';
 import { AsTypeA } from '__mocks__/AsType.mock';
 import { fireEvent, render } from '../../utils';
 
-describe('<Tag />', () => {
+describe('<ColoredTag />', () => {
   it('should render a tag', () => {
-    const { getByText } = render(<Tag>Click me!</Tag>);
+    const { getByText } = render(<ColoredTag colorId="P10">Click me!</ColoredTag>);
     expect(getByText('Click me!')).toBeTruthy();
   });
 
   it('should render as a div', () => {
-    const { container } = render(<Tag>Click me!</Tag>);
+    const { container } = render(<ColoredTag colorId="P10">Click me!</ColoredTag>);
     expect(container.firstChild?.nodeName).toBe('DIV');
   });
 
   it('should render as an anchor', () => {
     const { container, getByText } = render(
-      <Tag<'a'> actionable as="a" href="#tag">
+      <ColoredTag<'a'> actionable as="a" colorId="P10" href="#tag">
         Click me!
-      </Tag>,
+      </ColoredTag>,
     );
     expect(container.firstChild?.nodeName).toBe('A');
     expect(container.firstChild).toHaveAttribute('href', '#tag');
@@ -29,9 +29,9 @@ describe('<Tag />', () => {
   it('should render as a button', () => {
     const onClick = jest.fn();
     const { container, getByText } = render(
-      <Tag<'button'> actionable as="button" onClick={onClick}>
+      <ColoredTag<'button'> actionable as="button" colorId="P10" onClick={onClick}>
         Click me!
-      </Tag>,
+      </ColoredTag>,
     );
     expect(container.firstChild?.nodeName).toBe('BUTTON');
     expect(getByText('Click me!')).toBeTruthy();
@@ -46,9 +46,9 @@ describe('<Tag />', () => {
 
   it('should render using a functional component', () => {
     const { container, getByText } = render(
-      <Tag<'a'> actionable as={AsTypeA} href="#tag">
+      <ColoredTag<'a'> actionable as={AsTypeA} colorId="P10" href="#tag">
         Click me!
-      </Tag>,
+      </ColoredTag>,
     );
     expect(container.firstChild?.nodeName).toBe('A');
     expect(container.firstChild).toHaveAttribute('href', '#tag');

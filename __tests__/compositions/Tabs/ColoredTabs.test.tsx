@@ -1,33 +1,17 @@
 import React from 'react';
-import { Accordion } from 'lib';
+import { ColoredTabs } from 'lib';
 import { render } from '../../utils';
 
 const items = [
-  {
-    id: 'first',
-    label: 'First',
-    content: 'First panel',
-  },
-  {
-    id: 'second',
-    label: 'Second',
-    content: 'Second panel',
-  },
-  {
-    id: 'third',
-    label: 'Third',
-    content: 'Third panel',
-  },
-  {
-    id: 'fourth',
-    label: 'Fourth',
-    content: 'Fourth panel',
-  },
+  { id: 'first', label: 'First', content: 'First panel' },
+  { id: 'second', label: 'Second', content: 'Second panel' },
+  { id: 'third', label: 'Third', content: 'Third panel', disabled: true },
+  { id: 'fourth', label: 'Fourth', content: 'Fourth panel' },
 ];
 
-describe('<Accordion />', () => {
-  it('should render an accordion', () => {
-    const { getByText } = render(<Accordion items={items} />);
+describe('<ColoredTabs />', () => {
+  it('should render basic tabs', () => {
+    const { getByText } = render(<ColoredTabs colorId="P10" items={items} />);
 
     expect(getByText('First')).toBeTruthy();
     expect(getByText('Second')).toBeTruthy();

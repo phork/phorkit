@@ -1,20 +1,21 @@
 import React from 'react';
-import { InlineTooltip, TimesIcon } from 'lib';
+import { PortalPopover, TimesIcon } from 'lib';
 import { render } from '../../utils';
 
-describe('<InlineTooltip />', () => {
-  it('should render a tooltip', () => {
+describe('<PortalPopover />', () => {
+  it('should render a popover', () => {
     const { getByText } = render(
-      <InlineTooltip permanent height={80} toggler={<TimesIcon scale="3xlarge" />} triangleColor="#fff" width={300}>
+      <PortalPopover focusable permanent height={80} toggler={<TimesIcon scale="3xlarge" />} width={300}>
         <div>Hello world</div>
-      </InlineTooltip>,
+      </PortalPopover>,
     );
     expect(getByText('Hello world')).toBeTruthy();
   });
 
-  it('should render a tooltip and forward the position', () => {
+  it('should render a popover and forward the position', () => {
     const { getByText } = render(
-      <InlineTooltip
+      <PortalPopover
+        focusable
         permanent
         height={80}
         position="bottom-right"
@@ -25,7 +26,6 @@ describe('<InlineTooltip />', () => {
           </React.Fragment>
         )}
         toggler={<TimesIcon scale="3xlarge" />}
-        triangleColor="#fff"
         width={300}
       />,
     );

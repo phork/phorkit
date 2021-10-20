@@ -4,7 +4,7 @@ import { AsTypeP } from '__mocks__/AsType.mock';
 import { render } from '../../utils';
 
 describe('<LinkContainer />', () => {
-  it('should render a basic link container', () => {
+  it('should render a link container', () => {
     const { container, getByText } = render(
       <LinkContainer>
         <a href="#linkcontainer">Click me!</a>
@@ -15,7 +15,7 @@ describe('<LinkContainer />', () => {
     expect(getByText('Click me!')).toBeTruthy();
   });
 
-  it('should render a link container as a paragraph', () => {
+  it('should render as a paragraph', () => {
     const { container, getByText } = render(
       <LinkContainer as="p">
         <a href="#linkcontainer">Click me!</a>
@@ -26,7 +26,7 @@ describe('<LinkContainer />', () => {
     expect(getByText('Click me!')).toBeTruthy();
   });
 
-  it('should render a link container using a functional component', () => {
+  it('should render using a functional component', () => {
     const { container, getByText } = render(
       <LinkContainer<'p'> as={AsTypeP}>
         <a href="#linkcontainer">Click me!</a>

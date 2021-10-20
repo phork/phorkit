@@ -1,20 +1,20 @@
 import React from 'react';
-import { InlineTooltip, TimesIcon } from 'lib';
+import { PortalTooltip, TimesIcon } from 'lib';
 import { render } from '../../utils';
 
-describe('<InlineTooltip />', () => {
+describe('<PortalTooltip />', () => {
   it('should render a tooltip', () => {
     const { getByText } = render(
-      <InlineTooltip permanent height={80} toggler={<TimesIcon scale="3xlarge" />} triangleColor="#fff" width={300}>
+      <PortalTooltip permanent height={80} toggler={<TimesIcon scale="3xlarge" />} triangleColor="#fff" width={300}>
         <div>Hello world</div>
-      </InlineTooltip>,
+      </PortalTooltip>,
     );
     expect(getByText('Hello world')).toBeTruthy();
   });
 
   it('should render a tooltip and forward the position', () => {
     const { getByText } = render(
-      <InlineTooltip
+      <PortalTooltip
         permanent
         height={80}
         position="bottom-right"

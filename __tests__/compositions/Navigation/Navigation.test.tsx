@@ -3,7 +3,7 @@ import { Navigation } from 'lib';
 import { render } from '../../utils';
 
 describe('<Navigation />', () => {
-  it('should render a basic navigation', () => {
+  it('should render a navigation', () => {
     const { getByText } = render(
       <Navigation
         items={[

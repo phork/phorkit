@@ -4,7 +4,7 @@ import { IconGroup, TimesIcon } from 'lib';
 import { render } from '../../utils';
 
 describe('<IconGroup />', () => {
-  it('should render a basic icon group by scale', () => {
+  it('should render an icon group by scale', () => {
     const { container } = render(
       <IconGroup scale="large">
         <TimesIcon />
@@ -19,7 +19,7 @@ describe('<IconGroup />', () => {
     expect(container.querySelector('svg')).toHaveAttribute('width', '20px');
   });
 
-  it('should render a basic icon group by size', () => {
+  it('should render an icon group by size', () => {
     const { container } = render(
       <IconGroup size={12}>
         <TimesIcon />

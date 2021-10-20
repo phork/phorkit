@@ -4,7 +4,7 @@ import { Portal } from 'lib';
 import { render } from '../../utils';
 
 describe('<Portal />', () => {
-  it('should render a basic portal', () => {
+  it('should render a portal', () => {
     const relativeRef: React.MutableRefObject<HTMLDivElement> = {
       current: null!,
     };

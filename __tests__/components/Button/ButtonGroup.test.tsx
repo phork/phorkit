@@ -4,7 +4,7 @@ import { Button, ButtonGroup } from 'lib';
 import { fireEvent, render } from '../../utils';
 
 describe('<ButtonGroup />', () => {
-  it('should render a basic button group', () => {
+  it('should render a button group', () => {
     const { container, getByText } = render(
       <ButtonGroup
         buttons={[

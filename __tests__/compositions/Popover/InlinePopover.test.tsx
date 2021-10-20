@@ -3,7 +3,7 @@ import { InlinePopover, TimesIcon } from 'lib';
 import { render } from '../../utils';
 
 describe('<InlinePopover />', () => {
-  it('should render a basic popover', () => {
+  it('should render a popover', () => {
     const { getByText } = render(
       <InlinePopover focusable permanent height={80} toggler={<TimesIcon scale="3xlarge" />} width={300}>
         <div>Hello world</div>
@@ -12,7 +12,7 @@ describe('<InlinePopover />', () => {
     expect(getByText('Hello world')).toBeTruthy();
   });
 
-  it('should render a basic popover and forward the position', () => {
+  it('should render a popover and forward the position', () => {
     const { getByText } = render(
       <InlinePopover
         focusable

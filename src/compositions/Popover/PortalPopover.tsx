@@ -13,7 +13,7 @@ export type PortalPopoverProps<F extends HTMLElement | undefined = undefined> = 
   PopoverProps<PortalPopoverContentHTMLElement, F>,
   'renderContent'
 > &
-  Omit<PortalProps, 'children' | 'focusRef' | 'initialCoords' | 'position' | 'visible'> & {
+  Omit<PortalProps, 'children' | 'focusRef' | 'initialCoords' | 'position' | 'relativeRef' | 'visible'> & {
     contentClassName?: string;
     contentStyle?: React.CSSProperties;
     position?: PortalProps['position'];

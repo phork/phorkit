@@ -4,7 +4,7 @@ import { AccordionLabel } from 'lib';
 import { render } from '../../utils';
 
 describe('<AccordionLabel />', () => {
-  it('should render a basic accordion label', () => {
+  it('should render an accordion label', () => {
     const { container, getByText } = render(<AccordionLabel id="test">Click me!</AccordionLabel>);
     expect(container.firstChild?.nodeName).toBe('DIV');
     expect(getByText('Click me!')).toBeTruthy();

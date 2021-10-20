@@ -5,7 +5,7 @@ import { AsTypeA } from '__mocks__/AsType.mock';
 import { fireEvent, render } from '../../utils';
 
 describe('<ColoredColoredIconButton/>', () => {
-  it('should render a basic button', () => {
+  it('should render a button', () => {
     const { container } = render(
       <ColoredIconButton colorId="P10">
         <TimesIcon scale="medium" />
