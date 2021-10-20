@@ -56,22 +56,25 @@ include(component) && writeFileSyncRecursive(`${src}/${component}.tsx`, `
 import React from 'react';
 import { cx } from '@emotion/css';
 import { ThemeProps } from '${relativeSrc}types';
-import { useThemeId } from '${relativeSrc}hooks/useThemeId';
+import { useThemeId } from '${relativeSrc}context/Theme';
 import styles from './styles/${component}.module.css';
 
-export type ${component}Props = ThemeProps & {
-  children: React.ReactNode
-}
+export type ${component}Props = React.HTMLAttributes<HTMLDivElement> &
+  ThemeProps & {
+    children: React.ReactNode;
+    style?: React.CSSProperties;
+  };
 
-export function ${component}({ children, themeId: initThemeId }: ${component}Props): React.ReactElement {
+export function ${component}({ children, themeId: initThemeId, unthemed, ...props }: ${component}Props): React.ReactElement<${component}Props> {
   const themeId = useThemeId(initThemeId);
 
   return (
     <div
       className={cx(
         styles.${lcfirst(component)},
-        themeId && styles[\`${lcfirst(component)}--\${themeId}\`],
+        themeId && !unthemed && styles[\`${lcfirst(component)}--\${themeId}\`],
       )}
+      {...props}
     >
       {children}
     </div>
