@@ -82,6 +82,16 @@ export function Progress({
     );
   };
 
+  // only add aria props for single-segment progress bars
+  const ariaProps = data
+    ? undefined
+    : {
+        'aria-valuemax': 100,
+        'aria-valuemin': 0,
+        'aria-valuenow': percent,
+        role: 'progressbar',
+      };
+
   return (
     <div
       className={cx(
@@ -96,6 +106,7 @@ export function Progress({
         color && !unthemed && styles[`progress--${color}`],
         className,
       )}
+      {...ariaProps}
       {...props}
     >
       {data ? data.map(renderSegment) : renderSegment({ percent, color: color || 'primary' }, 0)}
