@@ -26,7 +26,7 @@ const items = [
 ];
 
 describe('<Accordion />', () => {
-  it('should render a basic accordion', () => {
+  it('should render an accordion', () => {
     const { getByText } = render(<Accordion items={items} />);
 
     expect(getByText('First')).toBeTruthy();

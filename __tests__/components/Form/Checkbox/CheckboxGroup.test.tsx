@@ -25,7 +25,7 @@ const items = [
 ];
 
 describe('<CheckboxGroup />', () => {
-  it('should render a basic checkbox group', () => {
+  it('should render a checkbox group', () => {
     const { container, getByText } = render(
       <CheckboxGroup checkboxes={items} layout="stacked" legend="Legendary" onChange={() => {}} values={['first']} />,
     );

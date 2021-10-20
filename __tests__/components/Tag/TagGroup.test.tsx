@@ -4,7 +4,7 @@ import { Tag, TagGroup } from 'lib';
 import { fireEvent, render } from '../../utils';
 
 describe('<TagGroup />', () => {
-  it('should render a basic tag group', () => {
+  it('should render a tag group', () => {
     const { container, getByText } = render(
       <TagGroup
         tags={[

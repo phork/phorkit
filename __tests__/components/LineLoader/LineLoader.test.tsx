@@ -3,7 +3,7 @@ import { LineLoader } from 'lib';
 import { render } from '../../utils';
 
 describe('<LineLoader />', () => {
-  it('should render a basic line loader', () => {
+  it('should render a line loader', () => {
     const { container } = render(<LineLoader />);
     expect(container.firstChild?.nodeName).toBe('DIV');
   });

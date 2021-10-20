@@ -14,7 +14,7 @@ export type PortalProps = Pick<UseAbsoluteCoordsProps, 'centered' | 'offset' | '
     container?: HTMLElement;
     height?: number;
     initialCoords?: UseAbsoluteCoordsProps['initialCoords'];
-    /** Observe the the changes of the relativeRef and reposition the portal accordingly */
+    /** Observe the changes of the relativeRef and reposition the portal accordingly */
     observe?: boolean;
     portal?: 'fixed' | 'absolute';
     /** The relative ref is the element that the portal will be positioned relative to */

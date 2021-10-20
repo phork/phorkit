@@ -1,13 +1,13 @@
 import React from 'react';
-import { InlineDropover, DropoverLabel, DropoverContent } from 'lib';
+import { PortalDropover, DropoverLabel, DropoverContent } from 'lib';
 import { fireEvent, render } from '../../utils';
 
-describe('<InlineDropover />', () => {
-  it('should render an inline dropover', () => {
+describe('<PortalDropover />', () => {
+  it('should render a portal dropover', () => {
     const { getByText } = render(
-      <InlineDropover label={<DropoverLabel>Super fantastic label</DropoverLabel>}>
+      <PortalDropover label={<DropoverLabel>Super fantastic label</DropoverLabel>}>
         <DropoverContent>Hello world</DropoverContent>
-      </InlineDropover>,
+      </PortalDropover>,
     );
     expect(getByText('Super fantastic label')).toBeTruthy();
   });
@@ -16,9 +16,9 @@ describe('<InlineDropover />', () => {
     const onOpen = jest.fn();
 
     const { getByTestId, getByText } = render(
-      <InlineDropover label={<DropoverLabel data-testid="button">Super fantastic label</DropoverLabel>} onOpen={onOpen}>
+      <PortalDropover label={<DropoverLabel data-testid="button">Super fantastic label</DropoverLabel>} onOpen={onOpen}>
         <DropoverContent>Hello world</DropoverContent>
-      </InlineDropover>,
+      </PortalDropover>,
     );
 
     const button = getByTestId('button');

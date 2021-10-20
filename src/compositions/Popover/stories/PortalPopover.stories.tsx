@@ -122,14 +122,6 @@ export default {
         category: 'Interaction',
       },
     },
-    relativeRef: {
-      control: {
-        disable: true,
-      },
-      table: {
-        category: 'Interaction',
-      },
-    },
 
     onClose: {
       table: {

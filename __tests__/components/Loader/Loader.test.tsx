@@ -4,7 +4,7 @@ import { Loader } from 'lib';
 import { render } from '../../utils';
 
 describe('<Loader />', () => {
-  it('should render a basic loader', () => {
+  it('should render a loader', () => {
     const { container } = render(<Loader />);
     expect(container.firstChild?.nodeName).toBe('DIV');
   });

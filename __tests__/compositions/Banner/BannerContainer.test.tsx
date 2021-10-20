@@ -3,7 +3,7 @@ import { BannerContainer, Banner } from 'lib';
 import { render } from '../../utils';
 
 describe('<Banners />', () => {
-  it('should render a basic banner container', () => {
+  it('should render a banner container', () => {
     const { getByText } = render(
       <BannerContainer>
         <Banner immediate level="info">

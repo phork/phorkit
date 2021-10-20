@@ -5,7 +5,7 @@ import { AsTypeA } from '__mocks__/AsType.mock';
 import { fireEvent, render } from '../../utils';
 
 describe('<ColoredButton colorId="P10" />', () => {
-  it('should render a basic button', () => {
+  it('should render a button', () => {
     const { getByText } = render(<ColoredButton colorId="P10">Click me!</ColoredButton>);
     expect(getByText('Click me!')).toBeTruthy();
   });

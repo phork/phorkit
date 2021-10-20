@@ -3,7 +3,7 @@ import { Paper } from 'lib';
 import { render } from '../../utils';
 
 describe('<Paper />', () => {
-  it('should render a basic paper', () => {
+  it('should render a paper', () => {
     const { getByText } = render(<Paper>Hello world</Paper>);
     expect(getByText('Hello world')).toBeTruthy();
   });

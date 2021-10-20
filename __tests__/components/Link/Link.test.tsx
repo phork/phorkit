@@ -4,7 +4,7 @@ import { Link } from 'lib';
 import { render } from '../../utils';
 
 describe('<Link />', () => {
-  it('should render a basic link', () => {
+  it('should render a link', () => {
     const { container, getByText } = render(<Link href="#link">Click me!</Link>);
     expect(container.firstChild?.nodeName).toBe('A');
     expect(container.firstChild).toHaveAttribute('href', '#link');

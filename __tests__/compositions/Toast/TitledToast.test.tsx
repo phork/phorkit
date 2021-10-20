@@ -3,7 +3,7 @@ import { TitledToast } from 'lib';
 import { render } from '../../utils';
 
 describe('<TitledToast />', () => {
-  it('should render a basic toast with a title', () => {
+  it('should render a toast with a title', () => {
     const { getByText } = render(
       <TitledToast immediate level="success" title="Hello world">
         This is a success toast.

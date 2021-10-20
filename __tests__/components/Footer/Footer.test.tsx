@@ -3,7 +3,7 @@ import { Footer } from 'lib';
 import { render } from '../../utils';
 
 describe('<Footer />', () => {
-  it('should render a basic footer', () => {
+  it('should render a footer', () => {
     const { getByText } = render(<Footer>Hello world</Footer>);
     expect(getByText('Hello world')).toBeTruthy();
   });

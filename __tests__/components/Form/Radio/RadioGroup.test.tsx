@@ -25,7 +25,7 @@ const items = [
 ];
 
 describe('<RadioGroup />', () => {
-  it('should render a basic radio group', () => {
+  it('should render a radio group', () => {
     const { container, getByText } = render(
       <RadioGroup
         layout="stacked"

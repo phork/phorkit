@@ -3,7 +3,7 @@ import { InlineTooltip, TimesIcon } from 'lib';
 import { render } from '../../utils';
 
 describe('<InlineTooltip />', () => {
-  it('should render a basic popover', () => {
+  it('should render a tooltip', () => {
     const { getByText } = render(
       <InlineTooltip
         focusable
@@ -19,7 +19,7 @@ describe('<InlineTooltip />', () => {
     expect(getByText('Hello world')).toBeTruthy();
   });
 
-  it('should render a basic popover and forward the position', () => {
+  it('should render a tooltip and forward the position', () => {
     const { getByText } = render(
       <InlineTooltip
         focusable
