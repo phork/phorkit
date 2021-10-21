@@ -71,33 +71,26 @@ export type LocalTypographyProps = {
 export type TypographyProps<T extends keyof JSX.IntrinsicElements = 'span'> = AsReactType<T> &
   MergeElementPropsWithoutRef<T, LocalTypographyProps>;
 
-/**
- * The typography component adds type styles to a
- * container element. It can change size, line height,
- * color, weight, case, etc. It doesn't have any
- * default styles, so it won't override an existing
- * style when that prop is left undefined.
- *
- * There's also a `reset` flag that will override
- * most styles and set them back to their defaults.
- */
-export function Typography<T extends keyof JSX.IntrinsicElements = 'span'>({
-  align,
-  as,
-  children,
-  className,
-  color,
-  fullWidth = false,
-  heading,
-  reset = false,
-  size,
-  style,
-  themeId: initThemeId,
-  weight,
-  variants,
-  volume,
-  ...props
-}: TypographyProps<T>): React.ReactElement {
+export function TypographyBase<T extends keyof JSX.IntrinsicElements = 'span'>(
+  {
+    align,
+    as,
+    children,
+    className,
+    color,
+    fullWidth = false,
+    heading,
+    reset = false,
+    size,
+    style,
+    themeId: initThemeId,
+    weight,
+    variants,
+    volume,
+    ...props
+  }: TypographyProps<T>,
+  forwardedRef: React.ForwardedRef<JSX.IntrinsicElements[T]>,
+): React.ReactElement {
   const themeId = useThemeId(initThemeId);
 
   const variantStyles = () => {
@@ -135,6 +128,7 @@ export function Typography<T extends keyof JSX.IntrinsicElements = 'span'>({
         weight && styles[`text-weight-${weight}`],
         className,
       ),
+      ref: forwardedRef,
       style,
       ...props,
     },
@@ -142,4 +136,19 @@ export function Typography<T extends keyof JSX.IntrinsicElements = 'span'>({
   );
 }
 
-Typography.displayName = 'Typography';
+/**
+ * The typography component adds type styles to a
+ * container element. It can change size, line height,
+ * color, weight, case, etc. It doesn't have any
+ * default styles, so it won't override an existing
+ * style when that prop is left undefined.
+ *
+ * There's also a `reset` flag that will override
+ * most styles and set them back to their defaults.
+ */
+export const Typography = React.forwardRef(TypographyBase) as <T extends keyof JSX.IntrinsicElements = 'span'>(
+  p: TypographyProps<T> & { ref?: React.Ref<JSX.IntrinsicElements[T]> },
+) => React.ReactElement<T>;
+
+// note that the base element cannot have a displayName because it breaks Storybook
+(Typography as React.NamedExoticComponent).displayName = 'Typography';
