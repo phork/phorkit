@@ -25,6 +25,11 @@ export default {
         category: 'Appearance',
       },
     },
+    cornerTriangle: {
+      table: {
+        category: 'Appearance',
+      },
+    },
     height: {
       table: {
         category: 'Appearance',
@@ -175,6 +180,11 @@ export default {
         category: 'Uncommon',
       },
     },
+    uncentered: {
+      table: {
+        category: 'Uncommon',
+      },
+    },
     withPopoverTogglerProps: {
       table: {
         category: 'Uncommon',
@@ -237,6 +247,7 @@ const defaultArgs = {
     </ColoredPaper>
   ),
   closeDelay: 500,
+  cornerTriangle: false,
   height: 84,
   focusable: false,
   hoverable: true,
@@ -247,6 +258,7 @@ const defaultArgs = {
   permanent: false,
   toggler: <BlobbrIcon scale="3xlarge" />,
   triangleColor: themes.light['color-P10'],
+  uncentered: false,
   width: 300,
   withoutTogglerFocusStyle: false,
   withPopoverTogglerProps: false,
@@ -340,6 +352,23 @@ RightBottomPosition.storyName = 'Position: Right bottom';
 RightBottomPosition.args = {
   ...defaultArgs,
   position: 'right-bottom',
+};
+
+export const CornerTriangle = Template.bind({});
+CornerTriangle.storyName = 'Corner triangle';
+CornerTriangle.args = {
+  ...defaultArgs,
+  cornerTriangle: true,
+  position: 'left-top',
+};
+
+export const CornerTriangleUncentered = Template.bind({});
+CornerTriangleUncentered.storyName = 'Corner triangle, uncentered';
+CornerTriangleUncentered.args = {
+  ...defaultArgs,
+  cornerTriangle: true,
+  position: 'left-top',
+  uncentered: true,
 };
 
 export const TriangleSize = Template.bind({});

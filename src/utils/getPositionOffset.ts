@@ -34,16 +34,32 @@ export function getPositionOffset(position: AnyPosition | StackedPosition, offse
         left: offset.horizontal ? -1 * offset.horizontal : 0,
       };
     case 'left-top':
+      return {
+        right: offset.horizontal,
+        top: offset.vertical ? -1 * offset.vertical : 0,
+      };
     case 'left-center':
-    case 'left-bottom':
       return {
         right: offset.horizontal,
       };
+    case 'left-bottom':
+      return {
+        right: offset.horizontal,
+        bottom: offset.vertical ? -1 * offset.vertical : 0,
+      };
     case 'right-top':
+      return {
+        left: offset.horizontal,
+        top: offset.vertical ? -1 * offset.vertical : 0,
+      };
     case 'right-center':
+      return {
+        left: offset.horizontal,
+      };
     case 'right-bottom':
       return {
         left: offset.horizontal,
+        bottom: offset.vertical ? -1 * offset.vertical : 0,
       };
     case 'stacked':
       return {

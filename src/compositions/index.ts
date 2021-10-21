@@ -10,6 +10,7 @@ export * from './Modal';
 export * from './Navigation';
 export * from './Pagination';
 export * from './Popover';
+export * from './StatusBubble';
 export * from './Tabs';
 export * from './TextboxGroup';
 export * from './Toast';

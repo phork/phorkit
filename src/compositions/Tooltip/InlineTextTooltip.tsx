@@ -18,6 +18,11 @@ export type InlineTextTooltipProps<F extends HTMLElement | undefined = undefined
     tooltipClassName?: string;
     triangleBorderWidth?: number;
     triangleSize?: number;
+  } & {
+    /** If the position is `[left|right]-[top|bottom]` then the triangle can be a corner triangle (eg. flat top or bottom) */
+    cornerTriangle?: boolean;
+    /** Don't center the tooltip relative to the toggle */
+    uncentered?: boolean;
   };
 
 /**
@@ -35,6 +40,7 @@ export type InlineTextTooltipProps<F extends HTMLElement | undefined = undefined
 export function InlineTextTooltip<F extends HTMLElement | undefined = undefined>({
   children,
   contrast = false,
+  cornerTriangle = false,
   layout,
   offset: initOffset,
   position,
@@ -44,18 +50,19 @@ export function InlineTextTooltip<F extends HTMLElement | undefined = undefined>
   tooltipClassName,
   triangleBorderWidth,
   triangleSize,
+  uncentered = false,
   width,
   ...props
 }: InlineTextTooltipProps<F>): React.ReactElement {
   const themeId = useThemeId(initThemeId);
   const { backgroundColor, borderColor } = getTextTooltipColors(themeId, contrast);
 
-  const offset = initOffset || getTooltipOffset({ position, layout });
+  const offset = initOffset || getTooltipOffset({ cornerTriangle, position, layout });
 
   return (
     <InlinePopover<F>
-      centered
       isTooltip
+      centered={!uncentered}
       offset={offset}
       position={position}
       renderChildren={({ close, focusRef, isTogglerFocused, offset, position, visible }) => {
@@ -66,6 +73,7 @@ export function InlineTextTooltip<F extends HTMLElement | undefined = undefined>
         return (
           <TooltipContent
             className={tooltipClassName}
+            cornerTriangle={cornerTriangle}
             layout={layout}
             offset={offset}
             position={position}

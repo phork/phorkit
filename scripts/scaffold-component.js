@@ -62,10 +62,11 @@ import styles from './styles/${component}.module.css';
 export type ${component}Props = React.HTMLAttributes<HTMLDivElement> &
   ThemeProps & {
     children: React.ReactNode;
+    className?: string;
     style?: React.CSSProperties;
   };
 
-export function ${component}({ children, themeId: initThemeId, unthemed, ...props }: ${component}Props): React.ReactElement<${component}Props> {
+export function ${component}({ children, className, themeId: initThemeId, unthemed, ...props }: ${component}Props): React.ReactElement<${component}Props> {
   const themeId = useThemeId(initThemeId);
 
   return (
@@ -73,6 +74,7 @@ export function ${component}({ children, themeId: initThemeId, unthemed, ...prop
       className={cx(
         styles.${lcfirst(component)},
         themeId && !unthemed && styles[\`${lcfirst(component)}--\${themeId}\`],
+        className,
       )}
       {...props}
     >

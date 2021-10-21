@@ -1,15 +1,15 @@
-.tooltip {
+.tooltipContent {
   height: 100%;
   position: relative;
   width: 100%;
 }
 
-.tooltip__triangle {
+.tooltipContent__triangle {
   position: absolute;
   z-index: 1;
 
   /* triangle: top */
-  .tooltip--bottomLeft & {
+  .tooltipContent--bottomLeft & {
     margin-top: calc(-1 * var(--triangle-size));
     right: 0;
     top: 0;
@@ -17,7 +17,7 @@
   }
 
   /* triangle: top */
-  .tooltip--bottomCenter & {
+  .tooltipContent--bottomCenter & {
     left: 50%;
     margin-top: calc(-1 * var(--triangle-size));
     top: 0;
@@ -25,7 +25,7 @@
   }
 
   /* triangle: top */
-  .tooltip--bottomRight & {
+  .tooltipContent--bottomRight & {
     left: 0;
     margin-top: calc(-1 * var(--triangle-size));
     top: 0;
@@ -33,7 +33,7 @@
   }
 
   /* triangle: bottom */
-  .tooltip--topLeft & {
+  .tooltipContent--topLeft & {
     bottom: 0;
     margin-bottom: calc(-1 * var(--triangle-size));
     right: 0;
@@ -41,7 +41,7 @@
   }
 
   /* triangle: bottom */
-  .tooltip--topCenter & {
+  .tooltipContent--topCenter & {
     bottom: 0;
     left: 50%;
     margin-bottom: calc(-1 * var(--triangle-size));
@@ -49,52 +49,84 @@
   }
 
   /* triangle: bottom */
-  .tooltip--topRight & {
+  .tooltipContent--topRight & {
     bottom: 0;
     left: 0;
     margin-bottom: calc(-1 * var(--triangle-size));
     transform: translateX(-50%);
+  }
+
+  /* triangle: right */
+  .tooltipContent--leftTop:not(.tooltipContent--cornerTriangle) & {
+    margin-right: calc(-1 * var(--triangle-size));
+    right: 0;
+    top: 0;
+    transform: translateY(-50%);
   }
 
   /* triangle: top-left */
-  .tooltip--leftTop & {
+  .tooltipContent--leftTop.tooltipContent--cornerTriangle & {
     margin-right: calc(-2 * var(--triangle-size));
     right: 0;
     top: 0;
   }
 
   /* triangle: right */
-  .tooltip--leftCenter & {
+  .tooltipContent--leftCenter & {
     margin-right: calc(-1 * var(--triangle-size));
     right: 0;
     top: 50%;
     transform: translateY(-50%);
   }
 
+  /* triangle: right */
+  .tooltipContent--leftBottom:not(.tooltipContent--cornerTriangle) & {
+    bottom: 0;
+    margin-right: calc(-1 * var(--triangle-size));
+    right: 0;
+    transform: translateY(50%);
+  }
+
   /* triangle: bottom-left */
-  .tooltip--leftBottom & {
+  .tooltipContent--leftBottom.tooltipContent--cornerTriangle & {
     bottom: 0;
     margin-right: calc(-2 * var(--triangle-size));
     right: 0;
   }
 
+  /* triangle: left */
+  .tooltipContent--rightTop:not(.tooltipContent--cornerTriangle) & {
+    left: 0;
+    margin-left: calc(-1 * var(--triangle-size));
+    top: 0;
+    transform: translateY(-50%);
+  }
+
   /* triangle: top-right */
-  .tooltip--rightTop & {
+  .tooltipContent--rightTop.tooltipContent--cornerTriangle & {
     left: 0;
     margin-left: calc(-2 * var(--triangle-size));
     top: 0;
   }
 
   /* triangle: left */
-  .tooltip--rightCenter & {
+  .tooltipContent--rightCenter & {
     left: 0;
     margin-left: calc(-1 * var(--triangle-size));
     top: 50%;
     transform: translateY(-50%);
   }
 
+  /* triangle: left */
+  .tooltipContent--rightBottom:not(.tooltipContent--cornerTriangle) & {
+    bottom: 0;
+    left: 0;
+    margin-left: calc(-1 * var(--triangle-size));
+    transform: translateY(50%);
+  }
+
   /* triangle: bottom-right */
-  .tooltip--rightBottom & {
+  .tooltipContent--rightBottom.tooltipContent--cornerTriangle & {
     bottom: 0;
     left: 0;
     margin-left: calc(-2 * var(--triangle-size));

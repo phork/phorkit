@@ -13,6 +13,7 @@ export type VerticalPosition = 'top' | 'bottom';
 export type VerticalPositionCentered = 'top-center' | 'bottom-center';
 export type HorizontalPosition = 'left' | 'right';
 export type HorizontalPositionCentered = 'left-center' | 'right-center';
+export type HorizontalPositionEdge = 'left-top' | 'left-bottom' | 'right-top' | 'right-bottom';
 
 export type SimplePosition = VerticalPosition | HorizontalPosition;
 
@@ -20,10 +21,7 @@ export type AnyPosition =
   | CornerPosition
   | VerticalPositionCentered
   | HorizontalPositionCentered
-  | 'left-top'
-  | 'left-bottom'
-  | 'right-top'
-  | 'right-bottom';
+  | HorizontalPositionEdge;
 
 export type Orientation = 'horizontal' | 'vertical';
 
