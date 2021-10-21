@@ -51,6 +51,7 @@ const primaryContrastColors = {
   'color-P65-contrast': '#fff',
 };
 
+// fine tune the lighten and darken amounts by color
 const adjustments = {
   'color-P05-lighten': 0.275,
   'color-P10-lighten': 0.1875,
@@ -70,21 +71,27 @@ const adjustments = {
   'color-P35-darken': 0.0625,
 };
 
+// shade color is the accent color at .1 opacity flattened on white
 const accentColors = {
   'color-accent-primary': primaryColors['color-P50'],
   'color-accent-primary-contrast': '#fff',
+  'color-accent-primary-shade': '#e6effa',
 
   'color-success': primaryColors['color-P40'],
   'color-success-contrast': '#fff',
+  'color-success-shade': '#f2f8ec',
 
   'color-warning': primaryColors['color-P25'],
   'color-warning-contrast': '#fff',
+  'color-warning-shade': '#fff4e7',
 
   'color-danger': primaryColors['color-P15'],
   'color-danger-contrast': '#fff',
+  'color-danger-shade': '#ffebeb',
 
   'color-neutral': neutralColors['color-FG30'],
   'color-neutral-contrast': '#fff',
+  'color-neutral-shade': '#f3f3f3',
 };
 
 const shadowColors = {

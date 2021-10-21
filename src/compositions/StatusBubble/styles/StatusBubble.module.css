@@ -1,0 +1,112 @@
+.statusBubble {
+  display: flex;
+}
+
+.statusBubble--rightBottom {
+  align-items: flex-end;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.statusBubble--rightTop {
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.statusBubble--leftBottom {
+  align-items: flex-end;
+  justify-content: flex-start;
+  flex-direction: row-reverse;
+}
+
+.statusBubble--leftTop {
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row-reverse;
+}
+
+.statusBubbleIcon {
+  align-items: center;
+  background-color: var(--status-bubble-state-color);
+  color: var(--status-bubble-state-contrast-color);
+  display: flex;
+  flex: none;
+  height: 36px;
+  justify-content: center;
+  width: 36px;
+
+  .statusBubble--rightBottom &,
+  .statusBubble--rightTop & {
+    margin-right: 16px;
+  }
+
+  .statusBubble--leftBottom &,
+  .statusBubble--leftTop & {
+    margin-left: 16px;
+  }
+}
+
+.statusBubbleIcon--square {
+  border-radius: $border-radius-large;
+}
+
+.statusBubbleIcon--circle {
+  border-radius: 100%;
+}
+
+.statusBubbleContent {
+  border-radius: $border-radius-large;
+  min-height: 36px;
+  overflow: hidden;
+}
+
+.statusBubbleHeader {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  font-size: $font-size-medium;
+  justify-content: space-between;
+  padding: 10px 16px;
+}
+
+.statusBubbleHeader + .statusBubbleBody {
+  border-top: 1px solid var(--status-bubble-state-color);
+}
+
+/* .statusBubbleBody {} */
+
+.statusBubble--primary {
+  @mixin themed .statusBubble {
+    --status-bubble-state-color: $theme-color-accent-primary;
+    --status-bubble-state-contrast-color: $theme-color-accent-primary-contrast;
+  }
+}
+
+.statusBubble--success {
+  @mixin themed .statusBubble {
+    --status-bubble-state-color: $theme-color-success;
+    --status-bubble-state-contrast-color: $theme-color-success-contrast;
+  }
+}
+
+.statusBubble--warning {
+  @mixin themed .statusBubble {
+    --status-bubble-state-color: $theme-color-warning;
+    --status-bubble-state-contrast-color: $theme-color-warning-contrast;
+  }
+}
+
+.statusBubble--danger {
+  @mixin themed .statusBubble {
+    --status-bubble-state-color: $theme-color-danger;
+    --status-bubble-state-contrast-color: $theme-color-danger-contrast;
+  }
+}
+
+.statusBubble--neutral {
+  @mixin themed .statusBubble {
+    --status-bubble-state-color: $theme-color-neutral;
+    --status-bubble-state-contrast-color: $theme-color-neutral-contrast;
+  }
+}

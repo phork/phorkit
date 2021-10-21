@@ -22,6 +22,11 @@ export default {
         category: 'Appearance',
       },
     },
+    cornerTriangle: {
+      table: {
+        category: 'Appearance',
+      },
+    },
     height: {
       table: {
         category: 'Appearance',
@@ -172,6 +177,11 @@ export default {
         category: 'Uncommon',
       },
     },
+    uncentered: {
+      table: {
+        category: 'Uncommon',
+      },
+    },
     withPopoverTogglerProps: {
       table: {
         category: 'Uncommon',
@@ -183,7 +193,7 @@ export default {
       },
     },
   },
-  pparameters: {
+  parameters: {
     controls: {
       sort: 'requiredFirst',
     },
@@ -212,6 +222,7 @@ const defaultArgs = {
   children: 'Hello world',
   closeDelay: 500,
   contrast: false,
+  cornerTriangle: false,
   focusable: true,
   hoverable: true,
   ignoreClickOutside: false,
@@ -222,6 +233,7 @@ const defaultArgs = {
   position: 'top-center' as PortalTextTooltipProps['position'],
   scrollable: false,
   toggler: <BlobbrIcon scale="3xlarge" />,
+  uncentered: false,
   withoutTogglerFocusStyle: false,
   withPopoverTogglerProps: false,
 };

@@ -79,27 +79,32 @@ export type ThemePrimaryDarkenedColors = MakeThemePrimaryColors<'D10'> &
 export type ThemeAccentPrimaryColors = {
   'color-accent-primary': string;
   'color-accent-primary-contrast': string;
+  'color-accent-primary-shade': string;
 } & MakeThemeOpacities<'accent-primary'> &
   MakeThemeLightenDarken<'accent-primary'>;
 
 export type ThemeSuccessColors = {
   'color-success': string;
   'color-success-contrast': string;
+  'color-success-shade': string;
 } & MakeThemeLightenDarken<'success'>;
 
 export type ThemeWarningColors = {
   'color-warning': string;
   'color-warning-contrast': string;
+  'color-warning-shade': string;
 } & MakeThemeLightenDarken<'warning'>;
 
 export type ThemeDangerColors = {
   'color-danger': string;
   'color-danger-contrast': string;
+  'color-danger-shade': string;
 } & MakeThemeLightenDarken<'danger'>;
 
 export type ThemeNeutralColors = {
   'color-neutral': string;
   'color-neutral-contrast': string;
+  'color-neutral-shade': string;
 } & MakeThemeLightenDarken<'neutral'>;
 
 export type ThemeBoxShadowColors = {

@@ -10,12 +10,16 @@ export type PortalTooltipProps<F extends HTMLElement | undefined = undefined> = 
   PortalPopoverProps<F>,
   'centered' | 'isTooltip' | 'position'
 > & {
+  /** If the position is `[left|right]-[top|bottom]` then the triangle can be a corner triangle (eg. flat top or bottom) */
+  cornerTriangle?: boolean;
   position?: AnyPosition;
   tooltipClassName?: string;
   triangleBorderColor?: string;
   triangleBorderWidth?: number;
   triangleColor: string;
   triangleSize?: number;
+  /** Don't center the tooltip relative to the toggle */
+  uncentered?: boolean;
 };
 
 /**
@@ -29,6 +33,7 @@ export type PortalTooltipProps<F extends HTMLElement | undefined = undefined> = 
  */
 export function PortalTooltip<F extends HTMLElement | undefined = undefined>({
   children,
+  cornerTriangle = false,
   layout,
   offset: initOffset,
   position,
@@ -38,14 +43,15 @@ export function PortalTooltip<F extends HTMLElement | undefined = undefined>({
   triangleBorderWidth,
   triangleColor,
   triangleSize,
+  uncentered,
   ...props
 }: PortalTooltipProps<F>): React.ReactElement {
-  const offset = initOffset || getTooltipOffset({ position, layout });
+  const offset = initOffset || getTooltipOffset({ cornerTriangle, position, layout });
 
   return (
     <PortalPopover<F>
-      centered
       isTooltip
+      centered={!uncentered}
       offset={offset}
       position={position}
       renderChildren={({ close, focusRef, isTogglerFocused, offset, position, visible }) => {
@@ -56,6 +62,7 @@ export function PortalTooltip<F extends HTMLElement | undefined = undefined>({
         return (
           <TooltipContent
             className={tooltipClassName}
+            cornerTriangle={cornerTriangle}
             layout={layout}
             offset={offset}
             position={position}

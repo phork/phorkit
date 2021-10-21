@@ -14,10 +14,20 @@ export default {
       },
     },
 
+    actionable: {
+      table: {
+        category: 'Appearance',
+      },
+    },
     color: {
       control: {
         type: 'text',
       },
+      table: {
+        category: 'Appearance',
+      },
+    },
+    opaque: {
       table: {
         category: 'Appearance',
       },
@@ -95,6 +105,7 @@ const defaultArgs = {
   color: 'primary' as ShadeProps['color'],
   focused: false,
   hovered: false,
+  opaque: false,
   style: { padding: '24px' },
   unthemed: false,
 };
@@ -111,11 +122,27 @@ PrimaryColor.args = {
   color: 'primary',
 };
 
+export const PrimaryColorOpaque = Template.bind({});
+PrimaryColorOpaque.storyName = 'Color: Primary, opaque';
+PrimaryColorOpaque.args = {
+  ...defaultArgs,
+  color: 'primary',
+  opaque: true,
+};
+
 export const SuccessColor = Template.bind({});
 SuccessColor.storyName = 'Color: Success';
 SuccessColor.args = {
   ...defaultArgs,
   color: 'success',
+};
+
+export const SuccessColorOpaque = Template.bind({});
+SuccessColorOpaque.storyName = 'Color: Success, opaque';
+SuccessColorOpaque.args = {
+  ...defaultArgs,
+  color: 'success',
+  opaque: true,
 };
 
 export const WarningColor = Template.bind({});
@@ -125,11 +152,27 @@ WarningColor.args = {
   color: 'warning',
 };
 
+export const WarningColorOpaque = Template.bind({});
+WarningColorOpaque.storyName = 'Color: Warning, opaque';
+WarningColorOpaque.args = {
+  ...defaultArgs,
+  color: 'warning',
+  opaque: true,
+};
+
 export const DangerColor = Template.bind({});
 DangerColor.storyName = 'Color: Danger';
 DangerColor.args = {
   ...defaultArgs,
   color: 'danger',
+};
+
+export const DangerColorOpaque = Template.bind({});
+DangerColorOpaque.storyName = 'Color: Danger, opaque';
+DangerColorOpaque.args = {
+  ...defaultArgs,
+  color: 'danger',
+  opaque: true,
 };
 
 export const NeutralColor = Template.bind({});
@@ -139,12 +182,29 @@ NeutralColor.args = {
   color: 'neutral',
 };
 
+export const NeutralColorOpaque = Template.bind({});
+NeutralColorOpaque.storyName = 'Color: Neutral, opaque';
+NeutralColorOpaque.args = {
+  ...defaultArgs,
+  color: 'neutral',
+  opaque: true,
+};
+
 export const Actionable = Template.bind({});
 Actionable.storyName = 'Actionable';
 Actionable.args = {
   ...defaultArgs,
   actionable: true,
   color: 'primary',
+};
+
+export const ActionableOpaque = Template.bind({});
+ActionableOpaque.storyName = 'Actionable, opaque';
+ActionableOpaque.args = {
+  ...defaultArgs,
+  actionable: true,
+  color: 'primary',
+  opaque: true,
 };
 
 export const ActiveState = Template.bind({});

@@ -4,12 +4,14 @@ import { CornerPosition, SimplePosition, AnyPosition, Orientation } from '../../
 import { lowerCamelize } from '../../utils/case';
 import { PositionOffset } from '../../utils/getPositionOffset';
 import { Triangle } from '../../components/Triangle/Triangle';
-import styles from './styles/Tooltip.module.css';
+import styles from './styles/TooltipContent.module.css';
 
 export type TooltipContentProps = React.HTMLAttributes<HTMLDivElement> & {
   children: React.ReactNode;
+  /** If the position is `[left|right]-[top|bottom]` then the triangle can be a corner triangle (eg. flat top or bottom) */
+  cornerTriangle?: boolean;
   layout?: Orientation;
-  offset: PositionOffset;
+  offset?: PositionOffset;
   position?: AnyPosition;
   triangleBorderColor?: string;
   triangleBorderWidth?: number;
@@ -17,7 +19,7 @@ export type TooltipContentProps = React.HTMLAttributes<HTMLDivElement> & {
   triangleSize?: number;
 };
 
-const getTrianglePosition = (position: AnyPosition): SimplePosition | CornerPosition => {
+const getTrianglePosition = (position: AnyPosition, cornerTriangle?: boolean): SimplePosition | CornerPosition => {
   switch (position) {
     case 'bottom-left':
     case 'bottom-center':
@@ -27,33 +29,35 @@ const getTrianglePosition = (position: AnyPosition): SimplePosition | CornerPosi
     case 'top-center':
     case 'top-right':
       return 'bottom';
-    case 'left-top':
-      return 'top-left';
     case 'left-center':
       return 'right';
-    case 'left-bottom':
-      return 'bottom-left';
-    case 'right-top':
-      return 'top-right';
     case 'right-center':
       return 'left';
+    case 'left-top':
+      return cornerTriangle ? 'top-left' : 'right';
+    case 'left-bottom':
+      return cornerTriangle ? 'bottom-left' : 'right';
+    case 'right-top':
+      return cornerTriangle ? 'top-right' : 'left';
     case 'right-bottom':
-      return 'bottom-right';
+      return cornerTriangle ? 'bottom-right' : 'left';
   }
 };
 
 const getTriangleSize = ({
   baseSize,
+  cornerTriangle = false,
   triangleBorderWidth,
-  isBorder,
+  isBorder = false,
   position,
 }: {
   baseSize?: number;
+  cornerTriangle?: boolean;
   triangleBorderWidth?: number;
   isBorder?: boolean;
   position: AnyPosition;
 }) => {
-  const trianglePosition = getTrianglePosition(position);
+  const trianglePosition = getTrianglePosition(position, cornerTriangle);
   if (trianglePosition && ['top-left', 'top-right', 'bottom-left', 'bottom-right'].includes(trianglePosition)) {
     return (baseSize || 6) + (isBorder && triangleBorderWidth ? triangleBorderWidth : 0);
   }
@@ -61,17 +65,19 @@ const getTriangleSize = ({
 };
 
 const getTriangleStyle = ({
-  triangleBorderWidth,
+  cornerTriangle = false,
   hasBorder = false,
   isBorder = false,
   offset,
   position,
+  triangleBorderWidth,
 }: {
-  triangleBorderWidth?: number;
+  cornerTriangle?: boolean;
   hasBorder?: boolean;
   isBorder?: boolean;
   offset?: PositionOffset;
   position: AnyPosition;
+  triangleBorderWidth?: number;
 }) => {
   const triangleStyle: React.CSSProperties = {
     zIndex: isBorder ? 1 : 2,
@@ -82,6 +88,10 @@ const getTriangleStyle = ({
     triangleStyle.right = offset?.right ? -1 * offset.right : undefined;
   } else if (['top-right', 'bottom-right'].includes(position)) {
     triangleStyle.left = offset?.left ? -1 * offset.left : undefined;
+  } else if (['left-top', 'right-top'].includes(position) && !cornerTriangle) {
+    triangleStyle.top = offset?.top ? -1 * offset.top : undefined;
+  } else if (['left-bottom', 'right-bottom'].includes(position) && !cornerTriangle) {
+    triangleStyle.bottom = offset?.bottom ? -1 * offset.bottom : undefined;
   }
 
   // adjust the triangle to create the border effect
@@ -96,10 +106,12 @@ const getTriangleStyle = ({
       triangleStyle.left = isBorder ? -triangleBorderWidth : triangleBorderWidth;
     }
 
-    if (['left-top', 'right-top'].includes(position) && !isBorder) {
-      triangleStyle.top = triangleBorderWidth;
-    } else if (['left-bottom', 'right-bottom'].includes(position) && !isBorder) {
-      triangleStyle.bottom = triangleBorderWidth;
+    if (cornerTriangle) {
+      if (['left-top', 'right-top'].includes(position) && !isBorder) {
+        triangleStyle.top = triangleBorderWidth;
+      } else if (['left-bottom', 'right-bottom'].includes(position) && !isBorder) {
+        triangleStyle.bottom = triangleBorderWidth;
+      }
     }
   }
 
@@ -115,6 +127,7 @@ const getTriangleStyle = ({
 export function TooltipContent({
   children,
   className,
+  cornerTriangle = false,
   layout,
   offset,
   position = 'top-center',
@@ -127,10 +140,15 @@ export function TooltipContent({
 }: TooltipContentProps): React.ReactElement | null {
   return position ? (
     <div
-      className={cx(styles.tooltip, styles[`tooltip--${lowerCamelize(position)}`], className)}
+      className={cx(
+        styles.tooltipContent,
+        styles[`tooltipContent--${lowerCamelize(position)}`],
+        cornerTriangle && styles['tooltipContent--cornerTriangle'],
+        className,
+      )}
       style={
         {
-          '--triangle-size': `${getTriangleSize({ baseSize: triangleSize, position })}px`,
+          '--triangle-size': `${getTriangleSize({ baseSize: triangleSize, cornerTriangle, position })}px`,
           ...style,
         } as React.CSSProperties
       }
@@ -138,20 +156,39 @@ export function TooltipContent({
     >
       {triangleBorderColor && (
         <Triangle
-          className={cx(styles.tooltip__triangle)}
+          className={cx(styles.tooltipContent__triangle)}
           color={triangleBorderColor}
-          position={getTrianglePosition(position)}
-          size={getTriangleSize({ baseSize: triangleSize, position, triangleBorderWidth, isBorder: true })}
-          style={getTriangleStyle({ position, offset, triangleBorderWidth, hasBorder: true, isBorder: true })}
+          position={getTrianglePosition(position, cornerTriangle)}
+          size={getTriangleSize({
+            baseSize: triangleSize,
+            cornerTriangle,
+            position,
+            triangleBorderWidth,
+            isBorder: true,
+          })}
+          style={getTriangleStyle({
+            cornerTriangle,
+            hasBorder: true,
+            isBorder: true,
+            offset,
+            position,
+            triangleBorderWidth,
+          })}
         />
       )}
 
       <Triangle
-        className={cx(styles.tooltip__triangle)}
+        className={cx(styles.tooltipContent__triangle)}
         color={triangleColor}
-        position={getTrianglePosition(position)}
-        size={getTriangleSize({ baseSize: triangleSize, position, triangleBorderWidth })}
-        style={getTriangleStyle({ position, offset, hasBorder: !!triangleBorderColor, triangleBorderWidth })}
+        position={getTrianglePosition(position, cornerTriangle)}
+        size={getTriangleSize({ baseSize: triangleSize, cornerTriangle, position, triangleBorderWidth })}
+        style={getTriangleStyle({
+          cornerTriangle,
+          hasBorder: !!triangleBorderColor,
+          offset,
+          position,
+          triangleBorderWidth,
+        })}
       />
 
       {children}

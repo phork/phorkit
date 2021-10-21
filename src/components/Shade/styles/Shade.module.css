@@ -1,6 +1,14 @@
 .shade {
   position: relative;
+}
 
+.shade--opaque {
+  background-color: var(--shade-opaque-primary-color);
+  border: 1px solid var(--shade-primary-color);
+  color: var(--shade-primary-color);
+}
+
+.shade--transparent {
   @mixin makeShadedFill var(--shade-primary-color), withShade;
 }
 
@@ -28,40 +36,45 @@
 
 .shade--success {
   @mixin themed .shade {
-    --shade-primary-color: $theme-color-success;
-    --shade-inverse-color: $theme-color-success-contrast;
     --shade-active-primary-color: $theme-color-success-D10;
+    --shade-inverse-color: $theme-color-success-contrast;
+    --shade-opaque-primary-color: $theme-color-success-shade;
+    --shade-primary-color: $theme-color-success;
   }
 }
 
 .shade--warning {
   @mixin themed .shade {
-    --shade-primary-color: $theme-color-warning;
-    --shade-inverse-color: $theme-color-warning-contrast;
     --shade-active-primary-color: $theme-color-warning-D10;
+    --shade-inverse-color: $theme-color-warning-contrast;
+    --shade-opaque-primary-color: $theme-color-warning-shade;
+    --shade-primary-color: $theme-color-warning;
   }
 }
 
 .shade--danger {
   @mixin themed .shade {
-    --shade-primary-color: $theme-color-danger;
-    --shade-inverse-color: $theme-color-danger-contrast;
     --shade-active-primary-color: $theme-color-danger-D10;
+    --shade-inverse-color: $theme-color-danger-contrast;
+    --shade-opaque-primary-color: $theme-color-danger-shade;
+    --shade-primary-color: $theme-color-danger;
   }
 }
 
 .shade--primary {
   @mixin themed .shade {
-    --shade-primary-color: $theme-color-accent-primary;
-    --shade-inverse-color: $theme-color-accent-primary-contrast;
     --shade-active-primary-color: $theme-color-accent-primary-D10;
+    --shade-inverse-color: $theme-color-accent-primary-contrast;
+    --shade-opaque-primary-color: $theme-color-accent-primary-shade;
+    --shade-primary-color: $theme-color-accent-primary;
   }
 }
 
 .shade--neutral {
   @mixin themed .shade {
-    --shade-primary-color: $theme-color-neutral;
-    --shade-inverse-color: $theme-color-neutral-contrast;
     --shade-active-primary-color: $theme-color-neutral-D10;
+    --shade-inverse-color: $theme-color-neutral-contrast;
+    --shade-opaque-primary-color: $theme-color-neutral-shade;
+    --shade-primary-color: $theme-color-neutral;
   }
 }

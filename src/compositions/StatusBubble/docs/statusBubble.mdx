@@ -1,0 +1,232 @@
+---
+name: StatusBubble
+menu: Display
+route: /compositions/StatusBubble
+---
+
+import { Playground, Props } from 'docz';
+import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { Avatar } from 'components/Avatar';
+import { Paper } from 'components/Paper';
+import { Rhythm } from 'components/Rhythm';
+import { Typography } from 'components/Typography';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { StatusBubble } from '../index';
+
+<PageTitle src="compositions/StatusBubble" title="StatusBubble" />
+
+## Neutral status bubble
+
+<Playground>
+  <ThemeWrapper>
+    <StatusBubble
+      color="neutral"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      icon={<BlobbrIcon scale="large" />}
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </StatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Primary status bubble
+
+<Playground>
+  <ThemeWrapper>
+    <StatusBubble
+      color="primary"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      icon={<BlobbrIcon scale="large" />}
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </StatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Success status bubble
+
+<Playground>
+  <ThemeWrapper>
+    <StatusBubble
+      color="success"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      icon={<BlobbrIcon scale="large" />}
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </StatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Warning status bubble
+
+<Playground>
+  <ThemeWrapper>
+    <StatusBubble
+      color="warning"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      icon={<BlobbrIcon scale="large" />}
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </StatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Danger status bubble
+
+<Playground>
+  <ThemeWrapper>
+    <StatusBubble
+      color="danger"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      icon={<BlobbrIcon scale="large" />}
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </StatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Right top
+
+<Playground>
+  <ThemeWrapper>
+    <StatusBubble
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      icon={<BlobbrIcon scale="large" />}
+      position="right-top"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </StatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Left top
+
+<Playground>
+  <ThemeWrapper>
+    <StatusBubble
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      icon={<BlobbrIcon scale="large" />}
+      position="left-top"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </StatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Right bottom
+
+<Playground>
+  <ThemeWrapper>
+    <StatusBubble
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      icon={<BlobbrIcon scale="large" />}
+      position="right-bottom"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </StatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Left bottom
+
+<Playground>
+  <ThemeWrapper>
+    <StatusBubble
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      icon={<BlobbrIcon scale="large" />}
+      position="left-bottom"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </StatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## With an avatar
+
+<Playground>
+  <ThemeWrapper>
+    <StatusBubble
+      color="neutral"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      icon={<Avatar imgSrc="/public/images/avatar.jpg" initials="EC" size="large" />}
+      iconShape="circle"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </StatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## \[props\]
+
+<Props of={StatusBubble} />
