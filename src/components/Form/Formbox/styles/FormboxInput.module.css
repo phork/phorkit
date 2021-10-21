@@ -42,7 +42,7 @@
 }
 
 .formboxInput--primary {
-  @mixin themed .formbox {
+  @mixin themed .formboxInput {
     --formbox-input-text-color: $theme-primary-palette-quiet-color;
   }
 
