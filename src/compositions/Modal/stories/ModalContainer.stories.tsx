@@ -2,7 +2,7 @@ import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } fro
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { Flex } from 'components/Flex/Flex';
-import { Typography } from 'components/Typography/Typography';
+import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { Modal } from '../Modal';
 import { ModalBody } from '../ModalBody';
@@ -39,7 +39,7 @@ export default {
   decorators: [
     Story => (
       <Flex full alignItems="center" justifyContent="center">
-        <Typography size="large" variants="italic" volume="quietest">
+        <Typography color="primary" size="large" variants="italic" volume="quietest">
           See the center of the page
         </Typography>
         <Story />

@@ -1,6 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { Flex } from 'components/Flex';
+import { Link } from 'components/Link';
 import { Rhythm } from 'components/Rhythm';
 import { Canvas } from 'stories/helpers/Canvas';
 import { PageTitle } from 'stories/helpers/PageTitle';
@@ -21,43 +22,69 @@ import { Typography } from '../Typography';
 <Canvas>
   <Flex direction="column">
     <Rhythm my={1}>
-      <Typography size="2xsmall">The quick brown fox jumped over the lazy dog (2xs)</Typography>
+      <Typography color="primary" size="2xsmall">
+        The quick brown fox jumped over the lazy dog (2xs)
+      </Typography>
     </Rhythm>
     <Rhythm my={1}>
-      <Typography size="xsmall">The quick brown fox jumped over the lazy dog (xs)</Typography>
+      <Typography color="primary" size="xsmall">
+        The quick brown fox jumped over the lazy dog (xs)
+      </Typography>
     </Rhythm>
     <Rhythm my={1}>
-      <Typography size="small">The quick brown fox jumped over the lazy dog (s)</Typography>
+      <Typography color="primary" size="small">
+        The quick brown fox jumped over the lazy dog (s)
+      </Typography>
     </Rhythm>
     <Rhythm my={1}>
-      <Typography size="medium">The quick brown fox jumped over the lazy dog (m)</Typography>
+      <Typography color="primary" size="medium">
+        The quick brown fox jumped over the lazy dog (m)
+      </Typography>
     </Rhythm>
     <Rhythm my={1}>
-      <Typography size="large">The quick brown fox jumped over the lazy dog (l)</Typography>
+      <Typography color="primary" size="large">
+        The quick brown fox jumped over the lazy dog (l)
+      </Typography>
     </Rhythm>
     <Rhythm my={1}>
-      <Typography size="xlarge">The quick brown fox jumped over the lazy dog (xl)</Typography>
+      <Typography color="primary" size="xlarge">
+        The quick brown fox jumped over the lazy dog (xl)
+      </Typography>
     </Rhythm>
     <Rhythm my={1}>
-      <Typography size="2xlarge">The quick brown fox jumped over the lazy dog (2xl)</Typography>
+      <Typography color="primary" size="2xlarge">
+        The quick brown fox jumped over the lazy dog (2xl)
+      </Typography>
     </Rhythm>
     <Rhythm my={1}>
-      <Typography size="3xlarge">The quick brown fox jumped over the lazy dog (3xl)</Typography>
+      <Typography color="primary" size="3xlarge">
+        The quick brown fox jumped over the lazy dog (3xl)
+      </Typography>
     </Rhythm>
     <Rhythm my={1}>
-      <Typography size="4xlarge">The quick brown fox jumped over the lazy dog (4xl)</Typography>
+      <Typography color="primary" size="4xlarge">
+        The quick brown fox jumped over the lazy dog (4xl)
+      </Typography>
     </Rhythm>
     <Rhythm my={1}>
-      <Typography size="5xlarge">The quick brown fox jumped over the lazy dog (5xl)</Typography>
+      <Typography color="primary" size="5xlarge">
+        The quick brown fox jumped over the lazy dog (5xl)
+      </Typography>
     </Rhythm>
     <Rhythm my={1}>
-      <Typography size="6xlarge">The quick brown fox jumped over the lazy dog (6xl)</Typography>
+      <Typography color="primary" size="6xlarge">
+        The quick brown fox jumped over the lazy dog (6xl)
+      </Typography>
     </Rhythm>
     <Rhythm my={1}>
-      <Typography size="7xlarge">The quick brown fox jumped over the lazy dog (7xl)</Typography>
+      <Typography color="primary" size="7xlarge">
+        The quick brown fox jumped over the lazy dog (7xl)
+      </Typography>
     </Rhythm>
     <Rhythm my={1}>
-      <Typography size="8xlarge">The quick brown fox jumped over the lazy dog (8xl)</Typography>
+      <Typography color="primary" size="8xlarge">
+        The quick brown fox jumped over the lazy dog (8xl)
+      </Typography>
     </Rhythm>
   </Flex>
 </Canvas>
@@ -67,22 +94,22 @@ import { Typography } from '../Typography';
 <Canvas>
   <Flex direction="column">
     <Rhythm my={1}>
-      <Typography size="large" weight="lighter">
+      <Typography color="primary" size="large" weight="lighter">
         The quick brown fox jumped over the lazy dog (lighter)
       </Typography>
     </Rhythm>
     <Rhythm my={1}>
-      <Typography size="large" weight="light">
+      <Typography color="primary" size="large" weight="light">
         The quick brown fox jumped over the lazy dog (light)
       </Typography>
     </Rhythm>
     <Rhythm my={1}>
-      <Typography size="large" weight="regular">
+      <Typography color="primary" size="large" weight="regular">
         The quick brown fox jumped over the lazy dog (regular)
       </Typography>
     </Rhythm>
     <Rhythm my={1}>
-      <Typography size="large" weight="bold">
+      <Typography color="primary" size="large" weight="bold">
         The quick brown fox jumped over the lazy dog (bold)
       </Typography>
     </Rhythm>
@@ -92,22 +119,24 @@ import { Typography } from '../Typography';
 ### Spaces
 
 <Canvas>
-  <div>
-    Hello<Typography variants={['space-before']}>world</Typography>
-  </div>
-  <div>
-    <Typography variants={['space-after']}>Hello</Typography>world
-  </div>
-  <div>
+  <Typography as="div" color="primary">
+    Hello
+    <Typography variants={['space-before']}>world</Typography>
+  </Typography>
+  <Typography as="div" color="primary">
+    <Typography variants={['space-after']}>Hello</Typography>
+    world
+  </Typography>
+  <Typography as="div" color="primary">
     <Typography variants={['space-after', 'small-caps']}>Hello</Typography>
     <Typography variants={['space-before', '2xlarge']}>world</Typography>
-  </div>
+  </Typography>
 </Canvas>
 
 ### Truncated
 
 <Canvas>
-  <Typography as="div" style={{ width: '140px' }} variants="truncated">
+  <Typography as="div" color="primary" style={{ width: '140px' }} variants="truncated">
     The quick brown fox jumped over the lazy dog
   </Typography>
 </Canvas>
@@ -116,13 +145,13 @@ import { Typography } from '../Typography';
 
 <Canvas>
   <Flex direction="column">
-    <Typography align="left" as="div">
+    <Typography align="left" as="div" color="primary">
       The quick brown fox jumped over the lazy dog
     </Typography>
-    <Typography align="center" as="div">
+    <Typography align="center" as="div" color="primary">
       The quick brown fox jumped over the lazy dog
     </Typography>
-    <Typography align="right" as="div">
+    <Typography align="right" as="div" color="primary">
       The quick brown fox jumped over the lazy dog
     </Typography>
   </Flex>
@@ -131,10 +160,10 @@ import { Typography } from '../Typography';
 ### Case
 
 <Canvas>
-  <Typography as="div" variants="uppercase">
+  <Typography as="div" color="primary" variants="uppercase">
     The uppercase fox jumped over the lazy dog
   </Typography>
-  <Typography as="div" variants="lowercase">
+  <Typography as="div" color="primary" variants="lowercase">
     The LOWERCASE fox jumped over the lazy dog
   </Typography>
 </Canvas>
@@ -142,44 +171,56 @@ import { Typography } from '../Typography';
 ### Italic
 
 <Canvas>
-  <Typography variants="italic">The quick brown fox jumped over the lazy dog</Typography>
+  <Typography color="primary" variants="italic">
+    The quick brown fox jumped over the lazy dog
+  </Typography>
 </Canvas>
 
 ### Underline
 
 <Canvas>
-  <Typography variants="underline">The quick brown fox jumped over the lazy dog</Typography>
+  <Typography color="primary" variants="underline">
+    The quick brown fox jumped over the lazy dog
+  </Typography>
 </Canvas>
 
 ### Blackout
 
 <Canvas>
-  <Typography variants="blackout">The quick brown fox jumped over the lazy dog</Typography>
+  <Typography color="primary" variants="blackout">
+    The quick brown fox jumped over the lazy dog
+  </Typography>
 </Canvas>
 
 ### Blackout rounded
 
 <Canvas>
-  <Typography variants="blackout-rounded">The quick brown fox jumped over the lazy dog</Typography>
+  <Typography color="primary" variants="blackout-rounded">
+    The quick brown fox jumped over the lazy dog
+  </Typography>
 </Canvas>
 
 ### Spoiler
 
 <Canvas>
-  <Typography variants="spoiler">The quick brown fox jumped over the lazy dog</Typography>
+  <Typography color="primary" variants="spoiler">
+    The quick brown fox jumped over the lazy dog
+  </Typography>
 </Canvas>
 
 ### Letter spacing
 
 <Canvas>
-  <Typography as="div">This is normal letter spacing</Typography>
-  <Typography as="div" variants="letter-spacing-comfy">
-    This is comfy letter spacing
-  </Typography>
-  <Typography as="div" variants="uppercase">
+  <Typography as="div" color="primary">
     This is normal letter spacing
   </Typography>
-  <Typography as="div" variants={['letter-spacing-comfy', 'uppercase']}>
+  <Typography as="div" color="primary" variants="letter-spacing-comfy">
+    This is comfy letter spacing
+  </Typography>
+  <Typography as="div" color="primary" variants="uppercase">
+    This is normal letter spacing
+  </Typography>
+  <Typography as="div" color="primary" variants={['letter-spacing-comfy', 'uppercase']}>
     This is comfy letter spacing
   </Typography>
 </Canvas>
@@ -188,15 +229,15 @@ import { Typography } from '../Typography';
 
 <Canvas>
   <Rhythm my={2} style={{ maxWidth: '400px' }}>
-    <Typography as="div" variants="line-height-smash">
+    <Typography as="div" color="primary" variants="line-height-smash">
       This is line height smash This is line height smash This is line height smash This is line height smash This is
       line height smash This is line height smash This is line height smash
     </Typography>
-    <Typography as="div" variants="line-height-normal">
+    <Typography as="div" color="primary" variants="line-height-normal">
       This is line height normal This is line height normal This is line height normal This is line height normal This
       is line height normal This is line height normal This is line height normal
     </Typography>
-    <Typography as="div" variants="line-height-comfy">
+    <Typography as="div" color="primary" variants="line-height-comfy">
       This is line height comfy This is line height comfy This is line height comfy This is line height comfy This is
       line height comfy This is line height comfy This is line height comfy
     </Typography>
@@ -206,14 +247,16 @@ import { Typography } from '../Typography';
 ### Quiet, Quieter, Quietest
 
 <Canvas>
-  <Typography as="div">This is a normal volume</Typography>
-  <Typography as="div" volume="quiet">
+  <Typography as="div" color="primary">
+    This is a normal volume
+  </Typography>
+  <Typography as="div" color="primary" volume="quiet">
     This is a quiet volume
   </Typography>
-  <Typography as="div" volume="quieter">
+  <Typography as="div" color="primary" volume="quieter">
     This is a quieter volume
   </Typography>
-  <Typography as="div" volume="quietest">
+  <Typography as="div" color="primary" volume="quietest">
     This is the quietest volume
   </Typography>
 </Canvas>
@@ -221,91 +264,105 @@ import { Typography } from '../Typography';
 ### Colors
 
 <Canvas>
-  <ThemeWrapper>
-    <Typography as="div" color="primary">
-      Theme primary
-    </Typography>
-    <Typography as="div" color="primary" volume="quiet">
-      Theme primary quiet
-    </Typography>
-    <Typography as="div" color="primary" volume="quieter">
-      Theme primary quieter
-    </Typography>
-    <Typography as="div" color="primary" volume="quietest">
-      Theme primary quietest
-    </Typography>
-    <br />
-    <Typography as="div" color="secondary">
-      Theme secondary
-    </Typography>
-    <Typography as="div" color="secondary" volume="quiet">
-      Theme secondary quiet
-    </Typography>
-    <Typography as="div" color="secondary" volume="quieter">
-      Theme secondary quieter
-    </Typography>
-    <Typography as="div" color="secondary" volume="quietest">
-      Theme secondary quietest
-    </Typography>
-    <br />
-    <Typography as="div" color="tertiary">
-      Theme tertiary
-    </Typography>
-    <Typography as="div" color="tertiary" volume="quiet">
-      Theme tertiary quiet
-    </Typography>
-    <Typography as="div" color="tertiary" volume="quieter">
-      Theme tertiary quieter
-    </Typography>
-    <Typography as="div" color="tertiary" volume="quietest">
-      Theme tertiary quietest
-    </Typography>
-    <br />
-    <Typography as="div" color="accent-primary">
-      Theme accent primary
-    </Typography>
-    <Typography as="div" color="accent-primary" volume="quiet">
-      Theme accent primary quiet
-    </Typography>
-    <Typography as="div" color="accent-primary" volume="quieter">
-      Theme accent primary quieter
-    </Typography>
-    <Typography as="div" color="accent-primary" volume="quietest">
-      Theme accent primary quietest
-    </Typography>
-  </ThemeWrapper>
+  <Typography as="div" color="primary">
+    Theme primary
+  </Typography>
+  <Typography as="div" color="primary" volume="quiet">
+    Theme primary quiet
+  </Typography>
+  <Typography as="div" color="primary" volume="quieter">
+    Theme primary quieter
+  </Typography>
+  <Typography as="div" color="primary" volume="quietest">
+    Theme primary quietest
+  </Typography>
+</Canvas>
+
+<Canvas>
+  <Typography as="div" color="secondary">
+    Theme secondary
+  </Typography>
+  <Typography as="div" color="secondary" volume="quiet">
+    Theme secondary quiet
+  </Typography>
+  <Typography as="div" color="secondary" volume="quieter">
+    Theme secondary quieter
+  </Typography>
+  <Typography as="div" color="secondary" volume="quietest">
+    Theme secondary quietest
+  </Typography>
+</Canvas>
+
+<Canvas>
+  <Typography as="div" color="tertiary">
+    Theme tertiary
+  </Typography>
+  <Typography as="div" color="tertiary" volume="quiet">
+    Theme tertiary quiet
+  </Typography>
+  <Typography as="div" color="tertiary" volume="quieter">
+    Theme tertiary quieter
+  </Typography>
+  <Typography as="div" color="tertiary" volume="quietest">
+    Theme tertiary quietest
+  </Typography>
+</Canvas>
+
+<Canvas>
+  <Typography as="div" color="accent-primary">
+    Theme accent primary
+  </Typography>
+  <Typography as="div" color="accent-primary" volume="quiet">
+    Theme accent primary quiet
+  </Typography>
+  <Typography as="div" color="accent-primary" volume="quieter">
+    Theme accent primary quieter
+  </Typography>
+  <Typography as="div" color="accent-primary" volume="quietest">
+    Theme accent primary quietest
+  </Typography>
 </Canvas>
 
 ### Contrast
 
 <Canvas contrast>
-  <ThemeWrapper>
-    <Typography as="div" color="contrast">
-      Theme contrast
-    </Typography>
-    <Typography as="div" color="contrast" volume="quiet">
-      Theme contrast quiet
-    </Typography>
-    <Typography as="div" color="contrast" volume="quieter">
-      Theme contrast quieter
-    </Typography>
-    <Typography as="div" color="contrast" volume="quietest">
-      Theme contrast quietest
-    </Typography>
-  </ThemeWrapper>
+  <Typography as="div" color="contrast">
+    Theme contrast
+  </Typography>
+  <Typography as="div" color="contrast" volume="quiet">
+    Theme contrast quiet
+  </Typography>
+  <Typography as="div" color="contrast" volume="quieter">
+    Theme contrast quieter
+  </Typography>
+  <Typography as="div" color="contrast" volume="quietest">
+    Theme contrast quietest
+  </Typography>
 </Canvas>
 
 ### Headings
 
 <Canvas>
   <Rhythm my={2}>
-    <Typography heading="h1">The quick brown fox jumped over the lazy dog (h1)</Typography>
-    <Typography heading="h2">The quick brown fox jumped over the lazy dog (h2)</Typography>
-    <Typography heading="h3">The quick brown fox jumped over the lazy dog (h3)</Typography>
-    <Typography heading="h4">The quick brown fox jumped over the lazy dog (h4)</Typography>
-    <Typography heading="h5">The quick brown fox jumped over the lazy dog (h5)</Typography>
-    <Typography heading="h6">The quick brown fox jumped over the lazy dog (h6)</Typography>
-    <Typography heading="p">
+    <Typography color="primary" heading="h1">
+      The quick brown fox jumped over the lazy dog (h1)
+    </Typography>
+    <Typography color="primary" heading="h2">
+      The quick brown fox jumped over the lazy dog (h2)
+    </Typography>
+    <Typography color="primary" heading="h3">
+      The quick brown fox jumped over the lazy dog (h3)
+    </Typography>
+    <Typography color="primary" heading="h4">
+      The quick brown fox jumped over the lazy dog (h4)
+    </Typography>
+    <Typography color="primary" heading="h5">
+      The quick brown fox jumped over the lazy dog (h5)
+    </Typography>
+    <Typography color="primary" heading="h6">
+      The quick brown fox jumped over the lazy dog (h6)
+    </Typography>
+    <Typography color="primary" heading="p">
       The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox
       jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog
       The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox
@@ -317,11 +374,13 @@ import { Typography } from '../Typography';
 ### Medium caps
 
 <Canvas>
-  <Typography variants={['medium-caps']}>The quick brown fox jumped over the lazy dog</Typography>
+  <Typography color="primary" variants={['medium-caps']}>
+    The quick brown fox jumped over the lazy dog
+  </Typography>
 </Canvas>
 
 <Canvas>
-  <Typography variants={['medium-caps']} volume="quiet">
+  <Typography color="primary" variants={['medium-caps']} volume="quiet">
     The quiet brown fox jumped over the lazy dog
   </Typography>
 </Canvas>
@@ -329,11 +388,13 @@ import { Typography } from '../Typography';
 ### Small caps
 
 <Canvas>
-  <Typography variants={['small-caps']}>The quick brown fox jumped over the lazy dog</Typography>
+  <Typography color="primary" variants={['small-caps']}>
+    The quick brown fox jumped over the lazy dog
+  </Typography>
 </Canvas>
 
 <Canvas>
-  <Typography variants={['small-caps']} volume="quiet">
+  <Typography color="primary" variants={['small-caps']} volume="quiet">
     The quiet brown fox jumped over the lazy dog
   </Typography>
 </Canvas>
@@ -341,11 +402,13 @@ import { Typography } from '../Typography';
 ### Extra small caps
 
 <Canvas>
-  <Typography variants={['xsmall-caps']}>The quick brown fox jumped over the lazy dog</Typography>
+  <Typography color="primary" variants={['xsmall-caps']}>
+    The quick brown fox jumped over the lazy dog
+  </Typography>
 </Canvas>
 
 <Canvas>
-  <Typography variants={['xsmall-caps']} volume="quiet">
+  <Typography color="primary" variants={['xsmall-caps']} volume="quiet">
     The quiet brown fox jumped over the lazy dog
   </Typography>
 </Canvas>
@@ -353,7 +416,9 @@ import { Typography } from '../Typography';
 ### Reset
 
 <Canvas>
-  <div
+  <Typography
+    as="div"
+    color="primary"
     style={{
       fontSize: '14px',
       fontWeight: 'bold',
@@ -364,5 +429,13 @@ import { Typography } from '../Typography';
   >
     <div>This text has not been reset.</div>
     <Typography variants={['reset']}>The quick brown fox jumped over the lazy dog</Typography>
-  </div>
+  </Typography>
+</Canvas>
+
+### As link
+
+<Canvas>
+  <Typography as={Link} href="https://phorkit.org" target="_blank" volume="quiet">
+    Typography as Link
+  </Typography>
 </Canvas>

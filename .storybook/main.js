@@ -10,7 +10,6 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-postcss',
     '@storybook/addon-a11y',
-    'storybook-dark-mode',
   ],
   typescript: async config => {
     return {

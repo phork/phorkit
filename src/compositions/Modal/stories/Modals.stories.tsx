@@ -2,14 +2,14 @@ import { actions } from '@storybook/addon-actions';
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { Button } from 'components/Button/Button';
+import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { Button } from 'components/Button';
 import { ButtonGroup } from 'components/Button/ButtonGroup';
+import { Flex } from 'components/Flex';
+import { IconText } from 'components/IconText/IconText';
+import { Rhythm } from 'components/Rhythm';
+import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { BlobbrIcon } from '../../../icons/internal/BlobbrIcon';
-import { Flex } from '../../../components/Flex/Flex';
-import { IconText } from '../../../components/IconText/IconText';
-import { Rhythm } from '../../../components/Rhythm/Rhythm';
-import { Typography } from '../../../components/Typography/Typography';
 import { Modal } from '../Modal';
 import { ModalBody } from '../ModalBody';
 import { ModalConsumer } from '../ModalConsumer';
@@ -336,10 +336,18 @@ const Template: ComponentStory<typeof Modals> = args => (
           >
             Open an uncloseable modal
           </Button>
-          <p>{hasModal('demo-large-modal') ? 'The large modal is open.' : 'The large modal is closed.'}</p>
-          <p>{hasModal('demo-medium-modal') ? 'The medium modal is open.' : 'The medium modal is closed.'}</p>
-          <p>{hasModal('demo-small-modal') ? 'The small modal is open.' : 'The small modal is closed.'}</p>
-          <p>{hasModal('demo-permanent-modal') ? 'The permanent modal is open.' : 'The permanent modal is closed.'}</p>
+          <Typography<'p'> as="p" color="primary">
+            {hasModal('demo-large-modal') ? 'The large modal is open.' : 'The large modal is closed.'}
+          </Typography>
+          <Typography<'p'> as="p" color="primary">
+            {hasModal('demo-medium-modal') ? 'The medium modal is open.' : 'The medium modal is closed.'}
+          </Typography>
+          <Typography<'p'> as="p" color="primary">
+            {hasModal('demo-small-modal') ? 'The small modal is open.' : 'The small modal is closed.'}
+          </Typography>
+          <Typography<'p'> as="p" color="primary">
+            {hasModal('demo-permanent-modal') ? 'The permanent modal is open.' : 'The permanent modal is closed.'}
+          </Typography>
         </Rhythm>
       )}
     </ModalConsumer>

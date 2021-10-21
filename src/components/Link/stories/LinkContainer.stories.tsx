@@ -1,6 +1,7 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { LinkContainer } from '../LinkContainer';
 
@@ -106,12 +107,12 @@ Paragraph.args = {
   ...defaultArgs,
   as: 'p',
   children: (
-    <React.Fragment>
+    <Typography color="primary">
       Hello world.{' '}
       <a href="http://phork.org" target="_blank">
         I am a link within a LinkContainer.
       </a>{' '}
       I also have a paragraph wrapper.
-    </React.Fragment>
+    </Typography>
   ),
 };

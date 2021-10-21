@@ -29,89 +29,83 @@ import { TagGroup } from '../TagGroup';
 _Note that the links will cause the page to reload so the state will appear unchanged._
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={['2xsmall', 'xsmall', 'small', 'medium', 'large']}
-      render={size => (
-        <React.Fragment>
-          <Rhythm m={2}>
-            <Tag size={size} weight="shaded">
-              Read only tag
-            </Tag>
-            <Tag actionable onClick={() => console.log('button tag')} size={size} weight="shaded">
-              Button tag
-            </Tag>
-            <Tag actionable as="a" href="https://phorkit.org" size={size} target="_blank" weight="shaded">
-              Link tag
-            </Tag>
-            <Tag actionable size={size} weight="outlined">
-              Outlined tag
-            </Tag>
-            <Tag actionable size={size} weight="solid">
-              Solid tag
-            </Tag>
-          </Rhythm>
-          <br />
-        </React.Fragment>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={['2xsmall', 'xsmall', 'small', 'medium', 'large']}
+    render={size => (
+      <React.Fragment>
+        <Rhythm m={2}>
+          <Tag size={size} weight="shaded">
+            Read only tag
+          </Tag>
+          <Tag actionable onClick={() => console.log('button tag')} size={size} weight="shaded">
+            Button tag
+          </Tag>
+          <Tag actionable as="a" href="https://phorkit.org" size={size} target="_blank" weight="shaded">
+            Link tag
+          </Tag>
+          <Tag actionable size={size} weight="outlined">
+            Outlined tag
+          </Tag>
+          <Tag actionable size={size} weight="solid">
+            Solid tag
+          </Tag>
+        </Rhythm>
+        <br />
+      </React.Fragment>
+    )}
+  />
 </Canvas>
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={['2xsmall', 'xsmall', 'small', 'medium', 'large']}
-      render={size => (
-        <React.Fragment>
-          <Rhythm m={2}>
-            <Tag shape="brick" size={size}>
-              Read only
-            </Tag>
-            <Tag actionable onClick={() => console.log('button tag')} shape="brick" size={size}>
-              Button tag
-            </Tag>
-            <Tag actionable as="a" href="https://phorkit.org" shape="brick" size={size} target="_blank">
-              Link tag
-            </Tag>
-            <Tag actionable shape="brick" size={size} weight="outlined">
-              Outlined tag
-            </Tag>
-            <Tag actionable shape="brick" size={size} weight="solid">
-              Solid tag
-            </Tag>
-          </Rhythm>
-          <br />
-        </React.Fragment>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={['2xsmall', 'xsmall', 'small', 'medium', 'large']}
+    render={size => (
+      <React.Fragment>
+        <Rhythm m={2}>
+          <Tag shape="brick" size={size}>
+            Read only
+          </Tag>
+          <Tag actionable onClick={() => console.log('button tag')} shape="brick" size={size}>
+            Button tag
+          </Tag>
+          <Tag actionable as="a" href="https://phorkit.org" shape="brick" size={size} target="_blank">
+            Link tag
+          </Tag>
+          <Tag actionable shape="brick" size={size} weight="outlined">
+            Outlined tag
+          </Tag>
+          <Tag actionable shape="brick" size={size} weight="solid">
+            Solid tag
+          </Tag>
+        </Rhythm>
+        <br />
+      </React.Fragment>
+    )}
+  />
 </Canvas>
 
 <Canvas contrast>
-  <ThemeWrapper>
-    <Rhythm m={2}>
-      <Tag contrast>Read only tag</Tag>
-      <Tag actionable contrast onClick={() => console.log('button tag')}>
-        Button tag
-      </Tag>
-      <Tag actionable contrast as="a" href="https://phorkit.org" target="_blank">
-        Link tag
-      </Tag>
-      <Tag actionable contrast weight="outlined">
-        Outlined tag
-      </Tag>
-      <Tag actionable contrast weight="solid">
-        Solid tag
-      </Tag>
-    </Rhythm>
-  </ThemeWrapper>
+  <Rhythm m={2}>
+    <Tag contrast>Read only tag</Tag>
+    <Tag actionable contrast onClick={() => console.log('button tag')}>
+      Button tag
+    </Tag>
+    <Tag actionable contrast as="a" href="https://phorkit.org" target="_blank">
+      Link tag
+    </Tag>
+    <Tag actionable contrast weight="outlined">
+      Outlined tag
+    </Tag>
+    <Tag actionable contrast weight="solid">
+      Solid tag
+    </Tag>
+  </Rhythm>
 </Canvas>
 
 ### Custom tag labels
 
 <Canvas>
-  <ThemeWrapper withThemeId>
+  <ThemeWrapper>
     {({ themeId }) => (
       <TagGroup>
         <Tag key="remove">
@@ -154,7 +148,7 @@ _Note that the links will cause the page to reload so the state will appear unch
 _This is an example of how to make a custom chip from the Tag component. There is also a pre-defined [Chip](?path=/story/display-chip--default) component._
 
 <Canvas>
-  <ThemeWrapper withThemeId>
+  <ThemeWrapper>
     {({ themeId }) => (
       <TagGroup>
         <Tag flush key="close" size="medium">

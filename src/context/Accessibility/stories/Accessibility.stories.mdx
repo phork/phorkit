@@ -22,7 +22,7 @@ import styles from './AccessibilityDemo.module.css';
 ### AccessibilityProvider, useAccessibility and useInputEventType
 
 <Canvas>
-  <ThemeWrapper withThemeId>
+  <ThemeWrapper>
     {({ themeId }) => (
       <AccessibilityProvider>
         <React.Fragment>
@@ -36,10 +36,10 @@ import styles from './AccessibilityDemo.module.css';
               <div>
                 <Flex wrap direction="row">
                   <Rhythm m={2} mb={4}>
-                    <Typography as="div" style={{ width: '120px' }} variants={['xsmall-caps']}>
+                    <Typography as="div" color="primary" style={{ width: '120px' }} variants={['xsmall-caps']}>
                       <Typography volume="quiet">Is accessible</Typography> {accessible ? 'yes' : 'no'}
                     </Typography>
-                    <Typography as="div" style={{ width: '140px' }} variants={['xsmall-caps']}>
+                    <Typography as="div" color="primary" style={{ width: '140px' }} variants={['xsmall-caps']}>
                       <Typography volume="quiet">Event type</Typography> {eventType || '-'}
                     </Typography>
                   </Rhythm>

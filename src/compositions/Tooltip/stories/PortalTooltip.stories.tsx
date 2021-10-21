@@ -267,7 +267,11 @@ const defaultArgs = {
   observe: false,
   permanent: false,
   portal: 'absolute' as PortalTooltipProps['portal'],
-  toggler: <BlobbrIcon scale="3xlarge" />,
+  toggler: (
+    <Typography color="primary">
+      <BlobbrIcon scale="3xlarge" />
+    </Typography>
+  ),
   triangleColor: themes.light['color-P10'],
   uncentered: false,
   width: 300,

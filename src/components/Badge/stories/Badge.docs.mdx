@@ -4,9 +4,9 @@ import { themes } from 'config/themes';
 import { Flex } from 'components/Flex';
 import { Looper } from 'components/Looper';
 import { Rhythm } from 'components/Rhythm';
+import { Typography } from 'components/Typography';
 import { Canvas } from 'stories/helpers/Canvas';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 import { Badge } from '../Badge';
 
 <PageTitle src="components/Badge" title="Badge" />
@@ -28,11 +28,11 @@ import { Badge } from '../Badge';
 ## Examples
 
 <Canvas>
-  <ThemeWrapper>
+  <Typography as="div" color="primary">
     <Flex alignItems="center" direction="row">
       <div
         style={{
-          backgroundColor: themes.light['color-BG10'],
+          border: '1px dotted currentColor',
           height: '20px',
           margin: '20px',
           position: 'relative',
@@ -65,15 +65,15 @@ import { Badge } from '../Badge';
         />
       </Flex>
     </Flex>
-  </ThemeWrapper>
+  </Typography>
 </Canvas>
 
 <Canvas>
-  <ThemeWrapper>
+  <Typography as="div" color="primary">
     <Flex alignItems="center" direction="row">
       <div
         style={{
-          backgroundColor: themes.light['color-BG10'],
+          border: '1px dotted currentColor',
           height: '20px',
           margin: '20px',
           position: 'relative',
@@ -106,15 +106,15 @@ import { Badge } from '../Badge';
         />
       </Flex>
     </Flex>
-  </ThemeWrapper>
+  </Typography>
 </Canvas>
 
 <Canvas>
-  <ThemeWrapper>
+  <Typography as="div" color="primary">
     <Flex alignItems="center" direction="row">
       <div
         style={{
-          backgroundColor: themes.light['color-BG10'],
+          border: '1px dotted currentColor',
           height: '40px',
           margin: '20px',
           marginRight: 40,
@@ -160,15 +160,15 @@ import { Badge } from '../Badge';
         />
       </Flex>
     </Flex>
-  </ThemeWrapper>
+  </Typography>
 </Canvas>
 
 <Canvas>
-  <ThemeWrapper>
+  <Typography as="div" color="primary">
     <Flex alignItems="center" direction="row">
       <div
         style={{
-          backgroundColor: themes.light['color-BG10'],
+          border: '1px dotted currentColor',
           height: '40px',
           margin: '20px',
           marginRight: 60,
@@ -214,15 +214,15 @@ import { Badge } from '../Badge';
         />
       </Flex>
     </Flex>
-  </ThemeWrapper>
+  </Typography>
 </Canvas>
 
 <Canvas contrast>
-  <ThemeWrapper>
+  <Typography as="div" color="contrast">
     <Flex alignItems="center" direction="row">
       <div
         style={{
-          backgroundColor: themes.light['contrast-palette-quietest-color'],
+          border: '1px dotted currentColor',
           height: '40px',
           margin: '20px',
           marginRight: 40,
@@ -268,5 +268,5 @@ import { Badge } from '../Badge';
         </Flex>
       </Flex>
     </Flex>
-  </ThemeWrapper>
+  </Typography>
 </Canvas>

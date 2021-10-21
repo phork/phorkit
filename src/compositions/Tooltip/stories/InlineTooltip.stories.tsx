@@ -256,7 +256,11 @@ const defaultArgs = {
   layout: 'vertical' as InlineTooltipProps['layout'],
   observe: false,
   permanent: false,
-  toggler: <BlobbrIcon scale="3xlarge" />,
+  toggler: (
+    <Typography color="primary">
+      <BlobbrIcon scale="3xlarge" />
+    </Typography>
+  ),
   triangleColor: themes.light['color-P10'],
   uncentered: false,
   width: 300,

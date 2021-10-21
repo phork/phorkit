@@ -7,7 +7,6 @@ import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 import { IconLooper } from 'docs/helpers/IconLooper';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 
 <Meta
   parameters={{
@@ -22,61 +21,57 @@ import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 <PageTitle src="public/icons" title="Icons" />
 
 <Canvas>
-  <ThemeWrapper>
-    <Flex wrap>
-      <IconLooper icons={icons}>
-        {(name, Icon) => (
-          <Rhythm key={name} m={2} px={4} py={2}>
-            <Paper bordered color="primary" style={{ borderRadius: 3 }}>
-              <Typography size="large" variants={['letter-spacing-comfy']} volume="quiet" weight="light">
-                {name}
-              </Typography>
-              <Flex alignItems="center">
-                <Rhythm m={2}>
-                  <Icon scale="xsmall" />
-                  <Icon scale="small" />
-                  <Icon scale="medium" />
-                  <Icon scale="large" />
-                  <Icon scale="xlarge" />
-                  <Icon scale="2xlarge" />
-                  <Icon scale="3xlarge" />
-                </Rhythm>
-              </Flex>
-            </Paper>
-          </Rhythm>
-        )}
-      </IconLooper>
-    </Flex>
-  </ThemeWrapper>
+  <Flex wrap>
+    <IconLooper icons={icons}>
+      {(name, Icon) => (
+        <Rhythm key={name} m={2} px={4} py={2}>
+          <Paper bordered color="primary" style={{ borderRadius: 3 }}>
+            <Typography size="large" variants={['letter-spacing-comfy']} volume="quiet" weight="light">
+              {name}
+            </Typography>
+            <Flex alignItems="center">
+              <Rhythm m={2}>
+                <Icon scale="xsmall" />
+                <Icon scale="small" />
+                <Icon scale="medium" />
+                <Icon scale="large" />
+                <Icon scale="xlarge" />
+                <Icon scale="2xlarge" />
+                <Icon scale="3xlarge" />
+              </Rhythm>
+            </Flex>
+          </Paper>
+        </Rhythm>
+      )}
+    </IconLooper>
+  </Flex>
 </Canvas>
 
 ### Internal icons
 
 <Canvas>
-  <ThemeWrapper>
-    <Flex wrap>
-      <IconLooper icons={internal}>
-        {(name, Icon) => (
-          <Rhythm key={name} m={2} px={4} py={2}>
-            <Paper bordered color="primary" style={{ borderRadius: 3 }}>
-              <Typography size="large" variants={['letter-spacing-comfy']} volume="quiet" weight="light">
-                {name}
-              </Typography>
-              <Flex alignItems="center">
-                <Rhythm m={2}>
-                  <Icon scale="xsmall" />
-                  <Icon scale="small" />
-                  <Icon scale="medium" />
-                  <Icon scale="large" />
-                  <Icon scale="xlarge" />
-                  <Icon scale="2xlarge" />
-                  <Icon scale="3xlarge" />
-                </Rhythm>
-              </Flex>
-            </Paper>
-          </Rhythm>
-        )}
-      </IconLooper>
-    </Flex>
-  </ThemeWrapper>
+  <Flex wrap>
+    <IconLooper icons={internal}>
+      {(name, Icon) => (
+        <Rhythm key={name} m={2} px={4} py={2}>
+          <Paper bordered color="primary" style={{ borderRadius: 3 }}>
+            <Typography size="large" variants={['letter-spacing-comfy']} volume="quiet" weight="light">
+              {name}
+            </Typography>
+            <Flex alignItems="center">
+              <Rhythm m={2}>
+                <Icon scale="xsmall" />
+                <Icon scale="small" />
+                <Icon scale="medium" />
+                <Icon scale="large" />
+                <Icon scale="xlarge" />
+                <Icon scale="2xlarge" />
+                <Icon scale="3xlarge" />
+              </Rhythm>
+            </Flex>
+          </Paper>
+        </Rhythm>
+      )}
+    </IconLooper>
+  </Flex>
 </Canvas>

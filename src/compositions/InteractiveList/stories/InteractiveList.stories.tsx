@@ -1,6 +1,7 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { InteractiveList, InteractiveListProps } from '../InteractiveList';
 import { items, navigationItems } from './helpers/items';
@@ -377,6 +378,6 @@ LabelFunctions.args = {
 export const Empty = Template.bind({});
 Empty.args = {
   ...defaultArgs,
-  children: 'This list is empty',
+  children: <Typography color="primary">This list is empty</Typography>,
   items: [],
 };

@@ -19,270 +19,264 @@ import { items } from './helpers/items';
 ### Custom styles
 
 <Canvas>
-  <ThemeWrapper>
-    <Tabs
-      unstyled
-      initialSelected={['second']}
-      items={[
-        {
-          id: 'first',
-          label: ({ disabled, focused, selected }) => (
-            <Rhythm mr={2}>
-              <Button
-                as="div"
-                color="neutral"
-                disabled={disabled}
-                focused={focused}
-                shape="brick"
-                tabIndex={-1}
-                weight={selected ? 'shaded' : 'outlined'}
-              >
-                First
-              </Button>
-            </Rhythm>
-          ),
-          content: ({ selected }) => (
-            <Typography as="h4" heading="h4">
-              First panel{selected ? ' is selected' : ''}
-            </Typography>
-          ),
-          labelProps: { style: { outline: 'none' } },
-          contentProps: { flush: true },
-        },
-        {
-          id: 'second',
-          label: ({ disabled, focused, selected }) => (
-            <Rhythm mx={2}>
-              <Button
-                as="div"
-                color="neutral"
-                disabled={disabled}
-                focused={focused}
-                shape="brick"
-                tabIndex={-1}
-                weight={selected ? 'shaded' : 'outlined'}
-              >
-                Second
-              </Button>
-            </Rhythm>
-          ),
-          content: ({ selected }) => (
-            <Typography as="h4" heading="h4">
-              Second panel{selected ? ' is selected' : ''}
-            </Typography>
-          ),
-          labelProps: { style: { outline: 'none' } },
-          contentProps: { flush: true },
-        },
-        {
-          id: 'third',
-          label: ({ disabled, focused, selected }) => (
-            <Rhythm mx={2}>
-              <Button
-                as="div"
-                color="neutral"
-                disabled={disabled}
-                focused={focused}
-                shape="brick"
-                tabIndex={-1}
-                weight={selected ? 'shaded' : 'outlined'}
-              >
-                Third
-              </Button>
-            </Rhythm>
-          ),
-          content: ({ selected }) => (
-            <Typography as="h4" heading="h4">
-              Third panel{selected ? ' is selected' : ''}
-            </Typography>
-          ),
-          labelProps: { style: { outline: 'none', pointerEvents: 'none' } },
-          contentProps: { flush: true },
-          disabled: true,
-        },
-        {
-          id: 'fourth',
-          label: ({ disabled, focused, selected }) => (
-            <Rhythm ml={2}>
-              <Button
-                as="div"
-                color="neutral"
-                disabled={disabled}
-                focused={focused}
-                shape="brick"
-                tabIndex={-1}
-                weight={selected ? 'shaded' : 'outlined'}
-              >
-                Fourth
-              </Button>
-            </Rhythm>
-          ),
-          content: ({ selected }) => (
-            <Typography as="h4" heading="h4">
-              Fourth panel{selected ? ' is selected' : ''}
-            </Typography>
-          ),
-          labelProps: { style: { outline: 'none' } },
-          contentProps: { flush: true },
-        },
-      ]}
-      listProps={{
-        unstyled: true,
-        style: {
-          alignItems: 'center',
-          display: 'flex',
-          flexDirection: 'row',
-          outline: 'none',
-        },
-      }}
-      panelGroupProps={{
-        unstyled: true,
-      }}
-      style={{ border: 'none', outline: 'none' }}
-    />
-  </ThemeWrapper>
+  <Tabs
+    unstyled
+    initialSelected={['second']}
+    items={[
+      {
+        id: 'first',
+        label: ({ disabled, focused, selected }) => (
+          <Rhythm mr={2}>
+            <Button
+              as="div"
+              color="neutral"
+              disabled={disabled}
+              focused={focused}
+              shape="brick"
+              tabIndex={-1}
+              weight={selected ? 'shaded' : 'outlined'}
+            >
+              First
+            </Button>
+          </Rhythm>
+        ),
+        content: ({ selected }) => (
+          <Typography as="h4" color="primary" heading="h4">
+            First panel{selected ? ' is selected' : ''}
+          </Typography>
+        ),
+        labelProps: { style: { outline: 'none' } },
+        contentProps: { flush: true },
+      },
+      {
+        id: 'second',
+        label: ({ disabled, focused, selected }) => (
+          <Rhythm mx={2}>
+            <Button
+              as="div"
+              color="neutral"
+              disabled={disabled}
+              focused={focused}
+              shape="brick"
+              tabIndex={-1}
+              weight={selected ? 'shaded' : 'outlined'}
+            >
+              Second
+            </Button>
+          </Rhythm>
+        ),
+        content: ({ selected }) => (
+          <Typography as="h4" color="primary" heading="h4">
+            Second panel{selected ? ' is selected' : ''}
+          </Typography>
+        ),
+        labelProps: { style: { outline: 'none' } },
+        contentProps: { flush: true },
+      },
+      {
+        id: 'third',
+        label: ({ disabled, focused, selected }) => (
+          <Rhythm mx={2}>
+            <Button
+              as="div"
+              color="neutral"
+              disabled={disabled}
+              focused={focused}
+              shape="brick"
+              tabIndex={-1}
+              weight={selected ? 'shaded' : 'outlined'}
+            >
+              Third
+            </Button>
+          </Rhythm>
+        ),
+        content: ({ selected }) => (
+          <Typography as="h4" color="primary" heading="h4">
+            Third panel{selected ? ' is selected' : ''}
+          </Typography>
+        ),
+        labelProps: { style: { outline: 'none', pointerEvents: 'none' } },
+        contentProps: { flush: true },
+        disabled: true,
+      },
+      {
+        id: 'fourth',
+        label: ({ disabled, focused, selected }) => (
+          <Rhythm ml={2}>
+            <Button
+              as="div"
+              color="neutral"
+              disabled={disabled}
+              focused={focused}
+              shape="brick"
+              tabIndex={-1}
+              weight={selected ? 'shaded' : 'outlined'}
+            >
+              Fourth
+            </Button>
+          </Rhythm>
+        ),
+        content: ({ selected }) => (
+          <Typography as="h4" color="primary" heading="h4">
+            Fourth panel{selected ? ' is selected' : ''}
+          </Typography>
+        ),
+        labelProps: { style: { outline: 'none' } },
+        contentProps: { flush: true },
+      },
+    ]}
+    listProps={{
+      unstyled: true,
+      style: {
+        alignItems: 'center',
+        display: 'flex',
+        flexDirection: 'row',
+        outline: 'none',
+      },
+    }}
+    panelGroupProps={{
+      unstyled: true,
+    }}
+    style={{ border: 'none', outline: 'none' }}
+  />
 </Canvas>
 
 ### With `children` prop
 
 <Canvas>
-  <ThemeWrapper>
-    <Tabs
-      unstyled
-      initialSelected={['second']}
-      items={[
-        {
-          id: 'first',
-          label: ({ disabled, focused, selected }) => (
-            <Rhythm mr={2}>
-              <Button
-                as="div"
-                color="neutral"
-                disabled={disabled}
-                focused={focused}
-                shape="brick"
-                tabIndex={-1}
-                weight={selected ? 'shaded' : 'outlined'}
-              >
-                First
-              </Button>
-            </Rhythm>
-          ),
-          content: ({ selected }) => (
-            <Typography as="h4" heading="h4">
-              First panel{selected ? ' is selected' : ''}
-            </Typography>
-          ),
-          labelProps: { style: { outline: 'none' } },
-          contentProps: { flush: true },
-        },
-        {
-          id: 'second',
-          label: ({ disabled, focused, selected }) => (
-            <Rhythm mx={2}>
-              <Button
-                as="div"
-                color="neutral"
-                disabled={disabled}
-                focused={focused}
-                shape="brick"
-                tabIndex={-1}
-                weight={selected ? 'shaded' : 'outlined'}
-              >
-                Second
-              </Button>
-            </Rhythm>
-          ),
-          content: ({ selected }) => (
-            <Typography as="h4" heading="h4">
-              Second panel{selected ? ' is selected' : ''}
-            </Typography>
-          ),
-          labelProps: { style: { outline: 'none' } },
-          contentProps: { flush: true },
-        },
-        {
-          id: 'third',
-          label: ({ disabled, focused, selected }) => (
-            <Rhythm mx={2}>
-              <Button
-                as="div"
-                color="neutral"
-                disabled={disabled}
-                focused={focused}
-                shape="brick"
-                tabIndex={-1}
-                tabIndex={-1}
-                weight={selected ? 'shaded' : 'outlined'}
-              >
-                Third
-              </Button>
-            </Rhythm>
-          ),
-          content: ({ selected }) => (
-            <Typography as="h4" heading="h4">
-              Third panel{selected ? ' is selected' : ''}
-            </Typography>
-          ),
-          labelProps: { style: { outline: 'none', pointerEvents: 'none' } },
-          contentProps: { flush: true },
-          disabled: true,
-        },
-        {
-          id: 'fourth',
-          label: ({ disabled, focused, selected }) => (
-            <Rhythm ml={2}>
-              <Button
-                as="div"
-                color="neutral"
-                disabled={disabled}
-                focused={focused}
-                shape="brick"
-                tabIndex={-1}
-                weight={selected ? 'shaded' : 'outlined'}
-              >
-                Fourth
-              </Button>
-            </Rhythm>
-          ),
-          content: ({ selected }) => (
-            <Typography as="h4" heading="h4">
-              Fourth panel{selected ? ' is selected' : ''}
-            </Typography>
-          ),
-          labelProps: { style: { outline: 'none' } },
-          contentProps: { flush: true },
-        },
-      ]}
-      style={{ outline: 'none' }}
-    >
-      {({ componentId, items, orientation, ref, themeId, unstyled }) => (
-        <TabsContainer orientation={orientation} style={{ border: 'none' }}>
-          <TabList
-            componentId={componentId}
-            items={items}
-            orientation={orientation}
-            ref={ref}
-            style={{
-              alignItems: 'center',
-              display: 'flex',
-              flexDirection: orientation === 'vertical' ? 'column' : 'row',
-              outline: 'none',
-            }}
-            themeId={themeId}
-            unstyled={unstyled}
-          />
-          <TabPanelGroup unstyled componentId={componentId} items={items} orientation={orientation} themeId={themeId} />
-        </TabsContainer>
-      )}
-    </Tabs>
-  </ThemeWrapper>
+  <Tabs
+    unstyled
+    initialSelected={['second']}
+    items={[
+      {
+        id: 'first',
+        label: ({ disabled, focused, selected }) => (
+          <Rhythm mr={2}>
+            <Button
+              as="div"
+              color="neutral"
+              disabled={disabled}
+              focused={focused}
+              shape="brick"
+              tabIndex={-1}
+              weight={selected ? 'shaded' : 'outlined'}
+            >
+              First
+            </Button>
+          </Rhythm>
+        ),
+        content: ({ selected }) => (
+          <Typography as="h4" color="primary" heading="h4">
+            First panel{selected ? ' is selected' : ''}
+          </Typography>
+        ),
+        labelProps: { style: { outline: 'none' } },
+        contentProps: { flush: true },
+      },
+      {
+        id: 'second',
+        label: ({ disabled, focused, selected }) => (
+          <Rhythm mx={2}>
+            <Button
+              as="div"
+              color="neutral"
+              disabled={disabled}
+              focused={focused}
+              shape="brick"
+              tabIndex={-1}
+              weight={selected ? 'shaded' : 'outlined'}
+            >
+              Second
+            </Button>
+          </Rhythm>
+        ),
+        content: ({ selected }) => (
+          <Typography as="h4" color="primary" heading="h4">
+            Second panel{selected ? ' is selected' : ''}
+          </Typography>
+        ),
+        labelProps: { style: { outline: 'none' } },
+        contentProps: { flush: true },
+      },
+      {
+        id: 'third',
+        label: ({ disabled, focused, selected }) => (
+          <Rhythm mx={2}>
+            <Button
+              as="div"
+              color="neutral"
+              disabled={disabled}
+              focused={focused}
+              shape="brick"
+              tabIndex={-1}
+              tabIndex={-1}
+              weight={selected ? 'shaded' : 'outlined'}
+            >
+              Third
+            </Button>
+          </Rhythm>
+        ),
+        content: ({ selected }) => (
+          <Typography as="h4" color="primary" heading="h4">
+            Third panel{selected ? ' is selected' : ''}
+          </Typography>
+        ),
+        labelProps: { style: { outline: 'none', pointerEvents: 'none' } },
+        contentProps: { flush: true },
+        disabled: true,
+      },
+      {
+        id: 'fourth',
+        label: ({ disabled, focused, selected }) => (
+          <Rhythm ml={2}>
+            <Button
+              as="div"
+              color="neutral"
+              disabled={disabled}
+              focused={focused}
+              shape="brick"
+              tabIndex={-1}
+              weight={selected ? 'shaded' : 'outlined'}
+            >
+              Fourth
+            </Button>
+          </Rhythm>
+        ),
+        content: ({ selected }) => (
+          <Typography as="h4" color="primary" heading="h4">
+            Fourth panel{selected ? ' is selected' : ''}
+          </Typography>
+        ),
+        labelProps: { style: { outline: 'none' } },
+        contentProps: { flush: true },
+      },
+    ]}
+    style={{ outline: 'none' }}
+  >
+    {({ componentId, items, orientation, ref, themeId, unstyled }) => (
+      <TabsContainer orientation={orientation} style={{ border: 'none' }}>
+        <TabList
+          componentId={componentId}
+          items={items}
+          orientation={orientation}
+          ref={ref}
+          style={{
+            alignItems: 'center',
+            display: 'flex',
+            flexDirection: orientation === 'vertical' ? 'column' : 'row',
+            outline: 'none',
+          }}
+          themeId={themeId}
+          unstyled={unstyled}
+        />
+        <TabPanelGroup unstyled componentId={componentId} items={items} orientation={orientation} themeId={themeId} />
+      </TabsContainer>
+    )}
+  </Tabs>
 </Canvas>
 
 ### Contrast
 
 <Canvas contrast>
-  <ThemeWrapper>
-    <Tabs contrast items={items} />
-  </ThemeWrapper>
+  <Tabs contrast items={items} />
 </Canvas>

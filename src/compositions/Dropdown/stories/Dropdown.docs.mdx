@@ -34,172 +34,158 @@ export const dropdownContainerStyle = {
 ### Raised dropdown
 
 <Canvas>
-  <ThemeWrapper>
-    <Flex full wrap direction="row" justifyContent="space-between">
-      <Looper
-        list={variants}
-        render={variant => (
-          <div style={dropdownContainerStyle}>
-            <Dropdown
-              transitional
-              inputVariant={variant}
-              label="Super awesome dropdown"
-              layout="raised"
-              options={options}
-            />
-          </div>
-        )}
-      />
-    </Flex>
-  </ThemeWrapper>
+  <Flex full wrap direction="row" justifyContent="space-between">
+    <Looper
+      list={variants}
+      render={variant => (
+        <div style={dropdownContainerStyle}>
+          <Dropdown
+            transitional
+            inputVariant={variant}
+            label="Super awesome dropdown"
+            layout="raised"
+            options={options}
+          />
+        </div>
+      )}
+    />
+  </Flex>
 </Canvas>
 
 ### Contained dropdown
 
 <Canvas>
-  <ThemeWrapper>
-    <Flex full wrap direction="row" justifyContent="space-between">
-      <Looper
-        list={variants}
-        render={variant => (
-          <div style={dropdownContainerStyle}>
-            <Dropdown
-              transitional
-              initialSelected={[options[3]]}
-              inputVariant={variant}
-              label="Super awesome dropdown"
-              layout="contained"
-              options={options}
-            />
-          </div>
-        )}
-      />
-    </Flex>
-  </ThemeWrapper>
+  <Flex full wrap direction="row" justifyContent="space-between">
+    <Looper
+      list={variants}
+      render={variant => (
+        <div style={dropdownContainerStyle}>
+          <Dropdown
+            transitional
+            initialSelected={[options[3]]}
+            inputVariant={variant}
+            label="Super awesome dropdown"
+            layout="contained"
+            options={options}
+          />
+        </div>
+      )}
+    />
+  </Flex>
 </Canvas>
 
 ### Dropdown with placeholder
 
 <Canvas>
-  <ThemeWrapper>
-    <Flex full wrap direction="row" justifyContent="space-between">
-      <Looper
-        list={variants}
-        render={variant => (
-          <div style={dropdownContainerStyle}>
-            <Dropdown
-              transitional
-              inputVariant={variant}
-              label="Super awesome dropdown"
-              layout="contained"
-              options={options}
-              placeholder="Select one"
-            />
-          </div>
-        )}
-      />
-    </Flex>
-  </ThemeWrapper>
+  <Flex full wrap direction="row" justifyContent="space-between">
+    <Looper
+      list={variants}
+      render={variant => (
+        <div style={dropdownContainerStyle}>
+          <Dropdown
+            transitional
+            inputVariant={variant}
+            label="Super awesome dropdown"
+            layout="contained"
+            options={options}
+            placeholder="Select one"
+          />
+        </div>
+      )}
+    />
+  </Flex>
 </Canvas>
 
 ### Dropdown with icons
 
 <Canvas>
-  <ThemeWrapper>
-    <Flex full wrap direction="row" justifyContent="space-between">
-      <Looper
-        list={variants}
-        render={variant => (
-          <div style={dropdownContainerStyle}>
-            <Dropdown
-              transitional
-              iconBefore={<TagIcon />}
-              inputVariant={variant}
-              label="Super awesome dropdown"
-              layout="contained"
-              options={options}
-              placeholder="Select one"
-            />
-          </div>
-        )}
-      />
-    </Flex>
-  </ThemeWrapper>
+  <Flex full wrap direction="row" justifyContent="space-between">
+    <Looper
+      list={variants}
+      render={variant => (
+        <div style={dropdownContainerStyle}>
+          <Dropdown
+            transitional
+            iconBefore={<TagIcon />}
+            inputVariant={variant}
+            label="Super awesome dropdown"
+            layout="contained"
+            options={options}
+            placeholder="Select one"
+          />
+        </div>
+      )}
+    />
+  </Flex>
 </Canvas>
 
 ### Multi-select dropdown
 
 <Canvas>
-  <ThemeWrapper>
-    <Flex full wrap direction="row" justifyContent="space-between">
-      <Looper
-        list={variants}
-        render={variant => (
-          <div style={dropdownContainerStyle}>
-            <Dropdown
-              transitional
-              initialSelected={[options[3]]}
-              inputVariant={variant}
-              label="Super awesome dropdown"
-              layout="contained"
-              maxSelect={-1}
-              options={options}
-            />
-          </div>
-        )}
-      />
-    </Flex>
-  </ThemeWrapper>
+  <Flex full wrap direction="row" justifyContent="space-between">
+    <Looper
+      list={variants}
+      render={variant => (
+        <div style={dropdownContainerStyle}>
+          <Dropdown
+            transitional
+            initialSelected={[options[3]]}
+            inputVariant={variant}
+            label="Super awesome dropdown"
+            layout="contained"
+            maxSelect={-1}
+            options={options}
+          />
+        </div>
+      )}
+    />
+  </Flex>
 </Canvas>
 
 ### Multi-select dropdown with minSelect, maxSelect
 
 <Canvas>
-  <ThemeWrapper>
-    <Flex full wrap direction="row" justifyContent="space-between">
-      <Looper
-        list={variants}
-        render={variant => (
-          <div style={dropdownContainerStyle}>
-            <Dropdown
-              transitional
-              initialSelected={[options[3], options[4], options[5]]}
-              inputVariant={variant}
-              label="Super awesome dropdown"
-              layout="contained"
-              maxSelect={3}
-              minSelect={1}
-              options={options}
-            />
-          </div>
-        )}
-      />
-    </Flex>
-  </ThemeWrapper>
+  <Flex full wrap direction="row" justifyContent="space-between">
+    <Looper
+      list={variants}
+      render={variant => (
+        <div style={dropdownContainerStyle}>
+          <Dropdown
+            transitional
+            initialSelected={[options[3], options[4], options[5]]}
+            inputVariant={variant}
+            label="Super awesome dropdown"
+            layout="contained"
+            maxSelect={3}
+            minSelect={1}
+            options={options}
+          />
+        </div>
+      )}
+    />
+  </Flex>
 </Canvas>
 
 ### Filterable dropdown
 
 <Canvas>
-  <ThemeWrapper>
-    <Flex full wrap direction="row" justifyContent="space-between">
-      <Looper
-        list={variants}
-        render={variant => (
-          <div style={dropdownContainerStyle}>
-            <Dropdown
-              transitional
-              getFilteredOptions={handleFilter}
-              initialSelected={[options[3]]}
-              inputVariant={variant}
-              label="Super awesome dropdown"
-              options={options}
-            />
-          </div>
-        )}
-      />
-    </Flex>
-  </ThemeWrapper>
+  <Flex full wrap direction="row" justifyContent="space-between">
+    <Looper
+      list={variants}
+      render={variant => (
+        <div style={dropdownContainerStyle}>
+          <Dropdown
+            transitional
+            getFilteredOptions={handleFilter}
+            initialSelected={[options[3]]}
+            inputVariant={variant}
+            label="Super awesome dropdown"
+            options={options}
+          />
+        </div>
+      )}
+    />
+  </Flex>
 </Canvas>
 
 ### Searchable dropdown
@@ -207,119 +193,109 @@ export const dropdownContainerStyle = {
 _A searchable dropdown is similar to a filterable dropdown except that it starts with no initial values._
 
 <Canvas>
-  <ThemeWrapper>
-    <StateWrapper initialState="">
-      {({ state: filter, setState: setFilter }) => (
-        <div style={{ height: 300, maxWidth: 300 }}>
-          <Dropdown
-            searchable
-            transitional
-            emptyNotification={filter ? `No options were found for "${filter}".` : ''}
-            getFilteredOptions={handleFilter}
-            label="Super awesome dropdown"
-            onInputChange={setFilter}
-          />
-        </div>
-      )}
-    </StateWrapper>
-  </ThemeWrapper>
+  <StateWrapper initialState="">
+    {({ state: filter, setState: setFilter }) => (
+      <div style={{ height: 300, maxWidth: 300 }}>
+        <Dropdown
+          searchable
+          transitional
+          emptyNotification={filter ? `No options were found for "${filter}".` : ''}
+          getFilteredOptions={handleFilter}
+          label="Super awesome dropdown"
+          onInputChange={setFilter}
+        />
+      </div>
+    )}
+  </StateWrapper>
 </Canvas>
 
 ### Danger dropdown
 
 <Canvas>
-  <ThemeWrapper>
-    <Flex full wrap direction="row" justifyContent="space-between">
-      <Looper
-        list={variants}
-        render={variant => (
-          <div style={dropdownContainerStyle}>
-            <Dropdown
-              id="demo-danger-dropdown"
-              initialSelected={[options[3]]}
-              inputVariant={variant}
-              label="Super awesome dropdown"
-              options={options}
-              validity="danger"
-            />
-          </div>
-        )}
-      />
-    </Flex>
-  </ThemeWrapper>
+  <Flex full wrap direction="row" justifyContent="space-between">
+    <Looper
+      list={variants}
+      render={variant => (
+        <div style={dropdownContainerStyle}>
+          <Dropdown
+            id="demo-danger-dropdown"
+            initialSelected={[options[3]]}
+            inputVariant={variant}
+            label="Super awesome dropdown"
+            options={options}
+            validity="danger"
+          />
+        </div>
+      )}
+    />
+  </Flex>
 </Canvas>
 
 ### Warning dropdown
 
 <Canvas>
-  <ThemeWrapper>
-    <Flex full wrap direction="row" justifyContent="space-between">
-      <Looper
-        list={variants}
-        render={variant => (
-          <div style={dropdownContainerStyle}>
-            <Dropdown
-              transitional
-              initialSelected={[options[3]]}
-              inputVariant={variant}
-              label="Super awesome dropdown"
-              options={options}
-              validity="warning"
-            />
-          </div>
-        )}
-      />
-    </Flex>
-  </ThemeWrapper>
+  <Flex full wrap direction="row" justifyContent="space-between">
+    <Looper
+      list={variants}
+      render={variant => (
+        <div style={dropdownContainerStyle}>
+          <Dropdown
+            transitional
+            initialSelected={[options[3]]}
+            inputVariant={variant}
+            label="Super awesome dropdown"
+            options={options}
+            validity="warning"
+          />
+        </div>
+      )}
+    />
+  </Flex>
 </Canvas>
 
 ### Success dropdown
 
 <Canvas>
-  <ThemeWrapper>
-    <Flex full wrap direction="row" justifyContent="space-between">
-      <Looper
-        list={variants}
-        render={variant => (
-          <div style={dropdownContainerStyle}>
-            <Dropdown
-              transitional
-              initialSelected={[options[3]]}
-              inputVariant={variant}
-              label="Super awesome dropdown"
-              options={options}
-              validity="success"
-            />
-          </div>
-        )}
-      />
-    </Flex>
-  </ThemeWrapper>
+  <Flex full wrap direction="row" justifyContent="space-between">
+    <Looper
+      list={variants}
+      render={variant => (
+        <div style={dropdownContainerStyle}>
+          <Dropdown
+            transitional
+            initialSelected={[options[3]]}
+            inputVariant={variant}
+            label="Super awesome dropdown"
+            options={options}
+            validity="success"
+          />
+        </div>
+      )}
+    />
+  </Flex>
 </Canvas>
 
 ### Contrast dropdown
 
 <Canvas contrast>
-  <ThemeWrapper>
-    <Flex full wrap direction="row" justifyContent="space-between">
-      <Looper
-        list={variants}
-        render={variant => (
-          <div style={dropdownContainerStyle}>
-            <Dropdown
-              contrast
-              transitional
-              iconBefore={<TagIcon />}
-              initialSelected={[options[3]]}
-              inputVariant={variant}
-              label="Super awesome dropdown"
-              options={options}
-            />
-          </div>
-        )}
-      />
-    </Flex>
-  </ThemeWrapper>
+  <Flex full wrap direction="row" justifyContent="space-between">
+    <Looper
+      list={variants}
+      render={variant => (
+        <div style={dropdownContainerStyle}>
+          <Dropdown
+            contrast
+            transitional
+            iconBefore={<TagIcon />}
+            initialSelected={[options[3]]}
+            inputVariant={variant}
+            label="Super awesome dropdown"
+            options={options}
+          />
+        </div>
+      )}
+    />
+  </Flex>
 </Canvas>
 
 ### Styled dropdown
@@ -373,47 +349,43 @@ _A searchable dropdown is similar to a filterable dropdown except that it starts
 ## Notifications
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={['danger', 'warning', 'success', 'primary', 'neutral']}
-      render={level => (
-        <Rhythm py={3}>
-          <Flex full wrap direction="row" justifyContent="space-between">
-            <Looper
-              list={variants}
-              render={variant => (
-                <div style={dropdownContainerStyle}>
-                  <NotifiedDropdown
-                    transitional
-                    initialSelected={[options[3]]}
-                    inputVariant={variant}
-                    label="Super awesome dropdown"
-                    layout="raised"
-                    level={level}
-                    notification={`This is an example ${level} notification.`}
-                    options={options}
-                  />
-                </div>
-              )}
-            />
-          </Flex>
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={['danger', 'warning', 'success', 'primary', 'neutral']}
+    render={level => (
+      <Rhythm py={3}>
+        <Flex full wrap direction="row" justifyContent="space-between">
+          <Looper
+            list={variants}
+            render={variant => (
+              <div style={dropdownContainerStyle}>
+                <NotifiedDropdown
+                  transitional
+                  initialSelected={[options[3]]}
+                  inputVariant={variant}
+                  label="Super awesome dropdown"
+                  layout="raised"
+                  level={level}
+                  notification={`This is an example ${level} notification.`}
+                  options={options}
+                />
+              </div>
+            )}
+          />
+        </Flex>
+      </Rhythm>
+    )}
+  />
 </Canvas>
 
 <Canvas>
-  <ThemeWrapper>
-    <div style={{ marginBottom: 20, marginLeft: 20, marginRight: 20 }}>
-      <NotifiedDropdown
-        transitional
-        label="Super awesome dropdown"
-        level="primary"
-        notification="This notification shifts down when the dropdown is focused."
-        options={[]}
-        style={{ maxWidth: 300 }}
-      />
-    </div>
-  </ThemeWrapper>
+  <div style={{ marginBottom: 20, marginLeft: 20, marginRight: 20 }}>
+    <NotifiedDropdown
+      transitional
+      label="Super awesome dropdown"
+      level="primary"
+      notification="This notification shifts down when the dropdown is focused."
+      options={[]}
+      style={{ maxWidth: 300 }}
+    />
+  </div>
 </Canvas>

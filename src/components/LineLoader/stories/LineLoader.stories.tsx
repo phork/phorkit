@@ -154,7 +154,7 @@ Fixed.args = {
 Fixed.decorators = [
   Story => (
     <Flex full alignItems="center" justifyContent="center">
-      <Typography size="large" variants="italic" volume="quietest">
+      <Typography color="primary" size="large" variants="italic" volume="quietest">
         See the top of the page
       </Typography>
       <Story />

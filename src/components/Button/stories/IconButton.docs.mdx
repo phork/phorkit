@@ -8,7 +8,6 @@ import { Looper } from 'components/Looper';
 import { Rhythm } from 'components/Rhythm';
 import { Canvas } from 'stories/helpers/Canvas';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 import { IconButton } from '../IconButton';
 
 <PageTitle src="components/Button/IconButton" title="IconButton" />
@@ -46,162 +45,154 @@ import { IconButton } from '../IconButton';
 ## Examples
 
 <Canvas>
-  <ThemeWrapper>
-    <Rhythm grouped m={-2}>
-      <Looper
-        list={['solid', 'shaded', 'outlined', 'ghost']}
-        render={weight => (
-          <Rhythm grouped key={weight || 'undefined'} m={2}>
-            <Flex direction="row">
-              <Looper
-                list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
-                render={color => (
-                  <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
-                    <IconButton color={color} onClick={() => action(color)} weight={weight}>
-                      <BlobbrIcon scale="medium" />
-                    </IconButton>
-                  </Rhythm>
-                )}
-              />
-            </Flex>
-            <Flex direction="row">
-              <Looper
-                list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
-                render={color => (
-                  <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
-                    <IconButton
-                      disabled
-                      loading
-                      color={color}
-                      loader={<SpinnerIcon scale="medium" />}
-                      onClick={() => action(color)}
-                      weight={weight}
-                    >
-                      <BlobbrIcon scale="medium" />
-                    </IconButton>
-                  </Rhythm>
-                )}
-              />
-            </Flex>
-          </Rhythm>
-        )}
-      />
-    </Rhythm>
-  </ThemeWrapper>
+  <Rhythm grouped m={-2}>
+    <Looper
+      list={['solid', 'shaded', 'outlined', 'ghost']}
+      render={weight => (
+        <Rhythm grouped key={weight || 'undefined'} m={2}>
+          <Flex direction="row">
+            <Looper
+              list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+              render={color => (
+                <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
+                  <IconButton color={color} onClick={() => action(color)} weight={weight}>
+                    <BlobbrIcon scale="medium" />
+                  </IconButton>
+                </Rhythm>
+              )}
+            />
+          </Flex>
+          <Flex direction="row">
+            <Looper
+              list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+              render={color => (
+                <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
+                  <IconButton
+                    disabled
+                    loading
+                    color={color}
+                    loader={<SpinnerIcon scale="medium" />}
+                    onClick={() => action(color)}
+                    weight={weight}
+                  >
+                    <BlobbrIcon scale="medium" />
+                  </IconButton>
+                </Rhythm>
+              )}
+            />
+          </Flex>
+        </Rhythm>
+      )}
+    />
+  </Rhythm>
 </Canvas>
 
 <Canvas>
-  <ThemeWrapper>
-    <Rhythm grouped m={-2}>
-      <Looper
-        list={['solid', 'shaded', 'outlined', 'ghost']}
-        render={weight => (
-          <Rhythm grouped key={weight || 'undefined'} m={2}>
-            <Flex direction="row">
-              <Looper
-                list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
-                render={color => (
-                  <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
-                    <IconButton color={color} onClick={() => action(color)} shape="square" weight={weight}>
-                      <BlobbrIcon scale="medium" />
-                    </IconButton>
-                  </Rhythm>
-                )}
-              />
-            </Flex>
-            <Flex direction="row">
-              <Looper
-                list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
-                render={color => (
-                  <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
-                    <IconButton
-                      disabled
-                      loading
-                      color={color}
-                      loader={<SpinnerIcon scale="medium" />}
-                      onClick={() => action(color)}
-                      shape="square"
-                      weight={weight}
-                    >
-                      <BlobbrIcon scale="medium" />
-                    </IconButton>
-                  </Rhythm>
-                )}
-              />
-            </Flex>
-          </Rhythm>
-        )}
-      />
-    </Rhythm>
-  </ThemeWrapper>
+  <Rhythm grouped m={-2}>
+    <Looper
+      list={['solid', 'shaded', 'outlined', 'ghost']}
+      render={weight => (
+        <Rhythm grouped key={weight || 'undefined'} m={2}>
+          <Flex direction="row">
+            <Looper
+              list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+              render={color => (
+                <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
+                  <IconButton color={color} onClick={() => action(color)} shape="square" weight={weight}>
+                    <BlobbrIcon scale="medium" />
+                  </IconButton>
+                </Rhythm>
+              )}
+            />
+          </Flex>
+          <Flex direction="row">
+            <Looper
+              list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+              render={color => (
+                <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
+                  <IconButton
+                    disabled
+                    loading
+                    color={color}
+                    loader={<SpinnerIcon scale="medium" />}
+                    onClick={() => action(color)}
+                    shape="square"
+                    weight={weight}
+                  >
+                    <BlobbrIcon scale="medium" />
+                  </IconButton>
+                </Rhythm>
+              )}
+            />
+          </Flex>
+        </Rhythm>
+      )}
+    />
+  </Rhythm>
 </Canvas>
 
 <Canvas>
-  <ThemeWrapper>
-    <Rhythm grouped m={-2}>
-      <Flex direction="row">
-        <Looper
-          list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
-          render={color => (
-            <Rhythm key={color} m={2}>
-              <IconButton color={color} onClick={() => action(color)} shape="square" weight="inline">
-                <BlobbrIcon scale="xlarge" />
-              </IconButton>
-            </Rhythm>
-          )}
-        />
-      </Flex>
-      <Flex direction="row">
-        <Looper
-          list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
-          render={color => (
-            <Rhythm key={color} m={2}>
-              <IconButton
-                disabled
-                loading
-                color={color}
-                loader={<SpinnerIcon scale="xlarge" />}
-                onClick={() => action(color)}
-                shape="square"
-                weight="inline"
-              >
-                <BlobbrIcon scale="xlarge" />
-              </IconButton>
-            </Rhythm>
-          )}
-        />
-      </Flex>
-    </Rhythm>
-  </ThemeWrapper>
+  <Rhythm grouped m={-2}>
+    <Flex direction="row">
+      <Looper
+        list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+        render={color => (
+          <Rhythm key={color} m={2}>
+            <IconButton color={color} onClick={() => action(color)} shape="square" weight="inline">
+              <BlobbrIcon scale="xlarge" />
+            </IconButton>
+          </Rhythm>
+        )}
+      />
+    </Flex>
+    <Flex direction="row">
+      <Looper
+        list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+        render={color => (
+          <Rhythm key={color} m={2}>
+            <IconButton
+              disabled
+              loading
+              color={color}
+              loader={<SpinnerIcon scale="xlarge" />}
+              onClick={() => action(color)}
+              shape="square"
+              weight="inline"
+            >
+              <BlobbrIcon scale="xlarge" />
+            </IconButton>
+          </Rhythm>
+        )}
+      />
+    </Flex>
+  </Rhythm>
 </Canvas>
 
 <Canvas contrast>
-  <ThemeWrapper>
-    <Rhythm grouped m={-2}>
-      <Flex alignItems="center" direction="row">
-        <Looper
-          list={['solid', 'shaded', 'outlined', 'ghost', 'inline']}
-          render={weight => (
-            <Rhythm key={weight} m={2}>
-              <IconButton contrast weight={weight}>
-                <BlobbrIcon scale="medium" />
-              </IconButton>
-            </Rhythm>
-          )}
-        />
-      </Flex>
-      <Flex alignItems="center" direction="row">
-        <Looper
-          list={['solid', 'shaded', 'outlined', 'ghost', 'inline']}
-          render={weight => (
-            <Rhythm key={weight} m={2}>
-              <IconButton contrast loading key={weight} loader={<SpinnerIcon scale="medium" />} weight={weight}>
-                <BlobbrIcon scale="xlarge" />
-              </IconButton>
-            </Rhythm>
-          )}
-        />
-      </Flex>
-    </Rhythm>
-  </ThemeWrapper>
+  <Rhythm grouped m={-2}>
+    <Flex alignItems="center" direction="row">
+      <Looper
+        list={['solid', 'shaded', 'outlined', 'ghost', 'inline']}
+        render={weight => (
+          <Rhythm key={weight} m={2}>
+            <IconButton contrast weight={weight}>
+              <BlobbrIcon scale="medium" />
+            </IconButton>
+          </Rhythm>
+        )}
+      />
+    </Flex>
+    <Flex alignItems="center" direction="row">
+      <Looper
+        list={['solid', 'shaded', 'outlined', 'ghost', 'inline']}
+        render={weight => (
+          <Rhythm key={weight} m={2}>
+            <IconButton contrast loading key={weight} loader={<SpinnerIcon scale="medium" />} weight={weight}>
+              <BlobbrIcon scale="xlarge" />
+            </IconButton>
+          </Rhythm>
+        )}
+      />
+    </Flex>
+  </Rhythm>
 </Canvas>

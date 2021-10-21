@@ -233,7 +233,11 @@ const defaultArgs = {
   observe: false,
   offset: defaultOffset,
   permanent: false,
-  toggler: <BlobbrIcon scale="3xlarge" />,
+  toggler: (
+    <Typography color="primary">
+      <BlobbrIcon scale="3xlarge" />
+    </Typography>
+  ),
   width: 300,
   withoutTogglerFocusStyle: false,
   withPopoverTogglerProps: false,

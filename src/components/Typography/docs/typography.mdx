@@ -5,6 +5,7 @@ route: /components/Typography
 ---
 
 import { Playground, Props } from 'docz';
+import { Link } from 'components/Link';
 import { Rhythm } from 'components/Rhythm';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
@@ -365,6 +366,14 @@ import { Typography } from '../index';
     <div>This text has not been reset.</div>
     <Typography variants={['reset']}>The quick brown fox jumped over the lazy dog</Typography>
   </div>
+</Playground>
+
+### As link
+
+<Playground>
+  <Typography as={Link} href="https://phorkit.org" target="_blank" volume="quiet">
+    Typography as Link
+  </Typography>
 </Playground>
 
 ## \[props\]

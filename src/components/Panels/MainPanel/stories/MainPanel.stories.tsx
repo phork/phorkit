@@ -1,6 +1,7 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { PanelContainer } from '../../PanelContainer';
 import { MainPanel } from '../MainPanel';
@@ -11,7 +12,7 @@ export default {
   argTypes: {
     children: {
       control: {
-        type: 'text',
+        disable: true,
       },
     },
 
@@ -45,10 +46,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component:
-          'The main panel stretches to fill the remainder of a panel container after accounting for SidePanel and StackPanel siblings.',
-      },
       source: {
         excludeDecorators: false,
       },
@@ -60,7 +57,7 @@ export default {
 const Template: ComponentStory<typeof MainPanel> = args => <MainPanel {...args} />;
 
 const defaultArgs = {
-  children: 'Main panel',
+  children: <Typography color="primary">Main panel</Typography>,
 };
 
 export const Default = Template.bind({});

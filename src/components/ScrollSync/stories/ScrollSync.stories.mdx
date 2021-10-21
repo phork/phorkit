@@ -3,6 +3,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { Stepper } from 'components/Form/Stepper';
 import { Looper } from 'components/Looper';
 import { Rhythm } from 'components/Rhythm';
+import { Typography } from 'components/Typography';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
@@ -45,13 +46,15 @@ import { ScrollSync } from '../ScrollSync';
                     end={count}
                     render={id => (
                       <Rhythm grouped mb={3}>
-                        <div
+                        <Typography
+                          as="div"
                           className={cx(
                             scrollbar.scrollbar,
                             scrollbar['scrollbar--primary'],
                             scrollbar['scrollbar--small'],
                             scrollbar[`scrollbar--${themeId}`],
                           )}
+                          color="primary"
                           data-id={id}
                           key={id}
                           ref={makeRefCallback(id)}
@@ -67,7 +70,7 @@ import { ScrollSync } from '../ScrollSync';
                             cursus lobortis libero, eget finibus nisl egestas in. Mauris congue vestibulum velit eget
                             luctus.
                           </div>
-                        </div>
+                        </Typography>
                       </Rhythm>
                     )}
                     start={1}
@@ -94,13 +97,15 @@ import { ScrollSync } from '../ScrollSync';
               list={['one', 'two', 'three']}
               render={id => (
                 <Rhythm grouped mb={3}>
-                  <div
+                  <Typography
+                    as="div"
                     className={cx(
                       scrollbar.scrollbar,
                       scrollbar['scrollbar--primary'],
                       scrollbar['scrollbar--small'],
                       scrollbar[`scrollbar--${themeId}`],
                     )}
+                    color="primary"
                     key={id}
                     ref={makeRefCallback(id)}
                     style={{ width: 300, height: 100, overflow: 'auto', paddingRight: 6 }}
@@ -112,7 +117,7 @@ import { ScrollSync } from '../ScrollSync';
                     volutpat, urna nec efficitur posuere, nisi quam posuere nunc, vel gravida arcu lorem eu ligula.
                     Mauris ultrices posuere sapien, in sodales turpis ornare eget. Donec cursus lobortis libero, eget
                     finibus nisl egestas in. Mauris congue vestibulum velit eget luctus.
-                  </div>
+                  </Typography>
                 </Rhythm>
               )}
             />
@@ -135,13 +140,15 @@ import { ScrollSync } from '../ScrollSync';
               list={['one', 'two', 'three']}
               render={id => (
                 <Rhythm grouped mb={3}>
-                  <div
+                  <Typography
+                    as="div"
                     className={cx(
                       scrollbar.scrollbar,
                       scrollbar['scrollbar--primary'],
                       scrollbar['scrollbar--small'],
                       scrollbar[`scrollbar--${themeId}`],
                     )}
+                    color="primary"
                     key={id}
                     ref={makeRefCallback(id)}
                     style={{ height: 80, width: 300, overflow: 'auto', paddingBottom: 6, paddingRight: 6 }}
@@ -155,7 +162,7 @@ import { ScrollSync } from '../ScrollSync';
                       eu ligula. Mauris ultrices posuere sapien, in sodales turpis ornare eget. Donec cursus lobortis
                       libero, eget finibus nisl egestas in. Mauris congue vestibulum velit eget luctus.
                     </div>
-                  </div>
+                  </Typography>
                 </Rhythm>
               )}
             />

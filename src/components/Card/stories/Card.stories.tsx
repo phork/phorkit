@@ -1,6 +1,7 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { Card } from '../Card';
 
@@ -9,6 +10,14 @@ export default {
   component: Card,
   argTypes: {
     bordered: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    children: {
+      control: {
+        disable: true,
+      },
       table: {
         category: 'Appearance',
       },
@@ -95,9 +104,13 @@ const Template: ComponentStory<typeof Card> = args => <Card {...args} />;
 const defaultArgs = {
   bordered: false,
   children: (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 200, height: 200 }}>
+    <Typography<'div'>
+      as="div"
+      color="primary"
+      style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 200, height: 200 }}
+    >
       Hello world
-    </div>
+    </Typography>
   ),
   full: false,
   hoverable: false,

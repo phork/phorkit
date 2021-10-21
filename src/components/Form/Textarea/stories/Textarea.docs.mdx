@@ -21,229 +21,203 @@ import { variants } from './helpers/variants';
 ### Basic textarea
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={variants}
-      render={variant => (
-        <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
-            <Textarea variant={variant} />
-          </FormComponentDemo>
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Rhythm grouped py={3}>
+        <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
+          <Textarea variant={variant} />
+        </FormComponentDemo>
+      </Rhythm>
+    )}
+  />
 </Canvas>
 
 ### Textarea with rows and cols
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={variants}
-      render={variant => (
-        <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
-            <Textarea cols={12} rows={2} variant={variant} />
-          </FormComponentDemo>
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Rhythm grouped py={3}>
+        <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
+          <Textarea cols={12} rows={2} variant={variant} />
+        </FormComponentDemo>
+      </Rhythm>
+    )}
+  />
 </Canvas>
 
 ### Textarea with max length
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={variants}
-      render={variant => (
-        <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
-            <Textarea maxLength={12} variant={variant} />
-          </FormComponentDemo>
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Rhythm grouped py={3}>
+        <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
+          <Textarea maxLength={12} variant={variant} />
+        </FormComponentDemo>
+      </Rhythm>
+    )}
+  />
 </Canvas>
 
 ### Labeled textarea
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={variants}
-      render={variant => (
-        <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
-            <Textarea label="Super fantastic label" variant={variant} />
-          </FormComponentDemo>
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Rhythm grouped py={3}>
+        <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
+          <Textarea label="Super fantastic label" variant={variant} />
+        </FormComponentDemo>
+      </Rhythm>
+    )}
+  />
 </Canvas>
 
 ### Transitional labeled textarea
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={variants}
-      render={variant => (
-        <Rhythm grouped py={3}>
-          <FormComponentDemo property="value" type="textarea">
-            <Textarea transitional label="Super fantastic label" variant={variant} />
-          </FormComponentDemo>
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Rhythm grouped py={3}>
+        <FormComponentDemo property="value" type="textarea">
+          <Textarea transitional label="Super fantastic label" variant={variant} />
+        </FormComponentDemo>
+      </Rhythm>
+    )}
+  />
 </Canvas>
 
 ### Labeled textarea with placeholder
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={variants}
-      render={variant => (
-        <Rhythm grouped py={3}>
-          <FormComponentDemo property="value" type="textarea">
-            <Textarea label="Super fantastic label" placeholder="Hello world" variant={variant} />
-          </FormComponentDemo>
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Rhythm grouped py={3}>
+        <FormComponentDemo property="value" type="textarea">
+          <Textarea label="Super fantastic label" placeholder="Hello world" variant={variant} />
+        </FormComponentDemo>
+      </Rhythm>
+    )}
+  />
 </Canvas>
 
 ### Read only textarea
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={variants}
-      render={variant => (
-        <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
-            <Textarea readOnly label="Super fantastic label" variant={variant} />
-          </FormComponentDemo>
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Rhythm grouped py={3}>
+        <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
+          <Textarea readOnly label="Super fantastic label" variant={variant} />
+        </FormComponentDemo>
+      </Rhythm>
+    )}
+  />
 </Canvas>
 
 ### Disabled textarea
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={variants}
-      render={variant => (
-        <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
-            <Textarea disabled label="Super fantastic label" variant={variant} />
-          </FormComponentDemo>
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Rhythm grouped py={3}>
+        <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
+          <Textarea disabled label="Super fantastic label" variant={variant} />
+        </FormComponentDemo>
+      </Rhythm>
+    )}
+  />
 </Canvas>
 
 ### Danger textarea
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={variants}
-      render={variant => (
-        <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
-            <Textarea transitional label="Super fantastic label" validity="danger" variant={variant} />
-          </FormComponentDemo>
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Rhythm grouped py={3}>
+        <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
+          <Textarea transitional label="Super fantastic label" validity="danger" variant={variant} />
+        </FormComponentDemo>
+      </Rhythm>
+    )}
+  />
 </Canvas>
 
 ### Warning textarea
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={variants}
-      render={variant => (
-        <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
-            <Textarea transitional label="Super fantastic label" validity="warning" variant={variant} />
-          </FormComponentDemo>
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Rhythm grouped py={3}>
+        <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
+          <Textarea transitional label="Super fantastic label" validity="warning" variant={variant} />
+        </FormComponentDemo>
+      </Rhythm>
+    )}
+  />
 </Canvas>
 
 ### Success textarea
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={variants}
-      render={variant => (
-        <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
-            <Textarea transitional label="Super fantastic label" validity="success" variant={variant} />
-          </FormComponentDemo>
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Rhythm grouped py={3}>
+        <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
+          <Textarea transitional label="Super fantastic label" validity="success" variant={variant} />
+        </FormComponentDemo>
+      </Rhythm>
+    )}
+  />
 </Canvas>
 
 ### Contrast textarea
 
 <Canvas contrast>
-  <ThemeWrapper>
-    <Looper
-      list={variants}
-      render={variant => (
-        <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
-            <Textarea contrast transitional label="Super fantastic label" variant={variant} />
-          </FormComponentDemo>
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Rhythm grouped py={3}>
+        <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
+          <Textarea contrast transitional label="Super fantastic label" variant={variant} />
+        </FormComponentDemo>
+      </Rhythm>
+    )}
+  />
 </Canvas>
 
 ## Notifications
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={['danger', 'warning', 'success', 'primary', 'neutral']}
-      render={level => (
-        <Looper
-          list={variants}
-          render={variant => (
-            <Rhythm grouped py={3}>
-              <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
-                <NotifiedTextarea
-                  level={level}
-                  notification={`This is an example ${level} notification.`}
-                  variant={variant}
-                />
-              </FormComponentDemo>
-            </Rhythm>
-          )}
-        />
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={['danger', 'warning', 'success', 'primary', 'neutral']}
+    render={level => (
+      <Looper
+        list={variants}
+        render={variant => (
+          <Rhythm grouped py={3}>
+            <FormComponentDemo initialValue="Hello world" property="value" type="textarea">
+              <NotifiedTextarea
+                level={level}
+                notification={`This is an example ${level} notification.`}
+                variant={variant}
+              />
+            </FormComponentDemo>
+          </Rhythm>
+        )}
+      />
+    )}
+  />
 </Canvas>

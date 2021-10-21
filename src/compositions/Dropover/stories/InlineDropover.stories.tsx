@@ -186,7 +186,7 @@ const defaultArgs = {
   align: 'left' as InlineDropoverProps<HTMLButtonElement>['align'],
   children: (
     <DropoverContent>
-      <Typography size="medium" variants="line-height-comfy">
+      <Typography color="secondary" size="medium" variants="line-height-comfy">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eros neque, ullamcorper at erat quis, eleifend
         gravida dolor.
       </Typography>
@@ -199,7 +199,7 @@ const defaultArgs = {
   isTooltip: false,
   label: (
     <DropoverLabel>
-      <Typography size="large" variants="line-height-normal" weight="bold">
+      <Typography color="primary" size="large" variants="line-height-normal" weight="bold">
         Hello world
       </Typography>
     </DropoverLabel>

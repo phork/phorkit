@@ -14,10 +14,16 @@ import pkg from '../../package.json';
 />
 
 <Flex wrap alignItems="flex-end" justifyContent="space-between" style={{ marginBottom: 24 }}>
-  <Typography as="h1" heading="h1" style={{ fontSize: 48, margin: 0 }} weight="lighter">
+  <Typography as="h1" color="primary" heading="h1" style={{ fontSize: 48, margin: 0 }} weight="lighter">
     Phork/it
   </Typography>
-  <Typography as="h5" heading="h5" style={{ margin: '24px 0 0' }}>{`Version ${pkg.version}`}</Typography>
+  <Typography
+    as="h5"
+    color="primary"
+    heading="h5"
+    style={{ margin: '24px 0 0' }}
+    volume="quiet"
+  >{`Version ${pkg.version}`}</Typography>
 </Flex>
 
 ## Introduction

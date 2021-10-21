@@ -232,7 +232,11 @@ const defaultArgs = {
   permanent: false,
   position: 'top-center' as PortalTextTooltipProps['position'],
   scrollable: false,
-  toggler: <BlobbrIcon scale="3xlarge" />,
+  toggler: (
+    <Typography color="primary">
+      <BlobbrIcon scale="3xlarge" />
+    </Typography>
+  ),
   uncentered: false,
   withoutTogglerFocusStyle: false,
   withPopoverTogglerProps: false,
@@ -290,7 +294,9 @@ OnText.args = {
 
 OnText.decorators = [
   (Story, { args: { position } }) => (
-    <div
+    <Typography<'div'>
+      as="div"
+      color="primary"
       style={{
         display: 'flex',
         margin: 20,
@@ -299,12 +305,10 @@ OnText.decorators = [
         alignItems: alignItemsByPosition(position),
       }}
     >
-      <div>
-        <span>Hello, world.</span>
-        {Story()}
-        <span>There are others like me as well.</span>
-      </div>
-    </div>
+      <span>Hello, world.</span>
+      {Story()}
+      <span>There are others like me as well.</span>
+    </Typography>
   ),
 ];
 
@@ -325,7 +329,9 @@ OnIcon.args = {
 
 OnIcon.decorators = [
   (Story, { args: { position } }) => (
-    <div
+    <Typography<'div'>
+      as="div"
+      color="primary"
       style={{
         display: 'flex',
         margin: 20,
@@ -334,11 +340,9 @@ OnIcon.decorators = [
         alignItems: alignItemsByPosition(position),
       }}
     >
-      <div>
-        <span>Sometimes a tooltip should be clickable, or on an icon.</span>
-        {Story()}
-        <span>That is neat.</span>
-      </div>
-    </div>
+      <span>Sometimes a tooltip should be clickable, or on an icon.</span>
+      {Story()}
+      <span>That is neat.</span>
+    </Typography>
   ),
 ];

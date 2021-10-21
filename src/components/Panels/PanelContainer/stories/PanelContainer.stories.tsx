@@ -1,6 +1,7 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { MainPanel } from '../../MainPanel';
 import { PanelContainer, PanelContainerProps } from '../PanelContainer';
@@ -74,10 +75,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component:
-          'A panel container wraps a set of SidePanel or StackPanel components and one or more MainPanel components.',
-      },
     },
     layout: 'fullscreen',
   },
@@ -87,7 +84,14 @@ const Template: ComponentStory<typeof PanelContainer> = args => <PanelContainer 
 
 const defaultArgs = {
   absolute: false,
-  children: [<MainPanel key="panel1">Main panel 1</MainPanel>, <MainPanel key="panel2">Main panel 2</MainPanel>],
+  children: [
+    <MainPanel key="panel1">
+      <Typography color="primary">Main panel 1</Typography>
+    </MainPanel>,
+    <MainPanel key="panel2">
+      <Typography color="primary">Main panel 2</Typography>
+    </MainPanel>,
+  ],
   full: false,
   orientation: 'horizontal' as PanelContainerProps['orientation'],
   reverse: false,

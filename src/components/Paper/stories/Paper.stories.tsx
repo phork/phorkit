@@ -128,10 +128,6 @@ export default {
     },
     docs: {
       page: PaperDocumentation,
-      description: {
-        component:
-          'The paper component sets the text color and adds a background color and optional border and scrollbars around its children.',
-      },
     },
   },
 } as ComponentMeta<typeof Paper>;

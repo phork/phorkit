@@ -10,7 +10,6 @@ import { Rhythm } from 'components/Rhythm';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { Canvas } from 'stories/helpers/Canvas';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 import { ButtonGroup } from '../ButtonGroup';
 
 <PageTitle src="components/Button" title="ButtonGroup" />
@@ -56,22 +55,20 @@ import { ButtonGroup } from '../ButtonGroup';
 ### Contrast
 
 <Canvas contrast>
-  <ThemeWrapper>
-    <StateWrapper initialState="second">
-      {({ state, setState }) => (
-        <ButtonGroup
-          contrast
-          buttons={[
-            { id: 'first', label: 'First', selected: state === 'first' },
-            { id: 'second', label: 'Second', selected: state === 'second' },
-            { id: 'third', label: 'Third', selected: state === 'third' },
-            { id: 'fourth', label: 'Fourth', selected: state === 'fourth' },
-          ]}
-          onClick={(event, id) => setState(id)}
-          shape="brick"
-          spacing="joined"
-        />
-      )}
-    </StateWrapper>
-  </ThemeWrapper>
+  <StateWrapper initialState="second">
+    {({ state, setState }) => (
+      <ButtonGroup
+        contrast
+        buttons={[
+          { id: 'first', label: 'First', selected: state === 'first' },
+          { id: 'second', label: 'Second', selected: state === 'second' },
+          { id: 'third', label: 'Third', selected: state === 'third' },
+          { id: 'fourth', label: 'Fourth', selected: state === 'fourth' },
+        ]}
+        onClick={(event, id) => setState(id)}
+        shape="brick"
+        spacing="joined"
+      />
+    )}
+  </StateWrapper>
 </Canvas>

@@ -24,3 +24,9 @@ export default themeId => ({
   textInverseColor: themes[themeId]['primary-palette-background-color'],
   textMutedColor: themes[themeId]['primary-palette-quietest-color'],
 });
+
+export const getThemeId = () =>
+  (document.body.classList.contains('dark') && 'dark') ||
+  (document.body.classList.contains('light') && 'light') ||
+  (window?.matchMedia?.('(prefers-color-scheme: dark)').matches && 'dark') ||
+  'light';

@@ -1,6 +1,7 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { MainPanel } from '../../MainPanel';
 import { PanelContainer } from '../../PanelContainer';
@@ -12,7 +13,7 @@ export default {
   argTypes: {
     children: {
       control: {
-        type: 'text',
+        disable: true,
       },
     },
 
@@ -143,7 +144,7 @@ export default {
 const Template: ComponentStory<typeof SidePanel> = args => <SidePanel {...args} />;
 
 const defaultArgs = {
-  children: 'Side panel',
+  children: <Typography color="primary">Side panel</Typography>,
   duration: 300,
   fixed: false,
   open: true,

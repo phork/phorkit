@@ -8,7 +8,6 @@ import { Looper } from 'components/Looper';
 import { Rhythm } from 'components/Rhythm';
 import { Canvas } from 'stories/helpers/Canvas';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 import { IconTextButton } from '../IconTextButton';
 
 <PageTitle src="components/Button/IconTextButton" title="IconTextButton" />
@@ -46,267 +45,259 @@ import { IconTextButton } from '../IconTextButton';
 ## Examples
 
 <Canvas>
-  <ThemeWrapper>
-    <Rhythm grouped m={-2}>
-      <Looper
-        list={['solid', 'shaded', 'outlined', 'ghost']}
-        render={weight => (
-          <Rhythm grouped key={weight || 'undefined'} m={2}>
-            <Flex direction="row">
-              <Looper
-                list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
-                render={color => (
-                  <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
-                    <IconTextButton
-                      color={color}
-                      icon={<BlobbrIcon scale="medium" />}
-                      onClick={() => action(color)}
-                      weight={weight}
-                    >
-                      {ucfirst(color)}
-                    </IconTextButton>
-                  </Rhythm>
-                )}
-              />
-            </Flex>
-            <Flex direction="row">
-              <Looper
-                list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
-                render={color => (
-                  <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
-                    <IconTextButton
-                      loaderReplaceIcon
-                      loading
-                      color={color}
-                      icon={<BlobbrIcon scale="medium" />}
-                      loader={<SpinnerIcon scale="medium" />}
-                      onClick={() => action(color)}
-                      weight={weight}
-                    >
-                      {ucfirst(color)}
-                    </IconTextButton>
-                  </Rhythm>
-                )}
-              />
-            </Flex>
-            <Flex direction="row">
-              <Looper
-                list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
-                render={color => (
-                  <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
-                    <IconTextButton
-                      loading
-                      color={color}
-                      icon={<BlobbrIcon scale="medium" />}
-                      loader={<SpinnerIcon scale="medium" />}
-                      onClick={() => action(color)}
-                      weight={weight}
-                    >
-                      {ucfirst(color)}
-                    </IconTextButton>
-                  </Rhythm>
-                )}
-              />
-            </Flex>
-          </Rhythm>
-        )}
-      />
-    </Rhythm>
-  </ThemeWrapper>
+  <Rhythm grouped m={-2}>
+    <Looper
+      list={['solid', 'shaded', 'outlined', 'ghost']}
+      render={weight => (
+        <Rhythm grouped key={weight || 'undefined'} m={2}>
+          <Flex direction="row">
+            <Looper
+              list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+              render={color => (
+                <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
+                  <IconTextButton
+                    color={color}
+                    icon={<BlobbrIcon scale="medium" />}
+                    onClick={() => action(color)}
+                    weight={weight}
+                  >
+                    {ucfirst(color)}
+                  </IconTextButton>
+                </Rhythm>
+              )}
+            />
+          </Flex>
+          <Flex direction="row">
+            <Looper
+              list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+              render={color => (
+                <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
+                  <IconTextButton
+                    loaderReplaceIcon
+                    loading
+                    color={color}
+                    icon={<BlobbrIcon scale="medium" />}
+                    loader={<SpinnerIcon scale="medium" />}
+                    onClick={() => action(color)}
+                    weight={weight}
+                  >
+                    {ucfirst(color)}
+                  </IconTextButton>
+                </Rhythm>
+              )}
+            />
+          </Flex>
+          <Flex direction="row">
+            <Looper
+              list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+              render={color => (
+                <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
+                  <IconTextButton
+                    loading
+                    color={color}
+                    icon={<BlobbrIcon scale="medium" />}
+                    loader={<SpinnerIcon scale="medium" />}
+                    onClick={() => action(color)}
+                    weight={weight}
+                  >
+                    {ucfirst(color)}
+                  </IconTextButton>
+                </Rhythm>
+              )}
+            />
+          </Flex>
+        </Rhythm>
+      )}
+    />
+  </Rhythm>
 </Canvas>
 
 <Canvas>
-  <ThemeWrapper>
-    <Rhythm grouped m={-2}>
-      <Looper
-        list={['solid', 'shaded', 'outlined', 'ghost']}
-        render={weight => (
-          <Rhythm grouped key={weight || 'undefined'} m={2}>
-            <Flex direction="row">
-              <Looper
-                list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
-                render={color => (
-                  <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
-                    <IconTextButton
-                      color={color}
-                      icon={<BlobbrIcon scale="medium" />}
-                      onClick={() => action(color)}
-                      shape="brick"
-                      weight={weight}
-                    >
-                      {ucfirst(color)}
-                    </IconTextButton>
-                  </Rhythm>
-                )}
-              />
-            </Flex>
-            <Flex direction="row">
-              <Looper
-                list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
-                render={color => (
-                  <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
-                    <IconTextButton
-                      loaderReplaceIcon
-                      loading
-                      color={color}
-                      icon={<BlobbrIcon scale="medium" />}
-                      loader={<SpinnerIcon scale="medium" />}
-                      onClick={() => action(color)}
-                      shape="brick"
-                      weight={weight}
-                    >
-                      {ucfirst(color)}
-                    </IconTextButton>
-                  </Rhythm>
-                )}
-              />
-            </Flex>
-            <Flex direction="row">
-              <Looper
-                list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
-                render={color => (
-                  <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
-                    <IconTextButton
-                      loading
-                      color={color}
-                      icon={<BlobbrIcon scale="medium" />}
-                      loader={<SpinnerIcon scale="medium" />}
-                      onClick={() => action(color)}
-                      shape="brick"
-                      weight={weight}
-                    >
-                      {ucfirst(color)}
-                    </IconTextButton>
-                  </Rhythm>
-                )}
-              />
-            </Flex>
-          </Rhythm>
-        )}
-      />
-    </Rhythm>
-  </ThemeWrapper>
+  <Rhythm grouped m={-2}>
+    <Looper
+      list={['solid', 'shaded', 'outlined', 'ghost']}
+      render={weight => (
+        <Rhythm grouped key={weight || 'undefined'} m={2}>
+          <Flex direction="row">
+            <Looper
+              list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+              render={color => (
+                <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
+                  <IconTextButton
+                    color={color}
+                    icon={<BlobbrIcon scale="medium" />}
+                    onClick={() => action(color)}
+                    shape="brick"
+                    weight={weight}
+                  >
+                    {ucfirst(color)}
+                  </IconTextButton>
+                </Rhythm>
+              )}
+            />
+          </Flex>
+          <Flex direction="row">
+            <Looper
+              list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+              render={color => (
+                <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
+                  <IconTextButton
+                    loaderReplaceIcon
+                    loading
+                    color={color}
+                    icon={<BlobbrIcon scale="medium" />}
+                    loader={<SpinnerIcon scale="medium" />}
+                    onClick={() => action(color)}
+                    shape="brick"
+                    weight={weight}
+                  >
+                    {ucfirst(color)}
+                  </IconTextButton>
+                </Rhythm>
+              )}
+            />
+          </Flex>
+          <Flex direction="row">
+            <Looper
+              list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+              render={color => (
+                <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
+                  <IconTextButton
+                    loading
+                    color={color}
+                    icon={<BlobbrIcon scale="medium" />}
+                    loader={<SpinnerIcon scale="medium" />}
+                    onClick={() => action(color)}
+                    shape="brick"
+                    weight={weight}
+                  >
+                    {ucfirst(color)}
+                  </IconTextButton>
+                </Rhythm>
+              )}
+            />
+          </Flex>
+        </Rhythm>
+      )}
+    />
+  </Rhythm>
 </Canvas>
 
 <Canvas>
-  <ThemeWrapper>
-    <Rhythm grouped m={-2}>
-      <Flex direction="row">
-        <Looper
-          list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
-          render={color => (
-            <Rhythm key={color} m={2}>
-              <IconTextButton
-                color={color}
-                icon={<BlobbrIcon scale="medium" />}
-                onClick={() => action(color)}
-                shape="brick"
-                weight="inline"
-              >
-                {ucfirst(color)}
-              </IconTextButton>
-            </Rhythm>
-          )}
-        />
-      </Flex>
-      <Flex direction="row">
-        <Looper
-          list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
-          render={color => (
-            <Rhythm key={color} m={2}>
-              <IconTextButton
-                loaderReplaceIcon
-                loading
-                color={color}
-                icon={<BlobbrIcon scale="medium" />}
-                loader={<SpinnerIcon scale="medium" />}
-                onClick={() => action(color)}
-                shape="brick"
-                weight="inline"
-              >
-                {ucfirst(color)}
-              </IconTextButton>
-            </Rhythm>
-          )}
-        />
-      </Flex>
-      <Flex direction="row">
-        <Looper
-          list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
-          render={color => (
-            <Rhythm key={color} m={2}>
-              <IconTextButton
-                loading
-                color={color}
-                icon={<BlobbrIcon scale="medium" />}
-                loader={<SpinnerIcon scale="medium" />}
-                onClick={() => action(color)}
-                shape="brick"
-                weight="inline"
-              >
-                {ucfirst(color)}
-              </IconTextButton>
-            </Rhythm>
-          )}
-        />
-      </Flex>
-    </Rhythm>
-  </ThemeWrapper>
+  <Rhythm grouped m={-2}>
+    <Flex direction="row">
+      <Looper
+        list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+        render={color => (
+          <Rhythm key={color} m={2}>
+            <IconTextButton
+              color={color}
+              icon={<BlobbrIcon scale="medium" />}
+              onClick={() => action(color)}
+              shape="brick"
+              weight="inline"
+            >
+              {ucfirst(color)}
+            </IconTextButton>
+          </Rhythm>
+        )}
+      />
+    </Flex>
+    <Flex direction="row">
+      <Looper
+        list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+        render={color => (
+          <Rhythm key={color} m={2}>
+            <IconTextButton
+              loaderReplaceIcon
+              loading
+              color={color}
+              icon={<BlobbrIcon scale="medium" />}
+              loader={<SpinnerIcon scale="medium" />}
+              onClick={() => action(color)}
+              shape="brick"
+              weight="inline"
+            >
+              {ucfirst(color)}
+            </IconTextButton>
+          </Rhythm>
+        )}
+      />
+    </Flex>
+    <Flex direction="row">
+      <Looper
+        list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
+        render={color => (
+          <Rhythm key={color} m={2}>
+            <IconTextButton
+              loading
+              color={color}
+              icon={<BlobbrIcon scale="medium" />}
+              loader={<SpinnerIcon scale="medium" />}
+              onClick={() => action(color)}
+              shape="brick"
+              weight="inline"
+            >
+              {ucfirst(color)}
+            </IconTextButton>
+          </Rhythm>
+        )}
+      />
+    </Flex>
+  </Rhythm>
 </Canvas>
 
 <Canvas contrast>
-  <ThemeWrapper>
-    <Rhythm grouped m={-2}>
-      <Flex alignItems="center" direction="row">
-        <Looper
-          list={['solid', 'shaded', 'outlined', 'ghost', 'inline']}
-          render={weight => (
-            <Rhythm key={weight} m={2}>
-              <IconTextButton contrast icon={<BlobbrIcon scale="medium" />} weight={weight}>
-                {ucfirst(weight)}
-              </IconTextButton>
-            </Rhythm>
-          )}
-        />
-      </Flex>
-      <Flex alignItems="center" direction="row">
-        <Looper
-          list={['solid', 'shaded', 'outlined', 'ghost', 'inline']}
-          render={weight => (
-            <Rhythm key={weight} m={2}>
-              <IconTextButton
-                contrast
-                loaderReplaceIcon
-                loading
-                icon={<BlobbrIcon scale="medium" />}
-                loader={<SpinnerIcon scale="medium" />}
-                weight={weight}
-              >
-                {ucfirst(weight)}
-              </IconTextButton>
-            </Rhythm>
-          )}
-        />
-      </Flex>
-      <Flex alignItems="center" direction="row">
-        <Looper
-          list={['solid', 'shaded', 'outlined', 'ghost', 'inline']}
-          render={weight => (
-            <Rhythm key={weight} m={2}>
-              <IconTextButton
-                contrast
-                loading
-                icon={<BlobbrIcon scale="medium" />}
-                key={weight}
-                loader={<SpinnerIcon scale="medium" />}
-                weight={weight}
-              >
-                {ucfirst(weight)}
-              </IconTextButton>
-            </Rhythm>
-          )}
-        />
-      </Flex>
-    </Rhythm>
-  </ThemeWrapper>
+  <Rhythm grouped m={-2}>
+    <Flex alignItems="center" direction="row">
+      <Looper
+        list={['solid', 'shaded', 'outlined', 'ghost', 'inline']}
+        render={weight => (
+          <Rhythm key={weight} m={2}>
+            <IconTextButton contrast icon={<BlobbrIcon scale="medium" />} weight={weight}>
+              {ucfirst(weight)}
+            </IconTextButton>
+          </Rhythm>
+        )}
+      />
+    </Flex>
+    <Flex alignItems="center" direction="row">
+      <Looper
+        list={['solid', 'shaded', 'outlined', 'ghost', 'inline']}
+        render={weight => (
+          <Rhythm key={weight} m={2}>
+            <IconTextButton
+              contrast
+              loaderReplaceIcon
+              loading
+              icon={<BlobbrIcon scale="medium" />}
+              loader={<SpinnerIcon scale="medium" />}
+              weight={weight}
+            >
+              {ucfirst(weight)}
+            </IconTextButton>
+          </Rhythm>
+        )}
+      />
+    </Flex>
+    <Flex alignItems="center" direction="row">
+      <Looper
+        list={['solid', 'shaded', 'outlined', 'ghost', 'inline']}
+        render={weight => (
+          <Rhythm key={weight} m={2}>
+            <IconTextButton
+              contrast
+              loading
+              icon={<BlobbrIcon scale="medium" />}
+              key={weight}
+              loader={<SpinnerIcon scale="medium" />}
+              weight={weight}
+            >
+              {ucfirst(weight)}
+            </IconTextButton>
+          </Rhythm>
+        )}
+      />
+    </Flex>
+  </Rhythm>
 </Canvas>

@@ -19,7 +19,7 @@ export function PageTitle({ title, src, url: initUrl, ...props }: PageTitleProps
   return (
     <Rhythm mb={4} {...props}>
       <Flex wrap alignItems="center" justifyContent="space-between">
-        <Typography<'h1'> as="h1" heading="h1" style={{ fontSize: 48, margin: 0 }} weight="lighter">
+        <Typography<'h1'> as="h1" color="primary" heading="h1" style={{ fontSize: 48, margin: 0 }} weight="lighter">
           {title}
         </Typography>
 
