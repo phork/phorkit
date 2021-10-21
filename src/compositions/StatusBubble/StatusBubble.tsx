@@ -1,7 +1,7 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import { HorizontalPositionEdge, SemanticColor, ThemeProps } from '../../types';
-import { ThemeColors, themes } from '../../config';
+import { themes } from '../../config';
 import { useThemeId } from '../../context/Theme';
 import { lowerCamelize } from '../../utils/case';
 import { getPositionOffset } from '../../utils/getPositionOffset';
@@ -20,6 +20,8 @@ export type StatusBubbleProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'titl
     iconShape?: StatusBubbleIconShape;
     position?: HorizontalPositionEdge;
     style?: React.CSSProperties;
+    triangleBorderColor?: string;
+    triangleColor?: string;
   };
 
 export function StatusBubble({
@@ -30,6 +32,8 @@ export function StatusBubble({
   iconShape = 'square',
   position = 'right-top',
   themeId: initThemeId,
+  triangleBorderColor: initTriangleBorderColor,
+  triangleColor: initTriangleColor,
   unthemed,
   ...props
 }: StatusBubbleProps): React.ReactElement<StatusBubbleProps> {
@@ -37,8 +41,8 @@ export function StatusBubble({
   const themeId = useThemeId(initThemeId);
   const colorName = color === 'primary' ? 'accent-primary' : color;
 
-  const triangleColor = themes[themeId][`color-${colorName}-shade` as keyof ThemeColors] as string;
-  const triangleBorderColor = themes[themeId][`color-${colorName}` as keyof ThemeColors] as string;
+  const triangleColor = initTriangleColor || themes[themeId][`color-${colorName}-shade`];
+  const triangleBorderColor = initTriangleBorderColor || themes[themeId][`color-${colorName}`];
 
   return (
     <div

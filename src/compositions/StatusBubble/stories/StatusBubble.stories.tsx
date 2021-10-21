@@ -1,8 +1,10 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { themes } from 'config/themes';
 import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { Avatar } from 'components/Avatar';
+import { Divider } from 'components/Divider';
 import { Paper } from 'components/Paper';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
@@ -138,8 +140,12 @@ const defaultArgs = {
   color: 'neutral' as StatusBubbleProps['color'],
   header: (
     <React.Fragment>
-      <Typography weight="bold">Something cool happened</Typography>
-      <Typography volume="quiet">Yesterday</Typography>
+      <Rhythm mr={2}>
+        <Typography weight="bold">Something cool happened</Typography>
+      </Rhythm>
+      <Rhythm ml={2}>
+        <Typography volume="quiet">Yesterday</Typography>
+      </Rhythm>
     </React.Fragment>
   ),
   iconShape: 'square' as StatusBubbleProps['iconShape'],
@@ -228,16 +234,25 @@ NoHeader.args = {
   ...defaultArgs,
   header: undefined,
   children: (
-    <Paper color="primary">
-      <Rhythm px={4} py={3}>
-        Hello world
-        <br />
-        Hello world
-        <br />
-        Hello world
-      </Rhythm>
-    </Paper>
+    <React.Fragment>
+      <Paper color="primary" themeId="light">
+        <Rhythm grouped px={4} py={3}>
+          <div>Hello world</div>
+          <div>Hello world</div>
+          <div>Hello world</div>
+        </Rhythm>
+      </Paper>
+      <Divider volume="quieter" />
+      <Paper color="secondary" themeId="light">
+        <Rhythm grouped px={4} py={3}>
+          <div>Hello world</div>
+        </Rhythm>
+      </Paper>
+    </React.Fragment>
   ),
+  color: 'primary',
+  style: { maxWidth: 400 },
+  triangleColor: themes.light['primary-palette-background-color'],
 };
 
 export const NoChildren = Template.bind({});
@@ -245,4 +260,5 @@ NoChildren.storyName = 'No children';
 NoChildren.args = {
   ...defaultArgs,
   children: undefined,
+  style: { maxWidth: 400 },
 };
