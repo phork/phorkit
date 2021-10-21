@@ -71,27 +71,27 @@ const adjustments = {
   'color-P35-darken': 0.0625,
 };
 
-// shade color is the accent color at .1 opacity flattened on the primary bg color
+// shade color is the accent color at .1 opacity flattened on the extreme background color
 const accentColors = {
   'color-accent-primary': primaryColors['color-P45'],
   'color-accent-primary-contrast': '#222',
-  'color-accent-primary-shade': '#152633',
+  'color-accent-primary-shade': '#0c1d27',
 
   'color-success': primaryColors['color-P40'],
   'color-success-contrast': '#222',
-  'color-success-shade': '#21291c',
+  'color-success-shade': '#182010',
 
   'color-warning': primaryColors['color-P25'],
   'color-warning-contrast': '#222',
-  'color-warning-shade': '#2e2316',
+  'color-warning-shade': '#251a0f',
 
   'color-danger': primaryColors['color-P15'],
   'color-danger-contrast': '#222',
-  'color-danger-shade': '#2e1a1f',
+  'color-danger-shade': '#251113',
 
   'color-neutral': neutralColors['color-FG30'],
   'color-neutral-contrast': '#222',
-  'color-neutral-shade': '#232329',
+  'color-neutral-shade': '#1a1a1d',
 };
 
 const shadowColors = {

@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { TimesIcon } from 'icons/TimesIcon';
 import { Rhythm } from 'components/Rhythm/Rhythm';
+import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { IconGroup, IconGroupProps } from '../IconGroup';
 
@@ -41,6 +42,13 @@ export default {
       },
     },
   },
+  decorators: [
+    Story => (
+      <Typography<'div'> as="div" color="primary">
+        {Story()}
+      </Typography>
+    ),
+  ],
   parameters: {
     controls: {
       sort: 'requiredFirst',

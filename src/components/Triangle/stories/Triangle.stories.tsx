@@ -1,5 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { Typography } from 'components/Typography';
 import { Triangle, TriangleProps } from '../Triangle';
 import TriangleDocumentation from './Triangle.docs.mdx';
 
@@ -35,6 +36,13 @@ export default {
       },
     },
   },
+  decorators: [
+    Story => (
+      <Typography<'div'> as="div" color="primary">
+        {Story()}
+      </Typography>
+    ),
+  ],
   parameters: {
     controls: {
       sort: 'requiredFirst',

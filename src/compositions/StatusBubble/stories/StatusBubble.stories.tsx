@@ -1,7 +1,6 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { themes } from 'config/themes';
 import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { Avatar } from 'components/Avatar';
 import { Divider } from 'components/Divider';
@@ -235,7 +234,7 @@ NoHeader.args = {
   header: undefined,
   children: (
     <React.Fragment>
-      <Paper color="primary" themeId="light">
+      <Paper color="primary">
         <Rhythm grouped px={4} py={3}>
           <div>Hello world</div>
           <div>Hello world</div>
@@ -243,7 +242,7 @@ NoHeader.args = {
         </Rhythm>
       </Paper>
       <Divider volume="quieter" />
-      <Paper color="secondary" themeId="light">
+      <Paper color="secondary">
         <Rhythm grouped px={4} py={3}>
           <div>Hello world</div>
         </Rhythm>
@@ -252,7 +251,6 @@ NoHeader.args = {
   ),
   color: 'primary',
   style: { maxWidth: 400 },
-  triangleColor: themes.light['primary-palette-background-color'],
 };
 
 export const NoChildren = Template.bind({});

@@ -2,6 +2,7 @@ import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } fro
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { themes } from 'config/themes';
+import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 import { Position, PositionProps } from '../Position';
@@ -54,7 +55,7 @@ export default {
   },
   decorators: [
     Story => (
-      <ThemeWrapper withThemeId>
+      <ThemeWrapper>
         {({ themeId }) => (
           <div
             style={{
@@ -95,7 +96,13 @@ export default {
 const Template: ComponentStory<typeof Position> = args => <Position {...args} />;
 
 const defaultArgs = {
-  children: <div style={{ width: '8px', height: '8px', backgroundColor: '#000', borderRadius: '100%' }} />,
+  children: (
+    <Typography<'div'>
+      as="div"
+      color="primary"
+      style={{ width: '8px', height: '8px', backgroundColor: 'currentColor', borderRadius: '100%' }}
+    />
+  ),
   fixed: false,
   location: 'top-left' as PositionProps['location'],
   raised: false,
@@ -137,7 +144,7 @@ const CompleteTemplate: ComponentStory<typeof Position> = ({ variant }) => (
       {defaultArgs.children}
     </Position>
     <Position location="center">
-      <div style={{ width: '20px', height: '20px', backgroundColor: '#fff' }} />
+      <div style={{ width: '20px', height: '20px', backgroundColor: '#fff', borderRadius: '4px', opacity: 0.3 }} />
     </Position>
   </React.Fragment>
 );

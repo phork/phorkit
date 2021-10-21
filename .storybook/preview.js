@@ -1,16 +1,16 @@
 import { themes } from '@storybook/theming';
 import React from 'react';
-import { useDarkMode } from 'storybook-dark-mode';
 import { AccessibilityProvider } from '../src/context/Accessibility/AccessibilityProvider';
 import { ThemeProvider } from '../src/context/Theme/ThemeProvider';
 import '../src/styles/common.css';
 import '../src/styles/fonts.css';
 import '../src/styles/normalize.css';
 import { DocsContainer } from './components/DocsContainer';
-import theme from './theme';
+import theme, { getThemeId } from './theme';
 
+// [TODO:themeId]
 export const decorators = [
-  storyFn => <ThemeProvider themeId={useDarkMode() ? 'dark' : 'light'}>{storyFn()}</ThemeProvider>,
+  storyFn => <ThemeProvider themeId={getThemeId()}>{storyFn()}</ThemeProvider>,
   storyFn => <AccessibilityProvider>{storyFn()}</AccessibilityProvider>,
 ];
 
@@ -24,17 +24,12 @@ export const parameters = {
       date: /Date$/,
     },
   },
-  darkMode: {
-    current: 'light',
-    dark: { ...themes.dark, ...theme('dark') },
-    light: { ...themes.normal, ...theme('light') },
-    stylePreview: true,
-  },
   docs: {
     container: DocsContainer,
     source: {
       excludeDecorators: true,
     },
+    theme: { ...themes[getThemeId() === 'dark' ? 'dark' : 'normal'], ...theme(getThemeId()) },
   },
   options: {
     storySort: (a, b) => {

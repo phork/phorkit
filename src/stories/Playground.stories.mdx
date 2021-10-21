@@ -85,7 +85,7 @@ import {
   title="Playground"
 />
 
-<Typography as="h1" heading="h1" style={{ fontSize: 48, marginBottom: 16 }} weight="lighter">
+<Typography as="h1" color="primary" heading="h1" style={{ fontSize: 48, marginBottom: 16 }} weight="lighter">
   Playground
 </Typography>
 
@@ -93,7 +93,7 @@ import {
 
 <Canvas>
   <Story name="Lots of progress">
-    <ThemeWrapper withThemeId>
+    <ThemeWrapper>
       {({ themeId }) => {
         const getPercent = (min = 20, max = 100) => Math.floor(Math.random() * (max - min + 1) + min);
         return (
@@ -128,29 +128,29 @@ import {
 
 <Canvas>
   <Story name="Popover title">
-    <ThemeWrapper withThemeId>
-      {({ themeId }) => (
-        <Rhythm mx={8} my={6}>
-          <InlinePopover
-            hoverable
-            closeDelay={0}
-            offset={{ vertical: 10 }}
-            position="top-center"
-            toggler={<BlobbrIcon scale="xlarge" title="" />}
-          >
-            <Card full raised>
-              <Rhythm px={3} py={1}>
-                <Paper bordered color="primary">
-                  <Typography as="div" size="small" variants={['no-wrap']}>
-                    An example title
-                  </Typography>
-                </Paper>
-              </Rhythm>
-            </Card>
-          </InlinePopover>
-        </Rhythm>
-      )}
-    </ThemeWrapper>
+    <Rhythm mx={8} my={6}>
+      <InlinePopover
+        hoverable
+        closeDelay={0}
+        offset={{ vertical: 10 }}
+        position="top-center"
+        toggler={
+          <Typography color="primary">
+            <BlobbrIcon scale="xlarge" title="" />
+          </Typography>
+        }
+      >
+        <Card full raised>
+          <Rhythm px={3} py={1}>
+            <Paper bordered color="primary">
+              <Typography as="div" color="primary" size="small" variants={['no-wrap']}>
+                An example title
+              </Typography>
+            </Paper>
+          </Rhythm>
+        </Card>
+      </InlinePopover>
+    </Rhythm>
   </Story>
 </Canvas>
 
@@ -158,141 +158,133 @@ import {
 
 <Canvas>
   <Story name="Badge on buttons">
-    <ThemeWrapper>
-      <Rhythm m={2}>
-        <Button color="primary">
-          <Flex inflexible alignItems="center" direction="row" justifyContent="center" wrap={false}>
-            Notifications
-            <Rhythm ml={2}>
-              <Badge contrast shape="label">
-                Beta
-              </Badge>
-            </Rhythm>
-          </Flex>
-        </Button>
-        <Button color="primary">
-          <Flex inflexible alignItems="center" direction="row" justifyContent="center" wrap={false}>
-            Notifications
-            <Badge color="warning" position="top-right" shape="count">
-              7
+    <Rhythm m={2}>
+      <Button color="primary">
+        <Flex inflexible alignItems="center" direction="row" justifyContent="center" wrap={false}>
+          Notifications
+          <Rhythm ml={2}>
+            <Badge contrast shape="label">
+              Beta
             </Badge>
-          </Flex>
-        </Button>
-        <Button color="warning" weight="outlined">
-          <Flex inflexible alignItems="center" direction="row" justifyContent="center" wrap={false}>
-            Notifications
-            <Badge color="warning" position="top-right" shape="count">
-              7
-            </Badge>
-          </Flex>
-        </Button>
-      </Rhythm>
-    </ThemeWrapper>
+          </Rhythm>
+        </Flex>
+      </Button>
+      <Button color="primary">
+        <Flex inflexible alignItems="center" direction="row" justifyContent="center" wrap={false}>
+          Notifications
+          <Badge color="warning" position="top-right" shape="count">
+            7
+          </Badge>
+        </Flex>
+      </Button>
+      <Button color="warning" weight="outlined">
+        <Flex inflexible alignItems="center" direction="row" justifyContent="center" wrap={false}>
+          Notifications
+          <Badge color="warning" position="top-right" shape="count">
+            7
+          </Badge>
+        </Flex>
+      </Button>
+    </Rhythm>
   </Story>
 </Canvas>
 
 <Canvas>
   <Story name="Badge on card">
-    <ThemeWrapper>
-      <div style={{ width: '300px', height: '200px', maxWidth: '100%' }}>
-        <Card full hoverable raised style={{ overflow: 'visible' }}>
-          <Badge color="primary" position="top-right" shape="count">
-            7
-          </Badge>
-          <Paper flexible color="primary">
-            <Rhythm grouped p={6}>
-              <Typography as="div" size="3xlarge" variants={['line-height-comfy']} weight="light">
-                Hello world
-              </Typography>
-              <Typography as="div" size="medium" variants={['line-height-comfy']}>
-                How are things?
-              </Typography>
-            </Rhythm>
-          </Paper>
-          <Paper color="accent-primary" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
-            <Rhythm m={2}>
-              <ButtonGroup align="right" spacing="cozy">
-                <Button contrast key="cancel" weight="ghost">
-                  Cancel
-                </Button>
-                <Button contrast key="confirm" weight="outlined">
-                  Confirm
-                </Button>
-              </ButtonGroup>
-            </Rhythm>
-          </Paper>
-        </Card>
-      </div>
-    </ThemeWrapper>
+    <div style={{ width: '300px', height: '200px', maxWidth: '100%' }}>
+      <Card full hoverable raised style={{ overflow: 'visible' }}>
+        <Badge color="primary" position="top-right" shape="count">
+          7
+        </Badge>
+        <Paper flexible color="primary">
+          <Rhythm grouped p={6}>
+            <Typography as="div" size="3xlarge" variants={['line-height-comfy']} weight="light">
+              Hello world
+            </Typography>
+            <Typography as="div" size="medium" variants={['line-height-comfy']}>
+              How are things?
+            </Typography>
+          </Rhythm>
+        </Paper>
+        <Paper color="accent-primary" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
+          <Rhythm m={2}>
+            <ButtonGroup align="right" spacing="cozy">
+              <Button contrast key="cancel" weight="ghost">
+                Cancel
+              </Button>
+              <Button contrast key="confirm" weight="outlined">
+                Confirm
+              </Button>
+            </ButtonGroup>
+          </Rhythm>
+        </Paper>
+      </Card>
+    </div>
   </Story>
 </Canvas>
 
 <Canvas>
   <Story name="Badge on navigation">
-    <ThemeWrapper>
-      <Navigation
-        animated
-        items={[
-          {
-            id: 'first',
-            label: (
-              <Flex inflexible alignItems="center" direction="row" justifyContent="center" wrap={false}>
-                <Badge color="warning" position="top-right" shape="count">
-                  7
-                </Badge>
-                First
-              </Flex>
-            ),
-          },
-          { id: 'second', label: 'Second' },
-          {
-            id: 'third',
-            label: (
-              <Flex inflexible alignItems="center" direction="row" justifyContent="center" wrap={false}>
-                <Position location="right-center" variant="inside">
-                  <Rhythm ml={4}>
-                    <Badge color="primary" shape="label">
-                      Restricted
-                    </Badge>
-                  </Rhythm>
-                </Position>
-                Third
-              </Flex>
-            ),
-            disabled: true,
-          },
-          {
-            id: 'fourth',
-            label: (
-              <div style={{ position: 'relative' }}>
-                <Position location="right-center" variant="outside">
-                  <Rhythm ml={3}>
-                    <Badge pulsing color="primary" shape="marker" />
-                  </Rhythm>
-                </Position>
-                Fourth
-              </div>
-            ),
-          },
-        ]}
-        orientation="vertical"
-        selectedId="first"
-        style={{ maxWidth: '200px' }}
-      />
-    </ThemeWrapper>
+    <Navigation
+      animated
+      items={[
+        {
+          id: 'first',
+          label: (
+            <Flex inflexible alignItems="center" direction="row" justifyContent="center" wrap={false}>
+              <Badge color="warning" position="top-right" shape="count">
+                7
+              </Badge>
+              First
+            </Flex>
+          ),
+        },
+        { id: 'second', label: 'Second' },
+        {
+          id: 'third',
+          label: (
+            <Flex inflexible alignItems="center" direction="row" justifyContent="center" wrap={false}>
+              <Position location="right-center" variant="inside">
+                <Rhythm ml={4}>
+                  <Badge color="primary" shape="label">
+                    Restricted
+                  </Badge>
+                </Rhythm>
+              </Position>
+              Third
+            </Flex>
+          ),
+          disabled: true,
+        },
+        {
+          id: 'fourth',
+          label: (
+            <div style={{ position: 'relative' }}>
+              <Position location="right-center" variant="outside">
+                <Rhythm ml={3}>
+                  <Badge pulsing color="primary" shape="marker" />
+                </Rhythm>
+              </Position>
+              Fourth
+            </div>
+          ),
+        },
+      ]}
+      orientation="vertical"
+      selectedId="first"
+      style={{ maxWidth: '200px' }}
+    />
   </Story>
 </Canvas>
 
 <Canvas>
   <Story name="Badge on toast">
-    <ThemeWrapper>
-      <Toast id="demo-info-toast" level="info" style={{ maxWidth: '100%' }} title="Hello world">
-        This is an info toast with a badge.
-        <Badge color="warning" position="top-right" shape="count">
-          7
-        </Badge>
-      </Toast>
-    </ThemeWrapper>
+    <Toast id="demo-info-toast" level="info" style={{ maxWidth: '100%' }} title="Hello world">
+      This is an info toast with a badge.
+      <Badge color="warning" position="top-right" shape="count">
+        7
+      </Badge>
+    </Toast>
   </Story>
 </Canvas>
 
@@ -300,66 +292,60 @@ import {
 
 <Canvas>
   <Story name="Tooltip on buttons">
-    <ThemeWrapper>
-      <PortalTooltip
-        hoverable={false}
-        position="top-center"
-        toggler={
-          <Button color="primary" weight="outlined">
-            Notifications
-          </Button>
-        }
-        triangleBorderColor={themes.light['color-P50-D10']}
-        triangleColor={themes.light['color-P50']}
-        width={250}
-      >
-        <ColoredPaper bordered colorId="P50" container="popover" style={{ borderRadius: '2px' }}>
-          <Typography as="div" size="small" variants="line-height-comfy">
-            The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog
-          </Typography>
-        </ColoredPaper>
-      </PortalTooltip>
-    </ThemeWrapper>
+    <PortalTooltip
+      hoverable={false}
+      position="top-center"
+      toggler={
+        <Button color="primary" weight="outlined">
+          Notifications
+        </Button>
+      }
+      triangleBorderColor={themes.light['color-P50-D10']}
+      triangleColor={themes.light['color-P50']}
+      width={250}
+    >
+      <ColoredPaper bordered colorId="P50" container="popover" style={{ borderRadius: '2px' }}>
+        <Typography as="div" size="small" variants="line-height-comfy">
+          The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog
+        </Typography>
+      </ColoredPaper>
+    </PortalTooltip>
   </Story>
 </Canvas>
 
 <Canvas>
   <Story name="Tooltip on textbox">
-    <ThemeWrapper>
-      <PortalTextTooltip
-        hoverable={false}
-        position="right-center"
-        style={{ maxWidth: '100%' }}
-        toggler={
-          <Textbox
-            clearable
-            transitional
-            iconBefore={<SearchIcon />}
-            id="demo-tooltip-textbox"
-            label="Super fantastic label"
-            style={{ width: '400px', maxWidth: '100%' }}
-          />
-        }
-        width="auto"
-      >
-        <Typography variants="no-wrap">This field is required</Typography>
-      </PortalTextTooltip>
-    </ThemeWrapper>
+    <PortalTextTooltip
+      hoverable={false}
+      position="right-center"
+      style={{ maxWidth: '100%' }}
+      toggler={
+        <Textbox
+          clearable
+          transitional
+          iconBefore={<SearchIcon />}
+          id="demo-tooltip-textbox"
+          label="Super fantastic label"
+          style={{ width: '400px', maxWidth: '100%' }}
+        />
+      }
+      width="auto"
+    >
+      <Typography variants="no-wrap">This field is required</Typography>
+    </PortalTextTooltip>
   </Story>
 </Canvas>
 
 <Canvas>
   <Story name="Tooltip on toggle">
-    <ThemeWrapper>
-      <PortalTextTooltip
-        withoutTogglerFocusStyle
-        position="left-center"
-        toggler={<Toggle id="demo-tooltip-toggle">Super fantastic label</Toggle>}
-        width="auto"
-      >
-        <Typography variants="no-wrap">You must agree</Typography>
-      </PortalTextTooltip>
-    </ThemeWrapper>
+    <PortalTextTooltip
+      withoutTogglerFocusStyle
+      position="left-center"
+      toggler={<Toggle id="demo-tooltip-toggle">Super fantastic label</Toggle>}
+      width="auto"
+    >
+      <Typography variants="no-wrap">You must agree</Typography>
+    </PortalTextTooltip>
   </Story>
 </Canvas>
 
@@ -367,7 +353,7 @@ import {
 
 <Canvas>
   <Story name="Tooltip content">
-    <ThemeWrapper withThemeId>
+    <ThemeWrapper>
       {({ themeId }) => (
         <Flex alignItems="center" direction="row">
           <Shade color="success" style={{ borderRadius: 4, width: 60, height: 60 }}>
@@ -415,7 +401,7 @@ import {
 
 <Canvas>
   <Story name="Fancy list">
-    <ThemeWrapper withThemeId>
+    <ThemeWrapper>
       {({ themeId }) => (
         <List aria-label="Fancy list" as="div" style={{ width: '300px', maxWidth: '100%' }} variant="shadowed">
           <Looper
@@ -453,7 +439,7 @@ import {
 
 <Canvas>
   <Story name="Fancy list in popover">
-    <ThemeWrapper withThemeId>
+    <ThemeWrapper>
       {({ themeId }) => (
         <div style={{ paddingTop: 100, paddingBottom: 100 }}>
           <PortalTooltip
@@ -461,7 +447,11 @@ import {
             permanent
             height={200}
             position="right-center"
-            toggler={<BlobbrIcon size={40} />}
+            toggler={
+              <Typography color="primary">
+                <BlobbrIcon size={40} />
+              </Typography>
+            }
             triangleBorderColor={themes[themeId]['secondary-palette-border-color']}
             triangleColor={themes[themeId]['secondary-palette-background-color']}
             width={300}
@@ -521,7 +511,7 @@ import {
 
 <Canvas>
   <Story name="Fancy textbox w/ avatar">
-    <ThemeWrapper withThemeId>
+    <ThemeWrapper>
       {({ themeId }) => (
         <div style={{ width: '300px', maxWidth: '100%' }}>
           <StateWrapper>
@@ -568,66 +558,62 @@ import {
 
 <Canvas>
   <Story name="Fancy textbox w/ label tooltip">
-    <ThemeWrapper>
-      <div style={{ width: '300px', maxWidth: '100%' }}>
-        <StateWrapper>
-          {({ state: value, setState: setValue }) => (
-            <Textbox
-              label={
-                <Flex alignItems="center" direction="row">
-                  <Rhythm mr={2}>
-                    <Typography variants="xsmall-caps">Super fantastic label</Typography>
-                  </Rhythm>
-                  <PortalTextTooltip hoverable position="top-center" toggler={<HelpIcon size={10} />} width={180}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porttitor purus augue.
-                  </PortalTextTooltip>
-                </Flex>
-              }
-              onChange={(event, value) => setValue(value)}
-              placeholder="Hello world"
-              value={value}
-              variant="underline"
-            />
-          )}
-        </StateWrapper>
-      </div>
-    </ThemeWrapper>
+    <div style={{ width: '300px', maxWidth: '100%' }}>
+      <StateWrapper>
+        {({ state: value, setState: setValue }) => (
+          <Textbox
+            label={
+              <Flex alignItems="center" direction="row">
+                <Rhythm mr={2}>
+                  <Typography variants="xsmall-caps">Super fantastic label</Typography>
+                </Rhythm>
+                <PortalTextTooltip hoverable position="top-center" toggler={<HelpIcon size={10} />} width={180}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porttitor purus augue.
+                </PortalTextTooltip>
+              </Flex>
+            }
+            onChange={(event, value) => setValue(value)}
+            placeholder="Hello world"
+            value={value}
+            variant="underline"
+          />
+        )}
+      </StateWrapper>
+    </div>
   </Story>
 </Canvas>
 
 <Canvas>
   <Story name="Fancy textbox w/ spaces">
-    <ThemeWrapper>
-      <div style={{ width: '300px', maxWidth: '100%' }}>
-        <StateWrapper>
-          {({ state: value, setState: setValue }) => (
-            <Textbox
-              transitional
-              inputMode="numeric"
-              label="Credit card number"
-              maxLength={19}
-              onChange={(event, newValue) => {
-                // if the last char deleted was an appended space, then delete the real last char
-                const forceDeleteLastChar = `${newValue} ` === value;
-                const unspaced = newValue.replace(/\s/g, '');
-                const formatted = unspaced
-                  .split(/(\w{4})/g)
-                  .filter(Boolean)
-                  .join(' ');
-                const appendSpace =
-                  !(unspaced.length % 4) && unspaced.length < 16 && formatted.length > 0 && !forceDeleteLastChar;
-                setValue(
-                  (appendSpace && `${formatted} `) || (forceDeleteLastChar && formatted.slice(0, -1)) || formatted,
-                );
-              }}
-              type="text"
-              value={value}
-              variant="underline"
-            />
-          )}
-        </StateWrapper>
-      </div>
-    </ThemeWrapper>
+    <div style={{ width: '300px', maxWidth: '100%' }}>
+      <StateWrapper>
+        {({ state: value, setState: setValue }) => (
+          <Textbox
+            transitional
+            inputMode="numeric"
+            label="Credit card number"
+            maxLength={19}
+            onChange={(event, newValue) => {
+              // if the last char deleted was an appended space, then delete the real last char
+              const forceDeleteLastChar = `${newValue} ` === value;
+              const unspaced = newValue.replace(/\s/g, '');
+              const formatted = unspaced
+                .split(/(\w{4})/g)
+                .filter(Boolean)
+                .join(' ');
+              const appendSpace =
+                !(unspaced.length % 4) && unspaced.length < 16 && formatted.length > 0 && !forceDeleteLastChar;
+              setValue(
+                (appendSpace && `${formatted} `) || (forceDeleteLastChar && formatted.slice(0, -1)) || formatted,
+              );
+            }}
+            type="text"
+            value={value}
+            variant="underline"
+          />
+        )}
+      </StateWrapper>
+    </div>
   </Story>
 </Canvas>
 
@@ -635,7 +621,7 @@ import {
 
 <Canvas>
   <Story name="Fancy dropdown w/ underline">
-    <ThemeWrapper withThemeId>
+    <ThemeWrapper>
       {({ themeId }) => {
         const options = [
           { id: 1, value: 'one' },
@@ -713,7 +699,7 @@ import {
 
 <Canvas>
   <Story name="Fancy dropdown w/ outline">
-    <ThemeWrapper withThemeId>
+    <ThemeWrapper>
       {({ themeId }) => {
         const options = [
           { id: 1, value: 'one' },
@@ -804,7 +790,7 @@ import {
 
 <Canvas>
   <Story name="Fancy toast">
-    <ThemeWrapper withThemeId>
+    <ThemeWrapper>
       {({ themeId }) => (
         <Toast immediate id="demo-triangle-toast" level="info" title="Hello world">
           This is an info toast with a triangle!
@@ -832,7 +818,7 @@ import {
 
 <Canvas>
   <Story name="Fancy card">
-    <ThemeWrapper withThemeId>
+    <ThemeWrapper>
       {({ themeId }) => (
         <Rhythm grouped m={2} style={{ width: '300px' }}>
           <Card full raised>
@@ -906,7 +892,7 @@ import {
 
 <Canvas>
   <Story name="Fancy card w/ magnify">
-    <ThemeWrapper withThemeId>
+    <ThemeWrapper>
       {({ themeId }) => (
         <Rhythm grouped m={2} style={{ width: '200px', maxWidth: '100%' }}>
           <Card full hoverable magnify raised>
@@ -963,7 +949,7 @@ import {
 
 <Canvas>
   <Story name="Fancy tabs">
-    <ThemeWrapper withThemeId>
+    <ThemeWrapper>
       {({ themeId }) => (
         <ScaleProvider scale="small">
           <Card full hoverable raised style={{ maxWidth: '300px' }}>
@@ -1089,52 +1075,50 @@ import {
 
 <Canvas>
   <Story name="Fancy icon buttons">
-    <ThemeWrapper>
-      <Flex>
-        <IconGroup scale="medium">
-          <Rhythm m={2}>
-            <IconButton color="primary" onClick={() => console.log('check')}>
-              <CheckIcon />
-            </IconButton>
-            <IconButton color="primary" onClick={() => console.log('search')}>
-              <SearchIcon />
-              <Badge color="warning" position="top-right" shape="point" />
-            </IconButton>
-            <IconButton color="primary" onClick={() => console.log('times')}>
-              <TimesIcon />
-            </IconButton>
-          </Rhythm>
-        </IconGroup>
-        <IconGroup scale="medium">
-          <Rhythm m={1}>
-            <IconButton color="primary" onClick={() => console.log('check')} shape="square">
-              <CheckIcon />
-            </IconButton>
-            <IconButton color="primary" onClick={() => console.log('search')} shape="square">
-              <SearchIcon />
-              <Badge outlined color="warning" position="top-right" shape="marker" />
-            </IconButton>
-            <IconButton color="primary" onClick={() => console.log('times')} shape="square">
-              <TimesIcon />
-            </IconButton>
-          </Rhythm>
-        </IconGroup>
-        <IconGroup scale="medium">
-          <Rhythm m={1}>
-            <IconButton color="primary" onClick={() => console.log('check')} shape="circle">
-              <CheckIcon />
-            </IconButton>
-            <IconButton color="primary" onClick={() => console.log('search')} shape="circle">
-              <SearchIcon />
-              <Badge color="warning" position="top-right" shape="point" />
-            </IconButton>
-            <IconButton color="primary" onClick={() => console.log('times')} shape="circle">
-              <TimesIcon />
-            </IconButton>
-          </Rhythm>
-        </IconGroup>
-      </Flex>
-    </ThemeWrapper>
+    <Flex>
+      <IconGroup scale="medium">
+        <Rhythm m={2}>
+          <IconButton color="primary" onClick={() => console.log('check')}>
+            <CheckIcon />
+          </IconButton>
+          <IconButton color="primary" onClick={() => console.log('search')}>
+            <SearchIcon />
+            <Badge color="warning" position="top-right" shape="point" />
+          </IconButton>
+          <IconButton color="primary" onClick={() => console.log('times')}>
+            <TimesIcon />
+          </IconButton>
+        </Rhythm>
+      </IconGroup>
+      <IconGroup scale="medium">
+        <Rhythm m={1}>
+          <IconButton color="primary" onClick={() => console.log('check')} shape="square">
+            <CheckIcon />
+          </IconButton>
+          <IconButton color="primary" onClick={() => console.log('search')} shape="square">
+            <SearchIcon />
+            <Badge outlined color="warning" position="top-right" shape="marker" />
+          </IconButton>
+          <IconButton color="primary" onClick={() => console.log('times')} shape="square">
+            <TimesIcon />
+          </IconButton>
+        </Rhythm>
+      </IconGroup>
+      <IconGroup scale="medium">
+        <Rhythm m={1}>
+          <IconButton color="primary" onClick={() => console.log('check')} shape="circle">
+            <CheckIcon />
+          </IconButton>
+          <IconButton color="primary" onClick={() => console.log('search')} shape="circle">
+            <SearchIcon />
+            <Badge color="warning" position="top-right" shape="point" />
+          </IconButton>
+          <IconButton color="primary" onClick={() => console.log('times')} shape="circle">
+            <TimesIcon />
+          </IconButton>
+        </Rhythm>
+      </IconGroup>
+    </Flex>
   </Story>
 </Canvas>
 
@@ -1147,51 +1131,49 @@ import {
       layout: 'fixed',
     }}
   >
-    <ThemeWrapper>
-      <Flex style={{ height: 280, marginRight: -20, maxHeight: 300, overflow: 'hidden' }}>
-        <PanelContainer full orientation="horizontal" style={{ borderRadius: 4 }}>
-          <StackPanel open position="top">
-            <Card raised squared>
-              <BannerContainer>
-                <Banner immediate level="info">
-                  <IconText
-                    icon={<BlobbrIcon size={18} />}
-                    text={
-                      <Rhythm ml={3} wrapper="span">
-                        This is a simple info banner because something happened. Cool.
-                      </Rhythm>
-                    }
-                  />
-                </Banner>
-                <Banner immediate level="success">
-                  <IconText
-                    icon={<BlobbrIcon size={18} />}
-                    text={
-                      <Rhythm ml={3} wrapper="span">
-                        This is a simple success banner because something was successful. Yay.
-                      </Rhythm>
-                    }
-                  />
-                </Banner>
-              </BannerContainer>
-            </Card>
-          </StackPanel>
-          <MainPanel>
-            <Paper flexible scrollable color="primary" container="panel">
-              <Looper
-                end={10}
-                render={i => (
-                  <Typography fullWidth key={i} size="large" variants={['line-height-comfy']}>
-                    This banner system is using panels. The banners are raised with a Card.
-                  </Typography>
-                )}
-                start={0}
-              />
-            </Paper>
-          </MainPanel>
-        </PanelContainer>
-      </Flex>
-    </ThemeWrapper>
+    <Flex style={{ height: 280, marginRight: -20, maxHeight: 300, overflow: 'hidden' }}>
+      <PanelContainer full orientation="horizontal" style={{ borderRadius: 4 }}>
+        <StackPanel open position="top">
+          <Card raised squared>
+            <BannerContainer>
+              <Banner immediate level="info">
+                <IconText
+                  icon={<BlobbrIcon size={18} />}
+                  text={
+                    <Rhythm ml={3} wrapper="span">
+                      This is a simple info banner because something happened. Cool.
+                    </Rhythm>
+                  }
+                />
+              </Banner>
+              <Banner immediate level="success">
+                <IconText
+                  icon={<BlobbrIcon size={18} />}
+                  text={
+                    <Rhythm ml={3} wrapper="span">
+                      This is a simple success banner because something was successful. Yay.
+                    </Rhythm>
+                  }
+                />
+              </Banner>
+            </BannerContainer>
+          </Card>
+        </StackPanel>
+        <MainPanel>
+          <Paper flexible scrollable color="primary" container="panel">
+            <Looper
+              end={10}
+              render={i => (
+                <Typography fullWidth key={i} size="large" variants={['line-height-comfy']}>
+                  This banner system is using panels. The banners are raised with a Card.
+                </Typography>
+              )}
+              start={0}
+            />
+          </Paper>
+        </MainPanel>
+      </PanelContainer>
+    </Flex>
   </Story>
 </Canvas>
 
@@ -1202,35 +1184,33 @@ import {
       layout: 'fixed',
     }}
   >
-    <ThemeWrapper>
-      <Flex direction="column" style={{ height: 280, marginRight: -20, maxHeight: 300 }}>
-        <BannerContainer style={{ borderTopLeftRadius: 4, borderTopRightRadius: 4, overflow: 'hidden' }}>
-          <Banner immediate level="warning" style={{ height: 50 }}>
-            This is a simple warning banner because something concerning happened. Meh.
-          </Banner>
-          <Banner immediate level="danger" style={{ height: 50 }}>
-            This is a simple danger banner because something went wrong. Boo.
-          </Banner>
-        </BannerContainer>
-        <Paper
-          flexible
-          scrollable
-          color="primary"
-          container="panel"
-          style={{ borderBottomLeftRadius: 4, borderBottomRightRadius: 4 }}
-        >
-          <Looper
-            end={10}
-            render={i => (
-              <Typography fullWidth key={i} size="large" variants={['line-height-comfy']}>
-                This banner system is using scrollable paper.
-              </Typography>
-            )}
-            start={0}
-          />
-        </Paper>
-      </Flex>
-    </ThemeWrapper>
+    <Flex direction="column" style={{ height: 280, marginRight: -20, maxHeight: 300 }}>
+      <BannerContainer style={{ borderTopLeftRadius: 4, borderTopRightRadius: 4, overflow: 'hidden' }}>
+        <Banner immediate level="warning" style={{ height: 50 }}>
+          This is a simple warning banner because something concerning happened. Meh.
+        </Banner>
+        <Banner immediate level="danger" style={{ height: 50 }}>
+          This is a simple danger banner because something went wrong. Boo.
+        </Banner>
+      </BannerContainer>
+      <Paper
+        flexible
+        scrollable
+        color="primary"
+        container="panel"
+        style={{ borderBottomLeftRadius: 4, borderBottomRightRadius: 4 }}
+      >
+        <Looper
+          end={10}
+          render={i => (
+            <Typography fullWidth key={i} size="large" variants={['line-height-comfy']}>
+              This banner system is using scrollable paper.
+            </Typography>
+          )}
+          start={0}
+        />
+      </Paper>
+    </Flex>
   </Story>
 </Canvas>
 
@@ -1238,96 +1218,94 @@ import {
 
 <Canvas>
   <Story name="Login modal">
-    <ThemeWrapper>
-      <Modals>
-        <ModalConsumer>
-          {({ createModal, popModal }) => (
-            <Rhythm m={2}>
-              <Button
-                color="primary"
-                onClick={event =>
-                  event.persist() ||
-                  createModal(
-                    <Modal focusable id="demo-login-modal" onClose={() => console.log('closed modal')} size="medium">
-                      {({ id, focusRef }) => (
-                        <React.Fragment>
-                          <ModalHeader modalId={id} title="Login" />
-                          <ModalBody scrollable>
-                            <Rhythm grouped py={4}>
-                              <StateWrapper initialState={{}}>
-                                {({ state: values, setState: setValues }) => (
-                                  <React.Fragment>
-                                    <Rhythm mb={2}>
-                                      <Textbox
-                                        transitional
-                                        id="login-username"
-                                        label="Username"
-                                        name="username"
-                                        onChange={event => {
-                                          event.persist();
-                                          setValues(previous => ({
-                                            ...previous,
-                                            [event.target.name]: event.target.value,
-                                          }));
-                                        }}
-                                        ref={focusRef}
-                                        value={values.username}
-                                        variant="filled"
-                                      />
-                                    </Rhythm>
-                                    <Rhythm mb={6} mt={6}>
-                                      <Password
-                                        transitional
-                                        id="login-password"
-                                        label="Password"
-                                        name="password"
-                                        onChange={event => {
-                                          event.persist();
-                                          setValues(previous => ({
-                                            ...previous,
-                                            [event.target.name]: event.target.value,
-                                          }));
-                                        }}
-                                        value={values.password}
-                                        variant="filled"
-                                      />
-                                    </Rhythm>
-                                  </React.Fragment>
-                                )}
-                              </StateWrapper>
-                            </Rhythm>
-                          </ModalBody>
-                          <ModalFooter bordered>
-                            <Flex justifyContent="flex-end">
-                              <ButtonGroup spacing="cozy">
-                                <Button color="neutral" key="cancel" onClick={popModal} shape="brick" weight="ghost">
-                                  Cancel
-                                </Button>
-                                <Button
-                                  color="primary"
-                                  key="login"
-                                  key="submit"
-                                  onClick={() => console.log('Login!')}
-                                  shape="brick"
-                                >
-                                  Login
-                                </Button>
-                              </ButtonGroup>
-                            </Flex>
-                          </ModalFooter>
-                        </React.Fragment>
-                      )}
-                    </Modal>,
-                  )
-                }
-              >
-                Open a login modal
-              </Button>
-            </Rhythm>
-          )}
-        </ModalConsumer>
-      </Modals>
-    </ThemeWrapper>
+    <Modals>
+      <ModalConsumer>
+        {({ createModal, popModal }) => (
+          <Rhythm m={2}>
+            <Button
+              color="primary"
+              onClick={event =>
+                event.persist() ||
+                createModal(
+                  <Modal focusable id="demo-login-modal" onClose={() => console.log('closed modal')} size="medium">
+                    {({ id, focusRef }) => (
+                      <React.Fragment>
+                        <ModalHeader modalId={id} title="Login" />
+                        <ModalBody scrollable>
+                          <Rhythm grouped py={4}>
+                            <StateWrapper initialState={{}}>
+                              {({ state: values, setState: setValues }) => (
+                                <React.Fragment>
+                                  <Rhythm mb={2}>
+                                    <Textbox
+                                      transitional
+                                      id="login-username"
+                                      label="Username"
+                                      name="username"
+                                      onChange={event => {
+                                        event.persist();
+                                        setValues(previous => ({
+                                          ...previous,
+                                          [event.target.name]: event.target.value,
+                                        }));
+                                      }}
+                                      ref={focusRef}
+                                      value={values.username}
+                                      variant="filled"
+                                    />
+                                  </Rhythm>
+                                  <Rhythm mb={6} mt={6}>
+                                    <Password
+                                      transitional
+                                      id="login-password"
+                                      label="Password"
+                                      name="password"
+                                      onChange={event => {
+                                        event.persist();
+                                        setValues(previous => ({
+                                          ...previous,
+                                          [event.target.name]: event.target.value,
+                                        }));
+                                      }}
+                                      value={values.password}
+                                      variant="filled"
+                                    />
+                                  </Rhythm>
+                                </React.Fragment>
+                              )}
+                            </StateWrapper>
+                          </Rhythm>
+                        </ModalBody>
+                        <ModalFooter bordered>
+                          <Flex justifyContent="flex-end">
+                            <ButtonGroup spacing="cozy">
+                              <Button color="neutral" key="cancel" onClick={popModal} shape="brick" weight="ghost">
+                                Cancel
+                              </Button>
+                              <Button
+                                color="primary"
+                                key="login"
+                                key="submit"
+                                onClick={() => console.log('Login!')}
+                                shape="brick"
+                              >
+                                Login
+                              </Button>
+                            </ButtonGroup>
+                          </Flex>
+                        </ModalFooter>
+                      </React.Fragment>
+                    )}
+                  </Modal>,
+                )
+              }
+            >
+              Open a login modal
+            </Button>
+          </Rhythm>
+        )}
+      </ModalConsumer>
+    </Modals>
   </Story>
 </Canvas>
 
@@ -1335,51 +1313,37 @@ import {
 
 <Canvas>
   <Story name="Search dropover">
-    <ThemeWrapper>
-      <StateWrapper>
-        {({ state: searchTerm, setState: setSearchTerm }) => (
-          <Rhythm grouped mb={12} p={4}>
-            <PortalDropover
-              passiveLabel
-              label={
-                <DropoverInputLabel>
-                  <Textbox
-                    clearable
-                    aria-label="Search"
-                    iconBefore={<SearchIcon size={14} />}
-                    onChange={(event, value) => {
-                      setSearchTerm(value);
-                    }}
-                    onClear={(event, value) => setSearchTerm('')}
-                    value={searchTerm || ''}
-                    width={200}
-                  />
-                </DropoverInputLabel>
-              }
-              portal="fixed"
-              width={400}
-            >
-              <DropoverContent>
-                <Rhythm py={5}>
-                  <div>{searchTerm ? `Searching for ${searchTerm}` : 'What are you searching for?'}</div>
-                </Rhythm>
-              </DropoverContent>
-            </PortalDropover>
-          </Rhythm>
-        )}
-      </StateWrapper>
-    </ThemeWrapper>
-  </Story>
-</Canvas>
-
-### Typography
-
-<Canvas>
-  <Story name="Typography">
-    <ThemeWrapper>
-      <Typography as={Link} href="https://phorkit.org" target="_blank" volume="quietest">
-        Typography as Link
-      </Typography>
-    </ThemeWrapper>
+    <StateWrapper>
+      {({ state: searchTerm, setState: setSearchTerm }) => (
+        <Rhythm grouped mb={12} p={4}>
+          <PortalDropover
+            passiveLabel
+            label={
+              <DropoverInputLabel>
+                <Textbox
+                  clearable
+                  aria-label="Search"
+                  iconBefore={<SearchIcon size={14} />}
+                  onChange={(event, value) => {
+                    setSearchTerm(value);
+                  }}
+                  onClear={(event, value) => setSearchTerm('')}
+                  value={searchTerm || ''}
+                  width={200}
+                />
+              </DropoverInputLabel>
+            }
+            portal="fixed"
+            width={400}
+          >
+            <DropoverContent>
+              <Rhythm py={5}>
+                <div>{searchTerm ? `Searching for ${searchTerm}` : 'What are you searching for?'}</div>
+              </Rhythm>
+            </DropoverContent>
+          </PortalDropover>
+        </Rhythm>
+      )}
+    </StateWrapper>
   </Story>
 </Canvas>

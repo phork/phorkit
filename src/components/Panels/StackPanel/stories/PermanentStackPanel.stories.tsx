@@ -1,6 +1,7 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { MainPanel } from '../../MainPanel';
 import { PanelContainer } from '../../PanelContainer';
@@ -12,7 +13,7 @@ export default {
   argTypes: {
     children: {
       control: {
-        type: 'text',
+        disable: true,
       },
     },
 
@@ -87,10 +88,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component:
-          'The permanent stack panel is a stripped down version of the StackPanel component without animation.',
-      },
       source: {
         excludeDecorators: false,
       },
@@ -102,7 +99,7 @@ export default {
 const Template: ComponentStory<typeof PermanentStackPanel> = args => <PermanentStackPanel {...args} />;
 
 const defaultArgs = {
-  children: 'Stack panel',
+  children: <Typography color="primary">Stack panel</Typography>,
   fixed: false,
   height: 100,
   position: 'left' as PermanentStackPanelProps['position'],

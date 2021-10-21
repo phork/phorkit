@@ -23,7 +23,7 @@ _Clicking on any color block will copy that color ID to your clipboard._
 
 <Canvas withSource="none">
   <Story name="Primary colors">
-    <ThemeWrapper withThemeId>
+    <ThemeWrapper>
       {({ themeId }) => (
         <ColorSwatches
           direction="column"
@@ -44,7 +44,7 @@ _Clicking on any color block will copy that color ID to your clipboard._
 
 <Canvas withSource="none">
   <Story name="Primary accent color">
-    <ThemeWrapper withThemeId>
+    <ThemeWrapper>
       {({ themeId }) => (
         <ColorSwatches
           joined
@@ -65,7 +65,7 @@ _Clicking on any color block will copy that color ID to your clipboard._
 
 <Canvas withSource="none">
   <Story name="Success color">
-    <ThemeWrapper withThemeId>
+    <ThemeWrapper>
       {({ themeId }) => (
         <ColorSwatches joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="success">
           <BlobbrIcon size={30} />
@@ -79,7 +79,7 @@ _Clicking on any color block will copy that color ID to your clipboard._
 
 <Canvas withSource="none">
   <Story name="Warning color">
-    <ThemeWrapper withThemeId>
+    <ThemeWrapper>
       {({ themeId }) => (
         <ColorSwatches joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="warning">
           <BlobbrIcon size={30} />
@@ -93,7 +93,7 @@ _Clicking on any color block will copy that color ID to your clipboard._
 
 <Canvas withSource="none">
   <Story name="Danger color">
-    <ThemeWrapper withThemeId>
+    <ThemeWrapper>
       {({ themeId }) => (
         <ColorSwatches joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="danger">
           <BlobbrIcon size={30} />
@@ -107,7 +107,7 @@ _Clicking on any color block will copy that color ID to your clipboard._
 
 <Canvas withSource="none">
   <Story name="Neutral color">
-    <ThemeWrapper withThemeId>
+    <ThemeWrapper>
       {({ themeId }) => (
         <ColorSwatches joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="neutral">
           <BlobbrIcon size={30} />
@@ -121,7 +121,7 @@ _Clicking on any color block will copy that color ID to your clipboard._
 
 <Canvas withSource="none">
   <Story name="Background colors">
-    <ThemeWrapper withThemeId>
+    <ThemeWrapper>
       {({ themeId }) => <ColorSwatches group="background" swatchHeight={40} swatchWidth={60} themeId={themeId} />}
     </ThemeWrapper>
   </Story>
@@ -131,7 +131,7 @@ _Clicking on any color block will copy that color ID to your clipboard._
 
 <Canvas withSource="none">
   <Story name="Foreground colors">
-    <ThemeWrapper withThemeId>
+    <ThemeWrapper>
       {({ themeId }) => <ColorSwatches group="foreground" swatchHeight={40} swatchWidth={60} themeId={themeId} />}
     </ThemeWrapper>
   </Story>
@@ -141,7 +141,7 @@ _Clicking on any color block will copy that color ID to your clipboard._
 
 <Canvas withSource="none">
   <Story name="Transparent colors">
-    <ThemeWrapper withThemeId>
+    <ThemeWrapper>
       {({ themeId }) => <ColorSwatches group="transparent" swatchHeight={40} swatchWidth={60} themeId={themeId} />}
     </ThemeWrapper>
   </Story>
@@ -151,7 +151,7 @@ _Clicking on any color block will copy that color ID to your clipboard._
 
 <Canvas withSource="none">
   <Story name="Primary theme">
-    <ThemeWrapper withThemeId>{({ themeId }) => <ColorTheme themeId={themeId} variant="primary" />}</ThemeWrapper>
+    <ThemeWrapper>{({ themeId }) => <ColorTheme themeId={themeId} variant="primary" />}</ThemeWrapper>
   </Story>
 </Canvas>
 
@@ -159,7 +159,7 @@ _Clicking on any color block will copy that color ID to your clipboard._
 
 <Canvas withSource="none">
   <Story name="Secondary theme">
-    <ThemeWrapper withThemeId>{({ themeId }) => <ColorTheme themeId={themeId} variant="secondary" />}</ThemeWrapper>
+    <ThemeWrapper>{({ themeId }) => <ColorTheme themeId={themeId} variant="secondary" />}</ThemeWrapper>
   </Story>
 </Canvas>
 
@@ -167,7 +167,7 @@ _Clicking on any color block will copy that color ID to your clipboard._
 
 <Canvas withSource="none">
   <Story name="Tertiary theme">
-    <ThemeWrapper withThemeId>{({ themeId }) => <ColorTheme themeId={themeId} variant="tertiary" />}</ThemeWrapper>
+    <ThemeWrapper>{({ themeId }) => <ColorTheme themeId={themeId} variant="tertiary" />}</ThemeWrapper>
   </Story>
 </Canvas>
 
@@ -175,6 +175,6 @@ _Clicking on any color block will copy that color ID to your clipboard._
 
 <Canvas withSource="none">
   <Story name="Contrast theme">
-    <ThemeWrapper withThemeId>{({ themeId }) => <ColorTheme themeId={themeId} variant="contrast" />}</ThemeWrapper>
+    <ThemeWrapper>{({ themeId }) => <ColorTheme themeId={themeId} variant="contrast" />}</ThemeWrapper>
   </Story>
 </Canvas>

@@ -2,7 +2,6 @@ import { action } from '@storybook/addon-actions';
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { Canvas } from 'stories/helpers/Canvas';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 import { Divider } from '../Divider';
 
 <PageTitle src="components/Divider" title="Divider" />
@@ -15,7 +14,5 @@ import { Divider } from '../Divider';
 ### Contrast
 
 <Canvas contrast>
-  <ThemeWrapper>
-    <Divider contrast />
-  </ThemeWrapper>
+  <Divider contrast />
 </Canvas>

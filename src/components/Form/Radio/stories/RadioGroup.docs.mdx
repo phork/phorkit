@@ -4,7 +4,6 @@ import { Looper } from 'components/Looper';
 import { Rhythm } from 'components/Rhythm';
 import { Canvas } from 'stories/helpers/Canvas';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 import { FormComponentDemo } from '../../stories/helpers/FormComponentDemo';
 import { NotifiedRadioGroup } from '../NotifiedRadioGroup';
 import { RadioGroup } from '../RadioGroup';
@@ -20,11 +19,9 @@ import { radios } from './helpers/options';
 ### Contrast
 
 <Canvas contrast>
-  <ThemeWrapper>
-    <FormComponentDemo initialValue="one" property="value" type="radio">
-      <RadioGroup contrast legend="Super fantastic label" radios={radios} value="one" />
-    </FormComponentDemo>
-  </ThemeWrapper>
+  <FormComponentDemo initialValue="one" property="value" type="radio">
+    <RadioGroup contrast legend="Super fantastic label" radios={radios} value="one" />
+  </FormComponentDemo>
 </Canvas>
 
 ## Notifications

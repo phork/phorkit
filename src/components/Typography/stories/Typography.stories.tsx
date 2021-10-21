@@ -143,7 +143,7 @@ export default {
 } as ComponentMeta<typeof Typography>;
 
 const Template: ComponentStory<typeof Typography> = ({ as, ...args }) => (
-  <Typography<'div'> as="div" {...(args as TypographyProps<'div'>)} />
+  <Typography<'div'> as="div" color="primary" {...(args as TypographyProps<'div'>)} />
 );
 
 const defaultArgs = {

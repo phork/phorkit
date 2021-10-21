@@ -44,7 +44,7 @@ export default {
   decorators: [
     Story => (
       <Flex full alignItems="center" justifyContent="center">
-        <Typography size="large" variants="italic" volume="quietest">
+        <Typography color="primary" size="large" variants="italic" volume="quietest">
           See the edge of the page
         </Typography>
         <Story />
@@ -66,10 +66,6 @@ export default {
           <Stories />
         </React.Fragment>
       ),
-      description: {
-        component:
-          'A toast container wraps one or more toasts and renders them in a portal along the edge of the viewport.',
-      },
     },
     layout: 'centered',
   },

@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { BlobbrIcon } from 'icons/internal';
 import { Rhythm } from 'components/Rhythm';
+import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { IconText, IconTextProps } from '../IconText';
 
@@ -66,6 +67,13 @@ export default {
       },
     },
   },
+  decorators: [
+    Story => (
+      <Typography<'div'> as="div" color="primary">
+        {Story()}
+      </Typography>
+    ),
+  ],
   parameters: {
     controls: {
       sort: 'requiredFirst',

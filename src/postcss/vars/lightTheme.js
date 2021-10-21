@@ -71,7 +71,7 @@ const adjustments = {
   'color-P35-darken': 0.0625,
 };
 
-// shade color is the accent color at .1 opacity flattened on white
+// shade color is the accent color at .1 opacity flattened on the extreme background color
 const accentColors = {
   'color-accent-primary': primaryColors['color-P50'],
   'color-accent-primary-contrast': '#fff',

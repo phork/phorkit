@@ -1,7 +1,7 @@
 import { Canvas as BaseCanvas } from '@storybook/addon-docs';
 import React from 'react';
-import { useDarkMode } from 'storybook-dark-mode';
 import { themes } from 'config/themes';
+import { useThemeId } from 'context/Theme/useThemeId';
 import { ErrorBoundary } from 'components/ErrorBoundary';
 
 type CanvasProps = React.ComponentProps<typeof BaseCanvas> & {
@@ -10,11 +10,10 @@ type CanvasProps = React.ComponentProps<typeof BaseCanvas> & {
 };
 
 export const Canvas = ({ contrast, style, ...props }: CanvasProps) => {
-  const dark = useDarkMode();
+  const themeId = useThemeId();
   const backgroundColor =
-    (contrast && `var(--contrast-color, ${themes[dark ? 'dark' : 'light']['contrast-palette-background-color']})`) ||
-    undefined;
-  const color = (contrast && themes[dark ? 'dark' : 'light']['contrast-palette-background-color']) || undefined;
+    (contrast && `var(--contrast-color, ${themes[themeId]['contrast-palette-background-color']})`) || undefined;
+  const color = (contrast && themes[themeId]['contrast-palette-background-color']) || undefined;
 
   // @ts-ignore [TODO:ts] custom styles work but they aren't in the canvas props
   const content = <BaseCanvas style={{ backgroundColor, color, ...style }} {...props} />;

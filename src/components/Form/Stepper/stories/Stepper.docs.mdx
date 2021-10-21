@@ -22,222 +22,198 @@ import { variants } from './helpers/variants';
 ### Basic stepper
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={variants}
-      render={variant => (
-        <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue={10} property="value" type="stepper">
-            <Stepper aria-label="Cool label" variant={variant} />
-          </FormComponentDemo>
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Rhythm grouped py={3}>
+        <FormComponentDemo initialValue={10} property="value" type="stepper">
+          <Stepper aria-label="Cool label" variant={variant} />
+        </FormComponentDemo>
+      </Rhythm>
+    )}
+  />
 </Canvas>
 
 ### Ticked stepper
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={variants}
-      render={variant => (
-        <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue={10} property="value" type="stepper">
-            <Stepper aria-label="Cool label" max={100} min={-100} step={10} variant={variant} />
-          </FormComponentDemo>
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Rhythm grouped py={3}>
+        <FormComponentDemo initialValue={10} property="value" type="stepper">
+          <Stepper aria-label="Cool label" max={100} min={-100} step={10} variant={variant} />
+        </FormComponentDemo>
+      </Rhythm>
+    )}
+  />
 </Canvas>
 
 ### Labeled stepper
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={variants}
-      render={variant => (
-        <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue={10} property="value" type="stepper">
-            <Stepper label="Cool label" max={12} min={2} step={1} variant={variant} />
-          </FormComponentDemo>
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Rhythm grouped py={3}>
+        <FormComponentDemo initialValue={10} property="value" type="stepper">
+          <Stepper label="Cool label" max={12} min={2} step={1} variant={variant} />
+        </FormComponentDemo>
+      </Rhythm>
+    )}
+  />
 </Canvas>
 
 ### Labeled stepper with placeholder
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={variants}
-      render={variant => (
-        <Rhythm grouped py={3}>
-          <FormComponentDemo property="value" type="stepper">
-            <Stepper label="Cool label" max={12} min={2} placeholder={10} step={1} variant={variant} />
-          </FormComponentDemo>
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Rhythm grouped py={3}>
+        <FormComponentDemo property="value" type="stepper">
+          <Stepper label="Cool label" max={12} min={2} placeholder={10} step={1} variant={variant} />
+        </FormComponentDemo>
+      </Rhythm>
+    )}
+  />
 </Canvas>
 
 ### Labeled stepper with HTML value
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={variants}
-      render={variant => (
-        <StateWrapper initialState={10} key={variant}>
-          {({ state: value, setState: setValue }) => (
-            <Rhythm grouped py={3} style={{ maxWidth: 400 }}>
-              <Stepper
-                alwaysUseFormatting
-                formattedValue={value || value === 0 ? <i>{value}</i> : undefined}
-                label="Cool label"
-                onChange={(event, value) => setValue(value)}
-                value={value}
-                variant={variant}
-              />
-            </Rhythm>
-          )}
-        </StateWrapper>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={variants}
+    render={variant => (
+      <StateWrapper initialState={10} key={variant}>
+        {({ state: value, setState: setValue }) => (
+          <Rhythm grouped py={3} style={{ maxWidth: 400 }}>
+            <Stepper
+              alwaysUseFormatting
+              formattedValue={value || value === 0 ? <i>{value}</i> : undefined}
+              label="Cool label"
+              onChange={(event, value) => setValue(value)}
+              value={value}
+              variant={variant}
+            />
+          </Rhythm>
+        )}
+      </StateWrapper>
+    )}
+  />
 </Canvas>
 
 ### Read only stepper
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={variants}
-      render={variant => (
-        <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue={10} property="value" type="stepper">
-            <Stepper readOnly label="Cool label" max={12} min={2} step={1} variant={variant} />
-          </FormComponentDemo>
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Rhythm grouped py={3}>
+        <FormComponentDemo initialValue={10} property="value" type="stepper">
+          <Stepper readOnly label="Cool label" max={12} min={2} step={1} variant={variant} />
+        </FormComponentDemo>
+      </Rhythm>
+    )}
+  />
 </Canvas>
 
 ### Disabled stepper
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={variants}
-      render={variant => (
-        <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue={10} property="value" type="stepper">
-            <Stepper disabled label="Cool label" variant={variant} />
-          </FormComponentDemo>
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Rhythm grouped py={3}>
+        <FormComponentDemo initialValue={10} property="value" type="stepper">
+          <Stepper disabled label="Cool label" variant={variant} />
+        </FormComponentDemo>
+      </Rhythm>
+    )}
+  />
 </Canvas>
 
 ### Danger stepper
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={variants}
-      render={variant => (
-        <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue={10} property="value" type="stepper">
-            <Stepper label="Cool label" validity="danger" variant={variant} />
-          </FormComponentDemo>
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Rhythm grouped py={3}>
+        <FormComponentDemo initialValue={10} property="value" type="stepper">
+          <Stepper label="Cool label" validity="danger" variant={variant} />
+        </FormComponentDemo>
+      </Rhythm>
+    )}
+  />
 </Canvas>
 
 ### Warning stepper
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={variants}
-      render={variant => (
-        <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue={10} property="value" type="stepper">
-            <Stepper label="Cool label" validity="warning" variant={variant} />
-          </FormComponentDemo>
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Rhythm grouped py={3}>
+        <FormComponentDemo initialValue={10} property="value" type="stepper">
+          <Stepper label="Cool label" validity="warning" variant={variant} />
+        </FormComponentDemo>
+      </Rhythm>
+    )}
+  />
 </Canvas>
 
 ### Success stepper
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={variants}
-      render={variant => (
-        <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue={10} property="value" type="stepper">
-            <Stepper label="Cool label" validity="success" variant={variant} />
-          </FormComponentDemo>
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Rhythm grouped py={3}>
+        <FormComponentDemo initialValue={10} property="value" type="stepper">
+          <Stepper label="Cool label" validity="success" variant={variant} />
+        </FormComponentDemo>
+      </Rhythm>
+    )}
+  />
 </Canvas>
 
 ### Contrast stepper
 
 <Canvas contrast>
-  <ThemeWrapper>
-    <Looper
-      list={variants}
-      render={variant => (
-        <Rhythm grouped py={3}>
-          <FormComponentDemo initialValue={10} property="value" type="stepper">
-            <Stepper contrast label="Cool label" variant={variant} />
-          </FormComponentDemo>
-        </Rhythm>
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={variants}
+    render={variant => (
+      <Rhythm grouped py={3}>
+        <FormComponentDemo initialValue={10} property="value" type="stepper">
+          <Stepper contrast label="Cool label" variant={variant} />
+        </FormComponentDemo>
+      </Rhythm>
+    )}
+  />
 </Canvas>
 
 ## Notifications
 
 <Canvas>
-  <ThemeWrapper>
-    <Looper
-      list={['danger', 'warning', 'success', 'primary', 'neutral']}
-      render={level => (
-        <Looper
-          list={variants}
-          render={variant => (
-            <Rhythm grouped py={3}>
-              <FormComponentDemo initialValue={10} property="value" type="stepper">
-                <NotifiedStepper
-                  label="Cool label"
-                  level={level}
-                  notification={`This is an example ${level} notification.`}
-                  variant={variant}
-                />
-              </FormComponentDemo>
-            </Rhythm>
-          )}
-        />
-      )}
-    />
-  </ThemeWrapper>
+  <Looper
+    list={['danger', 'warning', 'success', 'primary', 'neutral']}
+    render={level => (
+      <Looper
+        list={variants}
+        render={variant => (
+          <Rhythm grouped py={3}>
+            <FormComponentDemo initialValue={10} property="value" type="stepper">
+              <NotifiedStepper
+                label="Cool label"
+                level={level}
+                notification={`This is an example ${level} notification.`}
+                variant={variant}
+              />
+            </FormComponentDemo>
+          </Rhythm>
+        )}
+      />
+    )}
+  />
 </Canvas>

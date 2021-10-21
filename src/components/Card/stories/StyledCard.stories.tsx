@@ -1,6 +1,7 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledCard } from '../StyledCard';
 import cardStory from './Card.stories';
@@ -49,9 +50,13 @@ const defaultArgs = {
   borderColor: '#c5106b',
   bordered: true,
   children: (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 200, height: 200 }}>
+    <Typography<'div'>
+      as="div"
+      color="primary"
+      style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 200, height: 200 }}
+    >
       Hello world
-    </div>
+    </Typography>
   ),
   full: false,
   hoveredBorderColor: '#642da0',

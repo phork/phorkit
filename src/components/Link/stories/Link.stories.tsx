@@ -105,7 +105,11 @@ Default.args = {
 };
 
 const displayDecorators: typeof Default.decorators = [
-  Story => <Typography size="large">Hello world. {Story()}</Typography>,
+  Story => (
+    <Typography color="primary" size="large">
+      Hello world. {Story()}
+    </Typography>
+  ),
 ];
 
 export const Inline = Template.bind({});

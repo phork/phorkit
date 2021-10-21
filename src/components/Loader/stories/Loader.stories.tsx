@@ -156,7 +156,7 @@ FixedPosition.args = {
 FixedPosition.decorators = [
   Story => (
     <Flex full alignItems="center" justifyContent="center">
-      <Typography size="large" variants="italic" volume="quietest">
+      <Typography color="primary" size="large" variants="italic" volume="quietest">
         See the center of the page
       </Typography>
       <Story />

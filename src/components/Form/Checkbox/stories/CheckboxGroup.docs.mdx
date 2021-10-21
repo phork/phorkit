@@ -4,7 +4,6 @@ import { Looper } from 'components/Looper';
 import { Rhythm } from 'components/Rhythm';
 import { Canvas } from 'stories/helpers/Canvas';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 import { FormComponentDemo } from '../../stories/helpers/FormComponentDemo';
 import { CheckboxGroup } from '../CheckboxGroup';
 import { NotifiedCheckboxGroup } from '../NotifiedCheckboxGroup';
@@ -20,11 +19,9 @@ import { checkboxes } from './helpers/options';
 ### Contrast
 
 <Canvas contrast>
-  <ThemeWrapper>
-    <FormComponentDemo initialValue={['one']} property="values" type="checkbox">
-      <CheckboxGroup contrast checkboxes={checkboxes} legend="Super fantastic label" values={['one']} />
-    </FormComponentDemo>
-  </ThemeWrapper>
+  <FormComponentDemo initialValue={['one']} property="values" type="checkbox">
+    <CheckboxGroup contrast checkboxes={checkboxes} legend="Super fantastic label" values={['one']} />
+  </FormComponentDemo>
 </Canvas>
 
 ## Notifications

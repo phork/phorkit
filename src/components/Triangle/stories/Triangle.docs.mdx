@@ -1,6 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { Flex } from 'components/Flex';
+import { Typography } from 'components/Typography';
 import { Canvas } from 'stories/helpers/Canvas';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { Triangle } from '../Triangle';
@@ -15,20 +16,22 @@ import { Triangle } from '../Triangle';
 ## Examples
 
 <Canvas>
-  <Flex direction="column">
-    <Flex justifyContent="space-around">
-      <Triangle color="currentColor" position="top-left" size={30} title="top-left" />
-      <Triangle color="currentcolor" position="top" size={30} title="top" />
-      <Triangle color="currentcolor" position="top-right" size={30} title="top-right" />
+  <Typography color="primary">
+    <Flex direction="column">
+      <Flex justifyContent="space-around">
+        <Triangle color="currentColor" position="top-left" size={30} title="top-left" />
+        <Triangle color="currentcolor" position="top" size={30} title="top" />
+        <Triangle color="currentcolor" position="top-right" size={30} title="top-right" />
+      </Flex>
+      <Flex justifyContent="space-around">
+        <Triangle color="currentcolor" position="left" size={30} title="left" />
+        <Triangle color="currentcolor" position="right" size={30} title="right" />
+      </Flex>
+      <Flex justifyContent="space-around">
+        <Triangle color="currentcolor" position="bottom-left" size={30} title="bottom-left" />
+        <Triangle color="currentcolor" position="bottom" size={30} title="bottom" />
+        <Triangle color="currentcolor" position="bottom-right" size={30} title="bottom-right" />
+      </Flex>
     </Flex>
-    <Flex justifyContent="space-around">
-      <Triangle color="currentcolor" position="left" size={30} title="left" />
-      <Triangle color="currentcolor" position="right" size={30} title="right" />
-    </Flex>
-    <Flex justifyContent="space-around">
-      <Triangle color="currentcolor" position="bottom-left" size={30} title="bottom-left" />
-      <Triangle color="currentcolor" position="bottom" size={30} title="bottom" />
-      <Triangle color="currentcolor" position="bottom-right" size={30} title="bottom-right" />
-    </Flex>
-  </Flex>
+  </Typography>
 </Canvas>

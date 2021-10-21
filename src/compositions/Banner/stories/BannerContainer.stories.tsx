@@ -2,6 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { Banner } from '../Banner';
 import { BannerContainer } from '../BannerContainer';
@@ -142,10 +143,12 @@ Page.args = {
         This is another tertiary banner. It has a border to distinguish it from the one above.
       </Banner>
       <Banner immediate level="transparent" onClose={action('closed banner')}>
-        This is a transparent banner.
+        <Typography color="primary">This is a transparent banner.</Typography>
       </Banner>
       <Banner immediate level="transparent" onClose={action('closed banner')}>
-        This is another transparent banner. It has a border to distinguish it from the one above.
+        <Typography color="primary">
+          This is another transparent banner. It has a border to distinguish it from the one above.
+        </Typography>
       </Banner>
     </React.Fragment>
   ),

@@ -1,6 +1,7 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { Notification } from '../Notification';
 
@@ -10,7 +11,7 @@ export default {
   argTypes: {
     children: {
       control: {
-        type: 'text',
+        disable: true,
       },
     },
 
@@ -90,7 +91,7 @@ export default {
 const Template: ComponentStory<typeof Notification> = args => <Notification {...args} />;
 
 const defaultArgs = {
-  children: 'Content that the notification refers to.',
+  children: <Typography color="primary">Content that the notification refers to.</Typography>,
   contrast: false,
   divided: false,
   hideNotification: false,

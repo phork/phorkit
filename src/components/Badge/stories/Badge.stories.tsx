@@ -1,7 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { themes } from 'config/themes';
-import { ThemeWrapper } from '../../../stories/helpers/ThemeWrapper';
+import { Typography } from 'components/Typography';
 import { Badge, BadgeProps } from '../Badge';
 import BadgeDocumentation from './Badge.docs.mdx';
 
@@ -85,22 +84,20 @@ export default {
   },
   decorators: [
     Story => (
-      <ThemeWrapper withThemeId>
-        {({ themeId }) => (
-          <div
-            style={{
-              backgroundColor: themes[themeId]['color-BG10'],
-              borderRadius: '4px',
-              height: 100,
-              margin: 'auto',
-              position: 'relative',
-              width: 100,
-            }}
-          >
-            {Story()}
-          </div>
-        )}
-      </ThemeWrapper>
+      <Typography<'div'>
+        as="div"
+        color="primary"
+        style={{
+          backgroundColor: 'currentColor',
+          borderRadius: '4px',
+          height: 100,
+          margin: 'auto',
+          position: 'relative',
+          width: 100,
+        }}
+      >
+        {Story()}
+      </Typography>
     ),
   ],
   parameters: {

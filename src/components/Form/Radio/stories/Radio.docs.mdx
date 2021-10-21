@@ -6,7 +6,6 @@ import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 import { Canvas } from 'stories/helpers/Canvas';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 import { Radio } from '../Radio';
 
 <PageTitle src="components/Form/Radio" title="Radio" />
@@ -21,150 +20,140 @@ import { Radio } from '../Radio';
 ### Basic radio button
 
 <Canvas>
-  <ThemeWrapper>
-    <Flex wrap direction="row">
-      <Rhythm m={2}>
-        <Flex direction="column">
-          <Rhythm my={2}>
-            <Radio checked />
-            <Radio />
-            <Radio checked>Primary checked</Radio>
-            <Radio>Primary unchecked</Radio>
-            <Radio checked disabled>
-              Primary checked disabled
-            </Radio>
-            <Radio disabled>Primary unchecked disabled</Radio>
-          </Rhythm>
-        </Flex>
-        <Flex direction="column">
-          <Rhythm my={2}>
-            <Radio checked variant="secondary" />
-            <Radio variant="secondary" />
-            <Radio checked variant="secondary">
-              Secondary checked
-            </Radio>
-            <Radio variant="secondary">Secondary unchecked</Radio>
-            <Radio checked disabled variant="secondary">
-              Secondary checked disabled
-            </Radio>
-            <Radio disabled variant="secondary">
-              Secondary unchecked disabled
-            </Radio>
-          </Rhythm>
-        </Flex>
-      </Rhythm>
-    </Flex>
-  </ThemeWrapper>
+  <Flex wrap direction="row">
+    <Rhythm m={2}>
+      <Flex direction="column">
+        <Rhythm my={2}>
+          <Radio checked />
+          <Radio />
+          <Radio checked>Primary checked</Radio>
+          <Radio>Primary unchecked</Radio>
+          <Radio checked disabled>
+            Primary checked disabled
+          </Radio>
+          <Radio disabled>Primary unchecked disabled</Radio>
+        </Rhythm>
+      </Flex>
+      <Flex direction="column">
+        <Rhythm my={2}>
+          <Radio checked variant="secondary" />
+          <Radio variant="secondary" />
+          <Radio checked variant="secondary">
+            Secondary checked
+          </Radio>
+          <Radio variant="secondary">Secondary unchecked</Radio>
+          <Radio checked disabled variant="secondary">
+            Secondary checked disabled
+          </Radio>
+          <Radio disabled variant="secondary">
+            Secondary unchecked disabled
+          </Radio>
+        </Rhythm>
+      </Flex>
+    </Rhythm>
+  </Flex>
 </Canvas>
 
 ### Full width labeled radio button
 
 <Canvas>
-  <ThemeWrapper>
-    <Flex direction="column" style={{ width: 240 }}>
-      <Rhythm my={2}>
-        <Radio checked full>
-          Super fantastic label
-        </Radio>
-        <Radio full reverse>
-          Super fantastic label
-        </Radio>
-      </Rhythm>
-    </Flex>
-  </ThemeWrapper>
+  <Flex direction="column" style={{ width: 240 }}>
+    <Rhythm my={2}>
+      <Radio checked full>
+        Super fantastic label
+      </Radio>
+      <Radio full reverse>
+        Super fantastic label
+      </Radio>
+    </Rhythm>
+  </Flex>
 </Canvas>
 
 ### Wrapped labeled radio button
 
 <Canvas>
-  <ThemeWrapper>
-    <Radio style={{ maxWidth: 400 }}>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget dui eu orci ultrices maximus eu eu ante.
-      Vestibulum ligula velit, scelerisque vitae venenatis tempor, consectetur a orci. Aenean molestie eu tortor in
-      pharetra. Nulla lobortis, sapien quis ornare venenatis, nunc libero finibus justo, non tempor nisi urna quis
-      justo. Integer sit amet venenatis leo.
-    </Radio>
-  </ThemeWrapper>
+  <Radio style={{ maxWidth: 400 }}>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eget dui eu orci ultrices maximus eu eu ante.
+    Vestibulum ligula velit, scelerisque vitae venenatis tempor, consectetur a orci. Aenean molestie eu tortor in
+    pharetra. Nulla lobortis, sapien quis ornare venenatis, nunc libero finibus justo, non tempor nisi urna quis justo.
+    Integer sit amet venenatis leo.
+  </Radio>
 </Canvas>
 
 ### Danger radio button
 
 <Canvas>
-  <ThemeWrapper>
-    <Flex wrap direction="row">
-      <Rhythm m={2}>
-        <Flex direction="column">
-          <Rhythm my={2}>
-            <Radio checked validity="danger">
-              Primary checked
-            </Radio>
-            <Radio validity="danger">Primary unchecked</Radio>
-            <Radio checked disabled validity="danger">
-              Primary checked disabled
-            </Radio>
-            <Radio disabled validity="danger">
-              Primary unchecked disabled
-            </Radio>
-          </Rhythm>
-        </Flex>
-        <Flex direction="column">
-          <Rhythm my={2}>
-            <Radio checked validity="danger" variant="secondary">
-              Secondary checked
-            </Radio>
-            <Radio validity="danger" variant="secondary">
-              Secondary unchecked
-            </Radio>
-            <Radio checked disabled validity="danger" variant="secondary">
-              Secondary checked disabled
-            </Radio>
-            <Radio disabled validity="danger" variant="secondary">
-              Secondary unchecked disabled
-            </Radio>
-          </Rhythm>
-        </Flex>
-      </Rhythm>
-    </Flex>
-  </ThemeWrapper>
+  <Flex wrap direction="row">
+    <Rhythm m={2}>
+      <Flex direction="column">
+        <Rhythm my={2}>
+          <Radio checked validity="danger">
+            Primary checked
+          </Radio>
+          <Radio validity="danger">Primary unchecked</Radio>
+          <Radio checked disabled validity="danger">
+            Primary checked disabled
+          </Radio>
+          <Radio disabled validity="danger">
+            Primary unchecked disabled
+          </Radio>
+        </Rhythm>
+      </Flex>
+      <Flex direction="column">
+        <Rhythm my={2}>
+          <Radio checked validity="danger" variant="secondary">
+            Secondary checked
+          </Radio>
+          <Radio validity="danger" variant="secondary">
+            Secondary unchecked
+          </Radio>
+          <Radio checked disabled validity="danger" variant="secondary">
+            Secondary checked disabled
+          </Radio>
+          <Radio disabled validity="danger" variant="secondary">
+            Secondary unchecked disabled
+          </Radio>
+        </Rhythm>
+      </Flex>
+    </Rhythm>
+  </Flex>
 </Canvas>
 
 ### Contrast radio button
 
 <Canvas contrast>
-  <ThemeWrapper>
-    <Flex wrap direction="row">
-      <Rhythm m={2}>
-        <Flex direction="column">
-          <Rhythm my={2}>
-            <Radio checked contrast>
-              Primary checked
-            </Radio>
-            <Radio contrast>Primary unchecked</Radio>
-            <Radio checked contrast disabled>
-              Primary checked disabled
-            </Radio>
-            <Radio contrast disabled>
-              Primary unchecked disabled
-            </Radio>
-          </Rhythm>
-        </Flex>
-        <Flex direction="column">
-          <Rhythm my={2}>
-            <Radio checked contrast variant="secondary">
-              Secondary checked
-            </Radio>
-            <Radio contrast variant="secondary">
-              Secondary unchecked
-            </Radio>
-            <Radio checked contrast disabled variant="secondary">
-              Secondary checked disabled
-            </Radio>
-            <Radio contrast disabled variant="secondary">
-              Secondary unchecked disabled
-            </Radio>
-          </Rhythm>
-        </Flex>
-      </Rhythm>
-    </Flex>
-  </ThemeWrapper>
+  <Flex wrap direction="row">
+    <Rhythm m={2}>
+      <Flex direction="column">
+        <Rhythm my={2}>
+          <Radio checked contrast>
+            Primary checked
+          </Radio>
+          <Radio contrast>Primary unchecked</Radio>
+          <Radio checked contrast disabled>
+            Primary checked disabled
+          </Radio>
+          <Radio contrast disabled>
+            Primary unchecked disabled
+          </Radio>
+        </Rhythm>
+      </Flex>
+      <Flex direction="column">
+        <Rhythm my={2}>
+          <Radio checked contrast variant="secondary">
+            Secondary checked
+          </Radio>
+          <Radio contrast variant="secondary">
+            Secondary unchecked
+          </Radio>
+          <Radio checked contrast disabled variant="secondary">
+            Secondary checked disabled
+          </Radio>
+          <Radio contrast disabled variant="secondary">
+            Secondary unchecked disabled
+          </Radio>
+        </Rhythm>
+      </Flex>
+    </Rhythm>
+  </Flex>
 </Canvas>

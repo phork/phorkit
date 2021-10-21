@@ -172,7 +172,7 @@ export default {
   },
   decorators: [
     Story => (
-      <ThemeWrapper withThemeId>
+      <ThemeWrapper>
         {({ themeId }) => (
           <div
             style={{
@@ -209,7 +209,7 @@ export default {
 } as ComponentMeta<typeof Rhythm>;
 
 const ContentBox = ({ className }: { className?: string }) => (
-  <ThemeWrapper withThemeId>
+  <ThemeWrapper>
     {({ themeId }) => (
       <div className={className} style={{ background: themes[themeId]['color-accent-primary'] }}>
         <TimesIcon size={20} style={{ color: themes[themeId]['contrast-palette-text-color'], float: 'left' }} />
