@@ -60,7 +60,7 @@ export function StatusBubble({
         position={position}
         triangleBorderColor={triangleBorderColor}
         triangleColor={triangleColor}
-        triangleSize={8}
+        triangleSize={6}
       >
         <Shade opaque className={cx(styles.statusBubbleContent)} color={color}>
           {header && <div className={cx(styles.statusBubbleHeader)}>{header}</div>}
