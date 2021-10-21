@@ -1,7 +1,7 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import { HorizontalPositionEdge, SemanticColor, ThemeProps } from '../../types';
-import { themes } from '../../config';
+import { ThemeColors, themes } from '../../config';
 import { useThemeId } from '../../context/Theme';
 import { lowerCamelize } from '../../utils/case';
 import { getPositionOffset } from '../../utils/getPositionOffset';
@@ -41,8 +41,10 @@ export function StatusBubble({
   const themeId = useThemeId(initThemeId);
   const colorName = color === 'primary' ? 'accent-primary' : color;
 
-  const triangleColor = initTriangleColor || themes[themeId][`color-${colorName}-shade`];
-  const triangleBorderColor = initTriangleBorderColor || themes[themeId][`color-${colorName}`];
+  const triangleColor =
+    initTriangleColor || (themes[themeId][`color-${colorName}-shade` as keyof ThemeColors] as string);
+  const triangleBorderColor =
+    initTriangleBorderColor || (themes[themeId][`color-${colorName}` as keyof ThemeColors] as string);
 
   return (
     <div
