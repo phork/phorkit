@@ -131,6 +131,7 @@ StackedLayout.args = {
 };
 
 export const CustomLabel = Template.bind({});
+CustomLabel.storyName = 'Custom label';
 CustomLabel.args = {
   ...defaultArgs,
   legend: (
@@ -140,4 +141,12 @@ CustomLabel.args = {
       </Typography>
     </Rhythm>
   ),
+};
+
+export const NoLabel = Template.bind({});
+NoLabel.storyName = 'No label';
+NoLabel.args = {
+  ...defaultArgs,
+  layout: 'stacked',
+  legend: undefined,
 };

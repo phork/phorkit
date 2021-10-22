@@ -18,7 +18,7 @@ export type CheckboxGroupItem<V extends CheckboxValue = string> = Omit<
 
 export type LocalCheckboxGroupProps<V extends CheckboxValue = string> = Omit<ThemeProps, 'unthemed'> & {
   className?: string;
-  legend: React.ReactNode;
+  legend?: React.ReactNode;
   layout: 'stacked' | 'inline';
   onChange: (event: React.ChangeEvent<HTMLInputElement>, values: readonly V[]) => void;
   checkboxes: readonly CheckboxGroupItem<V>[];

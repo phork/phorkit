@@ -235,7 +235,7 @@ import { radioGroup, logValue } from './helpers/utils';
   </FormComponentDemo>
 </Playground>
 
-## Custom label
+## Custom group legend
 
 <Playground>
   <FormComponentDemo initialValue="one" property="value" type="radio">
@@ -250,6 +250,14 @@ import { radioGroup, logValue } from './helpers/utils';
       onChange={logValue}
       radios={radioGroup}
     />
+  </FormComponentDemo>
+</Playground>
+
+## No group legend
+
+<Playground>
+  <FormComponentDemo initialValue="one" property="value" type="radio">
+    <RadioGroup layout="stacked" name="unlabeled-radio-group" onChange={logValue} radios={radioGroup} />
   </FormComponentDemo>
 </Playground>
 

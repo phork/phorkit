@@ -286,6 +286,14 @@ import { checkboxGroup, logChecked } from './helpers/utils';
   </FormComponentDemo>
 </Playground>
 
+## No group legend
+
+<Playground>
+  <FormComponentDemo initialValue={['one']} property="values" type="checkbox">
+    <CheckboxGroup checkboxes={checkboxGroup} layout="stacked" name="unlabeled-checkbox-group" onChange={logChecked} />
+  </FormComponentDemo>
+</Playground>
+
 ## Notifications
 
 <Playground>
