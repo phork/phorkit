@@ -42,7 +42,7 @@ export type LocalTypographyProps = {
   /** The children are optional so that this component can be passed as empty and then cloned */
   children?: React.ReactNode;
   className?: string;
-  color?: SequentialVariant | AccentColor | StateColor | 'contrast';
+  color?: SequentialVariant | AccentColor | StateColor | 'neutral' | 'contrast';
   fullWidth?: boolean;
   heading?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
   /** Reset all the font styles to their defaults */

@@ -117,3 +117,9 @@
     color: $theme-color-danger;
   }
 }
+
+.text-color-neutral {
+  @mixin themed .text {
+    color: $theme-color-neutral;
+  }
+}
