@@ -312,6 +312,30 @@ _Note that the links will cause the page to reload so the state will appear unch
   </ThemeWrapper>
 </Playground>
 
+### Minimal with custom text
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState={1}>
+      {({ state: currentPage, setState: setCurrentPage }) => (
+        <Pagination
+          withPreviousAndNext
+          color="primary"
+          justify="center"
+          onChangePage={(event, pageTo) => setCurrentPage(pageTo)}
+          page={currentPage}
+          pageSize={10}
+          totalItems={300}
+          translations={{
+            previousPageLabel: 'Newer',
+            nextPageLabel: 'Older',
+          }}
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
 ## Unstyled pagination
 
 ### Page links with icons

@@ -324,6 +324,25 @@ MinimalWithText.args = {
   withPreviousAndNext: true,
 };
 
+export const MinimalWithCustomText = Template.bind({});
+MinimalWithCustomText.storyName = 'Minimal with custom text';
+MinimalWithCustomText.args = {
+  ...defaultArgs,
+  justify: 'center',
+  page: 1,
+  translations: {
+    previousPageLabel: 'Newer',
+    nextPageLabel: 'Older',
+  },
+  withEllipsis: false,
+  withFirstAndLast: false,
+  withIcons: false,
+  withPageAndTotalLabel: false,
+  withPageLabel: false,
+  withPageLinks: false,
+  withPreviousAndNext: true,
+};
+
 export const CurrentPage = Template.bind({});
 CurrentPage.storyName = 'Current page';
 CurrentPage.args = {

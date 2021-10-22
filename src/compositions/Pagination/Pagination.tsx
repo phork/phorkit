@@ -14,12 +14,12 @@ import { PaginationPage } from './PaginationPage';
 import { usePagination } from './usePagination';
 
 export type PaginationTranslations = {
-  firstPageLabel: string;
-  lastPageLabel: string;
-  nextPageLabel: string;
-  previousPageLabel: string;
-  pageLabel: string;
-  pageAndTotalLabel: string;
+  firstPageLabel?: string;
+  lastPageLabel?: string;
+  nextPageLabel?: string;
+  previousPageLabel?: string;
+  pageLabel?: string;
+  pageAndTotalLabel?: string;
 };
 
 export const paginationTranslations: PaginationTranslations = {
