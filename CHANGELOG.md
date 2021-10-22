@@ -6,10 +6,15 @@
 
 - added forwardRef to Typography ([a7e232e](https://github.com/phork/phorkit/commit/a7e232e))
 - added neutral color to Typography ([44424bf](https://github.com/phork/phorkit/commit/44424bf))
+- added StatusBubble component ([a3fbfc9](https://github.com/phork/phorkit/commit/a3fbfc9))
+- added active, focused, hovered states to Button, Tag ([263172a](https://github.com/phork/phorkit/commit/263172a))
+- added Shade component ([ed4dccb](https://github.com/phork/phorkit/commit/ed4dccb))
+- improve Progress accessibility ([8c54639](https://github.com/phork/phorkit/commit/8c54639))
 
 ### 🐛 Bug Fixes
 
 - fix formbox input colors ([5c03d7c](https://github.com/phork/phorkit/commit/5c03d7c))
+- make themeId optional in colored components ([967dad7](https://github.com/phork/phorkit/commit/967dad7))
 
 # [10.0.0](https://github.com/phork/phorkit/compare/v9.0.3...v10.0.0) (2021-10-19)
 
@@ -38,6 +43,8 @@
 - updated EventListener hooks ([e0ca445](https://github.com/phork/phorkit/commit/e0ca445))
 - set several Pagination default props ([2ccb989](https://github.com/phork/phorkit/commit/2ccb989))
 - updated Button and Tag hover and active states ([42bf138](https://github.com/phork/phorkit/commit/42bf138))
+- changed all array prop types to be readonly ([0637aba](https://github.com/phork/phorkit/commit/0637aba))
+- standardize all focus rings, use mixins ([763852b](https://github.com/phork/phorkit/commit/763852b))
 
 ### ✨ Features
 
@@ -45,9 +52,11 @@
 - added custom tag option to DropdownWithTags ([61c634c](https://github.com/phork/phorkit/commit/61c634c))
 - added display prop to ButtonGroup ([563b9f5](https://github.com/phork/phorkit/commit/563b9f5))
 - added loaderReplaceIcon option to IconTextButton ([1bb2c46](https://github.com/phork/phorkit/commit/1bb2c46))
+- added useScrollSync hook ([dbab06e](https://github.com/phork/phorkit/commit/dbab06e))
 - added ScrollSync component ([3930cde](https://github.com/phork/phorkit/commit/3930cde))
 - added StyledTextbox and StyledPassword components ([8492311](https://github.com/phork/phorkit/commit/8492311))
-- added useScrollSync hook ([dbab06e](https://github.com/phork/phorkit/commit/dbab06e))
+- added StyledChip component ([d57a7ac](https://github.com/phork/phorkit/commit/d57a7ac))
+- moved Looper from docs helper to component ([b7aa572](https://github.com/phork/phorkit/commit/b7aa572))
 
 ### 📝 Storybook
 
@@ -60,6 +69,7 @@
 - added Button stories ([d363faa](https://github.com/phork/phorkit/commit/d363faa))
 - added ButtonGroup stories ([495936e](https://github.com/phork/phorkit/commit/495936e))
 - added Checkbox, Radio stories ([86cdea6](https://github.com/phork/phorkit/commit/86cdea6))
+- added Chip stories ([d57a7ac](https://github.com/phork/phorkit/commit/d57a7ac))
 - added ColoredAvatar and StyledAvatar stories ([f352102](https://github.com/phork/phorkit/commit/f352102))
 - added Dropdown stories ([4486865](https://github.com/phork/phorkit/commit/4486865))
 - added DropdownWithTags stories ([eadddb2](https://github.com/phork/phorkit/commit/eadddb2))
@@ -118,6 +128,7 @@
 - pass isTooltip flag from Tooltip to Popover ([e7557dd](https://github.com/phork/phorkit/commit/e7557dd))
 - removed inherited Paper types from Banner ([85bffcd](https://github.com/phork/phorkit/commit/85bffcd))
 - removed unused unthemed prop from TagGroup ([0bddc18](https://github.com/phork/phorkit/commit/0bddc18))
+- hide focused Paper outline unless accessible ([d3240bc](https://github.com/phork/phorkit/commit/d3240bc))
 
 ## [9.0.3](https://github.com/phork/phorkit/compare/v9.0.2...v9.0.3) (2021-07-30)
 
