@@ -33,7 +33,7 @@ export interface BannerProps
   onClose?: (event?: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, contextId?: string) => void;
   permanent?: boolean;
   style?: React.CSSProperties;
-  translations?: BannerTranslations;
+  translations?: Partial<BannerTranslations>;
 }
 
 /**

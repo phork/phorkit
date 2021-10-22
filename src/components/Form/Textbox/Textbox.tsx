@@ -172,7 +172,10 @@ export function TextboxBase(
   forwardedRef: React.ForwardedRef<HTMLInputElement>,
 ): React.ReactElement<TextboxProps> {
   const themeId = useThemeId(initThemeId);
-  const translations = useTranslations({ customTranslations, fallbackTranslations: textboxTranslations });
+  const translations = useTranslations<TextboxTranslations>({
+    customTranslations,
+    fallbackTranslations: textboxTranslations,
+  });
   const { clearLabel } = translations;
 
   const { autoFilled, handleAnimationStart } = useAutoFilled<HTMLInputElement>({ onAnimationStart });

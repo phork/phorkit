@@ -26,7 +26,7 @@ export type DropdownEmptyProps = React.HTMLAttributes<HTMLDivElement> &
     /** The contained layout adds extra padding */
     layout?: DropdownLayout;
     style?: React.CSSProperties;
-    translations?: DropdownEmptyTranslations;
+    translations?: Partial<DropdownEmptyTranslations>;
   };
 
 /**

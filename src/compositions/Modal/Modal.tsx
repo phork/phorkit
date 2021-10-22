@@ -38,7 +38,7 @@ export type ModalProps<E extends HTMLElement = HTMLElement> = Omit<ThemeProps, '
   permanent?: boolean;
   size?: 'small' | 'medium' | 'large' | 'xlarge';
   style?: React.CSSProperties;
-  translations?: ModalTranslations;
+  translations?: Partial<ModalTranslations>;
 };
 
 /**
@@ -80,7 +80,10 @@ export function Modal<E extends HTMLElement = HTMLElement>({
   const [hasTransitioned, setHasTransitioned] = useState<boolean>(immediate || false);
   const { changeFocus, returnFocus } = useFocusReturn();
   const { componentId, generateTitleId } = useModalComponentIds(contextId);
-  const translations = useTranslations({ customTranslations, fallbackTranslations: modalTranslations });
+  const translations = useTranslations<ModalTranslations>({
+    customTranslations,
+    fallbackTranslations: modalTranslations,
+  });
   const { closeLabel } = translations;
 
   const handleClose = useCallback(

@@ -126,7 +126,7 @@ export type PartialDropdownProps = Omit<
     size?: DropdownSize;
     style?: React.CSSProperties;
     transitional?: boolean;
-    translations?: DropdownTranslations;
+    translations?: Partial<DropdownTranslations>;
     /** When using the withNotification HOC the empty content notice must be inline if there's a notification */
     usingNotification?: boolean;
     validity?: StateColor;

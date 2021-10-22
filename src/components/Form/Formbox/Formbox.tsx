@@ -49,7 +49,7 @@ export type FormboxProps = Omit<FormboxContainerProps<'label'>, 'as' | 'children
   persistEvents?: boolean;
   required?: boolean;
   size?: FormboxSize;
-  translations?: FormboxTranslations;
+  translations?: Partial<FormboxTranslations>;
   /** Manually apply the focus styles; this does not affect focus */
   visuallyFocused?: boolean;
 };
@@ -103,7 +103,10 @@ export function FormboxBase(
     { alwaysTriggerBlur, alwaysTriggerFocus, persistEvents },
   );
   const { generateComponentId } = useComponentId(id);
-  const translations = useTranslations({ customTranslations, fallbackTranslations: formboxTranslations });
+  const translations = useTranslations<FormboxTranslations>({
+    customTranslations,
+    fallbackTranslations: formboxTranslations,
+  });
   const { readOnlyLabel } = translations;
 
   const combineRefs = makeCombineRefs<HTMLLabelElement>(ref, forwardedRef);

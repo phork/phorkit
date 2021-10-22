@@ -25,7 +25,7 @@ export type LineLoaderProps = React.HTMLAttributes<HTMLDivElement> &
     percent?: number;
     position?: 'top' | 'bottom';
     style?: React.CSSProperties;
-    translations?: LineLoaderTranslations;
+    translations?: Partial<LineLoaderTranslations>;
   };
 
 /**

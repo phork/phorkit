@@ -39,7 +39,7 @@ export type LocalPasswordProps = {
   iconShowSize?: number;
   /** The initial type is only used when the component renders and is then taken over by the state */
   initialType?: 'password' | 'text';
-  translations?: PasswordTranslations;
+  translations?: Partial<PasswordTranslations>;
 };
 
 export type PasswordProps = MergeProps<
@@ -77,7 +77,10 @@ export function PasswordBase(
 ) {
   const [type, setType] = useState<'text' | 'password'>(initialType);
 
-  const translations = useTranslations({ customTranslations, fallbackTranslations: passwordTranslations });
+  const translations = useTranslations<PasswordTranslations>({
+    customTranslations,
+    fallbackTranslations: passwordTranslations,
+  });
   const { showPasswordLabel, hidePasswordLabel } = translations;
 
   const hidePassword = useCallback(() => setType('password'), []);

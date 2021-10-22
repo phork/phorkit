@@ -21,7 +21,7 @@ export type LocalAvatarProps = ThemeProps & {
   initials?: string;
   size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge' | '3xlarge' | 'custom';
   style?: React.CSSProperties;
-  translations?: AvatarTranslations;
+  translations?: Partial<AvatarTranslations>;
 };
 
 export type AvatarProps<T extends React.ElementType = 'div'> = AsReactType<T> & MergeElementProps<T, LocalAvatarProps>;

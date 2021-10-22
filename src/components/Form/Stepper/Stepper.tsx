@@ -39,7 +39,7 @@ export type LocalStepperProps = {
     value: number | '',
   ) => void;
   placeholder?: number | '';
-  translations?: StepperTranslations;
+  translations?: Partial<StepperTranslations>;
   value?: number;
 };
 
@@ -85,7 +85,10 @@ export function StepperBase(
   forwardedRef: React.ForwardedRef<HTMLInputElement>,
 ) {
   const inputRef = useRef<HTMLInputElement>(null!);
-  const translations = useTranslations({ customTranslations, fallbackTranslations: stepperTranslations });
+  const translations = useTranslations<StepperTranslations>({
+    customTranslations,
+    fallbackTranslations: stepperTranslations,
+  });
   const { incrementLabel, decrementLabel, ...restTranslations } = translations;
 
   const combineRefs = makeCombineRefs<HTMLInputElement>(inputRef, forwardedRef);

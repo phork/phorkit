@@ -40,7 +40,7 @@ export type LocalToastProps = Omit<ThemeProps, 'contrast'> & {
   onPin?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, id?: string) => void;
   permanent?: boolean;
   style?: React.CSSProperties;
-  translations?: ToastTranslations;
+  translations?: Partial<ToastTranslations>;
   variant?: 'colored';
 };
 

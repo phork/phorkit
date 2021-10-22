@@ -14,12 +14,12 @@ import { PaginationPage } from './PaginationPage';
 import { usePagination } from './usePagination';
 
 export type PaginationTranslations = {
-  firstPageLabel?: string;
-  lastPageLabel?: string;
-  nextPageLabel?: string;
-  previousPageLabel?: string;
-  pageLabel?: string;
-  pageAndTotalLabel?: string;
+  firstPageLabel: string;
+  lastPageLabel: string;
+  nextPageLabel: string;
+  previousPageLabel: string;
+  pageLabel: string;
+  pageAndTotalLabel: string;
 };
 
 export const paginationTranslations: PaginationTranslations = {
@@ -83,7 +83,7 @@ export type LocalPaginationProps = MergeProps<
     style?: FlexProps['style'];
     /** The total number of items (used to calculate number of pages) */
     totalItems: number;
-    translations?: PaginationTranslations;
+    translations?: Partial<PaginationTranslations>;
     /** Show "[1] ..." and "... [n]" buttons */
     withEllipsis?: boolean;
     /** Show "First page" and "Last page" buttons */
@@ -177,7 +177,10 @@ export function Pagination({
 }: PaginationProps) {
   const { generateComponentId } = useComponentId(id);
   const themeId = useThemeId(initThemeId);
-  const translations = useTranslations({ customTranslations, fallbackTranslations: paginationTranslations });
+  const translations = useTranslations<PaginationTranslations>({
+    customTranslations,
+    fallbackTranslations: paginationTranslations,
+  });
   const { pageLinksBefore, pageLinksAfter, pages } = usePagination({
     page,
     pageLinks,

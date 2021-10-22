@@ -22,7 +22,7 @@ export type LoaderProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>
     scale?: Exclude<IconScale, 'xsmall'>;
     size?: number;
     style?: React.CSSProperties;
-    translations?: LoaderTranslations;
+    translations?: Partial<LoaderTranslations>;
   };
 
 /**
@@ -43,7 +43,10 @@ export function Loader({
   ...props
 }: LoaderProps): React.ReactElement<LoaderProps> | React.ReactPortal | null {
   const themeId = useThemeId(initThemeId);
-  const translations = useTranslations({ customTranslations, fallbackTranslations: loaderTranslations });
+  const translations = useTranslations<LoaderTranslations>({
+    customTranslations,
+    fallbackTranslations: loaderTranslations,
+  });
   const { loadingLabel } = translations;
 
   const content = (
