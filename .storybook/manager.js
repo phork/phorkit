@@ -1,7 +1,8 @@
 import { addons } from '@storybook/addons';
 import { themes } from '@storybook/theming';
-import theme, { getThemeId } from './theme';
+import { getThemeId } from './addons/theme/utils';
+import { getCustomTheme } from './theme';
 
 addons.setConfig({
-  theme: { ...themes[getThemeId() === 'dark' ? 'dark' : 'normal'], ...theme(getThemeId()) },
+  theme: { ...themes[getThemeId()], ...getCustomTheme(getThemeId()) },
 });

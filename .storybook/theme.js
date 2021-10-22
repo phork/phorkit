@@ -1,6 +1,6 @@
 import { themes } from '../src/config/themes';
 
-export default themeId => ({
+export const getCustomTheme = themeId => ({
   // brandImage: '',
   brandTitle: 'Phork/it',
   brandUrl: 'https://phorkit.org',
@@ -24,9 +24,3 @@ export default themeId => ({
   textInverseColor: themes[themeId]['primary-palette-background-color'],
   textMutedColor: themes[themeId]['primary-palette-quietest-color'],
 });
-
-export const getThemeId = () =>
-  (document.body.classList.contains('dark') && 'dark') ||
-  (document.body.classList.contains('light') && 'light') ||
-  (window?.matchMedia?.('(prefers-color-scheme: dark)').matches && 'dark') ||
-  'light';
