@@ -20,7 +20,9 @@ export type StatusBubbleProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'titl
     iconShape?: StatusBubbleIconShape;
     position?: HorizontalPositionEdge;
     style?: React.CSSProperties;
+    /** An optional override of the bubble pointer border color */
     triangleBorderColor?: string;
+    /** An optional override of the bubble pointer fill color */
     triangleColor?: string;
   };
 

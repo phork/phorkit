@@ -88,6 +88,16 @@ export default {
         category: 'Uncommon',
       },
     },
+    triangleBorderColor: {
+      table: {
+        category: 'Uncommon',
+      },
+    },
+    triangleColor: {
+      table: {
+        category: 'Uncommon',
+      },
+    },
     unthemed: {
       table: {
         category: 'Uncommon',
@@ -259,4 +269,13 @@ NoChildren.args = {
   ...defaultArgs,
   children: undefined,
   style: { maxWidth: 400 },
+};
+
+export const NoTriangle = Template.bind({});
+NoTriangle.storyName = 'No triangle';
+NoTriangle.args = {
+  ...defaultArgs,
+  style: { maxWidth: 400 },
+  triangleBorderColor: 'transparent',
+  triangleColor: 'transparent',
 };

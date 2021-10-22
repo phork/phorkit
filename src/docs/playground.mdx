@@ -65,6 +65,7 @@ import {
   ScaleProvider,
   Shade,
   StackPanel,
+  StatusBubble,
   StyledAvatar,
   StyledHeader,
   StyledLoader,
@@ -396,6 +397,40 @@ import {
       </Flex>
     )}
   </ThemeWrapper>
+</Playground>
+
+## A conversation
+
+<Playground>
+  <Flex direction="column" style={{ maxWidth: 300 }}>
+    <Rhythm grouped my={2}>
+      <StatusBubble
+        color="neutral"
+        header="Knock knock"
+        icon={<Avatar imgSrc="/public/images/avatar.jpg" initials="EC" size="large" />}
+        iconShape="circle"
+        position="right-top"
+      />
+    </Rhythm>
+    <Rhythm grouped my={2}>
+      <StatusBubble
+        color="neutral"
+        header="Who's there?"
+        icon={<Avatar initials="EC" size="large" />}
+        iconShape="circle"
+        position="left-top"
+      />
+    </Rhythm>
+    <Rhythm grouped my={2}>
+      <StatusBubble
+        color="neutral"
+        header="Land shark 🦈"
+        icon={<Avatar imgSrc="/public/images/avatar.jpg" initials="EC" size="large" />}
+        iconShape="circle"
+        position="right-top"
+      />
+    </Rhythm>
+  </Flex>
 </Playground>
 
 ## Fancy lists

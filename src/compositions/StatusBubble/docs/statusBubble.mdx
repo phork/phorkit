@@ -7,6 +7,7 @@ route: /compositions/StatusBubble
 import { Playground, Props } from 'docz';
 import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { Avatar } from 'components/Avatar';
+import { Divider } from 'components/Divider';
 import { Paper } from 'components/Paper';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
@@ -219,6 +220,72 @@ import { StatusBubble } from '../index';
       }
       icon={<Avatar imgSrc="/public/images/avatar.jpg" initials="EC" size="large" />}
       iconShape="circle"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </StatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## No header
+
+<Playground>
+  <ThemeWrapper>
+    <StatusBubble color="primary" icon={<BlobbrIcon scale="large" />} style={{ maxWidth: 400 }}>
+      <React.Fragment>
+        <Paper color="primary">
+          <Rhythm grouped px={4} py={3}>
+            <div>Hello world</div>
+            <div>Hello world</div>
+            <div>Hello world</div>
+          </Rhythm>
+        </Paper>
+        <Divider volume="quieter" />
+        <Paper color="secondary">
+          <Rhythm grouped px={4} py={3}>
+            <div>Hello world</div>
+          </Rhythm>
+        </Paper>
+      </React.Fragment>
+    </StatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## No children
+
+<Playground>
+  <ThemeWrapper>
+    <StatusBubble
+      color="neutral"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      icon={<BlobbrIcon scale="large" />}
+      style={{ maxWidth: 400 }}
+    />
+  </ThemeWrapper>
+</Playground>
+
+## No triangle
+
+<Playground>
+  <ThemeWrapper>
+    <StatusBubble
+      color="neutral"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      icon={<BlobbrIcon scale="large" />}
+      style={{ maxWidth: 400 }}
+      triangleBorderColor="transparent"
+      triangleColor="transparent"
     >
       <Paper color="primary">
         <Rhythm p={4}>Hello world</Rhythm>

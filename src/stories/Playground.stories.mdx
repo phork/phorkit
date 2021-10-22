@@ -59,6 +59,7 @@ import {
   ScaleProvider,
   Shade,
   StackPanel,
+  StatusBubble,
   StyledAvatar,
   StyledHeader,
   StyledLoader,
@@ -395,6 +396,40 @@ import {
       )}
     </ThemeWrapper>
   </Story>
+</Canvas>
+
+### A conversation
+
+<Canvas>
+  <Flex direction="column" style={{ maxWidth: 300 }}>
+    <Rhythm grouped my={2}>
+      <StatusBubble
+        color="neutral"
+        header="Knock knock"
+        icon={<Avatar imgSrc="/images/avatar.jpg" initials="EC" size="large" />}
+        iconShape="circle"
+        position="right-top"
+      />
+    </Rhythm>
+    <Rhythm grouped my={2}>
+      <StatusBubble
+        color="neutral"
+        header="Who's there?"
+        icon={<Avatar initials="EC" size="large" />}
+        iconShape="circle"
+        position="left-top"
+      />
+    </Rhythm>
+    <Rhythm grouped my={2}>
+      <StatusBubble
+        color="neutral"
+        header="Land shark 🦈"
+        icon={<Avatar imgSrc="/images/avatar.jpg" initials="EC" size="large" />}
+        iconShape="circle"
+        position="right-top"
+      />
+    </Rhythm>
+  </Flex>
 </Canvas>
 
 ### Fancy lists
