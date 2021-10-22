@@ -12,18 +12,23 @@ export type PageTitleProps = Omit<RhythmProps, 'children'> & {
   url?: string;
 };
 
+/**
+ * Storybook docs don't change themes well so this
+ * uses a hardcoded grey that works with both light
+ * and dark backgrounds.
+ */
 export function PageTitle({ title, src, url: initUrl, ...props }: PageTitleProps): React.ReactElement {
   const repository = pkg.repository.url.replace(/\.git$/, '');
   const url = initUrl || (repository && src && `${repository}/tree/develop/src/${src}`) || undefined;
 
   return (
     <Rhythm mb={4} {...props}>
-      <Flex wrap alignItems="center" justifyContent="space-between">
-        <Typography<'h1'> as="h1" color="primary" heading="h1" style={{ fontSize: 48, margin: 0 }} weight="lighter">
+      <Flex wrap alignItems="center" justifyContent="space-between" style={{ color: '#707075' }}>
+        <Typography<'h1'> as="h1" heading="h1" style={{ fontSize: 48, margin: 0 }} weight="lighter">
           {title}
         </Typography>
 
-        <IconButton as="a" color="neutral" href={url} target="_blank" themeId="light">
+        <IconButton unthemed as="a" href={url} target="_blank">
           <GithubIcon size={24} />
         </IconButton>
       </Flex>

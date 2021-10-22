@@ -3,14 +3,13 @@ import React from 'react';
 import { ErrorBoundary } from '../../src/components/ErrorBoundary';
 import { Toasts } from '../../src/compositions/Toast';
 import { ThemeProvider } from '../../src/context/Theme/ThemeProvider';
-import { getThemeId } from '../theme';
+import { getThemeId } from '../addons/theme/utils';
 
 type DocsContainerProps = {
   children: React.ReactNode;
   context: BaseContainerProps['context'];
 };
 
-// [TODO:themeId]
 export const DocsContainer = ({ children, context }: DocsContainerProps) => {
   return (
     <ThemeProvider themeId={getThemeId()}>

@@ -1,18 +1,15 @@
 import { themes } from '@storybook/theming';
 import React from 'react';
 import { AccessibilityProvider } from '../src/context/Accessibility/AccessibilityProvider';
-import { ThemeProvider } from '../src/context/Theme/ThemeProvider';
 import '../src/styles/common.css';
 import '../src/styles/fonts.css';
 import '../src/styles/normalize.css';
 import { DocsContainer } from './components/DocsContainer';
-import theme, { getThemeId } from './theme';
+import { getThemeId } from './addons/theme/utils';
+import { withTheme } from './addons/theme/withTheme';
+import { getCustomTheme } from './theme';
 
-// [TODO:themeId]
-export const decorators = [
-  storyFn => <ThemeProvider themeId={getThemeId()}>{storyFn()}</ThemeProvider>,
-  storyFn => <AccessibilityProvider>{storyFn()}</AccessibilityProvider>,
-];
+export const decorators = [withTheme, storyFn => <AccessibilityProvider>{storyFn()}</AccessibilityProvider>];
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -29,7 +26,7 @@ export const parameters = {
     source: {
       excludeDecorators: true,
     },
-    theme: { ...themes[getThemeId() === 'dark' ? 'dark' : 'normal'], ...theme(getThemeId()) },
+    theme: { ...themes[getThemeId()], ...getCustomTheme(getThemeId()) },
   },
   options: {
     storySort: (a, b) => {
