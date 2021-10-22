@@ -21,6 +21,13 @@ export type ShadeProps = React.HTMLAttributes<HTMLDivElement> &
     unthemed?: boolean;
   };
 
+/**
+ * The shade component is similar to `Paper` but it
+ * uses a semi-transparent background (preferred) or
+ * an opaque approximation of what the semi-transparent
+ * transparent background would look like when used
+ * on the extreme palette background color.
+ */
 export function Shade({
   actionable,
   active,
