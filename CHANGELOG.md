@@ -1,5 +1,16 @@
 # Changelog
 
+# [10.1.0](https://github.com/phork/phorkit/compare/v10.0.0...v10.1.0) (2021-10-22)
+
+### ✨ Features
+
+- added forwardRef to Typography ([a7e232e](https://github.com/phork/phorkit/commit/a7e232e))
+- added neutral color to Typography ([44424bf](https://github.com/phork/phorkit/commit/44424bf))
+
+### 🐛 Bug Fixes
+
+- fix formbox input colors ([5c03d7c](https://github.com/phork/phorkit/commit/5c03d7c))
+
 # [10.0.0](https://github.com/phork/phorkit/compare/v9.0.3...v10.0.0) (2021-10-19)
 
 ### ♻ Code Refactoring
