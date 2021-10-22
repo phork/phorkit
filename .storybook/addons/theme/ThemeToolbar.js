@@ -3,7 +3,7 @@ import addons from '@storybook/addons';
 import { useGlobals } from '@storybook/api';
 import { IconButton } from '@storybook/components';
 import { FORCE_RE_RENDER } from '@storybook/core-events';
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { getThemeId, setThemeId } from './utils';
 import { PARAM_KEY } from './constants';
 
@@ -33,6 +33,11 @@ export const ThemeToolbar = React.memo(() => {
   const [globals, updateGlobals] = useGlobals();
   const currentThemeId = globals[PARAM_KEY] || getThemeId();
   const isDarkTheme = currentThemeId === 'dark';
+
+  // add the body classes on initial load
+  useEffect(() => {
+    updateElementClasses(currentThemeId);
+  }, []);
 
   const toggleThemeId = useCallback(() => {
     const newThemeId = isDarkTheme ? 'light' : 'dark';
