@@ -36,6 +36,8 @@ export type LocalButtonGroupProps = Pick<ButtonProps, 'color' | 'fullWidth' | 's
     spacing?: ButtonGroupSpacing;
     style?: React.CSSProperties;
     weight?: ButtonWeight;
+    /** Button groups can wrap if they're horizontal and have cozy or comfy spacing */
+    wrap?: boolean;
   };
 
 export type ButtonGroupProps = MergeElementProps<'div', LocalButtonGroupProps>;
@@ -65,9 +67,11 @@ export function ButtonGroup({
   spacing,
   themeId: initThemeId,
   weight = 'outlined',
+  wrap: initWrap = false,
   ...props
 }: ButtonGroupProps): React.ReactElement<ButtonGroupProps> {
   const themeId = useThemeId(initThemeId);
+  const wrap = initWrap && orientation === 'horizontal' && spacing && ['cozy', 'comfy'].includes(spacing);
 
   const handleClick = useCallback(
     (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent) => {
@@ -94,7 +98,7 @@ export function ButtonGroup({
     return undefined;
   };
 
-  const renderButtonsFromChildren = () => {
+  const renderButtonsFromChildren = (children: ButtonGroupProps['children']) => {
     return children
       ? children.map(child =>
           child
@@ -117,6 +121,7 @@ export function ButtonGroup({
         orientation && styles[`buttonGroup--${orientation}`],
         spacing && styles[`buttonGroup--${spacing}`],
         themeId && styles[`buttonGroup--${themeId}`],
+        wrap && styles['buttonGroup--wrap'],
         className,
       )}
       {...props}
@@ -155,7 +160,7 @@ export function ButtonGroup({
             ),
         )}
 
-      {!buttons && Array.isArray(children) ? renderButtonsFromChildren() : children}
+      {!buttons && children && renderButtonsFromChildren(Array.isArray(children) ? children : [children])}
     </div>
   );
 }

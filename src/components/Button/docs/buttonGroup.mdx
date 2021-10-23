@@ -223,6 +223,37 @@ import { Button, ButtonGroup, StyledButton } from '../index';
   </ThemeWrapper>
 </Playground>
 
+### Wrapped groups
+
+<Playground>
+  <ThemeWrapper>
+    <StateWrapper initialState="first">
+      {({ state, setState }) => (
+        <ButtonGroup
+          wrap
+          buttons={[
+            { id: 'first', label: 'First', selected: state === 'first' },
+            { id: 'second', label: 'Second', selected: state === 'second' },
+            { id: 'third', label: 'Third', selected: state === 'third' },
+            { id: 'fourth', label: 'Fourth', selected: state === 'fourth' },
+            { id: 'fifth', label: 'Fifth', selected: state === 'fifth' },
+            { id: 'sixth', label: 'Sixth', selected: state === 'sixth' },
+            { id: 'seventh', label: 'Seventh', selected: state === 'seventh' },
+          ]}
+          color="primary"
+          onClick={(event, id) => setState(id)}
+          selectedWeight="solid"
+          shape="pill"
+          size="medium"
+          spacing="cozy"
+          style={{ maxWidth: 400 }}
+          weight="outlined"
+        />
+      )}
+    </StateWrapper>
+  </ThemeWrapper>
+</Playground>
+
 ## Vertical groups
 
 ### Joined groups
