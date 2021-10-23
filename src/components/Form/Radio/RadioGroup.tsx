@@ -46,6 +46,7 @@ export function RadioGroupBase<V extends RadioValue = string>(
     onChange,
     radios,
     size,
+    style,
     themeId: initThemeId,
     value,
     variant,
@@ -64,7 +65,14 @@ export function RadioGroupBase<V extends RadioValue = string>(
   );
 
   return (
-    <Fieldset className={className} contrast={contrast} legend={legend} ref={forwardedRef} themeId={themeId}>
+    <Fieldset
+      className={className}
+      contrast={contrast}
+      legend={legend}
+      ref={forwardedRef}
+      style={style}
+      themeId={themeId}
+    >
       <div className={cx(styles.radioGroup, layout && styles[`radioGroup--${layout}`])} {...props}>
         {radios &&
           radios.map(({ id, label, value: radioValue, ...radioProps }) => (

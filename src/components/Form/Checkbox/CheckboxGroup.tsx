@@ -44,6 +44,7 @@ export function CheckboxGroupBase<V extends CheckboxValue = string>(
     legend,
     onChange,
     size,
+    style,
     themeId: initThemeId,
     values,
     variant,
@@ -72,7 +73,14 @@ export function CheckboxGroupBase<V extends CheckboxValue = string>(
   );
 
   return (
-    <Fieldset className={className} contrast={contrast} legend={legend} ref={forwardedRef} themeId={themeId}>
+    <Fieldset
+      className={className}
+      contrast={contrast}
+      legend={legend}
+      ref={forwardedRef}
+      style={style}
+      themeId={themeId}
+    >
       <div className={cx(styles.checkboxGroup, layout && styles[`checkboxGroup--${layout}`])} {...props}>
         {checkboxes &&
           checkboxes.map(({ id, label, value: checkboxValue, ...checkboxProps }) => (
