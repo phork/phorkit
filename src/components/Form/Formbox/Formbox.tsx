@@ -131,6 +131,7 @@ export function FormboxBase(
       readOnly={readOnly}
       ref={combineRefs}
       size={size}
+      style={style}
       themeId={themeId}
       transitional={transitional}
       transparent={transparent}
