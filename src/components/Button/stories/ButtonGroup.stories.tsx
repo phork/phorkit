@@ -4,6 +4,7 @@ import React from 'react';
 import { MoonIcon } from 'icons/internal/MoonIcon';
 import { SunIcon } from 'icons/internal/SunIcon';
 import { Rhythm } from 'components/Rhythm';
+import { StoryComponentDemo } from 'stories/helpers/StoryComponentDemo';
 import { Button } from '../Button';
 import { ButtonGroupProps, ButtonGroup } from '../ButtonGroup';
 import { IconButton } from '../IconButton';
@@ -86,6 +87,11 @@ export default {
         category: 'Appearance',
       },
     },
+    wrap: {
+      table: {
+        category: 'Appearance',
+      },
+    },
 
     selectedColor: {
       options: ['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white', undefined],
@@ -163,6 +169,26 @@ export default {
       },
     },
   },
+  decorators: [
+    (Story, { initialArgs: { buttons } }) => (
+      <StoryComponentDemo<ButtonGroupProps['buttons'], NonNullable<ButtonGroupProps['onClick']>>
+        eventHandlerName="onClick"
+        initialValue={buttons}
+        processValue={(selected, buttons) => {
+          return buttons
+            ? buttons.map(({ id, label }) => ({
+                id,
+                label,
+                selected: selected === id,
+              }))
+            : buttons;
+        }}
+        valuePropName="buttons"
+      >
+        {Story()}
+      </StoryComponentDemo>
+    ),
+  ],
   parameters: {
     controls: {
       sort: 'requiredFirst',
@@ -172,12 +198,9 @@ export default {
     },
     layout: 'centered',
   },
-} as ComponentMeta<(args: ButtonGroupProps & { selected?: boolean }) => ReturnType<typeof ButtonGroup>>;
+} as ComponentMeta<typeof ButtonGroup>;
 
-const Template: ComponentStory<(args: ButtonGroupProps & { selected?: boolean }) => ReturnType<typeof ButtonGroup>> = ({
-  children,
-  ...args
-}) => (
+const Template: ComponentStory<typeof ButtonGroup> = ({ children, ...args }) => (
   <ButtonGroup {...args} onClick={action('clicked')}>
     {children}
   </ButtonGroup>
@@ -200,6 +223,7 @@ const defaultArgs = {
   size: 'medium' as ButtonGroupProps['size'],
   spacing: 'joined' as ButtonGroupProps['spacing'],
   weight: 'outlined' as ButtonGroupProps['weight'],
+  wrap: false,
 };
 
 export const Default = Template.bind({});
@@ -437,6 +461,25 @@ FullWidth.args = {
   orientation: 'horizontal',
 };
 
+export const Wrapped = Template.bind({});
+Wrapped.args = {
+  ...defaultArgs,
+  buttons: [
+    { id: 'first', label: 'First' },
+    { id: 'second', label: 'Second', selected: true },
+    { id: 'third', label: 'Third' },
+    { id: 'fourth', label: 'Fourth' },
+    { id: 'fifth', label: 'Fifth' },
+    { id: 'sixth', label: 'Sixth' },
+    { id: 'seventh', label: 'Seventh' },
+  ],
+  orientation: 'horizontal',
+  spacing: 'cozy',
+  shape: 'brick',
+  style: { maxWidth: 400 },
+  wrap: true,
+};
+
 export const Children = Template.bind({});
 Children.storyName = 'Using Button children';
 Children.args = {
@@ -477,9 +520,9 @@ IconTextChildren.args = {
   spacing: 'joined',
 };
 
-export const IconChildren = Template.bind({});
-IconChildren.storyName = 'Using IconButton children';
-IconChildren.args = {
+export const IconButtonChildren = Template.bind({});
+IconButtonChildren.storyName = 'Using IconButton children';
+IconButtonChildren.args = {
   children: [
     <IconButton color="primary" key="sun" shape="square" weight="outlined">
       <SunIcon size={14} />
@@ -492,9 +535,9 @@ IconChildren.args = {
   spacing: 'joined',
 };
 
-export const Icons = Template.bind({});
-Icons.storyName = 'With custom labels';
-Icons.args = {
+export const CustomLabels = Template.bind({});
+CustomLabels.storyName = 'With custom labels';
+CustomLabels.args = {
   ...defaultArgs,
   buttons: [
     {

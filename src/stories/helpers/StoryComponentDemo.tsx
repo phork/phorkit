@@ -6,7 +6,7 @@ export type StoryComponentDemoProps<V> = React.HTMLAttributes<HTMLDivElement> & 
   eventHandlerName: string;
   initialValue?: V;
   /** Used to format the event handler value to that which will be set on the state */
-  processValue?: (v: any) => V | undefined;
+  processValue?: (newValue: any, currentValue: V | undefined) => V | undefined;
   /** The name of the value prop to pass to the child (eg. page, count, value) */
   valuePropName: string;
 };
@@ -29,9 +29,9 @@ export function StoryComponentDemo<V, E extends (...args: any[]) => void>({
     <div {...props}>
       {React.cloneElement(children, {
         [valuePropName]: value,
-        [eventHandlerName]: (event: E, value: V) => {
-          setValue(processValue ? processValue(value) : value);
-          children.props[eventHandlerName]?.(event, value);
+        [eventHandlerName]: (event: E, newValue: any) => {
+          setValue(processValue ? processValue(newValue, value) : newValue);
+          children.props[eventHandlerName]?.(event, newValue);
         },
       })}
     </div>

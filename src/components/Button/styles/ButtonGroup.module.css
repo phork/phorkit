@@ -1,15 +1,27 @@
 .buttonGroup {
   display: flex;
   flex: none;
+}
 
-  &.buttonGroup--horizontal {
-    align-items: center;
-    flex-direction: row;
-  }
+.buttonGroup--horizontal {
+  align-items: center;
+  flex-direction: row;
+}
 
-  &.buttonGroup--vertical {
-    flex-direction: column;
-  }
+.buttonGroup--vertical {
+  flex-direction: column;
+}
+
+/**
+ * 1. Using width: 100% can cause problems with the
+ *    negative margins, so flex is a better choice.
+ */
+.buttonGroup--fullWidth {
+  flex: 1;
+}
+
+.buttonGroup--wrap {
+  flex-wrap: wrap;
 }
 
 .buttonGroup--left {
@@ -42,14 +54,6 @@
   }
 }
 
-/**
- * 1. Using width: 100% can cause problems with the
- *    negative margins, so flex is a better choice.
- */
-.buttonGroup--fullWidth {
-  flex: 1;
-}
-
 .buttonGroup--cozy {
   &.buttonGroup--horizontal {
     margin-left: -6px;
@@ -58,6 +62,16 @@
     .buttonGroup__button {
       margin-left: 6px;
       margin-right: 6px;
+    }
+
+    &.buttonGroup--wrap {
+      margin-top: -4px;
+      margin-bottom: -4px;
+
+      .buttonGroup__button {
+        margin-top: 4px;
+        margin-bottom: 4px;
+      }
     }
   }
 
@@ -80,6 +94,16 @@
     .buttonGroup__button {
       margin-left: 12px;
       margin-right: 12px;
+    }
+
+    &.buttonGroup--wrap {
+      margin-top: -8px;
+      margin-bottom: -8px;
+
+      .buttonGroup__button {
+        margin-top: 8px;
+        margin-bottom: 8px;
+      }
     }
   }
 
