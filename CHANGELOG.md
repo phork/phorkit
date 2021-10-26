@@ -1,5 +1,18 @@
 # Changelog
 
+# [10.2.0](https://github.com/phork/phorkit/compare/v10.1.0...v10.2.0) (2021-10-26)
+
+### ✨ Features
+
+- added ButtonGroup wrap prop ([1cc7353](https://github.com/phork/phorkit/commit/1cc7353))
+- allow unlabeled CheckboxGroup, RadioGroup ([bbc2f1f](https://github.com/phork/phorkit/commit/bbc2f1f))
+
+### 🐛 Bug Fixes
+
+- allow for partial translations ([b529fef](https://github.com/phork/phorkit/commit/b529fef))
+- apply CheckboxGroup, RadioGroup styles to fieldset ([37cf6bc](https://github.com/phork/phorkit/commit/37cf6bc))
+- apply Formbox style prop ([10430f9](https://github.com/phork/phorkit/commit/10430f9))
+
 # [10.1.0](https://github.com/phork/phorkit/compare/v10.0.0...v10.1.0) (2021-10-22)
 
 ### ✨ Features
