@@ -1,7 +1,6 @@
 import { Meta } from '@storybook/addon-docs';
-import { Flex } from 'components/Flex/Flex';
-import { Typography } from 'components/Typography/Typography';
-import pkg from '../../package.json';
+import { Rhythm } from 'components/Rhythm';
+import { Introduction } from 'stories/helpers/Introduction';
 
 <Meta
   parameters={{
@@ -13,12 +12,9 @@ import pkg from '../../package.json';
   title="Introduction"
 />
 
-<Flex wrap alignItems="flex-end" justifyContent="space-between" style={{ color: '#707075', marginBottom: 24 }}>
-  <Typography as="h1" heading="h1" style={{ fontSize: 48, margin: 0 }} weight="lighter">
-    Phork/it
-  </Typography>
-  <Typography as="h5" heading="h5" style={{ margin: '24px 0 0' }} volume="quiet">{`Version ${pkg.version}`}</Typography>
-</Flex>
+<Rhythm grouped mb={14} mt={12}>
+  <Introduction />
+</Rhythm>
 
 ## Introduction
 

@@ -6,22 +6,11 @@ route: /
 import { Divider } from 'components/Divider';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
-import { Version } from './helpers/Version';
+import { Introduction } from './helpers/Introduction';
 
-<div
-  style={{
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
-  }}
->
-  <h1>Phork/it</h1>
-  <h3>
-    Version <Version />
-  </h3>
-</div>
+<Rhythm grouped mb={14} mt={12}>
+  <Introduction />
+</Rhythm>
 
 <Typography size="6xlarge" weight="light">
   Introduction
