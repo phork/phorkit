@@ -10,6 +10,8 @@ export { EyeSlashIcon } from './EyeSlashIcon';
 export { EyeIcon } from './EyeIcon';
 export { MinusIcon } from './MinusIcon';
 export { PencilSlashIcon } from './PencilSlashIcon';
+export { PhorkIcon } from './PhorkIcon';
+export { PhorkitIcon } from './PhorkitIcon';
 export { PinIcon } from './PinIcon';
 export { PlusIcon } from './PlusIcon';
 export { SearchIcon } from './SearchIcon';

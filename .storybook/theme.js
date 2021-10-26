@@ -1,7 +1,7 @@
 import { themes } from '../src/config/themes';
 
 export const getCustomTheme = themeId => ({
-  // brandImage: '',
+  brandImage: `/images/phorkit-${themeId}.svg`,
   brandTitle: 'Phork/it',
   brandUrl: 'https://phorkit.org',
 
