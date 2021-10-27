@@ -30,8 +30,12 @@ export default {
         category: 'Appearance',
       },
     },
-
     variant: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    wrap: {
       table: {
         category: 'Appearance',
       },
@@ -109,6 +113,7 @@ const defaultArgs = {
   size: 'medium' as CheckboxGroupProps['size'],
   values: ['one'],
   variant: 'primary' as CheckboxGroupProps['variant'],
+  wrap: false,
 };
 
 export const Default = Template.bind({});

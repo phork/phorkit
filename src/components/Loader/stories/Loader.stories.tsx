@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { Flex } from 'components/Flex';
 import { Typography } from 'components/Typography';
-import { Loader } from '../Loader';
+import { Loader, LoaderProps } from '../Loader';
 import LoaderDocumentation from './Loader.docs.mdx';
 
 export default {
@@ -82,6 +82,8 @@ const Template: ComponentStory<typeof Loader> = args => <Loader {...args} />;
 
 const defaultArgs = {
   contrast: false,
+  position: 'relative' as LoaderProps['position'],
+  size: 60,
   unthemed: false,
 };
 

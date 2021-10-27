@@ -12,6 +12,40 @@ export default {
       control: {
         type: 'text',
       },
+      table: {
+        category: 'Appearance',
+      },
+    },
+    immediate: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    level: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    permanent: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    scrollable: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    scrollbar: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+
+    onClose: {
+      table: {
+        category: 'Actions',
+      },
     },
 
     className: {

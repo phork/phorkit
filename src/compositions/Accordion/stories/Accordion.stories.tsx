@@ -9,7 +9,7 @@ export default {
   title: 'Surfaces/Accordion',
   component: Accordion,
   argTypes: {
-    horizontal: {
+    orientation: {
       table: {
         category: 'Appearance',
       },

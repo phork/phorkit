@@ -29,15 +29,16 @@ export type LocalToastProps = Omit<ThemeProps, 'contrast'> & {
   className?: string;
   /** The context ID is used by both the toast system and the aria-label system */
   contextId?: string;
-  /** The value of Date.now() when the toast was created used to render the countdown bar */
+  /** The value of `Date.now()` when the toast was created */
   created?: number;
   /** The number of milliseconds before the toast is removed */
   duration?: number;
-  /** The immediate flag remove the entry animation */
+  /** The immediate flag removes the entry animation */
   immediate?: boolean;
   level?: ToastNotificationLevel;
   onClose?: (event?: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, id?: string) => void;
   onPin?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, id?: string) => void;
+  /** Permanent toasts don't have a close button */
   permanent?: boolean;
   style?: React.CSSProperties;
   translations?: Partial<ToastTranslations>;

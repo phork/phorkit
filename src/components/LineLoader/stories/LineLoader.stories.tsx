@@ -23,6 +23,7 @@ export default {
       },
     },
     position: {
+      options: ['top', 'bottom', undefined],
       control: {
         type: 'radio',
       },

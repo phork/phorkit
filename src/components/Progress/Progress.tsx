@@ -31,6 +31,7 @@ export type ProgressProps = MergeProps<
       /** Whether the edges of the bar and the segments should be rounded */
       rounded?: boolean;
       size?: 'small' | 'medium' | 'large';
+      /** To separate the segments in a multi-segment progress bar */
       spaced?: boolean;
       style?: React.CSSProperties;
       volume?: Volume;

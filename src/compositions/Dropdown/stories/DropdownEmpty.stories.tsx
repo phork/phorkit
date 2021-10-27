@@ -13,6 +13,20 @@ export default {
       control: {
         type: 'text',
       },
+      table: {
+        category: 'Appearance',
+      },
+    },
+    filter: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    layout: {
+      options: ['raised', 'contained', undefined],
+      table: {
+        category: 'Appearance',
+      },
     },
 
     className: {
@@ -73,15 +87,21 @@ Default.args = {
   ...defaultArgs,
 };
 
+export const Filtered = Template.bind({});
+Filtered.args = {
+  ...defaultArgs,
+  filter: 'Yellow',
+};
+
 export const StringNotification = Template.bind({});
-StringNotification.storyName = 'String children';
+StringNotification.storyName = 'Children as string';
 StringNotification.args = {
   ...defaultArgs,
   children: 'This is a string notification',
 };
 
 export const ComponentNotification = Template.bind({});
-ComponentNotification.storyName = 'Component children';
+ComponentNotification.storyName = 'Children as component';
 ComponentNotification.args = {
   ...defaultArgs,
   children: <ListProps />,
@@ -89,7 +109,7 @@ ComponentNotification.args = {
 };
 
 export const FunctionNotification = Template.bind({});
-FunctionNotification.storyName = 'Function children';
+FunctionNotification.storyName = 'Children as function';
 FunctionNotification.args = {
   ...defaultArgs,
   children: ({ filter }) => <React.Fragment>{`This is a functional notification passed "${filter}"`}</React.Fragment>,
