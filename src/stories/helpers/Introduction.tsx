@@ -13,7 +13,13 @@ export function Introduction(props: FlexProps): React.ReactElement {
 
   return (
     <Flex wrap alignItems="flex-end" justifyContent="space-between" {...props}>
-      <img alt="phork/it by phork.works" height="100" src={`images/phorkit-credits-${themeId}.svg`} width="500" />
+      <img
+        alt="phork/it by phork.works"
+        height="100"
+        src={`images/phorkit-credits-${themeId}.svg`}
+        style={{ marginBottom: '12px', maxWidth: 'calc(100% - 20px' }}
+        width="500"
+      />
       <Flex alignItems="center" direction="row">
         {repository && (
           <IconButton<'a'>

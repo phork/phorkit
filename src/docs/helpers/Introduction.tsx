@@ -17,6 +17,7 @@ export function Introduction(props: FlexProps): React.ReactElement {
         alt="phork/it by phork.works"
         height="100"
         src={`/public/images/phorkit-credits-${themeId}.svg`}
+        style={{ marginBottom: '12px', maxWidth: 'calc(100% - 20px' }}
         width="500"
       />
       <Flex alignItems="center" direction="row">
