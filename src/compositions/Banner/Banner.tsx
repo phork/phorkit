@@ -27,10 +27,11 @@ export interface BannerProps
   className?: string;
   /** The context ID is used by the banner system */
   contextId?: string;
-  /** The immediate flag remove the entry animation */
+  /** The immediate flag removes the entry animation */
   immediate?: boolean;
   level: StateColor | SequentialVariant | 'info' | 'contrast' | 'transparent';
   onClose?: (event?: React.MouseEvent | React.KeyboardEvent | React.TouchEvent, contextId?: string) => void;
+  /** Permanent banners don't have a close button */
   permanent?: boolean;
   style?: React.CSSProperties;
   translations?: Partial<BannerTranslations>;

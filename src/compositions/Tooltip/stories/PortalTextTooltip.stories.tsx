@@ -42,6 +42,11 @@ export default {
         category: 'Appearance',
       },
     },
+    portal: {
+      table: {
+        category: 'Appearance',
+      },
+    },
     position: {
       table: {
         category: 'Appearance',
@@ -80,6 +85,11 @@ export default {
     },
 
     closeDelay: {
+      table: {
+        category: 'Interaction',
+      },
+    },
+    container: {
       table: {
         category: 'Interaction',
       },
@@ -230,6 +240,7 @@ const defaultArgs = {
   layout: 'vertical' as PortalTextTooltipProps['layout'],
   observe: false,
   permanent: false,
+  portal: 'absolute' as PortalTextTooltipProps['portal'],
   position: 'top-center' as PortalTextTooltipProps['position'],
   scrollable: false,
   toggler: (

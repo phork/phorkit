@@ -29,6 +29,7 @@ export default {
       },
     },
     validity: {
+      options: ['danger', undefined],
       table: {
         category: 'Appearance',
       },

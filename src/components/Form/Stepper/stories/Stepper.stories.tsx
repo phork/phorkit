@@ -188,6 +188,16 @@ export default {
         category: 'Uncommon',
       },
     },
+    iconAfterClassName: {
+      table: {
+        category: 'Uncommon',
+      },
+    },
+    iconBeforeClassName: {
+      table: {
+        category: 'Uncommon',
+      },
+    },
     inputClassName: {
       table: {
         category: 'Uncommon',

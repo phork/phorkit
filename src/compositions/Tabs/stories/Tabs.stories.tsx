@@ -178,6 +178,7 @@ const defaultArgs = {
   orientation: 'horizontal' as TabsProps['orientation'],
   selectOnFocus: false,
   unstyled: false,
+  variant: 'primary' as TabsProps['variant'],
 };
 
 export const Default = Template.bind({});

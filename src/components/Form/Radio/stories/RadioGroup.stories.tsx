@@ -30,8 +30,12 @@ export default {
         category: 'Appearance',
       },
     },
-
     variant: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    wrap: {
       table: {
         category: 'Appearance',
       },
@@ -48,6 +52,9 @@ export default {
       },
     },
     value: {
+      control: {
+        type: 'text',
+      },
       table: {
         category: 'Input',
       },
@@ -114,6 +121,7 @@ const defaultArgs = {
   size: 'medium' as RadioGroupProps['size'],
   value: 'one',
   variant: 'primary' as RadioGroupProps['variant'],
+  wrap: false,
 };
 
 export const Default = Template.bind({});

@@ -19,7 +19,22 @@ export default {
         category: 'Appearance',
       },
     },
+    active: {
+      table: {
+        category: 'Appearance',
+      },
+    },
     avatar: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    focused: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    hovered: {
       table: {
         category: 'Appearance',
       },
@@ -121,8 +136,11 @@ const Template: ComponentStory<typeof Chip> = args => <Chip {...args} />;
 
 const defaultArgs = {
   actionable: false,
+  active: false,
   avatar: { initials: 'EC', color: 'primary' as AvatarProps['color'], imgSrc: '/images/avatar.jpg' },
   contrast: false,
+  focused: false,
+  hovered: false,
   icon: (
     <Rhythm mr={2}>
       <CheckIcon scale="medium" />
