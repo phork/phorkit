@@ -25,6 +25,8 @@ export default function DocsWrapper({ children }: DocsWrapperProps): React.React
           <link href="/public/favicon/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
           <link href="/public/favicon/site.webmanifest" rel="manifest" />
           <link color="#0060ce" href="/public/favicon/safari-pinned-tab.svg" rel="mask-icon" />
+          <link href="/public/favicon/favicon.ico" rel="shortcut icon" />
+          <meta content="/public/favicon/browserconfig.xml" name="msapplication-config" />
           <meta content="#0060ce" name="msapplication-TileColor" />
           <meta content="#fff" name="theme-color" />
           <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet" />
