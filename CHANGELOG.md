@@ -1,5 +1,11 @@
 # Changelog
 
+## [10.2.1](https://github.com/phork/phorkit/compare/v10.2.0...v10.2.1) (2021-10-28)
+
+### 🐛 Bug Fixes
+
+- fixed the return type for the SizeProvider ([d5c78c2](https://github.com/phork/phorkit/commit/d5c78c2))
+
 # [10.2.0](https://github.com/phork/phorkit/compare/v10.1.0...v10.2.0) (2021-10-26)
 
 ### ✨ Features
