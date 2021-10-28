@@ -3,7 +3,7 @@ import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } fro
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { SpinnerIcon } from 'icons/SpinnerIcon';
-import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { CheckIcon } from 'icons/internal/CheckIcon';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledIconTextButton, StyledIconTextButtonProps } from '../StyledIconTextButton';
 import buttonStory from './StyledButton.stories';
@@ -23,9 +23,9 @@ export default {
       options: ['small', 'medium', 'large'],
       control: {
         labels: {
-          small: '<BlobbrIcon scale="small" />',
-          medium: '<BlobbrIcon scale="medium" />',
-          large: '<BlobbrIcon scale="large" />',
+          small: '<CheckIcon scale="small" />',
+          medium: '<CheckIcon scale="medium" />',
+          large: '<CheckIcon scale="large" />',
         },
       },
       table: {
@@ -64,7 +64,7 @@ const Template: ComponentStory<
 > = ({ children, icon = 'medium', size, ...args }) => (
   <StyledIconTextButton
     {...args}
-    icon={<BlobbrIcon scale={icon} />}
+    icon={<CheckIcon scale={icon} />}
     loader={<SpinnerIcon scale={icon} />}
     onClick={action('clicked')}
     size={size}

@@ -1,7 +1,7 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { PhorkIcon } from 'icons/PhorkIcon';
 import { Avatar } from 'components/Avatar';
 import { Divider } from 'components/Divider';
 import { Paper } from 'components/Paper';
@@ -42,7 +42,7 @@ export default {
       options: ['icon', 'avatar'],
       control: {
         labels: {
-          icon: '<BlobbrIcon scale="large" />',
+          icon: '<PhorkIcon scale="large" />',
           avatar: '<Avatar initials="EC" />',
         },
       },
@@ -132,7 +132,7 @@ const Template: ComponentStory<
       icon === 'avatar' ? (
         <Avatar imgSrc="/images/avatar.jpg" initials="EC" size="large" />
       ) : (
-        <BlobbrIcon scale="large" />
+        <PhorkIcon scale="large" />
       )
     }
     iconShape={icon === 'avatar' ? 'circle' : iconShape}

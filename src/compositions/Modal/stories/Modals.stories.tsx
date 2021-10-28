@@ -2,7 +2,7 @@ import { actions } from '@storybook/addon-actions';
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { HeartIcon } from 'icons/internal/HeartIcon';
 import { Button } from 'components/Button';
 import { ButtonGroup } from 'components/Button/ButtonGroup';
 import { Flex } from 'components/Flex';
@@ -207,7 +207,7 @@ const Template: ComponentStory<typeof Modals> = args => (
                                                       <ModalHeader modalId={id}>
                                                         <IconText
                                                           inline
-                                                          icon={<BlobbrIcon scale="medium" />}
+                                                          icon={<HeartIcon scale="medium" />}
                                                           text={
                                                             <Rhythm ml={2}>
                                                               <Typography size="large">Hello world</Typography>

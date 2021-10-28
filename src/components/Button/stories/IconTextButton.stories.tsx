@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { SpinnerIcon } from 'icons/SpinnerIcon';
-import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { CheckIcon } from 'icons/internal/CheckIcon';
 import { IconTextButtonProps, IconTextButton } from '../IconTextButton';
 import buttonStory from './Button.stories';
 import IconTextButtonDocumentation from './IconTextButton.docs.mdx';
@@ -22,9 +22,9 @@ export default {
       options: ['small', 'medium', 'large'],
       control: {
         labels: {
-          small: '<BlobbrIcon scale="small" />',
-          medium: '<BlobbrIcon scale="medium" />',
-          large: '<BlobbrIcon scale="large" />',
+          small: '<CheckIcon scale="small" />',
+          medium: '<CheckIcon scale="medium" />',
+          large: '<CheckIcon scale="large" />',
         },
       },
       table: {
@@ -55,7 +55,7 @@ const Template: ComponentStory<
   <IconTextButton<'button'>
     {...args}
     as="button"
-    icon={<BlobbrIcon scale={icon} />}
+    icon={<CheckIcon scale={icon} />}
     loader={<SpinnerIcon scale={icon} />}
     onClick={action('clicked')}
     size={size}
@@ -259,7 +259,7 @@ export const Link = ({
   icon = 'medium',
   ...args
 }: Omit<IconTextButtonProps<'a'>, 'icon'> & { icon: 'small' | 'medium' | 'large' }) => (
-  <IconTextButton<'a'> {...args} icon={<BlobbrIcon scale={icon} />} />
+  <IconTextButton<'a'> {...args} icon={<CheckIcon scale={icon} />} />
 );
 Link.args = {
   ...defaultArgs,
@@ -277,7 +277,7 @@ export const Imitation = ({
   icon = 'medium',
   ...args
 }: Omit<IconTextButtonProps<'div'>, 'icon'> & { icon: 'small' | 'medium' | 'large' }) => (
-  <IconTextButton<'div'> {...args} icon={<BlobbrIcon scale={icon} />} />
+  <IconTextButton<'div'> {...args} icon={<CheckIcon scale={icon} />} />
 );
 Imitation.args = {
   ...defaultArgs,

@@ -1,7 +1,7 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { ArrowUpDownIcon } from 'icons/ArrowUpDownIcon';
 import { IconButton } from 'components/Button/IconButton';
 import { LinkContainer } from 'components/Link/LinkContainer';
 import { Rhythm } from 'components/Rhythm/Rhythm';
@@ -234,7 +234,7 @@ const defaultArgs = {
   scrollable: false,
   toggler: (
     <Typography color="primary">
-      <BlobbrIcon scale="3xlarge" />
+      <ArrowUpDownIcon scale="xlarge" />
     </Typography>
   ),
   uncentered: false,
@@ -319,9 +319,9 @@ OnIcon.args = {
   children: 'Tiny little portal tooltip. Hardly bigger than an acorn.',
   hoverable: false,
   toggler: (
-    <Rhythm mx={1} style={{ top: '3px' }}>
+    <Rhythm mx={1}>
       <IconButton color="primary">
-        <BlobbrIcon scale="medium" />
+        <ArrowUpDownIcon scale="medium" />
       </IconButton>
     </Rhythm>
   ),

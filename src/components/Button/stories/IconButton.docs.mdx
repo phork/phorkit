@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ucfirst } from 'utils';
 import { SpinnerIcon } from 'icons/SpinnerIcon';
-import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { CheckIcon } from 'icons/internal/CheckIcon';
 import { Flex } from 'components/Flex';
 import { Looper } from 'components/Looper';
 import { Rhythm } from 'components/Rhythm';
@@ -38,7 +38,7 @@ import { IconButton } from '../IconButton';
 
 <Canvas contrast>
   <IconButton contrast shape="circle" weight="solid">
-    <BlobbrIcon scale="medium" />
+    <CheckIcon scale="medium" />
   </IconButton>
 </Canvas>
 
@@ -56,7 +56,7 @@ import { IconButton } from '../IconButton';
               render={color => (
                 <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
                   <IconButton color={color} onClick={() => action(color)} weight={weight}>
-                    <BlobbrIcon scale="medium" />
+                    <CheckIcon scale="medium" />
                   </IconButton>
                 </Rhythm>
               )}
@@ -75,7 +75,7 @@ import { IconButton } from '../IconButton';
                     onClick={() => action(color)}
                     weight={weight}
                   >
-                    <BlobbrIcon scale="medium" />
+                    <CheckIcon scale="medium" />
                   </IconButton>
                 </Rhythm>
               )}
@@ -99,7 +99,7 @@ import { IconButton } from '../IconButton';
               render={color => (
                 <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
                   <IconButton color={color} onClick={() => action(color)} shape="square" weight={weight}>
-                    <BlobbrIcon scale="medium" />
+                    <CheckIcon scale="medium" />
                   </IconButton>
                 </Rhythm>
               )}
@@ -119,7 +119,7 @@ import { IconButton } from '../IconButton';
                     shape="square"
                     weight={weight}
                   >
-                    <BlobbrIcon scale="medium" />
+                    <CheckIcon scale="medium" />
                   </IconButton>
                 </Rhythm>
               )}
@@ -139,7 +139,7 @@ import { IconButton } from '../IconButton';
         render={color => (
           <Rhythm key={color} m={2}>
             <IconButton color={color} onClick={() => action(color)} shape="square" weight="inline">
-              <BlobbrIcon scale="xlarge" />
+              <CheckIcon scale="xlarge" />
             </IconButton>
           </Rhythm>
         )}
@@ -159,7 +159,7 @@ import { IconButton } from '../IconButton';
               shape="square"
               weight="inline"
             >
-              <BlobbrIcon scale="xlarge" />
+              <CheckIcon scale="xlarge" />
             </IconButton>
           </Rhythm>
         )}
@@ -176,7 +176,7 @@ import { IconButton } from '../IconButton';
         render={weight => (
           <Rhythm key={weight} m={2}>
             <IconButton contrast weight={weight}>
-              <BlobbrIcon scale="medium" />
+              <CheckIcon scale="medium" />
             </IconButton>
           </Rhythm>
         )}
@@ -188,7 +188,7 @@ import { IconButton } from '../IconButton';
         render={weight => (
           <Rhythm key={weight} m={2}>
             <IconButton contrast loading key={weight} loader={<SpinnerIcon scale="medium" />} weight={weight}>
-              <BlobbrIcon scale="xlarge" />
+              <CheckIcon scale="xlarge" />
             </IconButton>
           </Rhythm>
         )}

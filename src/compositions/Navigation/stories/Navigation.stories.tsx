@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { PhorkIcon } from 'icons/PhorkIcon';
 import { InteractiveGroupSelectEventHandlerProps } from 'components/InteractiveGroup/types';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
@@ -214,26 +214,26 @@ IconNavigation.args = {
   items: [
     {
       id: 'first',
-      label: <BlobbrIcon size={16} />,
+      label: <PhorkIcon size={24} />,
       flush: true,
       style: { padding: '8px', marginBottom: '4px' },
     },
     {
       id: 'second',
-      label: <BlobbrIcon size={16} />,
+      label: <PhorkIcon size={24} />,
       flush: true,
       style: { padding: '8px', marginBottom: '4px' },
     },
     {
       id: 'third',
-      label: <BlobbrIcon size={16} />,
+      label: <PhorkIcon size={24} />,
       flush: true,
       style: { padding: '8px', marginBottom: '4px' },
       disabled: true,
     },
     {
       id: 'fourth',
-      label: <BlobbrIcon size={16} />,
+      label: <PhorkIcon size={24} />,
       flush: true,
       style: { padding: '8px' },
     },

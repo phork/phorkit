@@ -6,9 +6,9 @@ route: /playground
 import { cx } from '@emotion/css';
 import { Playground } from 'docz';
 import { ArrowDownIcon } from 'icons/ArrowDownIcon';
+import { PhorkIcon } from 'icons/PhorkIcon';
 import { SearchIcon } from 'icons/SearchIcon';
 import { TimesIcon } from 'icons/TimesIcon';
-import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { CheckIcon } from 'icons/internal/CheckIcon';
 import { HeartIcon } from 'icons/internal/HeartIcon';
 import { HelpIcon } from 'icons/internal/HelpIcon';
@@ -131,7 +131,7 @@ import {
           closeDelay={0}
           offset={{ vertical: 10 }}
           position="top-center"
-          toggler={<BlobbrIcon scale="xlarge" title="" />}
+          toggler={<PhorkIcon scale="xlarge" title="" />}
         >
           <Card full raised>
             <Rhythm px={3} py={1}>
@@ -361,7 +361,7 @@ import {
       <Flex alignItems="center" direction="row">
         <Shade color="success" style={{ borderRadius: 4, width: 60, height: 60 }}>
           <Flex full alignItems="center" justifyContent="center">
-            <BlobbrIcon scale="2xlarge" />
+            <PhorkIcon scale="2xlarge" />
           </Flex>
         </Shade>
         <Rhythm ml={6}>
@@ -481,7 +481,7 @@ import {
         permanent
         height={200}
         position="right-center"
-        toggler={<BlobbrIcon size={40} />}
+        toggler={<Avatar imgSrc="/public/images/avatar.jpg" initials="EC" />}
         triangleBorderColor={themes[themeId]['secondary-palette-border-color']}
         triangleColor={themes[themeId]['secondary-palette-background-color']}
         width={300}
@@ -898,7 +898,7 @@ import {
                 <IconCount count={13} icon={CheckIcon} label="Example" />
                 <IconCount count={24} icon={TimesIcon} iconSize={10} label="Example" />
                 <IconCount count={9} icon={HeartIcon} iconSize={15} label="Example" />
-                <IconCount icon={BlobbrIcon} label="Example" />
+                <IconCount icon={SearchIcon} iconSize={13} label="Example" />
               </Flex>
             </Rhythm>
           </Footer>
@@ -975,12 +975,12 @@ import {
             initialSelected={['check']}
             items={[
               {
-                id: 'blobbr',
-                label: <BlobbrIcon style={{ display: 'block' }} />,
+                id: 'heart',
+                label: <HeartIcon style={{ display: 'block' }} />,
                 content: (
                   <React.Fragment>
                     <img
-                      alt="Blobbr panel"
+                      alt="Heart panel"
                       src="/public/images/avatar.jpg"
                       style={{
                         opacity: 0.1,
@@ -1067,7 +1067,15 @@ import {
                 content: (
                   <Rhythm px={5} py={2}>
                     <Paper flexible color="secondary">
-                      <Looper end={10} render={i => <div key={i}>This tab is using flexible paper.</div>} start={0} />
+                      <Looper
+                        end={10}
+                        render={i => (
+                          <Rhythm key={i} my={1}>
+                            This tab is using flexible paper.
+                          </Rhythm>
+                        )}
+                        start={0}
+                      />
                     </Paper>
                   </Rhythm>
                 ),
@@ -1147,7 +1155,7 @@ import {
           <BannerContainer>
             <Banner immediate level="info">
               <IconText
-                icon={<BlobbrIcon size={18} />}
+                icon={<CheckIcon size={18} />}
                 text={
                   <Rhythm ml={3} wrapper="span">
                     This is a simple info banner because something happened. Cool.
@@ -1157,7 +1165,7 @@ import {
             </Banner>
             <Banner immediate level="success">
               <IconText
-                icon={<BlobbrIcon size={18} />}
+                icon={<CheckIcon size={18} />}
                 text={
                   <Rhythm ml={3} wrapper="span">
                     This is a simple success banner because something was successful. Yay.

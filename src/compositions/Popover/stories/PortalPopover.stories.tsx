@@ -2,7 +2,7 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { ArrowUpDownIcon } from 'icons/ArrowUpDownIcon';
 import { Button } from 'components/Button';
 import { Card } from 'components/Card';
 import { Paper } from 'components/Paper';
@@ -246,7 +246,7 @@ const defaultArgs = {
   portal: 'absolute' as PortalPopoverProps['portal'],
   toggler: (
     <Typography color="primary">
-      <BlobbrIcon scale="3xlarge" />
+      <ArrowUpDownIcon scale="xlarge" />
     </Typography>
   ),
   width: 300,
@@ -361,7 +361,7 @@ export const AbsolutePortal = Template.bind({});
 AbsolutePortal.storyName = 'Portal: Absolute';
 AbsolutePortal.args = {
   ...defaultArgs,
-  offset: { vertical: 8 },
+  offset: { horizontal: 8 },
   portal: 'absolute',
   position: 'right-center',
 };
@@ -370,7 +370,7 @@ export const FixedPortal = Template.bind({});
 FixedPortal.storyName = 'Portal: Fixed';
 FixedPortal.args = {
   ...defaultArgs,
-  offset: { vertical: 8 },
+  offset: { horizontal: 8 },
   portal: 'fixed',
   position: 'right-center',
 };

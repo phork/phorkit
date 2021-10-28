@@ -8,7 +8,7 @@ import { Playground, Props } from 'docz';
 import { ucfirst } from 'utils';
 import { SpinnerIcon } from 'icons/SpinnerIcon';
 import { TimesIcon } from 'icons/TimesIcon';
-import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { CheckIcon } from 'icons/internal/CheckIcon';
 import { Flex } from 'components/Flex';
 import { Looper } from 'components/Looper';
 import { Rhythm } from 'components/Rhythm';
@@ -42,7 +42,7 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
                           <Rhythm key={`${size}-${shape}-${loading}-${weight}`} m={2} mb={0}>
                             <IconTextButton
                               color="primary"
-                              icon={<BlobbrIcon scale={size} />}
+                              icon={<CheckIcon scale={size} />}
                               loader={<SpinnerIcon scale={size} />}
                               loaderReplaceIcon={loading === 'loaderReplaceIcon'}
                               loading={['loading', 'loaderReplaceIcon'].includes(loading)}
@@ -79,7 +79,7 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
           <Rhythm m={2}>
             <IconTextButton
               color="primary"
-              icon={<BlobbrIcon scale="small" />}
+              icon={<CheckIcon scale="small" />}
               loader={<SpinnerIcon scale="small" />}
               loaderReplaceIcon={loading === 'loaderReplaceIcon'}
               loading={['loading', 'loaderReplaceIcon'].includes(loading)}
@@ -91,7 +91,7 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
             </IconTextButton>
             <IconTextButton
               color="primary"
-              icon={<BlobbrIcon scale="medium" />}
+              icon={<CheckIcon scale="medium" />}
               loader={<SpinnerIcon scale="medium" />}
               loading={loading}
               onClick={() => console.log('medium')}
@@ -102,7 +102,7 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
             </IconTextButton>
             <IconTextButton
               color="primary"
-              icon={<BlobbrIcon scale="large" />}
+              icon={<CheckIcon scale="large" />}
               loader={<SpinnerIcon scale="large" />}
               loaderReplaceIcon={loading === 'loaderReplaceIcon'}
               loading={['loading', 'loaderReplaceIcon'].includes(loading)}
@@ -114,7 +114,7 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
             </IconTextButton>
             <IconTextButton
               color="primary"
-              icon={<BlobbrIcon scale="large" />}
+              icon={<CheckIcon scale="large" />}
               loader={<SpinnerIcon scale="large" />}
               loaderReplaceIcon={loading === 'loaderReplaceIcon'}
               loading={['loading', 'loaderReplaceIcon'].includes(loading)}
@@ -255,7 +255,7 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
               <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
                 <IconTextButton
                   color={color}
-                  icon={<BlobbrIcon scale="medium" />}
+                  icon={<CheckIcon scale="medium" />}
                   onClick={() => console.log(color)}
                   weight={weight}
                 >
@@ -272,7 +272,7 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
                 <IconTextButton
                   loading
                   color={color}
-                  icon={<BlobbrIcon scale="medium" />}
+                  icon={<CheckIcon scale="medium" />}
                   loader={<SpinnerIcon scale="medium" />}
                   onClick={() => console.log(color)}
                   weight={weight}
@@ -302,7 +302,7 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
               <Rhythm key={`buttonColor-${weight}-${color}`} mx={2} my={1}>
                 <IconTextButton
                   color={color}
-                  icon={<BlobbrIcon scale="medium" />}
+                  icon={<CheckIcon scale="medium" />}
                   onClick={() => console.log(color)}
                   shape="brick"
                   weight={weight}
@@ -320,7 +320,7 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
                 <IconTextButton
                   loading
                   color={color}
-                  icon={<BlobbrIcon scale="medium" />}
+                  icon={<CheckIcon scale="medium" />}
                   loader={<SpinnerIcon scale="medium" />}
                   onClick={() => console.log(color)}
                   shape="brick"
@@ -347,7 +347,7 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
         <Rhythm key={color} m={2}>
           <IconTextButton
             color={color}
-            icon={<BlobbrIcon scale="medium" />}
+            icon={<CheckIcon scale="medium" />}
             onClick={() => console.log(color)}
             shape="brick"
             weight="inline"
@@ -365,7 +365,7 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
           <IconTextButton
             loading
             color={color}
-            icon={<BlobbrIcon scale="medium" />}
+            icon={<CheckIcon scale="medium" />}
             loader={<SpinnerIcon scale="medium" />}
             onClick={() => console.log(color)}
             shape="brick"
@@ -386,31 +386,31 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
 <Playground>
   <ThemeWrapper contrast>
     <Rhythm m={2}>
-      <IconTextButton contrast icon={<BlobbrIcon scale="medium" />} weight="solid">
+      <IconTextButton contrast icon={<CheckIcon scale="medium" />} weight="solid">
         Pill solid
       </IconTextButton>
-      <IconTextButton contrast icon={<BlobbrIcon scale="medium" />} weight="shaded">
+      <IconTextButton contrast icon={<CheckIcon scale="medium" />} weight="shaded">
         Pill shaded
       </IconTextButton>
-      <IconTextButton contrast icon={<BlobbrIcon scale="medium" />} weight="outlined">
+      <IconTextButton contrast icon={<CheckIcon scale="medium" />} weight="outlined">
         Pill outlined
       </IconTextButton>
-      <IconTextButton contrast icon={<BlobbrIcon scale="medium" />} weight="ghost">
+      <IconTextButton contrast icon={<CheckIcon scale="medium" />} weight="ghost">
         Pill ghost
       </IconTextButton>
-      <IconTextButton contrast icon={<BlobbrIcon scale="medium" />} weight="inline">
+      <IconTextButton contrast icon={<CheckIcon scale="medium" />} weight="inline">
         Pill inline
       </IconTextButton>
     </Rhythm>
     <br />
     <Rhythm m={2}>
-      <IconTextButton contrast loading icon={<BlobbrIcon scale="medium" />} loader={<SpinnerIcon scale="medium" />}>
+      <IconTextButton contrast loading icon={<CheckIcon scale="medium" />} loader={<SpinnerIcon scale="medium" />}>
         Pill solid
       </IconTextButton>
       <IconTextButton
         contrast
         loading
-        icon={<BlobbrIcon scale="medium" />}
+        icon={<CheckIcon scale="medium" />}
         loader={<SpinnerIcon scale="medium" />}
         weight="shaded"
       >
@@ -419,7 +419,7 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
       <IconTextButton
         contrast
         loading
-        icon={<BlobbrIcon scale="medium" />}
+        icon={<CheckIcon scale="medium" />}
         loader={<SpinnerIcon scale="medium" />}
         weight="outlined"
       >
@@ -428,7 +428,7 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
       <IconTextButton
         contrast
         loading
-        icon={<BlobbrIcon scale="medium" />}
+        icon={<CheckIcon scale="medium" />}
         loader={<SpinnerIcon scale="medium" />}
         weight="ghost"
       >
@@ -437,7 +437,7 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
       <IconTextButton
         contrast
         loading
-        icon={<BlobbrIcon scale="medium" />}
+        icon={<CheckIcon scale="medium" />}
         loader={<SpinnerIcon scale="medium" />}
         weight="inline"
       >
@@ -460,19 +460,19 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
               <Flex direction="column">
                 <Flex wrap durection="row">
                   <Rhythm mx={2} my={1}>
-                    <ColoredIconTextButton colorId={id} icon={<BlobbrIcon scale="medium" />} weight="solid">
+                    <ColoredIconTextButton colorId={id} icon={<CheckIcon scale="medium" />} weight="solid">
                       {`Color ${id}`}
                     </ColoredIconTextButton>
-                    <ColoredIconTextButton colorId={id} icon={<BlobbrIcon scale="medium" />} weight="shaded">
+                    <ColoredIconTextButton colorId={id} icon={<CheckIcon scale="medium" />} weight="shaded">
                       {`Color ${id}`}
                     </ColoredIconTextButton>
-                    <ColoredIconTextButton colorId={id} icon={<BlobbrIcon scale="medium" />} weight="outlined">
+                    <ColoredIconTextButton colorId={id} icon={<CheckIcon scale="medium" />} weight="outlined">
                       {`Color ${id}`}
                     </ColoredIconTextButton>
-                    <ColoredIconTextButton colorId={id} icon={<BlobbrIcon scale="medium" />} weight="ghost">
+                    <ColoredIconTextButton colorId={id} icon={<CheckIcon scale="medium" />} weight="ghost">
                       {`Color ${id}`}
                     </ColoredIconTextButton>
-                    <ColoredIconTextButton colorId={id} icon={<BlobbrIcon scale="medium" />} weight="inline">
+                    <ColoredIconTextButton colorId={id} icon={<CheckIcon scale="medium" />} weight="inline">
                       {`Color ${id}`}
                     </ColoredIconTextButton>
                   </Rhythm>
@@ -482,7 +482,7 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
                     <ColoredIconTextButton
                       loading
                       colorId={id}
-                      icon={<BlobbrIcon scale="medium" />}
+                      icon={<CheckIcon scale="medium" />}
                       loader={<SpinnerIcon scale="medium" />}
                       weight="solid"
                     >
@@ -491,7 +491,7 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
                     <ColoredIconTextButton
                       loading
                       colorId={id}
-                      icon={<BlobbrIcon scale="medium" />}
+                      icon={<CheckIcon scale="medium" />}
                       loader={<SpinnerIcon scale="medium" />}
                       weight="shaded"
                     >
@@ -500,7 +500,7 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
                     <ColoredIconTextButton
                       loading
                       colorId={id}
-                      icon={<BlobbrIcon scale="medium" />}
+                      icon={<CheckIcon scale="medium" />}
                       loader={<SpinnerIcon scale="medium" />}
                       weight="outlined"
                     >
@@ -509,7 +509,7 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
                     <ColoredIconTextButton
                       loading
                       colorId={id}
-                      icon={<BlobbrIcon scale="medium" />}
+                      icon={<CheckIcon scale="medium" />}
                       loader={<SpinnerIcon scale="medium" />}
                       weight="ghost"
                     >
@@ -518,7 +518,7 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
                     <ColoredIconTextButton
                       loading
                       colorId={id}
-                      icon={<BlobbrIcon scale="medium" />}
+                      icon={<CheckIcon scale="medium" />}
                       loader={<SpinnerIcon scale="medium" />}
                       weight="inline"
                     >
@@ -549,19 +549,19 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
     return (
       <React.Fragment>
         <Rhythm m={2}>
-          <StyledIconTextButton icon={<BlobbrIcon scale="medium" />} {...styles}>
+          <StyledIconTextButton icon={<CheckIcon scale="medium" />} {...styles}>
             Styled solid
           </StyledIconTextButton>
-          <StyledIconTextButton icon={<BlobbrIcon scale="medium" />} weight="shaded" {...styles}>
+          <StyledIconTextButton icon={<CheckIcon scale="medium" />} weight="shaded" {...styles}>
             Styled shaded
           </StyledIconTextButton>
-          <StyledIconTextButton icon={<BlobbrIcon scale="medium" />} weight="outlined" {...styles}>
+          <StyledIconTextButton icon={<CheckIcon scale="medium" />} weight="outlined" {...styles}>
             Styled outlined
           </StyledIconTextButton>
-          <StyledIconTextButton icon={<BlobbrIcon scale="medium" />} weight="ghost" {...styles}>
+          <StyledIconTextButton icon={<CheckIcon scale="medium" />} weight="ghost" {...styles}>
             Styled ghost
           </StyledIconTextButton>
-          <StyledIconTextButton icon={<BlobbrIcon scale="medium" />} weight="inline" {...styles}>
+          <StyledIconTextButton icon={<CheckIcon scale="medium" />} weight="inline" {...styles}>
             Styled inline
           </StyledIconTextButton>
         </Rhythm>
@@ -569,7 +569,7 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
         <Rhythm m={2}>
           <StyledIconTextButton
             loading
-            icon={<BlobbrIcon scale="medium" />}
+            icon={<CheckIcon scale="medium" />}
             loader={<SpinnerIcon scale="medium" />}
             {...styles}
           >
@@ -577,7 +577,7 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
           </StyledIconTextButton>
           <StyledIconTextButton
             loading
-            icon={<BlobbrIcon scale="medium" />}
+            icon={<CheckIcon scale="medium" />}
             loader={<SpinnerIcon scale="medium" />}
             weight="shaded"
             {...styles}
@@ -586,7 +586,7 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
           </StyledIconTextButton>
           <StyledIconTextButton
             loading
-            icon={<BlobbrIcon scale="medium" />}
+            icon={<CheckIcon scale="medium" />}
             loader={<SpinnerIcon scale="medium" />}
             weight="outlined"
             {...styles}
@@ -595,7 +595,7 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
           </StyledIconTextButton>
           <StyledIconTextButton
             loading
-            icon={<BlobbrIcon scale="medium" />}
+            icon={<CheckIcon scale="medium" />}
             loader={<SpinnerIcon scale="medium" />}
             weight="ghost"
             {...styles}
@@ -604,7 +604,7 @@ import { IconTextButton, ColoredIconTextButton, StyledIconTextButton } from '../
           </StyledIconTextButton>
           <StyledIconTextButton
             loading
-            icon={<BlobbrIcon scale="medium" />}
+            icon={<CheckIcon scale="medium" />}
             loader={<SpinnerIcon scale="medium" />}
             weight="inline"
             {...styles}
@@ -627,7 +627,7 @@ _Note that the links will cause the page to reload so the state will appear unch
       <IconTextButton
         color="primary"
         href="#linked"
-        icon={<BlobbrIcon scale="medium" />}
+        icon={<CheckIcon scale="medium" />}
         onClick={() => console.log('linked clicked')}
       >
         Linked solid
@@ -635,7 +635,7 @@ _Note that the links will cause the page to reload so the state will appear unch
       <IconTextButton
         color="primary"
         href="#linked"
-        icon={<BlobbrIcon scale="medium" />}
+        icon={<CheckIcon scale="medium" />}
         onClick={() => console.log('linked clicked')}
         weight="shaded"
       >
@@ -644,7 +644,7 @@ _Note that the links will cause the page to reload so the state will appear unch
       <IconTextButton
         color="primary"
         href="#linked"
-        icon={<BlobbrIcon scale="medium" />}
+        icon={<CheckIcon scale="medium" />}
         onClick={() => console.log('linked clicked')}
         weight="outlined"
       >
@@ -653,7 +653,7 @@ _Note that the links will cause the page to reload so the state will appear unch
       <IconTextButton
         color="primary"
         href="#linked"
-        icon={<BlobbrIcon scale="medium" />}
+        icon={<CheckIcon scale="medium" />}
         onClick={() => console.log('linked clicked')}
         weight="ghost"
       >
@@ -662,7 +662,7 @@ _Note that the links will cause the page to reload so the state will appear unch
       <IconTextButton
         color="primary"
         href="#linked"
-        icon={<BlobbrIcon scale="medium" />}
+        icon={<CheckIcon scale="medium" />}
         onClick={() => console.log('linked clicked')}
         weight="inline"
       >
@@ -675,7 +675,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         loading
         color="primary"
         href="#linked"
-        icon={<BlobbrIcon scale="medium" />}
+        icon={<CheckIcon scale="medium" />}
         loader={<SpinnerIcon scale="medium" />}
         onClick={() => console.log('linked clicked')}
       >
@@ -685,7 +685,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         loading
         color="primary"
         href="#linked"
-        icon={<BlobbrIcon scale="medium" />}
+        icon={<CheckIcon scale="medium" />}
         loader={<SpinnerIcon scale="medium" />}
         onClick={() => console.log('linked clicked')}
         weight="shaded"
@@ -696,7 +696,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         loading
         color="primary"
         href="#linked"
-        icon={<BlobbrIcon scale="medium" />}
+        icon={<CheckIcon scale="medium" />}
         loader={<SpinnerIcon scale="medium" />}
         onClick={() => console.log('linked clicked')}
         weight="outlined"
@@ -707,7 +707,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         loading
         color="primary"
         href="#linked"
-        icon={<BlobbrIcon scale="medium" />}
+        icon={<CheckIcon scale="medium" />}
         loader={<SpinnerIcon scale="medium" />}
         onClick={() => console.log('linked clicked')}
         weight="ghost"
@@ -718,7 +718,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         loading
         color="primary"
         href="#linked"
-        icon={<BlobbrIcon scale="medium" />}
+        icon={<CheckIcon scale="medium" />}
         loader={<SpinnerIcon scale="medium" />}
         onClick={() => console.log('linked clicked')}
         weight="inline"
@@ -737,7 +737,7 @@ _Note that the links will cause the page to reload so the state will appear unch
       <IconTextButton
         as="div"
         color="primary"
-        icon={<BlobbrIcon scale="medium" />}
+        icon={<CheckIcon scale="medium" />}
         onClick={() => console.log('div clicked')}
       >
         Acts like a button
@@ -745,7 +745,7 @@ _Note that the links will cause the page to reload so the state will appear unch
       <IconTextButton
         as="div"
         color="primary"
-        icon={<BlobbrIcon scale="medium" />}
+        icon={<CheckIcon scale="medium" />}
         onClick={() => console.log('div clicked')}
         weight="shaded"
       >
@@ -754,7 +754,7 @@ _Note that the links will cause the page to reload so the state will appear unch
       <IconTextButton
         as="div"
         color="primary"
-        icon={<BlobbrIcon scale="medium" />}
+        icon={<CheckIcon scale="medium" />}
         onClick={() => console.log('div clicked')}
         weight="outlined"
       >
@@ -763,7 +763,7 @@ _Note that the links will cause the page to reload so the state will appear unch
       <IconTextButton
         as="div"
         color="primary"
-        icon={<BlobbrIcon scale="medium" />}
+        icon={<CheckIcon scale="medium" />}
         onClick={() => console.log('div clicked')}
         weight="ghost"
       >
@@ -772,7 +772,7 @@ _Note that the links will cause the page to reload so the state will appear unch
       <IconTextButton
         as="div"
         color="primary"
-        icon={<BlobbrIcon scale="medium" />}
+        icon={<CheckIcon scale="medium" />}
         onClick={() => console.log('div clicked')}
         weight="inline"
       >
@@ -785,7 +785,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         loading
         as="div"
         color="primary"
-        icon={<BlobbrIcon scale="medium" />}
+        icon={<CheckIcon scale="medium" />}
         loader={<SpinnerIcon scale="medium" />}
         onClick={() => console.log('div clicked')}
       >
@@ -795,7 +795,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         loading
         as="div"
         color="primary"
-        icon={<BlobbrIcon scale="medium" />}
+        icon={<CheckIcon scale="medium" />}
         loader={<SpinnerIcon scale="medium" />}
         onClick={() => console.log('div clicked')}
         weight="shaded"
@@ -806,7 +806,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         loading
         as="div"
         color="primary"
-        icon={<BlobbrIcon scale="medium" />}
+        icon={<CheckIcon scale="medium" />}
         loader={<SpinnerIcon scale="medium" />}
         onClick={() => console.log('div clicked')}
         weight="outlined"
@@ -817,7 +817,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         loading
         as="div"
         color="primary"
-        icon={<BlobbrIcon scale="medium" />}
+        icon={<CheckIcon scale="medium" />}
         loader={<SpinnerIcon scale="medium" />}
         onClick={() => console.log('div clicked')}
         weight="ghost"
@@ -828,7 +828,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         loading
         as="div"
         color="primary"
-        icon={<BlobbrIcon scale="medium" />}
+        icon={<CheckIcon scale="medium" />}
         loader={<SpinnerIcon scale="medium" />}
         onClick={() => console.log('div clicked')}
         weight="inline"
@@ -852,7 +852,7 @@ _Note that the links will cause the page to reload so the state will appear unch
               <IconTextButton
                 fullWidth
                 color="primary"
-                icon={<BlobbrIcon scale="medium" />}
+                icon={<CheckIcon scale="medium" />}
                 shape={shape}
                 themeId={themeId}
               >
@@ -860,7 +860,7 @@ _Note that the links will cause the page to reload so the state will appear unch
               </IconTextButton>
               <IconTextButton
                 color="primary"
-                icon={<BlobbrIcon scale="medium" />}
+                icon={<CheckIcon scale="medium" />}
                 shape={shape}
                 themeId={themeId}
                 width={200}
@@ -884,19 +884,19 @@ _Note that the links will cause the page to reload so the state will appear unch
         <StyledIconTextButton
           align="left"
           color="primary"
-          icon={<BlobbrIcon scale="medium" />}
+          icon={<CheckIcon scale="medium" />}
           themeId={themeId}
           width={200}
         >
           Align left
         </StyledIconTextButton>
-        <StyledIconTextButton color="primary" icon={<BlobbrIcon scale="medium" />} themeId={themeId} width={200}>
+        <StyledIconTextButton color="primary" icon={<CheckIcon scale="medium" />} themeId={themeId} width={200}>
           Align center
         </StyledIconTextButton>
         <StyledIconTextButton
           align="right"
           color="primary"
-          icon={<BlobbrIcon scale="medium" />}
+          icon={<CheckIcon scale="medium" />}
           themeId={themeId}
           width={200}
         >
@@ -911,7 +911,7 @@ _Note that the links will cause the page to reload so the state will appear unch
 
 <Playground>
   <ThemeWrapper>
-    <IconTextButton unstyled icon={<BlobbrIcon scale="medium" />} onClick={() => console.log('unstyled')}>
+    <IconTextButton unstyled icon={<CheckIcon scale="medium" />} onClick={() => console.log('unstyled')}>
       Unstyled
     </IconTextButton>
   </ThemeWrapper>

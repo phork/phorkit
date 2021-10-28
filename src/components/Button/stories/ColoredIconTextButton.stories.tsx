@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { ThemeColorIds } from 'config/themes';
 import { SpinnerIcon } from 'icons/SpinnerIcon';
-import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { CheckIcon } from 'icons/internal/CheckIcon';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { ColoredIconTextButton, ColoredIconTextButtonProps } from '../ColoredIconTextButton';
 import buttonStory from './ColoredButton.stories';
@@ -24,9 +24,9 @@ export default {
       options: ['small', 'medium', 'large'],
       control: {
         labels: {
-          small: '<BlobbrIcon scale="small" />',
-          medium: '<BlobbrIcon scale="medium" />',
-          large: '<BlobbrIcon scale="large" />',
+          small: '<CheckIcon scale="small" />',
+          medium: '<CheckIcon scale="medium" />',
+          large: '<CheckIcon scale="large" />',
         },
       },
       table: {
@@ -66,7 +66,7 @@ const Template: ComponentStory<
   <ColoredIconTextButton<'button'>
     {...args}
     as="button"
-    icon={<BlobbrIcon scale={icon} />}
+    icon={<CheckIcon scale={icon} />}
     loader={<SpinnerIcon scale={icon} />}
     onClick={action('clicked')}
     size={size}

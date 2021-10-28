@@ -6,8 +6,8 @@ route: /compositions/Popover
 
 import { Playground, Props } from 'docz';
 import { themes } from 'config/themes';
+import { ArrowUpDownIcon } from 'icons/ArrowUpDownIcon';
 import { TimesIcon } from 'icons/TimesIcon';
-import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { Button } from 'components/Button';
 import { Card } from 'components/Card';
 import { Flex } from 'components/Flex';
@@ -48,13 +48,7 @@ import { horizontal, vertical } from './helpers/config';
             </Card>
           )}
           style={{ position: 'fixed', top: '100px', right: '40px', zIndex: 2000 }}
-          toggler={
-            <BlobbrIcon
-              aria-label="BlobbrIcon"
-              scale="3xlarge"
-              style={{ color: themes[themeId]['color-accent-primary'] }}
-            />
-          }
+          toggler={<ArrowUpDownIcon scale="xlarge" style={{ color: themes[themeId]['color-accent-primary'] }} />}
           width={300}
         />
       </React.Fragment>
@@ -88,7 +82,7 @@ import { horizontal, vertical } from './helpers/config';
           height={80}
           offset={{ vertical }}
           position="top-left"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={300}
         >
           <Paper contained scrollable color="accent-primary" container="popover" scrollbar="small">
@@ -115,7 +109,7 @@ import { horizontal, vertical } from './helpers/config';
           height={80}
           offset={{ vertical }}
           position="top-center"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={300}
         >
           <Paper contained scrollable color="accent-primary" container="popover" scrollbar="small">
@@ -142,7 +136,7 @@ import { horizontal, vertical } from './helpers/config';
           height={80}
           offset={{ vertical }}
           position="top-right"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={300}
         >
           <Paper contained scrollable color="accent-primary" container="popover" scrollbar="small">
@@ -169,7 +163,7 @@ import { horizontal, vertical } from './helpers/config';
           height={80}
           offset={{ vertical }}
           position="bottom-left"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={300}
         >
           <Paper contained scrollable color="accent-primary" container="popover" scrollbar="small">
@@ -196,7 +190,7 @@ import { horizontal, vertical } from './helpers/config';
           height={80}
           offset={{ vertical }}
           position="bottom-center"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={300}
         >
           <Paper contained scrollable color="accent-primary" container="popover" scrollbar="small">
@@ -223,7 +217,7 @@ import { horizontal, vertical } from './helpers/config';
           height={80}
           offset={{ vertical }}
           position="bottom-right"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={300}
         >
           <Paper contained scrollable color="accent-primary" container="popover" scrollbar="small">
@@ -258,7 +252,7 @@ import { horizontal, vertical } from './helpers/config';
           initialVisible
           offset={{ horizontal }}
           position="left-top"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={300}
         >
           <Paper color="accent-primary" container="popover">
@@ -284,7 +278,7 @@ import { horizontal, vertical } from './helpers/config';
           initialVisible
           offset={{ horizontal }}
           position="left-center"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={300}
         >
           <Paper color="accent-primary" container="popover">
@@ -310,7 +304,7 @@ import { horizontal, vertical } from './helpers/config';
           initialVisible
           offset={{ horizontal }}
           position="left-bottom"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={300}
         >
           <Paper color="accent-primary" container="popover">
@@ -336,7 +330,7 @@ import { horizontal, vertical } from './helpers/config';
           initialVisible
           offset={{ horizontal }}
           position="right-top"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={300}
         >
           <Paper color="accent-primary" container="popover">
@@ -362,7 +356,7 @@ import { horizontal, vertical } from './helpers/config';
           initialVisible
           offset={{ horizontal }}
           position="right-center"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={300}
         >
           <Paper color="accent-primary" container="popover">
@@ -388,7 +382,7 @@ import { horizontal, vertical } from './helpers/config';
           initialVisible
           offset={{ horizontal }}
           position="right-bottom"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={300}
         >
           <Paper color="accent-primary" container="popover">
@@ -430,7 +424,7 @@ import { horizontal, vertical } from './helpers/config';
           height={80}
           offset={{ vertical }}
           position="top-left"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={300}
         >
           <Paper contained scrollable color="accent-primary" container="popover" scrollbar="small">
@@ -457,7 +451,7 @@ import { horizontal, vertical } from './helpers/config';
           height={80}
           offset={{ vertical }}
           position="top-center"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={300}
         >
           <Paper contained scrollable color="accent-primary" container="popover" scrollbar="small">
@@ -484,7 +478,7 @@ import { horizontal, vertical } from './helpers/config';
           height={80}
           offset={{ vertical }}
           position="top-right"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={300}
         >
           <Paper contained scrollable color="accent-primary" container="popover" scrollbar="small">
@@ -511,7 +505,7 @@ import { horizontal, vertical } from './helpers/config';
           height={80}
           offset={{ vertical }}
           position="bottom-left"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={300}
         >
           <Paper contained scrollable color="accent-primary" container="popover" scrollbar="small">
@@ -538,7 +532,7 @@ import { horizontal, vertical } from './helpers/config';
           height={80}
           offset={{ vertical }}
           position="bottom-center"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={300}
         >
           <Paper contained scrollable color="accent-primary" container="popover" scrollbar="small">
@@ -565,7 +559,7 @@ import { horizontal, vertical } from './helpers/config';
           height={80}
           offset={{ vertical }}
           position="bottom-right"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={300}
         >
           <Paper contained scrollable color="accent-primary" container="popover" scrollbar="small">
@@ -600,7 +594,7 @@ import { horizontal, vertical } from './helpers/config';
           initialVisible
           offset={{ horizontal }}
           position="left-top"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={300}
         >
           <Paper color="accent-primary" container="popover">
@@ -626,7 +620,7 @@ import { horizontal, vertical } from './helpers/config';
           initialVisible
           offset={{ horizontal }}
           position="left-center"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={300}
         >
           <Paper color="accent-primary" container="popover">
@@ -652,7 +646,7 @@ import { horizontal, vertical } from './helpers/config';
           initialVisible
           offset={{ horizontal }}
           position="left-bottom"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={300}
         >
           <Paper color="accent-primary" container="popover">
@@ -678,7 +672,7 @@ import { horizontal, vertical } from './helpers/config';
           initialVisible
           offset={{ horizontal }}
           position="right-top"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={300}
         >
           <Paper color="accent-primary" container="popover">
@@ -704,7 +698,7 @@ import { horizontal, vertical } from './helpers/config';
           initialVisible
           offset={{ horizontal }}
           position="right-center"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={300}
         >
           <Paper color="accent-primary" container="popover">
@@ -730,7 +724,7 @@ import { horizontal, vertical } from './helpers/config';
           initialVisible
           offset={{ horizontal }}
           position="right-bottom"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={300}
         >
           <Paper color="accent-primary" container="popover">
@@ -755,7 +749,7 @@ import { horizontal, vertical } from './helpers/config';
       offset={{ horizontal }}
       portal="fixed"
       position="right-center"
-      toggler={<BlobbrIcon scale="3xlarge" />}
+      toggler={<ArrowUpDownIcon scale="xlarge" />}
       width={300}
     >
       <Paper color="accent-primary" container="popover">
@@ -790,7 +784,7 @@ import { horizontal, vertical } from './helpers/config';
           Close
         </Button>
       )}
-      toggler={<BlobbrIcon scale="3xlarge" />}
+      toggler={<ArrowUpDownIcon scale="xlarge" />}
       width={150}
     />
   </ThemeWrapper>
@@ -824,7 +818,7 @@ import { horizontal, vertical } from './helpers/config';
               </Paper>
             </Card>
           )}
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={150}
         />
       </div>
@@ -851,7 +845,7 @@ import { horizontal, vertical } from './helpers/config';
               </Paper>
             </Card>
           )}
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={150}
         />
       </div>
@@ -862,7 +856,7 @@ import { horizontal, vertical } from './helpers/config';
           height={74}
           offset={{ horizontal }}
           position="right-center"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={150}
         >
           <Card full raised>
@@ -888,7 +882,7 @@ import { horizontal, vertical } from './helpers/config';
           height={74}
           offset={{ horizontal }}
           position="right-center"
-          toggler={<BlobbrIcon scale="3xlarge" />}
+          toggler={<ArrowUpDownIcon scale="xlarge" />}
           width={150}
         >
           <Card full raised>
