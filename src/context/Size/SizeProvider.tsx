@@ -17,7 +17,7 @@ export function SizeProvider<E extends HTMLElement = HTMLDivElement>({
   decimalPlaces,
   observe,
   propsToMeasure,
-}: SizeProviderProps<E>): React.ReactNode {
+}: SizeProviderProps<E>): JSX.Element {
   const { ref, value } = useObserveSize<E>({
     decimalPlaces,
     observe,
