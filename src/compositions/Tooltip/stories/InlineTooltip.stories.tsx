@@ -3,7 +3,7 @@ import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } fro
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { themes } from 'config/themes';
-import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { ArrowUpDownIcon } from 'icons/ArrowUpDownIcon';
 import { Button } from 'components/Button';
 import { Card } from 'components/Card';
 import { ColoredPaper } from 'components/Paper';
@@ -258,7 +258,7 @@ const defaultArgs = {
   permanent: false,
   toggler: (
     <Typography color="primary">
-      <BlobbrIcon scale="3xlarge" />
+      <ArrowUpDownIcon scale="xlarge" />
     </Typography>
   ),
   triangleColor: themes.light['color-P10'],

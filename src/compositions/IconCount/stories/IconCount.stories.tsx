@@ -1,8 +1,8 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { CheckIcon } from 'icons/internal/CheckIcon';
+import { HeartIcon } from 'icons/internal/HeartIcon';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { IconCount, IconCountProps } from '../IconCount';
 
@@ -101,7 +101,7 @@ const Template: ComponentStory<typeof IconCount> = args => <IconCount {...args} 
 const defaultArgs = {
   active: false,
   count: 42,
-  icon: BlobbrIcon,
+  icon: HeartIcon,
   iconSize: 15,
   inline: false,
   label: 'Icon label',

@@ -1,12 +1,11 @@
 import { render } from '@testing-library/react';
 import React from 'react';
-import { StatusBubble } from 'lib';
-import { BlobbrIcon } from '../../../src/icons/internal';
+import { PhorkIcon, StatusBubble } from 'lib';
 
 describe('<StatusBubble />', () => {
   it('should render a status bubble', () => {
     const { container, queryByText } = render(
-      <StatusBubble header="Header" icon={<BlobbrIcon scale="large" />}>
+      <StatusBubble header="Header" icon={<PhorkIcon scale="large" />}>
         Hello world
       </StatusBubble>,
     );

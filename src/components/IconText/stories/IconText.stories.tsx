@@ -1,7 +1,7 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { BlobbrIcon } from 'icons/internal';
+import { TimesIcon } from 'icons/TimesIcon';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
@@ -15,9 +15,9 @@ export default {
       options: ['small', 'medium', 'large'],
       control: {
         labels: {
-          small: '<BlobbrIcon scale="small" />',
-          medium: '<BlobbrIcon scale="medium" />',
-          large: '<BlobbrIcon scale="large" />',
+          small: '<TimesIcon scale="small" />',
+          medium: '<TimesIcon scale="medium" />',
+          large: '<TimesIcon scale="large" />',
         },
       },
       table: {
@@ -96,7 +96,7 @@ export default {
 
 const Template: ComponentStory<
   (args: Omit<IconTextProps, 'icon'> & { icon: 'small' | 'medium' | 'large' }) => ReturnType<typeof IconText>
-> = ({ icon = 'medium', ...args }) => <IconText icon={<BlobbrIcon scale={icon} />} {...args} />;
+> = ({ icon = 'small', ...args }) => <IconText icon={<TimesIcon scale={icon} />} {...args} />;
 
 const defaultArgs = {
   inline: false,

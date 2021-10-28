@@ -6,8 +6,8 @@ route: /components/Tag
 
 import { Playground, Props } from 'docz';
 import { TimesIcon } from 'icons/TimesIcon';
-import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { CheckIcon } from 'icons/internal/CheckIcon';
+import { HeartIcon } from 'icons/internal/HeartIcon';
 import { Avatar } from 'components/Avatar';
 import { IconButton } from 'components/Button';
 import { Flex } from 'components/Flex';
@@ -180,7 +180,7 @@ _Note that the links will cause the page to reload so the state will appear unch
         </Tag>
         <Tag actionable key="hello" onClick={() => console.log('tag')} shape="brick">
           <IconText
-            icon={<BlobbrIcon scale="small" />}
+            icon={<HeartIcon scale="small" />}
             text={
               <Rhythm ml={2}>
                 <span>Hello world</span>

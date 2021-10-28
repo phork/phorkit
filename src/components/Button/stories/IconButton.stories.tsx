@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { SpinnerIcon } from 'icons/SpinnerIcon';
-import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { CheckIcon } from 'icons/internal/CheckIcon';
 import { IconButtonProps, IconButton } from '../IconButton';
 import buttonStory from './Button.stories';
 import IconButtonDocumentation from './IconButton.docs.mdx';
@@ -22,10 +22,10 @@ export default {
       options: ['small', 'medium', 'large', 'xlarge'],
       control: {
         labels: {
-          small: '<BlobbrIcon scale="small" />',
-          medium: '<BlobbrIcon scale="medium" />',
-          large: '<BlobbrIcon scale="large" />',
-          xlarge: '<BlobbrIcon scale="xlarge" />',
+          small: '<CheckIcon scale="small" />',
+          medium: '<CheckIcon scale="medium" />',
+          large: '<CheckIcon scale="large" />',
+          xlarge: '<CheckIcon scale="xlarge" />',
         },
       },
     },
@@ -55,7 +55,7 @@ const Template: ComponentStory<
     onClick={action('clicked')}
     size={size}
   >
-    <BlobbrIcon scale={children} />
+    <CheckIcon scale={children} />
   </IconButton>
 );
 
@@ -217,7 +217,7 @@ export const Link = ({
   ...args
 }: Omit<IconButtonProps<'a'>, 'children'> & { children: React.ReactElement }) => (
   <IconButton<'a'> {...args}>
-    <BlobbrIcon scale={children?.props.scale || 'medium'} />
+    <CheckIcon scale={children?.props.scale || 'medium'} />
   </IconButton>
 );
 Link.args = {
@@ -237,7 +237,7 @@ export const Imitation = ({
   ...args
 }: Omit<IconButtonProps<'div'>, 'children'> & { children: React.ReactElement }) => (
   <IconButton<'div'> {...args}>
-    <BlobbrIcon scale={children?.props.scale || 'medium'} />
+    <CheckIcon scale={children?.props.scale || 'medium'} />
   </IconButton>
 );
 Imitation.args = {

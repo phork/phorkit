@@ -1,12 +1,12 @@
 ---
 name: Tooltip
-menu: Feedback
+menu: Surfaces
 route: /compositions/Tooltip
 ---
 
 import { Playground, Props } from 'docz';
 import { themes } from 'config/themes';
-import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { ArrowUpDownIcon } from 'icons/ArrowUpDownIcon';
 import { Button, IconButton } from 'components/Button';
 import { Card } from 'components/Card';
 import { Flex } from 'components/Flex';
@@ -62,13 +62,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             );
           }}
           style={{ position: 'fixed', top: '100px', right: '140px', zIndex: 2000 }}
-          toggler={
-            <BlobbrIcon
-              aria-label="Blobbr"
-              scale="3xlarge"
-              style={{ color: themes[themeId]['color-accent-primary-D10'] }}
-            />
-          }
+          toggler={<ArrowUpDownIcon scale="xlarge" style={{ color: themes[themeId]['color-accent-primary-D10'] }} />}
           triangleColor={themes[themeId]['color-accent-primary']}
           width={300}
         />
@@ -88,7 +82,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
         height={80}
         offset={{ horizontal: 42, vertical: 20 }}
         position="bottom-right"
-        toggler={<BlobbrIcon scale="3xlarge" />}
+        toggler={<ArrowUpDownIcon scale="xlarge" />}
         triangleColor={themes[themeId]['color-accent-primary']}
         triangleSize={12}
         width={300}
@@ -140,7 +134,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             height={80}
             position="top-left"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -176,7 +170,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             height={80}
             position="top-center"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -212,7 +206,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             height={80}
             position="top-right"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -248,7 +242,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             height={80}
             position="bottom-left"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -284,7 +278,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             height={80}
             position="bottom-center"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -320,7 +314,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             height={80}
             position="bottom-right"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -366,7 +360,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             hoverable
             initialVisible
             position="left-top"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -398,7 +392,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             hoverable
             initialVisible
             position="left-center"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -425,7 +419,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             hoverable
             initialVisible
             position="left-bottom"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -457,7 +451,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             hoverable
             initialVisible
             position="right-top"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -489,7 +483,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             hoverable
             initialVisible
             position="right-center"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -516,7 +510,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             hoverable
             initialVisible
             position="right-bottom"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -560,7 +554,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             hoverable
             initialVisible
             position="left-top"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -593,7 +587,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             hoverable
             initialVisible
             position="left-bottom"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -626,7 +620,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             hoverable
             initialVisible
             position="right-top"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -659,7 +653,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             hoverable
             initialVisible
             position="right-bottom"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -709,7 +703,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             height={80}
             position="top-left"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -745,7 +739,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             height={80}
             position="top-center"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -781,7 +775,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             height={80}
             position="top-right"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -817,7 +811,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             height={80}
             position="bottom-left"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -853,7 +847,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             height={80}
             position="bottom-center"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -889,7 +883,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             height={80}
             position="bottom-right"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -935,7 +929,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             hoverable
             initialVisible
             position="left-top"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -967,7 +961,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             hoverable
             initialVisible
             position="left-center"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -994,7 +988,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             hoverable
             initialVisible
             position="left-bottom"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -1026,7 +1020,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             hoverable
             initialVisible
             position="right-top"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -1058,7 +1052,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             hoverable
             initialVisible
             position="right-center"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -1085,7 +1079,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             hoverable
             initialVisible
             position="right-bottom"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -1129,7 +1123,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             hoverable
             initialVisible
             position="left-top"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -1162,7 +1156,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             hoverable
             initialVisible
             position="left-bottom"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -1195,7 +1189,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             hoverable
             initialVisible
             position="right-top"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -1228,7 +1222,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             hoverable
             initialVisible
             position="right-bottom"
-            toggler={<BlobbrIcon scale="3xlarge" />}
+            toggler={<ArrowUpDownIcon scale="xlarge" />}
             triangleColor={themes[themeId]['color-accent-primary']}
             width={300}
           >
@@ -1274,7 +1268,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             </Button>
           </Paper>
         )}
-        toggler={<BlobbrIcon scale="3xlarge" />}
+        toggler={<ArrowUpDownIcon scale="xlarge" />}
         triangleColor={themes[themeId]['color-accent-primary']}
       />
     )}
@@ -1367,7 +1361,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             toggler={
               <Rhythm mx={1} style={{ top: '3px' }}>
                 <IconButton color="primary">
-                  <BlobbrIcon scale="medium" />
+                  <ArrowUpDownIcon scale="medium" />
                 </IconButton>
               </Rhythm>
             }

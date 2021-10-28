@@ -1,4 +1,3 @@
-export { BlobbrIcon } from './BlobbrIcon';
 export { CheckIcon } from './CheckIcon';
 export { ClipboardIcon } from './ClipboardIcon';
 export { EmailIcon } from './EmailIcon';

@@ -5,8 +5,8 @@ route: /compositions/IconCount
 ---
 
 import { Playground, Props } from 'docz';
-import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
 import { CheckIcon } from 'icons/internal/CheckIcon';
+import { HeartIcon } from 'icons/internal/HeartIcon';
 import { Flex } from 'components/Flex';
 import { Rhythm } from 'components/Rhythm';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
@@ -18,7 +18,7 @@ import { IconCount } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <IconCount count={24} icon={BlobbrIcon} label="Example" />
+    <IconCount count={24} icon={HeartIcon} label="Example" />
   </ThemeWrapper>
 </Playground>
 
@@ -26,7 +26,7 @@ import { IconCount } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <IconCount active count={24} icon={BlobbrIcon} label="Example" />
+    <IconCount active count={24} icon={HeartIcon} label="Example" />
   </ThemeWrapper>
 </Playground>
 
@@ -42,12 +42,12 @@ import { IconCount } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <Flex wrap direction="row" justifyContent="space-betwee">
+    <Flex wrap direction="row" justifyContent="space-between">
       <Rhythm m={2}>
-        <IconCount count={24} icon={BlobbrIcon} iconSize={16} label="Example" typographySize="small" />
-        <IconCount count={24} icon={BlobbrIcon} iconSize={18} label="Example" typographySize="medium" />
-        <IconCount count={24} icon={BlobbrIcon} iconSize={20} label="Example" typographySize="large" />
-        <IconCount count={24} icon={BlobbrIcon} iconSize={24} label="Example" typographySize="xlarge" />
+        <IconCount count={24} icon={HeartIcon} iconSize={16} label="Example" typographySize="small" />
+        <IconCount count={24} icon={HeartIcon} iconSize={18} label="Example" typographySize="medium" />
+        <IconCount count={24} icon={HeartIcon} iconSize={20} label="Example" typographySize="large" />
+        <IconCount count={24} icon={HeartIcon} iconSize={24} label="Example" typographySize="xlarge" />
       </Rhythm>
     </Flex>
   </ThemeWrapper>

@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { ThemeColorIds } from 'config/themes';
 import { SpinnerIcon } from 'icons/SpinnerIcon';
-import { BlobbrIcon } from 'icons/internal/BlobbrIcon';
+import { CheckIcon } from 'icons/internal/CheckIcon';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { ColoredIconButton, ColoredIconButtonProps } from '../ColoredIconButton';
 import buttonStory from './ColoredButton.stories';
@@ -19,10 +19,10 @@ export default {
       options: ['small', 'medium', 'large', 'xlarge'],
       control: {
         labels: {
-          small: '<BlobbrIcon scale="small" />',
-          medium: '<BlobbrIcon scale="medium" />',
-          large: '<BlobbrIcon scale="large" />',
-          xlarge: '<BlobbrIcon scale="xlarge" />',
+          small: '<CheckIcon scale="small" />',
+          medium: '<CheckIcon scale="medium" />',
+          large: '<CheckIcon scale="large" />',
+          xlarge: '<CheckIcon scale="xlarge" />',
         },
       },
     },
@@ -61,7 +61,7 @@ const Template: ComponentStory<
     onClick={action('clicked')}
     size={size}
   >
-    <BlobbrIcon scale={children} />
+    <CheckIcon scale={children} />
   </ColoredIconButton>
 );
 
