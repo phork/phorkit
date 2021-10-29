@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "allowJs": false,
-    "alwaysStrict": true,
     "allowSyntheticDefaultImports": true,
+    "alwaysStrict": true,
     "baseUrl": ".",
     "composite": true,
     "esModuleInterop": true,

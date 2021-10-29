@@ -1,14 +1,18 @@
 import React from 'react';
+import { MergeProps } from '../../types';
 import { ScaleProvider, ScaleProviderProps } from '../../context/Scale/ScaleProvider';
 import { Flex, FlexProps } from '../../components/Flex/Flex';
 
-export type IconGroupProps = {
-  children: React.ReactNode;
-  className?: FlexProps['className'];
-  scale?: ScaleProviderProps['scale'];
-  size?: ScaleProviderProps['size'];
-  style?: React.CSSProperties;
-};
+export type IconGroupProps = MergeProps<
+  FlexProps,
+  {
+    children: React.ReactNode;
+    className?: FlexProps['className'];
+    scale?: ScaleProviderProps['scale'];
+    size?: ScaleProviderProps['size'];
+    style?: React.CSSProperties;
+  }
+>;
 
 /**
  * An icon group renders a row of icons and wraps them
@@ -18,10 +22,10 @@ export type IconGroupProps = {
  *
  * This uses the `Flex` component and the `Scale` context.
  */
-export function IconGroup({ children, className, scale, size }: IconGroupProps): React.ReactElement {
+export function IconGroup({ children, className, scale, size, ...props }: IconGroupProps): React.ReactElement {
   return (
     <ScaleProvider scale={scale} size={size}>
-      <Flex alignItems="center" className={className} direction="row" wrap={false}>
+      <Flex alignItems="center" className={className} direction="row" wrap={false} {...props}>
         {children}
       </Flex>
     </ScaleProvider>

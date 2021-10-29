@@ -11,6 +11,7 @@ export type LinkProps = React.HTMLAttributes<HTMLAnchorElement> &
     children: React.ReactNode;
     className?: string;
     href?: string;
+    rel?: string;
     style?: React.CSSProperties;
     target?: string;
     underline?: boolean;

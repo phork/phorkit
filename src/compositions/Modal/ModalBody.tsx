@@ -17,7 +17,7 @@ export type ModalBodyProps = React.HTMLAttributes<HTMLDivElement> & {
 export const ModalBody = React.forwardRef<HTMLDivElement, ModalBodyProps>(
   (
     { children, className, flush = false, scrollable = false, style, ...props },
-    forwardedRef,
+    forwardedRef: React.ForwardedRef<HTMLDivElement>,
   ): React.ReactElement<ModalBodyProps> => {
     return (
       <div
