@@ -34,7 +34,7 @@ button.avatar {
   &:focus,
   &:hover {
     @mixin makeFocusRing var(--avatar-actionable-background-color, var(--avatar-background-color)),
-      var(--avatar-actionable-border-width, 4px);
+      var(--avatar-focus-ring-size, 4px);
     @mixin setFocusRingOpacity var(--avatar-focus-ring-opacity, 0.2);
   }
 
@@ -43,22 +43,36 @@ button.avatar {
   }
 }
 
+.avatar--4xlarge {
+  font-size: $font-size-4xlarge;
+  height: $element-height-4xlarge;
+  width: $element-height-4xlarge;
+
+  --avatar-focus-ring-size: 6px;
+}
+
 .avatar--3xlarge {
   font-size: $font-size-3xlarge;
   height: $element-height-3xlarge;
   width: $element-height-3xlarge;
+
+  --avatar-focus-ring-size: 6px;
 }
 
 .avatar--2xlarge {
   font-size: $font-size-2xlarge;
   height: $element-height-2xlarge;
   width: $element-height-2xlarge;
+
+  --avatar-focus-ring-size: 5px;
 }
 
 .avatar--xlarge {
   font-size: $font-size-xlarge;
   height: $element-height-xlarge;
   width: $element-height-xlarge;
+
+  --avatar-focus-ring-size: 5px;
 }
 
 .avatar--large {
@@ -80,7 +94,7 @@ button.avatar {
 }
 
 .avatar--xsmall {
-  --avatar-actionable-border-width: 3px;
+  --avatar-focus-ring-size: 3px;
 
   font-size: $font-size-2xsmall;
   height: $element-height-xsmall;

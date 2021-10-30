@@ -19,7 +19,7 @@ export type LocalAvatarProps = ThemeProps & {
   color?: 'neutral' | 'primary';
   imgSrc?: string;
   initials?: string;
-  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge' | '3xlarge' | 'custom';
+  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge' | '3xlarge' | '4xlarge' | 'custom';
   style?: React.CSSProperties;
   translations?: Partial<AvatarTranslations>;
 };
