@@ -8,52 +8,33 @@
 
 ## Getting started
 
-### Using Docz (current)
+### Using Storybook (current)
 
-Phork/it uses [Docz](https://www.docz.site/) to publish the documentation.
-
-To start a Docz development server go to the project root and run:
-
-```bash
-$ yarn install
-$ yarn start
-```
-
-Open [http://localhost:4000](http://localhost:4000) in your browser.
-
-### Using Storybook (next)
-
-The documentation is in the process of moving to [Storybook](https://storybook.js.org/).
+Phork/it uses [Storybook](https://storybook.js.org/) to publish the documentation.
 
 To start a Storybook development server go to the project root and run:
 
 ```bash
 $ yarn install
-$ yarn storybook
+$ yarn start-storybook
 ```
 
-Open [http://localhost:6006](http://localhost:6006) in your browser.
+### Using Docz (legacy)
+
+Phork/it previously used [Docz](https://www.docz.site/) to publish the documentation.
+
+To start a Docz development server go to the project root and run:
+
+```bash
+$ yarn install
+$ yarn start-docz
+```
+
+Open [http://localhost:4000](http://localhost:4000) in your browser.
 
 ## Building the documentation
 
-### Using Docz (current)
-
-The build system writes the Docz file to `build/docz`. To build the app locally run:
-
-```bash
-$ yarn build-docs
-```
-
-To build and preview the Docz app with Docker run:
-
-```bash
-$ docker build -f .docker/docz/Dockerfile . -t phork/phorkit
-$ docker run -p 3000:80 phork/phorkit
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Using Storybook (next)
+### Using Storybook (current)
 
 The build system writes the Storybook files to `build/storybook`. To build the app locally run:
 
@@ -65,6 +46,23 @@ To build and preview the Storybook app with Docker run:
 
 ```bash
 $ docker build -f .docker/storybook/Dockerfile . -t phork/phorkit
+$ docker run -p 3000:80 phork/phorkit
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Using Docz (legacy)
+
+The build system writes the Docz file to `build/docz`. To build the app locally run:
+
+```bash
+$ yarn build-docz
+```
+
+To build and preview the Docz app with Docker run:
+
+```bash
+$ docker build -f .docker/docz/Dockerfile . -t phork/phorkit
 $ docker run -p 3000:80 phork/phorkit
 ```
 

@@ -3,7 +3,7 @@ FROM node:latest as builder
 WORKDIR /opt/app
 COPY . /opt/app/
 
-RUN yarn build-docs
+RUN yarn build-docz
 
 # Serve
 

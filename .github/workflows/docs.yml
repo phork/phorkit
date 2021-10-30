@@ -22,7 +22,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Build docs
-        run: yarn build-docs
+        run: yarn build-docz
 
       - name: Deploy docs
         uses: burnett01/rsync-deployments@4.1
