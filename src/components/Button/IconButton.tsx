@@ -12,10 +12,11 @@ export type IconButtonElementType = ButtonElementType;
 type RenderFromPropProps = {};
 
 export type IconButtonProps<T extends ButtonElementType = 'button'> = MergeProps<
-  Omit<ButtonProps<T>, 'align'>,
+  Omit<ButtonProps<T>, 'align' | 'size'>,
   {
     children: RenderFromPropElement<RenderFromPropProps>;
     shape?: IconButtonShape;
+    size?: ButtonProps['size'] | 'xlarge' | '2xlarge' | '3xlarge' | '4xlarge';
   }
 >;
 

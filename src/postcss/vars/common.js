@@ -23,6 +23,7 @@ const elementSizes = {
   'element-height-xlarge': '40px',
   'element-height-2xlarge': '44px',
   'element-height-3xlarge': '48px',
+  'element-height-4xlarge': '54px',
 };
 
 const layout = {

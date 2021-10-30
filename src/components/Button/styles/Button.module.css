@@ -88,7 +88,7 @@ button.button {
 
     &:focus,
     &.is-focused {
-      @mixin makeFocusRing var(--button-primary-color);
+      @mixin makeFocusRing var(--button-primary-color), var(--button-focus-ring-size, 4px);
     }
 
     &:active,
@@ -113,12 +113,12 @@ button.button {
 
     &:focus,
     &.is-focused {
-      @mixin makeFocusRing var(--button-primary-color);
+      @mixin makeFocusRing var(--button-primary-color), var(--button-focus-ring-size, 4px);
     }
 
     &:active,
     &.is-active {
-      @mixin makeFocusRing var(--button-primary-color);
+      @mixin makeFocusRing var(--button-primary-color), var(--button-focus-ring-size, 4px);
       @mixin makeShadedFillActive var(--button-active-primary-color), var(--button-inverse-color);
     }
   }
@@ -140,7 +140,7 @@ button.button {
 
     &:focus,
     &.is-focused {
-      @mixin makeFocusRing var(--button-primary-color);
+      @mixin makeFocusRing var(--button-primary-color), var(--button-focus-ring-size, 4px);
     }
 
     &:active,
@@ -166,7 +166,7 @@ button.button {
 
     &:focus,
     &.is-focused {
-      @mixin makeFocusRing var(--button-primary-color);
+      @mixin makeFocusRing var(--button-primary-color), var(--button-focus-ring-size, 4px);
     }
 
     &:active,
@@ -328,6 +328,40 @@ button.button {
       padding-right: 1.6em;
     }
   }
+}
+
+/* Icon button sizes can exceed regular button sizes */
+
+.button--xlarge {
+  font-size: $font-size-xlarge;
+  height: $element-height-xlarge;
+  width: $element-height-xlarge;
+
+  --button-focus-ring-size: 5px;
+}
+
+.button--2xlarge {
+  font-size: $font-size-2xlarge;
+  height: $element-height-2xlarge;
+  width: $element-height-2xlarge;
+
+  --button-focus-ring-size: 5px;
+}
+
+.button--3xlarge {
+  font-size: $font-size-3xlarge;
+  height: $element-height-3xlarge;
+  width: $element-height-3xlarge;
+
+  --button-focus-ring-size: 6px;
+}
+
+.button--4xlarge {
+  font-size: $font-size-4xlarge;
+  height: $element-height-4xlarge;
+  width: $element-height-4xlarge;
+
+  --button-focus-ring-size: 6px;
 }
 
 /* A general catch-all button size */
