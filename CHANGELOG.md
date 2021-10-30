@@ -1,5 +1,11 @@
 # Changelog
 
+# [10.3.0](https://github.com/phork/phorkit/compare/v10.2.1...v10.3.0) (2021-10-30)
+
+### ✨ Features
+
+- added larger IconButton sizes ([a2b717a](https://github.com/phork/phorkit/commit/a2b717a))
+
 ## [10.2.1](https://github.com/phork/phorkit/compare/v10.2.0...v10.2.1) (2021-10-28)
 
 ### 🐛 Bug Fixes
