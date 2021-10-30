@@ -17,7 +17,26 @@ import { ColoredIconButton, IconButton, StyledIconButton } from '../index';
 
 <PageTitle src="components/Button" title="IconButton" />
 
-## Basic icon buttons
+## Icon button sizes
+
+<Playground>
+  <ThemeWrapper>
+    <Flex wrap alignItems="center" direction="row">
+      <Looper
+        list={['small', 'medium', 'large', 'xlarge', '2xlarge', '3xlarge', '4xlarge']}
+        render={size => (
+          <Rhythm key={size} m={2}>
+            <IconButton color="primary" onClick={() => console.log(size)} shape="circle" size={size} weight="solid">
+              <CheckIcon size={['small', 'medium'].includes(size) ? 12 : 20} />
+            </IconButton>
+          </Rhythm>
+        )}
+      />
+    </Flex>
+  </ThemeWrapper>
+</Playground>
+
+## Icon button colors
 
 <Playground>
   <ThemeWrapper>
