@@ -1,5 +1,11 @@
 # Changelog
 
+# [10.4.0](https://github.com/phork/phorkit/compare/v10.3.0...v10.4.0) (2021-10-30)
+
+### ✨ Features
+
+- added 4xlarge Avatar size ([0c97ed7](https://github.com/phork/phorkit/commit/0c97ed7))
+
 # [10.3.0](https://github.com/phork/phorkit/compare/v10.2.1...v10.3.0) (2021-10-30)
 
 ### ✨ Features
