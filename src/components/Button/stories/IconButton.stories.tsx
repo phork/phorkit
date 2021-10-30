@@ -184,6 +184,55 @@ InlineWeight.args = {
   weight: 'inline',
 };
 
+export const SmallSize = Template.bind({});
+SmallSize.storyName = 'Size: Small';
+SmallSize.args = {
+  ...defaultArgs,
+  size: 'small',
+};
+
+export const MediumSize = Template.bind({});
+MediumSize.storyName = 'Size: Medium';
+MediumSize.args = {
+  ...defaultArgs,
+  size: 'medium',
+};
+
+export const LargeSize = Template.bind({});
+LargeSize.storyName = 'Size: Large';
+LargeSize.args = {
+  ...defaultArgs,
+  size: 'large',
+};
+
+export const XLargeSize = Template.bind({});
+XLargeSize.storyName = 'Size: XLarge';
+XLargeSize.args = {
+  ...defaultArgs,
+  size: 'xlarge',
+};
+
+export const XXLargeSize = Template.bind({});
+XXLargeSize.storyName = 'Size: 2XLarge';
+XXLargeSize.args = {
+  ...defaultArgs,
+  size: '2xlarge',
+};
+
+export const XXXLargeSize = Template.bind({});
+XXXLargeSize.storyName = 'Size: 3XLarge';
+XXXLargeSize.args = {
+  ...defaultArgs,
+  size: '3xlarge',
+};
+
+export const XXXXLargeSize = Template.bind({});
+XXXXLargeSize.storyName = 'Size: 4XLarge';
+XXXXLargeSize.args = {
+  ...defaultArgs,
+  size: '4xlarge',
+};
+
 export const ActiveState = Template.bind({});
 ActiveState.storyName = 'State: Active';
 ActiveState.args = {
