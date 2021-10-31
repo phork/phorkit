@@ -36,7 +36,7 @@ export function PanelContainer({
   reverse = false,
   viewport = false,
   ...props
-}: PanelContainerProps): React.ReactElement<PanelContainerProps> {
+}: PanelContainerProps): JSX.Element {
   const classes = cx(
     styles.panelContainer,
     absolute && styles['panelContainer--absolute'],

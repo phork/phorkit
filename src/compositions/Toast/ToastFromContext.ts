@@ -24,11 +24,7 @@ export type ToastFromContextProps = ThemeProps & {
  * `onClose` prop that can be used to the remove the toast
  * from the state.
  */
-export function ToastFromContext({
-  toast,
-  themeId: initThemeId,
-  variant,
-}: ToastFromContextProps): React.ReactElement<ToastProps> {
+export function ToastFromContext({ toast, themeId: initThemeId, variant }: ToastFromContextProps): JSX.Element {
   const themeId = useThemeId(initThemeId);
   const { pinNotification, removeNotification } = useContext(ToastContext);
   const { duration, contextId, permanent } = toast.props;

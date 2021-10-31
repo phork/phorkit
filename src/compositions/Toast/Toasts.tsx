@@ -11,7 +11,7 @@ export type ToastsProps = ToastsFromContextProps & {
  * the `ToastProvider` and the `ToastsFromContext`
  * which is used to display the current toasts.
  */
-export function Toasts({ children, ...props }: ToastsProps): React.ReactElement {
+export function Toasts({ children, ...props }: ToastsProps): JSX.Element {
   return (
     <ToastProvider>
       {children}

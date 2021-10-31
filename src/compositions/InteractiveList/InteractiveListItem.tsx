@@ -32,7 +32,7 @@ export function InteractiveListItemBase({
   selected = false,
   transparent = false,
   ...props
-}: InteractiveListItemProps): React.ReactElement {
+}: InteractiveListItemProps): JSX.Element {
   const stateProps: StateProps = {
     disabled,
     focused,

@@ -96,7 +96,7 @@ type FormDemoProps = {
   style?: React.CSSProperties;
 };
 
-export function FormDemo({ children, contrast = false, style }: FormDemoProps): React.ReactElement {
+export function FormDemo({ children, contrast = false, style }: FormDemoProps): JSX.Element {
   const refs = useRef<FormDemoRefs>({});
 
   const { values, setValues, handleChange, handleSubmit } = useForm<FormDemoValues>(() => {

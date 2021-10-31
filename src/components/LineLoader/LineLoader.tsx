@@ -48,7 +48,7 @@ export function LineLoader({
   translations: customTranslations,
   unthemed = false,
   ...props
-}: LineLoaderProps): React.ReactElement<LineLoaderProps> {
+}: LineLoaderProps): JSX.Element {
   const ref = useRef<HTMLDivElement>(null!);
   const themeId = useThemeId(initThemeId);
   const translations = useTranslations<LineLoaderTranslations>({

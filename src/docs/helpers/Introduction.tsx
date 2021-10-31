@@ -7,7 +7,7 @@ import { Flex, FlexProps } from 'components/Flex';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 
-export function Introduction(props: FlexProps): React.ReactElement {
+export function Introduction(props: FlexProps): JSX.Element {
   const themeId = useThemeId();
   const { repository, version } = useConfig();
 

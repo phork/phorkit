@@ -27,7 +27,7 @@ export function ColorSwatchGrid({
   labelWidth: initLabelWidth,
   labelHeight: initLabelHeight,
   ...props
-}: ColorSwatchGridProps): React.ReactElement | null {
+}: ColorSwatchGridProps): JSX.Element | null {
   const gridDirection = direction === 'column' ? 'row' : 'column';
   const labelHeight = initLabelHeight || props.swatchHeight;
   const labelWidth = initLabelWidth || props.swatchWidth;

@@ -13,7 +13,7 @@ export type DocsWrapperProps = {
 };
 
 // importing CSS files doesn't work in production so this duplicates the common styles here
-export default function DocsWrapper({ children }: DocsWrapperProps): React.ReactElement {
+export default function DocsWrapper({ children }: DocsWrapperProps): JSX.Element {
   const [colorMode] = useColorMode<Theme>();
 
   return (

@@ -52,7 +52,7 @@ export function Tab({
   selected = false,
   unstyled = false,
   ...props
-}: TabProps): React.ReactElement {
+}: TabProps): JSX.Element {
   const ref = useRef<HTMLDivElement>(null!);
   useInteractiveGroupItem({ focused, ref });
   useListRegistryItem({ id, ref });

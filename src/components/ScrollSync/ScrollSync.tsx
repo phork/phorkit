@@ -10,7 +10,7 @@ export type ScrollSyncProps = UseScrollSyncProps & {
  * that passes on the props of the hook to a children
  * function.
  */
-export function ScrollSync({ children, horizontal, vertical }: ScrollSyncProps): React.ReactElement {
+export function ScrollSync({ children, horizontal, vertical }: ScrollSyncProps): JSX.Element {
   const props = useScrollSync({ horizontal, vertical });
   return children(props);
 }

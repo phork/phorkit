@@ -17,7 +17,7 @@ export function BannersFromContext({
   bannerStyle,
   themeId: initThemeId,
   ...props
-}: BannersFromContextProps): React.ReactElement {
+}: BannersFromContextProps): JSX.Element {
   const themeId = useThemeId(initThemeId);
 
   return (

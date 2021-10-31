@@ -61,13 +61,7 @@ export type RhythmProps = RhythmLocation &
  * The amount of space added is multiplied by the
  * `layout-grid-base` variable.
  */
-export function Rhythm({
-  children,
-  className,
-  grouped = false,
-  wrapper,
-  ...props
-}: RhythmProps): React.ReactElement | null {
+export function Rhythm({ children, className, grouped = false, wrapper, ...props }: RhythmProps): JSX.Element | null {
   const classes = cx(
     ...(
       ['m', 'mx', 'my', 'ml', 'mr', 'mt', 'mb', 'p', 'px', 'py', 'pl', 'pr', 'pt', 'pb'] as (keyof RhythmLocation)[]

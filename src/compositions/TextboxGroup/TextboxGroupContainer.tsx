@@ -12,7 +12,7 @@ export type TextboxGroupContainerProps = ThemeProps & {
  *
  * This uses the `ListRegistry` component.
  */
-export function TextboxGroupContainer({ children }: TextboxGroupContainerProps): React.ReactElement {
+export function TextboxGroupContainer({ children }: TextboxGroupContainerProps): JSX.Element {
   return <ListRegistryProvider<HTMLInputElement>>{children}</ListRegistryProvider>;
 }
 

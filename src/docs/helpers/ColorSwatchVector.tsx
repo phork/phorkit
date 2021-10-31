@@ -128,7 +128,7 @@ export const ColorSwatchVector = React.memo(function ColorSwatchVector({
   swatchHeight = 60,
   swatchWidth = 40,
   ...props
-}: ColorSwatchVectorProps): React.ReactElement {
+}: ColorSwatchVectorProps): JSX.Element {
   const { createNotification } = useContext(ToastContext);
 
   const handleClick = (id: string, color: string, contrast?: string) => {

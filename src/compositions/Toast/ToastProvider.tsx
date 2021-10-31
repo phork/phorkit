@@ -27,7 +27,7 @@ export type ToastProviderProps = {
  * pin a toast (prevent automatic removal), and clear all
  * toasts. It also provides a map containing all the toasts.
  */
-export function ToastProvider({ children }: ToastProviderProps): React.ReactElement {
+export function ToastProvider({ children }: ToastProviderProps): JSX.Element {
   const previousValue = useRef<ToastContextValue>({} as ToastContextValue);
   const {
     setSafeTimeout,

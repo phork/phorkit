@@ -34,7 +34,7 @@ export function Link({
   unstyled = false,
   unthemed = false,
   ...props
-}: LinkProps): React.ReactElement<LinkProps> {
+}: LinkProps): JSX.Element {
   const themeId = useThemeId(initThemeId);
 
   return (

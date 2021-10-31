@@ -20,7 +20,7 @@ export function ThemeProvider({
   onChange,
   themeId: propThemeId = 'light',
   unthemed = false,
-}: ThemeProviderProps): React.ReactElement {
+}: ThemeProviderProps): JSX.Element {
   const previousValue = useRef<ThemeContextValue>({} as ThemeContextValue);
   const [themeId, setThemeId] = useState<Theme | undefined>(unthemed ? undefined : propThemeId);
 

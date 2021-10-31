@@ -13,7 +13,7 @@ export type ChipProps = Omit<TagProps, 'children' | 'flush' | 'size'> &
  *
  * This uses the `Tag` component.
  */
-export function Chip({ avatar, icon, size = 'medium', text, ...props }: ChipProps): React.ReactElement {
+export function Chip({ avatar, icon, size = 'medium', text, ...props }: ChipProps): JSX.Element {
   return (
     <Tag flush size={size} {...props}>
       <ChipContent avatar={avatar} icon={icon} size={size} text={text} />

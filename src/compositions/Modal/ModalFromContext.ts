@@ -21,10 +21,7 @@ export type ModalFromContextProps = ThemeProps & {
  * that can be used to the remove modal from the
  * state.
  */
-export function ModalFromContext({
-  modal,
-  themeId: initThemeId,
-}: ModalFromContextProps): React.ReactElement<ModalProps> {
+export function ModalFromContext({ modal, themeId: initThemeId }: ModalFromContextProps): JSX.Element {
   const themeId = useThemeId(initThemeId);
   const { removeModal } = useContext(ModalContext);
   const { contextId } = modal.props;

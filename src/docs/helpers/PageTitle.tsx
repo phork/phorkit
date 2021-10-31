@@ -12,7 +12,7 @@ export type PageTitleProps = Omit<RhythmProps, 'children'> & {
   url?: string;
 };
 
-export function PageTitle({ title, src, url: initUrl, ...props }: PageTitleProps): React.ReactElement {
+export function PageTitle({ title, src, url: initUrl, ...props }: PageTitleProps): JSX.Element {
   const { repository } = useConfig();
   const url = initUrl || (repository && src && `${repository}/tree/develop/src/${src}`) || undefined;
 

@@ -16,7 +16,7 @@ export type ListRegistryProviderProps = {
  */
 export function ListRegistryProvider<E extends HTMLElement = HTMLElement>({
   children,
-}: ListRegistryProviderProps): React.ReactElement {
+}: ListRegistryProviderProps): JSX.Element {
   const [state, dispatch] = useReducer<Reducer<ListRegistryState<E>, ListRegistryStateAction<E>>>(
     reducer,
     new Map<string, ListRegistryItemType<E>>(),

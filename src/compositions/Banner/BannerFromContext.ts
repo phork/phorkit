@@ -27,7 +27,7 @@ export const BannerFromContext = React.memo(function BannerFromContext({
   banner,
   style: customStyle,
   themeId: initThemeId,
-}: BannerFromContextProps): React.ReactElement<BannerProps> {
+}: BannerFromContextProps): JSX.Element {
   const themeId = useThemeId(initThemeId);
   const { removeNotification } = useContext(BannerContext);
   const { contextId, permanent, style } = banner.props;

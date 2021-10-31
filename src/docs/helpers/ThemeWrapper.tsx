@@ -37,7 +37,7 @@ export function ThemeWrapper({
   variant: initVariant,
   withThemeId,
   ...props
-}: ThemeWrapperProps): React.ReactElement {
+}: ThemeWrapperProps): JSX.Element {
   const [colorMode, setColorMode] = useColorMode<Theme>();
   const { themeId, toggleThemeId } = useContext(ThemeContext);
 

@@ -27,7 +27,7 @@ export function TabPanel({
   orientation = 'horizontal',
   selected = false,
   ...props
-}: TabPanelProps): React.ReactElement<TabPanelProps> {
+}: TabPanelProps): JSX.Element {
   return (
     <div
       className={cx(

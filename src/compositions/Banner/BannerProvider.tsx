@@ -15,7 +15,7 @@ export type BannerProviderProps = {
  * banner and clear all banners. It also provides a
  * map containing all the banners.
  */
-export function BannerProvider({ children }: BannerProviderProps): React.ReactElement {
+export function BannerProvider({ children }: BannerProviderProps): JSX.Element {
   const previousValue = useRef<BannerContextValue>({} as BannerContextValue);
   const [state, dispatch] = useReducer(reducer, new Map() as BannerState);
 

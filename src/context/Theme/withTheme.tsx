@@ -12,7 +12,7 @@ export type WithThemeProps = {
 export function withTheme<WrappedComponentProps extends {} = {}>(
   WrappedComponent: React.FC<WrappedComponentProps>,
 ): (props: WithThemeProps) => React.ReactElement {
-  function ThemedComponent({ themeId, ...props }: WithThemeProps): React.ReactElement {
+  function ThemedComponent({ themeId, ...props }: WithThemeProps): JSX.Element {
     return (
       <ThemeContext.Consumer>
         {value => (

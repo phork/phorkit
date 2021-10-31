@@ -46,7 +46,7 @@ export function Flex({
   reverse = false,
   wrap = false,
   ...props
-}: FlexProps): React.ReactElement<FlexProps> {
+}: FlexProps): JSX.Element {
   return (
     <div
       className={cx(

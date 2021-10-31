@@ -1,7 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import styles from './styles/Modal.module.css';
-import { ModalProviderProps } from './ModalProvider';
 
 export type ModalFooterProps = React.HTMLAttributes<HTMLDivElement> & {
   bordered?: boolean;
@@ -16,12 +15,7 @@ export type ModalFooterProps = React.HTMLAttributes<HTMLDivElement> & {
  * `ModalBody` with the scrollable prop it sticks
  * to the bottom of the modal.
  */
-export function ModalFooter({
-  bordered = false,
-  children,
-  className,
-  ...props
-}: ModalFooterProps): React.ReactElement<ModalProviderProps> {
+export function ModalFooter({ bordered = false, children, className, ...props }: ModalFooterProps): JSX.Element {
   return (
     <div className={cx(styles.modalFooter, bordered && styles['modalFooter--bordered'], className)} {...props}>
       {children}

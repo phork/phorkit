@@ -27,7 +27,7 @@ export function MultiColorSliderTick({
   colors,
   themeId: initThemeId,
   ...props
-}: MultiColorSliderTickProps): React.ReactElement<MultiColorSliderTickProps> {
+}: MultiColorSliderTickProps): JSX.Element {
   const themeId = useThemeId(initThemeId);
 
   return (

@@ -29,7 +29,7 @@ export function AccordionContainer({
   style,
   themeId: initThemeId,
   variant: initVariant,
-}: AccordionContainerProps): React.ReactElement<AccordionContainerProps> {
+}: AccordionContainerProps): JSX.Element {
   const accessible = useAccessibility();
   const themeId = useThemeId(initThemeId);
   const variant = contrast ? 'contrast' : initVariant;
