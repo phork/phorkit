@@ -25,7 +25,7 @@ function isNavigationKey(keycode: string) {
  * event type manually, and an `accessible` flag which is
  * set to true if the event type is the keyboard.
  */
-export function AccessibilityProvider({ children }: AccessibilityProviderProps): React.ReactElement {
+export function AccessibilityProvider({ children }: AccessibilityProviderProps): JSX.Element {
   const previousValue = useRef<AccessibilityContextValue>({} as AccessibilityContextValue);
   const [eventType, setEventType] = useState<EventType | undefined>();
 

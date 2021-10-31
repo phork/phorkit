@@ -40,7 +40,7 @@ export function TextTooltipContent({
   themeId: initThemeId,
   width = 300,
   ...props
-}: TextTooltipContentProps): React.ReactElement {
+}: TextTooltipContentProps): JSX.Element {
   const themeId = useThemeId(initThemeId);
   const { textColor, backgroundColor, borderColor, focusedOutlineColor, scrollbarColor } = getTextTooltipColors(
     themeId,

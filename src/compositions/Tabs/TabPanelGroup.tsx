@@ -49,7 +49,7 @@ export function TabPanelGroup({
   unthemed = false,
   variant: initVariant = 'primary',
   ...props
-}: TabPanelGroupProps): React.ReactElement<TabPanelGroupProps> {
+}: TabPanelGroupProps): JSX.Element {
   const accessible = useAccessibility();
   const { generateComponentId } = useComponentId(componentId);
   const themeId = useThemeId(initThemeId);

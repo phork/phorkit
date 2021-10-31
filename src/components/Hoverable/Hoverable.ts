@@ -15,7 +15,7 @@ export type HoverableProps = {
  * hoverableProps to it depending on the mouseover
  * state.
  */
-export function Hoverable({ children, defaultProps, hoverableProps }: HoverableProps): React.ReactElement {
+export function Hoverable({ children, defaultProps, hoverableProps }: HoverableProps): JSX.Element {
   const { setSafeTimeout, clearSafeTimeout } = useSafeTimeout();
   const [hovered, setHovered] = useState<boolean>(false);
 

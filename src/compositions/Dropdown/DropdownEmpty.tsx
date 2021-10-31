@@ -43,7 +43,7 @@ export function DropdownEmpty({
   themeId: initThemeId,
   translations: customTranslations,
   ...props
-}: DropdownEmptyProps): React.ReactElement<DropdownEmptyProps> | null {
+}: DropdownEmptyProps): JSX.Element | null {
   const themeId = useThemeId(initThemeId);
   const content = useMemo(
     () => (children ? renderFromPropWithFallback<RenderFromPropProps>(children, { filter }) : undefined),

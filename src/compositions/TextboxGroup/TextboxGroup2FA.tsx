@@ -36,7 +36,7 @@ function TextboxGroup2FAContent({
   value = '',
   variant = 'outline',
   ...props
-}: TextboxGroup2FAProps): React.ReactElement | null {
+}: TextboxGroup2FAProps): JSX.Element | null {
   const { generateComponentId } = useComponentId();
   const themeId = useThemeId(initThemeId);
   const { items } = useListRegistry<HTMLInputElement>();
@@ -151,7 +151,7 @@ function TextboxGroup2FAContent({
  *
  * This uses the `Formbox` and `ListRegistry` components.
  */
-export function TextboxGroup2FA(props: TextboxGroup2FAProps): React.ReactElement | null {
+export function TextboxGroup2FA(props: TextboxGroup2FAProps): JSX.Element | null {
   return (
     <TextboxGroupContainer>
       <TextboxGroup2FAContent {...props} />

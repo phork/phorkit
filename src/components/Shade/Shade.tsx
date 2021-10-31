@@ -40,7 +40,7 @@ export function Shade({
   themeId: initThemeId,
   unthemed,
   ...props
-}: ShadeProps): React.ReactElement {
+}: ShadeProps): JSX.Element {
   const themeId = useThemeId(initThemeId);
 
   return (

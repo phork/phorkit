@@ -17,7 +17,7 @@ export type PageTitleProps = Omit<RhythmProps, 'children'> & {
  * uses a hardcoded grey that works with both light
  * and dark backgrounds.
  */
-export function PageTitle({ title, src, url: initUrl, ...props }: PageTitleProps): React.ReactElement {
+export function PageTitle({ title, src, url: initUrl, ...props }: PageTitleProps): JSX.Element {
   const repository = pkg.repository.url.replace(/\.git$/, '');
   const url = initUrl || (repository && src && `${repository}/tree/develop/src/${src}`) || undefined;
 

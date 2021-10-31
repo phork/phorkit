@@ -27,7 +27,7 @@ export function ChipContent({
   size = 'medium',
   text,
   ...props
-}: ChipContentProps): React.ReactElement {
+}: ChipContentProps): JSX.Element {
   return (
     <div className={cx(className, styles.chip, size && styles[`chip--${size}`])} {...props}>
       <Avatar<'div'>

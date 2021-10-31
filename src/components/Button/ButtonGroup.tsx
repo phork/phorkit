@@ -69,7 +69,7 @@ export function ButtonGroup({
   weight = 'outlined',
   wrap: initWrap = false,
   ...props
-}: ButtonGroupProps): React.ReactElement<ButtonGroupProps> {
+}: ButtonGroupProps): JSX.Element {
   const themeId = useThemeId(initThemeId);
   const wrap = initWrap && orientation === 'horizontal' && spacing && ['cozy', 'comfy'].includes(spacing);
 

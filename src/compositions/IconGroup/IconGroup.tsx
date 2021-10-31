@@ -22,7 +22,7 @@ export type IconGroupProps = MergeProps<
  *
  * This uses the `Flex` component and the `Scale` context.
  */
-export function IconGroup({ children, className, scale, size, ...props }: IconGroupProps): React.ReactElement {
+export function IconGroup({ children, className, scale, size, ...props }: IconGroupProps): JSX.Element {
   return (
     <ScaleProvider scale={scale} size={size}>
       <Flex alignItems="center" className={className} direction="row" wrap={false} {...props}>

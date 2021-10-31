@@ -40,7 +40,7 @@ export function Draggable<E extends HTMLElement = HTMLDivElement>({
   onDragStart,
   paused = false,
   touchOnly = false,
-}: DraggableProps): React.ReactElement {
+}: DraggableProps): JSX.Element {
   const blocking = (initBlocking === undefined && true) || initBlocking;
   const [dragging, setDragging] = useState<boolean>(false);
   const [relative, setRelative] = useState<Partial<Position> | undefined>();

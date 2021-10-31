@@ -18,7 +18,7 @@ export function ColorSwatches({
   themeId,
   variant,
   ...props
-}: ColorSwatchesProps): React.ReactElement | null {
+}: ColorSwatchesProps): JSX.Element | null {
   const themeProps = themes[themeId];
 
   const mapColors = (root: string, shade: string | undefined, props?: Omit<Color, 'id' | 'color'>): Color => {

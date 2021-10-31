@@ -11,7 +11,7 @@ export type ModalsProps = ModalsFromContextProps & {
  * the `ModalProvider` and the `ModalsFromContext`
  * which is used to display the active modal.
  */
-export function Modals({ children, ...props }: ModalsProps): React.ReactElement {
+export function Modals({ children, ...props }: ModalsProps): JSX.Element {
   return (
     <ModalProvider>
       {children}

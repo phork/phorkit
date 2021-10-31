@@ -25,7 +25,7 @@ export function DropoverContent({
   contrast = false,
   themeId: initThemeId,
   ...props
-}: DropoverContentProps): React.ReactElement<DropoverContentProps> {
+}: DropoverContentProps): JSX.Element {
   const themeId = useThemeId(initThemeId);
   const color = contrast ? 'contrast' : initColor;
 

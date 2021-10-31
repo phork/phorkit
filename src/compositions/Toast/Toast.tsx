@@ -79,7 +79,7 @@ export function Toast({
   unthemed,
   variant,
   ...props
-}: ToastProps): React.ReactElement<ToastProps> {
+}: ToastProps): JSX.Element {
   const themeId = useThemeId(initThemeId);
   const { setSafeTimeout } = useSafeTimeout();
   const [hasTransitioned, setHasTransitioned] = useState(immediate);

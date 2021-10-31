@@ -7,7 +7,7 @@ import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 import pkg from '../../../package.json';
 
-export function Introduction(props: FlexProps): React.ReactElement {
+export function Introduction(props: FlexProps): JSX.Element {
   const themeId = useThemeId();
   const repository = pkg.repository.url.replace(/\.git$/, '');
 

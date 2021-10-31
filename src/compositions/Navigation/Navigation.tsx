@@ -54,7 +54,7 @@ export function Navigation({
   unthemed = false,
   variant = 'primary',
   ...props
-}: NavigationProps): React.ReactElement {
+}: NavigationProps): JSX.Element {
   return (
     <ListRegistryProvider<HTMLDivElement>>
       <InteractiveGroupProvider<string, HTMLElement, HTMLDivElement>

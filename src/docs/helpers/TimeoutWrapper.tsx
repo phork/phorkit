@@ -12,7 +12,7 @@ export function TimeoutWrapper({
   children,
   milliseconds,
   infinite = false,
-}: TimeoutWrapperProps): React.ReactElement {
+}: TimeoutWrapperProps): JSX.Element {
   useEffect(() => {
     const id = (infinite ? setInterval : setTimeout)(callback, milliseconds);
     return () => (infinite ? clearInterval : clearTimeout)(id);

@@ -137,7 +137,7 @@ export function TooltipContent({
   triangleColor,
   triangleSize,
   ...props
-}: TooltipContentProps): React.ReactElement | null {
+}: TooltipContentProps): JSX.Element | null {
   return position ? (
     <div
       className={cx(

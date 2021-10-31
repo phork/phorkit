@@ -35,7 +35,7 @@ export const FormboxIcon = ({
   onFocus,
   position,
   variant,
-}: FormboxIconProps): React.ReactElement | null => {
+}: FormboxIconProps): JSX.Element | null => {
   const autoSize = !(
     typeof icon === 'object' &&
     (icon.type === 'button' || (icon.props && (icon.props.size || icon.props.scale)))

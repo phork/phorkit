@@ -29,7 +29,7 @@ export function ModalHeader({
   modalId,
   title,
   ...props
-}: ModalHeaderProps): React.ReactElement<ModalHeaderProps> {
+}: ModalHeaderProps): JSX.Element {
   const { generateTitleId } = useModalComponentIds(modalId);
 
   return (

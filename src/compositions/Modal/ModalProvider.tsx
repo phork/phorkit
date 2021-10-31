@@ -19,7 +19,7 @@ export type ModalProviderProps = {
  * Because only one modal can be rendered at a time
  * the top modal in the stack is the one shown.
  */
-export function ModalProvider({ children }: ModalProviderProps): React.ReactElement {
+export function ModalProvider({ children }: ModalProviderProps): JSX.Element {
   const previousValue = useRef<ModalContextValue>({} as ModalContextValue);
   const [state, dispatch] = useReducer(reducer, new Map() as ModalState);
 

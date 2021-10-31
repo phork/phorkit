@@ -15,7 +15,7 @@ export type ModalsFromContextProps = Omit<ModalContainerProps, 'onEscape'> & Omi
  * stack which will then either show the next modal
  * down or no modal at all.
  */
-export function ModalsFromContext({ themeId: initThemeId, ...props }: ModalsFromContextProps): React.ReactElement {
+export function ModalsFromContext({ themeId: initThemeId, ...props }: ModalsFromContextProps): JSX.Element {
   const themeId = useThemeId(initThemeId);
 
   return (

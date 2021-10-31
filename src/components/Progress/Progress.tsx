@@ -59,7 +59,7 @@ export function Progress({
   unthemed = false,
   volume,
   ...props
-}: ProgressProps): React.ReactElement<ProgressProps> {
+}: ProgressProps): JSX.Element {
   const themeId = useThemeId(initThemeId);
 
   const renderSegment = ({ percent, color }: ProgressSegment, i: number): React.ReactElement<HTMLDivElement> => {

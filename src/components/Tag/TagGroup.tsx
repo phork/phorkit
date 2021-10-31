@@ -38,7 +38,7 @@ export function TagGroup({
   unthemed,
   weight,
   ...props
-}: TagGroupProps): React.ReactElement<TagGroupProps> {
+}: TagGroupProps): JSX.Element {
   const themeId = useThemeId(initThemeId);
   const classes = cx(styles.tagGroup, className);
 

@@ -65,7 +65,7 @@ export type ColorThemeProps = {
   variant: 'primary' | 'secondary' | 'tertiary' | 'contrast';
 };
 
-export function ColorTheme({ themeId, variant }: ColorThemeProps): React.ReactElement {
+export function ColorTheme({ themeId, variant }: ColorThemeProps): JSX.Element {
   const themeProps = themes[themeId];
 
   return (

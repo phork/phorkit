@@ -6,7 +6,7 @@ export type StoryContainerProps = {
   title: string;
 };
 
-export function StoryContainer({ children, title, ...props }: StoryContainerProps): React.ReactElement {
+export function StoryContainer({ children, title, ...props }: StoryContainerProps): JSX.Element {
   return (
     <div style={{ marginBottom: 20 }} {...props}>
       <Typography<'h2'> as="h2">{title}</Typography>

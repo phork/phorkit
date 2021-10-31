@@ -85,7 +85,7 @@ export function Accordion({
   unstyled = false,
   variant: initVariant = 'primary',
   ...props
-}: AccordionProps): React.ReactElement {
+}: AccordionProps): JSX.Element {
   const { componentId } = useComponentId();
   const [focused, setFocused] = useState<boolean>(false);
   const variant = unstyled ? undefined : initVariant;

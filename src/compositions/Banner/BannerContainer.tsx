@@ -21,7 +21,7 @@ export function BannerContainer({
   className,
   themeId: initThemeId,
   ...props
-}: BannerContainerProps): React.ReactElement<BannerContainerProps> {
+}: BannerContainerProps): JSX.Element {
   const themeId = useThemeId(initThemeId);
 
   return (

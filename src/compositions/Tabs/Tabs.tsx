@@ -79,7 +79,7 @@ export function Tabs({
   unstyled = false,
   variant: initVariant = 'primary',
   ...props
-}: TabsProps): React.ReactElement {
+}: TabsProps): JSX.Element {
   const { componentId } = useComponentId();
   const [focused, setFocused] = useState(false);
   const variant = unstyled ? undefined : initVariant;

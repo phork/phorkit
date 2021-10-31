@@ -29,7 +29,7 @@ export function Position({
   style,
   variant = 'middle',
   ...props
-}: PositionProps): React.ReactElement<PositionProps> {
+}: PositionProps): JSX.Element {
   return (
     <div
       className={cx(

@@ -38,7 +38,7 @@ export function AccordionLabel({
   selected = false,
   unstyled = false,
   ...props
-}: AccordionLabelProps): React.ReactElement | null {
+}: AccordionLabelProps): JSX.Element | null {
   const ref = useRef<HTMLDivElement>(null!);
   useInteractiveGroupItem({ focused, ref });
   useListRegistryItem({ id, ref });

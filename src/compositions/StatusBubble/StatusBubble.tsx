@@ -38,7 +38,7 @@ export function StatusBubble({
   triangleColor: initTriangleColor,
   unthemed,
   ...props
-}: StatusBubbleProps): React.ReactElement<StatusBubbleProps> {
+}: StatusBubbleProps): JSX.Element {
   const offset = getPositionOffset(position, { vertical: 18 });
   const themeId = useThemeId(initThemeId);
   const colorName = color === 'primary' ? 'accent-primary' : color;

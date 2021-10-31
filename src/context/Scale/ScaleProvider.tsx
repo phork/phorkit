@@ -10,7 +10,7 @@ export type ScaleProviderProps = ScaleContextValue & {
  * The scale provider accepts and stores an icon scale
  * and/or size.
  */
-export function ScaleProvider({ children, scale, size }: ScaleProviderProps): React.ReactElement {
+export function ScaleProvider({ children, scale, size }: ScaleProviderProps): JSX.Element {
   const previousValue = useRef<ScaleContextValue>({} as ScaleContextValue);
 
   const value: ScaleContextValue = produce(previousValue.current, draftState => {

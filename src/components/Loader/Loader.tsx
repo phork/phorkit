@@ -41,7 +41,7 @@ export function Loader({
   translations: customTranslations,
   unthemed = false,
   ...props
-}: LoaderProps): React.ReactElement<LoaderProps> | React.ReactPortal | null {
+}: LoaderProps): JSX.Element | React.ReactPortal | null {
   const themeId = useThemeId(initThemeId);
   const translations = useTranslations<LoaderTranslations>({
     customTranslations,

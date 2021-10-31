@@ -66,7 +66,7 @@ export type ${component}Props = React.HTMLAttributes<HTMLDivElement> &
     style?: React.CSSProperties;
   };
 
-export function ${component}({ children, className, themeId: initThemeId, unthemed, ...props }: ${component}Props): React.ReactElement<${component}Props> {
+export function ${component}({ children, className, themeId: initThemeId, unthemed, ...props }: ${component}Props): JSX.Element {
   const themeId = useThemeId(initThemeId);
 
   return (

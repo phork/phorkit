@@ -17,11 +17,7 @@ export type ToastsFromContextProps = Omit<ToastContainerProps, 'children'> &
  * This consumes the toasts from the `ToastProvider`
  * and displays them all.
  */
-export function ToastsFromContext({
-  themeId: initThemeId,
-  variant,
-  ...props
-}: ToastsFromContextProps): React.ReactElement {
+export function ToastsFromContext({ themeId: initThemeId, variant, ...props }: ToastsFromContextProps): JSX.Element {
   const themeId = useThemeId(initThemeId);
 
   return (

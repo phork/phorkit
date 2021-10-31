@@ -61,7 +61,7 @@ export function Banner({
   themeId: initThemeId,
   translations: customTranslations,
   ...props
-}: BannerProps): React.ReactElement<BannerProps> {
+}: BannerProps): JSX.Element {
   const themeId = useThemeId(initThemeId);
   const { setSafeTimeout } = useSafeTimeout();
   const [hasTransitioned, setHasTransitioned] = useState(immediate);
