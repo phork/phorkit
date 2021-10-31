@@ -1,5 +1,11 @@
 # Changelog
 
+## [10.4.1](https://github.com/phork/phorkit/compare/v10.4.0...v10.4.1) (2021-10-31)
+
+### ♻ Code Refactoring
+
+- changed functional component return types ([74109b5](https://github.com/phork/phorkit/commit/74109b5))
+
 # [10.4.0](https://github.com/phork/phorkit/compare/v10.3.0...v10.4.0) (2021-10-30)
 
 ### ✨ Features
