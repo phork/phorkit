@@ -209,7 +209,7 @@ const stylesConfigs = commonStylesModules.map(src => ({
 }));
 
 // export standalone CSS packages for each component
-const rawStylesConfigs = [...new Set(componentInfo.map(({ css }) => css).filter(Boolean))].map(src => ({
+const rawStylesConfigs = [...new Set(componentInfo.flatMap(({ css }) => css).filter(Boolean))].map(src => ({
   input: src,
   output: { file: `${stylesDest}/modules/components/${path.basename(src)}`, format: FORMAT },
   external,
