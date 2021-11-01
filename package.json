@@ -25,7 +25,7 @@
     "about-clean-icons": "echo '🗑️ Delete the generated icon components' && exit 0",
     "about-clean-storybook": "echo '🗑️🌈 Delete the generated storybook documentation site' && exit 0",
     "about-deploy-docz": "echo '🧰🌈🚀 Build the docz documentation site and publish it' && exit 0",
-    "about-deploy-lib": "echo '🧰📦🚀 Build the publishable package and rsync it (a yarn link alternative)' && exit 0",
+    "about-deploy-lib": "echo '🧰📦🚀 Build the publishable package and rsync it (a `yarn link` alternative)' && exit 0",
     "about-deploy-storybook": "echo '🧰🌈🚀 Build the storybook documentation site and publish it' && exit 0",
     "about-eslint": "echo '🤖🖍️ Run eslint and fix the problems' && exit 0",
     "about-gen-component-info": "echo '📝 Generate a list of all components, hooks and utils (to be used with rollup)' && exit 0",
@@ -54,12 +54,12 @@
     "about-transfer-storybook": "echo '🌈🚀 Rsync the built storybook documentation site (requires .npmrc)' && exit 0",
     "about-validate": "echo '🤖 Validates the files with eslint and stylelint' && exit 0",
     "about-watch": "echo '🤖👁️‍🗨️ Watch for typescript errors' && exit 0",
-    "build-docz": "mkdir -p build && yarn clean-docz && yarn install --pure-lockfile && yarn build-icons && docz build",
+    "build-docz": "mkdir -p build && yarn clean-docz && yarn install --pure-lockfile && yarn build-icons && yarn gen-postcss-json && docz build",
     "build-icons": "yarn clean-icons && yarn gen-icons",
-    "build-lib-debug": "export NODE_ENV=development && yarn build-icons && yarn gen-component-info && yarn gen-postcss-json && npx rollup -c && yarn gen-lib-package && yarn gen-lib-index && yarn gen-lib-config && yarn gen-types && cp ./README.md lib/",
-    "build-lib-dev": "export NODE_ENV=development && yarn build-icons && yarn gen-component-info && yarn gen-lib-package && yarn gen-lib-index && yarn gen-lib-config && yarn gen-postcss-json && yarn gen-types && npx rollup -c --watch",
-    "build-lib": "export NODE_ENV=production && export NODE_OPTIONS=--max_old_space_size=8192 && yarn build-icons && yarn gen-component-info && yarn gen-postcss-json && npx rollup -c && yarn gen-lib-package && yarn gen-lib-index && yarn gen-lib-config && yarn gen-types && cp ./README.md lib/",
-    "build-storybook": "mkdir -p build && yarn clean-storybook && yarn install --pure-lockfile && yarn build-icons && build-storybook -s ./public -o ./build/storybook",
+    "build-lib-debug": "export NODE_ENV=development && yarn build-icons && yarn gen-postcss-json && yarn gen-component-info && npx rollup -c && yarn gen-lib-package && yarn gen-lib-index && yarn gen-lib-config && yarn gen-types && cp ./README.md lib/",
+    "build-lib-dev": "export NODE_ENV=development && yarn build-icons && yarn gen-postcss-json && yarn gen-component-info && yarn gen-lib-package && yarn gen-lib-index && yarn gen-lib-config && yarn gen-types && npx rollup -c --watch",
+    "build-lib": "export NODE_ENV=production && export NODE_OPTIONS=--max_old_space_size=8192 && yarn build-icons && yarn gen-postcss-json && yarn gen-component-info && npx rollup -c && yarn gen-lib-package && yarn gen-lib-index && yarn gen-lib-config && yarn gen-types && cp ./README.md lib/",
+    "build-storybook": "mkdir -p build && yarn clean-storybook && yarn install --pure-lockfile && yarn build-icons && yarn gen-postcss-json && build-storybook -s ./public -o ./build/storybook",
     "clean-docz": "npx rimraf .docz && npx rimraf build/docz",
     "clean-icons": "npx rimraf src/icons",
     "clean-storybook": "npx rimraf build/storybook",
@@ -118,8 +118,7 @@
     ]
   },
   "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.pkg.github.com/"
+    "access": "public"
   },
   "dependencies": {
     "@babel/runtime": "^7.13.16",
