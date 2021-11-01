@@ -3,6 +3,7 @@ node_modules/
 
 # production
 /.docz
+/.storybook
 /lib
 /build
 

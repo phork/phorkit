@@ -11,5 +11,6 @@ webpack.*.js
 jest.config.js
 jest.config.ci.js
 __mocks__
+README.md
 CHANGELOG.md
 CONTRIBUTING.md
