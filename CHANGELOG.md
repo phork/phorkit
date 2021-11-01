@@ -2,6 +2,10 @@
 
 ## [10.4.2](https://github.com/phork/phorkit/compare/v10.4.1...v10.4.2) (2021-11-01)
 
+### 👷 Build Changes
+
+- added NPM publish workflow ([191d804](https://github.com/phork/phorkit/commit/191d804))
+
 ## [10.4.1](https://github.com/phork/phorkit/compare/v10.4.0...v10.4.1) (2021-10-31)
 
 ### ♻ Code Refactoring
