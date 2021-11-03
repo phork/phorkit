@@ -1,0 +1,20 @@
+.focusRing {
+  position: relative;
+
+  @mixin prepareFocusRing;
+  @mixin setFocusRingOpacity var(--focus-ring-opacity, 0.3);
+
+  &:focus,
+  &.is-focused {
+    outline: none;
+
+    @mixin makeFocusRing var(--focus-ring-color), var(--focus-ring-size, 4px);
+  }
+}
+
+.focusRing--hoverable {
+  &:hover,
+  &.is-hovered {
+    @mixin makeFocusRing var(--focus-ring-color), var(--focus-ring-size, 4px);
+  }
+}

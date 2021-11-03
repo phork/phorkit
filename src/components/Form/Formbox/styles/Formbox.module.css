@@ -160,7 +160,7 @@
 
   &:not(.formboxInputContainer--readOnly) {
     @mixin prepareFocusRing -1px; /* [1] */
-    @mixin setFocusRingOpacity var(--formbox-input-container-focus-ring-opacity, .1);
+    @mixin setFocusRingOpacity var(--formbox-input-container-focus-ring-opacity, 0.1);
 
     &:hover,
     &.is-hovered {
