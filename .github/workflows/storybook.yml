@@ -31,5 +31,5 @@ jobs:
           path: build/storybook
           remote_path: ./phorkit/
           remote_host: phork.org
-          remote_user: phorkit
+          remote_user: ${{ secrets.DEPLOY_USER }}
           remote_key: ${{ secrets.DEPLOY_KEY }}
