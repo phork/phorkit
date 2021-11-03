@@ -1,4 +1,6 @@
 .focusRing {
+  position: relative;
+
   @mixin prepareFocusRing;
   @mixin setFocusRingOpacity var(--focus-ring-opacity, 0.3);
 
