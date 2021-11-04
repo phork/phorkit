@@ -1,5 +1,11 @@
 # Changelog
 
+# [10.5.0](https://github.com/phork/phorkit/compare/v10.4.2...v10.5.0) (2021-11-04)
+
+### ✨ Features
+
+- added a confirmClose prop to the modals ([09dfd5e](https://github.com/phork/phorkit/commit/09dfd5e))
+
 ## [10.4.2](https://github.com/phork/phorkit/compare/v10.4.1...v10.4.2) (2021-11-01)
 
 ### 👷 Build Changes
