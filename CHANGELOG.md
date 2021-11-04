@@ -5,6 +5,7 @@
 ### ✨ Features
 
 - added a confirmClose prop to the modals ([09dfd5e](https://github.com/phork/phorkit/commit/09dfd5e))
+- added focusRing stylesheet ([219eb15](https://github.com/phork/phorkit/commit/219eb15))
 
 ## [10.4.2](https://github.com/phork/phorkit/compare/v10.4.1...v10.4.2) (2021-11-01)
 
