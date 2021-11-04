@@ -87,7 +87,7 @@
     "start-storybook": "yarn gen-postcss-json && yarn build-icons && start-storybook -s ./public -p 6006",
     "start": "yarn start-storybook",
     "stylelint": "npx stylelint \"src/**/*.css\" --fix",
-    "test-dev": "npx jest",
+    "test-dev": "npx jest --coverage",
     "test-watch": "npx jest --watch",
     "test": "npx jest --config=jest.config.ci.js",
     "transfer-docz": "rsync -avz --delete build/docz $npm_config_deploy_docz_path",

@@ -284,3 +284,17 @@ Imitation.args = {
   as: 'div',
   imitation: true,
 };
+
+export const ColoredIcon = ({
+  icon = 'medium',
+  ...args
+}: Omit<IconTextButtonProps, 'icon'> & { icon: 'small' | 'medium' | 'large' }) => (
+  <IconTextButton {...args} icon={<CheckIcon scale={icon} style={{ color: '#f41150' }} />} />
+);
+
+ColoredIcon.storyName = 'Colored icon';
+ColoredIcon.args = {
+  ...defaultArgs,
+  color: 'neutral',
+  weight: 'outlined',
+};
