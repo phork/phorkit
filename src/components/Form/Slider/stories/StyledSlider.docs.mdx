@@ -1,0 +1,41 @@
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Looper } from 'components/Looper';
+import { Rhythm } from 'components/Rhythm';
+import { Canvas } from 'stories/helpers/Canvas';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
+import { FormComponentDemo } from '../../stories/helpers/FormComponentDemo';
+import { NotifiedStyledSlider } from '../NotifiedStyledSlider';
+import { StyledSlider } from '../StyledSlider';
+
+<PageTitle src="components/Form/Slider" title="StyledSlider" />
+<Subtitle />
+<Description />
+<Primary />
+<ArgsTable story={PRIMARY_STORY} />
+<Stories />
+
+## Notifications
+
+<Canvas>
+  <Looper
+    list={['danger', 'warning', 'success', 'primary', 'neutral']}
+    render={level => (
+      <Rhythm grouped mb={4}>
+        <FormComponentDemo initialValue="75" property="value" type="slider">
+          <NotifiedStyledSlider
+            aria-label="Super fantastic label"
+            handleBackgroundColor="#283992"
+            level={level}
+            notification={`This is an example ${level} notification.`}
+            tickBackgroundColor="#e4e4e4"
+            trackBackgroundColor="#e4e4e4"
+            trackFillBackgroundColor="#642da0"
+            valuePosition="right"
+            width="100%"
+          />
+        </FormComponentDemo>
+      </Rhythm>
+    )}
+  />
+</Canvas>

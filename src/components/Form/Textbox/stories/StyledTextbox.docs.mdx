@@ -1,0 +1,58 @@
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
+import { SearchIcon } from 'icons/SearchIcon';
+import { SpinnerIcon } from 'icons/SpinnerIcon';
+import { EmailIcon } from 'icons/internal/EmailIcon';
+import { Button } from 'components/Button';
+import { Flex } from 'components/Flex';
+import { Looper } from 'components/Looper';
+import { Rhythm } from 'components/Rhythm';
+import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { Canvas } from 'stories/helpers/Canvas';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
+import { FormComponentDemo } from '../../stories/helpers/FormComponentDemo';
+import { NotifiedStyledTextbox } from '../NotifiedStyledTextbox';
+import { Textbox } from '../Textbox';
+import { textbox as variants } from './helpers/variants';
+
+<PageTitle src="components/Form/Textbox" title="StyledTextbox" />
+<Subtitle />
+<Description />
+<Primary />
+<ArgsTable story={PRIMARY_STORY} />
+<Stories />
+
+## Notifications
+
+<Canvas>
+  <Looper
+    list={['danger', 'warning', 'success', 'primary', 'neutral']}
+    render={level => (
+      <Looper
+        list={variants}
+        render={variant => (
+          <Rhythm grouped py={3}>
+            <FormComponentDemo initialValue="Hello world" property="value" type="textbox">
+              <NotifiedStyledTextbox
+                clearable
+                transitional
+                label="Super fantastic label"
+                level={level}
+                notification={`This is an example ${level} notification.`}
+                textboxIconColor="#9D69D5"
+                textboxIconHoveredColor="#642da0"
+                textboxInputContainerBackgroundColor="transparent"
+                textboxInputContainerBorderColor="#9D69D5"
+                textboxInputContainerFocusedBorderColor="#57278C"
+                textboxInputContainerHoveredBorderColor="#642da0"
+                textboxInputTextColor="#642da0"
+                textboxLabelTextColor="#B995E1"
+                variant={variant}
+              />
+            </FormComponentDemo>
+          </Rhythm>
+        )}
+      />
+    )}
+  />
+</Canvas>

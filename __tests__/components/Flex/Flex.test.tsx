@@ -7,4 +7,25 @@ describe('<Flex />', () => {
     const { getByText } = render(<Flex>Hello world</Flex>);
     expect(getByText('Hello world')).toBeTruthy();
   });
+
+  it('should accept all the props', () => {
+    const { getByText } = render(
+      <Flex
+        flexible
+        full
+        inline
+        max
+        reverse
+        wrap
+        alignContent="center"
+        alignItems="center"
+        alignSelf="center"
+        direction="row"
+        justifyContent="center"
+      >
+        Hello world
+      </Flex>,
+    );
+    expect(getByText('Hello world')).toBeTruthy();
+  });
 });

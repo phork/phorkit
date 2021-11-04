@@ -1,9 +1,8 @@
-import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledPassword, StyledPasswordProps } from '../StyledPassword';
 import passwordStory from './Password.stories';
+import StyledPasswordDocumentation from './StyledPassword.docs.mdx';
 
 const argTypes = { ...passwordStory.argTypes };
 delete argTypes.contrast;
@@ -61,16 +60,7 @@ export default {
     ...passwordStory.parameters,
     docs: {
       ...passwordStory.parameters?.docs,
-      page: () => (
-        <React.Fragment>
-          <PageTitle src="components/Form/Textbox" title="StyledPassword" />
-          <Subtitle />
-          <Description />
-          <Primary />
-          <ArgsTable story={PRIMARY_STORY} />
-          <Stories />
-        </React.Fragment>
-      ),
+      page: StyledPasswordDocumentation,
     },
   },
 } as ComponentMeta<typeof StyledPassword>;

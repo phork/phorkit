@@ -143,7 +143,7 @@ export const useAnimationLoop = ({
     [duration, loops, state.start],
   );
 
-  // part of the return value used to manually start the animation
+  // part of the returned value used to manually start the animation
   const start = useCallback(
     (options: Pick<State, 'options'>): void => {
       if (duration === 0) {
@@ -159,7 +159,7 @@ export const useAnimationLoop = ({
     [animate, duration, onFinish, tick],
   );
 
-  // part of the return value used to manually stop the animation
+  // part of the returned value used to manually stop the animation
   const stop = useCallback((): void => {
     if (typeof window !== 'undefined' && requestId.current !== undefined) {
       window.cancelAnimationFrame(requestId.current);

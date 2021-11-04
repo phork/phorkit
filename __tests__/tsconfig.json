@@ -1,10 +1,29 @@
 {
   "compilerOptions": {
+    "baseUrl": "../src",
+    "rootDir": "../",
     "paths": {
-      "lib": ["src"],
-      "lib/*": ["src/*"]
-    }
+      "__mocks__": ["../__mocks__"],
+      "__mocks__/*": ["../__mocks__/*"],
+      "lib": ["../src"],
+      "lib/*": ["../src/*"],
+      "components": ["../src/components"],
+      "compositions": ["../src/compositions"],
+      "config": ["../src/config"],
+      "context": ["../src/context"],
+      "hooks": ["../src/hooks"],
+      "icons": ["../src/icons"],
+      "postcss": ["../src/postcss"],
+      "styles": ["../src/styles"],
+      "types": ["../src/types"],
+      "utils": ["../src/utils"],
+    },
+    "types": [
+      "jest",
+      "node",
+      "@testing-library/jest-dom"
+    ]
   },
-  "extends": "./tsconfig.ci.json",
+  "extends": "../tsconfig.json",
   "include": [".", "../src", "./jest.d.ts", "../__mocks__"]
  }
