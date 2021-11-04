@@ -1,9 +1,8 @@
-import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledSlider } from '../StyledSlider';
 import sliderStory from './Slider.stories';
+import StyledSliderDocumentation from './StyledSlider.docs.mdx';
 
 const argTypes = { ...sliderStory.argTypes };
 delete argTypes.contrast;
@@ -41,16 +40,7 @@ export default {
     ...sliderStory.parameters,
     docs: {
       ...sliderStory.parameters?.docs,
-      page: () => (
-        <React.Fragment>
-          <PageTitle src="components/Slider" title="StyledSlider" />
-          <Subtitle />
-          <Description />
-          <Primary />
-          <ArgsTable story={PRIMARY_STORY} />
-          <Stories />
-        </React.Fragment>
-      ),
+      page: StyledSliderDocumentation,
     },
   },
 } as ComponentMeta<typeof StyledSlider>;

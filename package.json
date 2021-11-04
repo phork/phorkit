@@ -54,6 +54,7 @@
     "about-transfer-storybook": "echo '🌈🚀 Rsync the built storybook documentation site (requires .npmrc)' && exit 0",
     "about-validate": "echo '🤖 Validates the files with eslint and stylelint' && exit 0",
     "about-watch": "echo '🤖👁️‍🗨️ Watch for typescript errors' && exit 0",
+    "about-watch-tests": "echo '🤖👁️‍🗨️ Watch the tests for typescript errors' && exit 0",
     "build-docz": "mkdir -p build && yarn clean-docz && yarn install --pure-lockfile && yarn build-icons && yarn gen-postcss-json && docz build",
     "build-icons": "yarn clean-icons && yarn gen-icons",
     "build-lib-debug": "export NODE_ENV=development && yarn build-icons && yarn gen-postcss-json && yarn gen-component-info && npx rollup -c && yarn gen-lib-package && yarn gen-lib-index && yarn gen-lib-config && yarn gen-types && cp ./README.md lib/",
@@ -93,7 +94,8 @@
     "transfer-lib": "rsync -avz --delete --exclude .git --exclude README.md lib/* $npm_config_deploy_lib_path",
     "transfer-storybook": "rsync -avz --delete build/storybook $npm_config_deploy_storybook_path",
     "validate": "npx eslint \"src/**/*.{js,json,ts,tsx}\" && npx stylelint \"src/**/*.css\"",
-    "watch": "npx tsc --watch --noEmit --project './tsconfig.json'"
+    "watch": "npx tsc --watch --noEmit --project './tsconfig.json'",
+    "watch-tests": "npx tsc --watch --noEmit --project '__tests__/tsconfig.json'"
   },
   "husky": {
     "hooks": {

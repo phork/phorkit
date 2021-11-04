@@ -1,8 +1,7 @@
-import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledTextbox, StyledTextboxProps } from '../StyledTextbox';
+import StyledTextboxDocumentation from './StyledTextbox.docs.mdx';
 import textboxStory from './Textbox.stories';
 
 const argTypes = { ...textboxStory.argTypes };
@@ -61,16 +60,7 @@ export default {
     ...textboxStory.parameters,
     docs: {
       ...textboxStory.parameters?.docs,
-      page: () => (
-        <React.Fragment>
-          <PageTitle src="components/Form/Textbox" title="StyledTextbox" />
-          <Subtitle />
-          <Description />
-          <Primary />
-          <ArgsTable story={PRIMARY_STORY} />
-          <Stories />
-        </React.Fragment>
-      ),
+      page: StyledTextboxDocumentation,
     },
   },
 } as ComponentMeta<typeof StyledTextbox>;

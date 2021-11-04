@@ -97,6 +97,7 @@ const defaultArgs = {
   focusedBorderColor: '#f41150',
   fullHeight: false,
   fullWidth: false,
+  itemBackgroundColor: 'transparent',
   itemFocusedBackgroundColor: '#f41150',
   itemFocusedBorderColor: '#f41150',
   itemFocusedSelectedBackgroundColor: '#F86F95',
