@@ -1,7 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import { MergeProps } from '../../types';
-import { renderFromPropWithFallback, RenderFromPropElement } from '../../utils/renderFromProp';
 import styles from './styles/Button.module.css';
 import { Button, ButtonProps } from './Button';
 import { ButtonElementType } from './types';
@@ -9,12 +8,10 @@ import { ButtonElementType } from './types';
 export type IconButtonShape = 'circle' | 'square';
 export type IconButtonElementType = ButtonElementType;
 
-type RenderFromPropProps = {};
-
 export type IconButtonProps<T extends ButtonElementType = 'button'> = MergeProps<
   Omit<ButtonProps<T>, 'align' | 'size'>,
   {
-    children: RenderFromPropElement<RenderFromPropProps>;
+    children: React.ReactElement<SVGElement>;
     shape?: IconButtonShape;
     size?: ButtonProps['size'] | 'xlarge' | '2xlarge' | '3xlarge' | '4xlarge';
   }
@@ -30,7 +27,6 @@ export function IconButtonBase<T extends IconButtonElementType = 'button'>(
   forwardedRef: React.ForwardedRef<HTMLElementTagNameMap[T]>,
 ): React.ReactElement {
   const classes = cx(styles['button--icon'], shape && styles[`button--${shapeMap[shape]}`], className);
-  const content = renderFromPropWithFallback<RenderFromPropProps>(children);
   const weight = initWeight || (shape && 'solid') || (!shape && 'inline');
 
   return (
@@ -43,7 +39,7 @@ export function IconButtonBase<T extends IconButtonElementType = 'button'>(
       {...(props as ButtonProps<T>)}
       as={as}
     >
-      {content}
+      {children}
     </Button>
   );
 }

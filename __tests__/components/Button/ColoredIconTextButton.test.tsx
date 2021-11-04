@@ -7,7 +7,7 @@ import { fireEvent, render } from '../../utils';
 describe('<ColoredIconTextButton colorId="P10" />', () => {
   it('should render a button', () => {
     const { container, getByText } = render(
-      <ColoredIconTextButton colorId="P10" icon={TimesIcon}>
+      <ColoredIconTextButton colorId="P10" icon={<TimesIcon scale="medium" />}>
         Click me!
       </ColoredIconTextButton>,
     );
@@ -17,7 +17,7 @@ describe('<ColoredIconTextButton colorId="P10" />', () => {
 
   it('should render a disabled button', () => {
     const { getByTestId } = render(
-      <ColoredIconTextButton disabled colorId="P10" data-testid="button" icon={TimesIcon}>
+      <ColoredIconTextButton disabled colorId="P10" data-testid="button" icon={<TimesIcon scale="medium" />}>
         Click me!
       </ColoredIconTextButton>,
     );
@@ -26,7 +26,13 @@ describe('<ColoredIconTextButton colorId="P10" />', () => {
 
   it('should render a loading button', () => {
     const { getByText, getByTestId } = render(
-      <ColoredIconTextButton loading colorId="P10" data-testid="button" icon={TimesIcon} loader={<span>Loading</span>}>
+      <ColoredIconTextButton
+        loading
+        colorId="P10"
+        data-testid="button"
+        icon={<TimesIcon scale="medium" />}
+        loader={<span>Loading</span>}
+      >
         Click me!
       </ColoredIconTextButton>,
     );
@@ -41,7 +47,7 @@ describe('<ColoredIconTextButton colorId="P10" />', () => {
         loading
         colorId="P10"
         data-testid="button"
-        icon={TimesIcon}
+        icon={<TimesIcon scale="medium" />}
         loader={<span>Loading</span>}
       >
         Click me!
@@ -54,7 +60,7 @@ describe('<ColoredIconTextButton colorId="P10" />', () => {
 
   it('should render a submit button', () => {
     const { getByTestId } = render(
-      <ColoredIconTextButton colorId="P10" data-testid="button" icon={TimesIcon} type="submit">
+      <ColoredIconTextButton colorId="P10" data-testid="button" icon={<TimesIcon scale="medium" />} type="submit">
         Click me!
       </ColoredIconTextButton>,
     );
@@ -64,7 +70,7 @@ describe('<ColoredIconTextButton colorId="P10" />', () => {
   it('should be clickable', () => {
     const onClick = jest.fn();
     const { getByRole } = render(
-      <ColoredIconTextButton colorId="P10" icon={TimesIcon} onClick={onClick}>
+      <ColoredIconTextButton colorId="P10" icon={<TimesIcon scale="medium" />} onClick={onClick}>
         Click me!
       </ColoredIconTextButton>,
     );
@@ -79,7 +85,7 @@ describe('<ColoredIconTextButton colorId="P10" />', () => {
 
   it('should render as a button', () => {
     const { container } = render(
-      <ColoredIconTextButton colorId="P10" icon={TimesIcon}>
+      <ColoredIconTextButton colorId="P10" icon={<TimesIcon scale="medium" />}>
         Click me!
       </ColoredIconTextButton>,
     );
@@ -88,7 +94,7 @@ describe('<ColoredIconTextButton colorId="P10" />', () => {
 
   it('should render as an anchor', () => {
     const { container } = render(
-      <ColoredIconTextButton<'a'> as="a" colorId="P10" href="#button" icon={TimesIcon}>
+      <ColoredIconTextButton<'a'> as="a" colorId="P10" href="#button" icon={<TimesIcon scale="medium" />}>
         Click me!
       </ColoredIconTextButton>,
     );
@@ -98,7 +104,7 @@ describe('<ColoredIconTextButton colorId="P10" />', () => {
 
   it('should render as a div', () => {
     const { container } = render(
-      <ColoredIconTextButton imitation colorId="P10" icon={TimesIcon}>
+      <ColoredIconTextButton imitation colorId="P10" icon={<TimesIcon scale="medium" />}>
         Click me!
       </ColoredIconTextButton>,
     );
@@ -107,7 +113,7 @@ describe('<ColoredIconTextButton colorId="P10" />', () => {
 
   it('should render using a functional component', () => {
     const { container, getByText } = render(
-      <ColoredIconTextButton<'a'> as={AsTypeA} colorId="P10" href="#button" icon={TimesIcon}>
+      <ColoredIconTextButton<'a'> as={AsTypeA} colorId="P10" href="#button" icon={<TimesIcon scale="medium" />}>
         Click me!
       </ColoredIconTextButton>,
     );

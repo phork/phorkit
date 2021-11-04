@@ -1,7 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import { MergeProps } from '../../types';
-import { renderFromProp, renderFromPropWithFallback, RenderFromPropElement } from '../../utils/renderFromProp';
 import styles from './styles/Button.module.css';
 import { Button, ButtonProps } from './Button';
 import { ButtonElementType } from './types';
@@ -11,8 +10,8 @@ export type IconTextButtonElementType = ButtonElementType;
 export type IconTextButtonProps<T extends ButtonElementType = 'button'> = MergeProps<
   ButtonProps<T>,
   {
-    icon: RenderFromPropElement<{}>;
-    children: RenderFromPropElement<{}> | string;
+    icon: React.ReactElement<SVGElement>;
+    children: React.ReactChild;
     /** If this is true then the loader icon will replace the icon and the text will remain */
     loaderReplaceIcon?: boolean;
     reverse?: boolean;
@@ -46,10 +45,8 @@ export function IconTextButtonBase<T extends IconTextButtonElementType = 'button
       {...(props as ButtonProps<T>)}
       as={as}
     >
-      <span className={styles.button__icon}>
-        {renderFromProp<{}>(loading && loaderReplaceIcon && loader ? loader : icon)}
-      </span>
-      <span className={styles.button__text}>{renderFromPropWithFallback<{}>(children)}</span>
+      <span className={styles.button__icon}>{loading && loaderReplaceIcon && loader ? loader : icon}</span>
+      <span className={styles.button__text}>{children}</span>
     </Button>
   );
 }
