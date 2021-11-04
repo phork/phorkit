@@ -457,6 +457,57 @@ import {
   </ThemeWrapper>
 </Playground>
 
+## Confirm close
+
+<Playground>
+  <ThemeWrapper>
+    <Modals confirmClose={() => new Promise(resolve => resolve(confirm('Are you sure you want to close this modal?')))}>
+      <ModalConsumer>
+        {({ createModal, popModal }) => (
+          <Rhythm m={2}>
+            <Button
+              color="primary"
+              onClick={event =>
+                createModal(
+                  <Modal
+                    focusable
+                    contextId="demo-confirm-close-modal"
+                    onClose={(event, contextId) => console.log(`closed ${contextId}`)}
+                    size="medium"
+                  >
+                    {({ id }) => (
+                      <React.Fragment>
+                        <ModalHeader modalId={id} title="Confirm close" />
+                        <ModalBody scrollable>
+                          <Typography size="xlarge" variants={['line-height-comfy']}>
+                            <p>
+                              This modal system uses the confirmClose callback to either confirm or cancel the close
+                              request.
+                            </p>
+                          </Typography>
+                        </ModalBody>
+                        <ModalFooter bordered>
+                          <Flex justifyContent="flex-end">
+                            <Button color="neutral" onClick={() => popModal()} weight="shaded">
+                              Immediate close
+                            </Button>
+                          </Flex>
+                        </ModalFooter>
+                      </React.Fragment>
+                    )}
+                  </Modal>,
+                )
+              }
+            >
+              Open a modal
+            </Button>
+          </Rhythm>
+        )}
+      </ModalConsumer>
+    </Modals>
+  </ThemeWrapper>
+</Playground>
+
 ## \[props\]
 
 ### Modal

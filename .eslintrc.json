@@ -154,6 +154,12 @@
           "typescript": {}
         }
       }
+    },
+    {
+      "files": ["**/stories/*"],
+      "rules": {
+        "no-console": "off"
+      }
     }
   ]
 }

@@ -11,12 +11,14 @@
   top: 0;
   z-index: $layout-z-index-modal;
 
-  &:before {
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-color: #000;
-    opacity: .4;
+  &:not(.modalContainer--noBlackout) {
+    &:before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-color: #000;
+      opacity: .4;
+    }
   }
 }
