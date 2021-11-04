@@ -1,7 +1,9 @@
 import { useCallback } from 'react';
 import { useElementEventListener } from './useElementEventListener';
 
-export type UseHandleEscapeProps<C extends HTMLElement> = {
+export type UseHandleEscapeProps<C extends HTMLElement = HTMLElement> = {
+  /** If this returns true the callback will be executed; false will cancel it */
+  confirm?: () => Promise<boolean>;
   onEscape: (event: KeyboardEvent) => void;
   ref?: React.RefObject<C>;
   stopPropagation?: boolean;
@@ -13,7 +15,8 @@ export type UseHandleEscapeProps<C extends HTMLElement> = {
  * is only called if the event happened within that
  * element.
  */
-export function useHandleEscape<C extends HTMLElement>({
+export function useHandleEscape<C extends HTMLElement = HTMLElement>({
+  confirm,
   onEscape,
   ref,
   stopPropagation = false,
@@ -22,12 +25,21 @@ export function useHandleEscape<C extends HTMLElement>({
     (event: KeyboardEvent): void => {
       if (event.key === 'Escape') {
         if (!ref || ref.current?.contains(event.target as HTMLElement)) {
-          stopPropagation && event.stopPropagation();
-          onEscape?.(event);
+          if (confirm) {
+            confirm().then((response: boolean) => {
+              if (response) {
+                stopPropagation && event.stopPropagation();
+                onEscape?.(event);
+              }
+            });
+          } else {
+            stopPropagation && event.stopPropagation();
+            onEscape?.(event);
+          }
         }
       }
     },
-    [onEscape, ref, stopPropagation],
+    [confirm, onEscape, ref, stopPropagation],
   );
 
   useElementEventListener({ eventType: 'keydown', callback: handleKeyDown as EventListener, capture: true });

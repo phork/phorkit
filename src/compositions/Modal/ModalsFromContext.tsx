@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
-import { ModalConsumer } from './ModalConsumer';
 import { ModalContainer, ModalContainerProps } from './ModalContainer';
+import { ModalContext } from './ModalContext';
 import { ModalFromContext } from './ModalFromContext';
 
 export type ModalsFromContextProps = Omit<ModalContainerProps, 'onEscape'> & Omit<ThemeProps, 'contrast' | 'unthemed'>;
@@ -15,22 +15,19 @@ export type ModalsFromContextProps = Omit<ModalContainerProps, 'onEscape'> & Omi
  * stack which will then either show the next modal
  * down or no modal at all.
  */
-export function ModalsFromContext({ themeId: initThemeId, ...props }: ModalsFromContextProps): JSX.Element {
+export function ModalsFromContext({
+  confirmClose,
+  themeId: initThemeId,
+  ...props
+}: ModalsFromContextProps): JSX.Element | null {
   const themeId = useThemeId(initThemeId);
+  const { modal, popModal } = useContext(ModalContext);
 
-  return (
-    <ModalConsumer>
-      {({ modal, popModal }) => (
-        <React.Fragment>
-          {modal ? (
-            <ModalContainer onEscape={popModal} {...props}>
-              <ModalFromContext key={modal.props.contextId} modal={modal} themeId={themeId} />
-            </ModalContainer>
-          ) : null}
-        </React.Fragment>
-      )}
-    </ModalConsumer>
-  );
+  return modal ? (
+    <ModalContainer confirmClose={confirmClose} onEscape={popModal} {...props}>
+      <ModalFromContext confirmClose={confirmClose} key={modal.props.contextId} modal={modal} themeId={themeId} />
+    </ModalContainer>
+  ) : null;
 }
 
 ModalsFromContext.displayName = 'ModalsFromContext';

@@ -1,0 +1,72 @@
+import { action } from '@storybook/addon-actions';
+import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Button, ButtonGroup } from 'components/Button';
+import { Flex } from 'components/Flex';
+import { Rhythm } from 'components/Rhythm';
+import { Typography } from 'components/Typography';
+import { Canvas } from 'stories/helpers/Canvas';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { Modal } from '../Modal';
+import { ModalBody } from '../ModalBody';
+import { ModalConsumer } from '../ModalConsumer';
+import { ModalFooter } from '../ModalFooter';
+import { ModalHeader } from '../ModalHeader';
+import { Modals } from '../Modals';
+
+<PageTitle src="compositions/Modals" title="Modals" />
+<Subtitle />
+<Description />
+<Primary />
+<ArgsTable story={PRIMARY_STORY} />
+<Stories />
+
+### Confirm close
+
+<Canvas>
+  <Modals confirmClose={() => new Promise(resolve => resolve(confirm('Are you sure you want to close this modal?')))}>
+    <ModalConsumer>
+      {({ createModal, popModal }) => (
+        <Rhythm m={2}>
+          <Button
+            color="primary"
+            onClick={event =>
+              createModal(
+                <Modal
+                  focusable
+                  contextId="demo-confirm-close-modal"
+                  onClose={(event, contextId) => console.log(`closed ${contextId}`)}
+                  size="medium"
+                >
+                  {({ id }) => (
+                    <React.Fragment>
+                      <ModalHeader modalId={id} title="Confirm close" />
+                      <ModalBody scrollable>
+                        <Typography size="xlarge" variants={['line-height-comfy']}>
+                          <p>
+                            This modal system uses the confirmClose callback to either confirm or cancel the close
+                            request.
+                          </p>
+                        </Typography>
+                      </ModalBody>
+                      <ModalFooter bordered>
+                        <Flex justifyContent="flex-end">
+                          <Button color="neutral" onClick={() => popModal()} shape="brick" weight="shaded">
+                            Immediate close
+                          </Button>
+                        </Flex>
+                      </ModalFooter>
+                    </React.Fragment>
+                  )}
+                </Modal>,
+              )
+            }
+            shape="brick"
+            weight="shaded"
+          >
+            Open a modal
+          </Button>
+        </Rhythm>
+      )}
+    </ModalConsumer>
+  </Modals>
+</Canvas>

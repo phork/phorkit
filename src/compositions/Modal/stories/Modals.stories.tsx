@@ -1,5 +1,3 @@
-import { actions } from '@storybook/addon-actions';
-import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { HeartIcon } from 'icons/internal/HeartIcon';
@@ -9,13 +7,13 @@ import { Flex } from 'components/Flex';
 import { IconText } from 'components/IconText/IconText';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
-import { PageTitle } from 'stories/helpers/PageTitle';
 import { Modal } from '../Modal';
 import { ModalBody } from '../ModalBody';
 import { ModalConsumer } from '../ModalConsumer';
 import { ModalFooter } from '../ModalFooter';
 import { ModalHeader } from '../ModalHeader';
 import { Modals } from '../Modals';
+import ModalsDocumentation from './Modals.docs.mdx';
 
 export default {
   title: 'Surfaces/Modals',
@@ -55,16 +53,7 @@ export default {
       sort: 'requiredFirst',
     },
     docs: {
-      page: () => (
-        <React.Fragment>
-          <PageTitle src="compositions/Modal" title="Modals" />
-          <Subtitle />
-          <Description />
-          <Primary />
-          <ArgsTable story={PRIMARY_STORY} />
-          <Stories />
-        </React.Fragment>
-      ),
+      page: ModalsDocumentation,
     },
   },
 } as ComponentMeta<typeof Modals>;
@@ -81,7 +70,7 @@ const Template: ComponentStory<typeof Modals> = args => (
                 <Modal<HTMLButtonElement>
                   focusable
                   contextId="demo-large-modal"
-                  onClose={(_event, contextId) => actions(`closed ${contextId}`)}
+                  onClose={(_event, contextId) => console.log(`closed ${contextId}`)}
                   size="large"
                   style={{ height: '400px' }}
                 >
@@ -137,7 +126,7 @@ const Template: ComponentStory<typeof Modals> = args => (
                                 <Modal<HTMLButtonElement>
                                   focusable
                                   contextId="demo-medium-modal"
-                                  onClose={(_event, contextId) => actions(`closed ${contextId}`)}
+                                  onClose={(_event, contextId) => console.log(`closed ${contextId}`)}
                                   size="medium"
                                 >
                                   {({ id, focusRef }) => (
@@ -199,7 +188,7 @@ const Template: ComponentStory<typeof Modals> = args => (
                                                   focusable
                                                   ariaLabel="Hello world"
                                                   contextId="demo-small-modal"
-                                                  onClose={(_event, contextId) => actions(`closed ${contextId}`)}
+                                                  onClose={(_event, contextId) => console.log(`closed ${contextId}`)}
                                                   size="small"
                                                 >
                                                   {({ id, focusRef }) => (
@@ -305,7 +294,7 @@ const Template: ComponentStory<typeof Modals> = args => (
                   focusable
                   permanent
                   contextId="demo-permanent-modal"
-                  onClose={() => actions('closed permanent')}
+                  onClose={() => console.log('closed permanent')}
                   size="small"
                 >
                   {({ id, focusRef }) => (
