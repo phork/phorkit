@@ -51,4 +51,9 @@ describe('<Avatar />', () => {
     expect(container.firstChild?.nodeName).toBe('A');
     expect(getByText('EC')).toBeTruthy();
   });
+
+  it('should render the contrast colors', () => {
+    const { getByText } = render(<Avatar contrast initials="EC" />);
+    expect(getByText('EC')).toBeTruthy();
+  });
 });

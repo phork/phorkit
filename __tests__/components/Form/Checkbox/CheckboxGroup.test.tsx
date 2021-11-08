@@ -35,7 +35,7 @@ describe('<CheckboxGroup />', () => {
     expect(getByText('Third')).toBeTruthy();
   });
 
-  it('should be clickable', () => {
+  it('should be clickable to checked', () => {
     const onChange = jest.fn();
     const { getAllByRole } = render(
       <CheckboxGroup checkboxes={items} layout="stacked" legend="Legendary" onChange={onChange} values={['third']} />,
@@ -48,11 +48,21 @@ describe('<CheckboxGroup />', () => {
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toEqual(['third', 'first']);
+  });
 
-    fireEvent.click(checkboxes[1]);
+  it('should be clickable to unchecked', () => {
+    const onChange = jest.fn();
+    const { getAllByRole } = render(
+      <CheckboxGroup checkboxes={items} layout="stacked" legend="Legendary" onChange={onChange} values={['third']} />,
+    );
 
-    expect(onChange).toHaveBeenCalledTimes(2);
-    expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toEqual(['third', 'second']);
+    expect(onChange).not.toHaveBeenCalled();
+
+    const checkboxes = getAllByRole('checkbox');
+    fireEvent.click(checkboxes[2]);
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toEqual([]);
   });
 
   it('should render a notified checkbox group', () => {

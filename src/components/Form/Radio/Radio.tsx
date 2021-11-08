@@ -93,7 +93,10 @@ export function RadioBase<V extends RadioValue = string>(
   const handleChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>(
     event => {
       persistEvents && event.persist();
-      onChange && onChange(event, event.target.checked, event.target.value as V);
+      if (onChange) {
+        const value = event.target.getAttribute('data-type') === 'number' ? +event.target.value : event.target.value;
+        onChange(event, event.target.checked, value as V);
+      }
     },
     [onChange, persistEvents],
   );
@@ -131,6 +134,7 @@ export function RadioBase<V extends RadioValue = string>(
         <input
           checked={checked}
           className={styles.radioInput}
+          data-type={typeof value}
           disabled={disabled}
           id={generateComponentId()}
           name={name}
