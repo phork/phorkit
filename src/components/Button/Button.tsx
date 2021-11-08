@@ -120,7 +120,7 @@ export function ButtonBase<T extends ButtonElementType = 'button'>(
 
       case 'button': {
         const elementProps = {} as React.HTMLProps<HTMLButtonElement>;
-        elementProps.type = type || 'button';
+        elementProps.type = type;
         elementProps.disabled = disabled;
         return elementProps;
       }

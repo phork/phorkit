@@ -1,8 +1,9 @@
 import '@testing-library/jest-dom/extend-expect';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Button } from 'lib';
 import { AsTypeA } from '__mocks__/AsType.mock';
-import { fireEvent, render } from '../../utils';
+import { createEvent, fireEvent, render } from '../../utils';
 
 describe('<Button />', () => {
   it('should render a button', () => {
@@ -50,6 +51,33 @@ describe('<Button />', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
+  it('should trigger on Enter keydown', () => {
+    const onClick = jest.fn();
+    const { getByRole } = render(<Button onClick={onClick}>Click me!</Button>);
+
+    expect(onClick).not.toHaveBeenCalled();
+
+    const button = getByRole('button');
+    button.focus();
+    userEvent.keyboard('[Enter]');
+
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('should not trigger when disabled', () => {
+    const { getByTestId } = render(
+      <Button disabled data-testid="button" href="#">
+        Click me!
+      </Button>,
+    );
+
+    const button = getByTestId('button');
+    const keyDownEvent = createEvent.keyDown(button, { key: 'Enter' });
+    fireEvent(button, keyDownEvent);
+
+    expect(keyDownEvent.defaultPrevented).toBe(true);
+  });
+
   it('should render as a button', () => {
     const { container } = render(<Button>Click me!</Button>);
     expect(container.firstChild?.nodeName).toBe('BUTTON');
@@ -79,5 +107,29 @@ describe('<Button />', () => {
     expect(container.firstChild?.nodeName).toBe('A');
     expect(container.firstChild).toHaveAttribute('href', '#button');
     expect(getByText('Click me!')).toBeTruthy();
+  });
+
+  it('should accept the rest of the props', () => {
+    const { getByText } = render(
+      <Button
+        active
+        focused
+        fullWidth
+        hovered
+        noHeight
+        noPadding
+        unthemed
+        align="left"
+        className="buttonTest"
+        color="primary"
+        shape="brick"
+        size="small"
+        style={{ color: 'red' }}
+        weight="solid"
+      >
+        Hello world
+      </Button>,
+    );
+    expect(getByText('Hello world')).toBeTruthy();
   });
 });
