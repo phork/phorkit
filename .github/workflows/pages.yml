@@ -1,0 +1,15 @@
+name: Pages
+
+on:
+  release:
+    types: [created]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Github pages build
+        run: |
+          curl -XPOST -u "${{ secrets.PAGES_USERNAME }}:${{ secrets.PAGES_TOKEN }}" -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" https://api.github.com/repos/phork/phork.github.io/actions/workflows/storybook.yml/dispatches --data '{"ref": "master"}'
