@@ -51,9 +51,13 @@ describe('<Button />', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  it('should trigger on Enter keydown', () => {
+  it('should trigger on Enter keydown when not a button', () => {
     const onClick = jest.fn();
-    const { getByRole } = render(<Button onClick={onClick}>Click me!</Button>);
+    const { getByRole } = render(
+      <Button<'div'> as="div" onClick={onClick}>
+        Click me!
+      </Button>,
+    );
 
     expect(onClick).not.toHaveBeenCalled();
 
@@ -64,7 +68,7 @@ describe('<Button />', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  it('should not trigger when disabled', () => {
+  it('should not trigger the link when disabled', () => {
     const { getByTestId } = render(
       <Button disabled data-testid="button" href="#">
         Click me!
@@ -107,6 +111,11 @@ describe('<Button />', () => {
     expect(container.firstChild?.nodeName).toBe('A');
     expect(container.firstChild).toHaveAttribute('href', '#button');
     expect(getByText('Click me!')).toBeTruthy();
+  });
+
+  it('should render an unstyled button', () => {
+    const { getByText } = render(<Button unstyled>Hello world</Button>);
+    expect(getByText('Hello world')).toBeTruthy();
   });
 
   it('should accept the rest of the props', () => {
