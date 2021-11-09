@@ -8,7 +8,7 @@ export function EllipsisIcon({ title, titleId = uuid(), ...initProps }: SvgIconP
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" aria-labelledby={titleId} {...props}>
       {title === undefined ? (
-        <title id={titleId}>{'Ellipses'}</title>
+        <title id={titleId}>{'Ellipsis'}</title>
       ) : title ? (
         <title id={titleId}>{title}</title>
       ) : null}

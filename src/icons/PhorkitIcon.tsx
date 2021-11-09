@@ -8,7 +8,7 @@ export function PhorkitIcon({ title, titleId = uuid(), ...initProps }: SvgIconPr
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 455 71" aria-labelledby={titleId} {...props}>
       {title === undefined ? (
-        <title id={titleId}>{'phork/it'}</title>
+        <title id={titleId}>{'Phork/it'}</title>
       ) : title ? (
         <title id={titleId}>{title}</title>
       ) : null}
