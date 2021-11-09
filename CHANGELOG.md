@@ -1,5 +1,15 @@
 # Changelog
 
+# [11.0.0](https://github.com/phork/phorkit/compare/v10.5.0...v11.0.0) (2021-11-09)
+
+### ♻ Code Refactoring
+
+- **major**: only allow ReactElement icon type in icon buttons ([382263d](https://github.com/phork/phorkit/commit/382263d))
+
+### 🐛 Bug Fixes
+
+- fix Select placeholder optionLabel type ([8a2eeb2](https://github.com/phork/phorkit/commit/8a2eeb2))
+
 # [10.5.0](https://github.com/phork/phorkit/compare/v10.4.2...v10.5.0) (2021-11-04)
 
 ### ✨ Features
