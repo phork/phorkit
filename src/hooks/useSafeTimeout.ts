@@ -1,5 +1,5 @@
+import { nanoid } from 'nanoid';
 import { useCallback, useEffect, useMemo, useRef } from 'react';
-import { v4 as uuid } from 'uuid';
 
 export type UseSafeTimeoutResponse = {
   setSafeTimeout: (callback: () => void, timeout?: number, id?: string) => string;
@@ -29,7 +29,7 @@ export const useSafeTimeout = (): UseSafeTimeoutResponse => {
   }, [clearSafeTimeout]);
 
   const setSafeTimeout = useCallback<UseSafeTimeoutResponse['setSafeTimeout']>(
-    (callback, timeout, id = uuid()) => {
+    (callback, timeout, id = nanoid()) => {
       clearSafeTimeout(id);
       timeouts.current[id] = setTimeout(callback, timeout || 0);
       return id;

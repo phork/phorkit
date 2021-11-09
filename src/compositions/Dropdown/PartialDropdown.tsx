@@ -1,7 +1,7 @@
 import { cx } from '@emotion/css';
 import debounce from 'lodash.debounce';
+import { nanoid } from 'nanoid';
 import React, { useCallback, useEffect, useImperativeHandle, useMemo, useReducer, useRef, useState } from 'react';
-import { v4 as uuid } from 'uuid';
 import { StateColor, ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import { useDeepFocusGroup } from '../../hooks/useDeepFocusGroup';
@@ -233,7 +233,7 @@ export function PartialDropdownBase(
 
   const [dropdownState, dropdownDispatch] = useReducer(dropdownReducer, {
     busy: false,
-    id: id || uuid(),
+    id: id || nanoid(),
     input: '',
     listVisible: false,
   });

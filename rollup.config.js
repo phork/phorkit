@@ -110,10 +110,6 @@ const scriptsConfig = ['esm', 'cjs'].map(format => ({
     babel(sharedBabelConfig),
     commonjs({
       include: 'node_modules/**',
-      namedExports: {
-        // explicitly specify unresolvable named exports
-        'node_modules/uuid/index.js': ['v4'],
-      },
     }),
     postcss({
       autoModules: false,

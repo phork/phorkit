@@ -1,6 +1,6 @@
 import produce from 'immer';
+import { nanoid } from 'nanoid';
 import React, { useCallback, useEffect, useReducer, useRef } from 'react';
-import { v4 as uuid } from 'uuid';
 import { EventListenerContext, EventListenerContextValue } from './EventListenerContext';
 import { eventListenerActions as ACTIONS } from './eventListenerActions';
 import {
@@ -37,7 +37,7 @@ export function EventListenerProvider({ children, ref }: EventListenerProviderPr
 
   const unshiftEventListener = useCallback<EventListenerContextValue['unshiftEventListener']>(
     (eventType, listener, options) => {
-      const id = uuid();
+      const id = nanoid();
       dispatch({
         id,
         type: ACTIONS.UNSHIFT,
@@ -52,7 +52,7 @@ export function EventListenerProvider({ children, ref }: EventListenerProviderPr
 
   const pushEventListener = useCallback<EventListenerContextValue['pushEventListener']>(
     (eventType, listener, options) => {
-      const id = uuid();
+      const id = nanoid();
       dispatch({
         id,
         type: ACTIONS.PUSH,

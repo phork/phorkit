@@ -1,6 +1,6 @@
 import produce, { castDraft } from 'immer';
+import { nanoid } from 'nanoid';
 import React, { useCallback, useRef, useReducer } from 'react';
-import { v4 as uuid } from 'uuid';
 import { ModalContext, ModalContextValue } from './ModalContext';
 import { modalActions as ACTIONS } from './modalActions';
 import { modalReducer as reducer, ModalState } from './modalReducer';
@@ -30,7 +30,7 @@ export function ModalProvider({ children }: ModalProviderProps): JSX.Element {
   }, []);
 
   const createModal = useCallback<ModalContextValue['createModal']>((modal, noJump) => {
-    const { contextId = uuid() } = modal.props;
+    const { contextId = nanoid() } = modal.props;
     dispatch({
       id: contextId,
       type: noJump ? ACTIONS.SET : ACTIONS.JUMPSET,

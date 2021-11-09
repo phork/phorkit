@@ -1,9 +1,13 @@
+import { nanoid } from 'nanoid';
 import * as React from 'react';
-import { v4 as uuid } from 'uuid';
 import { SvgIconProps } from '../types/svgIcon';
 import { useIconSize } from '../hooks/useIconSize';
 
-export function EllipsisIcon({ title, titleId = uuid(), ...initProps }: SvgIconProps): React.ReactElement<SVGElement> {
+export function EllipsisIcon({
+  title,
+  titleId = nanoid(),
+  ...initProps
+}: SvgIconProps): React.ReactElement<SVGElement> {
   const props = useIconSize(initProps);
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" aria-labelledby={titleId} {...props}>

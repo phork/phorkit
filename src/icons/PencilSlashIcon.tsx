@@ -1,11 +1,11 @@
+import { nanoid } from 'nanoid';
 import * as React from 'react';
-import { v4 as uuid } from 'uuid';
 import { SvgIconProps } from '../types/svgIcon';
 import { useIconSize } from '../hooks/useIconSize';
 
 export function PencilSlashIcon({
   title,
-  titleId = uuid(),
+  titleId = nanoid(),
   ...initProps
 }: SvgIconProps): React.ReactElement<SVGElement> {
   const props = useIconSize(initProps);

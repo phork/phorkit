@@ -1,6 +1,6 @@
 import produce, { castDraft } from 'immer';
+import { nanoid } from 'nanoid';
 import React, { useCallback, useRef, useReducer } from 'react';
-import { v4 as uuid } from 'uuid';
 import { BannerContext, BannerContextValue } from './BannerContext';
 import { bannerActions as ACTIONS } from './bannerActions';
 import { bannerReducer as reducer, BannerState } from './bannerReducer';
@@ -30,7 +30,7 @@ export function BannerProvider({ children }: BannerProviderProps): JSX.Element {
 
   // if a banner already exists it will be overwritten
   const createNotification = useCallback<BannerContextValue['createNotification']>(banner => {
-    const { contextId = uuid() } = banner.props;
+    const { contextId = nanoid() } = banner.props;
     const mutableBanner = React.cloneElement(banner, {
       contextId,
     });

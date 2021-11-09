@@ -1,6 +1,6 @@
 import produce, { castDraft } from 'immer';
+import { nanoid } from 'nanoid';
 import React, { useCallback, useReducer, useRef } from 'react';
-import { v4 as uuid } from 'uuid';
 import { useSafeTimeout } from '../../hooks/useSafeTimeout';
 import { ToastContext, ToastContextValue } from './ToastContext';
 import { ToastWithContextItemType } from './ToastFromContext';
@@ -74,7 +74,7 @@ export function ToastProvider({ children }: ToastProviderProps): JSX.Element {
   // if a toast already exists it will be overwritten and its removal time reset
   const createNotification = useCallback<ToastContextValue['createNotification']>(
     toast => {
-      const { contextId = uuid(), duration, level } = toast.props;
+      const { contextId = nanoid(), duration, level } = toast.props;
       const mutableToast = React.cloneElement(toast, {
         contextId,
         created: Date.now(),
