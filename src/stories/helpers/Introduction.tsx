@@ -14,7 +14,7 @@ export function Introduction(props: FlexProps): JSX.Element {
   return (
     <Flex wrap alignItems="flex-end" justifyContent="space-between" {...props}>
       <img
-        alt="phork/it by phork.works"
+        alt="Phork/it by phork.works"
         height="100"
         src={`images/phorkit-credits-${themeId}.svg`}
         style={{ marginBottom: '12px', maxWidth: 'calc(100% - 20px' }}

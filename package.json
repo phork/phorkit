@@ -1,6 +1,6 @@
 {
   "name": "@phork/phorkit",
-  "description": "Phork/it. A component library.",
+  "description": "Phork/it. A React component library.",
   "version": "10.5.0",
   "license": "MIT",
   "repository": {
@@ -81,8 +81,8 @@
     "prettier": "npx prettier \"./**/*.{js,json,ts,tsx}\" --write",
     "rebase-develop": "git checkout main && git pull && git checkout develop && git rebase main",
     "scaffold": "node ./scripts/scaffold-component.js",
-    "start-docker-docz": "docker-compose -f docker-compose.docz.yml up -d",
-    "start-docker-storybook": "docker-compose -f docker-compose.storybook.yml up -d",
+    "start-docker-docz": "docker-compose -f docker-compose.docz.yml up --build -d",
+    "start-docker-storybook": "docker-compose -f docker-compose.storybook.yml up --build -d",
     "start-docz": "yarn gen-postcss-json && yarn build-icons && docz dev",
     "start-storybook": "yarn gen-postcss-json && yarn build-icons && start-storybook -s ./public -p 6006",
     "start": "yarn start-storybook",

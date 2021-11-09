@@ -23,6 +23,9 @@ jobs:
 
       - name: Build storybook
         run: yarn build-storybook
+        env:
+          NODE_ENV: production
+          STORYBOOK_URL: https://phorkit.org
 
       - name: Deploy storybook
         uses: burnett01/rsync-deployments@4.1

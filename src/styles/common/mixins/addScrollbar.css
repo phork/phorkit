@@ -1,6 +1,4 @@
-@define-mixin addScrollbar $thumbColor: var(--scrollbar-thumb-color),
-  $trackColor: var(--scrollbar-track-color, transparent), $width: 6px, $borderRadius: 6px, $minHeight: 60px,
-  $offset: 4px {
+@define-mixin addScrollbar $thumbColor: var(--scrollbar-thumb-color), $trackColor: var(--scrollbar-track-color, transparent), $width: 6px, $borderRadius: 6px, $minHeight: 60px, $offset: 4px {
   &::-webkit-scrollbar {
     height: calc($width + calc($offset * 2));
     width: calc($width + calc($offset * 2));

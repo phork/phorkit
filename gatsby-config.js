@@ -1,8 +1,10 @@
+require('dotenv').config({ path: '.env' });
+
 module.exports = {
   siteMetadata: {
     title: 'Phork/it',
-    siteUrl: 'https://phorkit.phork.org',
-    description: 'A component library',
+    siteUrl: process.env.DOCZ_URL || 'https://docz.phorkit.org',
+    description: 'A React component library',
   },
   flags: {
     PRESERVE_WEBPACK_CACHE: true,

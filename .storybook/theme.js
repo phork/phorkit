@@ -3,7 +3,7 @@ import { themes } from '../src/config/themes';
 export const getCustomTheme = themeId => ({
   brandImage: `/images/phorkit-${themeId}.svg`,
   brandTitle: 'Phork/it',
-  brandUrl: 'https://phorkit.org',
+  brandUrl: process.env.STORYBOOK_URL || 'https://storybook.phorkit.org',
 
   fontBase: 'Roboto, "Open Sans", sans-serif',
 
