@@ -24,7 +24,6 @@ jobs:
       - name: Build storybook
         run: yarn build-storybook
         env:
-          NODE_ENV: production
           STORYBOOK_URL: https://phorkit.org
 
       - name: Deploy storybook

@@ -24,7 +24,6 @@ jobs:
       - name: Build docs
         run: yarn build-docz
         env:
-          NODE_ENV: production
           DOCZ_URL: https://docz.phorkit.org
 
       - name: Deploy docs
