@@ -39,8 +39,8 @@ export type SelectOptionPlaceholder = {
   disabled?: boolean;
   /** The placeholder label shown in the form view when the select is closed */
   label: string;
-  /** The placeholder label shown in the select list*/
-  optionLabel?: never;
+  /** The placeholder label shown in the select list */
+  optionLabel?: string;
   value?: string;
 };
 
