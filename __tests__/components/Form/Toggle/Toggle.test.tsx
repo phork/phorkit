@@ -17,7 +17,9 @@ describe('<Toggle />', () => {
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe(true);
   });
+});
 
+describe('<NotifiedToggle />', () => {
   it('should render a notified toggle', () => {
     const onChange = jest.fn();
 

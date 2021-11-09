@@ -6,7 +6,9 @@ import { fireEvent, render } from '../../../utils';
 
 describe('<Checkbox />', () => {
   it('should render a labeled checkbox', () => {
-    const { getByLabelText } = render(<Checkbox onChange={() => {}}>Super fantastic label</Checkbox>);
+    const { getByRole, getByLabelText } = render(<Checkbox onChange={() => {}}>Super fantastic label</Checkbox>);
+
+    expect(getByRole('checkbox')).toBeTruthy();
     expect(getByLabelText('Super fantastic label')).toBeTruthy();
   });
 

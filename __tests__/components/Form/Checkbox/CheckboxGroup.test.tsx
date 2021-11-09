@@ -64,7 +64,9 @@ describe('<CheckboxGroup />', () => {
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toEqual([]);
   });
+});
 
+describe('<NotifiedCheckboxGroup />', () => {
   it('should render a notified checkbox group', () => {
     const { container, getByText } = render(
       <NotifiedCheckboxGroup

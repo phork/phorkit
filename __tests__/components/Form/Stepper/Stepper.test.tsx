@@ -19,7 +19,9 @@ describe('<Stepper />', () => {
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe(5);
   });
+});
 
+describe('<NotifiedStepper />', () => {
   it('should render a notified stepper', () => {
     const onChange = jest.fn();
 

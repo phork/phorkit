@@ -68,7 +68,9 @@ describe('<RadioGroup />', () => {
     expect(onChange).toHaveBeenCalledTimes(2);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toEqual('second');
   });
+});
 
+describe('<NotifiedRadioGroup />', () => {
   it('should render a notified checkbox group', () => {
     const { container, getByText } = render(
       <NotifiedRadioGroup

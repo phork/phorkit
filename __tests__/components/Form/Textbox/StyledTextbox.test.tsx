@@ -30,7 +30,9 @@ describe('<StyledTextbox />', () => {
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe('Hello world');
   });
+});
 
+describe('<NotifiedStyledTextbox />', () => {
   it('should render a notified textbox', () => {
     const onChange = jest.fn();
 

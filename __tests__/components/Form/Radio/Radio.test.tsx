@@ -6,7 +6,9 @@ import { fireEvent, render } from '../../../utils';
 
 describe('<Radio />', () => {
   it('should render a labeled radio button', () => {
-    const { getByLabelText } = render(<Radio onChange={() => {}}>Super fantastic label</Radio>);
+    const { getByRole, getByLabelText } = render(<Radio onChange={() => {}}>Super fantastic label</Radio>);
+
+    expect(getByRole('radio')).toBeTruthy();
     expect(getByLabelText('Super fantastic label')).toBeTruthy();
   });
 

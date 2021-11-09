@@ -40,7 +40,9 @@ describe('<Password />', () => {
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe('Hello world');
   });
+});
 
+describe('<NotifiedPassword />', () => {
   it('should render a notified password', () => {
     const onChange = jest.fn();
 
