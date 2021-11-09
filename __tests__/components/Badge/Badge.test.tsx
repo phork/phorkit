@@ -22,4 +22,31 @@ describe('<Badge />', () => {
     const { getByText } = render(<Badge shape="label">Beta</Badge>);
     expect(getByText('Beta')).toBeTruthy();
   });
+
+  it('should render the contrast colors', () => {
+    const { getByText } = render(
+      <Badge contrast shape="label">
+        Beta
+      </Badge>,
+    );
+    expect(getByText('Beta')).toBeTruthy();
+  });
+
+  it('should accept the rest of the props', () => {
+    const { getByText } = render(
+      <Badge
+        outlined
+        pulsing
+        unthemed
+        className="badgeTest"
+        color="success"
+        position="top-left"
+        shape="label"
+        style={{ color: 'red' }}
+      >
+        Beta
+      </Badge>,
+    );
+    expect(getByText('Beta')).toBeTruthy();
+  });
 });
