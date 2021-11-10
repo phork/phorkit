@@ -14,4 +14,15 @@ describe('<Typography />', () => {
     expect(getByText('Hello world')).toBeTruthy();
     expect(container.firstChild?.nodeName).toBe('A');
   });
+
+  it('should accept a ref', () => {
+    const ref = React.createRef<JSX.IntrinsicElements['span']>();
+    const { getByTestId } = render(
+      <Typography data-testid="typography" ref={ref}>
+        Hello world
+      </Typography>,
+    );
+
+    expect(getByTestId('typography')).toBe(ref.current);
+  });
 });
