@@ -34,7 +34,7 @@ class BoundsEmitter {
     }
   }
 
-  public emit(): void {
+  public emit(once?: boolean): void {
     try {
       if (this.ref) {
         if (this.ref.current) {
@@ -42,7 +42,9 @@ class BoundsEmitter {
           this.ondata(data, this.previous);
           this.previous = data;
 
-          this.request = typeof window !== 'undefined' && window.requestAnimationFrame(() => this.emit());
+          if (!once) {
+            this.request = typeof window !== 'undefined' && window.requestAnimationFrame(() => this.emit());
+          }
         } else {
           this.destroy();
         }
@@ -81,7 +83,7 @@ export function boundsObservable(observer: Observer<DOMRect>, ref: React.RefObje
   return {
     subscribe: () => src.start(),
     unsubscribe: () => src.destroy(),
-    once: () => src.emit(),
+    once: () => src.emit(true),
     observing: () => src.state(),
   };
 }
