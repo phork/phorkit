@@ -39,7 +39,6 @@
 .navigation--tertiary {
   @mixin themed .navigation {
     --navigation-focused-border-color: $theme-color-accent-primary;
-    --navigation-item-focused-border-color: $theme-color-accent-primary-O20;
     --navigation-item-selected-border-color: $theme-color-accent-primary;
     --navigation-item-selected-text-color: $theme-primary-palette-text-color;
     --navigation-item-text-color: $theme-color-FG20;
@@ -68,7 +67,6 @@
 
   @mixin themed .navigation {
     --navigation-item-focused-background-color: $theme-color-BG50-O20;
-    --navigation-item-focused-border-color: $theme-color-BG50;
     --navigation-item-hovered-border-color: $theme-color-BG50;
   }
 }
@@ -170,25 +168,6 @@ button.navigationItem {
 
 .navigationItem--secondary,
 .navigationItem--tertiary {
-  .navigation:not(.is-accessible) & {
-    &:hover,
-    &.is-hovered {
-      &:not(.is-selected) {
-        @mixin addBorderHighlight var(--navigation-item-hovered-border-color),
-          var(--navigation-item-highlight-border-width);
-      }
-    }
-  }
-
-  .navigation.is-accessible & {
-    &.is-focused {
-      &:not(.is-selected) {
-        @mixin addBorderHighlight var(--navigation-item-focused-border-color),
-          var(--navigation-item-highlight-border-width);
-      }
-    }
-  }
-
   &.navigationItem--horizontal {
     &:not(.navigationItem--flush) {
       padding: 8px 20px;

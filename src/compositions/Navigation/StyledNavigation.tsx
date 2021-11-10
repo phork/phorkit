@@ -5,7 +5,6 @@ export type StyledNavigationProps = Omit<NavigationProps, 'themeId'> & {
   focusedBorderColor: string;
   itemBackgroundColor: string;
   itemFocusedBackgroundColor: string;
-  itemFocusedBorderColor: string;
   itemFocusedSelectedBackgroundColor: string;
   itemFocusedSelectedTextColor: string;
   itemFocusedTextColor: string;
@@ -26,7 +25,6 @@ export const StyledNavigation = styled(Navigation, {
       'focusedBorderColor',
       'itemBackgroundColor',
       'itemFocusedBackgroundColor',
-      'itemFocusedBorderColor',
       'itemFocusedSelectedBackgroundColor',
       'itemFocusedSelectedTextColor',
       'itemFocusedTextColor',
@@ -40,7 +38,6 @@ export const StyledNavigation = styled(Navigation, {
   --navigation-focused-border-color: ${props => props.focusedBorderColor};
   --navigation-item-background-color: ${props => props.itemBackgroundColor};
   --navigation-item-focused-background-color: ${props => props.itemFocusedBackgroundColor};
-  --navigation-item-focused-border-color: ${props => props.itemFocusedBorderColor};
   --navigation-item-focused-selected-background-color: ${props => props.itemFocusedSelectedBackgroundColor};
   --navigation-item-focused-selected-text-color: ${props => props.itemFocusedSelectedTextColor};
   --navigation-item-focused-text-color: ${props => props.itemFocusedTextColor};

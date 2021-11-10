@@ -1,5 +1,5 @@
 import { cx } from '@emotion/css';
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { Orientation, SequentialVariant, ThemeProps } from '../../types';
 import { useAccessibility } from '../../context/Accessibility';
 import { useThemeId } from '../../context/Theme';
@@ -16,7 +16,10 @@ import { useListRegistry } from '../../components/ListRegistry/useListRegistry';
 import styles from './styles/Navigation.module.css';
 import { NavigationItem, NavigationItemProps, NavigationItemStateProps } from './NavigationItem';
 
-export type InnerNavigationProps = React.HTMLAttributes<HTMLElement> &
+// this should be a HTMLNavigationElement or similar, but that doesn't exist
+export type NavigationElementType = HTMLElement;
+
+export type InnerNavigationProps = React.HTMLAttributes<NavigationElementType> &
   ThemeProps & {
     /** This will make each nav item a link only for the purpose of right clicking; it still uses an onClick event */
     allowRightClickLinks?: boolean;
@@ -56,7 +59,7 @@ export type InnerNavigationProps = React.HTMLAttributes<HTMLElement> &
  * This uses the `InteractiveGroup` and `ListRegistry`
  * components.
  */
-export const InnerNavigation = React.forwardRef<HTMLElement, InnerNavigationProps>(
+export const InnerNavigation = React.forwardRef<NavigationElementType, InnerNavigationProps>(
   (
     {
       allowRightClickLinks = false,
@@ -77,17 +80,16 @@ export const InnerNavigation = React.forwardRef<HTMLElement, InnerNavigationProp
     forwardedRef,
   ): React.ReactElement<InnerNavigationProps> => {
     // this ref should be HTMLNavElement or similar but that doesn't exist
-    const ref = useRef<HTMLElement>(null!);
+    const ref = useRef<NavigationElementType>(null!);
     const accessible = useAccessibility();
     const { getItem } = useListRegistry<HTMLDivElement>();
-    const [, setContainerSize] = useState<string>();
-    const { focused, handleBlur, handleFocus } = useDeepFocus<HTMLElement>(ref);
+    const { focused, handleBlur, handleFocus } = useDeepFocus<NavigationElementType>(ref);
     const themeId = useThemeId(initThemeId);
     const { componentId } = useComponentId();
     const { isInitialized } = useInitializer();
 
     const { focusedIndex, handleItemClick, selectId } =
-      useContext<InteractiveGroupContextValue<string, HTMLElement, HTMLDivElement>>(InteractiveGroupContext);
+      useContext<InteractiveGroupContextValue<string, NavigationElementType, HTMLDivElement>>(InteractiveGroupContext);
 
     const combineRefs = makeCombineRefs(ref, forwardedRef);
 
@@ -112,20 +114,6 @@ export const InnerNavigation = React.forwardRef<HTMLElement, InnerNavigationProp
     useEffect(() => {
       isInitialized('selectedId') && selectId(selectedId);
     }, [selectedId, isInitialized, selectId]);
-
-    // update dummy state to force redraw; use a string because an array or object would trigger redraw every time
-    const handleWindowResize = useCallback(() => {
-      const rect = ref.current?.getBoundingClientRect();
-      rect && setContainerSize(`${rect.width},${rect.height}`);
-    }, [ref]);
-
-    // a simple resize handler for window resize; for anything more complicated it's recommend to wrap this with sizeme
-    useEffect((): (() => void) => {
-      typeof window !== 'undefined' && window.addEventListener('resize', handleWindowResize);
-      return () => {
-        typeof window !== 'undefined' && window.removeEventListener('resize', handleWindowResize);
-      };
-    }, [handleWindowResize]);
 
     const selectedCoords = getSelectedCoords(selectedId);
 

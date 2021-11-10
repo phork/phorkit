@@ -24,11 +24,6 @@ export default {
         category: 'Styled',
       },
     },
-    itemFocusedBorderColor: {
-      table: {
-        category: 'Styled',
-      },
-    },
     itemFocusedSelectedBackgroundColor: {
       table: {
         category: 'Styled',
@@ -99,7 +94,6 @@ const defaultArgs = {
   fullWidth: false,
   itemBackgroundColor: 'transparent',
   itemFocusedBackgroundColor: '#f41150',
-  itemFocusedBorderColor: '#f41150',
   itemFocusedSelectedBackgroundColor: '#F86F95',
   itemFocusedSelectedTextColor: '#fff',
   itemFocusedTextColor: '#fff',

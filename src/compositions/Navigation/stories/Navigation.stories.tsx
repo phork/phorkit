@@ -167,6 +167,7 @@ export const VerticalOrientation = Template.bind({});
 VerticalOrientation.storyName = 'Orientation: Vertical';
 VerticalOrientation.args = {
   ...defaultArgs,
+  animated: true,
   orientation: 'vertical',
 };
 
@@ -201,6 +202,7 @@ export const TertiaryVariantVertical = Template.bind({});
 TertiaryVariantVertical.storyName = 'Variant: Tertiary, vertical';
 TertiaryVariantVertical.args = {
   ...defaultArgs,
+  animated: true,
   orientation: 'vertical',
   variant: 'tertiary',
 };
