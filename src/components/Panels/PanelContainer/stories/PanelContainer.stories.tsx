@@ -95,6 +95,7 @@ const defaultArgs = {
   full: false,
   orientation: 'horizontal' as PanelContainerProps['orientation'],
   reverse: false,
+  style: { height: 100 },
   viewport: false,
 };
 

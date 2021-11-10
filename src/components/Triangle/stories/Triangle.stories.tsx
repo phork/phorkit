@@ -50,7 +50,6 @@ export default {
     docs: {
       page: TriangleDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Triangle>;
 
@@ -65,4 +64,52 @@ const defaultArgs = {
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
+};
+
+export const TopPosition = Template.bind({});
+TopPosition.args = {
+  ...defaultArgs,
+  position: 'top',
+};
+
+export const BottomPosition = Template.bind({});
+BottomPosition.args = {
+  ...defaultArgs,
+  position: 'bottom',
+};
+
+export const LeftPosition = Template.bind({});
+LeftPosition.args = {
+  ...defaultArgs,
+  position: 'left',
+};
+
+export const RightPosition = Template.bind({});
+RightPosition.args = {
+  ...defaultArgs,
+  position: 'right',
+};
+
+export const TopLeftPosition = Template.bind({});
+TopLeftPosition.args = {
+  ...defaultArgs,
+  position: 'top-left',
+};
+
+export const TopRightPosition = Template.bind({});
+TopRightPosition.args = {
+  ...defaultArgs,
+  position: 'top-right',
+};
+
+export const BottomLeftPosition = Template.bind({});
+BottomLeftPosition.args = {
+  ...defaultArgs,
+  position: 'bottom-left',
+};
+
+export const BottomRightPosition = Template.bind({});
+BottomRightPosition.args = {
+  ...defaultArgs,
+  position: 'bottom-right',
 };

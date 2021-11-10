@@ -111,7 +111,6 @@ export default {
     docs: {
       page: ProgressDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Progress>;
 

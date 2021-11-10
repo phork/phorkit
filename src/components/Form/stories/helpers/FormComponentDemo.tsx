@@ -4,15 +4,16 @@ export type FormComponentDemoProps = {
   children: React.ReactElement;
   initialValue?: string | number | boolean | ReadonlyArray<string | number | undefined>;
   property: string;
+  style?: React.CSSProperties;
   type: 'checkbox' | 'password' | 'radio' | 'select' | 'slider' | 'stepper' | 'textarea' | 'textbox' | 'toggle';
 };
 
-export function FormComponentDemo({ children, initialValue, property, type }: FormComponentDemoProps) {
+export function FormComponentDemo({ children, initialValue, property, style, type }: FormComponentDemoProps) {
   const [value, setValue] = useState<FormComponentDemoProps['initialValue']>(initialValue);
   const clearable = ['textbox', 'password'].includes(type);
 
   return (
-    <div style={{ maxWidth: 400 }}>
+    <div style={{ maxWidth: 400, ...style }}>
       {React.cloneElement(children, {
         [property]: value,
         onChange: (event: React.ChangeEvent, value: FormComponentDemoProps['initialValue']) => {

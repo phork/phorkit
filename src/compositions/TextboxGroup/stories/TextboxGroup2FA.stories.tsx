@@ -100,7 +100,6 @@ export default {
         code: '<TextboxGroup2FA {...args} />',
       },
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof TextboxGroup2FA>;
 

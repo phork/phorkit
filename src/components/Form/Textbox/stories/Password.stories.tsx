@@ -321,7 +321,6 @@ export default {
     docs: {
       page: PasswordDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Password>;
 

@@ -78,7 +78,6 @@ export default {
     docs: {
       page: DividerDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Divider>;
 

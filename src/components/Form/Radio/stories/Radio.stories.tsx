@@ -122,7 +122,6 @@ export default {
     docs: {
       page: RadioDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Radio>;
 

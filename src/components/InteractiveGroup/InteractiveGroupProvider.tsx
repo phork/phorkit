@@ -36,6 +36,11 @@ export type InteractiveGroupProviderProps<
  * items are selected on load, but after that the state is
  * stored internally. The `onSelectionChange`, `onSelect` or
  * `onUnselect` callbacks can be used by the parent.
+ *
+ * @template T,E,I
+ * @param {T} - The type of item IDs allowed
+ * @param {E} - The HTML element type that the returned ref gets attached to
+ * @param {I} - The HTML element type of the items
  */
 export function InteractiveGroupProvider<
   T extends InteractiveGroupItemId = string,

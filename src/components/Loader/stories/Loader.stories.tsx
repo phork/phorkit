@@ -74,7 +74,6 @@ export default {
     docs: {
       page: LoaderDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Loader>;
 

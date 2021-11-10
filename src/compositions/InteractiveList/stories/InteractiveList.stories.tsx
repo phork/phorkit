@@ -232,6 +232,9 @@ export default {
     },
   },
   parameters: {
+    chromatic: {
+      disableSnapshot: true,
+    },
     controls: {
       sort: 'requiredFirst',
     },
@@ -247,7 +250,6 @@ export default {
         </React.Fragment>
       ),
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof InteractiveList>;
 

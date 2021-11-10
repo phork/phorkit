@@ -349,3 +349,7 @@ export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
 };
+
+Default.parameters = {
+  chromatic: { disableSnapshot: true },
+};

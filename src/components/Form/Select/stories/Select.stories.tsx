@@ -280,7 +280,6 @@ export default {
     docs: {
       page: SelectDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Select>;
 

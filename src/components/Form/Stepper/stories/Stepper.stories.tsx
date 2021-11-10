@@ -264,7 +264,6 @@ export default {
     docs: {
       page: StepperDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Stepper>;
 

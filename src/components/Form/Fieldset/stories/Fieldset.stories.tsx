@@ -51,7 +51,6 @@ export default {
     docs: {
       page: FieldsetDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Fieldset>;
 

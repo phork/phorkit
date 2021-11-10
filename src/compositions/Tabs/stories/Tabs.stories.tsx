@@ -161,7 +161,6 @@ export default {
     docs: {
       page: TabsDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Tabs>;
 

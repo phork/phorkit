@@ -95,7 +95,6 @@ export default {
         </React.Fragment>
       ),
     },
-    layout: 'centered',
   },
 } as ComponentMeta<(args: TagGroupProps) => ReturnType<typeof TagGroup>>;
 

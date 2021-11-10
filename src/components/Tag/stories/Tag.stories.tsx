@@ -103,7 +103,6 @@ export default {
     docs: {
       page: TagDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Tag>;
 

@@ -112,7 +112,7 @@ export default {
   },
   decorators: [
     Story => (
-      <PanelContainer orientation="horizontal">
+      <PanelContainer orientation="horizontal" style={{ height: 100 }}>
         {Story()}
         <MainPanel>Main panel</MainPanel>
       </PanelContainer>
@@ -147,9 +147,9 @@ const defaultArgs = {
   children: <Typography color="primary">Stack panel</Typography>,
   duration: 300,
   fixed: false,
-  height: 100,
+  height: 40,
   open: true,
-  position: 'left' as StackPanelProps['position'],
+  position: 'top' as StackPanelProps['position'],
   raised: false,
   transition: 'shiftable' as StackPanelProps['transition'],
   unit: 'px' as StackPanelProps['unit'],

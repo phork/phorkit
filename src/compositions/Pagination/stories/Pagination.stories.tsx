@@ -204,7 +204,6 @@ export default {
     docs: {
       page: PaginationDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Pagination>;
 

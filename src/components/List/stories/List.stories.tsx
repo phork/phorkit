@@ -140,7 +140,6 @@ export default {
     docs: {
       page: ListDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof List>;
 

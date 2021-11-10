@@ -83,7 +83,6 @@ export default {
     docs: {
       page: LinkDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Link>;
 

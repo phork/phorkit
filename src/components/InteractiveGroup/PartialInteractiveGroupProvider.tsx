@@ -4,9 +4,6 @@ import { InteractiveGroupContext, InteractiveGroupContextValue } from './Interac
 import { InteractiveGroupItemId } from './types';
 import { useInteractiveGroup, UseInteractiveGroupProps, UseInteractiveGroupResponse } from './useInteractiveGroup';
 
-/**
-
- */
 export type PartialInteractiveGroupProviderProps<
   T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,

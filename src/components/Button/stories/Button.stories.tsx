@@ -184,7 +184,6 @@ export default {
     docs: {
       page: ButtonDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<(args: ButtonProps) => ReturnType<typeof Button>>;
 

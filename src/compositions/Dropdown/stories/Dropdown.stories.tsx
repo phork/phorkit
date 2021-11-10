@@ -236,7 +236,6 @@ export default {
     docs: {
       page: DropdownDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Dropdown>;
 

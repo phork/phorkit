@@ -107,7 +107,6 @@ export default {
     docs: {
       page: RadioGroupDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof RadioGroup>;
 

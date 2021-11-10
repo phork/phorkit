@@ -89,7 +89,6 @@ export default {
     docs: {
       page: LabelDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Label>;
 

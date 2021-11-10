@@ -128,7 +128,6 @@ export default {
         </React.Fragment>
       ),
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Chip>;
 

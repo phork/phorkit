@@ -201,7 +201,7 @@ export const subPanelStyle = {
 
 <Canvas>
   <Story name="Side panel: Fixed percentage">
-    <PanelsWrapper>
+    <PanelsWrapper isOpen>
       {({ isOpen, panelState, setPanelState, toggleOpen }) => (
         <React.Fragment>
           <PanelContainer orientation="vertical" style={panelContainerStyle}>
@@ -407,7 +407,7 @@ export const subPanelStyle = {
 
 <Canvas>
   <Story name="Stack panel: Fixed percentage">
-    <PanelsWrapper>
+    <PanelsWrapper isOpen>
       {({ isOpen, panelState, setPanelState, toggleOpen }) => (
         <React.Fragment>
           <PanelContainer reverse orientation="horizontal" style={panelContainerStyle}>

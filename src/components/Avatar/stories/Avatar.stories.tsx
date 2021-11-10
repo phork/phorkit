@@ -86,7 +86,6 @@ export default {
     docs: {
       page: AvatarDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Avatar>;
 

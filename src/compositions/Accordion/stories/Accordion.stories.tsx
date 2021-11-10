@@ -116,7 +116,6 @@ export default {
     docs: {
       page: AccordionDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Accordion>;
 

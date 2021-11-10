@@ -91,7 +91,6 @@ export default {
           backgroundColor: 'currentColor',
           borderRadius: '4px',
           height: 100,
-          margin: 'auto',
           position: 'relative',
           width: 100,
         }}
@@ -107,7 +106,6 @@ export default {
     docs: {
       page: BadgeDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Badge>;
 

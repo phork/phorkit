@@ -17,7 +17,15 @@ import { ListRegistryItem, ListRegistryConsumer, ListRegistryProvider } from '..
 ### Scroll to element
 
 <Canvas>
-  <Story name="Scroll to element" parameters={{ layout: 'fullscreen' }}>
+  <Story
+    name="Scroll to element"
+    parameters={{
+      chromatic: {
+        disableSnapshot: true,
+      },
+      layout: 'fullscreen',
+    }}
+  >
     <ThemeWrapper>
       {({ themeId }) => (
         <ListRegistryProvider>
@@ -73,7 +81,15 @@ import { ListRegistryItem, ListRegistryConsumer, ListRegistryProvider } from '..
 ### Scroll to element with function and re-render
 
 <Canvas>
-  <Story name="Scroll to element with function and re-render" parameters={{ layout: 'fullscreen' }}>
+  <Story
+    name="Scroll to element with function and re-render"
+    parameters={{
+      chromatic: {
+        disableSnapshot: true,
+      },
+      layout: 'fullscreen',
+    }}
+  >
     <ThemeWrapper>
       {({ themeId }) => (
         <StateWrapper initialState={0}>

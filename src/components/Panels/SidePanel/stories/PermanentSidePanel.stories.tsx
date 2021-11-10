@@ -103,6 +103,7 @@ const defaultArgs = {
   fixed: false,
   position: 'left' as PermanentSidePanelProps['position'],
   raised: false,
+  style: { height: 100 },
   unit: 'px' as PermanentSidePanelProps['unit'],
   width: 200,
 };

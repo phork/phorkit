@@ -196,7 +196,6 @@ export default {
     docs: {
       page: ButtonGroupDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof ButtonGroup>;
 

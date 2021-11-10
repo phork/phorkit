@@ -343,7 +343,6 @@ export default {
     docs: {
       page: TextboxDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Textbox>;
 

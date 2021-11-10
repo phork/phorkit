@@ -30,7 +30,13 @@ export default {
       },
     },
   },
-  decorators: [Story => <PanelContainer orientation="horizontal">{Story()}</PanelContainer>],
+  decorators: [
+    Story => (
+      <PanelContainer orientation="horizontal" style={{ height: 100 }}>
+        {Story()}
+      </PanelContainer>
+    ),
+  ],
   parameters: {
     controls: {
       sort: 'requiredFirst',

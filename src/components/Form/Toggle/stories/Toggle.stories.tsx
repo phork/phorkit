@@ -115,7 +115,6 @@ export default {
     docs: {
       page: ToggleDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Toggle>;
 

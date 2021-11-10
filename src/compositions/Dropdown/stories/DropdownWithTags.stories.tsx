@@ -264,7 +264,6 @@ export default {
     docs: {
       page: DropdownWithTagsDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof DropdownWithTags>;
 

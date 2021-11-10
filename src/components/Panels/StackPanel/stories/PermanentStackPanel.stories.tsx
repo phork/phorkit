@@ -67,7 +67,7 @@ export default {
   },
   decorators: [
     Story => (
-      <PanelContainer orientation="horizontal">
+      <PanelContainer orientation="horizontal" style={{ height: 100 }}>
         {Story()}
         <MainPanel>Main panel</MainPanel>
       </PanelContainer>
@@ -101,7 +101,7 @@ const Template: ComponentStory<typeof PermanentStackPanel> = args => <PermanentS
 const defaultArgs = {
   children: <Typography color="primary">Stack panel</Typography>,
   fixed: false,
-  height: 100,
+  height: 40,
   position: 'left' as PermanentStackPanelProps['position'],
   raised: false,
   unit: 'px' as PermanentStackPanelProps['unit'],

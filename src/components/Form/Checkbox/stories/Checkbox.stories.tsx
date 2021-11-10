@@ -135,7 +135,6 @@ export default {
     docs: {
       page: CheckboxDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Checkbox>;
 

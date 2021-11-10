@@ -201,7 +201,6 @@ export default {
     docs: {
       page: SliderDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Slider>;
 

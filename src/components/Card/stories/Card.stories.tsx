@@ -95,7 +95,6 @@ export default {
         </React.Fragment>
       ),
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Card>;
 
@@ -123,6 +122,19 @@ const defaultArgs = {
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
+};
+
+export const Bordered = Template.bind({});
+Bordered.args = {
+  ...defaultArgs,
+  bordered: true,
+};
+
+export const Squared = Template.bind({});
+Squared.args = {
+  ...defaultArgs,
+  bordered: true,
+  squared: true,
 };
 
 export const Raised = Template.bind({});

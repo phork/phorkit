@@ -99,7 +99,6 @@ export default {
     docs: {
       page: CheckboxGroupDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof CheckboxGroup>;
 

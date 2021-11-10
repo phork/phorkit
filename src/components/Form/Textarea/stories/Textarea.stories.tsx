@@ -283,7 +283,6 @@ export default {
     docs: {
       page: TextareaDocumentation,
     },
-    layout: 'centered',
   },
 } as ComponentMeta<typeof Textarea>;
 
