@@ -1,7 +1,12 @@
 {
   "compilerOptions": {
     "baseUrl": "../",
-    "rootDir": "../"
+    "rootDir": "../",
+    "types": [
+      "@testing-library/jest-dom",
+      "jest",
+      "node"
+    ]
   },
   "extends": "../tsconfig.json",
   "include": [".", "../lib", "./jest.d.ts"]

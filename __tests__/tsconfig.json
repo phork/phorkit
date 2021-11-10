@@ -19,9 +19,9 @@
       "utils": ["../src/utils"],
     },
     "types": [
+      "@testing-library/jest-dom",
       "jest",
-      "node",
-      "@testing-library/jest-dom"
+      "node"
     ]
   },
   "extends": "../tsconfig.json",
