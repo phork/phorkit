@@ -22,7 +22,7 @@ import { useLineLoader } from '../useLineLoader';
 ### LineLoader
 
 <Canvas>
-  <Story name="LineLoader">
+  <Story name="LineLoader" parameters={{ chromatic: { disableSnapshot: true } }}>
     {() => {
       const { loader, onLoad, loaderFinishing } = useLineLoader({ position: 'top' });
       return (
@@ -59,7 +59,7 @@ import { useLineLoader } from '../useLineLoader';
 ### ColoredLineLoader
 
 <Canvas>
-  <Story name="ColoredLineLoader">
+  <Story name="ColoredLineLoader" parameters={{ chromatic: { disableSnapshot: true } }}>
     {() => {
       const { loader, onLoad, loaderFinishing } = useLineLoader({
         position: 'top',
@@ -100,7 +100,7 @@ import { useLineLoader } from '../useLineLoader';
 ### StyledLineLoader
 
 <Canvas>
-  <Story name="StyledLineLoader">
+  <Story name="StyledLineLoader" parameters={{ chromatic: { disableSnapshot: true } }}>
     {() => {
       const { loader, onLoad, loaderFinishing } = useLineLoader({
         position: 'top',

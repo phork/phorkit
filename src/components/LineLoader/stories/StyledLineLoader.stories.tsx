@@ -1,5 +1,6 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import isChromatic from 'chromatic/isChromatic';
 import React from 'react';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { StyledLineLoader, StyledLineLoaderProps } from '../StyledLineLoader';
@@ -47,6 +48,7 @@ const Template: ComponentStory<typeof StyledLineLoader> = args => <StyledLineLoa
 const defaultArgs = {
   color: '#556270',
   fixed: false,
+  percent: isChromatic() ? 24 : undefined,
   position: 'top' as StyledLineLoaderProps['position'],
 };
 

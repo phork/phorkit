@@ -21,10 +21,11 @@ const updateClassNames = (element, themeId) => {
 };
 
 const updateElementClasses = themeId => {
-  const iframe = document.getElementById('storybook-preview-iframe');
-  const iframeDocument = iframe && (iframe.contentDocument || iframe.contentWindow?.document);
+  document.querySelectorAll('iframe').forEach(iframe => {
+    const iframeDocument = iframe && (iframe.contentDocument || iframe.contentWindow?.document);
+    updateClassNames(iframeDocument?.querySelector('body'), themeId);
+  });
 
-  updateClassNames(iframeDocument?.querySelector('body'), themeId);
   updateClassNames(document.querySelector('body'), themeId);
 };
 

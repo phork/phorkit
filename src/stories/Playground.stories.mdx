@@ -93,7 +93,7 @@ import {
 ### Lots of progress
 
 <Canvas>
-  <Story name="Lots of progress">
+  <Story name="Lots of progress" parameters={{ chromatic: { disableSnapshot: true } }}>
     <ThemeWrapper>
       {({ themeId }) => {
         const getPercent = (min = 20, max = 100) => Math.floor(Math.random() * (max - min + 1) + min);

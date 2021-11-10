@@ -1,5 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import isChromatic from 'chromatic/isChromatic';
 import React from 'react';
 import { Button } from 'components/Button';
 import { Flex } from 'components/Flex';
@@ -122,6 +123,7 @@ const defaultArgs = {
   contrast: false,
   fixed: false,
   onLoop: undefined,
+  percent: isChromatic() ? 24 : undefined,
   unthemed: false,
 };
 
@@ -230,6 +232,7 @@ Stoppable.decorators = [
 ];
 
 Stoppable.parameters = {
+  chromatic: { disableSnapshot: true },
   docs: {
     source: {
       code: '<LineLoader percent={stopped ? 50 : undefined} />',
