@@ -96,4 +96,15 @@ describe('<IconButton />', () => {
     expect(container.querySelector('svg')).toBeTruthy();
     expect(container.firstChild).toHaveAttribute('href', '#button');
   });
+
+  it('should accept a ref', () => {
+    const ref = React.createRef<HTMLButtonElement>();
+    const { getByTestId } = render(
+      <IconButton data-testid="button" ref={ref}>
+        <TimesIcon scale="medium" />
+      </IconButton>,
+    );
+
+    expect(getByTestId('button')).toBe(ref.current);
+  });
 });

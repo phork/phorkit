@@ -4,14 +4,28 @@ import { fireEvent, render } from '../../../utils';
 
 describe('<Password />', () => {
   it('should render a labeled password with the password visible', () => {
-    const onChange = jest.fn();
-
     const { container, getByText } = render(
-      <Password initialType="text" label="Super fantastic label" onChange={onChange} value="my password" />,
+      <Password initialType="text" label="Super fantastic label" onChange={() => {}} value="my password" />,
     );
     expect(getByText('Super fantastic label')).toBeTruthy();
     expect(container.querySelector('input[type=text]')).toBeTruthy();
     expect(container.querySelector('input[type=password]')).not.toBeTruthy();
+  });
+
+  it('should render a labeled password with the password hidden', () => {
+    const { container, getByText } = render(
+      <Password initialType="password" label="Super fantastic label" onChange={() => {}} value="my password" />,
+    );
+    expect(getByText('Super fantastic label')).toBeTruthy();
+    expect(container.querySelector('input[type=text]')).not.toBeTruthy();
+    expect(container.querySelector('input[type=password]')).toBeTruthy();
+  });
+
+  it('should fire a change event', () => {
+    const onChange = jest.fn();
+    const { container } = render(
+      <Password initialType="text" label="Super fantastic label" onChange={onChange} value="my password" />,
+    );
 
     expect(onChange).not.toHaveBeenCalled();
 
@@ -22,23 +36,20 @@ describe('<Password />', () => {
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe('Hello world');
   });
 
-  it('should render a labeled password with the password hidden', () => {
-    const onChange = jest.fn();
-
-    const { container, getByText } = render(
-      <Password initialType="password" label="Super fantastic label" onChange={onChange} value="my password" />,
+  it('should accept a ref', () => {
+    const ref = React.createRef<HTMLInputElement>();
+    const { getByTestId } = render(
+      <Password
+        data-testid="password"
+        initialType="text"
+        label="Super fantastic label"
+        onChange={() => {}}
+        ref={ref}
+        value="my password"
+      />,
     );
-    expect(getByText('Super fantastic label')).toBeTruthy();
-    expect(container.querySelector('input[type=text]')).not.toBeTruthy();
-    expect(container.querySelector('input[type=password]')).toBeTruthy();
 
-    expect(onChange).not.toHaveBeenCalled();
-
-    const password = container.querySelector('input');
-    password && fireEvent.change(password, { target: { value: 'Hello world' } });
-
-    expect(onChange).toHaveBeenCalledTimes(1);
-    expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe('Hello world');
+    expect(getByTestId('password')).toBe(ref.current);
   });
 });
 

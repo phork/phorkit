@@ -30,4 +30,15 @@ describe('<InteractiveList />', () => {
     expect(getByText('Red orange')).toBeTruthy();
     expect(getByText('Orange')).toBeTruthy();
   });
+
+  it('should accept a ref', () => {
+    const ref = React.createRef<HTMLUListElement>();
+    const { getByTestId } = render(
+      <InteractiveList data-testid="list" initialSelected={['red']} items={options} ref={ref} variant="bordered">
+        An empty notification
+      </InteractiveList>,
+    );
+
+    expect(getByTestId('list')).toBe(ref.current);
+  });
 });

@@ -4,12 +4,17 @@ import { fireEvent, render } from '../../../utils';
 
 describe('<Stepper />', () => {
   it('should render a labeled stepper', () => {
-    const onChange = jest.fn();
-
-    const { container, getByText } = render(
-      <Stepper label="Super fantastic label" max={10} min={1} onChange={onChange} step={1} />,
+    const { getByText } = render(
+      <Stepper label="Super fantastic label" max={10} min={1} onChange={() => {}} step={1} />,
     );
     expect(getByText('Super fantastic label')).toBeTruthy();
+  });
+
+  it('should fire a change event', () => {
+    const onChange = jest.fn();
+    const { container } = render(
+      <Stepper label="Super fantastic label" max={10} min={1} onChange={onChange} step={1} />,
+    );
 
     expect(onChange).not.toHaveBeenCalled();
 
@@ -18,6 +23,23 @@ describe('<Stepper />', () => {
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe(5);
+  });
+
+  it('should accept a ref', () => {
+    const ref = React.createRef<HTMLInputElement>();
+    const { getByTestId } = render(
+      <Stepper
+        data-testid="stepper"
+        label="Super fantastic label"
+        max={10}
+        min={1}
+        onChange={() => {}}
+        ref={ref}
+        step={1}
+      />,
+    );
+
+    expect(getByTestId('stepper')).toBe(ref.current);
   });
 });
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dropdown } from 'lib';
+import { Dropdown, PartialDropdownHandles } from 'lib';
 import { render } from '../../utils';
 
 export const options = [
@@ -84,5 +84,23 @@ describe('<Dropdown />', () => {
     );
     expect(getByText('Super fantastic label')).toBeTruthy();
     expect(getByText('2 items selected')).toBeTruthy();
+  });
+
+  it('should accept a ref', () => {
+    const ref = React.createRef<PartialDropdownHandles>();
+    const { getByTestId } = render(
+      <Dropdown
+        transitional
+        data-testid="dropdown"
+        initialSelected={[options[3]]}
+        label="Super fantastic label"
+        layout="raised"
+        onSelect={() => {}}
+        options={options}
+        ref={ref}
+      />,
+    );
+
+    expect(getByTestId('dropdown')).toBe(ref.current?.container);
   });
 });

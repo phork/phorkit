@@ -4,10 +4,13 @@ import { fireEvent, render } from '../../../utils';
 
 describe('<Toggle />', () => {
   it('should render a labeled toggle', () => {
-    const onChange = jest.fn();
-
-    const { container, getByText } = render(<Toggle onChange={onChange}>Super fantastic label</Toggle>);
+    const { getByText } = render(<Toggle onChange={() => {}}>Super fantastic label</Toggle>);
     expect(getByText('Super fantastic label')).toBeTruthy();
+  });
+
+  it('should fire a change event', () => {
+    const onChange = jest.fn();
+    const { container } = render(<Toggle onChange={onChange}>Super fantastic label</Toggle>);
 
     expect(onChange).not.toHaveBeenCalled();
 
@@ -16,6 +19,17 @@ describe('<Toggle />', () => {
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe(true);
+  });
+
+  it('should accept a ref', () => {
+    const ref = React.createRef<HTMLInputElement>();
+    const { container } = render(
+      <Toggle onChange={() => {}} ref={ref}>
+        Super fantastic label
+      </Toggle>,
+    );
+
+    expect(container.querySelector('input')).toBe(ref.current);
   });
 });
 

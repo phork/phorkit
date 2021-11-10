@@ -248,6 +248,22 @@ describe('<Select multiple />', () => {
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toEqual(['red', 'yellow']);
   });
+
+  it('should accept a ref', () => {
+    const ref = React.createRef<HTMLSelectElement>();
+    const { getByTestId } = render(
+      <Select
+        transitional
+        data-testid="select"
+        label="Super fantastic label"
+        onChange={() => {}}
+        options={options}
+        ref={ref}
+      />,
+    );
+
+    expect(getByTestId('select')).toBe(ref.current);
+  });
 });
 
 describe('<NotifiedSelect />', () => {

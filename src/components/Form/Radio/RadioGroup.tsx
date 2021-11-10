@@ -1,9 +1,9 @@
 import { cx } from '@emotion/css';
 import React, { useCallback } from 'react';
-import { MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
+import { MergeProps, ThemeProps } from '../../../types';
 import { useThemeId } from '../../../context/Theme';
 import { useComponentId } from '../../../hooks/useComponentId';
-import { Fieldset } from '../Fieldset/Fieldset';
+import { Fieldset, FieldsetProps } from '../Fieldset/Fieldset';
 import styles from './styles/RadioGroup.module.css';
 import { Radio, RadioProps, RadioSize, RadioValue } from './Radio';
 
@@ -29,9 +29,9 @@ export type LocalRadioGroupProps<V extends RadioValue = string> = Omit<ThemeProp
   variant?: RadioProps['variant'];
 };
 
-export type RadioGroupProps<V extends RadioValue = string> = Omit<
-  MergeElementPropsWithoutRef<'div', LocalRadioGroupProps<V>>,
-  'children'
+export type RadioGroupProps<V extends RadioValue = string> = MergeProps<
+  Omit<FieldsetProps, 'children'>,
+  LocalRadioGroupProps<V>
 >;
 
 export type RadioGroupRef = React.ForwardedRef<HTMLFieldSetElement>;
@@ -46,7 +46,6 @@ export function RadioGroupBase<V extends RadioValue = string>(
     onChange,
     radios,
     size,
-    style,
     themeId: initThemeId,
     value,
     variant,
@@ -65,15 +64,8 @@ export function RadioGroupBase<V extends RadioValue = string>(
   );
 
   return (
-    <Fieldset
-      className={className}
-      contrast={contrast}
-      legend={legend}
-      ref={forwardedRef}
-      style={style}
-      themeId={themeId}
-    >
-      <div className={cx(styles.radioGroup, layout && styles[`radioGroup--${layout}`])} {...props}>
+    <Fieldset className={className} contrast={contrast} legend={legend} ref={forwardedRef} themeId={themeId} {...props}>
+      <div className={cx(styles.radioGroup, layout && styles[`radioGroup--${layout}`])}>
         {radios &&
           radios.map(({ id, label, value: radioValue, ...radioProps }) => (
             <Radio<V>

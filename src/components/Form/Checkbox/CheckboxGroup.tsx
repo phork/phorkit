@@ -1,9 +1,9 @@
 import { cx } from '@emotion/css';
 import React, { useCallback } from 'react';
-import { MergeElementPropsWithoutRef, ThemeProps } from '../../../types';
+import { MergeProps, ThemeProps } from '../../../types';
 import { useThemeId } from '../../../context/Theme';
 import { useComponentId } from '../../../hooks/useComponentId';
-import { Fieldset } from '../Fieldset/Fieldset';
+import { Fieldset, FieldsetProps } from '../Fieldset/Fieldset';
 import styles from './styles/CheckboxGroup.module.css';
 import { Checkbox, CheckboxProps, CheckboxSize, CheckboxValue } from './Checkbox';
 
@@ -28,9 +28,9 @@ export type LocalCheckboxGroupProps<V extends CheckboxValue = string> = Omit<The
   variant?: CheckboxProps<V>['variant'];
 };
 
-export type CheckboxGroupProps<V extends CheckboxValue = string> = Omit<
-  MergeElementPropsWithoutRef<'div', LocalCheckboxGroupProps<V>>,
-  'children'
+export type CheckboxGroupProps<V extends CheckboxValue = string> = MergeProps<
+  Omit<FieldsetProps, 'children'>,
+  LocalCheckboxGroupProps<V>
 >;
 
 export type CheckboxGroupRef = React.ForwardedRef<HTMLFieldSetElement>;
@@ -44,7 +44,6 @@ export function CheckboxGroupBase<V extends CheckboxValue = string>(
     legend,
     onChange,
     size,
-    style,
     themeId: initThemeId,
     values,
     variant,
@@ -73,15 +72,8 @@ export function CheckboxGroupBase<V extends CheckboxValue = string>(
   );
 
   return (
-    <Fieldset
-      className={className}
-      contrast={contrast}
-      legend={legend}
-      ref={forwardedRef}
-      style={style}
-      themeId={themeId}
-    >
-      <div className={cx(styles.checkboxGroup, layout && styles[`checkboxGroup--${layout}`])} {...props}>
+    <Fieldset className={className} contrast={contrast} legend={legend} ref={forwardedRef} themeId={themeId} {...props}>
+      <div className={cx(styles.checkboxGroup, layout && styles[`checkboxGroup--${layout}`])}>
         {checkboxes &&
           checkboxes.map(({ id, label, value: checkboxValue, ...checkboxProps }) => (
             <Checkbox<V>

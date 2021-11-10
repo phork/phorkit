@@ -68,10 +68,28 @@ describe('<RadioGroup />', () => {
     expect(onChange).toHaveBeenCalledTimes(2);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toEqual('second');
   });
+
+  it('should accept a ref', () => {
+    const ref = React.createRef<HTMLFieldSetElement>();
+    const { getByTestId } = render(
+      <RadioGroup
+        data-testid="radioGroup"
+        layout="stacked"
+        legend="Legendary"
+        name="radio"
+        onChange={() => {}}
+        radios={items}
+        ref={ref}
+        value="first"
+      />,
+    );
+
+    expect(getByTestId('radioGroup')).toBe(ref.current);
+  });
 });
 
 describe('<NotifiedRadioGroup />', () => {
-  it('should render a notified checkbox group', () => {
+  it('should render a notified radio group', () => {
     const { container, getByText } = render(
       <NotifiedRadioGroup
         layout="stacked"

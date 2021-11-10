@@ -13,12 +13,21 @@ describe('<StyledSlider />', () => {
   it('should render a labeled slider', () => {
     const onChange = jest.fn();
 
-    const { container, getByText } = render(
+    const { getByText } = render(
       <StyledSlider max={10} min={0} onChange={onChange} value={4} valuePosition="right" width="100%" {...styles}>
         Super fantastic label
       </StyledSlider>,
     );
     expect(getByText('Super fantastic label')).toBeTruthy();
+  });
+
+  it('should fire a change event', () => {
+    const onChange = jest.fn();
+    const { container } = render(
+      <StyledSlider max={10} min={0} onChange={onChange} value={4} valuePosition="right" width="100%" {...styles}>
+        Super fantastic label
+      </StyledSlider>,
+    );
 
     expect(onChange).not.toHaveBeenCalled();
 

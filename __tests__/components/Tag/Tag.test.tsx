@@ -6,39 +6,39 @@ import { fireEvent, render } from '../../utils';
 
 describe('<Tag />', () => {
   it('should render a tag', () => {
-    const { getByText } = render(<Tag>Click me!</Tag>);
-    expect(getByText('Click me!')).toBeTruthy();
+    const { getByText } = render(<Tag>Tag me!</Tag>);
+    expect(getByText('Tag me!')).toBeTruthy();
   });
 
   it('should render as a div', () => {
-    const { container } = render(<Tag>Click me!</Tag>);
+    const { container } = render(<Tag>Tag me!</Tag>);
     expect(container.firstChild?.nodeName).toBe('DIV');
   });
 
   it('should render as an anchor', () => {
     const { container, getByText } = render(
       <Tag<'a'> actionable as="a" href="#tag">
-        Click me!
+        Tag me!
       </Tag>,
     );
     expect(container.firstChild?.nodeName).toBe('A');
     expect(container.firstChild).toHaveAttribute('href', '#tag');
-    expect(getByText('Click me!')).toBeTruthy();
+    expect(getByText('Tag me!')).toBeTruthy();
   });
 
   it('should render as a button', () => {
     const onClick = jest.fn();
     const { container, getByText } = render(
       <Tag<'button'> actionable as="button" onClick={onClick}>
-        Click me!
+        Tag me!
       </Tag>,
     );
     expect(container.firstChild?.nodeName).toBe('BUTTON');
-    expect(getByText('Click me!')).toBeTruthy();
+    expect(getByText('Tag me!')).toBeTruthy();
 
     expect(onClick).not.toHaveBeenCalled();
 
-    const tag = getByText('Click me!');
+    const tag = getByText('Tag me!');
     fireEvent.click(tag);
 
     expect(onClick).toHaveBeenCalledTimes(1);
@@ -47,11 +47,22 @@ describe('<Tag />', () => {
   it('should render using a functional component', () => {
     const { container, getByText } = render(
       <Tag<'a'> actionable as={AsTypeA} href="#tag">
-        Click me!
+        Tag me!
       </Tag>,
     );
     expect(container.firstChild?.nodeName).toBe('A');
     expect(container.firstChild).toHaveAttribute('href', '#tag');
-    expect(getByText('Click me!')).toBeTruthy();
+    expect(getByText('Tag me!')).toBeTruthy();
+  });
+
+  it('should accept a ref', () => {
+    const ref = React.createRef<HTMLDivElement>();
+    const { getByTestId } = render(
+      <Tag data-testid="tag" ref={ref}>
+        Tag me!
+      </Tag>,
+    );
+
+    expect(getByTestId('tag')).toBe(ref.current);
   });
 });

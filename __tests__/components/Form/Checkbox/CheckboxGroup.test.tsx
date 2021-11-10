@@ -64,6 +64,23 @@ describe('<CheckboxGroup />', () => {
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toEqual([]);
   });
+
+  it('should accept a ref', () => {
+    const ref = React.createRef<HTMLFieldSetElement>();
+    const { getByTestId } = render(
+      <CheckboxGroup
+        checkboxes={items}
+        data-testid="checkboxGroup"
+        layout="stacked"
+        legend="Legendary"
+        onChange={() => {}}
+        ref={ref}
+        values={['first']}
+      />,
+    );
+
+    expect(getByTestId('checkboxGroup')).toBe(ref.current);
+  });
 });
 
 describe('<NotifiedCheckboxGroup />', () => {

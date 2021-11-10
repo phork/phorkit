@@ -58,8 +58,8 @@ describe('<Radio />', () => {
 
     expect(onChange).not.toHaveBeenCalled();
 
-    const checkbox = getByRole('radio');
-    fireEvent.click(checkbox);
+    const radio = getByRole('radio');
+    fireEvent.click(radio);
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe(true);
@@ -74,8 +74,8 @@ describe('<Radio />', () => {
       </Radio>,
     );
 
-    const checkbox = getByRole('radio');
-    fireEvent.click(checkbox);
+    const radio = getByRole('radio');
+    fireEvent.click(radio);
 
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][2]).toBe(8);
   });
@@ -83,7 +83,7 @@ describe('<Radio />', () => {
   it('should focus the container and not the radio button', () => {
     const { container, getByLabelText, getByRole } = render(<Radio onChange={() => {}}>Super fantastic label</Radio>);
 
-    const checkbox = getByRole('radio');
+    const radio = getByRole('radio');
     const label = getByLabelText('Super fantastic label');
 
     container.focus();
@@ -95,7 +95,7 @@ describe('<Radio />', () => {
     userEvent.tab();
 
     expect(label).not.toHaveFocus();
-    expect(checkbox).not.toHaveFocus();
+    expect(radio).not.toHaveFocus();
   });
 
   it('should render the contrast colors', () => {
@@ -116,7 +116,7 @@ describe('<Radio />', () => {
         reverse
         unthemed
         className="radioTest"
-        id="checkbox"
+        id="radio"
         inputStyle={{ color: 'red' }}
         onChange={() => {}}
         size="large"
@@ -128,5 +128,16 @@ describe('<Radio />', () => {
       </Radio>,
     );
     expect(getByLabelText('Super fantastic label')).toBeTruthy();
+  });
+
+  it('should accept a ref', () => {
+    const ref = React.createRef<HTMLInputElement>();
+    const { getByTestId } = render(
+      <Radio data-testid="radio" onChange={() => {}} ref={ref}>
+        Super fantastic label
+      </Radio>,
+    );
+
+    expect(getByTestId('radio')).toBe(ref.current);
   });
 });

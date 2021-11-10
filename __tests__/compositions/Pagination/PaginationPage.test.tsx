@@ -15,4 +15,11 @@ describe('<PaginationPage />', () => {
     expect(container.firstChild?.nodeName).toBe('DIV');
     expect(getByText('12345')).toBeTruthy();
   });
+
+  it('should accept a ref', () => {
+    const ref = React.createRef<HTMLButtonElement>();
+    const { getByTestId } = render(<PaginationPage data-testid="page" page={12345} ref={ref} />);
+
+    expect(getByTestId('page')).toBe(ref.current);
+  });
 });

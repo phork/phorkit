@@ -12,7 +12,7 @@ const styles = {
 
 describe('<StyledTag />', () => {
   it('should render a tag', () => {
-    const { getByText } = render(<StyledTag {...styles}>Click me!</StyledTag>);
-    expect(getByText('Click me!')).toBeTruthy();
+    const { getByText } = render(<StyledTag {...styles}>Tag me!</StyledTag>);
+    expect(getByText('Tag me!')).toBeTruthy();
   });
 });

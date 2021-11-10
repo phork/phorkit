@@ -150,4 +150,15 @@ describe('<Checkbox />', () => {
     );
     expect(getByLabelText('Super fantastic label')).toBeTruthy();
   });
+
+  it('should accept a ref', () => {
+    const ref = React.createRef<HTMLInputElement>();
+    const { getByTestId } = render(
+      <Checkbox data-testid="checkbox" onChange={() => {}} ref={ref}>
+        Super fantastic label
+      </Checkbox>,
+    );
+
+    expect(getByTestId('checkbox')).toBe(ref.current);
+  });
 });

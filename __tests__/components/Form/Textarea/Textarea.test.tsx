@@ -4,10 +4,13 @@ import { fireEvent, render } from '../../../utils';
 
 describe('<Textarea />', () => {
   it('should render a labeled textarea', () => {
-    const onChange = jest.fn();
-
-    const { container, getByText } = render(<Textarea label="Super fantastic label" onChange={onChange} />);
+    const { getByText } = render(<Textarea label="Super fantastic label" onChange={() => {}} />);
     expect(getByText('Super fantastic label')).toBeTruthy();
+  });
+
+  it('should fire an onChange event', () => {
+    const onChange = jest.fn();
+    const { container } = render(<Textarea label="Super fantastic label" onChange={onChange} />);
 
     expect(onChange).not.toHaveBeenCalled();
 
@@ -16,6 +19,15 @@ describe('<Textarea />', () => {
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe('Hello world');
+  });
+
+  it('should accept a ref', () => {
+    const ref = React.createRef<HTMLTextAreaElement>();
+    const { getByTestId } = render(
+      <Textarea data-testid="textarea" label="Super fantastic label" onChange={() => {}} ref={ref} />,
+    );
+
+    expect(getByTestId('textarea')).toBe(ref.current);
   });
 });
 

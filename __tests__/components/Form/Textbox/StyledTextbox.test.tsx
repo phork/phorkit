@@ -15,13 +15,13 @@ const styles = {
 
 describe('<StyledTextbox />', () => {
   it('should render a labeled textbox', () => {
-    const onChange = jest.fn();
-
-    const { container, getByText } = render(
-      <StyledTextbox label="Super fantastic label" onChange={onChange} {...styles} />,
-    );
+    const { getByText } = render(<StyledTextbox label="Super fantastic label" onChange={() => {}} {...styles} />);
     expect(getByText('Super fantastic label')).toBeTruthy();
+  });
 
+  it('should fire a change event', () => {
+    const onChange = jest.fn();
+    const { container } = render(<StyledTextbox label="Super fantastic label" onChange={onChange} {...styles} />);
     expect(onChange).not.toHaveBeenCalled();
 
     const textbox = container.querySelector('input');

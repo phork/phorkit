@@ -4,14 +4,21 @@ import { fireEvent, render } from '../../../utils';
 
 describe('<Slider />', () => {
   it('should render a labeled slider', () => {
-    const onChange = jest.fn();
-
-    const { container, getByText } = render(
-      <Slider max={10} min={0} onChange={onChange} value={4} valuePosition="right" width="100%">
+    const { getByText } = render(
+      <Slider max={10} min={0} onChange={() => {}} value={4} valuePosition="right" width="100%">
         Super fantastic label
       </Slider>,
     );
     expect(getByText('Super fantastic label')).toBeTruthy();
+  });
+
+  it('should fire a change event', () => {
+    const onChange = jest.fn();
+    const { container } = render(
+      <Slider max={10} min={0} onChange={onChange} value={4} valuePosition="right" width="100%">
+        Super fantastic label
+      </Slider>,
+    );
 
     expect(onChange).not.toHaveBeenCalled();
 
@@ -20,6 +27,26 @@ describe('<Slider />', () => {
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe(5);
+  });
+
+  it('should accept a ref', () => {
+    const ref = React.createRef<HTMLInputElement>();
+    const { getByTestId } = render(
+      <Slider
+        data-testid="slider"
+        max={10}
+        min={0}
+        onChange={() => {}}
+        ref={ref}
+        value={4}
+        valuePosition="right"
+        width="100%"
+      >
+        Super fantastic label
+      </Slider>,
+    );
+
+    expect(getByTestId('slider')).toBe(ref.current);
   });
 });
 

@@ -574,7 +574,6 @@ export function PartialDropdownBase(
         type="input"
         validity={validity}
         variant={inputVariant}
-        {...props}
       >
         {iconBefore && <FormboxIcon icon={iconBefore} position="before" variant={inputVariant} />}
 

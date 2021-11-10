@@ -109,4 +109,15 @@ describe('<IconTextButton />', () => {
     expect(container.firstChild).toHaveAttribute('href', '#button');
     expect(getByText('Click me!')).toBeTruthy();
   });
+
+  it('should accept a ref', () => {
+    const ref = React.createRef<HTMLButtonElement>();
+    const { getByTestId } = render(
+      <IconTextButton data-testid="button" icon={<TimesIcon scale="medium" />} ref={ref}>
+        Click me!
+      </IconTextButton>,
+    );
+
+    expect(getByTestId('button')).toBe(ref.current);
+  });
 });

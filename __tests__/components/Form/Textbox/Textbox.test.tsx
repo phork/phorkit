@@ -4,10 +4,13 @@ import { fireEvent, render } from '../../../utils';
 
 describe('<Textbox />', () => {
   it('should render a labeled textbox', () => {
-    const onChange = jest.fn();
-
-    const { container, getByText } = render(<Textbox label="Super fantastic label" onChange={onChange} />);
+    const { getByText } = render(<Textbox label="Super fantastic label" onChange={() => {}} />);
     expect(getByText('Super fantastic label')).toBeTruthy();
+  });
+
+  it('should fire a change event', () => {
+    const onChange = jest.fn();
+    const { container } = render(<Textbox label="Super fantastic label" onChange={onChange} />);
 
     expect(onChange).not.toHaveBeenCalled();
 
@@ -16,6 +19,15 @@ describe('<Textbox />', () => {
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe('Hello world');
+  });
+
+  it('should accept a ref', () => {
+    const ref = React.createRef<HTMLInputElement>();
+    const { getByTestId } = render(
+      <Textbox data-testid="textbox" label="Super fantastic label" onChange={() => {}} ref={ref} />,
+    );
+
+    expect(getByTestId('textbox')).toBe(ref.current);
   });
 });
 

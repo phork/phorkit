@@ -141,4 +141,15 @@ describe('<Button />', () => {
     );
     expect(getByText('Hello world')).toBeTruthy();
   });
+
+  it('should accept a ref', () => {
+    const ref = React.createRef<HTMLButtonElement>();
+    const { getByTestId } = render(
+      <Button data-testid="button" ref={ref}>
+        Click me!
+      </Button>,
+    );
+
+    expect(getByTestId('button')).toBe(ref.current);
+  });
 });
