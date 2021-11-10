@@ -32,7 +32,7 @@ const updateElementClasses = themeId => {
 // [TODO:sb] globals don't seem to be used by the docs addon so this uses local storage
 export const ThemeToolbar = React.memo(() => {
   const [globals, updateGlobals] = useGlobals();
-  const currentThemeId = globals[PARAM_KEY] || getThemeId();
+  const currentThemeId = process.env.STORYBOOK_THEME_ID || globals[PARAM_KEY] || getThemeId();
   const isDarkTheme = currentThemeId === 'dark';
 
   // add the body classes on initial load
@@ -51,7 +51,8 @@ export const ThemeToolbar = React.memo(() => {
 
   const title = isDarkTheme ? 'Use the light theme' : 'Use the dark theme';
 
-  return (
+  // if the theme has been forced then don't show the toggle
+  return process.env.STORYBOOK_THEME_ID ? null : (
     <IconButton key="theme" title={title} onClick={() => toggleThemeId()}>
       {isDarkTheme ? <SunIcon title={title} /> : <MoonIcon title={title} />}
     </IconButton>

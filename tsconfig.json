@@ -50,7 +50,8 @@
     "rootDir": "src",
     "strict": true,
     "target": "ES2019",
-    "typeRoots": ["node_modules/@types", "src/*.d.ts"]
+    "typeRoots": ["node_modules/@types", "src/*.d.ts"],
+    "types": ["node"]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.json"],
   "exclude": ["node_modules", "lib", ".docz"]
