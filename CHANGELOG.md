@@ -1,5 +1,11 @@
 # Changelog
 
+## [11.0.1](https://github.com/phork/phorkit/compare/v11.0.0...v11.0.1) (2021-11-10)
+
+### ⚡ Performance Improvements
+
+- replaced uuid with nanoid ([aeaad78](https://github.com/phork/phorkit/commit/aeaad78))
+
 # [11.0.0](https://github.com/phork/phorkit/compare/v10.5.0...v11.0.0) (2021-11-09)
 
 ### ♻ Code Refactoring
