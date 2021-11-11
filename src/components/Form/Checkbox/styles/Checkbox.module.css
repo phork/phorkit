@@ -172,17 +172,17 @@ input.checkboxInput {
 
 .checkbox--contrast {
   @mixin themed .checkbox {
-    --checkbox-checked-background-color: $theme-contrast-palette-accent-color;
-    --checkbox-checked-border-color: $theme-contrast-palette-accent-color;
-    --checkbox-checked-hovered-focus-ring-color: $theme-contrast-palette-accent-color;
+    --checkbox-checked-background-color: $theme-contrast-palette-text-color;
+    --checkbox-checked-border-color: $theme-contrast-palette-text-color;
+    --checkbox-checked-hovered-focus-ring-color: $theme-contrast-palette-text-color;
     --checkbox-checked-icon-color: var(--phork-contrast-color, $theme-contrast-palette-background-color);
     --checkbox-unchecked-border-color: $theme-contrast-palette-quieter-color;
     --checkbox-unchecked-hovered-focus-ring-color: $theme-contrast-palette-quietest-color;
 
     &.checkbox--secondary {
       --checkbox-checked-background-color: transparent;
-      --checkbox-checked-border-color: $theme-contrast-palette-accent-color;
-      --checkbox-checked-icon-color: $theme-contrast-palette-accent-color;
+      --checkbox-checked-border-color: $theme-contrast-palette-text-color;
+      --checkbox-checked-icon-color: $theme-contrast-palette-text-color;
     }
   }
 }

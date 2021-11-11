@@ -43,7 +43,7 @@
 .lineLoader--contrast {
   @mixin themed .lineLoader {
     &:after {
-      background-color: $theme-contrast-palette-accent-color;
+      background-color: $theme-contrast-palette-text-color;
     }
   }
 }

@@ -2,24 +2,25 @@ const color = require('./utils/color');
 
 // foreground and background colors, generally
 const neutralColors = {
-  'color-FG0': '#17171D',
-  'color-FG05': '#29292F',
-  'color-FG10': '#3A3A40',
-  'color-FG20': '#5D5D63',
+  'color-FG0': '#17171d',
+  'color-FG05': '#29292f',
+  'color-FG10': '#3a3a40',
+  'color-FG20': '#5d5d63',
   'color-FG30': '#808086',
-  'color-FG40': '#A3A3A9',
-  'color-FG50': '#C6C6CC',
+  'color-FG40': '#a3a3a9',
+  'color-FG50': '#c6c6cc',
 
-  'color-BG0': '#FFF',
-  'color-BG05': '#FAFAFA',
-  'color-BG10': '#F4F4F5',
-  'color-BG20': '#E8E8EB',
-  'color-BG30': '#DDDDE0',
-  'color-BG40': '#D1D1D6',
-  'color-BG50': '#C6C6CC',
+  'color-BG0': '#fff',
+  'color-BG05': '#fafafa',
+  'color-BG10': '#f4f4f5',
+  'color-BG20': '#e8e8eb',
+  'color-BG30': '#dddde0',
+  'color-BG40': '#d1d1d6',
+  'color-BG50': '#c6c6cc',
 };
 
 const primaryColors = {
+  'color-P00': '#808086',
   'color-P05': '#c5106b',
   'color-P10': '#f41150',
   'color-P15': '#ff3232',
@@ -36,6 +37,7 @@ const primaryColors = {
 };
 
 const primaryContrastColors = {
+  'color-P00-contrast': '#fff',
   'color-P05-contrast': '#fff',
   'color-P10-contrast': '#fff',
   'color-P15-contrast': '#fff',
@@ -53,6 +55,7 @@ const primaryContrastColors = {
 
 // fine tune the lighten and darken amounts by color
 const adjustments = {
+  'color-P00-lighten': 0.1625,
   'color-P05-lighten': 0.275,
   'color-P10-lighten': 0.1875,
   'color-P15-lighten': 0.1375,
@@ -66,6 +69,7 @@ const adjustments = {
   'color-P60-lighten': 0.275,
   'color-P65-lighten': 0.32,
 
+  'color-P00-darken': 0.15,
   'color-P15-darken': 0.15,
   'color-P30-darken': 0.1,
   'color-P35-darken': 0.0625,
@@ -74,25 +78,40 @@ const adjustments = {
 // shade color is the accent color at .1 opacity flattened on the extreme background color
 const accentColors = {
   'color-accent': primaryColors['color-P50'],
-  'color-accent-contrast': '#fff',
+  'color-accent-contrast': primaryContrastColors['color-P50-contrast'],
   'color-accent-shade': '#e6effa',
 
   'color-success': primaryColors['color-P40'],
-  'color-success-contrast': '#fff',
+  'color-success-contrast': primaryContrastColors['color-P40-contrast'],
   'color-success-shade': '#f2f8ec',
 
   'color-warning': primaryColors['color-P25'],
-  'color-warning-contrast': '#fff',
+  'color-warning-contrast': primaryContrastColors['color-P25-contrast'],
   'color-warning-shade': '#fff4e7',
 
   'color-danger': primaryColors['color-P15'],
-  'color-danger-contrast': '#fff',
+  'color-danger-contrast': primaryContrastColors['color-P15-contrast'],
   'color-danger-shade': '#ffebeb',
 
-  'color-neutral': neutralColors['color-FG30'],
-  'color-neutral-contrast': '#fff',
+  'color-neutral': primaryColors['color-P00'],
+  'color-neutral-contrast': primaryContrastColors['color-P00-contrast'],
   'color-neutral-shade': '#f3f3f3',
 };
+
+adjustments['color-accent-lighten'] = adjustments['color-P50-lighten'];
+adjustments['color-accent-darken'] = adjustments['color-P50-darken'];
+
+adjustments['color-success-lighten'] = adjustments['color-P40-lighten'];
+adjustments['color-success-darken'] = adjustments['color-P40-darken'];
+
+adjustments['color-warning-lighten'] = adjustments['color-P25-lighten'];
+adjustments['color-warning-darken'] = adjustments['color-P25-darken'];
+
+adjustments['color-danger-lighten'] = adjustments['color-P15-lighten'];
+adjustments['color-danger-darken'] = adjustments['color-P15-darken'];
+
+adjustments['color-neutral-lighten'] = adjustments['color-P00-lighten'];
+adjustments['color-neutral-darken'] = adjustments['color-P00-darken'];
 
 const shadowColors = {
   'box-shadow-10': `
@@ -154,7 +173,6 @@ const paletteColors = {
   'contrast-palette-quiet-color': color.transparency(accentColors['color-accent-contrast'], 20),
   'contrast-palette-quieter-color': color.transparency(accentColors['color-accent-contrast'], 40),
   'contrast-palette-quietest-color': color.transparency(accentColors['color-accent-contrast'], 60),
-  'contrast-palette-accent-color': accentColors['color-accent-contrast'],
 };
 
 const miscColors = {

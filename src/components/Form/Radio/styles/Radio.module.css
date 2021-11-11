@@ -147,17 +147,17 @@ input.radioInput {
 
 .radio--contrast {
   @mixin themed .radio {
-    --radio-checked-background-color: $theme-contrast-palette-accent-color;
-    --radio-checked-border-color: $theme-contrast-palette-accent-color;
-    --radio-checked-hovered-focus-ring-color: $theme-contrast-palette-accent-color;
+    --radio-checked-background-color: $theme-contrast-palette-text-color;
+    --radio-checked-border-color: $theme-contrast-palette-text-color;
+    --radio-checked-hovered-focus-ring-color: $theme-contrast-palette-text-color;
     --radio-checked-icon-color: var(--phork-contrast-color, $theme-contrast-palette-background-color);
     --radio-unchecked-border-color: $theme-contrast-palette-quieter-color;
     --radio-unchecked-hovered-focus-ring-color: $theme-contrast-palette-quietest-color;
 
     &.radio--secondary {
       --radio-checked-background-color: transparent;
-      --radio-checked-border-color: $theme-contrast-palette-accent-color;
-      --radio-checked-icon-color: $theme-contrast-palette-accent-color;
+      --radio-checked-border-color: $theme-contrast-palette-text-color;
+      --radio-checked-icon-color: $theme-contrast-palette-text-color;
     }
   }
 }

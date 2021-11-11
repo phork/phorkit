@@ -2,24 +2,25 @@ const color = require('./utils/color');
 
 // foreground and background colors, generally
 const neutralColors = {
-  'color-FG0': '#FAFAFA',
-  'color-FG05': '#E8E9EA',
-  'color-FG10': '#D6D7D9',
-  'color-FG20': '#B2B3B8',
-  'color-FG30': '#8F9096',
-  'color-FG40': '#6B6C75',
+  'color-FG0': '#fafafa',
+  'color-FG05': '#e8e9ea',
+  'color-FG10': '#d6d7d9',
+  'color-FG20': '#b2b3b8',
+  'color-FG30': '#8f9096',
+  'color-FG40': '#6b6c75',
   'color-FG50': '#474954',
 
-  'color-BG0': '#0D0D10',
-  'color-BG05': '#17171D',
+  'color-BG0': '#0d0d10',
+  'color-BG05': '#17171d',
   'color-BG10': '#212128',
-  'color-BG20': '#2A2B33',
-  'color-BG30': '#34353E',
-  'color-BG40': '#3D3F49',
+  'color-BG20': '#2a2b33',
+  'color-BG30': '#34353e',
+  'color-BG40': '#3d3f49',
   'color-BG50': '#474954',
 };
 
 const primaryColors = {
+  'color-P00': '#474954',
   'color-P05': '#c5106b',
   'color-P10': '#f41150',
   'color-P15': '#ff3232',
@@ -36,23 +37,25 @@ const primaryColors = {
 };
 
 const primaryContrastColors = {
-  'color-P05-contrast': '#222',
-  'color-P10-contrast': '#222',
-  'color-P15-contrast': '#222',
-  'color-P20-contrast': '#222',
-  'color-P25-contrast': '#222',
-  'color-P30-contrast': '#222',
-  'color-P35-contrast': '#222',
-  'color-P40-contrast': '#222',
-  'color-P45-contrast': '#222',
-  'color-P50-contrast': '#222',
-  'color-P55-contrast': '#222',
-  'color-P60-contrast': '#222',
-  'color-P65-contrast': '#222',
+  'color-P00-contrast': '#0d0d10',
+  'color-P05-contrast': '#0d0d10',
+  'color-P10-contrast': '#0d0d10',
+  'color-P15-contrast': '#0d0d10',
+  'color-P20-contrast': '#0d0d10',
+  'color-P25-contrast': '#0d0d10',
+  'color-P30-contrast': '#0d0d10',
+  'color-P35-contrast': '#0d0d10',
+  'color-P40-contrast': '#0d0d10',
+  'color-P45-contrast': '#0d0d10',
+  'color-P50-contrast': '#0d0d10',
+  'color-P55-contrast': '#0d0d10',
+  'color-P60-contrast': '#0d0d10',
+  'color-P65-contrast': '#0d0d10',
 };
 
 // fine tune the lighten and darken amounts by color
 const adjustments = {
+  'color-P00-lighten': 0.32,
   'color-P05-lighten': 0.275,
   'color-P10-lighten': 0.1875,
   'color-P15-lighten': 0.125,
@@ -74,25 +77,40 @@ const adjustments = {
 // shade color is the accent color at .1 opacity flattened on the extreme background color
 const accentColors = {
   'color-accent': primaryColors['color-P45'],
-  'color-accent-contrast': '#222',
+  'color-accent-contrast': primaryContrastColors['color-P45-contrast'],
   'color-accent-shade': '#0c1d27',
 
   'color-success': primaryColors['color-P40'],
-  'color-success-contrast': '#222',
+  'color-success-contrast': primaryContrastColors['color-P40-contrast'],
   'color-success-shade': '#182010',
 
   'color-warning': primaryColors['color-P25'],
-  'color-warning-contrast': '#222',
+  'color-warning-contrast': primaryContrastColors['color-P25-contrast'],
   'color-warning-shade': '#251a0f',
 
   'color-danger': primaryColors['color-P15'],
-  'color-danger-contrast': '#222',
+  'color-danger-contrast': primaryContrastColors['color-P15-contrast'],
   'color-danger-shade': '#251113',
 
-  'color-neutral': neutralColors['color-FG30'],
-  'color-neutral-contrast': '#222',
+  'color-neutral': primaryColors['color-P00'],
+  'color-neutral-contrast': primaryContrastColors['color-P00-contrast'],
   'color-neutral-shade': '#1a1a1d',
 };
+
+adjustments['color-accent-lighten'] = adjustments['color-P45-lighten'];
+adjustments['color-accent-darken'] = adjustments['color-P45-darken'];
+
+adjustments['color-success-lighten'] = adjustments['color-P40-lighten'];
+adjustments['color-success-darken'] = adjustments['color-P40-darken'];
+
+adjustments['color-warning-lighten'] = adjustments['color-P25-lighten'];
+adjustments['color-warning-darken'] = adjustments['color-P25-darken'];
+
+adjustments['color-danger-lighten'] = adjustments['color-P15-lighten'];
+adjustments['color-danger-darken'] = adjustments['color-P15-darken'];
+
+adjustments['color-neutral-lighten'] = adjustments['color-P00-lighten'];
+adjustments['color-neutral-darken'] = adjustments['color-P00-darken'];
 
 const shadowColors = {
   'box-shadow-10': `
@@ -157,7 +175,6 @@ const paletteColors = {
   'contrast-palette-quiet-color': color.transparency(accentColors['color-accent-contrast'], 30),
   'contrast-palette-quieter-color': color.transparency(accentColors['color-accent-contrast'], 50),
   'contrast-palette-quietest-color': color.transparency(accentColors['color-accent-contrast'], 70),
-  'contrast-palette-accent-color': accentColors['color-accent-contrast'],
 };
 
 const miscColors = {

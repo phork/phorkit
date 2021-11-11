@@ -51,6 +51,6 @@
 .tabs--contrast {
   @mixin themed .tabs {
     --tabs-border-color: $theme-contrast-palette-quietest-color;
-    --tabs-focused-border-color: $theme-contrast-palette-accent-color;
+    --tabs-focused-border-color: $theme-contrast-palette-text-color;
   }
 }
