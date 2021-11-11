@@ -379,12 +379,12 @@ ul.unlist {
 
 .list--contrast {
   @mixin themed .list {
-    --list-focused-border-color: $theme-contrast-palette-accent-color;
-    --list-item-selected-background-color: $theme-contrast-palette-accent-color;
+    --list-focused-border-color: $theme-contrast-palette-text-color;
+    --list-item-selected-background-color: $theme-contrast-palette-text-color;
     --list-item-selected-text-color: var(--phork-contrast-color, $theme-contrast-palette-background-color);
     --list-item-background-color: var(--phork-contrast-color, $theme-contrast-palette-background-color);
     --list-item-border-color: $theme-contrast-palette-border-color;
-    --list-item-focused-border-color: $theme-contrast-palette-accent-color;
+    --list-item-focused-border-color: $theme-contrast-palette-text-color;
     --list-item-focused-text-color: $theme-contrast-palette-quiet-color;
     --list-item-text-color: $theme-contrast-palette-text-color;
     --list-scrollbar-thumb-color: $theme-contrast-scrollbar-thumb-color;

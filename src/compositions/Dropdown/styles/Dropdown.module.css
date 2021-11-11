@@ -259,7 +259,7 @@
 
 .dropdown--contrast {
   @mixin themed .dropdown {
-    --dropdown-options-focused-border-color: $theme-contrast-palette-accent-color;
+    --dropdown-options-focused-border-color: $theme-contrast-palette-text-color;
     --dropdown-options-container-background-color: var(--phork-contrast-color, $theme-contrast-palette-background-color);
     --dropdown-options-container-box-shadow: $theme-box-shadow-10;
     --dropdown-options-container-border-color: $theme-contrast-palette-text-color;

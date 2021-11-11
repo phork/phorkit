@@ -52,7 +52,7 @@ export const DropoverLabel = React.forwardRef<HTMLDivElement, DropoverLabelProps
     const triangleFocusedColor =
       initTriangleFocusedColor ||
       (contrast
-        ? themes[themeId]['contrast-palette-accent-color']
+        ? themes[themeId]['contrast-palette-text-color']
         : `var(--phork-accent-color, ${themes[themeId]['color-accent']})`);
 
     return (

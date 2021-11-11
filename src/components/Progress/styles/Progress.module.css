@@ -134,7 +134,7 @@
 
 .progressSegment--contrast {
   @mixin themed .progressSegment {
-    background-color: $theme-contrast-palette-accent-color;
+    background-color: $theme-contrast-palette-text-color;
   }
 }
 

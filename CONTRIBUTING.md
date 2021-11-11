@@ -205,13 +205,14 @@ CSS custom properties can be overridden at the application root level or at the 
 ```css
 :root {
   --phork-accent-color: #642da0;
-  --phork-accent-color-contrast: #fce393;
+  --phork-accent-color-contrast: #d6c1ee;
   --phork-accent-color-L10: #803dc8;
   --phork-accent-color-L30: #b995e1;
   --phork-accent-color-D10: #57278c;
   --phork-accent-color-D30: #3e1c64;
   --phork-accent-color-shade: #f0eaf6;
   --phork-accent-color-O5: rgba(100, 45, 160, 0.05);
+  --phork-contrast-color: #642da0;
 }
 ```
 
@@ -219,13 +220,9 @@ CSS custom properties can be overridden at the application root level or at the 
 <Button
   style={{
     '--phork-accent-color': '#642da0',
-    '--phork-accent-color-contrast': '#fce393',
+    '--phork-accent-color-contrast': '#d6c1ee',
     '--phork-accent-color-L10': '#803dc8',
-    '--phork-accent-color-L30': '#b995e1',
     '--phork-accent-color-D10': '#57278c',
-    '--phork-accent-color-D30': '#3e1c64',
-    '--phork-accent-color-shade': '#f0eaf6',
-    '--phork-accent-color-O5': 'rgba(100, 45, 160, .05)',
   } as React.CSSProperties}
 >
   Click me!

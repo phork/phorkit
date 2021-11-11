@@ -167,8 +167,8 @@ input.sliderInput {
 .slider--contrast {
   @mixin themed .slider {
     --slider-track-background-color: $theme-contrast-palette-quietest-color;
-    --slider-track-fill-background-color: $theme-contrast-palette-accent-color;
-    --slider-handle-background-color: $theme-contrast-palette-accent-color;
+    --slider-track-fill-background-color: $theme-contrast-palette-text-color;
+    --slider-handle-background-color: $theme-contrast-palette-text-color;
     --slider-tick-background-color: $theme-contrast-palette-quiet-color;
   }
 }

@@ -1,6 +1,7 @@
 import { Theme } from '../../types';
 
 export type ThemeColorIds =
+  | 'P00'
   | 'P05'
   | 'P10'
   | 'P15'

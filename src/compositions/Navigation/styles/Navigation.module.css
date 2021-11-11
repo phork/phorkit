@@ -54,7 +54,7 @@
   @mixin themed .navigation {
     --navigation-item-focused-background-color: var(--phork-accent-color, $theme-color-accent);
     --navigation-item-selected-background-color: $theme-color-BG50-O20;
-    --navigation-item-focused-text-color: $theme-contrast-palette-accent-color;
+    --navigation-item-focused-text-color: $theme-contrast-palette-text-color;
   }
 }
 
@@ -81,9 +81,9 @@
   @mixin themed .navigation {
     --navigation-item-focused-background-color: $theme-color-BG50-O30;
     --navigation-item-focused-selected-background-color: var(--phork-accent-color-L10, $theme-color-accent-L10);
-    --navigation-item-focused-selected-text-color: $theme-contrast-palette-accent-color;
+    --navigation-item-focused-selected-text-color: $theme-contrast-palette-text-color;
     --navigation-item-selected-background-color: var(--phork-accent-color, $theme-color-accent);
-    --navigation-item-selected-text-color: $theme-contrast-palette-accent-color;
+    --navigation-item-selected-text-color: $theme-contrast-palette-text-color;
   }
 }
 

@@ -166,8 +166,8 @@ input.toggleInput {
     --toggle-background-color: $theme-contrast-palette-quietest-color;
     --toggle-button-background-color: $theme-contrast-palette-quieter-color;
     --toggle-checked-background-color: $theme-contrast-palette-quietest-color;
-    --toggle-checked-button-background-color: $theme-contrast-palette-accent-color;
-    --toggle-checked-hovered-focus-ring-color: $theme-contrast-palette-accent-color;
+    --toggle-checked-button-background-color: $theme-contrast-palette-text-color;
+    --toggle-checked-hovered-focus-ring-color: $theme-contrast-palette-text-color;
     --toggle-unchecked-hovered-focus-ring-color: $theme-contrast-palette-quietest-color;
   }
 }

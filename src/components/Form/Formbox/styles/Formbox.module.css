@@ -318,10 +318,10 @@
   @mixin themed .formbox {
     --formbox-autofilled-background-color: $theme-color-BG50-O10;
     --formbox-icon-color: $theme-contrast-palette-quieter-color;
-    --formbox-icon-hovered-color: $theme-contrast-palette-accent-color;
+    --formbox-icon-hovered-color: $theme-contrast-palette-text-color;
     --formbox-input-container-background-color: transparent;
     --formbox-input-container-border-color: $theme-contrast-palette-quieter-color;
-    --formbox-input-container-focused-border-color: $theme-contrast-palette-accent-color;
+    --formbox-input-container-focused-border-color: $theme-contrast-palette-text-color;
     --formbox-input-container-hovered-border-color: $theme-contrast-palette-quieter-color;
     --formbox-label-text-color: $theme-contrast-palette-quiet-color;
   }

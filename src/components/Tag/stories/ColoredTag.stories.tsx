@@ -69,6 +69,13 @@ Default.argTypes = {
   unthemed: { table: { disable: true } },
 };
 
+export const ColorP00 = Template.bind({});
+ColorP00.storyName = 'Color: P00';
+ColorP00.args = {
+  ...defaultArgs,
+  colorId: 'P00' as ThemeColorIds,
+};
+
 export const ColorP05 = Template.bind({});
 ColorP05.storyName = 'Color: P05';
 ColorP05.args = {
