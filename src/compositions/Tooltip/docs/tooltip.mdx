@@ -45,7 +45,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
                 <Paper
                   contained
                   scrollable
-                  color="accent-primary"
+                  color="accent"
                   container="popover"
                   scrollbar="small"
                   style={{ borderRadius: '2px', [arrowCornerRadiusProperty]: 0 }}
@@ -62,8 +62,8 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             );
           }}
           style={{ position: 'fixed', top: '100px', right: '140px', zIndex: 2000 }}
-          toggler={<ArrowUpDownIcon scale="xlarge" style={{ color: themes[themeId]['color-accent-primary-D10'] }} />}
-          triangleColor={themes[themeId]['color-accent-primary']}
+          toggler={<ArrowUpDownIcon scale="xlarge" style={{ color: themes[themeId]['color-accent-D10'] }} />}
+          triangleColor={themes[themeId]['color-accent']}
           width={300}
         />
       </React.Fragment>
@@ -83,14 +83,14 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
         offset={{ horizontal: 42, vertical: 20 }}
         position="bottom-right"
         toggler={<ArrowUpDownIcon scale="xlarge" />}
-        triangleColor={themes[themeId]['color-accent-primary']}
+        triangleColor={themes[themeId]['color-accent']}
         triangleSize={12}
         width={300}
       >
         <Paper
           contained
           scrollable
-          color="accent-primary"
+          color="accent"
           container="popover"
           scrollbar="small"
           style={{ borderRadius: '2px' }}
@@ -135,13 +135,13 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             height={80}
             position="top-left"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
               contained
               scrollable
-              color="accent-primary"
+              color="accent"
               container="popover"
               scrollbar="small"
               style={{ borderRadius: '2px' }}
@@ -171,13 +171,13 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             height={80}
             position="top-center"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
               contained
               scrollable
-              color="accent-primary"
+              color="accent"
               container="popover"
               scrollbar="small"
               style={{ borderRadius: '2px' }}
@@ -207,13 +207,13 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             height={80}
             position="top-right"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
               contained
               scrollable
-              color="accent-primary"
+              color="accent"
               container="popover"
               scrollbar="small"
               style={{ borderRadius: '2px' }}
@@ -243,13 +243,13 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             height={80}
             position="bottom-left"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
               contained
               scrollable
-              color="accent-primary"
+              color="accent"
               container="popover"
               scrollbar="small"
               style={{ borderRadius: '2px' }}
@@ -279,13 +279,13 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             height={80}
             position="bottom-center"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
               contained
               scrollable
-              color="accent-primary"
+              color="accent"
               container="popover"
               scrollbar="small"
               style={{ borderRadius: '2px' }}
@@ -315,13 +315,13 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             height={80}
             position="bottom-right"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
               contained
               scrollable
-              color="accent-primary"
+              color="accent"
               container="popover"
               scrollbar="small"
               style={{ borderRadius: '2px' }}
@@ -361,11 +361,11 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             position="left-top"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
-              color="accent-primary"
+              color="accent"
               container="popover"
               style={{ borderRadius: '2px', borderTopRightRadius: 0 }}
               themeId={themeId}
@@ -393,10 +393,10 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             position="left-center"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
-            <Paper color="accent-primary" container="popover" style={{ borderRadius: '2px' }} themeId={themeId}>
+            <Paper color="accent" container="popover" style={{ borderRadius: '2px' }} themeId={themeId}>
               <Typography as="div" size="small" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
                 brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox
@@ -420,11 +420,11 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             position="left-bottom"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
-              color="accent-primary"
+              color="accent"
               container="popover"
               style={{ borderRadius: '2px', borderBottomRightRadius: 0 }}
               themeId={themeId}
@@ -452,11 +452,11 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             position="right-top"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
-              color="accent-primary"
+              color="accent"
               container="popover"
               style={{ borderRadius: '2px', borderTopLeftRadius: 0 }}
               themeId={themeId}
@@ -484,10 +484,10 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             position="right-center"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
-            <Paper color="accent-primary" container="popover" style={{ borderRadius: '2px' }} themeId={themeId}>
+            <Paper color="accent" container="popover" style={{ borderRadius: '2px' }} themeId={themeId}>
               <Typography as="div" size="small" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
                 brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox
@@ -511,11 +511,11 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             position="right-bottom"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
-              color="accent-primary"
+              color="accent"
               container="popover"
               style={{ borderRadius: '2px', borderBottomLeftRadius: 0 }}
               themeId={themeId}
@@ -555,11 +555,11 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             position="left-top"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
-              color="accent-primary"
+              color="accent"
               container="popover"
               style={{ borderRadius: '2px', borderTopRightRadius: 0 }}
               themeId={themeId}
@@ -588,11 +588,11 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             position="left-bottom"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
-              color="accent-primary"
+              color="accent"
               container="popover"
               style={{ borderRadius: '2px', borderBottomRightRadius: 0 }}
               themeId={themeId}
@@ -621,11 +621,11 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             position="right-top"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
-              color="accent-primary"
+              color="accent"
               container="popover"
               style={{ borderRadius: '2px', borderTopLeftRadius: 0 }}
               themeId={themeId}
@@ -654,11 +654,11 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             position="right-bottom"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
-              color="accent-primary"
+              color="accent"
               container="popover"
               style={{ borderRadius: '2px', borderBottomLeftRadius: 0 }}
               themeId={themeId}
@@ -704,13 +704,13 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             height={80}
             position="top-left"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
               contained
               scrollable
-              color="accent-primary"
+              color="accent"
               container="popover"
               scrollbar="small"
               style={{ borderRadius: '2px' }}
@@ -740,13 +740,13 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             height={80}
             position="top-center"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
               contained
               scrollable
-              color="accent-primary"
+              color="accent"
               container="popover"
               scrollbar="small"
               style={{ borderRadius: '2px' }}
@@ -776,13 +776,13 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             height={80}
             position="top-right"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
               contained
               scrollable
-              color="accent-primary"
+              color="accent"
               container="popover"
               scrollbar="small"
               style={{ borderRadius: '2px' }}
@@ -812,13 +812,13 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             height={80}
             position="bottom-left"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
               contained
               scrollable
-              color="accent-primary"
+              color="accent"
               container="popover"
               scrollbar="small"
               style={{ borderRadius: '2px' }}
@@ -848,13 +848,13 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             height={80}
             position="bottom-center"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
               contained
               scrollable
-              color="accent-primary"
+              color="accent"
               container="popover"
               scrollbar="small"
               style={{ borderRadius: '2px' }}
@@ -884,13 +884,13 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             height={80}
             position="bottom-right"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
               contained
               scrollable
-              color="accent-primary"
+              color="accent"
               container="popover"
               scrollbar="small"
               style={{ borderRadius: '2px' }}
@@ -930,11 +930,11 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             position="left-top"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
-              color="accent-primary"
+              color="accent"
               container="popover"
               style={{ borderRadius: '2px', borderTopRightRadius: 0 }}
               themeId={themeId}
@@ -962,10 +962,10 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             position="left-center"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
-            <Paper color="accent-primary" container="popover" style={{ borderRadius: '2px' }} themeId={themeId}>
+            <Paper color="accent" container="popover" style={{ borderRadius: '2px' }} themeId={themeId}>
               <Typography as="div" size="small" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
                 brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox
@@ -989,11 +989,11 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             position="left-bottom"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
-              color="accent-primary"
+              color="accent"
               container="popover"
               style={{ borderRadius: '2px', borderBottomRightRadius: 0 }}
               themeId={themeId}
@@ -1021,11 +1021,11 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             position="right-top"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
-              color="accent-primary"
+              color="accent"
               container="popover"
               style={{ borderRadius: '2px', borderTopLeftRadius: 0 }}
               themeId={themeId}
@@ -1053,10 +1053,10 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             position="right-center"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
-            <Paper color="accent-primary" container="popover" style={{ borderRadius: '2px' }} themeId={themeId}>
+            <Paper color="accent" container="popover" style={{ borderRadius: '2px' }} themeId={themeId}>
               <Typography as="div" size="small" variants="line-height-comfy">
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
                 brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox
@@ -1080,11 +1080,11 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             position="right-bottom"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
-              color="accent-primary"
+              color="accent"
               container="popover"
               style={{ borderRadius: '2px', borderBottomLeftRadius: 0 }}
               themeId={themeId}
@@ -1124,11 +1124,11 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             position="left-top"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
-              color="accent-primary"
+              color="accent"
               container="popover"
               style={{ borderRadius: '2px', borderTopRightRadius: 0 }}
               themeId={themeId}
@@ -1157,11 +1157,11 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             position="left-bottom"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
-              color="accent-primary"
+              color="accent"
               container="popover"
               style={{ borderRadius: '2px', borderBottomRightRadius: 0 }}
               themeId={themeId}
@@ -1190,11 +1190,11 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             position="right-top"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
-              color="accent-primary"
+              color="accent"
               container="popover"
               style={{ borderRadius: '2px', borderTopLeftRadius: 0 }}
               themeId={themeId}
@@ -1223,11 +1223,11 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             initialVisible
             position="right-bottom"
             toggler={<ArrowUpDownIcon scale="xlarge" />}
-            triangleColor={themes[themeId]['color-accent-primary']}
+            triangleColor={themes[themeId]['color-accent']}
             width={300}
           >
             <Paper
-              color="accent-primary"
+              color="accent"
               container="popover"
               style={{ borderRadius: '2px', borderBottomLeftRadius: 0 }}
               themeId={themeId}
@@ -1254,7 +1254,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
         offset={{ horizontal: 20 }}
         position="right-center"
         renderChildren={({ close }) => (
-          <Paper color="accent-primary" style={{ borderRadius: '2px' }} themeId={themeId}>
+          <Paper color="accent" style={{ borderRadius: '2px' }} themeId={themeId}>
             <Button
               contrast
               onClick={() => {
@@ -1269,7 +1269,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
           </Paper>
         )}
         toggler={<ArrowUpDownIcon scale="xlarge" />}
-        triangleColor={themes[themeId]['color-accent-primary']}
+        triangleColor={themes[themeId]['color-accent']}
       />
     )}
   </ThemeWrapper>
@@ -1292,7 +1292,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
             hoverable
             position="top-center"
             toggler={
-              <Typography color="accent-primary" variants={['space-after', 'space-before']}>
+              <Typography color="accent" variants={['space-after', 'space-before']}>
                 I am a friendly tooltip with an auto-focused link.
               </Typography>
             }
@@ -1347,7 +1347,7 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
               </React.Fragment>
             )}
             toggler={
-              <Typography color="accent-primary" variants={['space-after', 'space-before']}>
+              <Typography color="accent" variants={['space-after', 'space-before']}>
                 I am a friendly tooltip with a manually focused link.
               </Typography>
             }

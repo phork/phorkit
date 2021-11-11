@@ -94,9 +94,9 @@
   }
 }
 
-.text-color-accent-primary {
+.text-color-accent {
   @mixin themed .text {
-    color: $theme-color-accent-primary;
+    color: var(--phork-accent-color, $theme-color-accent);
   }
 }
 

@@ -299,12 +299,12 @@
 
 .formbox--primary {
   @mixin themed .formbox {
-    --formbox-autofilled-background-color: $theme-color-accent-primary-O5;
+    --formbox-autofilled-background-color: var(--phork-accent-color-O5, $theme-color-accent-O5);
     --formbox-icon-color: $theme-primary-palette-quieter-color;
-    --formbox-icon-hovered-color: $theme-primary-palette-accent-color;
+    --formbox-icon-hovered-color: var(--phork-accent-color, $theme-color-accent);
     --formbox-input-container-background-color: transparent;
     --formbox-input-container-border-color: $theme-primary-palette-quietest-color;
-    --formbox-input-container-focused-border-color: $theme-color-accent-primary;
+    --formbox-input-container-focused-border-color: var(--phork-accent-color, $theme-color-accent);
     --formbox-input-container-hovered-border-color: $theme-primary-palette-quieter-color;
     --formbox-label-text-color: $theme-primary-palette-quiet-color;
   }

@@ -21,7 +21,7 @@
 .tabList--primary {
   @mixin themed .tabList {
     --tab-background-color: $theme-tertiary-palette-background-color;
-    --tab-focused-text-color: $theme-color-accent-primary;
+    --tab-focused-text-color: var(--phork-accent-color, $theme-color-accent);
     --tab-selected-background-color: $theme-primary-palette-background-color;
     --tab-selected-text-color: $theme-primary-palette-text-color;
     --tab-text-color: $theme-secondary-palette-quiet-color;
@@ -32,9 +32,9 @@
 .tabList--transparent {
   @mixin themed .tabList {
     --tab-background-color: transparent;
-    --tab-focused-text-color: $theme-color-accent-primary-D10;
+    --tab-focused-text-color: var(--phork-accent-color-D10, $theme-color-accent-D10);
     --tab-selected-background-color: transparent;
-    --tab-selected-text-color: $theme-color-accent-primary;
+    --tab-selected-text-color: var(--phork-accent-color, $theme-color-accent);
     --tab-text-color: currentColor;
     --tab-list-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
   }
@@ -44,7 +44,7 @@
   @mixin themed .tabList {
     --tab-background-color: $theme-color-BG0-O5;
     --tab-focused-text-color: $theme-contrast-palette-text-color;
-    --tab-selected-background-color: var(--contrast-color, $theme-contrast-palette-background-color);
+    --tab-selected-background-color: var(--phork-contrast-color, $theme-contrast-palette-background-color);
     --tab-selected-text-color: $theme-contrast-palette-quiet-color;
     --tab-text-color: $theme-contrast-palette-quiet-color;
     --tab-list-scrollbar-thumb-color: $theme-contrast-scrollbar-thumb-color;

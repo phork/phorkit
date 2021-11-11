@@ -1,7 +1,7 @@
 .button {
   @mixin themed {
     align-items: center;
-    background-color: $theme-primary-palette-accent-color;
+    background-color: var(--phork-accent-color, $theme-color-accent);
     color: $theme-contrast-palette-text-color;
     border-radius: $border-radius-medium;
     border: 1px solid transparent;
@@ -20,7 +20,7 @@
     text-decoration: none;
 
     &:focus {
-      background-color: $theme-color-accent-primary-L10;
+      background-color: var(--phork-accent-color-L10, $theme-color-accent-L10);
 
       &.is-accessible {
         &:before {
@@ -37,7 +37,7 @@
 
         &:focus {
           &:before {
-            border-color: $theme-color-accent-primary;
+            border-color: var(--phork-accent-color, $theme-color-accent);
           }
         }
       }

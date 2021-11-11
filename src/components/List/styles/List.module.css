@@ -351,13 +351,13 @@ ul.unlist {
 
 .list--primary {
   @mixin themed .list {
-    --list-focused-border-color: $theme-primary-palette-accent-color;
-    --list-item-selected-background-color: $theme-primary-palette-accent-color;
-    --list-item-selected-text-color: $theme-color-accent-primary-contrast;
+    --list-focused-border-color: var(--phork-accent-color, $theme-color-accent);
+    --list-item-selected-background-color: var(--phork-accent-color, $theme-color-accent);
+    --list-item-selected-text-color: var(--phork-accent-color-contrast, $theme-color-accent-contrast);
     --list-item-background-color: $theme-primary-palette-background-color;
     --list-item-border-color: $theme-primary-palette-border-color;
-    --list-item-focused-border-color: $theme-primary-palette-accent-color;
-    --list-item-focused-text-color: $theme-primary-palette-accent-color;
+    --list-item-focused-border-color: var(--phork-accent-color, $theme-color-accent);
+    --list-item-focused-text-color: var(--phork-accent-color, $theme-color-accent);
     --list-item-text-color: $theme-primary-palette-quiet-color;
     --list-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
   }
@@ -381,8 +381,8 @@ ul.unlist {
   @mixin themed .list {
     --list-focused-border-color: $theme-contrast-palette-accent-color;
     --list-item-selected-background-color: $theme-contrast-palette-accent-color;
-    --list-item-selected-text-color: var(--contrast-color, $theme-contrast-palette-background-color);
-    --list-item-background-color: var(--contrast-color, $theme-contrast-palette-background-color);
+    --list-item-selected-text-color: var(--phork-contrast-color, $theme-contrast-palette-background-color);
+    --list-item-background-color: var(--phork-contrast-color, $theme-contrast-palette-background-color);
     --list-item-border-color: $theme-contrast-palette-border-color;
     --list-item-focused-border-color: $theme-contrast-palette-accent-color;
     --list-item-focused-text-color: $theme-contrast-palette-quiet-color;

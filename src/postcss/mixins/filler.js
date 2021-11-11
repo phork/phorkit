@@ -159,7 +159,7 @@ const makeOutlinedFillHover = (mixin, primaryColor) => ({
 // a shade should have been prepared for this already so that it can transition
 const makeOutlinedFillActive = (mixin, primaryColor) => ({
   ...makeShade(mixin, primaryColor),
-  ...setShadeOpacity(mixin, 0.13),
+  ...setShadeOpacity(mixin, 0.1),
 });
 
 const makeGhostFill = (mixin, primaryColor, shouldPrepareShade) => ({
@@ -175,7 +175,7 @@ const makeGhostFillHover = (mixin, primaryColor) => ({
 // a shade should have been prepared for this already so that it can transition
 const makeGhostFillActive = (mixin, primaryColor) => ({
   ...makeShade(mixin, primaryColor),
-  ...setShadeOpacity(mixin, 0.13),
+  ...setShadeOpacity(mixin, 0.1),
 });
 
 /**

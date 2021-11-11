@@ -23,8 +23,8 @@
 
 .accordion--primary {
   @mixin themed .accordion {
-    --accordion-focused-border-color: $theme-color-accent-primary;
-    --accordion-label-focused-text-color: $theme-color-accent-primary;
+    --accordion-focused-border-color: var(--phork-accent-color, $theme-color-accent);
+    --accordion-label-focused-text-color: var(--phork-accent-color, $theme-color-accent);
     --accordion-label-selected-border-color: transparent;
   }
 }

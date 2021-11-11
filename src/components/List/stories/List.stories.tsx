@@ -161,6 +161,7 @@ const defaultArgs = {
   transparent: false,
   unstyled: false,
   unthemed: false,
+  variant: 'bordered' as ListProps['variant'],
 };
 
 export const Default = Template.bind({});

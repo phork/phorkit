@@ -14,7 +14,7 @@ export function ColorLooper({ render, themeId, group = 'primary' }: ColorLooperP
   const pattern = {
     neutral: /^color-((BG|FG)([0-9]+))$/,
     primary: /^color-((P)([0-9]+))$/,
-    state: /^color-((accent-primary|success|warning|danger)-?(.*)(?<!contrast)(?<!O[0-9]+))$/,
+    state: /^color-((accent|success|warning|danger)-?(.*)(?<!contrast)(?<!O[0-9]+))$/,
     transparent: /^color-((.+)-O([0-9]+))$/,
   }[group];
 

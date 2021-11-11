@@ -73,9 +73,9 @@ const adjustments = {
 
 // shade color is the accent color at .1 opacity flattened on the extreme background color
 const accentColors = {
-  'color-accent-primary': primaryColors['color-P50'],
-  'color-accent-primary-contrast': '#fff',
-  'color-accent-primary-shade': '#e6effa',
+  'color-accent': primaryColors['color-P50'],
+  'color-accent-contrast': '#fff',
+  'color-accent-shade': '#e6effa',
 
   'color-success': primaryColors['color-P40'],
   'color-success-contrast': '#fff',
@@ -130,7 +130,6 @@ const paletteColors = {
   'primary-palette-quiet-color': neutralColors['color-FG30'],
   'primary-palette-quieter-color': neutralColors['color-FG40'],
   'primary-palette-quietest-color': neutralColors['color-FG50'],
-  'primary-palette-accent-color': accentColors['color-accent-primary'],
 
   'secondary-palette-background-color': neutralColors['color-BG10'],
   'secondary-palette-border-color': neutralColors['color-BG50'],
@@ -139,7 +138,6 @@ const paletteColors = {
   'secondary-palette-quiet-color': neutralColors['color-FG30'],
   'secondary-palette-quieter-color': neutralColors['color-FG40'],
   'secondary-palette-quietest-color': neutralColors['color-FG50'],
-  'secondary-palette-accent-color': accentColors['color-accent-primary'],
 
   'tertiary-palette-background-color': neutralColors['color-BG20'],
   'tertiary-palette-border-color': neutralColors['color-BG40'],
@@ -148,23 +146,22 @@ const paletteColors = {
   'tertiary-palette-quiet-color': neutralColors['color-FG30'],
   'tertiary-palette-quieter-color': neutralColors['color-FG40'],
   'tertiary-palette-quietest-color': neutralColors['color-FG50'],
-  'tertiary-palette-accent-color': accentColors['color-accent-primary'],
 
-  'contrast-palette-background-color': accentColors['color-accent-primary'],
-  'contrast-palette-border-color': color.transparency(accentColors['color-accent-primary-contrast'], 50),
-  'contrast-palette-quiet-border-color': color.transparency(accentColors['color-accent-primary-contrast'], 70),
-  'contrast-palette-text-color': accentColors['color-accent-primary-contrast'],
-  'contrast-palette-quiet-color': color.transparency(accentColors['color-accent-primary-contrast'], 20),
-  'contrast-palette-quieter-color': color.transparency(accentColors['color-accent-primary-contrast'], 40),
-  'contrast-palette-quietest-color': color.transparency(accentColors['color-accent-primary-contrast'], 60),
-  'contrast-palette-accent-color': accentColors['color-accent-primary-contrast'],
+  'contrast-palette-background-color': accentColors['color-accent'],
+  'contrast-palette-border-color': color.transparency(accentColors['color-accent-contrast'], 50),
+  'contrast-palette-quiet-border-color': color.transparency(accentColors['color-accent-contrast'], 70),
+  'contrast-palette-text-color': accentColors['color-accent-contrast'],
+  'contrast-palette-quiet-color': color.transparency(accentColors['color-accent-contrast'], 20),
+  'contrast-palette-quieter-color': color.transparency(accentColors['color-accent-contrast'], 40),
+  'contrast-palette-quietest-color': color.transparency(accentColors['color-accent-contrast'], 60),
+  'contrast-palette-accent-color': accentColors['color-accent-contrast'],
 };
 
 const miscColors = {
   'primary-scrollbar-thumb-color': neutralColors['color-BG30'],
   'primary-scrollbar-track-color': 'transparent',
 
-  'contrast-scrollbar-thumb-color': color.transparency(accentColors['color-accent-primary-contrast'], 80),
+  'contrast-scrollbar-thumb-color': color.transparency(accentColors['color-accent-contrast'], 80),
   'contrast-scrollbar-track-color': 'transparent',
 };
 
@@ -182,17 +179,10 @@ const colors = {
   ...primaryContrastColors,
   ...color.generateLightenDarken(
     definedColors,
-    [
-      'color-accent-primary',
-      'color-success',
-      'color-warning',
-      'color-danger',
-      'color-neutral',
-      ...Object.keys(primaryColors),
-    ],
+    ['color-accent', 'color-success', 'color-warning', 'color-danger', 'color-neutral', ...Object.keys(primaryColors)],
     adjustments,
   ),
-  ...color.generateOpacityRange(definedColors, ['color-BG0', 'color-FG0', 'color-BG50', 'color-accent-primary']),
+  ...color.generateOpacityRange(definedColors, ['color-BG0', 'color-FG0', 'color-BG50', 'color-accent']),
 };
 
 module.exports = colors;

@@ -50,7 +50,7 @@
 
 .notification--primary {
   @mixin themed .notification {
-    color: $theme-color-accent-primary;
+    color: var(--phork-accent-color, $theme-color-accent);
   }
 }
 

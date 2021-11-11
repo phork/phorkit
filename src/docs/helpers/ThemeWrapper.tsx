@@ -64,7 +64,7 @@ export function ThemeWrapper({
     <div
       style={
         {
-          backgroundColor: contrast ? `var(--contrast-color, ${backgroundColor})` : backgroundColor,
+          backgroundColor: contrast ? `var(--phork-contrast-color, ${backgroundColor})` : backgroundColor,
           color,
           margin: '-20px',
           padding: '20px',

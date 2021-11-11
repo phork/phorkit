@@ -8,7 +8,7 @@ const lightTheme = {
   'primary-palette-quiet-color': '#808086',
   'primary-palette-quieter-color': '#A3A3A9',
   'primary-palette-quietest-color': '#C6C6CC',
-  'primary-palette-accent-color': '#0060ce',
+  'color-accent': '#0060ce',
   'secondary-palette-background-color': '#F4F4F5',
   'secondary-palette-border-color': '#C6C6CC',
   'secondary-palette-text-color': '#29292F',
@@ -24,7 +24,7 @@ const darkTheme = {
   'primary-palette-quiet-color': '#8F9096',
   'primary-palette-quieter-color': '#6B6C75',
   'primary-palette-quietest-color': '#474954',
-  'primary-palette-accent-color': '#00aaff',
+  'color-accent': '#00aaff',
   'secondary-palette-background-color': '#212128',
   'secondary-palette-border-color': '#474954',
   'secondary-palette-text-color': '#E8E9EA',
@@ -66,10 +66,10 @@ export default {
     showPlaygroundEditor: false,
 
     colors: {
-      primary: lightTheme['primary-palette-accent-color'],
+      primary: lightTheme['color-accent'],
       text: lightTheme['primary-palette-text-color'],
       muted: lightTheme['primary-palette-quiet-color'],
-      link: lightTheme['primary-palette-accent-color'],
+      link: lightTheme['color-accent'],
       background: lightTheme['primary-palette-background-color'],
       border: lightTheme['primary-palette-border-color'],
       blockquote: {
@@ -96,7 +96,7 @@ export default {
       props: {
         bg: lightTheme['secondary-palette-background-color'],
         text: lightTheme['secondary-palette-quiet-color'],
-        highlight: lightTheme['color-accent-primary'],
+        highlight: lightTheme['color-accent'],
         defaultValue: lightTheme['secondary-palette-quiet-color'],
         descriptionText: lightTheme['secondary-palette-quiet-color'],
         descriptionBg: 'transparent',
@@ -109,10 +109,10 @@ export default {
 
       modes: {
         dark: {
-          primary: darkTheme['primary-palette-accent-color'],
+          primary: darkTheme['color-accent'],
           text: darkTheme['primary-palette-text-color'],
           muted: darkTheme['primary-palette-quiet-color'],
-          link: darkTheme['primary-palette-accent-color'],
+          link: darkTheme['color-accent'],
           background: darkTheme['primary-palette-background-color'],
           border: darkTheme['primary-palette-border-color'],
           blockquote: {
@@ -139,7 +139,7 @@ export default {
           props: {
             bg: darkTheme['secondary-palette-background-color'],
             text: darkTheme['secondary-palette-quiet-color'],
-            highdark: darkTheme['color-accent-primary'],
+            highdark: darkTheme['color-accent'],
             defaultValue: darkTheme['secondary-palette-quiet-color'],
             descriptionText: darkTheme['secondary-palette-quiet-color'],
             descriptionBg: 'transparent',

@@ -46,7 +46,7 @@ export default {
         'primary',
         'secondary',
         'tertiary',
-        'accent-primary',
+        'accent',
         'contrast',
         'transparent',
         'extreme',
@@ -149,6 +149,7 @@ const defaultArgs = {
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
+  color: 'transparent',
 };
 
 export const ExtremeColor = Template.bind({});
@@ -191,12 +192,12 @@ TransparentColor.args = {
   color: 'transparent',
 };
 
-export const AccentPrimaryColor = Template.bind({});
-AccentPrimaryColor.storyName = 'Color: Accent primary';
-AccentPrimaryColor.args = {
+export const AccentColor = Template.bind({});
+AccentColor.storyName = 'Color: Accent';
+AccentColor.args = {
   ...defaultArgs,
   bordered: true,
-  color: 'accent-primary',
+  color: 'accent',
 };
 
 export const ContrastColor = Template.bind({});

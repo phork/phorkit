@@ -72,7 +72,7 @@ export function TextTooltipContent({
     <Card full raised themeId={themeId} {...props}>
       <StyledPaper
         bordered
-        backgroundColor={contrast ? `var(--contrast-color, ${backgroundColor})` : backgroundColor}
+        backgroundColor={contrast ? `var(--phork-contrast-color, ${backgroundColor})` : backgroundColor}
         borderColor={borderColor}
         container="popover"
         focusedOutlineColor={focusedOutlineColor}

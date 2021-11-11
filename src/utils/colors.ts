@@ -35,7 +35,7 @@ export const getPrimaryColors = (themeId: Theme): Colors => {
 
 export const getStateColors = (themeId: Theme): Colors => {
   return Object.keys(themes[themeId]).reduce((acc, key: string) => {
-    const matches = key.match(/^color-(accent-primary|success|warning|danger|neutral)$/);
+    const matches = key.match(/^color-(accent|success|warning|danger|neutral)$/);
     if (matches) {
       acc[matches[0]] = themes[themeId][matches[0] as keyof ThemeColors];
     }

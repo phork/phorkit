@@ -154,8 +154,8 @@ input.sliderInput {
 .slider--primary {
   @mixin themed .slider {
     --slider-track-background-color: $theme-color-FG0-O10;
-    --slider-track-fill-background-color: $theme-color-accent-primary;
-    --slider-handle-background-color: $theme-color-accent-primary;
+    --slider-track-fill-background-color: var(--phork-accent-color, $theme-color-accent);
+    --slider-handle-background-color: var(--phork-accent-color, $theme-color-accent);
     --slider-tick-background-color: $theme-color-BG50;
   }
 

@@ -144,9 +144,9 @@ export function FlexBox({
     <div
       style={{
         alignItems: 'center',
-        backgroundColor: themes[themeId]['color-accent-primary'],
-        border: `1px solid ${themes[themeId]['color-accent-primary-contrast']}`,
-        color: themes[themeId]['color-accent-primary-contrast'],
+        backgroundColor: `var(--phork-accent-color, ${themes[themeId]['color-accent']}`,
+        border: `1px solid var(--phork-accent-color-contrast, ${themes[themeId]['color-accent-contrast']})`,
+        color: `var(--phork-accent-color-contrast, ${themes[themeId]['color-accent-contrast']})`,
         display: 'flex',
         height,
         justifyContent: 'center',

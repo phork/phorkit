@@ -126,17 +126,17 @@ input.radioInput {
 
 .radio--primary {
   @mixin themed .radio {
-    --radio-checked-background-color: $theme-color-accent-primary;
-    --radio-checked-border-color: $theme-color-accent-primary;
-    --radio-checked-hovered-focus-ring-color: $theme-color-accent-primary;
-    --radio-checked-icon-color: $theme-color-accent-primary-contrast;
+    --radio-checked-background-color: var(--phork-accent-color, $theme-color-accent);
+    --radio-checked-border-color: var(--phork-accent-color, $theme-color-accent);
+    --radio-checked-hovered-focus-ring-color: var(--phork-accent-color, $theme-color-accent);
+    --radio-checked-icon-color: var(--phork-accent-color-contrast, $theme-color-accent-contrast);
     --radio-unchecked-border-color: $theme-color-FG0-O20;
     --radio-unchecked-hovered-focus-ring-color: $theme-color-FG0-O40;
 
     &.radio--secondary {
       --radio-checked-background-color: transparent;
-      --radio-checked-border-color: $theme-color-accent-primary;
-      --radio-checked-icon-color: $theme-color-accent-primary;
+      --radio-checked-border-color: var(--phork-accent-color, $theme-color-accent);
+      --radio-checked-icon-color: var(--phork-accent-color, $theme-color-accent);
     }
   }
 
@@ -150,7 +150,7 @@ input.radioInput {
     --radio-checked-background-color: $theme-contrast-palette-accent-color;
     --radio-checked-border-color: $theme-contrast-palette-accent-color;
     --radio-checked-hovered-focus-ring-color: $theme-contrast-palette-accent-color;
-    --radio-checked-icon-color: var(--contrast-color, $theme-contrast-palette-background-color);
+    --radio-checked-icon-color: var(--phork-contrast-color, $theme-contrast-palette-background-color);
     --radio-unchecked-border-color: $theme-contrast-palette-quieter-color;
     --radio-unchecked-hovered-focus-ring-color: $theme-contrast-palette-quietest-color;
 

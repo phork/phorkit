@@ -137,8 +137,6 @@ All color, sizing and spacing definitions come from the PostCSS files. Only the 
 
 Any component that deals with color should have a light and dark theme. Most components should include the `useThemeId` hook. Styled components can use the `withTheme` HOC. Most colors are applied by CSS classes which should be named using BEM syntax (eg. `.button--light` and `.button--dark`) and should use CSS custom properties to define the colors.
 
-Many components also have an optional `contrast` property. These components use one of the primary colors as the background color and the contrast color in varying shades as the foreground colors. The default primary color is the theme's primary accent color but can be overridden with the CSS custom property `--contrast-color`. This value cascades to all children components so use it wisely.
-
 An simple component stylesheet might look like this:
 
 ```css
@@ -176,19 +174,62 @@ A component stylesheet using CSS custom properties might look like this:
     --awesomeness-text-color: $theme-secondary-palette-text-color;
   }
 }
-
-.awesomeness--contrast {
-  @mixin themed .awesomeness {
-    --awesomeness-background-color: var(--contrast-color, $theme-contrast-palette-background-color);
-    --awesomeness-text-color: $theme-contrast-palette-text-color;
-  }
-}
 ```
 
 ```html
 <div class="awesomeness awesomeness--primary awesomeness--light">Hello world</div>
+<div class="awesomeness awesomeness--primary awesomeness--dark">Hello world</div>
 <div class="awesomeness awesomeness--secondary awesomeness--light">Hello world</div>
-<div class="awesomeness awesomeness--contrast awesomeness--light">Hello world</div>
+<div class="awesomeness awesomeness--secondary awesomeness--dark">Hello world</div>
+```
+
+### Custom colors
+
+The default accent color is blue, however it can be overridden using CSS custom properties. The properties that will need overriding for a custom accent color are listed below.
+
+| Property                        | Description                                                                            | Example                 |
+| ------------------------------- | -------------------------------------------------------------------------------------- | ----------------------- |
+| `--phork-accent-color`          | The main accent color                                                                  | #642da0                 |
+| `--phork-accent-color-contrast` | The contrast color                                                                     | #fff                    |
+| `--phork-accent-color-shade`    | The main accent color with an opacity of `.1` flattened on a background of `color-BG0` | #f0eaf6                 |
+| `--phork-accent-color-L10`      | The main accent color lightened by a shade                                             | #803dc8                 |
+| `--phork-accent-color-L30`      | The main accent color lightened by 3 shades                                            | #b995e1                 |
+| `--phork-accent-color-D10`      | The main accent color darkened by a shade                                              | #57278c                 |
+| `--phork-accent-color-D30`      | The main accent color darkened by 3 shades                                             | #3e1c64                 |
+| `--phork-accent-color-O5`       | The main accent color with an opacity of .05                                           | rgba(100, 45, 160, .05) |
+
+Many components also have an optional `contrast` property. These components use one of the primary colors as the background color and the contrast color in varying shades as the foreground colors. The default primary color is the theme's primary accent color but can be overridden with the CSS custom property `--phork-contrast-color`.
+
+CSS custom properties can be overridden at the application root level or at the component level. For example:
+
+```css
+:root {
+  --phork-accent-color: #642da0;
+  --phork-accent-color-contrast: #fce393;
+  --phork-accent-color-L10: #803dc8;
+  --phork-accent-color-L30: #b995e1;
+  --phork-accent-color-D10: #57278c;
+  --phork-accent-color-D30: #3e1c64;
+  --phork-accent-color-shade: #f0eaf6;
+  --phork-accent-color-O5: rgba(100, 45, 160, 0.05);
+}
+```
+
+```jsx
+<Button
+  style={{
+    '--phork-accent-color': '#642da0',
+    '--phork-accent-color-contrast': '#fce393',
+    '--phork-accent-color-L10': '#803dc8',
+    '--phork-accent-color-L30': '#b995e1',
+    '--phork-accent-color-D10': '#57278c',
+    '--phork-accent-color-D30': '#3e1c64',
+    '--phork-accent-color-shade': '#f0eaf6',
+    '--phork-accent-color-O5': 'rgba(100, 45, 160, .05)',
+  } as React.CSSProperties}
+>
+  Click me!
+</Button>
 ```
 
 ## Commits

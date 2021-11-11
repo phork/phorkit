@@ -15,7 +15,7 @@
 
   @mixin themed .lineLoader {
     &:after {
-      background-color: $theme-primary-palette-accent-color;
+      background-color: var(--phork-accent-color, $theme-color-accent);
     }
   }
 }

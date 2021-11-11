@@ -118,15 +118,15 @@
 
 .badge--primary {
   @mixin themed .badge {
-    --badge-background-color: $theme-color-accent-primary;
-    --badge-text-color: $theme-color-accent-primary-contrast;
+    --badge-background-color: var(--phork-accent-color, $theme-color-accent);
+    --badge-text-color: var(--phork-accent-color-contrast, $theme-color-accent-contrast);
   }
 }
 
 .badge--contrast {
   @mixin themed .badge {
     --badge-background-color: $theme-contrast-palette-text-color;
-    --badge-text-color: var(--contrast-color, $theme-contrast-palette-background-color);
+    --badge-text-color: var(--phork-contrast-color, $theme-contrast-palette-background-color);
   }
 }
 

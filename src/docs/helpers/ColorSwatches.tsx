@@ -73,7 +73,7 @@ export function ColorSwatches({
     }
 
     case 'transparent': {
-      const colorGrid = ['accent-primary', 'FG0', 'BG50', 'BG0'].map(variant => {
+      const colorGrid = ['accent', 'FG0', 'BG50', 'BG0'].map(variant => {
         const colors = getTransparentColorsByRoot(themeId, variant!);
         return {
           colors: Object.keys(colors).map(key => ({

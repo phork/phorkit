@@ -124,7 +124,7 @@
       outline-offset: 2px;
 
       @mixin themed .popoverToggler {
-        outline-color: $theme-color-accent-primary;
+        outline-color: var(--phork-accent-color, $theme-color-accent);
       }
     }
   }

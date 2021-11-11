@@ -76,12 +76,12 @@ export type ThemePrimaryDarkenedColors = MakeThemePrimaryColors<'D10'> &
   MakeThemePrimaryColors<'D30'> &
   MakeThemePrimaryColors<'D40'>;
 
-export type ThemeAccentPrimaryColors = {
-  'color-accent-primary': string;
-  'color-accent-primary-contrast': string;
-  'color-accent-primary-shade': string;
-} & MakeThemeOpacities<'accent-primary'> &
-  MakeThemeLightenDarken<'accent-primary'>;
+export type ThemeAccentColors = {
+  'color-accent': string;
+  'color-accent-contrast': string;
+  'color-accent-shade': string;
+} & MakeThemeOpacities<'accent'> &
+  MakeThemeLightenDarken<'accent'>;
 
 export type ThemeSuccessColors = {
   'color-success': string;
@@ -142,7 +142,7 @@ export type ThemeColors = ThemeForegroundColors &
   ThemePrimaryContrastColors &
   ThemePrimaryLightenedColors &
   ThemePrimaryDarkenedColors &
-  ThemeAccentPrimaryColors &
+  ThemeAccentColors &
   ThemeSuccessColors &
   ThemeWarningColors &
   ThemeDangerColors &

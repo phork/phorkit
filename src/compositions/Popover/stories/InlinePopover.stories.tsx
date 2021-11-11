@@ -211,7 +211,7 @@ const Template: ComponentStory<(args: InlinePopoverProps<HTMLButtonElement>) => 
 const defaultArgs = {
   alwaysRender: false,
   children: (
-    <Paper contained scrollable color="accent-primary" container="popover" scrollbar="small">
+    <Paper contained scrollable color="accent" container="popover" scrollbar="small">
       <Typography as="div" size="small" variants="line-height-comfy">
         The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox
         jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy
@@ -356,7 +356,7 @@ ManualFocus.args = {
   position: 'right-center',
   renderChildren: ({ focusRef }) => (
     <Card full raised>
-      <Paper contained scrollable color="accent-primary" container="popover" scrollbar="small">
+      <Paper contained scrollable color="accent" container="popover" scrollbar="small">
         <Typography as="div" variants="reset">
           <Rhythm my={1}>
             <Button contrast onClick={() => console.log('clicked')} weight="inline">
@@ -379,7 +379,7 @@ AutoFocus.args = {
   ...defaultArgs,
   children: (
     <Card full raised>
-      <Paper contained scrollable color="accent-primary" container="popover" scrollbar="small">
+      <Paper contained scrollable color="accent" container="popover" scrollbar="small">
         <Typography as="div" variants="reset">
           <Rhythm my={1}>
             <Button contrast onClick={() => console.log('clicked')} weight="inline">

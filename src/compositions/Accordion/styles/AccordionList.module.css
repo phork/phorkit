@@ -27,8 +27,8 @@
   @mixin themed .accordionList {
     --accordion-border-color: $theme-primary-palette-background-color;
     --accordion-item-border-color: $theme-color-FG0-O5;
-    --accordion-item-focused-border-color: $theme-color-accent-primary;
-    --accordion-label-focused-text-color: $theme-color-accent-primary;
+    --accordion-item-focused-border-color: var(--phork-accent-color, $theme-color-accent);
+    --accordion-label-focused-text-color: var(--phork-accent-color, $theme-color-accent);
     --accordion-list-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
     --accordion-selected-text-color: $theme-primary-palette-text-color;
     --accordion-text-color: $theme-tertiary-palette-text-color;
@@ -37,7 +37,7 @@
 
 .accordionList--contrast {
   @mixin themed .accordionList {
-    --accordion-border-color: var(--contrast-color, $theme-contrast-palette-background-color);
+    --accordion-border-color: var(--phork-contrast-color, $theme-contrast-palette-background-color);
     --accordion-item-border-color: $theme-contrast-palette-quietest-color;
     --accordion-item-focused-border-color: $theme-contrast-palette-text-color;
     --accordion-label-focused-text-color: $theme-contrast-palette-text-color;

@@ -296,7 +296,7 @@ OnText.args = {
     </React.Fragment>
   ),
   toggler: (
-    <Typography color="accent-primary" variants={['space-after', 'space-before']}>
+    <Typography color="accent" variants={['space-after', 'space-before']}>
       I am a friendly tooltip with a link.
     </Typography>
   ),
