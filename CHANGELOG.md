@@ -1,5 +1,20 @@
 # Changelog
 
+# [12.0.0](https://github.com/phork/phorkit/compare/v11.0.1...v12.0.0) (2021-11-11)
+
+### ♻ Code Refactoring
+
+- update Navigation to use SizeProvider ([64ba9bc](https://github.com/phork/phorkit/commit/64ba9bc))
+
+### ✨ Features
+
+- added color-P00, standardized accent color adjustments ([0a6d244](https://github.com/phork/phorkit/commit/0a6d244))
+- **major**: allow for custom accent colors ([616336e](https://github.com/phork/phorkit/commit/616336e))
+
+### 🐛 Bug Fixes
+
+- stop boundsObservable recursion when manually updated ([050d00c](https://github.com/phork/phorkit/commit/050d00c))
+
 ## [11.0.1](https://github.com/phork/phorkit/compare/v11.0.0...v11.0.1) (2021-11-10)
 
 ### ⚡ Performance Improvements
