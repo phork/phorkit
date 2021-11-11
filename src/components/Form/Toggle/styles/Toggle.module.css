@@ -143,18 +143,18 @@ input.toggleInput {
   &.toggle--light {
     --toggle-background-color: $light-color-FG0-O20;
     --toggle-button-background-color: $light-color-BG05;
-    --toggle-checked-background-color: $light-primary-palette-accent-color;
+    --toggle-checked-background-color: var(--phork-accent-color, $light-color-accent);
     --toggle-checked-button-background-color: $light-color-BG05;
-    --toggle-checked-hovered-focus-ring-color: $light-color-accent-primary;
+    --toggle-checked-hovered-focus-ring-color: var(--phork-accent-color, $light-color-accent);
     --toggle-unchecked-hovered-focus-ring-color: $light-color-FG0-O40;
   }
 
   &.toggle--dark {
     --toggle-background-color: $dark-color-FG50;
     --toggle-button-background-color: $dark-color-FG30;
-    --toggle-checked-background-color: $dark-primary-palette-accent-color;
+    --toggle-checked-background-color: var(--phork-accent-color, $dark-color-accent);
     --toggle-checked-button-background-color: $dark-color-BG05;
-    --toggle-checked-hovered-focus-ring-color: $dark-color-accent-primary;
+    --toggle-checked-hovered-focus-ring-color: var(--phork-accent-color, $dark-color-accent);
     --toggle-unchecked-hovered-focus-ring-color: $dark-color-FG0-O40;
 
     --toggle-checked-hovered-focus-ring-opacity: 0.3;

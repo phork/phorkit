@@ -93,7 +93,7 @@ export function Banner({
         hasTransitioned && styles['has-transitioned'],
         className,
       )}
-      color={level === 'info' ? 'accent-primary' : level}
+      color={level === 'info' ? 'accent' : level}
       container="banner"
       style={style}
       themeId={themeId}

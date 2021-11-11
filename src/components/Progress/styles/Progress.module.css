@@ -104,7 +104,7 @@
 
 .progressSegment--primary {
   @mixin themed .progressSegment {
-    background-color: $theme-color-accent-primary;
+    background-color: var(--phork-accent-color, $theme-color-accent);
   }
 }
 

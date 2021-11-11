@@ -176,7 +176,7 @@ export default {
         {({ themeId }) => (
           <div
             style={{
-              background: themes[themeId]['color-accent-primary-L30'],
+              background: `var(--phork-accent-color-L30, ${themes[themeId]['color-accent-L30']})`,
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -210,8 +210,17 @@ export default {
 const ContentBox = ({ className }: { className?: string }) => (
   <ThemeWrapper>
     {({ themeId }) => (
-      <div className={className} style={{ background: themes[themeId]['color-accent-primary'] }}>
-        <TimesIcon size={20} style={{ color: themes[themeId]['contrast-palette-text-color'], float: 'left' }} />
+      <div
+        className={className}
+        style={{ background: `var(--phork-accent-color, ${themes[themeId]['color-accent']})` }}
+      >
+        <TimesIcon
+          size={20}
+          style={{
+            color: `var(--phork-accent-color-contrast, ${themes[themeId]['color-accent-contrast']})`,
+            float: 'left',
+          }}
+        />
       </div>
     )}
   </ThemeWrapper>

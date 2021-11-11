@@ -115,12 +115,12 @@
     .toastIcon,
     &.toast--colored,
     &:before {
-      background-color: $theme-color-accent-primary;
+      background-color: var(--phork-accent-color, $theme-color-accent);
     }
 
     .toastIcon,
     &.toast--colored {
-      color: $theme-color-accent-primary-contrast;
+      color: var(--phork-accent-color-contrast, $theme-color-accent-contrast);
     }
   }
 }

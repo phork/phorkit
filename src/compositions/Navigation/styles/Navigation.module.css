@@ -38,8 +38,8 @@
 .navigation--secondary,
 .navigation--tertiary {
   @mixin themed .navigation {
-    --navigation-focused-border-color: $theme-color-accent-primary;
-    --navigation-item-selected-border-color: $theme-color-accent-primary;
+    --navigation-focused-border-color: var(--phork-accent-color, $theme-color-accent);
+    --navigation-item-selected-border-color: var(--phork-accent-color, $theme-color-accent);
     --navigation-item-selected-text-color: $theme-primary-palette-text-color;
     --navigation-item-text-color: $theme-color-FG20;
   }
@@ -52,7 +52,7 @@
   font-size: $font-size-medium;
 
   @mixin themed .navigation {
-    --navigation-item-focused-background-color: $theme-color-accent-primary;
+    --navigation-item-focused-background-color: var(--phork-accent-color, $theme-color-accent);
     --navigation-item-selected-background-color: $theme-color-BG50-O20;
     --navigation-item-focused-text-color: $theme-contrast-palette-accent-color;
   }
@@ -80,9 +80,9 @@
 
   @mixin themed .navigation {
     --navigation-item-focused-background-color: $theme-color-BG50-O30;
-    --navigation-item-focused-selected-background-color: $theme-color-accent-primary-L10;
+    --navigation-item-focused-selected-background-color: var(--phork-accent-color-L10, $theme-color-accent-L10);
     --navigation-item-focused-selected-text-color: $theme-contrast-palette-accent-color;
-    --navigation-item-selected-background-color: $theme-color-accent-primary;
+    --navigation-item-selected-background-color: var(--phork-accent-color, $theme-color-accent);
     --navigation-item-selected-text-color: $theme-contrast-palette-accent-color;
   }
 }

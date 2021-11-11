@@ -44,7 +44,7 @@
 .tabs--transparent {
   @mixin themed .tabs {
     --tabs-border-color: $theme-color-FG0-O5;
-    --tabs-focused-border-color: $theme-color-accent-primary;
+    --tabs-focused-border-color: var(--phork-accent-color, $theme-color-accent);
   }
 }
 

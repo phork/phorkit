@@ -478,17 +478,17 @@ button.button {
 
 .button--primary {
   @mixin themed .button {
-    --button-primary-color: $theme-color-accent-primary;
-    --button-inverse-color: $theme-color-accent-primary-contrast;
-    --button-hovered-primary-color: $theme-color-accent-primary-L10;
-    --button-active-primary-color: $theme-color-accent-primary-D10;
+    --button-primary-color: var(--phork-accent-color, $theme-color-accent);
+    --button-inverse-color: var(--phork-accent-color-contrast, $theme-color-accent-contrast);
+    --button-hovered-primary-color: var(--phork-accent-color-L10, $theme-color-accent-L10);
+    --button-active-primary-color: var(--phork-accent-color-D10, $theme-color-accent-D10);
   }
 }
 
 .button--contrast {
   @mixin themed .button {
     --button-primary-color: $theme-contrast-palette-text-color;
-    --button-inverse-color: var(--contrast-color, $theme-contrast-palette-background-color);
+    --button-inverse-color: var(--phork-contrast-color, $theme-contrast-palette-background-color);
     --button-hovered-primary-color: $theme-contrast-palette-quiet-color;
     --button-active-primary-color: $theme-contrast-palette-text-color;
   }
@@ -509,8 +509,8 @@ button.button {
     &:not(:disabled):not(.is-disabled) {
       &:focus,
       &.is-focused {
-        --button-primary-color: $theme-color-accent-primary;
-        --button-inverse-color: $theme-color-accent-primary-contrast;
+        --button-primary-color: var(--phork-accent-color, $theme-color-accent);
+        --button-inverse-color: var(--phork-accent-color-contrast, $theme-color-accent-contrast);
       }
     }
   }

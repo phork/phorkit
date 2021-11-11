@@ -138,9 +138,9 @@ export default {
 const Template: ComponentStory<typeof MultiColorSlider> = args => <MultiColorSlider {...args} />;
 
 const defaultArgs = {
-  colors: ['danger', 'warning', 'success', 'accent-primary'],
+  colors: ['danger', 'warning', 'success', 'accent'],
   disabled: false,
-  formatValue: (value?: number) => (value && ['danger', 'warning', 'success', 'accent-primary'][value - 1]) || '-',
+  formatValue: (value?: number) => (value && ['danger', 'warning', 'success', 'accent'][value - 1]) || '-',
   persistEvents: false,
   value: 2,
   valuePosition: 'right' as MultiColorSliderProps['valuePosition'],

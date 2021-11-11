@@ -207,7 +207,7 @@ import {
             </Typography>
           </Rhythm>
         </Paper>
-        <Paper color="accent-primary" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
+        <Paper color="accent" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
           <Rhythm m={2}>
             <ButtonGroup align="right" spacing="cozy">
               <Button contrast key="cancel" weight="ghost">
@@ -458,7 +458,7 @@ import {
                       <Typography weight="bold">Elenor C.</Typography>
                     </Flex>
                   </Rhythm>
-                  <Typography color="accent-primary" variants="line-height-smash">
+                  <Typography color="accent" variants="line-height-smash">
                     <CheckIcon scale="medium" />
                   </Typography>
                 </Flex>
@@ -521,7 +521,7 @@ import {
                             <Typography weight="bold">Elenor C.</Typography>
                           </Flex>
                         </Rhythm>
-                        <Typography color="accent-primary" variants="line-height-smash">
+                        <Typography color="accent" variants="line-height-smash">
                           <CheckIcon scale="medium" />
                         </Typography>
                       </Flex>
@@ -673,7 +673,7 @@ import {
                   <Typography weight="bold">Elenor C.</Typography>
                 </Flex>
               </Rhythm>
-              <Typography color={selected ? 'contrast' : 'accent-primary'} variants="line-height-smash">
+              <Typography color={selected ? 'contrast' : 'accent'} variants="line-height-smash">
                 <CheckIcon scale="medium" />
               </Typography>
             </Flex>
@@ -755,7 +755,7 @@ import {
                   </Typography>
                 </Flex>
               </Rhythm>
-              <Typography color={selected ? 'contrast' : 'accent-primary'} variants="line-height-smash">
+              <Typography color={selected ? 'contrast' : 'accent'} variants="line-height-smash">
                 <CheckIcon scale="medium" />
               </Typography>
             </Flex>
@@ -826,7 +826,11 @@ import {
         <Toast immediate id="demo-triangle-toast" level="info" title="Hello world">
           This is an info toast with a triangle!
           <Position location="top-right" variant="inside">
-            <Triangle color={themes[themeId]['secondary-palette-accent-color']} position="top-right" size={18}>
+            <Triangle
+              color={`var(--phork-accent-color, ${themes[themeId]['color-accent']})`}
+              position="top-right"
+              size={18}
+            >
               <Typography
                 as="div"
                 color="contrast"
@@ -939,7 +943,11 @@ import {
                 width="100%"
               />
               <Position location="top-right" variant="inside">
-                <Triangle color={themes[themeId]['secondary-palette-accent-color']} position="top-right" size={18}>
+                <Triangle
+                  color={`var(--phork-accent-color, ${themes[themeId]['color-accent']})`}
+                  position="top-right"
+                  size={18}
+                >
                   <Typography
                     as="div"
                     color="contrast"
@@ -1004,7 +1012,7 @@ import {
                         width="100%"
                       />
                       <Position location="bottom-right" style={{ zIndex: 10 }} variant="inside">
-                        <Triangle color={themes[themeId]['color-accent-primary']} position="bottom-right" size={18}>
+                        <Triangle color={themes[themeId]['color-accent']} position="bottom-right" size={18}>
                           <Typography
                             as="div"
                             color="contrast"
@@ -1053,7 +1061,7 @@ import {
                                 <Typography weight="bold">Elenor C.</Typography>
                               </Flex>
                             </Rhythm>
-                            <Typography color={selected ? 'contrast' : 'accent-primary'} variants="line-height-smash">
+                            <Typography color={selected ? 'contrast' : 'accent'} variants="line-height-smash">
                               <CheckIcon scale="medium" />
                             </Typography>
                           </Flex>

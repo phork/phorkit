@@ -26,6 +26,22 @@ export type StatusBubbleProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'titl
     triangleColor?: string;
   };
 
+const getTriangleColor = (
+  themeId: NonNullable<StatusBubbleProps['themeId']>,
+  color: NonNullable<StatusBubbleProps['color']>,
+): string => {
+  if (color === 'primary') return `var(--phork-accent-color-shade, ${themes[themeId]['color-accent-shade']})`;
+  return themes[themeId][`color-${color}-shade` as keyof ThemeColors] as string;
+};
+
+const getTriangleBorderColor = (
+  themeId: NonNullable<StatusBubbleProps['themeId']>,
+  color: NonNullable<StatusBubbleProps['color']>,
+): string => {
+  if (color === 'primary') return `var(--phork-accent-color, ${themes[themeId]['color-accent']})`;
+  return themes[themeId][`color-${color}` as keyof ThemeColors] as string;
+};
+
 export function StatusBubble({
   children,
   color = 'neutral',
@@ -34,19 +50,13 @@ export function StatusBubble({
   iconShape = 'square',
   position = 'right-top',
   themeId: initThemeId,
-  triangleBorderColor: initTriangleBorderColor,
-  triangleColor: initTriangleColor,
+  triangleBorderColor,
+  triangleColor,
   unthemed,
   ...props
 }: StatusBubbleProps): JSX.Element {
   const offset = getPositionOffset(position, { vertical: 18 });
   const themeId = useThemeId(initThemeId);
-  const colorName = color === 'primary' ? 'accent-primary' : color;
-
-  const triangleColor =
-    initTriangleColor || (themes[themeId][`color-${colorName}-shade` as keyof ThemeColors] as string);
-  const triangleBorderColor =
-    initTriangleBorderColor || (themes[themeId][`color-${colorName}` as keyof ThemeColors] as string);
 
   return (
     <div
@@ -62,8 +72,8 @@ export function StatusBubble({
       <TooltipContent
         offset={offset}
         position={position}
-        triangleBorderColor={triangleBorderColor}
-        triangleColor={triangleColor}
+        triangleBorderColor={triangleBorderColor || getTriangleBorderColor(themeId, color)}
+        triangleColor={triangleColor || getTriangleColor(themeId, color)}
         triangleSize={6}
       >
         <Shade opaque className={cx(styles.statusBubbleContent)} color={color}>

@@ -115,8 +115,8 @@ button.avatar {
 
 .avatar--primary {
   @mixin themed .avatar {
-    --avatar-background-color: $theme-color-accent-primary;
-    --avatar-text-color: $theme-color-accent-primary-contrast;
+    --avatar-background-color: var(--phork-accent-color, $theme-color-accent);
+    --avatar-text-color: var(--phork-accent-color-contrast, $theme-color-accent-contrast);
   }
 
   &.avatar--dark {
@@ -139,7 +139,7 @@ button.avatar {
 .avatar--contrast {
   @mixin themed .avatar {
     --avatar-background-color: $theme-contrast-palette-text-color;
-    --avatar-text-color: var(--contrast-color, $theme-contrast-palette-background-color);
+    --avatar-text-color: var(--phork-contrast-color, $theme-contrast-palette-background-color);
   }
 }
 

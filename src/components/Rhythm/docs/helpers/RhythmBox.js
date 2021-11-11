@@ -23,10 +23,10 @@ const InnerBox = styled.div`
 
 export function RhythmBox({ inline, children, ...props }) {
   return (
-    <OuterBox backgroundColor={themes[themeId]['color-accent-primary-L10']} inline={inline}>
+    <OuterBox backgroundColor={themes[themeId]['color-accent-L10']} inline={inline}>
       <InnerBox
-        backgroundColor={themes[themeId]['color-accent-primary']}
-        color={themes[themeId]['color-accent-primary-contrast']}
+        backgroundColor={themes[themeId]['color-accent']}
+        color={themes[themeId]['color-accent-contrast']}
         {...props}
       >
         {children}

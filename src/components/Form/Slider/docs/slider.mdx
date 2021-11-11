@@ -183,8 +183,8 @@ import { Slider, MultiColorSlider, StyledSlider, NotifiedSlider } from '../index
   <FormComponentDemo initialValue={2} property="value" type="slider">
     <MultiColorSlider
       aria-label="Super fantastic label"
-      colors={['danger', 'warning', 'success', 'accent-primary']}
-      formatValue={value => ['danger', 'warning', 'success', 'accent-primary'][value - 1] || '-'}
+      colors={['danger', 'warning', 'success', 'accent']}
+      formatValue={value => ['danger', 'warning', 'success', 'accent'][value - 1] || '-'}
       onChange={(event, value) => console.log(value)}
       valuePosition="right"
       variant="divider"

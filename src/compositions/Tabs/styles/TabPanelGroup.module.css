@@ -31,7 +31,7 @@
 
 .tabPanelGroup--contrast {
   @mixin themed .tabPanelGroup {
-    background-color: var(--contrast-color, $theme-contrast-palette-background-color);
-    color: var(--contrast-color, $theme-contrast-palette-text-color);
+    background-color: var(--phork-contrast-color, $theme-contrast-palette-background-color);
+    color: var(--phork-contrast-color, $theme-contrast-palette-text-color);
   }
 }

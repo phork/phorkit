@@ -210,7 +210,7 @@ export function Pagination({
         wrap={false}
       >
         {(withPageLabel || withPageAndTotalLabel) && (
-          <Typography<'div'> as="div" color={contrast ? 'contrast' : undefined} {...pageLabelProps}>
+          <Typography<'div'> as="div" color={contrast ? 'contrast' : 'primary'} {...pageLabelProps}>
             {substituteTranslationArgs(
               translations[withPageAndTotalLabel ? 'pageAndTotalLabel' : 'pageLabel'],
               page,

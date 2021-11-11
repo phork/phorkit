@@ -15,7 +15,7 @@ export const getCustomTheme = requestedThemeId => {
     appBorderRadius: 4,
     appContentBg: themes[themeId]['extreme-palette-background-color'],
     barBg: themes[themeId]['extreme-palette-background-color'],
-    barSelectedColor: themes[themeId]['primary-palette-accent-color'],
+    barSelectedColor: themes[themeId]['color-accent'],
     barTextColor: themes[themeId]['primary-palette-quieter-color'],
     colorPrimary: themes[themeId]['primary-palette-text-color'],
     colorSecondary: themes[themeId]['primary-palette-quietest-color'],

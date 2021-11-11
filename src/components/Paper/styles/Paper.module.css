@@ -136,15 +136,15 @@
   @mixin themed .paper {
     --paper-background-color: transparent;
     --paper-border-color: $theme-primary-palette-border-color;
-    --paper-focused-outline-color: currentColor;
+    --paper-focused-outline-color: $theme-primary-palette-text-color;
     --paper-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
-    --paper-text-color: currentColor;
+    --paper-text-color: $theme-primary-palette-text-color;
   }
 }
 
 .paper--contrast {
   @mixin themed .paper {
-    --paper-background-color: var(--contrast-color, $theme-contrast-palette-background-color);
+    --paper-background-color: var(--phork-contrast-color, $theme-contrast-palette-background-color);
     --paper-border-color: $theme-contrast-palette-border-color;
     --paper-focused-outline-color: $theme-contrast-palette-text-color;
     --paper-scrollbar-thumb-color: $theme-contrast-scrollbar-thumb-color;
@@ -206,20 +206,20 @@
   }
 }
 
-.paper--accent-primary {
+.paper--accent {
   @mixin themed .paper {
-    --paper-background-color: $theme-color-accent-primary;
+    --paper-background-color: var(--phork-accent-color, $theme-color-accent);
     --paper-scrollbar-thumb-color: $theme-contrast-scrollbar-thumb-color;
-    --paper-text-color: $theme-color-accent-primary-contrast;
+    --paper-text-color: var(--phork-accent-color-contrast, $theme-color-accent-contrast);
 
     &.paper--light {
-      --paper-border-color: $theme-color-accent-primary-D10;
-      --paper-focused-outline-color: $theme-color-accent-primary-D30;
+      --paper-border-color: var(--phork-accent-color-D10, $theme-color-accent-D10);
+      --paper-focused-outline-color: var(--phork-accent-color-D30, $theme-color-accent-D30);
     }
 
     &.paper--dark {
-      --paper-border-color: $theme-color-accent-primary-L10;
-      --paper-focused-outline-color: $theme-color-accent-primary-L30;
+      --paper-border-color: var(--phork-accent-color-L10, $theme-color-accent-L10);
+      --paper-focused-outline-color: var(--phork-accent-color-L30, $theme-color-accent-L30);
     }
   }
 }

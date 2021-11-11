@@ -34,9 +34,9 @@ a.link:not(.link--unstyled),
 a.link,
 .linkContainer {
   @mixin themed {
-    --link-text-color: $theme-color-accent-primary;
-    --link-hovered-color: $theme-color-accent-primary-L10;
-    --link-active-color: $theme-color-accent-primary-D10;
+    --link-text-color: var(--phork-accent-color, $theme-color-accent);
+    --link-hovered-color: var(--phork-accent-color-L10, $theme-color-accent-L10);
+    --link-active-color: var(--phork-accent-color-D10, $theme-color-accent-D10);
   }
 }
 

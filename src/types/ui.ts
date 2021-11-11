@@ -4,7 +4,7 @@ export type IconScale = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2x
 export type InvalidStateColor = 'warning' | 'danger';
 export type StateColor = 'success' | InvalidStateColor;
 export type SemanticColor = StateColor | 'neutral' | 'primary';
-export type AccentColor = 'accent-primary';
+export type AccentColor = 'accent';
 
 /** StackedPosition means the item is positioned on top of the trigger */
 export type StackedPosition = 'stacked' | 'stacked-right';

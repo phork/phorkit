@@ -151,17 +151,17 @@ input.checkboxInput {
 
 .checkbox--primary {
   @mixin themed .checkbox {
-    --checkbox-checked-background-color: $theme-color-accent-primary;
-    --checkbox-checked-border-color: $theme-color-accent-primary;
-    --checkbox-checked-hovered-focus-ring-color: $theme-color-accent-primary;
-    --checkbox-checked-icon-color: $theme-color-accent-primary-contrast;
+    --checkbox-checked-background-color: var(--phork-accent-color, $theme-color-accent);
+    --checkbox-checked-border-color: var(--phork-accent-color, $theme-color-accent);
+    --checkbox-checked-hovered-focus-ring-color: var(--phork-accent-color, $theme-color-accent);
+    --checkbox-checked-icon-color: var(--phork-accent-color-contrast, $theme-color-accent-contrast);
     --checkbox-unchecked-border-color: $theme-color-FG0-O20;
     --checkbox-unchecked-hovered-focus-ring-color: $theme-color-FG0-O40;
 
     &.checkbox--secondary {
       --checkbox-checked-background-color: transparent;
-      --checkbox-checked-border-color: $theme-color-accent-primary;
-      --checkbox-checked-icon-color: $theme-color-accent-primary;
+      --checkbox-checked-border-color: var(--phork-accent-color, $theme-color-accent);
+      --checkbox-checked-icon-color: var(--phork-accent-color, $theme-color-accent);
     }
   }
 
@@ -175,7 +175,7 @@ input.checkboxInput {
     --checkbox-checked-background-color: $theme-contrast-palette-accent-color;
     --checkbox-checked-border-color: $theme-contrast-palette-accent-color;
     --checkbox-checked-hovered-focus-ring-color: $theme-contrast-palette-accent-color;
-    --checkbox-checked-icon-color: var(--contrast-color, $theme-contrast-palette-background-color);
+    --checkbox-checked-icon-color: var(--phork-contrast-color, $theme-contrast-palette-background-color);
     --checkbox-unchecked-border-color: $theme-contrast-palette-quieter-color;
     --checkbox-unchecked-hovered-focus-ring-color: $theme-contrast-palette-quietest-color;
 

@@ -63,10 +63,10 @@
 
 .shade--primary {
   @mixin themed .shade {
-    --shade-active-primary-color: $theme-color-accent-primary-D10;
-    --shade-inverse-color: $theme-color-accent-primary-contrast;
-    --shade-opaque-primary-color: $theme-color-accent-primary-shade;
-    --shade-primary-color: $theme-color-accent-primary;
+    --shade-active-primary-color: var(--phork-accent-color-D10, $theme-color-accent-D10);
+    --shade-inverse-color: var(--phork-accent-color-contrast, $theme-color-accent-contrast);
+    --shade-opaque-primary-color: var(--phork-accent-color-shade, $theme-color-accent-shade);
+    --shade-primary-color: var(--phork-accent-color, $theme-color-accent);
   }
 }
 

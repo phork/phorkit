@@ -59,7 +59,7 @@ export function MultiColorSlider({
   const colors = useMemo(
     () =>
       initColors.map(color =>
-        ['success', 'warning', 'danger', 'accent-primary'].includes(color)
+        ['success', 'warning', 'danger', 'accent'].includes(color)
           ? (theme[`color-${color}` as keyof ThemeColors] as string)
           : color,
       ),

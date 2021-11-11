@@ -78,8 +78,8 @@
 
 .statusBubble--primary {
   @mixin themed .statusBubble {
-    --status-bubble-state-color: $theme-color-accent-primary;
-    --status-bubble-state-contrast-color: $theme-color-accent-primary-contrast;
+    --status-bubble-state-color: var(--phork-accent-color, $theme-color-accent);
+    --status-bubble-state-contrast-color: var(--phork-accent-color-contrast, $theme-color-accent-contrast);
   }
 }
 
