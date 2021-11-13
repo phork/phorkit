@@ -7,4 +7,6 @@ export const getThemeId = () =>
   (window?.matchMedia?.('(prefers-color-scheme: dark)').matches && 'dark') ||
   'light';
 
-export const setThemeId = themeId => store.set(STORAGE_KEY, themeId);
+export const setThemeId = themeId => {
+  store.set(STORAGE_KEY, themeId);
+};

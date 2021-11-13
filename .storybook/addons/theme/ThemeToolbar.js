@@ -38,6 +38,7 @@ export const ThemeToolbar = React.memo(() => {
   // add the body classes on initial load
   useEffect(() => {
     updateElementClasses(currentThemeId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const toggleThemeId = useCallback(() => {
@@ -47,13 +48,13 @@ export const ThemeToolbar = React.memo(() => {
 
     updateGlobals({ [PARAM_KEY]: newThemeId });
     addons.getChannel().emit(FORCE_RE_RENDER);
-  }, [isDarkTheme]);
+  }, [isDarkTheme, updateGlobals]);
 
   const title = isDarkTheme ? 'Use the light theme' : 'Use the dark theme';
 
   // if the theme has been forced then don't show the toggle
   return process.env.STORYBOOK_THEME_ID ? null : (
-    <IconButton key="theme" title={title} onClick={() => toggleThemeId()}>
+    <IconButton key="theme" onClick={() => toggleThemeId()} title={title}>
       {isDarkTheme ? <SunIcon title={title} /> : <MoonIcon title={title} />}
     </IconButton>
   );
