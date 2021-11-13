@@ -10,6 +10,7 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-postcss',
     '@storybook/addon-a11y',
+    './addons/accentColors/register',
     './addons/theme/register',
   ],
   typescript: async config => {
