@@ -56,9 +56,12 @@ button.button {
   &:disabled,
   &.is-disabled,
   &.is-loading {
-    cursor: default;
     opacity: $opacity-disabled;
     pointer-events: none;
+  }
+
+  &.is-loading {
+    cursor: 'wait';
   }
 
   > * {
@@ -443,12 +446,6 @@ button.button {
   width: 100%;
 }
 
-.button.is-loading {
-  .button__content {
-    visibility: hidden;
-  }
-}
-
 .button--success {
   @mixin themed .button {
     --button-primary-color: $theme-color-success;
@@ -547,6 +544,10 @@ button.button {
 
   .button--right & {
     justify-content: flex-end;
+  }
+
+  button.is-loading & {
+    visibility: hidden;
   }
 }
 

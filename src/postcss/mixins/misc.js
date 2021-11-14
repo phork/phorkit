@@ -26,13 +26,22 @@ const mixins = {
     cursor: 'pointer',
     outline: 'none',
     textAlign: !minimal && 'left',
+
+    '&:disabled': {
+      cursor: 'not-allowed',
+    },
   }),
 
   button: () => ({
     cursor: 'pointer',
     outline: 'none',
+
     '&:focus': {
       outline: 'none',
+    },
+
+    '&:disabled': {
+      cursor: 'not-allowed',
     },
   }),
 
