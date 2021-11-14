@@ -2,13 +2,13 @@ import { themes } from '.../../../src/config/themes';
 import { RainbowIcon, RefreshIcon } from ' ../../../src/icons/internal';
 import addons from '@storybook/addons';
 import { useGlobals } from '@storybook/api';
-import { Button, ColorControl, IconButton, ScrollArea, TabsState, WithTooltip } from '@storybook/components';
+import { Button, IconButton, ScrollArea, TabsState, WithTooltipPure } from '@storybook/components';
 import { FORCE_RE_RENDER } from '@storybook/core-events';
 import * as Color from 'color';
-import debounce from 'lodash.debounce';
-import React, { useCallback, useEffect, useMemo, useLayoutEffect, useState, useRef } from 'react';
+import React, { useCallback, useEffect, useMemo, useState, useRef } from 'react';
 import { getThemeId } from '../theme/utils';
-import { getAccentColors, setAccentColors, clearAccentColors } from './utils';
+import { getAccentColors, setAccentColors, clearAccentColors, isValidColor } from './utils';
+import { ColorPicker } from './ColorPicker';
 import { PARAM_KEY } from './constants';
 
 const themeId = getThemeId();
@@ -72,7 +72,8 @@ const accentColorProps = [
     property: '--phork-accent-color-O5',
     label: 'Accent color O5',
     hidden: true,
-    formula: src => Color(src).alpha(0.05).hsl().round().string(),
+    formula: src => Color(src).alpha(0.05).rgb().string(),
+    format: 'rgba',
   },
 ];
 
@@ -98,7 +99,9 @@ const renderAccentColors = accentColors => {
 const hasAccentColors = accentColors => !!accentColors && Object.values(accentColors).filter(Boolean).length > 0;
 
 export const AccentColorsToolbar = () => {
+  const [isVisible, setIsVisible] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [colorPickerExpansion, setColorPickerExpansion] = useState({});
 
   const [globals, updateGlobals] = useGlobals();
   const currentAccentColors = useMemo(() => globals[PARAM_KEY] || getAccentColors() || {}, [globals]);
@@ -132,15 +135,11 @@ export const AccentColorsToolbar = () => {
     [currentAccentColors, setCurrentAccentColors],
   );
 
-  const debouncedUpdateAccentColor = useRef();
-  const handleColorChange = debouncedUpdateAccentColor.current;
-  useEffect(() => {
-    debouncedUpdateAccentColor.current = debounce(updateAccentColor, 300, { leading: true });
-  }, [updateAccentColor]);
-
   const generateColor = useCallback(
     ({ property, formula, src }) => {
-      updateAccentColor(property, formula(src));
+      if (isValidColor(src)) {
+        updateAccentColor(property, formula(src));
+      }
     },
     [updateAccentColor],
   );
@@ -148,7 +147,7 @@ export const AccentColorsToolbar = () => {
   // update the hidden formulaic colors
   const updateHiddenColors = useCallback(
     src => {
-      if (src) {
+      if (src && isValidColor(src)) {
         const generatedAccentColors = accentColorProps.reduce(
           (acc, { property, hidden, formula }) => {
             if (formula && hidden) {
@@ -165,7 +164,7 @@ export const AccentColorsToolbar = () => {
     [currentAccentColors, setCurrentAccentColors],
   );
 
-  // if the main color has changed update the hidden forumulaic colors
+  // if the main color has changed update the hidden formulaic colors
   useEffect(() => {
     if (!isExpanded && baseAccentColor !== previousBaseAccentColor.current) {
       updateHiddenColors(baseAccentColor);
@@ -178,7 +177,8 @@ export const AccentColorsToolbar = () => {
   }, [currentAccentColors]);
 
   return (
-    <WithTooltip
+    <WithTooltipPure
+      onVisibilityChange={setIsVisible}
       placement="top"
       tooltip={() => {
         return (
@@ -187,41 +187,47 @@ export const AccentColorsToolbar = () => {
               <React.Fragment>
                 <ScrollArea vertical style={{ maxHeight: 'calc(100vh - 180px' }}>
                   {accentColorProps.map(
-                    ({ property, label, hidden, formula }) =>
+                    ({ property, label, hidden, formula, format }) =>
                       (isExpanded || !hidden) && (
                         <div
-                          key={`${property}-${currentAccentColors[property]}`}
+                          key={property}
                           style={{ display: 'flex', flexDirection: 'column', margin: 12, marginBottom: 16 }}
                         >
-                          <div
-                            style={{
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'space-between',
-                              marginBottom: 8,
-                            }}
-                          >
-                            {label}
-                            {formula && (
-                              <Button
-                                containsIcon
-                                outline
-                                small
-                                disabled={!baseAccentColor}
-                                onClick={() => generateColor({ property, formula, src: baseAccentColor })}
-                                style={{ padding: 4 }}
-                                title="Generate color"
-                              >
-                                <RefreshIcon size={10} />
-                              </Button>
-                            )}
-                          </div>
-                          <ColorControl
-                            name={label}
-                            onChange={color => handleColorChange(property, color)}
+                          <div style={{ marginBottom: 8 }}>{label}</div>
+                          <ColorPicker
+                            format={format}
+                            isExpanded={colorPickerExpansion[property]}
+                            onChange={color => updateAccentColor(property, color)}
+                            onFocus={e => e.target.select()}
+                            onToggleExpansion={() =>
+                              setColorPickerExpansion(current => ({ [property]: !current[property] }))
+                            }
+                            placeholder="Choose color..."
                             presetColors={presetColors}
                             value={currentAccentColors[property]}
-                          />
+                          >
+                            {formula && (
+                              <button
+                                aria-label="Generate color"
+                                disabled={!baseAccentColor}
+                                onClick={() => generateColor({ property, formula, src: baseAccentColor })}
+                                style={{
+                                  appearance: 'button',
+                                  background: 'transparent',
+                                  border: 'none',
+                                  borderRadius: '100%',
+                                  color: 'currentColor',
+                                  cursor: 'pointer',
+                                  opacity: 0.8,
+                                  outline: 'none',
+                                  padding: 0,
+                                }}
+                                title="Generate color"
+                              >
+                                <RefreshIcon size={17} />
+                              </button>
+                            )}
+                          </ColorPicker>
                         </div>
                       ),
                   )}
@@ -243,7 +249,13 @@ export const AccentColorsToolbar = () => {
                   <Button
                     small
                     onClick={() => setIsExpanded(!isExpanded)}
-                    style={{ fontWeight: 'normal', marginLeft: 12, padding: 0, color: themes[themeId]['color-accent'] }}
+                    style={{
+                      fontWeight: 'normal',
+                      marginLeft: 12,
+                      outline: 'none',
+                      padding: 0,
+                      color: themes[themeId]['color-accent'],
+                    }}
                   >
                     {isExpanded ? 'Show less' : 'Show more'}
                   </Button>
@@ -269,11 +281,12 @@ export const AccentColorsToolbar = () => {
           </TabsState>
         );
       }}
+      tooltipShown={isVisible}
       trigger="click"
     >
       <IconButton active={hasAccentColors(currentAccentColors)}>
         <RainbowIcon title="Set custom accent colors" />
       </IconButton>
-    </WithTooltip>
+    </WithTooltipPure>
   );
 };
