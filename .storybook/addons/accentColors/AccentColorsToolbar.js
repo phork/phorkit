@@ -185,7 +185,7 @@ export const AccentColorsToolbar = () => {
           <TabsState initial="input">
             <div id="input" title="Set colors">
               <React.Fragment>
-                <ScrollArea vertical style={{ maxHeight: 'calc(100vh - 180px' }}>
+                <ScrollArea vertical style={{ maxHeight: 'calc(100vh - 220px' }}>
                   {accentColorProps.map(
                     ({ property, label, hidden, formula, format }) =>
                       (isExpanded || !hidden) && (
