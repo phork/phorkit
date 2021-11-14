@@ -1,9 +1,10 @@
 import { themes } from '.../../../src/config/themes';
-import { RainbowIcon, RefreshIcon } from ' ../../../src/icons/internal';
+import { RainbowIcon, RefreshIcon, HelpIcon } from ' ../../../src/icons/internal';
 import addons from '@storybook/addons';
 import { useGlobals } from '@storybook/api';
 import { Button, IconButton, ScrollArea, TabsState, WithTooltipPure } from '@storybook/components';
 import { FORCE_RE_RENDER } from '@storybook/core-events';
+import { styled } from '@storybook/theming';
 import * as Color from 'color';
 import React, { useCallback, useEffect, useMemo, useState, useRef } from 'react';
 import { getThemeId } from '../theme/utils';
@@ -33,44 +34,56 @@ const accentColorProps = [
   {
     property: '--phork-accent-color',
     label: 'Accent color',
+    description:
+      'The accent color is the main color used in the components and generally defines the theme of the application.',
   },
   {
     property: '--phork-accent-color-contrast',
     label: 'Accent contrast',
+    description:
+      'The contrast color should be visible against the accent color. For example the accent color will be the background and the contrast color will be the text color.',
   },
   {
     property: '--phork-accent-color-L10',
     label: 'Accent color L10',
+    description: 'This is a slightly lightened version of the accent color used for things like button hover states.',
     hidden: true,
     formula: src => Color(src).lighten(0.25).hex(),
   },
   {
-    property: '--phork-accent-color-L30',
-    label: 'Accent color L30',
-    hidden: true,
-    formula: src => Color(src).lighten(0.75).hex(),
-  },
-  {
     property: '--phork-accent-color-D10',
     label: 'Accent color D10',
+    description: 'This is a slightly darkened version of the accent color used for things like button active states.',
     hidden: true,
     formula: src => Color(src).darken(0.125).hex(),
   },
   {
+    property: '--phork-accent-color-L30',
+    label: 'Accent color L30',
+    description: 'This the accent color lightened by a factor of 3. This is used for the Paper border in dark mode.',
+    hidden: true,
+    formula: src => Color(src).lighten(0.75).hex(),
+  },
+  {
     property: '--phork-accent-color-D30',
     label: 'Accent color D30',
+    description: 'This the accent color darkened by a factor of 3. This is used for the Paper borders in light mode.',
     hidden: true,
     formula: src => Color(src).lighten(0.375).hex(),
   },
   {
     property: '--phork-accent-color-shade',
     label: 'Accent color shade',
+    description:
+      'This is approximately the accent color at an opacity of .1 flattened against the extreme palette background color.',
     hidden: true,
     formula: src => Color(src).alpha(0.15).mix(Color(themes[themeId]['extreme-palette-background-color'])).hex(),
   },
   {
     property: '--phork-accent-color-O5',
     label: 'Accent color O5',
+    description:
+      'This is the accent color with an opacity of .05. This is used for auto-filled form background colors.',
     hidden: true,
     formula: src => Color(src).alpha(0.05).rgb().string(),
     format: 'rgba',
@@ -98,8 +111,33 @@ const renderAccentColors = accentColors => {
 
 const hasAccentColors = accentColors => !!accentColors && Object.values(accentColors).filter(Boolean).length > 0;
 
+const Unbutton = styled.button({
+  appearance: 'button',
+  background: 'transparent',
+  border: 'none',
+  color: 'currentColor',
+  cursor: 'pointer',
+  outline: 'none',
+  opacity: 0.7,
+  padding: 3,
+  position: 'relative',
+
+  '&:hover, &:focus': {
+    opacity: 0.9,
+  },
+
+  '&:focus': {
+    color: themes[themeId]['color-accent'],
+  },
+
+  '&:active': {
+    opacity: 1,
+  },
+});
+
 export const AccentColorsToolbar = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isDescriptionVisible, setIsDescriptionVisible] = useState({});
   const [isExpanded, setIsExpanded] = useState(false);
   const [colorPickerExpansion, setColorPickerExpansion] = useState({});
 
@@ -187,13 +225,47 @@ export const AccentColorsToolbar = () => {
               <React.Fragment>
                 <ScrollArea vertical style={{ maxHeight: 'calc(100vh - 220px' }}>
                   {accentColorProps.map(
-                    ({ property, label, hidden, formula, format }) =>
+                    ({ property, label, description, hidden, formula, format }) =>
                       (isExpanded || !hidden) && (
                         <div
                           key={property}
-                          style={{ display: 'flex', flexDirection: 'column', margin: 12, marginBottom: 16 }}
+                          style={{
+                            borderBottom: colorPickerExpansion[property]
+                              ? `1px solid ${themes[themeId]['primary-palette-border-color']}`
+                              : 'none',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            margin: 12,
+                            marginBottom: 16,
+                          }}
                         >
-                          <div style={{ marginBottom: 8 }}>{label}</div>
+                          <div
+                            style={{
+                              alignItems: 'center',
+                              display: 'flex',
+                              flexDirection: 'row',
+                              marginBottom: 8,
+                            }}
+                          >
+                            <div>{label}</div>
+                            {description && (
+                              <Unbutton
+                                aria-label="Toggle description"
+                                onClick={() =>
+                                  setIsDescriptionVisible(current => ({ ...current, [property]: !current[property] }))
+                                }
+                                style={{ marginLeft: 4 }}
+                                title="Toggle description"
+                              >
+                                <HelpIcon size={12} style={{ float: 'left' }} />
+                              </Unbutton>
+                            )}
+                          </div>
+                          {isDescriptionVisible[property] && (
+                            <div style={{ marginBottom: 16, maxWidth: 224, fontSize: 10, lineHeight: '12px' }}>
+                              {description}
+                            </div>
+                          )}
                           <ColorPicker
                             format={format}
                             isExpanded={colorPickerExpansion[property]}
@@ -205,27 +277,18 @@ export const AccentColorsToolbar = () => {
                             placeholder="Choose color..."
                             presetColors={presetColors}
                             value={currentAccentColors[property]}
+                            width={230}
                           >
                             {formula && (
-                              <button
+                              <Unbutton
                                 aria-label="Generate color"
                                 disabled={!baseAccentColor}
                                 onClick={() => generateColor({ property, formula, src: baseAccentColor })}
-                                style={{
-                                  appearance: 'button',
-                                  background: 'transparent',
-                                  border: 'none',
-                                  borderRadius: '100%',
-                                  color: 'currentColor',
-                                  cursor: 'pointer',
-                                  opacity: 0.8,
-                                  outline: 'none',
-                                  padding: 0,
-                                }}
+                                style={{ borderRadius: '100%', marginTop: 6 }}
                                 title="Generate color"
                               >
-                                <RefreshIcon size={17} />
-                              </button>
+                                <RefreshIcon size={14} style={{ float: 'left' }} />
+                              </Unbutton>
                             )}
                           </ColorPicker>
                         </div>

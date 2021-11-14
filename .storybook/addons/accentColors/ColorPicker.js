@@ -1,21 +1,23 @@
 import { Form } from '@storybook/components';
 import { styled } from '@storybook/theming';
 import debounce from 'lodash.debounce';
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import { HexColorPicker, RgbaStringColorPicker } from 'react-colorful';
 
-const Container = styled.div({
+const Container = styled.div(({ width }) => ({
+  overflow: 'hidden',
   position: 'relative',
-});
+  width,
+}));
 
-const Swatches = styled.div({
+const Swatches = styled.div(({ width }) => ({
   display: 'flex',
   flexDirection: 'row',
   flexWrap: 'wrap',
   margin: -2,
   marginTop: 12,
-  width: 224,
-});
+  width,
+}));
 
 const BaseSwatch = styled.button(({ theme, value }) => ({
   appearance: 'button',
@@ -33,15 +35,15 @@ const BaseSwatch = styled.button(({ theme, value }) => ({
   width: 16,
 
   '&:focus': {
-    boxShadow: `${theme.color.dark} 0 0 0 1px inset`,
+    boxShadow: `${theme.color.mediumdark} 0 0 0 1px inset`,
   },
 }));
 
-const InputSwatch = styled(BaseSwatch)(({ theme }) => ({
+const InputSwatch = styled(BaseSwatch)({
   position: 'absolute',
   top: 8,
   zIndex: 1,
-}));
+});
 
 const PresetSwatch = styled(BaseSwatch)({
   margin: 2,
@@ -55,18 +57,19 @@ const StyledInput = styled(Form.Input)({
 const RightButton = styled.div({
   position: 'absolute',
   right: 8,
-  top: 7,
+  top: 0,
   zIndex: 1,
 });
 
-const CollapsibleContainer = styled.div(({ isVisible }) => ({
-  height: 270,
-  maxHeight: isVisible ? 270 : 0,
+const CollapsibleContainer = styled.div(({ width, isVisible }) => ({
+  height: width + 50,
+  maxHeight: isVisible ? width + 50 : 0,
   overflow: 'hidden',
   transition: 'max-height 300ms ease-in-out',
+  visibility: isVisible ? 'visible' : 'hidden',
 }));
 
-const colorPickerStyles = {
+const getColorPickerStyles = ({ width }) => ({
   marginTop: 16,
 
   '.react-colorful__saturation': {
@@ -75,8 +78,8 @@ const colorPickerStyles = {
     borderTopLeftRadius: 4,
     borderTopRightRadius: 4,
     order: 1,
-    height: 244,
-    width: 224,
+    height: width,
+    width,
   },
 
   '.react-colorful__alpha': {
@@ -94,17 +97,17 @@ const colorPickerStyles = {
 
   '.react-colorful__hue, .react-colorful__alpha': {
     height: 24,
-    width: 224,
+    width,
   },
 
   '.react-colorful__hue-pointer, .react-colorful__alpha-pointer': {
     width: 20,
     height: 20,
   },
-};
+});
 
-const StyledHexColorPicker = styled(HexColorPicker)(colorPickerStyles);
-const StyledRgbaColorPicker = styled(RgbaStringColorPicker)(colorPickerStyles);
+const makeStyledHexColorPicker = ({ width }) => styled(HexColorPicker)(getColorPickerStyles({ width }));
+const makeStyledRgbaColorPicker = ({ width }) => styled(RgbaStringColorPicker)(getColorPickerStyles({ width }));
 
 /**
  * This is a simplified version of Storybook's
@@ -123,6 +126,7 @@ export const ColorPicker = ({
   placeholder,
   presetColors,
   value,
+  width = 224,
 }) => {
   const handleChange = useCallback(color => onChange(color), [onChange]);
 
@@ -131,10 +135,13 @@ export const ColorPicker = ({
     debouncedHandleChange.current = debounce(handleChange, 800);
   }, [handleChange]);
 
-  const ColorPickerByFormat = format === 'rgba' ? StyledRgbaColorPicker : StyledHexColorPicker;
+  const ColorPickerByFormat = useMemo(
+    () => (format === 'rgba' ? makeStyledRgbaColorPicker({ width }) : makeStyledHexColorPicker({ width })),
+    [format, width],
+  );
 
   return (
-    <Container>
+    <Container width={width}>
       <InputSwatch
         aria-label="Toggle color picker"
         onClick={onToggleExpansion}
@@ -151,12 +158,12 @@ export const ColorPicker = ({
       />
       {children && <RightButton>{children}</RightButton>}
 
-      <CollapsibleContainer isVisible={isExpanded}>
+      <CollapsibleContainer isVisible={isExpanded} width={width}>
         <ColorPickerByFormat
           color={value}
-          height={224}
+          height={width}
           onChange={color => debouncedHandleChange.current(color)}
-          width={224}
+          width={width}
         />
 
         {presetColors && (
