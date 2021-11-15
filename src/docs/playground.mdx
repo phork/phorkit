@@ -95,6 +95,7 @@ import {
         {({ themeId }) => (
           <Flex direction="row" justifyContent="flex-start">
             <ColorLooper
+              exclude={['color-P00']}
               render={({ id }) => (
                 <StateWrapper key={id}>
                   {({ state: percent, setState: setPercent }) => (

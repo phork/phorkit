@@ -15,22 +15,26 @@ module.exports = {
   whiten: (color, percent) =>
     Color(color)
       .whiten(percent / 100)
-      .hex(),
+      .hex()
+      .toLowerCase(),
 
   blacken: (color, percent) =>
     Color(color)
       .blacken(percent / 100)
-      .hex(),
+      .hex()
+      .toLowerCase(),
 
   lighten: (color, percent) =>
     Color(color)
       .lighten(percent / 100)
-      .hex(),
+      .hex()
+      .toLowerCase(),
 
   darken: (color, percent) =>
     Color(color)
       .darken(percent / 100)
-      .hex(),
+      .hex()
+      .toLowerCase(),
 
   generateOpacityRange: (source, colors, step = 10) => {
     const opacity = (color, i) =>
@@ -55,29 +59,37 @@ module.exports = {
       if (source[color]) {
         acc[`${color}-L10`] = Color(source[color])
           .lighten((adjustments?.[`${color}-lighten`] || 0.25) * 1)
-          .hex();
+          .hex()
+          .toLowerCase();
         acc[`${color}-L20`] = Color(source[color])
           .lighten((adjustments?.[`${color}-lighten`] || 0.25) * 2)
-          .hex();
+          .hex()
+          .toLowerCase();
         acc[`${color}-L30`] = Color(source[color])
           .lighten((adjustments?.[`${color}-lighten`] || 0.25) * 3)
-          .hex();
+          .hex()
+          .toLowerCase();
         acc[`${color}-L40`] = Color(source[color])
           .lighten((adjustments?.[`${color}-lighten`] || 0.25) * 4)
-          .hex();
+          .hex()
+          .toLowerCase();
 
         acc[`${color}-D10`] = Color(source[color])
           .darken((adjustments?.[`${color}-darken`] || 0.125) * 1)
-          .hex();
+          .hex()
+          .toLowerCase();
         acc[`${color}-D20`] = Color(source[color])
           .darken((adjustments?.[`${color}-darken`] || 0.125) * 2)
-          .hex();
+          .hex()
+          .toLowerCase();
         acc[`${color}-D30`] = Color(source[color])
           .darken((adjustments?.[`${color}-darken`] || 0.125) * 3)
-          .hex();
+          .hex()
+          .toLowerCase();
         acc[`${color}-D40`] = Color(source[color])
           .darken((adjustments?.[`${color}-darken`] || 0.125) * 4)
-          .hex();
+          .hex()
+          .toLowerCase();
       }
       return acc;
     }, {});
