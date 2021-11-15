@@ -65,7 +65,8 @@ const CollapsibleContainer = styled.div(({ width, isVisible }) => ({
   height: width + 50,
   maxHeight: isVisible ? width + 50 : 0,
   overflow: 'hidden',
-  transition: 'max-height 300ms ease-in-out',
+  // this seems counter-intuitive but it's correct
+  transition: isVisible ? 'max-height 300ms ease-in-out' : 'max-height 300ms ease-in-out, visibility 0s linear 300ms',
   visibility: isVisible ? 'visible' : 'hidden',
 }));
 
