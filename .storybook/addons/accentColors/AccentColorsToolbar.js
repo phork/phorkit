@@ -58,7 +58,7 @@ export const AccentColorsToolbar = () => {
       tooltipShown={isVisible}
       trigger="click"
     >
-      <IconButton active={hasAccentColors(currentAccentColors)}>
+      <IconButton aria-label="Set custom accent colors" active={hasAccentColors(currentAccentColors)}>
         <RainbowIcon title="Set custom accent colors" />
       </IconButton>
     </WithTooltipPure>

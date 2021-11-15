@@ -219,6 +219,7 @@
     "commander": "^7.2.0",
     "commitlint-config-gitmoji": "^2.2.3",
     "conventional-changelog-gitmoji-config": "^1.4.3",
+    "copy-to-clipboard": "^3.3.1",
     "core-js": "^3.10.2",
     "dotenv": "^8.0.0",
     "eslint-config-prettier": "^8.2.0",
