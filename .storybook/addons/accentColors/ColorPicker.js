@@ -1,7 +1,6 @@
 import { Form } from '@storybook/components';
 import { styled } from '@storybook/theming';
-import debounce from 'lodash.debounce';
-import React, { useCallback, useEffect, useMemo, useRef } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { HexColorPicker, RgbaStringColorPicker } from 'react-colorful';
 
 const Container = styled.div(({ width }) => ({
@@ -132,11 +131,6 @@ export const ColorPicker = ({
 }) => {
   const handleChange = useCallback(color => onChange(color), [onChange]);
 
-  const debouncedHandleChange = useRef();
-  useEffect(() => {
-    debouncedHandleChange.current = debounce(handleChange, 800);
-  }, [handleChange]);
-
   const ColorPickerByFormat = useMemo(
     () => (format === 'rgba' ? makeStyledRgbaColorPicker({ width }) : makeStyledHexColorPicker({ width })),
     [format, width],
@@ -148,25 +142,20 @@ export const ColorPicker = ({
         aria-label="Toggle color picker"
         onClick={onToggleExpansion}
         role="button"
-        value={value}
         tabIndex={0}
         title="Toggle color picker"
+        value={value}
       />
       <StyledInput
-        value={value || ''}
         onChange={event => handleChange(event.target.value)}
         onFocus={onFocus}
         placeholder={placeholder}
+        value={value || ''}
       />
       {children && <RightButton>{children}</RightButton>}
 
       <CollapsibleContainer isVisible={isExpanded} width={width}>
-        <ColorPickerByFormat
-          color={value}
-          height={width}
-          onChange={color => debouncedHandleChange.current(color)}
-          width={width}
-        />
+        <ColorPickerByFormat color={value} height={width} onChange={handleChange} width={width} />
 
         {presetColors && (
           <Swatches>
@@ -176,9 +165,9 @@ export const ColorPicker = ({
                 key={color}
                 onClick={() => handleChange(color)}
                 role="button"
-                value={color}
                 tabIndex={0}
                 title={title}
+                value={color}
               />
             ))}
           </Swatches>

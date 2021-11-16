@@ -80,7 +80,7 @@ export const AccentColorsForm = ({
 
       onChange?.(accentColors);
     },
-    [currentAccentColors],
+    [currentAccentColors, onChange],
   );
 
   // reset all accent colors back to empty
@@ -126,7 +126,7 @@ export const AccentColorsForm = ({
         setCurrentAccentColors(generatedAccentColors);
       }
     },
-    [currentAccentColors, setCurrentAccentColors, groupExpansion],
+    [accentColorProps, currentAccentColors, setCurrentAccentColors, groupExpansion],
   );
 
   // if a derivative source color has changed update the derived colors
@@ -136,7 +136,7 @@ export const AccentColorsForm = ({
         updateDerivedColors(property);
       }
     });
-  }, [currentAccentColors, previousAccentColors, updateDerivedColors]);
+  }, [currentAccentColors, derivativeSources, previousAccentColors, updateDerivedColors]);
 
   return (
     <React.Fragment>

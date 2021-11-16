@@ -4,7 +4,8 @@ import { useGlobals } from '@storybook/api';
 import { IconButton, TabsState, WithTooltipPure } from '@storybook/components';
 import { FORCE_RE_RENDER } from '@storybook/core-events';
 import { styled } from '@storybook/theming';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import debounce from 'lodash.debounce';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { getAccentColors, hasAccentColors, renderAccentColors } from './utils';
 import { AccentColorsCss } from './AccentColorsCss';
 import { AccentColorsForm } from './AccentColorsForm';
@@ -22,23 +23,25 @@ const TooltipContainer = styled.div(
 );
 
 export const AccentColorsToolbar = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const [globals, updateGlobals] = useGlobals();
-  const currentAccentColors = useMemo(() => globals[PARAM_KEY] || getAccentColors() || {}, [globals]);
+  const [currentAccentColors, setCurrentAccentColors] = useState(globals[PARAM_KEY] || getAccentColors() || {});
+  const [isVisible, setIsVisible] = useState(false);
 
-  // saving the colors must happen before forcing a re-render
-  const handleColorChange = useCallback(
-    accentColors => {
+  // updating globals must be debounced because it's slow
+  const debouncedUpdateGlobals = useRef();
+  useEffect(() => {
+    debouncedUpdateGlobals.current = debounce(accentColors => {
       updateGlobals({ [PARAM_KEY]: accentColors });
       addons.getChannel().emit(FORCE_RE_RENDER);
-    },
-    [updateGlobals],
-  );
+    }, 800);
+  }, [updateGlobals]);
 
-  // when the colors change update the view
-  useEffect(() => {
-    renderAccentColors(currentAccentColors);
-  }, [currentAccentColors]);
+  const handleColorChange = useCallback(accentColors => {
+    setCurrentAccentColors(accentColors);
+    renderAccentColors(accentColors);
+
+    debouncedUpdateGlobals.current(accentColors);
+  }, []);
 
   return (
     <WithTooltipPure
@@ -70,7 +73,7 @@ export const AccentColorsToolbar = () => {
       tooltipShown={isVisible}
       trigger="click"
     >
-      <IconButton aria-label="Set custom accent colors" active={hasAccentColors(currentAccentColors)}>
+      <IconButton active={hasAccentColors(currentAccentColors)} aria-label="Set custom accent colors">
         <RainbowIcon title="Set custom accent colors" />
       </IconButton>
     </WithTooltipPure>
