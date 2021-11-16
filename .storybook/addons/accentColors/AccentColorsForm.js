@@ -1,8 +1,6 @@
-import { themes } from '.../../../src/config/themes';
 import { Button, ScrollArea } from '@storybook/components';
 import { styled } from '@storybook/theming';
 import React, { useCallback, useEffect, useState, useRef } from 'react';
-import { getThemeId } from '../theme/utils';
 import {
   clearAccentColors,
   hasAccentColors,
@@ -13,37 +11,43 @@ import {
 } from './utils';
 import { AccentColorFormInput } from './AccentColorFormInput';
 
-const themeId = getThemeId();
+const ColorGroup = styled.div(
+  ({ bordered, theme }) =>
+    bordered && {
+      borderTop: `1px solid ${theme.appBorderColor}`,
+      marginTop: 24,
+    },
+);
 
-const Notification = styled.div({
-  background: themes[themeId]['primary-palette-background-color'],
-  borderBottom: `1px solid ${themes[themeId]['primary-palette-border-color']}`,
-  borderTop: `1px solid ${themes[themeId]['primary-palette-border-color']}`,
-  color: themes[themeId]['primary-palette-quiet-color'],
+const Notification = styled.div(({ theme }) => ({
+  background: theme.background.app,
+  borderBottom: `1px solid ${theme.appBorderColor}`,
+  borderTop: `1px solid ${theme.appBorderColor}`,
+  color: theme.barTextColor,
   fontSize: 11,
   fontWeight: 'bold',
   lineHeight: '16px',
   marginBottom: 24,
   marginTop: 24,
   padding: 12,
-});
+}));
 
-const TextButton = styled(Button)({
-  color: themes[themeId]['color-accent'],
+const TextButton = styled(Button)(({ theme }) => ({
+  color: theme.barSelectedColor,
   fontWeight: 'normal',
   marginLeft: 12,
   outline: 'none',
   padding: 0,
-});
+}));
 
-const Footer = styled.div({
+const Footer = styled.div(({ theme }) => ({
   alignItems: 'center',
-  borderTop: `1px solid ${themes[themeId]['primary-palette-border-color']}`,
+  borderTop: `1px solid ${theme.appBorderColor}`,
   display: 'flex',
   justifyContent: 'space-between',
   marginTop: 8,
   padding: 12,
-});
+}));
 
 export const AccentColorsForm = ({
   accentColorMap,
@@ -138,9 +142,9 @@ export const AccentColorsForm = ({
     <React.Fragment>
       <ScrollArea vertical style={{ maxHeight: 'calc(100vh - 220px' }}>
         {colorGroups.map(
-          ({ id, properties, notification, hidden }) =>
+          ({ id, properties, notification, hidden }, index) =>
             (groupExpansion[id] || !hidden) && (
-              <React.Fragment key={properties}>
+              <ColorGroup bordered={index > 0 && !notification} key={properties}>
                 {notification && (
                   <Notification>
                     <div style={{ maxWidth: width, paddingLeft: 4, paddingRight: 4 }}>{notification}</div>
@@ -175,7 +179,7 @@ export const AccentColorsForm = ({
                     );
                   }
                 })}
-              </React.Fragment>
+              </ColorGroup>
             ),
         )}
       </ScrollArea>

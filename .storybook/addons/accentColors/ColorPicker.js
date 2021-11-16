@@ -52,6 +52,7 @@ const PresetSwatch = styled(BaseSwatch)({
 const StyledInput = styled(Form.Input)({
   paddingLeft: 30,
   paddingRight: 30,
+  width: '100%',
 });
 
 const RightButton = styled.div({
@@ -115,7 +116,7 @@ const makeStyledRgbaColorPicker = ({ width }) => styled(RgbaStringColorPicker)(g
  * `ColorControl` because that control exists
  * within a tooltip and that tooltip doesn't work
  * very well if it's inside another tooltip.
- * Why, Storybook, Why? Separation, y'all.
+ * Why, Storybook, why? Separation, y'all.
  */
 export const ColorPicker = ({
   children,

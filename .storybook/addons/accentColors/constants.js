@@ -33,7 +33,7 @@ export const accentColorProps = [
   },
   {
     property: '--phork-accent-color-contrast',
-    label: 'Accent contrast',
+    label: 'Accent contrast color',
     description:
       'The contrast color should be visible against the accent color. For example the accent color will be the background and the contrast color will be the text color.',
   },
@@ -86,6 +86,13 @@ export const accentColorProps = [
     formula: src => Color(src['--phork-accent-color']).alpha(0.05).rgb().string(),
     format: 'rgba',
   },
+  {
+    property: '--phork-contrast-color',
+    label: 'Contrast color',
+    description: 'The contrast color is used as the background for components using the contrast flag.',
+    derivedFrom: ['--phork-accent-color'],
+    formula: src => src['--phork-accent-color'],
+  },
 ];
 
 export const colorGroups = [
@@ -106,6 +113,10 @@ export const colorGroups = [
       '--phork-accent-color-O5',
     ],
     hidden: true,
+  },
+  {
+    id: 'contrast',
+    properties: ['--phork-contrast-color'],
   },
 ];
 

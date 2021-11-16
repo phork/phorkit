@@ -1,14 +1,10 @@
-import { themes } from '.../../../src/config/themes';
 import { RefreshIcon, HelpIcon } from ' ../../../src/icons/internal';
 import { styled } from '@storybook/theming';
 import React, { useState } from 'react';
-import { getThemeId } from '../theme/utils';
 import { ColorPicker } from './ColorPicker';
 
-const themeId = getThemeId();
-
-const ColorContainer = styled.div(({ bordered }) => ({
-  borderBottom: bordered ? `1px solid ${themes[themeId]['primary-palette-border-color']}` : 'none',
+const ColorContainer = styled.div(({ bordered, theme }) => ({
+  borderBottom: bordered ? `1px solid ${theme.appBorderColor}` : 'none',
   display: 'flex',
   flexDirection: 'column',
   margin: 12,
@@ -33,7 +29,7 @@ const ColorDescription = styled.div({
   maxWidth: 224,
 });
 
-const Unbutton = styled.button(({ disabled }) => ({
+const Unbutton = styled.button(({ disabled, theme }) => ({
   appearance: 'button',
   background: 'transparent',
   border: 'none',
@@ -49,7 +45,7 @@ const Unbutton = styled.button(({ disabled }) => ({
   },
 
   '&:focus': {
-    color: themes[themeId]['color-accent'],
+    color: theme.barSelectedColor,
   },
 
   '&:active': {
