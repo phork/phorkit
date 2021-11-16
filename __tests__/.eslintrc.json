@@ -1,5 +1,13 @@
 {
+  "extends": [
+    "../.eslintrc.json"
+  ],
   "parserOptions": {
     "project": "./__tests__/tsconfig.json"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
   }
 }

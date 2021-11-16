@@ -20,6 +20,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "paths": {
+      "lib": ["src"],
+      "lib/*": ["src/*"],
       "components": ["src/components"],
       "components/*": ["src/components/*"],
       "compositions": ["src/compositions"],
