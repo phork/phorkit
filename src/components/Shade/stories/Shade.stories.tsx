@@ -20,9 +20,6 @@ export default {
       },
     },
     color: {
-      control: {
-        type: 'text',
-      },
       table: {
         category: 'Appearance',
       },
