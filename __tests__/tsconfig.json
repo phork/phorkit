@@ -1,23 +1,7 @@
 {
   "compilerOptions": {
-    "baseUrl": "../src",
+    "baseUrl": "../",
     "rootDir": "../",
-    "paths": {
-      "__mocks__": ["../__mocks__"],
-      "__mocks__/*": ["../__mocks__/*"],
-      "lib": ["../src"],
-      "lib/*": ["../src/*"],
-      "components": ["../src/components"],
-      "compositions": ["../src/compositions"],
-      "config": ["../src/config"],
-      "context": ["../src/context"],
-      "hooks": ["../src/hooks"],
-      "icons": ["../src/icons"],
-      "postcss": ["../src/postcss"],
-      "styles": ["../src/styles"],
-      "types": ["../src/types"],
-      "utils": ["../src/utils"],
-    },
     "types": [
       "@testing-library/jest-dom",
       "jest",

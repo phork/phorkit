@@ -87,7 +87,7 @@
     "start-docker-storybook": "docker-compose -f docker-compose.storybook.yml up --build -d",
     "start-docz": "yarn gen-postcss-json && yarn build-icons && docz dev",
     "start-storybook": "yarn gen-postcss-json && yarn build-icons && start-storybook -s ./public -p 6006",
-    "start": "yarn start-storybook",
+    "start": "yarn start-storybook --no-manager-cache",
     "stylelint": "npx stylelint \"src/**/*.css\" --fix",
     "test-dev": "npx jest --coverage",
     "test-watch": "npx jest --watch",

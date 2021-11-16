@@ -1,13 +1,10 @@
 {
   "compilerOptions": {
-    "baseUrl": "../",
-    "rootDir": "../",
-    "types": [
-      "@testing-library/jest-dom",
-      "jest",
-      "node"
-    ]
+    "paths": {
+      "lib": ["lib"],
+      "lib/*": ["lib/*"]
+    }
   },
-  "extends": "../tsconfig.json",
-  "include": [".", "../lib", "./jest.d.ts"]
+  "extends": "./tsconfig.json",
+  "include": [".", "../lib", "./jest.d.ts", "../__mocks__"]
 }
