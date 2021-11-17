@@ -26,8 +26,8 @@ export const presetColors = [
 ].map(colorId => ({
   color: themes[themeId][`color-${colorId}`],
   title: colorId,
-  lighten: themes[themeId][`color-${colorId}-lighten`],
-  darken: themes[themeId][`color-${colorId}-darken`],
+  lighten: themes[themeId][`cfg-color-${colorId}-lighten`],
+  darken: themes[themeId][`cfg-color-${colorId}-darken`],
 }));
 
 // use the custom lighten and darken amounts for the preset colors
@@ -59,7 +59,7 @@ export const accentColorProps = [
     label: 'Accent color D10',
     description: 'This is a slightly darkened version of the accent color used for things like button active states.',
     derivedFrom: ['--phork-accent-color'],
-    formula: src => Color(src['--phork-accent-color']).lighten(getDarken(src['--phork-accent-color'])).hex(),
+    formula: src => Color(src['--phork-accent-color']).darken(getDarken(src['--phork-accent-color'])).hex(),
   },
   {
     property: '--phork-accent-color-L20',
@@ -78,7 +78,7 @@ export const accentColorProps = [
     derivedFrom: ['--phork-accent-color'],
     formula: src =>
       Color(src['--phork-accent-color'])
-        .lighten(getDarken(src['--phork-accent-color']) * 2)
+        .darken(getDarken(src['--phork-accent-color']) * 2)
         .hex(),
   },
   {
@@ -98,7 +98,7 @@ export const accentColorProps = [
     derivedFrom: ['--phork-accent-color'],
     formula: src =>
       Color(src['--phork-accent-color'])
-        .lighten(getDarken(src['--phork-accent-color']) * 3)
+        .darken(getDarken(src['--phork-accent-color']) * 3)
         .hex(),
   },
   {

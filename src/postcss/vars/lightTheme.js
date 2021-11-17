@@ -57,26 +57,26 @@ const primaryContrastColors = {
 
 // fine tune the lighten and darken amounts by color
 const adjustments = {
-  'color-P00-lighten': 0.1625,
-  'color-P05-lighten': 0.275,
-  'color-P10-lighten': 0.1875,
-  'color-P15-lighten': 0.1375,
-  'color-P20-lighten': 0.1625,
-  'color-P25-lighten': 0.1875,
-  'color-P30-lighten': 0.1875,
-  'color-P35-lighten': 0.1875,
-  'color-P40-lighten': 0.275,
-  'color-P45-lighten': 0.1875,
-  'color-P50-lighten': 0.2875,
-  'color-P55-lighten': 0.32,
-  'color-P60-lighten': 0.2375,
-  'color-P65-lighten': 0.275,
-  'color-P70-lighten': 0.32,
+  'cfg-color-P00-lighten': 0.1625,
+  'cfg-color-P05-lighten': 0.275,
+  'cfg-color-P10-lighten': 0.1875,
+  'cfg-color-P15-lighten': 0.1375,
+  'cfg-color-P20-lighten': 0.1625,
+  'cfg-color-P25-lighten': 0.1875,
+  'cfg-color-P30-lighten': 0.1875,
+  'cfg-color-P35-lighten': 0.1875,
+  'cfg-color-P40-lighten': 0.275,
+  'cfg-color-P45-lighten': 0.1875,
+  'cfg-color-P50-lighten': 0.2875,
+  'cfg-color-P55-lighten': 0.32,
+  'cfg-color-P60-lighten': 0.2375,
+  'cfg-color-P65-lighten': 0.275,
+  'cfg-color-P70-lighten': 0.32,
 
-  'color-P00-darken': 0.15,
-  'color-P15-darken': 0.15,
-  'color-P30-darken': 0.1,
-  'color-P35-darken': 0.08,
+  'cfg-color-P00-darken': 0.15,
+  'cfg-color-P15-darken': 0.15,
+  'cfg-color-P30-darken': 0.1,
+  'cfg-color-P35-darken': 0.08,
 };
 
 // shade color is the accent color at .1 opacity flattened on the extreme background color
@@ -102,20 +102,20 @@ const accentColors = {
   'color-neutral-shade': '#f3f3f3',
 };
 
-adjustments['color-accent-lighten'] = adjustments['color-P55-lighten'];
-adjustments['color-accent-darken'] = adjustments['color-P55-darken'];
+adjustments['cfg-color-accent-lighten'] = adjustments['cfg-color-P55-lighten'];
+adjustments['cfg-color-accent-darken'] = adjustments['cfg-color-P55-darken'];
 
-adjustments['color-success-lighten'] = adjustments['color-P40-lighten'];
-adjustments['color-success-darken'] = adjustments['color-P40-darken'];
+adjustments['cfg-color-success-lighten'] = adjustments['cfg-color-P40-lighten'];
+adjustments['cfg-color-success-darken'] = adjustments['cfg-color-P40-darken'];
 
-adjustments['color-warning-lighten'] = adjustments['color-P25-lighten'];
-adjustments['color-warning-darken'] = adjustments['color-P25-darken'];
+adjustments['cfg-color-warning-lighten'] = adjustments['cfg-color-P25-lighten'];
+adjustments['cfg-color-warning-darken'] = adjustments['cfg-color-P25-darken'];
 
-adjustments['color-danger-lighten'] = adjustments['color-P15-lighten'];
-adjustments['color-danger-darken'] = adjustments['color-P15-darken'];
+adjustments['cfg-color-danger-lighten'] = adjustments['cfg-color-P15-lighten'];
+adjustments['cfg-color-danger-darken'] = adjustments['cfg-color-P15-darken'];
 
-adjustments['color-neutral-lighten'] = adjustments['color-P00-lighten'];
-adjustments['color-neutral-darken'] = adjustments['color-P00-darken'];
+adjustments['cfg-color-neutral-lighten'] = adjustments['cfg-color-P00-lighten'];
+adjustments['cfg-color-neutral-darken'] = adjustments['cfg-color-P00-darken'];
 
 const shadowColors = {
   'box-shadow-10': `
