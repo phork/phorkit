@@ -20,6 +20,8 @@ export type ThemeColorIds =
 export type ThemeForegroundIds = 'FG0' | 'FG05' | 'FG10' | 'FG20' | 'FG30' | 'FG40' | 'FG50';
 export type ThemeBackgroundIds = 'BG0' | 'BG05' | 'BG10' | 'BG20' | 'BG30' | 'BG40' | 'BG50';
 
+export type ThemeAccentColorIds = 'accent' | 'success' | 'warning' | 'danger' | 'neutral';
+
 export type ThemeColorOpacities = '5' | '10' | '20' | '30' | '40' | '50' | '60' | '70' | '80' | '90';
 export type ThemeColorLighten = 'L10' | 'L20' | 'L30';
 export type ThemeColorDarken = 'D10' | 'D20' | 'D30';
@@ -52,6 +54,11 @@ type MakeThemeOpacities<Color extends string> = {
 /** @returns 'color-success-L10', 'color-success-D10', etc. */
 type MakeThemeLightenDarken<Color extends string> = {
   [Adjustment in ThemeColorLighten | ThemeColorDarken as `color-${Color}-${string & Adjustment}`]: string;
+};
+
+/** @returns 'color-P05-lighten', 'color-P05-darken', etc. */
+type MakeThemeAdjustments<Direction extends 'lighten' | 'darken'> = {
+  [Color in ThemeColorIds | ThemeAccentColorIds as `color-${Color}-${string & Direction}`]?: string;
 };
 
 /** @returns 'primary-palette-background-color', 'primary-palette-border-color', etc. */
@@ -134,6 +141,8 @@ export type ThemeScrollbarColors = {
   'contrast-scrollbar-track-color': string;
 };
 
+export type ThemeAdjustments = MakeThemeAdjustments<'lighten'> & MakeThemeAdjustments<'darken'>;
+
 export type ThemeColors = ThemeForegroundColors &
   ThemeForegroundOpacityColors &
   ThemeBackgroundColors &
@@ -156,8 +165,8 @@ export type ThemeColors = ThemeForegroundColors &
   ThemeScrollbarColors;
 
 export type Themes = {
-  light: ThemeColors;
+  light: ThemeColors & ThemeAdjustments;
   lightThemeId: Theme;
-  dark: ThemeColors;
+  dark: ThemeColors & ThemeAdjustments;
   darkThemeId: Theme;
 };
