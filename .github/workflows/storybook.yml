@@ -21,6 +21,11 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
+      - name: Add tracking code
+        run: |
+          echo "${{ secrets.TRACKING_CODE }}" >> .storybook/preview-body.html
+          echo "${{ secrets.TRACKING_CODE }}" >> .storybook/manager-head.html
+
       - name: Build storybook
         run: yarn build-storybook
         env:
