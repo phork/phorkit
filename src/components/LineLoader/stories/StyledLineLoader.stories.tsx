@@ -57,6 +57,10 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  jest: ['StyledLineLoader.test.js'],
+};
+
 Default.argTypes = {
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },

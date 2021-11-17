@@ -157,6 +157,10 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  jest: ['Chip.test.js'],
+};
+
 export const SmallSize = Template.bind({});
 SmallSize.storyName = 'Size: Small';
 SmallSize.args = {

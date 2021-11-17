@@ -351,5 +351,9 @@ Default.args = {
 };
 
 Default.parameters = {
+  jest: ['Modal.test.js', 'ModalContainer.test.js'],
+};
+
+Default.parameters = {
   chromatic: { disableSnapshot: true },
 };

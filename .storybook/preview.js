@@ -1,5 +1,7 @@
+import { withTests } from '@storybook/addon-jest';
 import { themes } from '@storybook/theming';
 import React from 'react';
+import jestResults from '../.jest-test-results.json';
 import { AccessibilityProvider } from '../src/context/Accessibility/AccessibilityProvider';
 import '../src/styles/common.css';
 import '../src/styles/fonts.css';
@@ -9,7 +11,16 @@ import { getThemeId } from './addons/theme/utils';
 import { withTheme } from './addons/theme/withTheme';
 import { getCustomTheme } from './theme';
 
-export const decorators = [withTheme, storyFn => <AccessibilityProvider>{storyFn()}</AccessibilityProvider>];
+const hasJestResults = Object.keys(jestResults).length > 0;
+
+export const decorators = [
+  withTheme,
+  storyFn => <AccessibilityProvider>{storyFn()}</AccessibilityProvider>,
+  hasJestResults &&
+    withTests({
+      results: jestResults,
+    }),
+].filter(Boolean);
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

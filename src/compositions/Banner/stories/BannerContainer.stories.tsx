@@ -78,6 +78,10 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  jest: ['BannerContainer.test.js'],
+};
+
 export const State = Template.bind({});
 State.storyName = 'State banners';
 State.args = {

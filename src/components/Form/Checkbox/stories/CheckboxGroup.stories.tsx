@@ -35,11 +35,6 @@ export default {
         category: 'Appearance',
       },
     },
-    wrap: {
-      table: {
-        category: 'Appearance',
-      },
-    },
 
     checkboxes: {
       table: {
@@ -112,12 +107,15 @@ const defaultArgs = {
   size: 'medium' as CheckboxGroupProps['size'],
   values: ['one'],
   variant: 'primary' as CheckboxGroupProps['variant'],
-  wrap: false,
 };
 
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
+};
+
+Default.parameters = {
+  jest: ['CheckboxGroup.test.js'],
 };
 
 export const InlineLayout = Template.bind({});

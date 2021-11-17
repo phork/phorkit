@@ -150,3 +150,7 @@ export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
 };
+
+Default.parameters = {
+  jest: ['MultiColorSlider.test.js'],
+};

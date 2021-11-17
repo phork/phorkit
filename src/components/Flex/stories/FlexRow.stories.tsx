@@ -18,6 +18,10 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  jest: ['Flex.test.js'],
+};
+
 export const Center = Template.bind({});
 Center.storyName = 'alignItems: center, justifyContent: center';
 Center.args = {

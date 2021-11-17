@@ -3,7 +3,7 @@ FROM node:latest as builder
 WORKDIR /opt/app
 COPY . /opt/app/
 
-RUN yarn build-storybook
+RUN yarn install --pure-lockfile && yarn build-storybook
 
 # Serve
 

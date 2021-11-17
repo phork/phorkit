@@ -66,6 +66,10 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  jest: ['ColoredPaper.test.js'],
+};
+
 Default.argTypes = {
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },

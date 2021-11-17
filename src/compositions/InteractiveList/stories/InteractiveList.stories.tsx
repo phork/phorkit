@@ -284,6 +284,10 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  jest: ['InteractiveList.test.js'],
+};
+
 export const ScrollToElement = Template.bind({});
 ScrollToElement.storyName = 'Scroll to element';
 ScrollToElement.args = {

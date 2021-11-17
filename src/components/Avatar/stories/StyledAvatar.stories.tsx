@@ -60,6 +60,10 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  jest: ['StyledAvatar.test.js'],
+};
+
 Default.argTypes = {
   as: { table: { disable: true } },
   style: { table: { disable: true } },

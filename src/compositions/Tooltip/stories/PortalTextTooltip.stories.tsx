@@ -258,6 +258,10 @@ Default.args = {
   width: 100,
 };
 
+Default.parameters = {
+  jest: ['PortalTextTooltip.test.js'],
+};
+
 Default.decorators = [
   (Story, { args: { position } }) => (
     <div

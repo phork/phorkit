@@ -113,6 +113,10 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  jest: ['Position.test.js'],
+};
+
 const CompleteTemplate: ComponentStory<typeof Position> = ({ variant }) => (
   <React.Fragment>
     <Position raised location="center" style={{ width: 12, height: 12 }}>

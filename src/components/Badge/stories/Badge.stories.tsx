@@ -127,6 +127,10 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  jest: ['Badge.test.js'],
+};
+
 export const PrimaryColor = Template.bind({});
 PrimaryColor.storyName = 'Color: Primary';
 PrimaryColor.args = {

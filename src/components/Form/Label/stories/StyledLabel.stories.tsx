@@ -73,6 +73,10 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  jest: ['StyledLabel.test.js'],
+};
+
 Default.argTypes = {
   strength: { table: { disable: true } },
   style: { table: { disable: true } },

@@ -127,6 +127,10 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  jest: ['Tag.test.js'],
+};
+
 export const PillShape = Template.bind({});
 PillShape.storyName = 'Shape: Pill';
 PillShape.args = {

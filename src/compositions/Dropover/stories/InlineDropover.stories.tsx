@@ -215,6 +215,10 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  jest: ['InlineDropover.test.js'],
+};
+
 export const LeftAlign = Template.bind({});
 LeftAlign.storyName = 'Align: Left';
 LeftAlign.args = {
