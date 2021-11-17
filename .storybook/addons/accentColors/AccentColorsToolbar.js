@@ -43,6 +43,12 @@ export const AccentColorsToolbar = () => {
     debouncedUpdateGlobals.current(accentColors);
   }, []);
 
+  // render the accent colors on load
+  useEffect(() => {
+    renderAccentColors(currentAccentColors);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <WithTooltipPure
       onVisibilityChange={setIsVisible}
