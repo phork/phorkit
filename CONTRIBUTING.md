@@ -237,10 +237,9 @@ All commits abide by the rules of the [conventional changelog](https://github.co
 $ git commit -m ':gitmoji: type: short commit message starting with lowercase'
 ```
 
-For a breaking change add an exclamation point or `(major)` after the type.
+For a breaking change add a `(major)` scope after the type.
 
 ```bash
-$ git commit -m ':gitmoji: type!: short commit message starting with lowercase'
 $ git commit -m ':gitmoji: type(major): short commit message starting with lowercase'
 ```
 
@@ -260,8 +259,8 @@ These commit messages must use a pre-defined [Gitmoji](https://gitmoji.dev/) and
 For example
 
 ```bash
-$ git commit -m ':bug: fix: broken button width'
-$ git commit -m ':recycle: refactor(major): replace all somethings with something elses.'
+$ git commit -m ':bug: fix: added missing width to button'
+$ git commit -m ':recycle: refactor(major): replaced all somethings with something elses.'
 ```
 
 The optional full commit message format is
@@ -274,4 +273,6 @@ footer?
 
 ## Publishing
 
-Publishing is automated by Github actions. Any pushes to the `main` branch will be automatically versioned and published by [semantic-release](https://semantic-release.gitbook.io/semantic-release/).
+Any push to the `main` branch will trigger the [publish](.github/workflows/publish.yml) workflow which uses [semantic-release](https://semantic-release.gitbook.io/semantic-release/) to update the version and the changelog, create a new tag, and publish the package to Github packages.
+
+When a release is created from a tag the package will be published to NPM and the documentation will be published to [https://phorkit.phork.org/](https://phorkit.phork.org/).
