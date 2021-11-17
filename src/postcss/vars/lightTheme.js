@@ -26,14 +26,15 @@ const primaryColors = {
   'color-P15': '#ff3232',
   'color-P20': '#ff6020',
   'color-P25': '#ff8e0d',
-  'color-P30': '#fca60a',
+  'color-P30': '#fda600',
   'color-P35': '#f8be07',
-  'color-P40': '#7cbb3f',
-  'color-P45': '#3e8e87',
-  'color-P50': '#0060ce',
-  'color-P55': '#3247b7',
-  'color-P60': '#642da0',
-  'color-P65': '#8b218b',
+  'color-P40': '#bbc71e',
+  'color-P45': '#7cbb3f',
+  'color-P50': '#3e8e87',
+  'color-P55': '#0060ce',
+  'color-P60': '#3247b7',
+  'color-P65': '#642da0',
+  'color-P70': '#8b218b',
 };
 
 const primaryContrastColors = {
@@ -51,6 +52,7 @@ const primaryContrastColors = {
   'color-P55-contrast': '#fff',
   'color-P60-contrast': '#fff',
   'color-P65-contrast': '#fff',
+  'color-P70-contrast': '#fff',
 };
 
 // fine tune the lighten and darken amounts by color
@@ -63,26 +65,28 @@ const adjustments = {
   'color-P25-lighten': 0.1875,
   'color-P30-lighten': 0.1875,
   'color-P35-lighten': 0.1875,
-  'color-P40-lighten': 0.1875,
+  'color-P40-lighten': 0.275,
+  'color-P45-lighten': 0.1875,
   'color-P50-lighten': 0.2875,
-  'color-P55-lighten': 0.2375,
-  'color-P60-lighten': 0.275,
-  'color-P65-lighten': 0.32,
+  'color-P55-lighten': 0.32,
+  'color-P60-lighten': 0.2375,
+  'color-P65-lighten': 0.275,
+  'color-P70-lighten': 0.32,
 
   'color-P00-darken': 0.15,
   'color-P15-darken': 0.15,
   'color-P30-darken': 0.1,
-  'color-P35-darken': 0.0625,
+  'color-P35-darken': 0.08,
 };
 
 // shade color is the accent color at .1 opacity flattened on the extreme background color
 const accentColors = {
-  'color-accent': primaryColors['color-P50'],
+  'color-accent': primaryColors['color-P55'],
   'color-accent-contrast': primaryContrastColors['color-P50-contrast'],
   'color-accent-shade': '#e6effa',
 
-  'color-success': primaryColors['color-P40'],
-  'color-success-contrast': primaryContrastColors['color-P40-contrast'],
+  'color-success': primaryColors['color-P45'],
+  'color-success-contrast': primaryContrastColors['color-P45-contrast'],
   'color-success-shade': '#f2f8ec',
 
   'color-warning': primaryColors['color-P25'],
@@ -98,8 +102,8 @@ const accentColors = {
   'color-neutral-shade': '#f3f3f3',
 };
 
-adjustments['color-accent-lighten'] = adjustments['color-P50-lighten'];
-adjustments['color-accent-darken'] = adjustments['color-P50-darken'];
+adjustments['color-accent-lighten'] = adjustments['color-P55-lighten'];
+adjustments['color-accent-darken'] = adjustments['color-P55-darken'];
 
 adjustments['color-success-lighten'] = adjustments['color-P40-lighten'];
 adjustments['color-success-darken'] = adjustments['color-P40-darken'];

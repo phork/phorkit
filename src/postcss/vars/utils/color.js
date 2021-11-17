@@ -69,10 +69,6 @@ module.exports = {
           .lighten((adjustments?.[`${color}-lighten`] || 0.25) * 3)
           .hex()
           .toLowerCase();
-        acc[`${color}-L40`] = Color(source[color])
-          .lighten((adjustments?.[`${color}-lighten`] || 0.25) * 4)
-          .hex()
-          .toLowerCase();
 
         acc[`${color}-D10`] = Color(source[color])
           .darken((adjustments?.[`${color}-darken`] || 0.125) * 1)
@@ -84,10 +80,6 @@ module.exports = {
           .toLowerCase();
         acc[`${color}-D30`] = Color(source[color])
           .darken((adjustments?.[`${color}-darken`] || 0.125) * 3)
-          .hex()
-          .toLowerCase();
-        acc[`${color}-D40`] = Color(source[color])
-          .darken((adjustments?.[`${color}-darken`] || 0.125) * 4)
           .hex()
           .toLowerCase();
       }

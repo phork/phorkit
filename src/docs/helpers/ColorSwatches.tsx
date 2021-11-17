@@ -6,7 +6,7 @@ import { ColorSwatchGrid } from './ColorSwatchGrid';
 import { Color, ColorSwatchVector, ColorSwatchVectorProps } from './ColorSwatchVector';
 
 export type ColorSwatchesProps = Omit<ColorSwatchVectorProps, 'colors'> & {
-  group: 'primary' | 'state' | 'background' | 'foreground' | 'transparent';
+  group: 'primary' | 'primary-shades' | 'state' | 'background' | 'foreground' | 'transparent';
   variant?: string;
   themeId: Theme;
 };
@@ -59,17 +59,28 @@ export function ColorSwatches({
       return <ColorSwatchVector colors={formattedColors} direction={direction} {...props} />;
     }
 
-    case 'primary': {
+    case 'primary-shades': {
       const colorGrid = Object.keys(getPrimaryColors(themeId))
         .sort((a, b) => +a.replace(/[^\d]/g, '') - +b.replace(/[^\d]/g, ''))
         .map((root: string) => ({
-          colors: ['L40', 'L30', 'L20', 'L10', undefined, 'D10', 'D20', 'D30', 'D40'].map(shade =>
+          colors: ['L30', 'L20', 'L10', undefined, 'D10', 'D20', 'D30'].map(shade =>
             mapColors(root, shade, shade ? { children: shade } : undefined),
           ),
           label: root.replace('color-', ''),
           id: root,
         }));
       return <ColorSwatchGrid colorGrid={colorGrid} direction={direction} {...props} />;
+    }
+
+    case 'primary': {
+      const colors = getPrimaryColors(themeId!);
+      const formattedColors = Object.keys(colors).map(key => ({
+        id: key,
+        color: colors[key],
+        contrast: themeProps['color-BG0' as keyof ThemeColors] as string,
+        children: key.replace('color-', ''),
+      }));
+      return <ColorSwatchVector colors={formattedColors} direction={direction} {...props} />;
     }
 
     case 'transparent': {

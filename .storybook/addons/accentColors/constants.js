@@ -22,6 +22,7 @@ export const presetColors = [
   { color: themes[themeId]['color-P55'], title: 'P55' },
   { color: themes[themeId]['color-P60'], title: 'P60' },
   { color: themes[themeId]['color-P65'], title: 'P65' },
+  { color: themes[themeId]['color-P70'], title: 'P70' },
 ];
 
 export const accentColorProps = [

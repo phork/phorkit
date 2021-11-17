@@ -86,7 +86,7 @@ const SwatchLabel = styled('p', {
   height?: string | number;
   width?: string | number;
 }>`
-  align-items: center;
+  align-self: ${({ direction }) => (direction === 'row' ? 'center' : 'flex-start')};
   display: flex;
   font-size: 11px;
   height: ${props => `${props.height}${typeof props.height === 'number' ? 'px' : ''}`};

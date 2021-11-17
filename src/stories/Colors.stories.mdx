@@ -19,27 +19,6 @@ import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 
 _Clicking on any color block will copy that color ID to your clipboard._
 
-### Primary colors
-
-<Canvas withSource="none">
-  <Story name="Primary colors">
-    <ThemeWrapper>
-      {({ themeId }) => (
-        <ColorSwatches
-          direction="column"
-          group="primary"
-          labelHeight={20}
-          swatchHeight={40}
-          swatchWidth={60}
-          themeId={themeId}
-        >
-          <PhorkIcon size={24} />
-        </ColorSwatches>
-      )}
-    </ThemeWrapper>
-  </Story>
-</Canvas>
-
 ### Primary accent color
 
 <Canvas withSource="none">
@@ -104,6 +83,37 @@ _Clicking on any color block will copy that color ID to your clipboard._
       {({ themeId }) => (
         <ColorSwatches joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="neutral">
           <PhorkIcon size={30} />
+        </ColorSwatches>
+      )}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Primary colors
+
+<Canvas withSource="none">
+  <Story name="Primary colors">
+    <ThemeWrapper>
+      {({ themeId }) => <ColorSwatches group="primary" swatchHeight={36} swatchWidth={54} themeId={themeId} />}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Primary shades
+
+<Canvas withSource="none">
+  <Story name="Primary shades">
+    <ThemeWrapper>
+      {({ themeId }) => (
+        <ColorSwatches
+          direction="column"
+          group="primary-shades"
+          labelHeight={20}
+          swatchHeight={36}
+          swatchWidth={54}
+          themeId={themeId}
+        >
+          <PhorkIcon size={24} />
         </ColorSwatches>
       )}
     </ThemeWrapper>
