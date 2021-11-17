@@ -5,7 +5,6 @@ export * from './Card';
 export * from './Divider';
 export * from './Draggable';
 export * from './ErrorBoundary';
-export * from './EventListener';
 export * from './Flex';
 export * from './Footer';
 export * from './Form';
