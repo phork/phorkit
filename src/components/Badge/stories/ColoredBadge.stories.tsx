@@ -162,3 +162,10 @@ ColorP65.args = {
   ...defaultArgs,
   colorId: 'P65' as ThemeColorIds,
 };
+
+export const ColorP70 = Template.bind({});
+ColorP70.storyName = 'Color: P70';
+ColorP70.args = {
+  ...defaultArgs,
+  colorId: 'P70' as ThemeColorIds,
+};

@@ -14,25 +14,6 @@ import { ThemeWrapper } from './helpers/ThemeWrapper';
 
 Clicking on any color block will copy that color ID to your clipboard.
 
-## Primary colors
-
-<Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <ColorSwatches
-        direction="column"
-        group="primary"
-        labelHeight={20}
-        swatchHeight={40}
-        swatchWidth={60}
-        themeId={themeId}
-      >
-        <PhorkIcon size={24} />
-      </ColorSwatches>
-    )}
-  </ThemeWrapper>
-</Playground>
-
 ## Primary accent color
 
 <Playground>
@@ -88,6 +69,33 @@ Clicking on any color block will copy that color ID to your clipboard.
     {({ themeId }) => (
       <ColorSwatches joined group="state" swatchHeight={60} swatchWidth={80} themeId={themeId} variant="neutral">
         <PhorkIcon size={30} />
+      </ColorSwatches>
+    )}
+  </ThemeWrapper>
+</Playground>
+
+### Primary colors
+
+<Playground withSource="none">
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => <ColorSwatches group="primary" swatchHeight={40} swatchWidth={60} themeId={themeId} />}
+  </ThemeWrapper>
+</Playground>
+
+## Primary shades
+
+<Playground>
+  <ThemeWrapper withThemeId>
+    {({ themeId }) => (
+      <ColorSwatches
+        direction="column"
+        group="primary-shades"
+        labelHeight={20}
+        swatchHeight={40}
+        swatchWidth={60}
+        themeId={themeId}
+      >
+        <PhorkIcon size={24} />
       </ColorSwatches>
     )}
   </ThemeWrapper>

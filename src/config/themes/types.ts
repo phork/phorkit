@@ -14,14 +14,15 @@ export type ThemeColorIds =
   | 'P50'
   | 'P55'
   | 'P60'
-  | 'P65';
+  | 'P65'
+  | 'P70';
 
 export type ThemeForegroundIds = 'FG0' | 'FG05' | 'FG10' | 'FG20' | 'FG30' | 'FG40' | 'FG50';
 export type ThemeBackgroundIds = 'BG0' | 'BG05' | 'BG10' | 'BG20' | 'BG30' | 'BG40' | 'BG50';
 
 export type ThemeColorOpacities = '5' | '10' | '20' | '30' | '40' | '50' | '60' | '70' | '80' | '90';
-export type ThemeColorLighten = 'L10' | 'L20' | 'L30' | 'L40';
-export type ThemeColorDarken = 'D10' | 'D20' | 'D30' | 'D40';
+export type ThemeColorLighten = 'L10' | 'L20' | 'L30';
+export type ThemeColorDarken = 'D10' | 'D20' | 'D30';
 
 export type ThemePaletteComponents =
   | 'background'
@@ -69,13 +70,11 @@ export type ThemePrimaryContrastColors = MakeThemePrimaryColors<'contrast'>;
 
 export type ThemePrimaryLightenedColors = MakeThemePrimaryColors<'L10'> &
   MakeThemePrimaryColors<'L20'> &
-  MakeThemePrimaryColors<'L30'> &
-  MakeThemePrimaryColors<'L40'>;
+  MakeThemePrimaryColors<'L30'>;
 
 export type ThemePrimaryDarkenedColors = MakeThemePrimaryColors<'D10'> &
   MakeThemePrimaryColors<'D20'> &
-  MakeThemePrimaryColors<'D30'> &
-  MakeThemePrimaryColors<'D40'>;
+  MakeThemePrimaryColors<'D30'>;
 
 export type ThemeAccentColors = {
   'color-accent': string;
