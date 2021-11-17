@@ -1,4 +1,4 @@
-FROM node:latest as builder
+FROM node:16.13.0 as builder
 
 WORKDIR /opt/app
 COPY . /opt/app/
