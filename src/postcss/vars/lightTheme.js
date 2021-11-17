@@ -205,6 +205,7 @@ const colors = {
     adjustments,
   ),
   ...color.generateOpacityRange(definedColors, ['color-BG0', 'color-FG0', 'color-BG50', 'color-accent']),
+  ...adjustments,
 };
 
 module.exports = colors;
