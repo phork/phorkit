@@ -3,7 +3,6 @@
 'use strict';
 
 const fs = require('fs');
-const path = require('path');
 const chalk = require('chalk');
 const lineByLine = require('n-readlines');
 const writeFileSyncRecursive = require('./utils/write-file');
@@ -35,7 +34,7 @@ const getComponentStyleIncludes = (folder, src) => {
     /**
      * If we've already reached the imports section and
      * the line being read is not an import then we can
-     * assume the imports section is done and exist the
+     * assume the imports section is done and exit the
      * reader.
      */
     } else if (reachedImports) {
