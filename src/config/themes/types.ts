@@ -56,9 +56,9 @@ type MakeThemeLightenDarken<Color extends string> = {
   [Adjustment in ThemeColorLighten | ThemeColorDarken as `color-${Color}-${string & Adjustment}`]: string;
 };
 
-/** @returns 'color-P05-lighten', 'color-P05-darken', etc. */
+/** @returns 'cfg-color-P05-lighten', 'cfg-color-P05-darken', etc. */
 type MakeThemeAdjustments<Direction extends 'lighten' | 'darken'> = {
-  [Color in ThemeColorIds | ThemeAccentColorIds as `color-${Color}-${string & Direction}`]?: string;
+  [Color in ThemeColorIds | ThemeAccentColorIds as `cfg-color-${Color}-${string & Direction}`]?: string;
 };
 
 /** @returns 'primary-palette-background-color', 'primary-palette-border-color', etc. */

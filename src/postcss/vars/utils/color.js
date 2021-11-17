@@ -58,28 +58,28 @@ module.exports = {
     return colors.reduce((acc, color) => {
       if (source[color]) {
         acc[`${color}-L10`] = Color(source[color])
-          .lighten((adjustments?.[`${color}-lighten`] || 0.25) * 1)
+          .lighten((adjustments?.[`cfg-${color}-lighten`] || 0.25) * 1)
           .hex()
           .toLowerCase();
         acc[`${color}-L20`] = Color(source[color])
-          .lighten((adjustments?.[`${color}-lighten`] || 0.25) * 2)
+          .lighten((adjustments?.[`cfg-${color}-lighten`] || 0.25) * 2)
           .hex()
           .toLowerCase();
         acc[`${color}-L30`] = Color(source[color])
-          .lighten((adjustments?.[`${color}-lighten`] || 0.25) * 3)
+          .lighten((adjustments?.[`cfg-${color}-lighten`] || 0.25) * 3)
           .hex()
           .toLowerCase();
 
         acc[`${color}-D10`] = Color(source[color])
-          .darken((adjustments?.[`${color}-darken`] || 0.125) * 1)
+          .darken((adjustments?.[`cfg-${color}-darken`] || 0.125) * 1)
           .hex()
           .toLowerCase();
         acc[`${color}-D20`] = Color(source[color])
-          .darken((adjustments?.[`${color}-darken`] || 0.125) * 2)
+          .darken((adjustments?.[`cfg-${color}-darken`] || 0.125) * 2)
           .hex()
           .toLowerCase();
         acc[`${color}-D30`] = Color(source[color])
-          .darken((adjustments?.[`${color}-darken`] || 0.125) * 3)
+          .darken((adjustments?.[`cfg-${color}-darken`] || 0.125) * 3)
           .hex()
           .toLowerCase();
       }
