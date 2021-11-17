@@ -9,21 +9,30 @@ export const STORAGE_KEY = 'storybook/accentColors';
 const themeId = getThemeId();
 
 export const presetColors = [
-  { color: themes[themeId]['color-P05'], title: 'P05' },
-  { color: themes[themeId]['color-P10'], title: 'P10' },
-  { color: themes[themeId]['color-P15'], title: 'P15' },
-  { color: themes[themeId]['color-P20'], title: 'P20' },
-  { color: themes[themeId]['color-P25'], title: 'P25' },
-  { color: themes[themeId]['color-P30'], title: 'P30' },
-  { color: themes[themeId]['color-P35'], title: 'P35' },
-  { color: themes[themeId]['color-P40'], title: 'P40' },
-  { color: themes[themeId]['color-P45'], title: 'P45' },
-  { color: themes[themeId]['color-P50'], title: 'P50' },
-  { color: themes[themeId]['color-P55'], title: 'P55' },
-  { color: themes[themeId]['color-P60'], title: 'P60' },
-  { color: themes[themeId]['color-P65'], title: 'P65' },
-  { color: themes[themeId]['color-P70'], title: 'P70' },
-];
+  'P05',
+  'P10',
+  'P15',
+  'P20',
+  'P25',
+  'P30',
+  'P35',
+  'P40',
+  'P45',
+  'P50',
+  'P55',
+  'P60',
+  'P65',
+  'P70',
+].map(colorId => ({
+  color: themes[themeId][`color-${colorId}`],
+  title: colorId,
+  lighten: themes[themeId][`color-${colorId}-lighten`],
+  darken: themes[themeId][`color-${colorId}-darken`],
+}));
+
+// use the custom lighten and darken amounts for the preset colors
+const getLighten = src => presetColors.find(({ color }) => color.toLowerCase() === src.toLowerCase())?.lighten || 0.25;
+const getDarken = src => presetColors.find(({ color }) => color.toLowerCase() === src.toLowerCase())?.darken || 0.125;
 
 export const accentColorProps = [
   {
@@ -43,28 +52,54 @@ export const accentColorProps = [
     label: 'Accent color L10',
     description: 'This is a slightly lightened version of the accent color used for things like button hover states.',
     derivedFrom: ['--phork-accent-color'],
-    formula: src => Color(src['--phork-accent-color']).lighten(0.25).hex(),
+    formula: src => Color(src['--phork-accent-color']).lighten(getLighten(src['--phork-accent-color'])).hex(),
   },
   {
     property: '--phork-accent-color-D10',
     label: 'Accent color D10',
     description: 'This is a slightly darkened version of the accent color used for things like button active states.',
     derivedFrom: ['--phork-accent-color'],
-    formula: src => Color(src['--phork-accent-color']).darken(0.125).hex(),
+    formula: src => Color(src['--phork-accent-color']).lighten(getDarken(src['--phork-accent-color'])).hex(),
+  },
+  {
+    property: '--phork-accent-color-L20',
+    label: 'Accent color L20',
+    description: 'This is the accent color lightened by a factor of 2. Reserved for future use.',
+    derivedFrom: ['--phork-accent-color'],
+    formula: src =>
+      Color(src['--phork-accent-color'])
+        .lighten(getLighten(src['--phork-accent-color']) * 2)
+        .hex(),
+  },
+  {
+    property: '--phork-accent-color-D20',
+    label: 'Accent color D20',
+    description: 'This is the accent color darkened by a factor of 2. Reserved for future use.',
+    derivedFrom: ['--phork-accent-color'],
+    formula: src =>
+      Color(src['--phork-accent-color'])
+        .lighten(getDarken(src['--phork-accent-color']) * 2)
+        .hex(),
   },
   {
     property: '--phork-accent-color-L30',
     label: 'Accent color L30',
     description: 'This the accent color lightened by a factor of 3. This is used for the Paper border in dark mode.',
     derivedFrom: ['--phork-accent-color'],
-    formula: src => Color(src['--phork-accent-color']).lighten(0.75).hex(),
+    formula: src =>
+      Color(src['--phork-accent-color'])
+        .lighten(getLighten(src['--phork-accent-color']) * 3)
+        .hex(),
   },
   {
     property: '--phork-accent-color-D30',
     label: 'Accent color D30',
     description: 'This the accent color darkened by a factor of 3. This is used for the Paper borders in light mode.',
     derivedFrom: ['--phork-accent-color'],
-    formula: src => Color(src['--phork-accent-color']).lighten(0.375).hex(),
+    formula: src =>
+      Color(src['--phork-accent-color'])
+        .lighten(getDarken(src['--phork-accent-color']) * 3)
+        .hex(),
   },
   {
     property: '--phork-accent-color-shade',
@@ -108,6 +143,8 @@ export const colorGroups = [
     properties: [
       '--phork-accent-color-L10',
       '--phork-accent-color-D10',
+      '--phork-accent-color-L20',
+      '--phork-accent-color-D20',
       '--phork-accent-color-L30',
       '--phork-accent-color-D30',
       '--phork-accent-color-shade',
