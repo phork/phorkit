@@ -27,7 +27,9 @@ jobs:
           echo "${{ secrets.TRACKING_CODE }}" >> .storybook/manager-head.html
 
       - name: Build storybook
-        run: yarn build-storybook
+        run: |
+          yarn test-output
+          yarn build-storybook
         env:
           STORYBOOK_URL: https://phorkit.org
 

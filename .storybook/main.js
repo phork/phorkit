@@ -1,5 +1,8 @@
 const path = require('path');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const jestResults = require('../.jest-test-results.json');
+
+const hasJestResults = Object.keys(jestResults).length > 0;
 
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -10,9 +13,10 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-postcss',
     '@storybook/addon-a11y',
+    hasJestResults && '@storybook/addon-jest',
     './addons/accentColors/register',
     './addons/theme/register',
-  ],
+  ].filter(Boolean),
   typescript: async config => {
     return {
       ...config,

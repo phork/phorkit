@@ -149,6 +149,10 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  jest: ['IconToast.test.js'],
+};
+
 export const DangerLevel = Template.bind({});
 DangerLevel.storyName = 'Level: Danger';
 DangerLevel.args = {

@@ -237,6 +237,10 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  jest: ['Pagination.test.js'],
+};
+
 export const AsButtons = Template.bind({});
 AsButtons.storyName = 'As buttons';
 AsButtons.args = {

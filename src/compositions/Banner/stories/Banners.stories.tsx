@@ -138,3 +138,7 @@ export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
 };
+
+Default.parameters = {
+  jest: ['Banner.test.js', 'BannerContainer.test.js'],
+};

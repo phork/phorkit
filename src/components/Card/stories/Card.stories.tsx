@@ -124,6 +124,10 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  jest: ['Card.test.js'],
+};
+
 export const Bordered = Template.bind({});
 Bordered.args = {
   ...defaultArgs,

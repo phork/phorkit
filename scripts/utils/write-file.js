@@ -17,4 +17,4 @@ const writeFileSyncRecursive = (filename, content, charset) => {
   fs.writeFileSync(filename, content.trim() + "\n", charset);
 }
 
-module.exports = writeFileSyncRecursive
+module.exports = writeFileSyncRecursive;

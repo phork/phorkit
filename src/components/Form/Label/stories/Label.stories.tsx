@@ -110,6 +110,10 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  jest: ['Label.test.js'],
+};
+
 export const StandardStrength = Template.bind({});
 StandardStrength.storyName = 'Strength: Standard';
 StandardStrength.args = {

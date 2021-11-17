@@ -259,6 +259,10 @@ Default.args = {
   position: 'top-left',
 };
 
+Default.parameters = {
+  jest: ['PortalPopover.test.js'],
+};
+
 export const TopLeftPosition = Template.bind({});
 TopLeftPosition.storyName = 'Position: Top left';
 TopLeftPosition.args = {

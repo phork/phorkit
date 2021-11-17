@@ -241,6 +241,10 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  jest: ['Rhythm.test.js'],
+};
+
 export const Margin = Template.bind({});
 Margin.storyName = 'All margins';
 Margin.args = {

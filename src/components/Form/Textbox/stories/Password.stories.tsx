@@ -368,6 +368,10 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  jest: ['Password.test.js'],
+};
+
 export const UnderlineVariant = Template.bind({});
 UnderlineVariant.storyName = 'Variant: Underline';
 UnderlineVariant.args = {

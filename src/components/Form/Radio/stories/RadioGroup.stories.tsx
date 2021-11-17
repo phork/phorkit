@@ -35,11 +35,6 @@ export default {
         category: 'Appearance',
       },
     },
-    wrap: {
-      table: {
-        category: 'Appearance',
-      },
-    },
 
     name: {
       table: {
@@ -120,12 +115,15 @@ const defaultArgs = {
   size: 'medium' as RadioGroupProps['size'],
   value: 'one',
   variant: 'primary' as RadioGroupProps['variant'],
-  wrap: false,
 };
 
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
+};
+
+Default.parameters = {
+  jest: ['RadioGroup.test.js'],
 };
 
 export const InlineLayout = Template.bind({});

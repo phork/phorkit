@@ -105,6 +105,10 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  jest: ['Avatar.test.js'],
+};
+
 export const Image = Template.bind({});
 Image.storyName = 'With image';
 Image.args = {

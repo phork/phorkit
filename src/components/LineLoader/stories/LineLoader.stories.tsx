@@ -132,6 +132,10 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  jest: ['LineLoader.test.js'],
+};
+
 export const PositionTop = Template.bind({});
 PositionTop.storyName = 'Position: Top';
 PositionTop.args = {

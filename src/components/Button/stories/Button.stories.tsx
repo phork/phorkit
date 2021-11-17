@@ -227,6 +227,10 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  jest: ['Button.test.js'],
+};
+
 export const PrimaryColor = Template.bind({});
 PrimaryColor.storyName = 'Color: Primary';
 PrimaryColor.args = {

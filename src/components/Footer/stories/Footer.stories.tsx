@@ -127,6 +127,10 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  jest: ['Footer.test.js'],
+};
+
 export const Bordered = Template.bind({});
 Bordered.args = {
   ...defaultArgs,

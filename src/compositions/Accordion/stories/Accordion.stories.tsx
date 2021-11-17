@@ -135,6 +135,10 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  jest: ['Accordion.test.js'],
+};
+
 export const VerticalOrientation = Template.bind({});
 VerticalOrientation.storyName = 'Orientation: Vertical';
 VerticalOrientation.args = {

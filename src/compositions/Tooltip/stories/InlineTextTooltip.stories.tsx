@@ -247,6 +247,10 @@ Default.args = {
   width: 100,
 };
 
+Default.parameters = {
+  jest: ['InlineTextTooltip.test.js'],
+};
+
 Default.decorators = [
   (Story, { args: { position } }) => (
     <div

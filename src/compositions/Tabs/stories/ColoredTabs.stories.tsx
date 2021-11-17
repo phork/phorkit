@@ -60,6 +60,10 @@ Default.args = {
   ...defaultArgs,
 };
 
+Default.parameters = {
+  jest: ['ColoredTabs.test.js'],
+};
+
 Default.argTypes = {
   style: { table: { disable: true } },
 };

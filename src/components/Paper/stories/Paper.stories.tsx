@@ -152,6 +152,10 @@ Default.args = {
   color: 'transparent',
 };
 
+Default.parameters = {
+  jest: ['Paper.test.js'],
+};
+
 export const ExtremeColor = Template.bind({});
 ExtremeColor.storyName = 'Color: Extreme';
 ExtremeColor.args = {
