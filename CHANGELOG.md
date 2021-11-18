@@ -1,5 +1,16 @@
 # Changelog
 
+# [13.0.0](https://github.com/phork/phorkit/compare/v12.0.0...v13.0.0) (2021-11-18)
+
+### ♻ Code Refactoring
+
+- **major**: removed EventListener component ([fe4ef27](https://github.com/phork/phorkit/commit/fe4ef27))
+- **major**: updated primary colors, added lime green ([81318a4](https://github.com/phork/phorkit/commit/81318a4))
+
+### ✨ Features
+
+- include theme color adjustments in theme config ([42bd850](https://github.com/phork/phorkit/commit/42bd850))
+
 # [12.0.0](https://github.com/phork/phorkit/compare/v11.0.1...v12.0.0) (2021-11-11)
 
 ### ♻ Code Refactoring
