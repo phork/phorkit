@@ -106,7 +106,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['StyledTextbox.test.js'],
+  jest: ['StyledTextbox.test.js', 'Textbox.test.js'],
 };
 
 Default.argTypes = {

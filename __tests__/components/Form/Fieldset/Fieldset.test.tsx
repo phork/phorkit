@@ -14,6 +14,18 @@ describe('<Fieldset />', () => {
     expect(getByText('Legendary')).toBeTruthy();
   });
 
+  it('should accept the rest of the props', () => {
+    render(
+      <Fieldset className="fieldset" id="fieldset" legend="Legendary" style={{ color: 'red' }} themeId="dark">
+        Hello world
+      </Fieldset>,
+    );
+
+    const fieldset = document.getElementById('fieldset');
+    expect(fieldset?.nodeName).toBe('FIELDSET');
+    expect(fieldset?.style.getPropertyValue('color')).toBe('red');
+  });
+
   it('should accept a ref', () => {
     const ref = React.createRef<HTMLFieldSetElement>();
     const { getByTestId } = render(

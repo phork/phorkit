@@ -55,6 +55,33 @@ describe('<Tag />', () => {
     expect(getByText('Tag me!')).toBeTruthy();
   });
 
+  it('should accept the rest of the props', () => {
+    render(
+      <Tag
+        actionable
+        active
+        contrast
+        flush
+        focused
+        hovered
+        unthemed
+        className="tag"
+        id="tag"
+        shape="brick"
+        size="medium"
+        style={{ color: 'red' }}
+        themeId="dark"
+        weight="solid"
+      >
+        Tag me!
+      </Tag>,
+    );
+
+    const tag = document.getElementById('tag');
+    expect(tag?.nodeName).toBe('BUTTON');
+    expect(tag?.style.getPropertyValue('color')).toBe('red');
+  });
+
   it('should accept a ref', () => {
     const ref = React.createRef<HTMLDivElement>();
     const { getByTestId } = render(

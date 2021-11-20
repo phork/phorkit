@@ -92,7 +92,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['ColoredButton.test.js'],
+  jest: ['ColoredButton.test.js', 'Button.test.js'],
 };
 
 Default.argTypes = {

@@ -26,6 +26,7 @@ export type TextboxGroup2FAProps = MergeElementProps<'div', LocalTextboxGroup2FA
 
 function TextboxGroup2FAContent({
   className,
+  id,
   inputClassName,
   inputStyle,
   inputWidth,
@@ -37,7 +38,7 @@ function TextboxGroup2FAContent({
   variant = 'outline',
   ...props
 }: TextboxGroup2FAProps): JSX.Element | null {
-  const { generateComponentId } = useComponentId();
+  const { generateComponentId } = useComponentId(id);
   const themeId = useThemeId(initThemeId);
   const { items } = useListRegistry<HTMLInputElement>();
   const [looper, setLooper] = useState<string[]>([]);

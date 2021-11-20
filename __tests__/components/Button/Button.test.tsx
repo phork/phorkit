@@ -39,6 +39,16 @@ describe('<Button />', () => {
     expect(getByTestId('button')).toHaveAttribute('type', 'submit');
   });
 
+  it('should focus the button on tab', () => {
+    const { container, getByRole } = render(<Button id="button">Click me!</Button>);
+
+    container.focus();
+    userEvent.tab();
+
+    const button = getByRole('button');
+    expect(button).toHaveFocus();
+  });
+
   it('should be clickable', () => {
     const onClick = jest.fn();
     const { getByRole } = render(<Button onClick={onClick}>Click me!</Button>);
@@ -119,7 +129,7 @@ describe('<Button />', () => {
   });
 
   it('should accept the rest of the props', () => {
-    const { getByText } = render(
+    render(
       <Button
         active
         focused
@@ -129,17 +139,22 @@ describe('<Button />', () => {
         noPadding
         unthemed
         align="left"
-        className="buttonTest"
+        className="button"
         color="primary"
+        id="button"
         shape="brick"
         size="small"
         style={{ color: 'red' }}
+        themeId="dark"
         weight="solid"
       >
         Hello world
       </Button>,
     );
-    expect(getByText('Hello world')).toBeTruthy();
+
+    const button = document.getElementById('button');
+    expect(button?.nodeName).toBe('BUTTON');
+    expect(button?.style.getPropertyValue('color')).toBe('red');
   });
 
   it('should accept a ref', () => {

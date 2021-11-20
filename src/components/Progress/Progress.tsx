@@ -84,14 +84,15 @@ export function Progress({
   };
 
   // only add aria props for single-segment progress bars
-  const ariaProps = data
-    ? undefined
-    : {
-        'aria-valuemax': 100,
-        'aria-valuemin': 0,
-        'aria-valuenow': percent,
-        role: 'progressbar',
-      };
+  const ariaProps =
+    data && data.length > 1
+      ? undefined
+      : {
+          'aria-valuemax': 100,
+          'aria-valuemin': 0,
+          'aria-valuenow': percent,
+          role: 'progressbar',
+        };
 
   return (
     <div

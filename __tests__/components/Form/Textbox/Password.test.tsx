@@ -1,3 +1,5 @@
+import '@testing-library/jest-dom/extend-expect';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Password, NotifiedPassword } from 'lib';
 import { fireEvent, render } from '../../../utils';
@@ -21,7 +23,45 @@ describe('<Password />', () => {
     expect(container.querySelector('input[type=password]')).toBeTruthy();
   });
 
-  it('should fire a change event', () => {
+  it('should focus the input on tab', () => {
+    const { container } = render(
+      <Password id="password" initialType="text" label="Super fantastic label" onChange={() => {}} />,
+    );
+
+    container.focus();
+    userEvent.tab();
+
+    const input = document.getElementById('password');
+    expect(input).toHaveFocus();
+  });
+
+  it('should focus the view toggle on second tab', () => {
+    const { container, getByRole } = render(
+      <Password initialType="text" label="Super fantastic label" onChange={() => {}} />,
+    );
+
+    container.focus();
+    userEvent.tab();
+    userEvent.tab();
+
+    const button = getByRole('button');
+    expect(button).toHaveFocus();
+  });
+
+  it('should toggle the view type', () => {
+    const { container } = render(<Password initialType="password" label="Super fantastic label" onChange={() => {}} />);
+
+    expect(container.querySelector('input[type=password]')).toBeTruthy();
+
+    container.focus();
+    userEvent.tab();
+    userEvent.tab();
+    userEvent.keyboard('[Enter]');
+
+    expect(container.querySelector('input[type=password]')).not.toBeTruthy();
+  });
+
+  it('should trigger the change event', () => {
     const onChange = jest.fn();
     const { container } = render(
       <Password initialType="text" label="Super fantastic label" onChange={onChange} value="my password" />,

@@ -60,7 +60,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['ColoredLineLoader.test.js'],
+  jest: ['ColoredLineLoader.test.js', 'LineLoader.test.js'],
 };
 
 Default.argTypes = {

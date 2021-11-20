@@ -81,7 +81,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['StyledPaper.test.js'],
+  jest: ['StyledPaper.test.js', 'Paper.test.js'],
 };
 
 Default.argTypes = {

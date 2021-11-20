@@ -61,7 +61,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['StyledAvatar.test.js'],
+  jest: ['StyledAvatar.test.js', 'Avatar.test.js'],
 };
 
 Default.argTypes = {

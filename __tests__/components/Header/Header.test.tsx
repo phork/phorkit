@@ -14,11 +14,25 @@ describe('<Header />', () => {
   });
 
   it('should accept the rest of the props', () => {
-    const { getByText } = render(
-      <Header full transparent unthemed bordered="pseudo" className="headerTest" variant="primary" volume="quiet">
+    render(
+      <Header
+        full
+        transparent
+        unthemed
+        bordered="pseudo"
+        className="header"
+        id="header"
+        style={{ color: 'red' }}
+        themeId="dark"
+        variant="primary"
+        volume="quiet"
+      >
         Hello world
       </Header>,
     );
-    expect(getByText('Hello world')).toBeTruthy();
+
+    const header = document.getElementById('header');
+    expect(header?.nodeName).toBe('DIV');
+    expect(header?.style.getPropertyValue('color')).toBe('red');
   });
 });

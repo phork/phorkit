@@ -102,7 +102,7 @@ export function FormboxBase(
     { onBlur, onFocus },
     { alwaysTriggerBlur, alwaysTriggerFocus, persistEvents },
   );
-  const { generateComponentId } = useComponentId(id);
+  const { componentId } = useComponentId(id);
   const translations = useTranslations<FormboxTranslations>({
     customTranslations,
     fallbackTranslations: formboxTranslations,
@@ -123,7 +123,7 @@ export function FormboxBase(
       focused={focused || visuallyFocused}
       hasIconAfter={!!iconAfter}
       hasIconBefore={!!iconBefore}
-      id={generateComponentId()}
+      id={componentId}
       inputWidth={inputWidth}
       label={label}
       onBlur={handleBlur}
@@ -153,7 +153,7 @@ export function FormboxBase(
       )}
       {renderInput({
         focused: focused || visuallyFocused,
-        id: generateComponentId(),
+        id: componentId,
         required,
         variant,
       })}

@@ -62,7 +62,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['StyledSlider.test.js'],
+  jest: ['StyledSlider.test.js', 'Slider.test.js'],
 };
 
 Default.argTypes = {

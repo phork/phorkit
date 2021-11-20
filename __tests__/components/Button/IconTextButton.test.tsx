@@ -1,8 +1,9 @@
 import '@testing-library/jest-dom/extend-expect';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { IconTextButton, TimesIcon } from 'lib';
 import { AsTypeA } from '__mocks__/AsType.mock';
-import { fireEvent, render } from '../../utils';
+import { createEvent, fireEvent, render } from '../../utils';
 
 describe('<IconTextButton />', () => {
   it('should render a button', () => {
@@ -72,6 +73,37 @@ describe('<IconTextButton />', () => {
     fireEvent.click(button);
 
     expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('should trigger on Enter keydown when not a button', () => {
+    const onClick = jest.fn();
+    const { getByRole } = render(
+      <IconTextButton<'div'> as="div" icon={<TimesIcon scale="medium" />} onClick={onClick}>
+        Click me!
+      </IconTextButton>,
+    );
+
+    expect(onClick).not.toHaveBeenCalled();
+
+    const button = getByRole('button');
+    button.focus();
+    userEvent.keyboard('[Enter]');
+
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('should not trigger the link when disabled', () => {
+    const { getByTestId } = render(
+      <IconTextButton disabled data-testid="button" href="#" icon={<TimesIcon scale="medium" />}>
+        Click me!
+      </IconTextButton>,
+    );
+
+    const button = getByTestId('button');
+    const keyDownEvent = createEvent.keyDown(button, { key: 'Enter' });
+    fireEvent(button, keyDownEvent);
+
+    expect(keyDownEvent.defaultPrevented).toBe(true);
   });
 
   it('should render as a button', () => {

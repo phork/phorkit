@@ -105,7 +105,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['StyledButton.test.js'],
+  jest: ['StyledButton.test.js', 'Button.test.js'],
 };
 
 Default.argTypes = {

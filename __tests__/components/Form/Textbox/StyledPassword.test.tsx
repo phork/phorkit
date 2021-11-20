@@ -44,7 +44,7 @@ describe('<StyledPassword />', () => {
     expect(container.querySelector('input[type=password]')).toBeTruthy();
   });
 
-  it('should fire a change event', () => {
+  it('should trigger the change event', () => {
     const onChange = jest.fn();
     const { container } = render(
       <StyledPassword

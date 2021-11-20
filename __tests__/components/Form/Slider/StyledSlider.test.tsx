@@ -21,7 +21,7 @@ describe('<StyledSlider />', () => {
     expect(getByText('Super fantastic label')).toBeTruthy();
   });
 
-  it('should fire a change event', () => {
+  it('should trigger the change event', () => {
     const onChange = jest.fn();
     const { container } = render(
       <StyledSlider max={10} min={0} onChange={onChange} value={4} valuePosition="right" width="100%" {...styles}>

@@ -98,7 +98,7 @@ describe('<Checkbox />', () => {
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][2]).toBe(8);
   });
 
-  it('should focus the container and not the checkbox', () => {
+  it('should focus the container on tab', () => {
     const { container, getByLabelText, getByRole } = render(
       <Checkbox onChange={() => {}}>Super fantastic label</Checkbox>,
     );
@@ -136,12 +136,13 @@ describe('<Checkbox />', () => {
         persistEvents
         reverse
         unthemed
-        className="checkboxTest"
+        className="checkbox"
         id="checkbox"
         inputStyle={{ color: 'red' }}
         onChange={() => {}}
         size="large"
         style={{ color: 'red' }}
+        themeId="dark"
         validity="danger"
         variant="primary"
       >

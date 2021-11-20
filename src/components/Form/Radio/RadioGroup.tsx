@@ -40,6 +40,7 @@ export function RadioGroupBase<V extends RadioValue = string>(
   {
     className,
     contrast = false,
+    id,
     layout = 'inline',
     legend,
     name,
@@ -54,7 +55,7 @@ export function RadioGroupBase<V extends RadioValue = string>(
   forwardedRef: React.ForwardedRef<HTMLFieldSetElement>,
 ): React.ReactElement<RadioGroupProps<V>, 'fieldset'> {
   const themeId = useThemeId(initThemeId);
-  const { generateComponentId } = useComponentId();
+  const { generateComponentId } = useComponentId(id);
 
   const handleChange = useCallback<RadioProps<V>['onChange']>(
     (event, checked) => {
@@ -67,13 +68,13 @@ export function RadioGroupBase<V extends RadioValue = string>(
     <Fieldset className={className} contrast={contrast} legend={legend} ref={forwardedRef} themeId={themeId} {...props}>
       <div className={cx(styles.radioGroup, layout && styles[`radioGroup--${layout}`])}>
         {radios &&
-          radios.map(({ id, label, value: radioValue, ...radioProps }) => (
+          radios.map(({ id: radioId, label, value: radioValue, ...radioProps }) => (
             <Radio<V>
               checked={radioValue === value}
               className={cx(styles.radio, styles[`radio--${layout}`])}
               contrast={contrast}
-              id={generateComponentId(id)}
-              key={id}
+              id={generateComponentId(radioId)}
+              key={radioId}
               name={name}
               onChange={handleChange}
               size={size}

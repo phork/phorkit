@@ -8,4 +8,24 @@ describe('<IconText />', () => {
     expect(container.querySelector('svg')).toBeTruthy();
     expect(getByText('Hello world')).toBeTruthy();
   });
+
+  it('should accept the rest of the props', () => {
+    render(
+      <IconText
+        inline
+        reverse
+        className="iconText"
+        icon={<TimesIcon scale="medium" />}
+        iconClassName="iconTextIcon"
+        id="iconText"
+        style={{ color: 'red' }}
+        text="Hello world"
+        textClassName="iconTextText"
+      />,
+    );
+
+    const iconText = document.getElementById('iconText');
+    expect(iconText?.nodeName).toBe('DIV');
+    expect(iconText?.style.getPropertyValue('color')).toBe('red');
+  });
 });

@@ -14,11 +14,25 @@ describe('<Footer />', () => {
   });
 
   it('should accept the rest of the props', () => {
-    const { getByText } = render(
-      <Footer full transparent unthemed bordered="pseudo" className="footerTest" variant="primary" volume="quiet">
+    render(
+      <Footer
+        full
+        transparent
+        unthemed
+        bordered="pseudo"
+        className="footer"
+        id="footer"
+        style={{ color: 'red' }}
+        themeId="dark"
+        variant="primary"
+        volume="quiet"
+      >
         Hello world
       </Footer>,
     );
-    expect(getByText('Hello world')).toBeTruthy();
+
+    const footer = document.getElementById('footer');
+    expect(footer?.nodeName).toBe('DIV');
+    expect(footer?.style.getPropertyValue('color')).toBe('red');
   });
 });

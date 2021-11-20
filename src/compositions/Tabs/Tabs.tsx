@@ -67,6 +67,7 @@ export function Tabs({
   className,
   contrast = false,
   fullWidth = false,
+  id,
   initialSelected,
   items,
   listProps,
@@ -80,7 +81,7 @@ export function Tabs({
   variant: initVariant = 'primary',
   ...props
 }: TabsProps): JSX.Element {
-  const { componentId } = useComponentId();
+  const { componentId } = useComponentId(id);
   const [focused, setFocused] = useState(false);
   const variant = unstyled ? undefined : initVariant;
 

@@ -30,4 +30,21 @@ describe('<Portal />', () => {
 
     expect(screen.getByText('Hello world')).toBeTruthy();
   });
+
+  it('does not render when hidden', () => {
+    const relativeRef: React.MutableRefObject<HTMLDivElement> = {
+      current: null!,
+    };
+
+    render(
+      <React.Fragment>
+        <div ref={relativeRef}>Relative</div>
+        <Portal container={document.body} position="stacked" relativeRef={relativeRef}>
+          <React.Fragment>Hello world</React.Fragment>
+        </Portal>
+      </React.Fragment>,
+    );
+
+    expect(() => screen.getByText('Hello world')).toThrow();
+  });
 });

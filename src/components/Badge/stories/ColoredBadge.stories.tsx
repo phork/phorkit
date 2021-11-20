@@ -61,7 +61,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['ColoredBadge.test.js'],
+  jest: ['ColoredBadge.test.js', 'Badge.test.js'],
 };
 
 Default.argTypes = {

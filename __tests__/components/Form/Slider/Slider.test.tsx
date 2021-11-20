@@ -1,3 +1,5 @@
+import '@testing-library/jest-dom/extend-expect';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Slider, NotifiedSlider } from 'lib';
 import { fireEvent, render } from '../../../utils';
@@ -12,7 +14,21 @@ describe('<Slider />', () => {
     expect(getByText('Super fantastic label')).toBeTruthy();
   });
 
-  it('should fire a change event', () => {
+  it('should focus the input on tab', () => {
+    const { container, getByTestId } = render(
+      <Slider data-testid="slider" max={10} min={0} onChange={() => {}} value={4} valuePosition="right" width="100%">
+        Super fantastic label
+      </Slider>,
+    );
+
+    container.focus();
+    userEvent.tab();
+
+    const input = getByTestId('slider');
+    expect(input).toHaveFocus();
+  });
+
+  it('should trigger the change event', () => {
     const onChange = jest.fn();
     const { container } = render(
       <Slider max={10} min={0} onChange={onChange} value={4} valuePosition="right" width="100%">

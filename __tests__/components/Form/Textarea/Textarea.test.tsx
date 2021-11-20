@@ -1,3 +1,5 @@
+import '@testing-library/jest-dom/extend-expect';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Textarea, NotifiedTextarea } from 'lib';
 import { fireEvent, render } from '../../../utils';
@@ -8,7 +10,47 @@ describe('<Textarea />', () => {
     expect(getByText('Super fantastic label')).toBeTruthy();
   });
 
-  it('should fire an onChange event', () => {
+  it('should render a textarea with a value', () => {
+    const { container } = render(<Textarea id="textarea" onChange={() => {}} value="Hello world" />);
+
+    const input = document.getElementById('textarea');
+    expect(input).toHaveValue('Hello world');
+    expect(container.querySelector('textarea')).toBeTruthy();
+  });
+
+  it('should render a read only textarea with a value', () => {
+    const { container, getByText } = render(
+      <Textarea readOnly label="Super fantastic label" onChange={() => {}} value="Hello world" />,
+    );
+    expect(container.querySelector('textarea')).not.toBeTruthy();
+    expect(getByText('Hello world')).toBeTruthy();
+  });
+
+  it('should focus the input on tab', () => {
+    const { container } = render(<Textarea id="textarea" label="Super fantastic label" onChange={() => {}} />);
+
+    container.focus();
+    userEvent.tab();
+
+    const input = document.getElementById('textarea');
+    expect(input).toHaveFocus();
+  });
+
+  it('should allow keyboard input', () => {
+    const onChange = jest.fn();
+    const { container } = render(<Textarea label="Super fantastic label" onChange={onChange} />);
+
+    expect(onChange).not.toHaveBeenCalled();
+
+    container.focus();
+    userEvent.tab();
+    userEvent.keyboard('abc');
+
+    expect(onChange).toHaveBeenCalledTimes(3);
+    expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe('c');
+  });
+
+  it('should trigger an onChange event', () => {
     const onChange = jest.fn();
     const { container } = render(<Textarea label="Super fantastic label" onChange={onChange} />);
 

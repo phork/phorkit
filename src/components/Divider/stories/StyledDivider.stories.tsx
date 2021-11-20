@@ -54,7 +54,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['StyledDivider.test.js'],
+  jest: ['StyledDivider.test.js', 'Divider.test.js'],
 };
 
 Default.argTypes = {

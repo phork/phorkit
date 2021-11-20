@@ -85,6 +85,18 @@ describe('<Select />', () => {
     expect(getByText('Choose a color')).toBeTruthy();
   });
 
+  it('should focus the select on tab', () => {
+    const { container } = render(
+      <Select transitional id="select" label="Super fantastic label" onChange={() => {}} options={options} />,
+    );
+
+    container.focus();
+    userEvent.tab();
+
+    const select = document.getElementById('select');
+    expect(select).toHaveFocus();
+  });
+
   it('should be selectable', () => {
     const onChange = jest.fn();
 

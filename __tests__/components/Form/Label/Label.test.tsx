@@ -24,4 +24,28 @@ describe('<Label />', () => {
     expect(getByText('Hello world')).toBeTruthy();
     expect(container.firstChild?.nodeName).toBe('A');
   });
+
+  it('accept the rest of the props', () => {
+    render(
+      <Label
+        contrast
+        disabled
+        focused
+        muted
+        noWrap
+        unthemed
+        className="label"
+        id="label"
+        strength="standard"
+        style={{ color: 'red' }}
+        themeId="dark"
+      >
+        Hello world
+      </Label>,
+    );
+
+    const label = document.getElementById('label');
+    expect(label?.nodeName).toBe('DIV');
+    expect(label?.style.getPropertyValue('color')).toBe('red');
+  });
 });
