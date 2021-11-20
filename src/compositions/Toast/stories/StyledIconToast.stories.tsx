@@ -64,7 +64,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['StyledIconToast.test.js'],
+  jest: ['StyledIconToast.test.js', 'IconToast.test.js'],
 };
 
 Default.argTypes = {

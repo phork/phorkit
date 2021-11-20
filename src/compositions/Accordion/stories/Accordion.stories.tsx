@@ -80,6 +80,11 @@ export default {
         category: 'Uncommon',
       },
     },
+    id: {
+      table: {
+        category: 'Uncommon',
+      },
+    },
     listProps: {
       table: {
         category: 'Uncommon',

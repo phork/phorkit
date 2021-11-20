@@ -21,11 +21,14 @@ describe('<Flex />', () => {
         alignItems="center"
         alignSelf="center"
         direction="row"
+        id="flex"
         justifyContent="center"
       >
         Hello world
       </Flex>,
     );
+
+    expect(document.getElementById('flex')).toBeTruthy();
     expect(getByText('Hello world')).toBeTruthy();
   });
 });

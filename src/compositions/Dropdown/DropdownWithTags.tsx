@@ -82,7 +82,7 @@ export function DropdownWithTags({
   const tagRef = useRef<HTMLButtonElement>(null!);
   const isDropdownOpen = useRef<boolean>(false);
   const previousSelectedIds = useRef<readonly string[]>(state.selectedIds);
-  const { generateComponentId } = useComponentId();
+  const { generateComponentId } = useComponentId(id);
   const themeId = useThemeId(initThemeId);
 
   // don't pass the tag props on to the dropdown, but map them by ID so they can be applied to the tags

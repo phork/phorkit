@@ -67,7 +67,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['ColoredPaper.test.js'],
+  jest: ['ColoredPaper.test.js', 'Paper.test.js'],
 };
 
 Default.argTypes = {

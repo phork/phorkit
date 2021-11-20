@@ -68,6 +68,7 @@ export const InnerNavigation = React.forwardRef<NavigationElementType, InnerNavi
       fullHeight = false,
       fullWidth = false,
       highlightRadius,
+      id,
       items,
       orientation = 'horizontal',
       selectedId,
@@ -85,7 +86,7 @@ export const InnerNavigation = React.forwardRef<NavigationElementType, InnerNavi
     const { getItem } = useListRegistry<HTMLDivElement>();
     const { focused, handleBlur, handleFocus } = useDeepFocus<NavigationElementType>(ref);
     const themeId = useThemeId(initThemeId);
-    const { componentId } = useComponentId();
+    const { componentId } = useComponentId(id);
     const { isInitialized } = useInitializer();
 
     const { focusedIndex, handleItemClick, selectId } =

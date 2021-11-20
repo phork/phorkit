@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Avatar } from 'lib';
 import { AsTypeA } from '__mocks__/AsType.mock';
-import { render } from '../../utils';
+import { fireEvent, render } from '../../utils';
 
 describe('<Avatar />', () => {
   it('should render with initials', () => {
@@ -17,6 +17,13 @@ describe('<Avatar />', () => {
     expect(avatar?.style.getPropertyValue('background-image')).toBe('url(/avatar.png)');
   });
 
+  it('should render a non-actionable avatar', () => {
+    const { getByTestId } = render(<Avatar data-testid="avatar" initials="EC" />);
+    expect(document.body).toHaveFocus();
+    userEvent.tab();
+    expect(getByTestId('avatar')).not.toHaveFocus();
+  });
+
   it('should render an actionable avatar', () => {
     const { getByTestId } = render(<Avatar actionable data-testid="avatar" initials="EC" />);
     expect(document.body).toHaveFocus();
@@ -24,11 +31,29 @@ describe('<Avatar />', () => {
     expect(getByTestId('avatar')).toHaveFocus();
   });
 
-  it('should render a non-actionable avatar', () => {
-    const { getByTestId } = render(<Avatar data-testid="avatar" initials="EC" />);
-    expect(document.body).toHaveFocus();
-    userEvent.tab();
-    expect(getByTestId('avatar')).not.toHaveFocus();
+  it('should be clickable when actionable', () => {
+    const onClick = jest.fn();
+    const { getByTestId } = render(<Avatar actionable data-testid="avatar" initials="EC" onClick={onClick} />);
+
+    expect(onClick).not.toHaveBeenCalled();
+
+    const avatar = getByTestId('avatar');
+    fireEvent.click(avatar);
+
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('should trigger on Enter keydown when actionable', () => {
+    const onClick = jest.fn();
+    const { getByTestId } = render(<Avatar actionable data-testid="avatar" initials="EC" onClick={onClick} />);
+
+    expect(onClick).not.toHaveBeenCalled();
+
+    const avatar = getByTestId('avatar');
+    avatar.focus();
+    userEvent.keyboard('[Enter]');
+
+    expect(onClick).toHaveBeenCalledTimes(1);
   });
 
   it('should render as a div', () => {
@@ -55,5 +80,17 @@ describe('<Avatar />', () => {
   it('should render the contrast colors', () => {
     const { getByText } = render(<Avatar contrast initials="EC" />);
     expect(getByText('EC')).toBeTruthy();
+  });
+
+  it('should accept the rest of the props', () => {
+    render(
+      <Avatar id="avatar" initials="EC" style={{ color: 'red' }} themeId="dark">
+        Beta
+      </Avatar>,
+    );
+
+    const avatar = document.getElementById('avatar');
+    expect(avatar?.nodeName).toBe('DIV');
+    expect(avatar?.style.getPropertyValue('color')).toBe('red');
   });
 });

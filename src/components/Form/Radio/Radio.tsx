@@ -85,7 +85,7 @@ export function RadioBase<V extends RadioValue = string>(
   const inputRef = useRef<HTMLInputElement | null>(null);
   const themeId = useThemeId(initThemeId);
   const [focused, setFocused] = useState(false);
-  const { generateComponentId } = useComponentId(id);
+  const { componentId } = useComponentId(id);
   const color = contrast ? 'contrast' : 'primary';
 
   const combineRefs = makeCombineRefs<HTMLInputElement>(inputRef, forwardedRef);
@@ -123,7 +123,7 @@ export function RadioBase<V extends RadioValue = string>(
         validity && styles[`is-${validity}`],
         className,
       )}
-      htmlFor={generateComponentId()}
+      htmlFor={componentId}
       onFocus={forwardFocus}
       style={style}
       tabIndex={focused || disabled ? -1 : 0}
@@ -136,7 +136,7 @@ export function RadioBase<V extends RadioValue = string>(
           className={styles.radioInput}
           data-type={typeof value}
           disabled={disabled}
-          id={generateComponentId()}
+          id={componentId}
           name={name}
           onBlur={handleBlur}
           onChange={handleChange}

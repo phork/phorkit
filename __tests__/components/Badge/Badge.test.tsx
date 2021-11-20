@@ -33,20 +33,25 @@ describe('<Badge />', () => {
   });
 
   it('should accept the rest of the props', () => {
-    const { getByText } = render(
+    render(
       <Badge
         outlined
         pulsing
         unthemed
-        className="badgeTest"
+        className="badge"
         color="success"
+        id="badge"
         position="top-left"
         shape="label"
         style={{ color: 'red' }}
+        themeId="dark"
       >
         Beta
       </Badge>,
     );
-    expect(getByText('Beta')).toBeTruthy();
+
+    const badge = document.getElementById('badge');
+    expect(badge?.nodeName).toBe('DIV');
+    expect(badge?.style.getPropertyValue('color')).toBe('red');
   });
 });

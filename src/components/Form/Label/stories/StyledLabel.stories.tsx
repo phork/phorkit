@@ -74,7 +74,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['StyledLabel.test.js'],
+  jest: ['StyledLabel.test.js', 'Label.test.js'],
 };
 
 Default.argTypes = {

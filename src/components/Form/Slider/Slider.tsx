@@ -105,7 +105,7 @@ export function SliderBase(
   const [dragged, setDragged] = useState<number>();
   const containerRef = useRef<HTMLElement>(null!);
   const inputRef = useRef<HTMLInputElement>(null!);
-  const { generateComponentId } = useComponentId(id);
+  const { componentId } = useComponentId(id);
   const width = containerRef.current && containerRef.current.offsetWidth;
   const color = !unstyled && (contrast ? 'contrast' : 'primary');
 
@@ -251,7 +251,7 @@ export function SliderBase(
         color && styles[`slider--${color}`],
         className,
       )}
-      htmlFor={generateComponentId()}
+      htmlFor={componentId}
       onFocus={forwardFocus}
       ref={labelRef}
       style={{ width: propWidth }}
@@ -310,7 +310,7 @@ export function SliderBase(
       <input
         className={styles.sliderInput}
         disabled={disabled}
-        id={generateComponentId()}
+        id={componentId}
         max={max}
         min={min}
         name={name}

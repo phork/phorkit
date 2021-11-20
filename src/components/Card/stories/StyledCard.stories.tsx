@@ -72,7 +72,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['StyledCard.test.js'],
+  jest: ['StyledCard.test.js', 'Card.test.js'],
 };
 
 Default.argTypes = {

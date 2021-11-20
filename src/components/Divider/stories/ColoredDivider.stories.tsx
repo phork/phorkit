@@ -59,7 +59,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['ColoredDivider.test.js'],
+  jest: ['ColoredDivider.test.js', 'Divider.test.js'],
 };
 
 Default.argTypes = {

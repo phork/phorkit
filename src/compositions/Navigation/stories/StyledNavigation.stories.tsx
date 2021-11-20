@@ -115,7 +115,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['StyledNavigation.test.js'],
+  jest: ['StyledNavigation.test.js', 'Navigation.test.js'],
 };
 
 Default.argTypes = {

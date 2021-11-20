@@ -53,7 +53,7 @@ export function ToggleBase(
   const themeId = useThemeId(initThemeId);
   const [focused, setFocused] = useState(false);
   const color = contrast ? 'contrast' : 'primary';
-  const { generateComponentId } = useComponentId();
+  const { componentId } = useComponentId(id);
 
   const combineRefs = makeCombineRefs<HTMLInputElement>(inputRef, forwardedRef);
 
@@ -84,7 +84,7 @@ export function ToggleBase(
         focused && styles['is-focused'],
         className,
       )}
-      htmlFor={generateComponentId(id)}
+      htmlFor={componentId}
       onFocus={forwardFocus}
       tabIndex={focused || disabled ? -1 : 0}
       {...props}
@@ -95,7 +95,7 @@ export function ToggleBase(
           checked={checked}
           className={styles.toggleInput}
           disabled={disabled}
-          id={generateComponentId(id)}
+          id={componentId}
           name={name}
           onBlur={handleBlur}
           onChange={handleChange}

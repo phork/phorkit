@@ -27,6 +27,7 @@ export type AccordionProps = Pick<
   ThemeProps & {
     children?: AccordionRenderChildren;
     className?: string;
+    id?: string;
     listProps?: Omit<
       AccordionListProps,
       | 'componentId'
@@ -73,6 +74,7 @@ export function Accordion({
   contrast = false,
   duration,
   easing,
+  id,
   initialSelected,
   items,
   listProps,
@@ -86,7 +88,7 @@ export function Accordion({
   variant: initVariant = 'primary',
   ...props
 }: AccordionProps): JSX.Element {
-  const { componentId } = useComponentId();
+  const { componentId } = useComponentId(id);
   const [focused, setFocused] = useState<boolean>(false);
   const variant = unstyled ? undefined : initVariant;
 

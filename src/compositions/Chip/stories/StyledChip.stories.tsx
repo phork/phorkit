@@ -94,7 +94,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['StyledChip.test.js'],
+  jest: ['StyledChip.test.js', 'Chip.test.js'],
 };
 
 Default.argTypes = {

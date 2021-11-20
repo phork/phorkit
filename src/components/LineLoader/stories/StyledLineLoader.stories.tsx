@@ -58,7 +58,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['StyledLineLoader.test.js'],
+  jest: ['StyledLineLoader.test.js', 'LineLoader.test.js'],
 };
 
 Default.argTypes = {

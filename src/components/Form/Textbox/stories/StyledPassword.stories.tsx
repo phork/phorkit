@@ -101,7 +101,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['StyledPassword.test.js'],
+  jest: ['StyledPassword.test.js', 'Password.test.js'],
 };
 
 Default.argTypes = {

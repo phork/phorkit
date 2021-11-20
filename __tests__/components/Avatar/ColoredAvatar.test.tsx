@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { ColoredAvatar } from 'lib';
 import { AsTypeA } from '__mocks__/AsType.mock';
-import { render } from '../../utils';
+import { fireEvent, render } from '../../utils';
 
 describe('<ColoredAvatar />', () => {
   it('should render with initials', () => {
@@ -19,6 +19,13 @@ describe('<ColoredAvatar />', () => {
     expect(avatar?.style.getPropertyValue('background-image')).toBe('url(/avatar.png)');
   });
 
+  it('should render a non-actionable avatar', () => {
+    const { getByTestId } = render(<ColoredAvatar colorId="P10" data-testid="avatar" initials="EC" />);
+    expect(document.body).toHaveFocus();
+    userEvent.tab();
+    expect(getByTestId('avatar')).not.toHaveFocus();
+  });
+
   it('should render an actionable avatar', () => {
     const { getByTestId } = render(<ColoredAvatar actionable colorId="P10" data-testid="avatar" initials="EC" />);
     expect(document.body).toHaveFocus();
@@ -26,11 +33,33 @@ describe('<ColoredAvatar />', () => {
     expect(getByTestId('avatar')).toHaveFocus();
   });
 
-  it('should render a non-actionable avatar', () => {
-    const { getByTestId } = render(<ColoredAvatar colorId="P10" data-testid="avatar" initials="EC" />);
-    expect(document.body).toHaveFocus();
-    userEvent.tab();
-    expect(getByTestId('avatar')).not.toHaveFocus();
+  it('should be clickable when actionable', () => {
+    const onClick = jest.fn();
+    const { getByTestId } = render(
+      <ColoredAvatar actionable colorId="P10" data-testid="avatar" initials="EC" onClick={onClick} />,
+    );
+
+    expect(onClick).not.toHaveBeenCalled();
+
+    const avatar = getByTestId('avatar');
+    fireEvent.click(avatar);
+
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('should trigger on Enter keydown when actionable', () => {
+    const onClick = jest.fn();
+    const { getByTestId } = render(
+      <ColoredAvatar actionable colorId="P10" data-testid="avatar" initials="EC" onClick={onClick} />,
+    );
+
+    expect(onClick).not.toHaveBeenCalled();
+
+    const avatar = getByTestId('avatar');
+    avatar.focus();
+    userEvent.keyboard('[Enter]');
+
+    expect(onClick).toHaveBeenCalledTimes(1);
   });
 
   it('should render as a div', () => {

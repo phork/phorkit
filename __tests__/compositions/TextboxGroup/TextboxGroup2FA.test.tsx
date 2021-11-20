@@ -10,7 +10,7 @@ describe('<TextboxGroup2FA />', () => {
     expect(textboxes.length).toBe(6);
   });
 
-  it('should fire the onChange event', () => {
+  it('should trigger the change event', () => {
     const onChange = jest.fn();
 
     const { container, rerender } = render(<TextboxGroup2FA length={6} onChange={onChange} value="" />);

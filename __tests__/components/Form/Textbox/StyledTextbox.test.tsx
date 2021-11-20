@@ -19,7 +19,7 @@ describe('<StyledTextbox />', () => {
     expect(getByText('Super fantastic label')).toBeTruthy();
   });
 
-  it('should fire a change event', () => {
+  it('should trigger the change event', () => {
     const onChange = jest.fn();
     const { container } = render(<StyledTextbox label="Super fantastic label" onChange={onChange} {...styles} />);
     expect(onChange).not.toHaveBeenCalled();

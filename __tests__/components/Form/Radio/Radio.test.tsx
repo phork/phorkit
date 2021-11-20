@@ -80,7 +80,7 @@ describe('<Radio />', () => {
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][2]).toBe(8);
   });
 
-  it('should focus the container and not the radio button', () => {
+  it('should focus the container on tab', () => {
     const { container, getByLabelText, getByRole } = render(<Radio onChange={() => {}}>Super fantastic label</Radio>);
 
     const radio = getByRole('radio');
@@ -115,12 +115,13 @@ describe('<Radio />', () => {
         persistEvents
         reverse
         unthemed
-        className="radioTest"
+        className="radio"
         id="radio"
         inputStyle={{ color: 'red' }}
         onChange={() => {}}
         size="large"
         style={{ color: 'red' }}
+        themeId="dark"
         validity="danger"
         variant="primary"
       >

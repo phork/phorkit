@@ -26,4 +26,23 @@ describe('<Loader />', () => {
     expect(getByTitle('Loading...').parentElement).toHaveAttribute('width', '16px');
     expect(getByTitle('Loading...').parentElement).toHaveAttribute('height', '16px');
   });
+
+  it('should accept the rest of the props', () => {
+    render(
+      <Loader
+        contrast
+        unthemed
+        className="loader"
+        id="loader"
+        position="fixed"
+        style={{ color: 'red' }}
+        themeId="dark"
+        translations={{ loadingLabel: 'Test label' }}
+      />,
+    );
+
+    const loader = document.getElementById('loader');
+    expect(loader?.nodeName).toBe('DIV');
+    expect(loader?.style.getPropertyValue('color')).toBe('red');
+  });
 });

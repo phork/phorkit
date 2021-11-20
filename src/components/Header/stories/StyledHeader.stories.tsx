@@ -65,7 +65,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['StyledHeader.test.js'],
+  jest: ['StyledHeader.test.js', 'Header.test.js'],
 };
 
 Default.argTypes = {

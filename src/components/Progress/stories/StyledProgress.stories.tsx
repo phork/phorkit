@@ -66,7 +66,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['StyledProgress.test.js'],
+  jest: ['StyledProgress.test.js', 'Progress.test.js'],
 };
 
 Default.argTypes = {

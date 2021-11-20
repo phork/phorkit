@@ -64,6 +64,12 @@ const defaultArgs = {
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
+  size: undefined,
+  color: undefined,
+  style: {
+    '--triangle-size': '30px',
+    '--triangle-color': 'currentColor',
+  } as React.CSSProperties,
 };
 
 Default.parameters = {

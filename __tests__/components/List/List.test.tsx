@@ -39,6 +39,36 @@ describe('<List />', () => {
     expect(container.firstChild?.nodeName).toBe('DIV');
   });
 
+  it('should accept the rest of the props', () => {
+    render(
+      <List
+        contrast
+        focused
+        hideFocusOutline
+        inactive
+        inline
+        mimicSelectOnFocus
+        rounded
+        scrollable
+        transparent
+        unstyled
+        unthemed
+        className="list"
+        color="neutral"
+        id="list"
+        items={items}
+        size="large"
+        style={{ color: 'red' }}
+        themeId="dark"
+        variant="divided"
+      />,
+    );
+
+    const list = document.getElementById('list');
+    expect(list?.nodeName).toBe('UL');
+    expect(list?.style.getPropertyValue('color')).toBe('red');
+  });
+
   it('should accept a ref', () => {
     const ref = React.createRef<HTMLUListElement>();
     const { getByTestId } = render(<List data-testid="list" items={items} ref={ref} variant="bordered" />);

@@ -65,7 +65,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['ColoredTag.test.js'],
+  jest: ['ColoredTag.test.js', 'Tag.test.js'],
 };
 
 Default.argTypes = {

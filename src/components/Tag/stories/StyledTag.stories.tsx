@@ -78,7 +78,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['StyledTag.test.js'],
+  jest: ['StyledTag.test.js', 'Tag.test.js'],
 };
 
 Default.argTypes = {

@@ -1,3 +1,5 @@
+import '@testing-library/jest-dom/extend-expect';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Toggle, NotifiedToggle } from 'lib';
 import { fireEvent, render } from '../../../utils';
@@ -8,7 +10,7 @@ describe('<Toggle />', () => {
     expect(getByText('Super fantastic label')).toBeTruthy();
   });
 
-  it('should fire a change event', () => {
+  it('should trigger the change event', () => {
     const onChange = jest.fn();
     const { container } = render(<Toggle onChange={onChange}>Super fantastic label</Toggle>);
 
@@ -16,6 +18,77 @@ describe('<Toggle />', () => {
 
     const toggle = container.querySelector('input');
     toggle && fireEvent.click(toggle);
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe(true);
+  });
+
+  it('should focus the input on tab', () => {
+    const { container } = render(
+      <Toggle id="toggle" onChange={() => {}}>
+        Super fantastic label
+      </Toggle>,
+    );
+
+    container.focus();
+    userEvent.tab();
+
+    const input = document.getElementById('toggle');
+    expect(input).toHaveFocus();
+  });
+
+  it('should toggle to checked on click', () => {
+    const onChange = jest.fn();
+    const { getByTestId } = render(
+      <Toggle data-testid="toggle" onChange={onChange}>
+        Super fantastic label
+      </Toggle>,
+    );
+
+    expect(onChange).not.toHaveBeenCalled();
+
+    const toggle = getByTestId('toggle');
+    toggle && fireEvent.click(toggle);
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe(true);
+  });
+
+  it('should toggle to unchecked on click', () => {
+    const onChange = jest.fn();
+    const { getByTestId } = render(
+      <Toggle checked data-testid="toggle" onChange={onChange}>
+        Super fantastic label
+      </Toggle>,
+    );
+
+    expect(onChange).not.toHaveBeenCalled();
+
+    const toggle = getByTestId('toggle');
+    toggle && fireEvent.click(toggle);
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe(false);
+  });
+
+  it('should toggle to checked on space', () => {
+    const onChange = jest.fn();
+    const { container } = render(
+      <Toggle id="toggle" onChange={onChange}>
+        Super fantastic label
+      </Toggle>,
+    );
+
+    expect(onChange).not.toHaveBeenCalled();
+
+    container.focus();
+    userEvent.tab();
+
+    const input = document.getElementById('toggle');
+    if (input) {
+      input.focus();
+      userEvent.keyboard('[Space]');
+    }
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe(true);

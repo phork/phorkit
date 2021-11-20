@@ -89,7 +89,7 @@ export function CheckboxBase<V extends CheckboxValue = string>(
   const inputRef = useRef<HTMLInputElement | null>(null);
   const themeId = useThemeId(initThemeId);
   const [focused, setFocused] = useState<boolean>(false);
-  const { generateComponentId } = useComponentId(id);
+  const { componentId } = useComponentId(id);
   const color = contrast ? 'contrast' : 'primary';
 
   const combineRefs = makeCombineRefs<HTMLInputElement>(inputRef, forwardedRef, element => {
@@ -130,7 +130,7 @@ export function CheckboxBase<V extends CheckboxValue = string>(
         validity && styles[`is-${validity}`],
         className,
       )}
-      htmlFor={generateComponentId()}
+      htmlFor={componentId}
       onFocus={forwardFocus}
       style={style}
       tabIndex={focused || disabled ? -1 : 0}
@@ -143,7 +143,7 @@ export function CheckboxBase<V extends CheckboxValue = string>(
           className={styles.checkboxInput}
           data-type={typeof value}
           disabled={disabled}
-          id={generateComponentId()}
+          id={componentId}
           name={name}
           onBlur={handleBlur}
           onChange={handleChange}

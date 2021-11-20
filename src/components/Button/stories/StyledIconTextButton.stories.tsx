@@ -106,7 +106,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['StyledIconTextButton.test.js'],
+  jest: ['StyledIconTextButton.test.js', 'IconTextButton.test.js'],
 };
 
 Default.argTypes = {

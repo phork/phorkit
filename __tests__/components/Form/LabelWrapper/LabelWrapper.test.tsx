@@ -29,4 +29,25 @@ describe('<LabelWrapper />', () => {
     expect(getByRole('textbox')).toBeTruthy();
     expect(container.firstChild?.nodeName).toBe('A');
   });
+
+  it('should accept the rest of the props', () => {
+    render(
+      <LabelWrapper
+        reverse
+        spread
+        className="labelWrapper"
+        id="labelWrapper"
+        input={<input type="text" />}
+        inputWidth={100}
+        label={<div>Hello world</div>}
+        labelWidth={100}
+        orientation="vertical"
+        style={{ color: 'red' }}
+      />,
+    );
+
+    const labelWrapper = document.getElementById('labelWrapper');
+    expect(labelWrapper?.nodeName).toBe('DIV');
+    expect(labelWrapper?.style.getPropertyValue('color')).toBe('red');
+  });
 });

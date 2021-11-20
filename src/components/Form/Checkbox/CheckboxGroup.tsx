@@ -40,6 +40,7 @@ export function CheckboxGroupBase<V extends CheckboxValue = string>(
     checkboxes,
     className,
     contrast = false,
+    id,
     layout = 'inline',
     legend,
     onChange,
@@ -52,7 +53,7 @@ export function CheckboxGroupBase<V extends CheckboxValue = string>(
   forwardedRef: React.ForwardedRef<HTMLFieldSetElement>,
 ): React.ReactElement<CheckboxGroupProps<V>, 'fieldset'> {
   const themeId = useThemeId(initThemeId);
-  const { generateComponentId } = useComponentId();
+  const { generateComponentId } = useComponentId(id);
 
   const handleChange = useCallback<CheckboxProps<V>['onChange']>(
     (event, checked, value) => {
@@ -75,13 +76,13 @@ export function CheckboxGroupBase<V extends CheckboxValue = string>(
     <Fieldset className={className} contrast={contrast} legend={legend} ref={forwardedRef} themeId={themeId} {...props}>
       <div className={cx(styles.checkboxGroup, layout && styles[`checkboxGroup--${layout}`])}>
         {checkboxes &&
-          checkboxes.map(({ id, label, value: checkboxValue, ...checkboxProps }) => (
+          checkboxes.map(({ id: checkboxId, label, value: checkboxValue, ...checkboxProps }) => (
             <Checkbox<V>
               checked={values?.includes(checkboxValue)}
               className={cx(styles.checkbox, styles[`checkbox--${layout}`])}
               contrast={contrast}
-              id={generateComponentId(id)}
-              key={id}
+              id={generateComponentId(checkboxId)}
+              key={checkboxId}
               onChange={handleChange}
               size={size}
               themeId={themeId}

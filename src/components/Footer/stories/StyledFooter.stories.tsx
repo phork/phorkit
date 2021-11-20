@@ -65,7 +65,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['StyledFooter.test.js'],
+  jest: ['StyledFooter.test.js', 'Footer.test.js'],
 };
 
 Default.argTypes = {

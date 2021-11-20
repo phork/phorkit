@@ -67,7 +67,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['StyledLink.test.js'],
+  jest: ['StyledLink.test.js', 'Link.test.js'],
 };
 
 Default.argTypes = {
