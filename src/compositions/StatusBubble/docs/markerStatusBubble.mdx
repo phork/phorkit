@@ -1,0 +1,325 @@
+---
+name: MarkerStatusBubble
+menu: Display
+route: /compositions/MarkerStatusBubble
+---
+
+import { Playground, Props } from 'docz';
+import { Avatar } from 'components/Avatar';
+import { Divider } from 'components/Divider';
+import { Paper } from 'components/Paper';
+import { Rhythm } from 'components/Rhythm';
+import { Typography } from 'components/Typography';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { MarkerStatusBubble } from '../index';
+
+<PageTitle src="compositions/StatusBubble" title="MarkerStatusBubble" />
+
+## Neutral status bubble
+
+<Playground>
+  <ThemeWrapper>
+    <MarkerStatusBubble
+      color="neutral"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </MarkerStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Primary status bubble
+
+<Playground>
+  <ThemeWrapper>
+    <MarkerStatusBubble
+      color="primary"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </MarkerStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Success status bubble
+
+<Playground>
+  <ThemeWrapper>
+    <MarkerStatusBubble
+      color="success"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </MarkerStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Warning status bubble
+
+<Playground>
+  <ThemeWrapper>
+    <MarkerStatusBubble
+      color="warning"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </MarkerStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Danger status bubble
+
+<Playground>
+  <ThemeWrapper>
+    <MarkerStatusBubble
+      color="danger"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </MarkerStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Right top
+
+<Playground>
+  <ThemeWrapper>
+    <MarkerStatusBubble
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      position="right-top"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </MarkerStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Left top
+
+<Playground>
+  <ThemeWrapper>
+    <MarkerStatusBubble
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      position="left-top"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </MarkerStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Right center
+
+<Playground>
+  <ThemeWrapper>
+    <MarkerStatusBubble
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      position="right-center"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </MarkerStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Left center
+
+<Playground>
+  <ThemeWrapper>
+    <MarkerStatusBubble
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      position="left-center"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </MarkerStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Right bottom
+
+<Playground>
+  <ThemeWrapper>
+    <MarkerStatusBubble
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      position="right-bottom"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </MarkerStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Left bottom
+
+<Playground>
+  <ThemeWrapper>
+    <MarkerStatusBubble
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      position="left-bottom"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </MarkerStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## With an avatar
+
+<Playground>
+  <ThemeWrapper>
+    <MarkerStatusBubble
+      color="neutral"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </MarkerStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## No header
+
+<Playground>
+  <ThemeWrapper>
+    <MarkerStatusBubble color="primary" style={{ maxWidth: 400 }}>
+      <React.Fragment>
+        <Paper color="primary">
+          <Rhythm grouped px={4} py={3}>
+            <div>Hello world</div>
+            <div>Hello world</div>
+            <div>Hello world</div>
+          </Rhythm>
+        </Paper>
+        <Divider volume="quieter" />
+        <Paper color="secondary">
+          <Rhythm grouped px={4} py={3}>
+            <div>Hello world</div>
+          </Rhythm>
+        </Paper>
+      </React.Fragment>
+    </MarkerStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## No children
+
+<Playground>
+  <ThemeWrapper>
+    <MarkerStatusBubble
+      color="neutral"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      style={{ maxWidth: 400 }}
+    />
+  </ThemeWrapper>
+</Playground>
+
+## No triangle
+
+<Playground>
+  <ThemeWrapper>
+    <MarkerStatusBubble
+      color="neutral"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      style={{ maxWidth: 400 }}
+      triangleBorderColor="transparent"
+      triangleColor="transparent"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </MarkerStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## \[props\]
+
+<Props of={MarkerStatusBubble} />

@@ -1,24 +1,27 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { HorizontalPositionEdge, SemanticColor, ThemeProps } from '../../types';
+import { HorizontalPositionCentered, HorizontalPositionEdge, SemanticColor, ThemeProps } from '../../types';
 import { ThemeColors, themes } from '../../config';
 import { useThemeId } from '../../context/Theme';
 import { lowerCamelize } from '../../utils/case';
-import { getPositionOffset } from '../../utils/getPositionOffset';
+import { getPositionOffset, Offset } from '../../utils/getPositionOffset';
 import { Shade } from '../../components/Shade/Shade';
 import { TooltipContent } from '../Tooltip/TooltipContent';
 import styles from './styles/StatusBubble.module.css';
 
-export type StatusBubbleIconShape = 'circle' | 'square';
+const defaultOffset = {
+  horizontal: 0,
+  vertical: 18,
+};
 
 export type StatusBubbleProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> &
   Omit<ThemeProps, 'contrast'> & {
+    anchor: React.ReactElement;
     children?: React.ReactNode;
     color?: SemanticColor;
     header?: React.ReactNode;
-    icon: React.ReactElement;
-    iconShape?: StatusBubbleIconShape;
-    position?: HorizontalPositionEdge;
+    offset?: Offset;
+    position?: HorizontalPositionCentered | HorizontalPositionEdge;
     style?: React.CSSProperties;
     /** An optional override of the bubble pointer border color */
     triangleBorderColor?: string;
@@ -43,11 +46,12 @@ const getTriangleBorderColor = (
 };
 
 export function StatusBubble({
+  anchor,
   children,
+  className,
   color = 'neutral',
   header,
-  icon,
-  iconShape = 'square',
+  offset: initOffset = defaultOffset,
   position = 'right-top',
   themeId: initThemeId,
   triangleBorderColor,
@@ -55,7 +59,7 @@ export function StatusBubble({
   unthemed,
   ...props
 }: StatusBubbleProps): JSX.Element {
-  const offset = getPositionOffset(position, { vertical: 18 });
+  const offset = getPositionOffset(position, initOffset);
   const themeId = useThemeId(initThemeId);
 
   return (
@@ -65,10 +69,11 @@ export function StatusBubble({
         styles[`statusBubble--${lowerCamelize(position)}`],
         styles[`statusBubble--${color}`],
         themeId && !unthemed && styles[`statusBubble--${themeId}`],
+        className,
       )}
       {...props}
     >
-      <div className={cx(styles.statusBubbleIcon, styles[`statusBubbleIcon--${iconShape}`])}>{icon}</div>
+      {anchor}
       <TooltipContent
         offset={offset}
         position={position}

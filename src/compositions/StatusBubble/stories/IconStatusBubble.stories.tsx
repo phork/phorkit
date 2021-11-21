@@ -8,11 +8,11 @@ import { Paper } from 'components/Paper';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { StatusBubble, StatusBubbleProps } from '../StatusBubble';
+import { IconStatusBubble, IconStatusBubbleProps } from '../IconStatusBubble';
 
 export default {
-  title: 'Display/StatusBubble',
-  component: StatusBubble,
+  title: 'Display/StatusBubble/IconStatusBubble',
+  component: IconStatusBubble,
   argTypes: {
     children: {
       control: {
@@ -111,7 +111,7 @@ export default {
     docs: {
       page: () => (
         <React.Fragment>
-          <PageTitle src="compositions/StatusBubble" title="StatusBubble" />
+          <PageTitle src="compositions/StatusBubble" title="IconStatusBubble" />
           <Subtitle />
           <Description />
           <Primary />
@@ -121,12 +121,12 @@ export default {
       ),
     },
   },
-} as ComponentMeta<typeof StatusBubble>;
+} as ComponentMeta<typeof IconStatusBubble>;
 
 const Template: ComponentStory<
-  (args: Omit<StatusBubbleProps, 'icon'> & { icon: 'icon' | 'avatar' }) => ReturnType<typeof StatusBubble>
+  (args: Omit<IconStatusBubbleProps, 'icon'> & { icon: 'icon' | 'avatar' }) => ReturnType<typeof IconStatusBubble>
 > = ({ icon = 'icon', iconShape, ...args }) => (
-  <StatusBubble
+  <IconStatusBubble
     icon={
       icon === 'avatar' ? (
         <Avatar imgSrc="/images/avatar.jpg" initials="EC" size="large" />
@@ -145,7 +145,7 @@ const defaultArgs = {
       <Rhythm p={4}>Hello world</Rhythm>
     </Paper>
   ),
-  color: 'neutral' as StatusBubbleProps['color'],
+  color: 'neutral' as IconStatusBubbleProps['color'],
   header: (
     <React.Fragment>
       <Rhythm mr={2}>
@@ -156,8 +156,8 @@ const defaultArgs = {
       </Rhythm>
     </React.Fragment>
   ),
-  iconShape: 'square' as StatusBubbleProps['iconShape'],
-  position: 'right-top' as StatusBubbleProps['position'],
+  iconShape: 'square' as IconStatusBubbleProps['iconShape'],
+  position: 'right-top' as IconStatusBubbleProps['position'],
   unthemed: false,
 };
 
@@ -212,6 +212,13 @@ LeftTopPosition.args = {
   position: 'left-top',
 };
 
+export const LeftCenterPosition = Template.bind({});
+LeftCenterPosition.storyName = 'Position: Left center';
+LeftCenterPosition.args = {
+  ...defaultArgs,
+  position: 'left-center',
+};
+
 export const LeftBottomPosition = Template.bind({});
 LeftBottomPosition.storyName = 'Position: Left bottom';
 LeftBottomPosition.args = {
@@ -224,6 +231,13 @@ RightTopPosition.storyName = 'Position: Right top';
 RightTopPosition.args = {
   ...defaultArgs,
   position: 'right-top',
+};
+
+export const RightCenterPosition = Template.bind({});
+RightCenterPosition.storyName = 'Position: Right center';
+RightCenterPosition.args = {
+  ...defaultArgs,
+  position: 'right-center',
 };
 
 export const RightBottomPosition = Template.bind({});
