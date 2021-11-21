@@ -1,0 +1,50 @@
+---
+name: Timeline
+menu: Display
+route: /compositions/Timeline
+---
+
+import { Playground, Props } from 'docz';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { Timeline } from '../index';
+import { items } from './helpers/items';
+
+<PageTitle src="compositions/Timeline" title="Timeline" />
+
+## Right side timeline
+
+<Playground>
+  <ThemeWrapper>
+    <Timeline items={items} />
+  </ThemeWrapper>
+</Playground>
+
+## Left side timeline
+
+<Playground>
+  <ThemeWrapper>
+    <Timeline items={items.map(item => ({ ...item, position: 'left-center' }))} />
+  </ThemeWrapper>
+</Playground>
+
+## Both sides timeline
+
+<Playground>
+  <ThemeWrapper>
+    <Timeline
+      items={items.map((item, i) => ({
+        ...item,
+        position: i % 2 ? 'left-center' : 'right-center',
+        style: {
+          width: 180,
+          [i % 2 ? 'marginRight' : 'marginLeft']: 167,
+        },
+      }))}
+    />
+  </ThemeWrapper>
+</Playground>
+
+## \[props\]
+
+<Props of={Timeline} />
