@@ -8,18 +8,28 @@ import styles from './styles/Timeline.module.css';
 export type TimelineItemProps = MarkerStatusBubbleProps & {
   first?: boolean;
   last?: boolean;
+  width?: number;
 };
 
+/**
+ * A timeline item is a special status bubble pointing
+ * towards a marker that is positioned in the Timeline.
+ *
+ * This uses the `MarkerStatusBubble` component.
+ */
 export function TimelineItem({
   className,
   first,
   last,
   themeId: initThemeId,
   position = 'right-center',
+  style: initStyle,
   unthemed,
+  width,
   ...props
 }: TimelineItemProps): JSX.Element {
   const themeId = useThemeId(initThemeId);
+  const style = width !== undefined ? { ...initStyle, width } : initStyle;
 
   return (
     <MarkerStatusBubble
@@ -34,6 +44,7 @@ export function TimelineItem({
       )}
       markerClassName={styles['timelineItemMarker']}
       position={position}
+      style={style}
       themeId={themeId}
       unthemed={unthemed}
       {...props}

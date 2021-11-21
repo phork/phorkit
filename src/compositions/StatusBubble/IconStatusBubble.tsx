@@ -10,6 +10,15 @@ export type IconStatusBubbleProps = Omit<StatusBubbleProps, 'anchor' | 'offset'>
   iconShape?: StatusBubbleIconShape;
 };
 
+/**
+ * The icon status bubble is a status bubble that
+ * uses an icon as its marker. The icon isn't limited
+ * to just SVG components and can also be something
+ * like an avatar.
+ *
+ * This uses the `Shade` and `TooltipContent`
+ * components.
+ */
 export function IconStatusBubble({ icon, iconShape = 'square', ...props }: IconStatusBubbleProps): JSX.Element {
   return (
     <StatusBubble

@@ -1,4 +1,6 @@
 .timeline {
+  display: flex;
+  flex-direction: column;
   position: relative;
 
   @mixin themed {
@@ -7,7 +9,12 @@
   }
 }
 
+.timeline--straddled {
+  flex: none;
+}
+
 .timelineItem {
+  flex: none;
   position: relative;
 
   & + .timelineItem {
@@ -53,6 +60,10 @@
   &:before {
     left: 6px;
   }
+
+  .timeline--straddled & {
+    align-self: flex-end;
+  }
 }
 
 .timelineItem--leftBottom,
@@ -60,6 +71,10 @@
 .timelineItem--leftTop {
   &:before {
     right: 6px;
+  }
+
+  .timeline--straddled & {
+    align-self: flex-start;
   }
 }
 

@@ -26,8 +26,23 @@ const items = [
 ];
 
 describe('<Timeline />', () => {
-  it('should render', () => {
-    const { queryAllByText } = render(<Timeline items={items}>Hello world</Timeline>);
-    expect(queryAllByText('Hello world').length).toBe(4);
+  it('should render multiple timeline items', () => {
+    const { getAllByText } = render(<Timeline items={items} />);
+    expect(getAllByText('Hello world').length).toBe(4);
+  });
+
+  it('should accept the rest of the props', () => {
+    render(<Timeline className="timeline" id="timeline" items={items} style={{ color: 'red' }} themeId="dark" />);
+
+    const timeline = document.getElementById('timeline');
+    expect(timeline?.nodeName).toBe('DIV');
+    expect(timeline?.style.getPropertyValue('color')).toBe('red');
+  });
+
+  it('should accept a ref', () => {
+    const ref = React.createRef<HTMLDivElement>();
+    const { getByTestId } = render(<Timeline data-testid="timeline" items={items} ref={ref} />);
+
+    expect(getByTestId('timeline')).toBe(ref.current);
   });
 });

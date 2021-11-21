@@ -45,6 +45,13 @@ const getTriangleBorderColor = (
   return themes[themeId][`color-${color}` as keyof ThemeColors] as string;
 };
 
+/**
+ * The status bubble is a colored text bubble that
+ * points towards its anchor.
+ *
+ * This uses the `Shade` and `TooltipContent`
+ * components.
+ */
 export function StatusBubble({
   anchor,
   children,

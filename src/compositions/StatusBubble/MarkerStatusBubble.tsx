@@ -9,6 +9,14 @@ export type MarkerStatusBubbleProps = Omit<StatusBubbleProps, 'anchor' | 'offset
   markerStyle?: React.CSSProperties;
 };
 
+/**
+ * The marker status bubble is a status bubble that
+ * uses a marker as its anchor. A marker is a small
+ * outlined circle.
+ *
+ * This uses the `Shade` and `TooltipContent`
+ * components.
+ */
 export function MarkerStatusBubble({
   fillMarker,
   markerClassName,
