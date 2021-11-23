@@ -86,4 +86,13 @@ module.exports = {
       return acc;
     }, {});
   },
+
+  generateShade: (source, colors, backgroundColor) => {
+    return colors.reduce((acc, color) => {
+      if (source[color]) {
+        acc[`${color}-shade`] = Color(source[color]).alpha(0.15).mix(Color(backgroundColor)).hex();
+      }
+      return acc;
+    }, {});
+  },
 };

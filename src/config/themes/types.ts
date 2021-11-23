@@ -83,6 +83,8 @@ export type ThemePrimaryDarkenedColors = MakeThemePrimaryColors<'D10'> &
   MakeThemePrimaryColors<'D20'> &
   MakeThemePrimaryColors<'D30'>;
 
+export type ThemePrimaryShadeColors = MakeThemePrimaryColors<'shade'>;
+
 export type ThemeAccentColors = {
   'color-accent': string;
   'color-accent-contrast': string;
@@ -150,6 +152,7 @@ export type ThemeColors = ThemeForegroundColors &
   ThemePrimaryColors &
   ThemePrimaryContrastColors &
   ThemePrimaryLightenedColors &
+  ThemePrimaryShadeColors &
   ThemePrimaryDarkenedColors &
   ThemeAccentColors &
   ThemeSuccessColors &

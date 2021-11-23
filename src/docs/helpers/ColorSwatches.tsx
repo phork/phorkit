@@ -63,7 +63,7 @@ export function ColorSwatches({
       const colorGrid = Object.keys(getPrimaryColors(themeId))
         .sort((a, b) => +a.replace(/[^\d]/g, '') - +b.replace(/[^\d]/g, ''))
         .map((root: string) => ({
-          colors: ['L30', 'L20', 'L10', undefined, 'D10', 'D20', 'D30'].map(shade =>
+          colors: ['shade', 'L30', 'L20', 'L10', undefined, 'D10', 'D20', 'D30'].map(shade =>
             mapColors(root, shade, shade ? { children: shade } : undefined),
           ),
           label: root.replace('color-', ''),

@@ -83,23 +83,18 @@ const adjustments = {
 const accentColors = {
   'color-accent': primaryColors['color-P55'],
   'color-accent-contrast': primaryContrastColors['color-P50-contrast'],
-  'color-accent-shade': '#e6effa',
 
   'color-success': primaryColors['color-P45'],
   'color-success-contrast': primaryContrastColors['color-P45-contrast'],
-  'color-success-shade': '#f2f8ec',
 
   'color-warning': primaryColors['color-P25'],
   'color-warning-contrast': primaryContrastColors['color-P25-contrast'],
-  'color-warning-shade': '#fff4e7',
 
   'color-danger': primaryColors['color-P15'],
   'color-danger-contrast': primaryContrastColors['color-P15-contrast'],
-  'color-danger-shade': '#ffebeb',
 
   'color-neutral': primaryColors['color-P00'],
   'color-neutral-contrast': primaryContrastColors['color-P00-contrast'],
-  'color-neutral-shade': '#f3f3f3',
 };
 
 adjustments['cfg-color-accent-lighten'] = adjustments['cfg-color-P55-lighten'];
@@ -203,6 +198,11 @@ const colors = {
     definedColors,
     ['color-accent', 'color-success', 'color-warning', 'color-danger', 'color-neutral', ...Object.keys(primaryColors)],
     adjustments,
+  ),
+  ...color.generateShade(
+    definedColors,
+    ['color-accent', 'color-success', 'color-warning', 'color-danger', 'color-neutral', ...Object.keys(primaryColors)],
+    paletteColors['extreme-palette-background-color'],
   ),
   ...color.generateOpacityRange(definedColors, ['color-BG0', 'color-FG0', 'color-BG50', 'color-accent']),
   ...adjustments,

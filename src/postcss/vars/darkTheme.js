@@ -77,27 +77,21 @@ const adjustments = {
   'cfg-color-P35-darken': 0.08,
 };
 
-// shade color is the accent color at .1 opacity flattened on the extreme background color
 const accentColors = {
   'color-accent': primaryColors['color-P55'],
   'color-accent-contrast': primaryContrastColors['color-P55-contrast'],
-  'color-accent-shade': '#0c1d27',
 
   'color-success': primaryColors['color-P45'],
   'color-success-contrast': primaryContrastColors['color-P45-contrast'],
-  'color-success-shade': '#182010',
 
   'color-warning': primaryColors['color-P25'],
   'color-warning-contrast': primaryContrastColors['color-P25-contrast'],
-  'color-warning-shade': '#251a0f',
 
   'color-danger': primaryColors['color-P15'],
   'color-danger-contrast': primaryContrastColors['color-P15-contrast'],
-  'color-danger-shade': '#251113',
 
   'color-neutral': primaryColors['color-P00'],
   'color-neutral-contrast': primaryContrastColors['color-P00-contrast'],
-  'color-neutral-shade': '#1a1a1d',
 };
 
 adjustments['cfg-color-accent-lighten'] = adjustments['cfg-color-P55-lighten'];
@@ -204,6 +198,11 @@ const colors = {
     definedColors,
     ['color-accent', 'color-success', 'color-warning', 'color-danger', 'color-neutral', ...Object.keys(primaryColors)],
     adjustments,
+  ),
+  ...color.generateShade(
+    definedColors,
+    ['color-accent', 'color-success', 'color-warning', 'color-danger', 'color-neutral', ...Object.keys(primaryColors)],
+    paletteColors['extreme-palette-background-color'],
   ),
   ...color.generateOpacityRange(definedColors, ['color-BG0', 'color-FG0', 'color-BG50', 'color-accent']),
   ...adjustments,
