@@ -1,3 +1,9 @@
+/**
+ * This is the vertical offset used by the StatusBubble
+ * to vertically position the pointer.
+ */
+$status-bubble-vertical-offset: 18px;
+
 .timeline {
   display: flex;
   flex-direction: column;
@@ -5,7 +11,6 @@
 
   @mixin themed {
     --timeline-item-connector-color: $theme-primary-palette-border-color;
-    --timeline-item-connector-mask-color: $theme-primary-palette-background-color;
   }
 }
 
@@ -13,21 +18,44 @@
   flex: none;
 }
 
+/**
+ * 1. The amount of space added on to each non-first
+ *    item as top padding. This is un-nested because
+ *    otherwise a higher specificity could override
+ *    the .timelineItem--first setting.
+ */
+.timeline--cozy {
+  --timeline-item-spacing: 12px; /* [1] */
+}
+
+/**
+ * 1. The amount of space added on to each non-first
+ *    item as top padding. This is un-nested because
+ *    otherwise a higher specificity could override
+ *    the .timelineItem--first setting.
+ */
+.timeline--comfy {
+  --timeline-item-spacing: 24px; /* [1] */
+}
+
 .timelineItem {
   flex: none;
+  padding-top: var(--timeline-item-spacing, 0px);
   position: relative;
 }
 
-.timeline--cozy {
-  .timelineItem + .timelineItem {
-    padding-top: 12px;
-  }
+.timelineItem--first {
+  --timeline-item-spacing: 0px;
 }
 
-.timeline--comfy {
-  .timelineItem + .timelineItem {
-    padding-top: 24px;
-  }
+.timelineItem--marker {
+  --timeline-item-anchor-spacing: 4px;
+  --timeline-item-anchor-height: 11px;
+}
+
+.timelineItem--divider {
+  --timeline-item-anchor-spacing: 4px;
+  --timeline-item-anchor-height: 1px;
 }
 
 .timelineItem--rightBottom,
@@ -41,6 +69,13 @@
   &:before {
     content: '';
     top: 0;
+    width: 1px;
+    background: var(--timeline-item-connector-color);
+    position: absolute;
+  }
+
+  &:after {
+    content: '';
     bottom: 0;
     width: 1px;
     background: var(--timeline-item-connector-color);
@@ -49,23 +84,73 @@
 
   &.timelineItem--first {
     &:before {
-      top: unset;
-      height: 50%;
+      height: 0;
     }
   }
 
   &.timelineItem--last {
-    &:before {
-      bottom: unset;
-      height: 50%;
+    &:after {
+      height: 0;
     }
+  }
+}
+
+.timelineItem--leftTop,
+.timelineItem--rightTop {
+  &:before {
+    height: calc(
+      $status-bubble-vertical-offset + var(--timeline-item-spacing, 0px) - var(--timeline-item-anchor-spacing, 0px) -
+        calc(var(--timeline-item-anchor-height, 0px) / 2)
+    );
+  }
+
+  &:after {
+    height: calc(
+      100% - $status-bubble-vertical-offset - var(--timeline-item-spacing, 0px) -
+        var(--timeline-item-anchor-spacing, 0px) - calc(var(--timeline-item-anchor-height, 0px) / 2)
+    );
+  }
+}
+
+.timelineItem--leftBottom,
+.timelineItem--rightBottom {
+  &:before {
+    height: calc(
+      100% - $status-bubble-vertical-offset - var(--timeline-item-anchor-spacing, 0px) -
+        calc(var(--timeline-item-anchor-height, 0px) / 2)
+    );
+  }
+
+  &:after {
+    height: calc(
+      $status-bubble-vertical-offset - var(--timeline-item-anchor-spacing, 0px) -
+        calc(var(--timeline-item-anchor-height, 0px) / 2)
+    );
+  }
+}
+
+.timelineItem--leftCenter,
+.timelineItem--rightCenter {
+  &:before {
+    height: calc(
+      50% + calc(var(--timeline-item-spacing, 0px) / 2) - var(--timeline-item-anchor-spacing, 0px) -
+        calc(var(--timeline-item-anchor-height, 0px) / 2)
+    );
+  }
+
+  &:after {
+    height: calc(
+      50% - calc(var(--timeline-item-spacing, 0px) / 2) - var(--timeline-item-anchor-spacing, 0px) -
+        calc(var(--timeline-item-anchor-height, 0px) / 2)
+    );
   }
 }
 
 .timelineItem--rightBottom,
 .timelineItem--rightCenter,
 .timelineItem--rightTop {
-  &:before {
+  &:before,
+  &:after {
     left: 5px;
   }
 
@@ -77,7 +162,8 @@
 .timelineItem--leftBottom,
 .timelineItem--leftCenter,
 .timelineItem--leftTop {
-  &:before {
+  &:before,
+  &:after {
     right: 5px;
   }
 
@@ -86,18 +172,12 @@
   }
 }
 
-.timelineItemMarker,
-.timelineItemDivider {
-  box-shadow: 0 0 0 4px var(--timeline-item-connector-mask-color);
-}
-
 .timelineItemMarker {
-  background: var(--timeline-item-marker-background-color, transparent);
   border-radius: 100%;
   border: 3px solid var(--timeline-item-state-color);
   flex: none;
-  height: 11px;
-  width: 11px;
+  height: var(--timeline-item-anchor-height);
+  width: var(--timeline-item-anchor-height);
 
   .timelineItem--leftTop &,
   .timelineItem--rightTop & {
@@ -116,7 +196,7 @@
 
 .timelineItemDivider {
   background: var(--timeline-item-connector-color);
-  height: 1px;
+  height: var(--timeline-item-anchor-height);
   width: 12px;
 
   .timelineItem--leftTop &,

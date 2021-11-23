@@ -46,6 +46,7 @@ export function TimelineDividerItem({
       }
       className={cx(
         styles.timelineItem,
+        styles['timelineItem--divider'],
         styles[`timelineItem--${lowerCamelize(position)}`],
         first && styles['timelineItem--first'],
         last && styles['timelineItem--last'],

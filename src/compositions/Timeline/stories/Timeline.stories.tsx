@@ -153,6 +153,70 @@ LeftSide.args = {
   items: defaultArgs.items.map(item => ({ ...item, position: 'left-center' })),
 };
 
+export const LeftTopPosition = Template.bind({});
+LeftTopPosition.storyName = 'Position: Left top';
+LeftTopPosition.args = {
+  ...defaultArgs,
+  items: defaultArgs.items.map(item => ({
+    ...item,
+    children: (
+      <Rhythm p={4}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris congue congue nunc eget commodo. Nunc lacus mi,
+        sagittis in placerat.
+      </Rhythm>
+    ),
+    position: 'left-top',
+  })),
+};
+
+export const LeftBottomPosition = Template.bind({});
+LeftBottomPosition.storyName = 'Position: Left bottom';
+LeftBottomPosition.args = {
+  ...defaultArgs,
+  items: defaultArgs.items.map(item => ({
+    ...item,
+    children: (
+      <Rhythm p={4}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris congue congue nunc eget commodo. Nunc lacus mi,
+        sagittis in placerat.
+      </Rhythm>
+    ),
+    position: 'left-bottom',
+  })),
+};
+
+export const RightTopPosition = Template.bind({});
+RightTopPosition.storyName = 'Position: Right top';
+RightTopPosition.args = {
+  ...defaultArgs,
+  items: defaultArgs.items.map(item => ({
+    ...item,
+    children: (
+      <Rhythm p={4}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris congue congue nunc eget commodo. Nunc lacus mi,
+        sagittis in placerat.
+      </Rhythm>
+    ),
+    position: 'right-top',
+  })),
+};
+
+export const RightBottomPosition = Template.bind({});
+RightBottomPosition.storyName = 'Position: Right bottom';
+RightBottomPosition.args = {
+  ...defaultArgs,
+  items: defaultArgs.items.map(item => ({
+    ...item,
+    children: (
+      <Rhythm p={4}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris congue congue nunc eget commodo. Nunc lacus mi,
+        sagittis in placerat.
+      </Rhythm>
+    ),
+    position: 'right-bottom',
+  })),
+};
+
 export const BothSides = Template.bind({});
 BothSides.storyName = 'Both sides';
 BothSides.args = {
@@ -177,7 +241,7 @@ BothSides.parameters = {
 };
 
 export const Styled = Template.bind({});
-Styled.storyName = 'Styled';
+Styled.storyName = 'Custom styles';
 Styled.args = {
   ...defaultArgs,
   items: defaultArgs.items.map(({ color, ...item }, index) => ({

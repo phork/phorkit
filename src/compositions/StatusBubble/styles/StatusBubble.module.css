@@ -41,7 +41,7 @@
 }
 
 .statusBubbleAnchor {
-  z-index: 1;
+  flex: none;
 
   .statusBubble--rightBottom &,
   .statusBubble--rightCenter &,

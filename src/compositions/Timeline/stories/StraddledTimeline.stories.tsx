@@ -175,6 +175,38 @@ LeftSideLarger.args = {
   rightWidth: 140,
 };
 
+export const TopPositions = Template.bind({});
+TopPositions.storyName = 'Top positions';
+TopPositions.args = {
+  ...defaultArgs,
+  items: defaultArgs.items.map(({ position, ...item }, i) => ({
+    ...item,
+    children: (
+      <Rhythm p={4}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris congue congue nunc eget commodo. Nunc lacus mi,
+        sagittis in placerat.
+      </Rhythm>
+    ),
+    position: position?.replace('center', 'top') as TimelineMarkerItemProps['position'],
+  })),
+};
+
+export const BottomPositions = Template.bind({});
+BottomPositions.storyName = 'Bottom positions';
+BottomPositions.args = {
+  ...defaultArgs,
+  items: defaultArgs.items.map(({ position, ...item }, i) => ({
+    ...item,
+    children: (
+      <Rhythm p={4}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris congue congue nunc eget commodo. Nunc lacus mi,
+        sagittis in placerat.
+      </Rhythm>
+    ),
+    position: position?.replace('center', 'bottom') as TimelineMarkerItemProps['position'],
+  })),
+};
+
 export const Styled = Template.bind({});
 Styled.storyName = 'Styled';
 Styled.args = {

@@ -43,6 +43,7 @@ export function TimelineMarkerItem({
       }
       className={cx(
         styles.timelineItem,
+        styles['timelineItem--marker'],
         styles[`timelineItem--${lowerCamelize(position)}`],
         first && styles['timelineItem--first'],
         last && styles['timelineItem--last'],
