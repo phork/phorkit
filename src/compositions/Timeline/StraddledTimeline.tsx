@@ -42,8 +42,8 @@ export function StraddledTimelineBase(
 }
 
 /**
- * A straddled timeline is a group of timeline item
- * components connected by a vertical line. The items
+ * A straddled timeline render a group of timeline
+ * items connected by a vertical line. The items
  * can be on both the left and the right side of the
  * line.
  */

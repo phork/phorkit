@@ -43,8 +43,8 @@ export function TimelineBase(
 }
 
 /**
- * A timeline renders a group of timeline item
- * components connected by a vertical line.
+ * A timeline renders a group of timeline items
+ * connected by a vertical line.
  */
 export const Timeline = React.forwardRef(TimelineBase);
 

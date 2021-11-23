@@ -254,9 +254,9 @@ Styled.args = {
       '--shade-opaque-primary-color': themes.light[`color-P${index * 5 + 30}-shade` as keyof ThemeColors],
       '--status-bubble-state-color': themes.light[`color-P${index * 5 + 30}` as keyof ThemeColors],
       '--status-bubble-state-contrast-color': themes.light[`color-P${index * 5 + 30}-contrast` as keyof ThemeColors],
+      '--status-bubble-triangle-color': themes.light[`color-P${index * 5 + 30}-shade` as keyof ThemeColors],
+      '--status-bubble-triangle-border-color': themes.light[`color-P${index * 5 + 30}` as keyof ThemeColors],
     },
-    triangleColor: themes.light[`color-P${index * 5 + 30}-shade` as keyof ThemeColors],
-    triangleBorderColor: themes.light[`color-P${index * 5 + 30}` as keyof ThemeColors],
     unthemed: true,
   })),
 };

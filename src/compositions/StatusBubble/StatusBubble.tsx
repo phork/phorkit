@@ -32,7 +32,9 @@ export type StatusBubbleProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'titl
 const getTriangleColor = (
   themeId: NonNullable<StatusBubbleProps['themeId']>,
   color: NonNullable<StatusBubbleProps['color']>,
+  unthemed?: boolean,
 ): string => {
+  if (unthemed) return 'var(--status-bubble-triangle-color)';
   if (color === 'primary') return `var(--phork-accent-color-shade, ${themes[themeId]['color-accent-shade']})`;
   return themes[themeId][`color-${color}-shade` as keyof ThemeColors] as string;
 };
@@ -40,7 +42,9 @@ const getTriangleColor = (
 const getTriangleBorderColor = (
   themeId: NonNullable<StatusBubbleProps['themeId']>,
   color: NonNullable<StatusBubbleProps['color']>,
+  unthemed?: boolean,
 ): string => {
+  if (unthemed) return 'var(--status-bubble-triangle-border-color)';
   if (color === 'primary') return `var(--phork-accent-color, ${themes[themeId]['color-accent']})`;
   return themes[themeId][`color-${color}` as keyof ThemeColors] as string;
 };
@@ -84,8 +88,8 @@ export function StatusBubble({
       <TooltipContent
         offset={offset}
         position={position}
-        triangleBorderColor={triangleBorderColor || getTriangleBorderColor(themeId, color)}
-        triangleColor={triangleColor || getTriangleColor(themeId, color)}
+        triangleBorderColor={triangleBorderColor || getTriangleBorderColor(themeId, color, unthemed)}
+        triangleColor={triangleColor || getTriangleColor(themeId, color, unthemed)}
         triangleSize={6}
       >
         <Shade opaque className={cx(styles.statusBubbleContent)} color={color} unthemed={unthemed}>

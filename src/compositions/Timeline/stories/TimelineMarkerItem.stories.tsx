@@ -238,8 +238,8 @@ Styled.args = {
     '--shade-opaque-primary-color': themes.light['color-P50-shade'],
     '--status-bubble-state-color': themes.light['color-P50'],
     '--status-bubble-state-contrast-color': themes.light['color-P50-contrast'],
+    '--status-bubble-triangle-color': themes.light['color-P50-shade'],
+    '--status-bubble-triangle-border-color': themes.light['color-P50-D10'],
   } as React.CSSProperties,
-  triangleBorderColor: themes.light['color-P50-D10'],
-  triangleColor: themes.light['color-P50-shade'],
   unthemed: true,
 };
