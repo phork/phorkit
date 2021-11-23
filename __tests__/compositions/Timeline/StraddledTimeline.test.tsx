@@ -41,7 +41,7 @@ describe('<StraddledTimeline />', () => {
     );
 
     const timeline = getByTestId('timeline');
-    expect(timeline?.style.getPropertyValue('width')).toBe('287px');
+    expect(timeline?.style.getPropertyValue('width')).toBe('289px');
   });
 
   it('should set the timeline item sizes', () => {

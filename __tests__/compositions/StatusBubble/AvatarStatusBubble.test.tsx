@@ -17,7 +17,7 @@ describe('<AvatarStatusBubble />', () => {
 
   it('should render an avatar status bubble with an image', () => {
     const { queryByText, queryByRole } = render(
-      <AvatarStatusBubble header="Header" initials="EC">
+      <AvatarStatusBubble header="Header" imgSrc="/avatar.png" initials="EC">
         Hello world
       </AvatarStatusBubble>,
     );
