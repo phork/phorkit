@@ -80,7 +80,7 @@ export function StatusBubble({
       )}
       {...props}
     >
-      {anchor}
+      <div className={styles.statusBubbleAnchor}>{anchor}</div>
       <TooltipContent
         offset={offset}
         position={position}
@@ -88,7 +88,7 @@ export function StatusBubble({
         triangleColor={triangleColor || getTriangleColor(themeId, color)}
         triangleSize={6}
       >
-        <Shade opaque className={cx(styles.statusBubbleContent)} color={color}>
+        <Shade opaque className={cx(styles.statusBubbleContent)} color={color} unthemed={unthemed}>
           {header && <div className={cx(styles.statusBubbleHeader)}>{header}</div>}
           {children && <div className={cx(styles.statusBubbleBody)}>{children}</div>}
         </Shade>

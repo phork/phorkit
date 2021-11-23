@@ -1,3 +1,3 @@
+export * from './AvatarStatusBubble';
 export * from './IconStatusBubble';
-export * from './MarkerStatusBubble';
 export * from './StatusBubble';

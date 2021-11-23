@@ -2,18 +2,25 @@ import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } fro
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { themes } from 'config/themes';
-import { PhorkIcon } from 'icons/PhorkIcon';
 import { Divider } from 'components/Divider';
 import { Paper } from 'components/Paper';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { IconStatusBubble, IconStatusBubbleProps } from '../IconStatusBubble';
+import { StatusBubble, StatusBubbleProps } from '../StatusBubble';
 
 export default {
-  title: 'Display/StatusBubble/IconStatusBubble',
-  component: IconStatusBubble,
+  title: 'Display/StatusBubble',
+  component: StatusBubble,
   argTypes: {
+    anchor: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: 'Appearance',
+      },
+    },
     children: {
       control: {
         disable: true,
@@ -39,16 +46,12 @@ export default {
       },
     },
     icon: {
+      options: ['icon', 'avatar'],
       control: {
-        disable: true,
-      },
-      table: {
-        category: 'Appearance',
-      },
-    },
-    iconShape: {
-      control: {
-        type: 'inline-radio',
+        labels: {
+          icon: '<PhorkIcon scale="large" />',
+          avatar: '<Avatar initials="EC" />',
+        },
       },
       table: {
         category: 'Appearance',
@@ -107,7 +110,7 @@ export default {
     docs: {
       page: () => (
         <React.Fragment>
-          <PageTitle src="compositions/StatusBubble" title="IconStatusBubble" />
+          <PageTitle src="compositions/StatusBubble" title="StatusBubble" />
           <Subtitle />
           <Description />
           <Primary />
@@ -117,17 +120,24 @@ export default {
       ),
     },
   },
-} as ComponentMeta<typeof IconStatusBubble>;
+} as ComponentMeta<typeof StatusBubble>;
 
-const Template: ComponentStory<typeof IconStatusBubble> = args => <IconStatusBubble {...args} />;
+const Template: ComponentStory<(args: StatusBubbleProps) => ReturnType<typeof StatusBubble>> = args => (
+  <StatusBubble {...args} />
+);
 
 const defaultArgs = {
+  anchor: (
+    <Typography<'div'> as="div" style={{ marginTop: 13, marginBottom: 13 }} variants="xsmall-caps">
+      anchor
+    </Typography>
+  ),
   children: (
     <Paper color="primary">
       <Rhythm p={4}>Hello world</Rhythm>
     </Paper>
   ),
-  color: 'neutral' as IconStatusBubbleProps['color'],
+  color: 'neutral' as StatusBubbleProps['color'],
   header: (
     <React.Fragment>
       <Rhythm mr={2}>
@@ -138,9 +148,7 @@ const defaultArgs = {
       </Rhythm>
     </React.Fragment>
   ),
-  icon: <PhorkIcon scale="large" />,
-  iconShape: 'square' as IconStatusBubbleProps['iconShape'],
-  position: 'right-top' as IconStatusBubbleProps['position'],
+  position: 'right-top' as StatusBubbleProps['position'],
   unthemed: false,
 };
 
@@ -150,7 +158,7 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['IconStatusBubble.test.js', 'StatusBubble.test.js'],
+  jest: ['StatusBubble.test.js'],
 };
 
 export const PrimaryColor = Template.bind({});

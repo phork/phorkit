@@ -2,10 +2,10 @@ import { cx } from '@emotion/css';
 import React from 'react';
 import { useThemeId } from '../../context/Theme';
 import { lowerCamelize } from '../../utils/case';
-import { MarkerStatusBubble, MarkerStatusBubbleProps } from '../StatusBubble';
+import { StatusBubble, StatusBubbleProps } from '../StatusBubble';
 import styles from './styles/Timeline.module.css';
 
-export type TimelineItemProps = MarkerStatusBubbleProps & {
+export type TimelineDividerItemProps = Omit<StatusBubbleProps, 'anchor'> & {
   first?: boolean;
   last?: boolean;
   width?: number;
@@ -13,11 +13,12 @@ export type TimelineItemProps = MarkerStatusBubbleProps & {
 
 /**
  * A timeline item is a special status bubble pointing
- * towards a marker that is positioned in the Timeline.
+ * towards a dividing line that is positioned in the
+ * `Timeline`.
  *
- * This uses the `MarkerStatusBubble` component.
+ * This uses the `StatusBubble` component.
  */
-export function TimelineItem({
+export function TimelineDividerItem({
   className,
   first,
   last,
@@ -27,13 +28,22 @@ export function TimelineItem({
   unthemed,
   width,
   ...props
-}: TimelineItemProps): JSX.Element {
+}: TimelineDividerItemProps): JSX.Element {
   const themeId = useThemeId(initThemeId);
   const style = width !== undefined ? { ...initStyle, width } : initStyle;
 
   return (
-    <MarkerStatusBubble
-      fillMarker
+    <StatusBubble
+      anchor={
+        <div
+          aria-hidden="true"
+          className={cx(
+            styles['timelineItemDivider'],
+            styles[`timelineItemDivider--${lowerCamelize(position)}`],
+            themeId && styles[`timelineItemDivider--${themeId}`],
+          )}
+        />
+      }
       className={cx(
         styles.timelineItem,
         styles[`timelineItem--${lowerCamelize(position)}`],
@@ -42,7 +52,6 @@ export function TimelineItem({
         themeId && !unthemed && styles[`timeline--${themeId}`],
         className,
       )}
-      markerClassName={styles['timelineItemMarker']}
       position={position}
       style={style}
       themeId={themeId}
@@ -52,4 +61,4 @@ export function TimelineItem({
   );
 }
 
-TimelineItem.displayName = 'TimelineItem';
+TimelineDividerItem.displayName = 'TimelineDividerItem';

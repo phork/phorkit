@@ -42,7 +42,7 @@ export function StraddledTimelineBase(
 }
 
 /**
- * A straddled timeline renders a group of `TimelineItem`
+ * A straddled timeline renders a group of `TimelineMarkerItem`
  * components connected by a vertical line. With a straddled
  * timeline the items can be on the left and the right.
  */

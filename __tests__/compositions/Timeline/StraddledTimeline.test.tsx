@@ -1,31 +1,31 @@
 import { render } from '@testing-library/react';
 import React from 'react';
-import { StraddledTimeline, TimelineItemProps } from 'lib';
+import { StraddledTimeline, TimelineMarkerItemProps } from 'lib';
 
 const items = [
   {
     id: 'one',
     children: <div>Hello world</div>,
-    color: 'primary' as TimelineItemProps['color'],
-    position: 'left-center' as TimelineItemProps['position'],
+    color: 'primary' as TimelineMarkerItemProps['color'],
+    position: 'left-center' as TimelineMarkerItemProps['position'],
   },
   {
     id: 'two',
     children: <div>Hello world</div>,
-    color: 'success' as TimelineItemProps['color'],
-    position: 'right-center' as TimelineItemProps['position'],
+    color: 'success' as TimelineMarkerItemProps['color'],
+    position: 'right-center' as TimelineMarkerItemProps['position'],
   },
   {
     id: 'three',
     children: <div>Hello world</div>,
-    color: 'warning' as TimelineItemProps['color'],
-    position: 'left-center' as TimelineItemProps['position'],
+    color: 'warning' as TimelineMarkerItemProps['color'],
+    position: 'left-center' as TimelineMarkerItemProps['position'],
   },
   {
     id: 'four',
     children: <div>Hello world</div>,
-    color: 'danger' as TimelineItemProps['color'],
-    position: 'right-center' as TimelineItemProps['position'],
+    color: 'danger' as TimelineMarkerItemProps['color'],
+    position: 'right-center' as TimelineMarkerItemProps['position'],
   },
 ];
 

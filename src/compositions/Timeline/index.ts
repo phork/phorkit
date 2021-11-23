@@ -1,3 +1,4 @@
 export * from './StraddledTimeline';
 export * from './Timeline';
-export * from './TimelineItem';
+export * from './TimelineMarkerItem';
+export * from './TimelineDividerItem';

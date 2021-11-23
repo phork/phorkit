@@ -3,8 +3,9 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { Rhythm } from 'components/Rhythm';
 import { PageTitle } from 'stories/helpers/PageTitle';
+import { TimelineMarkerItemType } from '..';
 import { Timeline } from '../Timeline';
-import { TimelineItemProps } from '../TimelineItem';
+import { TimelineMarkerItemProps } from '../TimelineMarkerItem';
 
 export default {
   title: 'Display/Timeline',
@@ -73,22 +74,33 @@ const defaultArgs = {
     {
       id: 'one',
       children: <Rhythm p={4}>Hello world</Rhythm>,
-      color: 'primary' as TimelineItemProps['color'],
+      color: 'primary' as TimelineMarkerItemProps['color'],
     },
     {
       id: 'two',
       children: <Rhythm p={4}>Hello world</Rhythm>,
-      color: 'success' as TimelineItemProps['color'],
+      color: 'success' as TimelineMarkerItemProps['color'],
     },
     {
       id: 'three',
       children: <Rhythm p={4}>Hello world</Rhythm>,
-      color: 'warning' as TimelineItemProps['color'],
+      color: 'warning' as TimelineMarkerItemProps['color'],
     },
     {
       id: 'four',
       children: <Rhythm p={4}>Hello world</Rhythm>,
-      color: 'danger' as TimelineItemProps['color'],
+      color: 'danger' as TimelineMarkerItemProps['color'],
+    },
+    {
+      id: 'section',
+      children: <Rhythm p={4}>Hello world</Rhythm>,
+      color: 'neutral' as TimelineMarkerItemProps['color'],
+      type: 'section' as TimelineMarkerItemType,
+    },
+    {
+      id: 'five',
+      children: <Rhythm p={4}>Hello world</Rhythm>,
+      color: 'neutral' as TimelineMarkerItemProps['color'],
     },
   ],
   unthemed: false,
@@ -108,6 +120,13 @@ RightSide.args = {
 export const LeftSide = Template.bind({});
 LeftSide.storyName = 'Left side';
 LeftSide.args = {
+  ...defaultArgs,
+  items: defaultArgs.items.map(item => ({ ...item, position: 'left-center' })),
+};
+
+export const Styled = Template.bind({});
+Styled.storyName = 'Styled';
+Styled.args = {
   ...defaultArgs,
   items: defaultArgs.items.map(item => ({ ...item, position: 'left-center' })),
 };

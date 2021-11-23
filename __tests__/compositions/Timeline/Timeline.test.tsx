@@ -1,27 +1,27 @@
 import { render } from '@testing-library/react';
 import React from 'react';
-import { Timeline, TimelineItemProps } from 'lib';
+import { Timeline, TimelineMarkerItemProps } from 'lib';
 
 const items = [
   {
     id: 'one',
     children: <div>Hello world</div>,
-    color: 'primary' as TimelineItemProps['color'],
+    color: 'primary' as TimelineMarkerItemProps['color'],
   },
   {
     id: 'two',
     children: <div>Hello world</div>,
-    color: 'success' as TimelineItemProps['color'],
+    color: 'success' as TimelineMarkerItemProps['color'],
   },
   {
     id: 'three',
     children: <div>Hello world</div>,
-    color: 'warning' as TimelineItemProps['color'],
+    color: 'warning' as TimelineMarkerItemProps['color'],
   },
   {
     id: 'four',
     children: <div>Hello world</div>,
-    color: 'danger' as TimelineItemProps['color'],
+    color: 'danger' as TimelineMarkerItemProps['color'],
   },
 ];
 

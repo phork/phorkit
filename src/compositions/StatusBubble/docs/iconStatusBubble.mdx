@@ -6,7 +6,6 @@ route: /compositions/IconStatusBubble
 
 import { Playground, Props } from 'docz';
 import { PhorkIcon } from 'icons/PhorkIcon';
-import { Avatar } from 'components/Avatar';
 import { Divider } from 'components/Divider';
 import { Paper } from 'components/Paper';
 import { Rhythm } from 'components/Rhythm';
@@ -240,28 +239,6 @@ import { IconStatusBubble } from '../index';
       }
       icon={<PhorkIcon scale="large" />}
       position="left-bottom"
-    >
-      <Paper color="primary">
-        <Rhythm p={4}>Hello world</Rhythm>
-      </Paper>
-    </IconStatusBubble>
-  </ThemeWrapper>
-</Playground>
-
-## With an avatar
-
-<Playground>
-  <ThemeWrapper>
-    <IconStatusBubble
-      color="neutral"
-      header={
-        <React.Fragment>
-          <Typography weight="bold">Something cool happened</Typography>
-          <Typography volume="quiet">Yesterday</Typography>
-        </React.Fragment>
-      }
-      icon={<Avatar imgSrc="/public/images/avatar.jpg" initials="EC" size="large" />}
-      iconShape="circle"
     >
       <Paper color="primary">
         <Rhythm p={4}>Hello world</Rhythm>

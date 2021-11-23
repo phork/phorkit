@@ -1,26 +1,26 @@
 import React from 'react';
 import { Rhythm } from 'components/Rhythm';
-import { TimelineItemProps } from '../../TimelineItem';
+import { TimelineMarkerItemProps } from '../../TimelineMarkerItem';
 
 export const items = [
   {
     id: 'one',
     children: <Rhythm p={4}>Hello world</Rhythm>,
-    color: 'primary' as TimelineItemProps['color'],
+    color: 'primary' as TimelineMarkerItemProps['color'],
   },
   {
     id: 'two',
     children: <Rhythm p={4}>Hello world</Rhythm>,
-    color: 'success' as TimelineItemProps['color'],
+    color: 'success' as TimelineMarkerItemProps['color'],
   },
   {
     id: 'three',
     children: <Rhythm p={4}>Hello world</Rhythm>,
-    color: 'warning' as TimelineItemProps['color'],
+    color: 'warning' as TimelineMarkerItemProps['color'],
   },
   {
     id: 'four',
     children: <Rhythm p={4}>Hello world</Rhythm>,
-    color: 'danger' as TimelineItemProps['color'],
+    color: 'danger' as TimelineMarkerItemProps['color'],
   },
 ];

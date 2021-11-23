@@ -11,10 +11,10 @@ export type IconStatusBubbleProps = Omit<StatusBubbleProps, 'anchor' | 'offset'>
 };
 
 /**
- * The icon status bubble is a status bubble that
- * uses an icon as its marker. The icon isn't limited
- * to just SVG components and can also be something
- * like an avatar.
+ * The icon status bubble extends the `StatusBubble`
+ * component with an icon as its anchor. The icon
+ * isn't limited to just SVG components and will
+ * accept anything that fits in a 36x36 box.
  *
  * This uses the `Shade` and `TooltipContent`
  * components.

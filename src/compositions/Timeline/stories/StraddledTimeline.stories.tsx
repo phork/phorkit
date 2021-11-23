@@ -4,7 +4,8 @@ import React from 'react';
 import { Rhythm } from 'components/Rhythm';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { StraddledTimeline } from '../StraddledTimeline';
-import { TimelineItemProps } from '../TimelineItem';
+import { TimelineMarkerItemType } from '../Timeline';
+import { TimelineMarkerItemProps } from '../TimelineMarkerItem';
 
 export default {
   title: 'Display/Timeline/StraddledTimeline',
@@ -84,26 +85,39 @@ const defaultArgs = {
     {
       id: 'one',
       children: <Rhythm p={4}>Hello world</Rhythm>,
-      color: 'primary' as TimelineItemProps['color'],
-      position: 'left-center' as TimelineItemProps['position'],
+      color: 'primary' as TimelineMarkerItemProps['color'],
+      position: 'left-center' as TimelineMarkerItemProps['position'],
     },
     {
       id: 'two',
       children: <Rhythm p={4}>Hello world</Rhythm>,
-      color: 'success' as TimelineItemProps['color'],
-      position: 'right-center' as TimelineItemProps['position'],
+      color: 'success' as TimelineMarkerItemProps['color'],
+      position: 'right-center' as TimelineMarkerItemProps['position'],
     },
     {
       id: 'three',
       children: <Rhythm p={4}>Hello world</Rhythm>,
-      color: 'warning' as TimelineItemProps['color'],
-      position: 'left-center' as TimelineItemProps['position'],
+      color: 'warning' as TimelineMarkerItemProps['color'],
+      position: 'left-center' as TimelineMarkerItemProps['position'],
     },
     {
       id: 'four',
       children: <Rhythm p={4}>Hello world</Rhythm>,
-      color: 'danger' as TimelineItemProps['color'],
-      position: 'right-center' as TimelineItemProps['position'],
+      color: 'danger' as TimelineMarkerItemProps['color'],
+      position: 'right-center' as TimelineMarkerItemProps['position'],
+    },
+    {
+      id: 'section',
+      children: <Rhythm p={4}>Hello world</Rhythm>,
+      color: 'neutral' as TimelineMarkerItemProps['color'],
+      type: 'section' as TimelineMarkerItemType,
+      position: 'left-center' as TimelineMarkerItemProps['position'],
+    },
+    {
+      id: 'five',
+      children: <Rhythm p={4}>Hello world</Rhythm>,
+      color: 'neutral' as TimelineMarkerItemProps['color'],
+      position: 'right-center' as TimelineMarkerItemProps['position'],
     },
   ],
   unthemed: false,

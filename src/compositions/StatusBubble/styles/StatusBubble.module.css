@@ -39,15 +39,8 @@
   flex-direction: row-reverse;
 }
 
-.statusBubbleIcon {
-  align-items: center;
-  background-color: var(--status-bubble-state-color);
-  color: var(--status-bubble-state-contrast-color);
-  display: flex;
-  flex: none;
-  height: 36px;
-  justify-content: center;
-  width: 36px;
+.statusBubbleAnchor {
+  z-index: 1;
 
   .statusBubble--rightBottom &,
   .statusBubble--rightCenter &,
@@ -62,49 +55,23 @@
   }
 }
 
+.statusBubbleIcon {
+  align-items: center;
+  background-color: var(--status-bubble-state-color);
+  color: var(--status-bubble-state-contrast-color);
+  display: flex;
+  flex: none;
+  height: 36px;
+  justify-content: center;
+  width: 36px;
+}
+
 .statusBubbleIcon--square {
   border-radius: $border-radius-large;
 }
 
 .statusBubbleIcon--circle {
   border-radius: 100%;
-}
-
-.statusBubbleMarker {
-  background: var(--status-bubble-marker-background-color, transparent);
-  border-radius: 100%;
-  border: 3px solid var(--status-bubble-state-color);
-  flex: none;
-  height: 12px;
-  width: 12px;
-
-  .statusBubble--rightBottom &,
-  .statusBubble--rightCenter &,
-  .statusBubble--rightTop & {
-    margin-right: 14px;
-  }
-
-  .statusBubble--leftBottom &,
-  .statusBubble--leftCenter &,
-  .statusBubble--leftTop & {
-    margin-left: 14px;
-  }
-
-  .statusBubble--leftTop &,
-  .statusBubble--rightTop & {
-    margin-top: 12px;
-  }
-
-  .statusBubble--leftBottom &,
-  .statusBubble--rightBottom & {
-    margin-bottom: 12px;
-  }
-}
-
-.statusBubbleMarker--filled {
-  @mixin themed .statusBubbleMarker {
-    --status-bubble-marker-background-color: $theme-extreme-palette-background-color;
-  }
 }
 
 .statusBubbleContent {
