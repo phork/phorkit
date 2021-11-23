@@ -179,7 +179,7 @@ export const TopPositions = Template.bind({});
 TopPositions.storyName = 'Top positions';
 TopPositions.args = {
   ...defaultArgs,
-  items: defaultArgs.items.map(({ position, ...item }, i) => ({
+  items: defaultArgs.items.map(({ position, ...item }) => ({
     ...item,
     children: (
       <Rhythm p={4}>
@@ -195,7 +195,7 @@ export const BottomPositions = Template.bind({});
 BottomPositions.storyName = 'Bottom positions';
 BottomPositions.args = {
   ...defaultArgs,
-  items: defaultArgs.items.map(({ position, ...item }, i) => ({
+  items: defaultArgs.items.map(({ position, ...item }) => ({
     ...item,
     children: (
       <Rhythm p={4}>
