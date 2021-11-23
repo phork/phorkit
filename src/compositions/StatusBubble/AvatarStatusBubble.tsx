@@ -4,7 +4,7 @@ import { StatusBubble, StatusBubbleProps } from './StatusBubble';
 
 export type AvatarStatusBubbleProps = Omit<StatusBubbleProps, 'anchor' | 'offset'> &
   Pick<AvatarProps, 'imgSrc' | 'initials'> & {
-    avatarColor: AvatarProps['color'];
+    avatarColor?: AvatarProps['color'];
   };
 
 /**
