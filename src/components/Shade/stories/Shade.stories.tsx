@@ -2,6 +2,7 @@ import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } fro
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { PageTitle } from 'stories/helpers/PageTitle';
+import { themes } from '../../../config/themes';
 import { Shade, ShadeProps } from '../Shade';
 
 export default {
@@ -232,4 +233,18 @@ HoveredState.args = {
   actionable: true,
   color: 'primary',
   hovered: true,
+};
+
+export const Styled = Template.bind({});
+Styled.storyName = 'Custom styles';
+Styled.args = {
+  ...defaultArgs,
+  style: {
+    ...defaultArgs.style,
+    '--shade-active-primary-color': themes.light['color-P50-D10'],
+    '--shade-inverse-color': themes.light['color-P50-contrast'],
+    '--shade-primary-color': themes.light['color-P50'],
+    '--shade-opaque-primary-color': themes.light['color-P50-shade'],
+  } as React.CSSProperties,
+  unthemed: true,
 };

@@ -11,7 +11,7 @@ export type ShadeProps = React.HTMLAttributes<HTMLDivElement> &
     active?: boolean;
     children: React.ReactNode;
     className?: string;
-    color: SemanticColor;
+    color?: SemanticColor;
     /** Manually apply the focus styles; this does not affect :focus */
     focused?: boolean;
     /** Manually apply the hover styles; this does not affect :hover */
