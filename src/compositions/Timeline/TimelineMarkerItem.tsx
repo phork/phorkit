@@ -12,8 +12,9 @@ export type TimelineMarkerItemProps = Omit<StatusBubbleProps, 'anchor'> & {
 };
 
 /**
- * A timeline item is a special `StatusBubble` pointing
- * towards a marker that is positioned in the `Timeline`.
+ * The timeline marker item is a special `StatusBubble`
+ * pointing towards a marker that is positioned in a
+ * `Timeline`.
  *
  * This uses the `MarkerStatusBubble` component.
  */

@@ -42,9 +42,10 @@ export function StraddledTimelineBase(
 }
 
 /**
- * A straddled timeline renders a group of `TimelineMarkerItem`
- * components connected by a vertical line. With a straddled
- * timeline the items can be on the left and the right.
+ * A straddled timeline is a group of timeline item
+ * components connected by a vertical line. The items
+ * can be on both the left and the right side of the
+ * line.
  */
 export const StraddledTimeline = React.forwardRef(StraddledTimelineBase);
 

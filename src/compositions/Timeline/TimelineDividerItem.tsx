@@ -12,9 +12,9 @@ export type TimelineDividerItemProps = Omit<StatusBubbleProps, 'anchor'> & {
 };
 
 /**
- * A timeline item is a special `StatusBubble` pointing
- * towards a dividing line that is positioned in the
- * `Timeline`.
+ * The timeline divider item is a special `StatusBubble`
+ * pointing towards a dividing line that is positioned in
+ * a `Timeline`.
  *
  * This uses the `StatusBubble` component.
  */
