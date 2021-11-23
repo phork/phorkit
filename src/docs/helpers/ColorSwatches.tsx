@@ -21,13 +21,19 @@ export function ColorSwatches({
 }: ColorSwatchesProps): JSX.Element | null {
   const themeProps = themes[themeId];
 
-  const mapColors = (root: string, shade: string | undefined, props?: Omit<Color, 'id' | 'color'>): Color => {
+  const mapColors = (
+    root: string,
+    shade: string | undefined,
+    { contrast, ...props }: Omit<Color, 'id' | 'color'> = {},
+  ): Color => {
     const id = `${root}${shade ? `-${shade}` : ''}`;
     return {
       id,
       color: themeProps[id as keyof ThemeColors] as string,
       contrast:
-        themeProps[`${id}-contrast` as keyof ThemeColors] || themeProps[`${root}-contrast` as keyof ThemeColors],
+        contrast ||
+        themeProps[`${id}-contrast` as keyof ThemeColors] ||
+        themeProps[`${root}-contrast` as keyof ThemeColors],
       ...props,
     };
   };
@@ -64,7 +70,16 @@ export function ColorSwatches({
         .sort((a, b) => +a.replace(/[^\d]/g, '') - +b.replace(/[^\d]/g, ''))
         .map((root: string) => ({
           colors: ['shade', 'L30', 'L20', 'L10', undefined, 'D10', 'D20', 'D30'].map(shade =>
-            mapColors(root, shade, shade ? { children: shade } : undefined),
+            mapColors(
+              root,
+              shade,
+              shade
+                ? {
+                    children: shade,
+                    contrast: shade === 'shade' ? themeProps[root as keyof ThemeColors] : undefined,
+                  }
+                : undefined,
+            ),
           ),
           label: root.replace('color-', ''),
           id: root,
