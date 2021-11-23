@@ -107,10 +107,10 @@ const defaultArgs = {
       position: 'right-center' as TimelineMarkerItemProps['position'],
     },
     {
-      id: 'section',
+      id: 'divider',
       children: <Rhythm p={4}>Hello world</Rhythm>,
       color: 'neutral' as TimelineMarkerItemProps['color'],
-      type: 'section' as TimelineMarkerItemType,
+      type: 'divider' as TimelineMarkerItemType,
       position: 'left-center' as TimelineMarkerItemProps['position'],
     },
     {

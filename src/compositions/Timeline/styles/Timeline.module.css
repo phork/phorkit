@@ -81,19 +81,6 @@
 .timelineItemMarker,
 .timelineItemDivider {
   box-shadow: 0 0 0 4px var(--timeline-item-background-color);
-  z-index: 1;
-
-  .timelineItem--rightBottom &,
-  .timelineItem--rightCenter &,
-  .timelineItem--rightTop & {
-    margin-right: 14px;
-  }
-
-  .timelineItem--leftBottom &,
-  .timelineItem--leftCenter &,
-  .timelineItem--leftTop & {
-    margin-left: 14px;
-  }
 }
 
 .timelineItemMarker {
@@ -101,8 +88,8 @@
   border-radius: 100%;
   border: 3px solid var(--status-bubble-state-color);
   flex: none;
-  height: 12px;
-  width: 12px;
+  height: 13px;
+  width: 13px;
 
   @mixin themed .timelineItemMarker {
     --status-bubble-marker-background-color: $theme-extreme-palette-background-color;
@@ -112,5 +99,5 @@
 .timelineItemDivider {
   background: var(--timeline-item-connector-color);
   height: 1px;
-  width: 15px;
+  width: 14px;
 }

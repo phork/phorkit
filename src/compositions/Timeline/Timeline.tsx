@@ -6,7 +6,7 @@ import styles from './styles/Timeline.module.css';
 import { TimelineDividerItem, TimelineDividerItemProps } from './TimelineDividerItem';
 import { TimelineMarkerItem, TimelineMarkerItemProps } from './TimelineMarkerItem';
 
-export type TimelineMarkerItemType = 'section' | 'default';
+export type TimelineMarkerItemType = 'divider' | 'default';
 
 export type TimelineProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> &
   Omit<ThemeProps, 'contrast'> & {
@@ -28,7 +28,7 @@ export function TimelineBase(
       {...props}
     >
       {items.map(({ id, type, ...item }, index) => {
-        const Item = type === 'section' ? TimelineDividerItem : TimelineMarkerItem;
+        const Item = type === 'divider' ? TimelineDividerItem : TimelineMarkerItem;
         return <Item first={index === 0} key={id} last={index === items.length - 1} themeId={themeId} {...item} />;
       })}
     </div>

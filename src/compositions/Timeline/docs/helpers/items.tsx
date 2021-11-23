@@ -23,4 +23,15 @@ export const items = [
     children: <Rhythm p={4}>Hello world</Rhythm>,
     color: 'danger' as TimelineMarkerItemProps['color'],
   },
+  {
+    id: 'divider',
+    children: <Rhythm p={4}>Hello world</Rhythm>,
+    color: 'neutral' as TimelineMarkerItemProps['color'],
+    type: 'divider',
+  },
+  {
+    id: 'five',
+    children: <Rhythm p={4}>Hello world</Rhythm>,
+    color: 'neutral' as TimelineMarkerItemProps['color'],
+  },
 ];
