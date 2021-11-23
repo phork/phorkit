@@ -1,10 +1,11 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { ThemeColors, themes } from 'config/themes';
 import { Rhythm } from 'components/Rhythm';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { StraddledTimeline } from '../StraddledTimeline';
-import { TimelineMarkerItemType } from '../Timeline';
+import { TimelineMarkerItemType, TimelineSpacing } from '../Timeline';
 import { TimelineMarkerItemProps } from '../TimelineMarkerItem';
 
 export default {
@@ -17,6 +18,12 @@ export default {
       },
     },
     rightWidth: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    spacing: {
+      options: [undefined, 'cozy', 'comfy'],
       table: {
         category: 'Appearance',
       },
@@ -120,14 +127,36 @@ const defaultArgs = {
       position: 'right-center' as TimelineMarkerItemProps['position'],
     },
   ],
+  leftWidth: 180,
+  rightWidth: 180,
+  spacing: 'cozy' as TimelineSpacing,
   unthemed: false,
 };
 
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
-  leftWidth: 180,
-  rightWidth: 180,
+};
+
+export const CozySpacing = Template.bind({});
+CozySpacing.storyName = 'Spacing: Cozy';
+CozySpacing.args = {
+  ...defaultArgs,
+  spacing: 'cozy' as TimelineSpacing,
+};
+
+export const ComfySpacing = Template.bind({});
+ComfySpacing.storyName = 'Spacing: Comfy';
+ComfySpacing.args = {
+  ...defaultArgs,
+  spacing: 'comfy' as TimelineSpacing,
+};
+
+export const NoSpacing = Template.bind({});
+NoSpacing.storyName = 'Spacing: Undefined';
+NoSpacing.args = {
+  ...defaultArgs,
+  spacing: undefined,
 };
 
 export const RightSideLarger = Template.bind({});
@@ -144,4 +173,24 @@ LeftSideLarger.args = {
   ...defaultArgs,
   leftWidth: 260,
   rightWidth: 140,
+};
+
+export const Styled = Template.bind({});
+Styled.storyName = 'Styled';
+Styled.args = {
+  ...defaultArgs,
+  items: defaultArgs.items.map(({ color, ...item }, index) => ({
+    ...item,
+    style: {
+      '--timeline-item-connector-color': themes.light['primary-palette-border-color'],
+      '--timeline-item-state-color': themes.light[`color-P${index * 5 + 30}` as keyof ThemeColors],
+      '--shade-primary-color': themes.light[`color-P${index * 5 + 30}` as keyof ThemeColors],
+      '--shade-opaque-primary-color': themes.light[`color-P${index * 5 + 30}-shade` as keyof ThemeColors],
+      '--status-bubble-state-color': themes.light[`color-P${index * 5 + 30}` as keyof ThemeColors],
+      '--status-bubble-state-contrast-color': themes.light[`color-P${index * 5 + 30}-contrast` as keyof ThemeColors],
+    },
+    triangleColor: themes.light[`color-P${index * 5 + 30}-shade` as keyof ThemeColors],
+    triangleBorderColor: themes.light[`color-P${index * 5 + 30}` as keyof ThemeColors],
+    unthemed: true,
+  })),
 };

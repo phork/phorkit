@@ -12,7 +12,7 @@ export type TimelineDividerItemProps = Omit<StatusBubbleProps, 'anchor'> & {
 };
 
 /**
- * A timeline item is a special status bubble pointing
+ * A timeline item is a special `StatusBubble` pointing
  * towards a dividing line that is positioned in the
  * `Timeline`.
  *
@@ -49,7 +49,7 @@ export function TimelineDividerItem({
         styles[`timelineItem--${lowerCamelize(position)}`],
         first && styles['timelineItem--first'],
         last && styles['timelineItem--last'],
-        themeId && !unthemed && styles[`timeline--${themeId}`],
+        themeId && !unthemed && styles[`timelineItem--${themeId}`],
         className,
       )}
       position={position}

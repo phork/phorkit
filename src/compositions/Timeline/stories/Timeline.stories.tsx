@@ -1,16 +1,23 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
+import { ThemeColors, themes } from 'config/themes';
 import { Rhythm } from 'components/Rhythm';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { TimelineMarkerItemType } from '..';
-import { Timeline } from '../Timeline';
+import { Timeline, TimelineMarkerItemType, TimelineSpacing } from '../Timeline';
 import { TimelineMarkerItemProps } from '../TimelineMarkerItem';
 
 export default {
   title: 'Display/Timeline',
   component: Timeline,
   argTypes: {
+    spacing: {
+      options: [undefined, 'cozy', 'comfy'],
+      table: {
+        category: 'Appearance',
+      },
+    },
+
     items: {
       table: {
         category: 'State',
@@ -103,12 +110,34 @@ const defaultArgs = {
       color: 'neutral' as TimelineMarkerItemProps['color'],
     },
   ],
+  spacing: 'cozy' as TimelineSpacing,
   unthemed: false,
 };
 
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
+};
+
+export const CozySpacing = Template.bind({});
+CozySpacing.storyName = 'Spacing: Cozy';
+CozySpacing.args = {
+  ...defaultArgs,
+  spacing: 'cozy' as TimelineSpacing,
+};
+
+export const ComfySpacing = Template.bind({});
+ComfySpacing.storyName = 'Spacing: Comfy';
+ComfySpacing.args = {
+  ...defaultArgs,
+  spacing: 'comfy' as TimelineSpacing,
+};
+
+export const NoSpacing = Template.bind({});
+NoSpacing.storyName = 'Spacing: Undefined';
+NoSpacing.args = {
+  ...defaultArgs,
+  spacing: undefined,
 };
 
 export const RightSide = Template.bind({});
@@ -124,13 +153,6 @@ LeftSide.args = {
   items: defaultArgs.items.map(item => ({ ...item, position: 'left-center' })),
 };
 
-export const Styled = Template.bind({});
-Styled.storyName = 'Styled';
-Styled.args = {
-  ...defaultArgs,
-  items: defaultArgs.items.map(item => ({ ...item, position: 'left-center' })),
-};
-
 export const BothSides = Template.bind({});
 BothSides.storyName = 'Both sides';
 BothSides.args = {
@@ -140,7 +162,7 @@ BothSides.args = {
     position: i % 2 ? 'left-center' : 'right-center',
     style: {
       width: 180,
-      [i % 2 ? 'marginRight' : 'marginLeft']: 167,
+      [i % 2 ? 'marginRight' : 'marginLeft']: 169,
     },
   })),
 };
@@ -152,4 +174,25 @@ BothSides.parameters = {
         'The StraddledTimeline component provides this functionality, but this story gives an example of an alternative way to do it.',
     },
   },
+};
+
+export const Styled = Template.bind({});
+Styled.storyName = 'Styled';
+Styled.args = {
+  ...defaultArgs,
+  items: defaultArgs.items.map(({ color, ...item }, index) => ({
+    ...item,
+    position: 'right-center',
+    style: {
+      '--timeline-item-connector-color': themes.light['primary-palette-border-color'],
+      '--timeline-item-state-color': themes.light[`color-P${index * 5 + 30}` as keyof ThemeColors],
+      '--shade-primary-color': themes.light[`color-P${index * 5 + 30}` as keyof ThemeColors],
+      '--shade-opaque-primary-color': themes.light[`color-P${index * 5 + 30}-shade` as keyof ThemeColors],
+      '--status-bubble-state-color': themes.light[`color-P${index * 5 + 30}` as keyof ThemeColors],
+      '--status-bubble-state-contrast-color': themes.light[`color-P${index * 5 + 30}-contrast` as keyof ThemeColors],
+    },
+    triangleColor: themes.light[`color-P${index * 5 + 30}-shade` as keyof ThemeColors],
+    triangleBorderColor: themes.light[`color-P${index * 5 + 30}` as keyof ThemeColors],
+    unthemed: true,
+  })),
 };

@@ -7,12 +7,28 @@ route: /compositions/Timeline
 import { Playground, Props } from 'docz';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { Timeline } from '../index';
+import { Timeline, StraddledTimeline, TimelineDividerItem, TimelineMarkerItem } from '../index';
 import { items } from './helpers/items';
 
 <PageTitle src="compositions/Timeline" title="Timeline" />
 
-## Right side timeline
+## Cozy timeline
+
+<Playground>
+  <ThemeWrapper>
+    <Timeline items={items} spacing="cozy" />
+  </ThemeWrapper>
+</Playground>
+
+## Comfy timeline
+
+<Playground>
+  <ThemeWrapper>
+    <Timeline items={items} spacing="comfy" />
+  </ThemeWrapper>
+</Playground>
+
+## Unspaced timeline
 
 <Playground>
   <ThemeWrapper>
@@ -20,15 +36,43 @@ import { items } from './helpers/items';
   </ThemeWrapper>
 </Playground>
 
+## Right side timeline
+
+<Playground>
+  <ThemeWrapper>
+    <Timeline items={items} spacing="cozy" />
+  </ThemeWrapper>
+</Playground>
+
+## Right side timeline
+
+<Playground>
+  <ThemeWrapper>
+    <Timeline items={items} spacing="cozy" />
+  </ThemeWrapper>
+</Playground>
+
 ## Left side timeline
 
 <Playground>
   <ThemeWrapper>
-    <Timeline items={items.map(item => ({ ...item, position: 'left-center' }))} />
+    <Timeline items={items.map(item => ({ ...item, position: 'left-center' }))} spacing="cozy" />
   </ThemeWrapper>
 </Playground>
 
-## Both sides timeline
+## Straddled timeline
+
+<Playground>
+  <ThemeWrapper>
+    <StraddledTimeline
+      items={items.map((item, index) => ({ ...item, position: index % 2 ? 'left-center' : 'right-center' }))}
+      leftWidth={260}
+      rightWidth={180}
+    />
+  </ThemeWrapper>
+</Playground>
+
+## Straddled timeline (manual alternative)
 
 <Playground>
   <ThemeWrapper>
@@ -38,7 +82,7 @@ import { items } from './helpers/items';
         position: i % 2 ? 'left-center' : 'right-center',
         style: {
           width: 180,
-          [i % 2 ? 'marginRight' : 'marginLeft']: 167,
+          [i % 2 ? 'marginRight' : 'marginLeft']: 169,
         },
       }))}
     />
@@ -47,4 +91,18 @@ import { items } from './helpers/items';
 
 ## \[props\]
 
+### Timeline
+
 <Props of={Timeline} />
+
+### StraddledTimeline
+
+<Props of={StraddledTimeline} />
+
+### TimelineDividerItem
+
+<Props of={TimelineDividerItem} />
+
+### TimelineMarkerItem
+
+<Props of={TimelineMarkerItem} />

@@ -47,6 +47,11 @@ export default {
         category: 'Appearance',
       },
     },
+    offset: {
+      table: {
+        category: 'Appearance',
+      },
+    },
     position: {
       control: {
         type: 'radio',

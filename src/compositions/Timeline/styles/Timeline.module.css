@@ -5,7 +5,7 @@
 
   @mixin themed {
     --timeline-item-connector-color: $theme-primary-palette-border-color;
-    --timeline-item-background-color: $theme-primary-palette-background-color;
+    --timeline-item-connector-mask-color: $theme-primary-palette-background-color;
   }
 }
 
@@ -16,8 +16,16 @@
 .timelineItem {
   flex: none;
   position: relative;
+}
 
-  & + .timelineItem {
+.timeline--cozy {
+  .timelineItem + .timelineItem {
+    padding-top: 12px;
+  }
+}
+
+.timeline--comfy {
+  .timelineItem + .timelineItem {
     padding-top: 24px;
   }
 }
@@ -58,7 +66,7 @@
 .timelineItem--rightCenter,
 .timelineItem--rightTop {
   &:before {
-    left: 6px;
+    left: 5px;
   }
 
   .timeline--straddled & {
@@ -70,7 +78,7 @@
 .timelineItem--leftCenter,
 .timelineItem--leftTop {
   &:before {
-    right: 6px;
+    right: 5px;
   }
 
   .timeline--straddled & {
@@ -80,24 +88,74 @@
 
 .timelineItemMarker,
 .timelineItemDivider {
-  box-shadow: 0 0 0 4px var(--timeline-item-background-color);
+  box-shadow: 0 0 0 4px var(--timeline-item-connector-mask-color);
 }
 
 .timelineItemMarker {
-  background: var(--status-bubble-marker-background-color, transparent);
+  background: var(--timeline-item-marker-background-color, transparent);
   border-radius: 100%;
-  border: 3px solid var(--status-bubble-state-color);
+  border: 3px solid var(--timeline-item-state-color);
   flex: none;
-  height: 13px;
-  width: 13px;
+  height: 11px;
+  width: 11px;
+
+  .timelineItem--leftTop &,
+  .timelineItem--rightTop & {
+    margin-top: 12px;
+  }
+
+  .timelineItem--leftBottom &,
+  .timelineItem--rightBottom & {
+    margin-bottom: 12px;
+  }
 
   @mixin themed .timelineItemMarker {
-    --status-bubble-marker-background-color: $theme-extreme-palette-background-color;
+    --timeline-item-marker-background-color: $theme-extreme-palette-background-color;
   }
 }
 
 .timelineItemDivider {
   background: var(--timeline-item-connector-color);
   height: 1px;
-  width: 14px;
+  width: 12px;
+
+  .timelineItem--leftTop &,
+  .timelineItem--rightTop & {
+    margin-top: 17px;
+  }
+
+  .timelineItem--leftBottom &,
+  .timelineItem--rightBottom & {
+    margin-bottom: 17px;
+  }
+}
+
+.timelineItem--primary {
+  @mixin themed .timelineItem {
+    --timeline-item-state-color: var(--phork-accent-color, $theme-color-accent);
+  }
+}
+
+.timelineItem--success {
+  @mixin themed .timelineItem {
+    --timeline-item-state-color: $theme-color-success;
+  }
+}
+
+.timelineItem--warning {
+  @mixin themed .timelineItem {
+    --timeline-item-state-color: $theme-color-warning;
+  }
+}
+
+.timelineItem--danger {
+  @mixin themed .timelineItem {
+    --timeline-item-state-color: $theme-color-danger;
+  }
+}
+
+.timelineItem--neutral {
+  @mixin themed .timelineItem {
+    --timeline-item-state-color: $theme-color-neutral;
+  }
 }

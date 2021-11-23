@@ -7,23 +7,30 @@ import { TimelineDividerItem, TimelineDividerItemProps } from './TimelineDivider
 import { TimelineMarkerItem, TimelineMarkerItemProps } from './TimelineMarkerItem';
 
 export type TimelineMarkerItemType = 'divider' | 'default';
+export type TimelineSpacing = 'cozy' | 'comfy';
 
 export type TimelineProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> &
   Omit<ThemeProps, 'contrast'> & {
     className?: string;
     items: Array<(TimelineMarkerItemProps | TimelineDividerItemProps) & { id: string; type?: TimelineMarkerItemType }>;
+    spacing?: TimelineSpacing;
     style?: React.CSSProperties;
   };
 
 export function TimelineBase(
-  { className, items, themeId: initThemeId, unthemed, ...props }: TimelineProps,
+  { className, items, spacing, themeId: initThemeId, unthemed, ...props }: TimelineProps,
   forwardedRef: React.ForwardedRef<HTMLDivElement>,
 ): JSX.Element {
   const themeId = useThemeId(initThemeId);
 
   return (
     <div
-      className={cx(styles.timeline, themeId && !unthemed && styles[`timeline--${themeId}`], className)}
+      className={cx(
+        styles.timeline,
+        spacing && styles[`timeline--${spacing}`],
+        themeId && !unthemed && styles[`timeline--${themeId}`],
+        className,
+      )}
       ref={forwardedRef}
       {...props}
     >

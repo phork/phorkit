@@ -12,13 +12,14 @@ export type TimelineMarkerItemProps = Omit<StatusBubbleProps, 'anchor'> & {
 };
 
 /**
- * A timeline item is a special status bubble pointing
+ * A timeline item is a special `StatusBubble` pointing
  * towards a marker that is positioned in the `Timeline`.
  *
  * This uses the `MarkerStatusBubble` component.
  */
 export function TimelineMarkerItem({
   className,
+  color = 'neutral',
   first,
   last,
   themeId: initThemeId,
@@ -36,11 +37,7 @@ export function TimelineMarkerItem({
       anchor={
         <div
           aria-hidden="true"
-          className={cx(
-            styles.timelineItemMarker,
-            styles['timelineItemMarker--filled'],
-            themeId && styles[`timelineItemMarker--${themeId}`],
-          )}
+          className={cx(styles.timelineItemMarker, themeId && styles[`timelineItemMarker--${themeId}`])}
         />
       }
       className={cx(
@@ -48,9 +45,11 @@ export function TimelineMarkerItem({
         styles[`timelineItem--${lowerCamelize(position)}`],
         first && styles['timelineItem--first'],
         last && styles['timelineItem--last'],
-        themeId && !unthemed && styles[`timeline--${themeId}`],
+        color && !unthemed && styles[`timelineItem--${color}`],
+        themeId && !unthemed && styles[`timelineItem--${themeId}`],
         className,
       )}
+      color={color}
       position={position}
       style={style}
       themeId={themeId}

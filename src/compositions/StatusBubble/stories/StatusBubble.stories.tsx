@@ -45,14 +45,7 @@ export default {
         category: 'Appearance',
       },
     },
-    icon: {
-      options: ['icon', 'avatar'],
-      control: {
-        labels: {
-          icon: '<PhorkIcon scale="large" />',
-          avatar: '<Avatar initials="EC" />',
-        },
-      },
+    offset: {
       table: {
         category: 'Appearance',
       },

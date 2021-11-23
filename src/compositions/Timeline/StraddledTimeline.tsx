@@ -4,7 +4,7 @@ import styles from './styles/Timeline.module.css';
 import { Timeline, TimelineProps } from './Timeline';
 
 /** The width of the status bubble plus the divider width */
-const OVERLAP_WIDTH = 13;
+const OVERLAP_WIDTH = 11;
 
 export type StraddledTimelineProps = TimelineProps & {
   leftWidth: number;
@@ -19,7 +19,7 @@ export function StraddledTimelineBase(
 
   const items = useMemo(
     () =>
-      initItems.map(({ position, style, ...item }) => {
+      initItems.map(({ position, ...item }) => {
         const [side] = position?.split('-') || ['right'];
         return {
           position,

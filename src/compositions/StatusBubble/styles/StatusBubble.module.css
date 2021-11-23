@@ -1,6 +1,7 @@
 .statusBubble {
   display: flex;
   flex-wrap: nowrap;
+  position: relative;
 }
 
 .statusBubble--rightBottom {
