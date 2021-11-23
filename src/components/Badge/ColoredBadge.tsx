@@ -26,6 +26,7 @@ const StyledBadge = styled(Badge, {
 export const ColoredBadge = React.memo<Omit<ColoredBadgeProps, 'themeId'> & { themeId?: Theme }>(
   withTheme<ColoredBadgeProps>(StyledBadge),
 );
+
 ColoredBadge.displayName = 'ColoredBadge';
 
 StyledBadge.defaultProps = {
