@@ -1,27 +1,26 @@
 ---
-name: StatusBubble
+name: IconStatusBubble
 menu: Display
-route: /compositions/StatusBubble
+route: /compositions/IconStatusBubble
 ---
 
 import { Playground, Props } from 'docz';
 import { PhorkIcon } from 'icons/PhorkIcon';
-import { Avatar } from 'components/Avatar';
 import { Divider } from 'components/Divider';
 import { Paper } from 'components/Paper';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { StatusBubble } from '../index';
+import { IconStatusBubble } from '../index';
 
-<PageTitle src="compositions/StatusBubble" title="StatusBubble" />
+<PageTitle src="compositions/StatusBubble" title="IconStatusBubble" />
 
 ## Neutral status bubble
 
 <Playground>
   <ThemeWrapper>
-    <StatusBubble
+    <IconStatusBubble
       color="neutral"
       header={
         <React.Fragment>
@@ -34,7 +33,7 @@ import { StatusBubble } from '../index';
       <Paper color="primary">
         <Rhythm p={4}>Hello world</Rhythm>
       </Paper>
-    </StatusBubble>
+    </IconStatusBubble>
   </ThemeWrapper>
 </Playground>
 
@@ -42,7 +41,7 @@ import { StatusBubble } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <StatusBubble
+    <IconStatusBubble
       color="primary"
       header={
         <React.Fragment>
@@ -55,7 +54,7 @@ import { StatusBubble } from '../index';
       <Paper color="primary">
         <Rhythm p={4}>Hello world</Rhythm>
       </Paper>
-    </StatusBubble>
+    </IconStatusBubble>
   </ThemeWrapper>
 </Playground>
 
@@ -63,7 +62,7 @@ import { StatusBubble } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <StatusBubble
+    <IconStatusBubble
       color="success"
       header={
         <React.Fragment>
@@ -76,7 +75,7 @@ import { StatusBubble } from '../index';
       <Paper color="primary">
         <Rhythm p={4}>Hello world</Rhythm>
       </Paper>
-    </StatusBubble>
+    </IconStatusBubble>
   </ThemeWrapper>
 </Playground>
 
@@ -84,7 +83,7 @@ import { StatusBubble } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <StatusBubble
+    <IconStatusBubble
       color="warning"
       header={
         <React.Fragment>
@@ -97,7 +96,7 @@ import { StatusBubble } from '../index';
       <Paper color="primary">
         <Rhythm p={4}>Hello world</Rhythm>
       </Paper>
-    </StatusBubble>
+    </IconStatusBubble>
   </ThemeWrapper>
 </Playground>
 
@@ -105,7 +104,7 @@ import { StatusBubble } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <StatusBubble
+    <IconStatusBubble
       color="danger"
       header={
         <React.Fragment>
@@ -118,7 +117,7 @@ import { StatusBubble } from '../index';
       <Paper color="primary">
         <Rhythm p={4}>Hello world</Rhythm>
       </Paper>
-    </StatusBubble>
+    </IconStatusBubble>
   </ThemeWrapper>
 </Playground>
 
@@ -126,7 +125,7 @@ import { StatusBubble } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <StatusBubble
+    <IconStatusBubble
       header={
         <React.Fragment>
           <Typography weight="bold">Something cool happened</Typography>
@@ -139,7 +138,7 @@ import { StatusBubble } from '../index';
       <Paper color="primary">
         <Rhythm p={4}>Hello world</Rhythm>
       </Paper>
-    </StatusBubble>
+    </IconStatusBubble>
   </ThemeWrapper>
 </Playground>
 
@@ -147,7 +146,7 @@ import { StatusBubble } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <StatusBubble
+    <IconStatusBubble
       header={
         <React.Fragment>
           <Typography weight="bold">Something cool happened</Typography>
@@ -160,7 +159,49 @@ import { StatusBubble } from '../index';
       <Paper color="primary">
         <Rhythm p={4}>Hello world</Rhythm>
       </Paper>
-    </StatusBubble>
+    </IconStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Right center
+
+<Playground>
+  <ThemeWrapper>
+    <IconStatusBubble
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      icon={<PhorkIcon scale="large" />}
+      position="right-center"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </IconStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Left center
+
+<Playground>
+  <ThemeWrapper>
+    <IconStatusBubble
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      icon={<PhorkIcon scale="large" />}
+      position="left-center"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </IconStatusBubble>
   </ThemeWrapper>
 </Playground>
 
@@ -168,7 +209,7 @@ import { StatusBubble } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <StatusBubble
+    <IconStatusBubble
       header={
         <React.Fragment>
           <Typography weight="bold">Something cool happened</Typography>
@@ -181,7 +222,7 @@ import { StatusBubble } from '../index';
       <Paper color="primary">
         <Rhythm p={4}>Hello world</Rhythm>
       </Paper>
-    </StatusBubble>
+    </IconStatusBubble>
   </ThemeWrapper>
 </Playground>
 
@@ -189,7 +230,7 @@ import { StatusBubble } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <StatusBubble
+    <IconStatusBubble
       header={
         <React.Fragment>
           <Typography weight="bold">Something cool happened</Typography>
@@ -202,29 +243,7 @@ import { StatusBubble } from '../index';
       <Paper color="primary">
         <Rhythm p={4}>Hello world</Rhythm>
       </Paper>
-    </StatusBubble>
-  </ThemeWrapper>
-</Playground>
-
-## With an avatar
-
-<Playground>
-  <ThemeWrapper>
-    <StatusBubble
-      color="neutral"
-      header={
-        <React.Fragment>
-          <Typography weight="bold">Something cool happened</Typography>
-          <Typography volume="quiet">Yesterday</Typography>
-        </React.Fragment>
-      }
-      icon={<Avatar imgSrc="/public/images/avatar.jpg" initials="EC" size="large" />}
-      iconShape="circle"
-    >
-      <Paper color="primary">
-        <Rhythm p={4}>Hello world</Rhythm>
-      </Paper>
-    </StatusBubble>
+    </IconStatusBubble>
   </ThemeWrapper>
 </Playground>
 
@@ -232,7 +251,7 @@ import { StatusBubble } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <StatusBubble color="primary" icon={<PhorkIcon scale="large" />} style={{ maxWidth: 400 }}>
+    <IconStatusBubble color="primary" icon={<PhorkIcon scale="large" />} style={{ maxWidth: 400 }}>
       <React.Fragment>
         <Paper color="primary">
           <Rhythm grouped px={4} py={3}>
@@ -248,7 +267,7 @@ import { StatusBubble } from '../index';
           </Rhythm>
         </Paper>
       </React.Fragment>
-    </StatusBubble>
+    </IconStatusBubble>
   </ThemeWrapper>
 </Playground>
 
@@ -256,7 +275,7 @@ import { StatusBubble } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <StatusBubble
+    <IconStatusBubble
       color="neutral"
       header={
         <React.Fragment>
@@ -274,7 +293,7 @@ import { StatusBubble } from '../index';
 
 <Playground>
   <ThemeWrapper>
-    <StatusBubble
+    <IconStatusBubble
       color="neutral"
       header={
         <React.Fragment>
@@ -290,10 +309,10 @@ import { StatusBubble } from '../index';
       <Paper color="primary">
         <Rhythm p={4}>Hello world</Rhythm>
       </Paper>
-    </StatusBubble>
+    </IconStatusBubble>
   </ThemeWrapper>
 </Playground>
 
 ## \[props\]
 
-<Props of={StatusBubble} />
+<Props of={IconStatusBubble} />

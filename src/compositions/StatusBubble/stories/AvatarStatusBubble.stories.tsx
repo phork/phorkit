@@ -7,20 +7,12 @@ import { Paper } from 'components/Paper';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { StatusBubble, StatusBubbleProps } from '../StatusBubble';
+import { AvatarStatusBubble, AvatarStatusBubbleProps } from '../AvatarStatusBubble';
 
 export default {
-  title: 'Display/StatusBubble',
-  component: StatusBubble,
+  title: 'Display/StatusBubble/AvatarStatusBubble',
+  component: AvatarStatusBubble,
   argTypes: {
-    anchor: {
-      control: {
-        disable: true,
-      },
-      table: {
-        category: 'Appearance',
-      },
-    },
     children: {
       control: {
         disable: true,
@@ -41,6 +33,16 @@ export default {
       control: {
         disable: true,
       },
+      table: {
+        category: 'Appearance',
+      },
+    },
+    imgSrc: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    initials: {
       table: {
         category: 'Appearance',
       },
@@ -103,7 +105,7 @@ export default {
     docs: {
       page: () => (
         <React.Fragment>
-          <PageTitle src="compositions/StatusBubble" title="StatusBubble" />
+          <PageTitle src="compositions/StatusBubble" title="AvatarStatusBubble" />
           <Subtitle />
           <Description />
           <Primary />
@@ -113,24 +115,17 @@ export default {
       ),
     },
   },
-} as ComponentMeta<typeof StatusBubble>;
+} as ComponentMeta<typeof AvatarStatusBubble>;
 
-const Template: ComponentStory<(args: StatusBubbleProps) => ReturnType<typeof StatusBubble>> = args => (
-  <StatusBubble {...args} />
-);
+const Template: ComponentStory<typeof AvatarStatusBubble> = args => <AvatarStatusBubble {...args} />;
 
 const defaultArgs = {
-  anchor: (
-    <Typography<'div'> as="div" style={{ marginTop: 13, marginBottom: 13 }} variants="xsmall-caps">
-      anchor
-    </Typography>
-  ),
   children: (
     <Paper color="primary">
       <Rhythm p={4}>Hello world</Rhythm>
     </Paper>
   ),
-  color: 'neutral' as StatusBubbleProps['color'],
+  color: 'neutral' as AvatarStatusBubbleProps['color'],
   header: (
     <React.Fragment>
       <Rhythm mr={2}>
@@ -141,7 +136,9 @@ const defaultArgs = {
       </Rhythm>
     </React.Fragment>
   ),
-  position: 'right-top' as StatusBubbleProps['position'],
+  imgSrc: '/images/avatar.jpg',
+  initials: 'EC',
+  position: 'right-top' as AvatarStatusBubbleProps['position'],
   unthemed: false,
 };
 
@@ -151,7 +148,25 @@ Default.args = {
 };
 
 Default.parameters = {
-  jest: ['StatusBubble.test.js'],
+  jest: ['AvatarStatusBubble.test.js', 'StatusBubble.test.js'],
+};
+
+export const PrimaryAvatarColor = Template.bind({});
+PrimaryAvatarColor.storyName = 'Avatar color: Primary';
+PrimaryAvatarColor.args = {
+  ...defaultArgs,
+  avatarColor: 'primary',
+  color: 'primary',
+  imgSrc: undefined,
+};
+
+export const NeutralAvatarColor = Template.bind({});
+NeutralAvatarColor.storyName = 'Avatar color: Neutral';
+NeutralAvatarColor.args = {
+  ...defaultArgs,
+  avatarColor: 'neutral',
+  color: 'neutral',
+  imgSrc: undefined,
 };
 
 export const PrimaryColor = Template.bind({});
@@ -231,6 +246,11 @@ RightBottomPosition.args = {
   position: 'right-bottom',
 };
 
+export const AvatarAvatar = Template.bind({});
+AvatarAvatar.args = {
+  ...defaultArgs,
+};
+
 export const NoHeader = Template.bind({});
 NoHeader.storyName = 'No header';
 NoHeader.args = {
@@ -278,7 +298,10 @@ export const Styled = Template.bind({});
 Styled.storyName = 'Custom styles';
 Styled.args = {
   ...defaultArgs,
+  imgSrc: undefined,
   style: {
+    '--avatar-background-color': themes.light['color-P50'],
+    '--avatar-text-color': themes.light['color-P50-contrast'],
     '--shade-primary-color': themes.light['color-P50'],
     '--shade-opaque-primary-color': themes.light['color-P50-shade'],
     '--status-bubble-state-color': themes.light['color-P50'],

@@ -13,5 +13,6 @@ export * from './Popover';
 export * from './StatusBubble';
 export * from './Tabs';
 export * from './TextboxGroup';
+export * from './Timeline';
 export * from './Toast';
 export * from './Tooltip';

@@ -1,0 +1,134 @@
+---
+name: Timeline
+menu: Display
+route: /compositions/Timeline
+---
+
+import { Playground, Props } from 'docz';
+import { themes } from 'config/themes';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { Timeline, StraddledTimeline, TimelineDividerItem, TimelineMarkerItem } from '../index';
+import { items } from './helpers/items';
+
+<PageTitle src="compositions/Timeline" title="Timeline" />
+
+## Cozy timeline
+
+<Playground>
+  <ThemeWrapper>
+    <Timeline items={items} spacing="cozy" />
+  </ThemeWrapper>
+</Playground>
+
+## Comfy timeline
+
+<Playground>
+  <ThemeWrapper>
+    <Timeline items={items} spacing="comfy" />
+  </ThemeWrapper>
+</Playground>
+
+## Unspaced timeline
+
+<Playground>
+  <ThemeWrapper>
+    <Timeline items={items} />
+  </ThemeWrapper>
+</Playground>
+
+## Right side timeline
+
+<Playground>
+  <ThemeWrapper>
+    <Timeline items={items} spacing="cozy" />
+  </ThemeWrapper>
+</Playground>
+
+## Right side timeline
+
+<Playground>
+  <ThemeWrapper>
+    <Timeline items={items} spacing="cozy" />
+  </ThemeWrapper>
+</Playground>
+
+## Left side timeline
+
+<Playground>
+  <ThemeWrapper>
+    <Timeline items={items.map(item => ({ ...item, position: 'left-center' }))} spacing="cozy" />
+  </ThemeWrapper>
+</Playground>
+
+## Straddled timeline
+
+<Playground>
+  <ThemeWrapper>
+    <StraddledTimeline
+      items={items.map((item, index) => ({ ...item, position: index % 2 ? 'left-center' : 'right-center' }))}
+      leftWidth={260}
+      rightWidth={180}
+    />
+  </ThemeWrapper>
+</Playground>
+
+## Straddled timeline (manual alternative)
+
+<Playground>
+  <ThemeWrapper>
+    <Timeline
+      items={items.map((item, i) => ({
+        ...item,
+        position: i % 2 ? 'left-center' : 'right-center',
+        style: {
+          width: 180,
+          [i % 2 ? 'marginRight' : 'marginLeft']: 169,
+        },
+      }))}
+    />
+  </ThemeWrapper>
+</Playground>
+
+## Custom styles
+
+<Playground>
+  <ThemeWrapper>
+    <Timeline
+      items={items.map(({ color, ...item }, index) => ({
+        ...item,
+        position: 'right-center',
+        style: {
+          '--timeline-item-connector-color': themes.light['primary-palette-border-color'],
+          '--timeline-item-state-color': themes.light[`color-P${index * 5 + 30}`],
+          '--shade-primary-color': themes.light[`color-P${index * 5 + 30}`],
+          '--shade-opaque-primary-color': themes.light[`color-P${index * 5 + 30}-shade`],
+          '--status-bubble-state-color': themes.light[`color-P${index * 5 + 30}`],
+          '--status-bubble-state-contrast-color': themes.light[`color-P${index * 5 + 30}-contrast`],
+          '--status-bubble-triangle-color': themes.light[`color-P${index * 5 + 30}-shade`],
+          '--status-bubble-triangle-border-color': themes.light[`color-P${index * 5 + 30}`],
+        },
+        unthemed: true,
+      }))}
+      spacing="cozy"
+    />
+  </ThemeWrapper>
+</Playground>
+
+## \[props\]
+
+### Timeline
+
+<Props of={Timeline} />
+
+### StraddledTimeline
+
+<Props of={StraddledTimeline} />
+
+### TimelineDividerItem
+
+<Props of={TimelineDividerItem} />
+
+### TimelineMarkerItem
+
+<Props of={TimelineMarkerItem} />

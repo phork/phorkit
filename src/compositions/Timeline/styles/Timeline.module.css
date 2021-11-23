@@ -1,0 +1,241 @@
+/**
+ * This is the vertical offset used by the StatusBubble
+ * to vertically position the pointer.
+ */
+$status-bubble-vertical-offset: 18px;
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  @mixin themed {
+    --timeline-item-connector-color: $theme-primary-palette-border-color;
+  }
+}
+
+.timeline--straddled {
+  flex: none;
+}
+
+/**
+ * 1. The amount of space added on to each non-first
+ *    item as top padding. This is un-nested because
+ *    otherwise a higher specificity could override
+ *    the .timelineItem--first setting.
+ */
+.timeline--cozy {
+  --timeline-item-spacing: 12px; /* [1] */
+}
+
+/**
+ * 1. The amount of space added on to each non-first
+ *    item as top padding. This is un-nested because
+ *    otherwise a higher specificity could override
+ *    the .timelineItem--first setting.
+ */
+.timeline--comfy {
+  --timeline-item-spacing: 24px; /* [1] */
+}
+
+.timelineItem {
+  flex: none;
+  padding-top: var(--timeline-item-spacing, 0px);
+  position: relative;
+}
+
+.timelineItem--first {
+  --timeline-item-spacing: 0px;
+}
+
+.timelineItem--marker {
+  --timeline-item-anchor-spacing: 4px;
+  --timeline-item-anchor-height: 11px;
+}
+
+.timelineItem--divider {
+  --timeline-item-anchor-spacing: 4px;
+  --timeline-item-anchor-height: 1px;
+}
+
+.timelineItem--rightBottom,
+.timelineItem--rightCenter,
+.timelineItem--rightTop,
+.timelineItem--leftBottom,
+.timelineItem--leftCenter,
+.timelineItem--leftTop {
+  position: relative;
+
+  &:before {
+    content: '';
+    top: 0;
+    width: 1px;
+    background: var(--timeline-item-connector-color);
+    position: absolute;
+  }
+
+  &:after {
+    content: '';
+    bottom: 0;
+    width: 1px;
+    background: var(--timeline-item-connector-color);
+    position: absolute;
+  }
+
+  &.timelineItem--first {
+    &:before {
+      height: 0;
+    }
+  }
+
+  &.timelineItem--last {
+    &:after {
+      height: 0;
+    }
+  }
+}
+
+.timelineItem--leftTop,
+.timelineItem--rightTop {
+  &:before {
+    height: calc(
+      $status-bubble-vertical-offset + var(--timeline-item-spacing, 0px) - var(--timeline-item-anchor-spacing, 0px) -
+        calc(var(--timeline-item-anchor-height, 0px) / 2)
+    );
+  }
+
+  &:after {
+    height: calc(
+      100% - $status-bubble-vertical-offset - var(--timeline-item-spacing, 0px) -
+        var(--timeline-item-anchor-spacing, 0px) - calc(var(--timeline-item-anchor-height, 0px) / 2)
+    );
+  }
+}
+
+.timelineItem--leftBottom,
+.timelineItem--rightBottom {
+  &:before {
+    height: calc(
+      100% - $status-bubble-vertical-offset - var(--timeline-item-anchor-spacing, 0px) -
+        calc(var(--timeline-item-anchor-height, 0px) / 2)
+    );
+  }
+
+  &:after {
+    height: calc(
+      $status-bubble-vertical-offset - var(--timeline-item-anchor-spacing, 0px) -
+        calc(var(--timeline-item-anchor-height, 0px) / 2)
+    );
+  }
+}
+
+.timelineItem--leftCenter,
+.timelineItem--rightCenter {
+  &:before {
+    height: calc(
+      50% + calc(var(--timeline-item-spacing, 0px) / 2) - var(--timeline-item-anchor-spacing, 0px) -
+        calc(var(--timeline-item-anchor-height, 0px) / 2)
+    );
+  }
+
+  &:after {
+    height: calc(
+      50% - calc(var(--timeline-item-spacing, 0px) / 2) - var(--timeline-item-anchor-spacing, 0px) -
+        calc(var(--timeline-item-anchor-height, 0px) / 2)
+    );
+  }
+}
+
+.timelineItem--rightBottom,
+.timelineItem--rightCenter,
+.timelineItem--rightTop {
+  &:before,
+  &:after {
+    left: 5px;
+  }
+
+  .timeline--straddled & {
+    align-self: flex-end;
+  }
+}
+
+.timelineItem--leftBottom,
+.timelineItem--leftCenter,
+.timelineItem--leftTop {
+  &:before,
+  &:after {
+    right: 5px;
+  }
+
+  .timeline--straddled & {
+    align-self: flex-start;
+  }
+}
+
+.timelineItemMarker {
+  border-radius: 100%;
+  border: 3px solid var(--timeline-item-state-color);
+  flex: none;
+  height: var(--timeline-item-anchor-height);
+  width: var(--timeline-item-anchor-height);
+
+  .timelineItem--leftTop &,
+  .timelineItem--rightTop & {
+    margin-top: 12px;
+  }
+
+  .timelineItem--leftBottom &,
+  .timelineItem--rightBottom & {
+    margin-bottom: 12px;
+  }
+
+  @mixin themed .timelineItemMarker {
+    --timeline-item-marker-background-color: $theme-extreme-palette-background-color;
+  }
+}
+
+.timelineItemDivider {
+  background: var(--timeline-item-connector-color);
+  height: var(--timeline-item-anchor-height);
+  width: 12px;
+
+  .timelineItem--leftTop &,
+  .timelineItem--rightTop & {
+    margin-top: 17px;
+  }
+
+  .timelineItem--leftBottom &,
+  .timelineItem--rightBottom & {
+    margin-bottom: 17px;
+  }
+}
+
+.timelineItem--primary {
+  @mixin themed .timelineItem {
+    --timeline-item-state-color: var(--phork-accent-color, $theme-color-accent);
+  }
+}
+
+.timelineItem--success {
+  @mixin themed .timelineItem {
+    --timeline-item-state-color: $theme-color-success;
+  }
+}
+
+.timelineItem--warning {
+  @mixin themed .timelineItem {
+    --timeline-item-state-color: $theme-color-warning;
+  }
+}
+
+.timelineItem--danger {
+  @mixin themed .timelineItem {
+    --timeline-item-state-color: $theme-color-danger;
+  }
+}
+
+.timelineItem--neutral {
+  @mixin themed .timelineItem {
+    --timeline-item-state-color: $theme-color-neutral;
+  }
+}

@@ -2,25 +2,16 @@ import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } fro
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { themes } from 'config/themes';
-import { Divider } from 'components/Divider';
 import { Paper } from 'components/Paper';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { StatusBubble, StatusBubbleProps } from '../StatusBubble';
+import { TimelineMarkerItem, TimelineMarkerItemProps } from '../TimelineMarkerItem';
 
 export default {
-  title: 'Display/StatusBubble',
-  component: StatusBubble,
+  title: 'Display/Timeline/Items/TimelineMarkerItem',
+  component: TimelineMarkerItem,
   argTypes: {
-    anchor: {
-      control: {
-        disable: true,
-      },
-      table: {
-        category: 'Appearance',
-      },
-    },
     children: {
       control: {
         disable: true,
@@ -37,6 +28,11 @@ export default {
         category: 'Appearance',
       },
     },
+    first: {
+      table: {
+        category: 'Appearance',
+      },
+    },
     header: {
       control: {
         disable: true,
@@ -45,7 +41,7 @@ export default {
         category: 'Appearance',
       },
     },
-    offset: {
+    last: {
       table: {
         category: 'Appearance',
       },
@@ -54,6 +50,11 @@ export default {
       control: {
         type: 'radio',
       },
+      table: {
+        category: 'Appearance',
+      },
+    },
+    width: {
       table: {
         category: 'Appearance',
       },
@@ -96,6 +97,7 @@ export default {
       },
     },
   },
+
   parameters: {
     controls: {
       sort: 'requiredFirst',
@@ -103,7 +105,7 @@ export default {
     docs: {
       page: () => (
         <React.Fragment>
-          <PageTitle src="compositions/StatusBubble" title="StatusBubble" />
+          <PageTitle src="compositions/Timeline" title="TimelineMarkerItem" />
           <Subtitle />
           <Description />
           <Primary />
@@ -113,24 +115,19 @@ export default {
       ),
     },
   },
-} as ComponentMeta<typeof StatusBubble>;
+} as ComponentMeta<typeof TimelineMarkerItem>;
 
-const Template: ComponentStory<(args: StatusBubbleProps) => ReturnType<typeof StatusBubble>> = args => (
-  <StatusBubble {...args} />
-);
+const Template: ComponentStory<typeof TimelineMarkerItem> = args => <TimelineMarkerItem {...args} />;
 
 const defaultArgs = {
-  anchor: (
-    <Typography<'div'> as="div" style={{ marginTop: 13, marginBottom: 13 }} variants="xsmall-caps">
-      anchor
-    </Typography>
-  ),
   children: (
     <Paper color="primary">
       <Rhythm p={4}>Hello world</Rhythm>
     </Paper>
   ),
-  color: 'neutral' as StatusBubbleProps['color'],
+  color: 'neutral' as TimelineMarkerItemProps['color'],
+  first: false,
+  last: false,
   header: (
     <React.Fragment>
       <Rhythm mr={2}>
@@ -141,17 +138,16 @@ const defaultArgs = {
       </Rhythm>
     </React.Fragment>
   ),
-  position: 'right-top' as StatusBubbleProps['position'],
+  position: 'right-top' as TimelineMarkerItemProps['position'],
+  style: {
+    '--timeline-item-connector-color': themes.light['primary-palette-border-color'],
+  } as React.CSSProperties,
   unthemed: false,
 };
 
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
-};
-
-Default.parameters = {
-  jest: ['StatusBubble.test.js'],
 };
 
 export const PrimaryColor = Template.bind({});
@@ -231,60 +227,19 @@ RightBottomPosition.args = {
   position: 'right-bottom',
 };
 
-export const NoHeader = Template.bind({});
-NoHeader.storyName = 'No header';
-NoHeader.args = {
-  ...defaultArgs,
-  header: undefined,
-  children: (
-    <React.Fragment>
-      <Paper color="primary">
-        <Rhythm grouped px={4} py={3}>
-          <div>Hello world</div>
-          <div>Hello world</div>
-          <div>Hello world</div>
-        </Rhythm>
-      </Paper>
-      <Divider volume="quieter" />
-      <Paper color="secondary">
-        <Rhythm grouped px={4} py={3}>
-          <div>Hello world</div>
-        </Rhythm>
-      </Paper>
-    </React.Fragment>
-  ),
-  color: 'primary',
-  style: { maxWidth: 400 },
-};
-
-export const NoChildren = Template.bind({});
-NoChildren.storyName = 'No children';
-NoChildren.args = {
-  ...defaultArgs,
-  children: undefined,
-  style: { maxWidth: 400 },
-};
-
-export const NoTriangle = Template.bind({});
-NoTriangle.storyName = 'No triangle';
-NoTriangle.args = {
-  ...defaultArgs,
-  style: { maxWidth: 400 },
-  triangleBorderColor: 'transparent',
-  triangleColor: 'transparent',
-};
-
 export const Styled = Template.bind({});
 Styled.storyName = 'Custom styles';
 Styled.args = {
   ...defaultArgs,
   style: {
+    '--timeline-item-connector-color': themes.light['primary-palette-border-color'],
+    '--timeline-item-state-color': themes.light['color-P50'],
     '--shade-primary-color': themes.light['color-P50'],
     '--shade-opaque-primary-color': themes.light['color-P50-shade'],
     '--status-bubble-state-color': themes.light['color-P50'],
     '--status-bubble-state-contrast-color': themes.light['color-P50-contrast'],
+    '--status-bubble-triangle-color': themes.light['color-P50-shade'],
+    '--status-bubble-triangle-border-color': themes.light['color-P50-D10'],
   } as React.CSSProperties,
-  triangleBorderColor: themes.light['color-P50-D10'],
-  triangleColor: themes.light['color-P50-shade'],
   unthemed: true,
 };

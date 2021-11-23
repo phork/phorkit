@@ -1,17 +1,17 @@
 import { render } from '@testing-library/react';
 import React from 'react';
-import { PhorkIcon, StatusBubble } from 'lib';
+import { StatusBubble } from 'lib';
 
 describe('<StatusBubble />', () => {
   it('should render a status bubble', () => {
-    const { container, queryByText } = render(
-      <StatusBubble header="Header" icon={<PhorkIcon scale="large" />}>
+    const { queryByText } = render(
+      <StatusBubble anchor={<div>Anchor</div>} header="Header">
         Hello world
       </StatusBubble>,
     );
 
     expect(queryByText('Header')).toBeTruthy();
     expect(queryByText('Hello world')).toBeTruthy();
-    expect(container.querySelector('svg')).toBeTruthy();
+    expect(queryByText('Anchor')).toBeTruthy();
   });
 });

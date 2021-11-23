@@ -1,0 +1,375 @@
+---
+name: AvatarStatusBubble
+menu: Display
+route: /compositions/AvatarStatusBubble
+---
+
+import { Playground, Props } from 'docz';
+import { Divider } from 'components/Divider';
+import { Paper } from 'components/Paper';
+import { Rhythm } from 'components/Rhythm';
+import { Typography } from 'components/Typography';
+import { PageTitle } from 'docs/helpers/PageTitle';
+import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
+import { AvatarStatusBubble } from '../index';
+
+<PageTitle src="compositions/StatusBubble" title="AvatarStatusBubble" />
+
+## Primary color
+
+<Playground>
+  <ThemeWrapper>
+    <AvatarStatusBubble
+      avatarColor="primary"
+      color="primary"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      initials="EC"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </AvatarStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Neutral color
+
+<Playground>
+  <ThemeWrapper>
+    <AvatarStatusBubble
+      avatarColor="neutral"
+      color="neutral"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      initials="EC"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </AvatarStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Neutral status bubble
+
+<Playground>
+  <ThemeWrapper>
+    <AvatarStatusBubble
+      color="neutral"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      imgSrc="/public/images/avatar.jpg"
+      initials="EC"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </AvatarStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Primary status bubble
+
+<Playground>
+  <ThemeWrapper>
+    <AvatarStatusBubble
+      color="primary"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      imgSrc="/public/images/avatar.jpg"
+      initials="EC"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </AvatarStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Success status bubble
+
+<Playground>
+  <ThemeWrapper>
+    <AvatarStatusBubble
+      color="success"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      imgSrc="/public/images/avatar.jpg"
+      initials="EC"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </AvatarStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Warning status bubble
+
+<Playground>
+  <ThemeWrapper>
+    <AvatarStatusBubble
+      color="warning"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      imgSrc="/public/images/avatar.jpg"
+      initials="EC"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </AvatarStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Danger status bubble
+
+<Playground>
+  <ThemeWrapper>
+    <AvatarStatusBubble
+      color="danger"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      imgSrc="/public/images/avatar.jpg"
+      initials="EC"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </AvatarStatusBubble>
+    `
+  </ThemeWrapper>
+</Playground>
+
+## Right top
+
+<Playground>
+  <ThemeWrapper>
+    <AvatarStatusBubble
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      imgSrc="/public/images/avatar.jpg"
+      initials="EC"
+      position="right-top"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </AvatarStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Left top
+
+<Playground>
+  <ThemeWrapper>
+    <AvatarStatusBubble
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      imgSrc="/public/images/avatar.jpg"
+      initials="EC"
+      position="left-top"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </AvatarStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Right center
+
+<Playground>
+  <ThemeWrapper>
+    <AvatarStatusBubble
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      imgSrc="/public/images/avatar.jpg"
+      initials="EC"
+      position="right-center"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </AvatarStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Left center
+
+<Playground>
+  <ThemeWrapper>
+    <AvatarStatusBubble
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      imgSrc="/public/images/avatar.jpg"
+      initials="EC"
+      position="left-center"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </AvatarStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Right bottom
+
+<Playground>
+  <ThemeWrapper>
+    <AvatarStatusBubble
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      imgSrc="/public/images/avatar.jpg"
+      initials="EC"
+      position="right-bottom"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </AvatarStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## Left bottom
+
+<Playground>
+  <ThemeWrapper>
+    <AvatarStatusBubble
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      imgSrc="/public/images/avatar.jpg"
+      initials="EC"
+      position="left-bottom"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </AvatarStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## No header
+
+<Playground>
+  <ThemeWrapper>
+    <AvatarStatusBubble color="primary" imgSrc="/public/images/avatar.jpg" initials="EC" style={{ maxWidth: 400 }}>
+      <React.Fragment>
+        <Paper color="primary">
+          <Rhythm grouped px={4} py={3}>
+            <div>Hello world</div>
+            <div>Hello world</div>
+            <div>Hello world</div>
+          </Rhythm>
+        </Paper>
+        <Divider volume="quieter" />
+        <Paper color="secondary">
+          <Rhythm grouped px={4} py={3}>
+            <div>Hello world</div>
+          </Rhythm>
+        </Paper>
+      </React.Fragment>
+    </AvatarStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## No children
+
+<Playground>
+  <ThemeWrapper>
+    <AvatarStatusBubble
+      color="neutral"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      imgSrc="/public/images/avatar.jpg"
+      initials="EC"
+      style={{ maxWidth: 400 }}
+    />
+  </ThemeWrapper>
+</Playground>
+
+## No triangle
+
+<Playground>
+  <ThemeWrapper>
+    <AvatarStatusBubble
+      color="neutral"
+      header={
+        <React.Fragment>
+          <Typography weight="bold">Something cool happened</Typography>
+          <Typography volume="quiet">Yesterday</Typography>
+        </React.Fragment>
+      }
+      imgSrc="/public/images/avatar.jpg"
+      initials="EC"
+      style={{ maxWidth: 400 }}
+      triangleBorderColor="transparent"
+      triangleColor="transparent"
+    >
+      <Paper color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    </AvatarStatusBubble>
+  </ThemeWrapper>
+</Playground>
+
+## \[props\]
+
+<Props of={AvatarStatusBubble} />
