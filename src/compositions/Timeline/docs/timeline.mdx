@@ -5,6 +5,7 @@ route: /compositions/Timeline
 ---
 
 import { Playground, Props } from 'docz';
+import { themes } from 'config/themes';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { Timeline, StraddledTimeline, TimelineDividerItem, TimelineMarkerItem } from '../index';
@@ -85,6 +86,31 @@ import { items } from './helpers/items';
           [i % 2 ? 'marginRight' : 'marginLeft']: 169,
         },
       }))}
+    />
+  </ThemeWrapper>
+</Playground>
+
+## Custom styles
+
+<Playground>
+  <ThemeWrapper>
+    <Timeline
+      items={items.map(({ color, ...item }, index) => ({
+        ...item,
+        position: 'right-center',
+        style: {
+          '--timeline-item-connector-color': themes.light['primary-palette-border-color'],
+          '--timeline-item-state-color': themes.light[`color-P${index * 5 + 30}`],
+          '--shade-primary-color': themes.light[`color-P${index * 5 + 30}`],
+          '--shade-opaque-primary-color': themes.light[`color-P${index * 5 + 30}-shade`],
+          '--status-bubble-state-color': themes.light[`color-P${index * 5 + 30}`],
+          '--status-bubble-state-contrast-color': themes.light[`color-P${index * 5 + 30}-contrast`],
+          '--status-bubble-triangle-color': themes.light[`color-P${index * 5 + 30}-shade`],
+          '--status-bubble-triangle-border-color': themes.light[`color-P${index * 5 + 30}`],
+        },
+        unthemed: true,
+      }))}
+      spacing="cozy"
     />
   </ThemeWrapper>
 </Playground>
