@@ -10,7 +10,6 @@ const ThemeElement = styled.div<{
   quietColor: string;
   quieterColor: string;
   quietestColor: string;
-  accentColor: string;
 }>`
   background-color: ${props => props.backgroundColor};
   border: 1px solid ${props => props.borderColor};
@@ -54,10 +53,6 @@ const ThemeElement = styled.div<{
   > .quietest {
     color: ${props => props.quietestColor};
   }
-
-  > .accent {
-    color: ${props => props.accentColor};
-  }
 `;
 
 export type ColorThemeProps = {
@@ -70,7 +65,6 @@ export function ColorTheme({ themeId, variant }: ColorThemeProps): JSX.Element {
 
   return (
     <ThemeElement
-      accentColor={themeProps[`${variant}-palette-accent-color` as keyof ThemeColors] as string}
       backgroundColor={themeProps[`${variant}-palette-background-color` as keyof ThemeColors] as string}
       borderColor={themeProps[`${variant}-palette-border-color` as keyof ThemeColors] as string}
       color={themeProps[`${variant}-palette-text-color` as keyof ThemeColors] as string}
@@ -83,7 +77,6 @@ export function ColorTheme({ themeId, variant }: ColorThemeProps): JSX.Element {
       <div className="quiet">The quiet quick brown fox jumped over the lazy dog</div>
       <div className="quieter">The quieter quick brown fox jumped over the lazy dog</div>
       <div className="quietest">The quietest quick brown fox jumped over the lazy dog</div>
-      <div className="accent">The accented quick brown fox jumped over the lazy dog</div>
     </ThemeElement>
   );
 }
