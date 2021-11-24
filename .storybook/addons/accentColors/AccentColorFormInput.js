@@ -24,7 +24,7 @@ const ColorLabelContainer = styled.div({
 
 const ColorDescription = styled.div({
   fontSize: 10,
-  lineHeight: '12px',
+  lineHeight: '13px',
   marginBottom: 16,
   maxWidth: 224,
 });
