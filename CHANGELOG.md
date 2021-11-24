@@ -1,5 +1,18 @@
 # Changelog
 
+# [13.1.0](https://github.com/phork/phorkit/compare/v13.0.0...v13.1.0) (2021-11-24)
+
+### ♻ Code Refactoring
+
+- auto-generate shade colors, add primary shades ([2909f69](https://github.com/phork/phorkit/commit/2909f69))
+- renamed Colored*.ts to *.tsx ([7dbfab9](https://github.com/phork/phorkit/commit/7dbfab9))
+
+### ✨ Features
+
+- added ColoredShade component ([69217f8](https://github.com/phork/phorkit/commit/69217f8))
+- added StyledShade component ([5e2f68b](https://github.com/phork/phorkit/commit/5e2f68b))
+- added Timeline component ([31e3382](https://github.com/phork/phorkit/commit/31e3382))
+
 # [13.0.0](https://github.com/phork/phorkit/compare/v12.0.0...v13.0.0) (2021-11-18)
 
 ### ♻ Code Refactoring
