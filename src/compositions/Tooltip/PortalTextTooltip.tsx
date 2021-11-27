@@ -48,7 +48,7 @@ export function PortalTextTooltip<F extends HTMLElement | undefined = undefined>
   scrollable,
   themeId: initThemeId,
   tooltipClassName,
-  triangleBorderWidth,
+  triangleBorderWidth = 2,
   triangleSize,
   uncentered,
   width,

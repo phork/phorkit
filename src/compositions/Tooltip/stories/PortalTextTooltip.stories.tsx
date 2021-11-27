@@ -247,6 +247,7 @@ const defaultArgs = {
       <ArrowUpDownIcon scale="xlarge" />
     </Typography>
   ),
+  triangleBorderWidth: 2,
   uncentered: false,
   withoutTogglerFocusStyle: false,
   withPopoverTogglerProps: false,

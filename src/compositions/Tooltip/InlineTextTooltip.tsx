@@ -48,7 +48,7 @@ export function InlineTextTooltip<F extends HTMLElement | undefined = undefined>
   scrollable,
   themeId: initThemeId,
   tooltipClassName,
-  triangleBorderWidth,
+  triangleBorderWidth = 2,
   triangleSize,
   uncentered = false,
   width,
