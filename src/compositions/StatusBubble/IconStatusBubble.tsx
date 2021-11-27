@@ -5,7 +5,7 @@ import { StatusBubble, StatusBubbleProps } from './StatusBubble';
 
 export type StatusBubbleIconShape = 'circle' | 'square';
 
-export type IconStatusBubbleProps = Omit<StatusBubbleProps, 'anchor' | 'offset'> & {
+export type IconStatusBubbleProps = Omit<StatusBubbleProps, 'anchor'> & {
   icon: React.ReactElement;
   iconShape?: StatusBubbleIconShape;
 };

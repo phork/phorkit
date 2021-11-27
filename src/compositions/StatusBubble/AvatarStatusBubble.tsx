@@ -2,7 +2,7 @@ import React from 'react';
 import { Avatar, AvatarProps } from '../../components/Avatar';
 import { StatusBubble, StatusBubbleProps } from './StatusBubble';
 
-export type AvatarStatusBubbleProps = Omit<StatusBubbleProps, 'anchor' | 'offset'> &
+export type AvatarStatusBubbleProps = Omit<StatusBubbleProps, 'anchor'> &
   Pick<AvatarProps, 'imgSrc' | 'initials'> & {
     avatarColor?: AvatarProps['color'];
   };

@@ -58,6 +58,16 @@ export default {
         category: 'Appearance',
       },
     },
+    squared: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    unbordered: {
+      table: {
+        category: 'Appearance',
+      },
+    },
 
     className: {
       control: {
@@ -86,6 +96,11 @@ export default {
       },
     },
     triangleColor: {
+      table: {
+        category: 'Uncommon',
+      },
+    },
+    triangleSize: {
       table: {
         category: 'Uncommon',
       },
@@ -272,6 +287,23 @@ NoTriangle.args = {
   style: { maxWidth: 400 },
   triangleBorderColor: 'transparent',
   triangleColor: 'transparent',
+};
+
+export const Squared = Template.bind({});
+Squared.args = {
+  ...defaultArgs,
+  color: 'primary',
+  style: { maxWidth: 400 },
+  squared: true,
+};
+
+export const Unbordered = Template.bind({});
+Unbordered.args = {
+  ...defaultArgs,
+  color: 'primary',
+  style: { maxWidth: 400 },
+  triangleSize: 8,
+  unbordered: true,
 };
 
 export const Styled = Template.bind({});

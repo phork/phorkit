@@ -14,4 +14,31 @@ describe('<StatusBubble />', () => {
     expect(queryByText('Hello world')).toBeTruthy();
     expect(queryByText('Anchor')).toBeTruthy();
   });
+
+  it('should accept the rest of the props', () => {
+    render(
+      <StatusBubble
+        squared
+        unbordered
+        anchor={<div>Anchor</div>}
+        className="shade"
+        color="primary"
+        header="Header"
+        id="shade"
+        offset={{ vertical: 10, horizontal: 10 }}
+        position="left-top"
+        style={{ color: 'red' }}
+        themeId="dark"
+        triangleBorderColor="red"
+        triangleColor="red"
+        triangleSize={8}
+      >
+        Hello world
+      </StatusBubble>,
+    );
+
+    const shade = document.getElementById('shade');
+    expect(shade?.nodeName).toBe('DIV');
+    expect(shade?.style.getPropertyValue('color')).toBe('red');
+  });
 });
