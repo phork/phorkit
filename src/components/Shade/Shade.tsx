@@ -18,6 +18,7 @@ export type ShadeProps = React.HTMLAttributes<HTMLDivElement> &
     hovered?: boolean;
     /** Use a flattened background color rather than a semi-transparent pseudo-element */
     opaque?: boolean;
+    unbordered?: boolean;
     unthemed?: boolean;
   };
 
@@ -40,6 +41,7 @@ export const Shade = React.forwardRef<HTMLDivElement, ShadeProps>(
       hovered,
       opaque,
       themeId: initThemeId,
+      unbordered,
       unthemed,
       ...props
     },
@@ -56,6 +58,7 @@ export const Shade = React.forwardRef<HTMLDivElement, ShadeProps>(
           hovered && styles['is-hovered'],
           actionable && styles['shade--actionable'],
           styles[`shade--${opaque ? 'opaque' : 'transparent'}`],
+          unbordered && styles['shade--unbordered'],
           color && !unthemed && styles[`shade--${color}`],
           themeId && !unthemed && styles[`shade--${themeId}`],
           className,

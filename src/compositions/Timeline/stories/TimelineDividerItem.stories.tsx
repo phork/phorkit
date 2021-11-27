@@ -241,3 +241,26 @@ Styled.args = {
   } as React.CSSProperties,
   unthemed: true,
 };
+
+export const Toasty = Template.bind({});
+Toasty.storyName = 'Toasty';
+Toasty.args = {
+  ...defaultArgs,
+  children: (
+    <Paper color="tertiary" style={{ borderLeft: `5px solid ${themes.light['color-warning']}` }} themeId="dark">
+      <Rhythm p={4}>Hello world</Rhythm>
+    </Paper>
+  ),
+  header: undefined,
+  position: 'right-center',
+  squared: true,
+  style: {
+    '--timeline-item-connector-color': themes.light['primary-palette-border-color'],
+    '--timeline-item-state-color': themes.light['color-warning'],
+    '--status-bubble-triangle-color': themes.light['color-warning'],
+    maxWidth: 300,
+  } as React.CSSProperties,
+  triangleSize: 6,
+  unbordered: true,
+  unthemed: true,
+};

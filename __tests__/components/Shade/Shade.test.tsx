@@ -25,7 +25,18 @@ describe('<Shade />', () => {
 
   it('should accept the rest of the props', () => {
     const { getByText } = render(
-      <Shade actionable active focused hovered opaque unthemed className="shade" color="warning" themeId="dark">
+      <Shade
+        actionable
+        active
+        focused
+        hovered
+        opaque
+        unbordered
+        unthemed
+        className="shade"
+        color="warning"
+        themeId="dark"
+      >
         Hello world
       </Shade>,
     );

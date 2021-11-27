@@ -22,11 +22,16 @@ export type StatusBubbleProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'titl
     header?: React.ReactNode;
     offset?: Offset;
     position?: HorizontalPositionCentered | HorizontalPositionEdge;
+    /** Remove the border radius */
+    squared?: boolean;
     style?: React.CSSProperties;
     /** An optional override of the bubble pointer border color */
     triangleBorderColor?: string;
     /** An optional override of the bubble pointer fill color */
     triangleColor?: string;
+    /** An optional override of the bubble pointer size color */
+    triangleSize?: number;
+    unbordered?: boolean;
   };
 
 const getTriangleColor = (
@@ -43,7 +48,9 @@ const getTriangleBorderColor = (
   themeId: NonNullable<StatusBubbleProps['themeId']>,
   color: NonNullable<StatusBubbleProps['color']>,
   unthemed?: boolean,
+  unbordered?: boolean,
 ): string => {
+  if (unbordered) return 'transparent';
   if (unthemed) return 'var(--status-bubble-triangle-border-color)';
   if (color === 'primary') return `var(--phork-accent-color, ${themes[themeId]['color-accent']})`;
   return themes[themeId][`color-${color}` as keyof ThemeColors] as string;
@@ -64,9 +71,12 @@ export function StatusBubble({
   header,
   offset: initOffset = defaultOffset,
   position = 'right-top',
+  squared,
   themeId: initThemeId,
   triangleBorderColor,
   triangleColor,
+  triangleSize = 6,
+  unbordered,
   unthemed,
   ...props
 }: StatusBubbleProps): JSX.Element {
@@ -88,11 +98,17 @@ export function StatusBubble({
       <TooltipContent
         offset={offset}
         position={position}
-        triangleBorderColor={triangleBorderColor || getTriangleBorderColor(themeId, color, unthemed)}
+        triangleBorderColor={triangleBorderColor || getTriangleBorderColor(themeId, color, unthemed, unbordered)}
         triangleColor={triangleColor || getTriangleColor(themeId, color, unthemed)}
-        triangleSize={6}
+        triangleSize={triangleSize}
       >
-        <Shade opaque className={cx(styles.statusBubbleContent)} color={color} unthemed={unthemed}>
+        <Shade
+          opaque
+          className={cx(styles.statusBubbleContent, squared && styles['statusBubbleContent--squared'])}
+          color={color}
+          unbordered={unbordered}
+          unthemed={unthemed}
+        >
           {header && <div className={cx(styles.statusBubbleHeader)}>{header}</div>}
           {children && <div className={cx(styles.statusBubbleBody)}>{children}</div>}
         </Shade>

@@ -81,6 +81,10 @@
   overflow: hidden;
 }
 
+.statusBubbleContent--squared {
+  border-radius: 0;
+}
+
 .statusBubbleHeader {
   align-items: center;
   display: flex;

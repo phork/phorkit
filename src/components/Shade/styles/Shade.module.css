@@ -6,10 +6,18 @@
   background-color: var(--shade-opaque-primary-color);
   border: 1px solid var(--shade-primary-color);
   color: var(--shade-primary-color);
+
+  &.shade--unbordered {
+    border: none;
+  }
 }
 
 .shade--transparent {
   @mixin makeShadedFill var(--shade-primary-color), withShade;
+
+  &.shade--unbordered {
+    border: none;
+  }
 }
 
 .shade--actionable {

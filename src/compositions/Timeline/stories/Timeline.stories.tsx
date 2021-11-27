@@ -2,6 +2,7 @@ import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } fro
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { ThemeColors, themes } from 'config/themes';
+import { Paper } from 'components/Paper';
 import { Rhythm } from 'components/Rhythm';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { Timeline, TimelineMarkerItemType, TimelineSpacing } from '../Timeline';
@@ -257,6 +258,34 @@ Styled.args = {
       '--status-bubble-triangle-color': themes.light[`color-P${index * 5 + 30}-shade` as keyof ThemeColors],
       '--status-bubble-triangle-border-color': themes.light[`color-P${index * 5 + 30}` as keyof ThemeColors],
     },
+    unthemed: true,
+  })),
+};
+
+export const Toasty = Template.bind({});
+Toasty.args = {
+  ...defaultArgs,
+  items: defaultArgs.items.map(({ color, ...item }, index) => ({
+    ...item,
+    children: (
+      <Paper
+        color="tertiary"
+        style={{ borderLeft: `5px solid ${themes.light[`color-P${index * 5 + 30}` as keyof ThemeColors]}` }}
+        themeId="dark"
+      >
+        <Rhythm p={4}>Hello world</Rhythm>
+      </Paper>
+    ),
+    header: undefined,
+    position: 'right-center',
+    squared: true,
+    style: {
+      '--timeline-item-connector-color': themes.light['primary-palette-border-color'],
+      '--timeline-item-state-color': themes.light[`color-P${index * 5 + 30}` as keyof ThemeColors],
+      '--status-bubble-triangle-color': themes.light[`color-P${index * 5 + 30}` as keyof ThemeColors],
+    } as React.CSSProperties,
+    triangleSize: 6,
+    unbordered: true,
     unthemed: true,
   })),
 };

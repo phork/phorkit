@@ -30,6 +30,11 @@ export default {
         category: 'Appearance',
       },
     },
+    unbordered: {
+      table: {
+        category: 'Appearance',
+      },
+    },
 
     active: {
       table: {
@@ -189,6 +194,13 @@ NeutralColorOpaque.args = {
   ...defaultArgs,
   color: 'neutral',
   opaque: true,
+};
+
+export const Unbordered = Template.bind({});
+Unbordered.args = {
+  ...defaultArgs,
+  color: 'primary',
+  unbordered: true,
 };
 
 export const Actionable = Template.bind({});
