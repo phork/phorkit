@@ -47,21 +47,17 @@ const getTrianglePosition = (position: AnyPosition, cornerTriangle?: boolean): S
 const getTriangleSize = ({
   baseSize,
   cornerTriangle = false,
-  triangleBorderWidth,
-  isBorder = false,
   position,
 }: {
   baseSize?: number;
   cornerTriangle?: boolean;
-  triangleBorderWidth?: number;
-  isBorder?: boolean;
   position: AnyPosition;
 }) => {
   const trianglePosition = getTrianglePosition(position, cornerTriangle);
   if (trianglePosition && ['top-left', 'top-right', 'bottom-left', 'bottom-right'].includes(trianglePosition)) {
-    return (baseSize || 6) + (isBorder && triangleBorderWidth ? triangleBorderWidth : 0);
+    return baseSize || 6;
   }
-  return (baseSize || 8) + (isBorder && triangleBorderWidth ? triangleBorderWidth * 2 : 0);
+  return baseSize || 8;
 };
 
 const getTriangleStyle = ({
@@ -97,13 +93,13 @@ const getTriangleStyle = ({
   // adjust the triangle to create the border effect
   if (hasBorder && triangleBorderWidth) {
     if (['bottom-left', 'bottom-center', 'bottom-right'].includes(position)) {
-      triangleStyle.top = isBorder ? -triangleBorderWidth : triangleBorderWidth;
+      triangleStyle.top = isBorder ? 0 : triangleBorderWidth;
     } else if (['top-left', 'top-center', 'top-right'].includes(position)) {
-      triangleStyle.bottom = isBorder ? -triangleBorderWidth : triangleBorderWidth;
+      triangleStyle.bottom = isBorder ? 0 : triangleBorderWidth;
     } else if (['left-top', 'left-center', 'left-bottom'].includes(position)) {
-      triangleStyle.right = isBorder ? -triangleBorderWidth : triangleBorderWidth;
+      triangleStyle.right = isBorder ? 0 : triangleBorderWidth;
     } else if (['right-top', 'right-center', 'right-bottom'].includes(position)) {
-      triangleStyle.left = isBorder ? -triangleBorderWidth : triangleBorderWidth;
+      triangleStyle.left = isBorder ? 0 : triangleBorderWidth;
     }
 
     if (cornerTriangle) {
@@ -163,8 +159,6 @@ export function TooltipContent({
             baseSize: triangleSize,
             cornerTriangle,
             position,
-            triangleBorderWidth,
-            isBorder: true,
           })}
           style={getTriangleStyle({
             cornerTriangle,
@@ -181,7 +175,7 @@ export function TooltipContent({
         className={cx(styles.tooltipContent__triangle)}
         color={triangleColor}
         position={getTrianglePosition(position, cornerTriangle)}
-        size={getTriangleSize({ baseSize: triangleSize, cornerTriangle, position, triangleBorderWidth })}
+        size={getTriangleSize({ baseSize: triangleSize, cornerTriangle, position })}
         style={getTriangleStyle({
           cornerTriangle,
           hasBorder: !!triangleBorderColor,
