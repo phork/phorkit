@@ -1,5 +1,15 @@
 # Changelog
 
+# [13.2.0](https://github.com/phork/phorkit/compare/v13.1.0...v13.2.0) (2021-11-27)
+
+### ✨ Features
+
+- updated timeline components to allow for more variation ([d943d9f](https://github.com/phork/phorkit/commit/d943d9f))
+
+### 🐛 Bug Fixes
+
+- adjust width of tooltip triangle border ([3dfe4b8](https://github.com/phork/phorkit/commit/3dfe4b8))
+
 # [13.1.0](https://github.com/phork/phorkit/compare/v13.0.0...v13.1.0) (2021-11-24)
 
 ### ♻ Code Refactoring
