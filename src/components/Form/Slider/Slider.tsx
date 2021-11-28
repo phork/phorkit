@@ -20,11 +20,11 @@ type SliderEvent =
 
 export type LocalSliderProps = Omit<ThemeProps, 'unthemed'> & {
   /** This is used to populate the label value */
-  children?: React.ReactNode;
+  children?: React.ReactChild | React.ReactFragment | null;
   className?: string;
   disabled?: boolean;
   /** Applies formatting to the value before displaying it */
-  formatValue?: (value?: number) => React.ReactNode;
+  formatValue?: (value?: number) => React.ReactChild | React.ReactFragment | undefined;
   id?: string;
   max?: number;
   min?: number;
@@ -238,6 +238,8 @@ export function SliderBase(
     value: { width: sliderWidth },
   } = useSizeListeners<HTMLLabelElement>({ propsToMeasure });
 
+  const labelValue = formatValue ? formatValue(getValue()) : getValue();
+
   return (
     <label
       className={cx(
@@ -325,7 +327,7 @@ export function SliderBase(
         {...props}
       />
 
-      {valuePosition && (
+      {valuePosition && labelValue !== undefined && (
         <Label<'div'>
           noWrap
           as="div"
@@ -334,7 +336,7 @@ export function SliderBase(
           strength="standard"
           themeId={themeId}
         >
-          {formatValue ? formatValue(getValue()) : getValue()}
+          {labelValue}
         </Label>
       )}
     </label>

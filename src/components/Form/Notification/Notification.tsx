@@ -6,7 +6,7 @@ import styles from './styles/Notification.module.css';
 
 export type NotificationProps = React.HTMLAttributes<HTMLDivElement> &
   Omit<ThemeProps, 'unthemed'> & {
-    children: React.ReactNode;
+    children?: React.ReactChild | React.ReactFragment;
     className?: string;
     color?: SemanticColor;
     /** Add a divider above the notification */

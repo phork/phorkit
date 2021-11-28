@@ -33,7 +33,10 @@ export type InnerNavigationProps = React.HTMLAttributes<NavigationElementType> &
     /** The triggerOnly prop can be ignored as it is handled by the interactive group system */
     items: ReadonlyArray<
       Omit<NavigationItemProps, 'children' | 'componentId' | 'key' | 'onClick' | 'orientation' | 'variant'> & {
-        label: React.ReactNode | ((props: NavigationItemStateProps) => React.ReactNode);
+        label:
+          | React.ReactChild
+          | React.ReactFragment
+          | ((props: NavigationItemStateProps) => React.ReactChild | React.ReactFragment);
         triggerOnly?: InteractiveGroupItemType<string>['triggerOnly'];
       }
     >;

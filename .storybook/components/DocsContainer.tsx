@@ -6,7 +6,7 @@ import { ThemeProvider } from '../../src/context/Theme/ThemeProvider';
 import { getThemeId } from '../addons/theme/utils';
 
 type DocsContainerProps = {
-  children: React.ReactNode;
+  children: React.ReactChild | React.ReactFragment;
   context: BaseContainerProps['context'];
 };
 

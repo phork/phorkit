@@ -7,7 +7,7 @@ import styles from './styles/AccordionLabel.module.css';
 import { AccordionItemStateProps } from './types';
 
 export type LocalAccordionLabelProps = AccordionItemStateProps & {
-  children: React.ReactNode;
+  children: React.ReactChild | React.ReactFragment;
   className?: string;
   iconOnly?: boolean;
   id: string;

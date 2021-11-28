@@ -5,7 +5,7 @@ import styles from './styles/List.module.css';
 import { ListItemElementType } from './types';
 
 export type LocalListItemProps = ThemeProps & {
-  children: React.ReactNode;
+  children: React.ReactChild | React.ReactFragment;
   className?: string;
   disabled?: boolean;
   flush?: boolean;

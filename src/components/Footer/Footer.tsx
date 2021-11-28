@@ -7,7 +7,7 @@ import styles from './styles/Footer.module.css';
 export type FooterProps = React.HTMLAttributes<HTMLDivElement> &
   ThemeProps & {
     bordered?: boolean | 'pseudo';
-    children: React.ReactNode;
+    children: React.ReactChild | React.ReactFragment;
     className?: string;
     full?: boolean;
     style?: React.CSSProperties;

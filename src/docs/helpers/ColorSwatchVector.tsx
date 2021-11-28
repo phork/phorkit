@@ -101,11 +101,11 @@ export type Color = {
   contrast?: string;
   height?: string | number;
   width?: string | number;
-  children?: React.ReactNode;
+  children?: React.ReactChild | React.ReactFragment | null;
 };
 
 export type ColorSwatchVectorProps = {
-  children?: React.ReactNode;
+  children?: React.ReactChild | React.ReactFragment | null;
   colors: readonly Color[];
   direction?: FlexProps['direction'];
   joined?: boolean;

@@ -7,7 +7,7 @@ import styles from './styles/Card.module.css';
 export type CardProps = React.HTMLAttributes<HTMLDivElement> &
   Omit<ThemeProps, 'contrast'> & {
     bordered?: boolean;
-    children: React.ReactNode;
+    children: React.ReactChild | React.ReactFragment;
     className?: string;
     full?: boolean;
     hoverable?: boolean;

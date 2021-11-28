@@ -8,7 +8,7 @@ export type TabPanelStateProps = {
 };
 
 export type TabPanelProps = TabPanelStateProps & {
-  children: React.ReactNode;
+  children: React.ReactChild | React.ReactFragment;
   /** Remove the padding from the tab panel */
   flush?: boolean;
   id: string;

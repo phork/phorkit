@@ -14,7 +14,7 @@ export type LocalTagProps = ThemeProps & {
   actionable?: boolean;
   /** Manually apply the active styles; this does not affect :active */
   active?: boolean;
-  children: React.ReactNode;
+  children: React.ReactChild | React.ReactFragment;
   className?: string;
   /** This will remove all padding from the tag */
   flush?: boolean;

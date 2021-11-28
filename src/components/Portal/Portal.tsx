@@ -8,7 +8,7 @@ export type PortalProps = Pick<UseAbsoluteCoordsProps, 'centered' | 'offset' | '
   React.HTMLAttributes<HTMLDivElement> & {
     /** This will render a hidden portal; otherwise hidden portals are not rendered */
     alwaysRender?: boolean;
-    children: React.ReactNode;
+    children: React.ReactChild | React.ReactFragment | null | undefined;
     className?: string;
     /** This is the element that the portal will be rendered inside */
     container?: HTMLElement;

@@ -7,7 +7,7 @@ import { Triangle } from '../../components/Triangle/Triangle';
 import styles from './styles/TooltipContent.module.css';
 
 export type TooltipContentProps = React.HTMLAttributes<HTMLDivElement> & {
-  children: React.ReactNode;
+  children: React.ReactChild | React.ReactFragment;
   /** If the position is `[left|right]-[top|bottom]` then the triangle can be a corner triangle (eg. flat top or bottom) */
   cornerTriangle?: boolean;
   layout?: Orientation;

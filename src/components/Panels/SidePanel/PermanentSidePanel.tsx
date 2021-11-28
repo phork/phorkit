@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './styles/SidePanel.module.css';
 
 export type PermanentSidePanelProps = React.HTMLAttributes<HTMLDivElement> & {
-  children: React.ReactNode;
+  children: React.ReactChild | React.ReactFragment;
   className?: string;
   fixed?: boolean;
   position: 'left' | 'right';

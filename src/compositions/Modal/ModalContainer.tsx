@@ -5,7 +5,7 @@ import { useHandleEscape, UseHandleEscapeProps } from '../../hooks/useHandleEsca
 import styles from './styles/ModalContainer.module.css';
 
 export type ModalContainerProps = {
-  children?: React.ReactNode;
+  children?: React.ReactChild | React.ReactFragment | null;
   className?: string;
   /** If this is provided it must return true in order for the modal to be closed */
   confirmClose?: UseHandleEscapeProps['confirm'];

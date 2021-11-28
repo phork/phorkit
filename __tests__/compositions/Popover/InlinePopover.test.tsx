@@ -5,7 +5,7 @@ import { render } from '../../utils';
 describe('<InlinePopover />', () => {
   it('should render a popover', () => {
     const { getByText } = render(
-      <InlinePopover focusable permanent height={80} toggler={<TimesIcon scale="3xlarge" />} width={300}>
+      <InlinePopover permanent height={80} position="top-center" toggler={<TimesIcon scale="3xlarge" />} width={300}>
         <div>Hello world</div>
       </InlinePopover>,
     );

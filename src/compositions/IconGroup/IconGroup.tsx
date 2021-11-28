@@ -6,7 +6,6 @@ import { Flex, FlexProps } from '../../components/Flex/Flex';
 export type IconGroupProps = MergeProps<
   FlexProps,
   {
-    children: React.ReactNode;
     className?: FlexProps['className'];
     scale?: ScaleProviderProps['scale'];
     size?: ScaleProviderProps['size'];

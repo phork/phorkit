@@ -8,7 +8,7 @@ import { TabsVariant } from './types';
 
 export type TabsContainerProps = React.HTMLAttributes<HTMLDivElement> &
   ThemeProps & {
-    children: React.ReactNode;
+    children: React.ReactChild | React.ReactFragment;
     className?: string;
     focused?: boolean;
     orientation?: Orientation;

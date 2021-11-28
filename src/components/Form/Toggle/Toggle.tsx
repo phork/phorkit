@@ -10,7 +10,7 @@ import styles from './styles/Toggle.module.css';
 
 export type LocalToggleProps = ThemeProps & {
   checked?: boolean;
-  children: React.ReactNode;
+  children?: React.ReactChild | React.ReactFragment;
   className?: string;
   disabled?: boolean;
   full?: boolean;

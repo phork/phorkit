@@ -7,7 +7,7 @@ export type FlexProps = React.HTMLAttributes<HTMLDivElement> & {
   alignContent?: 'center' | 'flex-end' | 'flex-start' | 'space-around' | 'space-between' | 'stretch';
   alignSelf?: 'baseline' | 'center' | 'flex-end' | 'flex-start' | 'space-around' | 'space-between' | 'stretch';
   /** The children are optional so that this component can be passed as empty and then cloned */
-  children?: React.ReactNode;
+  children?: React.ReactChild | React.ReactFragment | null;
   className?: string;
   direction?: 'column' | 'row';
   /** This sets the style to `flex: 1` */

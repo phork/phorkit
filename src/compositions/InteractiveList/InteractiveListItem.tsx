@@ -11,7 +11,7 @@ type StateProps = {
 
 export type LocalInteractiveListItemProps = {
   id: string;
-  label: React.ReactNode | ((state: StateProps) => React.ReactNode);
+  label: React.ReactChild | React.ReactFragment | ((state: StateProps) => React.ReactChild | React.ReactFragment);
   mimicSelectOnFocus?: boolean;
   onClick: (event: React.MouseEvent | React.TouchEvent, id: LocalInteractiveListItemProps['id']) => void;
 };

@@ -11,7 +11,7 @@ export type SidePanelProps = Pick<
 > &
   Partial<Pick<UsePanelCollapserProps, 'easing' | 'unit' | 'transition'>> &
   React.HTMLAttributes<HTMLDivElement> & {
-    children: React.ReactNode;
+    children: React.ReactChild | React.ReactFragment;
     className?: string;
     /** The open and close animation duration */
     duration?: number;

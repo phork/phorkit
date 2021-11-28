@@ -5,7 +5,7 @@ import { lowerCamelize } from '../../utils/case';
 import styles from './styles/Position.module.css';
 
 export type PositionProps = React.HTMLAttributes<HTMLDivElement> & {
-  children: React.ReactNode;
+  children: React.ReactChild | React.ReactFragment;
   className?: string;
   fixed?: boolean;
   location: AnyPosition | 'center';

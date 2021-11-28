@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './styles/MainPanel.module.css';
 
 export type MainPanelProps = React.HTMLAttributes<HTMLDivElement> & {
-  children: React.ReactNode;
+  children: React.ReactChild | React.ReactFragment;
   className?: string;
   style?: React.CSSProperties;
 };

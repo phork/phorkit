@@ -6,8 +6,8 @@ import { ChipSize } from './types';
 
 export type ChipContentProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> & {
   avatar: Omit<AvatarProps, 'actionable' | 'className'>;
-  icon?: React.ReactNode;
-  text: React.ReactNode;
+  icon?: React.ReactChild | React.ReactFragment | null;
+  text: React.ReactChild | React.ReactFragment;
   size?: ChipSize;
   style?: React.CSSProperties;
 };

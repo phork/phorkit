@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './styles/Modal.module.css';
 
 export type ModalBodyProps = React.HTMLAttributes<HTMLDivElement> & {
-  children: React.ReactNode;
+  children: React.ReactChild | React.ReactFragment;
   className?: string;
   flush?: boolean;
   scrollable?: boolean;

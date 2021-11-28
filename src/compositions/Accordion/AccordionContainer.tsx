@@ -7,7 +7,7 @@ import styles from './styles/Accordion.module.css';
 
 export type AccordionContainerProps = React.HTMLAttributes<HTMLDivElement> &
   ThemeProps & {
-    children: React.ReactNode;
+    children: React.ReactChild | React.ReactFragment;
     className?: string;
     focused?: boolean;
     orientation?: Orientation;

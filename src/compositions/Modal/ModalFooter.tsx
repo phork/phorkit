@@ -4,7 +4,7 @@ import styles from './styles/Modal.module.css';
 
 export type ModalFooterProps = React.HTMLAttributes<HTMLDivElement> & {
   bordered?: boolean;
-  children?: React.ReactNode;
+  children?: React.ReactChild | React.ReactFragment | null;
   className?: string;
 };
 

@@ -5,7 +5,13 @@ import { render } from '../../utils';
 describe('<PortalTextTooltip />', () => {
   it('should render a tooltip', () => {
     const { getByText } = render(
-      <PortalTextTooltip permanent height={80} toggler={<TimesIcon scale="3xlarge" />} width={300}>
+      <PortalTextTooltip
+        permanent
+        height={80}
+        position="top-center"
+        toggler={<TimesIcon scale="3xlarge" />}
+        width={300}
+      >
         Hello world
       </PortalTextTooltip>,
     );

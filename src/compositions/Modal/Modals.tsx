@@ -3,7 +3,7 @@ import { ModalProvider } from './ModalProvider';
 import { ModalsFromContext, ModalsFromContextProps } from './ModalsFromContext';
 
 export type ModalsProps = ModalsFromContextProps & {
-  children?: React.ReactNode;
+  children?: React.ReactChild | React.ReactFragment | null;
 };
 
 /**
