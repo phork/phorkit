@@ -13,7 +13,7 @@ export const listItemElementMap: ListItemElementMap = {
 };
 
 export type LocalListProps = ThemeProps & {
-  children?: React.ReactNode;
+  children?: React.ReactChild | React.ReactFragment | null;
   className?: string;
   color?: 'primary' | 'neutral';
   /** The focused flag adds an outline to a focused list in accessibility mode */

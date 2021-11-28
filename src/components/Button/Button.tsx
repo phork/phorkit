@@ -9,7 +9,7 @@ export type LocalButtonProps = ThemeProps & {
   /** Manually apply the active styles; this does not affect :active */
   active?: boolean;
   align?: ButtonAlignment;
-  children: React.ReactNode;
+  children: React.ReactChild | React.ReactFragment;
   className?: string;
   color?: ButtonColor;
   disabled?: boolean;

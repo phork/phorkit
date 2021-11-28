@@ -23,7 +23,7 @@ type ThemeWrapperPropsWithThemeId = {
 };
 
 type ThemeWrapperPropsWithChildren = {
-  children: React.ReactNode;
+  children: React.ReactChild | React.ReactFragment;
   withThemeId?: false;
 };
 

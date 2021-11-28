@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 import { MergeElementPropsWithoutRef } from '../../../types';
 
 export type LocalMultiColorSliderTrackProps = {
-  children: React.ReactNode;
+  children: React.ReactChild | React.ReactFragment;
   className: string;
   colors: readonly string[];
   sliderWidth?: number;

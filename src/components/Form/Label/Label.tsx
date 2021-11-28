@@ -5,7 +5,7 @@ import { useThemeId } from '../../../context/Theme';
 import styles from './styles/Label.module.css';
 
 export type LocalLabelProps = ThemeProps & {
-  children: React.ReactNode;
+  children: React.ReactChild | React.ReactFragment;
   className?: string;
   disabled?: boolean;
   /** Manually apply the focus styles; this does not affect focus */

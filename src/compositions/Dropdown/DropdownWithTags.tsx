@@ -170,41 +170,47 @@ export function DropdownWithTags({
         <TagGroup size={tagSize} {...tagGroupProps}>
           {options
             .filter(({ id }) => state.selectedIds.includes(id))
-            .map(({ id: itemId, label, ...tagItemProps }, i) => (
-              <Tag<'button'>
-                actionable
-                as="button"
-                contrast={contrast}
-                key={`${generateComponentId(id, itemId)}_tag`}
-                onClick={() => removeItem(itemId)}
-                ref={i === 0 ? tagRef : undefined}
-                shape={tagShape}
-                size={tagSize}
-                themeId={themeId}
-                weight={tagWeight}
-                {...tagProps}
-                {...mappedProps[itemId]}
-              >
-                {tag ? (
-                  renderFromProp<DropdownWithTagsOption>(tag, {
-                    id: itemId,
-                    label,
-                    themeId,
-                    ...tagItemProps,
-                  })
-                ) : (
-                  <IconText
-                    reverse
-                    icon={
-                      <TypographyWithSvg<'div'> as="div" volume="quiet">
-                        <TimesIcon scale="xsmall" />
-                      </TypographyWithSvg>
-                    }
-                    text={<Rhythm mr={2}>{label}</Rhythm>}
-                  />
-                )}
-              </Tag>
-            ))}
+            .map(({ id: itemId, label, ...tagItemProps }, i) => {
+              const children = tag ? (
+                renderFromProp<DropdownWithTagsOption>(tag, {
+                  id: itemId,
+                  label,
+                  themeId,
+                  ...tagItemProps,
+                })
+              ) : (
+                <IconText
+                  reverse
+                  icon={
+                    <TypographyWithSvg<'div'> as="div" volume="quiet">
+                      <TimesIcon scale="xsmall" />
+                    </TypographyWithSvg>
+                  }
+                  text={<Rhythm mr={2}>{label}</Rhythm>}
+                />
+              );
+
+              return (
+                children && (
+                  <Tag<'button'>
+                    actionable
+                    as="button"
+                    contrast={contrast}
+                    key={`${generateComponentId(id, itemId)}_tag`}
+                    onClick={() => removeItem(itemId)}
+                    ref={i === 0 ? tagRef : undefined}
+                    shape={tagShape}
+                    size={tagSize}
+                    themeId={themeId}
+                    weight={tagWeight}
+                    {...tagProps}
+                    {...mappedProps[itemId]}
+                  >
+                    {children}
+                  </Tag>
+                )
+              );
+            })}
         </TagGroup>
       </Rhythm>
     </Flex>

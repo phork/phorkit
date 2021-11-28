@@ -14,7 +14,10 @@ export type NavigationItemStateProps = {
 
 export type LocalNavigationItemProps = NavigationItemStateProps & {
   allowRightClickLinks?: boolean;
-  children: React.ReactNode | ((props: NavigationItemStateProps) => React.ReactNode);
+  children:
+    | React.ReactChild
+    | React.ReactFragment
+    | ((props: NavigationItemStateProps) => React.ReactChild | React.ReactFragment);
   className?: string;
   componentId?: string;
   flush?: boolean;

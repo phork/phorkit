@@ -18,7 +18,7 @@ export type RadioGroupItem<V extends RadioValue = string> = Omit<
 
 export type LocalRadioGroupProps<V extends RadioValue = string> = Omit<ThemeProps, 'unthemed'> & {
   className?: string;
-  legend?: React.ReactNode;
+  legend?: React.ReactChild | React.ReactFragment | null;
   layout: 'stacked' | 'inline';
   name: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>, value: V) => void;

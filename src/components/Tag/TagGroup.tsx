@@ -13,7 +13,7 @@ export type TagGroupItem = {
 export type TagGroupProps = React.HTMLAttributes<HTMLDivElement> &
   ThemeProps & {
     actionable?: boolean;
-    children?: React.ReactNode;
+    children?: React.ReactChild | React.ReactFragment | null;
     className?: string;
     shape?: TagShape;
     size?: TagSize;

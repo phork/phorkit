@@ -59,6 +59,22 @@ export function PortalTooltip<F extends HTMLElement | undefined = undefined>({
           throw new Error('Invalid tooltip position');
         }
 
+        const content = renderChildren
+          ? renderFromPropWithFallback<PopoverRenderChildrenProps<PortalPopoverContentHTMLElement, F>>(
+              renderChildren!,
+              {
+                close,
+                focusRef,
+                isTogglerFocused,
+                offset,
+                position,
+                visible,
+              },
+            )
+          : children;
+
+        if (!content) throw new Error('Missing tooltip content');
+
         return (
           <TooltipContent
             className={tooltipClassName}
@@ -71,19 +87,7 @@ export function PortalTooltip<F extends HTMLElement | undefined = undefined>({
             triangleColor={triangleColor}
             triangleSize={triangleSize}
           >
-            {renderChildren
-              ? renderFromPropWithFallback<PopoverRenderChildrenProps<PortalPopoverContentHTMLElement, F>>(
-                  renderChildren!,
-                  {
-                    close,
-                    focusRef,
-                    isTogglerFocused,
-                    offset,
-                    position,
-                    visible,
-                  },
-                )
-              : children}
+            {content}
           </TooltipContent>
         );
       }}

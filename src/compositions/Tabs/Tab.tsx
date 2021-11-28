@@ -13,7 +13,7 @@ export type TabStateProps = {
 };
 
 export type LocalTabProps = TabStateProps & {
-  children: React.ReactNode;
+  children: React.ReactChild | React.ReactFragment;
   className?: string;
   /** This is used to match the aria labels up with the tabs */
   componentId?: string;

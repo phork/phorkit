@@ -76,6 +76,22 @@ export function InlinePopover<F extends HTMLElement | undefined = undefined>({
       permanent={permanent}
       position={position}
       renderContent={({ close, focusRef, isTogglerFocused, offset, position, visible, ...contentProps }) => {
+        const content = renderChildren
+          ? renderFromPropWithFallback<PopoverRenderChildrenProps<InlinePopoverContentHTMLElement, F>>(
+              renderChildren!,
+              {
+                close,
+                focusRef,
+                isTogglerFocused,
+                offset,
+                position,
+                visible,
+              },
+            )
+          : children;
+
+        if (!content) throw new Error('Missing popover content');
+
         return (
           <InlinePopoverContent<F>
             className={contentClassName}
@@ -87,19 +103,7 @@ export function InlinePopover<F extends HTMLElement | undefined = undefined>({
             {...contentProps}
             {...props}
           >
-            {renderChildren
-              ? renderFromPropWithFallback<PopoverRenderChildrenProps<InlinePopoverContentHTMLElement, F>>(
-                  renderChildren!,
-                  {
-                    close,
-                    focusRef,
-                    isTogglerFocused,
-                    offset,
-                    position,
-                    visible,
-                  },
-                )
-              : children}
+            {content}
           </InlinePopoverContent>
         );
       }}

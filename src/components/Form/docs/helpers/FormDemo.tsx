@@ -91,7 +91,7 @@ type FormDemoChildrenProps = Omit<UseFormResponse<FormDemoValues>, 'handleSubmit
 };
 
 type FormDemoProps = {
-  children: (props: FormDemoChildrenProps) => React.ReactNode;
+  children: (props: FormDemoChildrenProps) => React.ReactChild | React.ReactFragment;
   contrast?: boolean;
   style?: React.CSSProperties;
 };

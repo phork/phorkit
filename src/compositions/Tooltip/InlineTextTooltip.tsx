@@ -70,6 +70,22 @@ export function InlineTextTooltip<F extends HTMLElement | undefined = undefined>
           throw new Error('Invalid tooltip position');
         }
 
+        const content = renderChildren
+          ? renderFromPropWithFallback<PopoverRenderChildrenProps<InlinePopoverContentHTMLElement, F>>(
+              renderChildren!,
+              {
+                close,
+                focusRef,
+                isTogglerFocused,
+                offset,
+                position,
+                visible,
+              },
+            )
+          : children;
+
+        if (!content) throw new Error('Missing tooltip content');
+
         return (
           <TooltipContent
             className={tooltipClassName}
@@ -89,19 +105,7 @@ export function InlineTextTooltip<F extends HTMLElement | undefined = undefined>
               themeId={themeId}
               width={width}
             >
-              {renderChildren
-                ? renderFromPropWithFallback<PopoverRenderChildrenProps<InlinePopoverContentHTMLElement, F>>(
-                    renderChildren!,
-                    {
-                      close,
-                      focusRef,
-                      isTogglerFocused,
-                      offset,
-                      position,
-                      visible,
-                    },
-                  )
-                : children}
+              {content}
             </TextTooltipContent>
           </TooltipContent>
         );

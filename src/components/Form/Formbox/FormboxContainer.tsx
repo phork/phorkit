@@ -9,7 +9,7 @@ import { FormboxContainerElementType, FormboxInputElementType, FormboxSize, Form
 export type LocalFormboxContainerProps = ThemeProps & {
   /** Whether the formbox input was auto-filled (see useAutoFilled hook) */
   autoFilled?: boolean;
-  children: React.ReactNode;
+  children: React.ReactChild | React.ReactFragment;
   centered?: boolean;
   className?: string;
   disabled?: boolean;

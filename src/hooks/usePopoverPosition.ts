@@ -64,6 +64,8 @@ export const usePopoverPosition = (
         }
 
         setPosition([primary, secondary].join('-') as AnyPosition);
+      } else {
+        setPosition(layout === 'horizontal' ? 'right-center' : 'top-center');
       }
     };
 

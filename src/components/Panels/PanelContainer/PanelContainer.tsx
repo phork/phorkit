@@ -6,7 +6,7 @@ import styles from './styles/PanelContainer.module.css';
 export type PanelContainerProps = React.HTMLAttributes<HTMLDivElement> & {
   /** Use absolute positioning and top,right,bottom,left of 0 to fill the parent */
   absolute?: boolean;
-  children: React.ReactNode;
+  children: React.ReactChild | React.ReactFragment;
   className?: string;
   /** Set the width and height to 100% */
   full?: boolean;

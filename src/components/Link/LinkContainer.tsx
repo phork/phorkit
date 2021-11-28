@@ -7,7 +7,7 @@ import styles from './styles/Link.module.css';
 export type LinkContainerElementType = keyof JSX.IntrinsicElements;
 
 export type LocalLinkContainerProps = ThemeProps & {
-  children: React.ReactNode;
+  children: React.ReactChild | React.ReactFragment;
   className?: string;
   style?: React.CSSProperties;
   target?: string;

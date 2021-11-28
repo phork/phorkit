@@ -25,7 +25,7 @@ export type CheckboxSize =
 
 export type LocalCheckboxProps<V extends CheckboxValue = string> = ThemeProps & {
   checked?: boolean;
-  children: React.ReactNode;
+  children?: React.ReactChild | React.ReactFragment;
   className?: string;
   disabled?: boolean;
   /** Sets the width to 100% */

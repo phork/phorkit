@@ -10,6 +10,16 @@ describe('<Paper />', () => {
     expect(getByText('Hello world')).toBeTruthy();
   });
 
+  it('should render a paper with multiple children', () => {
+    const { getAllByText } = render(
+      <Paper>
+        <div>Hello world</div>
+        <div>Hello world</div>
+      </Paper>,
+    );
+    expect(getAllByText('Hello world').length).toBe(2);
+  });
+
   it('should focus scrollable paper on tab', () => {
     const { container, getByTestId } = render(
       <Paper scrollable data-testid="paper">

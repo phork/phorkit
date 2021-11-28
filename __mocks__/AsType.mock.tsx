@@ -1,7 +1,7 @@
 import React from 'react';
 
 export interface AsTypeAProps extends React.HTMLAttributes<HTMLAnchorElement> {
-  children: React.ReactNode;
+  children: React.ReactChild | React.ReactFragment;
 }
 
 export function AsTypeA({ children, ...props }: AsTypeAProps): React.ReactElement<AsTypeAProps, 'a'> {
@@ -9,7 +9,7 @@ export function AsTypeA({ children, ...props }: AsTypeAProps): React.ReactElemen
 }
 
 export interface AsTypeDivProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
+  children: React.ReactChild | React.ReactFragment;
 }
 
 export function AsTypeDiv({ children, ...props }: AsTypeDivProps): React.ReactElement<AsTypeDivProps, 'div'> {
@@ -17,7 +17,7 @@ export function AsTypeDiv({ children, ...props }: AsTypeDivProps): React.ReactEl
 }
 
 export interface AsTypePProps extends React.HTMLAttributes<HTMLParagraphElement> {
-  children: React.ReactNode;
+  children: React.ReactChild | React.ReactFragment;
 }
 
 export function AsTypeP({ children, ...props }: AsTypePProps): React.ReactElement<AsTypePProps, 'p'> {
@@ -25,7 +25,7 @@ export function AsTypeP({ children, ...props }: AsTypePProps): React.ReactElemen
 }
 
 export interface AsTypeUlProps extends React.HTMLAttributes<HTMLUListElement> {
-  children: React.ReactNode;
+  children: React.ReactChild | React.ReactFragment;
 }
 
 export function AsTypeUl({ children, ...props }: AsTypeUlProps): React.ReactElement<AsTypeUlProps, 'ul'> {
@@ -33,7 +33,7 @@ export function AsTypeUl({ children, ...props }: AsTypeUlProps): React.ReactElem
 }
 
 export interface AsTypeLiProps extends React.HTMLAttributes<HTMLLIElement> {
-  children: React.ReactNode;
+  children: React.ReactChild | React.ReactFragment;
 }
 
 export function AsTypeLi({ children, ...props }: AsTypeLiProps): React.ReactElement<AsTypeLiProps, 'li'> {

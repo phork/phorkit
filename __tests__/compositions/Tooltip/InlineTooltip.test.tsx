@@ -5,7 +5,14 @@ import { render } from '../../utils';
 describe('<InlineTooltip />', () => {
   it('should render a tooltip', () => {
     const { getByText } = render(
-      <InlineTooltip permanent height={80} toggler={<TimesIcon scale="3xlarge" />} triangleColor="#fff" width={300}>
+      <InlineTooltip
+        permanent
+        height={80}
+        position="top-center"
+        toggler={<TimesIcon scale="3xlarge" />}
+        triangleColor="#fff"
+        width={300}
+      >
         <div>Hello world</div>
       </InlineTooltip>,
     );

@@ -12,7 +12,7 @@ export type ButtonGroupAlignment = 'left' | 'center' | 'right';
 
 export type ButtonGroupItem = {
   id: string;
-  label: React.ReactNode | ((selected: boolean) => JSX.Element);
+  label: React.ReactChild | React.ReactFragment | ((selected: boolean) => JSX.Element);
   selected?: boolean;
 } & Omit<ButtonProps, 'children' | 'id' | 'key' | 'size' | 'value'>;
 

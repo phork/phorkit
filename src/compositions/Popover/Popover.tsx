@@ -69,7 +69,7 @@ export type PopoverProps<C extends HTMLElement, F extends HTMLElement | undefine
   permanent?: boolean;
   position?: AnyPosition | StackedPosition;
   /** A function to render the actual popover and set its positioning */
-  renderContent: (props: PopoverRenderContentProps<C, F>) => React.ReactNode;
+  renderContent: (props: PopoverRenderContentProps<C, F>) => React.ReactChild | React.ReactFragment;
   style?: React.CSSProperties;
   /** The element that's clicked or hovered to open and close the popover */
   toggler: RenderFromPropElement<PopoverTogglerProps>;
@@ -119,7 +119,7 @@ export function Popover<C extends HTMLElement, F extends HTMLElement | undefined
   withoutTogglerFocusStyle = false,
   withPopoverTogglerProps = false,
   ...props
-}: PopoverProps<C, F>): React.ReactElement<PopoverProps<C, F>> {
+}: PopoverProps<C, F>): React.ReactElement<PopoverProps<C, F>> | null {
   const accessible = useAccessibility();
   const themeId = useThemeId(initThemeId);
   const { setSafeTimeout, clearSafeTimeout } = useSafeTimeout();
@@ -277,7 +277,27 @@ export function Popover<C extends HTMLElement, F extends HTMLElement | undefined
     previous.current.hasContentRef = hasContentRef;
   }, [changeFocus, focusable, isComponentVisible, onClose, onOpen, returnFocus, hasContentRef]);
 
-  return (
+  const content =
+    position &&
+    offset &&
+    renderContent({
+      'aria-hidden': !isComponentVisible,
+      close: closePopover,
+      focusRef: focusable ? focusRef : undefined,
+      id: componentId,
+      isTogglerFocused,
+      offset,
+      onMouseEnter: cancelClose,
+      position,
+      ref: setContentRef,
+      relativeRef,
+      role: isTooltip ? 'tooltip' : 'dialog',
+      visible: isComponentVisible,
+    });
+
+  if (!content) throw new Error('Missing popover content');
+
+  return content ? (
     <div
       aria-describedby={isTooltip ? componentId : undefined}
       className={cx(styles.popoverContainer, className)}
@@ -287,24 +307,9 @@ export function Popover<C extends HTMLElement, F extends HTMLElement | undefined
       {...props}
     >
       {renderToggler()}
-      {position &&
-        offset &&
-        renderContent({
-          'aria-hidden': !isComponentVisible,
-          close: closePopover,
-          focusRef: focusable ? focusRef : undefined,
-          id: componentId,
-          isTogglerFocused,
-          offset,
-          onMouseEnter: cancelClose,
-          position,
-          ref: setContentRef,
-          relativeRef,
-          role: isTooltip ? 'tooltip' : 'dialog',
-          visible: isComponentVisible,
-        })}
+      {content}
     </div>
-  );
+  ) : null;
 }
 
 Popover.displayName = 'Popover';
