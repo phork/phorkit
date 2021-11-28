@@ -6,19 +6,24 @@ import styles from './styles/Timeline.module.css';
 import { TimelineDividerItem, TimelineDividerItemProps } from './TimelineDividerItem';
 import { TimelineMarkerItem, TimelineMarkerItemProps } from './TimelineMarkerItem';
 
-export type TimelineMarkerItemType = 'divider' | 'default';
+export type TimelineAnchorItemType = 'divider' | 'default';
 export type TimelineSpacing = 'cozy' | 'comfy';
 
-export type TimelineProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> &
+export type TimelineItem = (TimelineMarkerItemProps | TimelineDividerItemProps) & {
+  id: string;
+  type?: TimelineAnchorItemType;
+};
+
+export type TimelineProps = React.HTMLAttributes<HTMLDivElement> &
   Omit<ThemeProps, 'contrast'> & {
     className?: string;
-    items: Array<(TimelineMarkerItemProps | TimelineDividerItemProps) & { id: string; type?: TimelineMarkerItemType }>;
+    items?: Array<TimelineItem>;
     spacing?: TimelineSpacing;
     style?: React.CSSProperties;
   };
 
 export function TimelineBase(
-  { className, items, spacing, themeId: initThemeId, unthemed, ...props }: TimelineProps,
+  { children, className, items, spacing, themeId: initThemeId, unthemed, ...props }: TimelineProps,
   forwardedRef: React.ForwardedRef<HTMLDivElement>,
 ): JSX.Element {
   const themeId = useThemeId(initThemeId);
@@ -34,10 +39,12 @@ export function TimelineBase(
       ref={forwardedRef}
       {...props}
     >
-      {items.map(({ id, type, ...item }, index) => {
-        const Item = type === 'divider' ? TimelineDividerItem : TimelineMarkerItem;
-        return <Item first={index === 0} key={id} last={index === items.length - 1} themeId={themeId} {...item} />;
-      })}
+      {items
+        ? items.map(({ id, type, ...item }, index) => {
+            const Item = type === 'divider' ? TimelineDividerItem : TimelineMarkerItem;
+            return <Item first={index === 0} key={id} last={index === items.length - 1} themeId={themeId} {...item} />;
+          })
+        : children}
     </div>
   );
 }

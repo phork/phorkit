@@ -5,8 +5,8 @@ import { ThemeColors, themes } from 'config/themes';
 import { Paper } from 'components/Paper';
 import { Rhythm } from 'components/Rhythm';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { Timeline, TimelineMarkerItemType, TimelineSpacing } from '../Timeline';
-import { TimelineMarkerItemProps } from '../TimelineMarkerItem';
+import { Timeline, TimelineAnchorItemType, TimelineSpacing } from '../Timeline';
+import { TimelineMarkerItem, TimelineMarkerItemProps } from '../TimelineMarkerItem';
 
 export default {
   title: 'Display/Timeline',
@@ -28,6 +28,14 @@ export default {
       },
     },
 
+    children: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: 'Uncommon',
+      },
+    },
     className: {
       control: {
         disable: true,
@@ -103,7 +111,7 @@ const defaultArgs = {
       id: 'divider',
       children: <Rhythm p={4}>Hello world</Rhythm>,
       color: 'neutral' as TimelineMarkerItemProps['color'],
-      type: 'divider' as TimelineMarkerItemType,
+      type: 'divider' as TimelineAnchorItemType,
     },
     {
       id: 'five',
@@ -288,4 +296,28 @@ Toasty.args = {
     unbordered: true,
     unthemed: true,
   })),
+};
+
+export const Children = Template.bind({});
+Children.storyName = 'Using item children';
+Children.args = {
+  ...defaultArgs,
+  children: (
+    <React.Fragment>
+      <TimelineMarkerItem first color="primary">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </TimelineMarkerItem>
+      <TimelineMarkerItem color="success">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </TimelineMarkerItem>
+      <TimelineMarkerItem color="warning">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </TimelineMarkerItem>
+      <TimelineMarkerItem last color="danger">
+        <Rhythm p={4}>Hello world</Rhythm>
+      </TimelineMarkerItem>
+    </React.Fragment>
+  ),
+  items: undefined,
+  spacing: 'cozy',
 };

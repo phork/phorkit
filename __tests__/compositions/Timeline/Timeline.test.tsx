@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import React from 'react';
-import { Timeline, TimelineMarkerItemProps } from 'lib';
+import { Timeline, TimelineDividerItem, TimelineMarkerItem, TimelineMarkerItemProps } from 'lib';
 
 const items = [
   {
@@ -29,6 +29,22 @@ describe('<Timeline />', () => {
   it('should render multiple timeline items', () => {
     const { getAllByText } = render(<Timeline items={items} />);
     expect(getAllByText('Hello world').length).toBe(4);
+  });
+
+  it('should render from children', () => {
+    const { getAllByText } = render(
+      <Timeline>
+        <TimelineMarkerItem first color="primary">
+          Hello world
+        </TimelineMarkerItem>
+        <TimelineMarkerItem color="primary">Hello world</TimelineMarkerItem>
+        <TimelineDividerItem last color="primary">
+          Hello world
+        </TimelineDividerItem>
+      </Timeline>,
+    );
+
+    expect(getAllByText('Hello world').length).toBe(3);
   });
 
   it('should accept the rest of the props', () => {

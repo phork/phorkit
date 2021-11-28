@@ -19,7 +19,7 @@ export function StraddledTimelineBase(
 
   const items = useMemo(
     () =>
-      initItems.map(({ position, ...item }) => {
+      initItems?.map(({ position, ...item }) => {
         const [side] = position?.split('-') || ['right'];
         return {
           position,
