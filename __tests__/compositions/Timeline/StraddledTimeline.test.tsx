@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import React from 'react';
-import { StraddledTimeline, TimelineMarkerItemProps } from 'lib';
+import { StraddledTimeline, TimelineDividerItem, TimelineMarkerItem, TimelineMarkerItemProps } from 'lib';
 
 const items = [
   {
@@ -58,6 +58,24 @@ describe('<StraddledTimeline />', () => {
     expect(getByTestId('item-two').style.getPropertyValue('width')).toBe('200px');
     expect(getByTestId('item-three').style.getPropertyValue('width')).toBe('100px');
     expect(getByTestId('item-four').style.getPropertyValue('width')).toBe('200px');
+  });
+
+  it('should render from children', () => {
+    const { getAllByText } = render(
+      <StraddledTimeline leftWidth={180} rightWidth={200}>
+        <TimelineMarkerItem first color="primary" width={200}>
+          Hello world
+        </TimelineMarkerItem>
+        <TimelineMarkerItem color="primary" width={200}>
+          Hello world
+        </TimelineMarkerItem>
+        <TimelineDividerItem last color="primary" width={200}>
+          Hello world
+        </TimelineDividerItem>
+      </StraddledTimeline>,
+    );
+
+    expect(getAllByText('Hello world').length).toBe(3);
   });
 
   it('should accept the rest of the props', () => {

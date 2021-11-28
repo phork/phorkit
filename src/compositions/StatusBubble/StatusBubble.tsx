@@ -25,11 +25,11 @@ export type StatusBubbleProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'titl
     /** Remove the border radius */
     squared?: boolean;
     style?: React.CSSProperties;
-    /** An optional override of the bubble pointer border color */
+    /** An optional override of the status bubble tail border color */
     triangleBorderColor?: string;
-    /** An optional override of the bubble pointer fill color */
+    /** An optional override of the status bubble tail fill color */
     triangleColor?: string;
-    /** An optional override of the bubble pointer size color */
+    /** An optional override of the status bubble tail size color */
     triangleSize?: number;
     unbordered?: boolean;
   };

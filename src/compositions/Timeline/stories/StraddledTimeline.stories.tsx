@@ -6,8 +6,8 @@ import { Paper } from 'components/Paper';
 import { Rhythm } from 'components/Rhythm';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { StraddledTimeline } from '../StraddledTimeline';
-import { TimelineMarkerItemType, TimelineSpacing } from '../Timeline';
-import { TimelineMarkerItemProps } from '../TimelineMarkerItem';
+import { TimelineAnchorItemType, TimelineSpacing } from '../Timeline';
+import { TimelineMarkerItem, TimelineMarkerItemProps } from '../TimelineMarkerItem';
 
 export default {
   title: 'Display/Timeline/StraddledTimeline',
@@ -118,7 +118,7 @@ const defaultArgs = {
       id: 'divider',
       children: <Rhythm p={4}>Hello world</Rhythm>,
       color: 'neutral' as TimelineMarkerItemProps['color'],
-      type: 'divider' as TimelineMarkerItemType,
+      type: 'divider' as TimelineAnchorItemType,
       position: 'left-center' as TimelineMarkerItemProps['position'],
     },
     {
@@ -258,4 +258,28 @@ Toasty.args = {
     unbordered: true,
     unthemed: true,
   })),
+};
+
+export const Children = Template.bind({});
+Children.storyName = 'Using item children';
+Children.args = {
+  ...defaultArgs,
+  children: (
+    <React.Fragment>
+      <TimelineMarkerItem first color="primary" position="left-center" width={180}>
+        <Rhythm p={4}>Hello world</Rhythm>
+      </TimelineMarkerItem>
+      <TimelineMarkerItem color="success" position="right-center" width={180}>
+        <Rhythm p={4}>Hello world</Rhythm>
+      </TimelineMarkerItem>
+      <TimelineMarkerItem color="warning" position="left-center" width={180}>
+        <Rhythm p={4}>Hello world</Rhythm>
+      </TimelineMarkerItem>
+      <TimelineMarkerItem last color="danger" position="right-center" width={180}>
+        <Rhythm p={4}>Hello world</Rhythm>
+      </TimelineMarkerItem>
+    </React.Fragment>
+  ),
+  items: undefined,
+  spacing: 'cozy',
 };
