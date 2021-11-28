@@ -21,6 +21,7 @@ import { TimeoutWrapper } from 'docs/helpers/TimeoutWrapper';
 import scrollbar from 'styles/common/Scrollbar.module.css';
 import {
   Avatar,
+  AvatarStatusBubble,
   Badge,
   Banner,
   BannerContainer,
@@ -65,7 +66,6 @@ import {
   ScaleProvider,
   Shade,
   StackPanel,
-  StatusBubble,
   StyledAvatar,
   StyledHeader,
   StyledLoader,
@@ -405,29 +405,26 @@ import {
 <Playground>
   <Flex direction="column" style={{ maxWidth: 300 }}>
     <Rhythm grouped my={2}>
-      <StatusBubble
+      <AvatarStatusBubble
         color="neutral"
         header="Knock knock"
         icon={<Avatar imgSrc="/public/images/avatar.jpg" initials="EC" size="large" />}
-        iconShape="circle"
         position="right-top"
       />
     </Rhythm>
     <Rhythm grouped my={2}>
-      <StatusBubble
+      <AvatarStatusBubble
         color="neutral"
         header="Who's there?"
         icon={<Avatar initials="EC" size="large" />}
-        iconShape="circle"
         position="left-top"
       />
     </Rhythm>
     <Rhythm grouped my={2}>
-      <StatusBubble
+      <AvatarStatusBubble
         color="neutral"
         header="Land shark 🦈"
         icon={<Avatar imgSrc="/public/images/avatar.jpg" initials="EC" size="large" />}
-        iconShape="circle"
         position="right-top"
       />
     </Rhythm>

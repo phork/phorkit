@@ -16,6 +16,7 @@ import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 import scrollbar from 'styles/common/Scrollbar.module.css';
 import {
   Avatar,
+  AvatarStatusBubble,
   Badge,
   Banner,
   BannerContainer,
@@ -59,7 +60,6 @@ import {
   ScaleProvider,
   Shade,
   StackPanel,
-  StatusBubble,
   StyledAvatar,
   StyledHeader,
   StyledLoader,
@@ -404,29 +404,23 @@ import {
 <Canvas>
   <Flex direction="column" style={{ maxWidth: 300 }}>
     <Rhythm grouped my={2}>
-      <StatusBubble
+      <AvatarStatusBubble
         color="neutral"
         header="Knock knock"
-        icon={<Avatar imgSrc="/images/avatar.jpg" initials="EC" size="large" />}
-        iconShape="circle"
+        imgSrc="/images/avatar.jpg"
+        initials="EC"
         position="right-top"
       />
     </Rhythm>
     <Rhythm grouped my={2}>
-      <StatusBubble
-        color="neutral"
-        header="Who's there?"
-        icon={<Avatar initials="EC" size="large" />}
-        iconShape="circle"
-        position="left-top"
-      />
+      <AvatarStatusBubble avatarColor="neutral" header="Who's there?" initials="EC" position="left-top" />
     </Rhythm>
     <Rhythm grouped my={2}>
-      <StatusBubble
+      <AvatarStatusBubble
         color="neutral"
         header="Land shark 🦈"
-        icon={<Avatar imgSrc="/images/avatar.jpg" initials="EC" size="large" />}
-        iconShape="circle"
+        imgSrc="/images/avatar.jpg"
+        initials="EC"
         position="right-top"
       />
     </Rhythm>
