@@ -1,5 +1,20 @@
 # Changelog
 
+# [14.0.0](https://github.com/phork/phorkit/compare/v13.2.0...v14.0.0) (2021-11-29)
+
+### ♻ Code Refactoring
+
+- improved popover and tooltip errors ([b3ead41](https://github.com/phork/phorkit/commit/b3ead41))
+- **major**: updated most children types ([9b9537d](https://github.com/phork/phorkit/commit/9b9537d))
+
+### ✨ Features
+
+- allow Timeline children as an alternative to items ([0ae5fac](https://github.com/phork/phorkit/commit/0ae5fac))
+
+### 🐛 Bug Fixes
+
+- increase text tooltip tail border widths ([820c91d](https://github.com/phork/phorkit/commit/820c91d))
+
 # [13.2.0](https://github.com/phork/phorkit/compare/v13.1.0...v13.2.0) (2021-11-27)
 
 ### ✨ Features
