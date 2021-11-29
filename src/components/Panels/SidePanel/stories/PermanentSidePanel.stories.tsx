@@ -22,6 +22,11 @@ export default {
         category: 'Appearance',
       },
     },
+    flexible: {
+      table: {
+        category: 'Appearance',
+      },
+    },
     position: {
       options: ['left', 'right'],
       control: {
@@ -101,6 +106,7 @@ const Template: ComponentStory<typeof PermanentSidePanel> = args => <PermanentSi
 const defaultArgs = {
   children: <Typography color="primary">Side panel</Typography>,
   fixed: false,
+  flexible: false,
   position: 'left' as PermanentSidePanelProps['position'],
   raised: false,
   style: { height: 100 },

@@ -1,8 +1,12 @@
 .stackPanel {
   display: flex;
-  flex: 0 0 auto;
   flex-direction: column;
+  flex: none;
   position: relative;
+}
+
+.stackPanel--flexible {
+  flex: 0 0 auto;
 }
 
 .stackPanel--raised {

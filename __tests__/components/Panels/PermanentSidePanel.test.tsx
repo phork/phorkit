@@ -12,6 +12,7 @@ describe('<PermanentSidePanel />', () => {
     render(
       <PermanentSidePanel
         fixed
+        flexible
         raised
         className="permanentSidePanel"
         id="permanentSidePanel"

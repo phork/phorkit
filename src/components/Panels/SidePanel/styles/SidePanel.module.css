@@ -1,7 +1,12 @@
 .sidePanel {
   display: flex;
   flex-direction: column;
+  flex: none;
   position: relative;
+}
+
+.sidePanel--flexible {
+  flex: 0 0 auto;
 }
 
 .sidePanel--raised {

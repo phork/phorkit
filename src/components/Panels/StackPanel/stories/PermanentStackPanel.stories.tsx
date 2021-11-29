@@ -22,6 +22,11 @@ export default {
         category: 'Appearance',
       },
     },
+    flexible: {
+      table: {
+        category: 'Appearance',
+      },
+    },
     height: {
       table: {
         category: 'Appearance',
@@ -101,6 +106,7 @@ const Template: ComponentStory<typeof PermanentStackPanel> = args => <PermanentS
 const defaultArgs = {
   children: <Typography color="primary">Stack panel</Typography>,
   fixed: false,
+  flexible: false,
   height: 40,
   position: 'left' as PermanentStackPanelProps['position'],
   raised: false,
