@@ -12,6 +12,7 @@ describe('<PermanentStackPanel />', () => {
     render(
       <PermanentStackPanel
         fixed
+        flexible
         raised
         className="permanentStackPanel"
         height={30}

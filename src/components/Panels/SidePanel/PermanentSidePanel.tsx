@@ -6,6 +6,7 @@ export type PermanentSidePanelProps = React.HTMLAttributes<HTMLDivElement> & {
   children: React.ReactChild | React.ReactFragment;
   className?: string;
   fixed?: boolean;
+  flexible?: boolean;
   position: 'left' | 'right';
   /** Raise the panel above other elements by using a high z-index */
   raised?: boolean;
@@ -26,12 +27,24 @@ export type PermanentSidePanelProps = React.HTMLAttributes<HTMLDivElement> & {
  */
 export const PermanentSidePanel = React.forwardRef<HTMLDivElement, PermanentSidePanelProps>(
   (
-    { children, className, fixed = false, position, raised, style: initStyle, unit: initUnit = 'px', width, ...props },
+    {
+      children,
+      className,
+      fixed = false,
+      flexible,
+      position,
+      raised,
+      style: initStyle,
+      unit: initUnit = 'px',
+      width,
+      ...props
+    },
     forwardedRef,
   ): React.ReactElement<PermanentSidePanelProps> => {
     const classes = cx(
       styles.sidePanel,
       fixed && styles['sidePanel--fixed'],
+      flexible && styles['sidePanel--flexible'],
       raised && styles['sidePanel--raised'],
       styles[`sidePanel--${position}`],
       className,

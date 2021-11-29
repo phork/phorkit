@@ -6,6 +6,7 @@ export type PermanentStackPanelProps = React.HTMLAttributes<HTMLDivElement> & {
   children: React.ReactChild | React.ReactFragment;
   className?: string;
   fixed?: boolean;
+  flexible?: boolean;
   height?: number;
   position: 'top' | 'bottom';
   /** Raise the panel above other elements by using a high z-index */
@@ -26,12 +27,24 @@ export type PermanentStackPanelProps = React.HTMLAttributes<HTMLDivElement> & {
  */
 export const PermanentStackPanel = React.forwardRef<HTMLDivElement, PermanentStackPanelProps>(
   (
-    { children, className, fixed, height, position, raised, style: initStyle, unit: initUnit = 'px', ...props },
+    {
+      children,
+      className,
+      fixed,
+      flexible,
+      height,
+      position,
+      raised,
+      style: initStyle,
+      unit: initUnit = 'px',
+      ...props
+    },
     forwardedRef,
   ): React.ReactElement<PermanentStackPanelProps> => {
     const classes = cx(
-      styles.sidePanel,
+      styles.stackPanel,
       fixed && styles['stackPanel--fixed'],
+      flexible && styles['stackPanel--flexible'],
       raised && styles['stackPanel--raised'],
       styles[`stackPanel--${position}`],
       className,
