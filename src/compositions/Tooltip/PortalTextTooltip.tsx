@@ -63,6 +63,7 @@ export function PortalTextTooltip<F extends HTMLElement | undefined = undefined>
     <PortalPopover<F>
       isTooltip
       centered={!uncentered}
+      layout={layout}
       offset={offset}
       position={position}
       renderChildren={({ close, focusRef, isTogglerFocused, offset, position, visible }) => {

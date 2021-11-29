@@ -52,6 +52,7 @@ export function InlineTooltip<F extends HTMLElement | undefined = undefined>({
     <InlinePopover<F>
       isTooltip
       centered={!uncentered}
+      layout={layout}
       offset={offset}
       position={position}
       renderChildren={({ close, focusRef, isTogglerFocused, offset, position, visible }) => {

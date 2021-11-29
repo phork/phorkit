@@ -10,7 +10,7 @@ import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { PortalTooltip, PortalTooltipProps } from '../PortalTooltip';
-import { justifyContentByPosition, alignItemsByPosition } from './helpers/position';
+import { getHorizontalPosition, getVerticalPosition } from './helpers/position';
 
 export default {
   title: 'Surfaces/Tooltip/PortalTooltip',
@@ -206,18 +206,24 @@ export default {
     },
   },
   decorators: [
-    (Story, { args: { position } }) => (
+    (Story, { args: { layout, position } }) => (
       <div
         style={{
-          display: 'flex',
           margin: 20,
           width: 380,
-          height: 140,
-          justifyContent: justifyContentByPosition(position),
-          alignItems: alignItemsByPosition(position),
+          height: layout === 'horizontal' || (position && /^(right|left)-/.test(position)) ? 90 : 140,
+          position: 'relative',
         }}
       >
-        {Story()}
+        <div
+          style={{
+            position: 'absolute',
+            ...getHorizontalPosition(position, layout),
+            ...getVerticalPosition(position, layout),
+          }}
+        >
+          {Story()}
+        </div>
       </div>
     ),
   ],
@@ -369,6 +375,20 @@ RightBottomPosition.storyName = 'Position: Right bottom';
 RightBottomPosition.args = {
   ...defaultArgs,
   position: 'right-bottom',
+};
+
+export const VerticalLayout = Template.bind({});
+VerticalLayout.storyName = 'Layout: Vertical';
+VerticalLayout.args = {
+  ...defaultArgs,
+  layout: 'vertical',
+};
+
+export const HorizontalLayout = Template.bind({});
+HorizontalLayout.storyName = 'Layout: Horizontal';
+HorizontalLayout.args = {
+  ...defaultArgs,
+  layout: 'horizontal',
 };
 
 export const CornerTriangle = Template.bind({});
