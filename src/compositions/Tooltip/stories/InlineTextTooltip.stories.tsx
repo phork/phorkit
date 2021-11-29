@@ -8,7 +8,7 @@ import { Rhythm } from 'components/Rhythm/Rhythm';
 import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { InlineTextTooltip, InlineTextTooltipProps } from '../InlineTextTooltip';
-import { justifyContentByPosition, alignItemsByPosition } from './helpers/position';
+import { getHorizontalPosition, getVerticalPosition } from './helpers/position';
 
 export default {
   title: 'Surfaces/Tooltip/InlineTextTooltip',
@@ -253,17 +253,24 @@ Default.parameters = {
 };
 
 Default.decorators = [
-  (Story, { args: { position } }) => (
+  (Story, { args: { layout, position } }) => (
     <div
       style={{
-        display: 'flex',
         margin: 20,
-        height: 140,
-        justifyContent: justifyContentByPosition(position),
-        alignItems: alignItemsByPosition(position),
+        width: 380,
+        height: layout === 'horizontal' || (position && /^(right|left)-/.test(position)) ? 60 : 90,
+        position: 'relative',
       }}
     >
-      {Story()}
+      <div
+        style={{
+          position: 'absolute',
+          ...getHorizontalPosition(position, layout),
+          ...getVerticalPosition(position, layout),
+        }}
+      >
+        {Story()}
+      </div>
     </div>
   ),
 ];
@@ -297,21 +304,25 @@ OnText.args = {
 };
 
 OnText.decorators = [
-  (Story, { args: { position } }) => (
+  (Story, { args: { position, layout } }) => (
     <Typography<'div'>
       as="div"
       color="primary"
       style={{
-        display: 'flex',
         margin: 20,
         height: 180,
-        justifyContent: justifyContentByPosition(position),
-        alignItems: alignItemsByPosition(position),
+        position: 'relative',
       }}
     >
-      <span>Hello, world.</span>
-      {Story()}
-      <span>There are others like me as well.</span>
+      <div
+        style={{
+          position: 'absolute',
+          ...getHorizontalPosition(position, layout),
+          ...getVerticalPosition(position, layout),
+        }}
+      >
+        {Story()}
+      </div>
     </Typography>
   ),
 ];
@@ -332,21 +343,29 @@ OnIcon.args = {
 };
 
 OnIcon.decorators = [
-  (Story, { args: { position } }) => (
+  (Story, { args: { position, layout } }) => (
     <Typography<'div'>
       as="div"
       color="primary"
       style={{
-        display: 'flex',
         margin: 20,
         height: 60,
-        justifyContent: justifyContentByPosition(position),
-        alignItems: alignItemsByPosition(position),
+        position: 'relative',
       }}
     >
-      <span>Sometimes a tooltip should be clickable, or on an icon.</span>
-      {Story()}
-      <span>That is neat.</span>
+      <div
+        style={{
+          alignItems: 'center',
+          display: 'flex',
+          position: 'absolute',
+          ...getHorizontalPosition(position, layout),
+          ...getVerticalPosition(position, layout),
+        }}
+      >
+        <span>Sometimes a tooltip should be clickable, or on an icon.</span>
+        {Story()}
+        <span>That is neat.</span>
+      </div>
     </Typography>
   ),
 ];

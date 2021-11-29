@@ -9,8 +9,12 @@ import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { InlinePopover, InlinePopoverProps } from '../InlinePopover';
-import { defaultOffset } from '../Popover';
-import { justifyContentByPosition, alignItemsByPosition } from './helpers/position';
+import { getHorizontalPosition, getVerticalPosition } from './helpers/position';
+
+const defaultOffset = {
+  horizontal: 0,
+  vertical: 0,
+};
 
 export default {
   title: 'Surfaces/Popover/InlinePopover',
@@ -171,18 +175,24 @@ export default {
     },
   },
   decorators: [
-    (Story, { args: { position } }) => (
+    (Story, { args: { layout, position } }) => (
       <div
         style={{
-          display: 'flex',
           margin: 20,
           width: 380,
-          height: 140,
-          justifyContent: justifyContentByPosition(position),
-          alignItems: alignItemsByPosition(position),
+          height: layout === 'horizontal' || (position && /^(right|left)-/.test(position)) ? 90 : 140,
+          position: 'relative',
         }}
       >
-        {Story()}
+        <div
+          style={{
+            position: 'absolute',
+            ...getHorizontalPosition(position, layout),
+            ...getVerticalPosition(position, layout),
+          }}
+        >
+          {Story()}
+        </div>
       </div>
     ),
   ],
@@ -304,6 +314,7 @@ export const LeftTopPosition = Template.bind({});
 LeftTopPosition.storyName = 'Position: Left top';
 LeftTopPosition.args = {
   ...defaultArgs,
+  layout: 'horizontal',
   offset: { horizontal: 8 },
   position: 'left-top',
 };
@@ -312,6 +323,7 @@ export const LeftCenterPosition = Template.bind({});
 LeftCenterPosition.storyName = 'Position: Left center';
 LeftCenterPosition.args = {
   ...defaultArgs,
+  layout: 'horizontal',
   offset: { horizontal: 8 },
   position: 'left-center',
 };
@@ -320,6 +332,7 @@ export const LeftBottomPosition = Template.bind({});
 LeftBottomPosition.storyName = 'Position: Left bottom';
 LeftBottomPosition.args = {
   ...defaultArgs,
+  layout: 'horizontal',
   offset: { horizontal: 8 },
   position: 'left-bottom',
 };
@@ -328,6 +341,7 @@ export const RightTopPosition = Template.bind({});
 RightTopPosition.storyName = 'Position: Right top';
 RightTopPosition.args = {
   ...defaultArgs,
+  layout: 'horizontal',
   offset: { horizontal: 8 },
   position: 'right-top',
 };
@@ -336,6 +350,7 @@ export const RightCenterPosition = Template.bind({});
 RightCenterPosition.storyName = 'Position: Right center';
 RightCenterPosition.args = {
   ...defaultArgs,
+  layout: 'horizontal',
   offset: { horizontal: 8 },
   position: 'right-center',
 };
@@ -344,8 +359,25 @@ export const RightBottomPosition = Template.bind({});
 RightBottomPosition.storyName = 'Position: Right bottom';
 RightBottomPosition.args = {
   ...defaultArgs,
+  layout: 'horizontal',
   offset: { horizontal: 8 },
   position: 'right-bottom',
+};
+
+export const VerticalLayout = Template.bind({});
+VerticalLayout.storyName = 'Layout: Vertical';
+VerticalLayout.args = {
+  ...defaultArgs,
+  offset: { vertical: 8 },
+  layout: 'vertical',
+};
+
+export const HorizontalLayout = Template.bind({});
+HorizontalLayout.storyName = 'Layout: Horizontal';
+HorizontalLayout.args = {
+  ...defaultArgs,
+  layout: 'horizontal',
+  offset: { horizontal: 8 },
 };
 
 export const ManualFocus = Template.bind({});

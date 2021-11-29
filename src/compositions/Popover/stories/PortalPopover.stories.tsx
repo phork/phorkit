@@ -8,9 +8,13 @@ import { Paper } from 'components/Paper';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { defaultOffset } from '../Popover';
 import { PortalPopover, PortalPopoverProps } from '../PortalPopover';
-import { justifyContentByPosition, alignItemsByPosition } from './helpers/position';
+import { getHorizontalPosition, getVerticalPosition } from './helpers/position';
+
+const defaultOffset = {
+  horizontal: 0,
+  vertical: 0,
+};
 
 export default {
   title: 'Surfaces/Popover/PortalPopover',
@@ -181,18 +185,24 @@ export default {
     },
   },
   decorators: [
-    (Story, { args: { position } }) => (
+    (Story, { args: { layout, position } }) => (
       <div
         style={{
-          display: 'flex',
           margin: 20,
           width: 380,
-          height: 140,
-          justifyContent: justifyContentByPosition(position),
-          alignItems: alignItemsByPosition(position),
+          height: layout === 'horizontal' || (position && /^(right|left)-/.test(position)) ? 90 : 140,
+          position: 'relative',
         }}
       >
-        {Story()}
+        <div
+          style={{
+            position: 'absolute',
+            ...getHorizontalPosition(position, layout),
+            ...getVerticalPosition(position, layout),
+          }}
+        >
+          {Story()}
+        </div>
       </div>
     ),
   ],
@@ -357,6 +367,22 @@ RightBottomPosition.args = {
   ...defaultArgs,
   offset: { horizontal: 8 },
   position: 'right-bottom',
+};
+
+export const VerticalLayout = Template.bind({});
+VerticalLayout.storyName = 'Layout: Vertical';
+VerticalLayout.args = {
+  ...defaultArgs,
+  offset: { vertical: 8 },
+  layout: 'vertical',
+};
+
+export const HorizontalLayout = Template.bind({});
+HorizontalLayout.storyName = 'Layout: Horizontal';
+HorizontalLayout.args = {
+  ...defaultArgs,
+  offset: { horizontal: 8 },
+  layout: 'horizontal',
 };
 
 export const AbsolutePortal = Template.bind({});

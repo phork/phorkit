@@ -39,4 +39,32 @@ describe('<PortalTooltip />', () => {
     expect(getByText('Hello world')).toBeTruthy();
     expect(getByText('bottom-right')).toBeTruthy();
   });
+
+  it('should render a popover and generate a position', () => {
+    const { getByText } = render(
+      <PortalTooltip
+        permanent
+        height={80}
+        layout="vertical"
+        renderChildren={({ position }) => <div>{position}</div>}
+        toggler={<TimesIcon scale="3xlarge" />}
+        triangleColor="#fff"
+        width={300}
+      />,
+    );
+    expect(getByText('bottom-right')).toBeTruthy();
+  });
+
+  it('should error without children', () => {
+    const consoleWarnMock = jest.spyOn(console, 'error').mockImplementation();
+
+    expect(() =>
+      render(
+        /* @ts-ignore */
+        <PortalTooltip permanent height={80} toggler={<TimesIcon scale="3xlarge" />} width={300} />,
+      ),
+    ).toThrow();
+
+    consoleWarnMock.mockRestore();
+  });
 });
