@@ -35,7 +35,7 @@ const darkTheme = {
 
 export default {
   title: 'Phork/it',
-  description: `A React component library.`,
+  description: `A React UI kit.`,
   repository: 'https://github.com/phork/phorkit',
   typescript: true,
   host: 'localhost',

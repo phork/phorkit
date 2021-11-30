@@ -4,6 +4,10 @@
 
 To see examples and documentation go to [https://phorkit.phork.org/](https://phorkit.phork.org/).
 
+## Introduction
+
+Phork/it is a UI kit built with React and TypeScript. It provides a customizable and accessible library of components that can be used to speed up React application development.
+
 ## Getting started
 
 Include the common styles and fonts in `index.js`.
@@ -17,11 +21,11 @@ import '@phork/phorkit/lib/styles/common.css';
 Include the basic providers in `App.js`.
 
 ```javascript
-<AccessibilityProvider>
-  <ThemeProvider themeId={light|dark}>
-    hello world
-  </Theme>
-</AccessibilityProvider>
+<ThemeProvider themeId={light | dark}>
+  <AccessibilityProvider>
+    <Modals>hello world</Modals>
+  </AccessibilityProvider>
+</ThemeProvider>
 ```
 
 The Phork/it CSS files have also been published separately so that they can be used outside of React, or included in a custom React component.

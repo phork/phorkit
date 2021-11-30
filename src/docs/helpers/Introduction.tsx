@@ -20,7 +20,7 @@ export function Introduction(props: FlexProps): JSX.Element {
         style={{ marginBottom: '12px', maxWidth: 'calc(100% - 20px' }}
         width="500"
       />
-      <Flex alignItems="center" direction="row">
+      <Flex alignItems="center" direction="row" style={{ marginBottom: 20 }}>
         {repository && (
           <IconButton<'a'>
             as="a"

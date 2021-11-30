@@ -18,7 +18,7 @@ import { Introduction } from 'stories/helpers/Introduction';
 
 ## Introduction
 
-Phork/it is a React component library.
+Phork/it is a UI kit built with React and TypeScript. It provides a customizable and accessible library of components that can be used to speed up React application development.
 
 <br />
 
@@ -35,11 +35,13 @@ import '@phork/phorkit/lib/styles/common.css';
 Include the basic providers in `App.js`.
 
 ```
-<AccessibilityProvider>
-  <ThemeProvider themeId={light|dark}>
-    hello world
-  </Theme>
-</AccessibilityProvider>
+<ThemeProvider themeId={light|dark}>
+  <AccessibilityProvider>
+    <Modals>
+      hello world
+    </Modals>
+  </AccessibilityProvider>
+</ThemeProvider>
 ```
 
 ## Themes

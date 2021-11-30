@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     title: 'Phork/it',
     siteUrl: process.env.DOCZ_URL || 'https://docz.phorkit.org',
-    description: 'A React component library',
+    description: 'A React UI kit',
   },
   flags: {
     PRESERVE_WEBPACK_CACHE: true,
