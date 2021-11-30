@@ -1,5 +1,12 @@
 # Changelog
 
+## [14.0.1](https://github.com/phork/phorkit/compare/v14.0.0...v14.0.1) (2021-11-30)
+
+### 🐛 Bug Fixes
+
+- made all permanent panels inflexible by default ([6303bb8](https://github.com/phork/phorkit/commit/6303bb8))
+- marked the themeId prop in toggleThemeId as optional ([9da6e03](https://github.com/phork/phorkit/commit/9da6e03))
+
 # [14.0.0](https://github.com/phork/phorkit/compare/v13.2.0...v14.0.0) (2021-11-29)
 
 ### ♻ Code Refactoring
