@@ -5,7 +5,7 @@ export type ThemeContextValue = {
   /** The active theme ID */
   themeId?: Theme;
   /** Toggles between theme IDs or sets the themeId to the value passed */
-  toggleThemeId: (forceThemeId: Theme) => Theme | undefined;
+  toggleThemeId: (forceThemeId?: Theme) => Theme | undefined;
   /** Clears the active themeId */
   clearThemeId: () => void;
 };
