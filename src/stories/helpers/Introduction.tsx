@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useThemeId } from 'context/Theme/useThemeId';
 import { GithubIcon } from 'icons/internal/GithubIcon';
 import { IconButton } from 'components/Button';
@@ -9,6 +9,7 @@ import pkg from '../../../package.json';
 
 export function Introduction(props: FlexProps): JSX.Element {
   const themeId = useThemeId();
+  const cachedThemeId = useRef(themeId);
   const repository = pkg.repository.url.replace(/\.git$/, '');
 
   return (
@@ -16,7 +17,7 @@ export function Introduction(props: FlexProps): JSX.Element {
       <img
         alt="Phork/it by phork.works"
         height="100"
-        src={`images/phorkit-credits-${themeId}.svg`}
+        src={`images/phorkit-credits-${cachedThemeId.current}.svg`}
         style={{ marginBottom: '12px', maxWidth: 'calc(100% - 20px' }}
         width="500"
       />
@@ -29,6 +30,7 @@ export function Introduction(props: FlexProps): JSX.Element {
             shape="circle"
             size="large"
             target="_blank"
+            themeId={cachedThemeId.current}
             weight="ghost"
           >
             <GithubIcon size={24} />
@@ -40,6 +42,7 @@ export function Introduction(props: FlexProps): JSX.Element {
             color="primary"
             heading="h5"
             style={{ margin: 0 }}
+            themeId={cachedThemeId.current}
             variants="line-height-smash"
             volume="quietest"
           >{`Version ${pkg.version}`}</Typography>
