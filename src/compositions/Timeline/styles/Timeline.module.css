@@ -197,7 +197,7 @@ $status-bubble-vertical-offset: 18px;
 .timelineItemDivider {
   background: var(--timeline-item-connector-color);
   height: var(--timeline-item-anchor-height);
-  width: 12px;
+  width: 11px;
 
   .timelineItem--leftTop &,
   .timelineItem--rightTop & {
