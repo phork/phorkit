@@ -1,5 +1,11 @@
 # Changelog
 
+## [14.0.2](https://github.com/phork/phorkit/compare/v14.0.1...v14.0.2) (2021-12-01)
+
+### 🐛 Bug Fixes
+
+- decreased timeline divider width by 1px ([cab81ae](https://github.com/phork/phorkit/commit/cab81ae))
+
 ## [14.0.1](https://github.com/phork/phorkit/compare/v14.0.0...v14.0.1) (2021-11-30)
 
 ### 🐛 Bug Fixes
