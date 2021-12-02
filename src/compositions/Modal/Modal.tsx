@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from
 import { ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import { useFocusReturn } from '../../hooks/useFocusReturn';
+import { useFocusTrap } from '../../hooks/useFocusTrap';
 import { useSafeTimeout } from '../../hooks/useSafeTimeout';
 import { useTranslations } from '../../hooks/useTranslations';
 import { getFirstFocusableElement } from '../../utils/getFocusableElements';
@@ -85,6 +86,9 @@ export function Modal<E extends HTMLElement = HTMLElement>({
     fallbackTranslations: modalTranslations,
   });
   const { closeLabel } = translations;
+
+  // keep the focus within the modal when navigating by tab and shift+tab
+  useFocusTrap({ container: ref });
 
   const handleClose = useCallback(
     (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent): void => {

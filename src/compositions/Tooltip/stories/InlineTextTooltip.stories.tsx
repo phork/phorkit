@@ -296,6 +296,7 @@ OnText.args = {
       </p>
     </React.Fragment>
   ),
+  closeDelay: 0,
   toggler: (
     <Typography color="accent" variants={['space-after', 'space-before']}>
       I am a friendly tooltip with a link.
@@ -340,6 +341,7 @@ OnIcon.args = {
       </IconButton>
     </Rhythm>
   ),
+  withoutTogglerFocusStyle: true,
 };
 
 OnIcon.decorators = [

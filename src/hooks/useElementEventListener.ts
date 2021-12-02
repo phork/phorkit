@@ -32,10 +32,7 @@ export const useElementEventListener = ({
     const element = initElement || (typeof document !== undefined && document) || undefined;
     if (!element || !element.addEventListener) return undefined;
 
-    // necessary because the callback may have changed by the time it needs to be removed
-    const listener = (event: Event) => callback(event);
-
-    element.addEventListener(eventType, listener, options || capture);
-    return () => element.removeEventListener(eventType, listener, options || capture);
+    element.addEventListener(eventType, callback, options || capture);
+    return () => element.removeEventListener(eventType, callback, options || capture);
   }, [callback, capture, eventType, initElement, options]);
 };

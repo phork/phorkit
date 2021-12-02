@@ -5,6 +5,7 @@ import { useAccessibility } from '../../context/Accessibility';
 import { useThemeId } from '../../context/Theme';
 import { useComponentVisible } from '../../hooks/useComponentVisible';
 import { useFocusReturn } from '../../hooks/useFocusReturn';
+import { useFocusTrap } from '../../hooks/useFocusTrap';
 import { usePopoverPosition } from '../../hooks/usePopoverPosition';
 import { useSafeTimeout } from '../../hooks/useSafeTimeout';
 import { getFirstFocusableElement, isFocusWithin } from '../../utils/getFocusableElements';
@@ -30,7 +31,15 @@ export type PopoverTogglerProps = {
 
 export type PopoverRenderContentProps<C extends HTMLElement, F extends HTMLElement | undefined = undefined> = Pick<
   PopoverContentProps<C, F>,
-  'close' | 'focusRef' | 'isTogglerFocused' | 'offset' | 'onMouseEnter' | 'position' | 'relativeRef' | 'visible'
+  | 'close'
+  | 'focusRef'
+  | 'isTogglerFocused'
+  | 'offset'
+  | 'onFocus'
+  | 'onMouseEnter'
+  | 'position'
+  | 'relativeRef'
+  | 'visible'
 > &
   Required<Pick<PopoverContentProps<C, F>, 'offset'>> & {
     'aria-hidden': boolean;
@@ -86,13 +95,13 @@ export const defaultOffset = {
 
 /**
  * The popover component renders an element that is
- * used to toggle the popover from visible to hidden
+ * used to toggle the popover from visible to hidden,
  * as well as the `PopoverContent` itself which is
  * positioned relative to the toggle.
  *
  * A popover can be toggled via click (default) or
  * by hovering over the toggle if the hoverable prop
- * it set.
+ * is set.
  *
  * @template C,F
  * @param {C} - The HTML element type of the contentRef
@@ -130,6 +139,9 @@ export function Popover<C extends HTMLElement, F extends HTMLElement | undefined
   const focusRef = useRef<F>(null!);
   const previous = useRef<{ isComponentVisible?: boolean; hasContentRef?: boolean }>({});
   const clickOutsideExclusions = useRef<HTMLElement[]>();
+
+  // keep the focus within the popover when navigating by tab and shift+tab
+  useFocusTrap({ container: contentRef });
 
   // use the onHide callback rather than a useEffect listener so isFocusWithin runs before the popover is hidden
   const handleHide = useCallback(() => {
@@ -172,9 +184,9 @@ export function Popover<C extends HTMLElement, F extends HTMLElement | undefined
     }
   }, []);
 
-  const cancelClose = () => {
+  const cancelClose = useCallback(() => {
     clearSafeTimeout(CLOSE_TIMEOUT_ID);
-  };
+  }, [clearSafeTimeout]);
 
   const closePopover = useCallback(
     (timeout?: number) => {
@@ -195,10 +207,10 @@ export function Popover<C extends HTMLElement, F extends HTMLElement | undefined
     [permanent, setIsComponentVisible, setSafeTimeout],
   );
 
-  const openPopover = () => {
+  const openPopover = useCallback(() => {
     cancelClose();
     setIsComponentVisible(true);
-  };
+  }, [cancelClose, setIsComponentVisible]);
 
   const togglePopover = () => {
     if (isComponentVisible) {
@@ -230,8 +242,22 @@ export function Popover<C extends HTMLElement, F extends HTMLElement | undefined
     }
   };
 
-  const handleTogglerBlur: PopoverTogglerProps['onBlur'] = useCallback(() => setIsTogglerFocused(false), []);
-  const handleTogglerFocus: PopoverTogglerProps['onFocus'] = useCallback(() => setIsTogglerFocused(true), []);
+  const handleTogglerBlur: PopoverTogglerProps['onBlur'] = useCallback(() => {
+    setIsTogglerFocused(false);
+
+    if (hoverable && accessible) {
+      // there must be a delay so if the focus jumps to the popover the whole thing doesn't close
+      closePopover(closeDelay || 100);
+    }
+  }, [accessible, closeDelay, hoverable, closePopover]);
+
+  const handleTogglerFocus: PopoverTogglerProps['onFocus'] = useCallback(() => {
+    setIsTogglerFocused(true);
+
+    if (hoverable && accessible) {
+      openPopover();
+    }
+  }, [accessible, openPopover, hoverable]);
 
   const renderToggler = () => {
     const togglerProps: PopoverTogglerProps = {
@@ -287,6 +313,7 @@ export function Popover<C extends HTMLElement, F extends HTMLElement | undefined
       id: componentId,
       isTogglerFocused,
       offset,
+      onFocus: cancelClose,
       onMouseEnter: cancelClose,
       position,
       ref: setContentRef,
