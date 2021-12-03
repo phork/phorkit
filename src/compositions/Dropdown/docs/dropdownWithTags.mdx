@@ -159,7 +159,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         onSelectionChange={value => console.log('selection', value)}
         options={options}
         style={{ width: 300 }}
-        tag={({ label, tagProps: { themeId } = {} }) => (
+        tag={({ label, themeId }) => (
           <Flex flexible alignItems="center" direction="row" justifyContent="flex-start">
             <Rhythm m={1} mr={2}>
               <Avatar
