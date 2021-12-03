@@ -52,7 +52,7 @@ const ucfirst = input => {
 const include = type => !files || files.includes(type)
 
 // generate the component boilerplate
-include(component) && writeFileSyncRecursive(`${src}/${component}.tsx`, `
+include('component') && writeFileSyncRecursive(`${src}/${component}.tsx`, `
 import React from 'react';
 import { cx } from '@emotion/css';
 import { ThemeProps } from '${relativeSrc}types';
