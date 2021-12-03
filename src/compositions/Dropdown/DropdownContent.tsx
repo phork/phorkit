@@ -120,12 +120,13 @@ export function DropdownContentBase(
   }));
 
   /**
-   * Remove the selected label from the items because the
+   * Remove the selected label from the options because the
    * interactive list doesn't need it, and add a disabled
-   * and highlighted flag.
+   * and highlighted flag and then save these items in the
+   * reducer state.
    */
-  const items = useMemo(
-    () =>
+  useEffect(() => {
+    setItems(
       options?.map(({ selectedLabel, ...option }) => {
         const isSelected = selectedState.selectedIds?.includes(option.id);
         return {
@@ -134,26 +135,20 @@ export function DropdownContentBase(
           highlighted: isSelected,
         };
       }) || [],
-    [options, disabledIds, selectedState.selectedIds],
-  );
+    );
+  }, [options, disabledIds, selectedState.selectedIds, setItems]);
 
-  // if the items change then update the items
-  useEffect(() => {
-    setItems(items);
-  }, [items, setItems]);
+  const items = selectedState.items.getAll();
 
   // if the dropdown changes visibility or the item length changes then focus the selected item
   useEffect(() => {
-    if (
-      (isDropdownVisible && !previous.current.isDropdownVisible) ||
-      selectedState.items.getAll().length !== previous.current.items?.length
-    ) {
+    if ((isDropdownVisible && !previous.current.isDropdownVisible) || items.length !== previous.current.items?.length) {
       focusSelected();
 
       previous.current.isDropdownVisible = !!isDropdownVisible;
-      previous.current.items = selectedState.items.getAll();
+      previous.current.items = items;
     }
-  }, [focusSelected, isDropdownVisible, selectedState.items]);
+  }, [focusSelected, isDropdownVisible, items]);
 
   const showNoContent = !hideNoContent && items.length === 0;
 
