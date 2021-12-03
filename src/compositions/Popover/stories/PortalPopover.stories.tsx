@@ -398,6 +398,7 @@ export const FixedPortal = Template.bind({});
 FixedPortal.storyName = 'Portal: Fixed';
 FixedPortal.args = {
   ...defaultArgs,
+  observe: true,
   offset: { horizontal: 8 },
   portal: 'fixed',
   position: 'right-center',

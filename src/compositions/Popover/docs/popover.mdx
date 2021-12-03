@@ -31,6 +31,7 @@ import { horizontal, vertical } from './helpers/config';
         <PortalPopover
           focusable
           initialVisible
+          observe
           permanent
           height={80}
           layout="horizontal"
@@ -746,6 +747,7 @@ import { horizontal, vertical } from './helpers/config';
   <ThemeWrapper style={{ paddingTop: 60, paddingBottom: 60 }}>
     <PortalPopover
       initialVisible
+      observe
       offset={{ horizontal }}
       portal="fixed"
       position="right-center"

@@ -2,8 +2,9 @@ import { useLayoutEffect, useState, useCallback } from 'react';
 import { AnyPosition, StackedPosition } from '../types';
 
 /**
- * If a position has not been set then this will determine
- * the best position based on window size and toggle location.
+ * If a position has not been set then this will
+ * determine the best position based on window
+ * size and toggle location.
  */
 export const usePopoverPosition = (
   ref: React.RefObject<HTMLElement>,
