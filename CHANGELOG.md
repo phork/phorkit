@@ -1,5 +1,15 @@
 # Changelog
 
+# [14.1.0](https://github.com/phork/phorkit/compare/v14.0.1...v14.1.0) (2021-12-03)
+
+### ✨ Features
+
+- added focus trap, better accessibility to Popover ([a1b6340](https://github.com/phork/phorkit/commit/a1b6340))
+
+### 🐛 Bug Fixes
+
+- decreased timeline divider width by 1px ([cab81ae](https://github.com/phork/phorkit/commit/cab81ae))
+
 ## [14.0.2](https://github.com/phork/phorkit/compare/v14.0.1...v14.0.2) (2021-12-01)
 
 ### 🐛 Bug Fixes
