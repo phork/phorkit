@@ -21,7 +21,8 @@ describe('<TagGroup />', () => {
   });
 
   it('render a tag group as clickable buttons', () => {
-    const onClick = jest.fn();
+    const onClick = jest.fn() as jest.MockedFunction<(i: string) => void>;
+
     const { container } = render(
       <TagGroup>
         <Tag<'button'> as="button" key="first" onClick={() => onClick('first')}>
