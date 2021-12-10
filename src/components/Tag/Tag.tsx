@@ -73,7 +73,7 @@ export function TagBase<T extends TagElementType = 'div'>(
       ),
       ref: forwardedRef,
       role: actionable ? 'button' : undefined,
-      tabIndex: actionable ? 0 : -1,
+      tabIndex: actionable ? 0 : undefined,
       ...(props as TagProps<T>),
     },
     children,
