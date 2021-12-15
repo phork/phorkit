@@ -40,7 +40,7 @@ export function AccordionLabel({
   ...props
 }: AccordionLabelProps): JSX.Element | null {
   const ref = useRef<HTMLDivElement>(null!);
-  useInteractiveGroupItem({ focused, ref });
+  useInteractiveGroupItem<HTMLDivElement>({ focused, ref, scrollBehavior: 'smooth' });
   useListRegistryItem({ id, ref });
 
   // wrap the content in a class so the content opacity can change without affecting the pseudo elements

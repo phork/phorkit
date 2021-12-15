@@ -13,7 +13,8 @@ export const isElementVisible = (element?: HTMLElement): boolean => {
   if (!inViewport) return false;
 
   const style = window.getComputedStyle(element);
-  const isInvisible = style.getPropertyValue('overflow') !== 'visible' || style.getPropertyValue('display') === 'none';
+  const isInvisible =
+    style.getPropertyValue('visibility') !== 'visible' || style.getPropertyValue('display') === 'none';
   if (isInvisible) return false;
 
   return true;

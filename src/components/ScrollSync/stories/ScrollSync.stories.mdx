@@ -1,5 +1,6 @@
 import { cx } from '@emotion/css';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { useRef, useState } from 'react';
 import { Stepper } from 'components/Form/Stepper';
 import { Looper } from 'components/Looper';
 import { Rhythm } from 'components/Rhythm';
@@ -9,6 +10,7 @@ import { PageTitle } from 'stories/helpers/PageTitle';
 import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 import scrollbar from 'styles/common/Scrollbar.module.css';
 import { ScrollSync } from '../ScrollSync';
+import { ScrollSyncVirtualized } from '../ScrollSyncVirtualized';
 
 <Meta
   parameters={{
@@ -41,7 +43,7 @@ import { ScrollSync } from '../ScrollSync';
                 />
               </Rhythm>
               <ScrollSync horizontal>
-                {makeRefCallback => (
+                {generateRef => (
                   <Looper
                     end={count}
                     render={id => (
@@ -57,7 +59,7 @@ import { ScrollSync } from '../ScrollSync';
                           color="primary"
                           data-id={id}
                           key={id}
-                          ref={makeRefCallback(id)}
+                          ref={generateRef(id)}
                           style={{ width: 300, overflow: 'auto', paddingBottom: 6 }}
                           /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
                           tabIndex={0}
@@ -92,7 +94,7 @@ import { ScrollSync } from '../ScrollSync';
     <ThemeWrapper withThemeId>
       {({ themeId }) => (
         <ScrollSync vertical>
-          {makeRefCallback => (
+          {generateRef => (
             <Looper
               list={['one', 'two', 'three']}
               render={id => (
@@ -107,7 +109,7 @@ import { ScrollSync } from '../ScrollSync';
                     )}
                     color="primary"
                     key={id}
-                    ref={makeRefCallback(id)}
+                    ref={generateRef(id)}
                     style={{ width: 300, height: 100, overflow: 'auto', paddingRight: 6 }}
                     /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
                     tabIndex={0}
@@ -135,7 +137,7 @@ import { ScrollSync } from '../ScrollSync';
     <ThemeWrapper withThemeId>
       {({ themeId }) => (
         <ScrollSync horizontal vertical>
-          {makeRefCallback => (
+          {generateRef => (
             <Looper
               list={['one', 'two', 'three']}
               render={id => (
@@ -150,7 +152,7 @@ import { ScrollSync } from '../ScrollSync';
                     )}
                     color="primary"
                     key={id}
-                    ref={makeRefCallback(id)}
+                    ref={generateRef(id)}
                     style={{ height: 80, width: 300, overflow: 'auto', paddingBottom: 6, paddingRight: 6 }}
                     /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
                     tabIndex={0}
@@ -169,6 +171,51 @@ import { ScrollSync } from '../ScrollSync';
           )}
         </ScrollSync>
       )}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+## ScrollSyncVirtualized
+
+_The syncRef should be on the content inside the scrollable area because it's used to determine the full size of the content._
+
+<Canvas>
+  <Story name="ScrollSyncVirtualized" parameters={{ chromatic: { disableSnapshot: true } }}>
+    <ThemeWrapper>
+      <ScrollSync vertical>
+        {generateRef => {
+          const contentRef = useRef();
+          return (
+            <div style={{ height: 80, width: 300, overflow: 'hidden', position: 'relative' }}>
+              <div
+                className={cx(scrollbar.scrollbar, scrollbar['scrollbar--primary'], scrollbar['scrollbar--hidden'])}
+                ref={generateRef('contentToScroll')}
+                style={{ height: '100%', width: '100%', overflow: 'auto' }}
+              >
+                <div ref={contentRef}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed ipsum eget mi lobortis efficitur ut
+                  eu ex. Suspendisse at dui lacus. In in velit et augue venenatis efficitur vel non sem. Aliquam
+                  volutpat, urna nec efficitur posuere, nisi quam posuere nunc, vel gravida arcu lorem eu ligula. Mauris
+                  ultrices posuere sapien, in sodales turpis ornare eget. Donec cursus lobortis libero, eget finibus
+                  nisl egestas in. Mauris congue vestibulum velit eget luctus.
+                  <br />
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed ipsum eget mi lobortis efficitur ut
+                  eu ex. Suspendisse at dui lacus. In in velit et augue venenatis efficitur vel non sem. Aliquam
+                  volutpat, urna nec efficitur posuere, nisi quam posuere nunc, vel gravida arcu lorem eu ligula. Mauris
+                  ultrices posuere sapien, in sodales turpis ornare eget. Donec cursus lobortis libero, eget finibus
+                  nisl egestas in. Mauris congue vestibulum velit eget luctus.
+                </div>
+              </div>
+              <ScrollSyncVirtualized
+                orientation="vertical"
+                ref={generateRef('scrollbar')}
+                size="small"
+                syncRef={contentRef}
+              />
+            </div>
+          );
+        }}
+      </ScrollSync>
     </ThemeWrapper>
   </Story>
 </Canvas>

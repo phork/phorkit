@@ -1,6 +1,9 @@
 import React, { useCallback } from 'react';
 import { MergeProps } from '../../types/utils';
-import { InteractiveGroupItem } from '../../components/InteractiveGroup/InteractiveGroupItem';
+import {
+  InteractiveGroupItem,
+  InteractiveGroupItemProps,
+} from '../../components/InteractiveGroup/InteractiveGroupItem';
 import { ListItem, ListItemProps } from '../../components/List';
 
 type StateProps = {
@@ -14,6 +17,7 @@ export type LocalInteractiveListItemProps = {
   label: React.ReactChild | React.ReactFragment | ((state: StateProps) => React.ReactChild | React.ReactFragment);
   mimicSelectOnFocus?: boolean;
   onClick: (event: React.MouseEvent | React.TouchEvent, id: LocalInteractiveListItemProps['id']) => void;
+  scrollBehavior?: InteractiveGroupItemProps<HTMLLIElement>['scrollBehavior'];
 };
 
 export type InteractiveListItemProps = Omit<
@@ -29,6 +33,7 @@ export function InteractiveListItemBase({
   mimicSelectOnFocus = false,
   onClick,
   onKeyDown,
+  scrollBehavior,
   selected = false,
   transparent = false,
   ...props
@@ -47,7 +52,7 @@ export function InteractiveListItemBase({
   );
 
   return (
-    <InteractiveGroupItem<HTMLLIElement> key={id} {...stateProps}>
+    <InteractiveGroupItem<HTMLLIElement> key={id} scrollBehavior={scrollBehavior} {...stateProps}>
       {ref => (
         <ListItem
           as="li"
@@ -78,5 +83,5 @@ export function InteractiveListItemBase({
  */
 export const InteractiveListItem = React.memo(InteractiveListItemBase);
 
-InteractiveListItemBase.displayName = 'InteractiveListItemBase';
+// note that the base element cannot have a displayName because it breaks Storybook
 InteractiveListItem.displayName = 'InteractiveListItem';

@@ -27,7 +27,7 @@ export const useElementEventListener = ({
   element: initElement,
   eventType,
   options,
-}: UseElementEventListenerProps) => {
+}: UseElementEventListenerProps): void => {
   useEffect((): (() => void) | undefined => {
     const element = initElement || (typeof document !== undefined && document) || undefined;
     if (!element || !element.addEventListener) return undefined;
