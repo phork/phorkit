@@ -28,7 +28,7 @@ import { ScrollSyncVirtualized } from '../ScrollSyncVirtualized';
 
 <Canvas>
   <Story name="Horizontal scrolling" parameters={{ chromatic: { disableSnapshot: true } }}>
-    <ThemeWrapper withThemeId>
+    <ThemeWrapper>
       {({ themeId }) => (
         <StateWrapper initialState={3}>
           {({ state: count, setState: setCount }) => (
@@ -91,7 +91,7 @@ import { ScrollSyncVirtualized } from '../ScrollSyncVirtualized';
 
 <Canvas>
   <Story name="Vertical scrolling" parameters={{ chromatic: { disableSnapshot: true } }}>
-    <ThemeWrapper withThemeId>
+    <ThemeWrapper>
       {({ themeId }) => (
         <ScrollSync vertical>
           {generateRef => (
@@ -134,7 +134,7 @@ import { ScrollSyncVirtualized } from '../ScrollSyncVirtualized';
 
 <Canvas>
   <Story name="All scrolling" parameters={{ chromatic: { disableSnapshot: true } }}>
-    <ThemeWrapper withThemeId>
+    <ThemeWrapper>
       {({ themeId }) => (
         <ScrollSync horizontal vertical>
           {generateRef => (

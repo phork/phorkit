@@ -1,0 +1,490 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { useRef } from 'react';
+import { PhorkIcon } from 'icons/PhorkIcon';
+import { Flex } from 'components/Flex';
+import { Paper } from 'components/Paper';
+import { Typography } from 'components/Typography';
+import { PageTitle } from 'stories/helpers/PageTitle';
+import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
+import { Portal } from '../Portal';
+
+<Meta
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+  title="Utilities/Portal"
+/>
+
+<PageTitle src="components/Portal" title="Portal" />
+
+### Centered on the icon
+
+<Canvas>
+  <Story name="Centered portal">
+    <ThemeWrapper>
+      {() => {
+        const relativeRef = useRef();
+        return (
+          <Flex alignItems="flex-start" justifyContent="flex-end" style={{ width: 232, height: 110 }}>
+            <Typography color="primary" ref={relativeRef}>
+              <PhorkIcon scale="large" />
+            </Typography>
+            <Portal
+              centered
+              visible
+              height={100}
+              offset={{ right: 12 }}
+              position="left-top"
+              relativeRef={relativeRef}
+              width={200}
+            >
+              <Paper full color="accent">
+                <Flex full alignItems="center" justifyContent="center">
+                  Hello world
+                </Flex>
+              </Paper>
+            </Portal>
+          </Flex>
+        );
+      }}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Fixed and observed
+
+<Canvas>
+  <Story name="Fixed portal">
+    <ThemeWrapper>
+      {() => {
+        const relativeRef = useRef();
+        return (
+          <Flex alignItems="flex-end" justifyContent="flex-end" style={{ width: 200, height: 140 }}>
+            <Typography color="primary" ref={relativeRef}>
+              <PhorkIcon scale="large" />
+            </Typography>
+            <Portal
+              observe
+              visible
+              height={100}
+              offset={{ bottom: 12 }}
+              portal="fixed"
+              position="top-left"
+              relativeRef={relativeRef}
+              width={200}
+            >
+              <Paper full color="accent">
+                <Flex full alignItems="center" justifyContent="center">
+                  Hello world
+                </Flex>
+              </Paper>
+            </Portal>
+          </Flex>
+        );
+      }}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+## Vertical positions
+
+### Top left portal
+
+<Canvas>
+  <Story name="Position: Top left">
+    <ThemeWrapper>
+      {() => {
+        const relativeRef = useRef();
+        return (
+          <Flex alignItems="flex-end" justifyContent="flex-end" style={{ width: 200, height: 140 }}>
+            <Typography color="primary" ref={relativeRef}>
+              <PhorkIcon scale="large" />
+            </Typography>
+            <Portal
+              visible
+              height={100}
+              offset={{ bottom: 12 }}
+              position="top-left"
+              relativeRef={relativeRef}
+              width={200}
+            >
+              <Paper full color="accent">
+                <Flex full alignItems="center" justifyContent="center">
+                  Hello world
+                </Flex>
+              </Paper>
+            </Portal>
+          </Flex>
+        );
+      }}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Top center portal
+
+<Canvas>
+  <Story name="Position: Top center">
+    <ThemeWrapper>
+      {() => {
+        const relativeRef = useRef();
+        return (
+          <Flex alignItems="flex-end" justifyContent="center" style={{ width: 200, height: 140 }}>
+            <Typography color="primary" ref={relativeRef}>
+              <PhorkIcon scale="large" />
+            </Typography>
+            <Portal
+              visible
+              height={100}
+              offset={{ bottom: 12 }}
+              position="top-center"
+              relativeRef={relativeRef}
+              width={200}
+            >
+              <Paper full color="accent">
+                <Flex full alignItems="center" justifyContent="center">
+                  Hello world
+                </Flex>
+              </Paper>
+            </Portal>
+          </Flex>
+        );
+      }}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Top right portal
+
+<Canvas>
+  <Story name="Position: Top right">
+    <ThemeWrapper>
+      {() => {
+        const relativeRef = useRef();
+        return (
+          <Flex alignItems="flex-end" justifyContent="flex-start" style={{ width: 200, height: 140 }}>
+            <Typography color="primary" ref={relativeRef}>
+              <PhorkIcon scale="large" />
+            </Typography>
+            <Portal
+              visible
+              height={100}
+              offset={{ bottom: 12 }}
+              position="top-right"
+              relativeRef={relativeRef}
+              width={200}
+            >
+              <Paper full color="accent">
+                <Flex full alignItems="center" justifyContent="center">
+                  Hello world
+                </Flex>
+              </Paper>
+            </Portal>
+          </Flex>
+        );
+      }}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Bottom left portal
+
+<Canvas>
+  <Story name="Position: Bottom left">
+    <ThemeWrapper>
+      {() => {
+        const relativeRef = useRef();
+        return (
+          <Flex alignItems="flex-start" justifyContent="flex-end" style={{ width: 200, height: 140 }}>
+            <Typography color="primary" ref={relativeRef}>
+              <PhorkIcon scale="large" />
+            </Typography>
+            <Portal
+              visible
+              height={100}
+              offset={{ top: 12 }}
+              position="bottom-left"
+              relativeRef={relativeRef}
+              width={200}
+            >
+              <Paper full color="accent">
+                <Flex full alignItems="center" justifyContent="center">
+                  Hello world
+                </Flex>
+              </Paper>
+            </Portal>
+          </Flex>
+        );
+      }}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Bottom center portal
+
+<Canvas>
+  <Story name="Position: Bottom center">
+    <ThemeWrapper>
+      {() => {
+        const relativeRef = useRef();
+        return (
+          <Flex alignItems="flex-start" justifyContent="center" style={{ width: 200, height: 140 }}>
+            <Typography color="primary" ref={relativeRef}>
+              <PhorkIcon scale="large" />
+            </Typography>
+            <Portal
+              visible
+              height={100}
+              offset={{ top: 12 }}
+              position="bottom-center"
+              relativeRef={relativeRef}
+              width={200}
+            >
+              <Paper full color="accent">
+                <Flex full alignItems="center" justifyContent="center">
+                  Hello world
+                </Flex>
+              </Paper>
+            </Portal>
+          </Flex>
+        );
+      }}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Bottom right portal
+
+<Canvas>
+  <Story name="Position: Bottom right">
+    <ThemeWrapper>
+      {() => {
+        const relativeRef = useRef();
+        return (
+          <Flex alignItems="flex-start" justifyContent="flex-start" style={{ width: 200, height: 140 }}>
+            <Typography color="primary" ref={relativeRef}>
+              <PhorkIcon scale="large" />
+            </Typography>
+            <Portal
+              visible
+              height={100}
+              offset={{ top: 12 }}
+              position="bottom-right"
+              relativeRef={relativeRef}
+              width={200}
+            >
+              <Paper full color="accent">
+                <Flex full alignItems="center" justifyContent="center">
+                  Hello world
+                </Flex>
+              </Paper>
+            </Portal>
+          </Flex>
+        );
+      }}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+## Horizontal positions
+
+### Left top portal
+
+<Canvas>
+  <Story name="Position: Left top">
+    <ThemeWrapper>
+      {() => {
+        const relativeRef = useRef();
+        return (
+          <Flex alignItems="flex-start" justifyContent="flex-end" style={{ width: 232, height: 100 }}>
+            <Typography color="primary" ref={relativeRef}>
+              <PhorkIcon scale="large" />
+            </Typography>
+            <Portal
+              visible
+              height={100}
+              offset={{ right: 12 }}
+              position="left-top"
+              relativeRef={relativeRef}
+              width={200}
+            >
+              <Paper full color="accent">
+                <Flex full alignItems="center" justifyContent="center">
+                  Hello world
+                </Flex>
+              </Paper>
+            </Portal>
+          </Flex>
+        );
+      }}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Left center portal
+
+<Canvas>
+  <Story name="Position: Left center">
+    <ThemeWrapper>
+      {() => {
+        const relativeRef = useRef();
+        return (
+          <Flex alignItems="center" justifyContent="flex-end" style={{ width: 232, height: 100 }}>
+            <Typography color="primary" ref={relativeRef}>
+              <PhorkIcon scale="large" />
+            </Typography>
+            <Portal
+              visible
+              height={100}
+              offset={{ right: 12 }}
+              position="left-center"
+              relativeRef={relativeRef}
+              width={200}
+            >
+              <Paper full color="accent">
+                <Flex full alignItems="center" justifyContent="center">
+                  Hello world
+                </Flex>
+              </Paper>
+            </Portal>
+          </Flex>
+        );
+      }}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Left bottom portal
+
+<Canvas>
+  <Story name="Position: Left bottom">
+    <ThemeWrapper>
+      {() => {
+        const relativeRef = useRef();
+        return (
+          <Flex alignItems="flex-end" justifyContent="flex-end" style={{ width: 232, height: 100 }}>
+            <Typography color="primary" ref={relativeRef}>
+              <PhorkIcon scale="large" />
+            </Typography>
+            <Portal
+              visible
+              height={100}
+              offset={{ right: 12 }}
+              position="left-bottom"
+              relativeRef={relativeRef}
+              width={200}
+            >
+              <Paper full color="accent">
+                <Flex full alignItems="center" justifyContent="center">
+                  Hello world
+                </Flex>
+              </Paper>
+            </Portal>
+          </Flex>
+        );
+      }}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Right top portal
+
+<Canvas>
+  <Story name="Position: Right top">
+    <ThemeWrapper>
+      {() => {
+        const relativeRef = useRef();
+        return (
+          <Flex alignItems="flex-start" justifyContent="flex-start" style={{ width: 232, height: 100 }}>
+            <Typography color="primary" ref={relativeRef}>
+              <PhorkIcon scale="large" />
+            </Typography>
+            <Portal
+              visible
+              height={100}
+              offset={{ left: 12 }}
+              position="right-top"
+              relativeRef={relativeRef}
+              width={200}
+            >
+              <Paper full color="accent">
+                <Flex full alignItems="center" justifyContent="center">
+                  Hello world
+                </Flex>
+              </Paper>
+            </Portal>
+          </Flex>
+        );
+      }}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Right center portal
+
+<Canvas>
+  <Story name="Position: Right center">
+    <ThemeWrapper>
+      {() => {
+        const relativeRef = useRef();
+        return (
+          <Flex alignItems="center" justifyContent="flex-start" style={{ width: 232, height: 100 }}>
+            <Typography color="primary" ref={relativeRef}>
+              <PhorkIcon scale="large" />
+            </Typography>
+            <Portal
+              visible
+              height={100}
+              offset={{ left: 12 }}
+              position="right-center"
+              relativeRef={relativeRef}
+              width={200}
+            >
+              <Paper full color="accent">
+                <Flex full alignItems="center" justifyContent="center">
+                  Hello world
+                </Flex>
+              </Paper>
+            </Portal>
+          </Flex>
+        );
+      }}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Right bottom portal
+
+<Canvas>
+  <Story name="Position: Right bottom">
+    <ThemeWrapper>
+      {() => {
+        const relativeRef = useRef();
+        return (
+          <Flex alignItems="flex-end" justifyContent="flex-start" style={{ width: 232, height: 100 }}>
+            <Typography color="primary" ref={relativeRef}>
+              <PhorkIcon scale="large" />
+            </Typography>
+            <Portal
+              visible
+              height={100}
+              offset={{ left: 12 }}
+              position="right-bottom"
+              relativeRef={relativeRef}
+              width={200}
+            >
+              <Paper full color="accent">
+                <Flex full alignItems="center" justifyContent="center">
+                  Hello world
+                </Flex>
+              </Paper>
+            </Portal>
+          </Flex>
+        );
+      }}
+    </ThemeWrapper>
+  </Story>
+</Canvas>
