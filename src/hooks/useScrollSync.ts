@@ -1,4 +1,4 @@
-import { useRef, useCallback } from 'react';
+import { useRef, useCallback, useState } from 'react';
 
 export type UseScrollSyncProps = {
   horizontal?: boolean;
@@ -10,11 +10,13 @@ export type UseScrollSyncResponse = (id: string) => React.RefCallback<HTMLElemen
 /**
  * This is used to sync scrolling of multiple scrollable
  * elements so that when one element is scrolled all others
- * are also scrolled. This returns a function whose result
- * should be set as the ref on all the scrollable elements.
+ * are also scrolled. This returns a generateRef function
+ * the results of which should be set as the ref on all the
+ * scrollable elements.
  */
 export function useScrollSync({ horizontal, vertical }: UseScrollSyncProps): UseScrollSyncResponse {
   const refs = useRef<Record<string, HTMLElement>>({});
+  const [, setInitialized] = useState<Record<string, boolean>>({});
 
   // remove the scroll listener so its change doesn't trigger another scroll event
   const handleScroll = useCallback<EventListener>(
@@ -43,12 +45,22 @@ export function useScrollSync({ horizontal, vertical }: UseScrollSyncProps): Use
     [horizontal, vertical],
   );
 
-  const makeRefCallback = useCallback(
+  const generateRef = useCallback(
     (id: string): React.RefCallback<HTMLElement> =>
       (node: HTMLElement) => {
+        refs.current[id]?.removeEventListener('scroll', handleScroll);
+
         if (node) {
           node.addEventListener('scroll', handleScroll);
           refs.current[id] = node;
+
+          // update the state the first time the ref is set
+          setInitialized(initialized => {
+            if (initialized[id]) {
+              return initialized;
+            }
+            return { ...initialized, [id]: true };
+          });
         } else {
           delete refs.current[id];
         }
@@ -56,5 +68,5 @@ export function useScrollSync({ horizontal, vertical }: UseScrollSyncProps): Use
     [handleScroll],
   );
 
-  return makeRefCallback;
+  return generateRef;
 }

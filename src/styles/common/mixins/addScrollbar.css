@@ -48,4 +48,5 @@
 
 @define-mixin addHiddenScrollbar {
   @mixin addScrollbar transparent, transparent, 0, 0, 0, 0;
+  scrollbar-width: none;
 }

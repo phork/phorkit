@@ -3,6 +3,7 @@ import React, { useEffect, useImperativeHandle, useMemo, useRef } from 'react';
 import { MergeElementProps, ThemeProps } from '../../types';
 import { useAccessibility } from '../../context/Accessibility/useAccessibility';
 import { InteractiveGroupItemType, generateInteractiveGroupActions } from '../../components/InteractiveGroup';
+import { ScrollSyncVirtualized, ScrollSync } from '../../components/ScrollSync';
 import { PartialInteractiveList, PartialInteractiveListProps } from '../InteractiveList/PartialInteractiveList';
 import styles from './styles/Dropdown.module.css';
 import { DropdownEmpty, DropdownEmptyProps } from './DropdownEmpty';
@@ -55,6 +56,8 @@ export type DropdownContentHandles = {
   container: HTMLDivElement;
   list: HTMLUListElement;
 };
+
+const onClickPreventDefault: React.MouseEventHandler = event => event.preventDefault();
 
 export function DropdownContentBase(
   {
@@ -153,58 +156,77 @@ export function DropdownContentBase(
   const showNoContent = !hideNoContent && items.length === 0;
 
   return items ? (
-    // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
-    <div
-      aria-hidden={!isDropdownVisible}
-      className={cx(
-        styles.dropdownOptionsContainer,
-        layout && styles[`dropdownOptionsContainer--${layout}`],
-        inlineDropdownEmpty && showNoContent && styles['dropdownOptionsContainer--inline'],
-        inputVariant && styles[`dropdownOptionsContainer--${inputVariant}`],
-        accessible && styles['is-accessible'],
-        focused && styles['is-focused'],
-        isDropdownVisible && styles['is-visible'],
-        className,
-      )}
-      ref={containerRef}
-      {...props}
-    >
-      <div className={cx(styles.dropdownOptions, isEmpty && styles['is-empty'])}>
-        <PartialInteractiveList
-          hideFocusOutline
-          mimicSelectOnFocus
-          allowReselect={allowReselect}
-          color={listColor}
-          contrast={contrast}
-          disabled={disabled}
-          focused={focused === true ? true : undefined}
-          // mimicSelectOnFocus is necessary so that keyboard navigation doesn't keep selecting items but it looks like a regular dropdown
-          maxSelect={maxSelect}
-          minSelect={minSelect}
-          onBlur={onListBlur}
-          onFocus={onListFocus}
-          onItemFocus={onItemFocus}
-          onKeyDown={onListKeyDown}
-          onSelect={onSelect}
-          onSelectionChange={onSelectionChange}
-          onUnselect={onUnselect}
-          parentRef={containerRef}
-          reducer={reducer}
-          ref={listRef}
-          rounded={layout === 'contained' && inputVariant && ['underline', 'filled'].includes(inputVariant)}
-          size={listSize}
-          tabIndex={isDropdownVisible ? 0 : -1}
-          unthemed={unthemed}
-          variant={listVariant}
-        >
-          {!hideNoContent && (
-            <DropdownEmpty contrast={contrast} filter={filter} layout={layout} themeId={themeId}>
-              {emptyNotification}
-            </DropdownEmpty>
+    <ScrollSync vertical>
+      {generateRef => (
+        // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
+        <div
+          aria-hidden={!isDropdownVisible}
+          className={cx(
+            styles.dropdownOptionsContainer,
+            layout && styles[`dropdownOptionsContainer--${layout}`],
+            inlineDropdownEmpty && showNoContent && styles['dropdownOptionsContainer--inline'],
+            inputVariant && styles[`dropdownOptionsContainer--${inputVariant}`],
+            accessible && styles['is-accessible'],
+            focused && styles['is-focused'],
+            isDropdownVisible && styles['is-visible'],
+            className,
           )}
-        </PartialInteractiveList>
-      </div>
-    </div>
+          ref={containerRef}
+          {...props}
+        >
+          <div className={cx(styles.dropdownOptions, isEmpty && styles['is-empty'])} ref={generateRef('list')}>
+            <PartialInteractiveList
+              hideFocusOutline
+              // mimicSelectOnFocus is necessary so that keyboard navigation doesn't keep selecting items but it looks like a regular dropdown
+              mimicSelectOnFocus
+              allowReselect={allowReselect}
+              color={listColor}
+              contrast={contrast}
+              disabled={disabled}
+              focused={focused === true ? true : undefined}
+              maxSelect={maxSelect}
+              minSelect={minSelect}
+              onBlur={onListBlur}
+              onFocus={onListFocus}
+              onItemFocus={onItemFocus}
+              onKeyDown={onListKeyDown}
+              onSelect={onSelect}
+              onSelectionChange={onSelectionChange}
+              onUnselect={onUnselect}
+              parentRef={containerRef}
+              reducer={reducer}
+              ref={listRef}
+              rounded={layout === 'contained' && inputVariant && ['underline', 'filled'].includes(inputVariant)}
+              // this MUST use auto for the scroll behavior so that it plays nicely with scroll sync
+              scrollBehavior="auto"
+              size={listSize}
+              tabIndex={isDropdownVisible ? 0 : -1}
+              unthemed={unthemed}
+              variant={listVariant}
+            >
+              {!hideNoContent && (
+                <DropdownEmpty contrast={contrast} filter={filter} layout={layout} themeId={themeId}>
+                  {emptyNotification}
+                </DropdownEmpty>
+              )}
+            </PartialInteractiveList>
+          </div>
+          <ScrollSyncVirtualized<HTMLUListElement>
+            className={cx(
+              styles.dropdownOptionsScrollSync,
+              layout && styles[`dropdownOptionsScrollSync--${layout}`],
+              inputVariant && styles[`dropdownOptionsScrollSync--${inputVariant}`],
+            )}
+            onClick={onClickPreventDefault}
+            orientation="vertical"
+            ref={generateRef('scrollbar')}
+            size="medium"
+            syncRef={listRef}
+            themeId={themeId}
+          />
+        </div>
+      )}
+    </ScrollSync>
   ) : null;
 }
 

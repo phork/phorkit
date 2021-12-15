@@ -1,9 +1,8 @@
 import { useEffect, useRef } from 'react';
-import { useScrollIntoView } from '../../hooks/useScrollIntoView';
+import { useScrollIntoView, UseScrollIntoViewProps } from './../../hooks/useScrollIntoView';
 
-type UseInteractiveGroupItemProps<E extends HTMLElement> = {
-  focused?: boolean;
-  ref: React.MutableRefObject<E | null>;
+export type UseInteractiveGroupItemProps<E extends HTMLElement> = Omit<UseScrollIntoViewProps<E>, 'behavior'> & {
+  scrollBehavior?: UseScrollIntoViewProps<E>['behavior'];
 };
 
 /**
@@ -14,9 +13,10 @@ type UseInteractiveGroupItemProps<E extends HTMLElement> = {
 export function useInteractiveGroupItem<E extends HTMLElement>({
   focused = false,
   ref,
+  scrollBehavior,
 }: UseInteractiveGroupItemProps<E>) {
   const previous = useRef<boolean | undefined>(false);
-  useScrollIntoView({ ref, focused });
+  useScrollIntoView<E>({ behavior: scrollBehavior, ref, focused });
 
   /**
    * Steal focus away from whatever child element may have

@@ -1,0 +1,72 @@
+@import '../../../styles/common/mixins/addScrollbar.css';
+
+.scrollSync {
+  position: absolute;
+  z-index: 100;
+
+  > div {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/**
+ * 1. The total size is the width plus offset*2 (as
+ *    defined in the addScrollbar mixin) plus 1px
+ *    for the content width.
+ */
+.scrollSync--medium {
+  @mixin addScrollbar var(--scroll-sync-thumb-color);
+
+  --scroll-sync-total-size: 11px; /* [1] */
+}
+
+.scrollSync--small {
+  @mixin addSmallScrollbar var(--scroll-sync-thumb-color);
+
+  --scroll-sync-size: 5px; /* [1] */
+}
+
+.scrollSync--xsmall {
+  @mixin addXSmallScrollbar var(--scroll-sync-thumb-color);
+
+  --scroll-sync-size: 3px; /* [1] */
+}
+
+.scrollSync--horizontal {
+  bottom: 0;
+  height: var(--scroll-sync-total-size);
+  left: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  right: 0;
+
+  > div {
+    height: 1px;
+  }
+}
+
+.scrollSync--vertical {
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  right: 0;
+  top: 0;
+  width: var(--scroll-sync-total-size);
+
+  > div {
+    width: 1px;
+  }
+}
+
+.scrollSync--primary {
+  @mixin themed .scrollSync {
+    --scroll-sync-thumb-color: $theme-primary-scrollbar-thumb-color;
+  }
+}
+
+.scrollSync--contrast {
+  @mixin themed .scrollSync {
+    --scroll-sync-thumb-color: $theme-contrast-scrollbar-thumb-color;
+  }
+}

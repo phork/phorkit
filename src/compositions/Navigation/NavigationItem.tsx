@@ -55,7 +55,7 @@ export function NavigationItem({
   ...props
 }: NavigationItemProps): JSX.Element {
   const ref = useRef<HTMLDivElement>(null!);
-  useInteractiveGroupItem({ focused, ref });
+  useInteractiveGroupItem<HTMLDivElement>({ scrollBehavior: 'smooth', focused, ref });
   useListRegistryItem({ id, ref });
 
   const { generateComponentId } = useComponentId(componentId);

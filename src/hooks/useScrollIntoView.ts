@@ -1,8 +1,9 @@
 import { useLayoutEffect, useRef } from 'react';
 
-export type UseScrollIntoViewProps = {
+export type UseScrollIntoViewProps<E extends HTMLElement> = {
+  behavior?: 'auto' | 'smooth';
   focused?: boolean;
-  ref: React.MutableRefObject<HTMLElement | null>;
+  ref: React.MutableRefObject<E | null>;
 };
 
 /**
@@ -10,14 +11,18 @@ export type UseScrollIntoViewProps = {
  * flag changes to true this scrolls the ref element into
  * view.
  */
-export function useScrollIntoView({ focused = false, ref }: UseScrollIntoViewProps): void {
+export function useScrollIntoView<E extends HTMLElement>({
+  focused = false,
+  ref,
+  behavior = 'smooth',
+}: UseScrollIntoViewProps<E>): void {
   const previous = useRef<boolean | undefined>(undefined);
 
   // make sure focused has previously been set so this doesn't scroll the whole page to this element on load
   useLayoutEffect((): void => {
     if (focused && previous.current !== undefined) {
-      ref.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+      ref.current?.scrollIntoView({ behavior, block: 'nearest', inline: 'start' });
     }
     previous.current = !!focused;
-  }, [focused, ref]);
+  }, [behavior, focused, ref]);
 }

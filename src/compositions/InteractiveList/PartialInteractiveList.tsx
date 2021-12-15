@@ -41,6 +41,7 @@ export type LocalPartialInteractiveListProps = ExplicitProviderProps & {
     PartialInteractiveGroupProviderProps<string, HTMLUListElement, HTMLLIElement>,
     keyof ExplicitProviderProps | 'children'
   >;
+  scrollBehavior?: InteractiveListItemProps['scrollBehavior'];
   unstyled?: boolean;
 };
 
@@ -72,6 +73,7 @@ export function PartialInteractiveListBase(
     providerProps,
     reducer,
     rounded = false,
+    scrollBehavior,
     selectOnFocus = false,
     themeId: initThemeId,
     transparent = false,
@@ -154,6 +156,7 @@ export function PartialInteractiveListBase(
                     label={label}
                     mimicSelectOnFocus={mimicSelectOnFocus}
                     onClick={handleItemClick}
+                    scrollBehavior={scrollBehavior}
                     transparent={transparent}
                     unstyled={unstyled}
                     {...stateProps}
