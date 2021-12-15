@@ -1,7 +1,11 @@
 import { getTabIndex } from './getTabIndex';
 import { isElementFocusable } from './isElementFocusable';
 
-export const getFocusableElements = (initParent: HTMLElement): HTMLElement[] | undefined => {
+/** This allows for a null parent so that it can be easily used with refs */
+export const isFocusWithin = (parent: HTMLElement | null): boolean =>
+  !!(parent && parent.contains(document.activeElement));
+
+export const getFocusableElements = (initParent?: HTMLElement): HTMLElement[] | undefined => {
   const parent = initParent || document?.body;
   return parent ? [].slice.call(parent.querySelectorAll('*'), 0).filter(isElementFocusable) : undefined;
 };
@@ -27,6 +31,32 @@ export const getFirstFocusableElement = (initParent: HTMLElement): HTMLElement |
 export const getLastFocusableElement = (initParent: HTMLElement): HTMLElement | undefined =>
   getSortedFocusableElements(initParent)?.slice(-1)[0];
 
-/** This allows for a null parent so that it can be easily used with refs */
-export const isFocusWithin = (parent: HTMLElement | null): boolean =>
-  !!(parent && parent.contains(document.activeElement));
+export const getPreviousFocusableElement = (initParent: HTMLElement): HTMLElement | undefined => {
+  const elements = getSortedFocusableElements(initParent);
+  if (elements) {
+    const currentIndex = elements?.findIndex(element => document.activeElement === element || isFocusWithin(element));
+
+    if (currentIndex === -1) {
+      return elements[0];
+    } else if (currentIndex === 0) {
+      return elements.slice(-1)[0];
+    } else {
+      return elements[currentIndex - 1];
+    }
+  }
+  return undefined;
+};
+
+export const getNextFocusableElement = (initParent: HTMLElement): HTMLElement | undefined => {
+  const elements = getSortedFocusableElements(initParent);
+  if (elements) {
+    const currentIndex = elements?.findIndex(element => document.activeElement === element || isFocusWithin(element));
+
+    if (currentIndex === -1 || currentIndex === elements.length - 1) {
+      return elements[0];
+    } else {
+      return elements[currentIndex + 1];
+    }
+  }
+  return undefined;
+};

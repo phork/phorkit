@@ -13,7 +13,7 @@ export type UseTranslationsProps<T> = {
 export function useTranslations<T extends Record<string, string>>({
   fallbackTranslations,
   customTranslations,
-}: UseTranslationsProps<T>) {
+}: UseTranslationsProps<T>): T {
   return useMemo(
     () => ({ ...(fallbackTranslations || {}), ...(customTranslations || {}) }),
     [customTranslations, fallbackTranslations],
@@ -30,6 +30,6 @@ export function useTranslations<T extends Record<string, string>>({
  */
 export function substituteTranslationArgs(translation: string, ...args: Array<string | number>): string {
   return args.reduce((substituted: string, arg, i): string => {
-    return substituted.replace(new RegExp(`\\{${i}\\}`, 'g'), arg + '');
+    return substituted.replace(new RegExp(`\\{${i}\\}`, 'g'), `${arg}`);
   }, translation);
 }

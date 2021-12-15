@@ -39,5 +39,6 @@ export const isElementFocusable = (
     focusableIfVisible = isTabbable(element);
   }
 
-  return focusableIfVisible && isElementVisible(element);
+  // the currently selected element should be considered focusable
+  return focusableIfVisible && (element == document.activeElement || isElementVisible(element));
 };

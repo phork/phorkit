@@ -11,7 +11,7 @@ export const makeCombineRefs =
   <T extends HTMLElement>(
     ...refs: (React.MutableRefObject<T> | React.ForwardedRef<T> | React.RefCallback<T> | null | undefined)[]
   ) =>
-  (element: T | null) => {
+  (element: T | null): void => {
     refs.forEach(ref => {
       if (ref) {
         if (typeof ref === 'function') {

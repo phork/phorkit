@@ -88,7 +88,7 @@ export function Modal<E extends HTMLElement = HTMLElement>({
   const { closeLabel } = translations;
 
   // keep the focus within the modal when navigating by tab and shift+tab
-  useFocusTrap({ container: ref });
+  useFocusTrap<HTMLDivElement>({ container: ref });
 
   const handleClose = useCallback(
     (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent): void => {
