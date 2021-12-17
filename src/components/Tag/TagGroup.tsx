@@ -43,7 +43,7 @@ export function TagGroup({
   const classes = cx(styles.tagGroup, className);
 
   return (
-    <div className={classes} {...props}>
+    <div className={classes} role="group" {...props}>
       {tags &&
         tags.map(({ id, label, ...tag }) => (
           <Tag

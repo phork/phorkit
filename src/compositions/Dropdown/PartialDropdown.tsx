@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid';
 import React, { useCallback, useEffect, useImperativeHandle, useMemo, useReducer, useRef, useState } from 'react';
 import { StateColor, ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
+import { useComponentId } from '../../hooks/useComponentId';
 import { useDeepFocusGroup } from '../../hooks/useDeepFocusGroup';
 import { useHandleEscape } from '../../hooks/useHandleEscape';
 import { useTranslations } from '../../hooks/useTranslations';
@@ -96,6 +97,7 @@ export type PartialDropdownProps = Omit<
     >
   > &
   ThemeProps & {
+    alwaysVisibleDropdown?: true;
     arrowIconSize?: number;
     className?: string;
     disabled?: boolean;
@@ -144,6 +146,7 @@ export type PartialDropdownRef = React.ForwardedRef<PartialDropdownHandles>;
 export function PartialDropdownBase(
   {
     allowReselect = false,
+    alwaysVisibleDropdown,
     arrowIconSize: initArrowIconSize,
     className,
     contrast = false,
@@ -187,6 +190,8 @@ export function PartialDropdownBase(
   }: PartialDropdownProps,
   forwardedRef: React.ForwardedRef<PartialDropdownHandles>,
 ): React.ReactElement<PartialDropdownProps> {
+  const { generateComponentId } = useComponentId(id);
+
   const [selectedState] = reducer;
   const [filteredOptions, setFilteredOptions] = useState<readonly DropdownOption[] | undefined>();
   const themeId = useThemeId(initThemeId);
@@ -248,7 +253,7 @@ export function PartialDropdownBase(
   const isToggleFocused = isIdFocused(FOCUS_REFS.TOGGLE);
   const isFocused = isClearFocused || isContainerFocused || isInputFocused || isListFocused || isToggleFocused;
 
-  const isDropdownVisible = isFocused && dropdownState.listVisible;
+  const isDropdownVisible = (isFocused && dropdownState.listVisible) || alwaysVisibleDropdown;
   const isListEmpty = !selectedState.items?.getAll().length;
   const isFilterable = !!getFilteredOptions;
   const isClearable = isFilterable && !!dropdownState.input && (isInputFocused || isClearFocused || isDropdownVisible);
@@ -405,6 +410,7 @@ export function PartialDropdownBase(
     [isDropdownVisible],
   );
 
+  // focuses the input and toggles the dropdown visibility
   const handleClick = useCallback(() => {
     if (!mouseDownRef.current.isListClicked) {
       if (mouseDownRef.current.isDropdownVisible) {
@@ -421,16 +427,66 @@ export function PartialDropdownBase(
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) => {
-      if (
-        (event.key === ' ' || (event.key === 'Enter' && !isListFocused && !isClearFocused)) &&
-        (event.target as HTMLDivElement).tagName.toLowerCase() !== 'input'
-      ) {
-        event.preventDefault();
-        dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
-        focus<HTMLUListElement, 'list'>({ ref: listRef, handle: 'list' });
+      const isInputTarget = (event.target as HTMLDivElement).tagName.toLowerCase() === 'input';
+
+      switch (event.key) {
+        // with the alt key it focuses the dropdown if visible, or shows it if not visible; without alt shows and focuses the dropdown
+        case 'ArrowDown':
+          if (event.altKey) {
+            if (isDropdownVisible) {
+              event.preventDefault();
+              event.stopPropagation();
+              focus<HTMLUListElement, 'list'>({ ref: listRef, handle: 'list' });
+            } else {
+              event.preventDefault();
+              event.stopPropagation();
+              dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
+            }
+          } else {
+            if (!isListFocused) {
+              event.preventDefault();
+              event.stopPropagation();
+              dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
+              focus<HTMLUListElement, 'list'>({ ref: listRef, handle: 'list' });
+            }
+          }
+          break;
+
+        // with the alt key it focuses the form if focus was in the dropdown, otherwise it just closes the dropdown
+        case 'ArrowUp':
+          if (event.altKey) {
+            if (isListFocused) {
+              if (isFilterable) {
+                event.preventDefault();
+                event.stopPropagation();
+                focus<HTMLInputElement>({ ref: inputRef });
+              } else {
+                event.preventDefault();
+                event.stopPropagation();
+                dropdownDispatch({ type: ACTIONS.HIDE_DROPDOWN });
+                focus<HTMLDivElement>({ ref: toggleRef });
+              }
+            } else if (isDropdownVisible) {
+              event.preventDefault();
+              event.stopPropagation();
+              dropdownDispatch({ type: ACTIONS.HIDE_DROPDOWN });
+            }
+          }
+          break;
+
+        // if the input wasn't part of the form or the clear button then show and focus the list
+        case 'Enter':
+        case ' ':
+          if (!isListFocused && !isClearFocused && !isInputTarget) {
+            event.preventDefault();
+            event.stopPropagation();
+            dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
+            focus<HTMLUListElement, 'list'>({ ref: listRef, handle: 'list' });
+          }
+          break;
       }
     },
-    [focus, isClearFocused, isListFocused],
+    [focus, isClearFocused, isDropdownVisible, isFilterable, isListFocused],
   );
 
   // if the `used` flag is true the list provider has already used that keydown event
@@ -442,7 +498,7 @@ export function PartialDropdownBase(
         dropdownDispatch({ type: ACTIONS.HIDE_DROPDOWN });
       }
     },
-    [isListFocused, dropdownState.listVisible],
+    [dropdownState.listVisible, isListFocused],
   );
 
   const handleInputChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>(
@@ -468,18 +524,11 @@ export function PartialDropdownBase(
     [dropdownState.input],
   );
 
-  const handleInputKeyDown = useCallback(
-    (event: React.KeyboardEvent<HTMLInputElement>): void => {
-      if (event.key === 'Enter') {
-        dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
-      }
-      if (event.key === 'ArrowDown') {
-        dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
-        focus<HTMLUListElement, 'list'>({ ref: listRef, handle: 'list' });
-      }
-    },
-    [focus],
-  );
+  const handleInputKeyDown = useCallback((event: React.KeyboardEvent<HTMLInputElement>): void => {
+    if (event.key === 'Enter') {
+      dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
+    }
+  }, []);
 
   const handleInputClear = useCallback(
     (
@@ -589,12 +638,16 @@ export function PartialDropdownBase(
             variant={inputVariant}
           >
             <input
+              aria-autocomplete="list"
+              aria-controls={generateComponentId('list')}
+              aria-expanded={isDropdownVisible}
               disabled={disabled}
               onBlur={handleBlur}
               onChange={handleInputChange}
               onFocus={handleFocus}
               onKeyDown={handleInputKeyDown}
               ref={inputRef}
+              role="combobox"
               type="text"
               value={inputValue}
             />
@@ -657,6 +710,7 @@ export function PartialDropdownBase(
         filter={dropdownState.input}
         focused={isListFocused}
         hideNoContent={hideNoContent}
+        id={generateComponentId('list')}
         inlineDropdownEmpty={usingNotification}
         inputVariant={inputVariant}
         isDropdownVisible={isDropdownVisible}

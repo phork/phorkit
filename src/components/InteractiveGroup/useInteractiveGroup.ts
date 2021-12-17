@@ -301,6 +301,13 @@ export function useInteractiveGroup<
     (event: KeyboardEvent) => {
       if (disabled) return undefined;
 
+      /**
+       * If the alt key is used then disregard all the
+       * keyboard events because alt usually has a special
+       * purpose like exiting out of a combobox dropdown.
+       */
+      if (event.altKey) return undefined;
+
       const isEventWithinContainer = (event: KeyboardEvent): boolean => {
         const container = (parentRef && parentRef.current) || ref.current;
         return !!container && container.contains(event.target as HTMLElement);
@@ -333,6 +340,8 @@ export function useInteractiveGroup<
            */
           if (action) {
             event.preventDefault();
+            event.stopPropagation();
+
             onKeyDown && onKeyDown(event, { used: true });
             return action({ event });
           }

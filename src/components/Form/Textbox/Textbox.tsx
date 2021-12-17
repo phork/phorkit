@@ -204,6 +204,9 @@ export function TextboxBase(
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>) => {
       if (onSubmit && event.key === 'Enter') {
+        event.preventDefault();
+        event.stopPropagation();
+
         onSubmit(event, (event.target as HTMLInputElement).value);
       } else {
         onKeyDown && onKeyDown(event, (event.target as HTMLInputElement).value);

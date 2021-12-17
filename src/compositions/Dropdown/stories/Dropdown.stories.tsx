@@ -184,6 +184,15 @@ export default {
       },
     },
 
+    alwaysVisibleDropdown: {
+      control: {
+        type: 'radio',
+        options: [true, undefined],
+      },
+      table: {
+        category: 'Uncommon',
+      },
+    },
     arrowIconSize: {
       table: {
         category: 'Uncommon',

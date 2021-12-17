@@ -11,6 +11,8 @@ export type UseDeepFocusGroupRefWithHandle<
 export type UseDeepFocusGroupEventHandlers = {
   /** A memoized function to call for each ref when it loses focus */
   onBlur?: (id: string, event?: React.FocusEvent<HTMLElement>) => void;
+  /** A memoized function to call when all refs have lost focus */
+  onBlurAll?: (event?: React.FocusEvent<HTMLElement>) => void;
   /** A memoized function to call for each ref when it gains focus */
   onFocus?: (id: string, event?: React.FocusEvent<HTMLElement>) => void;
 };
@@ -57,7 +59,9 @@ const isRefObject = (ref: UseDeepFocusGroupRef | UseDeepFocusGroupRefWithHandle)
  * returns a function that can be used to check if a
  * specific element or its children have focus. It
  * also accepts `onBlur` and `onFocus` callbacks which
- * are called for each element whose focus state changes.
+ * are called for each element whose focus state changes,
+ * and `onBlurAll` for when all registered elements
+ * have lost focus.
  *
  * This returns `addRef`, `removeRef` and `clearRefs`
  * functions that are used to register and unregister
@@ -103,7 +107,7 @@ const isRefObject = (ref: UseDeepFocusGroupRef | UseDeepFocusGroupRefWithHandle)
  * )
  */
 export function useDeepFocusGroup(
-  { onBlur, onFocus }: UseDeepFocusGroupEventHandlers = {},
+  { onBlur, onBlurAll, onFocus }: UseDeepFocusGroupEventHandlers = {},
   { persistEvents = false, blurDelay = 0 }: UseDeepFocusGroupOptions = {},
 ): UseDeepFocusGroupResponse {
   const previousResponse = useRef<UseDeepFocusGroupResponse>({} as UseDeepFocusGroupResponse);
@@ -119,16 +123,16 @@ export function useDeepFocusGroup(
     [focusedIds],
   );
 
-  const getFocusedIds = useCallback((activeElement: Element | null): string[] | undefined => {
+  const getFocusedIds = useCallback((): string[] | undefined => {
     const focusedIds = [
       ...Object.keys(refs.current).filter(id => {
         const ref = refs.current[id].current;
-        return ref && (activeElement === ref || ref?.contains(activeElement));
+        return ref && (document.activeElement === ref || ref.contains(document.activeElement));
       }),
       ...Object.keys(refsWithHandles.current).filter(id => {
         const ref = refsWithHandles.current[id].ref.current;
         const handle = refsWithHandles.current[id].handle;
-        return activeElement === ref?.[handle] || ref?.[handle]?.contains(activeElement);
+        return document.activeElement === ref?.[handle] || ref?.[handle]?.contains(document.activeElement);
       }),
     ];
     return focusedIds.length ? focusedIds : undefined;
@@ -147,9 +151,13 @@ export function useDeepFocusGroup(
       if (removedIds?.length || addedIds?.length) {
         setFocusedIds(ids);
         previousFocusedIds.current = ids;
+
+        if (!ids) {
+          onBlurAll?.(event);
+        }
       }
     },
-    [onBlur, onFocus],
+    [onBlur, onBlurAll, onFocus],
   );
 
   const addRef = useCallback<UseDeepFocusGroupResponse['addRef']>(
@@ -163,7 +171,7 @@ export function useDeepFocusGroup(
       } else {
         throw new Error(`Invalid ref for ID ${id}.`);
       }
-      !passive && typeof document !== 'undefined' && updateFocusedIds(getFocusedIds(document.activeElement));
+      !passive && typeof document !== 'undefined' && updateFocusedIds(getFocusedIds());
     },
     [getFocusedIds, updateFocusedIds],
   );
@@ -173,7 +181,7 @@ export function useDeepFocusGroup(
       if (!refs.current[id] && !refsWithHandles.current[id]) throw new Error(`ID ${id} does not exist.`);
       delete refs.current[id];
       delete refsWithHandles.current[id];
-      !passive && typeof document !== 'undefined' && updateFocusedIds(getFocusedIds(document.activeElement));
+      !passive && typeof document !== 'undefined' && updateFocusedIds(getFocusedIds());
     },
     [getFocusedIds, updateFocusedIds],
   );
@@ -187,7 +195,7 @@ export function useDeepFocusGroup(
     event => {
       clearBlurTimeoutId.current && clearSafeTimeout(clearBlurTimeoutId.current);
       persistEvents && event.persist();
-      updateFocusedIds(getFocusedIds(event.target as Element), event);
+      updateFocusedIds(getFocusedIds(), event);
     },
     [clearSafeTimeout, getFocusedIds, persistEvents, updateFocusedIds],
   );
@@ -196,24 +204,17 @@ export function useDeepFocusGroup(
     event => {
       persistEvents && event.persist();
 
-      const blurCallback = (ids: string[] | undefined, event: React.FocusEvent<HTMLElement>) => {
-        ids?.forEach(id => {
-          onBlur && onBlur(id, event);
-        });
-
-        setFocusedIds(undefined);
-        previousFocusedIds.current = undefined;
+      const blurCallback = (event: React.FocusEvent<HTMLElement>) => {
+        updateFocusedIds(getFocusedIds(), event);
       };
 
-      if (!getFocusedIds(event.relatedTarget as Element) && previousFocusedIds.current !== undefined) {
-        if (blurDelay) {
-          clearBlurTimeoutId.current = setSafeTimeout(() => blurCallback(previousFocusedIds.current, event), blurDelay);
-        } else {
-          blurCallback(previousFocusedIds.current, event);
-        }
+      if (blurDelay) {
+        clearBlurTimeoutId.current = setSafeTimeout(() => blurCallback(event), blurDelay);
+      } else {
+        blurCallback(event);
       }
     },
-    [blurDelay, getFocusedIds, onBlur, persistEvents, setSafeTimeout],
+    [blurDelay, getFocusedIds, persistEvents, setSafeTimeout, updateFocusedIds],
   );
 
   previousResponse.current = produce(previousResponse.current, draftState => {

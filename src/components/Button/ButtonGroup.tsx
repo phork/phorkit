@@ -124,6 +124,7 @@ export function ButtonGroup({
         wrap && styles['buttonGroup--wrap'],
         className,
       )}
+      role="group"
       {...props}
     >
       {buttons &&
