@@ -2,7 +2,7 @@ import { cx } from '@emotion/css';
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { MergeProps, StateColor, ThemeProps } from '../../../types';
 import { useAccessibility } from '../../../context/Accessibility/useAccessibility';
-import { SizeContextValue, useSizeListeners } from '../../../context/Size';
+import { SizeContextType, useSizeListeners } from '../../../context/Size';
 import { useThemeId } from '../../../context/Theme';
 import { useComponentId } from '../../../hooks/useComponentId';
 import { makeCombineRefs } from '../../../utils/combineRefs';
@@ -232,7 +232,7 @@ export function SliderBase(
   const filledPercent = () => calcFillFromValue(getValue()) || 0;
 
   // this only measures the slider width on resize or scroll
-  const propsToMeasure = useMemo(() => ['width' as keyof SizeContextValue], []);
+  const propsToMeasure = useMemo(() => ['width' as SizeContextType], []);
   const {
     ref: labelRef,
     value: { width: sliderWidth },

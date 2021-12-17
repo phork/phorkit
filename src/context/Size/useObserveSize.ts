@@ -1,14 +1,14 @@
 import produce from 'immer';
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { useBoundsObservable, UseBoundsObservableResponse } from '../../hooks/useBoundsObservable';
-import { SizeContextValue } from './SizeContext';
+import { SizeContextValue, SizeContextType } from './SizeContext';
 
 export type UseObserveSizeProps = {
   decimalPlaces?: number;
   /** Determines if the observer should be actively observing */
   observe?: boolean;
   /** The propsToMeasure array should be memoized */
-  propsToMeasure?: Readonly<(keyof SizeContextValue)[]>;
+  propsToMeasure?: Readonly<SizeContextType[]>;
 };
 
 export type UseObserveSizeResponse<E extends HTMLElement = HTMLDivElement> = {
@@ -24,14 +24,14 @@ const stripUnmeasuredProps = (
   propsToMeasure: NonNullable<UseObserveSizeProps['propsToMeasure']>,
 ): SizeContextValue => {
   return Object.keys(size).reduce((acc, key) => {
-    if (propsToMeasure.includes(key as keyof SizeContextValue)) {
-      acc[key as keyof SizeContextValue] = size[key as keyof SizeContextValue];
+    if (propsToMeasure.includes(key as SizeContextType)) {
+      acc[key as SizeContextType] = size[key as SizeContextType];
     }
     return acc;
   }, {} as SizeContextValue);
 };
 
-const defaultPropsToMeasure = ['width', 'height'] as (keyof SizeContextValue)[];
+const defaultPropsToMeasure = ['width', 'height'] as SizeContextType[];
 
 /**
  * The observe size hook accepts an array of size and/or
@@ -86,8 +86,8 @@ export function useObserveSize<E extends HTMLElement = HTMLDivElement>({
     draftState.width = size.width;
 
     Object.keys(draftState).map(prop => {
-      if (!propsToMeasure.includes(prop as keyof SizeContextValue)) {
-        delete draftState[prop as keyof SizeContextValue];
+      if (!propsToMeasure.includes(prop as SizeContextType)) {
+        delete draftState[prop as SizeContextType];
       }
     });
   });

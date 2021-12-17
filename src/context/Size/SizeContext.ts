@@ -13,3 +13,5 @@ export const SizeContext = createContext<SizeContextValue>({
   top: undefined,
   width: undefined,
 });
+
+export type SizeContextType = keyof SizeContextValue;
