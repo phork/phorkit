@@ -10,11 +10,11 @@ export type UseDeepFocusGroupRefWithHandle<
 
 export type UseDeepFocusGroupEventHandlers = {
   /** A memoized function to call for each ref when it loses focus */
-  onBlur?: (id: string, event?: React.FocusEvent<HTMLElement>) => void;
+  onBlur?: (id: string) => void;
   /** A memoized function to call when all refs have lost focus */
   onBlurAll?: (event?: React.FocusEvent<HTMLElement>) => void;
   /** A memoized function to call for each ref when it gains focus */
-  onFocus?: (id: string, event?: React.FocusEvent<HTMLElement>) => void;
+  onFocus?: (id: string) => void;
 };
 
 export type UseDeepFocusGroupOptions = {
@@ -142,10 +142,10 @@ export function useDeepFocusGroup(
   const updateFocusedIds = useCallback(
     (ids: string[] | undefined, event?: React.FocusEvent<HTMLElement>): void => {
       const removedIds = previousFocusedIds.current?.filter(id => !ids?.includes(id));
-      onBlur && removedIds?.forEach(id => onBlur(id, event));
+      onBlur && removedIds?.forEach(id => onBlur(id));
 
       const addedIds = ids?.filter(id => !previousFocusedIds.current?.includes(id));
-      onFocus && addedIds?.forEach(id => onFocus(id, event));
+      onFocus && addedIds?.forEach(id => onFocus(id));
 
       // only update the state if IDs have actually changed
       if (removedIds?.length || addedIds?.length) {
