@@ -40,16 +40,17 @@ These accent colors can be changed globally or on a per-component basis using CS
 
 ```
 :root {
-  --phork-accent-color: #3e8e87;
-  --phork-accent-color-L10: #53B4AB;
-  --phork-accent-color-D10: #367C76;
-  --phork-accent-color-L20: #7CC6BF;
-  --phork-accent-color-D20: #2F6A65;
-  --phork-accent-color-L30: #A4D7D3;
-  --phork-accent-color-D30: #275954;
-  --phork-accent-color-shade: #F1F7F6;
-  --phork-accent-color-O5: rgba(62, 142, 135, 0.05);
-  --phork-contrast-color: #3e8e87;
+  --phork-accent-color: #642da0;
+  --phork-accent-color-contrast: #ffffff;
+  --phork-accent-color-L10: #803DC8;
+  --phork-accent-color-L20: #9D69D5;
+  --phork-accent-color-L30: #B995E1;
+  --phork-accent-color-D10: #57278C;
+  --phork-accent-color-D20: #4B2278;
+  --phork-accent-color-D30: #3E1C64;
+  --phork-accent-color-shade: #F3EFF8;
+  --phork-accent-color-O5: rgba(100, 45, 160, 0.05);
+  --phork-contrast-color: #642da0;
 }
 ```
 

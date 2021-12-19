@@ -193,8 +193,10 @@ The default accent color is blue, however it can be overridden using CSS custom 
 | `--phork-accent-color-contrast` | The contrast color                                                                     | #fff                    |
 | `--phork-accent-color-shade`    | The main accent color with an opacity of `.1` flattened on a background of `color-BG0` | #f0eaf6                 |
 | `--phork-accent-color-L10`      | The main accent color lightened by a shade                                             | #803dc8                 |
+| `--phork-accent-color-L20`      | The main accent color lightened by 2 shades                                            | #9d69d5                 |
 | `--phork-accent-color-L30`      | The main accent color lightened by 3 shades                                            | #b995e1                 |
-| `--phork-accent-color-D10`      | The main accent color darkened by a shade                                              | #57278c                 |
+| `--phork-accent-color-D10`      | The main accent color darkened by a shade                                              | #4b2278                 |
+| `--phork-accent-color-D20`      | The main accent color darkened by 2 shades                                             | #57278c                 |
 | `--phork-accent-color-D30`      | The main accent color darkened by 3 shades                                             | #3e1c64                 |
 | `--phork-accent-color-O5`       | The main accent color with an opacity of .05                                           | rgba(100, 45, 160, .05) |
 
@@ -205,12 +207,14 @@ CSS custom properties can be overridden at the application root level or at the 
 ```css
 :root {
   --phork-accent-color: #642da0;
-  --phork-accent-color-contrast: #d6c1ee;
+  --phork-accent-color-contrast: #ffffff;
   --phork-accent-color-L10: #803dc8;
+  --phork-accent-color-L20: #9d69d5;
   --phork-accent-color-L30: #b995e1;
   --phork-accent-color-D10: #57278c;
+  --phork-accent-color-D20: #4b2278;
   --phork-accent-color-D30: #3e1c64;
-  --phork-accent-color-shade: #f0eaf6;
+  --phork-accent-color-shade: #f3eff8;
   --phork-accent-color-O5: rgba(100, 45, 160, 0.05);
   --phork-contrast-color: #642da0;
 }

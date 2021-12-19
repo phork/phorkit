@@ -84,7 +84,7 @@ export const accentColorProps = [
   {
     property: '--phork-accent-color-L30',
     label: 'Accent color L30',
-    description: 'This the accent color lightened by a factor of 3. This is used for the Paper border in dark mode.',
+    description: 'This the accent color lightened by a factor of 3. This is used for the Paper borders in dark mode.',
     derivedFrom: ['--phork-accent-color'],
     formula: src =>
       Color(src['--phork-accent-color'])
@@ -142,10 +142,10 @@ export const colorGroups = [
       'The following colors will be automatically generated from the accent color when this panel is closed.',
     properties: [
       '--phork-accent-color-L10',
-      '--phork-accent-color-D10',
       '--phork-accent-color-L20',
-      '--phork-accent-color-D20',
       '--phork-accent-color-L30',
+      '--phork-accent-color-D10',
+      '--phork-accent-color-D20',
       '--phork-accent-color-D30',
       '--phork-accent-color-shade',
       '--phork-accent-color-O5',
