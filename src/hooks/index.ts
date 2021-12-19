@@ -7,6 +7,7 @@ export * from './useDeepFocus';
 export * from './useDeepFocusGroup';
 export * from './useElementEventListener';
 export * from './useFocusReturn';
+export * from './useFocusTrap';
 export * from './useHandleClickOutside';
 export * from './useHandleEscape';
 export * from './useIconSize';
