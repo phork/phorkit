@@ -77,6 +77,7 @@ export function LineLoader({
     <div
       aria-busy="true"
       aria-label={loadingLabel}
+      aria-live="polite"
       className={cx(
         styles.lineLoader,
         contrast && styles['lineLoader--contrast'],

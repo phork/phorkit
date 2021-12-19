@@ -33,6 +33,7 @@ export function ScrollSyncVirtualizedBase<E extends HTMLElement = HTMLDivElement
 
   return contentSize ? (
     <div
+      aria-hidden={true}
       className={cx(
         styles.scrollSync,
         styles[`scrollSync--${orientation}`],

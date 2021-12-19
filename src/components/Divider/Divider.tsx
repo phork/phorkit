@@ -32,6 +32,7 @@ export function Divider({
 
   return (
     <div
+      aria-hidden={true}
       className={cx(
         styles.divider,
         styles[`divider--${orientation}`],

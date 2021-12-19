@@ -51,6 +51,9 @@ export function Loader({
 
   const content = (
     <div
+      aria-busy="true"
+      aria-label={loadingLabel}
+      aria-live="polite"
       className={cx(
         styles.loader,
         contrast && styles['loader--contrast'],
@@ -58,9 +61,10 @@ export function Loader({
         themeId && !unthemed && styles[`loader--${themeId}`],
         className,
       )}
+      role="status"
       {...props}
     >
-      <SpinnerIcon scale={scale} size={scale ? undefined : size} title={loadingLabel} />
+      <SpinnerIcon scale={scale} size={scale ? undefined : size} />
     </div>
   );
 

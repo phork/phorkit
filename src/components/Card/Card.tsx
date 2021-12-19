@@ -34,6 +34,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
       hoverable = false,
       magnify = false,
       raised = false,
+      role = 'region',
       squared = false,
       themeId: initThemeId,
       unthemed = false,
@@ -58,6 +59,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
           className,
         )}
         ref={forwardedRef}
+        role={role}
         {...props}
       >
         {children}

@@ -43,6 +43,8 @@ export function IconTextButtonBase<T extends IconTextButtonElementType = 'button
       loading={loading && !loaderReplaceIcon}
       ref={forwardedRef}
       {...(props as ButtonProps<T>)}
+      aria-busy={loading}
+      aria-live="polite"
       as={as}
     >
       <span className={styles.button__icon}>{loading && loaderReplaceIcon && loader ? loader : icon}</span>

@@ -149,7 +149,7 @@ export function ButtonBase<T extends ButtonElementType = 'button'>(
       className: classes,
       onClick: handleClick,
       ref: forwardedRef,
-      ...({ ...elementProps, ...props } as React.HTMLAttributes<T>),
+      ...({ ...elementProps, 'aria-busy': loading, 'aria-live': 'polite', ...props } as React.HTMLAttributes<T>),
     },
     <React.Fragment>
       <span className={styles.button__content}>{children}</span>
