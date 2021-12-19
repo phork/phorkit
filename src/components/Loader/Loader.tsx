@@ -64,7 +64,7 @@ export function Loader({
       role="status"
       {...props}
     >
-      <SpinnerIcon scale={scale} size={scale ? undefined : size} />
+      <SpinnerIcon scale={scale} size={scale ? undefined : size} title={loadingLabel} />
     </div>
   );
 
