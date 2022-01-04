@@ -141,7 +141,7 @@ export function Popover<C extends HTMLElement, F extends HTMLElement | undefined
   const clickOutsideExclusions = useRef<HTMLElement[]>();
 
   // keep the focus within the popover when navigating by tab and shift+tab
-  useFocusTrap({ container: contentRef });
+  useFocusTrap<C>({ container: contentRef });
 
   // use the onHide callback rather than a useEffect listener so isFocusWithin runs before the popover is hidden
   const handleHide = useCallback(() => {
