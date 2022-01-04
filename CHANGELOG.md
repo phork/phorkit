@@ -1,5 +1,26 @@
 # Changelog
 
+# [15.0.0](https://github.com/phork/phorkit/compare/v14.0.1...v15.0.0) (2022-01-04)
+
+### ♻ Code Refactoring
+
+- **major**: removed event from useDeepFocusGroup callbacks ([82cf1cc](https://github.com/phork/phorkit/commit/82cf1cc))
+- cleaned up DropdownContent state ([d6c9fed](https://github.com/phork/phorkit/commit/d6c9fed))
+- minor focus trap improvements ([7b5c888](https://github.com/phork/phorkit/commit/7b5c888))
+
+### ✨ Features
+
+- added focus trap, better accessibility to Popover ([a1b6340](https://github.com/phork/phorkit/commit/a1b6340))
+- scroll sync virtualized ([22b98ff](https://github.com/phork/phorkit/commit/22b98ff))
+- scroll sync virtualized ([38b1c66](https://github.com/phork/phorkit/commit/38b1c66))
+
+### 🐛 Bug Fixes
+
+- added missing useFocusTrap export ([85b755c](https://github.com/phork/phorkit/commit/85b755c))
+- decreased timeline divider width by 1px ([cab81ae](https://github.com/phork/phorkit/commit/cab81ae))
+- minor aria improvements to dropdown ([6a9ad92](https://github.com/phork/phorkit/commit/6a9ad92))
+- remove tabIndex from read only tags ([24126eb](https://github.com/phork/phorkit/commit/24126eb))
+
 # [14.1.0](https://github.com/phork/phorkit/compare/v14.0.1...v14.1.0) (2021-12-03)
 
 ### ✨ Features
