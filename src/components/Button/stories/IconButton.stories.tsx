@@ -7,6 +7,7 @@ import { IconButtonProps, IconButton } from '../IconButton';
 import buttonStory from './Button.stories';
 import IconButtonDocumentation from './IconButton.docs.mdx';
 
+
 export default {
   ...buttonStory,
   title: 'Buttons/IconButton',
@@ -235,6 +236,13 @@ XXXXLargeSize.storyName = 'Size: 4XLarge';
 XXXXLargeSize.args = {
   ...defaultArgs,
   size: '4xlarge',
+};
+
+export const XXXXXLargeSize = Template.bind({});
+XXXXXLargeSize.storyName = 'Size: 5XLarge';
+XXXXXLargeSize.args = {
+  ...defaultArgs,
+  size: '5xlarge',
 };
 
 export const ActiveState = Template.bind({});

@@ -22,7 +22,7 @@ export default {
       },
     },
     size: {
-      options: ['xsmall', 'small', 'medium', 'large', 'xlarge', '2xlarge', '3xlarge', '4xlarge'],
+      options: ['xsmall', 'small', 'medium', 'large', 'xlarge', '2xlarge', '3xlarge', '4xlarge', '5xlarge'],
       control: {
         type: 'radio',
       },

@@ -367,6 +367,14 @@ button.button {
   --button-focus-ring-size: 6px;
 }
 
+.button--5xlarge {
+  font-size: $font-size-5xlarge;
+  height: $element-height-5xlarge;
+  width: $element-height-5xlarge;
+
+  --button-focus-ring-size: 6px;
+}
+
 /* A general catch-all button size */
 
 .button--relative {

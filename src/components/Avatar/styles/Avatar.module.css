@@ -43,6 +43,14 @@ button.avatar {
   }
 }
 
+.avatar--5xlarge {
+  font-size: $font-size-5xlarge;
+  height: $element-height-5xlarge;
+  width: $element-height-5xlarge;
+
+  --avatar-focus-ring-size: 6px;
+}
+
 .avatar--4xlarge {
   font-size: $font-size-4xlarge;
   height: $element-height-4xlarge;

@@ -13,7 +13,7 @@ export type IconButtonProps<T extends ButtonElementType = 'button'> = MergeProps
   {
     children: React.ReactElement<SVGElement>;
     shape?: IconButtonShape;
-    size?: ButtonProps['size'] | 'xlarge' | '2xlarge' | '3xlarge' | '4xlarge';
+    size?: ButtonProps['size'] | 'xlarge' | '2xlarge' | '3xlarge' | '4xlarge' | '5xlarge';
   }
 >;
 
