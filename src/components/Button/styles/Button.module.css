@@ -356,7 +356,7 @@ button.button {
   height: $element-height-3xlarge;
   width: $element-height-3xlarge;
 
-  --button-focus-ring-size: 6px;
+  --button-focus-ring-size: 5px;
 }
 
 .button--4xlarge {

@@ -43,10 +43,52 @@ button.avatar {
   }
 }
 
-.avatar--5xlarge {
-  font-size: $font-size-5xlarge;
-  height: $element-height-5xlarge;
-  width: $element-height-5xlarge;
+.avatar--xsmall {
+  --avatar-focus-ring-size: 3px;
+
+  font-size: $font-size-2xsmall;
+  height: $element-height-xsmall;
+  width: $element-height-xsmall;
+}
+
+.avatar--small {
+  font-size: $font-size-small;
+  height: $element-height-small;
+  width: $element-height-small;
+}
+
+.avatar--medium {
+  font-size: $font-size-medium;
+  height: $element-height-medium;
+  width: $element-height-medium;
+}
+
+.avatar--large {
+  font-size: $font-size-large;
+  height: $element-height-large;
+  width: $element-height-large;
+}
+
+.avatar--xlarge {
+  font-size: $font-size-xlarge;
+  height: $element-height-xlarge;
+  width: $element-height-xlarge;
+
+  --avatar-focus-ring-size: 5px;
+}
+
+.avatar--2xlarge {
+  font-size: $font-size-2xlarge;
+  height: $element-height-2xlarge;
+  width: $element-height-2xlarge;
+
+  --avatar-focus-ring-size: 5px;
+}
+
+.avatar--3xlarge {
+  font-size: $font-size-3xlarge;
+  height: $element-height-3xlarge;
+  width: $element-height-3xlarge;
 
   --avatar-focus-ring-size: 6px;
 }
@@ -59,54 +101,12 @@ button.avatar {
   --avatar-focus-ring-size: 6px;
 }
 
-.avatar--3xlarge {
-  font-size: $font-size-3xlarge;
-  height: $element-height-3xlarge;
-  width: $element-height-3xlarge;
+.avatar--5xlarge {
+  font-size: $font-size-5xlarge;
+  height: $element-height-5xlarge;
+  width: $element-height-5xlarge;
 
   --avatar-focus-ring-size: 6px;
-}
-
-.avatar--2xlarge {
-  font-size: $font-size-2xlarge;
-  height: $element-height-2xlarge;
-  width: $element-height-2xlarge;
-
-  --avatar-focus-ring-size: 5px;
-}
-
-.avatar--xlarge {
-  font-size: $font-size-xlarge;
-  height: $element-height-xlarge;
-  width: $element-height-xlarge;
-
-  --avatar-focus-ring-size: 5px;
-}
-
-.avatar--large {
-  font-size: $font-size-large;
-  height: $element-height-large;
-  width: $element-height-large;
-}
-
-.avatar--medium {
-  font-size: $font-size-medium;
-  height: $element-height-medium;
-  width: $element-height-medium;
-}
-
-.avatar--small {
-  font-size: $font-size-small;
-  height: $element-height-small;
-  width: $element-height-small;
-}
-
-.avatar--xsmall {
-  --avatar-focus-ring-size: 3px;
-
-  font-size: $font-size-2xsmall;
-  height: $element-height-xsmall;
-  width: $element-height-xsmall;
 }
 
 .avatar--custom {
