@@ -22,9 +22,10 @@ export function ModalsFromContext({
 }: ModalsFromContextProps): JSX.Element | null {
   const themeId = useThemeId(initThemeId);
   const { modal, popModal } = useContext(ModalContext);
+  const isCurrentModalPermanent = modal?.props.permanent;
 
   return modal ? (
-    <ModalContainer confirmClose={confirmClose} onEscape={popModal} {...props}>
+    <ModalContainer confirmClose={confirmClose} onEscape={isCurrentModalPermanent ? undefined : popModal} {...props}>
       <ModalFromContext confirmClose={confirmClose} key={modal.props.contextId} modal={modal} themeId={themeId} />
     </ModalContainer>
   ) : null;

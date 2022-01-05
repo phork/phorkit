@@ -4,7 +4,7 @@ import { useElementEventListener } from './useElementEventListener';
 export type UseHandleEscapeProps<C extends HTMLElement = HTMLElement> = {
   /** If this returns true the callback will be executed; false will cancel it */
   confirm?: () => Promise<boolean>;
-  onEscape: (event: KeyboardEvent) => void;
+  onEscape?: (event: KeyboardEvent) => void;
   ref?: React.RefObject<C>;
   stopPropagation?: boolean;
 };
@@ -42,5 +42,10 @@ export function useHandleEscape<C extends HTMLElement = HTMLElement>({
     [confirm, onEscape, ref, stopPropagation],
   );
 
-  useElementEventListener({ eventType: 'keydown', callback: handleKeyDown as EventListener, capture: true });
+  useElementEventListener({
+    eventType: 'keydown',
+    callback: handleKeyDown as EventListener,
+    capture: true,
+    disabled: !onEscape,
+  });
 }
