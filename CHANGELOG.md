@@ -1,5 +1,11 @@
 # Changelog
 
+## [15.0.1](https://github.com/phork/phorkit/compare/v15.0.0...v15.0.1) (2022-01-05)
+
+### 🐛 Bug Fixes
+
+- update avatar sizes focus rings ([e7aebdc](https://github.com/phork/phorkit/commit/e7aebdc))
+
 # [15.0.0](https://github.com/phork/phorkit/compare/v14.0.1...v15.0.0) (2022-01-04)
 
 ### ♻ Code Refactoring
