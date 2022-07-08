@@ -68,6 +68,7 @@ export function Rhythm({ children, className, grouped = false, wrapper, ...props
     ).map(prefix => {
       if (props[prefix] !== undefined) {
         const suffix =
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           typeof props[prefix] === 'number' && props[prefix]! < 0
             ? `neg-${Math.abs(props[prefix] as number)}`
             : props[prefix];

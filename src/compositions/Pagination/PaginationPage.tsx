@@ -19,7 +19,7 @@ export type PaginationPageProps<T extends ButtonElementType = 'button'> = AsReac
 
 export function PaginationPageBase<T extends ButtonElementType = 'button'>(
   {
-    active = false,
+    active,
     allowRightClickLinks,
     as,
     className,

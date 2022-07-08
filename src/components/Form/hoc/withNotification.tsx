@@ -13,7 +13,11 @@ export type LocalNotifiedComponentProps = Pick<
   level: SemanticColor;
 };
 
-export type NotifiedComponentProps<WrappedComponentProps extends {}> = MergeProps<
+export type BaseWrappedComponentProps = {
+  [key: string]: unknown;
+};
+
+export type NotifiedComponentProps<WrappedComponentProps extends BaseWrappedComponentProps> = MergeProps<
   WrappedComponentProps,
   LocalNotifiedComponentProps
 >;
@@ -23,7 +27,7 @@ export type NotifiedComponentProps<WrappedComponentProps extends {}> = MergeProp
  * Notification component to display a notification under
  * the input.
  */
-export function withNotification<WrappedComponentProps, E>(
+export function withNotification<WrappedComponentProps extends BaseWrappedComponentProps, E>(
   WrappedComponent: React.FC<WrappedComponentProps>,
   { withDivider = false }: WithNotificationOptions = {},
   componentProps?: Partial<Omit<WrappedComponentProps, 'contrast' | 'width' | 'ref'>>,

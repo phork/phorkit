@@ -22,10 +22,7 @@ describe('<InlineTextTooltip />', () => {
     const consoleWarnMock = jest.spyOn(console, 'error').mockImplementation();
 
     expect(() =>
-      render(
-        /* @ts-ignore */
-        <InlineTextTooltip permanent height={80} toggler={<TimesIcon scale="3xlarge" />} width={300} />,
-      ),
+      render(<InlineTextTooltip permanent height={80} toggler={<TimesIcon scale="3xlarge" />} width={300} />),
     ).toThrow();
 
     consoleWarnMock.mockRestore();

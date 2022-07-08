@@ -49,7 +49,7 @@ export function ToggleBase(
   forwardedRef: React.ForwardedRef<HTMLInputElement>,
 ): React.ReactElement<ToggleProps> {
   const accessible = useAccessibility();
-  const inputRef = useRef<HTMLInputElement>(null!);
+  const inputRef = useRef<HTMLInputElement>(null);
   const themeId = useThemeId(initThemeId);
   const [focused, setFocused] = useState(false);
   const color = contrast ? 'contrast' : 'primary';

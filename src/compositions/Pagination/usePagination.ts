@@ -1,7 +1,7 @@
 import produce from 'immer';
 import { useRef } from 'react';
 
-const getPageLinks = (start: number, count: number, increment: number, max: number, min: number = 1): number[] =>
+const getPageLinks = (start: number, count: number, increment: number, max: number, min = 1): number[] =>
   Array(count)
     .fill(null)
     .map((_, i) => start + (i + 1) * increment)

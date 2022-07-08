@@ -14,6 +14,7 @@ type State = {
   percent: number;
   runtime: number;
   start: ReturnType<typeof window.requestAnimationFrame>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   options: any;
 };
 

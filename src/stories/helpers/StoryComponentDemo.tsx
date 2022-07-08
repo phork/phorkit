@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
 
 export type StoryComponentDemoProps<V> = React.HTMLAttributes<HTMLDivElement> & {

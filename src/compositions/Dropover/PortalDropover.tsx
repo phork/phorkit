@@ -16,7 +16,7 @@ export type PortalDropoverProps<F extends HTMLElement | undefined = undefined> =
   align?: HorizontalPosition;
   width?: number;
   height?: number;
-  label: RenderFromPropElement<any>;
+  label: RenderFromPropElement<object>;
   /** A passive label doesn't allow re-clicking to close the dropover */
   passiveLabel?: boolean;
 };
@@ -67,7 +67,7 @@ export function PortalDropover<T extends HTMLElement, F extends HTMLElement | un
   // portal dropovers must re-draw the label on top of the dropover content
   const renderClonedToggler = useCallback(
     (focused?: boolean) =>
-      renderFromProp<{ cloned: boolean; focused?: boolean }>(
+      renderFromProp<{ cloned?: boolean; focused?: boolean }>(
         label,
         { cloned: true, focused },
         { createFromString: true },
@@ -79,7 +79,7 @@ export function PortalDropover<T extends HTMLElement, F extends HTMLElement | un
   const getPortalTogglerInteractiveProps = (
     close: PopoverContentProps<PortalPopoverContentHTMLElement, F>['close'],
   ):
-    | {}
+    | Record<string, unknown>
     | {
         onClick: React.MouseEventHandler;
         onKeyDown: React.KeyboardEventHandler;
@@ -129,7 +129,7 @@ export function PortalDropover<T extends HTMLElement, F extends HTMLElement | un
 
             {renderChildren
               ? renderFromPropWithFallback<PopoverRenderChildrenProps<PortalPopoverContentHTMLElement, F>>(
-                  renderChildren!,
+                  renderChildren,
                   {
                     close,
                     focusRef,

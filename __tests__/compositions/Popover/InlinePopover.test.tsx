@@ -46,17 +46,4 @@ describe('<InlinePopover />', () => {
     );
     expect(getByText('bottom-right')).toBeTruthy();
   });
-
-  it('should error without children', () => {
-    const consoleWarnMock = jest.spyOn(console, 'error').mockImplementation();
-
-    expect(() =>
-      render(
-        /* @ts-ignore */
-        <InlinePopover permanent height={80} toggler={<TimesIcon scale="3xlarge" />} width={300} />,
-      ),
-    ).toThrow();
-
-    consoleWarnMock.mockRestore();
-  });
 });

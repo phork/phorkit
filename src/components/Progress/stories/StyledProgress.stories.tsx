@@ -1,11 +1,12 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentStory, ComponentMeta, ArgTypes } from '@storybook/react';
 import React from 'react';
 import { PageTitle } from 'stories/helpers/PageTitle';
+import { ProgressProps } from '../Progress';
 import { StyledProgress, StyledProgressProps } from '../StyledProgress';
 import progressStory from './Progress.stories';
 
-const argTypes = { ...progressStory.argTypes };
+const argTypes: Partial<ArgTypes<ProgressProps>> = { ...progressStory.argTypes };
 delete argTypes.color;
 delete argTypes.contrast;
 delete argTypes.themeId;

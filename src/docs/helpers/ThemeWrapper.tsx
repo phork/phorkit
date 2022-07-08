@@ -7,6 +7,7 @@ import { MoonIcon } from 'icons/internal/MoonIcon';
 import { SunIcon } from 'icons/internal/SunIcon';
 import { IconButton } from 'components/Button';
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const variables = require('../../postcss/vars/index');
 
 type RenderFromPropProps = { themeId?: Theme };

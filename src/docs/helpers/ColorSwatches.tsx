@@ -39,9 +39,10 @@ export function ColorSwatches({
   };
 
   switch (group) {
-    case 'state':
+    case 'state': {
       const colors = ['L10', undefined, 'D10'].map(shade => mapColors(`color-${variant}`, shade));
       return <ColorSwatchVector colors={colors} direction={direction} {...props} />;
+    }
 
     case 'background': {
       const colors = getBackgroundColors(themeId!);

@@ -16,7 +16,7 @@ export type InlineDropoverProps<F extends HTMLElement | undefined = undefined> =
   align?: HorizontalPosition;
   width?: number;
   height?: number;
-  label: RenderFromPropElement<any>;
+  label: RenderFromPropElement<object>;
 };
 
 export const defaultInlineOffset = {
@@ -77,7 +77,7 @@ export function InlineDropover<T extends HTMLElement, F extends HTMLElement | un
           <React.Fragment>
             {renderChildren
               ? renderFromPropWithFallback<PopoverRenderChildrenProps<InlinePopoverContentHTMLElement, F>>(
-                  renderChildren!,
+                  renderChildren,
                   {
                     close,
                     focusRef,

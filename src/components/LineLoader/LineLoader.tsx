@@ -49,7 +49,7 @@ export function LineLoader({
   unthemed = false,
   ...props
 }: LineLoaderProps): JSX.Element {
-  const ref = useRef<HTMLDivElement>(null!);
+  const ref = useRef<HTMLDivElement>(null);
   const themeId = useThemeId(initThemeId);
   const translations = useTranslations<LineLoaderTranslations>({
     customTranslations,

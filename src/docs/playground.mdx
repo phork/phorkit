@@ -5,7 +5,6 @@ route: /playground
 
 import { cx } from '@emotion/css';
 import { Playground } from 'docz';
-import { ArrowDownIcon } from 'icons/ArrowDownIcon';
 import { PhorkIcon } from 'icons/PhorkIcon';
 import { SearchIcon } from 'icons/SearchIcon';
 import { TimesIcon } from 'icons/TimesIcon';
@@ -43,7 +42,6 @@ import {
   InlinePopover,
   InlineTextTooltip,
   InteractiveList,
-  Link,
   List,
   ListItem,
   MainPanel,
@@ -58,7 +56,6 @@ import {
   Paper,
   Password,
   PortalDropover,
-  PortalPopover,
   PortalTextTooltip,
   PortalTooltip,
   Position,
@@ -70,12 +67,9 @@ import {
   StyledHeader,
   StyledLoader,
   StyledProgress,
-  Tabs,
   Textbox,
-  TextTooltip,
   Toast,
   Toggle,
-  Tooltip,
   TooltipContent,
   Triangle,
   Typography,
@@ -124,28 +118,26 @@ import {
 ## Popover title
 
 <Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <Rhythm mx={8} my={6}>
-        <InlinePopover
-          hoverable
-          closeDelay={0}
-          offset={{ vertical: 10 }}
-          position="top-center"
-          toggler={<PhorkIcon scale="xlarge" title="" />}
-        >
-          <Card full raised>
-            <Rhythm px={3} py={1}>
-              <Paper bordered color="primary">
-                <Typography as="div" size="small" variants={['no-wrap']}>
-                  An example title
-                </Typography>
-              </Paper>
-            </Rhythm>
-          </Card>
-        </InlinePopover>
-      </Rhythm>
-    )}
+  <ThemeWrapper>
+    <Rhythm mx={8} my={6}>
+      <InlinePopover
+        hoverable
+        closeDelay={0}
+        offset={{ vertical: 10 }}
+        position="top-center"
+        toggler={<PhorkIcon scale="xlarge" title="" />}
+      >
+        <Card full raised>
+          <Rhythm px={3} py={1}>
+            <Paper bordered color="primary">
+              <Typography as="div" size="small" variants={['no-wrap']}>
+                An example title
+              </Typography>
+            </Paper>
+          </Rhythm>
+        </Card>
+      </InlinePopover>
+    </Rhythm>
   </ThemeWrapper>
 </Playground>
 
@@ -569,7 +561,7 @@ import {
               }}
               label="Who are you?"
               onChange={(event, value) => setValue(value)}
-              onClear={(event, value) => setValue('')}
+              onClear={() => setValue('')}
               value={value}
               variant="underline"
             />
@@ -703,7 +695,7 @@ import {
             listSize="medium"
             listVariant="divided"
             onChange={value => console.log('change', value)}
-            onClear={value => console.log('clear')}
+            onClear={() => console.log('clear')}
             onSelect={value => console.log('select', value)}
             options={options}
             placeholder={
@@ -788,7 +780,7 @@ import {
             listSize="medium"
             listVariant="divided"
             onChange={value => console.log('change', value)}
-            onClear={value => console.log('clear')}
+            onClear={() => console.log('clear')}
             onSelect={value => console.log('select', value)}
             options={options}
             placeholder={
@@ -845,68 +837,66 @@ import {
 ## Fancy cards
 
 <Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <Rhythm grouped m={2} style={{ width: '300px' }}>
-        <Card full raised>
-          <StyledHeader backgroundColor="#393945" height={50} textColor="#fff">
-            <Rhythm px={5}>Fancy card</Rhythm>
-          </StyledHeader>
-          <Paper color="secondary">
-            <Rhythm my={12}>
-              <Flex full alignItems="center" direction="row" justifyContent="center">
-                <Typography volume="quietest">
-                  <MoonIcon size={48} />
-                </Typography>
-              </Flex>
-            </Rhythm>
-          </Paper>
-          <Divider volume="quieter" />
-          <Rhythm px={5} py={4}>
-            <Paper color="primary">
-              <Flex direction="row" justifyContent="space-between">
-                {[
-                  { id: 'first', label: 'First', value: 'Super' },
-                  { id: 'second', label: 'Second', value: 'Awesome' },
-                  { id: 'third', label: 'Third', value: 'Value' },
-                ].map(({ id, label, value }, i) => (
-                  <React.Fragment key={id}>
-                    <Flex flexible direction="column" justifyContent="center">
-                      <Typography
-                        color="secondary"
-                        size="xsmall"
-                        variants={['line-height-comfy', 'no-wrap']}
-                        weight="bold"
-                      >
-                        {value}
-                      </Typography>
-                      <Typography variants={['xsmall-caps']} volume="quiet">
-                        {label}
-                      </Typography>
-                    </Flex>
-                    {i < 2 && (
-                      <Rhythm mr={4}>
-                        <Divider orientation="vertical" style={{ height: '24px' }} volume="quieter" />
-                      </Rhythm>
-                    )}
-                  </React.Fragment>
-                ))}
-              </Flex>
-            </Paper>
+  <ThemeWrapper>
+    <Rhythm grouped m={2} style={{ width: '300px' }}>
+      <Card full raised>
+        <StyledHeader backgroundColor="#393945" height={50} textColor="#fff">
+          <Rhythm px={5}>Fancy card</Rhythm>
+        </StyledHeader>
+        <Paper color="secondary">
+          <Rhythm my={12}>
+            <Flex full alignItems="center" direction="row" justifyContent="center">
+              <Typography volume="quietest">
+                <MoonIcon size={48} />
+              </Typography>
+            </Flex>
           </Rhythm>
-          <Footer bordered volume="quiet">
-            <Rhythm px={5}>
-              <Flex full alignItems="center" direction="row" justifyContent="space-between" style={{ height: '48px' }}>
-                <IconCount count={13} icon={CheckIcon} label="Example" />
-                <IconCount count={24} icon={TimesIcon} iconSize={10} label="Example" />
-                <IconCount count={9} icon={HeartIcon} iconSize={15} label="Example" />
-                <IconCount icon={SearchIcon} iconSize={13} label="Example" />
-              </Flex>
-            </Rhythm>
-          </Footer>
-        </Card>
-      </Rhythm>
-    )}
+        </Paper>
+        <Divider volume="quieter" />
+        <Rhythm px={5} py={4}>
+          <Paper color="primary">
+            <Flex direction="row" justifyContent="space-between">
+              {[
+                { id: 'first', label: 'First', value: 'Super' },
+                { id: 'second', label: 'Second', value: 'Awesome' },
+                { id: 'third', label: 'Third', value: 'Value' },
+              ].map(({ id, label, value }, i) => (
+                <React.Fragment key={id}>
+                  <Flex flexible direction="column" justifyContent="center">
+                    <Typography
+                      color="secondary"
+                      size="xsmall"
+                      variants={['line-height-comfy', 'no-wrap']}
+                      weight="bold"
+                    >
+                      {value}
+                    </Typography>
+                    <Typography variants={['xsmall-caps']} volume="quiet">
+                      {label}
+                    </Typography>
+                  </Flex>
+                  {i < 2 && (
+                    <Rhythm mr={4}>
+                      <Divider orientation="vertical" style={{ height: '24px' }} volume="quieter" />
+                    </Rhythm>
+                  )}
+                </React.Fragment>
+              ))}
+            </Flex>
+          </Paper>
+        </Rhythm>
+        <Footer bordered volume="quiet">
+          <Rhythm px={5}>
+            <Flex full alignItems="center" direction="row" justifyContent="space-between" style={{ height: '48px' }}>
+              <IconCount count={13} icon={CheckIcon} label="Example" />
+              <IconCount count={24} icon={TimesIcon} iconSize={10} label="Example" />
+              <IconCount count={9} icon={HeartIcon} iconSize={15} label="Example" />
+              <IconCount icon={SearchIcon} iconSize={13} label="Example" />
+            </Flex>
+          </Rhythm>
+        </Footer>
+      </Card>
+    </Rhythm>
   </ThemeWrapper>
 </Playground>
 
@@ -1307,13 +1297,7 @@ import {
                               <Button color="neutral" key="cancel" onClick={popModal} shape="brick" weight="ghost">
                                 Cancel
                               </Button>
-                              <Button
-                                color="primary"
-                                key="login"
-                                key="submit"
-                                onClick={() => console.log('Login!')}
-                                shape="brick"
-                              >
+                              <Button color="primary" key="login" onClick={() => console.log('Login!')} shape="brick">
                                 Login
                               </Button>
                             </ButtonGroup>
@@ -1352,7 +1336,7 @@ import {
                   onChange={(event, value) => {
                     setSearchTerm(value);
                   }}
-                  onClear={(event, value) => setSearchTerm('')}
+                  onClear={() => setSearchTerm('')}
                   value={searchTerm || ''}
                   width={200}
                 />

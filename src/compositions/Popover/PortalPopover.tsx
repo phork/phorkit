@@ -75,17 +75,14 @@ export function PortalPopover<F extends HTMLElement | undefined = undefined>({
       position={position}
       renderContent={({ close, focusable, focusRef, isTogglerFocused, offset, position, visible, ...contentProps }) => {
         const content = renderChildren
-          ? renderFromPropWithFallback<PopoverRenderChildrenProps<PortalPopoverContentHTMLElement, F>>(
-              renderChildren!,
-              {
-                close,
-                focusRef,
-                offset,
-                position,
-                isTogglerFocused,
-                visible,
-              },
-            )
+          ? renderFromPropWithFallback<PopoverRenderChildrenProps<PortalPopoverContentHTMLElement, F>>(renderChildren, {
+              close,
+              focusRef,
+              offset,
+              position,
+              isTogglerFocused,
+              visible,
+            })
           : children;
 
         if (!content) throw new Error('Missing popover content');

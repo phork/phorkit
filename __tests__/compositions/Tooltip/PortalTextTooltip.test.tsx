@@ -22,10 +22,7 @@ describe('<PortalTextTooltip />', () => {
     const consoleWarnMock = jest.spyOn(console, 'error').mockImplementation();
 
     expect(() =>
-      render(
-        /* @ts-ignore */
-        <PortalTextTooltip permanent height={80} toggler={<TimesIcon scale="3xlarge" />} width={300} />,
-      ),
+      render(<PortalTextTooltip permanent height={80} toggler={<TimesIcon scale="3xlarge" />} width={300} />),
     ).toThrow();
 
     consoleWarnMock.mockRestore();

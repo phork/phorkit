@@ -1,4 +1,3 @@
-const postcss = require('postcss');
 const config = require('../vars');
 
 const mixins = {

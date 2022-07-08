@@ -15,7 +15,7 @@ import { ListProps } from 'docs/helpers/ListProps';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { Dropdown, DropdownContent, DropdownEmpty, PartialDropdown, NotifiedDropdown } from '../index';
+import { Dropdown, DropdownEmpty, PartialDropdown, NotifiedDropdown } from '../index';
 import { MultiVariantDropdown } from './helpers/MultiVariantDropdown';
 import { options, handleFilter, handleEmptyFilter } from './helpers/options';
 import { variants, sizes } from './helpers/variants';
@@ -205,7 +205,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
               initialSelected={[options[3]]}
               inputVariant={variant}
               label="Super awesome dropdown"
-              onClear={value => console.log('clear')}
+              onClear={() => console.log('clear')}
               onInputChange={value => console.log(value)}
               onSelect={value => console.log('select', value)}
               onSubmit={(event, value) =>
@@ -235,7 +235,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
             emptyNotification={filter ? `No options were found for "${filter}".` : ''}
             getFilteredOptions={handleFilter}
             label="Super awesome dropdown"
-            onClear={value => console.log('clear')}
+            onClear={() => console.log('clear')}
             onInputChange={setFilter}
             onSelect={value => console.log('select', value)}
           />
@@ -442,7 +442,7 @@ A searchable dropdown is similar to a filterable dropdown except that it starts 
           initialSelected={[options[3]]}
           label="Super awesome dropdown"
           layout="contained"
-          onClear={value => console.log('clear')}
+          onClear={() => console.log('clear')}
           onInputChange={value => console.log('change', value)}
           onSelect={value => console.log('select', value)}
           options={options}

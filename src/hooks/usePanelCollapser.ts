@@ -89,28 +89,28 @@ const getProperties = ({ position, transition, width, height, useMax }: GetPrope
       return {
         prop: transition === 'squashable' ? `${useMax ? 'max-' : ''}height` : 'margin-top',
         invert: transition === 'shiftable',
-        size: height!,
+        size: height || 0,
       };
 
     case 'bottom':
       return {
         prop: transition === 'squashable' ? `${useMax ? 'max-' : ''}height` : 'margin-bottom',
         invert: transition === 'shiftable',
-        size: height!,
+        size: height || 0,
       };
 
     case 'left':
       return {
         prop: transition === 'squashable' ? `${useMax ? 'max-' : ''}width` : 'margin-left',
         invert: transition === 'shiftable',
-        size: width!,
+        size: width || 0,
       };
 
     case 'right':
       return {
         prop: transition === 'squashable' ? `${useMax ? 'max-' : ''}width` : 'margin-right',
         invert: transition === 'shiftable',
-        size: width!,
+        size: width || 0,
       };
 
     default:

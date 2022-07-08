@@ -5,7 +5,6 @@ route: /compositions/InteractiveList
 ---
 
 import { Playground, Props } from 'docz';
-import { InteractiveGroupItem, InteractiveGroupConsumer } from 'components/InteractiveGroup';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { InteractiveList, PartialInteractiveList } from '../index';
@@ -18,132 +17,120 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 ## Scroll to element
 
 <Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <InteractiveList
-        scrollable
-        initialSelected={['violet-red']}
-        items={items}
-        onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
-        onSelect={(event, { id, index }) => console.log('select', { id, index })}
-        onUnselect={(event, { id }) => console.log('unselect', id)}
-        style={{ height: '200px' }}
-        variant="bordered"
-      >
-        An empty notification
-      </InteractiveList>
-    )}
+  <ThemeWrapper>
+    <InteractiveList
+      scrollable
+      initialSelected={['violet-red']}
+      items={items}
+      onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
+      onSelect={(event, { id, index }) => console.log('select', { id, index })}
+      onUnselect={(event, { id }) => console.log('unselect', id)}
+      style={{ height: '200px' }}
+      variant="bordered"
+    >
+      An empty notification
+    </InteractiveList>
   </ThemeWrapper>
 </Playground>
 
 ## Select on focus
 
 <Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <InteractiveList
-        scrollable
-        selectOnFocus
-        initialSelected={['red']}
-        items={items}
-        onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
-        onSelect={(event, { id, index }) => console.log('select', { id, index })}
-        onUnselect={(event, { id }) => console.log('unselect', id)}
-        style={{ height: '200px' }}
-        variant="bordered"
-      >
-        An empty notification
-      </InteractiveList>
-    )}
+  <ThemeWrapper>
+    <InteractiveList
+      scrollable
+      selectOnFocus
+      initialSelected={['red']}
+      items={items}
+      onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
+      onSelect={(event, { id, index }) => console.log('select', { id, index })}
+      onUnselect={(event, { id }) => console.log('unselect', id)}
+      style={{ height: '200px' }}
+      variant="bordered"
+    >
+      An empty notification
+    </InteractiveList>
   </ThemeWrapper>
 </Playground>
 
 ## Mimic select on focus
 
 <Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <InteractiveList
-        mimicSelectOnFocus
-        scrollable
-        initialSelected={['red']}
-        items={items}
-        onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
-        onSelect={(event, { id, index }) => console.log('select', { id, index })}
-        onUnselect={(event, { id }) => console.log('unselect', id)}
-        style={{ height: '200px' }}
-        variant="bordered"
-      >
-        An empty notification
-      </InteractiveList>
-    )}
+  <ThemeWrapper>
+    <InteractiveList
+      mimicSelectOnFocus
+      scrollable
+      initialSelected={['red']}
+      items={items}
+      onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
+      onSelect={(event, { id, index }) => console.log('select', { id, index })}
+      onUnselect={(event, { id }) => console.log('unselect', id)}
+      style={{ height: '200px' }}
+      variant="bordered"
+    >
+      An empty notification
+    </InteractiveList>
   </ThemeWrapper>
 </Playground>
 
 ## Multi-select
 
 <Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <InteractiveList
-        scrollable
-        initialSelected={['violet-red']}
-        items={items}
-        maxSelect={-1}
-        onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
-        onSelect={(event, { id, index }) => console.log('select', { id, index })}
-        onUnselect={(event, { id }) => console.log('unselect', id)}
-        style={{ height: '200px' }}
-        variant="bordered"
-      >
-        An empty notification
-      </InteractiveList>
-    )}
+  <ThemeWrapper>
+    <InteractiveList
+      scrollable
+      initialSelected={['violet-red']}
+      items={items}
+      maxSelect={-1}
+      onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
+      onSelect={(event, { id, index }) => console.log('select', { id, index })}
+      onUnselect={(event, { id }) => console.log('unselect', id)}
+      style={{ height: '200px' }}
+      variant="bordered"
+    >
+      An empty notification
+    </InteractiveList>
   </ThemeWrapper>
 </Playground>
 
 ## Allow unselect
 
 <Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <InteractiveList
-        scrollable
-        initialSelected={['red']}
-        items={items}
-        minSelect={0}
-        onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
-        onSelect={(event, { id, index }) => console.log('select', { id, index })}
-        onUnselect={(event, { id }) => console.log('unselect', id)}
-        style={{ height: '200px' }}
-        variant="bordered"
-      >
-        An empty notification
-      </InteractiveList>
-    )}
+  <ThemeWrapper>
+    <InteractiveList
+      scrollable
+      initialSelected={['red']}
+      items={items}
+      minSelect={0}
+      onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
+      onSelect={(event, { id, index }) => console.log('select', { id, index })}
+      onUnselect={(event, { id }) => console.log('unselect', id)}
+      style={{ height: '200px' }}
+      variant="bordered"
+    >
+      An empty notification
+    </InteractiveList>
   </ThemeWrapper>
 </Playground>
 
 ## Allow reselect
 
 <Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <InteractiveList
-        allowReselect
-        scrollable
-        initialSelected={['red']}
-        items={items}
-        minSelect={1}
-        onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
-        onSelect={(event, { id, index }) => console.log('select', { id, index })}
-        onUnselect={(event, { id }) => console.log('unselect', id)}
-        style={{ height: '200px' }}
-        variant="bordered"
-      >
-        An empty notification
-      </InteractiveList>
-    )}
+  <ThemeWrapper>
+    <InteractiveList
+      allowReselect
+      scrollable
+      initialSelected={['red']}
+      items={items}
+      minSelect={1}
+      onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
+      onSelect={(event, { id, index }) => console.log('select', { id, index })}
+      onUnselect={(event, { id }) => console.log('unselect', id)}
+      style={{ height: '200px' }}
+      variant="bordered"
+    >
+      An empty notification
+    </InteractiveList>
   </ThemeWrapper>
 </Playground>
 
@@ -152,83 +139,77 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
 _Note that the links will cause the page to reload so the state will appear unchanged._
 
 <Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <InteractiveList
-        scrollable
-        triggerLinks
-        items={[
-          {
-            id: 'first',
-            label: ({ focused, selected }) => (
-              <a href="#linked" style={{ color: 'currentColor', display: 'block', height: '60px' }}>
-                First {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
-              </a>
-            ),
-          },
-          {
-            id: 'second',
-            label: ({ focused, selected }) => (
-              <a href="#linked" style={{ color: 'currentColor', display: 'block', height: '60px' }}>
-                Second {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
-              </a>
-            ),
-          },
-          {
-            id: 'third',
-            label: ({ focused, selected }) => (
-              <a href="#linked" style={{ color: 'currentColor', display: 'block', height: '60px' }}>
-                Third {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
-              </a>
-            ),
-          },
-          {
-            id: 'fourth',
-            label: ({ focused, selected }) => (
-              <a href="#linked" style={{ color: 'currentColor', display: 'block', height: '60px' }}>
-                Fourth {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
-              </a>
-            ),
-          },
-        ]}
-        style={{ height: '200px' }}
-        variant="bordered"
-      />
-    )}
+  <ThemeWrapper>
+    <InteractiveList
+      scrollable
+      triggerLinks
+      items={[
+        {
+          id: 'first',
+          label: ({ focused, selected }) => (
+            <a href="#linked" style={{ color: 'currentColor', display: 'block', height: '60px' }}>
+              First {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
+            </a>
+          ),
+        },
+        {
+          id: 'second',
+          label: ({ focused, selected }) => (
+            <a href="#linked" style={{ color: 'currentColor', display: 'block', height: '60px' }}>
+              Second {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
+            </a>
+          ),
+        },
+        {
+          id: 'third',
+          label: ({ focused, selected }) => (
+            <a href="#linked" style={{ color: 'currentColor', display: 'block', height: '60px' }}>
+              Third {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
+            </a>
+          ),
+        },
+        {
+          id: 'fourth',
+          label: ({ focused, selected }) => (
+            <a href="#linked" style={{ color: 'currentColor', display: 'block', height: '60px' }}>
+              Fourth {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
+            </a>
+          ),
+        },
+      ]}
+      style={{ height: '200px' }}
+      variant="bordered"
+    />
   </ThemeWrapper>
 </Playground>
 
 ## Navigation role with links for right-click only
 
 <Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <InteractiveList
-        scrollable
-        initialSelected={['violet-red']}
-        items={navigationItems}
-        onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
-        onSelect={(event, { id, index }) => console.log('select', { id, index })}
-        onUnselect={(event, { id }) => console.log('unselect', id)}
-        providerProps={{ role: 'navigation', 'aria-label': 'Primary navigation' }}
-        style={{ height: '200px' }}
-        variant="bordered"
-      >
-        An empty notification
-      </InteractiveList>
-    )}
+  <ThemeWrapper>
+    <InteractiveList
+      scrollable
+      initialSelected={['violet-red']}
+      items={navigationItems}
+      onItemFocus={(event, { id, index }) => console.log('focus', { id, index })}
+      onSelect={(event, { id, index }) => console.log('select', { id, index })}
+      onUnselect={(event, { id }) => console.log('unselect', id)}
+      providerProps={{ role: 'navigation', 'aria-label': 'Primary navigation' }}
+      style={{ height: '200px' }}
+      variant="bordered"
+    >
+      An empty notification
+    </InteractiveList>
   </ThemeWrapper>
 </Playground>
 
 ## Empty list
 
 <Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <InteractiveList items={[]} variant="bordered">
-        An empty notification
-      </InteractiveList>
-    )}
+  <ThemeWrapper>
+    <InteractiveList items={[]} variant="bordered">
+      An empty notification
+    </InteractiveList>
   </ThemeWrapper>
 </Playground>
 

@@ -94,6 +94,7 @@ function TextboxGroup2FAContent({
   // if every pasted char is valid then append the value
   const handlePaste = useCallback<React.ClipboardEventHandler<HTMLInputElement>>(
     event => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const clipboard = (event.clipboardData || (window as any).clipboardData).getData('text');
       if (clipboard.split('').every(char => validator(char).isValid)) {
         const position = looper.findIndex(id => id === (event.target as HTMLInputElement).getAttribute('data-id'));

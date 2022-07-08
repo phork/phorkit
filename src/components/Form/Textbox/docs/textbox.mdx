@@ -98,7 +98,7 @@ import { textbox as variants, sizes } from './helpers/variants';
               transitional
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
-              onClear={(event, value) => console.log('cleared')}
+              onClear={() => console.log('clear')}
               variant={variant}
             />
           </FormComponentDemo>
@@ -195,7 +195,7 @@ import { textbox as variants, sizes } from './helpers/variants';
                 formattedValue={value ? <i>{value}</i> : undefined}
                 label="Super fantastic label"
                 onChange={(event, value) => setValue(value)}
-                onClear={(event, value) => console.log('cleared')}
+                onClear={() => console.log('clear')}
                 value={value}
                 variant={variant}
               />
@@ -222,7 +222,7 @@ import { textbox as variants, sizes } from './helpers/variants';
               iconBefore={<SearchIcon />}
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
-              onClear={(event, value) => console.log('cleared')}
+              onClear={() => console.log('clear')}
               variant={variant}
             />
           </FormComponentDemo>
@@ -284,9 +284,9 @@ import { textbox as variants, sizes } from './helpers/variants';
       <FormComponentDemo property="value" type="textbox">
         <Textbox
           label={isFocused ? 'Focused label' : 'Blurred label'}
-          onBlur={event => setFocused(false)}
+          onBlur={() => setFocused(false)}
           onChange={(event, value) => console.log(value)}
-          onFocus={event => setFocused(true)}
+          onFocus={() => setFocused(true)}
           placeholder="Hello world"
         />
       </FormComponentDemo>
@@ -379,7 +379,7 @@ import { textbox as variants, sizes } from './helpers/variants';
               iconBefore={<SearchIcon />}
               label="Super fantastic label"
               onChange={(event, value) => console.log(value)}
-              onClear={(event, value) => console.log('cleared')}
+              onClear={() => console.log('clear')}
               placeholder="Hello world"
               variant={variant}
             />
@@ -477,7 +477,7 @@ import { textbox as variants, sizes } from './helpers/variants';
                   level={level}
                   notification={`This is an example ${level} notification.`}
                   onChange={(event, value) => console.log(value)}
-                  onClear={(event, value) => console.log('cleared')}
+                  onClear={() => console.log('clear')}
                   variant={variant}
                 />
               </FormComponentDemo>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { createContext } from 'react';
 
 export type EventType = 'keyboard' | 'mouse' | 'touch';

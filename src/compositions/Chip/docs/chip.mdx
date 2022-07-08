@@ -7,7 +7,6 @@ route: /compositions/Chip
 import { Playground, Props } from 'docz';
 import { TimesIcon } from 'icons/TimesIcon';
 import { CheckIcon } from 'icons/internal/CheckIcon';
-import { Avatar } from 'components/Avatar';
 import { IconButton } from 'components/Button';
 import { Rhythm } from 'components/Rhythm';
 import { PageTitle } from 'docs/helpers/PageTitle';
@@ -29,7 +28,7 @@ import { Chip, StyledChip } from '../index';
               noHeight
               aria-label="Remove tag"
               color="neutral"
-              onClick={e => console.log('remove tag')}
+              onClick={() => console.log('remove tag')}
               shape="circle"
             >
               <TimesIcon scale="xsmall" />
@@ -85,7 +84,7 @@ import { Chip, StyledChip } from '../index';
               noHeight
               aria-label="Remove tag"
               color="neutral"
-              onClick={e => console.log('remove tag')}
+              onClick={() => console.log('remove tag')}
               shape="circle"
             >
               <TimesIcon size={7} />
@@ -141,7 +140,7 @@ import { Chip, StyledChip } from '../index';
               noHeight
               aria-label="Remove tag"
               color="neutral"
-              onClick={e => console.log('remove tag')}
+              onClick={() => console.log('remove tag')}
               shape="circle"
             >
               <TimesIcon scale="xsmall" />

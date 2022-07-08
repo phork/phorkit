@@ -50,7 +50,7 @@ export const AccordionContent = React.forwardRef<HTMLDivElement, AccordionConten
     },
     forwardedRef,
   ): React.ReactElement<AccordionContentProps> => {
-    const ref = useRef<HTMLDivElement>(null!);
+    const ref = useRef<HTMLDivElement>(null);
     const position = orientation === 'horizontal' ? 'right' : 'bottom';
     const [dimension, setDimension] = useState<number | undefined>();
 

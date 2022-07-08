@@ -127,7 +127,7 @@ export function useInteractiveGroup<
   }>({});
 
   const [state, dispatch] = reducer;
-  const ref = useRef<E>(null!);
+  const ref = useRef<E>(null);
 
   const {
     focusFirst,

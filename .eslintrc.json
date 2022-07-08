@@ -1,6 +1,8 @@
 {
   "extends": [
     "prettier",
+    "eslint:recommended",
+    "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:import/errors",
     "plugin:import/warnings"
@@ -25,10 +27,9 @@
   "plugins": ["react", "prettier", "json", "react-hooks", "jsx-a11y", "import", "jest"],
   "rules": {
     "arrow-parens": 0,
-    "camelcase": 1,
+    "camelcase": 2,
     "import/newline-after-import": ["error", { "count": 1 }],
     "import/no-absolute-path": 2,
-    "import/no-named-default": 0,
     "import/no-named-as-default": 0,
     "import/no-named-as-default-member": 0,
     "import/prefer-default-export": 0,
@@ -39,15 +40,11 @@
       }
     ],
     "no-console": 1,
-    "no-param-reassign": [2, { "props": false }],
-    "no-underscore-dangle": ["error", { "allow": ["_id"] }],
-    "no-unused-expressions": 0,
     "no-void": 0,
     "react-hooks/rules-of-hooks": 2,
     "react-hooks/exhaustive-deps": 2,
+    "react/display-name": 0,
     "react/forbid-prop-types": 0,
-    "react/jsx-curly-brace-presence": 0,
-    "react/jsx-filename-extension": 0,
     "react/jsx-props-no-spreading": 0,
     "react/jsx-no-undef": "error",
     "react/jsx-sort-props": [
@@ -61,7 +58,8 @@
         "reservedFirst": false
       }
     ],
-    "jsx-a11y/anchor-is-valid": ["error", { "components": ["Link"], "specialLink": ["onClick", "to"] }]
+    "jsx-a11y/anchor-is-valid": ["error", { "components": ["Link"], "specialLink": ["onClick", "to"] }],
+    "no-unused-vars": ["error", { "ignoreRestSiblings": true }]
   },
   "globals": {
     "document": true,
@@ -73,6 +71,9 @@
         "paths": ["src"],
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
+    },
+    "react": {
+      "version": "detect"
     }
   },
   "overrides": [
@@ -80,6 +81,7 @@
       "files": "**/*.mdx",
       "extends":[
         "prettier",
+        "eslint:recommended",
         "plugin:jsx-a11y/recommended",
         "plugin:import/errors",
         "plugin:import/warnings",
@@ -87,13 +89,16 @@
       ],
       "rules": {
         "no-console": 0,
-        "jsx-a11y/anchor-is-valid": 0
+        "jsx-a11y/anchor-is-valid": 0,
+        "react/prop-types": 0
       }
     },
     {
       "files": ["**/*.ts", "**/*.tsx"],
       "extends": [
         "prettier",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
         "plugin:jsx-a11y/recommended",
         "plugin:import/errors",
         "plugin:import/warnings",
@@ -111,10 +116,9 @@
       "plugins": ["@typescript-eslint", "react", "prettier", "json", "react-hooks", "jsx-a11y", "import"],
       "rules": {
         "arrow-parens": 0,
-        "camelcase": 1,
+        "camelcase": 2,
         "import/newline-after-import": ["error", { "count": 1 }],
         "import/no-absolute-path": 2,
-        "import/no-named-default": 0,
         "import/no-named-as-default": 0,
         "import/no-named-as-default-member": 0,
         "import/prefer-default-export": 0,
@@ -125,17 +129,13 @@
           }
         ],
         "no-console": 1,
-        "no-param-reassign": [2, { "props": false }],
-        "no-underscore-dangle": ["error", { "allow": ["_id"] }],
-        "no-unused-expressions": 0,
         "no-void": 0,
         "react-hooks/rules-of-hooks": 2,
         "react-hooks/exhaustive-deps": 2,
-        "react/forbid-prop-types": 0,
-        "react/jsx-curly-brace-presence": 0,
-        "react/jsx-filename-extension": 0,
+        "react/display-name": 0,
+        "react/prop-types": 0,
         "react/jsx-props-no-spreading": 0,
-        "react/jsx-no-undef": "error",
+        "react/jsx-no-undef": 2,
         "react/jsx-sort-props": [
           "warn",
           {
@@ -147,7 +147,11 @@
             "reservedFirst": false
           }
         ],
-        "jsx-a11y/anchor-is-valid": ["error", { "components": ["Link"], "specialLink": ["onClick", "to"] }]
+        "jsx-a11y/anchor-is-valid": ["error", { "components": ["Link"], "specialLink": ["onClick", "to"] }],
+        "@typescript-eslint/no-explicit-any": ["error", { "ignoreRestArgs": true }],
+        "@typescript-eslint/no-loss-of-precision": 0,
+        "@typescript-eslint/no-non-null-assertion": 0,
+        "@typescript-eslint/no-unused-vars": ["error", { "ignoreRestSiblings": true }]
       },
       "settings": {
         "import/resolver": {
@@ -158,7 +162,7 @@
     {
       "files": ["**/stories/*"],
       "rules": {
-        "no-console": "off"
+        "no-console": 0
       }
     }
   ]

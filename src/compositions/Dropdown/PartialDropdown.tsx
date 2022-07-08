@@ -289,7 +289,7 @@ export function PartialDropdownBase(
             dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
           })
           // getFilteredOptions should handle error cases, this is here to catch canceled promises
-          .catch(() => {});
+          .catch(() => {}); /* eslint-disable-line @typescript-eslint/no-empty-function */
       }
     }, 1000);
 

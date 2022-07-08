@@ -9,13 +9,12 @@ import { TimesIcon } from 'icons/TimesIcon';
 import { MoonIcon } from 'icons/internal/MoonIcon';
 import { SunIcon } from 'icons/internal/SunIcon';
 import { Flex } from 'components/Flex';
-import { IconText } from 'components/IconText';
 import { Looper } from 'components/Looper';
 import { Rhythm } from 'components/Rhythm';
 import { PageTitle } from 'docs/helpers/PageTitle';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { Button, ButtonGroup, StyledButton } from '../index';
+import { Button, ButtonGroup } from '../index';
 
 <PageTitle src="components/Button" title="ButtonGroup" />
 
@@ -64,60 +63,58 @@ import { Button, ButtonGroup, StyledButton } from '../index';
 ### Divided groups
 
 <Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <Looper
-        list={['pill', 'brick']}
-        render={shape => (
-          <Rhythm key={shape} my={2}>
-            <Flex wrap direction="row" justifyContent="space-between">
-              <Looper
-                list={['small', 'medium', 'large']}
-                render={size => (
-                  <StateWrapper initialState="first" key={`${shape}-${size}`}>
-                    {({ state, setState }) => (
-                      <Rhythm mb={2} mr={2}>
-                        <ButtonGroup
-                          buttons={[
-                            {
-                              id: 'first',
-                              label: 'First',
-                              selected: state === 'first',
-                            },
-                            {
-                              id: 'second',
-                              label: 'Second',
-                              selected: state === 'second',
-                            },
-                            {
-                              id: 'third',
-                              label: 'Third',
-                              selected: state === 'third',
-                            },
-                            {
-                              id: 'fourth',
-                              label: 'Fourth',
-                              selected: state === 'fourth',
-                            },
-                          ]}
-                          color="primary"
-                          onClick={(event, id) => setState(id)}
-                          selectedStyle={{ opacity: 0.8 }}
-                          shape={shape}
-                          size={size}
-                          spacing="divided"
-                          weight="solid"
-                        />
-                      </Rhythm>
-                    )}
-                  </StateWrapper>
-                )}
-              />
-            </Flex>
-          </Rhythm>
-        )}
-      />
-    )}
+  <ThemeWrapper>
+    <Looper
+      list={['pill', 'brick']}
+      render={shape => (
+        <Rhythm key={shape} my={2}>
+          <Flex wrap direction="row" justifyContent="space-between">
+            <Looper
+              list={['small', 'medium', 'large']}
+              render={size => (
+                <StateWrapper initialState="first" key={`${shape}-${size}`}>
+                  {({ state, setState }) => (
+                    <Rhythm mb={2} mr={2}>
+                      <ButtonGroup
+                        buttons={[
+                          {
+                            id: 'first',
+                            label: 'First',
+                            selected: state === 'first',
+                          },
+                          {
+                            id: 'second',
+                            label: 'Second',
+                            selected: state === 'second',
+                          },
+                          {
+                            id: 'third',
+                            label: 'Third',
+                            selected: state === 'third',
+                          },
+                          {
+                            id: 'fourth',
+                            label: 'Fourth',
+                            selected: state === 'fourth',
+                          },
+                        ]}
+                        color="primary"
+                        onClick={(event, id) => setState(id)}
+                        selectedStyle={{ opacity: 0.8 }}
+                        shape={shape}
+                        size={size}
+                        spacing="divided"
+                        weight="solid"
+                      />
+                    </Rhythm>
+                  )}
+                </StateWrapper>
+              )}
+            />
+          </Flex>
+        </Rhythm>
+      )}
+    />
   </ThemeWrapper>
 </Playground>
 

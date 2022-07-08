@@ -84,7 +84,7 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
           This is another transparent banner. It has a border to distinguish it from the one above.
         </Banner>
         <Banner immediate level="transparent">
-          This banner can't be removed because it doesn't have an onClose prop.
+          This banner cannot be removed because it does not have an onClose prop.
         </Banner>
       </BannerContainer>
     )}
@@ -185,7 +185,7 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
                     level="success"
                     onClose={(event, contextId) => console.log(`closed ${contextId}`)}
                   >
-                    This is an overwriting success banner because it's got a contextId. Yay!
+                    This is an overwriting success banner because it has got a contextId. Yay!
                     <div style={{ position: 'absolute', right: '8px', fontSize: '10px', opacity: 0.4 }}>
                       {Date.now()}
                     </div>
@@ -252,7 +252,7 @@ import { Banner, BannerConsumer, BannerContainer, BannerFromContext, Banners, Ba
               onClick={() =>
                 createNotification(
                   <Banner contextId="overwritable-success" level="success">
-                    This is an overwriting success banner because it's got a contextId. Yay!
+                    This is an overwriting success banner because it has got a contextId. Yay!
                     <div style={{ position: 'absolute', right: '8px', fontSize: '10px', opacity: 0.4 }}>
                       {Date.now()}
                     </div>

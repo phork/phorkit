@@ -7,7 +7,6 @@ import { IconButtonProps, IconButton } from '../IconButton';
 import buttonStory from './Button.stories';
 import IconButtonDocumentation from './IconButton.docs.mdx';
 
-
 export default {
   ...buttonStory,
   title: 'Buttons/IconButton',

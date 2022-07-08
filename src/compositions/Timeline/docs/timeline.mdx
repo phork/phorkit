@@ -95,8 +95,9 @@ import { items } from './helpers/items';
 <Playground>
   <ThemeWrapper>
     <Timeline
-      items={items.map(({ color, ...item }, index) => ({
+      items={items.map((item, index) => ({
         ...item,
+        color: undefined,
         position: 'right-center',
         style: {
           '--timeline-item-connector-color': themes.light['primary-palette-border-color'],

@@ -32,7 +32,7 @@ export const DropoverLabel = React.forwardRef<HTMLDivElement, DropoverLabelProps
     {
       children,
       className,
-      cloned = false,
+      cloned,
       contrast = false,
       focused = false,
       noTriangle = false,

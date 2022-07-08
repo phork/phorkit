@@ -47,7 +47,7 @@ export const useBoundsObservable = ({
       {
         next: bounds => processBounds(bounds),
         error: err => console.error('Observer error: ', err) /* eslint-disable-line no-console */,
-        complete: () => {},
+        complete: () => {} /* eslint-disable-line @typescript-eslint/no-empty-function */,
       },
       ref,
     );

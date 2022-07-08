@@ -6,19 +6,15 @@ route: /compositions/DropdownWithTags
 
 import { Playground, Props } from 'docz';
 import { themes } from 'config/themes';
-import { SearchIcon } from 'icons/SearchIcon';
 import { TimesIcon } from 'icons/TimesIcon';
-import { TagIcon } from 'icons/internal/TagIcon';
 import { Avatar } from 'components/Avatar';
 import { Flex } from 'components/Flex';
 import { Rhythm } from 'components/Rhythm';
 import { Typography, TypographyWithSvg } from 'components/Typography';
-import { ListProps } from 'docs/helpers/ListProps';
 import { PageTitle } from 'docs/helpers/PageTitle';
-import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
 import { DropdownWithTags } from '../index';
-import { options, handleFilter, handleEmptyFilter } from './helpers/options';
+import { options, handleFilter } from './helpers/options';
 
 <PageTitle src="compositions/Dropdown" title="DropdownWithTags" />
 
@@ -34,7 +30,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         initialSelected={[options[3]]}
         label="Super awesome dropdown"
         layout="raised"
-        onClear={value => console.log('clear')}
+        onClear={() => console.log('clear')}
         onSelect={value => console.log('select', value)}
         onSelectionChange={value => console.log('selection', value)}
         onUnselect={value => console.log('unselect', value)}
@@ -56,7 +52,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         inputVariant="filled"
         label="Super awesome dropdown"
         layout="raised"
-        onClear={value => console.log('clear')}
+        onClear={() => console.log('clear')}
         onSelectionChange={value => console.log('selection', value)}
         options={options}
         style={{ width: 300 }}
@@ -76,7 +72,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         inputVariant="outline"
         label="Super awesome dropdown"
         layout="raised"
-        onClear={value => console.log('clear')}
+        onClear={() => console.log('clear')}
         onSelectionChange={value => console.log('selection', value)}
         options={options}
         style={{ width: 300 }}
@@ -95,7 +91,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         initialSelected={[options[3]]}
         label="Super awesome dropdown"
         layout="contained"
-        onClear={value => console.log('clear')}
+        onClear={() => console.log('clear')}
         onSelectionChange={value => console.log('selection', value)}
         options={options}
         style={{ width: 300 }}
@@ -113,7 +109,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         transitional
         label="Super awesome dropdown"
         layout="contained"
-        onClear={value => console.log('clear')}
+        onClear={() => console.log('clear')}
         onSelectionChange={value => console.log('selection', value)}
         options={options}
         placeholder="Select colors"
@@ -155,7 +151,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         inputVariant="outline"
         label="Super awesome dropdown"
         layout="raised"
-        onClear={value => console.log('clear')}
+        onClear={() => console.log('clear')}
         onSelectionChange={value => console.log('selection', value)}
         options={options}
         style={{ width: 300 }}
@@ -195,7 +191,7 @@ Keyboard navigation is available for this component. Navigate with `Up`, `Down`,
         initialSelected={[options[3]]}
         label="Super awesome dropdown"
         layout="contained"
-        onClear={value => console.log('clear')}
+        onClear={() => console.log('clear')}
         onSelectionChange={value => console.log('selection', value)}
         options={options.map(option => ({
           ...option,

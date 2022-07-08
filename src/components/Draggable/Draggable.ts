@@ -45,7 +45,7 @@ export function Draggable<E extends HTMLElement = HTMLDivElement>({
   const [dragging, setDragging] = useState<boolean>(false);
   const [relative, setRelative] = useState<Partial<Position> | undefined>();
   const lastPosition = useRef<Position>();
-  const ref = useRef<E>(null!);
+  const ref = useRef<E>(null);
 
   const clampPosition = useCallback(
     (position: Position): Position => {

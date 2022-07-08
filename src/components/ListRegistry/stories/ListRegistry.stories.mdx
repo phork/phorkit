@@ -30,7 +30,7 @@ import { ListRegistryItem, ListRegistryConsumer, ListRegistryProvider } from '..
       {({ themeId }) => (
         <ListRegistryProvider>
           <ListRegistryConsumer>
-            {({ getItem, items }) => (
+            {({ getItem }) => (
               <div style={{ padding: '10px' }}>
                 <Looper
                   end={40}

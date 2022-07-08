@@ -9,7 +9,6 @@ import { Rhythm } from 'components/Rhythm';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { Canvas } from 'stories/helpers/Canvas';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 import { FormComponentDemo } from '../../stories/helpers/FormComponentDemo';
 import { NotifiedTextbox } from '../NotifiedTextbox';
 import { Textbox } from '../Textbox';
@@ -199,8 +198,8 @@ import { textbox as variants } from './helpers/variants';
       <FormComponentDemo property="value" type="textbox">
         <Textbox
           label={isFocused ? 'Focused label' : 'Blurred label'}
-          onBlur={event => setFocused(false)}
-          onFocus={event => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          onFocus={() => setFocused(true)}
           placeholder="Hello world"
         />
       </FormComponentDemo>

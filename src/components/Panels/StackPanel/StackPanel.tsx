@@ -57,7 +57,7 @@ export const StackPanel = React.forwardRef<HTMLDivElement, StackPanelProps>(
     },
     forwardedRef,
   ): React.ReactElement<StackPanelProps> => {
-    const ref = useRef<HTMLDivElement>(null!);
+    const ref = useRef<HTMLDivElement>(null);
 
     usePanelCollapser({
       duration,

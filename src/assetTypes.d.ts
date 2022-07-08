@@ -9,7 +9,7 @@ declare module '*.png' {
 }
 
 declare module '*.svg' {
-  const exports: any;
+  const exports: unknown;
   export default exports;
 }
 

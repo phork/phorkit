@@ -60,7 +60,7 @@ export const useTextboxGroup = ({
   values,
 }: UseTextboxGroupProps): UseTextboxGroupResponse => {
   const changeFocus = useCallback(
-    (startId: string, numPlaces: number = 0): HTMLInputElement | undefined => {
+    (startId: string, numPlaces = 0): HTMLInputElement | undefined => {
       const orderByIndex = orderBy?.findIndex(id => id === startId);
       if (orderByIndex !== undefined) {
         const nextId = orderBy?.[orderByIndex + numPlaces];
@@ -113,8 +113,8 @@ export const useTextboxGroup = ({
             newValues[id] = backspace(values[id]);
           }
 
-          if (target.value === '') {
-            const element = changeFocus(id!, -1);
+          if (target.value === '' && id !== null) {
+            const element = changeFocus(id, -1);
             if (element) {
               const focusedId = element.getAttribute('data-id');
               if (focusedId !== null) {

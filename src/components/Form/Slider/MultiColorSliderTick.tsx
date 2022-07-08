@@ -21,7 +21,7 @@ export type MultiColorSliderTickProps = MergeElementPropsWithoutRef<'div', Local
  * space between each segment.
  */
 export function MultiColorSliderTick({
-  active = false,
+  active,
   number,
   className,
   colors,

@@ -103,8 +103,8 @@ export function SliderBase(
   const [focused, setFocused] = useState<boolean>(false);
   const [dragging, setDragging] = useState<boolean>(false);
   const [dragged, setDragged] = useState<number>();
-  const containerRef = useRef<HTMLElement>(null!);
-  const inputRef = useRef<HTMLInputElement>(null!);
+  const containerRef = useRef<HTMLElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const { componentId } = useComponentId(id);
   const width = containerRef.current && containerRef.current.offsetWidth;
   const color = !unstyled && (contrast ? 'contrast' : 'primary');
@@ -193,20 +193,20 @@ export function SliderBase(
 
   const handleDragMove: DraggableProps['onDragMove'] = (event, { position }) => {
     dragging || setDragging(true);
-    const percent = (position.x / width) * 100;
+    const percent = width ? (position.x / width) * 100 : 0;
     const value = calcValueFromFill(percent, event);
     setDragged(value);
   };
 
   const handleDragEnd: DraggableProps['onDragEnd'] = (event, { position }) => {
-    const percent = (position.x / width) * 100;
+    const percent = width ? (position.x / width) * 100 : 0;
     const value = calcValueFromFill(percent, event);
     setDragging(false);
     setDragged(undefined);
     reportBack(event, value);
 
     // manually focus the slider because it only focuses on click, not immediate drag
-    inputRef.current.focus();
+    inputRef.current?.focus();
   };
 
   const handleDragStart: DraggableProps['onDragStart'] = useCallback(() => setFocused(true), []);

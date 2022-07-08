@@ -1282,21 +1282,47 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
 ## Primary
 
 <Playground>
-  <ThemeWrapper withThemeId>
-    {({ themeId }) => (
-      <React.Fragment>
-        <Typography as="div" size="medium">
-          <span>Hello, world.</span>
-          <InlineTextTooltip
-            focusable
-            hoverable
-            position="top-center"
-            toggler={
-              <Typography color="accent" variants={['space-after', 'space-before']}>
-                I am a friendly tooltip with an auto-focused link.
-              </Typography>
-            }
-          >
+  <ThemeWrapper>
+    <React.Fragment>
+      <Typography as="div" size="medium">
+        <span>Hello, world.</span>
+        <InlineTextTooltip
+          focusable
+          hoverable
+          position="top-center"
+          toggler={
+            <Typography color="accent" variants={['space-after', 'space-before']}>
+              I am a friendly tooltip with an auto-focused link.
+            </Typography>
+          }
+        >
+          <React.Fragment>
+            <p style={{ marginTop: 0 }}>
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </p>
+            <LinkContainer>
+              <p>
+                <a href="#linked">I am a focused link</a>
+              </p>
+            </LinkContainer>
+            <p style={{ marginBottom: 0 }}>
+              The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
+              fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
+              the lazy dog The quick brown fox jumped over the lazy dog
+            </p>
+          </React.Fragment>
+        </InlineTextTooltip>
+        <span>There are others like me as well.</span>
+      </Typography>
+      <Typography as="div" size="medium">
+        <span>Hello, world.</span>
+        <InlineTextTooltip
+          focusable
+          hoverable
+          position="bottom-center"
+          renderChildren={({ focusRef }) => (
             <React.Fragment>
               <p style={{ marginTop: 0 }}>
                 The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
@@ -1305,7 +1331,11 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
               </p>
               <LinkContainer>
                 <p>
-                  <a href="#linked">I am a focused link</a>
+                  <a href="#linked">I am not a focused link</a>
+                  <br />
+                  <a href="#linked" ref={focusRef}>
+                    I am a focused link
+                  </a>
                 </p>
               </LinkContainer>
               <p style={{ marginBottom: 0 }}>
@@ -1314,98 +1344,64 @@ import { InlineTooltip, InlineTextTooltip, PortalTooltip, PortalTextTooltip } fr
                 jumped over the lazy dog The quick brown fox jumped over the lazy dog
               </p>
             </React.Fragment>
-          </InlineTextTooltip>
-          <span>There are others like me as well.</span>
-        </Typography>
-        <Typography as="div" size="medium">
-          <span>Hello, world.</span>
-          <InlineTextTooltip
-            focusable
-            hoverable
-            position="bottom-center"
-            renderChildren={({ focusRef }) => (
-              <React.Fragment>
-                <p style={{ marginTop: 0 }}>
-                  The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
-                  brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox
-                  jumped over the lazy dog The quick brown fox jumped over the lazy dog
-                </p>
-                <LinkContainer>
-                  <p>
-                    <a href="#linked">I am not a focused link</a>
-                    <br />
-                    <a href="#linked" ref={focusRef}>
-                      I am a focused link
-                    </a>
-                  </p>
-                </LinkContainer>
-                <p style={{ marginBottom: 0 }}>
-                  The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick
-                  brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox
-                  jumped over the lazy dog The quick brown fox jumped over the lazy dog
-                </p>
-              </React.Fragment>
-            )}
-            toggler={
-              <Typography color="accent" variants={['space-after', 'space-before']}>
-                I am a friendly tooltip with a manually focused link.
-              </Typography>
-            }
-          />
-          <span>There are others like me as well.</span>
-        </Typography>
-        <Typography as="div" size="medium">
-          <span>Sometimes a tooltip should be clickable, or on an icon.</span>
-          <PortalTextTooltip
-            layout="vertical"
-            toggler={
-              <Rhythm mx={1} style={{ top: '3px' }}>
-                <IconButton color="primary">
-                  <ArrowUpDownIcon scale="medium" />
-                </IconButton>
-              </Rhythm>
-            }
-          >
-            Tiny little portal tooltip. Hardly bigger than an acorn.
-          </PortalTextTooltip>
-          <span>That is neat.</span>
-        </Typography>
-      </React.Fragment>
-    )}
+          )}
+          toggler={
+            <Typography color="accent" variants={['space-after', 'space-before']}>
+              I am a friendly tooltip with a manually focused link.
+            </Typography>
+          }
+        />
+        <span>There are others like me as well.</span>
+      </Typography>
+      <Typography as="div" size="medium">
+        <span>Sometimes a tooltip should be clickable, or on an icon.</span>
+        <PortalTextTooltip
+          layout="vertical"
+          toggler={
+            <Rhythm mx={1} style={{ top: '3px' }}>
+              <IconButton color="primary">
+                <ArrowUpDownIcon scale="medium" />
+              </IconButton>
+            </Rhythm>
+          }
+        >
+          Tiny little portal tooltip. Hardly bigger than an acorn.
+        </PortalTextTooltip>
+        <span>That is neat.</span>
+      </Typography>
+    </React.Fragment>
   </ThemeWrapper>
 </Playground>
 
 ## Contrast
 
 <Playground>
-  <ThemeWrapper contrast withThemeId>
-    {({ themeId }) => (
-      <Typography as="div" size="medium">
-        <span>Hello, world.</span>
-        <InlineTextTooltip
-          contrast
-          hoverable
-          layout="vertical"
-          toggler={
-            <Typography variants={['space-after', 'space-before']} weight="bold">
-              I am a friendly tooltip.
-            </Typography>
-          }
-        >
-          <p style={{ marginTop: 0 }}>
-            The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
-            fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
-            the lazy dog The quick brown fox jumped over the lazy dog
-          </p>
-          <p style={{ marginBottom: 0 }}>
-            The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown
-            fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over
-            the lazy dog The quick brown fox jumped over the lazy dog
-          </p>
-        </InlineTextTooltip>
-        <span>There are others like me as well.</span>
-      </Typography>
-    )}
+  <ThemeWrapper contrast>
+    <Typography as="div" size="medium">
+      <span>Hello, world.</span>
+      <InlineTextTooltip
+        contrast
+        hoverable
+        layout="vertical"
+        toggler={
+          <Typography variants={['space-after', 'space-before']} weight="bold">
+            I am a friendly tooltip.
+          </Typography>
+        }
+      >
+        <p style={{ marginTop: 0 }}>
+          The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox
+          jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy
+          dog The quick brown fox jumped over the lazy dog
+        </p>
+        <p style={{ marginBottom: 0 }}>
+          The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox
+          jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy
+          dog The quick brown fox jumped over the lazy dog
+        </p>
+      </InlineTextTooltip>
+      <span>There are others like me as well.</span>
+    </Typography>
   </ThemeWrapper>
 </Playground>
 

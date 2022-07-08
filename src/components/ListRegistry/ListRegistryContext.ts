@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { createContext } from 'react';
 import { ListRegistryItemType, ListRegistryState } from './types';
 
@@ -12,9 +13,10 @@ export type ListRegistryContextValue<E extends HTMLElement = HTMLElement> = {
   getItem: (id: string) => ListRegistryItemType<E> | undefined;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const ListRegistryContext = createContext<ListRegistryContextValue<any>>({
   items: new Map<string, ListRegistryItemType>(),
-  registerItem: (_id, _ref) => {},
-  unregisterItem: _id => {},
-  getItem: _id => undefined,
+  registerItem: (/* id, ref */) => {},
+  unregisterItem: (/* id */) => {},
+  getItem: (/*id */) => undefined,
 });

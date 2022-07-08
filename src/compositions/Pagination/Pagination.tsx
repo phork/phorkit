@@ -48,7 +48,7 @@ type PaginationButtonProps = Pick<
   width?: number | string;
 };
 
-export type PaginationLimitedProps = {};
+export type PaginationLimitedProps = Record<string, unknown>;
 
 export type LocalPaginationProps = MergeProps<
   Omit<ThemeProps, 'unthemed'>,

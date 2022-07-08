@@ -72,7 +72,7 @@ export function PortalTextTooltip<F extends HTMLElement | undefined = undefined>
         }
 
         const content = renderChildren
-          ? renderFromPropWithFallback<PopoverRenderChildrenProps<HTMLDivElement, F>>(renderChildren!, {
+          ? renderFromPropWithFallback<PopoverRenderChildrenProps<HTMLDivElement, F>>(renderChildren, {
               close,
               focusRef,
               isTogglerFocused,

@@ -1,5 +1,4 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
-import { SearchIcon } from 'icons/SearchIcon';
 import { TagIcon } from 'icons/internal/TagIcon';
 import { Flex } from 'components/Flex';
 import { Looper } from 'components/Looper';
@@ -7,10 +6,9 @@ import { Rhythm } from 'components/Rhythm';
 import { StateWrapper } from 'docs/helpers/StateWrapper';
 import { Canvas } from 'stories/helpers/Canvas';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 import { Dropdown } from '../Dropdown';
 import { NotifiedDropdown } from '../NotifiedDropdown';
-import { options, handleFilter, handleEmptyFilter } from './helpers/options';
+import { options, handleFilter } from './helpers/options';
 import { variants } from './helpers/variants';
 
 export const dropdownContainerStyle = {

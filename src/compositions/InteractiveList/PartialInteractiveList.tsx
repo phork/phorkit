@@ -85,7 +85,7 @@ export function PartialInteractiveListBase(
   }: PartialInteractiveListProps,
   forwardedRef: React.ForwardedRef<HTMLUListElement>,
 ): React.ReactElement {
-  const ref = useRef<HTMLUListElement>(null!);
+  const ref = useRef<HTMLUListElement>(null);
   const combineRefs = makeCombineRefs<HTMLUListElement>(ref, forwardedRef);
 
   const [state] = reducer;

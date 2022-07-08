@@ -16,7 +16,7 @@ export function toastReducer(state: ToastState, action: ToastStateAction): Toast
       mutable.set(action.id, action.value);
       return mutable;
 
-    case ACTIONS.DELETE:
+    case ACTIONS.DELETE: {
       const toast = mutable.get(action.id);
       if (toast) {
         handleDelete(toast);
@@ -24,6 +24,7 @@ export function toastReducer(state: ToastState, action: ToastStateAction): Toast
         return mutable;
       }
       return state;
+    }
 
     case ACTIONS.CLEAR:
       if (mutable.size) {

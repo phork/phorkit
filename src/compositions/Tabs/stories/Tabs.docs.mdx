@@ -1,11 +1,9 @@
-import { action } from '@storybook/addon-actions';
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { Button } from 'components/Button';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 import { Canvas } from 'stories/helpers/Canvas';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 import { Tabs, TabsContainer, TabList, TabPanelGroup } from '../index';
 import { items } from './helpers/items';
 
@@ -208,7 +206,6 @@ import { items } from './helpers/items';
               disabled={disabled}
               focused={focused}
               shape="brick"
-              tabIndex={-1}
               tabIndex={-1}
               weight={selected ? 'shaded' : 'outlined'}
             >

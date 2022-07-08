@@ -81,7 +81,7 @@ const Template: ComponentStory<typeof LinkContainer> = args => <LinkContainer {.
 
 const defaultArgs = {
   children: (
-    <a href="http://phorkit.org" target="_blank">
+    <a href="http://phorkit.org" rel="noreferrer" target="_blank">
       I am a link within a LinkContainer.
     </a>
   ),
@@ -112,7 +112,7 @@ Paragraph.args = {
   children: (
     <Typography color="primary">
       Hello world.{' '}
-      <a href="http://phorkit.org" target="_blank">
+      <a href="http://phorkit.org" rel="noreferrer" target="_blank">
         I am a link within a LinkContainer.
       </a>{' '}
       I also have a paragraph wrapper.

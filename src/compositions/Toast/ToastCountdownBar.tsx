@@ -20,7 +20,7 @@ export type ToastCountdownBarProps = React.HTMLAttributes<HTMLDivElement> &
  */
 export function ToastCountdownBar({ created, duration, level, themeId, variant }: ToastCountdownBarProps) {
   const [reset, setReset] = useState(created);
-  const ref = useRef<HTMLDivElement>(null!);
+  const ref = useRef<HTMLDivElement>(null);
 
   const startCountdown = useCallback(
     duration => {

@@ -5,6 +5,9 @@
   "parserOptions": {
     "project": "./__tests__/tsconfig.json"
   },
+  "rules": {
+    "@typescript-eslint/no-empty-function": 0
+  },
   "settings": {
     "import/resolver": {
       "typescript": {}

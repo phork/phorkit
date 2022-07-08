@@ -103,7 +103,7 @@ const Template: ComponentStory<typeof Toasts> = args => (
                   level="success"
                   onClose={(_event, contextId) => action(`closed ${contextId}`)}
                 >
-                  This is an overwriting success toast because it's got a contextId. Yay!
+                  This is an overwriting success toast because it has got a contextId. Yay!
                   <div style={{ position: 'absolute', right: '8px', fontSize: '10px', opacity: 0.4 }}>{Date.now()}</div>
                 </Toast>,
               )

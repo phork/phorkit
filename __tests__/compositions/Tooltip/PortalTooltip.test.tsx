@@ -60,8 +60,7 @@ describe('<PortalTooltip />', () => {
 
     expect(() =>
       render(
-        /* @ts-ignore */
-        <PortalTooltip permanent height={80} toggler={<TimesIcon scale="3xlarge" />} width={300} />,
+        <PortalTooltip permanent height={80} toggler={<TimesIcon scale="3xlarge" />} triangleColor="red" width={300} />,
       ),
     ).toThrow();
 

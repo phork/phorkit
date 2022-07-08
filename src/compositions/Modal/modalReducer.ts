@@ -41,7 +41,7 @@ export function modalReducer(state: ModalState, action: ModalStateAction) {
       return mutable;
     }
 
-    case ACTIONS.DELETE:
+    case ACTIONS.DELETE: {
       const modal = mutable.get(action.id);
       if (modal) {
         handleDelete(modal);
@@ -49,6 +49,7 @@ export function modalReducer(state: ModalState, action: ModalStateAction) {
         return mutable;
       }
       return state;
+    }
 
     case ACTIONS.CLEAR:
       if (mutable.size) {

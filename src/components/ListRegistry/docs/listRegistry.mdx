@@ -24,7 +24,7 @@ import { ListRegistryItem, ListRegistryConsumer, ListRegistryProvider } from '..
     {({ themeId }) => (
       <ListRegistryProvider>
         <ListRegistryConsumer>
-          {({ getItem, items }) => (
+          {({ getItem }) => (
             <React.Fragment>
               <Looper
                 end={40}

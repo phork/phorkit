@@ -15,7 +15,7 @@ export function InteractiveGroupItem<E extends HTMLElement>({
   focused = false,
   scrollBehavior,
 }: InteractiveGroupItemProps<E>): React.ReactElement {
-  const ref = useRef<E>(null!);
+  const ref = useRef<E>(null);
   useInteractiveGroupItem<E>({ focused, ref, scrollBehavior });
   return render(ref);
 }

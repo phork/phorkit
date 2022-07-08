@@ -302,8 +302,8 @@ const Template: ComponentStory<typeof Modals> = args => (
                       <ModalHeader align="left" modalId={id} title="A permanent modal" />
                       <ModalBody>
                         <div>
-                          This is a permanent modal that uses a render function to receive its parent's ID. It also has
-                          a left-aligned header. Note that it does not have a close button. However you can still{' '}
+                          This is a permanent modal that uses a render function to receive its parent&#39;s ID. It also
+                          has a left-aligned header. Note that it does not have a close button. However you can still{' '}
                           <Button color="primary" onClick={() => clearModals()} weight="inline">
                             clear all modals
                           </Button>

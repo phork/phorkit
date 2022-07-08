@@ -58,7 +58,7 @@ export function TabListBase(
   }: TabListProps,
   forwardedRef: React.ForwardedRef<HTMLDivElement>,
 ): React.ReactElement<TabListProps> {
-  const ref = useRef<HTMLDivElement>(null!);
+  const ref = useRef<HTMLDivElement>(null);
   const accessible = useAccessibility();
   const { focused, handleBlur, handleFocus } = useDeepFocus<HTMLDivElement>(ref);
   const { generateComponentId } = useComponentId(componentId);

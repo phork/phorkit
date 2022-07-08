@@ -74,7 +74,7 @@ export function Modal<E extends HTMLElement = HTMLElement>({
   translations: customTranslations,
   ...props
 }: ModalProps<E>): React.ReactElement<ModalProps> {
-  const ref = useRef<HTMLDivElement>(null!);
+  const ref = useRef<HTMLDivElement>(null);
   const focusRef = useRef<E>(null!);
   const themeId = useThemeId(initThemeId);
   const { setSafeTimeout } = useSafeTimeout();

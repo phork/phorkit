@@ -60,8 +60,7 @@ describe('<InlineTooltip />', () => {
 
     expect(() =>
       render(
-        /* @ts-ignore */
-        <InlineTooltip permanent height={80} toggler={<TimesIcon scale="3xlarge" />} width={300} />,
+        <InlineTooltip permanent height={80} toggler={<TimesIcon scale="3xlarge" />} triangleColor="red" width={300} />,
       ),
     ).toThrow();
 

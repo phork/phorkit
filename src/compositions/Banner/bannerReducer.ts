@@ -15,7 +15,7 @@ export function bannerReducer(state: BannerState, action: BannerStateAction): Ba
       mutable.set(action.id, action.value);
       return mutable;
 
-    case ACTIONS.DELETE:
+    case ACTIONS.DELETE: {
       const banner = mutable.get(action.id);
       if (banner) {
         handleDelete(banner);
@@ -23,6 +23,7 @@ export function bannerReducer(state: BannerState, action: BannerStateAction): Ba
         return mutable;
       }
       return state;
+    }
 
     case ACTIONS.CLEAR:
       if (mutable.size) {

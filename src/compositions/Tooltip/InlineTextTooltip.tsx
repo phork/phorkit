@@ -72,17 +72,14 @@ export function InlineTextTooltip<F extends HTMLElement | undefined = undefined>
         }
 
         const content = renderChildren
-          ? renderFromPropWithFallback<PopoverRenderChildrenProps<InlinePopoverContentHTMLElement, F>>(
-              renderChildren!,
-              {
-                close,
-                focusRef,
-                isTogglerFocused,
-                offset,
-                position,
-                visible,
-              },
-            )
+          ? renderFromPropWithFallback<PopoverRenderChildrenProps<InlinePopoverContentHTMLElement, F>>(renderChildren, {
+              close,
+              focusRef,
+              isTogglerFocused,
+              offset,
+              position,
+              visible,
+            })
           : children;
 
         if (!content) throw new Error('Missing tooltip content');

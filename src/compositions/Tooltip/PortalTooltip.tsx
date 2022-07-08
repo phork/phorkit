@@ -61,17 +61,14 @@ export function PortalTooltip<F extends HTMLElement | undefined = undefined>({
         }
 
         const content = renderChildren
-          ? renderFromPropWithFallback<PopoverRenderChildrenProps<PortalPopoverContentHTMLElement, F>>(
-              renderChildren!,
-              {
-                close,
-                focusRef,
-                isTogglerFocused,
-                offset,
-                position,
-                visible,
-              },
-            )
+          ? renderFromPropWithFallback<PopoverRenderChildrenProps<PortalPopoverContentHTMLElement, F>>(renderChildren, {
+              close,
+              focusRef,
+              isTogglerFocused,
+              offset,
+              position,
+              visible,
+            })
           : children;
 
         if (!content) throw new Error('Missing tooltip content');
