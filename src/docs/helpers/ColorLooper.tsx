@@ -15,7 +15,9 @@ export function ColorLooper({ exclude, render, themeId, group = 'primary' }: Col
   const pattern = {
     neutral: /^color-((BG|FG)([0-9]+))$/,
     primary: /^color-((P)([0-9]+))$/,
-    state: /^color-((accent|success|warning|danger)-?(.*)(?<!contrast)(?<!O[0-9]+))$/,
+    /* this is a better state regex but safari doesn't support negative look-behinds
+    state: /^color-((accent|success|warning|danger)-?(.*)(?<!contrast)(?<!O[0-9]+))$/, */
+    state: /^color-(accent|success|warning|danger)$/,
     transparent: /^color-((.+)-O([0-9]+))$/,
   }[group];
 
