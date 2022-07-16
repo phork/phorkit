@@ -86,9 +86,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['DropdownEmpty.test.js'],
 };
+*/
 
 export const Filtered = Template.bind({});
 Filtered.args = {

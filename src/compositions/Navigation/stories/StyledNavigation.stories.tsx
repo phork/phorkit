@@ -114,9 +114,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['StyledNavigation.test.js', 'Navigation.test.js'],
 };
+*/
 
 Default.argTypes = {
   style: { table: { disable: true } },

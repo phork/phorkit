@@ -64,9 +64,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['ColoredTag.test.js', 'Tag.test.js'],
 };
+*/
 
 Default.argTypes = {
   style: { table: { disable: true } },

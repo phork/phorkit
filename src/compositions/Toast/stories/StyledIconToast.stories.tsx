@@ -63,9 +63,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['StyledIconToast.test.js', 'IconToast.test.js'],
 };
+*/
 
 Default.argTypes = {
   style: { table: { disable: true } },

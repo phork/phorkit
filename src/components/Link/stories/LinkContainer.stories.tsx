@@ -95,9 +95,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['LinkContainer.test.js'],
 };
+*/
 
 export const Underlined = Template.bind({});
 Underlined.args = {

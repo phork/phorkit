@@ -72,9 +72,11 @@ Default.args = {
   } as React.CSSProperties,
 };
 
+/*
 Default.parameters = {
   jest: ['Triangle.test.js'],
 };
+*/
 
 export const TopPosition = Template.bind({});
 TopPosition.args = {

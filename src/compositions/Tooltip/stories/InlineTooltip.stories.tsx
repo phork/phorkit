@@ -278,9 +278,11 @@ Default.args = {
   position: 'top-left',
 };
 
+/*
 Default.parameters = {
   jest: ['InlineTooltip.test.js'],
 };
+*/
 
 export const TopLeftPosition = Template.bind({});
 TopLeftPosition.storyName = 'Position: Top left';

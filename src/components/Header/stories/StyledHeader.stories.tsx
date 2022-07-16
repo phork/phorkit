@@ -64,9 +64,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['StyledHeader.test.js', 'Header.test.js'],
 };
+*/
 
 Default.argTypes = {
   contrast: { table: { disable: true } },

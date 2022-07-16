@@ -104,9 +104,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['StyledButton.test.js', 'Button.test.js'],
 };
+*/
 
 Default.argTypes = {
   style: { table: { disable: true } },

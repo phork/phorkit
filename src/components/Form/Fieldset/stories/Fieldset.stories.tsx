@@ -71,6 +71,8 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['Fieldset.test.js'],
 };
+*/

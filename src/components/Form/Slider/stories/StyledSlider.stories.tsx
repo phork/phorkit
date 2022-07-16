@@ -61,9 +61,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['StyledSlider.test.js', 'Slider.test.js'],
 };
+*/
 
 Default.argTypes = {
   style: { table: { disable: true } },

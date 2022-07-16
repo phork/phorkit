@@ -89,9 +89,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['IconStatusBubble.test.js', 'StatusBubble.test.js'],
 };
+*/
 
 export const PrimaryColor = Template.bind({});
 PrimaryColor.storyName = 'Color: Primary';

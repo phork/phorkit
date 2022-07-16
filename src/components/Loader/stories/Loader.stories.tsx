@@ -91,9 +91,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['Loader.test.js'],
 };
+*/
 
 export const SmallScale = Template.bind({});
 SmallScale.storyName = 'Scale: Small';

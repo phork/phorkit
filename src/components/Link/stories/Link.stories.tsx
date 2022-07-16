@@ -103,9 +103,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['Link.test.js'],
 };
+*/
 
 const displayDecorators: typeof Default.decorators = [
   Story => (

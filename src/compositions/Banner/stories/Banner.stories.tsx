@@ -116,9 +116,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['Banner.test.js'],
 };
+*/
 
 export const PrimaryLevel = Template.bind({});
 PrimaryLevel.storyName = 'Level: Primary';

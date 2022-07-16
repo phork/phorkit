@@ -77,9 +77,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['StyledTag.test.js', 'Tag.test.js'],
 };
+*/
 
 Default.argTypes = {
   style: { table: { disable: true } },

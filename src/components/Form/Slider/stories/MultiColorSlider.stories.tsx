@@ -151,6 +151,8 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['MultiColorSlider.test.js'],
 };
+*/

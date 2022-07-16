@@ -64,9 +64,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['StyledFooter.test.js', 'Footer.test.js'],
 };
+*/
 
 Default.argTypes = {
   style: { table: { disable: true } },

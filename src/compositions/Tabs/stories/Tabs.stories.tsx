@@ -185,9 +185,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['Tabs.test.js'],
 };
+*/
 
 export const HorizontalOrientation = Template.bind({});
 HorizontalOrientation.storyName = 'Orientation: Horizontal';

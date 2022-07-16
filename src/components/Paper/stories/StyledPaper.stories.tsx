@@ -80,9 +80,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['StyledPaper.test.js', 'Paper.test.js'],
 };
+*/
 
 Default.argTypes = {
   style: { table: { disable: true } },

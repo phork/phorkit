@@ -258,9 +258,11 @@ Default.args = {
   position: 'top-left',
 };
 
+/*
 Default.parameters = {
   jest: ['InlinePopover.test.js'],
 };
+*/
 
 export const TopLeftPosition = Template.bind({});
 TopLeftPosition.storyName = 'Position: Top left';

@@ -94,9 +94,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['IconTextButton.test.js'],
 };
+*/
 
 export const PrimaryColor = Template.bind({});
 PrimaryColor.storyName = 'Color: Primary';

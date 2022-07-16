@@ -102,9 +102,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['Notification.test.js'],
 };
+*/
 
 export const DividedNotification = Template.bind({});
 DividedNotification.args = {

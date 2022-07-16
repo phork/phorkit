@@ -160,6 +160,8 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['StackPanel.test.js'],
 };
+*/

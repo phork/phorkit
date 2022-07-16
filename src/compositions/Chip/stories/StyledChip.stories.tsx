@@ -93,9 +93,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['StyledChip.test.js', 'Chip.test.js'],
 };
+*/
 
 Default.argTypes = {
   style: { table: { disable: true } },

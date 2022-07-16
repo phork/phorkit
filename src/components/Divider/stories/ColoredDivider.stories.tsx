@@ -58,9 +58,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['ColoredDivider.test.js', 'Divider.test.js'],
 };
+*/
 
 Default.argTypes = {
   style: { table: { disable: true } },

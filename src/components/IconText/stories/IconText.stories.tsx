@@ -108,9 +108,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['IconText.test.js'],
 };
+*/
 
 export const InlineReverse = Template.bind({});
 InlineReverse.storyName = 'Inline reverse';

@@ -86,9 +86,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['StyledIconButton.test.js', 'IconButton.test.js'],
 };
+*/
 
 Default.argTypes = {
   style: { table: { disable: true } },

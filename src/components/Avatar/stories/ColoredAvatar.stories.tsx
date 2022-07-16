@@ -61,9 +61,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['ColoredAvatar.test.js', 'Avatar.test.js'],
 };
+*/
 
 Default.argTypes = {
   as: { table: { disable: true } },

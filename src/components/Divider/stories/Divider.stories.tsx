@@ -95,9 +95,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['Divider.test.js'],
 };
+*/
 
 export const PrimaryVariant = Template.bind({});
 PrimaryVariant.storyName = 'Variant: Primary';

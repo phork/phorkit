@@ -137,9 +137,11 @@ Default.args = {
   children: undefined,
 };
 
+/*
 Default.parameters = {
   jest: ['Toggle.test.js'],
 };
+*/
 
 export const Labeled = Template.bind({});
 Labeled.args = {

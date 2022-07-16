@@ -118,6 +118,8 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['PermanentStackPanel.test.js'],
 };
+*/

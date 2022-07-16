@@ -60,9 +60,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['StyledTitledToast.test.js', 'TitledToast.test.js'],
 };
+*/
 
 Default.argTypes = {
   style: { table: { disable: true } },

@@ -105,9 +105,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['StyledTextbox.test.js', 'Textbox.test.js'],
 };
+*/
 
 Default.argTypes = {
   style: { table: { disable: true } },

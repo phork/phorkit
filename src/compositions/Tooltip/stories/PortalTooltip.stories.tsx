@@ -289,9 +289,11 @@ Default.args = {
   position: 'top-left',
 };
 
+/*
 Default.parameters = {
   jest: ['PortalTooltip.test.js'],
 };
+*/
 
 export const TopLeftPosition = Template.bind({});
 TopLeftPosition.storyName = 'Position: Top left';

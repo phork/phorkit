@@ -188,6 +188,8 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['Flex.test.js'],
 };
+*/

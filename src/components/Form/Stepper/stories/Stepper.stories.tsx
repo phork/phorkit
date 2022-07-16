@@ -299,9 +299,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['Stepper.test.js'],
 };
+*/
 
 export const UnderlineVariant = Template.bind({});
 UnderlineVariant.storyName = 'Variant: Underline';

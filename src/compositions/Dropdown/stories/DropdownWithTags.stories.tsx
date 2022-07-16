@@ -309,9 +309,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['DropdownWithTags.test.js'],
 };
+*/
 
 export const RaisedLayout = Template.bind({});
 RaisedLayout.storyName = 'Layout: Raised';

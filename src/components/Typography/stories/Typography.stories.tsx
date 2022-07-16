@@ -157,6 +157,8 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['Typography.test.js'],
 };
+*/

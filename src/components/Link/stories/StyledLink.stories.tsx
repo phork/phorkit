@@ -66,9 +66,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['StyledLink.test.js', 'Link.test.js'],
 };
+*/
 
 Default.argTypes = {
   style: { table: { disable: true } },
