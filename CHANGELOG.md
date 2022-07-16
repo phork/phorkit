@@ -1,5 +1,14 @@
 # Changelog
 
+# [15.1.0](https://github.com/phork/phorkit/compare/v15.0.0...v15.1.0) (2022-07-16)
+
+### 🐛 Bug Fixes
+
+- better typescript, eslint ([4629182](https://github.com/phork/phorkit/commit/4629182))
+- color looper regex fix for safari ([aa67e3a](https://github.com/phork/phorkit/commit/aa67e3a))
+- revert AsReactType generics ([39e578d](https://github.com/phork/phorkit/commit/39e578d))
+- update avatar sizes focus rings ([e7aebdc](https://github.com/phork/phorkit/commit/e7aebdc))
+
 ## [15.0.1](https://github.com/phork/phorkit/compare/v15.0.0...v15.0.1) (2022-01-05)
 
 ### 🐛 Bug Fixes
