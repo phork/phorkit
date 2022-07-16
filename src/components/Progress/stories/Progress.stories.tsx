@@ -134,9 +134,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['Progress.test.js'],
 };
+*/
 
 export const PrimaryColor = Template.bind({});
 PrimaryColor.storyName = 'Color: Primary';

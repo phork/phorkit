@@ -132,9 +132,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['Modal.test.js'],
 };
+*/
 
 export const Basic = Template.bind({});
 Basic.args = {

@@ -113,9 +113,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['IconCount.test.js'],
 };
+*/
 
 export const Active = Template.bind({});
 Active.args = {

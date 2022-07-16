@@ -71,9 +71,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['StyledCard.test.js', 'Card.test.js'],
 };
+*/
 
 Default.argTypes = {
   raised: { table: { disable: true } },

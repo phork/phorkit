@@ -91,9 +91,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['ColoredButton.test.js', 'Button.test.js'],
 };
+*/
 
 Default.argTypes = {
   style: { table: { disable: true } },

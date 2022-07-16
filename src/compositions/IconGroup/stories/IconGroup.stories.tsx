@@ -89,9 +89,11 @@ Default.args = {
   scale: 'medium' as IconGroupProps['scale'],
 };
 
+/*
 Default.parameters = {
   jest: ['IconGroup.test.js'],
 };
+*/
 
 export const SmallScale = Template.bind({});
 SmallScale.storyName = 'Scale: Small';

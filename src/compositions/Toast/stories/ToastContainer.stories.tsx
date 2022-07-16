@@ -97,6 +97,8 @@ Default.args = {
   position: 'bottom-right',
 };
 
+/*
 Default.parameters = {
   jest: ['ToastContainer.test.js'],
 };
+*/

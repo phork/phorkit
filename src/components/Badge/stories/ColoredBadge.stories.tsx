@@ -60,9 +60,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['ColoredBadge.test.js', 'Badge.test.js'],
 };
+*/
 
 Default.argTypes = {
   style: { table: { disable: true } },

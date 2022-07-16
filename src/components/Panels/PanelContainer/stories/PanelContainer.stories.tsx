@@ -104,6 +104,8 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['PanelContainer.test.js'],
 };
+*/

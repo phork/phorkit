@@ -161,6 +161,8 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['SidePanel.test.js'],
 };
+*/

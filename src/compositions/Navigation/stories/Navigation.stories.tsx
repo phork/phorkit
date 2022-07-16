@@ -149,9 +149,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['Navigation.test.js'],
 };
+*/
 
 export const Animated = Template.bind({});
 Animated.args = {

@@ -122,9 +122,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['RadioGroup.test.js'],
 };
+*/
 
 export const InlineLayout = Template.bind({});
 InlineLayout.storyName = 'Layout: Inline';

@@ -66,9 +66,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['StyledProgress.test.js', 'Progress.test.js'],
 };
+*/
 
 Default.argTypes = {
   style: { table: { disable: true } },

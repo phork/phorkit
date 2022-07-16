@@ -63,9 +63,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['ColoredShade.test.js', 'Shade.test.js'],
 };
+*/
 
 Default.argTypes = {
   style: { table: { disable: true } },

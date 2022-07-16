@@ -114,9 +114,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['LabelWrapper.test.js'],
 };
+*/
 
 export const FullWidth = Template.bind({});
 FullWidth.storyName = 'Full width';

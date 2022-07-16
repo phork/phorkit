@@ -158,9 +158,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['Checkbox.test.js'],
 };
+*/
 
 export const CheckedState = Template.bind({});
 CheckedState.storyName = 'State: Checked';

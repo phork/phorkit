@@ -228,9 +228,11 @@ Default.args = {
   children: 'Super fantastic label',
 };
 
+/*
 Default.parameters = {
   jest: ['Slider.test.js'],
 };
+*/
 
 export const RightValuePosition = Template.bind({});
 RightValuePosition.storyName = 'Value position: Right';

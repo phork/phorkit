@@ -100,9 +100,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['StyledPassword.test.js', 'Password.test.js'],
 };
+*/
 
 Default.argTypes = {
   style: { table: { disable: true } },

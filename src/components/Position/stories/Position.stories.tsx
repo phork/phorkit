@@ -113,9 +113,11 @@ Default.args = {
   ...defaultArgs,
 };
 
+/*
 Default.parameters = {
   jest: ['Position.test.js'],
 };
+*/
 
 const CompleteTemplate: ComponentStory<typeof Position> = ({ variant }) => (
   <React.Fragment>
