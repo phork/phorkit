@@ -105,10 +105,12 @@ export function Rhythm({ children, className, grouped = false, wrapper, ...props
                     ...props,
                     key: i,
                     className: classes,
-                  } as React.HTMLAttributes<unknown>)
+                  } as React.HTMLAttributes<{ className?: string }>)
                 : null;
             }
-            return React.cloneElement(child, {
+
+            // [TODO:ts] revisit casting
+            return React.cloneElement(child as React.ReactElement<{ className?: string }>, {
               ...props,
               className: classes,
             });

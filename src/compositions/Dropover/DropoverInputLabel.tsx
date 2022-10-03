@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './styles/Dropover.module.css';
 
 export type DropoverInputLabelProps = {
-  children: React.ReactChild | React.ReactFragment;
+  children: React.ReactElement<{ autoFocus?: boolean }>;
   className?: string;
   cloned?: boolean;
   focused?: boolean;
