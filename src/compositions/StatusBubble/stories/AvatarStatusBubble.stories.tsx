@@ -77,7 +77,7 @@ const defaultArgs = {
     </React.Fragment>
   ),
   imgSrc: '/images/avatar.jpg',
-  initials: 'EC',
+  initials: 'P',
   position: 'right-top' as AvatarStatusBubbleProps['position'],
   unthemed: false,
 };

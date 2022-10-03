@@ -95,7 +95,7 @@ const defaultArgs = {
   actionable: false,
   color: 'primary' as AvatarProps['color'],
   contrast: false,
-  initials: 'EC',
+  initials: 'P',
   size: 'medium' as AvatarProps['size'],
   unthemed: false,
 };
@@ -115,7 +115,7 @@ export const Image = Template.bind({});
 Image.storyName = 'With image';
 Image.args = {
   ...defaultArgs,
-  imgSrc: '/images/avatar.jpg',
+  imgSrc: '/images/avatar.png',
 };
 
 export const Initials = Template.bind({});

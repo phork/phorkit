@@ -52,7 +52,7 @@ const Template: ComponentStory<(args: ColoredAvatarProps) => ReturnType<typeof C
 const defaultArgs = {
   actionable: false,
   colorId: 'P60' as ThemeColorIds,
-  initials: 'EC',
+  initials: 'P',
   size: 'medium' as ColoredAvatarProps['size'],
 };
 

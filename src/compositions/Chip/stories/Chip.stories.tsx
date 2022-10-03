@@ -136,7 +136,7 @@ const Template: ComponentStory<typeof Chip> = args => <Chip {...args} />;
 const defaultArgs = {
   actionable: false,
   active: false,
-  avatar: { initials: 'EC', color: 'primary' as AvatarProps['color'], imgSrc: '/images/avatar.jpg' },
+  avatar: { initials: 'P', color: 'primary' as AvatarProps['color'], imgSrc: '/images/avatar.jpg' },
   contrast: false,
   focused: false,
   hovered: false,
@@ -192,7 +192,7 @@ LargeSize.args = {
 export const Initials = Template.bind({});
 Initials.args = {
   ...defaultArgs,
-  avatar: { initials: 'EC', color: 'primary' as AvatarProps['color'] },
+  avatar: { initials: 'P', color: 'primary' as AvatarProps['color'] },
   size: 'medium',
 };
 
@@ -200,7 +200,7 @@ export const Actionable = Template.bind({});
 Actionable.args = {
   ...defaultArgs,
   actionable: true,
-  avatar: { initials: 'EC', color: 'primary' as AvatarProps['color'] },
+  avatar: { initials: 'P', color: 'primary' as AvatarProps['color'] },
   size: 'medium',
 };
 
@@ -208,7 +208,7 @@ export const ButtonIcon = Template.bind({});
 ButtonIcon.storyName = 'With an icon button';
 ButtonIcon.args = {
   ...defaultArgs,
-  avatar: { initials: 'EC', color: 'primary' as AvatarProps['color'] },
+  avatar: { initials: 'P', color: 'primary' as AvatarProps['color'] },
   icon: (
     <Rhythm p={1}>
       <IconButton noHeight aria-label="Remove tag" color="neutral" onClick={action('remove tag')} shape="circle">

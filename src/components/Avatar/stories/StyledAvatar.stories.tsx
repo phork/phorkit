@@ -50,7 +50,7 @@ const Template: ComponentStory<typeof StyledAvatar> = args => <StyledAvatar {...
 const defaultArgs = {
   actionable: false,
   backgroundColor: '#556270',
-  initials: 'EC',
+  initials: 'P',
   size: 'medium' as StyledAvatarProps['size'],
   textColor: '#fff',
 };

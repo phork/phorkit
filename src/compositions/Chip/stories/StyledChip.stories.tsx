@@ -72,7 +72,7 @@ const defaultArgs = {
   avatarBackgroundColor: '#f41150',
   avatarTextColor: '#fff',
   actionable: true,
-  avatar: { initials: 'EC' },
+  avatar: { initials: 'P' },
   icon: (
     <Rhythm mr={2}>
       <CheckIcon scale="medium" />

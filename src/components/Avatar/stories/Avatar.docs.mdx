@@ -16,7 +16,7 @@ import { Avatar } from '../Avatar';
 ### Contrast
 
 <Canvas contrast>
-  <Avatar contrast initials="EC" />
+  <Avatar contrast initials="P" />
 </Canvas>
 
 ## Examples
@@ -28,7 +28,7 @@ import { Avatar } from '../Avatar';
         list={['xsmall', 'small', 'medium', 'large', 'xlarge', '2xlarge', '3xlarge', '4xlarge', '5xlarge']}
         render={size => (
           <Rhythm key={size} m={2}>
-            <Avatar actionable color="primary" imgSrc="/images/avatar.jpg" initials="EC" size={size} title={size} />
+            <Avatar actionable color="primary" imgSrc="/images/avatar.png" initials="P" size={size} title={size} />
           </Rhythm>
         )}
       />
@@ -43,7 +43,7 @@ import { Avatar } from '../Avatar';
         list={['xsmall', 'small', 'medium', 'large', 'xlarge', '2xlarge', '3xlarge', '4xlarge', '5xlarge']}
         render={size => (
           <Rhythm key={size} m={2}>
-            <Avatar actionable color="primary" initials="EC" size={size} title={size} />
+            <Avatar actionable color="primary" imgSrc="/images/avatar.jpg" initials="P" size={size} title={size} />
           </Rhythm>
         )}
       />
@@ -58,7 +58,22 @@ import { Avatar } from '../Avatar';
         list={['xsmall', 'small', 'medium', 'large', 'xlarge', '2xlarge', '3xlarge', '4xlarge', '5xlarge']}
         render={size => (
           <Rhythm key={size} m={2}>
-            <Avatar actionable color="neutral" initials="EC" size={size} title={size} />
+            <Avatar actionable color="primary" initials="P" size={size} title={size} />
+          </Rhythm>
+        )}
+      />
+    </Rhythm>
+  </Flex>
+</Canvas>
+
+<Canvas>
+  <Flex wrap alignItems="center" direction="row">
+    <Rhythm m={2}>
+      <Looper
+        list={['xsmall', 'small', 'medium', 'large', 'xlarge', '2xlarge', '3xlarge', '4xlarge', '5xlarge']}
+        render={size => (
+          <Rhythm key={size} m={2}>
+            <Avatar actionable color="neutral" initials="P" size={size} title={size} />
           </Rhythm>
         )}
       />
@@ -73,7 +88,7 @@ import { Avatar } from '../Avatar';
         list={['xsmall', 'small', 'medium', 'large', 'xlarge', '2xlarge', '3xlarge', '4xlarge', '5xlarge']}
         render={size => (
           <Rhythm key={size} m={2}>
-            <Avatar actionable contrast initials="EC" size={size} title={size} />
+            <Avatar actionable contrast initials="P" size={size} title={size} />
           </Rhythm>
         )}
       />

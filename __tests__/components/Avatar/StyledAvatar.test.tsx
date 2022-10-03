@@ -12,27 +12,25 @@ const styles = {
 
 describe('<StyledAvatar />', () => {
   it('should render with initials', () => {
-    const { getByText } = render(<StyledAvatar initials="EC" {...styles} />);
-    expect(getByText('EC')).toBeTruthy();
+    const { getByText } = render(<StyledAvatar initials="P" {...styles} />);
+    expect(getByText('P')).toBeTruthy();
   });
 
   it('should render with an image', () => {
-    const { getByTestId } = render(
-      <StyledAvatar data-testid="avatar" imgSrc="/avatar.png" initials="EC" {...styles} />,
-    );
+    const { getByTestId } = render(<StyledAvatar data-testid="avatar" imgSrc="/avatar.png" initials="P" {...styles} />);
     const avatar = getByTestId('avatar');
     expect(avatar?.style.getPropertyValue('background-image')).toBe('url(/avatar.png)');
   });
 
   it('should render a non-actionable avatar', () => {
-    const { getByTestId } = render(<StyledAvatar data-testid="avatar" initials="EC" {...styles} />);
+    const { getByTestId } = render(<StyledAvatar data-testid="avatar" initials="P" {...styles} />);
     expect(document.body).toHaveFocus();
     userEvent.tab();
     expect(getByTestId('avatar')).not.toHaveFocus();
   });
 
   it('should render an actionable avatar', () => {
-    const { getByTestId } = render(<StyledAvatar actionable data-testid="avatar" initials="EC" {...styles} />);
+    const { getByTestId } = render(<StyledAvatar actionable data-testid="avatar" initials="P" {...styles} />);
     expect(document.body).toHaveFocus();
     userEvent.tab();
     expect(getByTestId('avatar')).toHaveFocus();
@@ -41,7 +39,7 @@ describe('<StyledAvatar />', () => {
   it('should be clickable when actionable', () => {
     const onClick = jest.fn();
     const { getByTestId } = render(
-      <StyledAvatar actionable data-testid="avatar" initials="EC" onClick={onClick} {...styles} />,
+      <StyledAvatar actionable data-testid="avatar" initials="P" onClick={onClick} {...styles} />,
     );
 
     expect(onClick).not.toHaveBeenCalled();
@@ -55,7 +53,7 @@ describe('<StyledAvatar />', () => {
   it('should trigger on Enter keydown when actionable', () => {
     const onClick = jest.fn();
     const { getByTestId } = render(
-      <StyledAvatar actionable data-testid="avatar" initials="EC" onClick={onClick} {...styles} />,
+      <StyledAvatar actionable data-testid="avatar" initials="P" onClick={onClick} {...styles} />,
     );
 
     expect(onClick).not.toHaveBeenCalled();
@@ -68,25 +66,23 @@ describe('<StyledAvatar />', () => {
   });
 
   it('should render as a div', () => {
-    const { container } = render(<StyledAvatar initials="EC" {...styles} />);
+    const { container } = render(<StyledAvatar initials="P" {...styles} />);
     expect(container.firstChild?.nodeName).toBe('DIV');
   });
 
   it('should render as a button', () => {
-    const { container } = render(<StyledAvatar actionable initials="EC" {...styles} />);
+    const { container } = render(<StyledAvatar actionable initials="P" {...styles} />);
     expect(container.firstChild?.nodeName).toBe('BUTTON');
   });
 
   it('should render as a link', () => {
-    const { container } = render(<StyledAvatar<'a'> as="a" href="#avatar" initials="EC" {...styles} />);
+    const { container } = render(<StyledAvatar<'a'> as="a" href="#avatar" initials="P" {...styles} />);
     expect(container.firstChild?.nodeName).toBe('A');
   });
 
   it('should render using a functional component', () => {
-    const { container, getByText } = render(
-      <StyledAvatar<'a'> as={AsTypeA} href="#avatar" initials="EC" {...styles} />,
-    );
+    const { container, getByText } = render(<StyledAvatar<'a'> as={AsTypeA} href="#avatar" initials="P" {...styles} />);
     expect(container.firstChild?.nodeName).toBe('A');
-    expect(getByText('EC')).toBeTruthy();
+    expect(getByText('P')).toBeTruthy();
   });
 });

@@ -8,6 +8,11 @@ declare module '*.png' {
   export default exports;
 }
 
+declare module '*.jpg' {
+  const exports: string;
+  export default exports;
+}
+
 declare module '*.svg' {
   const exports: unknown;
   export default exports;

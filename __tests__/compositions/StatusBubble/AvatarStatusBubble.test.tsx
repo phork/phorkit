@@ -5,19 +5,19 @@ import { AvatarStatusBubble } from 'lib';
 describe('<AvatarStatusBubble />', () => {
   it('should render an avatar status bubble with initials', () => {
     const { queryByText } = render(
-      <AvatarStatusBubble header="Header" initials="EC">
+      <AvatarStatusBubble header="Header" initials="P">
         Hello world
       </AvatarStatusBubble>,
     );
 
     expect(queryByText('Header')).toBeTruthy();
     expect(queryByText('Hello world')).toBeTruthy();
-    expect(queryByText('EC')).toBeTruthy();
+    expect(queryByText('P')).toBeTruthy();
   });
 
   it('should render an avatar status bubble with an image', () => {
     const { queryByText, queryByRole } = render(
-      <AvatarStatusBubble header="Header" imgSrc="/avatar.png" initials="EC">
+      <AvatarStatusBubble header="Header" imgSrc="/avatar.png" initials="P">
         Hello world
       </AvatarStatusBubble>,
     );
