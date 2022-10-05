@@ -50,6 +50,7 @@
     "removeComments": false,
     "resolveJsonModule": false,
     "rootDir": "src",
+    "skipLibCheck": true,
     "strict": true,
     "target": "ES2019",
     "typeRoots": ["node_modules/@types", "src/*.d.ts"],
