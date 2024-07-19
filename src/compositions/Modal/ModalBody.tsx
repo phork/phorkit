@@ -28,7 +28,9 @@ export const ModalBody = React.forwardRef<HTMLDivElement, ModalBodyProps>(
           className,
         )}
         ref={forwardedRef}
+        role={scrollable ? 'region' : undefined}
         style={style}
+        tabIndex={scrollable ? 0 : undefined}
         {...props}
       >
         <div className={styles['modalBody__content']}>{children}</div>

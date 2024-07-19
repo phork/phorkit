@@ -54,6 +54,7 @@ export default {
 const Template: ComponentStory<typeof StyledProgress> = args => <StyledProgress {...args} />;
 
 const defaultArgs = {
+  'aria-label': 'Progress bar',
   backgroundColor: 'rgba(0, 0, 0, .1)',
   orientation: 'horizontal' as StyledProgressProps['orientation'],
   percent: 60,

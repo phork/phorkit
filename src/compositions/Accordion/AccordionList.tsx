@@ -133,6 +133,7 @@ export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps
                     handleItemClick(event, id)
                   }
                   orientation={orientation}
+                  role="tab"
                   unstyled={unstyled}
                   {...labelProps}
                   {...stateProps}
@@ -145,7 +146,7 @@ export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps
                   id={generateComponentId(id, 'panel')}
                   orientation={orientation}
                   parentRef={forwardedRef}
-                  role="region"
+                  role="tabpanel"
                   {...contentProps}
                   {...stateProps}
                 >

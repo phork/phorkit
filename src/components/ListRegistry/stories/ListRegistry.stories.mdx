@@ -55,7 +55,10 @@ import { ListRegistryItem, ListRegistryConsumer, ListRegistryProvider } from '..
                     scrollbar['scrollbar--primary'],
                     scrollbar[`scrollbar--${themeId}`],
                   )}
+                  role="region"
                   style={{ marginTop: '12px', height: '100px', overflow: 'auto' }}
+                  // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+                  tabIndex={0}
                 >
                   <Looper
                     end={40}
@@ -126,7 +129,10 @@ import { ListRegistryItem, ListRegistryConsumer, ListRegistryProvider } from '..
                         scrollbar['scrollbar--primary'],
                         scrollbar[`scrollbar--${themeId}`],
                       )}
+                      role="region"
                       style={{ marginTop: '12px', height: '100px', overflow: 'auto' }}
+                      // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+                      tabIndex={0}
                     >
                       <Looper
                         end={40}

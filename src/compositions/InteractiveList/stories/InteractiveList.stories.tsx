@@ -256,6 +256,7 @@ export default {
 const Template: ComponentStory<typeof InteractiveList> = args => <InteractiveList {...args} />;
 
 const defaultArgs = {
+  'aria-label': 'Interactive list',
   allowReselect: false,
   contrast: false,
   color: 'primary' as InteractiveListProps['color'],

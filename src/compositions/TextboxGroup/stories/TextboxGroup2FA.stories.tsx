@@ -110,6 +110,7 @@ const Template: ComponentStory<typeof TextboxGroup2FA> = ({ onChange, value, ...
 );
 
 const defaultArgs = {
+  inputLabel: 'Character',
   inputWidth: 64,
   length: 6,
   size: '7xlarge' as TextboxGroup2FAProps['size'],
