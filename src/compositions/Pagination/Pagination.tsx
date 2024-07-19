@@ -174,7 +174,7 @@ export function Pagination({
   withPageLinks = false,
   withPreviousAndNext = false,
   ...props
-}: PaginationProps) {
+}: PaginationProps): JSX.Element {
   const { generateComponentId } = useComponentId(id);
   const themeId = useThemeId(initThemeId);
   const translations = useTranslations<PaginationTranslations>({

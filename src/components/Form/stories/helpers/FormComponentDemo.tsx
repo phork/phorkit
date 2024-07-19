@@ -8,7 +8,13 @@ export type FormComponentDemoProps = {
   type: 'checkbox' | 'password' | 'radio' | 'select' | 'slider' | 'stepper' | 'textarea' | 'textbox' | 'toggle';
 };
 
-export function FormComponentDemo({ children, initialValue, property, style, type }: FormComponentDemoProps) {
+export function FormComponentDemo({
+  children,
+  initialValue,
+  property,
+  style,
+  type,
+}: FormComponentDemoProps): JSX.Element {
   const [value, setValue] = useState<FormComponentDemoProps['initialValue']>(initialValue);
   const clearable = ['textbox', 'password'].includes(type);
 

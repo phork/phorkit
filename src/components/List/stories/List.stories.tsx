@@ -287,7 +287,7 @@ Scrollable.args = {
   variant: 'bordered',
 };
 
-export const Manual = (args: ListProps<'div'>) => (
+export const Manual = (args: ListProps<'div'>): JSX.Element => (
   <List<'div'> {...args}>
     <ListItem<'div'> as="div">Normal</ListItem>
     <ListItem<'div'> selected as="div">

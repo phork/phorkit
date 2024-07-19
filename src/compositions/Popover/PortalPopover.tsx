@@ -57,7 +57,7 @@ export function PortalPopover<F extends HTMLElement | undefined = undefined>({
   withoutTogglerFocusStyle,
   withPopoverTogglerProps,
   ...props
-}: PortalPopoverProps<F>) {
+}: PortalPopoverProps<F>): JSX.Element {
   return (
     <Popover<PortalPopoverContentHTMLElement, F>
       className={className}

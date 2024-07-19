@@ -3,7 +3,12 @@
  * promise that can be canceled using the cancel
  * function that's also returned.
  */
-export const makeCancelable = <T = unknown>(promise: Promise<T>) => {
+export const makeCancelable = <T = unknown>(
+  promise: Promise<T>,
+): {
+  promise: Promise<T>;
+  cancel(): void;
+} => {
   let hasCanceled = false;
 
   const wrappedPromise = new Promise<T>((resolve, reject) => {

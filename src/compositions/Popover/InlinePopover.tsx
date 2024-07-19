@@ -59,7 +59,7 @@ export function InlinePopover<F extends HTMLElement | undefined = undefined>({
   withoutTogglerFocusStyle,
   withPopoverTogglerProps,
   ...props
-}: InlinePopoverProps<F>) {
+}: InlinePopoverProps<F>): JSX.Element {
   return (
     <Popover<InlinePopoverContentHTMLElement, F>
       className={className}

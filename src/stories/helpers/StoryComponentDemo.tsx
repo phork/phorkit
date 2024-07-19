@@ -23,7 +23,7 @@ export function StoryComponentDemo<V, E extends (...args: any[]) => void>({
   processValue,
   valuePropName,
   ...props
-}: StoryComponentDemoProps<V>) {
+}: StoryComponentDemoProps<V>): JSX.Element {
   const [value, setValue] = useState<V | undefined>(initialValue);
 
   return (

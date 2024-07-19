@@ -52,7 +52,7 @@ export function MultiColorSlider({
   themeId: initThemeId,
   value,
   ...props
-}: MultiColorSliderProps) {
+}: MultiColorSliderProps): JSX.Element {
   const themeId = useThemeId(initThemeId);
   const theme = themes[themeId];
 

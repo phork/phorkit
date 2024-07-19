@@ -16,7 +16,7 @@ export type InlineDropoverProps<F extends HTMLElement | undefined = undefined> =
   align?: HorizontalPosition;
   width?: number;
   height?: number;
-  label: RenderFromPropElement<object>;
+  label: RenderFromPropElement<Record<string, unknown>>;
 };
 
 export const defaultInlineOffset = {

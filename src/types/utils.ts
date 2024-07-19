@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export type MergeProps<T extends object, P extends object> = Omit<T, keyof P> & P;
+export type MergeProps<T extends Record<string, any>, P extends Record<string, any>> = Omit<T, keyof P> & P;
 
 // see https://github.com/microsoft/TypeScript/issues/36860 for css, sx removal notes
-export type MergeElementProps<T extends React.ElementType, P extends object> = Omit<
+export type MergeElementProps<T extends React.ElementType, P extends Record<string, unknown>> = Omit<
   React.ComponentPropsWithRef<T>,
   keyof P | 'css' | 'sx'
 > &
   P;
 
 // see https://github.com/microsoft/TypeScript/issues/36860 for css, sx removal notes
-export type MergeElementPropsWithoutRef<T extends React.ElementType, P extends object> = Omit<
+export type MergeElementPropsWithoutRef<T extends React.ElementType, P extends Record<string, unknown>> = Omit<
   React.ComponentPropsWithoutRef<T>,
   keyof P | 'css' | 'sx'
 > &
@@ -19,7 +19,7 @@ export type MergeElementPropsWithoutRef<T extends React.ElementType, P extends o
 export type Expand<T> = T extends infer O ? { [K in keyof O]: O[K] } : never;
 
 // expands object types recursively (https://stackoverflow.com/a/57683652/11386649)
-export type ExpandRecursively<T> = T extends object
+export type ExpandRecursively<T> = T extends Record<string, unknown>
   ? T extends infer O
     ? { [K in keyof O]: ExpandRecursively<O[K]> }
     : never

@@ -17,7 +17,7 @@ export function useFocusReturn<T extends HTMLElement = HTMLElement>(): UseFocusR
   const changeFocus = useCallback<UseFocusReturnResponse<T>['changeFocus']>(element => {
     if (element && element instanceof HTMLElement) {
       if (document?.activeElement && 'focus' in document.activeElement) {
-        initialFocus.current = document.activeElement;
+        initialFocus.current = document.activeElement as HTMLElement;
       }
       element.focus();
       return element;

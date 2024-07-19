@@ -1,6 +1,9 @@
 import { Orientation, StackedPosition, AnyPosition } from 'types/ui';
 
-export const getHorizontalPosition = (position?: AnyPosition | StackedPosition, layout?: Orientation) => {
+export const getHorizontalPosition = (
+  position?: AnyPosition | StackedPosition,
+  layout?: Orientation,
+): Pick<React.CSSProperties, 'right' | 'left' | 'transform'> => {
   if (position) {
     if (
       (
@@ -28,7 +31,10 @@ export const getHorizontalPosition = (position?: AnyPosition | StackedPosition, 
   return { left: '50%', transform: 'translateX(-50%)' };
 };
 
-export const getVerticalPosition = (position?: AnyPosition | StackedPosition, layout?: Orientation) => {
+export const getVerticalPosition = (
+  position?: AnyPosition | StackedPosition,
+  layout?: Orientation,
+): Pick<React.CSSProperties, 'top' | 'bottom' | 'transform'> => {
   if (position) {
     if (
       (

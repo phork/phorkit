@@ -264,7 +264,7 @@ LoaderReplaceIcon.args = {
 export const Link = ({
   icon = 'medium',
   ...args
-}: Omit<IconTextButtonProps<'a'>, 'icon'> & { icon: 'small' | 'medium' | 'large' }) => (
+}: Omit<IconTextButtonProps<'a'>, 'icon'> & { icon: 'small' | 'medium' | 'large' }): JSX.Element => (
   <IconTextButton<'a'> {...args} icon={<CheckIcon scale={icon} />} />
 );
 Link.args = {
@@ -282,7 +282,7 @@ Link.argTypes = {
 export const Imitation = ({
   icon = 'medium',
   ...args
-}: Omit<IconTextButtonProps<'div'>, 'icon'> & { icon: 'small' | 'medium' | 'large' }) => (
+}: Omit<IconTextButtonProps<'div'>, 'icon'> & { icon: 'small' | 'medium' | 'large' }): JSX.Element => (
   <IconTextButton<'div'> {...args} icon={<CheckIcon scale={icon} />} />
 );
 Imitation.args = {
@@ -294,7 +294,7 @@ Imitation.args = {
 export const ColoredIcon = ({
   icon = 'medium',
   ...args
-}: Omit<IconTextButtonProps, 'icon'> & { icon: 'small' | 'medium' | 'large' }) => (
+}: Omit<IconTextButtonProps, 'icon'> & { icon: 'small' | 'medium' | 'large' }): JSX.Element => (
   <IconTextButton {...args} icon={<CheckIcon scale={icon} style={{ color: '#f41150' }} />} />
 );
 

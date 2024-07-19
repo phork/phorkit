@@ -13,7 +13,16 @@ export type TextTooltipContentProps = CardProps & {
   width?: number | string;
 };
 
-export const getTextTooltipColors = (themeId: Theme, contrast?: boolean) => {
+export const getTextTooltipColors = (
+  themeId: Theme,
+  contrast?: boolean,
+): {
+  textColor: string;
+  backgroundColor: string;
+  borderColor: string;
+  focusedOutlineColor: string;
+  scrollbarColor: string;
+} => {
   const color = contrast ? 'contrast' : 'primary';
   const textColor = themes[themeId][`${color}-palette-text-color` as keyof ThemeColors] as string;
   const backgroundColor = themes[themeId][`${color}-palette-background-color` as keyof ThemeColors] as string;

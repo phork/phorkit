@@ -92,4 +92,4 @@ export class InteractiveGroupItems<T extends InteractiveGroupItemId = string> {
 
 export const interactiveGroupItemsFactory = <T extends InteractiveGroupItemId = string>(
   items: readonly InteractiveGroupItemType<T>[],
-) => new InteractiveGroupItems<T>(items);
+): InteractiveGroupItems<T> => new InteractiveGroupItems<T>(items);

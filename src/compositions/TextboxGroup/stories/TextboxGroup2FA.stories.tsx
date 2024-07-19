@@ -148,7 +148,7 @@ OutlineVariant.args = {
   variant: 'outline',
 };
 
-export const Labeled = ({ onChange, size, value, ...args }: TextboxGroup2FAProps) => (
+export const Labeled = ({ onChange, size, value, ...args }: TextboxGroup2FAProps): JSX.Element => (
   <StateWrapper initialState={value}>
     {({ state, setState }) => (
       <FormboxContainer focused as="label" label="Two-factor code" size={size} type="input" variant="minimal">

@@ -18,7 +18,7 @@ export type ToastCountdownBarProps = React.HTMLAttributes<HTMLDivElement> &
  * the created prop updates then the countdown starts
  * again. The animation is pure CSS.
  */
-export function ToastCountdownBar({ created, duration, level, themeId, variant }: ToastCountdownBarProps) {
+export function ToastCountdownBar({ created, duration, level, themeId, variant }: ToastCountdownBarProps): JSX.Element {
   const [reset, setReset] = useState(created);
   const ref = useRef<HTMLDivElement>(null);
 

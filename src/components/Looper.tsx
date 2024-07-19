@@ -27,7 +27,7 @@ export function Looper(props: ListLooperProps): React.ReactElement;
  * A simple utility to loop through an array of
  * strings or to loop through a start and end value.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
 export function Looper({ end: initEnd, list, render, start = 0, step = 1 }: any): React.ReactElement {
   const items = [];
   const end = list ? list.length - 1 : initEnd;

@@ -97,7 +97,7 @@ export function SliderBase(
     ...props
   }: SliderProps,
   forwardedRef: React.ForwardedRef<HTMLInputElement>,
-) {
+): JSX.Element {
   const accessible = useAccessibility();
   const themeId = useThemeId(initThemeId);
   const [focused, setFocused] = useState<boolean>(false);
