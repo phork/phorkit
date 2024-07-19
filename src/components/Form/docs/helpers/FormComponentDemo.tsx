@@ -20,7 +20,7 @@ export function FormComponentDemo({
   type,
   variant,
   ...props
-}: FormComponentDemoProps) {
+}: FormComponentDemoProps): JSX.Element {
   const [value, setValue] = useState<FormComponentDemoProps['initialValue']>(initialValue);
   const clearable = ['textbox', 'password'].includes(type);
 

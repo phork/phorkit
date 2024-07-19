@@ -7,7 +7,7 @@ export type IconLooperProps = {
   icons: Record<string, Icon>;
 };
 
-export function IconLooper({ children, icons }: IconLooperProps) {
+export function IconLooper({ children, icons }: IconLooperProps): JSX.Element {
   const items = Object.keys(icons).map(icon => {
     if (isKeyof<typeof icons>(icons, icon)) {
       // eslint-disable-next-line import/namespace

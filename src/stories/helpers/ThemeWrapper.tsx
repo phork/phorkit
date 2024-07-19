@@ -11,7 +11,7 @@ type ThemeWrapperProps = {
   variant?: SequentialVariant;
 };
 
-export function ThemeWrapper({ children }: ThemeWrapperProps) {
+export function ThemeWrapper({ children }: ThemeWrapperProps): JSX.Element | null {
   const themeId = useThemeId();
 
   return (

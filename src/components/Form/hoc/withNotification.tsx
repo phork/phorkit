@@ -31,7 +31,9 @@ export function withNotification<WrappedComponentProps extends BaseWrappedCompon
   WrappedComponent: React.FC<WrappedComponentProps>,
   { withDivider = false }: WithNotificationOptions = {},
   componentProps?: Partial<Omit<WrappedComponentProps, 'contrast' | 'width' | 'ref'>>,
-) {
+): React.ForwardRefExoticComponent<
+  React.PropsWithoutRef<NotifiedComponentProps<WrappedComponentProps> & React.RefAttributes<E>>
+> {
   function NotifiedComponent({
     contrast = false,
     forwardedRef,

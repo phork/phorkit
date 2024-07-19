@@ -9,7 +9,7 @@ type CanvasProps = React.ComponentProps<typeof BaseCanvas> & {
 };
 
 // this adds custom classes that are used with styles from preview-body.html
-export const Canvas = ({ className, contrast, ...props }: CanvasProps) => {
+export const Canvas = ({ className, contrast, ...props }: CanvasProps): JSX.Element => {
   return (
     <ErrorBoundary variant="default">
       <BaseCanvas className={cx(className, contrast && 'sbdocs-preview-contrast')} {...props} />

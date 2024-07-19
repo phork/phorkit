@@ -380,7 +380,7 @@ LoadingState.args = {
   loading: true,
 };
 
-export const Link = (args: ButtonProps<'a'>) => <Button<'a'> {...args} />;
+export const Link = (args: ButtonProps<'a'>): JSX.Element => <Button<'a'> {...args} />;
 Link.args = {
   ...defaultArgs,
   as: 'a',
@@ -393,7 +393,7 @@ Link.argTypes = {
   target: { table: { disable: false } },
 };
 
-export const Imitation = (args: ButtonProps<'div'>) => <Button<'div'> {...args} />;
+export const Imitation = (args: ButtonProps<'div'>): JSX.Element => <Button<'div'> {...args} />;
 Imitation.args = {
   ...defaultArgs,
   as: 'div',

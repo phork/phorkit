@@ -11,7 +11,7 @@ export type ColorLooperProps = {
   themeId: Theme;
 };
 
-export function ColorLooper({ exclude, render, themeId, group = 'primary' }: ColorLooperProps) {
+export function ColorLooper({ exclude, render, themeId, group = 'primary' }: ColorLooperProps): JSX.Element {
   const pattern = {
     neutral: /^color-((BG|FG)([0-9]+))$/,
     primary: /^color-((P)([0-9]+))$/,

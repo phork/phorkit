@@ -10,7 +10,7 @@ export type StyledLineLoaderProps = Omit<LineLoaderProps, 'contrast' | 'themeId'
  * `LineLoader` component that will have a
  * custom color.
  */
-export const StyledLineLoader = ({ color, style, ...props }: StyledLineLoaderProps) => {
+export const StyledLineLoader = ({ color, style, ...props }: StyledLineLoaderProps): JSX.Element => {
   return (
     <LineLoader
       {...props}

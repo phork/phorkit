@@ -10,7 +10,7 @@ import { Typography, TypographyProps } from './Typography';
 export function TypographyWithSvg<T extends keyof JSX.IntrinsicElements = 'span'>({
   className,
   ...props
-}: TypographyProps<T>) {
+}: TypographyProps<T>): JSX.Element {
   return (
     <Typography
       className={cx(styles.typographyWithSvg, className)}

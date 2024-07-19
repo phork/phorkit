@@ -93,11 +93,11 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
     hasError: false,
   };
 
-  static getDerivedStateFromError() {
+  static getDerivedStateFromError(): { hasError: boolean } {
     return { hasError: true };
   }
 
-  render() {
+  render(): React.ReactNode {
     const { children, errorMsg, variant = 'default' } = this.props;
     const { hasError } = this.state;
 

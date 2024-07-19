@@ -277,7 +277,7 @@ LoadingState.args = {
 export const Link = ({
   children,
   ...args
-}: Omit<IconButtonProps<'a'>, 'children'> & { children: React.ReactElement }) => (
+}: Omit<IconButtonProps<'a'>, 'children'> & { children: React.ReactElement }): JSX.Element => (
   <IconButton<'a'> {...args}>
     <CheckIcon scale={children?.props.scale || 'medium'} />
   </IconButton>
@@ -297,7 +297,7 @@ Link.argTypes = {
 export const Imitation = ({
   children,
   ...args
-}: Omit<IconButtonProps<'div'>, 'children'> & { children: React.ReactElement }) => (
+}: Omit<IconButtonProps<'div'>, 'children'> & { children: React.ReactElement }): JSX.Element => (
   <IconButton<'div'> {...args}>
     <CheckIcon scale={children?.props.scale || 'medium'} />
   </IconButton>

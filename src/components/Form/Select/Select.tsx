@@ -167,7 +167,7 @@ export function SelectBase(
     ...props
   }: SelectProps,
   forwardedRef: React.ForwardedRef<HTMLSelectElement>,
-) {
+): JSX.Element {
   const themeId = useThemeId(initThemeId);
   const inputRef = useRef<HTMLSelectElement>(null);
   const combineRefs = makeCombineRefs<HTMLSelectElement>(inputRef, forwardedRef);

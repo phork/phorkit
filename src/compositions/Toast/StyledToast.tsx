@@ -11,7 +11,7 @@ export type StyledToastProps = Omit<ToastProps, 'level' | 'themeId'> & {
  * component that will have a custom background
  * and text color.
  */
-export const StyledToast = ({ levelColor, levelInverseColor, style, ...props }: StyledToastProps) => {
+export const StyledToast = ({ levelColor, levelInverseColor, style, ...props }: StyledToastProps): JSX.Element => {
   return (
     <Toast
       {...props}

@@ -6,6 +6,6 @@ import { ListRegistryContext, ListRegistryContextValue } from './ListRegistryCon
  * `unregisterItem` and `getItem` functions as well as the
  * items map from the `ListRegistryContext`.
  */
-export const useListRegistry = <E extends HTMLElement = HTMLElement>() => {
+export const useListRegistry = <E extends HTMLElement = HTMLElement>(): ListRegistryContextValue<E> => {
   return useContext<ListRegistryContextValue<E>>(ListRegistryContext);
 };

@@ -111,7 +111,7 @@ export function TextareaBase(
     ...props
   }: TextareaProps,
   forwardedRef: React.ForwardedRef<HTMLTextAreaElement>,
-) {
+): JSX.Element {
   const themeId = useThemeId(initThemeId);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const combineRefs = makeCombineRefs<HTMLTextAreaElement>(inputRef, forwardedRef);

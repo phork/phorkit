@@ -7,7 +7,7 @@ const handleDelete = (modal: ModalWithContextItemType | undefined) => {
   modal && modal.props.onClose?.(undefined, modal.props.contextId);
 };
 
-export function modalReducer(state: ModalState, action: ModalStateAction) {
+export function modalReducer(state: ModalState, action: ModalStateAction): ModalState {
   const mutable: ModalState = new Map(state);
 
   switch (action.type) {

@@ -138,7 +138,7 @@ export function FlexBox({
   children: React.ReactChild;
   height: number | string;
   width: number | string;
-}) {
+}): JSX.Element {
   const themeId = useThemeId();
   return (
     <div

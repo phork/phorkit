@@ -14,7 +14,7 @@ export function useInteractiveGroupItem<E extends HTMLElement>({
   focused = false,
   ref,
   scrollBehavior,
-}: UseInteractiveGroupItemProps<E>) {
+}: UseInteractiveGroupItemProps<E>): void {
   const previous = useRef<boolean | undefined>(false);
   useScrollIntoView<E>({ behavior: scrollBehavior, ref, focused });
 

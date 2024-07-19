@@ -83,7 +83,7 @@ export function StepperBase(
     ...props
   }: StepperProps,
   forwardedRef: React.ForwardedRef<HTMLInputElement>,
-) {
+): JSX.Element {
   const inputRef = useRef<HTMLInputElement>(null);
   const translations = useTranslations<StepperTranslations>({
     customTranslations,

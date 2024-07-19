@@ -27,31 +27,36 @@ export type PanelContainerProps = React.HTMLAttributes<HTMLDivElement> & {
  * relatively, or absolutely to fill its parent container,
  * or it can be set to the size of the viewport.
  */
-export function PanelContainer({
-  absolute = false,
-  children,
-  className,
-  full = false,
-  orientation,
-  reverse = false,
-  viewport = false,
-  ...props
-}: PanelContainerProps): JSX.Element {
-  const classes = cx(
-    styles.panelContainer,
-    absolute && styles['panelContainer--absolute'],
-    full && styles['panelContainer--full'],
-    reverse && styles['panelContainer--reverse'],
-    viewport && styles['panelContainer--viewport'],
-    styles[`panelContainer--${orientation}`],
-    className,
-  );
+export const PanelContainer = React.forwardRef<HTMLDivElement, PanelContainerProps>(
+  (
+    {
+      absolute = false,
+      children,
+      className,
+      full = false,
+      orientation,
+      reverse = false,
+      viewport = false,
+      ...props
+    }: PanelContainerProps,
+    forwardedRef,
+  ): JSX.Element => {
+    const classes = cx(
+      styles.panelContainer,
+      absolute && styles['panelContainer--absolute'],
+      full && styles['panelContainer--full'],
+      reverse && styles['panelContainer--reverse'],
+      viewport && styles['panelContainer--viewport'],
+      styles[`panelContainer--${orientation}`],
+      className,
+    );
 
-  return (
-    <div className={classes} {...props}>
-      {children}
-    </div>
-  );
-}
+    return (
+      <div className={classes} ref={forwardedRef} {...props}>
+        {children}
+      </div>
+    );
+  },
+);
 
 PanelContainer.displayName = 'PanelContainer';

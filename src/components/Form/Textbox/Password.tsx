@@ -74,7 +74,7 @@ export function PasswordBase(
     ...props
   }: PasswordProps,
   forwardedRef: React.ForwardedRef<HTMLInputElement>,
-) {
+): JSX.Element {
   const [type, setType] = useState<'text' | 'password'>(initialType);
 
   const translations = useTranslations<PasswordTranslations>({
