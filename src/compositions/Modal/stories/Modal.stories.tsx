@@ -104,9 +104,9 @@ const Template: ComponentStory<typeof Modal> = args => <Modal {...args} />;
 
 const defaultArgs = {
   allowOverflow: false,
-  children: (
+  children: ({ id }: { id?: string }): React.ReactElement => (
     <React.Fragment>
-      <ModalHeader title="Hello world" />
+      <ModalHeader modalId={id} title="Hello world" />
       <ModalBody scrollable>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce blandit, mi id scelerisque semper, leo turpis
         varius tortor, a elementum libero nisl ut tortor. Quisque sit amet facilisis est, quis vestibulum eros. Donec
@@ -141,6 +141,7 @@ Default.parameters = {
 export const Basic = Template.bind({});
 Basic.args = {
   ...defaultArgs,
+  ariaLabel: 'Example modal',
   children: <ModalBody>This is an example modal.</ModalBody>,
 };
 
@@ -224,6 +225,7 @@ export const Overflow = Template.bind({});
 Overflow.args = {
   ...defaultArgs,
   allowOverflow: true,
+  ariaLabel: 'Overflow modal',
   children: (
     <ModalBody flush style={{ height: '300px' }}>
       <div

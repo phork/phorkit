@@ -121,6 +121,7 @@ export default {
 const Template: ComponentStory<typeof Toggle> = args => <Toggle {...args} />;
 
 const defaultArgs = {
+  'aria-label': 'Super fantastic toggle',
   checked: true,
   children: 'Super fantastic label',
   contrast: false,

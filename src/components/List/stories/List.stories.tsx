@@ -146,6 +146,7 @@ export default {
 const Template: ComponentStory<typeof List> = args => <List {...args} />;
 
 const defaultArgs = {
+  'aria-label': 'A list',
   contrast: false,
   color: 'primary' as ListProps['color'],
   focused: false,

@@ -12,6 +12,7 @@ import { useTextboxGroup, UseTextboxGroupProps } from './useTextboxGroup';
 
 export type LocalTextboxGroup2FAProps = Omit<ThemeProps, 'contrast' | 'unthemed'> & {
   inputClassName?: string;
+  inputLabel?: string;
   inputStyle?: React.CSSProperties;
   inputWidth?: number | string;
   length?: number;
@@ -28,6 +29,7 @@ function TextboxGroup2FAContent({
   className,
   id,
   inputClassName,
+  inputLabel,
   inputStyle,
   inputWidth,
   length = 6,
@@ -119,9 +121,10 @@ function TextboxGroup2FAContent({
       )}
       {...props}
     >
-      {looper.map(inputId => (
+      {looper.map((inputId, index) => (
         <TextboxGroupInput
           centered
+          aria-label={inputLabel ? `${inputLabel} ${index}` : ''}
           className={cx(
             styles['textboxGroupInput'],
             styles['textboxGroupInput--2fa'],

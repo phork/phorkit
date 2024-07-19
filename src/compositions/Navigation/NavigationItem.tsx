@@ -102,7 +102,7 @@ export function NavigationItem({
       id={generateComponentId(id)}
       onClick={handleClick}
       ref={ref}
-      role="button"
+      role="none"
       tabIndex={-1}
       {...props}
     >

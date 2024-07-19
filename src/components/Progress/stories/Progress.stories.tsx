@@ -117,6 +117,7 @@ export default {
 const Template: ComponentStory<typeof Progress> = args => <Progress {...args} />;
 
 const defaultArgs = {
+  'aria-label': 'Progress bar',
   animated: false,
   color: 'primary' as ProgressProps['color'],
   contrast: false,
