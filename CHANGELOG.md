@@ -1,5 +1,15 @@
 # Changelog
 
+# [15.2.0](https://github.com/phork/phorkit/compare/v15.1.0...v15.2.0) (2024-07-19)
+
+### ✨ Features
+
+- trigger release ([ea4b9df](https://github.com/phork/phorkit/commit/ea4b9df))
+
+### 🐛 Bug Fixes
+
+- fix type errors ([b6c993e](https://github.com/phork/phorkit/commit/b6c993e))
+
 # [15.1.0](https://github.com/phork/phorkit/compare/v15.0.0...v15.1.0) (2022-07-16)
 
 ### 🐛 Bug Fixes
