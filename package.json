@@ -61,7 +61,7 @@
     "about-validate": "echo '🤖 Validates the files with eslint and stylelint' && exit 0",
     "about-watch-tests": "echo '🤖👁️‍🗨️ Watch the tests for typescript errors' && exit 0",
     "about-watch": "echo '🤖👁️‍🗨️ Watch for typescript errors' && exit 0",
-    "build-docz": "mkdir -p build && yarn clean-docz && yarn pre-build-docz && docz build",
+    "build-docz": "export NODE_OPTIONS=--openssl-legacy-provider && mkdir -p build && yarn clean-docz && yarn pre-build-docz && docz build",
     "build-icons": "yarn clean-icons && yarn gen-icons",
     "build-lib-debug": "export NODE_OPTIONS=--openssl-legacy-provider && export NODE_ENV=development && yarn pre-build-lib && npx rollup -c && yarn post-build-lib && cp ./README.md lib/",
     "build-lib-dev": "export NODE_OPTIONS=--openssl-legacy-provider && export NODE_ENV=development && yarn pre-build-lib && yarn post-build-lib && npx rollup -c --watch",

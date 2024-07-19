@@ -4,11 +4,17 @@
 
 ### ✨ Features
 
-- trigger release ([ea4b9df](https://github.com/phork/phorkit/commit/ea4b9df))
+- added forwardRef to the panel container; improved types ([798cc0f](https://github.com/phork/phorkit/commit/798cc0f))
 
 ### 🐛 Bug Fixes
 
-- fix type errors ([b6c993e](https://github.com/phork/phorkit/commit/b6c993e))
+- fix type errors ([e7dd9e17](https://github.com/phork/phorkit/commit/b6c993e))
+- fix storybook aria ([6149373](https://github.com/phork/phorkit/commit/6149373))
+
+### ⬆️ Dependencies
+
+- upgrade storybook ([e7dd9e1](https://github.com/phork/phorkit/commit/e7dd9e17))
+- upgrade node version ([6149373](https://github.com/phork/phorkit/commit/6149373))
 
 # [15.1.0](https://github.com/phork/phorkit/compare/v15.0.0...v15.1.0) (2022-07-16)
 
