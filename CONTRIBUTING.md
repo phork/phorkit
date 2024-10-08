@@ -8,8 +8,6 @@
 
 ## Getting started
 
-### Using Storybook (current)
-
 Phork/it uses [Storybook](https://storybook.js.org/) to publish the documentation.
 
 To start a Storybook development server go to the project root and run:
@@ -19,22 +17,7 @@ $ yarn install
 $ yarn start-storybook
 ```
 
-### Using Docz (legacy)
-
-Phork/it previously used [Docz](https://www.docz.site/) to publish the documentation.
-
-To start a Docz development server go to the project root and run:
-
-```bash
-$ yarn install
-$ yarn start-docz
-```
-
-Open [http://localhost:4000](http://localhost:4000) in your browser.
-
 ## Building the documentation
-
-### Using Storybook (current)
 
 The build system writes the Storybook files to `build/storybook`. To build the app locally run:
 
@@ -46,23 +29,6 @@ To build and preview the Storybook app with Docker run:
 
 ```bash
 $ docker build -f .docker/storybook/Dockerfile . -t phork/phorkit
-$ docker run -p 3000:80 phork/phorkit
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Using Docz (legacy)
-
-The build system writes the Docz file to `build/docz`. To build the app locally run:
-
-```bash
-$ yarn build-docz
-```
-
-To build and preview the Docz app with Docker run:
-
-```bash
-$ docker build -f .docker/docz/Dockerfile . -t phork/phorkit
 $ docker run -p 3000:80 phork/phorkit
 ```
 

@@ -3,7 +3,6 @@ import { Theme } from 'types';
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
-      DOCZ_URL?: string;
       STORYBOOK_URL?: string;
       STORYBOOK_THEME_ID?: Theme
     }

@@ -57,5 +57,5 @@
     "types": ["node"]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.json"],
-  "exclude": ["node_modules", "lib", ".docz"]
+  "exclude": ["node_modules", "lib"]
 }

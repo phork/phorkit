@@ -1,5 +1,4 @@
 *.json
-.docz/
 lib/
 build/
 postcss.config.js

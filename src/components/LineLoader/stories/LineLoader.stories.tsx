@@ -7,7 +7,7 @@ import { Flex } from 'components/Flex';
 import { Looper } from 'components/Looper';
 import { Rhythm } from 'components/Rhythm/Rhythm';
 import { Typography } from 'components/Typography';
-import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { StateWrapper } from 'stories/helpers/StateWrapper';
 import { LineLoader } from '../LineLoader';
 import LineLoaderDocumentation from './LineLoader.docs.mdx';
 

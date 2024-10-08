@@ -3,12 +3,11 @@
     "baseUrl": "../",
     "rootDir": "../",
     "types": [
-      "@testing-library/jest-dom",
       "jest",
       "node"
     ]
   },
   "extends": "../tsconfig.json",
-  "include": [".", "../src", "./jest.d.ts", "../__mocks__"],
-  "exclude": ["node_modules", "lib", ".docz"]
+  "include": [".", "../src", "../__mocks__"],
+  "exclude": ["node_modules", "lib"]
  }
