@@ -30,7 +30,6 @@ const elementSizes = {
 const layout = {
   'layout-grid-base': '4px',
 
-  // anything that should show over the docz nav should be >= 1000
   'layout-z-index-side-panel': 500,
   'layout-z-index-stack-panel': 600,
   'layout-z-index-global-header': 700,

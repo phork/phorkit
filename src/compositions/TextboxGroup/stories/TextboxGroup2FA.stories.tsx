@@ -1,7 +1,7 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { StateWrapper } from 'docs/helpers/StateWrapper';
+import { StateWrapper } from 'lib/stories/helpers/StateWrapper';
 import { PageTitle } from 'stories/helpers/PageTitle';
 import { FormboxContainer } from '../../../components/Form/Formbox/FormboxContainer';
 import { TextboxGroup2FA, TextboxGroup2FAProps } from '../TextboxGroup2FA';

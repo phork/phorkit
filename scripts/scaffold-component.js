@@ -12,7 +12,7 @@ program
   .version(pkg.version)
   .usage('[options]')
   .addOption(new program.Option('-t, --type <type>', 'component type').choices(['component', 'composition']).default('component'))
-  .addOption(new program.Option('-f, --files <files...>', 'files to scaffold').choices(['component', 'styles', 'docz', 'storybook', 'tests', 'exports']))
+  .addOption(new program.Option('-f, --files <files...>', 'files to scaffold').choices(['component', 'styles', 'storybook', 'tests', 'exports']))
   .option('-p, --parent <parent>', 'parent component (optional)')
   .requiredOption('-c, --component <component>', 'component name');
 
@@ -90,34 +90,6 @@ ${component}.displayName = '${component}';
 include('styles') && writeFileSyncRecursive(`${src}/styles/${component}.module.css`, `
 .${lcfirst(component)} {
 }
-`);
-
-// generate the docz boilerplate
-include('docz') && writeFileSyncRecursive(`${src}/docs/${lcfirst(component)}.mdx`, `
----
-name: ${component}
-menu: ${ucfirst(type)}s
-route: /${type}s/${component}
----
-
-import { Playground, Props } from 'docz';
-import { PageTitle } from 'docs/helpers/PageTitle';
-import { ThemeWrapper } from 'docs/helpers/ThemeWrapper';
-import { ${component} } from '../index';
-
-<PageTitle title="${component}" src="${type}s/${parent || component}" />
-
-## Basic ${lcfirst(component)}
-
-<Playground>
-  <ThemeWrapper>
-    <${component} />
-  </ThemeWrapper>
-</Playground>
-
-## \\\[props\\\]
-
-<Props of={${component}} />
 `);
 
 // generate the storybook boilerplate

@@ -2,7 +2,7 @@ import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } fro
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { ListProps } from '../../../docs/helpers/ListProps';
+import { ListProps } from '../../../stories/helpers/ListProps';
 import { DropdownEmpty } from '../DropdownEmpty';
 
 export default {
