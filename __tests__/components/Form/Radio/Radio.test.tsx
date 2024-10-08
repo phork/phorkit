@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Radio } from 'lib';
@@ -80,19 +80,19 @@ describe('<Radio />', () => {
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][2]).toBe(8);
   });
 
-  it('should focus the container on tab', () => {
+  it('should focus the container on tab', async () => {
     const { container, getByLabelText, getByRole } = render(<Radio onChange={() => {}}>Super fantastic label</Radio>);
 
     const radio = getByRole('radio');
     const label = getByLabelText('Super fantastic label');
 
     container.focus();
-    userEvent.tab();
+    await userEvent.tab();
 
     expect(label).toHaveFocus();
     expect(label).toHaveAttribute('tabIndex', '-1');
 
-    userEvent.tab();
+    await userEvent.tab();
 
     expect(label).not.toHaveFocus();
     expect(radio).not.toHaveFocus();

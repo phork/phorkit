@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Toggle, NotifiedToggle } from 'lib';
@@ -23,7 +23,7 @@ describe('<Toggle />', () => {
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe(true);
   });
 
-  it('should focus the input on tab', () => {
+  it('should focus the input on tab', async () => {
     const { container } = render(
       <Toggle id="toggle" onChange={() => {}}>
         Super fantastic label
@@ -31,7 +31,7 @@ describe('<Toggle />', () => {
     );
 
     container.focus();
-    userEvent.tab();
+    await userEvent.tab();
 
     const input = document.getElementById('toggle');
     expect(input).toHaveFocus();
@@ -71,7 +71,7 @@ describe('<Toggle />', () => {
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe(false);
   });
 
-  it('should toggle to checked on space', () => {
+  it('should toggle to checked on space', async () => {
     const onChange = jest.fn();
     const { container } = render(
       <Toggle id="toggle" onChange={onChange}>
@@ -82,12 +82,12 @@ describe('<Toggle />', () => {
     expect(onChange).not.toHaveBeenCalled();
 
     container.focus();
-    userEvent.tab();
+    await userEvent.tab();
 
     const input = document.getElementById('toggle');
     if (input) {
       input.focus();
-      userEvent.keyboard('[Space]');
+      await userEvent.keyboard('[Space]');
     }
 
     expect(onChange).toHaveBeenCalledTimes(1);

@@ -1,4 +1,4 @@
-import produce, { castDraft, Draft } from 'immer';
+import { castDraft, produce, Draft } from 'immer';
 import React, { useRef } from 'react';
 import { InteractiveGroupContext, InteractiveGroupContextValue } from './InteractiveGroupContext';
 import { InteractiveGroupItemId } from './types';

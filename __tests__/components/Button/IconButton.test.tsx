@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { IconButton, TimesIcon } from 'lib';
@@ -59,7 +59,7 @@ describe('<IconButton />', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  it('should trigger on Enter keydown when not a button', () => {
+  it('should trigger on Enter keydown when not a button', async () => {
     const onClick = jest.fn();
     const { getByRole } = render(
       <IconButton<'div'> as="div" onClick={onClick}>
@@ -71,7 +71,7 @@ describe('<IconButton />', () => {
 
     const button = getByRole('button');
     button.focus();
-    userEvent.keyboard('[Enter]');
+    await userEvent.keyboard('[Enter]');
 
     expect(onClick).toHaveBeenCalledTimes(1);
   });

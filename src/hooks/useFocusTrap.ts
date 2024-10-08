@@ -1,4 +1,4 @@
-import produce from 'immer';
+import { produce } from 'immer';
 import { useCallback, useRef } from 'react';
 import {
   getFirstFocusableElement,

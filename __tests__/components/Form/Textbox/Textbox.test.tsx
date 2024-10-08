@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Textbox, NotifiedTextbox } from 'lib';
@@ -31,25 +31,25 @@ describe('<Textbox />', () => {
     expect(container.querySelector('input[type=number]')).toBeTruthy();
   });
 
-  it('should focus the input on tab', () => {
+  it('should focus the input on tab', async () => {
     const { container } = render(<Textbox id="textbox" label="Super fantastic label" onChange={() => {}} />);
 
     container.focus();
-    userEvent.tab();
+    await userEvent.tab();
 
     const input = document.getElementById('textbox');
     expect(input).toHaveFocus();
   });
 
-  it('should allow keyboard input', () => {
+  it('should allow keyboard input', async () => {
     const onChange = jest.fn();
     const { container } = render(<Textbox label="Super fantastic label" onChange={onChange} />);
 
     expect(onChange).not.toHaveBeenCalled();
 
     container.focus();
-    userEvent.tab();
-    userEvent.keyboard('abc');
+    await userEvent.tab();
+    await userEvent.keyboard('abc');
 
     expect(onChange).toHaveBeenCalledTimes(3);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe('c');
@@ -69,7 +69,7 @@ describe('<Textbox />', () => {
     expect(onClear).toHaveBeenCalledTimes(1);
   });
 
-  it('should be clearable from keyboard interaction', () => {
+  it('should be clearable from keyboard interaction', async () => {
     const onClear = jest.fn();
     const { container } = render(
       <Textbox clearable label="Super fantastic label" onChange={() => {}} onClear={onClear} value="Hello world" />,
@@ -78,9 +78,9 @@ describe('<Textbox />', () => {
     expect(onClear).not.toHaveBeenCalled();
 
     container.focus();
-    userEvent.tab();
-    userEvent.tab();
-    userEvent.keyboard('[Enter]');
+    await userEvent.tab();
+    await userEvent.tab();
+    await userEvent.keyboard('[Enter]');
 
     expect(onClear).toHaveBeenCalledTimes(1);
   });
@@ -98,7 +98,7 @@ describe('<Textbox />', () => {
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe('Hello world');
   });
 
-  it('should trigger the input blur and focus events', () => {
+  it('should trigger the input blur and focus events', async () => {
     const onInputBlur = jest.fn();
     const onInputFocus = jest.fn();
 
@@ -115,12 +115,12 @@ describe('<Textbox />', () => {
     expect(onInputFocus).not.toHaveBeenCalled();
 
     container.focus();
-    userEvent.tab();
+    await userEvent.tab();
 
     expect(onInputBlur).not.toHaveBeenCalled();
     expect(onInputFocus).toHaveBeenCalledTimes(1);
 
-    userEvent.tab();
+    await userEvent.tab();
 
     expect(onInputFocus).toHaveBeenCalledTimes(1);
     expect(onInputBlur).toHaveBeenCalledTimes(1);

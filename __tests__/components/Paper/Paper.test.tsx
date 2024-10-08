@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Paper } from 'lib';
@@ -20,7 +20,7 @@ describe('<Paper />', () => {
     expect(getAllByText('Hello world').length).toBe(2);
   });
 
-  it('should focus scrollable paper on tab', () => {
+  it('should focus scrollable paper on tab', async () => {
     const { container, getByTestId } = render(
       <Paper scrollable data-testid="paper">
         Super fantastic label
@@ -28,7 +28,7 @@ describe('<Paper />', () => {
     );
 
     container.focus();
-    userEvent.tab();
+    await userEvent.tab();
 
     expect(getByTestId('paper')).toHaveFocus();
   });

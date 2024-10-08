@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { StyledAvatar } from 'lib';
@@ -22,17 +22,19 @@ describe('<StyledAvatar />', () => {
     expect(avatar?.style.getPropertyValue('background-image')).toBe('url(/avatar.png)');
   });
 
-  it('should render a non-actionable avatar', () => {
+  it('should render a non-actionable avatar', async () => {
     const { getByTestId } = render(<StyledAvatar data-testid="avatar" initials="P" {...styles} />);
     expect(document.body).toHaveFocus();
-    userEvent.tab();
+
+    await userEvent.tab();
     expect(getByTestId('avatar')).not.toHaveFocus();
   });
 
-  it('should render an actionable avatar', () => {
+  it('should render an actionable avatar', async () => {
     const { getByTestId } = render(<StyledAvatar actionable data-testid="avatar" initials="P" {...styles} />);
     expect(document.body).toHaveFocus();
-    userEvent.tab();
+
+    await userEvent.tab();
     expect(getByTestId('avatar')).toHaveFocus();
   });
 
@@ -50,7 +52,7 @@ describe('<StyledAvatar />', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  it('should trigger on Enter keydown when actionable', () => {
+  it('should trigger on Enter keydown when actionable', async () => {
     const onClick = jest.fn();
     const { getByTestId } = render(
       <StyledAvatar actionable data-testid="avatar" initials="P" onClick={onClick} {...styles} />,
@@ -60,8 +62,8 @@ describe('<StyledAvatar />', () => {
 
     const avatar = getByTestId('avatar');
     avatar.focus();
-    userEvent.keyboard('[Enter]');
 
+    await userEvent.keyboard('[Enter]');
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 

@@ -1,4 +1,4 @@
-import produce, { castDraft } from 'immer';
+import { castDraft, produce } from 'immer';
 import { nanoid } from 'nanoid';
 import React, { useCallback, useReducer, useRef } from 'react';
 import { useSafeTimeout } from '../../hooks/useSafeTimeout';

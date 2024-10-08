@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Select, NotifiedSelect } from 'lib';
@@ -43,8 +43,8 @@ describe('<Select />', () => {
     expect(container.querySelector('select')).toHaveValue('yellow');
   });
 
-  it('should render the placeholder optionLabel when focused', () => {
-    const { container, getByText } = render(
+  it('should render the placeholder optionLabel when focused', async () => {
+    const { getByText } = render(
       <Select
         label="Super fantastic label"
         onChange={() => {}}
@@ -54,7 +54,7 @@ describe('<Select />', () => {
       />,
     );
 
-    container?.querySelector('label')?.focus();
+    await userEvent.tab();
     expect(getByText('(None)')).toBeTruthy();
   });
 
@@ -85,19 +85,19 @@ describe('<Select />', () => {
     expect(getByText('Choose a color')).toBeTruthy();
   });
 
-  it('should focus the select on tab', () => {
+  it('should focus the select on tab', async () => {
     const { container } = render(
       <Select transitional id="select" label="Super fantastic label" onChange={() => {}} options={options} />,
     );
 
     container.focus();
-    userEvent.tab();
+    await userEvent.tab();
 
     const select = document.getElementById('select');
     expect(select).toHaveFocus();
   });
 
-  it('should be selectable', () => {
+  it('should be selectable', async () => {
     const onChange = jest.fn();
 
     const { getByTestId } = render(
@@ -106,13 +106,13 @@ describe('<Select />', () => {
 
     expect(onChange).toHaveBeenCalledTimes(0);
 
-    userEvent.selectOptions(getByTestId('select'), 'yellow');
+    await userEvent.selectOptions(getByTestId('select'), 'yellow');
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe('yellow');
   });
 
-  it('should be reselectable', () => {
+  it('should be reselectable', async () => {
     const onChange = jest.fn();
 
     const { getByTestId } = render(
@@ -127,8 +127,8 @@ describe('<Select />', () => {
 
     expect(onChange).toHaveBeenCalledTimes(0);
 
-    // userEvent.deselectOptions only works with multi-selects
-    userEvent.selectOptions(getByTestId('select'), 'red');
+    // await userEvent.deselectOptions only works with multi-selects
+    await userEvent.selectOptions(getByTestId('select'), 'red');
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe('red');
@@ -222,7 +222,7 @@ describe('<Select multiple />', () => {
     expect(getByText('Choose a color')).toBeTruthy();
   });
 
-  it('should be selectable', () => {
+  it('should be selectable', async () => {
     const onChange = jest.fn();
 
     const { getByTestId } = render(
@@ -232,13 +232,13 @@ describe('<Select multiple />', () => {
     expect(onChange).toHaveBeenCalledTimes(0);
 
     // this fires the onChange once per selected option
-    userEvent.selectOptions(getByTestId('select'), ['red', 'yellow']);
+    await userEvent.selectOptions(getByTestId('select'), ['red', 'yellow']);
 
     expect(onChange).toHaveBeenCalledTimes(2);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toEqual(['red', 'yellow']);
   });
 
-  it('should be deselectable', () => {
+  it('should be deselectable', async () => {
     const onChange = jest.fn();
 
     const { getByTestId } = render(
@@ -255,7 +255,7 @@ describe('<Select multiple />', () => {
     expect(onChange).toHaveBeenCalledTimes(0);
 
     // this fires the onChange once per deselected option
-    userEvent.deselectOptions(getByTestId('select'), ['blue']);
+    await userEvent.deselectOptions(getByTestId('select'), ['blue']);
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toEqual(['red', 'yellow']);
@@ -279,7 +279,7 @@ describe('<Select multiple />', () => {
 });
 
 describe('<NotifiedSelect />', () => {
-  it('should render a notified select', () => {
+  it('should render a notified select', async () => {
     const onChange = jest.fn();
 
     const { getByTestId, getByText } = render(
@@ -298,7 +298,7 @@ describe('<NotifiedSelect />', () => {
 
     expect(onChange).not.toHaveBeenCalled();
 
-    userEvent.selectOptions(getByTestId('select'), 'yellow');
+    await userEvent.selectOptions(getByTestId('select'), 'yellow');
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe('yellow');

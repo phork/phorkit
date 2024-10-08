@@ -1,4 +1,4 @@
-import produce from 'immer';
+import { produce } from 'immer';
 import { useCallback, useRef, useState } from 'react';
 import styles from './styles/FormboxAutoFilled.module.css';
 

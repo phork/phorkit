@@ -1,4 +1,4 @@
-import produce from 'immer';
+import { produce } from 'immer';
 import { useCallback, useEffect, useRef, useReducer } from 'react';
 
 enum ACTIONS {
@@ -111,12 +111,13 @@ export const useAnimationLoop = ({
   const hasStateLoopChanged = state.loop !== previousState.current.loop;
   const hasStatePercentChanged = state.percent !== previousState.current.percent;
 
-  previousState.current = state;
-
   // updates the loop number, completion percentage and runtime with each tick
   const tick = useCallback(
     (timestamp: number, restart?: boolean, options?: State['options']): void => {
       if (!state.start || restart) {
+        previousState.current.start = state.start;
+        previousState.current.options = state.options;
+
         return dispatch({
           type: ACTIONS.SET_START,
           start: timestamp,
@@ -134,6 +135,10 @@ export const useAnimationLoop = ({
       const loop = duration ? Math.floor(runtime / duration) : 1;
       const percent = calculatePercent(runtime, loops, duration);
 
+      previousState.current.loop = state.loop;
+      previousState.current.percent = state.percent;
+      previousState.current.runtime = state.runtime;
+
       return dispatch({
         type: ACTIONS.SET_DURATION,
         loop,
@@ -141,7 +146,7 @@ export const useAnimationLoop = ({
         runtime,
       });
     },
-    [duration, loops, state.start],
+    [duration, loops, state.loop, state.options, state.percent, state.runtime, state.start],
   );
 
   // part of the returned value used to manually start the animation
@@ -190,21 +195,25 @@ export const useAnimationLoop = ({
   // flags the state as finished if the number of loops exceeds the maximum loops
   useEffect((): void => {
     if (loops && state.loop >= loops) {
+      previousState.current.finished = state.finished;
+
       dispatch({
         type: ACTIONS.SET_FINISHED,
       });
     }
-  }, [loops, state.loop]);
+  }, [loops, state.finished, state.loop]);
 
   // if a percent value was passed then update the percentage state
   useEffect((): void => {
     if (percent && percent !== 100) {
+      previousState.current.percent = state.percent;
+
       dispatch({
         type: ACTIONS.SET_CUSTOM,
         percent,
       });
     }
-  }, [percent]);
+  }, [percent, state.percent]);
 
   // if the finished flag was set then stop running and call animate()
   useEffect((): void => {

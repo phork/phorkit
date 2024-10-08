@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Slider, NotifiedSlider } from 'lib';
@@ -14,7 +14,7 @@ describe('<Slider />', () => {
     expect(getByText('Super fantastic label')).toBeTruthy();
   });
 
-  it('should focus the input on tab', () => {
+  it('should focus the input on tab', async () => {
     const { container, getByTestId } = render(
       <Slider data-testid="slider" max={10} min={0} onChange={() => {}} value={4} valuePosition="right" width="100%">
         Super fantastic label
@@ -22,7 +22,7 @@ describe('<Slider />', () => {
     );
 
     container.focus();
-    userEvent.tab();
+    await userEvent.tab();
 
     const input = getByTestId('slider');
     expect(input).toHaveFocus();
