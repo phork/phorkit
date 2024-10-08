@@ -1,5 +1,15 @@
 # Changelog
 
+# [16.0.0](https://github.com/phork/phorkit/compare/v15.2.0...v16.0.0) (2024-10-08)
+
+### ♻ Code Refactoring
+
+- **major**: removed deprecated docz app ([6450f76](https://github.com/phork/phorkit/commit/6450f76))
+
+### ✨ Features
+
+- **major**: upgraded react to 18.3.1 ([52b6bca](https://github.com/phork/phorkit/commit/52b6bca))
+
 # [15.2.0](https://github.com/phork/phorkit/compare/v15.1.0...v15.2.0) (2024-07-19)
 
 ### ✨ Features
