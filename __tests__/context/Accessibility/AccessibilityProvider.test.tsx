@@ -32,16 +32,16 @@ describe('<AccessibilityProvider />', () => {
     expect(screen.getByText('Event type: none')).toBeTruthy();
   });
 
-  it('should change to accessible on keyboard event', () => {
-    userEvent.tab();
+  it('should change to accessible on keyboard event', async () => {
+    await userEvent.tab();
 
     expect(screen.getByText('Accessible: yes')).toBeTruthy();
     expect(screen.getByText('Event type: keyboard')).toBeTruthy();
   });
 
-  it('should change to not accessible on mouse event', () => {
+  it('should change to not accessible on mouse event', async () => {
     const button = screen.getByTestId('button');
-    userEvent.click(button);
+    await userEvent.click(button);
 
     expect(screen.getByText('Accessible: no')).toBeTruthy();
     expect(screen.getByText('Event type: mouse')).toBeTruthy();

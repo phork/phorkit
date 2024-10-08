@@ -1,4 +1,4 @@
-import produce from 'immer';
+import { produce } from 'immer';
 import { useRef } from 'react';
 
 const getPageLinks = (start: number, count: number, increment: number, max: number, min = 1): number[] =>

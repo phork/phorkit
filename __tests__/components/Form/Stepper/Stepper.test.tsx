@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Stepper, NotifiedStepper } from 'lib';
@@ -22,7 +22,7 @@ describe('<Stepper />', () => {
     expect(container.querySelector('input[type=number]')).toBeTruthy();
   });
 
-  it('should progress the focus on tab', () => {
+  it('should progress the focus on tab', async () => {
     const { container, getAllByRole } = render(
       <Stepper id="stepper" label="Super fantastic label" max={10} min={1} onChange={() => {}} step={1} value={5} />,
     );
@@ -31,16 +31,16 @@ describe('<Stepper />', () => {
     expect(buttons.length).toBe(2);
 
     container.focus();
-    userEvent.tab();
+    await userEvent.tab();
 
     expect(buttons[0]).toHaveFocus();
 
-    userEvent.tab();
+    await userEvent.tab();
 
     const input = document.getElementById('stepper');
     expect(input).toHaveFocus();
 
-    userEvent.tab();
+    await userEvent.tab();
 
     expect(buttons[1]).toHaveFocus();
   });
@@ -60,7 +60,7 @@ describe('<Stepper />', () => {
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe(6);
   });
 
-  it('should decrement the value from keyboard interaction', () => {
+  it('should decrement the value from keyboard interaction', async () => {
     const onChange = jest.fn();
     const { container } = render(
       <Stepper id="stepper" label="Super fantastic label" max={10} min={1} onChange={onChange} step={1} value={5} />,
@@ -69,8 +69,8 @@ describe('<Stepper />', () => {
     expect(onChange).not.toHaveBeenCalled();
 
     container.focus();
-    userEvent.tab();
-    userEvent.keyboard('[Enter]');
+    await userEvent.tab();
+    await userEvent.keyboard('[Enter]');
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe(4);

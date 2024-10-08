@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
@@ -10,7 +10,7 @@ describe('<Shade />', () => {
     expect(queryByText('Hello world')).toBeTruthy();
   });
 
-  it('should focus an actionable shade on tab', () => {
+  it('should focus an actionable shade on tab', async () => {
     const { container, getByTestId } = render(
       <Shade actionable color="primary" data-testid="shade">
         Super fantastic label
@@ -18,7 +18,7 @@ describe('<Shade />', () => {
     );
 
     container.focus();
-    userEvent.tab();
+    await userEvent.tab();
 
     expect(getByTestId('shade')).toHaveFocus();
   });

@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Checkbox } from 'lib';
@@ -98,7 +98,7 @@ describe('<Checkbox />', () => {
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][2]).toBe(8);
   });
 
-  it('should focus the container on tab', () => {
+  it('should focus the container on tab', async () => {
     const { container, getByLabelText, getByRole } = render(
       <Checkbox onChange={() => {}}>Super fantastic label</Checkbox>,
     );
@@ -107,12 +107,12 @@ describe('<Checkbox />', () => {
     const label = getByLabelText('Super fantastic label');
 
     container.focus();
-    userEvent.tab();
+    await userEvent.tab();
 
     expect(label).toHaveFocus();
     expect(label).toHaveAttribute('tabIndex', '-1');
 
-    userEvent.tab();
+    await userEvent.tab();
 
     expect(label).not.toHaveFocus();
     expect(checkbox).not.toHaveFocus();

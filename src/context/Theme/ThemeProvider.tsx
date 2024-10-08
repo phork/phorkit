@@ -1,4 +1,4 @@
-import produce from 'immer';
+import { produce } from 'immer';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Theme } from '../../types';
 import { ThemeContext, ThemeContextValue } from './ThemeContext';

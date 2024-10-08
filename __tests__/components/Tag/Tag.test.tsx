@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import React from 'react';
 import { Tag } from 'lib';
 import { AsTypeA } from '__mocks__/AsType.mock';

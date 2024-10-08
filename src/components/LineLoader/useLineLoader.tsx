@@ -1,4 +1,4 @@
-import produce from 'immer';
+import { produce } from 'immer';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useSafeTimeout } from '../../hooks/useSafeTimeout';
 import { LineLoader, LineLoaderProps } from './LineLoader';

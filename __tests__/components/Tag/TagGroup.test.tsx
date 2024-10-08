@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import React from 'react';
 import { Tag, TagGroup } from 'lib';
 import { fireEvent, render } from '../../utils';

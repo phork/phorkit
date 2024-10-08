@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Textarea, NotifiedTextarea } from 'lib';
@@ -26,25 +26,25 @@ describe('<Textarea />', () => {
     expect(getByText('Hello world')).toBeTruthy();
   });
 
-  it('should focus the input on tab', () => {
+  it('should focus the input on tab', async () => {
     const { container } = render(<Textarea id="textarea" label="Super fantastic label" onChange={() => {}} />);
 
     container.focus();
-    userEvent.tab();
+    await userEvent.tab();
 
     const input = document.getElementById('textarea');
     expect(input).toHaveFocus();
   });
 
-  it('should allow keyboard input', () => {
+  it('should allow keyboard input', async () => {
     const onChange = jest.fn();
     const { container } = render(<Textarea label="Super fantastic label" onChange={onChange} />);
 
     expect(onChange).not.toHaveBeenCalled();
 
     container.focus();
-    userEvent.tab();
-    userEvent.keyboard('abc');
+    await userEvent.tab();
+    await userEvent.keyboard('abc');
 
     expect(onChange).toHaveBeenCalledTimes(3);
     expect(onChange.mock.calls[onChange.mock.calls.length - 1][1]).toBe('c');

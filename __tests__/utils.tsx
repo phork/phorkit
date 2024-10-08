@@ -1,9 +1,10 @@
 /* eslint-disable import/export */
-import { render, RenderOptions, RenderResult } from '@testing-library/react';
-import React, { FC, ReactElement } from 'react';
-import { AccessibilityProvider, ThemeProvider } from 'lib';
+import { render, RenderOptions } from '@testing-library/react';
+import React, { ReactElement } from 'react';
+import { AccessibilityProvider } from '../src/context/Accessibility/AccessibilityProvider';
+import { ThemeProvider } from '../src/context/Theme/ThemeProvider';
 
-const AllTheProviders: FC = ({ children }) => {
+const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
   return (
     <ThemeProvider themeId="light">
       <AccessibilityProvider>{children}</AccessibilityProvider>
@@ -11,7 +12,7 @@ const AllTheProviders: FC = ({ children }) => {
   );
 };
 
-const customRender = (ui: ReactElement, options?: Omit<RenderOptions, 'wrapper'>): RenderResult =>
+const customRender = (ui: ReactElement, options?: Omit<RenderOptions, 'wrapper'>): ReturnType<typeof render> =>
   render(ui, { wrapper: AllTheProviders, ...options });
 
 export * from '@testing-library/react';

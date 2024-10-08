@@ -1,4 +1,4 @@
-import produce from 'immer';
+import { produce } from 'immer';
 import React, { useRef } from 'react';
 import { ScaleContext, ScaleContextValue } from './ScaleContext';
 

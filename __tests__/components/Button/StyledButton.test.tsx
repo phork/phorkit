@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import React from 'react';
 import { StyledButton } from 'lib';
 import { fireEvent, render } from '../../utils';

@@ -1,4 +1,4 @@
-import produce from 'immer';
+import { produce } from 'immer';
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { useBoundsObservable, UseBoundsObservableResponse } from '../../hooks/useBoundsObservable';
 import { SizeContextValue, SizeContextType } from './SizeContext';

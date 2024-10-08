@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Button } from 'lib';
@@ -39,11 +39,11 @@ describe('<Button />', () => {
     expect(getByTestId('button')).toHaveAttribute('type', 'submit');
   });
 
-  it('should focus the button on tab', () => {
+  it('should focus the button on tab', async () => {
     const { container, getByRole } = render(<Button id="button">Click me!</Button>);
 
     container.focus();
-    userEvent.tab();
+    await userEvent.tab();
 
     const button = getByRole('button');
     expect(button).toHaveFocus();
@@ -61,7 +61,7 @@ describe('<Button />', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  it('should trigger on Enter keydown when not a button', () => {
+  it('should trigger on Enter keydown when not a button', async () => {
     const onClick = jest.fn();
     const { getByRole } = render(
       <Button<'div'> as="div" onClick={onClick}>
@@ -73,7 +73,7 @@ describe('<Button />', () => {
 
     const button = getByRole('button');
     button.focus();
-    userEvent.keyboard('[Enter]');
+    await userEvent.keyboard('[Enter]');
 
     expect(onClick).toHaveBeenCalledTimes(1);
   });

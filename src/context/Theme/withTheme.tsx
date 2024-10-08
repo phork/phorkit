@@ -9,7 +9,7 @@ export type WithThemeProps = {
 /**
  * A higher order component to provide the theme ID.
  */
-export function withTheme<WrappedComponentProps extends Record<string, unknown>>(
+export function withTheme<WrappedComponentProps>(
   WrappedComponent: React.FC<WrappedComponentProps>,
 ): (props: WithThemeProps) => React.ReactElement {
   function ThemedComponent({ themeId, ...props }: WithThemeProps): JSX.Element {
