@@ -1,5 +1,6 @@
 import { produce } from 'immer';
 import { useCallback, useEffect, useRef, useReducer } from 'react';
+import { useSafeTimeout } from './useSafeTimeout';
 
 enum ACTIONS {
   SET_CUSTOM = 'SET_CUSTOM',
@@ -27,6 +28,8 @@ type Action =
 export type UseAnimationLoopProps = {
   /** The callback that receives the updated animation percentage */
   animate: (percent: number, options: State['options']) => void;
+  /** The delay before animation starts */
+  delay?: number;
   /** The duration of the animation before it's considered complete, or falsy for infinite */
   duration?: number;
   /** The number of loops to run the animation for, or falsy for infinite */
@@ -46,6 +49,11 @@ export type UseAnimationLoopResponse = {
 
 const initialState = {} as State;
 
+/**
+ * The runtime starts at -1 because technically it's possible
+ * for the first set duration action to set the runtime to 0
+ * which would stop the loop before it started.
+ */
 const createReducer =
   () =>
   (state: State, action: Action): State => {
@@ -55,7 +63,7 @@ const createReducer =
           finished: false,
           loop: 0,
           percent: 0,
-          runtime: 0,
+          runtime: -1,
           start: action.start,
           options: action.options,
         };
@@ -95,6 +103,7 @@ const createReducer =
  */
 export const useAnimationLoop = ({
   animate,
+  delay,
   duration,
   loops,
   manual = false,
@@ -106,18 +115,22 @@ export const useAnimationLoop = ({
   const previousState = useRef<State>({} as State);
   const previousUseAnimationLoopResponse = useRef<UseAnimationLoopResponse>({} as UseAnimationLoopResponse);
   const [state, dispatch] = useReducer(createReducer(), initialState);
+  const { setSafeTimeout } = useSafeTimeout();
 
   const hasStateFinishedChanged = state.finished !== previousState.current.finished;
   const hasStateLoopChanged = state.loop !== previousState.current.loop;
   const hasStatePercentChanged = state.percent !== previousState.current.percent;
 
+  previousState.current = produce(previousState.current, draftState => {
+    draftState.finished = state.finished;
+    draftState.loop = state.loop;
+    draftState.percent = state.percent;
+  });
+
   // updates the loop number, completion percentage and runtime with each tick
   const tick = useCallback(
     (timestamp: number, restart?: boolean, options?: State['options']): void => {
       if (!state.start || restart) {
-        previousState.current.start = state.start;
-        previousState.current.options = state.options;
-
         return dispatch({
           type: ACTIONS.SET_START,
           start: timestamp,
@@ -135,10 +148,6 @@ export const useAnimationLoop = ({
       const loop = duration ? Math.floor(runtime / duration) : 1;
       const percent = calculatePercent(runtime, loops, duration);
 
-      previousState.current.loop = state.loop;
-      previousState.current.percent = state.percent;
-      previousState.current.runtime = state.runtime;
-
       return dispatch({
         type: ACTIONS.SET_DURATION,
         loop,
@@ -146,23 +155,29 @@ export const useAnimationLoop = ({
         runtime,
       });
     },
-    [duration, loops, state.loop, state.options, state.percent, state.runtime, state.start],
+    [duration, loops, state.start],
   );
 
   // part of the returned value used to manually start the animation
   const start = useCallback(
     (options: Pick<State, 'options'>): void => {
       if (duration === 0) {
-        animate(100, options);
-        onFinish && onFinish();
+        const run = () => {
+          animate(100, options);
+          onFinish && onFinish();
+        };
+        delay ? setSafeTimeout(run, delay) : run();
       } else {
-        requestId.current =
-          typeof window !== 'undefined'
-            ? window.requestAnimationFrame(timestamp => tick(timestamp, true, options))
-            : undefined;
+        const run = () => {
+          requestId.current =
+            typeof window !== 'undefined'
+              ? window.requestAnimationFrame(timestamp => tick(timestamp, true, options))
+              : undefined;
+        };
+        delay ? setSafeTimeout(run, delay) : run();
       }
     },
-    [animate, duration, onFinish, tick],
+    [animate, delay, duration, onFinish, setSafeTimeout, tick],
   );
 
   // part of the returned value used to manually stop the animation
@@ -195,25 +210,21 @@ export const useAnimationLoop = ({
   // flags the state as finished if the number of loops exceeds the maximum loops
   useEffect((): void => {
     if (loops && state.loop >= loops) {
-      previousState.current.finished = state.finished;
-
       dispatch({
         type: ACTIONS.SET_FINISHED,
       });
     }
-  }, [loops, state.finished, state.loop]);
+  }, [loops, state.loop]);
 
   // if a percent value was passed then update the percentage state
   useEffect((): void => {
     if (percent && percent !== 100) {
-      previousState.current.percent = state.percent;
-
       dispatch({
         type: ACTIONS.SET_CUSTOM,
         percent,
       });
     }
-  }, [percent, state.percent]);
+  }, [percent]);
 
   // if the finished flag was set then stop running and call animate()
   useEffect((): void => {

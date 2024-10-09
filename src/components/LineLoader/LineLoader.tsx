@@ -2,7 +2,7 @@ import { cx } from '@emotion/css';
 import React, { useCallback, useRef } from 'react';
 import { ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
-import { useAnimationLoop } from '../../hooks/useAnimationLoop';
+import { useAnimationLoop, UseAnimationLoopProps } from '../../hooks/useAnimationLoop';
 import { useTranslations } from '../../hooks/useTranslations';
 import styles from './styles/LineLoader.module.css';
 
@@ -15,14 +15,11 @@ export const lineLoaderTranslations: LineLoaderTranslations = {
 };
 
 export type LineLoaderProps = React.HTMLAttributes<HTMLDivElement> &
-  ThemeProps & {
+  ThemeProps &
+  Omit<UseAnimationLoopProps, 'animate' | 'delay' | 'manual'> & {
     className?: string;
-    duration?: number;
+    /** Use a fixed position for the line loader */
     fixed?: boolean;
-    loops?: number;
-    onFinish?: () => void;
-    onLoop?: (args: { loop: number }) => void;
-    percent?: number;
     position?: 'top' | 'bottom';
     style?: React.CSSProperties;
     translations?: Partial<LineLoaderTranslations>;

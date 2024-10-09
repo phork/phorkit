@@ -150,6 +150,51 @@ export const subPanelStyle = {
   </Story>
 </Canvas>
 
+### Side panel: Delayed
+
+<Canvas>
+  <Story name="Side panel: Delayed">
+    <PanelsWrapper isOpen>
+      {({ isOpen, panelState, setPanelState, toggleOpen }) => (
+        <React.Fragment>
+          <PanelContainer orientation="vertical" style={panelContainerStyle}>
+            <IconButton
+              color="white"
+              onClick={() => toggleOpen()}
+              shape="circle"
+              size="small"
+              style={{ position: 'absolute', bottom: 8, left: 8, zIndex: 10 }}
+              type="button"
+              weight="solid"
+            >
+              <RightPanelIcon size={14} />
+            </IconButton>
+            <MainPanel style={mainPanelStyle}>
+              Main panel
+              <br />
+              Side panel state: {panelState}
+            </MainPanel>
+            <SidePanel
+              delay={500}
+              onCloseFinish={() => setPanelState('closed')}
+              onCloseStart={() => setPanelState('closing')}
+              onOpenFinish={() => setPanelState('open')}
+              onOpenStart={() => setPanelState('opening')}
+              open={isOpen}
+              position="right"
+              style={subPanelStyle}
+              transition="squashable"
+              width={360}
+            >
+              Side panel
+            </SidePanel>
+          </PanelContainer>
+        </React.Fragment>
+      )}
+    </PanelsWrapper>
+  </Story>
+</Canvas>
+
 ### Side panel: Fixed
 
 <Canvas>
@@ -337,6 +382,51 @@ export const subPanelStyle = {
               Stack panel state: {panelState}
             </MainPanel>
             <StackPanel
+              height={40}
+              onCloseFinish={() => setPanelState('closed')}
+              onCloseStart={() => setPanelState('closing')}
+              onOpenFinish={() => setPanelState('open')}
+              onOpenStart={() => setPanelState('opening')}
+              open={isOpen}
+              position="top"
+              style={subPanelStyle}
+              transition="squashable"
+            >
+              Stack panel
+            </StackPanel>
+          </PanelContainer>
+        </React.Fragment>
+      )}
+    </PanelsWrapper>
+  </Story>
+</Canvas>
+
+### Stack panel: Delayed
+
+<Canvas>
+  <Story name="Stack panel: Delayed">
+    <PanelsWrapper isOpen>
+      {({ isOpen, panelState, setPanelState, toggleOpen }) => (
+        <React.Fragment>
+          <PanelContainer reverse orientation="horizontal" style={panelContainerStyle}>
+            <IconButton
+              color="white"
+              onClick={() => toggleOpen()}
+              shape="circle"
+              size="small"
+              style={{ position: 'absolute', bottom: 8, left: 8, zIndex: 10 }}
+              type="button"
+              weight="solid"
+            >
+              <RightPanelIcon size={14} />
+            </IconButton>
+            <MainPanel style={mainPanelStyle}>
+              Main panel
+              <br />
+              Stack panel state: {panelState}
+            </MainPanel>
+            <StackPanel
+              delay={500}
               height={40}
               onCloseFinish={() => setPanelState('closed')}
               onCloseStart={() => setPanelState('closing')}

@@ -56,6 +56,11 @@ export default {
       },
     },
 
+    delay: {
+      table: {
+        category: 'Animation',
+      },
+    },
     duration: {
       table: {
         category: 'Animation',

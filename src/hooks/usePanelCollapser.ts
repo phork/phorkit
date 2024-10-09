@@ -5,6 +5,8 @@ import { useAnimationLoop } from './useAnimationLoop';
 export type CollapseTransition = 'squashable' | 'shiftable';
 
 export type UsePanelCollapserProps = {
+  /** The delay before starting the animation */
+  delay?: number;
   disableHiding?: boolean;
   /** The duration of the animation (no duration results in an immediate change) */
   duration: number;
@@ -132,6 +134,7 @@ const getProperties = ({ position, transition, width, height, useMax }: GetPrope
  * value so that it shifts out out of the visible area.
  */
 export const usePanelCollapser = ({
+  delay,
   disableHiding = false,
   duration,
   easing,
@@ -190,6 +193,7 @@ export const usePanelCollapser = ({
   // no duration for the first run so the panel doesn't animate in or out on load
   const { start, stop } = useAnimationLoop({
     animate,
+    delay,
     duration: firstRun ? 0 : duration,
     loops: 1,
     manual: true,

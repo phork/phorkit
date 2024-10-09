@@ -9,7 +9,7 @@ export type SidePanelProps = Pick<
   UsePanelCollapserProps,
   'onCloseFinish' | 'onCloseStart' | 'onOpenFinish' | 'onOpenStart' | 'open'
 > &
-  Partial<Pick<UsePanelCollapserProps, 'easing' | 'unit' | 'transition'>> &
+  Partial<Pick<UsePanelCollapserProps, 'delay' | 'easing' | 'unit' | 'transition'>> &
   React.HTMLAttributes<HTMLDivElement> & {
     children: React.ReactChild | React.ReactFragment;
     className?: string;
@@ -40,6 +40,7 @@ export const SidePanel = React.forwardRef<HTMLDivElement, SidePanelProps>(
     {
       children,
       className,
+      delay,
       duration = 300,
       easing,
       fixed = false,
@@ -60,6 +61,7 @@ export const SidePanel = React.forwardRef<HTMLDivElement, SidePanelProps>(
     const ref = useRef<HTMLDivElement>(null);
 
     usePanelCollapser({
+      delay,
       duration,
       easing: easing || easeInOutCubic,
       position,
