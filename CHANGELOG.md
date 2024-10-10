@@ -1,5 +1,11 @@
 # Changelog
 
+# [16.2.0](https://github.com/phork/phorkit/compare/v16.1.0...v16.2.0) (2024-10-10)
+
+### ✨ Features
+
+- added minSize to panels ([e9a2433](https://github.com/phork/phorkit/commit/e9a2433))
+
 # [16.1.0](https://github.com/phork/phorkit/compare/v16.0.0...v16.1.0) (2024-10-10)
 
 ### ✨ Features
