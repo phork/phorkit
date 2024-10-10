@@ -1,5 +1,11 @@
 # Changelog
 
+# [16.1.0](https://github.com/phork/phorkit/compare/v16.0.0...v16.1.0) (2024-10-10)
+
+### ✨ Features
+
+- added delay option to animation loop ([0497de7](https://github.com/phork/phorkit/commit/0497de7))
+
 # [16.0.0](https://github.com/phork/phorkit/compare/v15.2.0...v16.0.0) (2024-10-08)
 
 ### ♻ Code Refactoring
