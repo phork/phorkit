@@ -13,6 +13,8 @@ export type UsePanelCollapserProps = {
   /** An easing function can be used to specify the rate of change */
   easing?: (percent: number) => number;
   height?: number;
+  /** The minimum size of the panel if it's greater than 0 */
+  minSize?: number;
   onCloseFinish?: () => void;
   onCloseStart?: () => void;
   onOpenFinish?: () => void;
@@ -40,34 +42,35 @@ const distance = ({ from, to, percent }: DistanceInput): number => from + (to - 
 
 type GetFromToInput = {
   invert?: boolean;
-  size: number;
+  minSize?: number;
   open?: boolean;
+  size: number;
 };
 
 type GetFromToResponse = { from: number; to: number };
 
-const getFromTo = ({ invert, size, open }: GetFromToInput): GetFromToResponse => {
+const getFromTo = ({ invert, minSize, open, size }: GetFromToInput): GetFromToResponse => {
   if (invert) {
     if (open) {
       return {
-        from: -size,
+        from: -(size - (minSize ? Math.max(minSize, 0) : 0)),
         to: 0,
       };
     }
     return {
       from: 0,
-      to: -size,
+      to: -(size - (minSize ? Math.max(minSize, 0) : 0)),
     };
   }
   if (open) {
     return {
-      from: 0,
+      from: minSize ? Math.max(minSize, 0) : 0,
       to: size,
     };
   }
   return {
     from: size,
-    to: 0,
+    to: minSize ? Math.max(minSize, 0) : 0,
   };
 };
 
@@ -139,6 +142,7 @@ export const usePanelCollapser = ({
   duration,
   easing,
   height,
+  minSize,
   onCloseFinish,
   onCloseStart,
   onOpenFinish,
@@ -173,7 +177,7 @@ export const usePanelCollapser = ({
     (percent: number, open: boolean): void => {
       if (ref.current) {
         const { prop, invert, size } = getProperties({ position, transition, width, height, useMax });
-        const { to, from } = getFromTo({ invert, size, open });
+        const { to, from } = getFromTo({ invert, minSize, open, size });
 
         const progress = Math.min(
           size,
@@ -187,7 +191,7 @@ export const usePanelCollapser = ({
         ref.current.style.setProperty(prop, `${progress}${unit}`);
       }
     },
-    [easing, height, position, ref, transition, unit, useMax, width],
+    [easing, height, minSize, position, ref, transition, unit, useMax, width],
   );
 
   // no duration for the first run so the panel doesn't animate in or out on load
@@ -201,7 +205,7 @@ export const usePanelCollapser = ({
       if (open) {
         onOpenFinish && onOpenFinish();
       } else {
-        !disableHiding && hidePanel();
+        !disableHiding && !minSize && hidePanel();
         onCloseFinish && onCloseFinish();
       }
     },
@@ -209,7 +213,7 @@ export const usePanelCollapser = ({
       if (loop === 0) {
         if (open) {
           onOpenStart && onOpenStart();
-          !disableHiding && showPanel();
+          !disableHiding && !minSize && showPanel();
         } else {
           onCloseStart && onCloseStart();
         }

@@ -27,6 +27,11 @@ export default {
         category: 'Appearance',
       },
     },
+    minSize: {
+      table: {
+        category: 'Appearance',
+      },
+    },
     open: {
       table: {
         category: 'Appearance',
