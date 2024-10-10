@@ -7,7 +7,7 @@ import styles from './styles/SidePanel.module.css';
 
 export type SidePanelProps = Pick<
   UsePanelCollapserProps,
-  'onCloseFinish' | 'onCloseStart' | 'onOpenFinish' | 'onOpenStart' | 'open'
+  'minSize' | 'onCloseFinish' | 'onCloseStart' | 'onOpenFinish' | 'onOpenStart' | 'open'
 > &
   Partial<Pick<UsePanelCollapserProps, 'delay' | 'easing' | 'unit' | 'transition'>> &
   React.HTMLAttributes<HTMLDivElement> & {
@@ -44,6 +44,7 @@ export const SidePanel = React.forwardRef<HTMLDivElement, SidePanelProps>(
       duration = 300,
       easing,
       fixed = false,
+      minSize,
       onCloseFinish,
       onCloseStart,
       onOpenFinish,
@@ -64,6 +65,7 @@ export const SidePanel = React.forwardRef<HTMLDivElement, SidePanelProps>(
       delay,
       duration,
       easing: easing || easeInOutCubic,
+      minSize,
       position,
       onCloseFinish,
       onCloseStart,

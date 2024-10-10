@@ -18,7 +18,8 @@ export const mainPanelStyle = {
 export const subPanelStyle = {
   background: '#fff',
   color: '#000',
-  padding: '12px',
+  padding: '0 12px',
+  lineHeight: '36px',
 };
 
 <Meta
@@ -106,6 +107,50 @@ export const subPanelStyle = {
   </Story>
 </Canvas>
 
+### Side panel: Shiftable with minSize
+
+<Canvas>
+  <Story name="Side panel: Shiftable with minSize">
+    <PanelsWrapper>
+      {({ isOpen, panelState, setPanelState, toggleOpen }) => (
+        <React.Fragment>
+          <PanelContainer orientation="vertical" style={panelContainerStyle}>
+            <IconButton
+              color="white"
+              onClick={() => toggleOpen()}
+              shape="circle"
+              size="small"
+              style={{ position: 'absolute', bottom: 8, left: 8, zIndex: 10 }}
+              type="button"
+              weight="solid"
+            >
+              <RightPanelIcon size={14} />
+            </IconButton>
+            <MainPanel style={mainPanelStyle}>
+              Main panel
+              <br />
+              Side panel state: {panelState}
+            </MainPanel>
+            <SidePanel
+              minSize={100}
+              onCloseFinish={() => setPanelState('closed')}
+              onCloseStart={() => setPanelState('closing')}
+              onOpenFinish={() => setPanelState('open')}
+              onOpenStart={() => setPanelState('opening')}
+              open={isOpen}
+              position="right"
+              style={subPanelStyle}
+              width={360}
+            >
+              Side panel
+            </SidePanel>
+          </PanelContainer>
+        </React.Fragment>
+      )}
+    </PanelsWrapper>
+  </Story>
+</Canvas>
+
 ### Side panel: Squashable
 
 <Canvas>
@@ -131,6 +176,51 @@ export const subPanelStyle = {
               Side panel state: {panelState}
             </MainPanel>
             <SidePanel
+              onCloseFinish={() => setPanelState('closed')}
+              onCloseStart={() => setPanelState('closing')}
+              onOpenFinish={() => setPanelState('open')}
+              onOpenStart={() => setPanelState('opening')}
+              open={isOpen}
+              position="right"
+              style={subPanelStyle}
+              transition="squashable"
+              width={360}
+            >
+              Side panel
+            </SidePanel>
+          </PanelContainer>
+        </React.Fragment>
+      )}
+    </PanelsWrapper>
+  </Story>
+</Canvas>
+
+### Side panel: Squashable with minSize
+
+<Canvas>
+  <Story name="Side panel: Squashable with minSize">
+    <PanelsWrapper>
+      {({ isOpen, panelState, setPanelState, toggleOpen }) => (
+        <React.Fragment>
+          <PanelContainer orientation="vertical" style={panelContainerStyle}>
+            <IconButton
+              color="white"
+              onClick={() => toggleOpen()}
+              shape="circle"
+              size="small"
+              style={{ position: 'absolute', bottom: 8, left: 8, zIndex: 10 }}
+              type="button"
+              weight="solid"
+            >
+              <RightPanelIcon size={14} />
+            </IconButton>
+            <MainPanel style={mainPanelStyle}>
+              Main panel
+              <br />
+              Side panel state: {panelState}
+            </MainPanel>
+            <SidePanel
+              minSize={100}
               onCloseFinish={() => setPanelState('closed')}
               onCloseStart={() => setPanelState('closing')}
               onOpenFinish={() => setPanelState('open')}
@@ -284,6 +374,41 @@ export const subPanelStyle = {
   </Story>
 </Canvas>
 
+### Side panel: Hoverable (rudimentary)
+
+<Canvas>
+  <Story name="Side panel: Hoverable">
+    <PanelsWrapper>
+      {({ isOpen, panelState, setPanelState, toggleOpen }) => (
+        <React.Fragment>
+          <PanelContainer orientation="vertical" style={panelContainerStyle}>
+            <MainPanel style={mainPanelStyle}>
+              Main panel
+              <br />
+              Side panel state: {panelState}
+            </MainPanel>
+            <SidePanel
+              minSize={100}
+              onCloseFinish={() => setPanelState('closed')}
+              onCloseStart={() => setPanelState('closing')}
+              onMouseOut={toggleOpen}
+              onMouseOver={toggleOpen}
+              onOpenFinish={() => setPanelState('open')}
+              onOpenStart={() => setPanelState('opening')}
+              open={isOpen}
+              position="right"
+              style={subPanelStyle}
+              width={360}
+            >
+              Side panel
+            </SidePanel>
+          </PanelContainer>
+        </React.Fragment>
+      )}
+    </PanelsWrapper>
+  </Story>
+</Canvas>
+
 # Stack panels
 
 <br />
@@ -327,7 +452,7 @@ export const subPanelStyle = {
               onClick={() => toggleOpen()}
               shape="circle"
               size="small"
-              style={{ position: 'absolute', bottom: 8, left: 8, zIndex: 10 }}
+              style={{ position: 'absolute', bottom: 8, left: 8, zIndex: 10, transform: 'rotate(-90deg)' }}
               type="button"
               weight="solid"
             >
@@ -340,6 +465,50 @@ export const subPanelStyle = {
             </MainPanel>
             <StackPanel
               height={40}
+              onCloseFinish={() => setPanelState('closed')}
+              onCloseStart={() => setPanelState('closing')}
+              onOpenFinish={() => setPanelState('open')}
+              onOpenStart={() => setPanelState('opening')}
+              open={isOpen}
+              position="top"
+              style={subPanelStyle}
+            >
+              Stack panel
+            </StackPanel>
+          </PanelContainer>
+        </React.Fragment>
+      )}
+    </PanelsWrapper>
+  </Story>
+</Canvas>
+
+### Stack panel: Shiftable with minSize
+
+<Canvas>
+  <Story name="Stack panel: Shiftable with minSize">
+    <PanelsWrapper>
+      {({ isOpen, panelState, setPanelState, toggleOpen }) => (
+        <React.Fragment>
+          <PanelContainer reverse orientation="horizontal" style={panelContainerStyle}>
+            <IconButton
+              color="white"
+              onClick={() => toggleOpen()}
+              shape="circle"
+              size="small"
+              style={{ position: 'absolute', bottom: 8, left: 8, zIndex: 10, transform: 'rotate(-90deg)' }}
+              type="button"
+              weight="solid"
+            >
+              <RightPanelIcon size={14} />
+            </IconButton>
+            <MainPanel style={mainPanelStyle}>
+              Main panel
+              <br />
+              Stack panel state: {panelState}
+            </MainPanel>
+            <StackPanel
+              height={40}
+              minSize={10}
               onCloseFinish={() => setPanelState('closed')}
               onCloseStart={() => setPanelState('closing')}
               onOpenFinish={() => setPanelState('open')}
@@ -370,19 +539,64 @@ export const subPanelStyle = {
               onClick={() => toggleOpen()}
               shape="circle"
               size="small"
-              style={{ position: 'absolute', bottom: 8, left: 8, zIndex: 10 }}
+              style={{ position: 'absolute', bottom: 8, left: 8, zIndex: 10, transform: 'rotate(-90deg)' }}
               type="button"
               weight="solid"
             >
               <RightPanelIcon size={14} />
             </IconButton>
-            <MainPanel style={mainPanelStyle}>
+            <MainPanel style={{ ...mainPanelStyle, zIndex: 1 }}>
               Main panel
               <br />
               Stack panel state: {panelState}
             </MainPanel>
             <StackPanel
               height={40}
+              onCloseFinish={() => setPanelState('closed')}
+              onCloseStart={() => setPanelState('closing')}
+              onOpenFinish={() => setPanelState('open')}
+              onOpenStart={() => setPanelState('opening')}
+              open={isOpen}
+              position="top"
+              style={subPanelStyle}
+              transition="squashable"
+            >
+              Stack panel
+            </StackPanel>
+          </PanelContainer>
+        </React.Fragment>
+      )}
+    </PanelsWrapper>
+  </Story>
+</Canvas>
+
+### Stack panel: Squashable with minSize
+
+<Canvas>
+  <Story name="Stack panel: Squashable with minSize">
+    <PanelsWrapper>
+      {({ isOpen, panelState, setPanelState, toggleOpen }) => (
+        <React.Fragment>
+          <PanelContainer reverse orientation="horizontal" style={panelContainerStyle}>
+            <IconButton
+              color="white"
+              onClick={() => toggleOpen()}
+              shape="circle"
+              size="small"
+              style={{ position: 'absolute', bottom: 8, left: 8, zIndex: 10, transform: 'rotate(-90deg)' }}
+              type="button"
+              weight="solid"
+            >
+              <RightPanelIcon size={14} />
+            </IconButton>
+            <MainPanel style={{ ...mainPanelStyle, zIndex: 1 }}>
+              Main panel
+              <br />
+              Stack panel state: {panelState}
+            </MainPanel>
+            <StackPanel
+              height={40}
+              minSize={10}
               onCloseFinish={() => setPanelState('closed')}
               onCloseStart={() => setPanelState('closing')}
               onOpenFinish={() => setPanelState('open')}
@@ -414,13 +628,13 @@ export const subPanelStyle = {
               onClick={() => toggleOpen()}
               shape="circle"
               size="small"
-              style={{ position: 'absolute', bottom: 8, left: 8, zIndex: 10 }}
+              style={{ position: 'absolute', bottom: 8, left: 8, zIndex: 10, transform: 'rotate(-90deg)' }}
               type="button"
               weight="solid"
             >
               <RightPanelIcon size={14} />
             </IconButton>
-            <MainPanel style={mainPanelStyle}>
+            <MainPanel style={{ ...mainPanelStyle, zIndex: 1 }}>
               Main panel
               <br />
               Stack panel state: {panelState}
@@ -459,7 +673,7 @@ export const subPanelStyle = {
               onClick={() => toggleOpen()}
               shape="circle"
               size="small"
-              style={{ position: 'absolute', bottom: 8, left: 8, zIndex: 10 }}
+              style={{ position: 'absolute', bottom: 8, left: 8, zIndex: 10, transform: 'rotate(-90deg)' }}
               type="button"
               weight="solid"
             >
@@ -503,7 +717,7 @@ export const subPanelStyle = {
               onClick={() => toggleOpen()}
               shape="circle"
               size="small"
-              style={{ position: 'absolute', bottom: 8, left: 8, zIndex: 10 }}
+              style={{ position: 'absolute', bottom: 8, left: 8, zIndex: 10, transform: 'rotate(-90deg)' }}
               type="button"
               weight="solid"
             >
@@ -525,6 +739,41 @@ export const subPanelStyle = {
               position="top"
               style={subPanelStyle}
               unit="percent"
+            >
+              Stack panel
+            </StackPanel>
+          </PanelContainer>
+        </React.Fragment>
+      )}
+    </PanelsWrapper>
+  </Story>
+</Canvas>
+
+### Stack panel: Hoverable (rudimentary)
+
+<Canvas>
+  <Story name="Stack panel: Hoverable">
+    <PanelsWrapper>
+      {({ isOpen, panelState, setPanelState, toggleOpen }) => (
+        <React.Fragment>
+          <PanelContainer reverse orientation="horizontal" style={panelContainerStyle}>
+            <MainPanel style={mainPanelStyle}>
+              Main panel
+              <br />
+              Stack panel state: {panelState}
+            </MainPanel>
+            <StackPanel
+              height={40}
+              minSize={10}
+              onCloseFinish={() => setPanelState('closed')}
+              onCloseStart={() => setPanelState('closing')}
+              onMouseOut={toggleOpen}
+              onMouseOver={toggleOpen}
+              onOpenFinish={() => setPanelState('open')}
+              onOpenStart={() => setPanelState('opening')}
+              open={isOpen}
+              position="top"
+              style={subPanelStyle}
             >
               Stack panel
             </StackPanel>

@@ -7,7 +7,7 @@ import styles from './styles/StackPanel.module.css';
 
 export type StackPanelProps = Pick<
   UsePanelCollapserProps,
-  'onCloseFinish' | 'onCloseStart' | 'onOpenFinish' | 'onOpenStart' | 'open'
+  'minSize' | 'onCloseFinish' | 'onCloseStart' | 'onOpenFinish' | 'onOpenStart' | 'open'
 > &
   Partial<Pick<UsePanelCollapserProps, 'delay' | 'easing' | 'unit' | 'transition'>> &
   React.HTMLAttributes<HTMLDivElement> & {
@@ -45,6 +45,7 @@ export const StackPanel = React.forwardRef<HTMLDivElement, StackPanelProps>(
       easing,
       fixed = false,
       height,
+      minSize,
       onCloseFinish,
       onCloseStart,
       onOpenFinish,
@@ -65,6 +66,7 @@ export const StackPanel = React.forwardRef<HTMLDivElement, StackPanelProps>(
       duration,
       easing: easing || easeInOutCubic,
       height,
+      minSize,
       onCloseFinish,
       onCloseStart,
       onOpenFinish,

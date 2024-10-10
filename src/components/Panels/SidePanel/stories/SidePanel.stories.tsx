@@ -27,6 +27,11 @@ export default {
         category: 'Appearance',
       },
     },
+    minSize: {
+      table: {
+        category: 'Appearance',
+      },
+    },
     position: {
       options: ['left', 'right'],
       control: {
