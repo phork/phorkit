@@ -1,5 +1,11 @@
 # Changelog
 
+# [16.3.0](https://github.com/phork/phorkit/compare/v16.2.0...v16.3.0) (2024-10-15)
+
+### ✨ Features
+
+- added flush prop to accordion, fixed storybook jumpiness ([da3aeb7](https://github.com/phork/phorkit/commit/da3aeb7))
+
 # [16.2.0](https://github.com/phork/phorkit/compare/v16.1.0...v16.2.0) (2024-10-10)
 
 ### ✨ Features
