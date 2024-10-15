@@ -1,6 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { Rhythm } from 'components/Rhythm/Rhythm';
+import { PhorkIcon } from 'icons/PhorkIcon';
+import { Flex } from 'components/Flex';
+import { Rhythm } from 'components/Rhythm';
+import { Typography } from 'components/Typography';
 import { Accordion, AccordionProps } from '../Accordion';
 import { items } from './helpers/items';
 import AccordionDocumentation from './Accordion.docs.mdx';
@@ -9,6 +12,11 @@ export default {
   title: 'Surfaces/Accordion',
   component: Accordion,
   argTypes: {
+    flush: {
+      table: {
+        category: 'Appearance',
+      },
+    },
     orientation: {
       table: {
         category: 'Appearance',
@@ -128,6 +136,7 @@ const Template: ComponentStory<typeof Accordion> = args => <Accordion {...args} 
 
 const defaultArgs = {
   contrast: false,
+  flush: false,
   items,
   orientation: 'vertical' as AccordionProps['orientation'],
   unstyled: false,
@@ -211,6 +220,64 @@ AllowUnselect.storyName = 'Allow unselect';
 AllowUnselect.args = {
   ...defaultArgs,
   minSelect: 0,
+};
+
+export const IconsOnly = Template.bind({});
+IconsOnly.storyName = 'Icons only';
+IconsOnly.args = {
+  ...defaultArgs,
+  items: [
+    {
+      id: 'first',
+      iconOnly: true,
+      label: <PhorkIcon scale="medium" />,
+      content: (
+        <Rhythm ml={2}>
+          <Flex full alignItems="center">
+            <Typography variants="no-wrap">First panel</Typography>
+          </Flex>
+        </Rhythm>
+      ),
+    },
+    {
+      id: 'second',
+      iconOnly: true,
+      label: <PhorkIcon scale="medium" />,
+      content: (
+        <Rhythm ml={2}>
+          <Flex full alignItems="center">
+            <Typography variants="no-wrap">Second panel</Typography>
+          </Flex>
+        </Rhythm>
+      ),
+    },
+    {
+      id: 'third',
+      iconOnly: true,
+      label: <PhorkIcon scale="medium" />,
+      content: (
+        <Rhythm ml={2}>
+          <Flex full alignItems="center">
+            <Typography variants="no-wrap">Third panel</Typography>
+          </Flex>
+        </Rhythm>
+      ),
+      disabled: true,
+    },
+    {
+      id: 'fourth',
+      iconOnly: true,
+      label: <PhorkIcon scale="medium" />,
+      content: (
+        <Rhythm ml={2}>
+          <Flex full alignItems="center">
+            <Typography variants="no-wrap">Fourth panel</Typography>
+          </Flex>
+        </Rhythm>
+      ),
+    },
+  ],
+  orientation: 'horizontal',
 };
 
 export const ItemFunctions = Template.bind({});

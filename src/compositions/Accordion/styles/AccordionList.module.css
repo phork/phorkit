@@ -61,13 +61,11 @@
 }
 
 .accordionItem--vertical {
-  border-bottom: 1px solid var(--accordion-item-border-color);
   flex-direction: column;
   width: 100%;
 }
 
 .accordionItem--horizontal {
-  border-right: 1px solid var(--accordion-item-border-color);
   flex-direction: row;
   flex-wrap: nowrap;
   min-height: 100%;

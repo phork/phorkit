@@ -13,6 +13,10 @@ button.accordionLabel {
   text-decoration: none;
   user-select: none;
 
+  &.accordionLabel--flush {
+    padding: 0;
+  }
+
   &.is-selected {
     color: var(--accordion-label-selected-text-color);
   }
@@ -59,7 +63,7 @@ button.accordionLabel {
   justify-content: center;
   line-height: normal;
 
-  &.accordion--icon {
+  &.accordionLabel--icon {
     min-width: 36px;
     padding: 10px;
   }
