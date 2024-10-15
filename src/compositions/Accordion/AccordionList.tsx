@@ -20,6 +20,7 @@ export type AccordionListProps = React.HTMLAttributes<HTMLDivElement> &
   ThemeProps & {
     className?: string;
     componentId: string;
+    flush?: boolean;
     items: readonly AccordionItemType[];
     onBlur?: (e: React.FocusEvent<HTMLDivElement>) => void;
     onFocus?: (e: React.FocusEvent<HTMLDivElement>) => void;
@@ -43,6 +44,7 @@ export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps
       contrast = false,
       duration,
       easing,
+      flush,
       items,
       onBlur,
       onFocus,
@@ -126,7 +128,9 @@ export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps
               >
                 <AccordionLabel
                   aria-controls={generateComponentId(id, 'panel')}
+                  aria-disabled={disabled}
                   aria-expanded={!!stateProps.selected}
+                  flush={flush}
                   iconOnly={iconOnly}
                   id={generateComponentId(id)}
                   onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent> | React.TouchEvent<HTMLDivElement>) =>

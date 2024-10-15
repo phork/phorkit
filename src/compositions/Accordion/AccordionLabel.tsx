@@ -9,6 +9,7 @@ import { AccordionItemStateProps } from './types';
 export type LocalAccordionLabelProps = AccordionItemStateProps & {
   children: React.ReactChild | React.ReactFragment;
   className?: string;
+  flush?: boolean;
   iconOnly?: boolean;
   id: string;
   orientation?: Orientation;
@@ -31,6 +32,7 @@ export function AccordionLabel({
   children,
   className,
   disabled = false,
+  flush = false,
   focused = false,
   iconOnly = false,
   id,
@@ -52,6 +54,7 @@ export function AccordionLabel({
           : cx(
               styles.accordionLabel,
               styles[`accordionLabel--${orientation}`],
+              flush && styles['accordionLabel--flush'],
               iconOnly && styles['accordionLabel--icon'],
               selected && styles['is-selected'],
               disabled && styles['is-disabled'],

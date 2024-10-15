@@ -1,5 +1,6 @@
 import { cx } from '@emotion/css';
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArrowUpDownIcon } from 'icons/ArrowUpDownIcon';
 import { PhorkIcon } from 'icons/PhorkIcon';
 import { SearchIcon } from 'icons/SearchIcon';
 import { TimesIcon } from 'icons/TimesIcon';
@@ -14,6 +15,7 @@ import { ThemeWrapper } from 'stories/helpers/ThemeWrapper';
 import { TimeoutWrapper } from 'stories/helpers/TimeoutWrapper';
 import scrollbar from 'styles/common/Scrollbar.module.css';
 import {
+  Accordion,
   Avatar,
   AvatarStatusBubble,
   Badge,
@@ -973,11 +975,15 @@ import {
           <Card full hoverable raised style={{ maxWidth: '300px' }}>
             <ColoredTabs
               colorId="P35"
-              initialSelected={['check']}
+              initialSelected={['heart']}
               items={[
                 {
                   id: 'heart',
-                  label: <HeartIcon style={{ display: 'block' }} />,
+                  label: (
+                    <Rhythm my={1}>
+                      <HeartIcon style={{ display: 'block' }} />
+                    </Rhythm>
+                  ),
                   content: (
                     <React.Fragment>
                       <img
@@ -1021,7 +1027,11 @@ import {
                 },
                 {
                   id: 'check',
-                  label: <CheckIcon style={{ display: 'block' }} />,
+                  label: (
+                    <Rhythm my={1}>
+                      <CheckIcon style={{ display: 'block' }} />
+                    </Rhythm>
+                  ),
                   content: (
                     <InteractiveList
                       selectOnFocus
@@ -1057,7 +1067,11 @@ import {
                 },
                 {
                   id: 'search',
-                  label: <SearchIcon style={{ display: 'block' }} />,
+                  label: (
+                    <Rhythm my={1}>
+                      <SearchIcon style={{ display: 'block' }} />
+                    </Rhythm>
+                  ),
                   content: 'Third panel',
                   iconOnly: true,
                   contentProps: { flush: true },
@@ -1065,7 +1079,11 @@ import {
                 },
                 {
                   id: 'times',
-                  label: <TimesIcon style={{ display: 'block' }} />,
+                  label: (
+                    <Rhythm my={1}>
+                      <TimesIcon style={{ display: 'block' }} />
+                    </Rhythm>
+                  ),
                   content: (
                     <Rhythm px={5} py={2}>
                       <Paper flexible color="secondary">
@@ -1087,6 +1105,7 @@ import {
                   },
                 },
               ]}
+              listProps={{ style: { width: 50 } }}
               onSelect={(event, id) => console.log(id)}
               orientation="vertical"
             />
@@ -1094,6 +1113,83 @@ import {
         </ScaleProvider>
       )}
     </ThemeWrapper>
+  </Story>
+</Canvas>
+
+### Fancy accordion
+
+<Canvas>
+  <Story name="Fancy accordion">
+    <Accordion
+      flush
+      items={[
+        {
+          content: <Rhythm p={8}>Hello world</Rhythm>,
+          id: 'one',
+          label: ({ selected }) => (
+            <Rhythm p={5}>
+              <Shade actionable color="primary" hovered={selected} style={{ borderBottom: 'none' }}>
+                <Rhythm mr={3}>
+                  <Badge color={selected ? undefined : 'primary'} contrast={selected} shape="count">
+                    <Typography size="xlarge">1</Typography>
+                  </Badge>
+                </Rhythm>
+                <Typography size="xlarge">Do this first</Typography>
+                <Rhythm mr={5}>
+                  <Position location="right-center" variant="inside">
+                    <ArrowUpDownIcon size={20} />
+                  </Position>
+                </Rhythm>
+              </Shade>
+            </Rhythm>
+          ),
+        },
+        {
+          content: <Rhythm p={8}>Hello world</Rhythm>,
+          id: 'two',
+          label: ({ selected }) => (
+            <Rhythm p={5}>
+              <Shade actionable color="primary" hovered={selected} style={{ borderBottom: 'none' }}>
+                <Rhythm mr={3}>
+                  <Badge color={selected ? undefined : 'primary'} contrast={selected} shape="count">
+                    <Typography size="xlarge">2</Typography>
+                  </Badge>
+                </Rhythm>
+                <Typography size="xlarge">Then do this</Typography>
+                <Rhythm mr={5}>
+                  <Position location="right-center" variant="inside">
+                    <ArrowUpDownIcon size={20} />
+                  </Position>
+                </Rhythm>
+              </Shade>
+            </Rhythm>
+          ),
+        },
+        {
+          content: <Rhythm p={8}>Hello world</Rhythm>,
+          id: 'layers',
+          label: ({ selected }) => (
+            <Rhythm p={5}>
+              <Shade actionable color="primary" hovered={selected}>
+                <Rhythm mr={3}>
+                  <Badge color={selected ? undefined : 'primary'} contrast={selected} shape="count">
+                    <Typography size="xlarge">3</Typography>
+                  </Badge>
+                </Rhythm>
+                <Typography size="xlarge">Finally do this</Typography>
+                <Rhythm mr={5}>
+                  <Position location="right-center" variant="inside">
+                    <ArrowUpDownIcon size={20} />
+                  </Position>
+                </Rhythm>
+              </Shade>
+            </Rhythm>
+          ),
+        },
+      ]}
+      minSelect={0}
+      orientation="vertical"
+    />
   </Story>
 </Canvas>
 
