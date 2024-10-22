@@ -1,5 +1,11 @@
 # Changelog
 
+## [16.3.1](https://github.com/phork/phorkit/compare/v16.3.0...v16.3.1) (2024-10-22)
+
+### 🐛 Bug Fixes
+
+- fix dropdown options container z-index on close ([1346823](https://github.com/phork/phorkit/commit/1346823))
+
 # [16.3.0](https://github.com/phork/phorkit/compare/v16.2.0...v16.3.0) (2024-10-15)
 
 ### ✨ Features
