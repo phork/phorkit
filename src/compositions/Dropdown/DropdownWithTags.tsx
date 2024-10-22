@@ -28,6 +28,8 @@ export type DropdownWithTagsProps = Omit<PartialDropdownProps, 'initialSelected'
   /** A custom renderer for the tags */
   tag?: RenderFromPropElement<DropdownWithTagsOption>;
   tagGroupProps?: Omit<TagGroupProps, 'size'>;
+  /** The margin between the tag group and the dropdown */
+  tagMarginTop?: number;
   tagProps?: Omit<TagProps<'button'>, 'actionable' | 'as' | 'children' | 'onClick' | 'ref'>;
   tagShape?: TagShape;
   tagSize?: TagSize;
@@ -61,6 +63,7 @@ export function DropdownWithTags({
   tagProps,
   tagShape = 'pill',
   tagSize = 'xsmall',
+  tagMarginTop = 6,
   tagWeight = 'outlined',
   themeId: initThemeId,
   translations: customTranslations,
@@ -166,7 +169,7 @@ export function DropdownWithTags({
         themeId={themeId}
         {...props}
       />
-      <Rhythm grouped mt={6}>
+      <Rhythm grouped mt={tagMarginTop}>
         <TagGroup size={tagSize} {...tagGroupProps}>
           {options
             .filter(({ id }) => state.selectedIds.includes(id))
