@@ -30,6 +30,10 @@
   }
 }
 
+/**
+ * 1. Prevent the dptions container from falling behind
+      the tags (if applicable) while it's closing.
+ */
 .dropdownOptionsContainer {
   left: 0;
   overflow: visible;
@@ -37,6 +41,10 @@
   right: 0;
   top: 100%;
   user-select: none;
+
+  &:not(.is-visible) {
+    z-index: 2; /* [1] */
+  }
 
   &.is-visible {
     z-index: $layout-z-index-popover;

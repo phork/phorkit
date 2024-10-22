@@ -652,7 +652,7 @@ import {
           { id: 4, value: 'four' },
           { id: 5, value: 'five', label: 'Plain text option' },
         ].map(option => ({
-          label: ({ selected }) => (
+          label: ({ focused, selected }) => (
             <Flex flexible alignItems="center" direction="row" justifyContent="flex-start">
               <Avatar
                 imgSrc="/images/avatar.png"
@@ -664,9 +664,11 @@ import {
                   <Typography weight="bold">Phorkish</Typography>
                 </Flex>
               </Rhythm>
-              <Typography color={selected ? 'contrast' : 'accent'} variants="line-height-smash">
-                <CheckIcon scale="medium" />
-              </Typography>
+              {selected && (
+                <Typography color={focused ? 'contrast' : 'accent'} variants="line-height-smash">
+                  <CheckIcon scale="medium" />
+                </Typography>
+              )}
             </Flex>
           ),
           selectedLabel: option.label || (
@@ -730,7 +732,7 @@ import {
           { id: 4, value: 'four' },
           { id: 5, value: 'five', label: 'Plain text option' },
         ].map(option => ({
-          label: ({ selected }) => (
+          label: ({ focused, selected }) => (
             <Flex flexible alignItems="center" direction="row" justifyContent="flex-start">
               <Avatar
                 imgSrc="/images/avatar.png"
@@ -746,9 +748,11 @@ import {
                   </Typography>
                 </Flex>
               </Rhythm>
-              <Typography color={selected ? 'contrast' : 'accent'} variants="line-height-smash">
-                <CheckIcon scale="medium" />
-              </Typography>
+              {selected && (
+                <Typography color={focused ? 'contrast' : 'accent'} variants="line-height-smash">
+                  <CheckIcon scale="medium" />
+                </Typography>
+              )}
             </Flex>
           ),
           selectedLabel: option.label || (

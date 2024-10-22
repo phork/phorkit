@@ -84,6 +84,11 @@ export default {
         category: 'Tags',
       },
     },
+    tagMarginTop: {
+      table: {
+        category: 'Tags',
+      },
+    },
     tagGroupProps: {
       table: {
         category: 'Tags',
