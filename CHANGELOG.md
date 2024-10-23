@@ -1,5 +1,15 @@
 # Changelog
 
+# [16.4.0](https://github.com/phork/phorkit/compare/v16.3.1...v16.4.0) (2024-10-23)
+
+### ✨ Features
+
+- granular paper borders ([b95c96a](https://github.com/phork/phorkit/commit/b95c96a))
+
+### 🐛 Bug Fixes
+
+- improve dropdown focus handling, tag keyboard events ([37a0e45](https://github.com/phork/phorkit/commit/37a0e45))
+
 ## [16.3.1](https://github.com/phork/phorkit/compare/v16.3.0...v16.3.1) (2024-10-22)
 
 ### 🐛 Bug Fixes
