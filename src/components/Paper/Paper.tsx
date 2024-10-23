@@ -1,13 +1,13 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { AccentColor, SequentialVariant, StateColor, ThemeProps } from '../../types';
+import { AccentColor, Orientation, SequentialVariant, SimplePosition, StateColor, ThemeProps } from '../../types';
 import { useAccessibility } from '../../context/Accessibility/useAccessibility';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Paper.module.css';
 
 export type PaperProps = React.HTMLAttributes<HTMLDivElement> &
   Omit<ThemeProps, 'contrast'> & {
-    bordered?: boolean;
+    bordered?: boolean | Array<SimplePosition | Orientation>;
     children: React.ReactChild | React.ReactFragment;
     className?: string;
     color?: StateColor | SequentialVariant | AccentColor | 'contrast' | 'transparent' | 'extreme';
@@ -61,7 +61,8 @@ export const Paper = React.forwardRef<HTMLDivElement, PaperProps>(
       <div
         className={cx(
           styles.paper,
-          bordered && styles['paper--bordered'],
+          bordered === true && styles['paper--bordered'],
+          Array.isArray(bordered) && bordered.map(border => styles[`paper--bordered-${border}`]),
           color && styles[`paper--${color}`],
           contained && styles['paper--contained'],
           container && styles[`paper--${container}`],

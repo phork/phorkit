@@ -346,3 +346,66 @@ ContainedLayout.args = {
   container: 'panel',
   contained: true,
 };
+
+export const LeftBorder = Template.bind({});
+LeftBorder.decorators = layoutDecorators;
+LeftBorder.storyName = 'Border: Left';
+LeftBorder.args = {
+  ...defaultArgs,
+  bordered: ['left'],
+  color: 'primary',
+};
+
+export const RightBorder = Template.bind({});
+RightBorder.decorators = layoutDecorators;
+RightBorder.storyName = 'Border: Right';
+RightBorder.args = {
+  ...defaultArgs,
+  bordered: ['right'],
+  color: 'primary',
+};
+
+export const TopBorder = Template.bind({});
+TopBorder.decorators = layoutDecorators;
+TopBorder.storyName = 'Border: Top';
+TopBorder.args = {
+  ...defaultArgs,
+  bordered: ['top'],
+  color: 'primary',
+};
+
+export const BottomBorder = Template.bind({});
+BottomBorder.decorators = layoutDecorators;
+BottomBorder.storyName = 'Border: Bottom';
+BottomBorder.args = {
+  ...defaultArgs,
+  bordered: ['bottom'],
+  color: 'primary',
+};
+
+export const VerticalBorder = Template.bind({});
+VerticalBorder.decorators = layoutDecorators;
+VerticalBorder.storyName = 'Borders: Vertical';
+VerticalBorder.args = {
+  ...defaultArgs,
+  bordered: ['vertical'],
+  color: 'primary',
+};
+
+export const HorizontalBorder = Template.bind({});
+HorizontalBorder.decorators = layoutDecorators;
+HorizontalBorder.storyName = 'Borders: Horizontal';
+HorizontalBorder.args = {
+  ...defaultArgs,
+  bordered: ['horizontal'],
+  color: 'primary',
+};
+
+export const BottomLeftBorder = Template.bind({});
+BottomLeftBorder.decorators = layoutDecorators;
+BottomLeftBorder.storyName = 'Borders: Bottom left';
+BottomLeftBorder.args = {
+  ...defaultArgs,
+  bordered: ['bottom', 'left'],
+  color: 'primary',
+};
