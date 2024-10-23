@@ -3,6 +3,7 @@
 .paper {
   background-color: var(--paper-background-color);
   border-color: var(--paper-border-color);
+  border-width: 0;
   color: var(--paper-text-color);
   position: relative;
 }
@@ -53,6 +54,30 @@
 
 .paper--bordered {
   border-width: 1px;
+  border-style: solid;
+}
+
+.paper--bordered-left,
+.paper--bordered-vertical {
+  border-left-width: 1px;
+  border-style: solid;
+}
+
+.paper--bordered-right,
+.paper--bordered-vertical {
+  border-right-width: 1px;
+  border-style: solid;
+}
+
+.paper--bordered-top,
+.paper--bordered-horizontal {
+  border-top-width: 1px;
+  border-style: solid;
+}
+
+.paper--bordered-bottom,
+.paper--bordered-horizontal {
+  border-bottom-width: 1px;
   border-style: solid;
 }
 
