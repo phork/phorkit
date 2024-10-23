@@ -244,7 +244,7 @@ export function PartialDropdownBase(
   });
 
   const { addRef, clearRefs, handleFocus, handleBlur, isIdFocused } = useDeepFocusGroup({}, { blurDelay: 150 });
-  const { focus, cancel } = useTriggerFocus({ focusDelay: 150 });
+  const { focus, cancel } = useTriggerFocus({ focusDelay: 0 });
 
   const isClearFocused = isIdFocused(FOCUS_REFS.CLEAR);
   const isContainerFocused = isIdFocused(FOCUS_REFS.CONTAINER);
@@ -404,7 +404,7 @@ export function PartialDropdownBase(
 
       mouseDownRef.current = {
         isDropdownVisible,
-        isListClicked: listRef.current?.container?.contains(event.target as Node),
+        isListClicked: listRef.current?.container.contains(event.target as Node),
       };
     },
     [isDropdownVisible],
@@ -477,7 +477,7 @@ export function PartialDropdownBase(
         // if the input wasn't part of the form or the clear button then show and focus the list
         case 'Enter':
         case ' ':
-          if (!isListFocused && !isClearFocused && !isInputTarget) {
+          if (!isClearFocused && !isInputTarget) {
             event.preventDefault();
             event.stopPropagation();
             dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });

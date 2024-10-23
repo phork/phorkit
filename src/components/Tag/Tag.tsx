@@ -1,5 +1,5 @@
 import { cx } from '@emotion/css';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { AsReactType, MergeElementPropsWithoutRef, ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Tag.module.css';
@@ -22,6 +22,7 @@ export type LocalTagProps = ThemeProps & {
   focused?: boolean;
   /** Manually apply the hover styles; this does not affect :hover */
   hovered?: boolean;
+  onClick?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent) => void;
   shape?: TagShape;
   size?: TagSize;
   style?: React.CSSProperties;
@@ -41,6 +42,7 @@ export function TagBase<T extends TagElementType = 'div'>(
     focused = false,
     flush = false,
     hovered = false,
+    onClick,
     shape = 'pill',
     size = 'small',
     themeId: initThemeId,
@@ -53,6 +55,20 @@ export function TagBase<T extends TagElementType = 'div'>(
   const themeId = useThemeId(initThemeId);
   const color = contrast ? 'contrast' : 'primary';
   const element = as || (actionable ? 'button' : 'div');
+
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent) => {
+      if (onClick) {
+        if (event.key === ' ' || event.key === 'Enter') {
+          event.preventDefault();
+          event.stopPropagation();
+
+          onClick(event);
+        }
+      }
+    },
+    [onClick],
+  );
 
   return React.createElement(
     element,
@@ -71,6 +87,8 @@ export function TagBase<T extends TagElementType = 'div'>(
         weight && styles[`tag--${weight}`],
         className,
       ),
+      onClick,
+      onKeyDown: handleKeyDown,
       ref: forwardedRef,
       role: actionable ? 'button' : undefined,
       tabIndex: actionable ? 0 : undefined,
