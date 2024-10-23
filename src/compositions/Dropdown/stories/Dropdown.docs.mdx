@@ -186,6 +186,76 @@ export const dropdownContainerStyle = {
   </Flex>
 </Canvas>
 
+### Multi-select filterable dropdown
+
+<Canvas>
+  <Flex full wrap direction="row" justifyContent="space-between">
+    <Looper
+      list={variants}
+      render={variant => (
+        <div style={dropdownContainerStyle}>
+          <Dropdown
+            transitional
+            getFilteredOptions={handleFilter}
+            initialSelected={[options[3]]}
+            inputVariant={variant}
+            label="Super awesome dropdown"
+            maxSelect={-1}
+            options={options}
+          />
+        </div>
+      )}
+    />
+  </Flex>
+</Canvas>
+
+### Contained filterable dropdown
+
+<Canvas>
+  <Flex full wrap direction="row" justifyContent="space-between">
+    <Looper
+      list={variants}
+      render={variant => (
+        <div style={dropdownContainerStyle}>
+          <Dropdown
+            transitional
+            getFilteredOptions={handleFilter}
+            initialSelected={[options[3]]}
+            inputVariant={variant}
+            label="Super awesome dropdown"
+            layout="contained"
+            options={options}
+          />
+        </div>
+      )}
+    />
+  </Flex>
+</Canvas>
+
+### Multi-select contained filterable dropdown
+
+<Canvas>
+  <Flex full wrap direction="row" justifyContent="space-between">
+    <Looper
+      list={variants}
+      render={variant => (
+        <div style={dropdownContainerStyle}>
+          <Dropdown
+            transitional
+            getFilteredOptions={handleFilter}
+            initialSelected={[options[3]]}
+            inputVariant={variant}
+            label="Super awesome dropdown"
+            layout="contained"
+            maxSelect={-1}
+            options={options}
+          />
+        </div>
+      )}
+    />
+  </Flex>
+</Canvas>
+
 ### Searchable dropdown
 
 _A searchable dropdown is similar to a filterable dropdown except that it starts with no initial values._
