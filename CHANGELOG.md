@@ -1,5 +1,11 @@
 # Changelog
 
+# [16.5.0](https://github.com/phork/phorkit/compare/v16.4.0...v16.5.0) (2024-10-29)
+
+### ✨ Features
+
+- added dropdown label renderer ([e70ac47](https://github.com/phork/phorkit/commit/e70ac47))
+
 # [16.4.0](https://github.com/phork/phorkit/compare/v16.3.1...v16.4.0) (2024-10-23)
 
 ### ✨ Features
