@@ -17,38 +17,37 @@ import {
   DropdownSize,
 } from './types';
 
-export type LocalDropdownContentProps = ThemeProps & {
-  /** This is used by DropdownWithTags so an item can be added, removed and re-added */
-  allowReselect?: boolean;
-  className?: string;
-  disabled?: boolean;
-  disabledIds?: readonly string[];
-  emptyNotification?: DropdownEmptyProps['children'];
-  filter?: string;
-  focused?: boolean;
-  hideNoContent?: boolean;
-  /** The empty dropdown notification should be inline when using withNotification */
-  inlineDropdownEmpty?: boolean;
-  inputVariant?: DropdownInputVariant;
-  isDropdownVisible?: boolean;
-  isEmpty?: boolean;
-  layout: DropdownLayout;
-  listColor?: DropdownListColor;
-  listSize?: DropdownListSize;
-  listVariant?: DropdownListVariant;
-  maxSelect?: number;
-  minSelect?: number;
-  onItemFocus: PartialInteractiveListProps['onItemFocus'];
-  onListBlur: React.FocusEventHandler<HTMLUListElement>;
-  onListFocus: React.FocusEventHandler<HTMLUListElement>;
-  onListKeyDown: PartialInteractiveListProps['onKeyDown'];
-  onSelect: PartialInteractiveListProps['onSelect'];
-  onSelectionChange: PartialInteractiveListProps['onSelectionChange'];
-  onUnselect: PartialInteractiveListProps['onUnselect'];
-  options?: readonly DropdownOption[];
-  reducer: PartialInteractiveListProps['reducer'];
-  size: DropdownSize;
-};
+export type LocalDropdownContentProps = ThemeProps &
+  Pick<PartialInteractiveListProps, 'maxSelect' | 'minSelect' | 'renderLabel'> & {
+    /** This is used by DropdownWithTags so an item can be added, removed and re-added */
+    allowReselect?: boolean;
+    className?: string;
+    disabled?: boolean;
+    disabledIds?: readonly string[];
+    emptyNotification?: DropdownEmptyProps['children'];
+    filter?: string;
+    focused?: boolean;
+    hideNoContent?: boolean;
+    /** The empty dropdown notification should be inline when using withNotification */
+    inlineDropdownEmpty?: boolean;
+    inputVariant?: DropdownInputVariant;
+    isDropdownVisible?: boolean;
+    isEmpty?: boolean;
+    layout: DropdownLayout;
+    listColor?: DropdownListColor;
+    listSize?: DropdownListSize;
+    listVariant?: DropdownListVariant;
+    onItemFocus: PartialInteractiveListProps['onItemFocus'];
+    onListBlur: React.FocusEventHandler<HTMLUListElement>;
+    onListFocus: React.FocusEventHandler<HTMLUListElement>;
+    onListKeyDown: PartialInteractiveListProps['onKeyDown'];
+    onSelect: PartialInteractiveListProps['onSelect'];
+    onSelectionChange: PartialInteractiveListProps['onSelectionChange'];
+    onUnselect: PartialInteractiveListProps['onUnselect'];
+    options?: readonly DropdownOption[];
+    reducer: PartialInteractiveListProps['reducer'];
+    size: DropdownSize;
+  };
 
 export type DropdownContentProps = MergeElementProps<'div', LocalDropdownContentProps>;
 
@@ -89,6 +88,7 @@ export function DropdownContentBase(
     onUnselect,
     options,
     reducer,
+    renderLabel,
     size,
     themeId,
     unthemed = false,
@@ -196,6 +196,7 @@ export function DropdownContentBase(
               parentRef={containerRef}
               reducer={reducer}
               ref={listRef}
+              renderLabel={renderLabel}
               rounded={layout === 'contained' && inputVariant && ['underline', 'filled'].includes(inputVariant)}
               // this MUST use auto for the scroll behavior so that it plays nicely with scroll sync
               scrollBehavior="auto"

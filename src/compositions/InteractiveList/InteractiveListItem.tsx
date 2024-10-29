@@ -6,7 +6,7 @@ import {
 } from '../../components/InteractiveGroup/InteractiveGroupItem';
 import { ListItem, ListItemProps } from '../../components/List';
 
-type StateProps = {
+export type InteractiveListItemStateProps = {
   disabled?: boolean;
   focused?: boolean;
   selected?: boolean;
@@ -14,9 +14,16 @@ type StateProps = {
 
 export type LocalInteractiveListItemProps = {
   id: string;
-  label: React.ReactChild | React.ReactFragment | ((state: StateProps) => React.ReactChild | React.ReactFragment);
+  label:
+    | React.ReactChild
+    | React.ReactFragment
+    | ((state: InteractiveListItemStateProps) => React.ReactChild | React.ReactFragment);
   mimicSelectOnFocus?: boolean;
   onClick: (event: React.MouseEvent | React.TouchEvent, id: LocalInteractiveListItemProps['id']) => void;
+  renderLabel?: (
+    label: React.ReactChild | React.ReactFragment,
+    state: InteractiveListItemStateProps,
+  ) => React.ReactElement;
   scrollBehavior?: InteractiveGroupItemProps<HTMLLIElement>['scrollBehavior'];
 };
 
@@ -33,12 +40,13 @@ export function InteractiveListItemBase({
   mimicSelectOnFocus = false,
   onClick,
   onKeyDown,
+  renderLabel,
   scrollBehavior,
   selected = false,
   transparent = false,
   ...props
 }: InteractiveListItemProps): JSX.Element {
-  const stateProps: StateProps = {
+  const stateProps: InteractiveListItemStateProps = {
     disabled,
     focused,
     selected,
@@ -67,7 +75,9 @@ export function InteractiveListItemBase({
           >)}
           {...stateProps}
         >
-          {typeof label === 'function' ? label(stateProps) : label}
+          {(typeof label === 'function' && label(stateProps)) ||
+            (renderLabel && renderLabel(label, stateProps)) ||
+            label}
         </ListItem>
       )}
     </InteractiveGroupItem>

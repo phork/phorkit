@@ -9,7 +9,7 @@ import {
   PartialInteractiveGroupProviderProps,
 } from '../../components/InteractiveGroup/PartialInteractiveGroupProvider';
 import { List, ListProps } from '../../components/List';
-import { InteractiveListItem, InteractiveListItemProps } from './InteractiveListItem';
+import { InteractiveListItem, InteractiveListItemProps, InteractiveListItemStateProps } from './InteractiveListItem';
 
 type ExplicitProviderProps = Pick<
   PartialInteractiveGroupProviderProps<string, HTMLUListElement, HTMLLIElement>,
@@ -41,6 +41,10 @@ export type LocalPartialInteractiveListProps = ExplicitProviderProps & {
     PartialInteractiveGroupProviderProps<string, HTMLUListElement, HTMLLIElement>,
     keyof ExplicitProviderProps | 'children'
   >;
+  renderLabel?: (
+    label: React.ReactChild | React.ReactFragment,
+    state: InteractiveListItemStateProps,
+  ) => React.ReactElement;
   scrollBehavior?: InteractiveListItemProps['scrollBehavior'];
   unstyled?: boolean;
 };
@@ -72,6 +76,7 @@ export function PartialInteractiveListBase(
     parentRef,
     providerProps,
     reducer,
+    renderLabel,
     rounded = false,
     scrollBehavior,
     selectOnFocus = false,
@@ -156,11 +161,12 @@ export function PartialInteractiveListBase(
                     label={label}
                     mimicSelectOnFocus={mimicSelectOnFocus}
                     onClick={handleItemClick}
+                    renderLabel={renderLabel}
                     scrollBehavior={scrollBehavior}
                     transparent={transparent}
                     unstyled={unstyled}
                     {...stateProps}
-                    {...(itemProps as Omit<InteractiveListItemProps, 'id' | 'label' | 'onClick'>)}
+                    {...(itemProps as Omit<InteractiveListItemProps, 'id' | 'label' | 'onClick' | 'renderLabel'>)}
                   />
                 );
               })}

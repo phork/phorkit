@@ -52,6 +52,41 @@ export const dropdownContainerStyle = {
   </div>
 </Canvas>
 
+### Dropdown with label renderer
+
+<Canvas>
+  <div style={dropdownContainerStyle}>
+    <DropdownWithTags
+      transitional
+      initialSelected={[options[3], options[5], options[7]]}
+      inputVariant="filled"
+      label="Super awesome dropdown"
+      layout="contained"
+      options={options}
+      renderLabel={(label, { focused, selected }) =>
+        `${label}${focused ? ' is focused' : ''}${focused && selected ? ' and ' : ''}${selected ? ' is selected' : ''}${
+          focused || selected ? '!' : ''
+        }`
+      }
+      style={{ width: 300 }}
+      tag={({ label }) => (
+        <ChipContent
+          avatar={{ initials: 'P', color: 'primary', imgSrc: '/images/avatar.jpg' }}
+          icon={
+            <Rhythm mr={2}>
+              <TimesIcon scale="xsmall" />
+            </Rhythm>
+          }
+          size="medium"
+          text={label}
+        />
+      )}
+      tagProps={{ flush: true }}
+      tagSize="medium"
+    />
+  </div>
+</Canvas>
+
 ### Custom styles
 
 <Canvas>

@@ -11,9 +11,11 @@ import { useTranslations } from '../../hooks/useTranslations';
 import { useTriggerFocus } from '../../hooks/useTriggerFocus';
 import { makeCancelable } from '../../utils/makeCancelable';
 import { RenderFromPropElement } from '../../utils/renderFromProp';
-import { PencilSlashIcon, SearchIcon, TimesIcon } from '../../icons';
 import { ArrowDownIcon } from '../../icons/ArrowDownIcon';
+import { PencilSlashIcon } from '../../icons/PencilSlashIcon';
+import { SearchIcon } from '../../icons/SearchIcon';
 import { SpinnerIcon } from '../../icons/SpinnerIcon';
+import { TimesIcon } from '../../icons/TimesIcon';
 import {
   FormboxContainer,
   FormboxIcon,
@@ -94,6 +96,7 @@ export type PartialDropdownProps = Omit<
       | 'maxSelect'
       | 'minSelect'
       | 'onItemFocus'
+      | 'renderLabel'
     >
   > &
   ThemeProps & {
@@ -178,6 +181,7 @@ export function PartialDropdownBase(
     placeholder,
     readOnly = false,
     reducer,
+    renderLabel,
     searchable = false,
     size = 'large',
     themeId: initThemeId,
@@ -731,6 +735,7 @@ export function PartialDropdownBase(
         options={processedOptions}
         reducer={reducer}
         ref={listRef}
+        renderLabel={renderLabel}
         size={size}
         themeId={themeId}
         unthemed={unthemed}
