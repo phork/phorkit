@@ -117,6 +117,34 @@ export const dropdownContainerStyle = {
   </Flex>
 </Canvas>
 
+### Dropdown with label renderer
+
+<Canvas>
+  <Flex full wrap direction="row" justifyContent="space-between">
+    <Looper
+      list={variants}
+      render={variant => (
+        <div style={dropdownContainerStyle}>
+          <Dropdown
+            transitional
+            iconBefore={<TagIcon />}
+            inputVariant={variant}
+            label="Super awesome dropdown"
+            layout="contained"
+            options={options}
+            placeholder="Select one"
+            renderLabel={(label, { focused, selected }) =>
+              `${label}${focused ? ' is focused' : ''}${focused && selected ? ' and ' : ''}${
+                selected ? ' is selected' : ''
+              }${focused || selected ? '!' : ''}`
+            }
+          />
+        </div>
+      )}
+    />
+  </Flex>
+</Canvas>
+
 ### Multi-select dropdown
 
 <Canvas>

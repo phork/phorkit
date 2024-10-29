@@ -343,8 +343,23 @@ NavigationRole.args = {
   providerProps: { role: 'navigation', 'aria-label': 'Primary navigation' },
 };
 
+export const RenderLabel = Template.bind({});
+RenderLabel.storyName = 'Render label';
+RenderLabel.args = {
+  ...defaultArgs,
+  renderLabel: (label, { focused, selected }) => (
+    <div style={{ height: '60px' }}>
+      {label}
+      {focused ? ' is focused' : ''}
+      {focused && selected ? ' and ' : ''}
+      {selected ? ' is selected' : ''}
+      {focused || selected ? '!' : ''}
+    </div>
+  ),
+};
+
 export const LabelFunctions = Template.bind({});
-LabelFunctions.storyName = 'Label functions';
+LabelFunctions.storyName = 'Individual label functions';
 LabelFunctions.args = {
   ...defaultArgs,
   items: [
@@ -352,7 +367,10 @@ LabelFunctions.args = {
       id: 'first',
       label: ({ focused, selected }) => (
         <div style={{ height: '60px' }}>
-          First {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
+          First{focused ? ' is focused' : ''}
+          {focused && selected ? ' and ' : ''}
+          {selected ? ' is selected' : ''}
+          {focused || selected ? '!' : ''}
         </div>
       ),
     },
@@ -360,7 +378,10 @@ LabelFunctions.args = {
       id: 'second',
       label: ({ focused, selected }) => (
         <div style={{ height: '60px' }}>
-          Second {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
+          Second{focused ? ' is focused' : ''}
+          {focused && selected ? ' and ' : ''}
+          {selected ? ' is selected' : ''}
+          {focused || selected ? '!' : ''}
         </div>
       ),
     },
@@ -368,7 +389,10 @@ LabelFunctions.args = {
       id: 'third',
       label: ({ focused, selected }) => (
         <div style={{ height: '60px' }}>
-          Third {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
+          Third{focused ? ' is focused' : ''}
+          {focused && selected ? ' and ' : ''}
+          {selected ? ' is selected' : ''}
+          {focused || selected ? '!' : ''}
         </div>
       ),
     },
@@ -376,7 +400,10 @@ LabelFunctions.args = {
       id: 'fourth',
       label: ({ focused, selected }) => (
         <div style={{ height: '60px' }}>
-          Fourth {focused ? 'is focused!' : ''} {selected ? 'is selected!' : ''}
+          Fourth{focused ? ' is focused' : ''}
+          {focused && selected ? ' and ' : ''}
+          {selected ? ' is selected' : ''}
+          {focused || selected ? '!' : ''}
         </div>
       ),
     },
