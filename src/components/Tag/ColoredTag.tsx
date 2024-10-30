@@ -19,17 +19,15 @@ const StyledTag = styled(Tag, {
   --tag-inverse-color: ${props => themes[props.themeId][`color-${props.colorId}-contrast` as keyof ThemeColors]};
 `;
 
+const BaseColoredTag = withTheme<ColoredTagProps>(StyledTag) as <T extends TagElementType = 'div'>(
+  p: Omit<ColoredTagProps<T>, 'themeId'> & { themeId?: Theme },
+) => React.ReactElement<T>;
+
 /**
  * A colored tag is an extension of the `Tag` component
  * that will have a background of one of the theme's
  * primary colors.
  */
-export const ColoredTag = withTheme<ColoredTagProps>(StyledTag) as <T extends TagElementType = 'div'>(
-  p: Omit<ColoredTagProps<T>, 'themeId'> & { themeId?: Theme },
-) => React.ReactElement<T>;
+export const ColoredTag = ((props: ColoredTagProps) => <BaseColoredTag {...props} unthemed />) as typeof BaseColoredTag;
 
 (ColoredTag as React.NamedExoticComponent).displayName = 'ColoredTag';
-
-StyledTag.defaultProps = {
-  unthemed: true,
-};

@@ -71,7 +71,6 @@ Default.parameters = {
 */
 
 Default.argTypes = {
-  contrast: { table: { disable: true } },
   style: { table: { disable: true } },
   unthemed: { table: { disable: true } },
   variant: { table: { disable: true } },

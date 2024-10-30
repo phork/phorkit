@@ -9,7 +9,7 @@ export type IconTextProps = React.HTMLAttributes<HTMLDivElement> & {
   inline?: boolean;
   reverse?: boolean;
   style?: React.CSSProperties;
-  text: React.ReactChild | React.ReactFragment;
+  text: NonNullable<React.ReactNode>;
   textClassName?: string;
 };
 

@@ -11,7 +11,7 @@ export type IconTextButtonProps<T extends ButtonElementType = 'button'> = MergeP
   ButtonProps<T>,
   {
     icon: React.ReactElement<SVGElement>;
-    children: React.ReactChild;
+    children: React.ReactNode;
     /** If this is true then the loader icon will replace the icon and the text will remain */
     loaderReplaceIcon?: boolean;
     reverse?: boolean;

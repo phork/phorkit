@@ -9,7 +9,7 @@ export type ShadeProps = React.HTMLAttributes<HTMLDivElement> &
     actionable?: boolean;
     /** Manually apply the active styles; this does not affect :active */
     active?: boolean;
-    children: React.ReactChild | React.ReactFragment;
+    children: NonNullable<React.ReactNode>;
     className?: string;
     color?: SemanticColor;
     /** Manually apply the focus styles; this does not affect :focus */

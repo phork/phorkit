@@ -7,7 +7,7 @@ import styles from './styles/FormboxInput.module.css';
 export type FormboxInputFormattedProps = React.HTMLAttributes<HTMLDivElement> &
   ThemeProps & {
     centered?: boolean;
-    children?: React.ReactChild;
+    children?: React.ReactNode;
     className?: string;
     hidden?: boolean;
     /** When used as a placeholder there will be some transparency */

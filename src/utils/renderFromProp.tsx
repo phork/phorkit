@@ -1,8 +1,8 @@
 import React from 'react';
 import * as ReactIs from 'react-is';
 
-export type RenderFromFunctionElement<P> = React.JSXElementConstructor<P & { children?: React.ReactChild }>;
-export type RenderFromElementElement<P> = React.ReactElement<P & { children?: React.ReactChild }>;
+export type RenderFromFunctionElement<P> = React.JSXElementConstructor<P & { children?: React.ReactNode }>;
+export type RenderFromElementElement<P> = React.ReactElement<P & { children?: React.ReactNode }>;
 export type RenderFromStringElement = keyof JSX.IntrinsicElements;
 
 export type RenderFromPropElement<P> =
@@ -11,7 +11,7 @@ export type RenderFromPropElement<P> =
   | RenderFromStringElement;
 
 export type RenderFromPropOptions = {
-  children?: React.ReactChild;
+  children?: React.ReactNode;
   createFromString?: boolean;
 };
 

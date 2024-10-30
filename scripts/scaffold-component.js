@@ -61,7 +61,7 @@ import styles from './styles/${component}.module.css';
 
 export type ${component}Props = React.HTMLAttributes<HTMLDivElement> &
   ThemeProps & {
-    children: React.ReactChild | React.ReactFragment;
+    children: React.ReactNode;
     className?: string;
     style?: React.CSSProperties;
   };

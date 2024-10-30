@@ -9,7 +9,7 @@ import styles from './styles/Dropover.module.css';
 
 export type DropoverLabelProps = React.HTMLAttributes<HTMLDivElement> &
   ThemeProps & {
-    children: React.ReactChild | React.ReactFragment;
+    children: React.ReactNode;
     className?: string;
     cloned?: boolean;
     focused?: boolean;

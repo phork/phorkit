@@ -5,7 +5,7 @@ import { Toast, ToastProps } from './Toast';
 import { useToastComponentIds } from './useToastComponentIds';
 
 export type TitledToastProps = Omit<ToastProps, 'title'> & {
-  title: React.ReactChild | React.ReactFragment;
+  title: NonNullable<React.ReactNode>;
 };
 
 /**

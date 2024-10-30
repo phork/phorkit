@@ -3,7 +3,7 @@ import { ThemeProps } from '../../types';
 import { ListRegistryProvider } from '../../components/ListRegistry/ListRegistryProvider';
 
 export type TextboxGroupContainerProps = ThemeProps & {
-  children: React.ReactChild | React.ReactFragment;
+  children: NonNullable<React.ReactNode>;
 };
 
 /**

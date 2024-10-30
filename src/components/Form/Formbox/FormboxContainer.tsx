@@ -9,7 +9,7 @@ import { FormboxContainerElementType, FormboxInputElementType, FormboxSize, Form
 export type LocalFormboxContainerProps = ThemeProps & {
   /** Whether the formbox input was auto-filled (see useAutoFilled hook) */
   autoFilled?: boolean;
-  children: React.ReactChild | React.ReactFragment;
+  children: NonNullable<React.ReactNode>;
   centered?: boolean;
   className?: string;
   disabled?: boolean;
@@ -22,7 +22,7 @@ export type LocalFormboxContainerProps = ThemeProps & {
   id?: string;
   /** The width of the input container */
   inputWidth?: string | number;
-  label?: React.ReactChild | React.ReactFragment | string;
+  label?: React.ReactNode | string;
   /** If the formbox container is read only then there are no hover events */
   readOnly?: boolean;
   size?: FormboxSize;

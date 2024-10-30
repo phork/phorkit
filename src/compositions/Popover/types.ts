@@ -41,7 +41,7 @@ export type PopoverContentPropsRenderChildren<C extends HTMLElement, F extends H
 
 export type PopoverContentPropsChildren = {
   /** If there are children then `renderChildren` is ignored */
-  children: React.ReactChild | React.ReactFragment;
+  children: NonNullable<React.ReactNode>;
   renderChildren?: never;
 };
 

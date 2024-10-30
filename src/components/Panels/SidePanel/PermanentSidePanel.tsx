@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './styles/SidePanel.module.css';
 
 export type PermanentSidePanelProps = React.HTMLAttributes<HTMLDivElement> & {
-  children: React.ReactChild | React.ReactFragment;
+  children: NonNullable<React.ReactNode>;
   className?: string;
   fixed?: boolean;
   flexible?: boolean;

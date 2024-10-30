@@ -7,7 +7,7 @@ import { useModalComponentIds } from './useModalComponentIds';
 export type ModalHeaderProps = React.HTMLAttributes<HTMLDivElement> & {
   align?: 'left' | 'center' | 'right';
   bordered?: boolean;
-  children?: React.ReactChild | React.ReactFragment | null;
+  children?: React.ReactNode;
   className?: string;
   modalId?: string;
   title?: string;

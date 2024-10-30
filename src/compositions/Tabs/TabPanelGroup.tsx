@@ -20,10 +20,7 @@ export type TabPanelGroupProps = React.HTMLAttributes<HTMLDivElement> &
     focused?: boolean;
     items: ReadonlyArray<{
       id: string;
-      content:
-        | React.ReactChild
-        | React.ReactFragment
-        | ((props: TabPanelStateProps) => React.ReactChild | React.ReactFragment);
+      content: React.ReactNode | ((props: TabPanelStateProps) => NonNullable<React.ReactNode>);
       contentProps?: Omit<TabPanelProps, 'children' | 'id' | 'selected'>;
     }>;
     orientation?: Orientation;

@@ -33,15 +33,13 @@ export type StyledLineLoaderProps = Omit<LineLoaderProps, 'contrast' | 'themeId'
   color: string;
 }
 
-export const StyledLineLoader = styled(LineLoader, {
+const BaseStyledLineLoader = styled(LineLoader, {
   shouldForwardProp: (prop: string) => prop !== 'color',
 })<StyledLineLoaderProps>`
   ${({ color }) => color && `--line-loader-color: ${color};`}
 `;
 
-StyledLineLoader.defaultProps = {
-  unthemed: true,
-};
+export const StyledLineLoader = (props: StyledLineLoaderProps) => <BaseStyledLineLoader {...props} unthemed />;
 */
 
 StyledLineLoader.displayName = 'StyledLineLoader';

@@ -78,7 +78,7 @@ export type PopoverProps<C extends HTMLElement, F extends HTMLElement | undefine
   permanent?: boolean;
   position?: AnyPosition | StackedPosition;
   /** A function to render the actual popover and set its positioning */
-  renderContent: (props: PopoverRenderContentProps<C, F>) => React.ReactChild | React.ReactFragment;
+  renderContent: (props: PopoverRenderContentProps<C, F>) => NonNullable<React.ReactNode>;
   style?: React.CSSProperties;
   /** The element that's clicked or hovered to open and close the popover */
   toggler: RenderFromPropElement<PopoverTogglerProps>;

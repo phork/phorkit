@@ -91,7 +91,7 @@ describe('renderFromProp', () => {
   });
 
   it('should render from a React node with children', () => {
-    const HelloWorld = ({ children }: { children?: React.ReactChild }) => <div>{children}</div>;
+    const HelloWorld = ({ children }: { children?: React.ReactNode }) => <div>{children}</div>;
 
     const { queryByText } = render(
       <React.Fragment>{renderFromProp(<HelloWorld />, {}, { children: 'Hello world' })}</React.Fragment>,
@@ -100,7 +100,7 @@ describe('renderFromProp', () => {
   });
 
   it('should render from a fragment containing a React node with children', () => {
-    const HelloWorld = ({ children }: { children?: React.ReactChild }) => <div>{children}</div>;
+    const HelloWorld = ({ children }: { children?: React.ReactNode }) => <div>{children}</div>;
 
     const { queryByText } = render(
       <React.Fragment>
@@ -133,7 +133,7 @@ describe('renderFromProp', () => {
   });
 
   it('should render from a React element with children', () => {
-    const HelloWorld = ({ children }: { children?: React.ReactChild }) => <div>{children}</div>;
+    const HelloWorld = ({ children }: { children?: React.ReactNode }) => <div>{children}</div>;
 
     const { queryByText } = render(
       <React.Fragment>{renderFromProp(HelloWorld, {}, { children: 'Hello world' })}</React.Fragment>,
@@ -142,7 +142,7 @@ describe('renderFromProp', () => {
   });
 
   it('should render from a fragment containing a React element with children', () => {
-    const HelloWorld = ({ children }: { children?: React.ReactChild }) => <div>{children}</div>;
+    const HelloWorld = ({ children }: { children?: React.ReactNode }) => <div>{children}</div>;
 
     const { queryByText } = render(
       <React.Fragment>

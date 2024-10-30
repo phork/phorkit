@@ -21,7 +21,7 @@ export type FormboxInputWithFormattingProps<I extends FormboxInputElementType> =
     contrast?: boolean;
     /** Manually apply the focus styles; this does not affect focus */
     focused?: boolean;
-    formattedValue?: React.ReactChild;
+    formattedValue?: React.ReactNode;
     /** This is whether there's an input value (excluding the formatted value) */
     hasValue?: boolean;
     placeholder?: FormboxValue | FormboxInputFormattedProps['children'];

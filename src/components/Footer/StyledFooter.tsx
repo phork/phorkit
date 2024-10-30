@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import React from 'react';
 import { Footer, FooterProps } from './Footer';
 
 export type StyledFooterProps = Omit<FooterProps, 'contrast' | 'themeId'> & {
@@ -8,13 +9,7 @@ export type StyledFooterProps = Omit<FooterProps, 'contrast' | 'themeId'> & {
   height?: number | string;
 };
 
-/**
- * A styled footer is an extension of the `Footer`
- * component which can have custom text, border,
- * and background colors, and an optional custom
- * height.
- */
-export const StyledFooter = styled(Footer, {
+const BaseStyledFooter = styled(Footer, {
   shouldForwardProp: (prop: string) => !['borderColor', 'backgroundColor', 'textColor', 'height'].includes(prop),
 })<StyledFooterProps>`
   ${({ backgroundColor }) => backgroundColor && `--footer-background-color: ${backgroundColor};`}
@@ -23,8 +18,12 @@ export const StyledFooter = styled(Footer, {
   ${({ height }) => height !== undefined && `height: ${Number.isNaN(Number(height)) ? height : `${height}px`};`}
 `;
 
-StyledFooter.displayName = 'StyledFooter';
+/**
+ * A styled footer is an extension of the `Footer`
+ * component which can have custom text, border,
+ * and background colors, and an optional custom
+ * height.
+ */
+export const StyledFooter = (props: StyledFooterProps) => <BaseStyledFooter {...props} unthemed />;
 
-StyledFooter.defaultProps = {
-  unthemed: true,
-};
+StyledFooter.displayName = 'StyledFooter';

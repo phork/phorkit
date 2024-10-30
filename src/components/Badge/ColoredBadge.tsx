@@ -18,17 +18,17 @@ const StyledBadge = styled(Badge, {
   --badge-text-color: ${props => themes[props.themeId][`color-${props.colorId}-contrast` as keyof ThemeColors]};
 `;
 
+const BaseColoredBadge = React.memo<Omit<ColoredBadgeProps, 'themeId'> & { themeId?: Theme }>(
+  withTheme<ColoredBadgeProps>(StyledBadge),
+);
+
 /**
  * A colored badge is an extension of the `Badge`
  * component that will have a background of one
  * of the theme's primary colors.
  */
-export const ColoredBadge = React.memo<Omit<ColoredBadgeProps, 'themeId'> & { themeId?: Theme }>(
-  withTheme<ColoredBadgeProps>(StyledBadge),
-);
+export const ColoredBadge = ((props: ColoredBadgeProps) => (
+  <BaseColoredBadge {...props} unthemed />
+)) as typeof BaseColoredBadge;
 
 ColoredBadge.displayName = 'ColoredBadge';
-
-StyledBadge.defaultProps = {
-  unthemed: true,
-};

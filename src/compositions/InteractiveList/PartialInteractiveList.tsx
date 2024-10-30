@@ -33,7 +33,7 @@ type ExplicitProviderProps = Pick<
 
 export type LocalPartialInteractiveListProps = ExplicitProviderProps & {
   /** The children element is shown when there are no list elements */
-  children: React.ReactChild | React.ReactFragment;
+  children: NonNullable<React.ReactNode>;
   /** A superficial focus state can be set outside of this component so that focus styles can be applied when, for example, a parent is focused */
   focused?: boolean;
   listComponent?: typeof List;
@@ -41,10 +41,7 @@ export type LocalPartialInteractiveListProps = ExplicitProviderProps & {
     PartialInteractiveGroupProviderProps<string, HTMLUListElement, HTMLLIElement>,
     keyof ExplicitProviderProps | 'children'
   >;
-  renderLabel?: (
-    label: React.ReactChild | React.ReactFragment,
-    state: InteractiveListItemStateProps,
-  ) => React.ReactElement;
+  renderLabel?: (label: React.ReactNode, state: InteractiveListItemStateProps) => React.ReactElement;
   scrollBehavior?: InteractiveListItemProps['scrollBehavior'];
   unstyled?: boolean;
 };

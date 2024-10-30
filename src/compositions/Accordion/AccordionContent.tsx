@@ -15,7 +15,7 @@ export type AccordionContentProps = React.HTMLAttributes<HTMLDivElement> &
   Pick<UsePanelCollapserProps, 'onCloseFinish' | 'onCloseStart' | 'onOpenFinish' | 'onOpenStart'> &
   Partial<Pick<UsePanelCollapserProps, 'duration' | 'easing'>> &
   AccordionItemStateProps & {
-    children: React.ReactChild | React.ReactFragment;
+    children: NonNullable<React.ReactNode>;
     className?: string;
     orientation?: Orientation;
     parentRef: React.Ref<HTMLDivElement>;

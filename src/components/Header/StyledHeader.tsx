@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import React from 'react';
 import { Header, HeaderProps } from './Header';
 
 export type StyledHeaderProps = Omit<HeaderProps, 'contrast' | 'themeId'> & {
@@ -8,13 +9,7 @@ export type StyledHeaderProps = Omit<HeaderProps, 'contrast' | 'themeId'> & {
   height?: number | string;
 };
 
-/**
- * A styled header is an extension of the `Header`
- * component which can have custom text, border,
- * and background colors, and an optional custom
- * height.
- */
-export const StyledHeader = styled(Header, {
+const BaseStyledHeader = styled(Header, {
   shouldForwardProp: (prop: string) => !['borderColor', 'backgroundColor', 'textColor', 'height'].includes(prop),
 })<StyledHeaderProps>`
   ${({ backgroundColor }) => backgroundColor && `--header-background-color: ${backgroundColor};`}
@@ -23,8 +18,12 @@ export const StyledHeader = styled(Header, {
   ${({ height }) => height !== undefined && `height: ${Number.isNaN(Number(height)) ? height : `${height}px`};`}
 `;
 
-StyledHeader.displayName = 'StyledHeader';
+/**
+ * A styled header is an extension of the `Header`
+ * component which can have custom text, border,
+ * and background colors, and an optional custom
+ * height.
+ */
+export const StyledHeader = (props: StyledHeaderProps) => <BaseStyledHeader {...props} unthemed />;
 
-StyledHeader.defaultProps = {
-  unthemed: true,
-};
+StyledHeader.displayName = 'StyledHeader';

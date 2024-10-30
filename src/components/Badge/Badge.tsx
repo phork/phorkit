@@ -8,7 +8,7 @@ import styles from './styles/Badge.module.css';
 export type BadgeShape = 'marker' | 'point' | 'count' | 'label';
 
 export type LocalBadgeProps = ThemeProps & {
-  children?: React.ReactChild | React.ReactFragment | null;
+  children?: React.ReactNode;
   className?: string;
   color?: SemanticColor;
   /** Adds a 1px outline to the badge to make it stand out */

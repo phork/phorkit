@@ -7,7 +7,7 @@ import styles from './styles/Header.module.css';
 export type HeaderProps = React.HTMLAttributes<HTMLDivElement> &
   ThemeProps & {
     bordered?: boolean | 'pseudo';
-    children: React.ReactChild | React.ReactFragment;
+    children: NonNullable<React.ReactNode>;
     className?: string;
     full?: boolean;
     style?: React.CSSProperties;

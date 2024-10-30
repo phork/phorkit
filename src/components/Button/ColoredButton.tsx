@@ -23,18 +23,17 @@ const StyledButton = styled(Button, {
   --button-active-primary-color: ${props => themes[props.themeId][`color-${props.colorId}-D10` as keyof ThemeColors]};
   --button-inverse-color: ${props => themes[props.themeId][`color-${props.colorId}-contrast` as keyof ThemeColors]};
 `;
+const BaseColoredButton = withTheme<ColoredButtonProps>(StyledButton) as <T extends ButtonElementType = 'button'>(
+  p: Omit<ColoredButtonProps<T>, 'themeId'> & { themeId?: Theme },
+) => React.ReactElement<T>;
 
 /**
  * A colored button is an extension of the `Button`
  * component that will have a background of one
  * of the theme's primary colors.
  */
-export const ColoredButton = withTheme<ColoredButtonProps>(StyledButton) as <T extends ButtonElementType = 'button'>(
-  p: Omit<ColoredButtonProps<T>, 'themeId'> & { themeId?: Theme },
-) => React.ReactElement<T>;
+export const ColoredButton = ((props: ColoredButtonProps) => (
+  <BaseColoredButton {...props} unthemed />
+)) as typeof BaseColoredButton;
 
 (ColoredButton as React.NamedExoticComponent).displayName = 'ColoredButton';
-
-StyledButton.defaultProps = {
-  unthemed: true,
-};
