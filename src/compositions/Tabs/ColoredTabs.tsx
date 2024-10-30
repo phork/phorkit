@@ -34,6 +34,8 @@ const BaseColoredTabs = React.memo<Omit<ColoredTabsProps, 'themeId'> & { themeId
  * component and they will have a background of one
  * of the theme's primary colors.
  */
-export const ColoredTabs = (props: ColoredTabsProps) => <BaseColoredTabs {...props} variant="colored" />;
+export const ColoredTabs = ((props: ColoredTabsProps) => (
+  <BaseColoredTabs {...props} variant="colored" />
+)) as typeof BaseColoredTabs;
 
 ColoredTabs.displayName = 'ColoredTabs';

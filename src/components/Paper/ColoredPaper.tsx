@@ -32,6 +32,8 @@ const BaseColoredPaper = React.memo<Omit<ColoredPaperProps, 'themeId'> & { theme
  * component that will have a background of one
  * of the theme's primary colors.
  */
-export const ColoredPaper = (props: ColoredPaperProps) => <BaseColoredPaper {...props} unthemed />;
+export const ColoredPaper = ((props: ColoredPaperProps) => (
+  <BaseColoredPaper {...props} unthemed />
+)) as typeof BaseColoredPaper;
 
 ColoredPaper.displayName = 'ColoredPaper';

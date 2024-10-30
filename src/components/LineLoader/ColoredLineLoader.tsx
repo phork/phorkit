@@ -26,6 +26,8 @@ const BaseColoredLineLoader = React.memo<Omit<ColoredLineLoaderProps, 'themeId'>
  * component which will have the color of one of the
  * theme's primary colors.
  */
-export const ColoredLineLoader = (props: ColoredLineLoaderProps) => <BaseColoredLineLoader {...props} unthemed />;
+export const ColoredLineLoader = ((props: ColoredLineLoaderProps) => (
+  <BaseColoredLineLoader {...props} unthemed />
+)) as typeof BaseColoredLineLoader;
 
 ColoredLineLoader.displayName = 'ColoredLineLoader';

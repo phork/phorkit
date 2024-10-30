@@ -27,6 +27,8 @@ const BaseColoredBadge = React.memo<Omit<ColoredBadgeProps, 'themeId'> & { theme
  * component that will have a background of one
  * of the theme's primary colors.
  */
-export const ColoredBadge = (props: ColoredBadgeProps) => <BaseColoredBadge {...props} unthemed />;
+export const ColoredBadge = ((props: ColoredBadgeProps) => (
+  <BaseColoredBadge {...props} unthemed />
+)) as typeof BaseColoredBadge;
 
 ColoredBadge.displayName = 'ColoredBadge';

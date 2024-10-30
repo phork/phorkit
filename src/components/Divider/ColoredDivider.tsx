@@ -33,6 +33,8 @@ const BaseColoredDivider = React.memo<Omit<ColoredDividerProps, 'themeId'> & { t
   withTheme<ColoredDividerProps>(StyledDivider),
 );
 
-export const ColoredDivider = (props: ColoredDividerProps) => <BaseColoredDivider {...props} unthemed />;
+export const ColoredDivider = ((props: ColoredDividerProps) => (
+  <BaseColoredDivider {...props} unthemed />
+)) as typeof BaseColoredDivider;
 
 ColoredDivider.displayName = 'ColoredDivider';
