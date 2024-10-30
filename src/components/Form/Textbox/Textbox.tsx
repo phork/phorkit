@@ -80,7 +80,7 @@ export type LocalTextboxProps = Pick<
   autoFocus?: boolean;
   centered?: boolean;
   /** This can be used to show an HTML value or any sort of value that's different from the actual value */
-  formattedValue?: React.ReactChild;
+  formattedValue?: React.ReactNode;
   clearable?: boolean;
   inputClassName?: string;
   /** The visible width, in characters, of the input */
@@ -98,7 +98,7 @@ export type LocalTextboxProps = Pick<
   onClear?: (event: React.KeyboardEvent | React.MouseEvent | React.TouchEvent) => void;
   onSubmit?: (event: React.KeyboardEvent<HTMLInputElement>, value: string) => void;
   /** This can be used to show HTML, or if it's undefined it will default to the plain input placeholder */
-  placeholder?: FormboxValue | React.ReactChild;
+  placeholder?: FormboxValue | React.ReactNode;
   step?: number;
   type?: 'color' | 'date' | 'email' | 'number' | 'password' | 'text' | 'time';
   value?: FormboxValue;

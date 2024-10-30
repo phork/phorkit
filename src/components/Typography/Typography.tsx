@@ -40,7 +40,7 @@ export type TypographyVariants =
 export type LocalTypographyProps = {
   align?: HorizontalPosition | 'center';
   /** The children are optional so that this component can be passed as empty and then cloned */
-  children?: React.ReactChild | React.ReactFragment | null;
+  children?: React.ReactNode;
   className?: string;
   color?: SequentialVariant | AccentColor | StateColor | 'neutral' | 'contrast';
   fullWidth?: boolean;

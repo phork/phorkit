@@ -25,16 +25,15 @@ const StyledTabs = styled(Tabs, {
   --tabs-focused-border-color: ${props => themes[props.themeId][`color-${props.colorId}` as keyof ThemeColors]};
 `;
 
+const BaseColoredTabs = React.memo<Omit<ColoredTabsProps, 'themeId'> & { themeId?: Theme }>(
+  withTheme<ColoredTabsProps>(StyledTabs),
+);
+
 /**
  * The colored tabs are an extension of the Tabs
  * component and they will have a background of one
  * of the theme's primary colors.
  */
-export const ColoredTabs = React.memo<Omit<ColoredTabsProps, 'themeId'> & { themeId?: Theme }>(
-  withTheme<ColoredTabsProps>(StyledTabs),
-);
-ColoredTabs.displayName = 'ColoredTabs';
+export const ColoredTabs = (props: ColoredTabsProps) => <BaseColoredTabs {...props} variant="colored" />;
 
-StyledTabs.defaultProps = {
-  variant: 'colored',
-};
+ColoredTabs.displayName = 'ColoredTabs';

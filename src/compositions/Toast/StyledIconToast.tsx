@@ -41,16 +41,14 @@ export type StyledIconToastProps = Omit<IconToastProps, 'level' | 'themeId'> & {
   levelInverseColor: string;
 }
 
-export const StyledIconToast = styled(IconToast, {
+const BaseStyledIconToast = styled(IconToast, {
   shouldForwardProp: (prop: string) => !['levelColor', 'levelInverseColor'].includes(prop),
 })<StyledIconToastProps>`
   ${({ levelColor }) => levelColor && `--toast-level-color: ${levelColor};`}
   ${({ levelInverseColor }) => levelInverseColor && `--toast-level-inverse-color: ${levelInverseColor};`}
 `;
 
-StyledIconToast.defaultProps = {
-  unthemed: true,
-};
+export const StyledIconToast = (props: StyledIconToastProps) => <BaseStyledIconToast {...props} unthemed />;
 */
 
 StyledIconToast.displayName = 'StyledIconToast';

@@ -8,7 +8,7 @@ import styles from './styles/Paper.module.css';
 export type PaperProps = React.HTMLAttributes<HTMLDivElement> &
   Omit<ThemeProps, 'contrast'> & {
     bordered?: boolean | Array<SimplePosition | Orientation>;
-    children: React.ReactChild | React.ReactFragment;
+    children: React.ReactNode;
     className?: string;
     color?: StateColor | SequentialVariant | AccentColor | 'contrast' | 'transparent' | 'extreme';
     /** This is used when the paper is contained within a relative element and should fill it */

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import React from 'react';
 import { Tag, TagProps } from './Tag';
 
 export type StyledTagProps = Omit<TagProps, 'contrast' | 'themeId'> & {
@@ -8,11 +9,7 @@ export type StyledTagProps = Omit<TagProps, 'contrast' | 'themeId'> & {
   activePrimaryColor?: string;
 };
 
-/**
- * A styled tag is an extension of the `Tag` component
- * that will have a custom background and text color.
- */
-export const StyledTag = styled(Tag, {
+const BaseStyledTag = styled(Tag, {
   shouldForwardProp: (prop: string) =>
     !['primaryColor', 'inverseColor', 'hoveredPrimaryColor', 'activePrimaryColor'].includes(prop),
 })<StyledTagProps>`
@@ -22,8 +19,10 @@ export const StyledTag = styled(Tag, {
   ${({ activePrimaryColor }) => activePrimaryColor && `--tag-active-primary-color: ${activePrimaryColor};`}
 `;
 
-StyledTag.displayName = 'StyledTag';
+/**
+ * A styled tag is an extension of the `Tag` component
+ * that will have a custom background and text color.
+ */
+export const StyledTag = (props: StyledTagProps) => <BaseStyledTag {...props} unthemed />;
 
-StyledTag.defaultProps = {
-  unthemed: true,
-};
+StyledTag.displayName = 'StyledTag';

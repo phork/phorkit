@@ -3,7 +3,7 @@ import { BannerProvider } from './BannerProvider';
 import { BannersFromContext, BannersFromContextProps } from './BannersFromContext';
 
 export type BannersProps = BannersFromContextProps & {
-  children?: React.ReactChild | React.ReactFragment | null;
+  children?: React.ReactNode;
 };
 
 /**

@@ -16,7 +16,7 @@ import { TabsVariant } from './types';
 
 export type TabListItemProps = Pick<TabProps, 'disabled' | 'iconOnly'> & {
   id: string;
-  label: React.ReactChild | React.ReactFragment | ((props: TabStateProps) => React.ReactChild | React.ReactFragment);
+  label: React.ReactNode | ((props: TabStateProps) => React.ReactNode);
   labelProps?: Omit<
     TabProps,
     'children' | 'disabled' | 'focused' | 'iconOnly' | 'id' | 'onClick' | 'orientation' | 'selected' | 'unstyled'

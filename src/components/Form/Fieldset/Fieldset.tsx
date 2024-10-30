@@ -8,7 +8,7 @@ import styles from './styles/Fieldset.module.css';
 export type LocalFieldsetProps = Omit<ThemeProps, 'unthemed'> & {
   children: React.ReactElement | string;
   className?: string;
-  legend?: React.ReactChild | React.ReactFragment | null;
+  legend?: React.ReactNode;
   style?: React.CSSProperties;
 };
 

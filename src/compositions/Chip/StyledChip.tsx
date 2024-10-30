@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import React from 'react';
 import { Chip, ChipProps } from './Chip';
 
 export type StyledChipProps = Omit<ChipProps, 'contrast' | 'themeId'> & {
@@ -10,12 +11,7 @@ export type StyledChipProps = Omit<ChipProps, 'contrast' | 'themeId'> & {
   tagPrimaryColor?: string;
 };
 
-/**
- * A styled chip is an extension of the `Chip` component
- * that will have a custom avatar, background and text
- * color.
- */
-export const StyledChip = styled(Chip, {
+const BaseStyledChip = styled(Chip, {
   shouldForwardProp: (prop: string) =>
     ![
       'avatarBackgroundColor',
@@ -34,8 +30,11 @@ export const StyledChip = styled(Chip, {
   ${({ tagActivePrimaryColor }) => tagActivePrimaryColor && `--tag-active-primary-color: ${tagActivePrimaryColor};`}
 `;
 
-StyledChip.displayName = 'StyledChip';
+/**
+ * A styled chip is an extension of the `Chip` component
+ * that will have a custom avatar, background and text
+ * color.
+ */
+export const StyledChip = (props: StyledChipProps) => <BaseStyledChip {...props} unthemed />;
 
-StyledChip.defaultProps = {
-  unthemed: true,
-};
+StyledChip.displayName = 'StyledChip';

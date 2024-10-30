@@ -25,7 +25,7 @@ export type RadioSize =
 
 export type LocalRadioProps<V extends RadioValue = string> = ThemeProps & {
   checked?: boolean;
-  children?: React.ReactChild | React.ReactFragment;
+  children?: React.ReactNode;
   className?: string;
   disabled?: boolean;
   /** Sets the width to 100% */

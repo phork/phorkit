@@ -6,7 +6,7 @@ import styles from './styles/Banner.module.css';
 
 export type BannerContainerProps = React.HTMLAttributes<HTMLDivElement> &
   Omit<ThemeProps, 'contrast' | 'unthemed'> & {
-    children?: React.ReactChild | React.ReactFragment;
+    children?: React.ReactNode;
     className?: string;
     style?: React.CSSProperties;
   };

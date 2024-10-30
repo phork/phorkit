@@ -23,7 +23,7 @@ export const bannerTranslations: BannerTranslations = {
 export interface BannerProps
   extends Omit<PaperProps, 'bordered' | 'children' | 'color' | 'contained' | 'container' | 'flexible' | 'full'>,
     Omit<ThemeProps, 'contrast' | 'unthemed'> {
-  children: React.ReactChild | React.ReactFragment;
+  children: NonNullable<React.ReactNode>;
   className?: string;
   /** The context ID is used by the banner system */
   contextId?: string;

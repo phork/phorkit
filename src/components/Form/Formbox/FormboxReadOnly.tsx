@@ -9,9 +9,9 @@ export type FormboxReadOnlyProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'p
   ThemeProps & {
     centered?: boolean;
     className?: string;
-    formattedValue?: React.ReactChild;
+    formattedValue?: React.ReactNode;
     id?: string;
-    placeholder?: FormboxValue | React.ReactChild;
+    placeholder?: FormboxValue | React.ReactNode;
     value?: FormboxValue | FormboxValue[];
   };
 

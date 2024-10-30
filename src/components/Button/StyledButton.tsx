@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import React from 'react';
 import { MergeProps } from '../../types';
 import { Button, ButtonProps } from './Button';
 import { ButtonElementType } from './types';
@@ -14,12 +15,7 @@ export type StyledButtonProps<T extends ButtonElementType = 'button'> = MergePro
   }
 >;
 
-/**
- * A styled button is an extension of the `Button`
- * component that will have a custom background
- * and text color.
- */
-export const StyledButton = styled(Button, {
+const BaseStyledButton = styled(Button, {
   shouldForwardProp: (prop: string) =>
     !['primaryColor', 'inverseColor', 'hoveredPrimaryColor', 'activePrimaryColor', 'width'].includes(prop),
 })<StyledButtonProps>`
@@ -30,8 +26,11 @@ export const StyledButton = styled(Button, {
   ${({ width }) => width !== undefined && `width: ${Number.isNaN(Number(width)) ? width : `${width}px`};`}
 `;
 
-StyledButton.displayName = 'StyledButton';
+/**
+ * A styled button is an extension of the `Button`
+ * component that will have a custom background
+ * and text color.
+ */
+export const StyledButton = (props: StyledButtonProps) => <BaseStyledButton {...props} unthemed />;
 
-StyledButton.defaultProps = {
-  unthemed: true,
-};
+StyledButton.displayName = 'StyledButton';

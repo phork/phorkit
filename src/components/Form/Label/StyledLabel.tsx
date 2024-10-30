@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import React from 'react';
 import { Label, LabelProps } from './Label';
 
 export type StyledLabelProps = Omit<LabelProps, 'contrast' | 'themeId'> & {
@@ -8,12 +9,7 @@ export type StyledLabelProps = Omit<LabelProps, 'contrast' | 'themeId'> & {
   textColor?: string;
 };
 
-/**
- * A styled label is an extension of the `Label`
- * component that will have a custom text color
- * and font size.
- */
-export const StyledLabel = styled(Label, {
+const BaseStyledLabel = styled(Label, {
   shouldForwardProp: (prop: string) => !['fontSize', 'lineHeight', 'mutedTextColor', 'textColor'].includes(prop),
 })<StyledLabelProps>`
   ${({ fontSize }) =>
@@ -25,8 +21,11 @@ export const StyledLabel = styled(Label, {
   ${({ textColor }) => textColor && `--label-text-color: ${textColor};`}
 `;
 
-StyledLabel.displayName = 'StyledLabel';
+/**
+ * A styled label is an extension of the `Label`
+ * component that will have a custom text color
+ * and font size.
+ */
+export const StyledLabel = (props: StyledLabelProps) => <BaseStyledLabel {...props} unthemed />;
 
-StyledLabel.defaultProps = {
-  unthemed: true,
-};
+StyledLabel.displayName = 'StyledLabel';

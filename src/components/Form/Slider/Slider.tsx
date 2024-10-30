@@ -20,11 +20,11 @@ type SliderEvent =
 
 export type LocalSliderProps = Omit<ThemeProps, 'unthemed'> & {
   /** This is used to populate the label value */
-  children?: React.ReactChild | React.ReactFragment | null;
+  children?: React.ReactNode;
   className?: string;
   disabled?: boolean;
   /** Applies formatting to the value before displaying it */
-  formatValue?: (value?: number) => React.ReactChild | React.ReactFragment | undefined;
+  formatValue?: (value?: number) => React.ReactNode;
   id?: string;
   max?: number;
   min?: number;

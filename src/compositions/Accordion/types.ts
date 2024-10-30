@@ -7,15 +7,9 @@ export type AccordionItemStateProps = {
 };
 
 export type AccordionItemType = Omit<InteractiveGroupItemType<string>, 'label'> & {
-  content:
-    | React.ReactChild
-    | React.ReactFragment
-    | ((props: AccordionItemStateProps) => React.ReactChild | React.ReactFragment);
+  content: React.ReactNode | ((props: AccordionItemStateProps) => NonNullable<React.ReactNode>);
   contentProps?: Record<string, unknown>;
   iconOnly?: boolean;
-  label:
-    | React.ReactChild
-    | React.ReactFragment
-    | ((props: AccordionItemStateProps) => React.ReactChild | React.ReactFragment);
+  label: React.ReactNode | ((props: AccordionItemStateProps) => NonNullable<React.ReactNode>);
   labelProps?: Record<string, unknown>;
 };

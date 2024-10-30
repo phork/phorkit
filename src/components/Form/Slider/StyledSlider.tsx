@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import React from 'react';
 import { Slider, SliderProps } from './Slider';
 
 export type StyledSliderProps = Omit<SliderProps, 'contrast' | 'themeId' | 'validity'> & {
@@ -8,12 +9,7 @@ export type StyledSliderProps = Omit<SliderProps, 'contrast' | 'themeId' | 'vali
   tickBackgroundColor: string;
 };
 
-/**
- * A styled slider is an extension of the `Slider`
- * component that will have a custom track, track
- * fill, tick and drag handle colors.
- */
-export const StyledSlider = styled(Slider, {
+const BaseStyledSlider = styled(Slider, {
   shouldForwardProp: (prop: string) =>
     !['trackBackgroundColor', 'trackFillBackgroundColor', 'handleBackgroundColor', 'tickBackgroundColor'].includes(
       prop,
@@ -25,8 +21,11 @@ export const StyledSlider = styled(Slider, {
   --slider-tick-background-color: ${props => props.tickBackgroundColor};
 `;
 
-StyledSlider.displayName = 'StyledSlider';
+/**
+ * A styled slider is an extension of the `Slider`
+ * component that will have a custom track, track
+ * fill, tick and drag handle colors.
+ */
+export const StyledSlider = (props: StyledSliderProps) => <BaseStyledSlider {...props} unstyled />;
 
-StyledSlider.defaultProps = {
-  unstyled: true,
-};
+StyledSlider.displayName = 'StyledSlider';

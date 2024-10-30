@@ -8,7 +8,7 @@ export type LinkProps = React.HTMLAttributes<HTMLAnchorElement> &
   ThemeProps & {
     /** Display as a block level element rather than inline */
     block?: boolean;
-    children: React.ReactChild | React.ReactFragment;
+    children: React.ReactNode;
     className?: string;
     href?: string;
     rel?: string;

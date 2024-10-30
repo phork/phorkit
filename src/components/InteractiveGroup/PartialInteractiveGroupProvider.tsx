@@ -11,9 +11,8 @@ export type PartialInteractiveGroupProviderProps<
 > = Omit<React.HTMLAttributes<E>, 'onKeyDown' | 'onSelect'> &
   UseInteractiveGroupProps<T> & {
     children:
-      | React.ReactElement
-      | ((ref: UseInteractiveGroupResponse<T, E, I>['ref'], props: unknown) => React.ReactElement<E>)
-      | null;
+      | React.ReactNode
+      | ((ref: UseInteractiveGroupResponse<T, E, I>['ref'], props: unknown) => React.ReactElement<E>);
   };
 
 /**

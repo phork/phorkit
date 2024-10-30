@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import React from 'react';
 import { Textbox, TextboxProps } from './Textbox';
 
 export type StyledTextboxProps = Omit<TextboxProps, 'contrast' | 'themeId' | 'validity'> & {
@@ -12,13 +13,7 @@ export type StyledTextboxProps = Omit<TextboxProps, 'contrast' | 'themeId' | 'va
   textboxLabelTextColor: string;
 };
 
-/**
- * A styled textbox is an extension of the `Textbox`
- * component which will have custom text, border and
- * background colors for the focused, unfocused and
- * hovered states.
- */
-export const StyledTextbox = styled(Textbox, {
+const BaseStyledTextbox = styled(Textbox, {
   shouldForwardProp: (prop: string) =>
     ![
       'textboxIconColor',
@@ -49,8 +44,12 @@ export const StyledTextbox = styled(Textbox, {
   ${({ textboxLabelTextColor }) => textboxLabelTextColor && `--formbox-label-text-color: ${textboxLabelTextColor};`}
 `;
 
-StyledTextbox.displayName = 'StyledTextbox';
+/**
+ * A styled textbox is an extension of the `Textbox`
+ * component which will have custom text, border and
+ * background colors for the focused, unfocused and
+ * hovered states.
+ */
+export const StyledTextbox = (props: StyledTextboxProps) => <BaseStyledTextbox {...props} unthemed />;
 
-StyledTextbox.defaultProps = {
-  unthemed: true,
-};
+StyledTextbox.displayName = 'StyledTextbox';

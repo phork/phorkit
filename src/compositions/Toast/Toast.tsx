@@ -25,7 +25,7 @@ export const toastTranslations: ToastTranslations = {
 };
 
 export type LocalToastProps = Omit<ThemeProps, 'contrast'> & {
-  children: React.ReactChild | React.ReactFragment;
+  children: NonNullable<React.ReactNode>;
   className?: string;
   /** The context ID is used by both the toast system and the aria-label system */
   contextId?: string;

@@ -17,16 +17,15 @@ const StyledLineLoader = styled(LineLoader, {
   --line-loader-color: ${props => themes[props.themeId][`color-${props.colorId}` as keyof ThemeColors]};
 `;
 
+const BaseColoredLineLoader = React.memo<Omit<ColoredLineLoaderProps, 'themeId'> & { themeId?: Theme }>(
+  withTheme<ColoredLineLoaderProps>(StyledLineLoader),
+);
+
 /**
  * A colored line load is an extension of the `LineLoader`
  * component which will have the color of one of the
  * theme's primary colors.
  */
-export const ColoredLineLoader = React.memo<Omit<ColoredLineLoaderProps, 'themeId'> & { themeId?: Theme }>(
-  withTheme<ColoredLineLoaderProps>(StyledLineLoader),
-);
-ColoredLineLoader.displayName = 'ColoredLineLoader';
+export const ColoredLineLoader = (props: ColoredLineLoaderProps) => <BaseColoredLineLoader {...props} unthemed />;
 
-StyledLineLoader.defaultProps = {
-  unthemed: true,
-};
+ColoredLineLoader.displayName = 'ColoredLineLoader';

@@ -12,7 +12,7 @@ export const getDropdownSelectedView = ({
   maxSelect: number;
   selectedState: InteractiveGroupState<string>;
   translations: DropdownTranslations;
-}): React.ReactChild | undefined => {
+}): React.ReactNode | undefined => {
   if (maxSelect === -1 || maxSelect > 1) {
     const { numSelectedSingular, numSelectedPlural } = translations;
 

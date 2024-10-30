@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import React from 'react';
 import { Password, PasswordProps } from './Password';
 
 export type StyledPasswordProps = Omit<PasswordProps, 'contrast' | 'themeId' | 'validity'> & {
@@ -12,13 +13,7 @@ export type StyledPasswordProps = Omit<PasswordProps, 'contrast' | 'themeId' | '
   passwordLabelTextColor: string;
 };
 
-/**
- * A styled password is an extension of the `Password`
- * component which will have custom text, border and
- * background colors for the focused, unfocused and
- * hovered states.
- */
-export const StyledPassword = styled(Password, {
+const BaseStyledPassword = styled(Password, {
   shouldForwardProp: (prop: string) =>
     ![
       'passwordIconColor',
@@ -50,8 +45,12 @@ export const StyledPassword = styled(Password, {
   ${({ passwordLabelTextColor }) => passwordLabelTextColor && `--formbox-label-text-color: ${passwordLabelTextColor};`}
 `;
 
-StyledPassword.displayName = 'StyledPassword';
+/**
+ * A styled password is an extension of the `Password`
+ * component which will have custom text, border and
+ * background colors for the focused, unfocused and
+ * hovered states.
+ */
+export const StyledPassword = (props: StyledPasswordProps) => <BaseStyledPassword {...props} unthemed />;
 
-StyledPassword.defaultProps = {
-  unthemed: true,
-};
+StyledPassword.displayName = 'StyledPassword';

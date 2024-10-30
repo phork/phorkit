@@ -14,16 +14,10 @@ export type InteractiveListItemStateProps = {
 
 export type LocalInteractiveListItemProps = {
   id: string;
-  label:
-    | React.ReactChild
-    | React.ReactFragment
-    | ((state: InteractiveListItemStateProps) => React.ReactChild | React.ReactFragment);
+  label: React.ReactNode | ((state: InteractiveListItemStateProps) => React.ReactNode);
   mimicSelectOnFocus?: boolean;
   onClick: (event: React.MouseEvent | React.TouchEvent, id: LocalInteractiveListItemProps['id']) => void;
-  renderLabel?: (
-    label: React.ReactChild | React.ReactFragment,
-    state: InteractiveListItemStateProps,
-  ) => React.ReactElement;
+  renderLabel?: (label: React.ReactNode, state: InteractiveListItemStateProps) => React.ReactElement;
   scrollBehavior?: InteractiveGroupItemProps<HTMLLIElement>['scrollBehavior'];
 };
 

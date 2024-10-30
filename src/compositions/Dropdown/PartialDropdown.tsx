@@ -105,7 +105,7 @@ export type PartialDropdownProps = Omit<
     className?: string;
     disabled?: boolean;
     disabledIds?: readonly string[];
-    formattedValue?: React.ReactChild;
+    formattedValue?: React.ReactNode;
     getFilteredOptions?: (filter: string) => Promise<readonly DropdownOption[]>;
     iconBefore?: RenderFromPropElement<FormboxIconRenderProps>;
     id?: string;
@@ -122,7 +122,7 @@ export type PartialDropdownProps = Omit<
     onSubmit?: (event: React.KeyboardEvent<HTMLInputElement>, value: string) => void;
     onUnselect?: (id: string, selectedIds: readonly string[] | undefined) => void;
     options: readonly DropdownOption[];
-    placeholder?: FormboxValue | React.ReactChild;
+    placeholder?: FormboxValue | React.ReactNode;
     readOnly?: boolean;
     /** The reducer comes from `useReducer(interactiveGroupReducer)` and is used to track selection */
     reducer: PartialInteractiveListProps['reducer'];

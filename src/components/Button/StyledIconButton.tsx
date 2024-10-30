@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import React from 'react';
 import { MergeProps } from '../../types';
 import { IconButton, IconButtonElementType, IconButtonProps } from './IconButton';
 
@@ -13,12 +14,7 @@ export type StyledIconButtonProps<T extends IconButtonElementType = 'button'> = 
   }
 >;
 
-/**
- * A styled icon button is an extension of the
- * `IconButton` component that will have a custom
- * text and background color.
- */
-export const StyledIconButton = styled(IconButton, {
+const BaseStyledIconButton = styled(IconButton, {
   shouldForwardProp: (prop: string) =>
     !['primaryColor', 'inverseColor', 'hoveredPrimaryColor', 'activePrimaryColor', 'width'].includes(prop),
 })<StyledIconButtonProps>`
@@ -29,8 +25,11 @@ export const StyledIconButton = styled(IconButton, {
   ${({ width }) => width !== undefined && `width: ${Number.isNaN(Number(width)) ? width : `${width}px`};`}
 `;
 
-StyledIconButton.displayName = 'StyledIconButton';
+/**
+ * A styled icon button is an extension of the
+ * `IconButton` component that will have a custom
+ * text and background color.
+ */
+export const StyledIconButton = (props: StyledIconButtonProps) => <BaseStyledIconButton {...props} unthemed />;
 
-StyledIconButton.defaultProps = {
-  unthemed: true,
-};
+StyledIconButton.displayName = 'StyledIconButton';

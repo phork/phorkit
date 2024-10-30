@@ -1,22 +1,21 @@
 import styled from '@emotion/styled';
+import React from 'react';
 import { Divider, DividerProps } from './Divider';
 
 export type StyledDividerProps = Omit<DividerProps, 'contrast' | 'themeId' | 'variant'> & {
   dividerColor: string;
 };
 
-/**
- * A styled divider is an extension of the `Divider`
- * component which will be a custom color.
- */
-export const StyledDivider = styled(Divider, {
+const BaseStyledDivider = styled(Divider, {
   shouldForwardProp: (prop: string) => prop !== 'dividerColor',
 })<StyledDividerProps>`
   ${({ dividerColor }) => dividerColor && `--divider-color: ${dividerColor};`}
 `;
 
-StyledDivider.displayName = 'StyledDivider';
+/**
+ * A styled divider is an extension of the `Divider`
+ * component which will be a custom color.
+ */
+export const StyledDivider = (props: StyledDividerProps) => <BaseStyledDivider {...props} unthemed />;
 
-StyledDivider.defaultProps = {
-  unthemed: true,
-};
+StyledDivider.displayName = 'StyledDivider';

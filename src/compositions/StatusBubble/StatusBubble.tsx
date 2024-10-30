@@ -17,9 +17,9 @@ const defaultOffset = {
 export type StatusBubbleProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> &
   Omit<ThemeProps, 'contrast'> & {
     anchor: React.ReactElement;
-    children?: React.ReactChild | React.ReactFragment | null;
+    children?: React.ReactNode;
     color?: SemanticColor;
-    header?: React.ReactChild | React.ReactFragment | null;
+    header?: React.ReactNode;
     offset?: Offset;
     position?: HorizontalPositionCentered | HorizontalPositionEdge;
     /** Remove the border radius */

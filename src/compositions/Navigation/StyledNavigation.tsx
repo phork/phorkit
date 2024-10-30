@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import React from 'react';
 import { Navigation, NavigationProps } from './Navigation';
 
 export type StyledNavigationProps = Omit<NavigationProps, 'themeId'> & {
@@ -15,11 +16,7 @@ export type StyledNavigationProps = Omit<NavigationProps, 'themeId'> & {
   itemTextColor: string;
 };
 
-/**
- * The styled navigation is an extension of the `Navigation`
- * component that will have all its colors customized.
- */
-export const StyledNavigation = styled(Navigation, {
+const BaseStyledNavigation = styled(Navigation, {
   shouldForwardProp: (prop: string) =>
     ![
       'focusedBorderColor',
@@ -48,8 +45,10 @@ export const StyledNavigation = styled(Navigation, {
   --navigation-item-text-color: ${props => props.itemTextColor};
 `;
 
-StyledNavigation.displayName = 'StyledNavigation';
+/**
+ * The styled navigation is an extension of the `Navigation`
+ * component that will have all its colors customized.
+ */
+export const StyledNavigation = (props: StyledNavigationProps) => <BaseStyledNavigation {...props} unthemed />;
 
-StyledNavigation.defaultProps = {
-  unthemed: true,
-};
+StyledNavigation.displayName = 'StyledNavigation';

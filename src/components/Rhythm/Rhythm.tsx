@@ -2,13 +2,7 @@ import { cx } from '@emotion/css';
 import React from 'react';
 import styles from './styles/Rhythm.module.css';
 
-type RhythmChildren =
-  | React.ReactChild
-  | React.ReactFragment
-  | React.ReactPortal
-  | null
-  | undefined
-  | Array<RhythmChildren>;
+type RhythmChildren = React.ReactNode | Array<RhythmChildren>;
 
 const createElementFromWrapper = (
   wrapper: RhythmProps['wrapper'],

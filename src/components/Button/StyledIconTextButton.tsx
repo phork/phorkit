@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import React from 'react';
 import { MergeProps } from '../../types';
 import { IconTextButton, IconTextButtonElementType, IconTextButtonProps } from './IconTextButton';
 
@@ -13,12 +14,7 @@ export type StyledIconTextButtonProps<T extends IconTextButtonElementType = 'but
   }
 >;
 
-/**
- * A styled icon text button is an extension of
- * the `IconTextButton` component that will have a
- * custom text and background color.
- */
-export const StyledIconTextButton = styled(IconTextButton, {
+const BaseStyledIconTextButton = styled(IconTextButton, {
   shouldForwardProp: (prop: string) =>
     !['primaryColor', 'inverseColor', 'hoveredPrimaryColor', 'activePrimaryColor', 'width'].includes(prop),
 })<StyledIconTextButtonProps>`
@@ -29,8 +25,13 @@ export const StyledIconTextButton = styled(IconTextButton, {
   ${({ width }) => width !== undefined && `width: ${Number.isNaN(Number(width)) ? width : `${width}px`};`}
 `;
 
-StyledIconTextButton.displayName = 'StyledIconTextButton';
+/**
+ * A styled icon text button is an extension of
+ * the `IconTextButton` component that will have a
+ * custom text and background color.
+ */
+export const StyledIconTextButton = (props: StyledIconTextButtonProps) => (
+  <BaseStyledIconTextButton {...props} unthemed />
+);
 
-StyledIconTextButton.defaultProps = {
-  unthemed: true,
-};
+StyledIconTextButton.displayName = 'StyledIconTextButton';

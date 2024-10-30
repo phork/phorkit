@@ -135,7 +135,7 @@ export function FlexBox({
   width,
   ...props
 }: {
-  children: React.ReactChild;
+  children: React.ReactNode;
   height: number | string;
   width: number | string;
 }): JSX.Element {

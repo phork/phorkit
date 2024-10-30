@@ -3,7 +3,7 @@ export type InteractiveGroupItemId = string | number;
 export type InteractiveGroupItemType<T extends InteractiveGroupItemId = string> = {
   disabled?: boolean;
   id: T;
-  label: React.ReactChild | React.ReactFragment;
+  label: React.ReactNode;
   triggerOnly?: () => void;
 };
 
