@@ -1,5 +1,11 @@
 # Changelog
 
+# [17.0.0](https://github.com/phork/phorkit/compare/v16.5.0...v17.0.0) (2024-10-30)
+
+### ✨ Features
+
+- **major**: improved typescript types ([362ec95](https://github.com/phork/phorkit/commit/362ec95))
+
 # [16.5.0](https://github.com/phork/phorkit/compare/v16.4.0...v16.5.0) (2024-10-29)
 
 ### ✨ Features
