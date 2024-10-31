@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.0.1](https://github.com/phork/phorkit/compare/v17.0.0...v17.0.1) (2024-10-31)
+
+### 🐛 Bug Fixes
+
+- account for textarea and other inputs in interactive list keydown filter ([19eaeef](https://github.com/phork/phorkit/commit/19eaeef))
+
 # [17.0.0](https://github.com/phork/phorkit/compare/v16.5.0...v17.0.0) (2024-10-30)
 
 ### ✨ Features
