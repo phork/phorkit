@@ -316,7 +316,7 @@ export function useInteractiveGroup<
 
       // don't allow any keyboard actions if in a form input because even if arrow keys technically work the selection keys won't
       const tagName = (event.target as HTMLElement).tagName.toLowerCase();
-      if (!disabled && tagName !== 'input') {
+      if (!disabled && !['input', 'textarea', 'select', 'button', 'option', 'label'].includes(tagName)) {
         let action;
         if (items) {
           if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
