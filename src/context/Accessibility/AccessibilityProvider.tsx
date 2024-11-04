@@ -53,9 +53,9 @@ export function AccessibilityProvider({ children }: AccessibilityProviderProps):
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      window.addEventListener('mousedown', handleMouseDown, { passive: true });
-      window.addEventListener('keydown', handleKeyDown, { passive: true });
-      window.addEventListener('touchstart', handleTouchStart, { passive: true });
+      window.addEventListener('mousedown', handleMouseDown, { capture: true, passive: true });
+      window.addEventListener('keydown', handleKeyDown, { capture: true, passive: true });
+      window.addEventListener('touchstart', handleTouchStart, { capture: true, passive: true });
     }
 
     return () => {
