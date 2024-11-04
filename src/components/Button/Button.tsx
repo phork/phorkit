@@ -97,7 +97,9 @@ export function ButtonBase<T extends ButtonElementType = 'button'>(
       );
 
   const handleClick = (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent): void => {
-    !disabled && !loading && onClick && onClick(event);
+    if (!disabled && !loading) {
+      onClick?.(event);
+    }
   };
 
   // if an href is passed we should ignore the `as` and force to an anchor
@@ -128,7 +130,7 @@ export function ButtonBase<T extends ButtonElementType = 'button'>(
       default: {
         const elementProps = {} as React.HTMLProps<HTMLElement>;
         elementProps.role = 'button';
-        elementProps.tabIndex = 0;
+        elementProps.tabIndex = onClick ? 0 : -1;
 
         elementProps.onKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
           if (event.key === ' ' || event.key === 'Enter') {

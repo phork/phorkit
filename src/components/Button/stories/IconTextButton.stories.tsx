@@ -261,6 +261,19 @@ LoaderReplaceIcon.args = {
   loaderReplaceIcon: true,
 };
 
+export const Div = ({
+  icon = 'medium',
+  ...args
+}: Omit<IconTextButtonProps<'div'>, 'icon'> & { icon: 'small' | 'medium' | 'large' }): JSX.Element => (
+  <IconTextButton<'div'> {...args} icon={<CheckIcon scale={icon} />} />
+);
+
+Div.args = {
+  ...defaultArgs,
+  as: 'div',
+  onClick: () => console.log('clicked'),
+};
+
 export const Link = ({
   icon = 'medium',
   ...args
