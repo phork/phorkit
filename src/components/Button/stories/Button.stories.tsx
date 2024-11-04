@@ -192,7 +192,10 @@ const Template: ComponentStory<(args: ButtonProps) => ReturnType<typeof Button>>
     {...args}
     as="button"
     loader={<SpinnerIcon scale={size as IconScale} />}
-    onClick={action('clicked')}
+    onClick={() => {
+      console.log('clicked');
+      action('clicked');
+    }}
     size={size}
   >
     {children}
@@ -380,6 +383,13 @@ LoadingState.args = {
   loading: true,
 };
 
+export const Div = (args: ButtonProps<'div'>): JSX.Element => <Button<'div'> {...args} />;
+Div.args = {
+  ...defaultArgs,
+  as: 'div',
+  onClick: () => console.log('clicked'),
+};
+
 export const Link = (args: ButtonProps<'a'>): JSX.Element => <Button<'a'> {...args} />;
 Link.args = {
   ...defaultArgs,
@@ -392,7 +402,6 @@ Link.argTypes = {
   href: { table: { disable: false } },
   target: { table: { disable: false } },
 };
-
 export const Imitation = (args: ButtonProps<'div'>): JSX.Element => <Button<'div'> {...args} />;
 Imitation.args = {
   ...defaultArgs,

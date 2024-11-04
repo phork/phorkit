@@ -274,6 +274,21 @@ LoadingState.args = {
   loading: true,
 };
 
+export const Div = ({
+  children,
+  ...args
+}: Omit<IconButtonProps<'div'>, 'children'> & { children: React.ReactElement }): JSX.Element => (
+  <IconButton<'div'> {...args}>
+    <CheckIcon scale={children?.props.scale || 'medium'} />
+  </IconButton>
+);
+
+Div.args = {
+  ...defaultArgs,
+  as: 'div',
+  onClick: () => console.log('clicked'),
+};
+
 export const Link = ({
   children,
   ...args

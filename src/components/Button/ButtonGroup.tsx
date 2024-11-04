@@ -76,7 +76,7 @@ export function ButtonGroup({
   const handleClick = useCallback(
     (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent) => {
       // [TODO:ts] revisit casting
-      onClick && onClick(event, (event.target as HTMLElement).getAttribute('data-value') as string);
+      onClick?.(event, (event.target as HTMLElement).getAttribute('data-value') as string);
     },
     [onClick],
   );
