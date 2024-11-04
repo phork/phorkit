@@ -337,10 +337,12 @@ export function PartialDropdownBase(
   useEffect(() => {
     if (isDropdownVisible !== previous.current.isDropdownVisible) {
       if (isDropdownVisible) {
-        !isFilterable && focus<HTMLUListElement, 'list'>({ ref: listRef, handle: 'list' });
-        onOpen && onOpen();
+        onOpen?.();
+        if (!isFilterable) {
+          focus<HTMLUListElement, 'list'>({ ref: listRef, handle: 'list' });
+        }
       } else {
-        onClose && onClose();
+        onClose?.();
       }
     }
     previous.current.isDropdownVisible = !!isDropdownVisible;
@@ -356,7 +358,7 @@ export function PartialDropdownBase(
         dropdownDispatch({ type: ACTIONS.SET_BUSY });
         debouncedFilter.current?.(dropdownState.input);
       }
-      onInputChange && onInputChange(dropdownState.input);
+      onInputChange?.(dropdownState.input);
     }
     previous.current.input = dropdownState.input;
   }, [dropdownState.input, onInputChange]);
@@ -373,7 +375,7 @@ export function PartialDropdownBase(
         focus<HTMLDivElement>({ ref: toggleRef });
       }
 
-      onSelect && onSelect(id, selectedIds);
+      onSelect?.(id, selectedIds);
     }
   };
 
@@ -391,7 +393,7 @@ export function PartialDropdownBase(
         }
       }
 
-      onUnselect && onUnselect(id, selectedIds);
+      onUnselect?.(id, selectedIds);
     }
   };
 
@@ -436,6 +438,9 @@ export function PartialDropdownBase(
       switch (event.key) {
         // with the alt key it focuses the dropdown if visible, or shows it if not visible; without alt shows and focuses the dropdown
         case 'ArrowDown':
+          event.preventDefault();
+          event.stopPropagation();
+
           if (event.altKey) {
             if (isDropdownVisible) {
               event.preventDefault();
@@ -458,6 +463,9 @@ export function PartialDropdownBase(
 
         // with the alt key it focuses the form if focus was in the dropdown, otherwise it just closes the dropdown
         case 'ArrowUp':
+          event.preventDefault();
+          event.stopPropagation();
+
           if (event.altKey) {
             if (isListFocused) {
               if (isFilterable) {
@@ -496,6 +504,11 @@ export function PartialDropdownBase(
   // if the `used` flag is true the list provider has already used that keydown event
   const handleListKeyDown = useCallback(
     (event: KeyboardEvent, { used }: { used?: boolean } = {}) => {
+      if (used) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+
       if (!used && !dropdownState.listVisible && event.key === 'Enter') {
         dropdownDispatch({ type: ACTIONS.SHOW_DROPDOWN });
       } else if (isListFocused && dropdownState.listVisible && event.key === 'Enter') {
@@ -542,11 +555,14 @@ export function PartialDropdownBase(
         | React.TouchEvent<HTMLButtonElement>,
     ): void => {
       event.stopPropagation();
-      dropdownDispatch({ type: ACTIONS.CLEAR_FILTER });
-      setFilteredOptions(undefined);
-      focus<HTMLInputElement>({ ref: inputRef });
 
-      onClear && onClear();
+      if (!('key' in event) || event.key === 'Enter') {
+        dropdownDispatch({ type: ACTIONS.CLEAR_FILTER });
+        setFilteredOptions(undefined);
+        focus<HTMLInputElement>({ ref: inputRef });
+
+        onClear?.();
+      }
     },
     [focus, onClear],
   );
@@ -693,6 +709,7 @@ export function PartialDropdownBase(
                 onBlur={handleBlur}
                 onClick={handleInputClear}
                 onFocus={handleFocus}
+                onKeyDown={handleInputClear}
                 ref={clearRef}
                 type="button"
               >

@@ -48,7 +48,7 @@ export function InteractiveListItemBase({
 
   const handleClick: ListItemProps['onClick'] = useCallback(
     event => {
-      onClick && onClick(event, id);
+      onClick?.(event, id);
     },
     [id, onClick],
   );

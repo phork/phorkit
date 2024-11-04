@@ -57,7 +57,10 @@ const Template: ComponentStory<(args: ColoredButtonProps) => ReturnType<typeof C
     {...args}
     as="button"
     loader={<SpinnerIcon scale={size as IconScale} />}
-    onClick={action('clicked')}
+    onClick={() => {
+      console.log('clicked');
+      action('clicked');
+    }}
     size={size}
   >
     {children}
@@ -78,6 +81,7 @@ const defaultArgs = {
   loading: false,
   noHeight: false,
   noPadding: false,
+  onKeyDown: undefined,
   shape: 'pill' as ColoredButtonProps['shape'],
   size: 'medium' as ColoredButtonProps['size'],
   type: 'button' as ColoredButtonProps['type'],

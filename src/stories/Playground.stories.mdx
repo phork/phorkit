@@ -446,7 +446,7 @@ import {
                   />
                   <Rhythm mx={4}>
                     <Flex flexible>
-                      <Typography weight="bold">Phorkish</Typography>
+                      <Typography weight="bold">Phork phork phork</Typography>
                     </Flex>
                   </Rhythm>
                   <Typography color="accent" variants="line-height-smash">
@@ -509,7 +509,7 @@ import {
                         />
                         <Rhythm mx={4}>
                           <Flex flexible>
-                            <Typography weight="bold">Phorkish</Typography>
+                            <Typography weight="bold">Phork phork phork</Typography>
                           </Flex>
                         </Rhythm>
                         <Typography color="accent" variants="line-height-smash">
@@ -661,7 +661,7 @@ import {
               />
               <Rhythm mx={4}>
                 <Flex flexible>
-                  <Typography weight="bold">Phorkish</Typography>
+                  <Typography weight="bold">Phork phork phork</Typography>
                 </Flex>
               </Rhythm>
               {selected && (
@@ -681,7 +681,7 @@ import {
                 />
                 <Rhythm mx={4}>
                   <Flex flexible>
-                    <Typography weight="bold">Phorkish</Typography>
+                    <Typography weight="bold">Phork phork phork</Typography>
                   </Flex>
                 </Rhythm>
               </Flex>
@@ -742,7 +742,7 @@ import {
               />
               <Rhythm ml={4}>
                 <Flex flexible direction="column" justifyContent="center">
-                  <Typography weight="bold">Phorkish</Typography>
+                  <Typography weight="bold">Phork phork phork</Typography>
                   <Typography size="small" variants={['line-height-comfy']} volume="quiet">
                     Something something something
                   </Typography>
@@ -766,7 +766,7 @@ import {
                 />
                 <Rhythm ml={4}>
                   <Flex flexible direction="column" justifyContent="center">
-                    <Typography weight="bold">Phorkish</Typography>
+                    <Typography weight="bold">Phork phork phork</Typography>
                     <Typography size="small" variants={['line-height-comfy']} volume="quiet">
                       Something something something
                     </Typography>
@@ -1051,7 +1051,7 @@ import {
                             />
                             <Rhythm mx={4}>
                               <Flex flexible>
-                                <Typography weight="bold">Phorkish</Typography>
+                                <Typography weight="bold">Phork phork phork</Typography>
                               </Flex>
                             </Rhythm>
                             <Typography color={selected ? 'contrast' : 'accent'} variants="line-height-smash">
@@ -1130,11 +1130,15 @@ import {
         {
           content: <Rhythm p={8}>Hello world</Rhythm>,
           id: 'one',
-          label: ({ selected }) => (
+          label: ({ focused, selected }) => (
             <Rhythm p={5}>
-              <Shade actionable color="primary" hovered={selected} style={{ borderBottom: 'none' }}>
+              <Shade actionable color="primary" hovered={selected} style={{ borderBottom: 'none' }} tabIndex={-1}>
                 <Rhythm mr={3}>
-                  <Badge color={selected ? undefined : 'primary'} contrast={selected} shape="count">
+                  <Badge
+                    color={(focused && 'success') || (!selected && 'primary')}
+                    contrast={selected && !focused}
+                    shape="count"
+                  >
                     <Typography size="xlarge">1</Typography>
                   </Badge>
                 </Rhythm>
@@ -1151,11 +1155,15 @@ import {
         {
           content: <Rhythm p={8}>Hello world</Rhythm>,
           id: 'two',
-          label: ({ selected }) => (
+          label: ({ focused, selected }) => (
             <Rhythm p={5}>
-              <Shade actionable color="primary" hovered={selected} style={{ borderBottom: 'none' }}>
+              <Shade actionable color="primary" hovered={selected} style={{ borderBottom: 'none' }} tabIndex={-1}>
                 <Rhythm mr={3}>
-                  <Badge color={selected ? undefined : 'primary'} contrast={selected} shape="count">
+                  <Badge
+                    color={(focused && 'success') || (!selected && 'primary')}
+                    contrast={selected && !focused}
+                    shape="count"
+                  >
                     <Typography size="xlarge">2</Typography>
                   </Badge>
                 </Rhythm>
@@ -1172,11 +1180,15 @@ import {
         {
           content: <Rhythm p={8}>Hello world</Rhythm>,
           id: 'layers',
-          label: ({ selected }) => (
+          label: ({ focused, selected }) => (
             <Rhythm p={5}>
-              <Shade actionable color="primary" hovered={selected}>
+              <Shade actionable color="primary" hovered={selected} tabIndex={-1}>
                 <Rhythm mr={3}>
-                  <Badge color={selected ? undefined : 'primary'} contrast={selected} shape="count">
+                  <Badge
+                    color={(focused && 'success') || (!selected && 'primary')}
+                    contrast={selected && !focused}
+                    shape="count"
+                  >
                     <Typography size="xlarge">3</Typography>
                   </Badge>
                 </Rhythm>

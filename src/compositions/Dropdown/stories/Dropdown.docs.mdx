@@ -1,4 +1,5 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
+import { CheckIcon } from 'icons/internal/CheckIcon';
 import { TagIcon } from 'icons/internal/TagIcon';
 import { Flex } from 'components/Flex';
 import { Looper } from 'components/Looper';
@@ -161,6 +162,35 @@ export const dropdownContainerStyle = {
             layout="contained"
             maxSelect={-1}
             options={options}
+          />
+        </div>
+      )}
+    />
+  </Flex>
+</Canvas>
+
+### Multi-select with label renderer
+
+<Canvas>
+  <Flex full wrap direction="row" justifyContent="space-between">
+    <Looper
+      list={variants}
+      render={variant => (
+        <div style={dropdownContainerStyle}>
+          <Dropdown
+            transitional
+            initialSelected={[options[3]]}
+            inputVariant={variant}
+            label="Super awesome dropdown"
+            layout="contained"
+            maxSelect={-1}
+            options={options}
+            renderLabel={(label, { selected }) => (
+              <Flex direction="row" justifyContent="space-between">
+                <div>{label}</div>
+                {selected && <CheckIcon scale="small" />}
+              </Flex>
+            )}
           />
         </div>
       )}

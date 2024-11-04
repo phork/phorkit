@@ -25,7 +25,7 @@ export type UseInteractiveGroupProps<T extends InteractiveGroupItemId = string> 
   minSelect?: number;
   /** Set maxSelect to -1 to allow an unlimited amount */
   maxSelect?: number;
-  onItemClick?: (event: React.MouseEvent | React.TouchEvent, id: T) => void;
+  onItemClick?: (event: React.MouseEvent | React.TouchEvent | React.KeyboardEvent, id: T) => void;
   onItemFocus?: (event: InteractiveGroupEventTypes['event'] | undefined, props: { id: T; index: number }) => void;
   onKeyDown?: (event: KeyboardEvent, props?: { used?: boolean }) => void;
   /** This fires for every item that has been selected */
@@ -60,7 +60,7 @@ export type UseInteractiveGroupResponse<
   /** The index of the focused item */
   focusedIndex?: number;
   /** A function to call from each item's onClick handler */
-  handleItemClick: (event: React.MouseEvent<I> | React.TouchEvent<I>, id: T) => void;
+  handleItemClick: (event: React.MouseEvent<I> | React.TouchEvent<I> | React.KeyboardEvent<I>, id: T) => void;
   /** A ref to be set on the container element */
   ref: React.Ref<E>;
   /** Checks if an item is selected by its ID */
@@ -316,7 +316,7 @@ export function useInteractiveGroup<
 
       // don't allow any keyboard actions if in a form input because even if arrow keys technically work the selection keys won't
       const tagName = (event.target as HTMLElement).tagName.toLowerCase();
-      if (!disabled && !['input', 'textarea', 'select', 'button', 'option', 'label'].includes(tagName)) {
+      if (!disabled && !['input', 'textarea', 'select', 'button', 'option', 'label', 'a'].includes(tagName)) {
         let action;
         if (items) {
           if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
@@ -340,15 +340,14 @@ export function useInteractiveGroup<
            */
           if (action) {
             event.preventDefault();
-            event.stopPropagation();
 
-            onKeyDown && onKeyDown(event, { used: true });
+            onKeyDown?.(event, { used: true });
             return action({ event });
           }
         }
       }
 
-      onKeyDown && onKeyDown(event);
+      onKeyDown?.(event);
       return undefined;
     },
     [

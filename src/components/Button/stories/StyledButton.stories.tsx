@@ -68,7 +68,15 @@ const Template: ComponentStory<(args: StyledButtonProps) => ReturnType<typeof St
   size,
   ...args
 }) => (
-  <StyledButton {...args} loader={<SpinnerIcon scale={size as IconScale} />} onClick={action('clicked')} size={size}>
+  <StyledButton
+    {...args}
+    loader={<SpinnerIcon scale={size as IconScale} />}
+    onClick={() => {
+      console.log('clicked');
+      action('clicked');
+    }}
+    size={size}
+  >
     {children}
   </StyledButton>
 );
@@ -89,6 +97,7 @@ const defaultArgs = {
   loading: false,
   noHeight: false,
   noPadding: false,
+  onKeyDown: undefined,
   primaryColor: '#556270',
   shape: 'pill' as StyledButtonProps['shape'],
   size: 'medium' as StyledButtonProps['size'],

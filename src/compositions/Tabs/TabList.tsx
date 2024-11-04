@@ -74,7 +74,7 @@ export function TabListBase(
   const handleBlurMemoized = useCallback(
     event => {
       handleBlur(event);
-      onBlur && onBlur(event);
+      onBlur?.(event);
     },
     [handleBlur, onBlur],
   );
@@ -82,7 +82,7 @@ export function TabListBase(
   const handleFocusMemoized = useCallback(
     event => {
       handleFocus(event);
-      onFocus && onFocus(event);
+      onFocus?.(event);
     },
     [handleFocus, onFocus],
   );

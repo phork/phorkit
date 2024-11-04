@@ -57,7 +57,10 @@ const Template: ComponentStory<
     as="button"
     icon={<CheckIcon scale={icon} />}
     loader={<SpinnerIcon scale={icon} />}
-    onClick={action('clicked')}
+    onClick={() => {
+      console.log('clicked');
+      action('clicked');
+    }}
     size={size}
   >
     {children}
@@ -80,6 +83,7 @@ const defaultArgs = {
   loading: false,
   noHeight: false,
   noPadding: false,
+  onKeyDown: undefined,
   reverse: false,
   shape: 'pill' as IconTextButtonProps['shape'],
   size: 'medium' as IconTextButtonProps['size'],
@@ -288,6 +292,25 @@ Link.args = {
 };
 
 Link.argTypes = {
+  href: { table: { disable: false } },
+  target: { table: { disable: false } },
+};
+
+export const DisabledLink = ({
+  icon = 'medium',
+  ...args
+}: Omit<IconTextButtonProps<'a'>, 'icon'> & { icon: 'small' | 'medium' | 'large' }): JSX.Element => (
+  <IconTextButton<'a'> {...args} icon={<CheckIcon scale={icon} />} />
+);
+DisabledLink.args = {
+  ...defaultArgs,
+  as: 'a',
+  disabled: true,
+  href: 'https://phorkit.org',
+  target: '_blank',
+};
+
+DisabledLink.argTypes = {
   href: { table: { disable: false } },
   target: { table: { disable: false } },
 };

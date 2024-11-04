@@ -21,7 +21,7 @@ export type AccordionRenderChildren = (
 
 export type AccordionProps = Pick<
   InteractiveGroupProviderProps,
-  'maxSelect' | 'minSelect' | 'initialSelected' | 'onSelect'
+  'maxSelect' | 'minSelect' | 'initialSelected' | 'onKeyDown' | 'onSelect'
 > &
   Pick<AccordionListProps, 'duration' | 'easing' | 'flush' | 'items' | 'orientation' | 'unstyled' | 'variant'> &
   ThemeProps & {

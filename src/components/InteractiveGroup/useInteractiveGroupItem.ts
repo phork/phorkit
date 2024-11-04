@@ -1,8 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useScrollIntoView, UseScrollIntoViewProps } from './../../hooks/useScrollIntoView';
 
 export type UseInteractiveGroupItemProps<E extends HTMLElement> = Omit<UseScrollIntoViewProps<E>, 'behavior'> & {
   scrollBehavior?: UseScrollIntoViewProps<E>['behavior'];
+  moveBrowserFocus?: boolean;
 };
 
 /**
@@ -12,26 +13,15 @@ export type UseInteractiveGroupItemProps<E extends HTMLElement> = Omit<UseScroll
  */
 export function useInteractiveGroupItem<E extends HTMLElement>({
   focused = false,
+  moveBrowserFocus = false,
   ref,
   scrollBehavior,
 }: UseInteractiveGroupItemProps<E>): void {
-  const previous = useRef<boolean | undefined>(false);
   useScrollIntoView<E>({ behavior: scrollBehavior, ref, focused });
 
-  /**
-   * Steal focus away from whatever child element may have
-   * it and put it at the top level, but don't steal focus
-   * away if the focus is on a parent element.
-   *
-   * This must check that previous.current.focused has been
-   * set so it doesn't run on initialization.
-   */
   useEffect(() => {
-    if (focused !== previous.current && previous.current !== undefined) {
-      if (focused && ref.current && ref.current.querySelectorAll(':focus').length === 1) {
-        ref.current.focus();
-      }
+    if (moveBrowserFocus && focused && document.activeElement !== ref.current) {
+      ref.current?.focus();
     }
-    previous.current = !!focused;
-  }, [focused, ref]);
+  }, [focused, moveBrowserFocus, ref]);
 }
