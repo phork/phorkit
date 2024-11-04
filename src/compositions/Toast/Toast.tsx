@@ -97,14 +97,14 @@ export function Toast({
 
   const handleClose = useCallback(
     (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent): void => {
-      onClose && onClose(event, contextId);
+      onClose?.(event, contextId);
     },
     [contextId, onClose],
   );
 
   const handlePin = useCallback(
     event => {
-      onPin && onPin(event, contextId);
+      onPin?.(event, contextId);
     },
     [contextId, onPin],
   );

@@ -51,8 +51,8 @@ export const FormboxIcon = ({
       typeof icon === 'object' && icon.props && icon.props.className,
       className,
     ),
-    onBlur: actionable ? (event: React.FocusEvent<HTMLElement>) => onBlur && onBlur(event, position) : undefined,
-    onFocus: actionable ? (event: React.FocusEvent<HTMLElement>) => onFocus && onFocus(event, position) : undefined,
+    onBlur: actionable ? (event: React.FocusEvent<HTMLElement>) => onBlur?.(event, position) : undefined,
+    onFocus: actionable ? (event: React.FocusEvent<HTMLElement>) => onFocus?.(event, position) : undefined,
     tabIndex: actionable ? 0 : undefined,
   });
 };

@@ -164,7 +164,7 @@ export const useAnimationLoop = ({
       if (duration === 0) {
         const run = () => {
           animate(100, options);
-          onFinish && onFinish();
+          onFinish?.();
         };
         delay ? setSafeTimeout(run, delay) : run();
       } else {
@@ -201,7 +201,7 @@ export const useAnimationLoop = ({
     if (hasStateLoopChanged) {
       if (!state.finished) {
         if (state.loop || state.loop === 0) {
-          onLoop && onLoop({ loop: state.loop });
+          onLoop?.({ loop: state.loop });
         }
       }
     }
@@ -240,7 +240,7 @@ export const useAnimationLoop = ({
   useEffect((): void => {
     if (hasStateFinishedChanged) {
       if (state.finished) {
-        onFinish && onFinish();
+        onFinish?.();
       }
     }
   }, [hasStateFinishedChanged, onFinish, state.finished]);

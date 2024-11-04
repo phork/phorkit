@@ -73,15 +73,15 @@ export function useDeepFocus<E extends HTMLElement>(
 
       if (!previousFocused.current) {
         if (event.currentTarget === event.target) {
-          onFocusSelf && onFocusSelf(event);
+          onFocusSelf?.(event);
         } else {
-          onFocusChild && onFocusChild(event);
+          onFocusChild?.(event);
         }
       }
 
       // don't trigger when swapping between children unless alwaysTriggerFocus is set
       if (alwaysTriggerFocus || !event.currentTarget?.contains(event.relatedTarget as Node)) {
-        onFocus && onFocus(event);
+        onFocus?.(event);
       }
 
       previousFocused.current = true;
@@ -99,15 +99,15 @@ export function useDeepFocus<E extends HTMLElement>(
 
         if (previousFocused.current !== false) {
           if (event.currentTarget === event.target) {
-            onBlurSelf && onBlurSelf(event);
+            onBlurSelf?.(event);
           } else {
-            onBlurChild && onBlurChild(event);
+            onBlurChild?.(event);
           }
         }
 
         // don't trigger when swapping between children unless alwaysTriggerBlur is set
         if (alwaysTriggerBlur || !event.currentTarget?.contains(event.relatedTarget as Node)) {
-          onBlur && onBlur(event);
+          onBlur?.(event);
         }
 
         previousFocused.current = false;

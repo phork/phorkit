@@ -96,12 +96,12 @@ export function StepperBase(
   const handleChange = useCallback(
     (event: React.ChangeEvent | React.KeyboardEvent | React.MouseEvent | React.TouchEvent, value: FormboxValue) => {
       if (value === '') {
-        onChange && onChange(event, '');
+        onChange?.(event, '');
       } else {
         let clamped = +value;
         clamped = min ? Math.max(min, clamped) : clamped;
         clamped = max ? Math.min(max, clamped) : clamped;
-        onChange && onChange(event, clamped);
+        onChange?.(event, clamped);
       }
     },
     [max, min, onChange],

@@ -95,7 +95,7 @@ export function Draggable<E extends HTMLElement = HTMLDivElement>({
           y: event.pageY - ref.current.offsetTop,
         });
 
-        onDragStart && onDragStart(event);
+        onDragStart?.(event);
 
         if (blocking) {
           event.stopPropagation();
@@ -112,7 +112,7 @@ export function Draggable<E extends HTMLElement = HTMLDivElement>({
       setDragging(false);
 
       const position = calcPosition(event);
-      onDragEnd && onDragEnd(event, { position });
+      onDragEnd?.(event, { position });
 
       setRelative(undefined);
 
@@ -128,7 +128,7 @@ export function Draggable<E extends HTMLElement = HTMLDivElement>({
     (event: MouseEvent): void => {
       if (dragging) {
         const position = calcPosition(event);
-        onDragMove && onDragMove(event, { position, relative });
+        onDragMove?.(event, { position, relative });
 
         if (blocking) {
           event.stopPropagation();
@@ -150,7 +150,7 @@ export function Draggable<E extends HTMLElement = HTMLDivElement>({
           y: event.touches[0].pageY - ref.current.offsetTop,
         });
 
-        onDragStart && onDragStart(event);
+        onDragStart?.(event);
       }
     },
     [onDragStart],
@@ -163,7 +163,7 @@ export function Draggable<E extends HTMLElement = HTMLDivElement>({
       // touchend events don't include coords so use the last position here
       const position = lastPosition.current;
       if (position) {
-        onDragEnd && onDragEnd(event, { position });
+        onDragEnd?.(event, { position });
       }
 
       setRelative(undefined);
@@ -175,7 +175,7 @@ export function Draggable<E extends HTMLElement = HTMLDivElement>({
     (event: TouchEvent) => {
       if (dragging) {
         const position = calcPosition(event.touches[0]);
-        onDragMove && onDragMove(event, { position, relative });
+        onDragMove?.(event, { position, relative });
       }
 
       if (blocking) {

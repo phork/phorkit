@@ -43,7 +43,7 @@ export function PaginationJump<T extends ButtonElementType = 'button'>({
   const handleClick = useCallback(
     (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent): void => {
       allowRightClickLinks && event.preventDefault();
-      onChangePage && onChangePage(event, page);
+      onChangePage?.(event, page);
     },
     [allowRightClickLinks, onChangePage, page],
   );
