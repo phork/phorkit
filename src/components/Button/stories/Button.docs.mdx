@@ -1,4 +1,3 @@
-import { action } from '@storybook/addon-actions';
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { ucfirst } from 'utils';
 import { SpinnerIcon } from 'icons/SpinnerIcon';
@@ -52,7 +51,7 @@ import { Button } from '../Button';
               list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
               render={color => (
                 <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
-                  <Button color={color} onClick={() => action(color)} weight={weight}>
+                  <Button color={color} onClick={() => console.log(color)} weight={weight}>
                     {ucfirst(color)}
                   </Button>
                 </Rhythm>
@@ -69,7 +68,7 @@ import { Button } from '../Button';
                     loading
                     color={color}
                     loader={<SpinnerIcon scale="medium" />}
-                    onClick={() => action(color)}
+                    onClick={() => console.log(color)}
                     weight={weight}
                   >
                     {ucfirst(color)}
@@ -95,7 +94,7 @@ import { Button } from '../Button';
               list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
               render={color => (
                 <Rhythm key={`${weight}-${color}`} mx={2} my={1}>
-                  <Button color={color} onClick={() => action(color)} shape="brick" weight={weight}>
+                  <Button color={color} onClick={() => console.log(color)} shape="brick" weight={weight}>
                     {ucfirst(color)}
                   </Button>
                 </Rhythm>
@@ -112,7 +111,7 @@ import { Button } from '../Button';
                     loading
                     color={color}
                     loader={<SpinnerIcon scale="medium" />}
-                    onClick={() => action(color)}
+                    onClick={() => console.log(color)}
                     shape="brick"
                     weight={weight}
                   >
@@ -135,7 +134,7 @@ import { Button } from '../Button';
         list={['primary', 'success', 'warning', 'danger', 'neutral', 'black', 'white']}
         render={color => (
           <Rhythm key={color} m={2}>
-            <Button color={color} onClick={() => action(color)} shape="brick" weight="inline">
+            <Button color={color} onClick={() => console.log(color)} shape="brick" weight="inline">
               {ucfirst(color)}
             </Button>
           </Rhythm>
@@ -152,7 +151,7 @@ import { Button } from '../Button';
               loading
               color={color}
               loader={<SpinnerIcon scale="medium" />}
-              onClick={() => action(color)}
+              onClick={() => console.log(color)}
               shape="brick"
               weight="inline"
             >
@@ -172,7 +171,7 @@ import { Button } from '../Button';
         list={['solid', 'shaded', 'outlined', 'ghost', 'inline']}
         render={weight => (
           <Rhythm key={weight} m={2}>
-            <Button contrast weight={weight}>
+            <Button contrast onClick={() => console.log(weight)} weight={weight}>
               {ucfirst(weight)}
             </Button>
           </Rhythm>
@@ -199,13 +198,13 @@ import { Button } from '../Button';
 <Canvas>
   <Rhythm grouped m={-2}>
     <Rhythm m={2}>
-      <Button align="left" color="primary" style={{ width: 200 }}>
+      <Button align="left" color="primary" onClick={() => console.log('left')} style={{ width: 200 }}>
         Align left
       </Button>
-      <Button color="primary" style={{ width: 200 }}>
+      <Button color="primary" onClick={() => console.log('center')} style={{ width: 200 }}>
         Align center
       </Button>
-      <Button align="right" color="primary" style={{ width: 200 }}>
+      <Button align="right" color="primary" onClick={() => console.log('right')} style={{ width: 200 }}>
         Align right
       </Button>
     </Rhythm>

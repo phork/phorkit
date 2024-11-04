@@ -3,7 +3,8 @@
   flex-direction: column;
   position: relative;
 
-  &.is-focused.is-accessible {
+  &.is-focused.is-accessible,
+  &:focus-within.is-accessible {
     &:after {
       border: 1px solid var(--accordion-focused-border-color);
       bottom: 0;

@@ -98,6 +98,11 @@ export default {
         category: 'Actions',
       },
     },
+    onKeyDown: {
+      table: {
+        category: 'Actions',
+      },
+    },
 
     as: {
       control: {
@@ -217,6 +222,7 @@ const defaultArgs = {
   loading: false,
   noHeight: false,
   noPadding: false,
+  onKeyDown: undefined,
   shape: 'pill' as ButtonProps['shape'],
   size: 'medium' as ButtonProps['size'],
   type: 'button' as ButtonProps['type'],
@@ -402,6 +408,21 @@ Link.argTypes = {
   href: { table: { disable: false } },
   target: { table: { disable: false } },
 };
+
+export const DisabledLink = (args: ButtonProps<'a'>): JSX.Element => <Button<'a'> {...args} />;
+DisabledLink.args = {
+  ...defaultArgs,
+  as: 'a',
+  disabled: true,
+  href: 'https://phorkit.org',
+  target: '_blank',
+};
+
+DisabledLink.argTypes = {
+  href: { table: { disable: false } },
+  target: { table: { disable: false } },
+};
+
 export const Imitation = (args: ButtonProps<'div'>): JSX.Element => <Button<'div'> {...args} />;
 Imitation.args = {
   ...defaultArgs,

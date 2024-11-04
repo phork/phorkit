@@ -138,6 +138,7 @@ const defaultArgs = {
   contrast: false,
   flush: false,
   items,
+  onKeyDown: undefined,
   orientation: 'vertical' as AccordionProps['orientation'],
   unstyled: false,
   unthemed: false,

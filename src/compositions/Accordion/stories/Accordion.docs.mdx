@@ -1,5 +1,9 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
-import { Button } from 'components/Button';
+import { TimesIcon } from 'icons/TimesIcon';
+import { CheckIcon } from 'icons/internal/CheckIcon';
+import { Button, IconButton } from 'components/Button';
+import { Flex } from 'components/Flex';
+import { Paper } from 'components/Paper';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 import { Canvas } from 'stories/helpers/Canvas';
@@ -128,8 +132,253 @@ import { Accordion, AccordionContainer, AccordionList } from '../index';
     ]}
     style={{ outline: 'none' }}
   >
-    {({ componentId, items, orientation, ref, themeId, unstyled }) => (
-      <AccordionContainer orientation={orientation} style={{ border: 'none' }}>
+    {({ componentId, items, orientation, ref, themeId, style, unstyled }) => (
+      <AccordionContainer orientation={orientation} style={{ ...style, border: 'none' }}>
+        <AccordionList
+          componentId={componentId}
+          items={items}
+          orientation={orientation}
+          ref={ref}
+          style={{
+            alignItems: 'center',
+            display: 'flex',
+            flexDirection: orientation === 'vertical' ? 'column' : 'row',
+            outline: 'none',
+          }}
+          themeId={themeId}
+          unstyled={unstyled}
+        />
+      </AccordionContainer>
+    )}
+  </Accordion>
+</Canvas>
+
+### With children buttons
+
+<Canvas>
+  <Accordion
+    unstyled
+    initialSelected={['first']}
+    items={[
+      {
+        id: 'first',
+        label: ({ disabled, focused }) => (
+          <Rhythm pl={5} pr={3} py={3}>
+            <Paper bordered full color={focused ? 'accent' : 'primary'}>
+              <Flex full alignItems="center" direction="row" justifyContent="space-between">
+                <span>First</span>
+                <IconButton
+                  color={!focused && 'neutral'}
+                  contrast={focused}
+                  disabled={disabled}
+                  onClick={event => {
+                    event.stopPropagation();
+                    console.log('clicked first header');
+                  }}
+                  shape="square"
+                  weight="solid"
+                >
+                  <TimesIcon scale="small" />
+                </IconButton>
+              </Flex>
+            </Paper>
+          </Rhythm>
+        ),
+        content: ({ selected }) => (
+          <Rhythm pl={5} pr={3} py={3}>
+            <Paper full bordered={['vertical', 'bottom']} color="primary">
+              <Flex full alignItems="center" direction="row" justifyContent="space-between">
+                <span>First panel{selected ? ' is selected' : ''}</span>
+                <IconButton
+                  as="div"
+                  color="neutral"
+                  onClick={event => {
+                    event.stopPropagation();
+                    console.log('clicked first panel');
+                  }}
+                  shape="square"
+                  weight="solid"
+                >
+                  <CheckIcon scale="small" />
+                </IconButton>
+              </Flex>
+            </Paper>
+          </Rhythm>
+        ),
+        labelProps: { style: { outline: 'none' } },
+      },
+      {
+        id: 'second',
+        label: ({ disabled, focused }) => (
+          <Rhythm full pl={5} pr={3} py={3}>
+            <Paper bordered full color={focused ? 'accent' : 'primary'}>
+              <Flex full alignItems="center" direction="row" justifyContent="space-between">
+                <span>Second</span>
+                <IconButton
+                  color={!focused && 'neutral'}
+                  contrast={focused}
+                  disabled={disabled}
+                  onClick={event => {
+                    event.stopPropagation();
+                    console.log('clicked second header');
+                  }}
+                  shape="square"
+                  weight="solid"
+                >
+                  <TimesIcon scale="small" />
+                </IconButton>
+              </Flex>
+            </Paper>
+          </Rhythm>
+        ),
+        content: ({ selected }) => (
+          <Rhythm pl={5} pr={3} py={3}>
+            <Paper full bordered={['vertical', 'bottom']} color="primary">
+              <Flex full alignItems="center" direction="row" justifyContent="space-between">
+                <span>Second panel{selected ? ' is selected' : ''}</span>
+                <IconButton
+                  as="div"
+                  color="neutral"
+                  onClick={event => {
+                    event.stopPropagation();
+                    console.log('clicked second panel');
+                  }}
+                  shape="square"
+                  weight="solid"
+                >
+                  <CheckIcon scale="small" />
+                </IconButton>
+              </Flex>
+            </Paper>
+          </Rhythm>
+        ),
+        labelProps: { style: { outline: 'none' } },
+      },
+      {
+        id: 'third',
+        label: ({ disabled, focused }) => (
+          <Rhythm pl={5} pr={3} py={3}>
+            <Paper bordered full color={focused ? 'accent' : 'primary'}>
+              <Flex full alignItems="center" direction="row" justifyContent="space-between">
+                <span>Third</span>
+                <IconButton
+                  color={!focused && 'neutral'}
+                  contrast={focused}
+                  disabled={disabled}
+                  onClick={event => {
+                    event.stopPropagation();
+                    console.log('clicked third header');
+                  }}
+                  shape="square"
+                  weight="solid"
+                >
+                  <TimesIcon scale="small" />
+                </IconButton>
+              </Flex>
+            </Paper>
+          </Rhythm>
+        ),
+        content: ({ selected }) => (
+          <Rhythm pl={5} pr={3} py={3}>
+            <Paper full bordered={['vertical', 'bottom']} color="primary">
+              <Flex full alignItems="center" direction="row" justifyContent="space-between">
+                <span>Third panel{selected ? ' is selected' : ''}</span>
+                <IconButton
+                  as="div"
+                  color="neutral"
+                  onClick={event => {
+                    event.stopPropagation();
+                    console.log('clicked third panel');
+                  }}
+                  shape="square"
+                  weight="solid"
+                >
+                  <CheckIcon scale="small" />
+                </IconButton>
+              </Flex>
+            </Paper>
+          </Rhythm>
+        ),
+        labelProps: { style: { outline: 'none' } },
+      },
+      {
+        id: 'fourth',
+        label: ({ disabled, focused }) => (
+          <Rhythm pl={5} pr={3} py={3}>
+            <Paper bordered full color={focused ? 'accent' : 'primary'}>
+              <Flex full alignItems="center" direction="row" justifyContent="space-between">
+                <span>Fourth</span>
+                <IconButton
+                  color={!focused && 'neutral'}
+                  contrast={focused}
+                  disabled={disabled}
+                  onClick={event => {
+                    event.stopPropagation();
+                    console.log('clicked fourth header');
+                  }}
+                  shape="square"
+                  weight="solid"
+                >
+                  <TimesIcon scale="small" />
+                </IconButton>
+              </Flex>
+            </Paper>
+          </Rhythm>
+        ),
+        content: ({ selected }) => (
+          <Rhythm pl={5} pr={3} py={3}>
+            <Paper full bordered={['vertical', 'bottom']} color="primary">
+              <Flex full alignItems="flex-start" direction="row" justifyContent="space-between">
+                <Rhythm grouped mr={2} my={3}>
+                  <span>Fourth panel{selected ? ' is selected' : ''}</span>
+                  <p>
+                    Lorem ipsum dolor sit amet,{' '}
+                    <a href="https://phorkit.org" rel="noreferrer" target="_blank">
+                      consectetur adipiscing
+                    </a>{' '}
+                    elit. In molestie nibh quis metus sollicitudin rutrum. Sed condimentum lectus tellus, et sodales
+                    justo accumsan non. Praesent et nibh sit amet mi efficitur placerat. Proin at
+                    <a href="https://phorkit.org" rel="noreferrer" target="_blank">
+                      neque viverra
+                    </a>, lobortis sem eu, tempus purus. Etiam placerat iaculis ipsum sed condimentum. Vivamus fringilla
+                    vulputate sem id vulputate. Integer euismod malesuada justo, sit amet suscipit turpis gravida non. Nulla
+                    sit amet laoreet lorem.
+                  </p>
+                  <p>
+                    Pellentesque ante turpis, molestie ut lectus nec, dapibus porttitor ligula. Pellentesque egestas
+                    nisi vitae odio pretium, at{' '}
+                    <a href="https://phorkit.org" rel="noreferrer" target="_blank">
+                      ultrices dui
+                    </a>{' '}
+                    mollis. Vestibulum quis pretium dolor. Suspendisse porttitor, ex congue tincidunt facilisis, quam
+                    ipsum rhoncus augue, ac luctus lacus lorem vel risus. Integer a ex interdum, egestas dui vitae,
+                    maximus sem. Praesent id egestas.
+                  </p>
+                  <input type="text" />
+                </Rhythm>
+                <IconButton
+                  as="div"
+                  color="neutral"
+                  onClick={event => {
+                    event.stopPropagation();
+                    console.log('clicked fourth panel');
+                  }}
+                  shape="square"
+                  weight="solid"
+                >
+                  <CheckIcon scale="small" />
+                </IconButton>
+              </Flex>
+            </Paper>
+          </Rhythm>
+        ),
+        labelProps: { style: { outline: 'none' } },
+      },
+    ]}
+    minSelect={0}
+  >
+    {({ componentId, items, orientation, ref, themeId, style, unstyled }) => (
+      <AccordionContainer orientation={orientation} style={{ ...style, border: 'none' }}>
         <AccordionList
           componentId={componentId}
           items={items}

@@ -94,6 +94,11 @@ export default {
         category: 'Tags',
       },
     },
+    tagIconProps: {
+      table: {
+        category: 'Tags',
+      },
+    },
     tagProps: {
       table: {
         category: 'Tags',

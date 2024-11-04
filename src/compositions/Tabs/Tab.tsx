@@ -61,7 +61,7 @@ export function Tab({
 
   const handleClick = useCallback(
     (event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
-      onClick && onClick(event, id);
+      onClick?.(event, id);
     },
     [id, onClick],
   );

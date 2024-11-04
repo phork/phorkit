@@ -1,5 +1,6 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
 import { Button } from 'components/Button';
+import { Flex } from 'components/Flex';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 import { Canvas } from 'stories/helpers/Canvas';
@@ -13,6 +14,66 @@ import { items } from './helpers/items';
 <Primary />
 <ArgsTable story={PRIMARY_STORY} />
 <Stories />
+
+### Children focusable
+
+<Canvas>
+  <Tabs
+    initialSelected={['second']}
+    items={[
+      {
+        id: 'first',
+        content: ({ selected }) => (
+          <Flex direction="row" justifyContent="space-between">
+            <div>First panel{selected ? ' is selected' : ''}</div>
+            <Button color="primary" onClick={() => console.log('first button clicked')} shape="brick" weight="solid">
+              Button
+            </Button>
+          </Flex>
+        ),
+        label: 'First',
+      },
+      {
+        id: 'second',
+        content: ({ selected }) => (
+          <Flex direction="row" justifyContent="space-between">
+            <div>Second panel{selected ? ' is selected' : ''}</div>
+            <Button color="primary" onClick={() => console.log('second button clicked')} shape="brick" weight="solid">
+              Button
+            </Button>
+          </Flex>
+        ),
+        label: 'Second',
+      },
+      {
+        id: 'third',
+        content: ({ selected }) => (
+          <Flex direction="row" justifyContent="space-between">
+            <div>Third panel{selected ? ' is selected' : ''}</div>
+            <Button color="primary" onClick={() => console.log('third button clicked')} shape="brick" weight="solid">
+              Button
+            </Button>
+          </Flex>
+        ),
+        disabled: true,
+        label: 'Third',
+      },
+      {
+        id: 'fourth',
+        content: ({ selected }) => (
+          <Flex direction="row" justifyContent="space-between">
+            <div>Fourth panel{selected ? ' is selected' : ''}</div>
+            <Button color="primary" onClick={() => console.log('fourth button clicked')} shape="brick" weight="solid">
+              Button
+            </Button>
+          </Flex>
+        ),
+        label: 'Fourth',
+      },
+    ]}
+    variant="primary"
+  />
+</Canvas>
 
 ### Custom styles
 

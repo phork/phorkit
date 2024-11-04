@@ -27,6 +27,8 @@ export type LocalButtonProps = ThemeProps & {
   noHeight?: boolean;
   noPadding?: boolean;
   onClick?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent) => void;
+  /** If the onKeyDown isn't specified then the onClick event is used */
+  onKeyDown?: (event: React.KeyboardEvent) => void;
   shape?: ButtonShape;
   size?: ButtonSize;
   style?: React.CSSProperties;
@@ -59,6 +61,7 @@ export function ButtonBase<T extends ButtonElementType = 'button'>(
     noHeight = false,
     noPadding = false,
     onClick,
+    onKeyDown,
     shape = 'pill',
     size = 'medium',
     themeId: initThemeId,
@@ -102,6 +105,17 @@ export function ButtonBase<T extends ButtonElementType = 'button'>(
     }
   };
 
+  // this prevents the default even if the button is disabled (important for <a> buttons)
+  const handleKeyDown = (event: React.KeyboardEvent): void => {
+    if (event.key === ' ' || event.key === 'Enter') {
+      event.preventDefault();
+
+      if (!disabled && !loading) {
+        onKeyDown ? onKeyDown(event) : onClick?.(event);
+      }
+    }
+  };
+
   // if an href is passed we should ignore the `as` and force to an anchor
   const element = (href && 'a') || (imitation && 'div') || as || 'button';
 
@@ -111,11 +125,6 @@ export function ButtonBase<T extends ButtonElementType = 'button'>(
     switch (element) {
       case 'a': {
         const elementProps = {} as React.HTMLProps<HTMLAnchorElement>;
-        elementProps.onKeyDown = (event: React.KeyboardEvent<HTMLAnchorElement>) => {
-          if (disabled && event.key === 'Enter') {
-            event.preventDefault();
-          }
-        };
         elementProps.href = href;
         return elementProps;
       }
@@ -131,15 +140,6 @@ export function ButtonBase<T extends ButtonElementType = 'button'>(
         const elementProps = {} as React.HTMLProps<HTMLElement>;
         elementProps.role = 'button';
         elementProps.tabIndex = onClick ? 0 : -1;
-
-        elementProps.onKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
-          if (event.key === ' ' || event.key === 'Enter') {
-            event.preventDefault();
-            event.stopPropagation();
-
-            handleClick(event);
-          }
-        };
         return elementProps;
       }
     }
@@ -150,6 +150,7 @@ export function ButtonBase<T extends ButtonElementType = 'button'>(
     {
       className: classes,
       onClick: handleClick,
+      onKeyDown: handleKeyDown,
       ref: forwardedRef,
       ...({ ...elementProps, 'aria-busy': loading, 'aria-live': 'polite', ...props } as React.HTMLAttributes<T>),
     },

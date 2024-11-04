@@ -200,7 +200,13 @@ export default {
 } as ComponentMeta<typeof ButtonGroup>;
 
 const Template: ComponentStory<typeof ButtonGroup> = ({ children, ...args }) => (
-  <ButtonGroup {...args} onClick={action('clicked')}>
+  <ButtonGroup
+    {...args}
+    onClick={() => {
+      console.log('clicked');
+      action('clicked');
+    }}
+  >
     {children}
   </ButtonGroup>
 );

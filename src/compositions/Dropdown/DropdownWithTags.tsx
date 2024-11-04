@@ -1,4 +1,5 @@
 import React, { Reducer, useCallback, useEffect, useMemo, useReducer, useRef } from 'react';
+import { SvgIconProps } from '../../types/svgIcon';
 import { useThemeId } from '../../context/Theme';
 import { useComponentId } from '../../hooks/useComponentId';
 import { renderFromProp, RenderFromPropElement } from '../../utils/renderFromProp';
@@ -7,16 +8,13 @@ import { Flex } from '../../components/Flex';
 import { IconText } from '../../components/IconText';
 import { generateInteractiveGroupActions } from '../../components/InteractiveGroup/generateInteractiveGroupActions';
 import { InteractiveGroupStateAction } from '../../components/InteractiveGroup/interactiveGroupActions';
-import {
-  getInteractiveGroupInitialState,
-  interactiveGroupReducer,
-  InteractiveGroupState,
-} from '../../components/InteractiveGroup/interactiveGroupReducer';
+import { getInteractiveGroupInitialState, interactiveGroupReducer, InteractiveGroupState } from '../../components/InteractiveGroup/interactiveGroupReducer';
 import { Rhythm } from '../../components/Rhythm/Rhythm';
 import { Tag, TagGroup, TagGroupProps, TagProps, TagShape, TagSize, TagWeight } from '../../components/Tag';
 import { TypographyWithSvg } from '../../components/Typography';
 import { PartialDropdown, PartialDropdownHandles, PartialDropdownProps } from './PartialDropdown';
 import { DropdownOption } from './types';
+
 
 export type DropdownWithTagsOption = DropdownOption & {
   tagProps?: TagProps<'button'>;
@@ -28,6 +26,7 @@ export type DropdownWithTagsProps = Omit<PartialDropdownProps, 'initialSelected'
   /** A custom renderer for the tags */
   tag?: RenderFromPropElement<DropdownWithTagsOption>;
   tagGroupProps?: Omit<TagGroupProps, 'size'>;
+  tagIconProps?: SvgIconProps;
   /** The margin between the tag group and the dropdown */
   tagMarginTop?: number;
   tagProps?: Omit<TagProps<'button'>, 'actionable' | 'as' | 'children' | 'onClick' | 'ref'>;
@@ -54,12 +53,15 @@ export function DropdownWithTags({
   initialSelected = [],
   minSelect = 0,
   maxSelect = -1,
+  onOpen,
+  onClose,
   onSelect,
   onSelectionChange,
   onUnselect,
   options,
   tag,
   tagGroupProps,
+  tagIconProps,
   tagProps,
   tagShape = 'pill',
   tagSize = 'xsmall',
@@ -87,6 +89,12 @@ export function DropdownWithTags({
   const previousSelectedIds = useRef<readonly string[]>(state.selectedIds);
   const { generateComponentId } = useComponentId(id);
   const themeId = useThemeId(initThemeId);
+
+  const iconSize = useMemo(() => {
+    if (tagSize === 'medium') return 10;
+    if (tagSize === 'large') return 12;
+    return 8;
+  }, [tagSize]);
 
   // don't pass the tag props on to the dropdown, but map them by ID so they can be applied to the tags
   const strippedOptions = useMemo(() => options.map(({ tagProps, ...option }) => option), [options]);
@@ -123,16 +131,18 @@ export function DropdownWithTags({
 
   const handleOpen = useCallback(() => {
     isDropdownOpen.current = true;
-  }, []);
+    onOpen?.();
+  }, [onOpen]);
 
   const handleClose = useCallback(() => {
     isDropdownOpen.current = false;
-  }, []);
+    onClose?.();
+  }, [onClose]);
 
   const handleSelect = useCallback<NonNullable<PartialDropdownProps['onSelect']>>(
     (id, selectedIds) => {
       selectId(id);
-      onSelect && onSelect(id, selectedIds);
+      onSelect?.(id, selectedIds);
     },
     [onSelect, selectId],
   );
@@ -140,7 +150,7 @@ export function DropdownWithTags({
   const handleUnselect = useCallback<NonNullable<PartialDropdownProps['onUnselect']>>(
     (id, selectedIds) => {
       unselectId(id);
-      onUnselect && onUnselect(id, selectedIds);
+      onUnselect?.(id, selectedIds);
     },
     [onUnselect, unselectId],
   );
@@ -186,7 +196,7 @@ export function DropdownWithTags({
                   reverse
                   icon={
                     <TypographyWithSvg<'div'> as="div" volume="quiet">
-                      <TimesIcon scale="xsmall" />
+                      <TimesIcon size={iconSize} {...tagIconProps} />
                     </TypographyWithSvg>
                   }
                   text={<Rhythm mr={2}>{label}</Rhythm>}
