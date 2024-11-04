@@ -140,35 +140,35 @@ button.tag {
   font-size: $font-size-2xsmall;
   height: $element-height-2xsmall;
   line-height: 1.3em;
-  padding: 0.5em 1.2em;
+  padding: 0 1.2em;
 }
 
 .tag--xsmall {
   font-size: $font-size-xsmall;
   height: $element-height-xsmall;
   line-height: 1.3em;
-  padding: 0.5em 1.4em;
+  padding: 0 1.4em;
 }
 
 .tag--small {
   font-size: $font-size-small;
   height: $element-height-small;
   line-height: 1.3em;
-  padding: 0.5em 1.4em;
+  padding: 0 1.4em;
 }
 
 .tag--medium {
   font-size: $font-size-medium;
   height: $element-height-medium;
   line-height: 1.3em;
-  padding: 0.4em 2em;
+  padding: 0 1.45em;
 }
 
 .tag--large {
   font-size: $font-size-large;
   height: $element-height-large;
   line-height: 1.3em;
-  padding: 0.4em 2.2em;
+  padding: 0 1.5em;
 }
 
 .tag--flush {
