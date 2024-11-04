@@ -122,7 +122,7 @@ export function TextareaBase(
     event => {
       if (value !== event.target.value) {
         if (!maxLength || !event.target.value || event.target.value.length <= maxLength) {
-          onChange && onChange(event, event.target.value);
+          onChange?.(event, event.target.value);
         }
       }
     },

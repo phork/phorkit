@@ -186,7 +186,7 @@ export function TextboxBase(
   const handleChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>(
     event => {
       if (value !== event.target.value) {
-        onChange && onChange(event, event.target.value);
+        onChange?.(event, event.target.value);
       }
     },
     [onChange, value],
@@ -195,7 +195,7 @@ export function TextboxBase(
   const handleClear = useCallback(
     (event: React.KeyboardEvent | React.MouseEvent | React.TouchEvent) => {
       event.preventDefault();
-      onClear && onClear(event);
+      onClear?.(event);
       inputRef.current && inputRef.current.focus();
     },
     [onClear],
@@ -209,7 +209,7 @@ export function TextboxBase(
 
         onSubmit(event, (event.target as HTMLInputElement).value);
       } else {
-        onKeyDown && onKeyDown(event, (event.target as HTMLInputElement).value);
+        onKeyDown?.(event, (event.target as HTMLInputElement).value);
       }
     },
     [onKeyDown, onSubmit],

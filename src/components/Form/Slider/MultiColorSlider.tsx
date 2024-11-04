@@ -71,7 +71,7 @@ export function MultiColorSlider({
   const handleChange = useCallback(
     (event, value) => {
       setActiveColor(colors[value - 1] || theme['color-neutral']);
-      onChange && onChange(event, value);
+      onChange?.(event, value);
     },
     [colors, onChange, theme],
   );

@@ -203,19 +203,19 @@ export const usePanelCollapser = ({
     manual: true,
     onFinish: () => {
       if (open) {
-        onOpenFinish && onOpenFinish();
+        onOpenFinish?.();
       } else {
         !disableHiding && !minSize && hidePanel();
-        onCloseFinish && onCloseFinish();
+        onCloseFinish?.();
       }
     },
     onLoop: ({ loop }) => {
       if (loop === 0) {
         if (open) {
-          onOpenStart && onOpenStart();
+          onOpenStart?.();
           !disableHiding && !minSize && showPanel();
         } else {
-          onCloseStart && onCloseStart();
+          onCloseStart?.();
         }
       }
     },

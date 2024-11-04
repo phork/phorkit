@@ -179,9 +179,9 @@ export function SelectBase(
       if (multiple) {
         const selectedOptions = Array.from((event.target as HTMLSelectElement).selectedOptions);
         const formattedValues = selectedOptions.map(({ value }) => value);
-        onChange && onChange(event, formattedValues);
+        onChange?.(event, formattedValues);
       } else {
-        onChange && onChange(event, event.target.value);
+        onChange?.(event, event.target.value);
       }
     },
     [multiple, onChange],

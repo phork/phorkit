@@ -28,7 +28,7 @@ export function ThemeProvider({
     forceThemeId => {
       const newThemeId = forceThemeId || (themeId === 'dark' ? 'light' : 'dark');
       setThemeId(newThemeId);
-      onChange && onChange(newThemeId);
+      onChange?.(newThemeId);
       return newThemeId;
     },
     [onChange, themeId],

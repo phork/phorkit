@@ -146,7 +146,7 @@ export function Popover<C extends HTMLElement, F extends HTMLElement | undefined
   // use the onHide callback rather than a useEffect listener so isFocusWithin runs before the popover is hidden
   const handleHide = useCallback(() => {
     focusable && isFocusWithin(contentRef.current) && returnFocus();
-    onClose && onClose();
+    onClose?.();
   }, [focusable, onClose, returnFocus]);
 
   const {
@@ -296,7 +296,7 @@ export function Popover<C extends HTMLElement, F extends HTMLElement | undefined
             changeFocus(getFirstFocusableElement(contentRef.current));
           }
         }
-        onOpen && onOpen();
+        onOpen?.();
       }
     }
     previous.current.isComponentVisible = isComponentVisible;

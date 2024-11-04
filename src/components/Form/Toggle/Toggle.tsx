@@ -60,7 +60,7 @@ export function ToggleBase(
   const handleChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>(
     event => {
       persistEvents && event.persist();
-      onChange && onChange(event, event.target.checked);
+      onChange?.(event, event.target.checked);
     },
     [onChange, persistEvents],
   );
