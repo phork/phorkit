@@ -15,6 +15,7 @@ export type AccordionListProps = React.HTMLAttributes<HTMLDivElement> &
   ThemeProps & {
     className?: string;
     componentId: string;
+    disableScrollIntoView?: boolean;
     flush?: boolean;
     items: readonly AccordionItemType[];
     onBlur?: (e: React.FocusEvent<HTMLDivElement>) => void;
@@ -37,6 +38,7 @@ export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps
       className,
       componentId,
       contrast = false,
+      disableScrollIntoView = false,
       duration,
       easing,
       flush,
@@ -104,6 +106,7 @@ export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps
           items.map(({ id, ...item }, index) => (
             <AccordionListItem
               componentId={componentId}
+              disableScrollIntoView={disableScrollIntoView}
               duration={duration}
               easing={easing}
               flush={flush}

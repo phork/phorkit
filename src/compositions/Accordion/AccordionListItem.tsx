@@ -15,6 +15,7 @@ export type AccordionListItemProps = React.HTMLAttributes<HTMLDivElement> &
   Pick<AccordionContentProps, 'duration' | 'easing' | 'orientation'> &
   AccordionItemType & {
     componentId: string;
+    disableScrollIntoView?: boolean;
     flush?: boolean;
     /** The accordion's focus state */
     focused?: boolean;
@@ -39,6 +40,7 @@ export const AccordionListItem = React.forwardRef<HTMLDivElement, AccordionListI
       content,
       contentProps,
       disabled,
+      disableScrollIntoView,
       duration,
       easing,
       flush,
@@ -127,6 +129,7 @@ export const AccordionListItem = React.forwardRef<HTMLDivElement, AccordionListI
           aria-disabled={disabled}
           aria-expanded={!!stateProps.selected}
           contentRef={contentRef}
+          disableScrollIntoView={disableScrollIntoView}
           flush={flush}
           iconOnly={iconOnly}
           id={generateComponentId(id)}

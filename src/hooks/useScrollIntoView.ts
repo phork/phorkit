@@ -2,6 +2,7 @@ import { useLayoutEffect, useRef } from 'react';
 
 export type UseScrollIntoViewProps<E extends HTMLElement> = {
   behavior?: 'auto' | 'smooth';
+  disabled?: boolean;
   focused?: boolean;
   ref: React.MutableRefObject<E | null>;
 };
@@ -12,6 +13,7 @@ export type UseScrollIntoViewProps<E extends HTMLElement> = {
  * view.
  */
 export function useScrollIntoView<E extends HTMLElement>({
+  disabled = false,
   focused = false,
   ref,
   behavior = 'smooth',
@@ -20,9 +22,9 @@ export function useScrollIntoView<E extends HTMLElement>({
 
   // make sure focused has previously been set so this doesn't scroll the whole page to this element on load
   useLayoutEffect((): void => {
-    if (focused && previous.current !== undefined) {
+    if (focused && previous.current !== undefined && !disabled) {
       ref.current?.scrollIntoView({ behavior, block: 'nearest', inline: 'start' });
     }
     previous.current = !!focused;
-  }, [behavior, focused, ref]);
+  }, [behavior, disabled, focused, ref]);
 }

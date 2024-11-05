@@ -10,6 +10,7 @@ export type LocalAccordionLabelProps = AccordionItemStateProps & {
   children: React.ReactNode;
   className?: string;
   contentRef?: React.RefObject<HTMLDivElement>;
+  disableScrollIntoView?: boolean;
   flush?: boolean;
   iconOnly?: boolean;
   id: string;
@@ -34,6 +35,7 @@ export function AccordionLabel({
   className,
   contentRef,
   disabled = false,
+  disableScrollIntoView = false,
   flush = false,
   focused = false,
   iconOnly = false,
@@ -53,7 +55,13 @@ export function AccordionLabel({
     return true;
   }, [contentRef]);
 
-  useInteractiveGroupItem<HTMLDivElement>({ focused, ref, moveBrowserFocus, scrollBehavior: 'smooth' });
+  useInteractiveGroupItem<HTMLDivElement>({
+    disableScrollIntoView,
+    focused,
+    ref,
+    moveBrowserFocus,
+    scrollBehavior: 'smooth',
+  });
   useListRegistryItem({ id, ref });
 
   // wrap the content in a class so the content opacity can change without affecting the pseudo elements

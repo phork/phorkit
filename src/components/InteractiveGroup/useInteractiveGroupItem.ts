@@ -2,8 +2,9 @@ import { useEffect } from 'react';
 import { useScrollIntoView, UseScrollIntoViewProps } from './../../hooks/useScrollIntoView';
 
 export type UseInteractiveGroupItemProps<E extends HTMLElement> = Omit<UseScrollIntoViewProps<E>, 'behavior'> & {
-  scrollBehavior?: UseScrollIntoViewProps<E>['behavior'];
+  disableScrollIntoView?: boolean;
   moveBrowserFocus?: boolean | ((props: { ref: React.MutableRefObject<E | null>; focused?: boolean }) => boolean);
+  scrollBehavior?: UseScrollIntoViewProps<E>['behavior'];
 };
 
 /**
@@ -12,12 +13,13 @@ export type UseInteractiveGroupItemProps<E extends HTMLElement> = Omit<UseScroll
  * view and changes the active element to that ref element.
  */
 export function useInteractiveGroupItem<E extends HTMLElement>({
+  disableScrollIntoView = false,
   focused = false,
   moveBrowserFocus = false,
   ref,
   scrollBehavior,
 }: UseInteractiveGroupItemProps<E>): void {
-  useScrollIntoView<E>({ behavior: scrollBehavior, ref, focused });
+  useScrollIntoView<E>({ behavior: scrollBehavior, disabled: disableScrollIntoView, ref, focused });
 
   useEffect(() => {
     if (focused && document.activeElement !== ref.current) {

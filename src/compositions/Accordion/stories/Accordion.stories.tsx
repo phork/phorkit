@@ -88,6 +88,11 @@ export default {
         category: 'Uncommon',
       },
     },
+    disableScrollIntoView: {
+      table: {
+        category: 'Uncommon',
+      },
+    },
     id: {
       table: {
         category: 'Uncommon',

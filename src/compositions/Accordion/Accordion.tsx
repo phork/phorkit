@@ -23,7 +23,10 @@ export type AccordionProps = Pick<
   InteractiveGroupProviderProps,
   'maxSelect' | 'minSelect' | 'initialSelected' | 'onKeyDown' | 'onSelect'
 > &
-  Pick<AccordionListProps, 'duration' | 'easing' | 'flush' | 'items' | 'orientation' | 'unstyled' | 'variant'> &
+  Pick<
+    AccordionListProps,
+    'disableScrollIntoView' | 'duration' | 'easing' | 'flush' | 'items' | 'orientation' | 'unstyled' | 'variant'
+  > &
   ThemeProps & {
     children?: AccordionRenderChildren;
     className?: string;
@@ -73,6 +76,7 @@ export function Accordion({
   children,
   className,
   contrast = false,
+  disableScrollIntoView = false,
   duration,
   easing,
   flush = false,
@@ -135,6 +139,7 @@ export function Accordion({
                 <AccordionList
                   componentId={componentId}
                   contrast={contrast}
+                  disableScrollIntoView={disableScrollIntoView}
                   duration={duration}
                   easing={easing}
                   flush={flush}
