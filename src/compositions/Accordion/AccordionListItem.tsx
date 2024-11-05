@@ -1,5 +1,5 @@
 import { cx } from '@emotion/css';
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useRef } from 'react';
 import { useAccessibility } from '../../context/Accessibility';
 import { useComponentId } from '../../hooks/useComponentId';
 import {
@@ -21,6 +21,8 @@ export type AccordionListItemProps = React.HTMLAttributes<HTMLDivElement> &
     index: number;
     /** The parent ref is used to get its dimensions so the content can be rendered at the right size */
     parentRef: React.RefObject<HTMLDivElement>;
+    /** Manually triggers the focused state of the useDeepFocus hook */
+    setDeepFocus: React.Dispatch<React.SetStateAction<boolean>>;
     unstyled?: boolean;
   };
 
@@ -48,12 +50,14 @@ export const AccordionListItem = React.forwardRef<HTMLDivElement, AccordionListI
       labelProps,
       orientation,
       parentRef,
+      setDeepFocus,
       unstyled,
     },
     forwardedRef,
   ): React.ReactElement<AccordionListItemProps> => {
     const accessible = useAccessibility();
     const { generateComponentId } = useComponentId(componentId);
+    const contentRef = useRef<HTMLDivElement | null>(null);
 
     const { handleItemClick, isSelected, focusedIndex, setFocused } =
       useContext<InteractiveGroupContextValue<string, HTMLDivElement, HTMLDivElement>>(InteractiveGroupContext);
@@ -78,6 +82,30 @@ export const AccordionListItem = React.forwardRef<HTMLDivElement, AccordionListI
       [id, setFocused],
     );
 
+    const handleContentFocus = useCallback<React.FocusEventHandler<HTMLDivElement>>(
+      event => {
+        event.stopPropagation();
+
+        // set this item as focused
+        setFocused(id, { event });
+
+        /**
+         * Set the entire accordion as having a focused state, which is
+         * necessary because the event.stopPropagation() call here stops
+         * the natural setting of this state by the useDeepFocus hook.
+         * The reason we need to do all this manually is that if you
+         * click into the expanded content item of an accordion while the
+         * accordion itself doesn't have focus, if we don't stopPropagation
+         * then the accordion steals focus from the item that was clicked on.
+         * And if we do stop propagation without manually reconciling the
+         * focused state then the accordion will not appear to be focused
+         * when in fact it is.
+         */
+        setDeepFocus?.(true);
+      },
+      [id, setFocused, setDeepFocus],
+    );
+
     const itemFocused = focusedIndex === index;
     const itemSelected = isSelected(id);
     const stateProps = { disabled, focused: focused && itemFocused, selected: itemSelected };
@@ -98,6 +126,7 @@ export const AccordionListItem = React.forwardRef<HTMLDivElement, AccordionListI
           aria-controls={generateComponentId(id, 'panel')}
           aria-disabled={disabled}
           aria-expanded={!!stateProps.selected}
+          contentRef={contentRef}
           flush={flush}
           iconOnly={iconOnly}
           id={generateComponentId(id)}
@@ -117,8 +146,11 @@ export const AccordionListItem = React.forwardRef<HTMLDivElement, AccordionListI
           duration={duration}
           easing={easing}
           id={generateComponentId(id, 'panel')}
+          // if something within the content gets the focus this prevents the accordion from stealing it
+          onFocus={handleContentFocus}
           orientation={orientation}
           parentRef={parentRef}
+          ref={contentRef}
           role="tabpanel"
           {...contentProps}
           {...stateProps}

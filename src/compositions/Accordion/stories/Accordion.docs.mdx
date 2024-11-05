@@ -166,7 +166,7 @@ import { Accordion, AccordionContainer, AccordionList } from '../index';
           <Rhythm pl={5} pr={3} py={3}>
             <Paper bordered full color={focused ? 'accent' : 'primary'}>
               <Flex full alignItems="center" direction="row" justifyContent="space-between">
-                <span>First</span>
+                <span>First{focused ? ' is focused' : ''}</span>
                 <IconButton
                   color={!focused && 'neutral'}
                   contrast={focused}
@@ -213,7 +213,7 @@ import { Accordion, AccordionContainer, AccordionList } from '../index';
           <Rhythm full pl={5} pr={3} py={3}>
             <Paper bordered full color={focused ? 'accent' : 'primary'}>
               <Flex full alignItems="center" direction="row" justifyContent="space-between">
-                <span>Second</span>
+                <span>Second{focused ? ' is focused' : ''}</span>
                 <IconButton
                   color={!focused && 'neutral'}
                   contrast={focused}
@@ -260,7 +260,7 @@ import { Accordion, AccordionContainer, AccordionList } from '../index';
           <Rhythm pl={5} pr={3} py={3}>
             <Paper bordered full color={focused ? 'accent' : 'primary'}>
               <Flex full alignItems="center" direction="row" justifyContent="space-between">
-                <span>Third</span>
+                <span>Third{focused ? ' is focused' : ''}</span>
                 <IconButton
                   color={!focused && 'neutral'}
                   contrast={focused}
@@ -307,7 +307,7 @@ import { Accordion, AccordionContainer, AccordionList } from '../index';
           <Rhythm pl={5} pr={3} py={3}>
             <Paper bordered full color={focused ? 'accent' : 'primary'}>
               <Flex full alignItems="center" direction="row" justifyContent="space-between">
-                <span>Fourth</span>
+                <span>Fourth{focused ? ' is focused' : ''}</span>
                 <IconButton
                   color={!focused && 'neutral'}
                   contrast={focused}
@@ -354,7 +354,7 @@ import { Accordion, AccordionContainer, AccordionList } from '../index';
                     ipsum rhoncus augue, ac luctus lacus lorem vel risus. Integer a ex interdum, egestas dui vitae,
                     maximus sem. Praesent id egestas.
                   </p>
-                  <input type="text" />
+                  <input style={{ height: 28 }} type="text" />
                 </Rhythm>
                 <IconButton
                   as="div"
@@ -375,6 +375,7 @@ import { Accordion, AccordionContainer, AccordionList } from '../index';
         labelProps: { style: { outline: 'none' } },
       },
     ]}
+    maxSelect={-1}
     minSelect={0}
   >
     {({ componentId, items, orientation, ref, themeId, style, unstyled }) => (

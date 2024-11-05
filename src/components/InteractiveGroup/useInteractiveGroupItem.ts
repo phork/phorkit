@@ -3,7 +3,7 @@ import { useScrollIntoView, UseScrollIntoViewProps } from './../../hooks/useScro
 
 export type UseInteractiveGroupItemProps<E extends HTMLElement> = Omit<UseScrollIntoViewProps<E>, 'behavior'> & {
   scrollBehavior?: UseScrollIntoViewProps<E>['behavior'];
-  moveBrowserFocus?: boolean;
+  moveBrowserFocus?: boolean | ((props: { ref: React.MutableRefObject<E | null>; focused?: boolean }) => boolean);
 };
 
 /**
@@ -20,8 +20,13 @@ export function useInteractiveGroupItem<E extends HTMLElement>({
   useScrollIntoView<E>({ behavior: scrollBehavior, ref, focused });
 
   useEffect(() => {
-    if (moveBrowserFocus && focused && document.activeElement !== ref.current) {
-      ref.current?.focus();
+    if (focused && document.activeElement !== ref.current) {
+      const shouldMoveBrowserFocus =
+        typeof moveBrowserFocus === 'function' ? moveBrowserFocus({ ref, focused }) : moveBrowserFocus;
+
+      if (shouldMoveBrowserFocus) {
+        ref.current?.focus();
+      }
     }
   }, [focused, moveBrowserFocus, ref]);
 }

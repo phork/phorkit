@@ -1,5 +1,5 @@
 import { cx } from '@emotion/css';
-import React, { useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { MergeElementPropsWithoutRef, Orientation } from '../../types';
 import { useInteractiveGroupItem } from '../../components/InteractiveGroup/useInteractiveGroupItem';
 import { useListRegistryItem } from '../../components/ListRegistry/useListRegistryItem';
@@ -9,6 +9,7 @@ import { AccordionItemStateProps } from './types';
 export type LocalAccordionLabelProps = AccordionItemStateProps & {
   children: React.ReactNode;
   className?: string;
+  contentRef?: React.RefObject<HTMLDivElement>;
   flush?: boolean;
   iconOnly?: boolean;
   id: string;
@@ -31,6 +32,7 @@ export type AccordionLabelProps = MergeElementPropsWithoutRef<'div', LocalAccord
 export function AccordionLabel({
   children,
   className,
+  contentRef,
   disabled = false,
   flush = false,
   focused = false,
@@ -42,7 +44,16 @@ export function AccordionLabel({
   ...props
 }: AccordionLabelProps): JSX.Element | null {
   const ref = useRef<HTMLDivElement>(null!);
-  useInteractiveGroupItem<HTMLDivElement>({ focused, ref, moveBrowserFocus: true, scrollBehavior: 'smooth' });
+
+  // don't move the browser focus if the focus is within the content
+  const moveBrowserFocus = useCallback(() => {
+    if (contentRef?.current?.contains(document.activeElement)) {
+      return false;
+    }
+    return true;
+  }, [contentRef]);
+
+  useInteractiveGroupItem<HTMLDivElement>({ focused, ref, moveBrowserFocus, scrollBehavior: 'smooth' });
   useListRegistryItem({ id, ref });
 
   // wrap the content in a class so the content opacity can change without affecting the pseudo elements

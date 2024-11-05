@@ -46,8 +46,8 @@ export const measureDomNode = (
   container.appendChild(content);
   appendTo.appendChild(container);
 
-  const height = container.clientHeight;
-  const width = container.clientWidth;
+  const height = Math.ceil(container.clientHeight);
+  const width = Math.ceil(container.clientWidth);
 
   container.parentNode?.removeChild(container);
   return { height, width };
