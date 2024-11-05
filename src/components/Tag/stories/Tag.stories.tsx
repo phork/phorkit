@@ -51,6 +51,12 @@ export default {
       },
     },
 
+    onClick: {
+      table: {
+        category: 'Actions',
+      },
+    },
+
     as: {
       control: {
         disable: true,
@@ -201,6 +207,14 @@ LargeSize.storyName = 'Size: Large';
 LargeSize.args = {
   ...defaultArgs,
   size: 'large',
+};
+
+export const Actionable = Template.bind({});
+Actionable.storyName = 'Actionable';
+Actionable.args = {
+  ...defaultArgs,
+  actionable: true,
+  onClick: () => console.log('clicked'),
 };
 
 export const ActiveState = Template.bind({});

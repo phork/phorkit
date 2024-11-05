@@ -106,6 +106,7 @@ export default {
   ],
   parameters: {
     controls: {
+      exclude: ['aria-label'],
       sort: 'requiredFirst',
     },
     docs: {

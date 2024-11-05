@@ -32,6 +32,7 @@ export default {
     color: {
       control: {
         type: 'radio',
+        options: ['success', 'warning', 'danger', 'neutral', 'primary'],
       },
       table: {
         category: 'Appearance',

@@ -18,6 +18,12 @@ export default {
       control: { disable: true },
     },
 
+    noBlackout: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+
     onEscape: {
       table: {
         category: 'Actions',
@@ -25,6 +31,12 @@ export default {
     },
 
     className: {
+      control: { disable: true },
+      table: {
+        category: 'Uncommon',
+      },
+    },
+    confirmClose: {
       control: { disable: true },
       table: {
         category: 'Uncommon',

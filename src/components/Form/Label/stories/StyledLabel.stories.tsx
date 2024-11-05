@@ -29,6 +29,11 @@ export default {
         category: 'Styled',
       },
     },
+    mutedTextColor: {
+      table: {
+        category: 'Styled',
+      },
+    },
     textColor: {
       table: {
         category: 'Styled',

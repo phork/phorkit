@@ -7,9 +7,6 @@ import { StyledProgress, StyledProgressProps } from '../StyledProgress';
 import progressStory from './Progress.stories';
 
 const argTypes: Partial<ArgTypes<ProgressProps>> = { ...progressStory.argTypes };
-delete argTypes.color;
-delete argTypes.contrast;
-delete argTypes.themeId;
 
 export default {
   ...progressStory,
@@ -35,6 +32,10 @@ export default {
   },
   parameters: {
     ...progressStory.parameters,
+    controls: {
+      ...progressStory.parameters?.controls,
+      exclude: ['color', 'contrast', 'theme', 'aria-label'],
+    },
     docs: {
       ...progressStory.parameters?.docs,
       page: () => (

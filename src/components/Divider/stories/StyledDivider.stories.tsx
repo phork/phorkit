@@ -6,9 +6,6 @@ import { StyledDivider, StyledDividerProps } from '../StyledDivider';
 import dividerStory from './Divider.stories';
 
 const argTypes = { ...dividerStory.argTypes };
-delete argTypes.contrast;
-delete argTypes.themeId;
-delete argTypes.variant;
 
 export default {
   ...dividerStory,
@@ -24,6 +21,10 @@ export default {
   },
   parameters: {
     ...dividerStory.parameters,
+    controls: {
+      ...dividerStory.parameters?.controls,
+      exclude: ['contrast', 'themeId', 'variant'],
+    },
     docs: {
       ...dividerStory.parameters?.docs,
       page: () => (

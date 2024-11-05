@@ -14,7 +14,28 @@ export default {
   title: 'Surfaces/Header/StyledHeader',
   component: StyledHeader,
   argTypes: {
+    height: {
+      table: {
+        category: 'Styled',
+      },
+    },
+
+    backgroundColor: {
+      table: {
+        category: 'Styled',
+      },
+    },
+    borderColor: {
+      table: {
+        category: 'Styled',
+      },
+    },
     headerColor: {
+      table: {
+        category: 'Styled',
+      },
+    },
+    textColor: {
       table: {
         category: 'Styled',
       },

@@ -62,6 +62,11 @@ export default {
         category: 'Appearance',
       },
     },
+    renderLabel: {
+      table: {
+        category: 'Appearance',
+      },
+    },
     size: {
       table: {
         category: 'Appearance',

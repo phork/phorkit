@@ -61,6 +61,11 @@ export default {
       },
     },
 
+    onKeyDown: {
+      table: {
+        category: 'Actions',
+      },
+    },
     onSelect: {
       table: {
         category: 'Actions',

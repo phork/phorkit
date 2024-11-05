@@ -134,7 +134,7 @@ export default {
   },
   parameters: {
     controls: {
-      exclude: ['children'],
+      exclude: ['aria-label', 'children'],
       sort: 'requiredFirst',
     },
     docs: {

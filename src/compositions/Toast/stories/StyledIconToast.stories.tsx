@@ -15,6 +15,22 @@ export default {
   title: 'Feedback/Toasts/StyledIconToast',
   component: StyledIconToast,
   argTypes: {
+    icon: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    iconSize: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    title: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+
     levelColor: {
       table: {
         category: 'Styled',

@@ -52,6 +52,11 @@ export default {
         category: 'Uncommon',
       },
     },
+    rel: {
+      table: {
+        category: 'Uncommon',
+      },
+    },
     style: {
       table: {
         category: 'Uncommon',

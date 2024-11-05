@@ -14,6 +14,12 @@ export default {
   title: 'Feedback/Toasts/StyledTitledToast',
   component: StyledTitledToast,
   argTypes: {
+    title: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+
     levelColor: {
       table: {
         category: 'Styled',

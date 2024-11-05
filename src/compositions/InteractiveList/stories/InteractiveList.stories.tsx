@@ -32,6 +32,11 @@ export default {
         category: 'Appearance',
       },
     },
+    renderLabel: {
+      table: {
+        category: 'Appearance',
+      },
+    },
     rounded: {
       table: {
         category: 'Appearance',
@@ -207,6 +212,11 @@ export default {
         category: 'Uncommon',
       },
     },
+    scrollBehavior: {
+      table: {
+        category: 'Uncommon',
+      },
+    },
     style: {
       table: {
         category: 'Uncommon',
@@ -236,6 +246,7 @@ export default {
       disableSnapshot: true,
     },
     controls: {
+      exclude: ['aria-label'],
       sort: 'requiredFirst',
     },
     docs: {

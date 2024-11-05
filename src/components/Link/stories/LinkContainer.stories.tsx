@@ -15,6 +15,12 @@ export default {
       },
     },
 
+    target: {
+      table: {
+        category: 'Anchor',
+      },
+    },
+
     underline: {
       table: {
         category: 'Appearance',

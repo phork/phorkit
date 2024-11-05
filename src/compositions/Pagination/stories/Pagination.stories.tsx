@@ -84,6 +84,11 @@ export default {
         category: 'Appearance',
       },
     },
+    wrap: {
+      table: {
+        category: 'Appearance',
+      },
+    },
 
     page: {
       table: {

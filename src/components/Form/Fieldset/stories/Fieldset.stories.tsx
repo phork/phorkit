@@ -15,6 +15,9 @@ export default {
       control: {
         type: 'text',
       },
+      table: {
+        category: 'Appearance',
+      },
     },
 
     className: {

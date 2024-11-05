@@ -23,6 +23,7 @@ export default {
     color: {
       control: {
         type: 'radio',
+        options: ['success', 'warning', 'danger', 'neutral', 'primary'],
       },
       table: {
         category: 'Appearance',
@@ -46,10 +47,30 @@ export default {
         category: 'Appearance',
       },
     },
+    offset: {
+      table: {
+        category: 'Appearance',
+      },
+    },
     position: {
       control: {
         type: 'radio',
       },
+      table: {
+        category: 'Appearance',
+      },
+    },
+    squared: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    triangleSize: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    unbordered: {
       table: {
         category: 'Appearance',
       },

@@ -31,6 +31,11 @@ export default {
       },
     },
 
+    inputLabel: {
+      table: {
+        category: 'Input',
+      },
+    },
     value: {
       control: {
         type: 'text',

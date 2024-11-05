@@ -7,8 +7,6 @@ import { StyledShade } from '../StyledShade';
 import shadeStory from './Shade.stories';
 
 const argTypes = { ...shadeStory.argTypes };
-delete argTypes.color;
-delete argTypes.themeId;
 
 export default {
   ...shadeStory,
@@ -39,6 +37,10 @@ export default {
   },
   parameters: {
     ...shadeStory.parameters,
+    controls: {
+      ...shadeStory.parameters?.controls,
+      exclude: ['color', 'theme', 'themeId'],
+    },
     docs: {
       ...shadeStory.parameters?.docs,
       page: () => (

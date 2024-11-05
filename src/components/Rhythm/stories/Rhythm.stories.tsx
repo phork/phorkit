@@ -17,6 +17,17 @@ export default {
       },
     },
 
+    grouped: {
+      table: {
+        category: 'Container',
+      },
+    },
+    wrapper: {
+      table: {
+        category: 'Container',
+      },
+    },
+
     m: {
       control: {
         type: 'number',

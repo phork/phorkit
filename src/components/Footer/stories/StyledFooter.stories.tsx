@@ -14,6 +14,27 @@ export default {
   title: 'Surfaces/Footer/StyledFooter',
   component: StyledFooter,
   argTypes: {
+    height: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+
+    backgroundColor: {
+      table: {
+        category: 'Styled',
+      },
+    },
+    borderColor: {
+      table: {
+        category: 'Styled',
+      },
+    },
+    textColor: {
+      table: {
+        category: 'Styled',
+      },
+    },
     footerColor: {
       table: {
         category: 'Styled',

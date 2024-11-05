@@ -15,6 +15,11 @@ export default {
       },
     },
 
+    colors: {
+      table: {
+        category: 'Appearance',
+      },
+    },
     scale: {
       options: ['small', undefined],
       control: {
@@ -43,6 +48,16 @@ export default {
     },
 
     disabled: {
+      table: {
+        category: 'Input',
+      },
+    },
+    id: {
+      table: {
+        category: 'Input',
+      },
+    },
+    name: {
       table: {
         category: 'Input',
       },

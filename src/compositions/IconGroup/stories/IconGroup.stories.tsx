@@ -17,6 +17,67 @@ export default {
       },
     },
 
+    alignContent: {
+      table: {
+        category: 'Layout',
+      },
+    },
+    alignItems: {
+      table: {
+        category: 'Layout',
+      },
+    },
+    alignSelf: {
+      table: {
+        category: 'Layout',
+      },
+    },
+    direction: {
+      table: {
+        category: 'Layout',
+      },
+    },
+    flexible: {
+      table: {
+        category: 'Layout',
+      },
+    },
+    full: {
+      table: {
+        category: 'Layout',
+      },
+    },
+    inflexible: {
+      table: {
+        category: 'Layout',
+      },
+    },
+    inline: {
+      table: {
+        category: 'Layout',
+      },
+    },
+    justifyContent: {
+      table: {
+        category: 'Layout',
+      },
+    },
+    max: {
+      table: {
+        category: 'Layout',
+      },
+    },
+    reverse: {
+      table: {
+        category: 'Layout',
+      },
+    },
+    wrap: {
+      table: {
+        category: 'Layout',
+      },
+    },
+
     scale: {
       table: {
         category: 'Appearance',

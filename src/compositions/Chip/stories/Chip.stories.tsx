@@ -72,6 +72,12 @@ export default {
       },
     },
 
+    onClick: {
+      table: {
+        category: 'Actions',
+      },
+    },
+
     as: {
       control: {
         disable: true,
@@ -201,6 +207,7 @@ Actionable.args = {
   ...defaultArgs,
   actionable: true,
   avatar: { initials: 'P', color: 'primary' as AvatarProps['color'] },
+  onClick: () => console.log('clicked'),
   size: 'medium',
 };
 

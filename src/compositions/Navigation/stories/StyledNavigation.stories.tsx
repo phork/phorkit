@@ -19,6 +19,11 @@ export default {
         category: 'Styled',
       },
     },
+    itemBackgroundColor: {
+      table: {
+        category: 'Styled',
+      },
+    },
     itemFocusedBackgroundColor: {
       table: {
         category: 'Styled',

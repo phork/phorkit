@@ -12,14 +12,20 @@ export default {
       control: {
         type: 'color',
       },
-      category: 'Appearance',
+      table: {
+        category: 'Appearance',
+      },
     },
     position: {
       control: 'radio',
-      category: 'Appearance',
+      table: {
+        category: 'Appearance',
+      },
     },
     size: {
-      category: 'Appearance',
+      table: {
+        category: 'Appearance',
+      },
     },
 
     className: {
