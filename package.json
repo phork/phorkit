@@ -104,17 +104,14 @@
   "lint-staged": {
     "*.{md,mdx}": [
       "yarn prettier",
-      "yarn eslint",
-      "git add"
+      "yarn eslint"
     ],
     "*.{js,json,ts,tsx}": [
       "yarn prettier",
-      "yarn eslint",
-      "git add"
+      "yarn eslint"
     ],
     "*.css": [
-      "yarn stylelint",
-      "git add"
+      "yarn stylelint"
     ]
   },
   "publishConfig": {

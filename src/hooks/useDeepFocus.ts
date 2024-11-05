@@ -24,6 +24,8 @@ export type UseDeepFocusResponse<E> = {
   focused: boolean;
   handleBlur: React.FocusEventHandler<E>;
   handleFocus: React.FocusEventHandler<E>;
+  /** This should only be used if the state is in fact focused but a child stopped the focus propagation before it could be set */
+  setFocused: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 /**
@@ -128,6 +130,7 @@ export function useDeepFocus<E extends HTMLElement>(
     draftState.focused = focused;
     draftState.handleBlur = handleBlur;
     draftState.handleFocus = handleFocus;
+    draftState.setFocused = setFocused;
   });
   return previousResponse.current;
 }

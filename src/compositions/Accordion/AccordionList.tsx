@@ -54,7 +54,7 @@ export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps
   ): React.ReactElement<AccordionListProps> => {
     const ref = useRef<HTMLDivElement>(null);
     const accessible = useAccessibility();
-    const { focused, handleBlur, handleFocus } = useDeepFocus<HTMLDivElement>(ref);
+    const { focused, handleBlur, handleFocus, setFocused } = useDeepFocus<HTMLDivElement>(ref);
     const themeId = useThemeId(initThemeId);
     const variant = contrast ? 'contrast' : initVariant;
 
@@ -113,6 +113,7 @@ export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps
               key={id}
               orientation={orientation}
               parentRef={ref}
+              setDeepFocus={setFocused}
               unstyled={unstyled}
               {...item}
             />

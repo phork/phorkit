@@ -8,13 +8,16 @@ import { Flex } from '../../components/Flex';
 import { IconText } from '../../components/IconText';
 import { generateInteractiveGroupActions } from '../../components/InteractiveGroup/generateInteractiveGroupActions';
 import { InteractiveGroupStateAction } from '../../components/InteractiveGroup/interactiveGroupActions';
-import { getInteractiveGroupInitialState, interactiveGroupReducer, InteractiveGroupState } from '../../components/InteractiveGroup/interactiveGroupReducer';
+import {
+  getInteractiveGroupInitialState,
+  interactiveGroupReducer,
+  InteractiveGroupState,
+} from '../../components/InteractiveGroup/interactiveGroupReducer';
 import { Rhythm } from '../../components/Rhythm/Rhythm';
 import { Tag, TagGroup, TagGroupProps, TagProps, TagShape, TagSize, TagWeight } from '../../components/Tag';
 import { TypographyWithSvg } from '../../components/Typography';
 import { PartialDropdown, PartialDropdownHandles, PartialDropdownProps } from './PartialDropdown';
 import { DropdownOption } from './types';
-
 
 export type DropdownWithTagsOption = DropdownOption & {
   tagProps?: TagProps<'button'>;
