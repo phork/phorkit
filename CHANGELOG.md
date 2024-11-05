@@ -1,5 +1,17 @@
 # Changelog
 
+# [17.1.0](https://github.com/phork/phorkit/compare/v17.0.1...v17.1.0) (2024-11-05)
+
+### ✨ Features
+
+- improved interactive group accessibility ([b9820cc](https://github.com/phork/phorkit/commit/b9820cc))
+
+### 🐛 Bug Fixes
+
+- add accessibility provider to storybook docs ([55df9f6](https://github.com/phork/phorkit/commit/55df9f6))
+- prevent accordion from stealing focus from content ([d005520](https://github.com/phork/phorkit/commit/d005520))
+- remove focus from imitation buttons ([3f984d3](https://github.com/phork/phorkit/commit/3f984d3))
+
 ## [17.0.1](https://github.com/phork/phorkit/compare/v17.0.0...v17.0.1) (2024-10-31)
 
 ### 🐛 Bug Fixes
