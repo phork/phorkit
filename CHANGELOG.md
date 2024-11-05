@@ -1,5 +1,11 @@
 # Changelog
 
+# [17.2.0](https://github.com/phork/phorkit/compare/v17.1.0...v17.2.0) (2024-11-05)
+
+### ✨ Features
+
+- add disable scroll into view option to accordion ([6f643b9](https://github.com/phork/phorkit/commit/6f643b9))
+
 # [17.1.0](https://github.com/phork/phorkit/compare/v17.0.1...v17.1.0) (2024-11-05)
 
 ### ✨ Features
