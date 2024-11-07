@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.3.1](https://github.com/phork/phorkit/compare/v17.3.0...v17.3.1) (2024-11-07)
+
+### 🐛 Bug Fixes
+
+- export StyledToggle ([8e47c33](https://github.com/phork/phorkit/commit/8e47c33))
+
 # [17.3.0](https://github.com/phork/phorkit/compare/v17.2.0...v17.3.0) (2024-11-07)
 
 ### ✨ Features
