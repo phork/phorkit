@@ -2,6 +2,7 @@
   $default-toggle-width: 40px;
   $default-toggle-height: 24px;
   $default-toggle-border-width: 3px;
+  $default-toggle-focus-ring-size: 4px;
   $button-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
 
   align-items: flex-start;
@@ -34,7 +35,7 @@ input.toggleInput {
 
 .toggleLabel {
   margin-left: calc(0.35 * var(--toggle-width, $default-toggle-width));
-  margin-top: 5px;
+  margin-top: var(--toggle-label-top-margin, 5px);
 
   .toggle--reverse & {
     margin-left: 0;
@@ -50,7 +51,7 @@ input.toggleInput {
 
   &:before {
     background-color: var(--toggle-background-color);
-    border-radius: var(--toggle-height, $default-toggle-height);
+    border-radius: var(--toggle-border-radius);
     content: '';
     height: var(--toggle-height, $default-toggle-height);
     left: 0;
@@ -63,7 +64,7 @@ input.toggleInput {
 
   &:after {
     background-color: var(--toggle-button-background-color);
-    border-radius: 50%;
+    border-radius: var(--toggle-button-border-radius);
     bottom: var(--toggle-border-width, $default-toggle-border-width);
     box-shadow: $button-box-shadow;
     content: '';
@@ -105,7 +106,7 @@ input.toggleInput {
 }
 
 .toggleInputContainerFocusRing {
-  border-radius: var(--toggle-height, $default-toggle-height);
+  border-radius: var(--toggle-border-radius);
   bottom: 0;
   left: 0;
   position: absolute;
@@ -118,25 +119,35 @@ input.toggleInput {
 .toggle:hover,
 .toggle.is-focused {
   .toggleInputContainerFocusRing {
-    @mixin makeFocusRing var(--toggle-unchecked-hovered-focus-ring-color);
+    @mixin makeFocusRing var(--toggle-unchecked-hovered-focus-ring-color),
+      var(--toggle-focus-ring-size, $default-toggle-focus-ring-size);
   }
 
   &.is-checked {
     .toggleInputContainerFocusRing {
-      @mixin makeFocusRing var(--toggle-checked-hovered-focus-ring-color);
+      @mixin makeFocusRing var(--toggle-checked-hovered-focus-ring-color),
+        var(--toggle-focus-ring-size, $default-toggle-focus-ring-size);
       @mixin setFocusRingOpacity var(--toggle-checked-hovered-focus-ring-opacity, 0.2);
     }
   }
 }
 
+.toggle--pill {
+  --toggle-border-radius: var(--toggle-height, $default-toggle-height);
+  --toggle-button-border-radius: 50%;
+}
+
+.toggle--brick {
+  --toggle-border-radius: $border-radius-medium;
+  --toggle-button-border-radius: $border-radius-small;
+}
+
 .toggle--small {
   --toggle-width: 32px;
   --toggle-height: 20px;
-  --toggle-border-width: 2px;
-
-  .toggleLabel {
-    margin-top: 3px;
-  }
+  --toggle-border-width: 3px;
+  --toggle-focus-ring-size: 3px;
+  --toggle-label-top-margin: 3px;
 }
 
 .toggle--primary {

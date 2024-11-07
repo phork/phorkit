@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { FormComponentDemo } from '../../stories/helpers/FormComponentDemo';
-import { Toggle } from '../Toggle';
+import { Toggle, ToggleProps } from '../Toggle';
 import ToggleDocumentation from './Toggle.docs.mdx';
 
 export default {
@@ -24,8 +24,16 @@ export default {
         category: 'Appearance',
       },
     },
+    shape: {
+      table: {
+        category: 'Appearance',
+      },
+    },
     size: {
-      option: { type: 'radio' },
+      options: ['small', undefined],
+      contol: {
+        option: { type: 'radio' },
+      },
       table: {
         category: 'Appearance',
       },
@@ -130,6 +138,7 @@ const defaultArgs = {
   full: false,
   persistEvents: false,
   reverse: false,
+  shape: 'pill' as ToggleProps['shape'],
   unthemed: false,
 };
 

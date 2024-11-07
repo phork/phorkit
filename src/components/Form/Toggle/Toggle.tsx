@@ -19,6 +19,7 @@ export type LocalToggleProps = ThemeProps & {
   onChange: (event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => void;
   persistEvents?: boolean;
   reverse?: boolean;
+  shape?: 'pill' | 'brick';
   size?: 'small';
   style?: React.CSSProperties;
   value?: string;
@@ -40,6 +41,7 @@ export function ToggleBase(
     onChange,
     persistEvents,
     reverse = false,
+    shape = 'pill',
     size,
     themeId: initThemeId,
     unthemed = false,
@@ -78,6 +80,7 @@ export function ToggleBase(
         size && styles[`toggle--${size}`],
         themeId && !unthemed && styles[`toggle--${themeId}`],
         color && !unthemed && styles[`toggle--${color}`],
+        shape && styles[`toggle--${shape}`],
         accessible && styles['is-accessible'],
         checked && styles['is-checked'],
         disabled && styles['is-disabled'],
