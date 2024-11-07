@@ -1,3 +1,5 @@
+@import '../../../styles/common/mixins/addScrollbar.css';
+
 .footer {
   align-items: center;
   background-color: var(--footer-background-color);
@@ -8,6 +10,10 @@
   justify-content: space-between;
   position: relative;
   width: 100%;
+}
+
+.footer--nowrap {
+  flex-wrap: nowrap;
 }
 
 /**
@@ -35,6 +41,10 @@
 .footer--primary {
   @mixin themed .footer {
     --footer-border-color: $theme-primary-palette-border-color;
+    --footer-focused-outline-color: $theme-primary-palette-text-color;
+    --footer-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
+    --footer-background-color: $theme-primary-palette-background-color;
+    --footer-text-color: $theme-primary-palette-text-color;
 
     &.footer--quiet {
       --footer-border-color: $theme-primary-palette-quiet-border-color;
@@ -43,15 +53,16 @@
     &.footer--transparent {
       background-color: transparent;
     }
-
-    background-color: $theme-primary-palette-background-color;
-    color: $theme-primary-palette-text-color;
   }
 }
 
 .footer--secondary {
   @mixin themed .footer {
     --footer-border-color: $theme-secondary-palette-border-color;
+    --footer-focused-outline-color: $theme-secondary-palette-text-color;
+    --footer-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
+    --footer-background-color: $theme-secondary-palette-background-color;
+    --footer-text-color: $theme-secondary-palette-text-color;
 
     &.footer--quiet {
       --footer-border-color: $theme-secondary-palette-quiet-border-color;
@@ -60,15 +71,16 @@
     &.footer--transparent {
       background-color: transparent;
     }
-
-    background-color: $theme-secondary-palette-background-color;
-    color: $theme-secondary-palette-text-color;
   }
 }
 
 .footer--tertiary {
   @mixin themed .footer {
     --footer-border-color: $theme-tertiary-palette-border-color;
+    --footer-focused-outline-color: $theme-tertiary-palette-text-color;
+    --footer-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
+    --footer-background-color: $theme-tertiary-palette-background-color;
+    --footer-textcolor: $theme-tertiary-palette-text-color;
 
     &.footer--quiet {
       --footer-border-color: $theme-tertiary-palette-quiet-border-color;
@@ -77,15 +89,16 @@
     &.footer--transparent {
       background-color: transparent;
     }
-
-    background-color: $theme-tertiary-palette-background-color;
-    color: $theme-tertiary-palette-text-color;
   }
 }
 
 .footer--contrast {
   @mixin themed .footer {
     --footer-border-color: $theme-contrast-palette-border-color;
+    --footer-focused-outline-color: $theme-contrast-palette-text-color;
+    --footer-scrollbar-thumb-color: $theme-contrast-scrollbar-thumb-color;
+    --footer-background-color: var(--phork-contrast-color, $theme-contrast-palette-background-color);
+    --footer-text-color: $theme-contrast-palette-text-color;
 
     &.footer--quiet {
       --footer-border-color: $theme-contrast-palette-quiet-border-color;
@@ -94,13 +107,35 @@
     &.footer--transparent {
       background-color: transparent;
     }
-
-    background-color: var(--phork-contrast-color, $theme-contrast-palette-background-color);
-    color: $theme-contrast-palette-text-color;
   }
 }
 
 .footer--full {
   height: 100%;
   width: 100%;
+}
+
+.footer--scrollable {
+  &.footer--medium-scrollbar {
+    @mixin addScrollbar var(--footer-scrollbar-thumb-color);
+  }
+
+  &.footer--small-scrollbar {
+    @mixin addSmallScrollbar var(--footer-scrollbar-thumb-color);
+  }
+
+  &.footer--xsmall-scrollbar {
+    @mixin addXSmallScrollbar var(--footer-scrollbar-thumb-color);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &.is-accessible:focus {
+    outline: 1px solid var(--footer-focused-outline-color);
+    outline-offset: -1px;
+  }
+
+  overflow: auto;
 }

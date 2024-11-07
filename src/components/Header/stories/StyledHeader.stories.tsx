@@ -30,7 +30,12 @@ export default {
         category: 'Styled',
       },
     },
-    headerColor: {
+    focusedOutlineColor: {
+      table: {
+        category: 'Styled',
+      },
+    },
+    scrollbarColor: {
       table: {
         category: 'Styled',
       },
@@ -38,6 +43,17 @@ export default {
     textColor: {
       table: {
         category: 'Styled',
+      },
+    },
+    themed: {
+      table: {
+        category: 'Styled',
+      },
+    },
+
+    themeId: {
+      table: {
+        category: 'Uncommon',
       },
     },
     ...argTypes,
@@ -77,12 +93,22 @@ const defaultArgs = {
   borderColor: '#393a61',
   textColor: '#fff',
   height: 50,
+  themed: false,
   variant: undefined,
 };
 
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
+};
+
+export const Themed = Template.bind({});
+Themed.storyName = 'Inherit theme';
+Themed.args = {
+  bordered: true,
+  height: 50,
+  variant: 'primary',
+  themed: true,
 };
 
 /*

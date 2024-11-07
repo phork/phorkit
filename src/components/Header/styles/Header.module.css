@@ -1,3 +1,5 @@
+@import '../../../styles/common/mixins/addScrollbar.css';
+
 .header {
   align-items: center;
   background-color: var(--header-background-color);
@@ -8,6 +10,10 @@
   justify-content: space-between;
   position: relative;
   width: 100%;
+}
+
+.header--nowrap {
+  flex-wrap: nowrap;
 }
 
 /**
@@ -35,6 +41,8 @@
 .header--primary {
   @mixin themed .header {
     --header-border-color: $theme-primary-palette-border-color;
+    --header-focused-outline-color: $theme-primary-palette-text-color;
+    --header-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
 
     &.header--quiet {
       --header-border-color: $theme-primary-palette-quiet-border-color;
@@ -52,6 +60,8 @@
 .header--secondary {
   @mixin themed .header {
     --header-border-color: $theme-secondary-palette-border-color;
+    --header-focused-outline-color: $theme-secondary-palette-text-color;
+    --header-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
 
     &.header--quiet {
       --header-border-color: $theme-secondary-palette-quiet-border-color;
@@ -69,6 +79,8 @@
 .header--tertiary {
   @mixin themed .header {
     --header-border-color: $theme-tertiary-palette-border-color;
+    --header-focused-outline-color: $theme-tertiary-palette-text-color;
+    --header-scrollbar-thumb-color: $theme-primary-scrollbar-thumb-color;
 
     &.header--quiet {
       --header-border-color: $theme-tertiary-palette-quiet-border-color;
@@ -86,6 +98,8 @@
 .header--contrast {
   @mixin themed .header {
     --header-border-color: $theme-contrast-palette-border-color;
+    --header-focused-outline-color: $theme-contrast-palette-text-color;
+    --header-scrollbar-thumb-color: $theme-contrast-scrollbar-thumb-color;
 
     &.header--quiet {
       --header-border-color: $theme-contrast-palette-quiet-border-color;
@@ -103,4 +117,29 @@
 .header--full {
   height: 100%;
   width: 100%;
+}
+
+.header--scrollable {
+  &.header--medium-scrollbar {
+    @mixin addScrollbar var(--header-scrollbar-thumb-color);
+  }
+
+  &.header--small-scrollbar {
+    @mixin addSmallScrollbar var(--header-scrollbar-thumb-color);
+  }
+
+  &.header--xsmall-scrollbar {
+    @mixin addXSmallScrollbar var(--header-scrollbar-thumb-color);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &.is-accessible:focus {
+    outline: 1px solid var(--header-focused-outline-color);
+    outline-offset: -1px;
+  }
+
+  overflow: auto;
 }

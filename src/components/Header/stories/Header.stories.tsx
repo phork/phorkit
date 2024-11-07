@@ -22,7 +22,22 @@ export default {
         type: 'text',
       },
     },
+    nowrap: {
+      table: {
+        category: 'Appearance',
+      },
+    },
     full: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    scrollable: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    scrollbar: {
       table: {
         category: 'Appearance',
       },
@@ -161,4 +176,26 @@ TertiaryVariant.args = {
   ...defaultArgs,
   bordered: true,
   variant: 'tertiary',
+};
+
+export const Scrollable = Template.bind({});
+Scrollable.args = {
+  ...defaultArgs,
+  children: (
+    <React.Fragment>
+      <div>Superlongword</div>
+      <div>Superlongword</div>
+      <div>Superlongword</div>
+      <div>Superlongword</div>
+      <div>Superlongword</div>
+      <div>Superlongword</div>
+      <div>Superlongword</div>
+      <div>Superlongword</div>
+      <div>Superlongword</div>
+      <div>Superlongword</div>
+    </React.Fragment>
+  ),
+  nowrap: true,
+  scrollable: true,
+  scrollbar: 'small',
 };

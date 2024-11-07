@@ -1,5 +1,6 @@
 export * from './Checkbox';
 export * from './Fieldset';
+export * from './Formbox';
 export * from './Label';
 export * from './LabelWrapper';
 export * from './Notification';
