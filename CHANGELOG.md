@@ -1,5 +1,11 @@
 # Changelog
 
+# [17.3.0](https://github.com/phork/phorkit/compare/v17.2.0...v17.3.0) (2024-11-07)
+
+### ✨ Features
+
+- added toggle shape options ([262589f](https://github.com/phork/phorkit/commit/262589f))
+
 # [17.2.0](https://github.com/phork/phorkit/compare/v17.1.0...v17.2.0) (2024-11-05)
 
 ### ✨ Features
