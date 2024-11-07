@@ -1,5 +1,11 @@
 # Changelog
 
+# [17.4.0](https://github.com/phork/phorkit/compare/v17.3.1...v17.4.0) (2024-11-07)
+
+### ✨ Features
+
+- added scrollable option to header and footer components ([1404bfd](https://github.com/phork/phorkit/commit/1404bfd))
+
 ## [17.3.1](https://github.com/phork/phorkit/compare/v17.3.0...v17.3.1) (2024-11-07)
 
 ### 🐛 Bug Fixes
