@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.4.1](https://github.com/phork/phorkit/compare/v17.4.0...v17.4.1) (2024-11-23)
+
+### 🐛 Bug Fixes
+
+- prevent checkbox and radio label size override ([eabeecc](https://github.com/phork/phorkit/commit/eabeecc))
+
 # [17.4.0](https://github.com/phork/phorkit/compare/v17.3.1...v17.4.0) (2024-11-07)
 
 ### ✨ Features

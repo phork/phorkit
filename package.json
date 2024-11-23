@@ -1,7 +1,7 @@
 {
   "name": "@phork/phorkit",
   "description": "Phork/it. A React UI kit.",
-  "version": "17.4.0",
+  "version": "17.4.1",
   "license": "MIT",
   "repository": {
     "type": "git",
