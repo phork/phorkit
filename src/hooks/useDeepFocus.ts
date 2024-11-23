@@ -45,6 +45,8 @@ export type UseDeepFocusResponse<E> = {
  * Additional handlers are available when the ref element
  * itself gets focus or blurs, and when different children
  * focus or blur.
+ *
+ * This can be used along with the `DeepFocus` context.
  */
 export function useDeepFocus<E extends HTMLElement>(
   ref: React.RefObject<E | null> | null,

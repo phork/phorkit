@@ -1,9 +1,8 @@
 import { cx } from '@emotion/css';
-import React, { useCallback, useRef } from 'react';
+import React, { useRef } from 'react';
 import { ThemeProps } from '../../types';
 import { useAccessibility } from '../../context/Accessibility';
 import { useThemeId } from '../../context/Theme';
-import { useDeepFocus } from '../../hooks/useDeepFocus';
 import { makeCombineRefs } from '../../utils/combineRefs';
 import styles from './styles/AccordionList.module.css';
 import { AccordionContentProps } from './AccordionContent';
@@ -17,9 +16,11 @@ export type AccordionListProps = React.HTMLAttributes<HTMLDivElement> &
     componentId: string;
     disableScrollIntoView?: boolean;
     flush?: boolean;
+    focused?: boolean;
     items: readonly AccordionItemType[];
-    onBlur?: (e: React.FocusEvent<HTMLDivElement>) => void;
-    onFocus?: (e: React.FocusEvent<HTMLDivElement>) => void;
+    onBlur?: React.FocusEventHandler<HTMLDivElement>;
+    onContentFocus?: React.FocusEventHandler<HTMLDivElement>;
+    onFocus?: React.FocusEventHandler<HTMLDivElement>;
     style?: React.CSSProperties;
     unstyled?: boolean;
     variant?: 'primary' | 'colored';
@@ -32,98 +33,84 @@ export type AccordionListProps = React.HTMLAttributes<HTMLDivElement> &
  *
  * This uses the `InteractiveGroup` component.
  */
-export const AccordionList = React.forwardRef<HTMLDivElement, AccordionListProps>(
-  (
-    {
-      className,
-      componentId,
-      contrast = false,
-      disableScrollIntoView = false,
-      duration,
-      easing,
-      flush,
-      items,
-      onBlur,
-      onFocus,
-      orientation = 'vertical',
-      style,
-      themeId: initThemeId,
-      unstyled = false,
-      variant: initVariant,
-      ...props
+export const AccordionList = React.memo(
+  React.forwardRef<HTMLDivElement, AccordionListProps>(
+    (
+      {
+        className,
+        componentId,
+        contrast = false,
+        disableScrollIntoView = false,
+        duration,
+        easing,
+        flush,
+        focused,
+        items,
+        onBlur,
+        onContentFocus,
+        onFocus,
+        orientation = 'vertical',
+        style,
+        themeId: initThemeId,
+        unstyled = false,
+        variant: initVariant,
+        ...props
+      },
+      forwardedRef,
+    ): React.ReactElement<AccordionListProps> => {
+      const ref = useRef<HTMLDivElement>(null);
+      const accessible = useAccessibility();
+      const themeId = useThemeId(initThemeId);
+      const variant = contrast ? 'contrast' : initVariant;
+      const combineRefs = makeCombineRefs<HTMLDivElement>(ref, forwardedRef);
+
+      return (
+        <div
+          aria-orientation={orientation}
+          className={
+            unstyled
+              ? className
+              : cx(
+                  styles.accordionList,
+                  themeId && styles[`accordionList--${themeId}`],
+                  variant && styles[`accordionList--${variant}`],
+                  styles[`accordionList--${orientation}`],
+                  accessible && styles['is-accessible'],
+                  focused && styles['is-focused'],
+                  className,
+                )
+          }
+          onBlur={onBlur}
+          onFocus={onFocus}
+          ref={combineRefs}
+          role="tablist"
+          style={style}
+          tabIndex={0}
+          {...props}
+        >
+          {items &&
+            items.map(({ id, ...item }, index) => (
+              <AccordionListItem
+                componentId={componentId}
+                disableScrollIntoView={disableScrollIntoView}
+                duration={duration}
+                easing={easing}
+                flush={flush}
+                focused={focused}
+                id={id}
+                index={index}
+                key={id}
+                onContentFocus={onContentFocus}
+                orientation={orientation}
+                parentRef={ref}
+                unstyled={unstyled}
+                {...item}
+              />
+            ))}
+        </div>
+      );
     },
-    forwardedRef,
-  ): React.ReactElement<AccordionListProps> => {
-    const ref = useRef<HTMLDivElement>(null);
-    const accessible = useAccessibility();
-    const { focused, handleBlur, handleFocus, setFocused } = useDeepFocus<HTMLDivElement>(ref);
-    const themeId = useThemeId(initThemeId);
-    const variant = contrast ? 'contrast' : initVariant;
-
-    const combineRefs = makeCombineRefs<HTMLDivElement>(ref, forwardedRef);
-
-    const handleBlurMemoized = useCallback(
-      event => {
-        handleBlur(event);
-        onBlur?.(event);
-      },
-      [handleBlur, onBlur],
-    );
-
-    const handleFocusMemoized = useCallback(
-      event => {
-        handleFocus(event);
-        onFocus?.(event);
-      },
-      [handleFocus, onFocus],
-    );
-
-    return (
-      <div
-        aria-orientation={orientation}
-        className={
-          unstyled
-            ? className
-            : cx(
-                styles.accordionList,
-                themeId && styles[`accordionList--${themeId}`],
-                variant && styles[`accordionList--${variant}`],
-                styles[`accordionList--${orientation}`],
-                accessible && styles['is-accessible'],
-                focused && styles['is-focused'],
-                className,
-              )
-        }
-        onBlur={handleBlurMemoized}
-        onFocus={handleFocusMemoized}
-        ref={combineRefs}
-        role="tablist"
-        style={style}
-        tabIndex={0}
-        {...props}
-      >
-        {items &&
-          items.map(({ id, ...item }, index) => (
-            <AccordionListItem
-              componentId={componentId}
-              disableScrollIntoView={disableScrollIntoView}
-              duration={duration}
-              easing={easing}
-              flush={flush}
-              focused={focused}
-              id={id}
-              index={index}
-              key={id}
-              orientation={orientation}
-              parentRef={ref}
-              setDeepFocus={setFocused}
-              unstyled={unstyled}
-              {...item}
-            />
-          ))}
-      </div>
-    );
-  },
+  ),
 );
 
 AccordionList.displayName = 'AccordionList';

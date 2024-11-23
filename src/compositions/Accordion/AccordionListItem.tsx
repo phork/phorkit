@@ -6,6 +6,8 @@ import {
   InteractiveGroupContext,
   InteractiveGroupContextValue,
 } from '../../components/InteractiveGroup/InteractiveGroupContext';
+import { useInteractiveGroupFocusedIndex } from '../../components/InteractiveGroup/useInteractiveGroupFocusedIndex';
+import { useInteractiveGroupSelectedIds } from '../../components/InteractiveGroup/useInteractiveGroupSelectedIds';
 import styles from './styles/AccordionList.module.css';
 import { AccordionContent, AccordionContentProps } from './AccordionContent';
 import { AccordionLabel } from './AccordionLabel';
@@ -20,10 +22,9 @@ export type AccordionListItemProps = React.HTMLAttributes<HTMLDivElement> &
     /** The accordion's focus state */
     focused?: boolean;
     index: number;
+    onContentFocus?: React.FocusEventHandler<HTMLDivElement>;
     /** The parent ref is used to get its dimensions so the content can be rendered at the right size */
     parentRef: React.RefObject<HTMLDivElement>;
-    /** Manually triggers the focused state of the useDeepFocus hook */
-    setDeepFocus: React.Dispatch<React.SetStateAction<boolean>>;
     unstyled?: boolean;
   };
 
@@ -50,9 +51,9 @@ export const AccordionListItem = React.forwardRef<HTMLDivElement, AccordionListI
       index,
       label,
       labelProps,
+      onContentFocus,
       orientation,
       parentRef,
-      setDeepFocus,
       unstyled,
     },
     forwardedRef,
@@ -61,7 +62,10 @@ export const AccordionListItem = React.forwardRef<HTMLDivElement, AccordionListI
     const { generateComponentId } = useComponentId(componentId);
     const contentRef = useRef<HTMLDivElement | null>(null);
 
-    const { handleItemClick, isSelected, focusedIndex, setFocused } =
+    const focusedIndex = useInteractiveGroupFocusedIndex();
+    const { isSelected } = useInteractiveGroupSelectedIds();
+
+    const { handleItemClick, setFocused } =
       useContext<InteractiveGroupContextValue<string, HTMLDivElement, HTMLDivElement>>(InteractiveGroupContext);
 
     const handleClick = useCallback(
@@ -88,24 +92,10 @@ export const AccordionListItem = React.forwardRef<HTMLDivElement, AccordionListI
       event => {
         event.stopPropagation();
 
-        // set this item as focused
         setFocused(id, { event });
-
-        /**
-         * Set the entire accordion as having a focused state, which is
-         * necessary because the event.stopPropagation() call here stops
-         * the natural setting of this state by the useDeepFocus hook.
-         * The reason we need to do all this manually is that if you
-         * click into the expanded content item of an accordion while the
-         * accordion itself doesn't have focus, if we don't stopPropagation
-         * then the accordion steals focus from the item that was clicked on.
-         * And if we do stop propagation without manually reconciling the
-         * focused state then the accordion will not appear to be focused
-         * when in fact it is.
-         */
-        setDeepFocus?.(true);
+        onContentFocus?.(event);
       },
-      [id, setFocused, setDeepFocus],
+      [id, setFocused, onContentFocus],
     );
 
     const itemFocused = focusedIndex === index;

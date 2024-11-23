@@ -7,11 +7,10 @@ export type InteractiveGroupContextValue<
   T extends InteractiveGroupItemId = string,
   E extends HTMLElement = HTMLDivElement,
   I extends HTMLElement = HTMLElement,
-> = Omit<UseInteractiveGroupResponse<T, E, I>, 'ref'>;
+> = Omit<UseInteractiveGroupResponse<T, E, I>, 'focused' | 'ref'>;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const InteractiveGroupContext = createContext<InteractiveGroupContextValue<any, any, any>>({
-  focusedIndex: undefined,
   handleItemClick: (/* event, id */) => {},
   isSelected: (/* id */) => false,
   selectedIds: undefined,

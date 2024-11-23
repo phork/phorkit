@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ThemeProps } from '../../types';
+import { SetDeepFocusConsumer, DeepFocusProvider, DeepFocusConsumer } from '../../context/DeepFocus';
 import { useComponentId } from '../../hooks/useComponentId';
 import {
   InteractiveGroupProvider,
@@ -95,11 +96,7 @@ export function Accordion({
   ...props
 }: AccordionProps): JSX.Element {
   const { componentId } = useComponentId(id);
-  const [focused, setFocused] = useState<boolean>(false);
   const variant = unstyled ? undefined : initVariant;
-
-  const handleBlur = () => setFocused(false);
-  const handleFocus = () => setFocused(true);
 
   return (
     <ListRegistryProvider<HTMLDivElement>>
@@ -112,49 +109,63 @@ export function Accordion({
         {...props}
       >
         {
-          ref =>
-            /* eslint-disable react/jsx-indent */
-            typeof children === 'function' ? (
-              children({
-                className,
-                componentId,
-                contrast,
-                items,
-                orientation,
-                ref,
-                style,
-                themeId,
-                variant,
-                unstyled,
-              })
-            ) : (
-              <AccordionContainer
-                className={className}
-                contrast={contrast}
-                focused={focused}
-                orientation={orientation}
-                style={style}
-                variant={variant}
-              >
-                <AccordionList
-                  componentId={componentId}
-                  contrast={contrast}
-                  disableScrollIntoView={disableScrollIntoView}
-                  duration={duration}
-                  easing={easing}
-                  flush={flush}
-                  items={items}
-                  onBlur={handleBlur}
-                  onFocus={handleFocus}
-                  orientation={orientation}
-                  ref={ref}
-                  themeId={themeId}
-                  unstyled={unstyled}
-                  variant={variant}
-                  {...listProps}
-                />
-              </AccordionContainer>
-            )
+          ref => (
+            <DeepFocusProvider ref={ref}>
+              {
+                /* eslint-disable react/jsx-indent */
+                typeof children === 'function' ? (
+                  children({
+                    className,
+                    componentId,
+                    contrast,
+                    items,
+                    orientation,
+                    ref,
+                    style,
+                    themeId,
+                    variant,
+                    unstyled,
+                  })
+                ) : (
+                  <AccordionContainer
+                    className={className}
+                    contrast={contrast}
+                    orientation={orientation}
+                    style={style}
+                    variant={variant}
+                  >
+                    <SetDeepFocusConsumer>
+                      {({ handleFocus, handleBlur }) => (
+                        <DeepFocusConsumer>
+                          {focused => (
+                            <AccordionList
+                              componentId={componentId}
+                              contrast={contrast}
+                              disableScrollIntoView={disableScrollIntoView}
+                              duration={duration}
+                              easing={easing}
+                              flush={flush}
+                              focused={focused}
+                              items={items}
+                              onBlur={handleBlur}
+                              onContentFocus={handleFocus}
+                              onFocus={handleFocus}
+                              orientation={orientation}
+                              ref={ref}
+                              themeId={themeId}
+                              unstyled={unstyled}
+                              variant={variant}
+                              {...listProps}
+                            />
+                          )}
+                        </DeepFocusConsumer>
+                      )}
+                    </SetDeepFocusConsumer>
+                  </AccordionContainer>
+                )
+              }
+            </DeepFocusProvider>
+          )
           /* eslint-enable react/jsx-indent */
         }
       </InteractiveGroupProvider>

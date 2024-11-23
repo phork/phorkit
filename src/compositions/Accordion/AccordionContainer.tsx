@@ -2,6 +2,7 @@ import { cx } from '@emotion/css';
 import React from 'react';
 import { Orientation, ThemeProps } from '../../types';
 import { useAccessibility } from '../../context/Accessibility';
+import { useIsDeepFocused } from '../../context/DeepFocus/useIsDeepFocused';
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Accordion.module.css';
 
@@ -9,7 +10,6 @@ export type AccordionContainerProps = React.HTMLAttributes<HTMLDivElement> &
   ThemeProps & {
     children: NonNullable<React.ReactNode>;
     className?: string;
-    focused?: boolean;
     orientation?: Orientation;
     style?: React.CSSProperties;
     variant?: 'primary' | 'colored' | 'transparent';
@@ -24,13 +24,13 @@ export function AccordionContainer({
   children,
   className,
   contrast = false,
-  focused = false,
   orientation = 'vertical',
   style,
   themeId: initThemeId,
   variant: initVariant,
 }: AccordionContainerProps): JSX.Element {
   const accessible = useAccessibility();
+  const focused = useIsDeepFocused();
   const themeId = useThemeId(initThemeId);
   const variant = contrast ? 'contrast' : initVariant;
 

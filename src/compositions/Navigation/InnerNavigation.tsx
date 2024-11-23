@@ -12,6 +12,7 @@ import {
   InteractiveGroupContextValue,
   InteractiveGroupItemType,
 } from '../../components/InteractiveGroup';
+import { useInteractiveGroupFocusedIndex } from '../../components/InteractiveGroup/useInteractiveGroupFocusedIndex';
 import { useListRegistry } from '../../components/ListRegistry/useListRegistry';
 import styles from './styles/Navigation.module.css';
 import { NavigationItem, NavigationItemProps, NavigationItemStateProps } from './NavigationItem';
@@ -89,7 +90,9 @@ export const InnerNavigation = React.forwardRef<NavigationElementType, InnerNavi
     const { componentId } = useComponentId(id);
     const { isInitialized } = useInitializer();
 
-    const { focusedIndex, handleItemClick, selectId } =
+    const focusedIndex = useInteractiveGroupFocusedIndex();
+
+    const { handleItemClick, selectId } =
       useContext<InteractiveGroupContextValue<string, NavigationElementType, HTMLDivElement>>(InteractiveGroupContext);
 
     const combineRefs = makeCombineRefs(ref, forwardedRef);

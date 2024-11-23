@@ -1,6 +1,8 @@
 import { castDraft, produce, Draft } from 'immer';
 import React, { useRef } from 'react';
 import { InteractiveGroupContext, InteractiveGroupContextValue } from './InteractiveGroupContext';
+import { InteractiveGroupFocusedIndexProvider } from './InteractiveGroupFocusedIndexProvider';
+import { InteractiveGroupSelectedIdsProvider } from './InteractiveGroupSelectedIdsProvider';
 import { InteractiveGroupItemId } from './types';
 import { useInteractiveGroup, UseInteractiveGroupProps, UseInteractiveGroupResponse } from './useInteractiveGroup';
 
@@ -85,7 +87,6 @@ export function PartialInteractiveGroupProvider<
   const value = produce<InteractiveGroupContextValue<T, E, I>, Draft<InteractiveGroupContextValue<T, E, I>>>(
     previousValue.current,
     draftState => {
-      draftState.focusedIndex = focusedIndex;
       draftState.handleItemClick = handleItemClick;
       draftState.isSelected = isSelected;
       draftState.selectedIds = castDraft(selectedIds);
@@ -97,15 +98,19 @@ export function PartialInteractiveGroupProvider<
   previousValue.current = value;
 
   return (
-    <InteractiveGroupContext.Provider value={value}>
-      {typeof children === 'function' ? (
-        children(ref, props)
-      ) : (
-        <div ref={ref as React.Ref<HTMLDivElement>} {...(props as React.HTMLAttributes<HTMLDivElement>)}>
-          {children}
-        </div>
-      )}
-    </InteractiveGroupContext.Provider>
+    <InteractiveGroupSelectedIdsProvider<T> isSelected={isSelected} selectedIds={selectedIds}>
+      <InteractiveGroupFocusedIndexProvider focusedIndex={focusedIndex}>
+        <InteractiveGroupContext.Provider value={value}>
+          {typeof children === 'function' ? (
+            children(ref, props)
+          ) : (
+            <div ref={ref as React.Ref<HTMLDivElement>} {...(props as React.HTMLAttributes<HTMLDivElement>)}>
+              {children}
+            </div>
+          )}
+        </InteractiveGroupContext.Provider>
+      </InteractiveGroupFocusedIndexProvider>
+    </InteractiveGroupSelectedIdsProvider>
   );
 }
 

@@ -3,13 +3,13 @@ import { MergeProps, ThemeProps } from '../../types';
 import { useThemeId } from '../../context/Theme';
 import { useDeepFocus } from '../../hooks/useDeepFocus';
 import { makeCombineRefs } from '../../utils/combineRefs';
-import { InteractiveGroupConsumer } from '../../components/InteractiveGroup/InteractiveGroupConsumer';
 import {
   PartialInteractiveGroupProvider,
   PartialInteractiveGroupProviderProps,
 } from '../../components/InteractiveGroup/PartialInteractiveGroupProvider';
 import { List, ListProps } from '../../components/List';
-import { InteractiveListItem, InteractiveListItemProps, InteractiveListItemStateProps } from './InteractiveListItem';
+import { InteractiveListItemProps, InteractiveListItemStateProps } from './InteractiveListItem';
+import { PartialInteractiveListItems } from './PartialInteractiveListItems';
 
 type ExplicitProviderProps = Pick<
   PartialInteractiveGroupProviderProps<string, HTMLUListElement, HTMLLIElement>,
@@ -119,60 +119,40 @@ export function PartialInteractiveListBase(
       triggerLinks={triggerLinks}
       {...providerProps}
     >
-      <InteractiveGroupConsumer>
-        {({ focusedIndex, handleItemClick, isSelected }) =>
-          items && items.length ? (
-            <ListComponent<'ul'>
-              as="ul"
-              focused={focused || superficialFocused}
-              inactive={disabled}
-              mimicSelectOnFocus={mimicSelectOnFocus}
-              onBlur={onBlur}
-              onFocus={onFocus}
-              ref={combineRefs}
-              rounded={rounded}
-              tabIndex={disabled ? -1 : 0}
-              themeId={themeId}
-              transparent={transparent}
-              unstyled={unstyled}
-              unthemed={unthemed}
-              variant={variant}
-              {...(props as Omit<
-                ListProps<'ul'>,
-                'as' | 'children' | 'focused' | 'inactive' | 'items' | 'ref' | 'tabIndex' | 'themeId' | 'unstyled'
-              >)}
-            >
-              {items.map(({ id, label, disabled, ...itemProps }, index) => {
-                const itemFocused = focusedIndex === index;
-                const itemSelected = isSelected(id);
-                const stateProps = {
-                  disabled,
-                  focused: (focused || mimicSelectOnFocus) && itemFocused,
-                  selected: itemSelected,
-                };
-
-                return (
-                  <InteractiveListItem
-                    id={id}
-                    key={id}
-                    label={label}
-                    mimicSelectOnFocus={mimicSelectOnFocus}
-                    onClick={handleItemClick}
-                    renderLabel={renderLabel}
-                    scrollBehavior={scrollBehavior}
-                    transparent={transparent}
-                    unstyled={unstyled}
-                    {...stateProps}
-                    {...(itemProps as Omit<InteractiveListItemProps, 'id' | 'label' | 'onClick' | 'renderLabel'>)}
-                  />
-                );
-              })}
-            </ListComponent>
-          ) : (
-            children
-          )
-        }
-      </InteractiveGroupConsumer>
+      {items && items.length ? (
+        <ListComponent<'ul'>
+          as="ul"
+          focused={focused || superficialFocused}
+          inactive={disabled}
+          mimicSelectOnFocus={mimicSelectOnFocus}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          ref={combineRefs}
+          rounded={rounded}
+          tabIndex={disabled ? -1 : 0}
+          themeId={themeId}
+          transparent={transparent}
+          unstyled={unstyled}
+          unthemed={unthemed}
+          variant={variant}
+          {...(props as Omit<
+            ListProps<'ul'>,
+            'as' | 'children' | 'focused' | 'inactive' | 'items' | 'ref' | 'tabIndex' | 'themeId' | 'unstyled'
+          >)}
+        >
+          <PartialInteractiveListItems
+            focused={focused}
+            items={items}
+            mimicSelectOnFocus={mimicSelectOnFocus}
+            renderLabel={renderLabel}
+            scrollBehavior={scrollBehavior}
+            transparent={transparent}
+            unstyled={unstyled}
+          />
+        </ListComponent>
+      ) : (
+        children
+      )}
     </PartialInteractiveGroupProvider>
   );
 }

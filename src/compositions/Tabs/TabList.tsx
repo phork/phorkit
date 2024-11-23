@@ -10,6 +10,8 @@ import {
   InteractiveGroupContext,
   InteractiveGroupContextValue,
 } from '../../components/InteractiveGroup/InteractiveGroupContext';
+import { useInteractiveGroupFocusedIndex } from '../../components/InteractiveGroup/useInteractiveGroupFocusedIndex';
+import { useInteractiveGroupSelectedIds } from '../../components/InteractiveGroup/useInteractiveGroupSelectedIds';
 import styles from './styles/Tabs.module.css';
 import { Tab, TabProps, TabStateProps } from './Tab';
 import { TabsVariant } from './types';
@@ -65,7 +67,10 @@ export function TabListBase(
   const themeId = useThemeId(initThemeId);
   const variant = contrast ? 'contrast' : initVariant;
 
-  const { handleItemClick, focusedIndex, selectedIds } =
+  const focusedIndex = useInteractiveGroupFocusedIndex();
+  const { selectedIds } = useInteractiveGroupSelectedIds();
+
+  const { handleItemClick } =
     useContext<InteractiveGroupContextValue<string, HTMLDivElement, HTMLDivElement>>(InteractiveGroupContext);
 
   const selectedId = selectedIds?.[0];

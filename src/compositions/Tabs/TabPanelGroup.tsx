@@ -1,13 +1,10 @@
 import { cx } from '@emotion/css';
-import React, { useContext } from 'react';
+import React from 'react';
 import { Orientation, ThemeProps } from '../../types';
 import { useAccessibility } from '../../context/Accessibility';
 import { useThemeId } from '../../context/Theme';
 import { useComponentId } from '../../hooks/useComponentId';
-import {
-  InteractiveGroupContext,
-  InteractiveGroupContextValue,
-} from '../../components/InteractiveGroup/InteractiveGroupContext';
+import { useInteractiveGroupSelectedIds } from '../../components/InteractiveGroup/useInteractiveGroupSelectedIds';
 import styles from './styles/TabPanelGroup.module.css';
 import { TabPanel, TabPanelProps, TabPanelStateProps } from './TabPanel';
 import { TabsVariant } from './types';
@@ -55,8 +52,7 @@ export function TabPanelGroup({
   const themeId = useThemeId(initThemeId);
   const variant = contrast ? 'contrast' : initVariant;
 
-  const { selectedIds } =
-    useContext<InteractiveGroupContextValue<string, HTMLDivElement, HTMLDivElement>>(InteractiveGroupContext);
+  const { selectedIds } = useInteractiveGroupSelectedIds();
 
   // because the interactive group always uses an array for selected ids
   const selectedId = selectedIds?.[0];

@@ -1,4 +1,5 @@
 import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } from '@storybook/addon-docs';
+import { DeepFocusConsumer, SetDeepFocusConsumer } from 'context/DeepFocus';
 import { TimesIcon } from 'icons/TimesIcon';
 import { CheckIcon } from 'icons/internal/CheckIcon';
 import { Button, IconButton } from 'components/Button';
@@ -134,20 +135,31 @@ import { Accordion, AccordionContainer, AccordionList } from '../index';
   >
     {({ componentId, items, orientation, ref, themeId, style, unstyled }) => (
       <AccordionContainer orientation={orientation} style={{ ...style, border: 'none' }}>
-        <AccordionList
-          componentId={componentId}
-          items={items}
-          orientation={orientation}
-          ref={ref}
-          style={{
-            alignItems: 'center',
-            display: 'flex',
-            flexDirection: orientation === 'vertical' ? 'column' : 'row',
-            outline: 'none',
-          }}
-          themeId={themeId}
-          unstyled={unstyled}
-        />
+        <SetDeepFocusConsumer>
+          {({ handleFocus, handleBlur }) => (
+            <DeepFocusConsumer>
+              {focused => (
+                <AccordionList
+                  componentId={componentId}
+                  focused={focused}
+                  items={items}
+                  onBlur={handleBlur}
+                  onFocus={handleFocus}
+                  orientation={orientation}
+                  ref={ref}
+                  style={{
+                    alignItems: 'center',
+                    display: 'flex',
+                    flexDirection: orientation === 'vertical' ? 'column' : 'row',
+                    outline: 'none',
+                  }}
+                  themeId={themeId}
+                  unstyled={unstyled}
+                />
+              )}
+            </DeepFocusConsumer>
+          )}
+        </SetDeepFocusConsumer>
       </AccordionContainer>
     )}
   </Accordion>
@@ -188,7 +200,14 @@ import { Accordion, AccordionContainer, AccordionList } from '../index';
           <Rhythm pl={5} pr={3} py={3}>
             <Paper full bordered={['vertical', 'bottom']} color="primary">
               <Flex full alignItems="center" direction="row" justifyContent="space-between">
-                <span>First panel{selected ? ' is selected' : ''}</span>
+                <Rhythm mr={4}>
+                  <Flex full direction="row" justifyContent="space-between">
+                    <span>First panel{selected ? ' is selected' : ''}</span>
+                    <Typography size="small" volume="quiet">
+                      {new Date().getTime()}
+                    </Typography>
+                  </Flex>
+                </Rhythm>
                 <IconButton
                   as="div"
                   color="neutral"
@@ -235,7 +254,14 @@ import { Accordion, AccordionContainer, AccordionList } from '../index';
           <Rhythm pl={5} pr={3} py={3}>
             <Paper full bordered={['vertical', 'bottom']} color="primary">
               <Flex full alignItems="center" direction="row" justifyContent="space-between">
-                <span>Second panel{selected ? ' is selected' : ''}</span>
+                <Rhythm mr={4}>
+                  <Flex full direction="row" justifyContent="space-between">
+                    <span>Second panel{selected ? ' is selected' : ''}</span>
+                    <Typography size="small" volume="quiet">
+                      {new Date().getTime()}
+                    </Typography>
+                  </Flex>
+                </Rhythm>
                 <IconButton
                   as="div"
                   color="neutral"
@@ -282,7 +308,14 @@ import { Accordion, AccordionContainer, AccordionList } from '../index';
           <Rhythm pl={5} pr={3} py={3}>
             <Paper full bordered={['vertical', 'bottom']} color="primary">
               <Flex full alignItems="center" direction="row" justifyContent="space-between">
-                <span>Third panel{selected ? ' is selected' : ''}</span>
+                <Rhythm mr={4}>
+                  <Flex full direction="row" justifyContent="space-between">
+                    <span>Third panel{selected ? ' is selected' : ''}</span>
+                    <Typography size="small" volume="quiet">
+                      {new Date().getTime()}
+                    </Typography>
+                  </Flex>
+                </Rhythm>
                 <IconButton
                   as="div"
                   color="neutral"
@@ -325,12 +358,23 @@ import { Accordion, AccordionContainer, AccordionList } from '../index';
             </Paper>
           </Rhythm>
         ),
-        content: ({ selected }) => (
+        content: (
           <Rhythm pl={5} pr={3} py={3}>
             <Paper full bordered={['vertical', 'bottom']} color="primary">
               <Flex full alignItems="flex-start" direction="row" justifyContent="space-between">
                 <Rhythm grouped mr={2} my={3}>
-                  <span>Fourth panel{selected ? ' is selected' : ''}</span>
+                  <Rhythm mr={4}>
+                    <Flex full direction="row" justifyContent="space-between">
+                      <span>Fourth panel</span>
+                      <Typography size="small" volume="quiet">
+                        {new Date().getTime()}
+                      </Typography>
+                    </Flex>
+                  </Rhythm>
+                  <p>
+                    This doesn&apos;t use a function to render like the others, because the focused state isn&apos;t
+                    referenced. Expanding and collapsing siblings won&apos;t re-render the content here.
+                  </p>
                   <p>
                     Lorem ipsum dolor sit amet,{' '}
                     <a href="https://phorkit.org" rel="noreferrer" target="_blank">
@@ -343,16 +387,6 @@ import { Accordion, AccordionContainer, AccordionList } from '../index';
                     </a>, lobortis sem eu, tempus purus. Etiam placerat iaculis ipsum sed condimentum. Vivamus fringilla
                     vulputate sem id vulputate. Integer euismod malesuada justo, sit amet suscipit turpis gravida non. Nulla
                     sit amet laoreet lorem.
-                  </p>
-                  <p>
-                    Pellentesque ante turpis, molestie ut lectus nec, dapibus porttitor ligula. Pellentesque egestas
-                    nisi vitae odio pretium, at{' '}
-                    <a href="https://phorkit.org" rel="noreferrer" target="_blank">
-                      ultrices dui
-                    </a>{' '}
-                    mollis. Vestibulum quis pretium dolor. Suspendisse porttitor, ex congue tincidunt facilisis, quam
-                    ipsum rhoncus augue, ac luctus lacus lorem vel risus. Integer a ex interdum, egestas dui vitae,
-                    maximus sem. Praesent id egestas.
                   </p>
                   <input style={{ height: 28 }} type="text" />
                 </Rhythm>
@@ -377,24 +411,5 @@ import { Accordion, AccordionContainer, AccordionList } from '../index';
     ]}
     maxSelect={-1}
     minSelect={0}
-  >
-    {({ componentId, items, orientation, ref, themeId, style, unstyled }) => (
-      <AccordionContainer orientation={orientation} style={{ ...style, border: 'none' }}>
-        <AccordionList
-          componentId={componentId}
-          items={items}
-          orientation={orientation}
-          ref={ref}
-          style={{
-            alignItems: 'center',
-            display: 'flex',
-            flexDirection: orientation === 'vertical' ? 'column' : 'row',
-            outline: 'none',
-          }}
-          themeId={themeId}
-          unstyled={unstyled}
-        />
-      </AccordionContainer>
-    )}
-  </Accordion>
+  />
 </Canvas>

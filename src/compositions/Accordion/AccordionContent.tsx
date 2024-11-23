@@ -40,6 +40,7 @@ export const AccordionContent = React.forwardRef<HTMLDivElement, AccordionConten
       focused = false,
       onCloseFinish,
       onCloseStart,
+      onFocus,
       onOpenFinish,
       onOpenStart,
       orientation = 'vertical',
@@ -104,7 +105,7 @@ export const AccordionContent = React.forwardRef<HTMLDivElement, AccordionConten
     const combineRefs = makeCombineRefs<HTMLDivElement>(ref, forwardedRef);
 
     return (
-      <div className={classes} ref={combineRefs} {...props}>
+      <div className={classes} onFocus={onFocus} ref={combineRefs} {...props}>
         {children}
       </div>
     );
