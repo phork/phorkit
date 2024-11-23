@@ -27,8 +27,9 @@ input.radioInput {
 }
 
 .radioLabel {
-  font-size: var(--radio-label-font-size, $font-size-medium);
-  line-height: 1.5;
+  --label-font-size: var(--radio-label-font-size, $font-size-medium);
+  --label-line-height: 1.5;
+
   margin-left: 12px;
   min-height: 1.4em;
   position: relative;

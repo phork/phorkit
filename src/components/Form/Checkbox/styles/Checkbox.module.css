@@ -27,8 +27,9 @@ input.checkboxInput {
 }
 
 .checkboxLabel {
-  font-size: var(--checkbox-label-font-size, $font-size-medium);
-  line-height: 1.5;
+  --label-font-size: var(--checkbox-label-font-size, $font-size-medium);
+  --label-line-height: 1.5;
+
   margin-left: 12px;
   margin-top: 1px;
   min-height: 1.4em;

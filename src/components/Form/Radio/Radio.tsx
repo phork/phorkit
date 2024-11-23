@@ -157,7 +157,6 @@ export function RadioBase<V extends RadioValue = string>(
           disabled={disabled}
           focused={focused}
           muted={!checked}
-          strength="standard"
           themeId={themeId}
         >
           {children}
