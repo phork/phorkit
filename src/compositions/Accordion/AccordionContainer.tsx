@@ -28,6 +28,7 @@ export function AccordionContainer({
   style,
   themeId: initThemeId,
   variant: initVariant,
+  ...props
 }: AccordionContainerProps): JSX.Element {
   const accessible = useAccessibility();
   const focused = useIsDeepFocused();
@@ -46,6 +47,7 @@ export function AccordionContainer({
         className,
       )}
       style={style}
+      {...props}
     >
       {children}
     </div>

@@ -29,6 +29,7 @@ export const items = [
         Third panel
       </Rhythm>
     ),
+    disabled: true,
   },
   {
     id: 'fourth',

@@ -243,7 +243,7 @@ export function useInteractiveGroup<
       }
 
       // trigger the onSelection change callback with the new selection
-      onSelectionChange && onSelectionChange(selectedIds);
+      onSelectionChange?.(selectedIds);
 
       /**
        * Manually trigger the link of <a> tags. If the target is the <a>
@@ -291,8 +291,11 @@ export function useInteractiveGroup<
       event.persist();
       event.stopPropagation();
 
-      !disabled && toggleSelected(id, { event });
-      onItemClick && onItemClick(event, id);
+      if (!disabled) {
+        toggleSelected(id, { event });
+      }
+
+      onItemClick?.(event, id);
     },
     [disabled, onItemClick, toggleSelected],
   );
