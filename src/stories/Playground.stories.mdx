@@ -1449,6 +1449,7 @@ import {
       {({ state: searchTerm, setState: setSearchTerm }) => (
         <Rhythm grouped mb={12} p={4}>
           <PortalDropover
+            observe
             passiveLabel
             label={
               <DropoverInputLabel>
@@ -1477,5 +1478,11 @@ import {
         </Rhythm>
       )}
     </StateWrapper>
+    <Rhythm ml={4} pt={7}>
+      <Typography as="div" variants={['italic']} volume="quiet">
+        Please note the form input re-renders with each character typed because this is a quick Storybook example. In a
+        real world scenario this can be prevented.
+      </Typography>
+    </Rhythm>
   </Story>
 </Canvas>
