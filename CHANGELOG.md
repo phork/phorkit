@@ -1,5 +1,11 @@
 # Changelog
 
+# [17.5.0](https://github.com/phork/phorkit/compare/v17.4.1...v17.5.0) (2024-11-27)
+
+### ✨ Features
+
+- **major!**: split contexts into getters and setters ([6fc9741](https://github.com/phork/phorkit/commit/6fc9741))
+
 ## [17.4.1](https://github.com/phork/phorkit/compare/v17.4.0...v17.4.1) (2024-11-23)
 
 ### 🐛 Bug Fixes
