@@ -74,7 +74,7 @@ export default {
     docs: {
       page: () => (
         <React.Fragment>
-          <PageTitle src="compositions/StraddledTimeline" title="StraddledTimeline" />
+          <PageTitle src="compositions/Timeline" title="StraddledTimeline" />
           <Subtitle />
           <Description />
           <Primary />
