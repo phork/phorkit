@@ -150,7 +150,7 @@ export function TooltipContent({
       }
       {...props}
     >
-      {triangleBorderColor && (
+      {triangleBorderColor && !!triangleSize && (
         <Triangle
           className={cx(styles.tooltipContent__triangle)}
           color={triangleBorderColor}
@@ -171,19 +171,21 @@ export function TooltipContent({
         />
       )}
 
-      <Triangle
-        className={cx(styles.tooltipContent__triangle)}
-        color={triangleColor}
-        position={getTrianglePosition(position, cornerTriangle)}
-        size={getTriangleSize({ baseSize: triangleSize, cornerTriangle, position })}
-        style={getTriangleStyle({
-          cornerTriangle,
-          hasBorder: !!triangleBorderColor,
-          offset,
-          position,
-          triangleBorderWidth,
-        })}
-      />
+      {!!triangleSize && (
+        <Triangle
+          className={cx(styles.tooltipContent__triangle)}
+          color={triangleColor}
+          position={getTrianglePosition(position, cornerTriangle)}
+          size={getTriangleSize({ baseSize: triangleSize, cornerTriangle, position })}
+          style={getTriangleStyle({
+            cornerTriangle,
+            hasBorder: !!triangleBorderColor,
+            offset,
+            position,
+            triangleBorderWidth,
+          })}
+        />
+      )}
 
       {children}
     </div>

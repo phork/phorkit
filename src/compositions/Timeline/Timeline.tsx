@@ -5,8 +5,9 @@ import { useThemeId } from '../../context/Theme';
 import styles from './styles/Timeline.module.css';
 import { TimelineDividerItem, TimelineDividerItemProps } from './TimelineDividerItem';
 import { TimelineMarkerItem, TimelineMarkerItemProps } from './TimelineMarkerItem';
+import { TimelinePlainItem } from './TimelinePlainItem';
 
-export type TimelineAnchorItemType = 'divider' | 'default';
+export type TimelineAnchorItemType = 'divider' | 'marker' | 'plain' | 'default';
 export type TimelineSpacing = 'cozy' | 'comfy';
 
 export type TimelineItem = (TimelineMarkerItemProps | TimelineDividerItemProps) & {
@@ -41,7 +42,10 @@ export function TimelineBase(
     >
       {items
         ? items.map(({ id, type, ...item }, index) => {
-            const Item = type === 'divider' ? TimelineDividerItem : TimelineMarkerItem;
+            const Item =
+              (type === 'divider' && TimelineDividerItem) ||
+              (type === 'plain' && TimelinePlainItem) ||
+              TimelineMarkerItem;
             return <Item first={index === 0} key={id} last={index === items.length - 1} themeId={themeId} {...item} />;
           })
         : children}

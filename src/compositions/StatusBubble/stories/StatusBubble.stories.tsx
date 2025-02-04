@@ -288,8 +288,7 @@ NoTriangle.storyName = 'No triangle';
 NoTriangle.args = {
   ...defaultArgs,
   style: { maxWidth: 400 },
-  triangleBorderColor: 'transparent',
-  triangleColor: 'transparent',
+  triangleSize: 0,
 };
 
 export const Squared = Template.bind({});

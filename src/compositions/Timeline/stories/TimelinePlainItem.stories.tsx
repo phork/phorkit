@@ -2,41 +2,119 @@ import { ArgsTable, Description, Primary, Stories, Subtitle, PRIMARY_STORY } fro
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import { themes } from 'config/themes';
-import { PhorkIcon } from 'icons/PhorkIcon';
-import { Divider } from 'components/Divider';
 import { Paper } from 'components/Paper';
 import { Rhythm } from 'components/Rhythm';
 import { Typography } from 'components/Typography';
 import { PageTitle } from 'stories/helpers/PageTitle';
-import { IconStatusBubble, IconStatusBubbleProps } from '../IconStatusBubble';
-import statusBubbleStory from './StatusBubble.stories';
+import { TimelinePlainItem, TimelinePlainItemProps } from '../TimelinePlainItem';
 
 export default {
-  ...statusBubbleStory,
-  title: 'Display/StatusBubble/IconStatusBubble',
-  component: IconStatusBubble,
+  title: 'Display/Timeline/Items/TimelinePlainItem',
+  component: TimelinePlainItem,
   argTypes: {
-    ...statusBubbleStory.argTypes,
-    anchor: {
-      table: {
+    children: {
+      control: {
         disable: true,
+      },
+      table: {
+        category: 'Appearance',
+      },
+    },
+    color: {
+      control: {
+        type: 'radio',
+        options: ['success', 'warning', 'danger', 'neutral', 'primary'],
+      },
+      table: {
+        category: 'Appearance',
+      },
+    },
+    first: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    header: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: 'Appearance',
+      },
+    },
+    last: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    offset: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    position: {
+      control: {
+        type: 'radio',
+      },
+      table: {
+        category: 'Appearance',
+      },
+    },
+    squared: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    triangleSize: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    unbordered: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+    width: {
+      table: {
+        category: 'Appearance',
       },
     },
 
-    icon: {
+    className: {
       control: {
         disable: true,
       },
       table: {
-        category: 'Appearance',
+        category: 'Uncommon',
       },
     },
-    iconShape: {
+    style: {
+      table: {
+        category: 'Uncommon',
+      },
+    },
+    themeId: {
       control: {
-        type: 'inline-radio',
+        disable: true,
       },
       table: {
-        category: 'Appearance',
+        category: 'Uncommon',
+      },
+    },
+    triangleBorderColor: {
+      table: {
+        category: 'Uncommon',
+      },
+    },
+    triangleColor: {
+      table: {
+        category: 'Uncommon',
+      },
+    },
+    unthemed: {
+      table: {
+        category: 'Uncommon',
       },
     },
   },
@@ -47,7 +125,7 @@ export default {
     docs: {
       page: () => (
         <React.Fragment>
-          <PageTitle src="compositions/StatusBubble" title="IconStatusBubble" />
+          <PageTitle src="compositions/Timeline" title="TimelinePlainItem" />
           <Subtitle />
           <Description />
           <Primary />
@@ -57,9 +135,9 @@ export default {
       ),
     },
   },
-} as ComponentMeta<typeof IconStatusBubble>;
+} as ComponentMeta<typeof TimelinePlainItem>;
 
-const Template: ComponentStory<typeof IconStatusBubble> = args => <IconStatusBubble {...args} />;
+const Template: ComponentStory<typeof TimelinePlainItem> = args => <TimelinePlainItem {...args} />;
 
 const defaultArgs = {
   children: (
@@ -67,7 +145,9 @@ const defaultArgs = {
       <Rhythm p={4}>Hello world</Rhythm>
     </Paper>
   ),
-  color: 'neutral' as IconStatusBubbleProps['color'],
+  color: 'neutral' as TimelinePlainItemProps['color'],
+  first: false,
+  last: false,
   header: (
     <React.Fragment>
       <Rhythm mr={2}>
@@ -78,9 +158,10 @@ const defaultArgs = {
       </Rhythm>
     </React.Fragment>
   ),
-  icon: <PhorkIcon scale="large" />,
-  iconShape: 'square' as IconStatusBubbleProps['iconShape'],
-  position: 'right-top' as IconStatusBubbleProps['position'],
+  position: 'right-top' as TimelinePlainItemProps['position'],
+  style: {
+    '--timeline-item-connector-color': themes.light['primary-palette-border-color'],
+  } as React.CSSProperties,
   unthemed: false,
 };
 
@@ -88,12 +169,6 @@ export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
 };
-
-/*
-Default.parameters = {
-  jest: ['IconStatusBubble.test.js', 'StatusBubble.test.js'],
-};
-*/
 
 export const PrimaryColor = Template.bind({});
 PrimaryColor.storyName = 'Color: Primary';
@@ -172,76 +247,41 @@ RightBottomPosition.args = {
   position: 'right-bottom',
 };
 
-export const NoHeader = Template.bind({});
-NoHeader.storyName = 'No header';
-NoHeader.args = {
-  ...defaultArgs,
-  header: undefined,
-  children: (
-    <React.Fragment>
-      <Paper color="primary">
-        <Rhythm grouped px={4} py={3}>
-          <div>Hello world</div>
-          <div>Hello world</div>
-          <div>Hello world</div>
-        </Rhythm>
-      </Paper>
-      <Divider volume="quieter" />
-      <Paper color="secondary">
-        <Rhythm grouped px={4} py={3}>
-          <div>Hello world</div>
-        </Rhythm>
-      </Paper>
-    </React.Fragment>
-  ),
-  color: 'primary',
-  style: { maxWidth: 400 },
-};
-
-export const NoChildren = Template.bind({});
-NoChildren.storyName = 'No children';
-NoChildren.args = {
-  ...defaultArgs,
-  children: undefined,
-  style: { maxWidth: 400 },
-};
-
-export const NoTriangle = Template.bind({});
-NoTriangle.storyName = 'No triangle';
-NoTriangle.args = {
-  ...defaultArgs,
-  style: { maxWidth: 400 },
-  triangleSize: 0,
-};
-
-export const Squared = Template.bind({});
-Squared.args = {
-  ...defaultArgs,
-  color: 'primary',
-  style: { maxWidth: 400 },
-  squared: true,
-};
-
-export const Unbordered = Template.bind({});
-Unbordered.args = {
-  ...defaultArgs,
-  color: 'primary',
-  style: { maxWidth: 400 },
-  triangleSize: 8,
-  unbordered: true,
-};
-
 export const Styled = Template.bind({});
 Styled.storyName = 'Custom styles';
 Styled.args = {
   ...defaultArgs,
   style: {
+    '--timeline-item-connector-color': themes.light['primary-palette-border-color'],
     '--shade-primary-color': themes.light['color-P50'],
     '--shade-opaque-primary-color': themes.light['color-P50-shade'],
     '--status-bubble-state-color': themes.light['color-P50'],
     '--status-bubble-state-contrast-color': themes.light['color-P50-contrast'],
+    '--status-bubble-triangle-color': themes.light['color-P50-shade'],
+    '--status-bubble-triangle-border-color': themes.light['color-P50-D10'],
   } as React.CSSProperties,
-  triangleBorderColor: themes.light['color-P50-D10'],
-  triangleColor: themes.light['color-P50-shade'],
+  unthemed: true,
+};
+
+export const Toasty = Template.bind({});
+Toasty.storyName = 'Toasty';
+Toasty.args = {
+  ...defaultArgs,
+  children: (
+    <Paper color="tertiary" style={{ borderLeft: `5px solid ${themes.light['color-warning']}` }} themeId="dark">
+      <Rhythm p={4}>Hello world</Rhythm>
+    </Paper>
+  ),
+  header: undefined,
+  position: 'right-center',
+  squared: true,
+  style: {
+    '--timeline-item-connector-color': themes.light['primary-palette-border-color'],
+    '--timeline-item-state-color': themes.light['color-warning'],
+    '--status-bubble-triangle-color': themes.light['color-warning'],
+    maxWidth: 300,
+  } as React.CSSProperties,
+  triangleSize: 6,
+  unbordered: true,
   unthemed: true,
 };

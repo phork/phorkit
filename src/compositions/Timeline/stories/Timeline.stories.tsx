@@ -108,6 +108,13 @@ const defaultArgs = {
       color: 'danger' as TimelineMarkerItemProps['color'],
     },
     {
+      id: 'plain',
+      children: <Rhythm p={4}>Hello world</Rhythm>,
+      color: 'neutral' as TimelineMarkerItemProps['color'],
+      type: 'plain' as TimelineAnchorItemType,
+      triangleSize: 0,
+    },
+    {
       id: 'divider',
       children: <Rhythm p={4}>Hello world</Rhythm>,
       color: 'neutral' as TimelineMarkerItemProps['color'],
