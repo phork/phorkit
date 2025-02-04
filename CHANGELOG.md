@@ -1,5 +1,7 @@
 # Changelog
 
+## [17.5.1](https://github.com/phork/phorkit/compare/v17.5.0...v17.5.1) (2025-02-04)
+
 # [17.5.0](https://github.com/phork/phorkit/compare/v17.4.1...v17.5.0) (2024-11-27)
 
 ### ✨ Features
