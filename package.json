@@ -115,7 +115,9 @@
     ]
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "cache": "~/.npm",
+    "registry": "https://npm.pkg.github.com"
   },
   "engines": {
     "node": ">=20.5.0"
