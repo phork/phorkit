@@ -13,7 +13,6 @@ component-info.json
 # privacy
 .env
 .npmrc
-.npm
 
 # logs
 npm-debug.log*
