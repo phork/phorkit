@@ -15,6 +15,17 @@ describe('<StatusBubble />', () => {
     expect(queryByText('Anchor')).toBeTruthy();
   });
 
+  it('should render without a triangle', () => {
+    const { queryByText } = render(
+      <StatusBubble anchor={<div>Anchor</div>} triangleSize={0}>
+        Hello world
+      </StatusBubble>,
+    );
+
+    expect(queryByText('Hello world')).toBeTruthy();
+    expect(queryByText('Hello world')!.previousSibling).toBeFalsy();
+  });
+
   it('should accept the rest of the props', () => {
     render(
       <StatusBubble
