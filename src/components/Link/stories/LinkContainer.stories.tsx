@@ -71,7 +71,7 @@ export default {
     docs: {
       page: () => (
         <React.Fragment>
-          <PageTitle src="components/LinkContainer" title="LinkContainer" />
+          <PageTitle src="components/Link" title="LinkContainer" />
           <Subtitle />
           <Description />
           <Primary />
