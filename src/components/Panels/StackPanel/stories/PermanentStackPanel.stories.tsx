@@ -85,7 +85,7 @@ export default {
     docs: {
       page: () => (
         <React.Fragment>
-          <PageTitle src="components/Panels/PermanentStackPanel" title="PermanentStackPanel" />
+          <PageTitle src="components/Panels/StackPanel" title="PermanentStackPanel" />
           <Subtitle />
           <Description />
           <Primary />

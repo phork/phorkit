@@ -93,7 +93,7 @@ export default {
     docs: {
       page: () => (
         <React.Fragment>
-          <PageTitle src="compositions/TextboxGroup2FA" title="TextboxGroup2FA" />
+          <PageTitle src="compositions/TextboxGroup" title="TextboxGroup2FA" />
           <Subtitle />
           <Description />
           <Primary />

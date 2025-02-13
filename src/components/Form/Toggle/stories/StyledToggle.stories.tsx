@@ -93,7 +93,7 @@ export default {
       ...ToggleStory.parameters?.docs,
       page: () => (
         <React.Fragment>
-          <PageTitle src="components/Toggle" title="StyledToggle" />
+          <PageTitle src="components/Form/Toggle" title="StyledToggle" />
           <Subtitle />
           <Description />
           <Primary />
