@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.6.2](https://github.com/phork/phorkit/compare/v17.6.1...v17.6.2) (2025-02-19)
+
+### 🐛 Bug Fixes
+
+- improve default tooltip arrow size ([7fe6a75](https://github.com/phork/phorkit/commit/7fe6a75))
+
 ## [17.6.1](https://github.com/phork/phorkit/compare/v17.6.0...v17.6.1) (2025-02-19)
 
 ### 🐛 Bug Fixes
