@@ -13,6 +13,8 @@ import {
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Typography.module.css';
 
+export type TypographyElementType = Extract<keyof HTMLElementTagNameMap, keyof JSX.IntrinsicElements>;
+
 export type TypographyVariants =
   | 'italic'
   | 'underline'
@@ -37,7 +39,9 @@ export type TypographyVariants =
   | 'small-caps'
   | 'xsmall-caps';
 
-export type LocalTypographyProps = {
+export type LocalTypographyProps<T extends TypographyElementType = 'span'> = React.HTMLAttributes<
+  HTMLElementTagNameMap[T]
+> & {
   align?: HorizontalPosition | 'center';
   /** The children are optional so that this component can be passed as empty and then cloned */
   children?: React.ReactNode;
@@ -68,10 +72,10 @@ export type LocalTypographyProps = {
   volume?: Volume;
 };
 
-export type TypographyProps<T extends keyof JSX.IntrinsicElements = 'span'> = AsReactType<T> &
-  MergeElementPropsWithoutRef<T, LocalTypographyProps>;
+export type TypographyProps<T extends TypographyElementType = 'span'> = AsReactType<T> &
+  MergeElementPropsWithoutRef<T, LocalTypographyProps<T>>;
 
-export function TypographyBase<T extends keyof JSX.IntrinsicElements = 'span'>(
+export function TypographyBase<T extends TypographyElementType = 'span'>(
   {
     align,
     as,
@@ -89,7 +93,7 @@ export function TypographyBase<T extends keyof JSX.IntrinsicElements = 'span'>(
     volume,
     ...props
   }: TypographyProps<T>,
-  forwardedRef: React.ForwardedRef<JSX.IntrinsicElements[T]>,
+  forwardedRef: React.ForwardedRef<HTMLElementTagNameMap[T]>,
 ): React.ReactElement {
   const themeId = useThemeId(initThemeId);
 
@@ -146,7 +150,7 @@ export function TypographyBase<T extends keyof JSX.IntrinsicElements = 'span'>(
  * There's also a `reset` flag that will override
  * most styles and set them back to their defaults.
  */
-export const Typography = React.forwardRef(TypographyBase) as <T extends keyof JSX.IntrinsicElements = 'span'>(
+export const Typography = React.forwardRef(TypographyBase) as <T extends TypographyElementType = 'span'>(
   p: TypographyProps<T> & { ref?: React.Ref<JSX.IntrinsicElements[T]> },
 ) => React.ReactElement<T>;
 

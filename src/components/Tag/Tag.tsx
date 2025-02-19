@@ -4,32 +4,34 @@ import { AsReactType, MergeElementPropsWithoutRef, ThemeProps } from '../../type
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Tag.module.css';
 
-export type TagElementType = Extract<keyof JSX.IntrinsicElements, 'button' | 'a' | 'div' | 'span'>;
+export type TagElementType = Extract<keyof HTMLElementTagNameMap, 'button' | 'a' | 'div' | 'span'>;
 export type TagShape = 'pill' | 'brick';
 export type TagSize = '2xsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'custom';
 export type TagWeight = 'outlined' | 'shaded' | 'solid';
 
-export type LocalTagProps = ThemeProps & {
-  /** An actionable tag renders a button */
-  actionable?: boolean;
-  /** Manually apply the active styles; this does not affect :active */
-  active?: boolean;
-  children: NonNullable<React.ReactNode>;
-  className?: string;
-  /** This will remove all padding from the tag */
-  flush?: boolean;
-  /** Manually apply the focus styles; this does not affect :focus */
-  focused?: boolean;
-  /** Manually apply the hover styles; this does not affect :hover */
-  hovered?: boolean;
-  onClick?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent) => void;
-  shape?: TagShape;
-  size?: TagSize;
-  style?: React.CSSProperties;
-  weight?: TagWeight;
-};
+export type LocalTagProps<T extends TagElementType = 'div'> = ThemeProps &
+  React.HTMLAttributes<HTMLElementTagNameMap[T]> & {
+    /** An actionable tag renders a button */
+    actionable?: boolean;
+    /** Manually apply the active styles; this does not affect :active */
+    active?: boolean;
+    children: NonNullable<React.ReactNode>;
+    className?: string;
+    /** This will remove all padding from the tag */
+    flush?: boolean;
+    /** Manually apply the focus styles; this does not affect :focus */
+    focused?: boolean;
+    /** Manually apply the hover styles; this does not affect :hover */
+    hovered?: boolean;
+    onClick?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent) => void;
+    shape?: TagShape;
+    size?: TagSize;
+    style?: React.CSSProperties;
+    weight?: TagWeight;
+  };
 
-export type TagProps<T extends TagElementType = 'div'> = AsReactType<T> & MergeElementPropsWithoutRef<T, LocalTagProps>;
+export type TagProps<T extends TagElementType = 'div'> = AsReactType<T> &
+  MergeElementPropsWithoutRef<T, LocalTagProps<T>>;
 
 export function TagBase<T extends TagElementType = 'div'>(
   {

@@ -4,29 +4,32 @@ import { AsReactType, StateColor, MergeElementPropsWithoutRef, ThemeProps } from
 import { useThemeId } from '../../../context/Theme';
 import styles from './styles/Label.module.css';
 
-export type LocalLabelProps = ThemeProps & {
-  children: React.ReactNode;
-  className?: string;
-  disabled?: boolean;
-  /** Manually apply the focus styles; this does not affect focus */
-  focused?: boolean;
-  /** A muted label looks like a disabled label but has a hover state of a regular label */
-  muted?: boolean;
-  noWrap?: boolean;
-  strength?: 'transitioned' | 'standard' | 'legend';
-  style?: React.CSSProperties;
-  validity?: StateColor;
-};
+export type LabelElementType = Extract<keyof HTMLElementTagNameMap, 'a' | 'label' | 'legend' | 'div' | 'span'>;
 
-export type LabelProps<T extends React.ElementType = 'div'> = AsReactType<T> &
-  MergeElementPropsWithoutRef<T, LocalLabelProps>;
+export type LocalLabelProps<T extends LabelElementType> = ThemeProps &
+  React.HTMLAttributes<HTMLElementTagNameMap[T]> & {
+    children: React.ReactNode;
+    className?: string;
+    disabled?: boolean;
+    /** Manually apply the focus styles; this does not affect focus */
+    focused?: boolean;
+    /** A muted label looks like a disabled label but has a hover state of a regular label */
+    muted?: boolean;
+    noWrap?: boolean;
+    strength?: 'transitioned' | 'standard' | 'legend';
+    style?: React.CSSProperties;
+    validity?: StateColor;
+  };
+
+export type LabelProps<T extends LabelElementType = 'div'> = AsReactType<T> &
+  MergeElementPropsWithoutRef<T, LocalLabelProps<T>>;
 
 /**
  * A form label can have one of several strengths and
  * colors. It can be a standard HTML label, a div or a
  * custom element.
  */
-export function Label<T extends React.ElementType = 'div'>({
+export function Label<T extends LabelElementType = 'div'>({
   as,
   children,
   className,

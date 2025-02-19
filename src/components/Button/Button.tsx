@@ -5,41 +5,42 @@ import { useThemeId } from '../../context/Theme';
 import styles from './styles/Button.module.css';
 import { ButtonAlignment, ButtonWeight, ButtonShape, ButtonSize, ButtonColor, ButtonElementType } from './types';
 
-export type LocalButtonProps = ThemeProps & {
-  /** Manually apply the active styles; this does not affect :active */
-  active?: boolean;
-  align?: ButtonAlignment;
-  children: React.ReactNode;
-  className?: string;
-  color?: ButtonColor;
-  disabled?: boolean;
-  /** Manually apply the focus styles; this does not affect :focus */
-  focused?: boolean;
-  fullWidth?: boolean;
-  /** Manually apply the hover styles; this does not affect :hover */
-  hovered?: boolean;
-  href?: string;
-  /** An imitation button looks like a button but doesn't have any functionality */
-  imitation?: boolean;
-  loader?: React.ReactElement;
-  loading?: boolean;
-  /** Remove the minimum height styles */
-  noHeight?: boolean;
-  noPadding?: boolean;
-  onClick?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent) => void;
-  /** If the onKeyDown isn't specified then the onClick event is used */
-  onKeyDown?: (event: React.KeyboardEvent) => void;
-  shape?: ButtonShape;
-  size?: ButtonSize;
-  style?: React.CSSProperties;
-  type?: 'button' | 'submit';
-  unstyled?: boolean;
-  unthemed?: boolean;
-  weight?: ButtonWeight;
-};
+export type LocalButtonProps<T extends ButtonElementType = 'button'> = ThemeProps &
+  React.HTMLAttributes<HTMLElementTagNameMap[T]> & {
+    /** Manually apply the active styles; this does not affect :active */
+    active?: boolean;
+    align?: ButtonAlignment;
+    children: React.ReactNode;
+    className?: string;
+    color?: ButtonColor;
+    disabled?: boolean;
+    /** Manually apply the focus styles; this does not affect :focus */
+    focused?: boolean;
+    fullWidth?: boolean;
+    /** Manually apply the hover styles; this does not affect :hover */
+    hovered?: boolean;
+    href?: string;
+    /** An imitation button looks like a button but doesn't have any functionality */
+    imitation?: boolean;
+    loader?: React.ReactElement;
+    loading?: boolean;
+    /** Remove the minimum height styles */
+    noHeight?: boolean;
+    noPadding?: boolean;
+    onClick?: (event: React.MouseEvent | React.KeyboardEvent | React.TouchEvent) => void;
+    /** If the onKeyDown isn't specified then the onClick event is used */
+    onKeyDown?: (event: React.KeyboardEvent) => void;
+    shape?: ButtonShape;
+    size?: ButtonSize;
+    style?: React.CSSProperties;
+    type?: 'button' | 'submit';
+    unstyled?: boolean;
+    unthemed?: boolean;
+    weight?: ButtonWeight;
+  };
 
 export type ButtonProps<T extends ButtonElementType = 'button'> = AsReactType<T> &
-  MergeElementPropsWithoutRef<T, LocalButtonProps>;
+  MergeElementPropsWithoutRef<T, LocalButtonProps<T>>;
 
 export function ButtonBase<T extends ButtonElementType = 'button'>(
   {

@@ -28,7 +28,13 @@ export function FieldsetBase(
   return (
     <fieldset className={cx(styles.fieldset, className)} ref={forwardedRef} {...props}>
       {legend && (
-        <Label as="legend" className={styles.fieldset__legend} contrast={contrast} strength="legend" themeId={themeId}>
+        <Label<'legend'>
+          as="legend"
+          className={styles.fieldset__legend}
+          contrast={contrast}
+          strength="legend"
+          themeId={themeId}
+        >
           {legend}
         </Label>
       )}

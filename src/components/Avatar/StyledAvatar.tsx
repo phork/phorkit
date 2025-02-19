@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import { Avatar, AvatarProps } from './Avatar';
+import { Avatar, AvatarElementType, AvatarProps } from './Avatar';
 
-export type StyledAvatarProps<T extends React.ElementType = 'div'> = Omit<
+export type StyledAvatarProps<T extends AvatarElementType = 'div'> = Omit<
   AvatarProps<T>,
   'color' | 'contrast' | 'themeId'
 > & {
@@ -19,6 +19,6 @@ export const StyledAvatar = styled(Avatar, {
 })<StyledAvatarProps>`
   ${({ backgroundColor }) => backgroundColor && `--avatar-background-color: ${backgroundColor};`}
   ${({ textColor }) => textColor && `--avatar-text-color: ${textColor};`}
-` as <T extends React.ElementType = 'div'>(p: StyledAvatarProps<T>) => React.ReactElement<T>;
+` as <T extends AvatarElementType = 'div'>(p: StyledAvatarProps<T>) => React.ReactElement<T>;
 
 (StyledAvatar as React.NamedExoticComponent).displayName = 'StyledAvatar';

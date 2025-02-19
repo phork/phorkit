@@ -12,32 +12,33 @@ export const listItemElementMap: ListItemElementMap = {
   div: 'div' as ListItemElementMap['div'],
 };
 
-export type LocalListProps = ThemeProps & {
-  children?: React.ReactNode;
-  className?: string;
-  color?: 'primary' | 'neutral';
-  /** The focused flag adds an outline to a focused list in accessibility mode */
-  focused?: boolean;
-  /** The focus outline should only be hidden when something else containing the list has a focus style (eg. a dropdown) */
-  hideFocusOutline?: boolean;
-  /** The inactive flag removes all hover styles */
-  inactive?: boolean;
-  inline?: boolean;
-  items?: readonly (Omit<ListItemProps, 'children'> & { id: string; label: ListItemProps['children'] })[];
-  /** This will set put selected item styles on a focused item but doesn't actually select the item (useful for dropdowns) */
-  mimicSelectOnFocus?: boolean;
-  /** The default role is list or listbox but it can be overridden or set to undefined */
-  role?: string;
-  rounded?: boolean;
-  scrollable?: boolean;
-  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
-  style?: React.CSSProperties;
-  transparent?: boolean;
-  unstyled?: boolean;
-  variant?: 'bordered' | 'shadowed' | 'divided' | 'unboxed';
-};
+export type LocalListProps<T extends ListElementType = 'ul'> = ThemeProps &
+  React.HTMLAttributes<HTMLElementTagNameMap[T]> & {
+    children?: React.ReactNode;
+    className?: string;
+    color?: 'primary' | 'neutral';
+    /** The focused flag adds an outline to a focused list in accessibility mode */
+    focused?: boolean;
+    /** The focus outline should only be hidden when something else containing the list has a focus style (eg. a dropdown) */
+    hideFocusOutline?: boolean;
+    /** The inactive flag removes all hover styles */
+    inactive?: boolean;
+    inline?: boolean;
+    items?: readonly (Omit<ListItemProps, 'children'> & { id: string; label: ListItemProps['children'] })[];
+    /** This will set put selected item styles on a focused item but doesn't actually select the item (useful for dropdowns) */
+    mimicSelectOnFocus?: boolean;
+    /** The default role is list or listbox but it can be overridden or set to undefined */
+    role?: string;
+    rounded?: boolean;
+    scrollable?: boolean;
+    size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
+    style?: React.CSSProperties;
+    transparent?: boolean;
+    unstyled?: boolean;
+    variant?: 'bordered' | 'shadowed' | 'divided' | 'unboxed';
+  };
 
-export type ListProps<T extends ListElementType = 'ul'> = AsReactType<T> & MergeElementProps<T, LocalListProps>;
+export type ListProps<T extends ListElementType = 'ul'> = AsReactType<T> & MergeElementProps<T, LocalListProps<T>>;
 
 export function ListBase<T extends ListElementType = 'ul'>(
   {

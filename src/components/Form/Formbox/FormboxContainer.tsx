@@ -6,40 +6,41 @@ import styles from './styles/Formbox.module.css';
 import sizeStyles from './styles/FormboxSizes.module.css';
 import { FormboxContainerElementType, FormboxInputElementType, FormboxSize, FormboxVariant } from './types';
 
-export type LocalFormboxContainerProps = ThemeProps & {
-  /** Whether the formbox input was auto-filled (see useAutoFilled hook) */
-  autoFilled?: boolean;
-  children: NonNullable<React.ReactNode>;
-  centered?: boolean;
-  className?: string;
-  disabled?: boolean;
-  /** This should be true if there's no input value, read only value, or placeholder */
-  empty?: boolean;
-  /** Manually apply the focus styles; this does not affect focus */
-  focused?: boolean;
-  hasIconAfter?: boolean;
-  hasIconBefore?: boolean;
-  id?: string;
-  /** The width of the input container */
-  inputWidth?: string | number;
-  label?: React.ReactNode | string;
-  /** If the formbox container is read only then there are no hover events */
-  readOnly?: boolean;
-  size?: FormboxSize;
-  style?: React.CSSProperties;
-  /** A transitional input show the label as a placeholder which moves out of the way on focus or if there's a value */
-  transitional?: boolean;
-  /** Transparent inputs can be used inside styled containers (eg. a contained dropdown) */
-  transparent?: boolean;
-  type: FormboxInputElementType;
-  validity?: StateColor;
-  variant?: FormboxVariant;
-  /** The width of the entire component */
-  width?: string | number;
-};
+export type LocalFormboxContainerProps<T extends FormboxContainerElementType> = ThemeProps &
+  React.HTMLAttributes<HTMLElementTagNameMap[T]> & {
+    /** Whether the formbox input was auto-filled (see useAutoFilled hook) */
+    autoFilled?: boolean;
+    children: NonNullable<React.ReactNode>;
+    centered?: boolean;
+    className?: string;
+    disabled?: boolean;
+    /** This should be true if there's no input value, read only value, or placeholder */
+    empty?: boolean;
+    /** Manually apply the focus styles; this does not affect focus */
+    focused?: boolean;
+    hasIconAfter?: boolean;
+    hasIconBefore?: boolean;
+    id?: string;
+    /** The width of the input container */
+    inputWidth?: string | number;
+    label?: React.ReactNode | string;
+    /** If the formbox container is read only then there are no hover events */
+    readOnly?: boolean;
+    size?: FormboxSize;
+    style?: React.CSSProperties;
+    /** A transitional input show the label as a placeholder which moves out of the way on focus or if there's a value */
+    transitional?: boolean;
+    /** Transparent inputs can be used inside styled containers (eg. a contained dropdown) */
+    transparent?: boolean;
+    type: FormboxInputElementType;
+    validity?: StateColor;
+    variant?: FormboxVariant;
+    /** The width of the entire component */
+    width?: string | number;
+  };
 
 export type FormboxContainerProps<T extends FormboxContainerElementType> = AsReactType<T> &
-  MergeElementProps<T, LocalFormboxContainerProps>;
+  MergeElementProps<T, LocalFormboxContainerProps<T>>;
 
 /**
  * This applies all the container and label styles for

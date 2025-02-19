@@ -17,7 +17,7 @@ describe('<LinkContainer />', () => {
 
   it('should render as a paragraph', () => {
     const { container, getByText } = render(
-      <LinkContainer as="p">
+      <LinkContainer<'p'> as="p">
         <a href="#linkcontainer">Click me!</a>
       </LinkContainer>,
     );

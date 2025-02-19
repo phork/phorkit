@@ -3,9 +3,9 @@ import React from 'react';
 import { Theme } from '../../types';
 import { themes, ThemeColors, ThemeColorIds } from '../../config';
 import { withTheme } from '../../context/Theme';
-import { Avatar, AvatarProps } from './Avatar';
+import { Avatar, AvatarElementType, AvatarProps } from './Avatar';
 
-export type ColoredAvatarProps<T extends React.ElementType = 'div'> = Omit<
+export type ColoredAvatarProps<T extends AvatarElementType = 'div'> = Omit<
   AvatarProps<T>,
   'color' | 'contrast' | 'themeId'
 > & {
@@ -21,7 +21,7 @@ const StyledAvatar = styled(Avatar, {
   --avatar-text-color: ${props => themes[props.themeId][`color-${props.colorId}-contrast` as keyof ThemeColors]};
 `;
 
-const BaseColoredAvatar = withTheme<ColoredAvatarProps>(StyledAvatar) as <T extends React.ElementType = 'div'>(
+const BaseColoredAvatar = withTheme<ColoredAvatarProps>(StyledAvatar) as <T extends AvatarElementType = 'div'>(
   p: Omit<ColoredAvatarProps<T>, 'themeId'> & { themeId?: Theme },
 ) => React.ReactElement<T>;
 

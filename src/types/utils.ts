@@ -1,15 +1,16 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export type MergeProps<T extends Record<string, any>, P extends Record<string, any>> = Omit<T, keyof P> & P;
 
 // see https://github.com/microsoft/TypeScript/issues/36860 for css, sx removal notes
-export type MergeElementProps<T extends React.ElementType, P extends Record<string, unknown>> = Omit<
+export type MergeElementProps<T extends React.ElementType, P extends {}> = Omit<
   React.ComponentPropsWithRef<T>,
   keyof P | 'css' | 'sx'
 > &
   P;
 
 // see https://github.com/microsoft/TypeScript/issues/36860 for css, sx removal notes
-export type MergeElementPropsWithoutRef<T extends React.ElementType, P extends Record<string, unknown>> = Omit<
+export type MergeElementPropsWithoutRef<T extends React.ElementType, P extends {}> = Omit<
   React.ComponentPropsWithoutRef<T>,
   keyof P | 'css' | 'sx'
 > &

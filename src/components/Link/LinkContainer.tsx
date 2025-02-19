@@ -4,18 +4,19 @@ import { AsReactType, MergeElementPropsWithoutRef, ThemeProps } from '../../type
 import { useThemeId } from '../../context/Theme';
 import styles from './styles/Link.module.css';
 
-export type LinkContainerElementType = keyof JSX.IntrinsicElements;
+export type LinkContainerElementType = Extract<keyof HTMLElementTagNameMap, keyof JSX.IntrinsicElements>;
 
-export type LocalLinkContainerProps = ThemeProps & {
-  children: NonNullable<React.ReactNode>;
-  className?: string;
-  style?: React.CSSProperties;
-  target?: string;
-  underline?: boolean;
-};
+export type LocalLinkContainerProps<T extends LinkContainerElementType = 'div'> = ThemeProps &
+  React.HTMLAttributes<HTMLElementTagNameMap[T]> & {
+    children: NonNullable<React.ReactNode>;
+    className?: string;
+    style?: React.CSSProperties;
+    target?: string;
+    underline?: boolean;
+  };
 
 export type LinkContainerProps<T extends LinkContainerElementType = 'div'> = AsReactType<T> &
-  MergeElementPropsWithoutRef<T, LocalLinkContainerProps>;
+  MergeElementPropsWithoutRef<T, LocalLinkContainerProps<T>>;
 
 /**
  * A link container adds custom link styles to any
@@ -30,7 +31,7 @@ export function LinkContainer<T extends LinkContainerElementType = 'div'>({
   underline = false,
   unthemed = false,
   ...props
-}: LinkContainerProps<T>): React.ReactElement {
+}: LinkContainerProps<T>): JSX.Element {
   const themeId = useThemeId(initThemeId);
   const className = cx(
     styles.linkContainer,
