@@ -248,6 +248,7 @@ const defaultArgs = {
     </Typography>
   ),
   triangleBorderWidth: 2,
+  triangleSize: 10,
   uncentered: false,
   withoutTogglerFocusStyle: false,
   withPopoverTogglerProps: false,

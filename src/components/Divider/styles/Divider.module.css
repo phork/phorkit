@@ -5,6 +5,7 @@
 
 hr.divider {
   border: none;
+  margin: 0;
 }
 
 .divider--horizontal {

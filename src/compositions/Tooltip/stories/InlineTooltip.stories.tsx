@@ -266,6 +266,7 @@ const defaultArgs = {
     </Typography>
   ),
   triangleColor: themes.light['color-P10'],
+  triangleSize: 10,
   uncentered: false,
   width: 300,
   withoutTogglerFocusStyle: false,
