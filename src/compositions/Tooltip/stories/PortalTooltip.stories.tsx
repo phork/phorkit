@@ -277,7 +277,6 @@ const defaultArgs = {
     </Typography>
   ),
   triangleColor: themes.light['color-P10'],
-  triangleSize: 10,
   uncentered: false,
   width: 300,
   withoutTogglerFocusStyle: false,
@@ -418,6 +417,15 @@ TriangleSize.args = {
   offset: { horizontal: 42, vertical: 20 },
   position: 'bottom-right',
   triangleSize: 12,
+};
+
+export const NoTriangle = Template.bind({});
+NoTriangle.storyName = 'No triangle';
+NoTriangle.args = {
+  ...defaultArgs,
+  offset: { horizontal: 42, vertical: 20 },
+  position: 'bottom-right',
+  triangleSize: 0,
 };
 
 export const AbsolutePortal = Template.bind({});

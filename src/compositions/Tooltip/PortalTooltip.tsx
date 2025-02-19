@@ -42,7 +42,7 @@ export function PortalTooltip<F extends HTMLElement | undefined = undefined>({
   triangleBorderColor,
   triangleBorderWidth,
   triangleColor,
-  triangleSize,
+  triangleSize = 8,
   uncentered,
   ...props
 }: PortalTooltipProps<F>): React.ReactElement {

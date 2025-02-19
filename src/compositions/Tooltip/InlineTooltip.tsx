@@ -42,7 +42,7 @@ export function InlineTooltip<F extends HTMLElement | undefined = undefined>({
   triangleBorderColor,
   triangleBorderWidth,
   triangleColor,
-  triangleSize,
+  triangleSize = 8,
   uncentered = false,
   ...props
 }: InlineTooltipProps<F>): React.ReactElement {

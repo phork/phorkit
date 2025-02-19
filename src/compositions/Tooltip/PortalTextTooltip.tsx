@@ -49,7 +49,7 @@ export function PortalTextTooltip<F extends HTMLElement | undefined = undefined>
   themeId: initThemeId,
   tooltipClassName,
   triangleBorderWidth = 2,
-  triangleSize,
+  triangleSize = 8,
   uncentered,
   width,
   ...props

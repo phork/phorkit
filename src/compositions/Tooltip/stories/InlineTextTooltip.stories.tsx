@@ -237,7 +237,6 @@ const defaultArgs = {
     </Typography>
   ),
   triangleBorderWidth: 2,
-  triangleSize: 10,
   uncentered: false,
   withoutTogglerFocusStyle: false,
   withPopoverTogglerProps: false,
@@ -348,6 +347,51 @@ OnIcon.args = {
 };
 
 OnIcon.decorators = [
+  (Story, { args: { position, layout } }) => (
+    <Typography<'div'>
+      as="div"
+      color="primary"
+      style={{
+        margin: 20,
+        height: 60,
+        position: 'relative',
+      }}
+    >
+      <div
+        style={{
+          alignItems: 'center',
+          display: 'flex',
+          position: 'absolute',
+          ...getHorizontalPosition(position, layout),
+          ...getVerticalPosition(position, layout),
+        }}
+      >
+        <span>Sometimes a tooltip should be clickable, or on an icon.</span>
+        {Story()}
+        <span>That is neat.</span>
+      </div>
+    </Typography>
+  ),
+];
+
+export const NoTriangle = Template.bind({});
+NoTriangle.storyName = 'No triangle';
+NoTriangle.args = {
+  ...defaultArgs,
+  children: 'Tiny little portal tooltip. Hardly bigger than an acorn.',
+  hoverable: false,
+  toggler: (
+    <Rhythm mx={1}>
+      <IconButton color="primary">
+        <ArrowUpDownIcon scale="medium" />
+      </IconButton>
+    </Rhythm>
+  ),
+  triangleSize: 0,
+  withoutTogglerFocusStyle: true,
+};
+
+NoTriangle.decorators = [
   (Story, { args: { position, layout } }) => (
     <Typography<'div'>
       as="div"

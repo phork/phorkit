@@ -61,7 +61,12 @@ export const DropoverLabel = React.forwardRef<HTMLDivElement, DropoverLabelProps
 
         {!noTriangle && (
           <Rhythm ml={2}>
-            <Triangle color={focused ? triangleFocusedColor : triangleColor} position="bottom" size={triangleSize} />
+            <Triangle
+              aria-hidden="true"
+              color={focused ? triangleFocusedColor : triangleColor}
+              position="bottom"
+              size={triangleSize}
+            />
           </Rhythm>
         )}
       </div>

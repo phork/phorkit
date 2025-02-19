@@ -12,7 +12,7 @@ module.exports = {
   },
   modulePathIgnorePatterns: [...config.modulePathIgnorePatterns, '<rootDir>/package.json'],
   moduleNameMapper: {
-    '^lib(.*)$': '<rootDir>/lib$1',
+    '^lib(.*)$': '<rootDir>/lib/cjs$1',
     '^__mocks__/(.*)$': '<rootDir>/__mocks__/$1',
     '\\.css$': '<rootDir>/__mocks__/style.mock.js',
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':

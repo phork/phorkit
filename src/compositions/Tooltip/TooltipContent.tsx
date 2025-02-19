@@ -152,6 +152,7 @@ export function TooltipContent({
     >
       {triangleBorderColor && !!triangleSize && (
         <Triangle
+          aria-hidden="true"
           className={cx(styles.tooltipContent__triangle)}
           color={triangleBorderColor}
           position={getTrianglePosition(position, cornerTriangle)}
@@ -173,6 +174,7 @@ export function TooltipContent({
 
       {!!triangleSize && (
         <Triangle
+          aria-hidden="true"
           className={cx(styles.tooltipContent__triangle)}
           color={triangleColor}
           position={getTrianglePosition(position, cornerTriangle)}
