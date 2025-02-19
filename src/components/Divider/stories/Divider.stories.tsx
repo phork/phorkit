@@ -148,3 +148,15 @@ Vertical.args = {
   ...defaultArgs,
   orientation: 'vertical',
 };
+
+export const HorizontalRule = (args: DividerProps<'hr'>): JSX.Element => <Divider<'hr'> {...args} />;
+HorizontalRule.args = {
+  ...defaultArgs,
+  as: 'hr',
+};
+
+export const Div = (args: DividerProps<'div'>): JSX.Element => <Divider<'div'> {...args} />;
+Div.args = {
+  ...defaultArgs,
+  as: 'div',
+};
