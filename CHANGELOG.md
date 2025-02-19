@@ -1,5 +1,11 @@
 # Changelog
 
+# [17.6.0](https://github.com/phork/phorkit/compare/v17.5.2...v17.6.0) (2025-02-19)
+
+### ✨ Features
+
+- refactored "as element" to allow element attributes ([d1e838f](https://github.com/phork/phorkit/commit/d1e838f))
+
 ## [17.5.2](https://github.com/phork/phorkit/compare/v17.5.1...v17.5.2) (2025-02-04)
 
 ## [17.5.1](https://github.com/phork/phorkit/compare/v17.5.0...v17.5.1) (2025-02-04)
