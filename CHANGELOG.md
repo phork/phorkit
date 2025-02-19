@@ -1,5 +1,11 @@
 # Changelog
 
+## [17.6.1](https://github.com/phork/phorkit/compare/v17.6.0...v17.6.1) (2025-02-19)
+
+### 🐛 Bug Fixes
+
+- minor visual fixes to divider, tooltips ([aee7579](https://github.com/phork/phorkit/commit/aee7579))
+
 # [17.6.0](https://github.com/phork/phorkit/compare/v17.5.2...v17.6.0) (2025-02-19)
 
 ### ✨ Features
