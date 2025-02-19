@@ -3,6 +3,10 @@
   flex: none;
 }
 
+hr.divider {
+  border: none;
+}
+
 .divider--horizontal {
   height: 1px;
   width: 100%;
